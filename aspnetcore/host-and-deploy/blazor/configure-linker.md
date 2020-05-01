@@ -1,21 +1,21 @@
 ---
-title: 設定ASP.NET核心連結器Blazor
+title: 設定 ASP.NET Core 的連結器Blazor
 author: guardrex
-description: 瞭解如何在構建Blazor應用時控制中間語言 (IL) 連結器。
+description: 瞭解如何在建立Blazor應用程式時控制中繼語言（IL）連結器。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/23/2020
+ms.date: 04/29/2020
 no-loc:
 - Blazor
 - SignalR
 uid: host-and-deploy/blazor/configure-linker
-ms.openlocfilehash: 109da5ef400c3b9d64ccf3ceb33a5387ea6b5618
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 94cf1f09ddff47aa41181e9f5c52b4c65dc2ecf1
+ms.sourcegitcommit: 6318d2bdd63116e178c34492a904be85ec9ac108
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80218657"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82604775"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>設定 ASP.NET Core Blazor 的連結器
 
@@ -23,20 +23,20 @@ ms.locfileid: "80218657"
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor WebAssembly 在生成期間執行[中間語言 (IL)](/dotnet/standard/managed-code#intermediate-language--execution)連結,以從應用的輸出程式集中修剪不必要的 IL。 在調試配置中生成連結器時,連結器將禁用。 應用必須在發佈配置中生成才能啟用連結器。 我們建議在部署 Blazor WebAssembly 應用時在「發布」中構建。 
+Blazor WebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-code#intermediate-language--execution)連結，以從應用程式的輸出元件修剪不必要的 IL。 在 Debug 設定中建立時，會停用連結器。 應用程式必須在發行設定中建立，才能啟用連結器。 我們建議您在部署 Blazor WebAssembly 應用程式時建立發行。 
 
-鏈接應用會優化大小,但可能會造成不利影響。 使用反射或相關動態功能的應用在修剪時可能會中斷,因為連結器不知道此動態行為,並且通常無法確定運行時反射需要哪些類型。 要修剪此類應用,必須告知連結程式在代碼和程式所依賴的包或框架中反射所需的任何類型。 
+連結應用程式會優化大小，但可能會有不利的影響。 使用反映或相關動態功能的應用程式可能會在修剪時中斷，因為連結器不知道此動態行為，而且無法判斷在執行時間的反映需要何種類型。 若要修剪這類應用程式，連結器必須通知程式碼中的反映所需的任何類型，以及應用程式所相依的封裝或架構。 
 
-為了確保修剪的應用在部署後正常工作,在開發時經常測試應用的發佈版本非常重要。
+若要確保已修剪的應用程式在部署後能正常運作，請務必在開發時經常測試應用程式的發行組建。
 
-可以使用以下 MSBuild 功能設定 Blazor 應用的連結:
+您可以使用下列 MSBuild 功能來設定 Blazor 應用程式的連結：
 
-* 使用[MSBuild 屬性](#control-linking-with-an-msbuild-property)配置全域連結。
-* 使用[配置檔](#control-linking-with-a-configuration-file)控制每個程式集的連結。
+* 使用[MSBuild 屬性](#control-linking-with-an-msbuild-property)來設定全域連結。
+* 使用[設定檔](#control-linking-with-a-configuration-file)來控制每個元件的連結。
 
-## <a name="control-linking-with-an-msbuild-property"></a>使用 MSBuild 屬性進行連結
+## <a name="control-linking-with-an-msbuild-property"></a>使用 MSBuild 屬性的控制項連結
 
-在配置中`Release`生成應用時啟用連結。 要變更此項目檔`BlazorWebAssemblyEnableLinking`中的 MSBuild 屬性:
+建立`Release`應用程式時，會啟用連結。 若要變更此項， `BlazorWebAssemblyEnableLinking`請在專案檔中設定 MSBuild 屬性：
 
 ```xml
 <PropertyGroup>
@@ -54,7 +54,7 @@ Blazor WebAssembly 在生成期間執行[中間語言 (IL)](/dotnet/standard/man
 </ItemGroup>
 ```
 
-*連結康菲格.xml*:
+*LinkerConfig .xml*：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -86,13 +86,13 @@ Blazor WebAssembly 在生成期間執行[中間語言 (IL)](/dotnet/standard/man
 </linker>
 ```
 
-有關詳細資訊,請參閱連結[xml 檔範例(單聲道/連結器 GitHub 儲存庫)。](https://github.com/mono/linker#link-xml-file-examples)
+如需詳細資訊，請參閱[連結 xml 檔案範例（mono/連結器 GitHub 存放庫）](https://github.com/mono/linker#link-xml-file-examples)。
 
-## <a name="add-an-xml-linker-configuration-file-to-a-library"></a>新增 XML 連結器設定檔到函式庫
+## <a name="add-an-xml-linker-configuration-file-to-a-library"></a>將 XML 連結器設定檔加入至程式庫
 
-要設定特定庫的連結程式,請將 XML 連結器設定檔作為嵌入式資源添加到庫中。 嵌入的資源必須與程式集具有相同的名稱。
+若要設定特定程式庫的連結器，請將 XML 連結器設定檔新增至程式庫做為內嵌資源。 內嵌資源的名稱必須與元件相同。
 
-在下面的範例中 *,LinkerConfig.xml*檔指定為與函式庫程式集同名的嵌入式資源:
+在下列範例中，會將*LinkerConfig*指定為與程式庫的元件同名的內嵌資源：
 
 ```xml
 <ItemGroup>
@@ -102,21 +102,21 @@ Blazor WebAssembly 在生成期間執行[中間語言 (IL)](/dotnet/standard/man
 </ItemGroup>
 ```
 
-### <a name="configure-the-linker-for-internationalization"></a>設定用於國際化的連結器
+### <a name="configure-the-linker-for-internationalization"></a>設定國際化的連結器
 
-默認情況下,Blazor 針對 Blazor WebAssembly 應用的連結器配置會剝離國際化資訊,但明確請求區域設置除外。 刪除這些程式集可最大程度地減小應用的大小。
+根據預設，Blazor WebAssembly 應用程式的 Blazor 連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 移除這些元件會將應用程式的大小降到最低。
 
-要控制保留哪些 I18N 程式集,`<MonoLinkerI18NAssemblies>`在專案 檔中設定 MSBuild 屬性:
+若要控制要保留哪些國際化元件，請`<BlazorWebAssemblyI18NAssemblies>`在專案檔中設定 MSBuild 屬性：
 
 ```xml
 <PropertyGroup>
-  <MonoLinkerI18NAssemblies>{all|none|REGION1,REGION2,...}</MonoLinkerI18NAssemblies>
+  <BlazorWebAssemblyI18NAssemblies>{all|none|REGION1,REGION2,...}</BlazorWebAssemblyI18NAssemblies>
 </PropertyGroup>
 ```
 
-| 區域值     | 單聲道區域裝配    |
+| 區域值     | Mono 區域元件    |
 | ---------------- | ----------------------- |
-| `all`            | 包括所有程式集 |
+| `all`            | 包含的所有元件 |
 | `cjk`            | *I18N.CJK.dll*          |
 | `mideast`        | *I18N.MidEast.dll*      |
 | `none` (預設值) | None                    |
@@ -124,6 +124,6 @@ Blazor WebAssembly 在生成期間執行[中間語言 (IL)](/dotnet/standard/man
 | `rare`           | *I18N.Rare.dll*         |
 | `west`           | *I18N.West.dll*         |
 
-使用逗號分隔多個值(例如, `mideast,west`
+使用逗號來分隔多個值（例如`mideast,west`）。
 
-有關詳細資訊,請參閱[I18N:Pnetlib 國際化框架庫(單聲道/單聲道 GitHub 儲存庫)。](https://github.com/mono/mono/tree/master/mcs/class/I18N)
+如需詳細資訊，請參閱[I18N： Pnetlib 國際化架構程式庫（mono/Mono GitHub 儲存機制）](https://github.com/mono/mono/tree/master/mcs/class/I18N)。

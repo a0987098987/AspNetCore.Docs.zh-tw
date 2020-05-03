@@ -1,7 +1,7 @@
 ---
-title: ASP.NET核心Blazor路由
+title: ASP.NET Core Blazor路由
 author: guardrex
-description: 瞭解如何在應用中路由請求以及 NavLink 元件。
+description: 瞭解如何在應用程式中路由傳送要求，以及關於 NavLink 元件。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
@@ -10,32 +10,32 @@ no-loc:
 - Blazor
 - SignalR
 uid: blazor/routing
-ms.openlocfilehash: 87579c88a37e0258921e199db2b5d8c7627f5499
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 291ec33f951008df10f85336c7abd0b3d0a50bbc
+ms.sourcegitcommit: c19e388c83c981232e6f128d97440262adfe06e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80218891"
+ms.lasthandoff: 05/02/2020
+ms.locfileid: "82727711"
 ---
-# <a name="aspnet-core-blazor-routing"></a>ASP.NET核心布拉佐爾路由
+# <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
 作者：[Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-瞭解如何路由請求以及如何使用`NavLink`元件在 Blazor 應用中創建導航連結。
+瞭解如何路由傳送要求，以及如何使用`NavLink`元件在 Blazor apps 中建立導覽連結。
 
-## <a name="aspnet-core-endpoint-routing-integration"></a>ASP.NET核心終結點路由整合
+## <a name="aspnet-core-endpoint-routing-integration"></a>ASP.NET Core 端點路由整合
 
-布拉佐伺服器整合[到 ASP.NET 核心端點路由](xref:fundamentals/routing)。 ASP.NET核心應用設定為接受`MapBlazorHub`具有`Startup.Configure`的 互動式元件的傳入連線:
+Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)中。 ASP.NET Core 應用程式已設定為接受`MapBlazorHub`中`Startup.Configure`的互動式元件連入連線：
 
 [!code-csharp[](routing/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-最典型的配置是將所有請求路由到 Razor 頁面,該頁面充當 Blazor Server 應用伺服器端部分的主機。 依慣例,*主機*頁通常命名為 *_Host.cshtml*。 在主機檔中指定的路由稱為*回退路由*,因為它在路由匹配中優先順序較低。 當其他路由不匹配時,將考慮回退路由。 這允許應用程式使用其他控制器和頁面,而不會干擾 Blazor 伺服器應用程式。
+最常見的設定是將所有要求路由傳送至 Razor 頁面，做為 Blazor 伺服器應用程式的伺服器端部分的主機。 依照慣例，[*主機*] 頁面通常會命名為 *_Host. cshtml*。 主機檔案中指定的路由稱為「回溯*路由*」，因為它在路由比對中以低優先順序運作。 當其他路由不相符時，就會考慮回退路由。 這可讓應用程式使用其他控制器和頁面，而不會干擾 Blazor 伺服器應用程式。
 
 ## <a name="route-templates"></a>路由範本
 
-該`Router`元件允許使用指定路由路由路由到每個元件。 元件`Router`將顯示在*App.razor*檔中:
+此`Router`元件可讓您使用指定的路由來路由傳送至每個元件。 此`Router`元件會出現在*應用程式 razor*檔案中：
 
 ```razor
 <Router AppAssembly="typeof(Startup).Assembly">
@@ -48,16 +48,16 @@ ms.locfileid: "80218891"
 </Router>
 ```
 
-編譯帶有`@page`指令的 *.razor*檔時,<xref:Microsoft.AspNetCore.Components.RouteAttribute>將提供指定 路由範本的生成類。
+編譯含有 *.razor* `@page`指示詞的 razor 檔案時，會提供<xref:Microsoft.AspNetCore.Components.RouteAttribute>指定路由範本的所產生類別。
 
-在執行時,`RouteView`元件:
+在執行時間， `RouteView`元件：
 
-* 從`RouteData`任何任何參數`Router`的參數接收 。
-* 使用指定的參數渲染指定元件的佈局(或可選的預設佈局)。
+* `RouteData`從接收， `Router`連同任何想要的參數。
+* 使用指定的參數，以配置（或選擇性的預設版面配置）呈現指定的元件。
 
-可以選擇使用佈局類指定參數`DefaultLayout`,用於不指定佈局的元件。 預設的 Blazor 樣本`MainLayout`指定 元件。 *MainLayout.razor*位於範本專案的 *「共用」* 資料夾中。 有關佈局的詳細資訊,請參閱<xref:blazor/layouts>。
+您可以選擇性地指定`DefaultLayout`具有版面配置類別的參數，以用於未指定版面配置的元件。 預設的 Blazor 範本會指定`MainLayout`元件。 *MainLayout*是在範本專案的*共用*資料夾中。 如需版面配置的詳細資訊<xref:blazor/layouts>，請參閱。
 
-多個工藝路線範本可以應用於元件。 以下元件回應和`/BlazorRoute``/DifferentBlazorRoute`的請求。
+多個路由範本可以套用至元件。 下列元件會回應和`/BlazorRoute` `/DifferentBlazorRoute`的要求：
 
 ```razor
 @page "/BlazorRoute"
@@ -67,13 +67,13 @@ ms.locfileid: "80218891"
 ```
 
 > [!IMPORTANT]
-> 要正確解析 URL,應用必須在其*wwwroot/index.html*檔(Blazor WebAssembly)或*頁面/_Host.cshtml*檔(Blazor Server)中包含一個`href``<base href="/">``<base>`標記,並在屬性 () 中指定應用基本路徑。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#app-base-path>。
+> 若要讓 Url 正確解析，應用程式必須在`<base>`其*Wwwroot/index.html*檔（Blazor WebAssembly）中包含標記，或在`href`屬性（`<base href="/">`）中指定應用程式基底路徑的*Pages/_Host. cshtml*檔案（Blazor 伺服器）。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#app-base-path>。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
-如果`Router`未找到請求的路由的內容,則元件允許應用指定自定義內容。
+如果`Router`找不到所要求路由的內容，此元件可讓應用程式指定自訂內容。
 
-在*App.razor*檔中`NotFound``Router`,在 元件的樣本參數中設定自訂內容:
+在*應用程式的 razor*檔案中，于`NotFound` `Router`元件的範本參數中設定自訂內容：
 
 ```razor
 <Router AppAssembly="typeof(Startup).Assembly">
@@ -87,11 +87,11 @@ ms.locfileid: "80218891"
 </Router>
 ```
 
-`<NotFound>`標記的內容可以包括任意專案,如其他互動式元件。 要將默認佈局應用於`NotFound`內容,請參閱<xref:blazor/layouts>。
+`<NotFound>`標記的內容可以包含任意專案，例如其他互動式元件。 若要將預設版面配置`NotFound`套用至內容<xref:blazor/layouts>，請參閱。
 
-## <a name="route-to-components-from-multiple-assemblies"></a>從多個程式集路由到元件
+## <a name="route-to-components-from-multiple-assemblies"></a>從多個元件路由至元件
 
-使用`AdditionalAssemblies`參數`Router`為 元件指定在搜尋可路由元件時要考慮的其他程式集。 除了`AppAssembly`指定的程式集之外,還考慮指定程式集。 在下面的範例中,`Component1`是在引用的類庫中定義的可路由元件。 以下`AdditionalAssemblies`範例導致路`Component1`由 支援 :
+使用`AdditionalAssemblies`參數來指定搜尋可路由的元件`Router`時，要考慮的元件的其他元件。 除了指定的`AppAssembly`元件以外，還會考慮指定的元件。 在下列範例中， `Component1`是在參考的類別庫中定義的可路由元件。 下列`AdditionalAssemblies`範例會產生的`Component1`路由支援：
 
 ```razor
 <Router
@@ -103,7 +103,7 @@ ms.locfileid: "80218891"
 
 ## <a name="route-parameters"></a>路由參數
 
-路由器使用路由參數使用同名(不區分大小寫)填充相應的元件參數:
+路由器會使用路由參數來填入具有相同名稱的對應元件參數（不區分大小寫）：
 
 ```razor
 @page "/RouteParameter"
@@ -122,20 +122,20 @@ ms.locfileid: "80218891"
 }
 ```
 
-不支援可選參數。 在前面`@page`的示例中應用了兩個指令。 第一個允許在沒有參數的情況下導航到元件。 第二`@page`個指令以`{text}`由參數並將值分配給屬性`Text`。
+不支援選擇性參數。 在`@page`上述範例中會套用兩個指示詞。 第一個則允許不使用參數導覽至元件。 第二`@page`個指示詞`{text}`會採用 route 參數，並將值`Text`指派給屬性。
 
-## <a name="route-constraints"></a>路由約束
+## <a name="route-constraints"></a>路由條件約束
 
-路由約束強制路由段上與元件的類型匹配。
+路由條件約束會將路由區段上的類型比對強制套用至元件。
 
-在以下範例中,到元件的`Users`路由僅在以下情況匹配時匹配:
+在下列範例中，對`Users`元件的路由只會符合下列條件：
 
-* `Id`請求 URL 上存在路由段。
-* 段`Id`是整數`int`( 。
+* 要求`Id` URL 上有路由區段。
+* `Id`區段是一個整數（`int`）。
 
 [!code-razor[](routing/samples_snapshot/3.x/Constraint.razor?highlight=1)]
 
-下表中顯示的路由約束可用。 有關與不變區域性匹配的路由約束,請參閱下表下面的警告以瞭解更多資訊。
+下表所示的路由條件約束可供使用。 若為符合不因文化特性而異的路由條件約束，請參閱表格下方的警告以取得詳細資訊。
 
 | 條件約束 | 範例           | 範例相符項目                                                                  | 非變異值<br>culture<br>比對 |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
@@ -151,65 +151,65 @@ ms.locfileid: "80218891"
 > [!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 `DateTime`) 一律使用不因國別而異的文化特性。 這些條件約束假設 URL 不可當地語系化。
 
-### <a name="routing-with-urls-that-contain-dots"></a>包含點的網址路由
+### <a name="routing-with-urls-that-contain-dots"></a>包含點的 Url 路由
 
-在 Blazor Server 應用中 *,_Host.cshtml*中的`/`預設`@page "/"`路由為 ( 。 包含點`.`( ) 的請求網址 與預設路由不匹配,因為 URL 似乎請求檔。 Blazor 應用返回*404 - 未找到*不存在的靜態檔的回應。 要使用包含點的路由,請使用以下路由範本設定 *_Host.cshtml:*
+在 Blazor 伺服器應用程式中， *_Host*中的預設路由是`/` （`@page "/"`）。 包含點（`.`）的要求 URL 不符合預設路由，因為 URL 會顯示要求檔案。 如果靜態檔案不存在，Blazor 應用程式會傳回*404-找不*到的回應。 若要使用包含點的路由，請使用下列路由範本來設定 *_Host. cshtml* ：
 
 ```cshtml
 @page "/{**path}"
 ```
 
-該`"/{**path}"`樣本包括:
+此`"/{**path}"`範本包含：
 
-* 雙星號*捕獲所有*語`**`法 ( ) 用於跨多個資料夾邊界捕獲路徑,而無需編碼`/`正向斜杠 ( )。
+* 雙星號*catch-all*語法（`**`）可跨多個資料夾界限捕捉路徑，而不需要編碼正`/`斜線（）。
 * `path`路由參數名稱。
 
 > [!NOTE]
-> Razor 元件`*`/`**`(*.razor*)**不支援***「 全部捕捉*」參數語法 ( )
+> Razor 元件（*razor*）中`*`/`**`**不**支援*Catch-all*參數語法（）。
 
 如需詳細資訊，請參閱 <xref:fundamentals/routing>。
 
-## <a name="navlink-component"></a>導覽連結元件
+## <a name="navlink-component"></a>NavLink 元件
 
-建立瀏`NavLink`覽 連結時,使用元件代替`<a>`HTML 超連結元素 ( ) 。 元件`NavLink`行為類似於`<a>`元素,只不過它根據是否`active``href`與當前 URL 匹配來切換 CSS 類。 該`active`類可幫助使用者了解顯示的導航連結中哪個頁面是活動頁面。
+建立導覽`NavLink`連結時，請使用元件來取代`<a>`HTML 超連結元素（）。 元件`NavLink`的行為類似`<a>`元素，但它會根據其`active` `href`是否符合目前的 URL 來切換 CSS 類別。 `active`類別可協助使用者瞭解在顯示的導覽連結中，哪個頁面是使用中的頁面。
 
-以下`NavMenu`元件建立[Bootstrap](https://getbootstrap.com/docs/)導航列,示範如何使用`NavLink`元件:
+下列`NavMenu`元件會建立[啟動](https://getbootstrap.com/docs/)程式導覽列，示範如何使用`NavLink`元件：
 
 [!code-razor[](routing/samples_snapshot/3.x/NavMenu.razor?highlight=4,9)]
 
-有兩`NavLinkMatch`個選項可以分配給`Match``<NavLink>`元素的屬性:
+有兩個`NavLinkMatch`選項可供您指派給`Match` `<NavLink>`元素的屬性：
 
-* `NavLinkMatch.All`&ndash;與`NavLink`整個當前網址匹配時處於活動狀態。
-* `NavLinkMatch.Prefix`(*預設*)&ndash;與`NavLink`當前URL的任何首元匹配時處於活動狀態。
+* `NavLinkMatch.All`&ndash;當`NavLink`符合整個目前的 URL 時，就會作用中。
+* `NavLinkMatch.Prefix`（*預設值*）&ndash;當`NavLink`符合目前 URL 的任何前置詞時，就會作用中。
 
-在前面的示例中,Home`NavLink``href=""`與主 URL 匹配,並且`active`僅在應用的預設基本路徑`https://localhost:5001/`URL(例如, ) 接收 CSS 類。 當使用者存`NavLink`取 具有`active`前置碼的任何網址時,`MyComponent`第二個 接收`https://localhost:5001/MyComponent`類別`https://localhost:5001/MyComponent/AnotherSegment`(例如, 與 。
+在上述範例中，home `NavLink` `href=""`會符合 home URL，而且只會在`active`應用程式的預設基底路徑 URL （例如， `https://localhost:5001/`）接收 CSS 類別。 第二`NavLink`個會`active`在使用者造訪具有`MyComponent`前置詞的任何 URL 時收到類別（例如`https://localhost:5001/MyComponent` ， `https://localhost:5001/MyComponent/AnotherSegment`和）。
 
-其他`NavLink`元件屬性將傳遞到呈現的錨點標記。 在下面的範例中,`NavLink`元件包括以下`target`屬性:
+其他`NavLink`元件屬性會傳遞至呈現的錨點標記。 在下列範例中， `NavLink`元件包含`target`屬性：
 
 ```razor
 <NavLink href="my-page" target="_blank">My page</NavLink>
 ```
 
-顯示以下 HTML 標籤:
+會轉譯下列 HTML 標籤：
 
 ```html
 <a href="my-page" target="_blank" rel="noopener noreferrer">My page</a>
 ```
 
-## <a name="uri-and-navigation-state-helpers"></a>URI 與導覽狀態說明器
+## <a name="uri-and-navigation-state-helpers"></a>URI 和流覽狀態協助程式
 
-用於<xref:Microsoft.AspNetCore.Components.NavigationManager>在 C# 代碼中處理 URI 和導航。 `NavigationManager`提供了下表中顯示的事件和方法。
+用於<xref:Microsoft.AspNetCore.Components.NavigationManager>在 c # 程式碼中處理 uri 和導覽。 `NavigationManager`提供下表所示的事件和方法。
 
 | member | 描述 |
 | ------ | ----------- |
-| Uri | 獲取當前絕對URI。 |
-| BaseUri | 獲取基礎 URI(帶有尾隨斜杠),該URI可以預置到相對 URI 路徑以生成絕對 URI。 通常,`BaseUri`對應於`href``<base>`文檔 元素上的屬性(wwwroot/index.html(WebAssembly)*wwwroot/index.html*Blazor或*頁面/_Host.cshtml(*Blazor伺服器)。 |
-| 導覽到 | 導航到指定的 URI。 如果是`forceLoad``true`:<ul><li>繞過用戶端路由。</li><li>無論URI通常由用戶端路由器處理,瀏覽器都被迫從伺服器載入新頁面。</li></ul> |
-| 位置已變更 | 當導航位置更改時觸發的事件。 |
-| 到絕對 | 將相對 URI 轉換為絕對 URI。 |
-| <span style="word-break:normal;word-wrap:normal">到基礎相對路徑</span> | 給定基本 URI(例如,以前`GetBaseUri`由返回的 URI)將絕對 URI 轉換為相對於基本 URI 前綴的 URI。 |
+| Uri | 取得目前的絕對 URI。 |
+| BaseUri | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 通常會`BaseUri`對應至`href` *wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）中檔`<base>`元素的屬性。 |
+| NavigateTo | 導覽至指定的 URI。 如果`forceLoad`為`true`：<ul><li>已略過用戶端路由。</li><li>瀏覽器會強制從伺服器載入新頁面，無論 URI 是否通常由用戶端路由器處理。</li></ul> |
+| LocationChanged | 導覽位置變更時引發的事件。 |
+| ToAbsoluteUri | 將相對 URI 轉換為絕對 URI。 |
+| <span style="word-break:normal;word-wrap:normal">ToBaseRelativePath</span> | 假設基底 URI （例如先前傳回的`GetBaseUri`uri），會將絕對 uri 轉換成相對於基底 uri 前置詞的 uri。 |
 
-選擇按鈕時,以下元件將導航到應用`Counter`的元件:
+下列元件會在選取按鈕時， `Counter`流覽至應用程式的元件：
 
 ```razor
 @page "/navigate"
@@ -229,10 +229,10 @@ ms.locfileid: "80218891"
 }
 ```
 
-以下元件處理位置更改的事件。 當`HandleLocationChanged`框架調用該方法`Dispose`時 ,該方法將取消掛號。 取消掛接該方法允許對元件進行垃圾回收。
+下列元件會處理位置已變更事件。 當`HandleLocationChanged`架構呼叫時`Dispose` ，方法會解除掛鉤。 Unhooking 方法允許元件的垃圾收集。
 
 ```razor
-@implement IDisposable
+@implements IDisposable
 @inject NavigationManager NavigationManager
 
 ...
@@ -253,9 +253,9 @@ public void Dispose()
 }
 ```
 
-<xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs>提供有關該事件的以下資訊:
+<xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs>提供事件的下列相關資訊：
 
 * <xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.Location>&ndash;新位置的 URL。
-* <xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted>&ndash;`true`如果Blazor,從瀏覽器截獲了導航。 如果`false`,[導航管理器.導航到](xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A)導致導航發生。
+* <xref:Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs.IsNavigationIntercepted>&ndash;如果`true`為Blazor ，則會攔截瀏覽器的導覽。 如果`false`為，則[NavigationManager NavigateTo](xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A)會造成導覽。
 
-有關元件處理的詳細資訊,請參閱<xref:blazor/lifecycle#component-disposal-with-idisposable>。
+如需有關元件處置的詳細資訊<xref:blazor/lifecycle#component-disposal-with-idisposable>，請參閱。

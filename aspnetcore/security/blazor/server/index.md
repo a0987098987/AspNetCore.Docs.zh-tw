@@ -5,17 +5,17 @@ description: 瞭解如何以 ASP.NET Core Blazor的應用程式來保護伺服�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/27/2020
+ms.date: 05/02/2020
 no-loc:
 - Blazor
 - SignalR
 uid: security/blazor/server/index
-ms.openlocfilehash: 0021911b731e57bc6eabf857c27a13462e7400ae
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: 324b3e8ed2d931c81bb41381caa469b0ec2f2fda
+ms.sourcegitcommit: c19e388c83c981232e6f128d97440262adfe06e2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206365"
+ms.lasthandoff: 05/02/2020
+ms.locfileid: "82727804"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>保護 ASP.NET Core Blazor 伺服器應用程式
 
@@ -101,3 +101,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 如需詳細資訊，請參閱 .NET Core 指南中的 [dotnet new](/dotnet/core/tools/dotnet-new) 命令。
 
 ---
+
+## <a name="secure-an-existing-app"></a>保護現有的應用程式
+
+Blazor伺服器應用程式的安全性設定方式與 ASP.NET Core 應用程式相同。 如需詳細資訊，請參閱底下<xref:security/index>的文章。

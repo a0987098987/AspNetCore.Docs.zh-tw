@@ -6,33 +6,39 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 9/25/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/compatibility-version
-ms.openlocfilehash: b29e2ee49aaf0f557f1acd0cf03e9e82d5ea0105
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 45eca0bedc2e4e5c74936ae5d1bf525774467b2a
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667122"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774206"
 ---
 # <a name="compatibility-version-for-aspnet-core-mvc"></a>ASP.NET Core MVC 的相容性版本
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 方法是 ASP.NET Core 3.0 應用程式的免費作業。 也就是說，以任何 <xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion> 值呼叫 `SetCompatibilityVersion` 不會影響應用程式。
+<xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*>方法是 ASP.NET Core 3.0 應用程式的無 op。 也就是說，使用任何`SetCompatibilityVersion`值呼叫，對<xref:Microsoft.AspNetCore.Mvc.CompatibilityVersion>應用程式不會有任何影響。
 
-* 下一個次要版本的 ASP.NET Core 可能會提供新的 `CompatibilityVersion` 值。
-* 透過 `Version_2_2` `Version_2_0` 的 `CompatibilityVersion` 值會標示 `[Obsolete(...)]`。
+* 下一個次要版本的 ASP.NET Core 可能會提供新`CompatibilityVersion`的值。
+* `CompatibilityVersion``Version_2_2`的`Version_2_0`值會標示`[Obsolete(...)]`為。
 * 請參閱[Antiforgery、CORS、診斷、Mvc 和路由中的重大 API 變更](https://github.com/aspnet/Announcements/issues/387)。 這份清單包含相容性參數的重大變更。
 
-若要查看 `SetCompatibilityVersion` 如何與 ASP.NET Core 2.x 應用程式搭配運作，請選取[此文章的 ASP.NET Core 2.2 版本](https://docs.microsoft.com/aspnet/core/mvc/compatibility-version?view=aspnetcore-2.2)。
+若要查看`SetCompatibilityVersion`如何與 ASP.NET Core 2.x 應用程式搭配運作，請選取本文的[ASP.NET Core 2.2 版本](https://docs.microsoft.com/aspnet/core/mvc/compatibility-version?view=aspnetcore-2.2)。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*> 方法可讓 ASP.NET Core 2.x 應用程式加入宣告或退出 ASP.NET Core MVC 2.1 或2.2 中引進的可能重大行為變更。 這些可能的重大行為變更通常在於 MVC 子系統的運作方式，以及執行階段呼叫**您的程式碼**的方式。 透過選擇加入，您可以取得最新的行為和 ASP.NET Core 的長期行為。
+<xref:Microsoft.Extensions.DependencyInjection.MvcCoreMvcBuilderExtensions.SetCompatibilityVersion*>方法可讓 ASP.NET Core 2.x 應用程式加入宣告或退出 ASP.NET Core MVC 2.1 或2.2 中引進的可能重大行為變更。 這些可能的重大行為變更通常在於 MVC 子系統的運作方式，以及執行階段呼叫**您的程式碼**的方式。 透過選擇加入，您可以取得最新的行為和 ASP.NET Core 的長期行為。
 
 下列程式碼會將相容性模式設定為 ASP.NET Core 2.2：
 
@@ -40,12 +46,12 @@ ms.locfileid: "78667122"
 
 建議您使用最新版本 (`CompatibilityVersion.Latest`) 測試應用程式。 預計大部分的應用程式都不會使用最新版本進行重大行為變更。
 
-呼叫 `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)` 的應用程式會受到保護，以防止在 ASP.NET Core 2.1/2.2 MVC 版本中引進的可能重大行為變更。 這項保護：
+呼叫`SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`的應用程式會受到保護，以防止 ASP.NET Core 2.1/2.2 MVC 版本中引進的可能重大行為變更。 這項保護：
 
 * 不適用於所有 2.1 和更新版本的變更，它的目標是 MVC 子系統中的可能重大 ASP.NET Core 執行階段行為變更。
 * 不會延伸至 ASP.NET Core 3.0。
 
-**未**呼叫 `SetCompatibilityVersion` 之 ASP.NET Core 2.1 和2.2 應用程式的預設相容性為2.0 相容性。 也就是說，不呼叫 `SetCompatibilityVersion` 等同於呼叫 `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`。
+**未**呼叫`SetCompatibilityVersion`之 ASP.NET Core 2.1 和2.2 應用程式的預設相容性為2.0 相容性。 也就是說，不呼叫 `SetCompatibilityVersion` 等同於呼叫 `SetCompatibilityVersion(CompatibilityVersion.Version_2_0)`。
 
 下列程式碼會將相容性模式設定為 ASP.NET Core 2.2，但下列行為除外：
 

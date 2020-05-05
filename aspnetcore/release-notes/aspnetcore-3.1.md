@@ -1,73 +1,76 @@
 ---
-title: ASP.NET核心 3.1 中的新增功能
+title: 3.1 ASP.NET Core 的新功能
 author: rick-anderson
-description: 瞭解 ASP.NET 酷 3.1 中的新功能。
+description: 深入瞭解 ASP.NET Core 3.1 中的新功能。
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: f375022ad3ebdea2990f626320ef295926f88c22
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 67fc972676549a02265035c129c513f11d303d51
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78662705"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774043"
 ---
-# <a name="whats-new-in-aspnet-core-31"></a>ASP.NET核心 3.1 中的新增功能
+# <a name="whats-new-in-aspnet-core-31"></a>3.1 ASP.NET Core 的新功能
 
-本文重點介紹了ASP.NET Core 3.1 中最重要的更改,並介紹了相關文檔的連結。
+本文將重點放在 ASP.NET Core 3.1 中最重要的變更，並提供相關檔的連結。
 
-## <a name="partial-class-support-for-razor-components"></a>對 Razor 元件的部分類別支援
+## <a name="partial-class-support-for-razor-components"></a>元件的Razor部分類別支援
 
-Razor 元件現在生成為部分類。 Razor 元件的代碼可以使用定義為部分類的代碼後面檔編寫,而不是在單個檔中定義元件的所有代碼。 有關詳細資訊,請參閱[部分類支援](xref:blazor/components#partial-class-support)。
+Razor元件現在會以部分類別的形式產生。 Razor元件的程式碼可以使用定義為部分類別的程式碼後置檔案來撰寫，而不是在單一檔案中定義元件的所有程式碼。 如需詳細資訊，請參閱[部分類別支援](xref:blazor/components#partial-class-support)。
 
-## <a name="opno-locblazor-component-tag-helper-and-pass-parameters-to-top-level-components"></a>Blazor元件標記說明器並將參數傳遞給頂級元件
+## <a name="blazor-component-tag-helper-and-pass-parameters-to-top-level-components"></a>Blazor元件標記協助程式，並將參數傳遞至最上層元件
 
-在BlazorASP.NET酷3.0中,元件使用 HTML 說明器`Html.RenderComponentAsync`() 呈現為頁面和檢視。 在ASP.NET酷3.1中,使用新的元件標記幫助程式從頁面或檢視中呈現元件:
+在Blazor具有 ASP.NET Core 3.0 的中，會使用 HTML Helper （`Html.RenderComponentAsync`）將元件轉譯成頁面和視圖。 在 ASP.NET Core 3.1 中，使用新的元件標記協助程式，從頁面或視圖轉譯元件：
 
 ```cshtml
 <component type="typeof(Counter)" render-mode="ServerPrerendered" />
 ```
 
-ASP.NET核心 3.1 中仍然支援 HTML 説明程式,但建議使用元件標記説明程式。
+ASP.NET Core 3.1 仍然支援 HTML Helper，但建議使用元件標記協助程式。
 
-Blazor伺服器應用現在可以在初始渲染期間將參數傳遞給頂級元件。 以前,您只能將參數傳遞給具有[RenderMode.Static 的頂級](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static)元件。 使用此版本,支援[RenderMode.Server](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server)和[RenderModel.伺服器預算](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered)。 任何指定的參數值都序列化為 JSON,並包含在初始回應中。
+Blazor伺服器應用程式現在可以在初始轉譯期間，將參數傳遞至最上層元件。 先前您只能將參數傳遞至具有[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static)的最上層元件。 在此版本中，支援[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server)和[RenderModel](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) 。 任何指定的參數值會序列化為 JSON，並包含在初始回應中。
 
-例如,預先成`Counter`具有增量量的元件`IncrementAmount`( :
+例如，已建立`Counter`具有遞增量（`IncrementAmount`）的元件：
 
 ```cshtml
 <component type="typeof(Counter)" render-mode="ServerPrerendered" 
     param-IncrementAmount="10" />
 ```
 
-有關詳細資訊,請參閱[將元件整合到 Razor 頁面和 MVC 應用中](xref:blazor/integrate-components)。
+如需詳細資訊，請參閱將[元件整合至Razor頁面和 MVC 應用程式](xref:blazor/integrate-components)。
 
 ## <a name="support-for-shared-queues-in-httpsys"></a>支援 HTTP.sys 中的共用佇列
 
-[HTTP.sys](xref:fundamentals/servers/httpsys)支援建立匿名請求佇列。 在 ASP.NET 酷 3.1 中,我們添加了創建或附加到現有名為 HTTP.sys 請求佇列的能力。 創建或附加到現有的名為 HTTP.sys 請求佇列時,可以啟用擁有佇列的 HTTP.sys 控制器進程獨立於偵聽器進程的方案。 這種獨立性使得在偵聽器行程重新啟動之間保留現有連接和排隊的請求成為可能:
+[Http.sys 支援建立](xref:fundamentals/servers/httpsys)匿名要求佇列。 在 ASP.NET Core 3.1 中，我們新增了建立或附加至現有已命名 HTTP.SYS 要求佇列的功能。 建立或附加至現有的已命名 HTTP.SYS 要求佇列，可讓擁有佇列的 HTTP.SYS 控制器進程與接聽程式進程無關的情況。 這種獨立性讓您能夠在接聽程式進程重新開機之間保留現有的連接和排入佇列的要求：
 
 [!code-csharp[](sample/Program.cs?name=snippet)]
 
-## <a name="breaking-changes-for-samesite-cookies"></a>同一網站 Cookie 的中斷變更
+## <a name="breaking-changes-for-samesite-cookies"></a>SameSite cookie 的重大變更
 
-SameSite Cookie 的行為已更改,以反映即將進行的瀏覽器更改。 這可能會影響身份驗證方案,如 AzureAd、OpenIdConnect 或 Ws-AI。 如需詳細資訊，請參閱 <xref:security/samesite>。
+SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 這可能會影響驗證案例，例如 AzureAd、OpenIdConnect 或 WsFederation。 如需詳細資訊，請參閱<xref:security/samesite>。
 
-## <a name="prevent-default-actions-for-events-in-opno-locblazor-apps"></a>防止應用程式中事件的Blazor預設操作
+## <a name="prevent-default-actions-for-events-in-blazor-apps"></a>防止應用程式中Blazor的事件進行預設動作
 
-使用`@on{EVENT}:preventDefault`指令屬性防止事件的預設操作。 在下面的範例中,阻止在文字框中顯示鍵字元的預設操作:
+`@on{EVENT}:preventDefault`使用指示詞屬性可防止事件的預設動作。 在下列範例中，會防止在文字方塊中顯示金鑰字元的預設動作：
 
 ```razor
 <input value="@_count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
 ```
 
-有關詳細資訊,請參閱[封鎖預設操作](xref:blazor/event-handling#prevent-default-actions)。
+如需詳細資訊，請參閱[防止預設動作](xref:blazor/event-handling#prevent-default-actions)。
 
-## <a name="stop-event-propagation-in-opno-locblazor-apps"></a>停止應用中Blazor的事件傳播
+## <a name="stop-event-propagation-in-blazor-apps"></a>停止應用程式中Blazor的事件傳播
 
-使用`@on{EVENT}:stopPropagation`指令屬性停止事件傳播。 在下面的範例中,選擇選擇選擇選擇的視窗可防止`<div>`子級 的單擊事件傳播`<div>`到父級 :
+`@on{EVENT}:stopPropagation`使用指示詞屬性來停止事件傳播。 在下列範例中，選取核取方塊可防止從子`<div>`系的 click 事件傳播到父系： `<div>`
 
 ```razor
 <input @bind="_stopPropagation" type="checkbox" />
@@ -83,13 +86,13 @@ SameSite Cookie 的行為已更改,以反映即將進行的瀏覽器更改。 �
 }
 ```
 
-有關詳細資訊,請參閱[停止事件傳播](xref:blazor/event-handling#stop-event-propagation)。
+如需詳細資訊，請參閱[停止事件傳播](xref:blazor/event-handling#stop-event-propagation)。
 
-## <a name="detailed-errors-during-opno-locblazor-app-development"></a>套用開發Blazor過程中的詳細錯誤
+## <a name="detailed-errors-during-blazor-app-development"></a>應用程式開發Blazor期間的詳細錯誤
 
-當應用Blazor在開發過程中無法正常運行時,從應用接收詳細的錯誤資訊有助於解決問題。 發生錯誤時,Blazor應用在螢幕底部顯示金條:
+當Blazor應用程式在開發期間無法正常運作時，從應用程式接收詳細的錯誤資訊有助於疑難排解和修正問題。 發生錯誤時， Blazor應用程式會在畫面底部顯示 [金色] 橫條：
 
-* 在開發過程中,金條將引導您到瀏覽器控制台,您可以在其中看到異常。
-* 在生產中,金條會通知使用者錯誤,並建議刷新瀏覽器。
+* 在開發期間，「金級」列會將您導向至瀏覽器主控台，您可以在其中看到例外狀況。
+* 在生產環境中，「金級」列會通知使用者發生錯誤，並建議重新整理瀏覽器。
 
-有關詳細資訊,請參閱[開發過程中的詳細錯誤](xref:blazor/handle-errors#detailed-errors-during-development)。
+如需詳細資訊，請參閱[開發期間的詳細錯誤](xref:blazor/handle-errors#detailed-errors-during-development)。

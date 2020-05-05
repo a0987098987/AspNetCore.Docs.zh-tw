@@ -1,19 +1,23 @@
 ---
-title: 開始使用ASP.NET核心SignalR
+title: 開始使用 ASP.NET CoreSignalR
 author: bradygaster
-description: 在本教學中,您將創建一個使用ASP.NET酷睿的SignalR聊天應用。
+description: 在本教學課程中，您會建立使用 ASP.NET Core SignalR的聊天應用程式。
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/21/2019
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: tutorials/signalr
-ms.openlocfilehash: 869eb325ee95a78e4b16c61c5b0573bb094292e3
-ms.sourcegitcommit: 9a46e78c79d167e5fa0cddf89c1ef584e5fe1779
+ms.openlocfilehash: 3fab97781fe354fd3d244880a00353957d7cfabf
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80994614"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774557"
 ---
 # <a name="tutorial-get-started-with-aspnet-core-signalr"></a>教學課程：開始使用 ASP.NET Core SignalR
 
@@ -32,7 +36,7 @@ ms.locfileid: "80994614"
 
 ![SignalR 範例應用程式](signalr/_static/3.x/signalr-get-started-finished.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -58,7 +62,7 @@ ms.locfileid: "80994614"
 
 * 在 [設定新專案]**** 對話方塊中，將專案命名為 *SignalRChat*，然後選取 [建立]****。
 
-* 在 **"建立新ASP.NET核心 Web 應用程式**' 對話框中,選擇 **.NET 核心****和ASP.NET核心 3.0**。 
+* 在 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中，選取 [ **.net Core** ] 和 [ **ASP.NET Core 3.0**]。 
 
 * 選取 [Web 應用程式]**** 建立使用 Razor Pages 的專案，然後選取 [建立]****。
 
@@ -89,7 +93,7 @@ ms.locfileid: "80994614"
 
 ## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫
 
-SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容交付網路 (CDN),可以交付在 npm 找到的任何內容,Node.js 包管理器。
+SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路（CDN），可提供在 npm 中找到的任何專案，也就是 node.js 套件管理員。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
@@ -101,11 +105,11 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
 * 選取 [選擇特定檔案]****、展開 [散發者/瀏覽器]** 資料夾，然後選取 *signalr.js* 與 *signalr.min.js*。
 
-* 將**目標位置**設定為*wwwroot/js/信號器/,* 然後選擇 **「安裝**」 。
+* 將 [**目標位置**] 設定為*wwwroot/js/signalr/*，然後選取 [**安裝**]。
 
   ![[新增用戶端程式庫] 對話方塊 - 選取程式庫](signalr/_static/3.x/find-signalr-client-libs-select-files.png)
 
-  LibMan 創建*wwwroot/js/訊號資料夾*,並將選取檔案複製到該資料夾。
+  LibMan 會建立*wwwroot/js/signalr*資料夾，並將選取的檔案複製到其中。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code/)
 
@@ -123,7 +127,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
   參數指定下列選項：
   * 使用 unpkg 提供者。
-  * 將檔案複製到*wwwroot/js/信號器*目標。
+  * 將檔案複製到*wwwroot/js/signalr*目的地。
   * 只複製指定的檔案。
 
   輸出看起來會像下列範例：
@@ -152,7 +156,7 @@ SignalR 伺服器程式庫包含在 ASP.NET Core 3.0 共用架構內。 JavaScri
 
   參數指定下列選項：
   * 使用 unpkg 提供者。
-  * 將檔案複製到*wwwroot/js/信號器*目標。
+  * 將檔案複製到*wwwroot/js/signalr*目的地。
   * 只複製指定的檔案。
 
   輸出看起來會像下列範例：
@@ -242,7 +246,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 > [!TIP]
 > * 如果應用程式無法運作，請開啟您的瀏覽器開發人員工具 (F12)，然後移至主控台。 您可能會看到與 HTML 和 JavaScript 程式碼相關的錯誤。 例如，假設您將 *signalr.js* 放置在與指示不同的資料夾中。 在此情況下，該檔案的參考無法運作，您會在主控台中看到 404 錯誤。
 >   ![signalr.js 找不到錯誤](signalr/_static/3.x/f12-console.png)
-> * 如果您在 Chrome 中收到錯誤ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY,請執行這些指令以更新您的開發證書:
+> * 如果您在 Chrome 中收到錯誤 ERR_SPDY_INADEQUATE_TRANSPORT_SECURITY，請執行下列命令來更新您的開發憑證：
 >
 >   ```dotnetcli
 >   dotnet dev-certs https --clean
@@ -261,9 +265,9 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 > * 建立 SignalR 中樞。   
 > * 設定專案以使用 SignalR。   
 > * 新增程式碼，以將訊息從任何用戶端傳送至所有連線的用戶端。  
-最後,您將有工作聊天應用程式:SignalR![範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png) 
+最後，您將會有一個可運作的聊天應用![程式： SignalR 範例應用程式](signalr/_static/2.x/signalr-get-started-finished.png) 
 
-## <a name="prerequisites"></a>Prerequisites    
+## <a name="prerequisites"></a>必要條件    
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)   
 
@@ -320,7 +324,7 @@ SignalR 伺服器必須設定為將 SignalR 要求傳遞給 SignalR。
 
 ## <a name="add-the-signalr-client-library"></a>新增 SignalR 用戶端程式庫   
 
-SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容交付網路 (CDN),可以交付在 npm 找到的任何內容,Node.js 包管理器。 
+SignalR 伺服器程式庫包含在 `Microsoft.AspNetCore.App` 中繼套件內。 JavaScript 用戶端程式庫不會自動包括在專案中。 針對此教學課程，您會使用程式庫管理員 (LibMan) 從 *unpkg* 取得用戶端程式庫。 unpkg 是一個內容傳遞網路（CDN），可提供在 npm 中找到的任何專案，也就是 node.js 套件管理員。 
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)  
 

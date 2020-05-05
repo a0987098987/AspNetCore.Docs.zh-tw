@@ -1,95 +1,98 @@
 ---
-title: ASP.NET核心Blazor全球化和當地語系化
+title: ASP.NET Core Blazor全球化和當地語系化
 author: guardrex
-description: 瞭解如何使 Razor 元件可供多種語言和語言中的用戶訪問。
+description: 瞭解如何讓Razor具有多種文化特性和語言的使用者能夠存取元件。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/14/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 1b0db66b23c0caffc6b7c4e4af723c020609612a
-ms.sourcegitcommit: d5d45d84fe488427d418de770000f7df44a08370
+ms.openlocfilehash: b39695f8b506744b4af27a1d7e09bfac9594d7ca
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81539657"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82772487"
 ---
-# <a name="aspnet-core-opno-locblazor-globalization-and-localization"></a>ASP.NET核心Blazor全球化和當地語系化
+# <a name="aspnet-core-blazor-globalization-and-localization"></a>ASP.NET Core Blazor全球化和當地語系化
 
-由[盧克·萊瑟姆](https://github.com/guardrex)和[丹尼爾·羅斯](https://github.com/danroth27)
+By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)
 
-Razor 元件可供多種語言和語言中的用戶訪問。 以下 .NET 全球化與當地語系化機制
+Razor元件可以讓使用者以多種文化特性和語言來存取。 以下是可用的 .NET 全球化和當地語系化案例：
 
 * .NET 的資源系統
-* 特定於區域性的數字與日期格式
+* 特定文化特性的數位和日期格式
 
-目前支援一組有限的ASP.NET Core 的當地語系化方案:
+目前支援一組有限的 ASP.NET Core 當地語系化案例：
 
-* `IStringLocalizer<>`Blazor在應用程式中*受支援*。
-* `IHtmlLocalizer<>`和數據註釋當地語系化ASP.NET核心 MVCBlazor方案,並且在應用中**不受支援。** `IViewLocalizer<>`
+* `IStringLocalizer<>`應用程式*支援。* Blazor
+* `IHtmlLocalizer<>`、 `IViewLocalizer<>`和資料批註當地語系化 ASP.NET Core MVC 案例中Blazor ，而且應用程式**不支援**。
 
-如需詳細資訊，請參閱 <xref:fundamentals/localization>。
+如需詳細資訊，請參閱<xref:fundamentals/localization>。
 
 ## <a name="globalization"></a>全球化
 
-Blazor功能`@bind`根據使用者當前區域性執行格式並分析顯示值。
+Blazor的`@bind`功能會執行格式，並根據使用者目前的文化特性來剖析要顯示的值。
 
-可以從<xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName>屬性訪問當前區域性。
+您可以從<xref:System.Globalization.CultureInfo.CurrentCulture?displayProperty=fullName>屬性存取目前的文化特性。
 
-[區域性資訊.不變區域性](xref:System.Globalization.CultureInfo.InvariantCulture)用於以下欄位型`<input type="{TYPE}" />`態 ( ):
+[InvariantCulture](xref:System.Globalization.CultureInfo.InvariantCulture)用於下欄欄位類型（`<input type="{TYPE}" />`）：
 
 * `date`
 * `number`
 
-前面的欄位型態:
+前面的欄位類型：
 
-* 使用其適當的基於瀏覽器的格式規則顯示。
-* 不能包含自由格式的文本。
-* 根據瀏覽器的實現提供使用者交互特徵。
+* 會使用其適當的瀏覽器格式規則來顯示。
+* 不能包含自由格式的文字。
+* 根據瀏覽器的執行方式提供使用者互動特性。
 
-以下欄位類型具有特定的格式設定要求,並且目前不受支援,Blazor因為它們不受所有主要瀏覽器的支援:
+下欄欄位類型具有特定的格式需求，目前不支援， Blazor因為所有主要瀏覽器都不支援它們：
 
 * `datetime-local`
 * `month`
 * `week`
 
-`@bind`支援`@bind:culture`參數<xref:System.Globalization.CultureInfo?displayProperty=fullName>以 提供 用於解析和格式化值的 參數。 使用`date`和`number`欄位類型時,不建議指定區域性。 `date`並`number`內置Blazor支援,提供所需的區域性。
+`@bind`支援`@bind:culture`參數，以提供<xref:System.Globalization.CultureInfo?displayProperty=fullName>用於剖析和格式化值的。 使用`date`和欄位類型時， `number`不建議指定文化特性。 `date`和`number`具有提供必要文化Blazor特性的內建支援。
 
 ## <a name="localization"></a>當地語系化
 
-### <a name="opno-locblazor-webassembly"></a>Blazor網路組裝
+### <a name="blazor-webassembly"></a>BlazorWebAssembly
 
-BlazorWebAssembly 應用使用使用者[的語言首選項](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages)設置區域性。
+BlazorWebAssembly apps 會使用使用者的[語言喜好](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages)設定來設定文化特性。
 
-要顯示式設定區域性,請設定`CultureInfo.DefaultThreadCurrentCulture`與`CultureInfo.DefaultThreadCurrentUICulture``Program.Main`。
+若要明確設定文化特性， `CultureInfo.DefaultThreadCurrentCulture`請`CultureInfo.DefaultThreadCurrentUICulture`在`Program.Main`中設定和。
 
-默認情況下BlazorBlazor,WebAssembly 應用的連結器配置會剝離國際化資訊,但顯式請求區域設置除外。 有關控制連結器行為的詳細資訊和指導,請參閱<xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>。
+根據預設， Blazor Blazor WebAssembly 應用程式的連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 如需控制連結器行為的詳細資訊和指引，請<xref:host-and-deploy/blazor/configure-linker#configure-the-linker-for-internationalization>參閱。
 
-雖然默認情況下Blazor選擇的區域性對於大多數用戶來說可能就足夠了,但請考慮為使用者提供一種指定其首選區域設置的方法。 有關具有Blazor區域性選取器的 WebAssembly 範例應用程式,請參閱[LocSample](https://github.com/pranavkm/LocSample)當地語系化範例應用程式。
+雖然預設Blazor選取的文化特性可能足以滿足大部分使用者的需求，但請考慮提供一種方法讓使用者指定其慣用的地區設定。 如需Blazor具有文化特性選擇器的 WebAssembly 範例應用程式，請參閱[LocSample](https://github.com/pranavkm/LocSample)當地語系化範例應用程式。
 
-### <a name="opno-locblazor-server"></a>Blazor伺服器
+### <a name="blazor-server"></a>Blazor伺服器
 
-Blazor伺服器應用程式是本地化使用[本地化中間件](xref:fundamentals/localization#localization-middleware)。 中間件為從應用請求資源的用戶選擇適當的區域性。
+Blazor伺服器應用程式是使用[當地語系化中介軟體](xref:fundamentals/localization#localization-middleware)來當地語系化。 中介軟體會為從應用程式要求資源的使用者選取適當的文化特性。
 
-可以使用以下方法之一設定區域性:
+您可以使用下列其中一種方法來設定文化特性：
 
 * [Cookie](#cookies)
-* [提供 UI 以選擇區域性](#provide-ui-to-choose-the-culture)
+* [提供 UI 以選擇文化特性](#provide-ui-to-choose-the-culture)
 
 如需詳細資訊和範例，請參閱 <xref:fundamentals/localization>。
 
 #### <a name="cookies"></a>Cookie
 
-當地語系化區域性 Cookie 可以持久化使用者的文化。 Cookie 由應用程式的主`OnGet`機頁 (*頁面/ Host.cshtml.cs)* 的方法建立。 當地語系化中間件讀取後續設置使用者區域性的請求上的 Cookie。 
+當地語系化文化特性 cookie 可以保存使用者的文化特性。 Cookie 是由應用程式的`OnGet`主機頁面（*Pages/主機. cshtml .cs*）的方法所建立。 當地語系化中介軟體會在後續要求中讀取 cookie，以設定使用者的文化特性。 
 
-使用 Cookie 可確保 WebSocket 連接可以正確傳播區域性。 如果當地語系化方案基於 URL 路徑或查詢字串,則該方案可能無法使用 WebSocket,從而無法持久化區域性。 因此,建議使用本地化區域性 Cookie。
+使用 cookie 可確保 WebSocket 連接可以正確地傳播文化特性。 如果當地語系化架構是以 URL 路徑或查詢字串為基礎，配置可能無法使用 Websocket，因而無法保存文化特性。 因此，建議的方法是使用當地語系化文化特性 cookie。
 
-如果區域性保留在當地語系化 Cookie 中,則任何技術都可用於分配區域性。 如果應用已為伺服器端ASP.NET Core 建立了當地語系化方案,請繼續使用應用的現有當地語系化基礎結構,並在應用方案中設置當地語系化區域性 Cookie。
+如果文化特性保存在當地語系化 cookie 中，任何技術都可以用來指派文化特性。 如果應用程式已建立伺服器端 ASP.NET Core 的當地語系化配置，請繼續使用應用程式的現有當地語系化基礎結構，並在應用程式的配置內設定當地語系化文化特性 cookie。
 
-下面的示例演示如何在 Cookie 中設置當前區域性,該 Cookie 可以由本地化中間件讀取。 在Blazor'伺服器'應用中建立包含以下內容的*頁面/_Host.cs*檔:
+下列範例顯示如何在可由當地語系化中介軟體讀取的 cookie 中設定目前的文化特性。 使用Blazor伺服器應用程式中的下列內容，建立*Pages/_Host. cshtml*檔案：
 
 ```csharp
 public class HostModel : PageModel
@@ -106,22 +109,22 @@ public class HostModel : PageModel
 }
 ```
 
-本地化由套用的事件排序處理:
+應用程式會依照下列事件順序來處理當地語系化：
 
-1. 瀏覽器向應用發送初始 HTTP 請求。
-1. 區域性由本地化中間件分配。
-1. `OnGet` *_Host.cshtml.cs*中的方法將區域性保留在 Cookie 中作為回應的一部分。
-1. 瀏覽器打開 WebSocket 連接以建立Blazor互動式 伺服器作業階段。
-1. 當地語系化中間件讀取 Cookie 並分配區域性。
-1. 伺服器Blazor會話以正確的區域性開始。
+1. 瀏覽器會將初始 HTTP 要求傳送至應用程式。
+1. 文化特性是由當地語系化中介軟體所指派。
+1. _Host `OnGet`中的 *_Host.cshtml.cs*方法會在 cookie 中保存文化特性，做為回應的一部分。
+1. 瀏覽器會開啟 WebSocket 連接，以建立互動式Blazor伺服器會話。
+1. 當地語系化中介軟體會讀取 cookie 並指派文化特性。
+1. Blazor伺服器會話的開頭是正確的文化特性。
 
-#### <a name="provide-ui-to-choose-the-culture"></a>提供 UI 以選擇區域性
+#### <a name="provide-ui-to-choose-the-culture"></a>提供 UI 以選擇文化特性
 
-要提供 UI 以允許使用者選擇區域性,建議採用*基於重定向的方法*。 此過程類似於用戶嘗試存取安全資源時 Web 應用中發生的情況。 使用者被重定向到登錄頁,然後重定向回原始資源。 
+為了提供允許使用者選取文化特性的 UI，建議使用以重新*導向為基礎的方法*。 此程式類似于使用者嘗試存取安全資源時，在 web 應用程式中發生的情況。 使用者重新導向至登入頁面，然後重新導向回原始資源。 
 
-應用通過重定向到控制器來保留使用者的選定區域性。 控制器將使用者所選區域性設置到 Cookie 中,並將使用者重定向回原始 URI。
+應用程式會透過重新導向至控制器的方式，來保存使用者選取的文化特性。 控制器會將使用者選取的文化特性設定為 cookie，並將使用者重新導向回到原始 URI。
 
-在伺服器上建立 HTTP 終結點,以在 Cookie 中設定使用者所選區域性,並執行重定向回原始 URI:
+在伺服器上建立 HTTP 端點，以在 cookie 中設定使用者選取的文化特性，並執行重新導向回到原始 URI：
 
 ```csharp
 [Route("[controller]/[action]")]
@@ -143,9 +146,9 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> 使用`LocalRedirect`操作結果可防止打開重定向攻擊。 如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
+> 使用`LocalRedirect`動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱<xref:security/preventing-open-redirects>。
 
-以下元件顯示了使用者選擇區域性時如何執行初始重定向的範例:
+下列元件顯示當使用者選取文化特性時，如何執行初始重新導向的範例：
 
 ```razor
 @inject NavigationManager NavigationManager

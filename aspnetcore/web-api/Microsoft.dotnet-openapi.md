@@ -5,13 +5,19 @@ description: 示範如何使用 ' dotnet-openapi ' 工具來加入 OpenAPI 檔�
 ms.author: rybrande
 ms.date: 09/26/2019
 monikerRange: '>= aspnetcore-3.0'
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: web-api/Microsoft.dotnet-openapi
-ms.openlocfilehash: 079e36511b63c186ffa7726bdb1e3c3bcbda9d34
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 1924fb8ee5ac1ba8dc31d2175a336c8333c81fb2
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78655264"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775709"
 ---
 # <a name="develop-aspnet-core-apps-using-openapi-tools"></a>使用 OpenAPI 工具開發 ASP.NET Core 應用程式
 
@@ -21,15 +27,15 @@ ms.locfileid: "78655264"
 
 ## <a name="installation"></a>安裝
 
-若要安裝 `Microsoft.dotnet-openapi`，請執行下列命令：
+若要`Microsoft.dotnet-openapi`安裝，請執行下列命令：
 
 ```dotnetcli
 dotnet tool install -g Microsoft.dotnet-openapi
 ```
 
-## <a name="add"></a>加
+## <a name="add"></a>新增
 
-使用此頁面上的任何命令新增 OpenAPI 參考時，會將類似下列的 `<OpenApiReference />` 專案新增至 *.csproj*檔案：
+使用此頁面上的任何命令新增 OpenAPI 參考時，會將`<OpenApiReference />`類似下列的專案新增至 *.csproj*檔案：
 
 ```xml
 <OpenApiReference Include="openapi.json" />
@@ -56,10 +62,10 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 #### <a name="options"></a>選項。
 
-| Short 選項| Long 選項| 描述 | 範例 |
+| Short 選項| Long 選項| 說明 | 範例 |
 |-------|------|-------|---------|
 | -p|--updateProject | 要操作的專案。 |dotnet openapi add file *--updateProject .\Ref.csproj* .\OpenAPI.json |
-| -c|--程式碼產生器| 要套用至參考的程式碼產生器。 選項為 `NSwagCSharp` 和 `NSwagTypeScript`。 如果未指定 `--code-generator`，工具預設會 `NSwagCSharp`。|dotnet openapi add file .\OpenApi.json--程式碼產生器
+| -c|--程式碼產生器| 要套用至參考的程式碼產生器。 選項為`NSwagCSharp`和`NSwagTypeScript`。 如果`--code-generator`未指定，則工具會預設`NSwagCSharp`為。|dotnet openapi add file .\OpenApi.json--程式碼產生器
 | -H|--help|顯示說明資訊|dotnet openapi add file--help|
 
 #### <a name="arguments"></a>引數
@@ -72,26 +78,26 @@ dotnet tool install -g Microsoft.dotnet-openapi
 
 #### <a name="options"></a>選項。
 
-| Short 選項| Long 選項| 描述 | 範例 |
+| Short 選項| Long 選項| 說明 | 範例 |
 |-------|------|-------------|---------|
-| -p|--updateProject | 要操作的專案。 |dotnet openapi 新增 url *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
-| -o|--output-file | 放置 OpenAPI 檔案本機複本的位置。 |dotnet openapi 新增 url `https://contoso.com/openapi.json` *--輸出-file myclient. json* |
-| -c|--程式碼產生器| 要套用至參考的程式碼產生器。 選項為 `NSwagCSharp` 和 `NSwagTypeScript`。 |dotnet openapi add file .\OpenApi.json--程式碼產生器
+| -p|--updateProject | 要操作的專案。 |dotnet openapi add url *--updateProject .\Ref.csproj*`https://contoso.com/openapi.json` |
+| -o|--output-file | 放置 OpenAPI 檔案本機複本的位置。 |dotnet openapi add url `https://contoso.com/openapi.json` *--output-file myclient. json* |
+| -c|--程式碼產生器| 要套用至參考的程式碼產生器。 選項為`NSwagCSharp`和`NSwagTypeScript`。 |dotnet openapi add file .\OpenApi.json--程式碼產生器
 | -H|--help|顯示說明資訊|dotnet openapi add url--help|
 
 #### <a name="arguments"></a>引數
 
 |  引數  | 描述 | 範例 |
 |-------------|-------------|---------|
-| 來源-URL | 要從中建立參考的來源。 必須是 URL。 |dotnet openapi 新增 url `https://contoso.com/openapi.json` |
+| 來源-URL | 要從中建立參考的來源。 必須是 URL。 |dotnet openapi 新增 url`https://contoso.com/openapi.json` |
 
 ## <a name="remove"></a>移除
 
-從 *.csproj*檔案中移除符合指定檔案名的 OpenAPI 參考。 移除 OpenAPI 參考時，將不會產生用戶端。 已刪除*yaml*檔案。
+從 *.csproj*檔案中移除符合指定檔案名的 OpenAPI 參考。 移除 OpenAPI 參考時，將不會產生用戶端。 已 *.json*刪除*yaml*檔案。
 
 ### <a name="options"></a>選項。
 
-| Short 選項| Long 選項| 描述| 範例 |
+| Short 選項| Long 選項| 說明| 範例 |
 |-------|------|------------|---------|
 | -p|--updateProject | 要操作的專案。 |dotnet openapi remove *--updateProject .\Ref.csproj* .\OpenAPI.json |
 | -H|--help|顯示說明資訊|dotnet openapi remove--help|
@@ -102,19 +108,19 @@ dotnet tool install -g Microsoft.dotnet-openapi
 | ------------|------------|---------|
 | 來源檔案 | 要移除其參考的來源。 |dotnet openapi remove *.\OpenAPI.json* |
 
-## <a name="refresh"></a>Refresh
+## <a name="refresh"></a>重新整理
 
 重新整理使用下載 URL 的最新內容下載之檔案的本機版本。
 
 ### <a name="options"></a>選項。
 
-| Short 選項| Long 選項| 描述 | 範例 |
+| Short 選項| Long 選項| 說明 | 範例 |
 |-------|------|-------------|---------|
-| -p|--updateProject | 要操作的專案。 | dotnet openapi refresh *--updateProject .\Ref.csproj* `https://contoso.com/openapi.json` |
+| -p|--updateProject | 要操作的專案。 | dotnet openapi refresh *--updateProject .\Ref.csproj*`https://contoso.com/openapi.json` |
 | -H|--help|顯示說明資訊|dotnet openapi refresh--help|
 
 ### <a name="arguments"></a>引數
 
 |  引數  | 描述 | 範例 |
 | ------------|-------------|---------|
-| 來源-URL | 重新整理參考的來源 URL。 | dotnet openapi refresh `https://contoso.com/openapi.json` |
+| 來源-URL | 重新整理參考的來源 URL。 | dotnet openapi refresh`https://contoso.com/openapi.json` |

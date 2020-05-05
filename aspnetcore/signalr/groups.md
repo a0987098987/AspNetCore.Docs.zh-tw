@@ -1,43 +1,47 @@
 ---
-title: 管理 SignalR 中的使用者和群組
+title: 管理中的使用者和群組SignalR
 author: bradygaster
-description: ASP.NET Core SignalR 使用者和群組管理的總覽。
+description: ASP.NET Core SignalR使用者和群組管理的總覽。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: signalr/groups
-ms.openlocfilehash: 7e8c85dcbc46daa68988374f499f19a9d2cead47
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: af498575899fcfa407aba9f9f49c0bfeabadc7a7
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78665862"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776294"
 ---
-# <a name="manage-users-and-groups-in-opno-locsignalr"></a>管理 SignalR 中的使用者和群組
+# <a name="manage-users-and-groups-in-signalr"></a>管理中的使用者和群組SignalR
 
 依[Brennan Conroy](https://github.com/BrennanConroy)
 
-SignalR 允許訊息傳送至與特定使用者相關聯的所有連接，以及命名的連線群組。
+SignalR允許訊息傳送至與特定使用者相關聯的所有連接，以及命名的連接群組。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/groups/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
-## <a name="users-in-opno-locsignalr"></a>SignalR 中的使用者
+## <a name="users-in-signalr"></a>中的使用者SignalR
 
-SignalR 可讓您將訊息傳送至與特定使用者相關聯的所有連接。 根據預設，SignalR 會使用與連接相關聯的 `ClaimsPrincipal` 中的 `ClaimTypes.NameIdentifier` 作為使用者識別碼。 單一使用者可以有多個 SignalR 應用程式的連接。 例如，使用者可以連線到桌上型電腦以及電話。 每個裝置都有個別的 SignalR 連線，但全都與相同的使用者相關聯。 如果訊息傳送給使用者，與該使用者相關聯的所有連接都會收到訊息。 您的中樞中的 `Context.UserIdentifier` 屬性可以存取連接的使用者識別碼。
+SignalR可讓您將訊息傳送至與特定使用者相關聯的所有連接。 根據預設， SignalR會使用`ClaimTypes.NameIdentifier`與連接`ClaimsPrincipal`相關聯的，做為使用者識別碼。 單一使用者可以有多個SignalR應用程式連接。 例如，使用者可以連線到桌上型電腦以及電話。 每個裝置都有SignalR個別的連線，但它們全都與相同的使用者相關聯。 如果訊息傳送給使用者，與該使用者相關聯的所有連接都會收到訊息。 您的中樞中的`Context.UserIdentifier`屬性可以存取連接的使用者識別碼。
 
-將使用者識別碼傳遞至中樞方法中的 `User` 函式，以將訊息傳送給特定使用者，如下列範例所示：
+將使用者識別碼傳遞至中樞方法中的`User`函式，以將訊息傳送給特定使用者，如下列範例所示：
 
 > [!NOTE]
 > 使用者識別碼會區分大小寫。
 
 [!code-csharp[Configure service](groups/sample/hubs/chathub.cs?range=29-32)]
 
-## <a name="groups-in-opno-locsignalr"></a>SignalR 中的群組
+## <a name="groups-in-signalr"></a>群組于SignalR
 
-「群組」（group）是與名稱相關聯之連接的集合。 訊息可以傳送至群組中的所有連接。 群組是傳送至連線或多個連接的建議方式，因為這些群組是由應用程式所管理。 連接可以是多個群組的成員。 這讓群組適用于類似聊天應用程式的專案，其中每個房間可以表示為一個群組。 您可以透過 `AddToGroupAsync` 和 `RemoveFromGroupAsync` 方法，在群組中新增或移除連接。
+「群組」（group）是與名稱相關聯之連接的集合。 訊息可以傳送至群組中的所有連接。 群組是傳送至連線或多個連接的建議方式，因為這些群組是由應用程式所管理。 連接可以是多個群組的成員。 這讓群組適用于類似聊天應用程式的專案，其中每個房間可以表示為一個群組。 您可以透過`AddToGroupAsync`和`RemoveFromGroupAsync`方法，在群組中新增或移除連接。
 
 [!code-csharp[Hub methods](groups/sample/hubs/chathub.cs?range=15-27)]
 

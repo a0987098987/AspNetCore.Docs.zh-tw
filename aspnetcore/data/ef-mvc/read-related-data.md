@@ -1,19 +1,25 @@
 ---
-title: 教學:讀取相關資料 - 使用 EF 核心ASP.NET MVC
+title: 教學課程：讀取相關資料-使用 EF Core ASP.NET MVC
 description: 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 author: rick-anderson
 ms.author: riande
 ms.date: 09/28/2019
 ms.topic: tutorial
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: a6e63723101ab09219db81ee9796c3938a612226
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 7cc400218d7ad8717311e56ec5b3fc190857862c
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78657105"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773532"
 ---
-# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學:讀取相關資料 - 使用 EF 核心ASP.NET MVC
+# <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料-使用 EF Core ASP.NET MVC
 
 在上一個教學課程中，您已完成 School 資料模型。 在此教學課程中，您將讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
 
@@ -31,7 +37,7 @@ ms.locfileid: "78657105"
 > * 建立 Instructors 頁面
 > * 了解明確載入
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [建立複雜的資料模型](complex-data-model.md)
 
@@ -188,7 +194,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
   }
   ```
 
-* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 有關詳細資訊,請參閱 Razor 語法文章的[顯式行轉換](xref:mvc/views/razor#explicit-line-transition)部分。
+* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 如需詳細資訊，請參閱Razor語法文章的[明確行轉換](xref:mvc/views/razor#explicit-line-transition)一節。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選取講師的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 
@@ -207,7 +213,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-執行應用並選擇「**講師」** 選項卡。如果沒有相關的 Office 分配實體,該頁將顯示相關 Office 分配實體的位置屬性和空錶單元格。
+執行應用程式，然後選取 [**講師**] 索引標籤。當沒有相關的 OfficeAssignment 實體時，此頁面會顯示相關 OfficeAssignment 實體的 Location 屬性和空的資料表資料格。
 
 ![Instructors [索引] 頁面未選取任何項目](read-related-data/_static/instructors-index-no-selection.png)
 

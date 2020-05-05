@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 04/27/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/server/additional-scenarios
-ms.openlocfilehash: 1a3e5a215daedbb9b97c1924275701915806983e
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: 95e9e57889fdbb5270f895874c9b8148ae4ca48d
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206386"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82772800"
 ---
 # <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server 其他安全性案例
 
@@ -23,9 +26,9 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)
 
 ## <a name="pass-tokens-to-a-blazor-server-app"></a>將權杖傳遞至Blazor伺服器應用程式
 
-您可以使用本節所述的方法， Blazor將伺服器應用程式中 Razor 元件以外的可用權杖傳遞給元件。 如需範例程式碼，包括`Startup.ConfigureServices`完整的範例，請參閱將[權杖傳遞給伺服器Blazor端應用程式](https://github.com/javiercn/blazor-server-aad-sample)。
+您可以使用本節所Razor述的方法Blazor ，將伺服器應用程式中元件外部可用的權杖傳遞給元件。 如需範例程式碼，包括`Startup.ConfigureServices`完整的範例，請參閱將[權杖傳遞給伺服器Blazor端應用程式](https://github.com/javiercn/blazor-server-aad-sample)。
 
-驗證服務器Blazor應用程式的方式與一般 RAZOR PAGES 或 MVC 應用程式一樣。 布建權杖並將其儲存至驗證 cookie。 例如：
+驗證服務器Blazor應用程式的方式與一般Razor頁面或 MVC 應用程式一樣。 布建權杖並將其儲存至驗證 cookie。 例如：
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;

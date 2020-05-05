@@ -5,13 +5,19 @@ description: 了解如何使用 Docker 登錄中已發佈的 .NET Core Docker �
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/15/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/docker/building-net-docker-images
-ms.openlocfilehash: ced0cb7cbeed1b8811813a70035c2e0b42c3e35a
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: bce04caf20dcf23ab7160066d55a279b29dca1ae
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440775"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774102"
 ---
 # <a name="docker-images-for-aspnet-core"></a>ASP.NET Core 的 Docker 映像
 
@@ -40,7 +46,7 @@ ms.locfileid: "81440775"
 
    範例會使用此映像來執行應用程式。 此映像包含 ASP.NET Core 執行階段和程式庫，並會進行最佳化，以在生產環境中執行應用程式。 專為部署和應用程式啟動速度而設計的映像相對較小，因此，已將從 Docker 登錄到 Docker 主機的網路效能最佳化。 只會將執行應用程式所需的程式庫和內容複製到容器中。 內容已準備好執行，可用最短的時間從 `Docker run` 到應用程式啟動。 在 Docker 模型中，不需要動態程式碼編譯。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 ::: moniker range="< aspnetcore-3.0"
 
 * [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download/dotnet-core)
@@ -187,7 +193,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ### <a name="the-dockerfile"></a>Dockerfile
 
-下面是您之前運行的命令`docker build`使用的*Dockerfile。*  它會以您在本節所做的相同方式，使用 `dotnet publish` 進行建置及部署。  
+以下是您*Dockerfile*稍早執行的`docker build`命令所使用的 Dockerfile。  它會以您在本節所做的相同方式，使用 `dotnet publish` 進行建置及部署。  
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
@@ -223,7 +229,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 
 ### <a name="the-dockerfile"></a>Dockerfile
 
-下面是您之前運行的命令`docker build`使用的*Dockerfile。*  它會以您在本節所做的相同方式，使用 `dotnet publish` 進行建置及部署。  
+以下是您*Dockerfile*稍早執行的`docker build`命令所使用的 Dockerfile。  它會以您在本節所做的相同方式，使用 `dotnet publish` 進行建置及部署。  
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
@@ -263,7 +269,7 @@ ENTRYPOINT ["dotnet", "aspnetapp.dll"]
 * [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](/aspnet/core/host-and-deploy/proxy-load-balancer)
 * [使用 Visual Studio Docker 工具](https://docs.microsoft.com/aspnet/core/publishing/visual-studio-tools-for-docker)
 * [使用 Visual Studio Code 偵錯](https://code.visualstudio.com/docs/nodejs/debugging-recipes#_debug-nodejs-in-docker-containers)
-* [使用 Docker 與小型容器的 GC](xref:performance/memory#sc)
+* [使用 Docker 和小型容器的 GC](xref:performance/memory#sc)
 
 ## <a name="next-steps"></a>後續步驟
 

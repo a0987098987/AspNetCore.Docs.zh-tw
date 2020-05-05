@@ -1,25 +1,31 @@
 ---
-title: 教學:在 ASP.NET MVC Web 應用中開始使用 EF Core
+title: 教學課程：開始在 ASP.NET MVC web 應用程式中使用 EF Core
 description: 這是說明如何從零開始建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/06/2019
 ms.topic: tutorial
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-mvc/intro
-ms.openlocfilehash: fca9fdc425506ec8b4eec5c609237208f4c0d7b5
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 7f17352d2e7e3f4239b338ec961120ab3088c77a
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79511297"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773545"
 ---
-# <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學:在 ASP.NET MVC Web 應用中開始使用 EF Core
+# <a name="tutorial-get-started-with-ef-core-in-an-aspnet-mvc-web-app"></a>教學課程：開始在 ASP.NET MVC web 應用程式中使用 EF Core
 
-此教學課程**尚未**升級至 ASP.NET Core 3.0。 [Razor Pages 版本](xref:data/ef-rp/intro)已更新。 ASP.NET酷3.0和本教程的更高版本的大部分代碼更改:
+此教學課程**尚未**升級至 ASP.NET Core 3.0。 頁面版本已更新。 [ Razor ](xref:data/ef-rp/intro) 本教學課程 ASP.NET Core 3.0 和更新版本的大部分程式碼變更：
 
-* 位於*Startup.cs*和*Program.cs*檔中。
-* 可在[剃刀頁版本](xref:data/ef-rp/intro)中找到。 
+* 位於*Startup.cs*和*Program.cs*檔案中。
+* 可以在[ Razor頁面版本](xref:data/ef-rp/intro)中找到。 
 
 如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/13920) \(英文\)。
 
@@ -42,7 +48,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 > * 建立控制器和檢視
 > * 檢視資料庫
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [.NET Core SDK 2.2](https://dotnet.microsoft.com/download)
 * 包含下列工作負載的 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)：
@@ -84,7 +90,7 @@ Contoso 大學範例 Web 應用程式示範如何使用 Entity Framework (EF) Co
 
 * 選取 [.NET Core]****、[ASP.NET Core 2.2]**** 和 [Web 應用程式 (Model-View-Controller)]**** 範本。
 
-* 確保**身份驗證**設置為 **「無身份驗證**」。
+* 請確定 [**驗證**] 設定為 [**無驗證**]。
 
 * 選取 [確定]****
 
@@ -254,7 +260,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
   * 選取 [使用 Entity Framework 執行檢視的 MVC 控制器]****。
 
-  * 按一下 **[新增]**。 [新增使用 Entity Framework 執行檢視的 MVC 控制器]**** 對話方塊隨即出現。
+  * 按一下 [新增]  。 [新增使用 Entity Framework 執行檢視的 MVC 控制器]**** 對話方塊隨即出現。
 
     ![Scaffold Student](intro/_static/scaffold-student2.png)
 
@@ -264,7 +270,7 @@ Entity Framework 會為您建立空白資料庫。 在本節中，您會撰寫�
 
   * 接受預設的 **StudentsController** 作為名稱。
 
-  * 按一下 **[新增]**。
+  * 按一下 [新增]  。
 
   當您按一下 [新增]**** 時，Visual Studio Scaffolding 引擎便會建立 *StudentsController.cs* 檔案及一組可以使用該控制器的檢視 (*.cshtml* 檔案)。
 
@@ -312,7 +318,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 ![SSOX 中的 Student 資料表](intro/_static/ssox-student-table.png)
 
-*.mdf*和 *.ldf*資料庫檔案位於*C:\\\\<使用者>* 資料夾中。
+*.Mdf*和 *.ldf*資料庫檔案位於*\\\<C:\Users yourusername>* 資料夾中。
 
 因為您在應用程式啟動時執行的初始設定式方法中呼叫了 `EnsureCreated`，您現在可以對 `Student` 類別進行變更、刪除資料庫、重新執行應用程式，資料庫會自動重新建立以符合您所作出的變更。 例如，若您將一個 `EmailAddress` 屬性新增到 `Student` 類別，您便會在重新建立的資料表中看到新的 `EmailAddress` 資料行。
 
@@ -326,7 +332,7 @@ ASP.NET Core 相依性插入會負責傳遞 `SchoolContext` 的執行個體給�
 
 * 命名為 ID 或 classnameID 的實體屬性，會辨識為主索引鍵屬性。
 
-* 如果屬性的名稱為*\<導航屬性\<名稱>主键属性名称>(*`Student`例如,`StudentID`對於`Student`導航屬性,因為實體的主鍵為`ID`)則屬性將解釋為外鍵屬性。 外鍵屬性也可以只`EnrollmentID``Enrollment``EnrollmentID`*\<命名主鍵屬性名稱>(* 例如,因為實體的主鍵是 )。
+* 如果屬性名為* \<導覽屬性名稱\<>主鍵屬性名稱>* （例如，因為`Student`實體的主鍵是`ID`）， `StudentID` `Student`則會將屬性解讀為外鍵屬性。 外鍵屬性也可以命名為單純* \<的主鍵屬性名稱>* （例如， `EnrollmentID`因為`Enrollment`實體的主鍵是`EnrollmentID`）。
 
 慣例行為可以被覆寫。 例如，您可以明確指定資料表名稱，如稍早在本教學課程中您所見到的。 您可以設定資料行名稱以及將任何屬性設為主索引鍵或外部索引鍵，如同您在本系列[稍後的教學課程](complex-data-model.md)中所見。
 

@@ -1,20 +1,26 @@
 ---
-title: 教學:建立複雜的資料模型 - 使用 EF Core ASP.NET MVC
+title: 教學課程：建立複雜的資料模型-使用 EF Core ASP.NET MVC
 description: 在本教學課程中，請新增更多實體和關聯性，並透過指定格式、驗證和對應規則來自訂資料模型。
 author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 91fd09874ecab8bfdb6a38a404faba04aeb73edc
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 5e617a201cbd133e695bdadc08dc6c797f97b6be
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78657427"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773623"
 ---
-# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學:建立複雜的資料模型 - 使用 EF Core ASP.NET MVC
+# <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型-使用 EF Core ASP.NET MVC
 
 在先前的教學課程中，您建立了由三個實體組成的簡單資料模型。 在本教學課程中，您會新增更多實體和關聯性，並透過指定格式、驗證和資料庫對應規則來自訂資料模型。
 
@@ -38,7 +44,7 @@ ms.locfileid: "78657427"
 > * 變更連接字串
 > * 更新資料庫
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [使用 EF Core 移轉](migrations.md)
 
@@ -72,7 +78,7 @@ ms.locfileid: "78657427"
 
 * 根據預設，瀏覽器將根據您的地區設定，使用正確的格式呈現資料。
 
-有關詳細資訊,請參閱[\<>标记帮助器文档的输入](../../mvc/views/working-with-forms.md#the-input-tag-helper)。
+如需詳細資訊，請參閱[ \<輸入> 標記](../../mvc/views/working-with-forms.md#the-input-tag-helper)協助程式檔。
 
 執行應用程式，移至 Students [索引] 頁面，您會注意到註冊日期欄位中不再顯示時間。 任何使用 Student 模型的檢視都會有相同的結果。
 
@@ -106,7 +112,7 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  移轉建立名為*\<timeStamp>_MaxLengthOnNames.cs 的檔案*。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
+`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  遷移會建立名為* \<timeStamp 的檔案>_MaxLengthOnNames .cs*。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
 
 Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉。 您可以在執行 update-database 命令前建立多個移轉，然後所有的移轉便會依照其建立的先後順序套用。
 
@@ -533,4 +539,4 @@ dotnet ef database update
 若要深入了解如何存取相關資料，請前往下個教學課程。
 
 > [!div class="nextstepaction"]
-> [下一頁:存取相關資料](read-related-data.md)
+> [下一步：存取相關資料](read-related-data.md)

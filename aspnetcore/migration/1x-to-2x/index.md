@@ -5,13 +5,19 @@ description: 本文概述將 ASP.NET Core 1.x 專案移轉至 ASP.NET Core 2.0 �
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: migration/1x-to-2x/index
-ms.openlocfilehash: c46f50a418cf630980ac2ba94407e4370d36e7d5
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 1b7b89b130f66c851bf01d0eb6d643e4b3676a1e
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78667612"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774219"
 ---
 # <a name="migrate-from-aspnet-core-1x-to-20"></a>從 ASP.NET Core 1.x 遷移至 2.0
 
@@ -23,7 +29,7 @@ ms.locfileid: "78667612"
 
 <a name="prerequisites"></a>
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 請參閱 [ASP.NET Core 使用者入門](xref:getting-started)。
 
@@ -156,13 +162,13 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 <a name="view-compilation"></a>
 
-## <a name="review-razor-view-compilation-setting"></a>檢閱 Razor 檢視編譯設定
+## <a name="review-razor-view-compilation-setting"></a>審核Razor視圖編譯設定
 
-更快速的應用程式啟動時間和較小的發行組合對您而言極為重要。 基於這些原因，預設會在 ASP.NET Core 2.0 中啟用 [Razor 檢視編譯](xref:mvc/views/view-compilation)。
+更快速的應用程式啟動時間和較小的發行組合對您而言極為重要。 基於這些理由， [ Razor ](xref:mvc/views/view-compilation)預設會在 ASP.NET Core 2.0 中啟用 view 編譯。
 
 已不再需要將 `MvcRazorCompileOnPublish` 屬性設定為 true。 除非您停用檢視編譯，否則屬性可能會從 *.csproj* 檔案中移除。
 
-以 .NET Framework 為目標時，仍然需要在 *.csproj* 檔案中明確參考 [Microsoft.AspNetCore.Mvc.Razor.ViewCompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) NuGet 套件：
+以 .NET Framework 為目標時，您仍然需要明確參考[AspNetCoreRazor。Microsoft.aspnetcore.mvc.razor.viewcompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.ViewCompilation) *.csproj*檔案中的 NuGet 套件：
 
 [!code-xml[](../1x-to-2x/samples/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App/AspNetCoreDotNetFx2.0App.csproj?range=15)]
 
@@ -190,9 +196,9 @@ Unable to create an object of type '<Context>'. Add an implementation of 'IDesig
 
 <a name="auth-and-identity"></a>
 
-## <a name="adopt-authenticationidentity-improvements"></a>採用驗證/身分識別的改進功能
+## <a name="adopt-authenticationidentity-improvements"></a>採用驗證/Identity改良功能
 
-ASP.NET Core 2.0 具有新的驗證模型和對 ASP.NET Core 身分識別的一些重大變更。 如果您在啟用個別使用者帳戶的情況下建立專案，或如果已手動新增驗證或身分識別，請參閱[將驗證和身分識別遷移至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)。
+ASP.NET Core 2.0 具有新的驗證模型和一些 ASP.NET Core Identity的重大變更。 如果您已在啟用個別使用者帳戶的情況下建立專案，或者您已手動新增Identity驗證或，請參閱[遷移驗證和Identity ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)。
 
 ## <a name="additional-resources"></a>其他資源
 

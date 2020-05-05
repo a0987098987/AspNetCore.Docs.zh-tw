@@ -5,17 +5,20 @@ description: 瞭解Blazor驗證和授權案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/26/2020
+ms.date: 05/04/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/index
-ms.openlocfilehash: ced8e90147b08bc75aec4534fdd8d8552506f88c
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: d55880265ed1ceedf8f115412e5ac47309521239
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206095"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82772891"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor驗證和授權
 
@@ -35,10 +38,10 @@ ASP.NET Core 支援在應用程式中Blazor設定和管理安全性。
 
 BlazorWebAssembly 應用程式會在用戶端上執行。 授權「僅」** 會被用來決定要顯示的 UI 選項。 由於用戶端檢查可由使用者修改或略過，因此Blazor WebAssembly 應用程式無法強制執行授權存取規則。
 
-[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization)不適用於可路由的 Razor 元件。 如果無法路由傳送的 Razor 元件[內嵌在頁面中](xref:blazor/integrate-components#render-components-from-a-page-or-view)，此頁面的授權慣例會間接影響 Razor 元件以及頁面內容的其餘部分。
+頁面授權慣例不適用於可路由Razor的元件。 [ Razor ](xref:security/authorization/razor-pages-authorization) 如果無法路由Razor傳送的元件[內嵌在頁面中](xref:blazor/integrate-components#render-components-from-a-page-or-view)，頁面的授權慣例會間接影響此Razor元件以及頁面內容的其餘部分。
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Identity.SignInManager%601>Razor <xref:Microsoft.AspNetCore.Identity.UserManager%601>元件中不支援和。
+> <xref:Microsoft.AspNetCore.Identity.SignInManager%601>元件<xref:Microsoft.AspNetCore.Identity.UserManager%601>中Razor不支援和。
 
 ## <a name="authentication"></a>驗證
 
@@ -246,7 +249,7 @@ builder.Services.AddAuthorizationCore();
 * 使用者具有「宣告」**。
 * 已滿足某個「原則」**。
 
-上述概念皆和 ASP.NET Core MVC 或 Razor Pages 應用程式中的概念相同。 如需 ASP.NET Core 安全性的詳細資訊，請參閱 [ASP.NET Core 安全性與身分識別](xref:security/index)下的文章。
+這些概念都與 ASP.NET Core MVC 或Razor Pages 應用程式中的相同。 如需 ASP.NET Core 安全性的詳細資訊，請參閱[ASP.NET Core 安全性和Identity](xref:security/index)底下的文章。
 
 ## <a name="authorizeview-component"></a>AuthorizeView 元件
 
@@ -299,7 +302,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-如需詳細資訊，請參閱 <xref:security/authorization/roles>。
+如需詳細資訊，請參閱<xref:security/authorization/roles>。
 
 針對原則型授權，請使用 `Policy` 參數：
 
@@ -309,7 +312,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies>。
+宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱<xref:security/authorization/policies>。
 
 這些 Api 可以在Blazor伺服器或Blazor WebAssembly 應用程式中使用。
 
@@ -338,7 +341,7 @@ Blazor允許以*非同步方式*判斷驗證狀態。 這種方法的主要案�
 
 ## <a name="authorize-attribute"></a>[Authorize] 屬性
 
-`[Authorize]`屬性可以在 Razor 元件中使用：
+`[Authorize]`屬性可以在元件中Razor使用：
 
 ```razor
 @page "/"
@@ -426,6 +429,7 @@ Not authorized.
 如果作為程序性邏輯的一部分，應用程式必須檢查授權規則，請使用 `Task<AuthenticationState>` 類型的階層式參數來取得使用者的 <xref:System.Security.Claims.ClaimsPrincipal>。 `Task<AuthenticationState>` 可以與其他服務 (例如 `IAuthorizationService`) 結合來評估原則。
 
 ```razor
+@using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 
 <button @onclick="@DoSomething">Do something important</button>

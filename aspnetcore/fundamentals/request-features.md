@@ -4,13 +4,19 @@ author: ardalis
 description: 了解有關 HTTP 要求和回應的網頁伺服器實作詳細資料，其定義於 ASP.NET Core 的介面中。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/request-features
-ms.openlocfilehash: d0f3ae521d1f314dd04cb581d9a921da4719273d
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: e26a1a7b35d40c1214bbc40269571545cbd2c235
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79416223"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776021"
 ---
 # <a name="request-features-in-aspnet-core"></a>ASP.NET Core 中的要求功能
 
@@ -70,5 +76,5 @@ ASP.NET Core 可定義 `Microsoft.AspNetCore.Http.Features` 中伺服器用來�
 ## <a name="additional-resources"></a>其他資源
 
 * [伺服器](xref:fundamentals/servers/index)
-* [中間件](xref:fundamentals/middleware/index)
-* [開啟 Web Interface for .NET (OWIN)](xref:fundamentals/owin)
+* [中介軟體](xref:fundamentals/middleware/index)
+* [Open Web Interface for .NET (OWIN)](xref:fundamentals/owin)

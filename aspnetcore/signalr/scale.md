@@ -1,20 +1,24 @@
 ---
-title: ASP.NET Core SignalR 生產環境裝載和調整
+title: ASP.NET Core SignalR生產環境裝載和調整
 author: bradygaster
-description: 瞭解如何避免使用 ASP.NET Core SignalR之應用程式的效能和調整問題。
+description: 瞭解如何避免使用 ASP.NET Core SignalR的應用程式中的效能和調整問題。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 01/17/2020
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: signalr/scale
-ms.openlocfilehash: 260e2f0c16288fec2e0a694d070f357529782d8d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 23ac2b1c80b9d73d6e9ac57f0ef774ac2ea54be4
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78668151"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775072"
 ---
 # <a name="aspnet-core-signalr-hosting-and-scaling"></a>ASP.NET Core SignalR 裝載和調整
 
@@ -32,7 +36,7 @@ SignalR 要求特定連接的所有 HTTP 要求都必須由相同的伺服器進
 
 在所有其他情況下（包括使用 Redis 背板時），則必須針對 [粘滯會話] 設定伺服器環境。
 
-如需設定 SignalR Azure App Service 的指引，請參閱 <xref:signalr/publish-to-azure-web-app>。
+如需設定 SignalR Azure App Service 的相關指引， <xref:signalr/publish-to-azure-web-app>請參閱。
 
 ## <a name="tcp-connection-resources"></a>TCP 連線資源
 
@@ -94,12 +98,12 @@ Azure SignalR Service 是 proxy，而不是背板。 每次用戶端起始與伺
   * 所有用戶端都設定為**只**使用 websocket。
   * 用戶端設定中已啟用[SkipNegotiation 設定](xref:signalr/configuration#configure-additional-options)。 
    一旦在伺服器上起始連接，連接就必須停留在該伺服器上。
-* SignalR 應用程式必須根據用戶端數目進行相應放大，即使傳送的訊息很少也一樣。
-* SignalR 應用程式所使用的連線資源比 web 應用程式更多，而沒有 SignalR。
+* SignalR應用程式必須根據用戶端數目進行相應放大，即使傳送的訊息很少也一樣。
+* 應用SignalR程式在沒有的情況下，會SignalR使用比 web 應用程式更多的連接資源。
 
 ## <a name="iis-limitations-on-windows-client-os"></a>Windows 用戶端作業系統上的 IIS 限制
 
-Windows 10 和 Windows 8.x 是用戶端作業系統。 用戶端作業系統上的 IIS 具有10個並行連線的限制。 SignalR的連接為：
+Windows 10 和 Windows 8.x 是用戶端作業系統。 用戶端作業系統上的 IIS 具有10個並行連線的限制。 SignalR的連線如下：
 
 * 暫時性且經常重新建立。
 * **不會**在不再使用時立即處置。
@@ -111,7 +115,7 @@ Windows 10 和 Windows 8.x 是用戶端作業系統。 用戶端作業系統上�
 
 ## <a name="linux-with-nginx"></a>使用 Nginx 的 Linux
 
-針對 SignalR Websocket，將 proxy 的 `Connection` 和 `Upgrade` 標頭設定為下列內容：
+針對SignalR websocket，將`Connection` proxy `Upgrade`的和標頭設定為下列內容：
 
 ```nginx
 proxy_set_header Upgrade $http_upgrade;
@@ -120,7 +124,7 @@ proxy_set_header Connection $connection_upgrade;
 
 如需詳細資訊，請參閱[NGINX as a WebSocket Proxy](https://www.nginx.com/blog/websocket-nginx/)。
 
-## <a name="third-party-opno-locsignalr-backplane-providers"></a>協力廠商 SignalR 背板提供者
+## <a name="third-party-signalr-backplane-providers"></a>協力廠商SignalR背板提供者
 
 * [NCache](https://www.alachisoft.com/ncache/asp-net-core-signalr.html)
 * [奧爾良](https://github.com/OrleansContrib/SignalR.Orleans)
@@ -129,5 +133,5 @@ proxy_set_header Connection $connection_upgrade;
 
 如需詳細資訊，請參閱下列資源：
 
-* [Azure SignalR 服務檔](/azure/azure-signalr/signalr-overview)
+* [Azure SignalR服務檔](/azure/azure-signalr/signalr-overview)
 * [設定 Redis 背板](xref:signalr/redis-backplane)

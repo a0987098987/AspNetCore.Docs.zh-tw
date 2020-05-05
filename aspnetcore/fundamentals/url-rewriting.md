@@ -6,17 +6,23 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 08/16/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: 7d63cf381f1d8a19ed4fb789348e36f94304ad63
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 9e12831f57af02cd427d2a66d9d4c4d654905106
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78666464"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774856"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
-由[米凱爾·門格斯圖](https://github.com/mikaelm12)
+依[Mikael Mengistu](https://github.com/mikaelm12)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -35,7 +41,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 > [!NOTE]
 > URL 重寫可能會降低應用程式的效能。 如果可行的話，請限制規則的數目與複雜程度。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="url-redirect-and-url-rewrite"></a>URL 重新導向和 URL 重寫
 
@@ -86,7 +92,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
   如果要確實得知哪種方法會降低最多效能，或是降低的效能可以忽略的話，進行效能評定是唯一方法。
 
-## <a name="package"></a>Package
+## <a name="package"></a>封裝
 
 URL 重寫中介軟體由 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite) 套件所提供，其會以隱含方式包含在 ASP.NET Core 應用程式中。
 
@@ -100,9 +106,9 @@ URL 重寫中介軟體由 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/p
 
 有三個選項可讓應用程式將非 `www` 要求重新導向 `www`：
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>&ndash;如果要求是非`www``www`, 則永久將請求重定向到子域。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>&ndash;如果要求不是，請`www`將要求永久重新導向至子域`www`。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>&ndash;如果傳入請求是非`www``www`的 ,則將請求重定向到子域。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>&ndash;如果連入要求為`www`非，則將要求重新導向至`www`子域。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
 
 ### <a name="url-redirect"></a>URL 重新導向
 
@@ -186,7 +192,7 @@ public void Configure(IApplicationBuilder app)
 
 在先前的重新導向規則範例 `redirect-rule/(.*)` 中，Regex 的開頭沒有插入號 (`^`)。 因此，就算 `redirect-rule/` 前有任何字元也能成功比對。
 
-| Path                               | 相符項目 |
+| 路徑                               | 比對 |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | 是   |
 | `/my-cool-redirect-rule/1234/5678` | 是   |
@@ -194,7 +200,7 @@ public void Configure(IApplicationBuilder app)
 
 `^rewrite-rule/(\d+)/(\d+)` 重寫規則只會比對開頭為 `rewrite-rule/` 的路徑。 請注意下表中的比對差異。
 
-| Path                              | 相符項目 |
+| 路徑                              | 比對 |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | 是   |
 | `/my-cool-rewrite-rule/1234/5678` | 否    |
@@ -387,7 +393,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 > [!NOTE]
 > URL 重寫可能會降低應用程式的效能。 如果可行的話，請限制規則的數目與複雜程度。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/url-rewriting/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="url-redirect-and-url-rewrite"></a>URL 重新導向和 URL 重寫
 
@@ -438,7 +444,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
   如果要確實得知哪種方法會降低最多效能，或是降低的效能可以忽略的話，進行效能評定是唯一方法。
 
-## <a name="package"></a>Package
+## <a name="package"></a>封裝
 
 若要在您的專案中包含中介軟體，請在包含 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite) 套件的專案檔中，將套件參考新增至 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
@@ -454,9 +460,9 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
 有三個選項可讓應用程式將非 `www` 要求重新導向 `www`：
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>&ndash;如果要求是非`www``www`, 則永久將請求重定向到子域。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>&ndash;如果要求不是，請`www`將要求永久重新導向至子域`www`。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>&ndash;如果傳入請求是非`www``www`的 ,則將請求重定向到子域。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>&ndash;如果連入要求為`www`非，則將要求重新導向至`www`子域。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
 
 ### <a name="url-redirect"></a>URL 重新導向
 
@@ -540,7 +546,7 @@ public void Configure(IApplicationBuilder app)
 
 在先前的重新導向規則範例 `redirect-rule/(.*)` 中，Regex 的開頭沒有插入號 (`^`)。 因此，就算 `redirect-rule/` 前有任何字元也能成功比對。
 
-| Path                               | 相符項目 |
+| 路徑                               | 比對 |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | 是   |
 | `/my-cool-redirect-rule/1234/5678` | 是   |
@@ -548,7 +554,7 @@ public void Configure(IApplicationBuilder app)
 
 `^rewrite-rule/(\d+)/(\d+)` 重寫規則只會比對開頭為 `rewrite-rule/` 的路徑。 請注意下表中的比對差異。
 
-| Path                              | 相符項目 |
+| 路徑                              | 比對 |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | 是   |
 | `/my-cool-rewrite-rule/1234/5678` | 否    |
@@ -729,7 +735,7 @@ public void Configure(IApplicationBuilder app)
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/index>
 * [.NET 中的規則運算式](/dotnet/articles/standard/base-types/regular-expressions)
-* [正規表示式語言 -快速參考](/dotnet/articles/standard/base-types/quick-ref)
+* [正則運算式語言-快速參考](/dotnet/articles/standard/base-types/quick-ref)
 * [Apache mod_rewrite](https://httpd.apache.org/docs/2.4/rewrite/)
 * [Using Url Rewrite Module 2.0 (for IIS)](/iis/extensions/url-rewrite-module/using-url-rewrite-module-20) (使用 URL Rewrite Module 2.0 (適用於 IIS))
 * [URL Rewrite Module Configuration Reference](/iis/extensions/url-rewrite-module/url-rewrite-module-configuration-reference) (URL Rewrite Module 組態參考)

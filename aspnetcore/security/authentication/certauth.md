@@ -5,17 +5,23 @@ description: 瞭解如何在 IIS 和 HTTP.sys 的 ASP.NET Core 中設定憑證�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
 ms.date: 01/02/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 280daa86510d4445c791b6952653122961f13aeb
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 2cee719014d57fa01b5e8b14edd703c192cfbe18
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78665323"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776639"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
-`Microsoft.AspNetCore.Authentication.Certificate` 包含類似于 ASP.NET Core 的[憑證驗證](https://tools.ietf.org/html/rfc5246#section-7.4.4)的執行方式。 憑證驗證會在 TLS 層級進行，長時間才會到達 ASP.NET Core。 更準確地說，這是驗證憑證的驗證處理常式，並提供您可將該憑證解析成 `ClaimsPrincipal`的事件。 
+`Microsoft.AspNetCore.Authentication.Certificate`包含類似于 ASP.NET Core 的[憑證驗證](https://tools.ietf.org/html/rfc5246#section-7.4.4)的執行。 憑證驗證會在 TLS 層級進行，長時間才會到達 ASP.NET Core。 更準確地說，這是驗證憑證的驗證處理常式，並提供您可將該憑證解析成的`ClaimsPrincipal`事件。 
 
 [設定您的主機](#configure-your-host-to-require-certificates)以進行憑證驗證，其為 IIS、Kestrel、Azure Web Apps 或您所使用的任何其他。
 
@@ -32,11 +38,11 @@ ms.locfileid: "78665323"
 
 取得 HTTPS 憑證並加以套用，並[將您的主機設定](#configure-your-host-to-require-certificates)為需要憑證。
 
-在您的 web 應用程式中，新增 `Microsoft.AspNetCore.Authentication.Certificate` 封裝的參考。 然後在 `Startup.ConfigureServices` 方法中，使用您的選項呼叫 `services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate(...);`，並提供委派給 `OnCertificateValidated`，以在隨要求一起傳送的用戶端憑證上執行任何補充驗證。 將該資訊轉換成 `ClaimsPrincipal`，並在 `context.Principal` 屬性上進行設定。
+在您的 web 應用程式中，新增對`Microsoft.AspNetCore.Authentication.Certificate`封裝的參考。 然後在`Startup.ConfigureServices`方法中，使用`services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate(...);`您的選項呼叫，提供的委派`OnCertificateValidated` ，以在隨要求傳送的用戶端憑證上執行任何補充驗證。 將該資訊轉換成`ClaimsPrincipal` ，並在`context.Principal`屬性上設定它。
 
-如果驗證失敗，此處理程式會傳回 `403 (Forbidden)` 回應，而不是如您所預期的 `401 (Unauthorized)`。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
+如果驗證失敗，此處理程式會`403 (Forbidden)`傳迴響應， `401 (Unauthorized)`而不是，如您所預期。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
 
-此外，也請在 `Startup.Configure` 方法中新增 `app.UseAuthentication();`。 否則，`HttpContext.User` 將不會設定為從憑證建立 `ClaimsPrincipal`。 例如：
+此外， `app.UseAuthentication();` `Startup.Configure`也會在方法中新增。 否則， `HttpContext.User`將不會設定為`ClaimsPrincipal`從憑證建立。 例如：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -59,13 +65,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="configure-certificate-validation"></a>設定憑證驗證
 
-`CertificateAuthenticationOptions` 處理常式有一些內建的驗證，這是您應該在憑證上執行的最小驗證。 預設會啟用這些設定。
+`CertificateAuthenticationOptions`處理常式有一些內建的驗證，這是您應該在憑證上執行的最小驗證。 預設會啟用這些設定。
 
 ### <a name="allowedcertificatetypes--chained-selfsigned-or-all-chained--selfsigned"></a>AllowedCertificateTypes = 連鎖、Lnk-selfsigned 之類或 All （連鎖 |Lnk-selfsigned 之類
 
 預設值：`CertificateTypes.Chained`
 
-這種檢查會驗證是否只允許適當的憑證類型。 如果應用程式使用自我簽署憑證，則必須將此選項設定為 `CertificateTypes.All` 或 `CertificateTypes.SelfSigned`。
+這種檢查會驗證是否只允許適當的憑證類型。 如果應用程式使用自我簽署憑證，則必須將此選項設定為`CertificateTypes.All`或。 `CertificateTypes.SelfSigned`
 
 ### <a name="validatecertificateuse"></a>ValidateCertificateUse
 
@@ -105,8 +111,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 此處理程式有兩個事件：
 
-* 如果在驗證期間發生例外狀況，則會呼叫 `OnAuthenticationFailed` &ndash;，並可讓您做出回應。
-* 在驗證憑證後呼叫 &ndash; `OnCertificateValidated`，通過驗證並已建立預設主體。 此事件可讓您執行自己的驗證，並增強或取代主體。 範例包括：
+* `OnAuthenticationFailed`&ndash;如果在驗證期間發生例外狀況，並可讓您做出回應，則呼叫。
+* `OnCertificateValidated`&ndash;在驗證憑證後呼叫，通過驗證並建立預設主體。 此事件可讓您執行自己的驗證，並增強或取代主體。 範例包括：
   * 判斷您的服務是否知道憑證。
   * 建立您自己的主體。 請考慮 `Startup.ConfigureServices` 中的下列範例：
 
@@ -142,7 +148,7 @@ services.AddAuthentication(
     });
 ```
 
-如果您發現輸入憑證不符合您的額外驗證，請呼叫 `context.Fail("failure reason")`，但發生失敗原因。
+如果您發現輸入憑證不符合您的額外驗證，請`context.Fail("failure reason")`呼叫失敗原因。
 
 針對實際的功能，您可能會想要呼叫在相依性插入中註冊的服務，而這些相依性會連接到資料庫或其他類型的使用者存放區。 使用傳入委派的內容存取您的服務。 請考慮 `Startup.ConfigureServices` 中的下列範例：
 
@@ -187,7 +193,7 @@ services.AddAuthentication(
     });
 ```
 
-就概念而言，驗證憑證是一項授權考慮。 例如，在授權原則中新增核取簽發者或指紋，而不是在 `OnCertificateValidated`內，是完全可接受的。
+就概念而言，驗證憑證是一項授權考慮。 在授權原則中新增核取簽發者或指紋，而不是在內部`OnCertificateValidated`，是完全可接受的。
 
 ## <a name="configure-your-host-to-require-certificates"></a>將您的主機設定為需要憑證
 
@@ -218,7 +224,7 @@ public static IHostBuilder CreateHostBuilder(string[] args)
 ```
 
 > [!NOTE]
-> 在呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>**之前**呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> 所建立的端點不會套用預設值。
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **在**呼叫<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>之前呼叫所建立的端點，將不會套用預設值。
 
 ### <a name="iis"></a>IIS
 
@@ -243,12 +249,12 @@ Azure 不需要轉送設定。 憑證轉送中介軟體已設定此功能。
 
 ### <a name="use-certificate-authentication-in-custom-web-proxies"></a>在自訂 web proxy 中使用憑證驗證
 
-`AddCertificateForwarding` 方法是用來指定：
+`AddCertificateForwarding`方法是用來指定：
 
 * 用戶端標頭名稱。
-* 如何載入憑證（使用 `HeaderConverter` 屬性）。
+* 如何載入憑證（使用`HeaderConverter`屬性）。
 
-在自訂的 web proxy 中，憑證會以自訂要求標頭的形式傳遞，例如 `X-SSL-CERT`。 若要使用它，請在 `Startup.ConfigureServices`中設定憑證轉送：
+例如`X-SSL-CERT`，在自訂的 web proxy 中，憑證會當做自訂要求標頭來傳遞。 若要使用它，請在中`Startup.ConfigureServices`設定憑證轉送：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -285,7 +291,7 @@ private static byte[] StringToByteArray(string hex)
 }
 ```
 
-然後 `Startup.Configure` 方法會新增中介軟體。 在呼叫 `UseAuthentication` 和 `UseAuthorization`之前，會呼叫 `UseCertificateForwarding`：
+然後`Startup.Configure` ，方法會新增中介軟體。 `UseCertificateForwarding`呼叫`UseAuthentication`和`UseAuthorization`之前，會先呼叫：
 
 ```csharp
 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -305,7 +311,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 }
 ```
 
-個別的類別可以用來執行驗證邏輯。 因為此範例中使用了相同的自我簽署憑證，請確定只能使用您的憑證。 驗證用戶端憑證和伺服器憑證的指紋是否相符，否則就可以使用任何憑證，而且就足以進行驗證。 這會在 `AddCertificate` 方法內使用。 如果您使用的是中繼或子系憑證，您也可以在這裡驗證主旨或簽發者。
+個別的類別可以用來執行驗證邏輯。 因為此範例中使用了相同的自我簽署憑證，請確定只能使用您的憑證。 驗證用戶端憑證和伺服器憑證的指紋是否相符，否則就可以使用任何憑證，而且就足以進行驗證。 這會在`AddCertificate`方法內使用。 如果您使用的是中繼或子系憑證，您也可以在這裡驗證主旨或簽發者。
 
 ```csharp
 using System.IO;
@@ -414,7 +420,7 @@ private async Task<JsonDocument> GetApiDataWithNamedClient()
 
 ### <a name="create-certificates-in-powershell"></a>在 PowerShell 中建立憑證
 
-建立憑證是設定此流程最困難的部分。 您可以使用 `New-SelfSignedCertificate` PowerShell Cmdlet 來建立根憑證。 建立憑證時，請使用強式密碼。 請務必加入 `KeyUsageProperty` 參數和 `KeyUsage` 參數，如下所示。
+建立憑證是設定此流程最困難的部分。 您可以使用`New-SelfSignedCertificate` PowerShell Cmdlet 來建立根憑證。 建立憑證時，請使用強式密碼。 請務必新增`KeyUsageProperty`參數和`KeyUsage`參數，如下所示。
 
 #### <a name="create-root-ca"></a>建立根 CA
 
@@ -429,7 +435,7 @@ Export-Certificate -Cert cert:\localMachine\my\"The thumbprint..." -FilePath roo
 ```
 
 > [!NOTE]
-> `-DnsName` 參數值必須符合應用程式的部署目標。 例如，"localhost" 用於開發。
+> `-DnsName`參數值必須符合應用程式的部署目標。 例如，"localhost" 用於開發。
 
 #### <a name="install-in-the-trusted-root"></a>在受信任的根目錄中安裝
 
@@ -439,7 +445,7 @@ https://social.msdn.microsoft.com/Forums/SqlServer/5ed119ef-1704-4be4-8a4f-ef11d
 
 #### <a name="intermediate-certificate"></a>中繼憑證
 
-現在可以從根憑證建立中繼憑證。 並非所有使用案例都需要這麼做，但您可能需要建立許多憑證，或需要啟用或停用憑證群組。 必須要有 `TextExtension` 參數，才能在憑證的基本條件約束中設定路徑長度。
+現在可以從根憑證建立中繼憑證。 並非所有使用案例都需要這麼做，但您可能需要建立許多憑證，或需要啟用或停用憑證群組。 必須`TextExtension`有參數，才能在憑證的基本條件約束中設定路徑長度。
 
 接著，您可以將中繼憑證新增至 Windows 主機系統中受信任的中繼憑證。
 

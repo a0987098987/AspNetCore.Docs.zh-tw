@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 3/29/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 7715adc9b39edd4f8a5882b2e60a1b5513fe400b
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: c2a7ef9c1523bc179524f328905f3a4b1460a1a5
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205991"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774492"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -71,7 +77,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 預設<xref:Microsoft.Extensions.Configuration.Json.JsonConfigurationProvider>會以下列順序載入設定：
 
 1. *appsettings.json*
-1. *appsettings。*`Environment` *. json* ：例如， *appsettings*。***生產***。*json*和*appsettings*。***開發***。*json*檔案。 檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。 如需詳細資訊，請參閱 <xref:fundamentals/environments>。
+1. *appsettings。*`Environment` *. json* ：例如， *appsettings*。***生產***。*json*和*appsettings*。***開發***。*json*檔案。 檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。 如需詳細資訊，請參閱<xref:fundamentals/environments>。
 
 *appsettings*。`Environment`.*json*值會覆寫*appsettings*中的索引鍵。 例如，根據預設：
 
@@ -137,7 +143,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 * <xref:fundamentals/environments>
 * <xref:security/app-secrets>：包含有關使用環境變數來儲存敏感性資料的建議。 秘密管理員會使用檔案設定[提供者](#fcp)，將使用者秘密儲存在本機系統上的 JSON 檔案中。
 
-[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱 <xref:security/key-vault-configuration>。
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱<xref:security/key-vault-configuration>。
 
 <a name="evcp"></a>
 
@@ -755,7 +761,7 @@ Index: 5  Value: value5
 
 ## <a name="add-configuration-from-an-external-assembly"></a>從外部組件新增設定
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -785,7 +791,7 @@ ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機�
 using Microsoft.Extensions.Configuration;
 ```
 
-*選項模式*是此主題中所述之設定概念的延伸。 選項使用類別來代表一組相關的設定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/options>。
+*選項模式*是此主題中所述之設定概念的延伸。 選項使用類別來代表一組相關的設定。 如需詳細資訊，請參閱<xref:fundamentals/configuration/options>。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
@@ -835,7 +841,7 @@ using Microsoft.Extensions.Configuration;
 * <xref:fundamentals/environments>
 * <xref:security/app-secrets>&ndash;包含使用環境變數來儲存敏感性資料的建議。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
 
-[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱 <xref:security/key-vault-configuration>。
+[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱<xref:security/key-vault-configuration>。
 
 ## <a name="hierarchical-configuration-data"></a>階層式設定資料
 
@@ -903,7 +909,7 @@ public class HomeController : Controller
 
 設定提供者無法使用 DI，因為當它們由主機設定時，它無法使用。
 
-### <a name="keys"></a>索引鍵
+### <a name="keys"></a>按鍵
 
 設定機碼會採用下列慣例：
 
@@ -1792,11 +1798,11 @@ public class Startup
 
 如需使用啟動方便方法來存取設定的範例，請參閱[應用程式啟動：方便方法](xref:fundamentals/startup#convenience-methods)。
 
-## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>存取 Razor Pages 頁面或 MVC 檢視中的設定
+## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>頁面頁面或 MVC Razor視圖中的存取設定
 
-若要在 [Razor Pages 頁面] 頁面或 MVC 檢視中存取組態設定，請針對 [Microsoft.Extensions.Configuration 命名空間](xref:Microsoft.Extensions.Configuration)[using 指示詞](xref:mvc/views/razor#using) ([C# 參考：using 指示詞](/dotnet/csharp/language-reference/keywords/using-directive))，並將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 插入到頁面或檢視中。
+若Razor要存取 [頁面] 頁面或 MVC 視圖中的設定，請在 [設定[命名空間](xref:Microsoft.Extensions.Configuration)] 中新增[using](xref:mvc/views/razor#using)指示詞（[c # 參考： using](/dotnet/csharp/language-reference/keywords/using-directive)指示詞<xref:Microsoft.Extensions.Configuration.IConfiguration> ），並將其插入頁面或視圖中。
 
-在 [Razor 頁面] 頁面中：
+在 [ Razor頁面] 頁面中：
 
 ```cshtml
 @page
@@ -1836,7 +1842,7 @@ public class Startup
 
 ## <a name="add-configuration-from-an-external-assembly"></a>從外部組件新增設定
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
 
 ## <a name="additional-resources"></a>其他資源
 

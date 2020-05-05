@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 03/31/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 48f5b09199091b2b55974010a2b0715c28eb1bae
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: 524fd015278d1a5f784fa306f077d06b865201c4
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205965"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82772083"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor裝載模型
 
@@ -94,9 +97,9 @@ Blazor伺服器應用程式模型支援[Docker 容器](/dotnet/standard/microser
 
 ### <a name="comparison-to-server-rendered-ui"></a>與伺服器呈現的 UI 比較
 
-瞭解Blazor伺服器應用程式的其中一種方式，就是了解它與傳統模型有何不同，可以使用 Razor views 或 Razor Pages 在 ASP.NET Core 應用程式中呈現 UI。 這兩種模型都使用 Razor 語言來描述 HTML 內容，但在標記呈現的方式上有很大的差異。
+瞭解Blazor伺服器應用程式的其中一種方式，就是了解它與傳統模型之間的差異，以Razor使用視圖Razor或頁面在 ASP.NET Core 應用程式中呈現 UI。 這兩種模型Razor都使用語言來描述 HTML 內容，但在標記的呈現方式上有很大的差異。
 
-當 Razor 頁面或視圖呈現時，每一行 Razor 程式碼都會以文字格式發出 HTML。 呈現之後，伺服器會處置頁面或 view 實例，包括任何已產生的狀態。 當頁面的另一個要求發生時（例如，當伺服器驗證失敗且顯示驗證摘要時）：
+當Razor頁面或視圖呈現時，每一行程式Razor代碼都會以文字格式發出 HTML。 呈現之後，伺服器會處置頁面或 view 實例，包括任何已產生的狀態。 當頁面的另一個要求發生時（例如，當伺服器驗證失敗且顯示驗證摘要時）：
 
 * 整個頁面會再次重新顯示為 HTML 文字。
 * 此頁面會傳送至用戶端。
@@ -106,7 +109,7 @@ Blazor應用程式是由可重複使用的 UI 元素（稱為「*元件*」）�
 * 已轉換成 HTML 文字（在&dagger;預建期間）。
 * 用來在一般轉譯期間有效率地更新標記。
 
-&dagger;預先*呈現* &ndash;要求的 Razor 元件會在伺服器上編譯成靜態 HTML，並傳送至用戶端，並在其中呈現給使用者。 在用戶端與伺服器之間建立連接之後，元件的靜態資源清單元素會取代為互動式元素。 進行預進行，讓應用程式更能回應使用者。
+&dagger;預先*呈現* &ndash;要求Razor的元件會在伺服器上編譯為靜態 HTML，並傳送至用戶端，並在其中呈現給使用者。 在用戶端與伺服器之間建立連接之後，元件的靜態資源清單元素會取代為互動式元素。 進行預進行，讓應用程式更能回應使用者。
 
 中Blazor的 UI 更新會由下列觸發：
 
@@ -125,7 +128,7 @@ Blazor應用程式是由可重複使用的 UI 元素（稱為「*元件*」）�
 
 Blazor考慮關閉瀏覽器索引標籤或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor伺服器會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。
 
-Blazor伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>。
+Blazor伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱<xref:blazor/advanced-scenarios#blazor-server-circuit-handler>。
 
 ### <a name="ui-latency"></a>UI 延遲
 
@@ -146,7 +149,7 @@ Blazor伺服器應用程式需要伺服器SignalR的使用中連接。 如果連
 
 Blazor伺服器應用程式會 prerenders，以回應第一個用戶端要求，這會在伺服器上設定 UI 狀態。 當用戶端嘗試建立SignalR連接時，用戶端必須重新連線到相同的伺服器。 Blazor使用一部以上後端伺服器的伺服器應用程式應該執行連線SignalR的*粘滯會話*。
 
-我們建議使用適用于Blazor伺服器應用程式的[Azure SignalR服務](/azure/azure-signalr)。 此服務可讓您將Blazor伺服器應用程式相應增加至大量的並行SignalR連接。 將服務的SignalR `ServerStickyMode`選項或設定值設為`Required`，即可為 Azure 服務啟用「粘滯會話」。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/server#signalr-configuration>。
+我們建議使用適用于Blazor伺服器應用程式的[Azure SignalR服務](/azure/azure-signalr)。 此服務可讓您將Blazor伺服器應用程式相應增加至大量的並行SignalR連接。 將服務的SignalR `ServerStickyMode`選項或設定值設為`Required`，即可為 Azure 服務啟用「粘滯會話」。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/server#signalr-configuration>。
 
 使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 

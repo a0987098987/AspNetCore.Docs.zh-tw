@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc, seodec18
 ms.date: 08/17/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-mongo-app
-ms.openlocfilehash: d5ce4a1dc3c00b2b12edc12e26f482caa97df6b3
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 4d1c2d915c646dd1c8fcadd25bcd420a0a749dc9
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79511414"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774765"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -31,14 +37,14 @@ ms.locfileid: "79511414"
 > * 從 Web API 執行 MongoDB CRUD 作業
 > * 自訂 JSON 序列化
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [.NET Core SDK 3.0 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
-* [視覺工作室 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)與**ASP.NET和網路開發**工作負載
+* **ASP.NET 和 網頁程式開發**工作負載的[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -58,7 +64,7 @@ ms.locfileid: "79511414"
 
 ## <a name="configure-mongodb"></a>設定 MongoDB
 
-若使用 Windows，MongoDB 預設會安裝在 *C:\\Program Files\\MongoDB*。 添加*C:\\\\\\程式檔案 MongoDB 伺服器\\\<\\version_number>bin*到`Path`環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
+若使用 Windows，MongoDB 預設會安裝在 *C:\\Program Files\\MongoDB*。 將*C：\\Program Files\\MongoDB\\伺服器\\\<version_number>\\bin*新增至`Path`環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
 
 在下列步驟中使用 mongo 殼層來建立資料庫、建立集合及存放文件。 如需有關 mongo 殼層命令的詳細資訊，請參閱[使用 mongo 殼層](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell)。
 
@@ -149,11 +155,11 @@ ms.locfileid: "79511414"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 跳到**檔案**>**新項目**>**Project**。
+1. 移至**File** > [檔案] [**新增** > **專案**]。
 1. 選取 [ASP.NET Core Web 應用程式]**** 專案類型，然後選取 [下一步]****。
 1. 將專案命名為 *BooksApi*，然後選取 [建立]****。
 1. 選取 [.NET Core]**** 目標架構與 [ASP.NET Core 3.0]****。 選取 [API]**** 專案範本，然後選取 [確定]****。
-1. 存[取 NuGet 函式庫:MongoDB.Driver,](https://www.nuget.org/packages/MongoDB.Driver/)確定 MongoDB 的 .NET 驅動程式的最新穩定版本。 在 [套件管理員主控台]**** 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 請造訪[NuGet 資源庫： MongoDB 驅動程式](https://www.nuget.org/packages/MongoDB.Driver/)，以判斷最新穩定版本的 .net Driver for MongoDB。 在 [套件管理員主控台]**** 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -170,8 +176,8 @@ ms.locfileid: "79511414"
 
    會產生以 .NET Core 為目標的新 ASP.NET Core Web API 專案，並在 Visual Studio Code 中開啟。
 
-1. 在狀態列的 OmniSharp 火焰圖示變為綠色後,一個對話框要求 **「BooksApi」中缺少需要的資產進行構建和調試。新增它們?**. 選取 [是]  。
-1. 存[取 NuGet 函式庫:MongoDB.Driver,](https://www.nuget.org/packages/MongoDB.Driver/)確定 MongoDB 的 .NET 驅動程式的最新穩定版本。 開啟 [整合式終端機]**** 並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' BooksApi ' 中遺漏了 debug。加入它們嗎？** 選取 [是]  。
+1. 請造訪[NuGet 資源庫： MongoDB 驅動程式](https://www.nuget.org/packages/MongoDB.Driver/)，以判斷最新穩定版本的 .net Driver for MongoDB。 開啟 [整合式終端機]**** 並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
    ```dotnetcli
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
@@ -221,10 +227,10 @@ ms.locfileid: "79511414"
    在上面的類別中，需要 `Id` 屬性：
 
    * 才能將通用語言執行平台 (CLR) 物件對應到 MongoDB 集合。
-   * 使用 用於指定此屬性[`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm)作為 文件的主鍵進行標記。
-   * 使用[`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm)允許將參數作為類型`string`而不是[ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm)結構傳遞。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
+   * 已標注， [`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm)可將此屬性指定為檔的主要金鑰。
+   * 會以標注[`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) ，允許以類型`string` （而非[ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm)結構）傳遞參數。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
 
-   屬性`BookName`使用[`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm)屬性進行帶用的帶號表示。 `Name` 的屬性值代表 MongoDB 集合中的屬性名稱。
+   `BookName`屬性會以[`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm)屬性標注。 `Name` 的屬性值代表 MongoDB 集合中的屬性名稱。
 
 ## <a name="add-a-configuration-model"></a>新增組態模型
 
@@ -264,7 +270,7 @@ ms.locfileid: "79511414"
 
    [!code-csharp[](first-mongo-app/samples_snapshot/3.x/SampleApp/Startup.ConfigureServices.AddSingletonService.cs?highlight=9)]
 
-   在上述程式碼中，`BookService` 類別要向 DI 註冊才能在取用類別中支援建構函式插入。 因為 `BookService` 直接依存於 `MongoClient`，所以 Singleton 服務存留期最適合。 根據官方[蒙戈用戶端重用準則](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)`MongoClient`, 應在 DI 中註冊,具有單例服務壽命。
+   在上述程式碼中，`BookService` 類別要向 DI 註冊才能在取用類別中支援建構函式插入。 因為 `BookService` 直接依存於 `MongoClient`，所以 Singleton 服務存留期最適合。 根據官方的[Mongo 用戶端重複使用方針](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)， `MongoClient`應該在 DI 中註冊單一服務存留期。
 
 1. 在 *Startup.cs* 的頂端新增下列程式碼，以解析 `BookService` 參考：
 
@@ -354,7 +360,7 @@ ms.locfileid: "79511414"
 
    完成前述變更後，Web API 序列化 JSON 回應中屬性名稱即符合其對應的 CLR 物件類型屬性名稱。 例如，`Book` 類別的 `Author` 屬性會序列化為 `Author`。
 
-1. 在*模型/Book.cs*中,使用`BookName`[`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm)以下 屬性對屬性進行編號:
+1. 在*模型/Book .cs*中，使用下列`BookName` [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm)屬性標注屬性：
 
    [!code-csharp[](first-mongo-app/samples/3.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
@@ -381,14 +387,14 @@ ms.locfileid: "79511414"
 > * 從 Web API 執行 MongoDB CRUD 作業
 > * 自訂 JSON 序列化
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-mongo-app/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * [.NET Core SDK 2.2](https://dotnet.microsoft.com/download/dotnet-core)
-* [視覺工作室 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)與**ASP.NET和網路開發**工作負載
+* **ASP.NET 和 網頁程式開發**工作負載的[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 * [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
@@ -408,7 +414,7 @@ ms.locfileid: "79511414"
 
 ## <a name="configure-mongodb"></a>設定 MongoDB
 
-若使用 Windows，MongoDB 預設會安裝在 *C:\\Program Files\\MongoDB*。 添加*C:\\\\\\程式檔案 MongoDB 伺服器\\\<\\version_number>bin*到`Path`環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
+若使用 Windows，MongoDB 預設會安裝在 *C:\\Program Files\\MongoDB*。 將*C：\\Program Files\\MongoDB\\伺服器\\\<version_number>\\bin*新增至`Path`環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
 
 在下列步驟中使用 mongo 殼層來建立資料庫、建立集合及存放文件。 如需有關 mongo 殼層命令的詳細資訊，請參閱[使用 mongo 殼層](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell)。
 
@@ -499,11 +505,11 @@ ms.locfileid: "79511414"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 跳到**檔案**>**新項目**>**Project**。
+1. 移至**File** > [檔案] [**新增** > **專案**]。
 1. 選取 [ASP.NET Core Web 應用程式]**** 專案類型，然後選取 [下一步]****。
 1. 將專案命名為 *BooksApi*，然後選取 [建立]****。
 1. 選取 [.NET Core]**** 目標架構與 [ASP.NET Core 2.2]****。 選取 [API]**** 專案範本，然後選取 [確定]****。
-1. 存[取 NuGet 函式庫:MongoDB.Driver,](https://www.nuget.org/packages/MongoDB.Driver/)確定 MongoDB 的 .NET 驅動程式的最新穩定版本。 在 [套件管理員主控台]**** 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 請造訪[NuGet 資源庫： MongoDB 驅動程式](https://www.nuget.org/packages/MongoDB.Driver/)，以判斷最新穩定版本的 .net Driver for MongoDB。 在 [套件管理員主控台]**** 視窗中，瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
    ```powershell
    Install-Package MongoDB.Driver -Version {VERSION}
@@ -520,8 +526,8 @@ ms.locfileid: "79511414"
 
    會產生以 .NET Core 為目標的新 ASP.NET Core Web API 專案，並在 Visual Studio Code 中開啟。
 
-1. 在狀態列的 OmniSharp 火焰圖示變為綠色後,一個對話框要求 **「BooksApi」中缺少需要的資產進行構建和調試。新增它們?**. 選取 [是]  。
-1. 存[取 NuGet 函式庫:MongoDB.Driver,](https://www.nuget.org/packages/MongoDB.Driver/)確定 MongoDB 的 .NET 驅動程式的最新穩定版本。 開啟 [整合式終端機]**** 並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
+1. 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' BooksApi ' 中遺漏了 debug。加入它們嗎？** 選取 [是]  。
+1. 請造訪[NuGet 資源庫： MongoDB 驅動程式](https://www.nuget.org/packages/MongoDB.Driver/)，以判斷最新穩定版本的 .net Driver for MongoDB。 開啟 [整合式終端機]**** 並瀏覽到專案根目錄。 執行下列命令以安裝適用於 MongoDB 的 .NET 驅動程式：
 
    ```dotnetcli
    dotnet add BooksApi.csproj package MongoDB.Driver -v {VERSION}
@@ -571,10 +577,10 @@ ms.locfileid: "79511414"
    在上面的類別中，需要 `Id` 屬性：
 
    * 才能將通用語言執行平台 (CLR) 物件對應到 MongoDB 集合。
-   * 使用 用於指定此屬性[`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm)作為 文件的主鍵進行標記。
-   * 使用[`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm)允許將參數作為類型`string`而不是[ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm)結構傳遞。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
+   * 已標注， [`[BsonId]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonIdAttribute.htm)可將此屬性指定為檔的主要金鑰。
+   * 會以標注[`[BsonRepresentation(BsonType.ObjectId)]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonRepresentationAttribute.htm) ，允許以類型`string` （而非[ObjectId](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_ObjectId.htm)結構）傳遞參數。 Mongo 會處理從 `string` 轉換到 `ObjectId` 的作業。
 
-   屬性`BookName`使用[`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm)屬性進行帶用的帶號表示。 `Name` 的屬性值代表 MongoDB 集合中的屬性名稱。
+   `BookName`屬性會以[`[BsonElement]`](https://api.mongodb.com/csharp/current/html/T_MongoDB_Bson_Serialization_Attributes_BsonElementAttribute.htm)屬性標注。 `Name` 的屬性值代表 MongoDB 集合中的屬性名稱。
 
 ## <a name="add-a-configuration-model"></a>新增組態模型
 
@@ -614,7 +620,7 @@ ms.locfileid: "79511414"
 
    [!code-csharp[](first-mongo-app/samples_snapshot/2.x/SampleApp/Startup.ConfigureServices.AddSingletonService.cs?highlight=9)]
 
-   在上述程式碼中，`BookService` 類別要向 DI 註冊才能在取用類別中支援建構函式插入。 因為 `BookService` 直接依存於 `MongoClient`，所以 Singleton 服務存留期最適合。 根據官方[蒙戈用戶端重用準則](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)`MongoClient`, 應在 DI 中註冊,具有單例服務壽命。
+   在上述程式碼中，`BookService` 類別要向 DI 註冊才能在取用類別中支援建構函式插入。 因為 `BookService` 直接依存於 `MongoClient`，所以 Singleton 服務存留期最適合。 根據官方的[Mongo 用戶端重複使用方針](https://mongodb.github.io/mongo-csharp-driver/2.8/reference/driver/connecting/#re-use)， `MongoClient`應該在 DI 中註冊單一服務存留期。
 
 1. 在 *Startup.cs* 的頂端新增下列程式碼，以解析 `BookService` 參考：
 
@@ -702,7 +708,7 @@ ms.locfileid: "79511414"
 
    完成前述變更後，Web API 序列化 JSON 回應中屬性名稱即符合其對應的 CLR 物件類型屬性名稱。 例如，`Book` 類別的 `Author` 屬性會序列化為 `Author`。
 
-1. 在*模型/Book.cs*中,使用`BookName`[`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm)以下 屬性對屬性進行編號:
+1. 在*模型/Book .cs*中，使用下列`BookName` [`[JsonProperty]`](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonPropertyAttribute.htm)屬性標注屬性：
 
    [!code-csharp[](first-mongo-app/samples/2.x/SampleApp/Models/Book.cs?name=snippet_BookNameProperty&highlight=2)]
 
@@ -716,7 +722,7 @@ ms.locfileid: "79511414"
 
 ::: moniker-end
 
-## <a name="add-authentication-support-to-a-web-api"></a>新增與 Web API 加入認證
+## <a name="add-authentication-support-to-a-web-api"></a>將驗證支援新增至 Web API
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
@@ -724,6 +730,6 @@ ms.locfileid: "79511414"
 
 如需有關建置 ASP.NET Core Web API 的詳細資訊，請參閱下列資源：
 
-* [本文的 YouTube 版本](https://www.youtube.com/watch?v=7uJt_sOenyo&feature=youtu.be)
+* [這篇文章的 YouTube 版本](https://www.youtube.com/watch?v=7uJt_sOenyo&feature=youtu.be)
 * <xref:web-api/index>
 * <xref:web-api/action-return-types>

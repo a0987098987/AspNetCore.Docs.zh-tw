@@ -6,17 +6,23 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/proxy-load-balancer
-ms.openlocfilehash: b5c81e0cfa29cddeb1aeed1119a711fca4d91ae4
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: e329b8604b820818167a563b3a21f01f2ab2a6ca
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78659380"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776379"
 ---
 # <a name="configure-aspnet-core-to-work-with-proxy-servers-and-load-balancers"></a>設定 ASP.NET Core 以與 Proxy 伺服器和負載平衡器搭配運作
 
-由[克裡斯·羅斯](https://github.com/Tratcher)
+依[Chris Ross](https://github.com/Tratcher)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -31,7 +37,7 @@ ms.locfileid: "78659380"
 
 依照慣例，Proxy 會以 HTTP 標頭轉送資訊。
 
-| 頁首 | 描述 |
+| 頁首 | 說明 |
 | ------ | ----------- |
 | X-Forwarded-For | 針對在 Proxy 鏈結中起始要求及後續 Proxy 的用戶端，保存用戶端的相關資訊。 此參數可能包含 IP 位址 (以及視需要可能會有連接埠號碼)。 在 Proxy 伺服器鏈結中，第一個參數會指出起始要求的用戶端。 後面接著後續的 Proxy 識別碼。 鏈結中的最後一個 Proxy 並不在參數清單中。 最後一個 Proxy 的 IP 位址 (以及視需要會有連接埠號碼) 會在傳輸層以遠端 IP 位址的形式提供。 |
 | X-Forwarded-Proto | 原始配置的值 (HTTP/HTTPS)。 如果要求周遊了多個 Proxy，則此值也可能是一個配置清單。 |
@@ -123,7 +129,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> | 依據 `X-Forwarded-Host` 標頭將主機限制成所提供的值。<ul><li>比較值時，會使用序數忽略大小寫的方式來比較。</li><li>必須排除連接埠號碼。</li><li>如果清單空白，即表示允許所有主機。</li><li>最上層的萬用字元 `*` 代表會允許所有非空白的主機。</li><li>允許使用子網域萬用字元，但不會比對出根網域。 例如，`*.contoso.com` 會比對出子網域 `foo.contoso.com`，但不會比對出根網域 `contoso.com`。</li><li>允許使用 Unicode 主機名稱，但會轉換成 [Punycode](https://tools.ietf.org/html/rfc3492) 來進行比對。</li><li>[IPv6 addresses](https://tools.ietf.org/html/rfc4291) 必須包含週框方括號，並採用[慣例格式](https://tools.ietf.org/html/rfc4291#section-2.2) (例如 `[ABCD:EF01:2345:6789:ABCD:EF01:2345:6789]`)。 IPv6 位址並未特別設計成會檢查不同格式間是否具有邏輯相等性，因此不會執行標準化。</li><li>如果無法限制可允許的主機，可能會讓攻擊者偽造服務所產生的連結。</li></ul>預設值是空的 `IList<string>`。 |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedForHeaderName> | 使用此屬性所指定的標頭，而不是 [ForwardedHeadersDefaults.XForwardedForHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XForwardedForHeaderName) 所指定的標頭。 當 Proxy/轉寄站未使用 `X-Forwarded-For` 標頭，而使用其他標頭轉送資訊時，會使用此選項。<br><br>預設值為 `X-Forwarded-For`。 |
@@ -258,38 +264,38 @@ if (string.Equals(
 
 ### <a name="azure"></a>Azure
 
-要將 Azure 應用服務設定為憑證轉寄,請參考[Azure 應用服務設定 TLS 的驗證](/azure/app-service/app-service-web-configure-tls-mutual-auth)。 以下指南與配置ASP.NET核心應用有關。
+若要設定憑證轉送的 Azure App Service，請參閱[設定 Azure App Service 的 TLS 相互驗證](/azure/app-service/app-service-web-configure-tls-mutual-auth)。 下列指導方針適用于設定 ASP.NET Core 應用程式。
 
-在`Startup.Configure`中,在呼叫之前將以下代碼`app.UseAuthentication();`加入 :
+在`Startup.Configure`中，于呼叫之前新增下列程式碼`app.UseAuthentication();`：
 
 ```csharp
 app.UseCertificateForwarding();
 ```
 
 
-設定證書轉發中間件以指定 Azure 使用的標頭名稱。 在`Startup.ConfigureServices`中,新增以下代碼來設定中間件產生憑證的標頭:
+設定憑證轉送中介軟體來指定 Azure 所使用的標頭名稱。 在`Startup.ConfigureServices`中，新增下列程式碼，以設定中介軟體用來建立憑證的標頭：
 
 ```csharp
 services.AddCertificateForwarding(options =>
     options.CertificateHeader = "X-ARR-ClientCert");
 ```
 
-### <a name="other-web-proxies"></a>其他網路代理
+### <a name="other-web-proxies"></a>其他 web proxy
 
-如果使用的代理不是 IIS 或 Azure 應用服務的應用程式請求路由 (ARR),請將代理配置為轉發它在 HTTP 標頭中收到的證書。 在`Startup.Configure`中,在呼叫之前將以下代碼`app.UseAuthentication();`加入 :
+如果使用的 proxy 不是 IIS 或 Azure App Service 的應用程式要求路由（ARR），請將 proxy 設定為轉送其在 HTTP 標頭中收到的憑證。 在`Startup.Configure`中，于呼叫之前新增下列程式碼`app.UseAuthentication();`：
 
 ```csharp
 app.UseCertificateForwarding();
 ```
 
-配置證書轉發中間件以指定標頭名稱。 在`Startup.ConfigureServices`中,新增以下代碼來設定中間件產生憑證的標頭:
+設定憑證轉送中介軟體來指定標頭名稱。 在`Startup.ConfigureServices`中，新增下列程式碼，以設定中介軟體用來建立憑證的標頭：
 
 ```csharp
 services.AddCertificateForwarding(options =>
     options.CertificateHeader = "YOUR_CERTIFICATE_HEADER_NAME");
 ```
 
-如果代理不是對證書進行基本編碼(與 Nginx 的情況一樣),`HeaderConverter`則設置 該選項。 請考慮 `Startup.ConfigureServices` 中的下列範例：
+如果 proxy 不會以 base64 編碼憑證（如同 Nginx 的情況），請設定`HeaderConverter`選項。 請考慮 `Startup.ConfigureServices` 中的下列範例：
 
 ```csharp
 services.AddCertificateForwarding(options =>
@@ -409,7 +415,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 依照慣例，Proxy 會以 HTTP 標頭轉送資訊。
 
-| 頁首 | 描述 |
+| 頁首 | 說明 |
 | ------ | ----------- |
 | X-Forwarded-For | 針對在 Proxy 鏈結中起始要求及後續 Proxy 的用戶端，保存用戶端的相關資訊。 此參數可能包含 IP 位址 (以及視需要可能會有連接埠號碼)。 在 Proxy 伺服器鏈結中，第一個參數會指出起始要求的用戶端。 後面接著後續的 Proxy 識別碼。 鏈結中的最後一個 Proxy 並不在參數清單中。 最後一個 Proxy 的 IP 位址 (以及視需要會有連接埠號碼) 會在傳輸層以遠端 IP 位址的形式提供。 |
 | X-Forwarded-Proto | 原始配置的值 (HTTP/HTTPS)。 如果要求周遊了多個 Proxy，則此值也可能是一個配置清單。 |
@@ -501,7 +507,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.AllowedHosts> | 依據 `X-Forwarded-Host` 標頭將主機限制成所提供的值。<ul><li>比較值時，會使用序數忽略大小寫的方式來比較。</li><li>必須排除連接埠號碼。</li><li>如果清單空白，即表示允許所有主機。</li><li>最上層的萬用字元 `*` 代表會允許所有非空白的主機。</li><li>允許使用子網域萬用字元，但不會比對出根網域。 例如，`*.contoso.com` 會比對出子網域 `foo.contoso.com`，但不會比對出根網域 `contoso.com`。</li><li>允許使用 Unicode 主機名稱，但會轉換成 [Punycode](https://tools.ietf.org/html/rfc3492) 來進行比對。</li><li>[IPv6 addresses](https://tools.ietf.org/html/rfc4291) 必須包含週框方括號，並採用[慣例格式](https://tools.ietf.org/html/rfc4291#section-2.2) (例如 `[ABCD:EF01:2345:6789:ABCD:EF01:2345:6789]`)。 IPv6 位址並未特別設計成會檢查不同格式間是否具有邏輯相等性，因此不會執行標準化。</li><li>如果無法限制可允許的主機，可能會讓攻擊者偽造服務所產生的連結。</li></ul>預設值是空的 `IList<string>`。 |
 | <xref:Microsoft.AspNetCore.Builder.ForwardedHeadersOptions.ForwardedForHeaderName> | 使用此屬性所指定的標頭，而不是 [ForwardedHeadersDefaults.XForwardedForHeaderName](xref:Microsoft.AspNetCore.HttpOverrides.ForwardedHeadersDefaults.XForwardedForHeaderName) 所指定的標頭。 當 Proxy/轉寄站未使用 `X-Forwarded-For` 標頭，而使用其他標頭轉送資訊時，會使用此選項。<br><br>預設值為 `X-Forwarded-For`。 |

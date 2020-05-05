@@ -1,19 +1,25 @@
 ---
-title: 教學:使用 JavaScript 呼叫ASP.NET核心 Web API
+title: 教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API
 author: rick-anderson
 description: 了解如何使用 JavaScript 呼叫 ASP.NET Core Web API。
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/26/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/web-api-javascript
-ms.openlocfilehash: 2a19a7d16ca8b8f5d6ac8eb99ad919b89f1e368b
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: c3eb003812a31d8cf3168453fcc11601ffba19fb
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78655250"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774349"
 ---
-# <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>教學:使用 JavaScript 呼叫ASP.NET核心 Web API
+# <a name="tutorial-call-an-aspnet-core-web-api-with-javascript"></a>教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -27,39 +33,39 @@ ms.locfileid: "78655250"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* 完整[教學:建立 Web API](xref:tutorials/first-web-api)
+* 完成[教學課程：建立 Web API](xref:tutorials/first-web-api)
 * 熟悉 CSS、HTML 和 JavaScript
 
 ## <a name="call-the-web-api-with-javascript"></a>使用 JavaScript 呼叫 Web API
 
 在此節中，您會新增一個 HTML 網頁，其中包含用於建立及管理待辦事項的表單。 事件處理常式會附加至頁面上的元素。 事件處理常式會產生對 Web API 的動作方法發出的 HTTP 要求。 Fetch API 的 `fetch` 函式會起始每個 HTTP 要求。
 
-函數`fetch`傳回一個[承諾](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)物件,該物件`Response`包含表示為 對象的 HTTP 回應。 常見的模式是叫用 `Response` 物件上的 `json` 函式，以擷取 JSON 回應主體。 JavaScript 會使用來自 Web API 回應的詳細資料來更新頁面。
+函式會傳回[承諾](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)物件，其中包含表示為`Response`物件的 HTTP 回應。 `fetch` 常見的模式是叫用 `Response` 物件上的 `json` 函式，以擷取 JSON 回應主體。 JavaScript 會使用來自 Web API 回應的詳細資料來更新頁面。
 
 最簡單 `fetch` 呼叫會接受代表路由的單一參數。 第二個參數 (稱為 `init` 物件) 是選擇性的。 `init` 是用來設定 HTTP 要求。
 
-1. 設定應用程式[以服務靜態檔案與](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)[啟用預設檔案映射](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。 *Startup.cs* 的 `Configure` 方法中需要下列反白顯示的程式碼：
+1. 設定應用程式來[提供靜態](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)檔案，並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。 *Startup.cs* 的 `Configure` 方法中需要下列反白顯示的程式碼：
 
     [!code-csharp[](first-web-api/samples/3.0/TodoApi/StartupJavaScript.cs?highlight=8-9&name=snippet_configure)]
 
-1. 在專案根中創建*wwwroot*資料夾。
+1. 在專案根目錄中建立*wwwroot*資料夾。
 
-1. 在*wwwroot*資料夾內創建一個*js*資料夾。
+1. 在*wwwroot*資料夾內建立*js*資料夾。
 
-1. 將名為*index.html*的 HTML 檔添加到*wwwroot*資料夾。 將*索引.html*的內容取代為以下標籤:
+1. 將名為*index* .html 的 HTML 檔案新增至*wwwroot*資料夾。 將*index*的內容取代為下列標記：
 
     [!code-html[](first-web-api/samples/3.0/TodoApi/wwwroot/index.html)]
 
-1. 將名為*site.js*的 JavaScript 檔添加到*wwwroot/js*資料夾中。 將*site.js*的內容取代為以下代碼:
+1. 將名為*site .js*的 JavaScript 檔案新增至*wwwroot/js*資料夾。 將*site .js*的內容取代為下列程式碼：
 
     [!code-javascript[](first-web-api/samples/3.0/TodoApi/wwwroot/js/site.js?name=snippet_SiteJs)]
 
 若要在本機測試 HTML 網頁，可能需要變更 ASP.NET Core 專案的啟動設定：
 
 1. 開啟 *Properties\launchSettings.json*。
-1. 刪除該`launchUrl`屬性以強制應用在*index.html*&mdash;專案預設檔打開。
+1. 請移除`launchUrl`屬性，以強制應用程式在*index. html*&mdash;開啟專案的預設檔案。
 
 此範例會呼叫 Web API 的所有 CRUD 方法。 以下是關於 Web API 要求的說明。
 

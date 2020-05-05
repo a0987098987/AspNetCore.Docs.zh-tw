@@ -1,20 +1,26 @@
 ---
-title: 教學:瞭解進階機制 - 使用 EF Core ASP.NET MVC
+title: 教學課程：瞭解 advanced 案例-使用 EF Core ASP.NET MVC
 description: 本教學課程介紹一些實用主題，這些主題超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念。
 author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: fc6f8d8c4ab09848cf316be2e522bf5ce3b9ac76
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 74153b9a185d382a3418dd9470ce6ca4c3c70041
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79416230"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773610"
 ---
-# <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學:瞭解進階機制 - 使用 EF Core ASP.NET MVC
+# <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：瞭解 advanced 案例-使用 EF Core ASP.NET MVC
 
 在上一個教學課程中，您實作了單表繼承。 本教學課程介紹幾個實用的主題，在超出開發 ASP.NET Core Web 應用程式 (使用 Entity Framework Core ) 的基本概念時，需要注意這些主題。
 
@@ -31,7 +37,7 @@ ms.locfileid: "79416230"
 > * 了解 EF Core 原始程式碼和開發計劃
 > * 了解如何使用動態 LINQ 來簡化程式碼
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [實作繼承](inheritance.md)
 
@@ -93,7 +99,7 @@ ms.locfileid: "79416230"
 
 在方案總管**** 中，以滑鼠右鍵按一下 *Views/Courses* 資料夾，然後按一下 [新增] > [新增項目]****。
 
-在 [加入新項目]**** 對話方塊中，按一下左窗格中 [已安裝]**** 底下的 [ASP.NET Core]****，按一下 [Razor 檢視]****，然後將新的檢視命名為 *UpdateCourseCredits.cshtml*。
+在 [**加入新專案**] 對話方塊中，按一下左窗格中 [**已安裝**] ** Razor **底下的 [ **ASP.NET Core** ]，按一下 [View]，並將新的 view 命名為*UpdateCourseCredits*。
 
 在 *Views/Courses/UpdateCourseCredits.cshtml* 中，以下列程式碼取代範本程式碼：
 
@@ -103,13 +109,13 @@ ms.locfileid: "79416230"
 
 ![更新課程學分數頁面](advanced/_static/update-credits.png)
 
-按一下 [更新]****。 您會看到受影響的資料列數目：
+按一下 [更新]  。 您會看到受影響的資料列數目：
 
 ![更新課程學分數頁面之受影響的資料列](advanced/_static/update-credits-rows-affected.png)
 
 按一下 [回到清單]****，以查看課程與已修訂學分數的清單。
 
-請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 (`Credits`屬性`[Range(0, 5)]`屬性屬性 。更新查詢將工作,但無效的數據可能會導致系統其他部分出現意外結果,這些部分假定積分數為 5 或更少。
+請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 （ `Credits`屬性具有`[Range(0, 5)]`屬性。）更新查詢會正常執行，但是不正確資料可能會導致系統的其他部分假設點數為5或更少，而造成非預期的結果。
 
 如需原始 SQL 查詢的詳細資訊，請參閱[原始 SQL 查詢](/ef/core/querying/raw-sql)。
 
@@ -181,7 +187,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="ef-core-source-code-and-development-plans"></a>EF Core 原始程式碼和開發計劃
 
-實體框架核心來源位於[https://github.com/dotnet/efcore](https://github.com/dotnet/efcore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/dotnet/efcore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
+Entity Framework Core 來源位於[https://github.com/dotnet/efcore](https://github.com/dotnet/efcore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/dotnet/efcore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
 
 雖然原始程式碼是開放式程式碼，但 Entity Framework Core 也作為 Microsoft 產品完整支援。 Microsoft Entity Framework 小組將控制接受哪些貢獻，並測試所有的程式碼變更以確保每次發行的品質。
 
@@ -279,4 +285,4 @@ dotnet ef database drop
 如此即完成本系列中在 ASP.NET Core MVC 應用程式中使用 Entity Framework Core 的教學課程。 這一系列教學課程使用了新的資料庫，您也可以從現有的資料庫反向建構模型。
 
 > [!div class="nextstepaction"]
-> [教程:EF 核心與 MVC,現有資料庫](/ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)
+> [教學課程：使用 MVC、現有的資料庫 EF Core](/ef/core/get-started/aspnetcore/existing-db?toc=/aspnet/core/toc.json&bc=/aspnet/core/breadcrumb/toc.json)

@@ -1,20 +1,26 @@
 ---
-title: 教學:實現 CRUD 功能 - 使用 EF 核心ASP.NET MVC
+title: 教學課程：使用 EF Core 來執行 CRUD 功能-ASP.NET MVC
 description: 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/04/2019
 ms.topic: tutorial
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 2aa4ef48509b9a34f3b25eb657b1ecac51c1374b
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 51334370b07709a773f6acd18d302f8b3ea88290
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79416209"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773584"
 ---
-# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學:實現 CRUD 功能 - 使用 EF 核心ASP.NET MVC
+# <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 來執行 CRUD 功能-ASP.NET MVC
 
 在前一個教學課程中，您建立了一個使用 Entity Framework 及 SQL Server LocalDB 來儲存及顯示資料的 MVC 應用程式。 在本教學課程中，您將檢閱並自訂 MVC Scaffolding 自動為您在控制器及檢視中建立的 CRUD (建立、讀取、更新、刪除) 程式碼。
 
@@ -30,7 +36,7 @@ ms.locfileid: "79416209"
 > * 更新 [刪除] 頁面
 > * 關閉資料庫連線
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [開始使用 EF Core 和 ASP.NET Core MVC](intro.md)
 
@@ -64,7 +70,7 @@ URL 最後的部分 ("?courseID=2021") 為查詢字串的值。 模型繫結器�
 http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 ```
 
-在 [索引] 頁面中，Razor 檢視裡的標籤協助程式陳述式會建立超連結 URL。 在下列 Razor 程式碼中，由於 `id` 參數符合預設路由，因此 `id` 便會新增至路由資料中。
+在 [索引] 頁面中，超連結 Url 是由Razor視圖中的標記協助程式語句所建立。 在下列Razor程式碼中， `id`參數符合預設路由，因此`id`會加入至路由資料。
 
 ```html
 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
@@ -76,7 +82,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 <a href="/Students/Edit/6">Edit</a>
 ```
 
-在下列 Razor 程式碼中，由於 `studentID` 不符合預設路由中的參數，因此將會作為查詢字串新增。
+在下列Razor程式碼中`studentID` ，不符合預設路由中的參數，因此會新增為查詢字串。
 
 ```html
 <a asp-action="Edit" asp-route-studentID="@item.ID">Edit</a>
@@ -151,11 +157,11 @@ public class Student
 
 ### <a name="test-the-create-page"></a>測試 [建立] 頁面
 
-*檢視/學生/Create.cshtml*中的代碼為每個`label`欄`input`位`span`使用和 (用於驗證訊息) 標記説明程式。
+*Views/student/Create. cshtml*中的程式碼`label`會`input`針對每`span`個欄位使用、和（適用于驗證訊息）標記協助程式。
 
 執行應用程式，選取 [Students]**** 索引標籤，然後按一下 [新建]****。
 
-輸入名稱和日期。 嘗試輸入無效的日期 (若您的瀏覽器允許的話)。 (某些瀏覽器強制您使用日期選取器。然後按下 **「創建**」以檢視錯誤訊息。
+輸入名稱和日期。 嘗試輸入無效的日期 (若您的瀏覽器允許的話)。 （有些瀏覽器會強制您使用日期選擇器）。然後按一下 [**建立**]，以查看錯誤訊息。
 
 ![日期驗證錯誤](crud/_static/date-error.png)
 
@@ -179,7 +185,7 @@ public class Student
 
 新的程式碼會讀取現有的實體，呼叫 `TryUpdateModel` 來[根據使用者在 Post 表單資料中輸入的內容](xref:mvc/models/model-binding)來更新已擷取實體中的欄位。 Entity Framework 的自動變更追蹤會在表單輸入變更的欄位上設定 `Modified` 旗標。 當呼叫 `SaveChanges` 方法時，Entity Framework 會建立 SQL 陳述式來更新資料庫的資料列。 系統會忽略並行衝突，並且只有使用者更新的資料表資料行會在資料庫中獲得更新。 (之後的教學課程會顯示如何處理並行衝突。)
 
-作為防止大量指派的最佳做法，您要允許 [編輯]**** 頁面更新的欄位會在 `TryUpdateModel` 參數的允許清單中。 (參數清單中欄位清單前面的空字串是用於表單欄位名稱的前置碼。目前沒有要保護的額外欄位,但列出您希望模型活頁夾綁定的欄位可確保,如果將來向資料模型添加欄位,則這些欄位將自動受到保護,直到您在此處顯式添加欄位。
+作為防止大量指派的最佳做法，您要允許 [編輯]**** 頁面更新的欄位會在 `TryUpdateModel` 參數的允許清單中。 （參數清單中欄位清單前面的空字串，是要搭配表單欄位名使用的前置詞）。目前沒有任何其他您要保護的欄位，但會列出您想要讓模型系結器系結的欄位，確保在未來將欄位加入至資料模型時，它們會自動受到保護，直到您明確地將它們加入到這裡。
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 
@@ -265,7 +271,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 ![刪除確認頁面](crud/_static/student-delete.png)
 
-按一下 [刪除]****。 顯示的 [索引] 頁面將不會包含遭刪除的學生。 (您會在並行教學課程中看到錯誤處理程式碼範例的實際情況。)
+按一下 **[刪除]** 。 顯示的 [索引] 頁面將不會包含遭刪除的學生。 (您會在並行教學課程中看到錯誤處理程式碼範例的實際情況。)
 
 ## <a name="close-database-connections"></a>關閉資料庫連線
 
@@ -289,7 +295,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 * 您想要連結到一個實體以更新它，但稍早之前您才為了不同的目的擷取過相同的實體。 由於實體已由資料庫內容進行追蹤，您無法連結到您想要變更的實體。 處理這種情況的一種方法，便是在稍早之前的查詢中呼叫 `AsNoTracking`。
 
-有關詳細資訊,請參閱[追蹤與無追蹤](/ef/core/querying/tracking)。
+如需詳細資訊，請參閱[追蹤與不追蹤](/ef/core/querying/tracking)。
 
 ## <a name="get-the-code"></a>取得程式碼
 
@@ -309,4 +315,4 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 若要了解如何藉由新增排序、篩選及分頁來擴充 [索引]**** 頁面的功能，請前往下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [下一頁:排序、篩選和分頁](sort-filter-page.md)
+> [下一步：排序、篩選和分頁](sort-filter-page.md)

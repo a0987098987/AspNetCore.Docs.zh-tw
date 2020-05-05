@@ -5,23 +5,29 @@ description: 了解如何使用 ASP.NET Core 中的檢視元件，以及如何�
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/18/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 910fffbf360ed0f62f7fe20bc8bfdf5be8198876
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 28696d246c5e1e6874e0d9058813750ed1955003
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660647"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774648"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
-由 [Rick Anderson](https://twitter.com/RickAndMSFT) 提供
+作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="view-components"></a>檢視元件
 
-檢視元件與部分檢視類似，但功能更強大。 檢視元件不會使用模型繫結，並且只取決於呼叫它時所提供的資料。 此文章是使用控制器與檢視所撰寫，但檢視元件也能搭配 Razor Pages 使用。
+檢視元件與部分檢視類似，但功能更強大。 檢視元件不會使用模型繫結，並且只取決於呼叫它時所提供的資料。 本文是使用控制器和 views 撰寫的，但 view 元件也可以使用Razor頁面。
 
 檢視元件：
 
@@ -42,7 +48,7 @@ ms.locfileid: "78660647"
 
 檢視元件是由兩個部分所組成：類別 (通常衍生自 [ViewComponent](/dotnet/api/microsoft.aspnetcore.mvc.viewcomponent)) 以及它所傳回的結果 (通常是檢視)。 與控制器類似，檢視元件可以是 POCO，但大部分開發人員會想要利用透過衍生自 `ViewComponent` 而取得的方法和屬性。
 
-當不確定檢視元件是否符合應用程式的規格時，您可以考慮改用 Razor 元件。 Razor 元件同樣會結合標記與 C# 程式碼，來產生可重複使用的 UI 單元。 Razor 元件是為提升開發人員提供用戶端 UI 邏輯和組合時的生產力所設計。 如需詳細資訊，請參閱 <xref:blazor/components>。
+考慮 view 元件是否符合應用程式的規格時，請考慮Razor改為使用元件。 Razor元件也會結合標記與 c # 程式碼，以產生可重複使用的 UI 單位。 Razor元件是針對開發人員在提供用戶端 UI 邏輯和組合時的生產力而設計的。 如需詳細資訊，請參閱<xref:blazor/components>。
 
 ## <a name="creating-a-view-component"></a>建立檢視元件
 
@@ -66,10 +72,10 @@ ms.locfileid: "78660647"
 
 ### <a name="view-component-methods"></a>檢視元件方法
 
-檢視元件會在傳回 `InvokeAsync` 的 `Task<IViewComponentResult>` 方法或傳回 `Invoke` 的同步 `IViewComponentResult` 方法中定義其邏輯。 參數直接來自檢視元件的引動過程，而不是來自模型繫結。 檢視元件絕不會直接處理要求。 通常，檢視元件會初始化模型，並呼叫 `View` 方法將其傳遞至檢視。 簡要來說，檢視元件方法：
+檢視元件會在傳回 `Task<IViewComponentResult>` 的 `InvokeAsync` 方法或傳回 `IViewComponentResult` 的同步 `Invoke` 方法中定義其邏輯。 參數直接來自檢視元件的引動過程，而不是來自模型繫結。 檢視元件絕不會直接處理要求。 通常，檢視元件會初始化模型，並呼叫 `View` 方法將其傳遞至檢視。 簡要來說，檢視元件方法：
 
-* 定義傳回 `InvokeAsync` 的 `Task<IViewComponentResult>` 方法或傳回 `Invoke` 的同步 `IViewComponentResult` 方法。
-* 通常會初始化模型，並藉由呼叫 `ViewComponent` `View` 方法，將它傳遞給視圖。
+* 定義傳回 `Task<IViewComponentResult>` 的 `InvokeAsync` 方法或傳回 `IViewComponentResult` 的同步 `Invoke` 方法。
+* 通常會初始化模型，並藉由呼叫`ViewComponent` `View`方法將它傳遞給視圖。
 * 參數來自呼叫端方法，而非 HTTP。 沒有模型繫結。
 * 無法直接當成 HTTP 端點連接。 它們是透過您的程式碼所叫用 (通常是在檢視中)。 檢視元件絕不會處理要求。
 * 已多載在簽章上，而非目前 HTTP 要求中的任何詳細資料。
@@ -82,7 +88,7 @@ ms.locfileid: "78660647"
 * /Views/Shared/Components/{檢視元件名稱}/{檢視名稱}
 * /Pages/Shared/Components/{檢視元件名稱}/{檢視名稱}
 
-搜尋路徑適用於使用控制器 + 檢視和 Razor Pages 的專案。
+搜尋路徑適用于使用控制器 + 視圖和Razor頁面的專案。
 
 檢視元件的預設檢視名稱是 *Default*，這表示您的檢視檔案通常會命名為 *Default.cshtml*。 建立檢視元件結果時，或呼叫 `View` 方法時，可以指定不同的檢視名稱。
 
@@ -90,11 +96,11 @@ ms.locfileid: "78660647"
 
 ### <a name="customize-the-view-search-path"></a>自訂視圖搜尋路徑
 
-若要自訂視圖搜尋路徑，請修改 Razor 的 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> 集合。 例如，若要在 "/Components/{View Component Name}/{檢視 Name}" 路徑中搜尋 views，請將新專案新增至集合：
+若要自訂視圖搜尋路徑， Razor請<xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats>修改的集合。 例如，若要在 "/Components/{View Component Name}/{檢視 Name}" 路徑中搜尋 views，請將新專案新增至集合：
 
 [!code-cs[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
 
-在上述程式碼中，預留位置 "{0}" 代表「元件/{視圖元件名稱}/{檢視名稱}」的路徑。
+在上述程式碼中，預留位置 "{0}" 代表路徑 "Components/{View Component name}/{檢視 Name}"。
 
 ## <a name="invoking-a-view-component"></a>叫用檢視元件
 
@@ -104,7 +110,7 @@ ms.locfileid: "78660647"
 @await Component.InvokeAsync("Name of view component", {Anonymous Type Containing Parameters})
 ```
 
-參數將傳遞給 `InvokeAsync` 方法。 本文中所開發的 `PriorityList` 檢視元件是透過 *Views/ToDO/Index.cshtml* 檢視檔案所叫用。 在下列範例中，`InvokeAsync` 方法是使用兩個參數所呼叫：
+參數將傳遞給 `InvokeAsync` 方法。 本文`PriorityList`中開發的 view 元件是從*Views/ToDo/Index. cshtml*視圖檔案叫用。 在下列範例中，`InvokeAsync` 方法是使用兩個參數所呼叫：
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexFinal.cshtml?range=35)]
 
@@ -179,22 +185,22 @@ ms.locfileid: "78660647"
 * 上面的 `[ViewComponent]` 屬性會告知檢視元件選取器在尋找與元件建立關聯的檢視時使用名稱 `PriorityList`，以及在從檢視參考類別元件時使用字串 "PriorityList"。 我稍後將更詳細地進行說明。
 * 元件會使用[相依性插入](../../fundamentals/dependency-injection.md)，讓資料內容可供使用。
 * `InvokeAsync` 會公開可以從檢視中呼叫的方法，而且可以採用任意數目的引數。
-* `InvokeAsync` 方法會傳回一組符合 `ToDo` 和 `isDone` 參數的 `maxPriority` 項目。
+* `InvokeAsync` 方法會傳回一組符合 `isDone` 和 `maxPriority` 參數的 `ToDo` 項目。
 
-### <a name="create-the-view-component-razor-view"></a>建立檢視元件 Razor 檢視
+### <a name="create-the-view-component-razor-view"></a>建立視圖元件Razor視圖
 
 * 建立 *Views/Shared/Components* 資料夾。 此資料夾**必須**命名為 *Components*。
 
 * 建立 *Views/Shared/Components/PriorityList* 資料夾。 此資料夾名稱必須符合檢視元件類別的名稱，或去掉尾碼的類別名稱 (如果我們遵循慣例，並在類別名稱中使用 *ViewComponent* 尾碼)。 如果您已使用 `ViewComponent` 屬性，則類別名稱需要符合屬性指定。
 
-* 建立 *Views/Shared/Components/PriorityList/Default.cshtml* Razor 檢視：
+* 建立*Views/Shared/Components/prioritylist default.cshtml/預設. cshtml* Razor view：
 
 
   [!code-cshtml[](view-components/sample/ViewCompFinal/Views/Shared/Components/PriorityList/Default1.cshtml)]
 
-   Razor 檢視採用 `TodoItem` 清單，並加以顯示。 如果檢視元件 `InvokeAsync` 方法未傳遞檢視名稱 (如我們的範例所示)，則依照慣例會使用 *Default* 作為檢視名稱。 在教學課程稍後，我將示範如何傳遞檢視的名稱。 若要覆寫特定控制器的預設樣式，請在控制器特定檢視資料夾中新增檢視 (例如 *Views/ToDO/Components/PriorityList/Default.cshtml*)。
+   此Razor視圖會接受的`TodoItem`清單，並顯示這些專案。 如果檢視元件 `InvokeAsync` 方法未傳遞檢視名稱 (如我們的範例所示)，則依照慣例會使用 *Default* 作為檢視名稱。 在教學課程稍後，我將示範如何傳遞檢視的名稱。 若要覆寫特定控制器的預設樣式，請在控制器特定檢視資料夾中新增檢視 (例如 *Views/ToDO/Components/PriorityList/Default.cshtml*)。
 
-    如果檢視元件是控制器特有的，則可以將它新增至控制器特定資料夾 (*Views/ToDO/Components/PriorityList/Default.cshtml*)。
+    如果 view 元件是控制器特定的，您可以將它新增至控制器特定的資料夾（*Views/ToDo/Components/prioritylist default.cshtml/Default. cshtml*）。
 
 * 將包含優先順序清單元件呼叫的 `div` 新增至 *Views/ToDO/index.cshtml* 檔案底端：
 
@@ -214,7 +220,7 @@ ms.locfileid: "78660647"
 
 ### <a name="specifying-a-view-name"></a>指定檢視名稱
 
-在某些情況下，可能需要複雜的檢視元件，才能指定非預設檢視。 下列程式碼示範如何從 `InvokeAsync` 方法指定 "PVC" 檢視。 更新 `InvokeAsync` 類別中的 `PriorityListViewComponent` 方法。
+在某些情況下，可能需要複雜的檢視元件，才能指定非預設檢視。 下列程式碼示範如何從 `InvokeAsync` 方法指定 "PVC" 檢視。 更新 `PriorityListViewComponent` 類別中的 `InvokeAsync` 方法。
 
 [!code-csharp[](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityListViewComponentFinal.cs?highlight=4,5,6,7,8,9&range=28-39)]
 
@@ -237,7 +243,7 @@ ms.locfileid: "78660647"
 ### <a name="examine-the-view-path"></a>檢查檢視路徑
 
 * 將優先順序參數變更為 3 或更小，以不傳回優先順序檢視。
-* 將 *Views/ToDO/Components/PriorityList/Default.cshtml* 暫時重新命名為 *1Default.cshtml*。
+* 暫時將*Views/ToDo/Components/prioritylist default.cshtml/Default. cshtml*重新命名為*1default.cshtml。*
 * 測試應用程式，您會收到下列錯誤：
 
    ```
@@ -249,7 +255,7 @@ ms.locfileid: "78660647"
    ```
 
 * 將 *Views/ToDO/Components/PriorityList/1Default.cshtml* 複製至 *Views/Shared/Components/PriorityList/Default.cshtml*。
-* 將某個標記新增至 *Shared* ToDO 檢視元件檢視，指出檢視來自 *Shared* 資料夾。
+* 將一些標記新增至 [*共用*ToDo 視圖] 元件視圖，表示此視圖來自*共用*資料夾。
 * 測試 **Shared** 元件檢視。
 
 ![含 Shared 元件檢視的 ToDo 輸出](view-components/_static/shared.png)
@@ -260,7 +266,7 @@ ms.locfileid: "78660647"
 
 [!code-csharp[](../../mvc/views/view-components/sample/ViewCompFinal/ViewComponents/PriorityList.cs?highlight=10&range=5-35)]
 
-將 `using` 陳述式新增至 Razor 檢視檔案，並使用 `nameof` 運算子：
+將`using`語句新增至您Razor的`nameof` view 檔案，並使用運算子：
 
 [!code-cshtml[](view-components/sample/ViewCompFinal/Views/ToDo/IndexNameof.cshtml?range=1-6,35-)]
 
@@ -279,7 +285,7 @@ public class PriorityList : ViewComponent
 }
 ```
 
-檢視元件的 Razor 檔案，會列出傳遞至 `Invoke` 方法 (*Views/Home/Components/PriorityList/Default.cshtml*) 的字串：
+View 元件的Razor檔案會列出傳遞至`Invoke`方法的字串（*Views/Home/Components/prioritylist default.cshtml/預設值*）：
 
 ```cshtml
 @model List<string>
@@ -295,7 +301,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range=">= aspnetcore-1.1"
 
-使用下列其中一項方式，在 Razor 檔案中叫用檢視元件 (例如 *Views/Home/Index.cshtml*)：
+您可使用下列其中一種Razor方法，在檔案中叫用 view 元件（例如*Views/Home/Index. cshtml*）：
 
 * <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
 * [標籤協助程式](xref:mvc/views/tag-helpers/intro)
@@ -306,7 +312,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker range="< aspnetcore-1.1"
 
-使用 *在 Razor 檔案中叫用檢視元件 (例如*Views/Home/Index.cshtml<xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>)。
+View 元件是在檔案中Razor叫用<xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>（例如*Views/Home/Index. cshtml*）。
 
 呼叫 `Component.InvokeAsync`：
 
@@ -324,7 +330,7 @@ public class PriorityList : ViewComponent
 @addTagHelper *, MyWebApp
 ```
 
-使用 Razor 標記檔案中的檢視元件標籤協助程式：
+在Razor標記檔案中使用 View 元件標記 Helper：
 
 ```cshtml
 <vc:priority-list max-priority="999" is-done="false">
@@ -333,7 +339,7 @@ public class PriorityList : ViewComponent
 
 ::: moniker-end
 
-`PriorityList.Invoke` 的方法簽章為同步，但 Razor 會在標記檔案中找到並使用 `Component.InvokeAsync` 呼叫該方法。
+的方法簽章`PriorityList.Invoke`是同步的， Razor但會`Component.InvokeAsync`在標記檔案中尋找並呼叫方法。
 
 ## <a name="all-view-component-parameters-are-required"></a>所有檢視元件參數均為必要參數
 
@@ -345,4 +351,4 @@ public class PriorityList : ViewComponent
 
 ## <a name="additional-resources"></a>其他資源
 
-* [在檢視中插入相依性](xref:mvc/views/dependency-injection)
+* [檢視中的相依性插入](xref:mvc/views/dependency-injection)

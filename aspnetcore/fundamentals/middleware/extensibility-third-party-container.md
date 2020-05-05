@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/22/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/middleware/extensibility-third-party-container
-ms.openlocfilehash: a5c5bf6dff6ef795add075df932dd625129ef793
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 9a551777c58ba8eae1cf04758e1631710ff16e51
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78663132"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774466"
 ---
 # <a name="middleware-activation-with-a-third-party-container-in-aspnet-core"></a>在 ASP.NET Core 中以協力廠商容器啟用中介軟體
 
@@ -20,7 +26,7 @@ ms.locfileid: "78663132"
 
 此文章示範如何使用 <xref:Microsoft.AspNetCore.Http.IMiddlewareFactory> 與 <xref:Microsoft.AspNetCore.Http.IMiddleware> 作為以協力廠商容器啟用[中介軟體](xref:fundamentals/middleware/index)的擴充點。 如需有關 `IMiddlewareFactory` 與 `IMiddleware` 的詳細資訊，請參閱 <xref:fundamentals/middleware/extensibility>。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 範例應用程式會示範如何透過 `IMiddlewareFactory` 的實作 `SimpleInjectorMiddlewareFactory` 來啟用中介軟體。 此範例會使用 [Simple Injector](https://simpleinjector.org) 相依性插入 (DI) 容器。
 
@@ -67,7 +73,7 @@ ms.locfileid: "78663132"
 
 此文章示範如何使用 <xref:Microsoft.AspNetCore.Http.IMiddlewareFactory> 與 <xref:Microsoft.AspNetCore.Http.IMiddleware> 作為以協力廠商容器啟用[中介軟體](xref:fundamentals/middleware/index)的擴充點。 如需有關 `IMiddlewareFactory` 與 `IMiddleware` 的詳細資訊，請參閱 <xref:fundamentals/middleware/extensibility>。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/middleware/extensibility-third-party-container/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 範例應用程式會示範如何透過 `IMiddlewareFactory` 的實作 `SimpleInjectorMiddlewareFactory` 來啟用中介軟體。 此範例會使用 [Simple Injector](https://simpleinjector.org) 相依性插入 (DI) 容器。
 
@@ -112,7 +118,7 @@ ms.locfileid: "78663132"
 
 ## <a name="additional-resources"></a>其他資源
 
-* [中間件](xref:fundamentals/middleware/index)
+* [中介軟體](xref:fundamentals/middleware/index)
 * [Factory 式中介軟體啟用](xref:fundamentals/middleware/extensibility)
 * [Simple Injector GitHub repository](https://github.com/simpleinjector/SimpleInjector) (Simple Injector GitHub 存放庫)
 * [Simple Injector documentation](https://simpleinjector.readthedocs.io/en/latest/index.html) (Simple Injector 文件)

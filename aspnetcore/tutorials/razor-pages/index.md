@@ -1,30 +1,36 @@
 ---
-title: 教學:建立一個剃刀網頁應用程式與ASP.NET核心
+title: 教學課程：使用Razor ASP.NET Core 建立頁面 web 應用程式
 author: rick-anderson
-description: 使用 Visual Studio、ASP.NET Core 及 EF Core 在 Windows 上建立 Razor Pages Web 應用程式。
+description: 使用 Visual Studio Razor 、ASP.NET Core 和 EF Core，在 Windows 上建立頁面 web 應用程式。
 ms.author: riande
 ms.date: 08/09/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/razor-pages/index
-ms.openlocfilehash: 03acfc381cf5dca2f8b834da75191cd8053e0da4
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 2a75c4c4133642d53349437ea83413e96c40baf5
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78665001"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774531"
 ---
-# <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>教學:建立一個剃刀網頁應用程式與ASP.NET核心
+# <a name="tutorial-create-a-razor-pages-web-app-with-aspnet-core"></a>教學課程：使用Razor ASP.NET Core 建立頁面 web 應用程式
 
-本系列教學課程說明建置 Razor Pages Web 應用程式的基本概念。 
+這一系列的教學課程將說明建立Razor頁面 web 應用程式的基本概念。 
 
 [!INCLUDE[](~/includes/advancedRP.md)]
 
 本系列包含下列教學課程：
 
-1. [建立 Razor 頁面 Web 應用程式](xref:tutorials/razor-pages/razor-pages-start)
-1. [將模型新增至 Razor 頁面應用程式](xref:tutorials/razor-pages/model)
-1. [Scaffold (產生) Razor 頁面](xref:tutorials/razor-pages/page)
+1. [建立Razor頁面 web 應用程式](xref:tutorials/razor-pages/razor-pages-start)
+1. [將模型新增至Razor頁面應用程式](xref:tutorials/razor-pages/model)
+1. [Scaffold （產生） Razor頁面](xref:tutorials/razor-pages/page)
 1. [使用資料庫](xref:tutorials/razor-pages/sql)
-1. [更新 Razor 頁面](xref:tutorials/razor-pages/da1)
+1. [更新Razor頁面](xref:tutorials/razor-pages/da1)
 1. [新增搜尋](xref:tutorials/razor-pages/search)
 1. [新增欄位](xref:tutorials/razor-pages/new-field)
 1. [新增驗證](xref:tutorials/razor-pages/validation)

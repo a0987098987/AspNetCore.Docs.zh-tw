@@ -5,13 +5,19 @@ description: 了解 ASP.NET Core 的驗證、授權和安全性基本概念。
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/index
-ms.openlocfilehash: 0f8e96fb7d5246e746b95f8907745f849de60e24
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: b507832e34ac850d2bd4e80bab3066e73ea2ad95
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78656034"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776509"
 ---
 # <a name="overview-of-aspnet-core-security"></a>ASP.NET Core 安全性概觀
 
@@ -19,9 +25,9 @@ ASP.NET Core 可讓開發人員輕鬆設定應用程式的安全性並進行管�
 
 ## <a name="aspnet-core-security-features"></a>ASP.NET Core 安全性功能
 
-ASP.NET Core 提供許多工具和程式庫來保護應用程式的安全，包括內建的識別提供者，但您也可以使用協力廠商的識別服務 (如 Facebook、Twitter 或 LinkedIn)。 使用 ASP.NET Core 時，您可以輕鬆管理應用程式密碼，以便使用機密資訊而不在程式碼中公開這些資訊。
+ASP.NET Core 提供許多工具和程式庫來保護您的應用程式， Identity包括內建提供者，但您可以使用 Facebook、Twitter 或 LinkedIn 等協力廠商身分識別服務。 使用 ASP.NET Core 時，您可以輕鬆管理應用程式密碼，以便使用機密資訊而不在程式碼中公開這些資訊。
 
-## <a name="authentication-vs-authorization"></a>認證與授權
+## <a name="authentication-vs-authorization"></a>驗證與授權
 
 驗證是一道程序，其會將使用者提供的認證與作業系統、資料庫、應用程式或資源中儲存的認證進行比對。 如果相符的話，使用者就能成功通過驗證，並可執行他們在授權程序期間取得授權的動作。 授權則是決定使用者得以執行哪些動作的程序。
 
@@ -36,4 +42,4 @@ ASP.NET Core 和 EF 包含的功能有助您保護應用程式的安全，並防
 * [Cross-Site Request Forgery (CSRF)](xref:security/anti-request-forgery) (跨網站偽造要求 (CSRF))
 * [Open redirect attacks](xref:security/preventing-open-redirects) (開啟重新導向攻擊)
 
-除此之外，還有許多弱點是您必須提防的。 如需詳細資訊，請參閱目錄**安全性與身分識別**一節中的其他文章。
+除此之外，還有許多弱點是您必須提防的。 如需詳細資訊，請參閱目錄的**安全性和Identity **章節中的其他文章。

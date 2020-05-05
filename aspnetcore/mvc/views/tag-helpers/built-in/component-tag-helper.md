@@ -1,34 +1,37 @@
 ---
-title: ASP.NET核心中的元件標記說明程式
+title: ASP.NET Core 中的元件標記協助程式
 author: guardrex
 ms.author: riande
-description: 瞭解如何使用ASP.NET核心元件標記説明器在頁面和檢視中呈現Razor元件。
+description: 瞭解如何使用 ASP.NET Core 元件標記協助程式來轉譯頁面Razor和視圖中的元件。
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: aaa4b92a8912b4f52d861ed07432aa7cf3ca5240
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: 4e003e5ed5e7863d8a218c0f02bb37e214e31910
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440957"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773925"
 ---
-# <a name="component-tag-helper-in-aspnet-core"></a>ASP.NET核心中的元件標記說明程式
+# <a name="component-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的元件標記協助程式
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-要從頁面或檢視呈現元件,請使用[元件標記說明程式](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper)。
+若要從頁面或視圖呈現元件，請使用[元件標記](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper)協助程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-依「準備應用程式」 的指南<xref:blazor/integrate-components#prepare-the-app>在文章的*頁面與檢視部分使用元件*。
+請遵循<xref:blazor/integrate-components#prepare-the-app>文章的*準備應用程式以使用頁面和 views 中的元件*一節中的指導方針。
 
-## <a name="component-tag-helper"></a>元件標記說明程式
+## <a name="component-tag-helper"></a>元件標記協助程式
 
-以下元件標記說明程式在頁面或檢視中`Counter`呈現元件:
+下列元件標記協助程式會在`Counter`頁面或視圖中呈現元件：
 
 ```cshtml
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -39,9 +42,9 @@ ms.locfileid: "81440957"
 <component type="typeof(Counter)" render-mode="ServerPrerendered" />
 ```
 
-前面的範例假定元件`Counter`位於應用的 *「主頁」* 資料夾中。
+上述範例假設`Counter`元件位於應用程式的*Pages*資料夾中。
 
-元件標記説明程式還可以將參數傳遞給元件。 請考慮設定複選框`ColorfulCheckbox`分頁顏色和大小的以下元件:
+元件標記協助程式也可以將參數傳遞給元件。 請考慮下列`ColorfulCheckbox`設定核取方塊標籤色彩和大小的元件：
 
 ```razor
 <label style="font-size:@(Size)px;color:@Color">
@@ -69,7 +72,7 @@ ms.locfileid: "81440957"
 }
 ```
 
-`Size` (`int``Color`)`string`與 ( )[元件參數](xref:blazor/components#component-parameters)可以由元件標記說明程式設定:
+元件`Size`標記`int`協助程式`Color`可以`string`設定（）和（）[元件參數](xref:blazor/components#component-parameters)：
 
 ```cshtml
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -81,9 +84,9 @@ ms.locfileid: "81440957"
     param-Size="14" param-Color="@("blue")" />
 ```
 
-前面的範例假定元件`ColorfulCheckbox`位於應用的 *「共用」* 資料夾中。
+上述範例假設`ColorfulCheckbox`元件位於應用程式的*共用*資料夾中。
 
-以下 HTML 呈現在頁面或檢視中:
+下列 HTML 會在頁面或視圖中呈現：
 
 ```html
 <label style="font-size:24px;color:blue">
@@ -92,13 +95,13 @@ ms.locfileid: "81440957"
 </label>
 ```
 
-傳遞引用的字串需要[顯式 Razor 運算式](xref:mvc/views/razor#explicit-razor-expressions),`param-Color`如前面的 範例所示。 `string`類型值的 Razor 解析行為不適用於`param-*`屬性, 因為屬性`object`是一種 類型。
+傳遞加上引號的字串需要[明確的 Razor 運算式](xref:mvc/views/razor#explicit-razor-expressions)，如`param-Color`上述範例中所示。 `string`類型值的 Razor 剖析行為不適用於`param-*`屬性，因為屬性是`object`類型。
 
-參數類型必須是 JSON 可序列化的,這通常意味著類型必須具有預設構造函數和可設置屬性。 例如,`Size`您可以為 和在前面的範`Color`例中 指定值`Size``Color`,因為和的類型是`int`基`string`元類型 ( 和 ),JSON 序列化器支援。
+參數類型必須是可序列化的 JSON，這通常表示該類型必須有預設的函式和可設定的屬性。 例如，您可以在上述範例中指定`Size`和`Color`的值， `Size`因為和`Color`的類型是基本類型（`int`和`string`），這是 JSON 序列化程式所支援的型別。
 
-在下面的範例中,類別傳遞給元件:
+在下列範例中，類別物件會傳遞至元件：
 
-*MyClass.cs*:
+*MyClass.cs*：
 
 ```csharp
 public class MyClass
@@ -112,9 +115,9 @@ public class MyClass
 }
 ```
 
-**類必須具有公共無參數構造函數。**
+**類別必須有公用無參數的函式。**
 
-*分享/我的元件.razor*:
+*Shared/mycomponent 之下. razor*：
 
 ```razor
 <h2>MyComponent</h2>
@@ -129,7 +132,7 @@ public class MyClass
 }
 ```
 
-*頁面/MyPage.cshtml*:
+*Pages/mypage.aspx. cshtml*：
 
 ```cshtml
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -148,22 +151,22 @@ public class MyClass
     param-MyObject="@myObject" />
 ```
 
-前面的範例假定元件`MyComponent`位於應用的 *「共用」* 資料夾中。 `MyClass`在套用的命名空間中`{APP ASSEMBLY}`。
+上述範例假設`MyComponent`元件位於應用程式的*共用*資料夾中。 `MyClass`位於應用程式的命名空間（`{APP ASSEMBLY}`）。
 
-<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>設定元件是否:
+<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>設定元件是否：
 
-* 預置到頁面中。
-* 在頁面上呈現為靜態 HTML,或者如果它包含從使用者代理引導 Blazor 應用的必要資訊。
+* 會資源清單到頁面中。
+* 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
 
-| 成像模式 | 描述 |
+| 轉譯模式 | 說明 |
 | ----------- | ----------- |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將元件呈現為靜態 HTML,並包含伺服器應用的Blazor標記。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 渲染伺服器應用的Blazor標記。 不包括元件的輸出。 當使用者代理啟動時,此標記用於引導Blazor應用。 |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將元件呈現為靜態 HTML。 |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將元件轉譯為靜態 HTML，並包含Blazor伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現Blazor伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將元件轉譯為靜態 HTML。 |
 
-雖然頁面和視圖可以使用元件,但事實並非如此。 元件無法使用特定於檢視和頁面的功能,如部分檢視和節。 要使用元件中部分檢視的邏輯,將部分檢視邏輯分解到元件中。
+雖然頁面和視圖可以使用元件，但相反的情況並非如此。 元件不能使用 view 和 page 特有的功能，例如部分視圖和區段。 若要在元件中使用部分視圖的邏輯，請將部分視圖邏輯分解成元件。
 
-不支援從靜態 HTML 頁呈現伺服器元件。
+不支援從靜態 HTML 網頁轉譯伺服器元件。
 
 ## <a name="additional-resources"></a>其他資源
 

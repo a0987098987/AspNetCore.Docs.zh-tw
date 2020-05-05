@@ -1,21 +1,24 @@
 ---
 title: ASP.NET Core Blazor裝載模型設定
 author: guardrex
-description: 瞭解Blazor主控模型設定，包括如何將 Razor 元件整合到 RAZOR PAGES 和 MVC 應用程式中。
+description: 瞭解Blazor主控模型設定，包括如何將元件整合Razor至Razor頁面和 MVC 應用程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/25/2020
+ms.date: 05/04/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: c7e8d1f2dcba6432072a5cc11a6c5d78e50c2398
-ms.sourcegitcommit: c6f5ea6397af2dd202632cf2be66fc30f3357bcc
+ms.openlocfilehash: 17ed43a12643f067da73658bec72400acbe1be43
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159615"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82772070"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -98,14 +101,14 @@ if (builder.HostEnvironment.IsEnvironment("Custom"))
 
 當`IWebAssemblyHostEnvironment.BaseAddress` `NavigationManager`服務無法使用時，可以在啟動期間使用此屬性。
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
-Blazor WebAssembly 支援下列設定：
+Blazor WebAssembly 會從載入設定：
 
-* 應用程式佈建檔案的檔案設定[提供者](xref:fundamentals/configuration/index#file-configuration-provider)預設為：
+* 應用程式佈建檔案（預設為）：
   * *wwwroot/appsettings. json*
   * *wwwroot/appsettings。{環境}. json*
-* 應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。
+* 應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。 並非所有提供者都適用于 Blazor WebAssembly 應用程式。 澄清[BLAZOR WASM 的設定提供者（dotnet/AspNetCore #18134）](https://github.com/dotnet/AspNetCore.Docs/issues/18134)可追蹤 Blazor WebAssembly 支援的提供者。
 
 > [!WARNING]
 > 使用者可以看到 Blazor WebAssembly 應用程式中的設定。 **請勿在設定中儲存應用程式秘密或認證。**
@@ -136,12 +139,12 @@ Blazor WebAssembly 支援下列設定：
 
 #### <a name="provider-configuration"></a>提供者設定
 
-下列範例會使用<xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationSource>和檔案設定[提供者](xref:fundamentals/configuration/index#file-configuration-provider)來提供額外的設定：
+下列範例會使用來<xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationSource>提供額外的設定：
 
 `Program.Main`:
 
 ```csharp
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.Memory;
 
 ...
 
@@ -159,9 +162,7 @@ var memoryConfig = new MemoryConfigurationSource { InitialData = vehicleData };
 
 ...
 
-builder.Configuration
-    .Add(memoryConfig)
-    .AddJsonFile("cars.json", optional: false, reloadOnChange: true);
+builder.Configuration.Add(memoryConfig);
 ```
 
 將<xref:Microsoft.Extensions.Configuration.IConfiguration>實例插入元件以存取設定資料：
@@ -176,10 +177,10 @@ builder.Configuration
 <h2>Wheels</h2>
 
 <ul>
-    <li>Count: @Configuration["wheels:count"]</p>
-    <li>Brand: @Configuration["wheels:brand"]</p>
-    <li>Type: @Configuration["wheels:brand:type"]</p>
-    <li>Year: @Configuration["wheels:year"]</p>
+    <li>Count: @Configuration["wheels:count"]</li>
+    <li>Brand: @Configuration["wheels:brand"]</li>
+    <li>Type: @Configuration["wheels:brand:type"]</li>
+    <li>Year: @Configuration["wheels:year"]</li>
 </ul>
 
 @code {
@@ -187,6 +188,36 @@ builder.Configuration
     
     ...
 }
+```
+
+若要將*wwwroot*資料夾中的其他設定檔讀取到設定中`HttpClient` ，請使用來取得檔案的內容。 使用此方法時，現有`HttpClient`的服務註冊可以使用已建立的本機用戶端來讀取檔案，如下列範例所示：
+
+*wwwroot/cars*：
+
+```json
+{
+    "size": "tiny"
+}
+```
+
+`Program.Main`:
+
+```csharp
+using Microsoft.Extensions.Configuration;
+
+...
+
+var client = new HttpClient()
+{
+    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+};
+
+builder.Services.AddTransient(sp => client);
+
+using var response = await client.GetAsync("cars.json");
+using var stream = await response.Content.ReadAsStreamAsync();
+
+builder.Configuration.AddJsonStream(stream);
 ```
 
 #### <a name="authentication-configuration"></a>驗證設定
@@ -295,7 +326,7 @@ var hostname = builder.Configuration["HostName"];
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
 
-| `RenderMode`        | 描述 |
+| `RenderMode`        | 說明 |
 | ------------------- | ----------- |
 | `ServerPrerendered` | 將元件轉譯為靜態 HTML，並包含Blazor伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
 | `Server`            | 呈現Blazor伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
@@ -303,7 +334,7 @@ var hostname = builder.Configuration["HostName"];
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
-### <a name="configure-the-opno-locsignalr-client-for-opno-locblazor-server-apps"></a>設定Blazor伺服器SignalR應用程式的用戶端
+### <a name="configure-the-signalr-client-for-blazor-server-apps"></a>設定Blazor伺服器SignalR應用程式的用戶端
 
 有時候，您需要設定SignalR Blazor伺服器應用程式所使用的用戶端。 例如，您可能會想要在SignalR用戶端上設定記錄來診斷連線問題。
 

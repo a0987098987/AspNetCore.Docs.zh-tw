@@ -4,13 +4,19 @@ author: rick-anderson
 description: 了解 ASP.NET Core MVC 如何使用路由中介軟體來比對內送要求的 URL，並將這些 URL 對應至動作。
 ms.author: riande
 ms.date: 3/25/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/controllers/routing
-ms.openlocfilehash: 974a5e7653f2b71b124a96650733ff460e60637a
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: 4208ef8fb7a9b10621f214f79679ff8d7fd83996
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206108"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775020"
 ---
 # <a name="routing-to-controller-actions-in-aspnet-core"></a>ASP.NET Core 中的路由至控制器動作
 
@@ -195,7 +201,9 @@ ASP.NET Core 3.0 和更新版本中的端點路由：
 ### <a name="conventional-routing-order"></a>傳統路由順序
 
 傳統路由只會符合應用程式所定義的動作和控制器組合。 這是為了簡化傳統路由重迭的情況。
-使用、 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute*>和新增路由， <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*>並根據叫用的順序，自動指派順序值給其端點。 從稍早出現的路由進行比對的優先順序較高。 慣例路由與順序息息相關。 一般而言，具有區域的路由應該放在較早的位置，因為它們比沒有區域的路由更明確。 [Dedicated conventional routes](#dcr)具有攔截所有路由參數（例如`{*article}` ）的專用慣例路由，可以讓路由過於[貪婪](xref:fundamentals/routing#greedy)，這表示它會比對您要與其他路由比對的 url。 將貪婪路由放在路由表中，以避免發生貪婪的相符。
+使用、 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapDefaultControllerRoute*>和新增路由， <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*>並根據叫用的順序，自動指派順序值給其端點。 從稍早出現的路由進行比對的優先順序較高。 慣例路由與順序息息相關。 一般而言，具有區域的路由應該放在較早的位置，因為它們比沒有區域的路由更明確。 具有 catch-all 路由參數（例如`{*article}` ）的[專用傳統路由](#dcr)會使路由過於[貪婪](xref:fundamentals/routing#greedy)，這表示它會比對您要與其他路由比對的 url。 將貪婪路由放在路由表中，以避免發生貪婪的相符。
+
+[!INCLUDE[](~/includes/catchall.md)]
 
 <a name="best"></a>
 
@@ -463,7 +471,7 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 * 上述程式碼是一個範例或不良的路由設計。 它是用來說明`Order`屬性。
 * `Order`屬性只會解析不明確的，該範本無法比對。 最好是移除`[Route("Home")]`範本。
 
-如需 Razor Pages 的路由順序資訊，請參閱[Razor Pages 路由和應用程式慣例：路由順序](xref:razor-pages/razor-pages-conventions#route-order)。
+請參閱[ Razor頁面路由和應用程式慣例：路由順序](xref:razor-pages/razor-pages-conventions#route-order)以取得路由訂單Razor與頁面的相關資訊。
 
 在某些情況下，會傳回具有不明確路由的 HTTP 500 錯誤。 使用[記錄](xref:fundamentals/logging/index)來查看哪些端點造成`AmbiguousMatchException`。
 
@@ -744,13 +752,13 @@ Url 的數個多載[。動作](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*)
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/UrlGeneration2Controller.cs?name=snippet_1)]
 
-下列 Razor 檔案會產生的`Destination_Route`HTML 連結：
+下列Razor檔案會產生的`Destination_Route`HTML 連結：
 
 [!code-cshtml[](routing/samples/3.x/main/Views/Shared/MyLink.cshtml)]
 
 <a name="routing-gen-urls-html-ref-label"></a>
 
-### <a name="generate-urls-in-html-and-razor"></a>以 HTML 和 Razor 產生 Url
+### <a name="generate-urls-in-html-and-razor"></a>以 HTML 和產生 UrlRazor
 
 <xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper>提供 Html.beginform <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper>和[Html.BeginForm](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.BeginForm*) [.html](xref:Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper.ActionLink*)方法，分別產生`<form>`和`<a>`元素。 這些方法會使用[url. Action](xref:Microsoft.AspNetCore.Mvc.IUrlHelper.Action*)方法來產生 url，並接受類似的引數。 `HtmlHelper` 的成對 `Url.RouteUrl` 為 `Html.BeginRouteForm` 和 `Html.RouteLink`，這兩者的功能很類似。
 
@@ -1212,7 +1220,7 @@ public class HomeController : Controller
 > [!TIP]
 > 請避免依賴 `Order`。 如果您的 URL 空間需要明確的順序值才能正確地路由，則同樣也可能會使用戶端混淆。 一般而言，屬性路由會透過 URL 比對來選取正確的路由。 如果用於 URL 產生的預設順序無效，使用路由名稱作為覆寫通常會比套用 `Order` 屬性更簡單。
 
-Razor Pages 路由和 MVC 控制器路由會共用實作。 如需 Razor Pages 主題中路由順序的資訊，請參閱 [Razor Pages 路由和應用程式慣例：路由順序](xref:razor-pages/razor-pages-conventions#route-order)。
+Razor頁面路由和 MVC 控制器路由會共用一個執行。 頁面主題中的Razor路由順序資訊可在[ Razor頁面路由和應用程式慣例中取得：路由順序](xref:razor-pages/razor-pages-conventions#route-order)。
 
 <a name="routing-token-replacement-templates-ref-label"></a>
 

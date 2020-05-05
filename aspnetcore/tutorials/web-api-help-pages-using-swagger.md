@@ -5,13 +5,19 @@ description: 本教學課程提供新增 Swagger，以產生 Web API 應用程�
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/07/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/web-api-help-pages-using-swagger
-ms.openlocfilehash: 4408e02996b958bf009903aa1e4eeda9ad4f457c
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: bde38fcbc11ef36c42523acb182fc62a934821c3
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78658470"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774518"
 ---
 # <a name="aspnet-core-web-api-help-pages-with-swagger--openapi"></a>使用 Swagger/OpenAPI 的 ASP.NET Core Web API 說明頁面
 
@@ -108,7 +114,7 @@ Swagger 流程的核心是 Swagger 規格&mdash;根據預設，文件名為 *swa
 
 ![Swagger UI](web-api-help-pages-using-swagger/_static/swagger-ui.png)
 
-控制器中的每個公用動作方法都可以從 UI 進行測試。 按一下方法名稱以展開該區段。 添加任何必要的參數,然後單擊 **「試用」!**
+控制器中的每個公用動作方法都可以從 UI 進行測試。 按一下方法名稱以展開該區段。 新增任何必要的參數，然後按一下 [**試試看！**]。
 
 ![範例 Swagger GET 測試](web-api-help-pages-using-swagger/_static/get-try-it-out.png)
 

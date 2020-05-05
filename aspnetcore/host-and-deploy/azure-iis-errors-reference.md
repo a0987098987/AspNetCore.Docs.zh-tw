@@ -6,21 +6,27 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 635c4cf6f12e62ca7e795b3b3b47e9445b945551
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 7b3454fbd891ca26d44125810a10eb3b3c2c3933
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79511596"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775202"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure App Service 與 IIS 搭配 ASP.NET Core 時的常見錯誤參考
 
 ::: moniker range=">= aspnetcore-2.2"
 
-本主題介紹常見錯誤,並在 Azure 應用服務和 IIS 上託管 ASP.NET 核心應用時,針對特定錯誤提供故障排除建議。
+本主題描述常見的錯誤，並提供在 Azure App Service 和 IIS 上裝載 ASP.NET Core 應用程式時，針對特定錯誤的疑難排解建議。
 
-有關常規故障排除指南,請參閱<xref:test/troubleshoot-azure-iis>。
+如需一般疑難排解指導方針<xref:test/troubleshoot-azure-iis>，請參閱。
 
 收集下列資訊：
 
@@ -46,19 +52,19 @@ ms.locfileid: "79511596"
 
 疑難排解：
 
-作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果先安裝 ASP.NET Core 模組再升級 OS，然後在 OS 升級之後以 32 位元模式執行任何應用程式集區，就會發生此問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參考[安裝 .NET 核心託管套件](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。 執行安裝程式時，請選取 [修復]****。
+作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果先安裝 ASP.NET Core 模組再升級 OS，然後在 OS 升級之後以 32 位元模式執行任何應用程式集區，就會發生此問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參閱[安裝 .Net Core 裝載](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)套件組合。 執行安裝程式時，請選取 [修復]****。
 
 ## <a name="missing-site-extension-32-bit-x86-and-64-bit-x64-site-extensions-installed-or-wrong-process-bitness-set"></a>遺失網站延伸模組、已安裝 32 位元 (x86) 和 64 位元 (x64) 網站延伸模組，或錯誤的處理序位元集合
 
 *適用於 Azure 應用程式服務所裝載的應用程式。*
 
-* **瀏覽器:** HTTP 錯誤 500.0 - ANCM 行程內處理程式載入失敗
+* **瀏覽器：** HTTP 錯誤 500.0-ANCM 同進程處理常式載入失敗
 
-* **應用程式紀錄:** 調用 hostfxr 以查找進程內請求處理程序失敗,但未找到任何本機依賴項。 找不到同處理序要求處理常式。 從調用 hostfxr 捕獲的輸出:無法找到任何相容的框架版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。 無法啟動應用程式 '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'。
+* **應用程式記錄檔：** 叫用用 hostfxr 以尋找進程中的要求處理常式失敗，而不需要尋找任何原生相依性。 找不到同處理序要求處理常式。 從叫用用 hostfxr 捕捉的輸出：找不到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。 無法啟動應用程式 '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'。
 
-* **ASP.NET核心模組固定日誌:** 找不到任何相容的框架版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 找不到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
 
-* **ASP.NET核心模組除錯紀錄:** 調用 hostfxr 以查找進程內請求處理程序失敗,但未找到任何本機依賴項。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 失敗的 HRESULT 傳回: 0x8000ffff. 找不到同處理序要求處理常式。 無法找到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 叫用用 hostfxr 以尋找進程中的要求處理常式失敗，而不需要尋找任何原生相依性。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 失敗的 HRESULT 傳回：0x8000ffff。 找不到同處理序要求處理常式。 無法找到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
 
 疑難排解：
 
@@ -75,17 +81,17 @@ ms.locfileid: "79511596"
 
 * 確認**應用程式設定**中應用程式的**平台**與應用程式位元相符。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>。
+如需詳細資訊，請參閱<xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>。
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>已部署 x86 應用程式，但未啟用 32 位元應用程式的應用程式集區
 
-* **瀏覽器:** HTTP 錯誤 500.30 - ANCM 行程內啟動失敗
+* **瀏覽器：** HTTP 錯誤 500.30-ANCM 同進程啟動失敗
 
-* **應用程式紀錄:** 應用程式'/LM/W3SVC/5/ROOT'與物理根'[PATH]命中意外託管異常,異常代碼 = '0xe0434352'。 如需詳細資訊，請檢查 stderr 記錄檔。 實體根目錄為 '{PATH}' 的應用程式 '/LM/W3SVC/5/ROOT' 無法載入 CLR 和受控應用程式。 CLR 背景工作執行緒不當結束
+* **應用程式記錄檔：** 實體根 ' {PATH} ' 的應用程式 '/LM/W3SVC/5/ROOT ' 遇到非預期的 managed 例外狀況，例外狀況代碼 = ' 0xe0434352 '。 如需詳細資訊，請檢查 stderr 記錄檔。 實體根目錄為 '{PATH}' 的應用程式 '/LM/W3SVC/5/ROOT' 無法載入 CLR 和受控應用程式。 CLR 背景工作執行緒不當結束
 
-* **ASP.NET核心模組固定日誌:** 日誌檔已創建但為空。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 已建立記錄檔，但卻是空的。
 
-* **ASP.NET核心模組除錯紀錄:** 傳回的 HRESULT 失敗: 0x8007023e
+* **ASP.NET Core 模組的 Debug 記錄檔：** 失敗的 HRESULT 傳回：0x8007023e
 
 SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合平台目標 (例如 `win10-x64` RID 在專案檔中使用 `<PlatformTarget>x86</PlatformTarget>`)，SDK 就會產生錯誤。
 
@@ -97,25 +103,25 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式紀錄:** 應用程式「計算機/WEBROOT/APPHOST/[ASSEMBLY]」,物理根為"C:PATH]\{\'未能用命令行"C:PATH_ASSEMBLY}"\{啟動進程。[exe_dll]" ',錯誤代碼 = '0x80004005 : ff.
+* **應用程式記錄檔：** 實體根目錄為 ' C：\{path}\'的應用程式 ' MACHINE/WEBROOT/APPHOST/{ASSEMBLY} ' 無法以命令列 ' "C：\{path} {ASSEMBLY} 啟動進程。{exe | dll} "'，ErrorCode = ' 0x80004005： ff。
 
-* **ASP.NET核心模組固定日誌:** 未處理異常:系統.BadImageFormat異常:無法載入檔或程式集"_ASSEMBLY_.dll"。 嘗試載入了格式不正確的程式。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 未處理的例外狀況： System.badimageformatexception>：無法載入檔案或元件 ' {ASSEMBLY} .dll '。 嘗試載入了格式不正確的程式。
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 如果在升級應用程式和部署更新的組件時，Azure 應用程式部署發生這個例外狀況，請手動刪除來自先前部署的所有檔案。 部署升級的應用程式時，延遲不相容的組件會導致 `System.BadImageFormatException` 例外狀況。
 
 ## <a name="uri-endpoint-wrong-or-stopped-website"></a>URI 端點錯誤或停止了網站
 
-* **瀏覽器:** ERR_CONNECTION_REFUSED **-- OR --** 無法連線
+* **瀏覽器：** ERR_CONNECTION_REFUSED **--或--** 無法連接
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
-* **ASP.NET核心模組除錯紀錄:** 未建立紀錄檔。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -137,9 +143,9 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
-* **ASP.NET核心模組除錯紀錄:** 未建立紀錄檔。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -151,9 +157,9 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
-* **ASP.NET核心模組除錯紀錄:** 未建立紀錄檔。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -165,7 +171,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
   如需詳細資訊，請參閱[安裝 .NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。
 
-* 確定 [應用程式集區]**[處理序模型]** > **[身分識別]** > **** 已設定為 **ApplicationPoolIdentity**，或自訂身分識別具有正確的權限，可存取應用程式的部署資料夾。
+* 請確定**應用程式** >集區**進程模型** > **Identity** 已設定為**ApplicationPoolIdentity** ，或自訂身分識別具有正確的許可權，可存取應用程式的部署資料夾。
 
 * 若解除安裝 ASP.NET Core Hosting Bundle 並安裝舊版裝載套件組合，*applicationHost.config* 檔案不會包括 ASP.NET Core Module 的區段。 開啟位於 *%windir%/System32/inetsrv/config* 的 *applicationHost.config*，然後尋找 `<configuration><configSections><sectionGroup name="system.webServer">` 區段群組。 若區段群組中沒有 ASP.NET Core Module 的區段，請新增區段元素：
 
@@ -177,21 +183,21 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 ## <a name="incorrect-processpath-missing-path-variable-hosting-bundle-not-installed-systemiis-not-restarted-vc-redistributable-not-installed-or-dotnetexe-access-violation"></a>不正確的 processPath、遺失 PATH 變數、未安裝裝載套件組合、未重新啟動系統/IIS、未安裝 VC++ 可轉散發套件或 dotnet.exe 存取違規
 
-* **瀏覽器:** HTTP 錯誤 500.0 - ANCM 行程內處理程式載入失敗
+* **瀏覽器：** HTTP 錯誤 500.0-ANCM 同進程處理常式載入失敗
 
-* **應用程式紀錄:** 應用程式"計算機/WEBROOT/APPHOST/[ASSEMBLY]",物理根為"C:PATH}\{\'未能啟動使用命令行"{...}"的進程。 ', 錯誤代碼 = '0x80070002 : 0. 應用程式 '{PATH}' 無法啟動。 在 '{PATH}' 找不到可執行檔。 無法啟動應用程式 '/LM/W3SVC/2/ROOT'，ErrorCode '0x8007023e'。
+* **應用程式記錄檔：** 實體根目錄為 ' C：\{PATH}\'的應用程式 ' MACHINE/WEBROOT/APPHOST/{ASSEMBLY} ' 無法使用命令列 ' "{...}" 來啟動進程 '，ErrorCode = ' 0x80070002：0。 應用程式 '{PATH}' 無法啟動。 在 '{PATH}' 找不到可執行檔。 無法啟動應用程式 '/LM/W3SVC/2/ROOT'，ErrorCode '0x8007023e'。
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
-* **ASP.NET核心模組除錯紀錄:** 事件日誌:"應用程式'[PATH]'無法啟動。 在 '{PATH}' 找不到可執行檔。 傳回的 HRESULT 失敗: 0x8007023e
+* **ASP.NET Core 模組的 Debug 記錄檔：** 事件記錄檔： ' 應用程式 ' {PATH} ' 無法啟動。 在 '{PATH}' 找不到可執行檔。 失敗的 HRESULT 傳回：0x8007023e
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 檢查 *web.config* 中 `<aspNetCore>` 元素上的 *processPath* 屬性，以確認它是 `dotnet` (適用於架構相依部署 (FDD)) 或 `.\{ASSEMBLY}.exe` (適用於[自封式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd))。
 
-* 若為 FDD，可能無法透過路徑設定存取 *dotnet.exe*。 確認系統 PATH 設定中存在*C:\程式檔案\\\點網*。
+* 若為 FDD，可能無法透過路徑設定存取 *dotnet.exe*。 確認*C:\Program Files\dotnet\\ *存在於系統路徑設定中。
 
 * 若為 FDD，應用程式集區的使用者身分識別可能無法存取 *dotnet.exe*。 確認應用程式集區使用者身分識別可以存取 *C:\Program Files\dotnet* 目錄。 確認 *C:\Program Files\dotnet* 和應用程式目錄上未針對應用程式集區使用者身分識別設定任何拒絕規則。
 
@@ -207,31 +213,31 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 ## <a name="incorrect-arguments-of-aspnetcore-element"></a>不正確的 \<aspNetCore> 元素引數
 
-* **瀏覽器:** HTTP 錯誤 500.0 - ANCM 行程內處理程式載入失敗
+* **瀏覽器：** HTTP 錯誤 500.0-ANCM 同進程處理常式載入失敗
 
-* **應用程式紀錄:** 調用 hostfxr 以查找進程內請求處理程序失敗,但未找到任何本機依賴項。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 找不到同處理序要求處理常式。 從呼叫 hostfxr 擷取的輸出:您是否打算執行 dotnet SDK 命令? 請安裝點網路 SDKhttps://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409從: 啟動應用程式失敗 '/LM/W3SVC/3/ROOT', 錯誤代碼 '0x8000ffff'.
+* **應用程式記錄檔：** 叫用用 hostfxr 以尋找進程中的要求處理常式失敗，而不需要尋找任何原生相依性。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 找不到同處理序要求處理常式。 從叫用用 hostfxr 捕獲的輸出：您是否說要執行 dotnet SDK 命令？ 請從下列安裝 dotnet SDK https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409 ：無法啟動應用程式 '/LM/W3SVC/3/ROOT '，ErrorCode ' 0x8000ffff '。
 
-* **ASP.NET核心模組固定日誌:** 您是否打算執行點網路 SDK 命令? 請從下列位置安裝 dotnet SDK：https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409
+* **ASP.NET Core 模組 Stdout 記錄檔：** 您是否表示要執行 dotnet SDK 命令？ 請從下列位置安裝 dotnet SDK：https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409
 
-* **ASP.NET核心模組除錯紀錄:** 調用 hostfxr 以查找進程內請求處理程序失敗,但未找到任何本機依賴項。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 返回的 HRESULT 失敗: 0x8000ffff 找不到行程內請求處理程式。 從呼叫 hostfxr 擷取的輸出:您是否打算執行 dotnet SDK 命令? 請安裝點網路 SDKhttps://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409從: 故障 HRESULT 傳回: 0x8000ffff
+* **ASP.NET Core 模組的 Debug 記錄檔：** 叫用用 hostfxr 以尋找進程中的要求處理常式失敗，而不需要尋找任何原生相依性。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 失敗的 HRESULT 傳回：0x8000ffff 找不到進程間要求處理常式。 從叫用用 hostfxr 捕獲的輸出：您是否說要執行 dotnet SDK 命令？ 請從下列安裝 dotnet SDK https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409 ： Failed HRESULT 傳回：0x8000ffff
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 檢查 *web.config* 中 `<aspNetCore>` 元素上的 *arguments* 屬性，以確認它是 (a) `.\{ASSEMBLY}.dll` (適用於架構相依部署 (FDD))；或 (b) 不存在、空字串 (`arguments=""`)，或是應用程式的引數清單 (`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`，適用於自封式部署 (SCD))。
 
 ## <a name="missing-net-core-shared-framework"></a>遺失 .NET Core 共用架構
 
-* **瀏覽器:** HTTP 錯誤 500.0 - ANCM 行程內處理程式載入失敗
+* **瀏覽器：** HTTP 錯誤 500.0-ANCM 同進程處理常式載入失敗
 
-* **應用程式紀錄:** 調用 hostfxr 以查找進程內請求處理程序失敗,但未找到任何本機依賴項。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 找不到同處理序要求處理常式。 從調用 hostfxr 捕獲的輸出:無法找到任何相容的框架版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}'。
+* **應用程式記錄檔：** 叫用用 hostfxr 以尋找進程中的要求處理常式失敗，而不需要尋找任何原生相依性。 這最有可能表示應用程式設定不正確，請檢查應用程式設為目標的 Microsoft.NetCore.App 和 Microsoft.AspNetCore.App 版本，並確定已安裝在電腦上。 找不到同處理序要求處理常式。 從叫用用 hostfxr 捕捉的輸出：找不到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}'。
 
 無法啟動應用程式 '/LM/W3SVC/5/ROOT'，ErrorCode '0x8000ffff'。
 
-* **ASP.NET核心模組固定日誌:** 找不到任何相容的框架版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}'。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 找不到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}'。
 
-* **ASP.NET核心模組除錯紀錄:** 傳回失敗 HRESULT: 0x8000ff
+* **ASP.NET Core 模組的 Debug 記錄檔：** 失敗的 HRESULT 傳回：0x8000ffff
 
 疑難排解：
 
@@ -243,9 +249,9 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
-* **ASP.NET核心模組除錯紀錄:** 未建立紀錄檔。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -257,41 +263,41 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 根應用的日誌檔已創建並顯示正常操作。 未建立子應用程式的記錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 根應用程式的記錄檔隨即建立，並顯示一般作業。 未建立子應用程式的記錄檔。
 
-* **ASP.NET核心模組除錯紀錄:** 根應用的日誌檔已創建並顯示正常操作。 未建立子應用程式的記錄檔。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 根應用程式的記錄檔隨即建立，並顯示一般作業。 未建立子應用程式的記錄檔。
 
 疑難排解：
 
 請確認子應用程式的 *web.config* 檔案不包含 `<handlers>` 區段，或子應用程式未繼承父應用程式的處理常式。
 
-父應用程式 *web.config* 的 `<system.webServer>` 區段位於 `<location>` 元素內。 屬性<xref:System.Configuration.SectionInformation.InheritInChildApplications*>設置為`false`指示[\<位置>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location)元素中指定的設置不會由駐留在父應用子目錄中的應用繼承。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
+父應用程式 *web.config* 的 `<system.webServer>` 區段位於 `<location>` 元素內。 <xref:System.Configuration.SectionInformation.InheritInChildApplications*>屬性會設定為`false` ，表示在[ \<位置>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location)專案中指定的設定，不會由位於父系應用程式子目錄中的應用程式繼承。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="stdout-log-path-incorrect"></a>stdout 記錄檔路徑不正確
 
 * **瀏覽器：** 應用程式正常回應。
 
-* **應用程式紀錄:** 無法在 C:\程式檔\IIS_Asp.Net 核心模組\V2_aspnetcorev2.dll 中啟動固定重定向。 異常消息:HRESULT 0x80070005 返回於 {PATH}aspnetcoremodulev2_公共lib_檔輸出管理器.cpp:84。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 異常消息:HRESULT 0x80070002 在 [PATH] 返回。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
+* **應用程式記錄檔：** 無法在 C:\Program Files\IIS\Asp.Net Core Module\v2\aspnetcorev2.dll 中啟動 stdout 重新導向 例外狀況訊息：已在 {PATH} \aspnetcoremodulev2\commonlib\fileoutputmanager.cpp：84傳回 HRESULT 0x80070005。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 例外狀況訊息：在 {PATH} 傳回 HRESULT 0x80070002。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
-* **ASP.NET核心模組除錯紀錄:** 無法在 C:\程式檔\IIS_Asp.Net 核心模組\V2_aspnetcorev2.dll 中啟動固定重定向。 異常消息:HRESULT 0x80070005 返回於 {PATH}aspnetcoremodulev2_公共lib_檔輸出管理器.cpp:84。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 異常消息:HRESULT 0x80070002 在 [PATH] 返回。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 無法在 C:\Program Files\IIS\Asp.Net Core Module\v2\aspnetcorev2.dll 中啟動 stdout 重新導向 例外狀況訊息：已在 {PATH} \aspnetcoremodulev2\commonlib\fileoutputmanager.cpp：84傳回 HRESULT 0x80070005。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 例外狀況訊息：在 {PATH} 傳回 HRESULT 0x80070002。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
 
 疑難排解：
 
-* *web.config* 中 `<aspNetCore>` 元素所指定的 `stdoutLogFile` 路徑不存在。 有關詳細資訊,請參閱[ASP.NET 核心模組:日誌建立和重定向](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)。
+* *web.config* 中 `<aspNetCore>` 元素所指定的 `stdoutLogFile` 路徑不存在。 如需詳細資訊，請參閱[ASP.NET Core 模組：記錄建立和](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)重新導向。
 
 * 應用程式集區使用者沒有 stdout 記錄檔路徑的寫入權限。
 
 ## <a name="application-configuration-general-issue"></a>應用程式組態一般問題
 
-* **瀏覽器:** HTTP 錯誤 500.0 - ANCM 行程內處理程式負載故障 **-- -- OR--** HTTP 錯誤 500.30 - ANCM 行程內啟動失敗
+* **瀏覽器：** HTTP 錯誤 500.0-ANCM 同進程處理常式載入失敗 **--或--** HTTP 錯誤 500.30-ANCM 同進程啟動失敗
 
-* **應用程式紀錄:** 變數
+* **應用程式記錄檔：** 變
 
-* **ASP.NET核心模組固定日誌:** 日誌檔被創建,但為空,或使用普通條目創建,直到應用的點失敗。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 在應用程式失敗之前，會建立記錄檔，但卻是空的或以一般專案建立的。
 
-* **ASP.NET核心模組除錯紀錄:** 變數
+* **ASP.NET Core 模組的 Debug 記錄檔：** 變
 
 疑難排解：
 
@@ -306,9 +312,9 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 ::: moniker range="< aspnetcore-2.2"
 
-本主題介紹常見錯誤,並在 Azure 應用服務和 IIS 上託管 ASP.NET 核心應用時,針對特定錯誤提供故障排除建議。
+本主題描述常見的錯誤，並提供在 Azure App Service 和 IIS 上裝載 ASP.NET Core 應用程式時，針對特定錯誤的疑難排解建議。
 
-有關常規故障排除指南,請參閱<xref:test/troubleshoot-azure-iis>。
+如需一般疑難排解指導方針<xref:test/troubleshoot-azure-iis>，請參閱。
 
 收集下列資訊：
 
@@ -334,17 +340,17 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 疑難排解：
 
-作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果先安裝 ASP.NET Core 模組再升級 OS，然後在 OS 升級之後以 32 位元模式執行任何應用程式集區，就會發生此問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參考[安裝 .NET 核心託管套件](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。 執行安裝程式時，請選取 [修復]****。
+作業系統升級時不會保留 **C:\Windows\SysWOW64\inetsrv** 目錄中的非作業系統檔案。 如果先安裝 ASP.NET Core 模組再升級 OS，然後在 OS 升級之後以 32 位元模式執行任何應用程式集區，就會發生此問題。 作業系統升級之後，請修復 ASP.NET Core 模組。 請參閱[安裝 .Net Core 裝載](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)套件組合。 執行安裝程式時，請選取 [修復]****。
 
 ## <a name="missing-site-extension-32-bit-x86-and-64-bit-x64-site-extensions-installed-or-wrong-process-bitness-set"></a>遺失網站延伸模組、已安裝 32 位元 (x86) 和 64 位元 (x64) 網站延伸模組，或錯誤的處理序位元集合
 
 *適用於 Azure 應用程式服務所裝載的應用程式。*
 
-* **瀏覽器:** HTTP 錯誤 500.0 - ANCM 行程內處理程式載入失敗
+* **瀏覽器：** HTTP 錯誤 500.0-ANCM 同進程處理常式載入失敗
 
-* **應用程式紀錄:** 調用 hostfxr 以查找進程內請求處理程序失敗,但未找到任何本機依賴項。 找不到同處理序要求處理常式。 從調用 hostfxr 捕獲的輸出:無法找到任何相容的框架版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。 無法啟動應用程式 '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'。
+* **應用程式記錄檔：** 叫用用 hostfxr 以尋找進程中的要求處理常式失敗，而不需要尋找任何原生相依性。 找不到同處理序要求處理常式。 從叫用用 hostfxr 捕捉的輸出：找不到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。 無法啟動應用程式 '/LM/W3SVC/1416782824/ROOT', ErrorCode '0x8000ffff'。
 
-* **ASP.NET核心模組固定日誌:** 找不到任何相容的框架版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 找不到任何相容的架構版本。 找不到指定的架構 'Microsoft.AspNetCore.App' 版本 '{VERSION}-preview-\*'。
 
 疑難排解：
 
@@ -361,15 +367,15 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * 確認**應用程式設定**中應用程式的**平台**與應用程式位元相符。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>。
+如需詳細資訊，請參閱<xref:host-and-deploy/azure-apps/index#install-the-preview-site-extension>。
 
 ## <a name="an-x86-app-is-deployed-but-the-app-pool-isnt-enabled-for-32-bit-apps"></a>已部署 x86 應用程式，但未啟用 32 位元應用程式的應用程式集區
 
-* **瀏覽器:** HTTP 錯誤 500.30 - ANCM 行程內啟動失敗
+* **瀏覽器：** HTTP 錯誤 500.30-ANCM 同進程啟動失敗
 
-* **應用程式紀錄:** 應用程式'/LM/W3SVC/5/ROOT'與物理根'[PATH]命中意外託管異常,異常代碼 = '0xe0434352'。 如需詳細資訊，請檢查 stderr 記錄檔。 實體根目錄為 '{PATH}' 的應用程式 '/LM/W3SVC/5/ROOT' 無法載入 CLR 和受控應用程式。 CLR 背景工作執行緒不當結束
+* **應用程式記錄檔：** 實體根 ' {PATH} ' 的應用程式 '/LM/W3SVC/5/ROOT ' 遇到非預期的 managed 例外狀況，例外狀況代碼 = ' 0xe0434352 '。 如需詳細資訊，請檢查 stderr 記錄檔。 實體根目錄為 '{PATH}' 的應用程式 '/LM/W3SVC/5/ROOT' 無法載入 CLR 和受控應用程式。 CLR 背景工作執行緒不當結束
 
-* **ASP.NET核心模組固定日誌:** 日誌檔已創建但為空。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 已建立記錄檔，但卻是空的。
 
 SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合平台目標 (例如 `win10-x64` RID 在專案檔中使用 `<PlatformTarget>x86</PlatformTarget>`)，SDK 就會產生錯誤。
 
@@ -381,23 +387,23 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式紀錄:** 應用程式「計算機/WEBROOT/APPHOST/[ASSEMBLY]」,物理根為"C:PATH]\{\'未能用命令行"C:PATH_ASSEMBLY}"\{啟動進程。[exe_dll]" ',錯誤代碼 = '0x80004005 : ff.
+* **應用程式記錄檔：** 實體根目錄為 ' C：\{path}\'的應用程式 ' MACHINE/WEBROOT/APPHOST/{ASSEMBLY} ' 無法以命令列 ' "C：\{path} {ASSEMBLY} 啟動進程。{exe | dll} "'，ErrorCode = ' 0x80004005： ff。
 
-* **ASP.NET核心模組固定日誌:** 未處理異常:系統.BadImageFormat異常:無法載入檔或程式集"_ASSEMBLY_.dll"。 嘗試載入了格式不正確的程式。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 未處理的例外狀況： System.badimageformatexception>：無法載入檔案或元件 ' {ASSEMBLY} .dll '。 嘗試載入了格式不正確的程式。
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 如果在升級應用程式和部署更新的組件時，Azure 應用程式部署發生這個例外狀況，請手動刪除來自先前部署的所有檔案。 部署升級的應用程式時，延遲不相容的組件會導致 `System.BadImageFormatException` 例外狀況。
 
 ## <a name="uri-endpoint-wrong-or-stopped-website"></a>URI 端點錯誤或停止了網站
 
-* **瀏覽器:** ERR_CONNECTION_REFUSED **-- OR --** 無法連線
+* **瀏覽器：** ERR_CONNECTION_REFUSED **--或--** 無法連接
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -419,7 +425,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -431,7 +437,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -443,7 +449,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
   如需詳細資訊，請參閱[安裝 .NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle)。
 
-* 確定 [應用程式集區]**[處理序模型]** > **[身分識別]** > **** 已設定為 **ApplicationPoolIdentity**，或自訂身分識別具有正確的權限，可存取應用程式的部署資料夾。
+* 請確定**應用程式** >集區**進程模型** > **Identity** 已設定為**ApplicationPoolIdentity** ，或自訂身分識別具有正確的許可權，可存取應用程式的部署資料夾。
 
 * 若解除安裝 ASP.NET Core Hosting Bundle 並安裝舊版裝載套件組合，*applicationHost.config* 檔案不會包括 ASP.NET Core Module 的區段。 開啟位於 *%windir%/System32/inetsrv/config* 的 *applicationHost.config*，然後尋找 `<configuration><configSections><sectionGroup name="system.webServer">` 區段群組。 若區段群組中沒有 ASP.NET Core Module 的區段，請新增區段元素：
 
@@ -457,17 +463,17 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式紀錄:** 應用程式"計算機/WEBROOT/APPHOST/[ASSEMBLY]",物理根為"C:PATH}\{\'未能啟動使用命令行"{...}"的進程。 ', 錯誤代碼 = '0x80070002 : 0.
+* **應用程式記錄檔：** 實體根目錄為 ' C：\{PATH}\'的應用程式 ' MACHINE/WEBROOT/APPHOST/{ASSEMBLY} ' 無法使用命令列 ' "{...}" 來啟動進程 '，ErrorCode = ' 0x80070002：0。
 
-* **ASP.NET核心模組固定日誌:** 日誌檔已創建但為空。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 已建立記錄檔，但卻是空的。
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 檢查 *web.config* 中 `<aspNetCore>` 元素上的 *processPath* 屬性，以確認它是 `dotnet` (適用於架構相依部署 (FDD)) 或 `.\{ASSEMBLY}.exe` (適用於[自封式部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd))。
 
-* 若為 FDD，可能無法透過路徑設定存取 *dotnet.exe*。 確認系統 PATH 設定中存在*C:\程式檔案\\\點網*。
+* 若為 FDD，可能無法透過路徑設定存取 *dotnet.exe*。 確認*C:\Program Files\dotnet\\ *存在於系統路徑設定中。
 
 * 若為 FDD，應用程式集區的使用者身分識別可能無法存取 *dotnet.exe*。 確認應用程式集區使用者身分識別可以存取 *C:\Program Files\dotnet* 目錄。 確認 *C:\Program Files\dotnet* 和應用程式目錄上未針對應用程式集區使用者身分識別設定任何拒絕規則。
 
@@ -485,13 +491,13 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式紀錄:** 應用程式「計算機/WEBROOT/APPHOST/[ASSEMBLY]」,物理根為"C:PATH}"\{\'未能啟動命令行"點網"的進程。\{ASSEMBLY_.dll',錯誤代碼 = '0x80004005 : 80008081。
+* **應用程式記錄檔：** 實體根目錄為 ' C：\{PATH}\'的應用程式 ' MACHINE/WEBROOT/APPHOST/{ASSEMBLY} ' 無法使用命令列 ' "dotnet" 來啟動進程。\{ASSEMBLY} .dll '，ErrorCode = ' 0x80004005：80008081。
 
-* **ASP.NET核心模組固定日誌:** 要執行的應用程式不存在:"PATH\{ASSEMBLY_.dll"
+* **ASP.NET Core 模組 Stdout 記錄檔：** 要執行的應用程式不存在： ' PATH\{ASSEMBLY} .dll '
 
 疑難排解：
 
-* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
+* 確認應用程式在 Kestrel 本機上執行。 處理序失敗，可能是因為應用程式發生問題。 如需詳細資訊，請參閱<xref:test/troubleshoot-azure-iis>。
 
 * 檢查 *web.config* 中 `<aspNetCore>` 元素上的 *arguments* 屬性，以確認它是 (a) `.\{ASSEMBLY}.dll` (適用於架構相依部署 (FDD))；或 (b) 不存在、空字串 (`arguments=""`)，或是應用程式的引數清單 (`arguments="{ARGUMENT_1}, {ARGUMENT_2}, ... {ARGUMENT_X}"`，適用於自封式部署 (SCD))。
 
@@ -505,7 +511,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
@@ -517,7 +523,7 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **應用程式記錄檔：** 無項目
 
-* **ASP.NET核心模組固定日誌:** 根應用的日誌檔已創建並顯示正常操作。 未建立子應用程式的記錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 根應用程式的記錄檔隨即建立，並顯示一般作業。 未建立子應用程式的記錄檔。
 
 疑難排解：
 
@@ -527,13 +533,13 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **瀏覽器：** 應用程式正常回應。
 
-* **應用程式紀錄:** 警告: 無法建立停滯紀錄檔\\?\{PATH_path_doesnt_exist[stdout_[進程 ID][TIMESTAMP].log,錯誤代碼 = -2147024893。
+* **應用程式記錄檔：** 警告：無法建立 stdoutLogFile \\？\{PATH} \ path_doesnt_exist \ STDOUT_ {處理序識別碼} _ {TIMESTAMP} .Log，ErrorCode =-2147024893。
 
-* **ASP.NET核心模組固定日誌:** 未建立紀錄檔。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
 疑難排解：
 
-* *web.config* 中 `<aspNetCore>` 元素所指定的 `stdoutLogFile` 路徑不存在。 有關詳細資訊,請參閱[ASP.NET 核心模組:日誌建立和重定向](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)。
+* *web.config* 中 `<aspNetCore>` 元素所指定的 `stdoutLogFile` 路徑不存在。 如需詳細資訊，請參閱[ASP.NET Core 模組：記錄建立和](xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection)重新導向。
 
 * 應用程式集區使用者沒有 stdout 記錄檔路徑的寫入權限。
 
@@ -541,9 +547,9 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **瀏覽器：** HTTP 錯誤 502.5 - 處理序失敗
 
-* **應用程式紀錄:** 應用程式「\{電腦/WEBROOT/APPHOST/[ASSEMBLY]」,物理根為"C:PATH]\'創建過程,命令行「C:PATH_ASSEMBLY}」。。\{ \{{exe_dll}" ' 但崩潰或未回應或未偵聽給定埠 "[PORT]",錯誤代碼 = "[錯誤代碼]"
+* **應用程式記錄檔：** 實體根目錄\{為 ' c： path}\'的應用程式 ' MACHINE/WEBROOT/APPHOST/{assembly} ' 已使用命令列 ' "\{C：\{path} ASSEMBLY} 建立進程。{exe | dll} "' 但已當機或沒有回應，或未在指定的埠 ' {PORT} ' 上接聽，ErrorCode = ' {錯誤碼} '
 
-* **ASP.NET核心模組固定日誌:** 日誌檔已創建但為空。
+* **ASP.NET Core 模組 Stdout 記錄檔：** 已建立記錄檔，但卻是空的。
 
 疑難排解：
 

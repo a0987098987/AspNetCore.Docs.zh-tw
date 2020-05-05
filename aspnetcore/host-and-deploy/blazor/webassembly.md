@@ -5,17 +5,20 @@ description: 瞭解如何使用 ASP.NET Core、內容傳遞Blazor網路（CDN）
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/30/2020
+ms.date: 05/04/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 2472fd499128a8807b76a3cc031d466140e180f5
-ms.sourcegitcommit: 23243f6d6a3100303802e4310b0634860cc0b268
+ms.openlocfilehash: 9bc1e3aaadb7310f6ea338eea2726bdc592aa06a
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82619365"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776405"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -332,7 +335,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/configure-linker>。
+Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。
 
 ## <a name="custom-boot-resource-loading"></a>自訂開機資源載入
 
@@ -344,7 +347,7 @@ Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸�
 
 `loadBootResource`參數會出現在下表中。
 
-| 參數    | 描述 |
+| 參數    | 說明 |
 | ------------ | ----------- |
 | `type`       | 資源類型。 運算子類型： `assembly`、 `pdb`、 `dotnetjs`、 `dotnetwasm`、`timezonedata` |
 | `name`       | 資源名稱。 |
@@ -402,3 +405,53 @@ Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸�
 外部來源必須傳回瀏覽器所需的 CORS 標頭，以允許跨原始來源資源載入。 根據預設，Cdn 通常會提供必要的標頭。
 
 您只需要指定自訂行為的類型。 根據預設載入行為`loadBootResource` ，架構會載入未指定的類型。
+
+## <a name="change-the-filename-extension-of-dll-files"></a>變更 DLL 檔案的副檔名
+
+如果您需要變更應用程式已發佈 *.dll*檔案的副檔名，請遵循本節中的指導方針。
+
+發行應用程式之後，請使用 shell 腳本或 DevOps 組建管線，將 *.dll*檔案重新命名為使用不同的副檔名。 以應用程式已發佈輸出的*wwwroot*目錄中的 *.dll*檔案為目標（例如 *{CONTENT ROOT}/bin/Release/netstandard2.1/publish/wwwroot*）。
+
+在下列範例中， *.dll*檔案已重新命名為使用*bin*副檔名。
+
+在 Windows 上：
+
+```powershell
+dir .\_framework\_bin | rename-item -NewName { $_.name -replace ".dll\b",".bin" }
+((Get-Content .\_framework\blazor.boot.json -Raw) -replace '.dll"','.bin"') | Set-Content .\_framework\blazor.boot.json
+```
+
+在 Linux 或 macOS 上：
+
+```console
+for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll\b/.bin/g'`"; done
+sed -i 's/\.dll"/.bin"/g' _framework/blazor.boot.json
+```
+   
+若要使用與*bin*不同的副檔名，請在上述命令中取代 *. bin* 。
+
+若要解決壓縮的*blazor gz*和*blazor.boot.json.br*檔案，請採用下列其中一種方法：
+
+* 移除壓縮的*blazor gz*和*blazor.boot.json.br*檔案。 此方法會停用壓縮。
+* 重新壓縮已更新的*blazor*檔案。
+
+下列 Windows 範例會使用放在專案根目錄中的 PowerShell 腳本。
+
+*ChangeDLLExtensions. ps1：*：
+
+```powershell
+param([string]$filepath,[string]$tfm)
+dir $filepath\bin\Release\$tfm\wwwroot\_framework\_bin | rename-item -NewName { $_.name -replace ".dll\b",".bin" }
+((Get-Content $filepath\bin\Release\$tfm\wwwroot\_framework\blazor.boot.json -Raw) -replace '.dll"','.bin"') | Set-Content $filepath\bin\Release\$tfm\wwwroot\_framework\blazor.boot.json
+Remove-Item $filepath\bin\Release\$tfm\wwwroot\_framework\blazor.boot.json.gz
+```
+
+在專案檔中，腳本會在發行應用程式之後執行：
+
+```xml
+<Target Name="ChangeDLLFileExtensions" AfterTargets="Publish" Condition="'$(Configuration)'=='Release'">
+  <Exec Command="powershell.exe -command &quot;&amp; { .\ChangeDLLExtensions.ps1 '$(SolutionDir)' '$(TargetFramework)'}&quot;" />
+</Target>
+```
+
+若要提供意見反應，請造訪[aspnetcore/問題 #5477](https://github.com/dotnet/aspnetcore/issues/5477)。

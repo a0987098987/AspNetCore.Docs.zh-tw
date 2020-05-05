@@ -1,19 +1,23 @@
 ---
 title: 在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 author: rick-anderson
-description: 解釋ASP.NET核心與ASP.NET 4.x 以及如何在它們之間進行選擇。
+description: 說明 ASP.NET Core 與 ASP.NET 4.x 的比較，以及如何在兩者之間進行選擇。
 ms.author: riande
 ms.custom: mvc, seodec18
 ms.date: 02/12/2020
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: a7280b59578ee1d96edeeccf9c9df0b0e4eb4eb8
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 1fb81d5a54cf332ca473af8fbe1841813a127be7
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78665239"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775878"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 
@@ -36,9 +40,9 @@ ASP.NET 4.x 是一個成熟的架構，其提供在 Windows 上建置企業級�
 | ASP.NET Core | ASP.NET 4.x |
 |---|---|
 |為 Windows、macOS 或 Linux 建置|為 Windows 建置|
-|從 ASP.NET Core 2.x 開始，[Razor 頁面](xref:razor-pages/index)是建立 Web UI 的建議方法。 另請參閱[MVC、Web](xref:mvc/overview) [API](xref:tutorials/first-web-api)與[SignalR](xref:signalr/introduction)。|使用[Web](/aspnet/web-forms)[SignalR](/aspnet/signalr)窗體, 、 [MVC,](/aspnet/mvc) [Web API](/aspnet/web-api/), [WebHook 或](/aspnet/webhooks/)[網頁](/aspnet/web-pages)|
+|頁面是建立 Web UI 的建議方法，從 ASP.NET Core 2.x. x。 [ Razor ](xref:razor-pages/index) 另請參閱[MVC](xref:mvc/overview)、 [Web API](xref:tutorials/first-web-api)和[SignalR](xref:signalr/introduction)。|使用[web Forms](/aspnet/web-forms)、 [SignalR](/aspnet/signalr)、 [MVC](/aspnet/mvc)、 [web API](/aspnet/web-api/)、 [webhook](/aspnet/webhooks/)或[Web Pages](/aspnet/web-pages)|
 |每部電腦多個版本|每部電腦一個版本|
-|使用[視覺工作室](https://visualstudio.microsoft.com/vs/)[、Mac 視覺工作室](https://visualstudio.microsoft.com/vs/mac/)或使用 C# 或 F[視覺化工作室代碼](https://code.visualstudio.com/)進行開發#|使用 C#、VB 或 F 使用[視覺化工作室](https://visualstudio.microsoft.com/vs/)進行開發#|
+|使用 c # 或 F 以[Visual Studio](https://visualstudio.microsoft.com/vs/)、 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)或[Visual Studio Code](https://code.visualstudio.com/)進行開發#|使用 c #、VB 或 F [Visual Studio](https://visualstudio.microsoft.com/vs/)進行開發#|
 |效能比 ASP.NET 4.x 更高|效能良好|
 |[使用 .NET Core 執行階段](/dotnet/standard/choosing-core-framework-server)|使用 .NET Framework 執行階段|
 

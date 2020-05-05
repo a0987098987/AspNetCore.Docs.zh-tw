@@ -1,159 +1,162 @@
 ---
-title: 除錯ASP.NET核心BlazorWeb 組裝
+title: Debug ASP.NET Core Blazor WebAssembly
 author: guardrex
-description: 瞭解如何調試Blazor應用。
+description: 瞭解如何調試Blazor程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/16/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 7273ae3d240de0b59a58069fdcc1880247379751
-ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
+ms.openlocfilehash: 9acbb8e7b122a8d527d16ce33af01c2e7e7608bf
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661599"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767534"
 ---
-# <a name="debug-aspnet-core-opno-locblazor-webassembly"></a>除錯ASP.NET核心BlazorWeb 組裝
+# <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET Core Blazor WebAssembly
 
-[丹尼爾·羅斯](https://github.com/danroth27)
+[Daniel Roth](https://github.com/danroth27)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-Blazor可以使用基於鉻瀏覽器(邊緣/Chrome)中的瀏覽器開發工具調試 WebAssembly 應用程式。  或者,您可以使用可視化工作室或可視化工作室代碼調試應用。
+BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器開發工具（邊緣/Chrome）進行調試。  或者，您可以使用 Visual Studio 或 Visual Studio Code 來對應用程式進行 debug 錯。
 
-可用機制:
+可用的案例包括：
 
-* 設置並刪除斷點。
-* 在可視化工作室和可視化工作室代碼<kbd>(F5</kbd>支援)中使用調試支援運行應用程式。
-* 通過代碼執行單步執行(<kbd>F10</kbd>)。
-* 在瀏覽器中使用<kbd>F8</kbd>或可視化工作室代碼中的<kbd>F5</kbd>恢復代碼執行。
-* 在 *「局部變數」* 顯示中,觀察局部變數的值。
-* 請參閱調用堆疊,包括從 JAVAScript 到 .NET 並從 .NET 到 JavaScript 的調用鏈。
+* 設定和移除中斷點。
+* 在 Visual Studio 和 Visual Studio Code （<kbd>F5</kbd>支援）中，以支援偵錯工具的方式執行應用程式。
+* 透過程式碼的單一步驟（<kbd>F10</kbd>）。
+* 在瀏覽器中使用<kbd>F8</kbd>或 Visual Studio 或 Visual Studio Code 中的<kbd>F5</kbd>繼續執行程式碼。
+* 在 [*區域變數*] 顯示中，觀察本機變數的值。
+* 查看呼叫堆疊，包括從 JavaScript 轉換成 .NET，以及從 .NET 到 JavaScript 的呼叫鏈。
 
-現在,*你不能*:
+目前，您*無法*：
 
 * 檢查陣列。
-* 懸停以檢查成員。
-* 步進調試到或從託管代碼中輸入。
-* 完全支援檢查值類型。
-* 中斷未處理的異常。
-* 在應用啟動期間命中斷點。
-* 使用服務輔助角色調試應用。
+* 將滑鼠暫留以檢查成員。
+* 逐步執行 managed 程式碼的偵錯工具。
+* 具有檢查實數值型別的完整支援。
+* 中斷未處理的例外狀況。
+* 在應用程式啟動期間叫用中斷點。
+* 使用服務工作者來對應用程式進行 Debug。
 
-我們將繼續改進即將發佈的調試體驗。
+我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-除錯需要以下任瀏覽器:
+調試需要下列其中一個瀏覽器：
 
-* 微軟邊緣(版本80或更高版本)
-* 谷歌Chrome(版本70或更高版本)
+* Microsoft Edge （版本80或更新版本）
+* Google Chrome （版本70或更新版本）
 
-## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>啟用視覺化工作室和視覺化工作室代碼的除錯
+## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>啟用 Visual Studio 和 Visual Studio Code 的偵錯工具
 
-對於使用 ASP.NET酷 3.2 預覽 3Blazor或更高版本的 WebAssembly 專案樣本([目前版本為 3.2 預覽 4)](xref:blazor/get-started)創建的新專案,將自動啟用調試。
+使用 ASP.NET Core 3.2 Preview 3 或更新版本Blazor WebAssembly 專案範本（[目前版本為 3.2 Preview 4](xref:blazor/get-started)）所建立的新專案，會自動啟用偵錯工具。
 
-要開啟現有BlazorWebAssembly 應用的除錯,請在啟動項目中更新*啟動設定.json*檔,以便`inspectUri`在每個啟動 設定檔中包括以下屬性:
+若要啟用現有Blazor WebAssembly 應用程式的偵測，請更新啟始專案中的*launchsettings.json* ，以在每個啟動`inspectUri`設定檔中包含下列屬性：
 
 ```json
 "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
 ```
 
-更新後,*啟動設定.json*檔應類似於以下範例:
+更新之後， *launchsettings.json*看起來應該類似下列範例：
 
 [!code-json[](debug/launchSettings.json?highlight=14,22)]
 
-屬性`inspectUri`:
+`inspectUri`屬性：
 
-* 使 IDE 能夠檢測Blazor應用是 Web 裝配應用。
-* 指示腳本調試基礎結構通過Blazor調試代理連接到瀏覽器。
+* 可讓 IDE 偵測應用程式是否為Blazor WebAssembly 應用程式。
+* 指示腳本的偵錯工具，透過Blazor的偵錯工具 proxy 連接到瀏覽器。
 
 ## <a name="visual-studio"></a>Visual Studio
 
-要在Blazor可視化工作室中調試 Web 組裝應用,可以執行:
+若要在Blazor Visual Studio 中進行 WebAssembly 應用程式的 debug：
 
-1. 確保您[已安裝 Visual Studio 2019 16.6(](https://visualstudio.com/preview)預覽版 2 或更高版本)的最新預覽版本。
-1. 創建新ASP.NET核心託管BlazorWeb 組裝應用。
-1. 按<kbd>F5</kbd>在調試器中運行應用。
-1. 在`IncrementCount`方法中的*Counter.razor*中設定斷點。
-1. 瀏覽到 **「計數器」** 選項卡並選擇按鈕以命中斷點:
+1. 請確定您已安裝 Visual Studio 2019 16.6 （preview 2 或更新版本）的[最新預覽版本](https://visualstudio.com/preview)。
+1. 建立新的 ASP.NET Core 託管Blazor WebAssembly 應用程式。
+1. 按<kbd>F5</kbd>以在偵錯工具中執行應用程式。
+1. 在方法的`IncrementCount` [ *razor* ] 中設定中斷點。
+1. 流覽至 [**計數器**] 索引標籤，然後選取按鈕以點擊中斷點：
 
-   ![除錯計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-counter.png)
+   ![Debug 計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-counter.png)
 
-1. 在局部變數視窗中檢視`currentCount`欄位的值:
+1. 查看 [區域變數] 視窗中`currentCount`的欄位值：
 
-   ![檢視本地人](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-locals.png)
+   ![View 區域變數](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-locals.png)
 
 1. 按<kbd>F5</kbd>繼續執行。
 
-除錯BlazorWebAssembly 應用程式時,您還可以除錯伺服器碼:
+在偵測Blazor WebAssembly 應用程式時，您也可以對伺服器程式碼進行偵錯工具：
 
-1. 在中的*FetchData.razor*`OnInitializedAsync`頁中 設置斷點。
-1. 在`WeatherForecastController``Get`操作方法中設置斷點。
-1. 瀏覽到 **「取得資料**」選項卡,在向`FetchData`伺服器發出 HTTP 請求之前,點擊元件中的第一個斷點:
+1. 在的 [ *FetchData* ] 頁面中`OnInitializedAsync`設定中斷點。
+1. 在`WeatherForecastController` `Get`動作方法的中設定中斷點。
+1. 流覽至 [**提取資料**] 索引標籤，以叫用`FetchData`元件中的第一個中斷點，然後再對伺服器發出 HTTP 要求：
 
-   ![除錯提取資料](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-fetch-data.png)
+   ![Debug Fetch 資料](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-fetch-data.png)
 
-1. 按<kbd>F5</kbd>繼續執行,然後`WeatherForecastController`在 中 命中伺服器上的斷點:
+1. 按<kbd>F5</kbd>繼續執行，然後在的伺服器上叫用中斷點`WeatherForecastController`：
 
-   ![除錯伺服器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-server.png)
+   ![Debug server](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-server.png)
 
-1. 再次按<kbd>F5</kbd>以允許執行繼續,並查看已呈現的天氣預報表。
+1. 再按一次<kbd>F5</kbd> ，讓執行繼續，並查看所轉譯的氣象預測資料表。
 
 <a id="vscode"></a>
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-要在可視化Blazor工作室代碼中調試 Web 組裝應用,請執行:
+若要在Blazor Visual Studio Code 中進行 WebAssembly 應用程式的 debug：
  
-1. 安裝[C# 延伸](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)與[JavaScript 除錯器(夜間)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸`debug.javascript.usePreview`, 設定為`true`。
+1. 安裝[c # 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸`debug.javascript.usePreview` ，並`true`將設定為。
 
-   ![延伸模組](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-extensions.png)
+   ![Extensions](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-extensions.png)
 
-   ![JS 預覽除錯器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-js-use-preview.png)
+   ![JS 預覽偵錯工具](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-js-use-preview.png)
 
-1. 打開啟用調試Blazor的現有 WebAssembly 應用。
+1. 開啟已啟用Blazor偵測的現有 WebAssembly 應用程式。
 
-   * 如果收到以下通知,表示啟用除錯需要額外的設定,請確認已安裝正確的擴展並啟用 JavaScript 預覽除錯,然後重新載入視窗:
+   * 如果您收到下列通知，表示需要額外的設定才能啟用偵錯工具，請確認您已安裝正確的延伸模組，並已啟用 JavaScript 預覽偵測，然後重載視窗：
 
-     ![附加設定](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
+     ![其他安裝必要](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
 
-   * 通知提供將所需資產添加到應用以生成和調試。 選擇 **"是**"
+   * 通知會提供將所需的資產新增至應用程式，以進行建立和調試。 選取 **[是]**：
 
-     ![新增所需資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
+     ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
 
-1. 在除錯器中啟動應用是一個兩步過程:
+1. 在偵錯工具中啟動應用程式是兩個步驟的進程：
 
-   1\. **首先**,使用 **.NETBlazor核心啟動(獨立)啟動**配置啟動應用程式。
+   1 \。 **首先**，使用 **.net Core 啟動Blazor （獨立式）** 啟動設定來啟動應用程式。
 
-   2\. **應用啟動後**,在 Chrome 啟動配置**中使用 .NETBlazor核心調試網路程式集**啟動瀏覽器(需要 Chrome)。 要使用 Edge 而不是`type`Chrome, 請將 *.vscode/launch.json*中的啟動`pwa-chrome`設定`pwa-msedge`從 更改為 。
+   2 \。 **應用程式啟動之後**，請使用 chrome 啟動設定（需要 chrome）**中的 .Net Core Debug Blazor Web 元件**來啟動瀏覽器。 若要使用 Edge 而不是 Chrome， `type`請將*vscode/啟動*中啟動設定的從`pwa-chrome`變更為`pwa-msedge`。
 
-1. 在`IncrementCount``Counter`元件中的方法中設定斷點,然後選擇按鈕以命中斷點:
+1. 在`IncrementCount` `Counter`元件的方法中設定中斷點，然後選取按鈕以叫用中斷點：
 
-   ![VS 代碼中的除錯計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
+   ![VS Code 中的 Debug 計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
 
-## <a name="debug-in-the-browser"></a>在瀏覽器中除錯
+## <a name="debug-in-the-browser"></a>瀏覽器中的 Debug
 
-1. 在開發環境中運行應用的調試生成。
+1. 在開發環境中執行應用程式的 Debug 組建。
 
-1. 按<kbd>移位</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>.
+1. 按<kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>D</kbd>。
 
-1. 必須在啟用遠端調試後運行瀏覽器。 如果關閉遠端除錯,將產生 **「無法搜尋可除錯的瀏覽器選項卡**錯誤」 頁。 錯誤頁包含在打開除錯埠時執行瀏覽器的說明,以便Blazor除錯代理可以連接到應用。 *關閉所有瀏覽器實例*,並按照指示重新啟動瀏覽器。
+1. 瀏覽器必須在啟用遠端偵錯功能的情況下執行。 如果已停用遠端偵錯程式，就會產生 [找**不到可調試的瀏覽器]** 索引標籤錯誤頁面。 錯誤頁面包含在開啟偵錯工具的情況之下執行瀏覽器的指示，讓Blazor偵錯工具 proxy 可以連接到應用程式。 *關閉所有瀏覽器實例*，然後依照指示重新開機瀏覽器。
 
-啟用遠端除錯後,瀏覽器運行後,除錯鍵盤快捷方式將打開一個新的除錯器選項卡。片刻後,「**源**」選項卡顯示應用中 .NET 程式集的清單。 展開每個程式集並找到可用於除錯的 *.cs.razor*/*.razor*源檔。 設置斷點,切換回應用的選項卡,並在代碼執行時命中斷點。 命中斷點後,透過代碼執行單步(<kbd>F10</kbd>) 或正常恢復 (<kbd>F8</kbd>) 程式碼執行.
+當瀏覽器在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。 展開每個元件，並尋找可用來進行偵錯工具的 *.cs*/*原始檔案。* 設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。 叫用中斷點之後，以單一步驟（<kbd>F10</kbd>），透過程式碼或繼續（<kbd>F8</kbd>）程式碼執行正常。
 
-Blazor提供了一個調試代理,用於實現[Chrome 開發人員工具協定](https://chromedevtools.github.io/devtools-protocol/),並使用 來增強協定。特定於 NET 的資訊。 按下調試鍵盤快捷鍵時,Blazor將 Chrome 開發人員工具指向代理。 代理連接到您要除錯的瀏覽器視窗(因此需要啟用遠端除錯)。
+Blazor提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https://chromedevtools.github.io/devtools-protocol/)，並使用來擴充通訊協定。NET 特定資訊。 當您按下 [調試鍵盤Blazor快捷方式] 時，會將 Chrome DevTools 指向 proxy。 Proxy 會連線到您想要進行調試的瀏覽器視窗（因此需要啟用遠端偵錯）。
 
-## <a name="browser-source-maps"></a>瀏覽器來源映射
+## <a name="browser-source-maps"></a>瀏覽器來源對應
 
-瀏覽器源映射允許瀏覽器將編譯的檔映射回其原始源檔,並通常用於用戶端調試。 但是,Blazor當前不會將 C# 直接映射到 JAVAScript/WASM。 相反,ILBlazor在瀏覽器中解釋,因此源映射不相關。
+瀏覽器來源對應可讓瀏覽器將已編譯的檔案對應回原始來源檔案，而且通常會用於用戶端的偵錯工具。 不過， Blazor目前不會將 c # 直接對應至 JAVASCRIPT/WASM。 相反地Blazor ，會在瀏覽器中進行 IL 轉譯，因此來源對應不相關。
 
 ## <a name="troubleshoot"></a>疑難排解
 
-如果您遇到錯誤,以下提示可能會有所説明:
+如果您遇到錯誤，下列秘訣可能會有説明：
 
-在 **「除錯器」** 選項卡中,在瀏覽器中打開開發人員工具。 在控制台中,執行`localStorage.clear()`以刪除任何斷點。
+在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。 在主控台中，執行`localStorage.clear()`以移除任何中斷點。

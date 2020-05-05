@@ -5,13 +5,19 @@ description: 本指南為如何為 Azure 上裝載的 ASP.NET Core 應用程式�
 ms.author: casoper
 ms.date: 08/07/2018
 ms.custom: mvc, seodec18
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: azure/devops/index
-ms.openlocfilehash: f45bb2a5dd4b3d1a820085ede7ce3219045ed80b
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: da9d5365b6e3920dbf672f65d5fab4ea158932c2
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78658078"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82766897"
 ---
 # <a name="devops-with-aspnet-core-and-azure"></a>ASP.NET Core 與 Azure 的 DevOps
 
@@ -49,7 +55,7 @@ ms.locfileid: "78658078"
 
 使用 GitHub、Azure DevOps Services 與 Azure，為您的 ASP.NET Core 應用程式建置端對端的持續整合與部署解決方案。
 
-### <a name="monitor-and-debug"></a>[監視並除錯](xref:azure/devops/monitor)
+### <a name="monitor-and-debug"></a>[監視和調試](xref:azure/devops/monitor)
 
 使用 Azure 工來監視、疑難排解問題，以及微調您的應用程式。
 

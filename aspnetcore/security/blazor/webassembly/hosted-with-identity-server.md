@@ -1,5 +1,5 @@
 ---
-title: 使用身分識別Blazor伺服器保護 ASP.NET Core WebAssembly 託管應用程式
+title: 使用Identity伺服器保護Blazor ASP.NET Core WebAssembly 託管應用程式
 author: guardrex
 description: 從使用 IdentityServer 後Blazor端的 Visual Studio 中，建立具有驗證的新[IdentityServer](https://identityserver.io/)託管應用程式
 monikerRange: '>= aspnetcore-3.1'
@@ -8,16 +8,19 @@ ms.custom: mvc
 ms.date: 04/24/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-identity-server
-ms.openlocfilehash: ffdcd30ae9ce5350113569a500e99cf8db82ad65
-ms.sourcegitcommit: 4f91da9ce4543b39dba5e8920a9500d3ce959746
+ms.openlocfilehash: bf2298618e922df412e0742177afd390c4116388
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82138598"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82768115"
 ---
-# <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-identity-server"></a>使用身分識別Blazor伺服器保護 ASP.NET Core WebAssembly 託管應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>使用Identity伺服器保護Blazor ASP.NET Core WebAssembly 託管應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
@@ -27,7 +30,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 若要在 Visual Studio Blazor中建立新的託管應用程式，以使用[IdentityServer](https://identityserver.io/)來驗證使用者和 API 呼叫：
 
-1. 使用 Visual Studio 建立新** Blazor的 WebAssembly**應用程式。 如需詳細資訊，請參閱 <xref:blazor/get-started>。
+1. 使用 Visual Studio 建立新** Blazor的 WebAssembly**應用程式。 如需詳細資訊，請參閱<xref:blazor/get-started>。
 1. 在 [**建立新Blazor的應用程式**] 對話方塊中，選取 [**驗證**] 區段中的 [**變更**]。
 1. 選取 [**個別使用者帳戶**]，後面接著 **[確定]**。
 1. 選取 [ **Advanced** ] 區段中的 [ **ASP.NET Core 託管**] 核取方塊。
@@ -51,7 +54,7 @@ dotnet new blazorwasm -au Individual -ho
 
 * 在 `Startup.ConfigureServices` 中：
 
-  * 身分識別：
+  * Identity:
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -104,7 +107,7 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
 
-<xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> Helper 方法會將應用程式的原則配置設定為預設驗證處理常式。 此原則設定為允許身分識別處理路由至身分識別 URL 空間`/Identity`中任何子路徑的所有要求。 會<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler>處理所有其他要求。 此外，這個方法也會：
+<xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> Helper 方法會將應用程式的原則配置設定為預設驗證處理常式。 此原則設定為允許Identity處理路由至Identity URL 空間`/Identity`中任何子路徑的所有要求。 會<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler>處理所有其他要求。 此外，這個方法也會：
 
 * 向 IdentityServer `{APPLICATION NAME}API`註冊具有預設範圍的`{APPLICATION NAME}API`API 資源。
 * 設定 JWT 持有人權杖中介軟體，以驗證 IdentityServer 針對應用程式所簽發的權杖。
@@ -115,9 +118,9 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="applicationdbcontext"></a>[ApplicationdbcoNtext]
 
-在`ApplicationDbContext` （*Data/[applicationdbcoNtext]*）中，會在識別中<xref:Microsoft.EntityFrameworkCore.DbContext>使用相同的，但它會擴充<xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601>以包含 IdentityServer 的架構。 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。
+`ApplicationDbContext`在（*Data/[applicationdbcoNtext]*）中，會使用<xref:Microsoft.EntityFrameworkCore.DbContext>相同的， Identity因為它會擴充<xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601>以包含 IdentityServer 的架構。 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。
 
-若要取得資料庫架構的完整控制權，請從其中一個可用的身分<xref:Microsoft.EntityFrameworkCore.DbContext>識別類別繼承，並透過在`builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` `OnModelCreating`方法中呼叫來設定內容以包含身分識別架構。
+若要取得資料庫架構的完整控制權，請從Identity <xref:Microsoft.EntityFrameworkCore.DbContext>其中一個可用的類別繼承，並透過在Identity `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` `OnModelCreating`方法中呼叫來設定內容以包含架構。
 
 ### <a name="oidcconfigurationcontroller"></a>OidcConfigurationController
 
@@ -185,7 +188,7 @@ builder.Services.AddApiAuthorization();
 
 * 針對已驗證的使用者：
   * 顯示目前的使用者名稱。
-  * 提供 ASP.NET Core 身分識別中 [使用者設定檔] 頁面的連結。
+  * 提供 ASP.NET Core Identity中 [使用者設定檔] 頁面的連結。
   * 提供用來登出應用程式的按鈕。
 * 匿名使用者：
   * 提供註冊的選項。

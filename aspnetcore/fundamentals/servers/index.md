@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 11/07/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/servers/index
-ms.openlocfilehash: d46793ef54c99fe609b5983c5a658fb7b20032fa
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 74affbb7d18d80e2e55714df100d820aed2ce427
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78666338"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776177"
 ---
 # <a name="web-server-implementations-in-aspnet-core"></a>ASP.NET Core 中的網頁伺服器實作
 
@@ -22,7 +28,7 @@ ASP.NET Core 應用程式執行時，需使用內含式 HTTP 伺服器實作。 
 
 ## <a name="kestrel"></a>Kestrel
 
-Kestrel 是 ASP.NET核心專案範本指定的預設 Web 伺服器。
+Kestrel 是 ASP.NET Core 專案範本所指定的預設 web 伺服器。
 
 使用 Kestrel：
 
@@ -34,7 +40,7 @@ Kestrel 是 ASP.NET核心專案範本指定的預設 Web 伺服器。
 
   ![Kestrel 透過 IIS、Nginx 或 Apache 等反向 Proxy 伺服器間接與網際網路通訊](kestrel/_static/kestrel-to-internet.png)
 
-支援具有反向&mdash;代理伺服器或不帶反向代理&mdash;伺服器的託管配置。
+不支援&mdash;具有或不使用反向 proxy 伺服器&mdash;的裝載設定。
 
 如需 Kestrel 設定指南及資訊，以了解在反向 Proxy 設定中使用 Kestrel 的時機，請參閱 <xref:fundamentals/servers/kestrel>。
 
@@ -50,10 +56,10 @@ ASP.NET Core 隨附下列項目：
 
 使用 [IIS](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture) 或 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 時，應用程式可能會執行於：
 
-* 與 IIS HTTP 伺服器在 IIS 工作進程([進程內託管模型](#hosting-models))相同的進程中。 「同處理序」** 是建議的設定。
+* 與 iis 背景工作進程相同的進程（同[進程裝載模型](#hosting-models)）與 Iis HTTP 伺服器相同。 「同處理序」** 是建議的設定。
 * 從 IIS 背景工作處理序中分離出的處理序 ([跨處理序裝載模型](#hosting-models))，並搭配 [Kestrel 伺服器](#kestrel)。
 
-[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是一種原生 IIS 模組，可處理 IIS 與同處理序 IIS HTTP 伺服器或 Kestrel 之間的原生 IIS 要求。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是一種原生 IIS 模組，可處理 IIS 與同處理序 IIS HTTP 伺服器或 Kestrel 之間的原生 IIS 要求。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="hosting-models"></a>裝載模型
 
@@ -97,7 +103,7 @@ ASP.NET Core 隨附下列項目：
 
 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的通訊埠上將要求路由至 IIS，此通訊埠通常是 80 (HTTP) 或 443 (HTTPS)。 此模組會在應用程式的隨機通訊埠上將要求轉送至 Kestrel，而且不會是通訊埠 80 或 443。
 
-模組在啟動時透過環境變數指定連接埠[,IIS 整合的中間元件](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)設定伺服器以`http://localhost:{port}`偵聽 。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
+此模組會在啟動時透過環境變數指定埠，而[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)會設定伺服器來接聽`http://localhost:{port}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
 
 Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的 HTTP 用戶端。
 
@@ -128,7 +134,7 @@ ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，這
 
 ## <a name="httpsys"></a>HTTP.sys
 
-如果您在 Windows 上執行 ASP.NET Core 應用程式，則 HTTP.sys 是 Kestrel 的替代方案。 通常建議使用 Kestrel 以達到最佳效能。 HTTP.sys 可以用於下列情況：應用程式公開到網際網路，且必要功能是由 HTTP.sys 而非 Kestrel 支援。 如需詳細資訊，請參閱 <xref:fundamentals/servers/httpsys>。
+如果您在 Windows 上執行 ASP.NET Core 應用程式，則 HTTP.sys 是 Kestrel 的替代方案。 通常建議使用 Kestrel 以達到最佳效能。 HTTP.sys 可以用於下列情況：應用程式公開到網際網路，且必要功能是由 HTTP.sys 而非 Kestrel 支援。 如需詳細資訊，請參閱<xref:fundamentals/servers/httpsys>。
 
 ![HTTP.sys 直接與網際網路通訊](httpsys/_static/httpsys-to-internet.png)
 
@@ -158,7 +164,7 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 當您在專案資料夾中使用命令提示字元啟動應用程式時，[dotnet run](/dotnet/core/tools/dotnet-run) 會啟動應用程式和伺服器 (僅限 Kestrel 和 HTTP.sys)。 組態是由 `-c|--configuration` 選項指定，會設為 `Debug` (預設值) 或 `Release`。
 
-*啟動設定.json*檔在啟動應用時提供配置`dotnet run`, 該應用包含或內置了工具中的調試器(如 Visual Studio)。 如果啟動設定檔存在於*launchSettings.json*檔中,請`--launch-profile {PROFILE NAME}``dotnet run`使用該 指令的選項或在 Visual Studio 中選擇配置檔。 如需詳細資訊，請參閱 [dotnet run](/dotnet/core/tools/dotnet-run) 和 [.NET Core 發佈封裝](/dotnet/core/build/distribution-packaging)。
+當使用`dotnet run`或內建于工具的偵錯工具（例如 Visual Studio）來啟動應用程式時， *launchsettings.json json*檔案會提供設定。 如果啟動設定檔出現在*launchsettings.json*檔案中，請使用`--launch-profile {PROFILE NAME}`選項搭配`dotnet run`命令，或在 Visual Studio 中選取設定檔。 如需詳細資訊，請參閱 [dotnet run](/dotnet/core/tools/dotnet-run) 和 [.NET Core 發佈封裝](/dotnet/core/build/distribution-packaging)。
 
 ## <a name="http2-support"></a>HTTP/2 支援
 
@@ -166,7 +172,7 @@ HTTP.sys 也可用於只公開到內部網路的應用程式。
 
 ::: moniker range=">= aspnetcore-2.2"
 
-* [凱斯特雷爾](xref:fundamentals/servers/kestrel#http2-support)
+* [Kestrel](xref:fundamentals/servers/kestrel#http2-support)
   * 作業系統
     * Windows Server 2016/Windows 10 或更新版本&dagger;
     * Linux 含 OpenSSL 1.0.2 或更新版本 (例如 Ubuntu 16.04 或更新版本)

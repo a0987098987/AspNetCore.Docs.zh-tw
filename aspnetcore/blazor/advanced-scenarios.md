@@ -1,29 +1,32 @@
 ---
-title: ASP.NET核心Blazor進階機制
+title: ASP.NET Core Blazor advanced 案例
 author: guardrex
-description: 瞭解中的Blazor高級方案,包括如何將手動 RenderTreeBuilder 邏輯合併到應用中。
+description: 深入瞭解中的 advanced Blazor案例，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 5edbbe36e8389bac0335594b1e4331aee1c02867
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 9f1e5ea4d883a027f40ac0eccc7a9bba1435139d
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78659450"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767196"
 ---
-# <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET核心布拉佐爾高級方案
+# <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Blazor 的先進案例
 
-由[盧克·萊瑟姆](https://github.com/guardrex)和[丹尼爾·羅斯](https://github.com/danroth27)
+By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)
 
-## <a name="blazor-server-circuit-handler"></a>布拉佐伺服器電路處理程式
+## <a name="blazor-server-circuit-handler"></a>Blazor 伺服器線路處理常式
 
-Blazor Server 允許代碼定義*電路處理程式*,它允許在更改使用者電路狀態時運行代碼。 電路處理程式是通過從`CircuitHandler`應用的服務容器中派生和註冊類實現的。 以下電路處理程式範例追蹤開啟的 SignalR 連線:
+Blazor 伺服器可讓程式碼定義*電路處理常式*，以允許對使用者線路狀態的變更執行程式碼。 線路處理常式是透過衍生自`CircuitHandler`並在應用程式的服務容器中註冊類別來執行。 下列的線路處理常式範例會追蹤開啟的 SignalR 連接：
 
 ```csharp
 using System.Collections.Generic;
@@ -55,7 +58,7 @@ public class TrackingCircuitHandler : CircuitHandler
 }
 ```
 
-電路處理程式使用 DI 註冊。 根據電路的實例創建作用域實例。 `TrackingCircuitHandler`使用前面的範例中,將建立單例服務,因為必須追蹤所有電路的狀態:
+線路處理常式是使用 DI 註冊。 範圍實例會針對每個線路實例而建立。 使用上述`TrackingCircuitHandler`範例中的時，會建立單一服務，因為必須追蹤所有線路的狀態：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -65,18 +68,18 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如果自定義電路處理程式的方法引發未處理的異常,則異常對 Blazor Server 電路是致命的。 要容忍處理程式代碼或調用方法中的異常,請用錯誤處理和日誌記錄將代碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。
+如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對 Blazor 伺服器線路而言是嚴重的。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。
 
-當電路因用戶斷開連接而結束,並且框架正在清理電路狀態時,框架將釋放電路的 DI 範圍。 處置範圍將釋放實現<xref:System.IDisposable?displayProperty=fullName>的任何電路範圍的 DI 服務。 如果任何 DI 服務在處置期間引發未處理的異常,則框架將記錄異常。
+當線路因使用者已中斷連線而結束，而架構正在清除線路狀態時，架構會處置線路的 DI 範圍。 處置範圍會處置任何執行<xref:System.IDisposable?displayProperty=fullName>的線路範圍 DI 服務。 如果任何 DI 服務在處置期間擲回未處理的例外狀況，則架構會記錄例外狀況。
 
-## <a name="manual-rendertreebuilder-logic"></a>手動成成樹建構器邏輯
+## <a name="manual-rendertreebuilder-logic"></a>手動 RenderTreeBuilder 邏輯
 
-`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder`提供了操作元件和元素的方法,包括在 C# 代碼中手動構建元件。
+`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder`提供操作元件和專案的方法，包括在 c # 程式碼中手動建立元件。
 
 > [!NOTE]
-> 使用`RenderTreeBuilder`創建元件是進階方案。 格式錯誤的元件(例如,未關閉的標記標記)可能會導致未定義的行為。
+> 使用來`RenderTreeBuilder`建立元件是一個先進的案例。 格式不正確的元件（例如，未封閉的標記標記）可能會導致未定義的行為。
 
-請考慮以下`PetDetails`元件,這些元件可以手動建構到另一個元件中:
+請考慮下列`PetDetails`元件，它可以手動內建在另一個元件中：
 
 ```razor
 <h2>Pet Details Component</h2>
@@ -90,9 +93,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-在下面的範例中,`CreateComponent`方法中的循環生成三`PetDetails`個 元件。 呼叫`RenderTreeBuilder`建立元件(`OpenComponent``AddAttribute`與 ) 的方法來建立 序列號時是原始程式碼行號。 Blazor 差異演演演算法依賴於對應於不同代碼行的序列號,而不是不同的調用調用。 使用`RenderTreeBuilder`方法建立元件時,對序列號的參數進行硬編碼。 **使用計算或計數器生成序列號可能會導致性能不佳。** 有關詳細資訊,請參閱[序列號與代碼行號相關,而不是執行訂單](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order)部分。
+在下列範例中， `CreateComponent`方法中的迴圈會產生三`PetDetails`個元件。 呼叫`RenderTreeBuilder`方法來建立元件（`OpenComponent`和`AddAttribute`）時，序號是源程式碼號。 Blazor 差異演算法依賴對應于不同程式程式碼的序號，而不是相異的呼叫調用。 使用`RenderTreeBuilder`方法建立元件時，硬式編碼序號的引數。 **使用計算或計數器來產生序號可能會導致效能不佳。** 如需詳細資訊，請參閱[序號與程式程式碼號，而不是執行順序](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order)一節。
 
-`BuiltContent`元件:
+`BuiltContent`成分
 
 ```razor
 @page "/BuiltContent"
@@ -126,15 +129,15 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!WARNING]
-> 中`Microsoft.AspNetCore.Components.RenderTree`的類型允許處理呈現操作*的結果*。 這些是布拉佐爾框架實施的內部細節。 這些類型應視為*不穩定*,並可能在未來版本中更改。
+> 中`Microsoft.AspNetCore.Components.RenderTree`的類型允許處理轉譯作業的*結果*。 這些是 Blazor framework 執行的內部詳細資料。 這些類型應該被視為不*穩定*，未來的版本可能會變更。
 
-### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序列號與代碼行號相關,而不是執行順序
+### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 
-剃刀元件檔 (*.razor*) 總是被編譯. 與解釋代碼時,編譯是一個潛在的優勢,因為編譯步驟可用於注入提高運行時應用性能的資訊。
+Razor 元件檔案（*razor*）一律會進行編譯。 編譯是在解讀程式碼方面的潛在優勢，因為編譯步驟可以用來插入資訊，以在執行時間改善應用程式效能。
 
-這些改進的一個關鍵範例的序列*號*。 序列號指示運行時輸出來自哪些代碼行不同且順序明確。 運行時使用此資訊在線性時間生成有效的樹差異,這比常規樹差異演演演算法通常可能的速度要快得多。
+這些改良功能的重要範例包括*序號*。 序號會向運行時程表示輸出來自哪些不同和已排序的程式程式碼。 執行時間會使用這項資訊，以線性時間產生有效率的樹狀差異，這比一般樹狀結構的差異演算法通常還能快得多。
 
-請考慮以下 Razor 元件 (*.razor*) 檔案:
+請考慮下列 Razor 元件（*razor*）檔案：
 
 ```razor
 @if (someFlag)
@@ -145,7 +148,7 @@ public void ConfigureServices(IServiceCollection services)
 Second
 ```
 
-前面的代碼編譯為類似以下內容:
+上述程式碼會編譯成如下所示的內容：
 
 ```csharp
 if (someFlag)
@@ -156,26 +159,26 @@ if (someFlag)
 builder.AddContent(1, "Second");
 ```
 
-當代碼首次執行時,如果`someFlag`是`true`,生成器將接收:
+當程式碼第一次執行時，如果`someFlag`是`true`，則產生器會接收：
 
 | 順序 | 類型      | 資料   |
 | :------: | --------- | :----: |
 | 0        | Text node | First  |
 | 1        | Text node | Second |
 
-想像一`someFlag``false`下 ,這將成為 ,標記將再次呈現。 這一次,產生器收到:
+想像一下`someFlag` ， `false`會變成，然後再次呈現標記。 這次，產生器會接收：
 
 | 順序 | 類型       | 資料   |
 | :------: | ---------- | :----: |
 | 1        | Text node  | Second |
 
-當執行時執行差異時,它會看到序列`0`中的項目被刪除,因此它產生以下瑣碎*的編輯文稿*:
+當執行時間執行 diff 時，會看到順序`0`中的專案已移除，因此它會產生下列簡單的*編輯腳本*：
 
-* 刪除第一個文字節點。
+* 移除第一個文位元組點。
 
-### <a name="the-problem-with-generating-sequence-numbers-programmatically"></a>以程式設計程式產生序列號的問題
+### <a name="the-problem-with-generating-sequence-numbers-programmatically"></a>以程式設計方式產生序號的問題
 
-相反,假設您編寫了以下渲染樹產生器邏輯:
+想像一下，您會改為撰寫下列轉譯樹產生器邏輯：
 
 ```csharp
 var seq = 0;
@@ -188,62 +191,62 @@ if (someFlag)
 builder.AddContent(seq++, "Second");
 ```
 
-現在,第一個輸出是:
+現在，第一個輸出是：
 
 | 順序 | 類型      | 資料   |
 | :------: | --------- | :----: |
 | 0        | Text node | First  |
 | 1        | Text node | Second |
 
-此結果與之前的情況相同,因此不存在負面問題。 `someFlag`是`false`在第二個渲染上,輸出是:
+此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag``false`在第二個轉譯上，輸出為：
 
 | 順序 | 類型      | 資料   |
 | :------: | --------- | ------ |
 | 0        | Text node | Second |
 
-這一次,diff 演演算法看到*發生了兩*個更改,並且該演演演算法生成以下編輯腳本:
+這次，diff 演算法發現發生了*兩*項變更，而演算法會產生下列編輯腳本：
 
-* 將第一個文字節點的值變更為`Second`。
-* 刪除第二個文字節點。
+* 將第一個文位元組點的值變更為`Second`。
+* 移除第二個文位元組點。
 
-生成序列號已丟失`if/else`有關 原始代碼中分支和迴圈存在位置的所有有用資訊。 這會導致差異的時間比以前**長一倍**。
+產生序號已遺失關於`if/else`分支和迴圈在原始程式碼中出現位置的所有實用資訊。 這會導致差異**兩倍，但前提**是之前。
 
-這是一個微不足道的例子。 在結構複雜且深度嵌套的更現實的情況下,尤其是迴圈中,性能成本通常較高。 diff 演演演算法不必立即識別已插入或刪除的循環塊或分支,而是必須深入地重新詛咒到渲染樹中。 這通常會導致必須構建較長的編輯腳本,因為 diff 演演演算法對新舊結構之間的關係有誤。
+這是一個簡單的範例。 在具有複雜和深層嵌套結構的更真實案例中，尤其是使用迴圈時，效能成本通常較高。 Diff 演算法不會立即識別已插入或移除的迴圈區塊或分支，而是必須將深度遞迴到轉譯樹狀結構中。 這通常需要建立更長的編輯腳本，因為差異演算法會 misinformed 舊的和新結構如何彼此相關。
 
-### <a name="guidance-and-conclusions"></a>指導和結論
+### <a name="guidance-and-conclusions"></a>指引和結論
 
-* 如果動態生成序列號,則應用性能會受到影響。
-* 框架無法在運行時自動創建自己的序列號,因為除非在編譯時捕獲必要的信息,否則不存在必要的資訊。
-* 不要編寫手動實現`RenderTreeBuilder`的邏輯的長塊。 首選 *.razor*檔,並允許編譯器處理序列號。 如果`RenderTreeBuilder`無法避免手動邏輯,請將長代碼塊拆分為在調用`OpenRegion`/`CloseRegion`中 包裝的較小部分。 每個區域都有其各自的序列號空間,因此您可以在每個區域內從零(或任何其他任意數位)重新啟動。
-* 如果對序列號進行硬編碼,差異演演演算法只需要該序列號的值增加。 初始值和間隙無關緊要。 一個合法的選項是使用代碼行號作為序列號,或從零開始,並增加 1 或數百(或任何首選間隔)。 
-* Blazor使用序列號,而其他樹差異 UI 框架不使用它們。 使用序列號時,差異速度要快得多,並且Blazor具有編譯步驟的優點,該步驟可自動處理序列號,以便開發人員創作 *.razor*檔。
+* 如果序號是動態產生的，應用程式效能會受到影響。
+* 架構無法在執行時間自動建立自己的序號，因為必要的資訊不存在，除非是在編譯時期加以捕捉。
+* 請勿撰寫長時間區塊的手動執行`RenderTreeBuilder`邏輯。 偏好*razor*檔案，並允許編譯器處理序號。 如果您無法`RenderTreeBuilder`避免手動邏輯，請將長塊的程式碼分割成較小的`OpenRegion` / `CloseRegion`片段，以呼叫。 每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。
+* 如果序號已硬式編碼，則 diff 演算法只會要求序號增加值。 起始值和間距無關。 一個合法的選項是使用程式程式碼號做為序號，或從零開始，並以一個或數百個（或任何慣用的間隔）來增加。 
+* Blazor會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。 當使用序號時，比較速度會更快， Blazor而且具有可自動處理序號的編譯步驟，讓開發人員撰寫*razor*檔案。
 
-## <a name="perform-large-data-transfers-in-opno-locblazor-server-apps"></a>在伺服器應用中Blazor執行大型資料傳輸
+## <a name="perform-large-data-transfers-in-blazor-server-apps"></a>在伺服器應用程式中Blazor執行大型資料傳輸
 
-在某些情況下,必須在 JAVAScriptBlazor和 之間傳輸大量數據。 通常,在以下時間進行大型數據傳輸:
+在某些情況下，必須在 JavaScript 和Blazor之間傳輸大量資料。 通常會在下列情況進行大型資料傳輸：
 
-* 瀏覽器檔案系統 API 用於上載或下載檔案。
-* 需要與第三方庫進行互操作。
+* 瀏覽器檔案系統 Api 可用來上傳或下載檔案。
+* 需要具有協力廠商程式庫的互通性。
 
-在BlazorServer 中,有限制,以防止傳遞可能導致性能問題的單個大型消息。
+在Blazor伺服器中，有一項限制是為了避免傳遞可能會導致效能問題的單一大型訊息。
 
-在開發在 JavaScriptBlazor和 之間傳輸資料的代碼時,請考慮以下指南:
+開發在 JavaScript 和Blazor之間傳輸資料的程式碼時，請考慮下列指導方針：
 
-* 將數據切成更小的部分,並按順序發送數據段,直到伺服器接收所有數據。
-* 不要在 JavaScript 和 C# 代碼中分配大型物件。
-* 在發送或接收數據時,不要長時間阻止主 UI 線程。
-* 釋放進程完成或取消時消耗的任何記憶體。
-* 出於安全目的,強制實施以下附加要求:
-  * 聲明可以傳遞的最大檔或數據大小。
-  * 聲明從用戶端到伺服器的最低上載速率。
-* 伺服器接收資料後,資料可以是:
-  * 暫時存儲在記憶體緩衝區中,直到收集所有段。
-  * 立即使用。 例如,數據可以立即存儲在資料庫中,或在接收每個段時寫入磁碟。
+* 將資料分割成較小的片段，並依序傳送資料區段，直到伺服器收到所有資料為止。
+* 不要以 JavaScript 和 c # 程式碼配置大型物件。
+* 傳送或接收資料時，不要長時間封鎖主要 UI 執行緒。
+* 釋放處理常式完成或取消時所耗用的任何記憶體。
+* 基於安全性目的，強制執行下列額外的需求：
+  * 宣告可傳遞的檔案或資料大小上限。
+  * 宣告從用戶端到伺服器的最小上傳速率。
+* 伺服器收到資料之後，資料可以是：
+  * 暫時儲存在記憶體緩衝區中，直到收集所有區段為止。
+  * 立即使用。 例如，資料可以立即儲存在資料庫中，或在每個區段收到時寫入磁片。
 
-以下檔上載器類處理與用戶端的 JS 互通。 上傳器類別使用 JS 互通來:
+下列檔案上傳者類別會處理用戶端的 JS interop。 上載者類別會使用 JS interop 來執行下列動作：
 
-* 輪詢客戶端以發送數據段。
-* 如果輪詢超時,則中止事務。
+* 輪詢用戶端以傳送資料區段。
+* 如果輪詢超時，則中止交易。
 
 ```csharp
 using System;
@@ -332,16 +335,16 @@ public class FileUploader : IDisposable
 
 在上述範例中：
 
-* `_maxBase64SegmentSize`設定為`8192`,`_maxBase64SegmentSize = _segmentSize * 4 / 3`從計算。
-* 低級 .NET 核心記憶體管理 API`_uploadedSegments`用於在中儲存伺服器上的記憶體段。
-* 方法`ReceiveFile`用於透過 JS 互通處理上載:
-  * 檔大小透過 JS`_jsRuntime.InvokeAsync<FileInfo>('getFileSize', selector)`與的聯名字節確定。
-  * 要接收的段數計算並儲存在中`numberOfSegments`。
-  * 段在`for`使用 JS 的循環`_jsRuntime.InvokeAsync<string>('receiveSegment', i, selector)`中要求使用 。 解碼前,除最後一個段外的所有段必須為 8,192 位元組。 用戶端被迫以有效的方式發送數據。
-  * 對於接收的每個段,在使用<xref:System.Convert.TryFromBase64String*>解碼之前執行檢查。
-  * 上載完成後,具有數據的流將作為新的<xref:System.IO.Stream>`SegmentedStream`( ) 傳回。
+* `_maxBase64SegmentSize`會設定為`8192`，這是從`_maxBase64SegmentSize = _segmentSize * 4 / 3`計算。
+* 低層級的 .NET Core 記憶體管理 Api 是用來將伺服器上的記憶體區段儲存`_uploadedSegments`在中。
+* `ReceiveFile`方法是用來處理透過 JS interop 的上傳：
+  * 檔案大小是以位元組為單位，透過 JS interop `_jsRuntime.InvokeAsync<FileInfo>('getFileSize', selector)`與來決定。
+  * 要接收的區段數目會計算並儲存在中`numberOfSegments`。
+  * 這些區段會在透過 JS `for` interop 與`_jsRuntime.InvokeAsync<string>('receiveSegment', i, selector)`的迴圈中要求。 在解碼之前，所有區段（但最後一個）必須是8192個位元組。 系統會強制用戶端以有效率的方式傳送資料。
+  * 針對每個收到的區段，會先執行檢查<xref:System.Convert.TryFromBase64String*>，然後再使用進行解碼。
+  * 當上傳完成之後，會以新<xref:System.IO.Stream>的（`SegmentedStream`）傳回資料的資料流程。
 
-分段流類將段清單公開為唯讀不可查找: <xref:System.IO.Stream>
+分段資料流程類別會將區段清單公開為 readonly 不可搜尋<xref:System.IO.Stream>：
 
 ```csharp
 using System;
@@ -437,7 +440,7 @@ public class SegmentedStream : Stream
 }
 ```
 
-以下代碼實現 JavaScript 函數來接收資料:
+下列程式碼會實行 JavaScript 函式來接收資料：
 
 ```javascript
 function getFileSize(selector) {

@@ -5,17 +5,23 @@ description: 此教學課程時間不長，會使用 ASP.NET Core 建立及執�
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: getting-started
-ms.openlocfilehash: 86a0c8d017138a949fddc0356f3de548d368a4c0
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 565cde233d6fc5f085ae1709e167e73980d5c3c2
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80417602"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776229"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
-本教學示範如何使用 .NET核心 CLI 創建和執行ASP.NET核心 Web 應用。
+本教學課程說明如何使用 .NET Core CLI 建立和執行 ASP.NET Core web 應用程式。
 
 您將學習如何：
 
@@ -29,7 +35,7 @@ ms.locfileid: "80417602"
 
 ![Web 應用程式首頁](_static/home-page.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
@@ -43,8 +49,8 @@ dotnet new webapp -o aspnetcoreapp
 
 上述命令會：
 
-* 創建新的 Web 應用。  
-* 參數`-o aspnetcoreapp`創建一個名為*aspnetcoreapp*的目錄,該目錄具有應用的源檔。
+* 建立新的 web 應用程式。  
+* `-o aspnetcoreapp`參數會建立名為*aspnetcoreapp*的目錄，其中包含應用程式的來源檔案。
 
 ### <a name="trust-the-development-certificate"></a>信任開發憑證
 
@@ -70,7 +76,7 @@ dotnet dev-certs https --trust
 
 上述命令會顯示以下訊息：
 
-*請求信任 HTTPS 開發證書。如果憑證尚未受信任,我們將執行以下命令:*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`
+*已要求信任 HTTPS 開發憑證。如果憑證尚未受到信任，我們會執行下列命令：*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`
 
 此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。 若您同意信任開發憑證，請輸入您的密碼。
 
@@ -93,13 +99,13 @@ dotnet watch run
 
 命令殼層指出應用程式已啟動之後，瀏覽到 `https://localhost:5001`。
 
-## <a name="edit-a-razor-page"></a>編輯 Razor 頁面
+## <a name="edit-a-razor-page"></a>編輯Razor頁面
 
-開啟*頁面/Index.cshtml,* 使用以下突顯的標記修改並儲存頁面:
+開啟*Pages/Index. cshtml* ，並以下列反白顯示的標記修改並儲存頁面：
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-瀏覽`https://localhost:5001`到,刷新頁面,並驗證顯示更改。
+流覽至`https://localhost:5001`、重新整理頁面，然後確認是否顯示變更。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,27 +5,30 @@ description: 瞭解如何使用 JSON helper 從Blazor WebAssembly 應用程式�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/23/2020
+ms.date: 05/04/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: abc546cc0079a01e3999b2c7c083235d3fff9b06
-ms.sourcegitcommit: e94ecfae6a3ef568fa197da791c8bc595917d17a
+ms.openlocfilehash: d823db3688e05f6befefacc9f390e0dcdbf329a7
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82122224"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767144"
 ---
-# <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core Blazor 呼叫 Web API
+# <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
 
 By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.com/danroth27)和[Juan De la Cruz](https://github.com/juandelacruz23)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-[Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) apps 會使用預先`HttpClient`設定的服務來呼叫 web api。 撰寫要求，其中可以包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用 Blazor JSON helper 或搭配<xref:System.Net.Http.HttpRequestMessage>。 Blazor `HttpClient` WebAssembly apps 中的服務著重于向原始伺服器提出要求。 本主題中的指導方針僅適用于 Blazor WebAssembly apps。
+WebAssembly apps 會使用預先`HttpClient`設定的服務來呼叫 web api。 [ Blazor ](xref:blazor/hosting-models#blazor-webassembly) 撰寫要求，其中可以包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用Blazor JSON helper 或搭配<xref:System.Net.Http.HttpRequestMessage>。 WebAssembly `HttpClient` apps 中Blazor的服務著重于向原始伺服器提出要求。 本主題中的指導方針僅適用Blazor于 WebAssembly apps。
 
-[Blazor 伺服器](xref:blazor/hosting-models#blazor-server)應用程式會使用<xref:System.Net.Http.HttpClient>實例呼叫 web api，通常<xref:System.Net.Http.IHttpClientFactory>是使用來建立。 本主題中的指導方針與 Blazor 伺服器應用程式無關。 開發 Blazor 伺服器應用程式時，請遵循中<xref:fundamentals/http-requests>的指導方針。
+伺服器應用程式會使用<xref:System.Net.Http.HttpClient>實例呼叫 web api，通常<xref:System.Net.Http.IHttpClientFactory>是使用來建立。 [ Blazor ](xref:blazor/hosting-models#blazor-server) 本主題中的指導方針與Blazor伺服器應用程式無關。 開發Blazor伺服器應用程式時，請遵循中<xref:fundamentals/http-requests>的指導方針。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)） &ndash;選取*BlazorWebAssemblySample*應用程式。
 
@@ -34,7 +37,7 @@ By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.co
 * 呼叫 Web API （*Pages/CallWebAPI. razor*）
 * HTTP 要求測試器（*元件/HTTPRequestTester razor*）
 
-## <a name="packages"></a>Packages
+## <a name="packages"></a>套件
 
 在專案檔中參考[系統 .net. Http. Json](https://www.nuget.org/packages/System.Net.Http.Json/) NuGet 套件。
 
@@ -43,7 +46,7 @@ By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.co
 在`Program.Main`中，新增`HttpClient`服務（如果尚未存在）：
 
 ```csharp
-builder.Services.AddSingleton(
+builder.Services.AddTransient(sp => 
     new HttpClient
     {
         BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
@@ -52,9 +55,9 @@ builder.Services.AddSingleton(
 
 ## <a name="httpclient-and-json-helpers"></a>HttpClient 和 JSON 協助程式
 
-在 Blazor WebAssembly 應用程式中， [HttpClient](xref:fundamentals/http-requests)會當做預先設定的服務提供，以便向源伺服器提出要求。
+在Blazor WebAssembly 應用程式中， [HttpClient](xref:fundamentals/http-requests)會當做預先設定的服務提供，以便向源伺服器提出要求。
 
-Blazor 伺服器應用程式預設不會`HttpClient`包含服務。 使用`HttpClient` [HttpClient factory 基礎結構](xref:fundamentals/http-requests)，將提供給應用程式。
+Blazor伺服器應用程式預設不會`HttpClient`包含服務。 使用`HttpClient` [HttpClient factory 基礎結構](xref:fundamentals/http-requests)，將提供給應用程式。
 
 `HttpClient`和 JSON 協助程式也用來呼叫協力廠商 Web API 端點。 `HttpClient`會使用瀏覽器[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
 
@@ -182,94 +185,14 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制稱為「*相同來源原則*」。 相同來源的原則可防止惡意網站從另一個網站讀取敏感性資料。 若要將來自瀏覽器的要求傳送至具有不同來源的端點，*端點*必須啟用[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)。
 
-[Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（*Pages/CallWebAPI. razor*）中使用 CORS。
+[WebAssembly 範例應用程式（BlazorWebAssemblySample）示範如何在呼叫 Web API 元件（Pages/CallWebAPI razor）中使用 CORS。 Blazor ](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) *Pages/CallWebAPI.razor*
 
 若要允許其他網站對您的應用程式進行跨原始來源資源分享（CORS）要求<xref:security/cors>，請參閱。
 
-## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>具有 Fetch API 要求選項的 HttpClient 和 HttpRequestMessage
-
-在 Blazor WebAssembly 應用程式的 WebAssembly 上執行時， [HttpClient](xref:fundamentals/http-requests)請使用<xref:System.Net.Http.HttpRequestMessage> HttpClient 和來自訂要求。 例如，您可以指定要求 URI、HTTP 方法，以及任何所需的要求標頭。
-
-```razor
-@using System.Net.Http
-@using System.Net.Http.Headers
-@using System.Net.Http.Json
-@inject HttpClient Http
-
-@code {
-    private async Task PostRequest()
-    {
-        var requestMessage = new HttpRequestMessage()
-        {
-            Method = new HttpMethod("POST"),
-            RequestUri = new Uri("https://localhost:10000/api/TodoItems"),
-            Content = 
-                JsonContent.Create(new TodoItem
-                { 
-                    Name: "A New Todo Item",
-                    IsComplete: false
-                })
-        };
-        
-        requestMessage.Headers.Authorization = 
-           new AuthenticationHeaderValue("Bearer", "{OAUTH TOKEN}");
-
-        requestMessage.Content.Headers.TryAddWithoutValidation(
-            "x-custom-header", "value");
-
-        var response = await Http.SendAsync(requestMessage);
-        var responseStatusCode = response.StatusCode;
-        var responseBody = await response.Content.ReadAsStringAsync();
-    }
-}
-```
-
-.NET WebAssembly 的執行會`HttpClient`使用[WindowOrWorkerGlobalScope。 fetch （）](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch)。 Fetch 可讓您設定數個[要求特有的選項](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。 
-
-您可以使用`HttpRequestMessage`下表所示的擴充方法來設定 HTTP 提取要求選項。
-
-| `HttpRequestMessage`擴充方法 | Fetch 要求屬性 |
-| ------------------------------------- | ---------------------- |
-| `SetBrowserRequestCredentials`        | [憑證](https://developer.mozilla.org/docs/Web/API/Request/credentials) |
-| `SetBrowserRequestCache`              | [高速](https://developer.mozilla.org/docs/Web/API/Request/cache) |
-| `SetBrowserRequestMode`               | [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) |
-| `SetBrowserRequestIntegrity`          | [完整性](https://developer.mozilla.org/docs/Web/API/Request/integrity) |
-
-您可以使用更泛型`SetBrowserRequestOption`的擴充方法來設定其他選項。
- 
-HTTP 回應通常會在Blazor WebAssembly 應用程式中進行緩衝處理，以啟用回應內容的同步讀取支援。 若要啟用回應串流的支援，請`SetBrowserResponseStreamingEnabled`在要求上使用擴充方法。
-
-若要在跨原始來源要求中包含認證，請`SetBrowserRequestCredentials`使用擴充方法：
-
-```csharp
-requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
-```
-
-如需有關提取 API 選項的詳細資訊，請參閱[MDN web 檔： WindowOrWorkerGlobalScope。 Fetch （）:P arameters](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。
-
-在 CORS 要求上傳送認證（授權 cookie/標頭）時`Authorization` ，cors 原則必須允許標頭。
-
-下列原則包含的設定：
-
-* 要求來源（`http://localhost:5000`、 `https://localhost:5001`）。
-* Any 方法（動詞）。
-* `Content-Type`和`Authorization`標頭。 若要允許自訂標頭（例如`x-custom-header`），請在呼叫<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*>時列出標頭。
-* 用戶端 JavaScript 程式碼（`credentials`屬性設為`include`）所設定的認證。
-
-```csharp
-app.UseCors(policy => 
-    policy.WithOrigins("http://localhost:5000", "https://localhost:5001")
-    .AllowAnyMethod()
-    .WithHeaders(HeaderNames.ContentType, HeaderNames.Authorization, "x-custom-header")
-    .AllowCredentials());
-```
-
-如需詳細資訊， <xref:security/cors>請參閱和範例應用程式的 HTTP 要求測試器元件（*Components/HTTPRequestTester*）。
-
 ## <a name="additional-resources"></a>其他資源
 
-* [要求其他存取權杖](xref:security/blazor/webassembly/additional-scenarios#request-additional-access-tokens)
-* [將權杖附加到連出要求](xref:security/blazor/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)
+* <xref:security/blazor/webassembly/index>
+* <xref:security/blazor/webassembly/additional-scenarios>
 * <xref:fundamentals/http-requests>
 * <xref:security/enforcing-ssl>
 * [Kestrel HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)

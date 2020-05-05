@@ -8,16 +8,19 @@ ms.custom: mvc
 ms.date: 04/24/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 6f049906da4a1aa87f293f5ad1af19dad44f477a
-ms.sourcegitcommit: 6d271f4b4c3cd1e82267f51d9bfb6de221c394fe
+ms.openlocfilehash: 05068853615a63611188175d95c27f1442973a86
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150041"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82768204"
 ---
-# <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 保護Blazor ASP.NET Core WebAssembly 託管應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 保護Blazor ASP.NET Core WebAssembly 託管應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
@@ -91,7 +94,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access`）。
 1. 選取 [新增權限]  。
-1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是] **** 加以確認。
+1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是]  確認。
 
 在**Home** > **Azure AD B2C** > **使用者流程**：
 
@@ -149,7 +152,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-### <a name="useridentityname"></a>User.Identity.Name
+### <a name="useridentityname"></a>使用者.Identity.檔案名
 
 根據預設， `User.Identity.Name`不會填入。
 
@@ -246,7 +249,7 @@ builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("{APP ASSEMBLY}.ServerAPI"));
 ```
 
-使用`AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal`封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援。 這個方法會設定應用程式與身分識別提供者（IP）互動所需的所有服務。
+使用`AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal`封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援。 這個方法會設定應用程式與Identity提供者（IP）互動所需的所有服務。
 
 *Program.cs*：
 

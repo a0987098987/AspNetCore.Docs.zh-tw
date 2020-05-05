@@ -5,13 +5,19 @@ description: 了解如何使用 Visual Studio Code 將 ASP.NET Core 應用程式
 ms.author: riserrad
 ms.custom: mvc
 ms.date: 07/10/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/publish-to-azure-webapp-using-vscode
-ms.openlocfilehash: 5f117cb2867a6e7b54269ef39abe819256b429ec
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: fde0290020e08701bd19b72ebea0e2739462b232
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80242674"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767840"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio-code"></a>使用 Visual Studio Code 將 ASP.NET Core 應用程式發佈至 Azure
 
@@ -28,10 +34,10 @@ ms.locfileid: "80242674"
 ## <a name="set-up"></a>設定
 
 - 如果您沒有帳戶，請開啟[免費的 Azure 帳戶](https://azure.microsoft.com/free/dotnet/)。
-- 安裝[.NET 核心 SDK](https://dotnet.microsoft.com/download)
-- 安裝[視覺化工作室代碼](https://code.visualstudio.com/Download)
+- 安裝[.NET Core SDK](https://dotnet.microsoft.com/download)
+- 安裝[Visual Studio Code](https://code.visualstudio.com/Download)
   - 將 [C# 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)安裝至 Visual Studio Code
-  - 將[Azure 應用服務擴展安裝](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)到可視化工作室代碼,並在繼續之前對其進行配置
+  - 安裝[Azure App Service 擴充](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)功能以 Visual Studio Code 並進行設定，然後再繼續
 
 ## <a name="create-an-aspnet-core-mvc-project"></a>建立 ASP.NET Core MVC 專案
 
@@ -111,7 +117,7 @@ tasks.json
 
 ![發佈資料夾結構](publish-to-azure-webapp-using-vscode/_static/publish-folder.jpg)
 
-## <a name="publish-to-azure-app-service"></a>發佈到 Azure App Service
+## <a name="publish-to-azure-app-service"></a>發佈至 Azure App Service
 
 運用適用於 Visual Studio Code 的 Azure App Service 延伸模組，遵循下列步驟將該網站直接發佈至 Azure App Service。
 

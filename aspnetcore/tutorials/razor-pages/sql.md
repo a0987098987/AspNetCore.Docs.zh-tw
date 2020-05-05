@@ -4,13 +4,19 @@ author: rick-anderson
 description: 說明如何使用資料庫和 ASP.NET Core。
 ms.author: riande
 ms.date: 7/22/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: b5acb573f8fa39e5300ecdb359113d8697d78934
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 159588ec750f0ede534522aa9397fc2aefb58cd6
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78664336"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775605"
 ---
 # <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
 
@@ -32,7 +38,7 @@ ms.locfileid: "78664336"
 
 ---
 
-ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本地開發,它將從*appsettings.json*檔中獲取連接字串。
+ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從*appsettings*取得連接字串。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -107,7 +113,7 @@ if (context.Movie.Any())
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Program.cs)]
 
-未執行時`Update-Database`發生以下異常:
+當尚未執行時`Update-Database` ，會發生下列例外狀況：
 
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
@@ -119,7 +125,7 @@ if (context.Movie.Any())
 * 刪除資料庫中的所有記錄。 您可以使用瀏覽器或 [SSOX](xref:tutorials/razor-pages/new-field#ssox) 的刪除連結來執行這項操作
 * 強制應用程式初始化 (呼叫 `Startup` 類別中的方法)，以執行植入方法。 若要強制初始化，IIS Express 必須停止並重新啟動。 您可以使用下列其中一個方法來執行此工作：
 
-  * 右鍵按下通知區域中的 IIS Express 系統匣圖示,然後點按 **「離開**」或 **「停止」網站**:
+  * 以滑鼠右鍵按一下通知區域中的 [IIS Express 系統匣] 圖示，然後**按 [結束] 或 [** **停止網站**]：
 
     ![IIS Express 系統匣圖示](../first-mvc-app/working-with-sql/_static/iisExIcon.png)
 
@@ -141,8 +147,8 @@ if (context.Movie.Any())
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一篇: 手手架剃刀頁面](xref:tutorials/razor-pages/page)
-> [下一頁: 更新頁面](xref:tutorials/razor-pages/da1)
+> [上一個： scaffold Razor Pages](xref:tutorials/razor-pages/page)
+> [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end
 
@@ -167,7 +173,7 @@ if (context.Movie.Any())
 * 適用於 `CookiePolicyOptions` 的 [ASP.NET Core 中的 EU 一般資料保護規定 (GDPR) 支援](xref:security/gdpr)。
 * [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
-ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本地開發,它將從*appsettings.json*檔中獲取連接字串。
+ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從*appsettings*取得連接字串。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -294,10 +300,10 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 
 ## <a name="additional-resources"></a>其他資源
 
-* [本教學的 YouTube 版本](https://youtu.be/A_5ff11sDHY)
+* [本教學課程的 YouTube 版本](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
-> [上一篇: 手手架剃刀頁面](xref:tutorials/razor-pages/page)
-> [下一頁: 更新頁面](xref:tutorials/razor-pages/da1)
+> [上一步Razor ： scaffold 頁面](xref:tutorials/razor-pages/page)
+> [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end

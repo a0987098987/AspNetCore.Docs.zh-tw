@@ -8,16 +8,19 @@ ms.custom: mvc
 ms.date: 04/24/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 95c16bcd8da22792b27b3aaaf8632b2206372270
-ms.sourcegitcommit: 6d271f4b4c3cd1e82267f51d9bfb6de221c394fe
+ms.openlocfilehash: 3ea2b7632fc41e1c8ad72292e45a93e081b6edbe
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150064"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776151"
 ---
-# <a name="secure-an-aspnet-core-opno-locblazor-webassembly-standalone-app-with-microsoft-accounts"></a>使用 Microsoft 帳戶Blazor保護 ASP.NET Core WebAssembly 獨立應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>使用 Microsoft 帳戶Blazor保護 ASP.NET Core WebAssembly 獨立應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
@@ -76,7 +79,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 ## <a name="authentication-service-support"></a>驗證服務支援
 
-使用`AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal`封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援。 這個方法會設定應用程式與身分識別提供者（IP）互動所需的所有服務。
+使用`AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal`封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援。 這個方法會設定應用程式與Identity提供者（IP）互動所需的所有服務。
 
 *Program.cs*：
 
@@ -171,4 +174,4 @@ builder.Services.AddMsalAuthentication(options =>
 
 * <xref:security/blazor/webassembly/additional-scenarios>
 * [快速入門：使用 Microsoft 身分識別平台來註冊應用程式](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)
-* [快速入門：設定應用程式以公開 web Api](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)
+* [快速入門：設定應用程式以公開 Web API](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)

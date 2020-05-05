@@ -7,14 +7,18 @@ ms.author: bradyg
 ms.custom: mvc
 ms.date: 04/12/2020
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 7e0cd952fd152ff6adb6e0a7c56214d70d3c7b86
-ms.sourcegitcommit: f9a5069577e8f7c53f8bcec9e13e117950f4f033
+ms.openlocfilehash: 054462c37fffd1973cbbe4f76ae4a3be5a6c1778
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559005"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767300"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 組態
 
@@ -188,12 +192,12 @@ let connection = new signalR.HubConnectionBuilder()
 
 下表列出可用的記錄層級。 您所提供的值`configureLogging` ，用來設定將記錄的**最低**記錄層級。 記錄在此層級的訊息，**或在資料表中所列的層級**將會記錄下來。
 
-| String                      | LogLevel               |
+| 字串                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info` **或** `information` | `LogLevel.Information` |
-| `warn` **或** `warning`     | `LogLevel.Warning`     |
+| `info`**或**`information` | `LogLevel.Information` |
+| `warn`**或**`warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -574,12 +578,12 @@ let connection = new signalR.HubConnectionBuilder()
 
 下表列出可用的記錄層級。 您所提供的值`configureLogging` ，用來設定將記錄的**最低**記錄層級。 記錄在此層級的訊息，**或在資料表中所列的層級**將會記錄下來。
 
-| String                      | LogLevel               |
+| 字串                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info` **或** `information` | `LogLevel.Information` |
-| `warn` **或** `warning`     | `LogLevel.Warning`     |
+| `info`**或**`information` | `LogLevel.Information` |
+| `warn`**或**`warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -958,12 +962,12 @@ let connection = new signalR.HubConnectionBuilder()
 
 下表列出可用的記錄層級。 您所提供的值`configureLogging` ，用來設定將記錄的**最低**記錄層級。 記錄在此層級的訊息，**或在資料表中所列的層級**將會記錄下來。
 
-| String                      | LogLevel               |
+| 字串                      | LogLevel               |
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info` **或** `information` | `LogLevel.Information` |
-| `warn` **或** `warning`     | `LogLevel.Warning`     |
+| `info`**或**`information` | `LogLevel.Information` |
+| `warn`**或**`warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |

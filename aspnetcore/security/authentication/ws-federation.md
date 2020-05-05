@@ -5,13 +5,19 @@ description: 本教學課程示範如何在 ASP.NET Core 應用程式中使用 W
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/16/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/ws-federation
-ms.openlocfilehash: d82421a14ede6cb6b01ef59f233bb2eba6b56aec
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ce0c484e84bc2ddb4a1d287246c63663f3875924
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78655425"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82768425"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>在 ASP.NET Core 中使用 WS-同盟來驗證使用者
 
@@ -21,8 +27,8 @@ ms.locfileid: "78655425"
 
 根據預設，新的中介軟體：
 
-* 不允許未經要求的登入。 WS-同盟通訊協定的這項功能很容易遭受 XSRF 攻擊。 不過，您可以使用 [`AllowUnsolicitedLogins`] 選項來啟用它。
-* 不會檢查每個表單張貼的登入訊息。 只會檢查 `CallbackPath` 的要求是否有登入。 `CallbackPath` 預設為 `/signin-wsfed`，但可透過[WsFederationOptions](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性加以變更。 藉由啟用[SkipUnrecognizedRequests](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions.skipunrecognizedrequests)選項，可以與其他驗證提供者共用此路徑。
+* 不允許未經要求的登入。 WS-同盟通訊協定的這項功能很容易遭受 XSRF 攻擊。 不過，您可以使用`AllowUnsolicitedLogins`選項來啟用它。
+* 不會檢查每個表單張貼的登入訊息。 只會檢查對`CallbackPath`的要求是否有登入。 `CallbackPath`預設為`/signin-wsfed` ，但可透過[WsFederationOptions](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性加以變更。 藉由啟用[SkipUnrecognizedRequests](/dotnet/api/microsoft.aspnetcore.authentication.wsfederation.wsfederationoptions.skipunrecognizedrequests)選項，可以與其他驗證提供者共用此路徑。
 
 ## <a name="register-the-app-with-active-directory"></a>向 Active Directory 註冊應用程式
 
@@ -51,15 +57,15 @@ ms.locfileid: "78655425"
 
 * 在嚮導的其餘部分按 [**下一步**]，然後在結尾處**關閉**。
 
-* ASP.NET Core 身分識別需要**名稱識別碼**宣告。 從 [編輯宣告**規則**] 對話方塊新增一個：
+* ASP.NET Core Identity需要**名稱識別碼**宣告。 從 [編輯宣告**規則**] 對話方塊新增一個：
 
 ![編輯宣告規則](ws-federation/_static/EditClaimRules.png)
 
-* 在 [**新增轉換宣告規則] 嚮導**中，將預設的 [**傳送 LDAP 屬性**] 保留為已選取，然後按 **[下一步]** 。 新增規則，將**SAM-Account-Name** LDAP 屬性對應至**名稱識別碼**傳出宣告：
+* 在 [**新增轉換宣告規則] 嚮導**中，將預設的 [**傳送 LDAP 屬性**] 保留為已選取，然後按 **[下一步]**。 新增規則，將**SAM-Account-Name** LDAP 屬性對應至**名稱識別碼**傳出宣告：
 
 ![新增轉換宣告規則嚮導：設定宣告規則](ws-federation/_static/AddTransformClaimRule.png)
 
-* 在 **編輯宣告規則** 視窗中，按一下 **完成** > **確定** 。
+* 在 [**編輯宣告規則**] 視窗中，按一下 [**完成** > **確定**]。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -72,17 +78,17 @@ ms.locfileid: "78655425"
 
 ![Azure Active Directory：建立應用程式註冊](ws-federation/_static/AadCreateAppRegistration.png)
 
-* 按一下 [**端點**]，並記下 [**同盟元資料檔案**URL]。 這是 WS-同盟中介軟體的 `MetadataAddress`：
+* 按一下 [**端點**]，並記下 [**同盟元資料檔案**URL]。 這是 WS-同盟中介軟體的`MetadataAddress`：
 
 ![Azure Active Directory：端點](ws-federation/_static/AadFederationMetadataDocument.png)
 
-* 流覽至新的應用程式註冊。 按一下 [**設定**] > [**屬性**]，並記下 [**應用程式識別碼 URI**]。 這是 WS-同盟中介軟體的 `Wtrealm`：
+* 流覽至新的應用程式註冊。 按一下 [**設定** > ] [**屬性**]，並記下 [**應用程式識別碼 URI**]。 這是 WS-同盟中介軟體的`Wtrealm`：
 
 ![Azure Active Directory：應用程式註冊屬性](ws-federation/_static/AadAppIdUri.png)
 
-## <a name="use-ws-federation-without-aspnet-core-identity"></a>使用不含 ASP.NET Core 身分識別的 WS-同盟
+## <a name="use-ws-federation-without-aspnet-core-identity"></a>使用不含 ASP.NET Core 的 WS-同盟Identity
 
-您可以使用 WS-同盟中介軟體而不需要身分識別。 例如：
+您可以使用 WS-同盟中介軟體而Identity不需要。 例如：
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](ws-federation/samples/StartupNon31.cs?name=snippet)]
 ::: moniker-end
@@ -91,10 +97,10 @@ ms.locfileid: "78655425"
 [!code-csharp[](ws-federation/samples/StartupNon21.cs?name=snippet)]
 ::: moniker-end
 
-## <a name="add-ws-federation-as-an-external-login-provider-for-aspnet-core-identity"></a>新增 WS-同盟做為 ASP.NET Core 身分識別的外部登入提供者
+## <a name="add-ws-federation-as-an-external-login-provider-for-aspnet-core-identity"></a>新增 WS-同盟做為 ASP.NET Core 的外部登入提供者Identity
 
 * 新增對 AspNetCore 的相依性。 [WsFederation](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.WsFederation)至專案。
-* 將 WS-同盟新增至 `Startup.ConfigureServices`：
+* 將 WS-同盟新增`Startup.ConfigureServices`至：
 
 ::: moniker range=">= aspnetcore-3.0"
 [!code-csharp[](ws-federation/samples/Startup31.cs?name=snippet)]
@@ -110,8 +116,8 @@ ms.locfileid: "78655425"
 
 流覽至應用程式，然後按一下導覽標頭中的 [**登入**] 連結。 有一個選項可使用 WsFederation： ![登入頁面登入](ws-federation/_static/WsFederationButton.png)
 
-使用 ADFS 做為提供者時，按鈕會重新導向至 ADFS 登入頁面： ![ADFS 登入頁面](ws-federation/_static/AdfsLoginPage.png)
+使用 ADFS 做為提供者時，按鈕會重新導向至 ADFS 登入頁面![： adfs 登入頁面](ws-federation/_static/AdfsLoginPage.png)
 
-使用 Azure Active Directory 做為提供者時，按鈕會重新導向至 AAD 登入頁面： ![AAD 登入頁面](ws-federation/_static/AadSignIn.png)
+使用 Azure Active Directory 做為提供者時，按鈕會重新導向至 AAD 登入頁面![： aad 登入頁面](ws-federation/_static/AadSignIn.png)
 
-成功登入新的使用者會重新導向至應用程式的使用者註冊頁面： ![註冊 頁面](ws-federation/_static/Register.png)
+成功登入新的使用者會重新導向至應用程式的使用者註冊頁面： ![[註冊] 頁面](ws-federation/_static/Register.png)

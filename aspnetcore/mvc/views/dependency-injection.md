@@ -4,13 +4,19 @@ author: ardalis
 description: 了解 ASP.NET Core 如何支援 MVC 檢視中的相依性插入。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 6241bb8e262f64e2e30721bc5fe6f8f1be84b60d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: aee4152bed50576f087862142e7ce9f261c7da19
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78656097"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775449"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>ASP.NET Core 檢視中的相依性插入
 
@@ -18,7 +24,7 @@ ms.locfileid: "78656097"
 
 ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-injection)。 這可用於檢視特定服務，例如僅適用於填入檢視項目所需的當地語系化或資料。 您應該嘗試維護控制器與檢視之間的 [Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (關注點分離)。 您檢視所顯示的大部分資料應該都是從控制器傳入。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="configuration-injection"></a>插入組態
 
@@ -55,7 +61,7 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
-此檢視會顯示 `ToDoItem` 執行個體清單，以及顯示整體統計資料的摘要。 摘要是從插入的 `StatisticsService` 中填入。 在 `ConfigureServices`Startup.cs*的* 中，註冊此服務以進行相依性插入：
+此檢視會顯示 `ToDoItem` 執行個體清單，以及顯示整體統計資料的摘要。 摘要是從插入的 `StatisticsService` 中填入。 在 *Startup.cs* 的 `ConfigureServices` 中，註冊此服務以進行相依性插入：
 
 [!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Startup.cs?highlight=6,7&range=15-22)]
 

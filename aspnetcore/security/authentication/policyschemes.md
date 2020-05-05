@@ -4,13 +4,19 @@ author: rick-anderson
 description: 驗證原則配置可讓您更輕鬆地擁有單一邏輯驗證架構
 ms.author: riande
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/policyschemes
-ms.openlocfilehash: f02d8e5cac20a9b60c5eddbd28253efacf682ea1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ddedf62c5e8363bd93c9948fd2d3418abc566539
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660731"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767313"
 ---
 # <a name="policy-schemes-in-aspnet-core"></a>ASP.NET Core 中的原則配置
 
@@ -19,7 +25,7 @@ ms.locfileid: "78660731"
 * 輕鬆將任何驗證動作轉送至另一個配置。
 * 根據要求動態轉送。
 
-使用衍生 <xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions> 的所有驗證配置和相關聯的[AuthenticationHandler\<TOptions >](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1)：
+所有使用衍生<xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions>的驗證配置和相關聯[的\<AuthenticationHandler TOptions>](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1)：
 
 * 會在 ASP.NET Core 2.1 和更新版本中自動進行原則配置。
 * 可以透過設定配置的選項來啟用。

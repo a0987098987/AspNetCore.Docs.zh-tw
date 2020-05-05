@@ -7,14 +7,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: fundamentals/websockets
-ms.openlocfilehash: a8040003374906fd93e12c9fde44c4a5ccc2cf37
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: da713f22582cf17f60a4deda1b689662a4e4ae06
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78655782"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775436"
 ---
 # <a name="websockets-support-in-aspnet-core"></a>ASP.NET Core 中的 WebSockets 支援
 
@@ -30,7 +34,7 @@ ms.locfileid: "78655782"
 
 針對大部分的應用程式，我們建議透過原始 WebSocket 的 SignalR。 SignalR 為不提供 WebSocket 的環境提供傳輸後援。 它也提供簡單的遠端程序呼叫應用程式模型。 而且在大部分的案例中，相較於使用原始 WebSocket，SignalR 沒有顯著的效能缺點。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * ASP.NET Core 1.1 或更新版本
 * 支援 ASP.NET Core 的任何作業系統：
@@ -184,13 +188,13 @@ CORS 所提供的保護不套用至 WebSocket。 瀏覽器**不**會：
 > [!NOTE]
 > 使用 IIS Express 時，不需要這些步驟
 
-1. 導航到**控制面板** > **程式和** > **功能** > **打開或關閉 Windows 功能**(螢幕左側)。
-1. 開啟以下節點:**網際網路資訊服務** > **萬維網服務** > **應用程式開發功能**。
+1. 流覽至 **[控制台** > **Programs** > ] [程式] [**程式和功能** > ] [開啟**或關閉 Windows 功能**] （畫面左側）。
+1. 開啟下列節點： **Internet Information Services** > **World Wide Web 服務** > **應用程式開發功能**。
 1. 選取 [WebSocket 通訊協定]**** 功能。 選取 [確定]  。
 
 ### <a name="disable-websocket-when-using-socketio-on-nodejs"></a>在 Node.js 上使用 socket.io 時停用 WebSocket
 
-如果在[Node.js](https://nodejs.org/)`webSocket`上的[socket.io](https://socket.io/)中使用 WebSocket 支援,請使用*Web.config 或應用程式 Host.config*中*applicationHost.config*的元素禁用預設的 IIS WebSocket 模組。如果未執行此步驟,IIS WebSocket 模組將嘗試處理 WebSocket 通信,而不是 Node.js 和應用。
+如果在[node.js](https://nodejs.org/)上使用`webSocket` [socket.io](https://socket.io/)中的 WebSocket 支援，請使用*web.config*或*Applicationhost.config*中的元素來停用預設 IIS WebSocket 模組。如果未執行此步驟，IIS WebSocket 模組會嘗試處理 WebSocket 通訊，而不是 node.js 和應用程式。
 
 ```xml
 <system.webServer>

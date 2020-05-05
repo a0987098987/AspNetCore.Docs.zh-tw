@@ -5,13 +5,19 @@ description: 了解如何使用 ASP.NET Core 建置 Web API。
 ms.author: riande
 ms.custom: mvc
 ms.date: 2/25/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: 4e205c737f606579590854b679e669cbdd0cd5ab
-ms.sourcegitcommit: c19e388c83c981232e6f128d97440262adfe06e2
+ms.openlocfilehash: ddc14aba14e31c5530cda14b4792736da001246a
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2020
-ms.locfileid: "82727800"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767235"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -36,7 +42,7 @@ ms.locfileid: "82727800"
 
 本教學課程會建立以下 API：
 
-|API | 描述 | Request body | Response body |
+|API | 說明 | Request body | Response body |
 |--- | ---- | ---- | ---- |
 |`GET /api/TodoItems` | 取得所有待辦事項 | None | 待辦事項的陣列|
 |`GET /api/TodoItems/{id}` | 依識別碼取得項目 | None | 待辦事項|
@@ -48,7 +54,7 @@ ms.locfileid: "82727800"
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -522,7 +528,7 @@ DTO 可用來：
 
 本教學課程會建立以下 API：
 
-|API | 描述 | Request body | Response body |
+|API | 說明 | Request body | Response body |
 |--- | ---- | ---- | ---- |
 |GET /api/TodoItems | 取得所有待辦事項 | None | 待辦事項的陣列|
 |GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
@@ -534,7 +540,7 @@ DTO 可用來：
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

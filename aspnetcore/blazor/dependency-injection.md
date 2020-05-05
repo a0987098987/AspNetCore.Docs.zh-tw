@@ -1,52 +1,55 @@
 ---
-title: ASP.NET核心Blazor相依項
+title: ASP.NET Core Blazor相依性插入
 author: guardrex
-description: 瞭解應用Blazor如何將服務注入元件。
+description: 瞭解應用Blazor程式如何將服務插入元件中。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/20/2020
+ms.date: 05/04/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/dependency-injection
-ms.openlocfilehash: 4cdde9ee8c9fd9adf00894a067d32965b180e5ec
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 742f3c5ea26fab5e168f162a0e133da05fd74a74
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78658071"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767108"
 ---
-# <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET核心布拉佐爾依賴注入
+# <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core Blazor 相依性插入
 
-由[雷納·斯特羅佩克](https://www.timecockpit.com)和[邁克·魯索斯](https://github.com/mjrousos)
+By [Rainer Stropek](https://www.timecockpit.com)和[Mike Rousos](https://github.com/mjrousos)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-布拉佐爾支持[依賴注入 (DI)。](xref:fundamentals/dependency-injection) 應用可以通過將它們注入元件來使用內置服務。 應用還可以定義和註冊自定義服務,並通過 DI 在整個應用中提供這些服務。
+Blazor 支援相依性[插入（DI）](xref:fundamentals/dependency-injection)。 應用程式可以使用內建的服務，方法是將它們插入元件中。 應用程式也可以定義和註冊自訂服務，並透過 DI 讓它們可在整個應用程式中使用。
 
-DI 是一種用於訪問在中心位置配置的服務的技術。 這在 Blazor 應用中非常有用,可用於:
+DI 是用來存取集中位置所設定之服務的技術。 在 Blazor 應用程式中，這會很有用：
 
-* 跨多個元件(稱為*單例*服務)共用服務類的單個實例。
-* 通過使用引用抽象將元件與具體服務類分離。 例如,請考慮用於訪問應用中`IDataAccess`數據的介面。 該介面由具體`DataAccess`類實現,並在應用的服務容器中註冊為服務。 當元件使用 DI 接收`IDataAccess`實現 時,元件不會耦合到具體類型。 可以交換實現,也許是為了單元測試中的模擬實現。
+* 跨許多元件（稱為*單一*服務）共用服務類別的單一實例。
+* 使用參考抽象，將元件與具體的服務類別分離。 例如，請考慮使用介面`IDataAccess`來存取應用程式中的資料。 介面是由具象`DataAccess`類別來執行，並在應用程式的服務容器中註冊為服務。 當元件使用 DI 來接收實作為`IDataAccess`時，該元件不會結合到具體類型。 可以交換執行，也許是針對單元測試中的 mock 執行。
 
 ## <a name="default-services"></a>預設服務
 
-默認服務將自動添加到應用的服務集合中。
+預設服務會自動新增至應用程式的服務集合。
 
-| 服務 | 存留期 | 描述 |
+| 服務 | 存留期 | 說明 |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | 單一 | 提供了從 URI 識別的資源發送 HTTP 請求和接收 HTTP 回應的方法。<br><br>Blazor `HttpClient` WebAssembly 應用中的實例使用瀏覽器處理後台的 HTTP 流量。<br><br>默認情況下,Blazor `HttpClient` Server 應用不包括配置為服務的應用。 向`HttpClient`Blazor 伺服器應用提供 。<br><br>如需詳細資訊，請參閱 <xref:blazor/call-web-api>。 |
-| `IJSRuntime` | 單頓(布拉佐網路大會)<br>範圍 (布拉佐伺服器) | 表示調度 JavaScript 呼叫的 JavaScript 執行時的實例。 如需詳細資訊，請參閱 <xref:blazor/call-javascript-from-dotnet>。 |
-| `NavigationManager` | 單頓(布拉佐網路大會)<br>範圍 (布拉佐伺服器) | 包含用於處理URI和導航狀態的幫助器。 有關詳細資訊,請參閱[URI 和瀏覽狀態說明器](xref:blazor/routing#uri-and-navigation-state-helpers)。 |
+| <xref:System.Net.Http.HttpClient> | 暫時性 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br>Blazor WebAssembly 應用`HttpClient`程式中的實例會使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor 伺服器應用程式預設不`HttpClient`包含已設定為服務的。 將提供`HttpClient`給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
+| `IJSRuntime` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor 伺服器） | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/call-javascript-from-dotnet>。 |
+| `NavigationManager` | Singleton （Blazor WebAssembly）<br>限定範圍（Blazor 伺服器） | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
 
-自定義服務提供者不會自動提供表中列出的預設服務。 如果使用自定義服務提供者並且需要表中顯示的任何服務,則向新的服務提供者添加所需的服務。
+自訂服務提供者不會自動提供表格中所列的預設服務。 如果您使用自訂服務提供者，而且需要資料表中所顯示的任何服務，請將所需的服務新增至新的服務提供者。
 
-## <a name="add-services-to-an-app"></a>新增服務新增到應用程式
+## <a name="add-services-to-an-app"></a>將服務新增至應用程式
 
 ### <a name="blazor-webassembly"></a>Blazor WebAssembly
 
-在`Main`*Program.cs*方法中為應用的服務集合配置服務。 在下面的範例中,`MyDependency`實現註冊`IMyDependency`為 :
+在`Main` *Program.cs*的方法中，為應用程式的服務集合設定服務。 在下列範例中， `MyDependency`會為`IMyDependency`執行註冊：
 
 ```csharp
 public class Program
@@ -62,7 +65,7 @@ public class Program
 }
 ```
 
-生成主機后,可以在呈現任何元件之前從根 DI 作用域訪問服務。 這對於在呈現內容之前執行初始化邏輯非常有用:
+建立主機之後，您就可以從根 DI 範圍存取服務，然後再呈現任何元件。 這有助於在轉譯內容之前執行初始化邏輯：
 
 ```csharp
 public class Program
@@ -83,7 +86,7 @@ public class Program
 }
 ```
 
-主機還為應用提供中央配置實例。 基於前面的範例,天氣服務的網址從預設設定來源 (例如*appsettings.json)* 傳遞到`InitializeWeatherAsync`:
+主機也會提供應用程式的中央設定實例。 以先前的範例為基礎，氣象服務的 URL 會從預設設定來源（例如*appsettings*）傳遞至`InitializeWeatherAsync`：
 
 ```csharp
 public class Program
@@ -107,7 +110,7 @@ public class Program
 
 ### <a name="blazor-server"></a>Blazor 伺服器
 
-建立新應用程式後,請檢查以下`Startup.ConfigureServices`方法:
+建立新的應用程式之後，請`Startup.ConfigureServices`檢查方法：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -116,7 +119,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-方法`ConfigureServices`傳遞的是<xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, 它是服務描述符<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor>物件 () 的清單。 通過向服務集合提供服務描述符來添加服務。 下面的範例展示該概念與`IDataAccess`介面與介面與`DataAccess`:
+會`ConfigureServices`傳遞方法<xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>，這是服務描述元物件（<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor>）的清單。 服務會藉由將服務描述項提供給服務集合來新增。 下列範例示範`IDataAccess`介面和其具體執行`DataAccess`的概念：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -125,34 +128,34 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### <a name="service-lifetime"></a>服務壽命
+### <a name="service-lifetime"></a>服務存留期
 
-可以使用下表中顯示的存留期配置服務。
+您可以使用下表所示的存留期來設定服務。
 
-| 存留期 | 描述 |
+| 存留期 | 說明 |
 | -------- | ----------- |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | BlazorWeb組裝應用當前沒有 DI 作用域的概念。 `Scoped`-註冊服務就像服務一`Singleton`樣。 但是,Blazor伺服器託管模型支援`Scoped`存留期。 在Blazor伺服器應用中,作用網域服務註冊的範圍限定到*連接*。 因此,對於應限定為當前用戶的服務,使用作用域服務是首選,即使當前意圖是在瀏覽器中運行用戶端。 |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI 建立服務的*單一實體 。* 需要`Singleton`服務的所有元件都接收同一服務的實例。 |
-| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | 每當元件從`Transient`服務容器取得服務的實體時,它都會收到服務*的新實體 。* |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped*> | BlazorWebAssembly apps 目前不具有 DI 範圍的概念。 `Scoped`註冊的服務的行為`Singleton`就像服務一樣。 不過， Blazor伺服器裝載模型支援`Scoped`存留期。 在Blazor伺服器應用程式中，範圍服務註冊的範圍是*連接*。 因此，即使目前的意圖是在瀏覽器中執行用戶端，使用範圍服務也適用于應該範圍設定為目前使用者的服務。 |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton*> | DI 會建立服務的*單一實例*。 所有需要`Singleton`服務的元件都會收到相同服務的實例。 |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient*> | 每當元件從服務容器取得`Transient`服務的實例時，就會收到服務的*新實例*。 |
 
-DI 系統基於 ASP.NET 核心中的 DI 系統。 如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection>。
+DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，請參閱<xref:fundamentals/dependency-injection>。
 
 ## <a name="request-a-service-in-a-component"></a>要求元件中的服務
 
-將服務添加到服務集合後,使用[\@注入](xref:mvc/views/razor#inject)Razor 指令將服務注入到元件中。 `@inject`有兩個參數:
+將服務新增至服務集合之後，請使用[ \@插入](xref:mvc/views/razor#inject) Razor指示詞將服務插入元件中。 `@inject`有兩個參數：
 
-* 鍵入&ndash;要注入的服務類型。
-* 屬性&ndash;接收注入的應用服務的屬性的名稱。 屬性不需要手動創建。 編譯器創建該屬性。
+* 輸入&ndash;要插入之服務的類型。
+* 屬性&ndash;接收插入的應用程式服務之屬性的名稱。 屬性不需要手動建立。 編譯器會建立屬性。
 
-如需詳細資訊，請參閱 <xref:mvc/views/dependency-injection>。
+如需詳細資訊，請參閱<xref:mvc/views/dependency-injection>。
 
-使用多個`@inject`語句注入不同的服務。
+使用多`@inject`個語句來插入不同的服務。
 
-下列範例示範如何使用 `@inject`。 服務實現`Services.IDataAccess`被注入到元件的屬性`DataRepository`中。 請注意代碼如何只使用`IDataAccess`抽象:
+下列範例示範如何使用 `@inject`。 執行`Services.IDataAccess`的服務會插入元件的屬性`DataRepository`中。 請注意程式碼如何使用`IDataAccess`抽象概念：
 
 [!code-razor[](dependency-injection/samples_snapshot/3.x/CustomerList.razor?highlight=2-3,23)]
 
-在內部,生成的屬性`DataRepository`(`InjectAttribute`) 使用 屬性。 通常,此屬性不會直接使用。 如果元件需要基數,並且基類別也需要注入屬性,則手動添加 : `InjectAttribute`
+就內部而言，產生的`DataRepository`屬性（） `InjectAttribute`會使用屬性。 通常不會直接使用這個屬性。 如果元件需要基類，而且基類也需要插入的`InjectAttribute`屬性，請手動新增：
 
 ```csharp
 public class ComponentBase : IComponent
@@ -164,7 +167,7 @@ public class ComponentBase : IComponent
 }
 ```
 
-在從基類派生的元件中,`@inject`不需要該指令。 基`InjectAttribute`類別的已足夠:
+在衍生自基類的元件中， `@inject`不需要指示詞。 `InjectAttribute`基類的已足夠：
 
 ```razor
 @page "/demo"
@@ -175,7 +178,7 @@ public class ComponentBase : IComponent
 
 ## <a name="use-di-in-services"></a>在服務中使用 DI
 
-複雜的服務可能需要其他服務。 在上一個示例中`DataAccess`,可能`HttpClient`需要 默認服務。 `@inject`(或`InjectAttribute`) 不適用於服務。 必須改用*建構函式注入*。 通過向服務的構造函數添加參數來添加所需的服務。 當 DI 創建服務時,它會識別構造函數中所需的服務,並相應地提供這些服務。
+複雜的服務可能需要額外的服務。 在先前的範例中`DataAccess` ，可能需要`HttpClient`預設服務。 `@inject`（或`InjectAttribute`）無法在服務中使用。 必須改為使用*函數插入*。 將參數新增至服務的函式，即可加入必要的服務。 當 DI 建立服務時，它會辨識它在此函式中所需的服務，並據以提供它們。
 
 ```csharp
 public class DataAccess : IDataAccess
@@ -189,26 +192,26 @@ public class DataAccess : IDataAccess
 }
 ```
 
-建構函數注入的先決條件:
+函式插入的必要條件：
 
-* 一個構造函數必須存在,其參數都可以由 DI 實現。 如果 DI 未涵蓋的其他參數指定預設值,則允許它們。
-* 適用的建構函數必須是*公共的*。
-* 必須存在一個適用的構造函數。 如果模稜兩可,DI 將引發異常。
+* 其中一個函式必須存在，且其引數可由 DI 完成。 如果指定預設值，則允許 DI 未涵蓋的其他參數。
+* 適用的函式必須是*公用*的。
+* 其中一個適用的函數必須存在。 如果發生不明確的情況，DI 會擲回例外狀況。
 
-## <a name="utility-base-component-classes-to-manage-a-di-scope"></a>管理 DI 作用網域的實用程式基礎元件類
+## <a name="utility-base-component-classes-to-manage-a-di-scope"></a>用來管理 DI 範圍的公用程式基底元件類別
 
-在 ASP.NET 核心應用中,作用域服務通常可限定為當前請求。 請求完成後,任何作用域或瞬態服務將由 DI 系統處理。 在BlazorServer 應用中,請求範圍持續於用戶端連接的持續時間,這可能導致瞬態和作用域服務的壽命比預期長得多。 在BlazorWebAssembly 應用中,以作用域存留期註冊的服務被視爲單例,因此它們比典型 ASP.NET Core 應用中的作用域服務活得更長。
+在 ASP.NET Core 應用程式中，限域服務的範圍通常是目前的要求。 要求完成之後，DI 系統會處置任何範圍或暫時性的服務。 在Blazor [伺服器應用程式] 中，要求範圍會在用戶端連線期間持續進行，這可能會導致暫時性和範圍服務的存留時間比預期長。 在Blazor WebAssembly apps 中，以限定範圍存留期註冊的服務會視為單次個體，因此其存留時間比一般 ASP.NET Core 應用程式中的限域服務長。
 
-限制Blazor套用的服務存留期的方法`OwningComponentBase`是使用類型 。 `OwningComponentBase`是從創建與元件存留期`ComponentBase`對應的 DI 作用域派生的抽象類型。 使用此作用域,可以使用具有作用域存留期的 DI 服務,並使它們像元件一樣存活。 銷毀元件后,將釋放來自元件作用域服務提供者的服務。 這對於以下服務非常有用:
+限制應用程式中Blazor服務存留期的方法是使用`OwningComponentBase`類型。 `OwningComponentBase`是衍生自`ComponentBase`的抽象類別型，它會建立與元件存留期相對應的 DI 範圍。 使用此範圍時，您可以使用具有限定範圍存留期的 DI 服務，而且只要元件，就可以讓它們正常運作。 當元件損毀時，來自元件範圍服務提供者的服務也會一併處置。 這適用于下列服務：
 
-* 應在元件中重複使用,因為瞬態存留期不合適。
-* 不應跨元件共用,因為單例存留期不合適。
+* 應該在元件內重複使用，因為暫時性存留期並不適當。
+* 不應跨元件共用，因為單一存留期並不適當。
 
-`OwningComponentBase`該類型的兩個版本可用:
+`OwningComponentBase`類型的兩個版本可供使用：
 
-* `OwningComponentBase`是具有類型`ComponentBase``ScopedServices``IServiceProvider`受保護屬性的抽象的一次性子級。 此提供程式可用於解析範圍為元件存留期的服務。
+* `OwningComponentBase`是`ComponentBase`類型的抽象、可處置子系，具有類型`ScopedServices` `IServiceProvider`的受保護屬性。 這個提供者可以用來解析範圍設定為元件存留期的服務。
 
-  使用`@inject``InjectAttribute`或`[Inject]`( ) 注入到元件中的 DI 服務不是在元件的作用域中創建的。 要使用元件的範圍,必須使用`ScopedServices.GetRequiredService`或`ScopedServices.GetService`解析服務。 使用`ScopedServices`提供程式解析的任何服務都提供來自同一作用域的依賴項。
+  使用`@inject`或`InjectAttribute` （`[Inject]`）插入元件的 DI 服務不會在元件的範圍內建立。 若要使用元件的範圍，必須使用`ScopedServices.GetRequiredService`或`ScopedServices.GetService`來解析服務。 使用此`ScopedServices`提供者解析的任何服務都會從該相同範圍提供其相依性。
 
   ```razor
   @page "/preferences"
@@ -236,7 +239,7 @@ public class DataAccess : IDataAccess
   }
   ```
 
-* `OwningComponentBase<T>`派生並`OwningComponentBase`添加從作用域`Service`DI 提供`T`程式返回 的 實例的屬性。 此類型是存取作用域服務的便捷方法`IServiceProvider`, 無需使用應用使用元件作用域從 DI 容器中需要一個主服務的實例。 該`ScopedServices`屬性可用,因此如有必要,應用可以獲取其他類型的服務。
+* `OwningComponentBase<T>`衍生自`OwningComponentBase` ，並加入屬性`Service` ， `T`從範圍 DI 提供者傳回的實例。 `IServiceProvider`當應用程式需要使用元件範圍的 DI 容器中的一個主要服務時，此類型可方便您存取已設定範圍的服務，而不需使用的實例。 `ScopedServices`屬性可供使用，因此應用程式可以取得其他類型的服務（如有需要）。
 
   ```razor
   @page "/users"
@@ -253,18 +256,18 @@ public class DataAccess : IDataAccess
   </ul>
   ```
 
-## <a name="use-of-entity-framework-dbcontext-from-di"></a>使用來自 DI 的實體框架 DbContext
+## <a name="use-of-entity-framework-dbcontext-from-di"></a>從 DI 使用 Entity Framework DbCoNtext
 
-在 Web 應用中從 DI 檢索的一種`DbContext`常見服務類型是實體框架 (EF) 物件。 預設情況下,使用`IServiceCollection.AddDbContext`將添加`DbContext`作為作用域服務的 EF 服務註冊。 註冊為作用域服務可能會導致Blazor應用中出現問題,因為它`DbContext`會導致 實例在應用中長壽命且共用。 `DbContext`不帶線程安全,不能同時使用。
+從 web 應用程式中的 DI 取出的一個常見服務類型是 Entity Framework （ `DbContext` EF）物件。 使用`IServiceCollection.AddDbContext`註冊 EF 服務`DbContext`時，預設會將新增為範圍服務。 將註冊為有範圍的服務可能會導致Blazor應用程式發生問題`DbContext` ，因為它會導致實例長期存留，並在應用程式之間共用。 `DbContext`不是安全線程，而且不得同時使用。
 
-根據應用的不同,使用`OwningComponentBase`將的範圍`DbContext`限制為單個元件*可能會*解決此問題。 `DbContext`如果元件不並行 使用 , 派生`OwningComponentBase`元件 並從 中`DbContext`派生`ScopedServices`並 檢索 就足夠了,因為它可確保:
+根據應用程式而定， `OwningComponentBase`使用將的範圍限制`DbContext`為單一元件，*可能會*解決此問題。 `DbContext`如果元件未平行使用，則從衍生元件， `OwningComponentBase`並`DbContext`從中`ScopedServices`抓取，就足以確保：
 
-* 單獨的元件不分享 。 `DbContext`
-* 只`DbContext`活只要元件取決於它。
+* 個別元件不會共用`DbContext`。
+* 存留`DbContext`的時間只會取決於元件。
 
-如果單個元件可能同時使用一`DbContext`個元件(例如,每次用戶選擇按鈕時),即使使用`OwningComponentBase`也不會避免併發 EF 操作的問題。 在這種情況下,`DbContext`對每個邏輯 EF 操作使用不同的操作。 使用以下任一方法:
+如果單一元件可能會`DbContext`同時使用（例如，每次使用者選取按鈕時），即使使用`OwningComponentBase`並不會避免並行 EF 作業的問題。 在此情況下，請針對`DbContext`每個邏輯 EF 作業使用不同的。 請使用下列其中一種方法：
 
-* 直接使用`DbContext``DbContextOptions<TContext>`參數創建參數,可以從 DI 檢索,並且線程安全。
+* 建立`DbContext`直接使用`DbContextOptions<TContext>`做為引數的，您可以從 DI 抓取它，而且它是安全線程。
 
     ```razor
     @page "/example"
@@ -298,8 +301,8 @@ public class DataAccess : IDataAccess
     }
     ```
 
-* 在具有`DbContext`瞬態存留期的服務容器中註冊:
-  * 註冊上文時,請使用`ServiceLifetime.Transient`。 擴展`AddDbContext`方法採用兩個類型的`ServiceLifetime`可選參數。 要使用此方法,只需要參數`contextLifetime`為`ServiceLifetime.Transient`。 `optionsLifetime`可以保留預設值`ServiceLifetime.Scoped`。
+* `DbContext`在服務容器中，以暫時性存留期註冊：
+  * 註冊內容時，請使用`ServiceLifetime.Transient`。 `AddDbContext`擴充方法會接受兩個類型`ServiceLifetime`的選擇性參數。 若要使用此方法，只有`contextLifetime`參數需要是`ServiceLifetime.Transient`。 `optionsLifetime`可以保留其預設值`ServiceLifetime.Scoped`。
 
     ```csharp
     services.AddDbContext<AppDbContext>(options =>
@@ -307,7 +310,7 @@ public class DataAccess : IDataAccess
          ServiceLifetime.Transient);
     ```  
 
-  * 瞬態`DbContext`可以像正常一樣(`@inject`使用 )注入不會並行執行多個 EF 操作的元件中。 可以同時執行多個 EF 操作的使用者`DbContext``IServiceProvider.GetRequiredService`可以使用 請求每個並行操作的單獨物件。
+  * 暫時性`DbContext`可以像平常一樣（使用`@inject`）插入至不會平行執行多個 EF 作業的元件。 可能同時執行多個 EF 作業的人員可以使用`DbContext` `IServiceProvider.GetRequiredService`，針對每個平行作業要求個別的物件。
 
     ```razor
     @page "/example"

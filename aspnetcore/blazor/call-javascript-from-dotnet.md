@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 04/07/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 380a14177d4bb8fa3de63a3c1cd9a39aeab13db3
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: 2f12c2a05ef510c38f407ccd69f748aceafd55de
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205978"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767160"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>在 ASP.NET Core 中從 .NET 方法呼叫 JavaScript 函式Blazor
 
@@ -56,7 +59,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 若要使用`IJSRuntime`抽象概念，請採用下列任何一種方法：
 
-* 將`IJSRuntime`抽象概念插入 razor 元件（*razor*）：
+* 將`IJSRuntime`抽象概念插入Razor元件（*razor*）中：
 
   [!code-razor[](call-javascript-from-dotnet/samples_snapshot/inject-abstraction.razor?highlight=1)]
 

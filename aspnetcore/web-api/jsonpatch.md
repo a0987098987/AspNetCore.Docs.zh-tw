@@ -5,17 +5,23 @@ description: 了解如何處理 ASP.NET Core Web API 中的 JSON Patch 要求。
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/02/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: web-api/jsonpatch
-ms.openlocfilehash: be4115e870dac818aeb6b1e65ddfb21e89d9cf25
-ms.sourcegitcommit: 9675db7bf4b67ae269f9226b6f6f439b5cce4603
+ms.openlocfilehash: 3a78fa268cce8cff10fedf5814d61ce0e5faaf4b
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80625872"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82766663"
 ---
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的 JsonPatch
 
-湯姆[·戴克斯特拉](https://github.com/tdykstra)和[柯克·拉金](https://github.com/serpent5)
+由[Tom 作者: dykstra](https://github.com/tdykstra)和[Kirk Larkin](https://github.com/serpent5)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -23,10 +29,10 @@ ms.locfileid: "80625872"
 
 ## <a name="package-installation"></a>套件安裝
 
-要在應用中啟用 JSON 修補程式支援,請完成以下步驟:
+若要在您的應用程式中啟用 JSON 修補程式支援，請完成下列步驟：
 
-1. 安裝[微軟.AspNetCore.Mvc.牛頓軟日森](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)NuGet套件。
-1. 更新要調用<xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*>的`Startup.ConfigureServices`專案 方法。 例如：
+1. 安裝[AspNetCore NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件。
+1. 更新專案的`Startup.ConfigureServices`方法以呼叫<xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*>。 例如：
 
     ```csharp
     services
@@ -34,19 +40,19 @@ ms.locfileid: "80625872"
         .AddNewtonsoftJson();
     ```
 
-`AddNewtonsoftJson`與 MVC 服務註冊方法相容:
+`AddNewtonsoftJson`與 MVC 服務註冊方法相容：
 
 * <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddRazorPages*>
 * <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllersWithViews*>
 * <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllers*>
 
-## <a name="json-patch-addnewtonsoftjson-and-systemtextjson"></a>JSON 補丁, 加入牛頓軟體 Json, 和系統.文本.Json
+## <a name="json-patch-addnewtonsoftjson-and-systemtextjson"></a>JSON Patch、AddNewtonsoftJson 和 System.web
 
-`AddNewtonsoftJson`替換`System.Text.Json`用於格式化**所有**JSON 內容的基於的輸入和輸出。 要使用 添加對`Newtonsoft.Json`JSON 修補程式的支援,同時使其他為事保持不變,`Startup.ConfigureServices`請更新專案 的方法,如下所示:
+`AddNewtonsoftJson``System.Text.Json`取代以為基礎的輸入和輸出格式器，用於格式化**所有**JSON 內容。 若要使用`Newtonsoft.Json`新增對 JSON 修補程式的支援，同時讓其他格式器保持不變`Startup.ConfigureServices` ，請更新專案的方法，如下所示：
 
 [!code-csharp[](jsonpatch/samples/3.0/WebApp1/Startup.cs?name=snippet)]
 
-前面的代碼需要`Microsoft.AspNetCore.Mvc.NewtonsoftJson`套件與`using`以下 語句:
+上述程式碼需要`Microsoft.AspNetCore.Mvc.NewtonsoftJson`封裝和下列`using`語句：
 
 [!code-csharp[](jsonpatch/samples/3.0/WebApp1/Startup.cs?name=snippet1)]
 
@@ -56,9 +62,9 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="json-patch"></a>JSON Patch
 
-[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。 JSON Patch 文件具有一個「作業」** 陣列。 每個操作標識特定類型的更改。 此類更改的範例包括添加陣列元素或替換屬性值。
+[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。 JSON Patch 文件具有一個「作業」** 陣列。 每個作業都會識別特定類型的變更。 這類變更的範例包括新增陣列元素或取代屬性值。
 
-例如,以下 JSON 文檔表示資源、資源的 JSON 修補程式文件以及應用修補程式操作的結果。
+例如，下列 JSON 檔代表資源、資源的 JSON 修補程式檔，以及套用修補程式作業的結果。
 
 ### <a name="resource-example"></a>資源範例
 
@@ -98,19 +104,19 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 }
 ```
 
-將 JSON 修補程式文件應用於資源所做的更改是原子的。 如果清單中的任何操作失敗,則不應用清單中的任何操作。
+將 JSON 修補檔套用至資源所做的變更是不可部分完成的。 如果清單中的任何作業失敗，則不會套用清單中的任何作業。
 
 ## <a name="path-syntax"></a>路徑語法
 
 作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。 例如： `"/address/zipCode"` 。
 
-以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 要`add`將陣列的末尾,請使用連字元 ()`-`而不是索引編`/addresses/-`號: 。
+以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 到`add`陣列結尾，請使用連字號（`-`），而不是索引編號：。 `/addresses/-`
 
 ### <a name="operations"></a>作業
 
 下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：
 
-|作業  | 注意 |
+|作業  | 備忘錄 |
 |-----------|--------------------------------|
 | `add`     | 加入屬性或陣列元素。 針對現有的屬性：設定值。|
 | `remove`  | 移除屬性或陣列元素。 |
@@ -119,7 +125,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 | `copy`    | 與使用來源的值 `add` 到目的地相同。 |
 | `test`    | 如果 `path` 上的值 = 所提供的 `value`，即會傳回成功狀態碼。|
 
-## <a name="json-patch-in-aspnet-core"></a>ASP.NET核心中的 JSON 修補程式
+## <a name="json-patch-in-aspnet-core"></a>ASP.NET Core 中的 JSON 修補程式
 
 [Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) \(英文\) NuGet 套件中會提供 JSON Patch 的 ASP.NET Core 實作。
 
@@ -128,14 +134,14 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 在 API 控制器中，JSON Patch 的動作方法：
 
 * 使用 `HttpPatch` 屬性來標註。
-* 接受`JsonPatchDocument<T>`,`[FromBody]`通常使用 。
+* 接受`JsonPatchDocument<T>`，通常使用`[FromBody]`。
 * 呼叫修補文件上的 `ApplyTo` 以套用變更。
 
 以下是範例：
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
-範例應用程式的此代碼適用於以下`Customer`模型:
+範例應用程式中的這段程式碼可`Customer`與下列模型搭配運作：
 
 [!code-csharp[](jsonpatch/samples/2.2/Models/Customer.cs?name=snippet_Customer)]
 
@@ -163,7 +169,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ### <a name="dynamic-objects"></a>動態物件
 
-以下操作方法範例展示如何將修補程式應用於動態物件:
+下列動作方法範例顯示如何將修補程式套用至動態物件：
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_Dynamic)]
 
@@ -188,7 +194,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
     * 如果屬性可為 Null：將它設定為 Null。
     * 如果屬性不可為 Null，則將它設定為 `default<T>`。
 
-以下範例修補程式文件集`CustomerName`為 null 與`Orders[0]`刪除:
+下列範例修補檔會將`CustomerName`設定為 null 並`Orders[0]`刪除：
 
 [!code-json[](jsonpatch/samples/2.2/JSON/remove.json)]
 
@@ -196,7 +202,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 此作業在功能上與 `remove` 之後接著 `add` 相同。
 
-以下範例修補程式文件設定的值`CustomerName``Orders[0]`, 並將取代為`Order`新 物件:
+下列範例修補檔會設定的值`CustomerName` ，並將`Orders[0]`取代為新`Order`的物件：
 
 [!code-json[](jsonpatch/samples/2.2/JSON/replace.json)]
 
@@ -239,14 +245,14 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples)。 ([如何下載](xref:index#how-to-download-a-sample))。
 
 若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：
 
 * URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`
 * HTTP 方法：`PATCH`
 * 標題：`Content-Type: application/json-patch+json`
-* 正文:複製並粘貼 JSON 修補程式文檔示例之一(來自*JSON*專案資料夾)。
+* 主體：從*json*專案資料夾複製並貼上其中一個 json 修補程式檔範例。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -322,7 +328,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：
 
-|作業  | 注意 |
+|作業  | 備忘錄 |
 |-----------|--------------------------------|
 | `add`     | 加入屬性或陣列元素。 針對現有的屬性：設定值。|
 | `remove`  | 移除屬性或陣列元素。 |
@@ -340,7 +346,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 在 API 控制器中，JSON Patch 的動作方法：
 
 * 使用 `HttpPatch` 屬性來標註。
-* 接受`JsonPatchDocument<T>`,`[FromBody]`通常使用 。
+* 接受`JsonPatchDocument<T>`，通常使用`[FromBody]`。
 * 呼叫修補文件上的 `ApplyTo` 以套用變更。
 
 以下是範例：
@@ -451,14 +457,14 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="get-the-code"></a>取得程式碼
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2)。 ([如何下載](xref:index#how-to-download-a-sample))。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2)。 ([如何下載](xref:index#how-to-download-a-sample))。
 
 若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：
 
 * URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`
 * HTTP 方法：`PATCH`
 * 標題：`Content-Type: application/json-patch+json`
-* 正文:複製並粘貼 JSON 修補程式文檔示例之一(來自*JSON*專案資料夾)。
+* 主體：從*json*專案資料夾複製並貼上其中一個 json 修補程式檔範例。
 
 ## <a name="additional-resources"></a>其他資源
 

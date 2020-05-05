@@ -5,13 +5,19 @@ description: dotnet aspnet-codegenerator 命令會架起 ASP.NET Core 專案。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 07/04/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 1043a578f66d5bb57f4a81e9fe21afa5e3c37cb8
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 58f7aa30d3e916307437d56c61e80765ac0c21cf
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78665183"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82766468"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -42,7 +48,7 @@ dotnet aspnet-codegenerator [arguments] [-p|--project] [-n|--nuget-package-dir] 
 dotnet aspnet-codegenerator [-h|--help]
 ```
 
-## <a name="description"></a>描述
+## <a name="description"></a>說明
 
 `dotnet aspnet-codegenerator` 全域命令會執行 ASP.NET Core 程式碼產生器與 Scaffolding 引擎。
 
@@ -96,7 +102,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 * 區域
 * 控制器
-* 身分識別  
+* 身份識別  
 * Razorpage
 * 檢視
 
@@ -112,7 +118,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 * *區域*
   * *AreaNameToGenerate*
-    * *控制器*
+    * *Controllers*
     * *Data*
     * *模型*
     * *檢視*
@@ -121,13 +127,13 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ### <a name="controller-options"></a>控制器選項
 
-下表列出了和`aspnet-codegenerator``controller``razorpage`的選項。
+下表列出和`aspnet-codegenerator` `controller` `razorpage`的選項：
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
 下表列出 `aspnet-codegenerator controller` 的專用選項：
 
-| 選項               | 描述|
+| 選項               | 說明|
 | ----------------- | ------------ |
 | --controllerName 或 -name | 控制器的名稱。 |
 | --useAsyncActions 或 -async | 產生非同步控制器動作。 |
@@ -170,13 +176,13 @@ dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieCo
 * `Details`
 * `List`
 
-下表列出了和`aspnet-codegenerator``razorpage``controller`的選項。
+下表列出和`aspnet-codegenerator` `razorpage` `controller`的選項：
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
 下表列出 `aspnet-codegenerator razorpage` 的專用選項：
 
-| 選項               | 描述|
+| 選項               | 說明|
 | ----------------- | ------------ |
 |   --namespaceName 或 -namespace | 要用於產生之 PageModel 的命名空間名稱 |
 | --partialView 或 -partial | 產生部分檢視。 若指定此選項，會忽略版面配置選項 -l 與 -udl。 |
@@ -190,6 +196,6 @@ dotnet aspnet-codegenerator razorpage -h
 
 請參閱[架起電影模型](/aspnet/core/tutorials/razor-pages/model)以取得 `dotnet aspnet-codegenerator razorpage` 的範例。
 
-### <a name="identity"></a>身分識別
+### Identity
 
-[架起身分識別](/aspnet/core/security/authentication/scaffold-identity)
+請[參閱Identity Scaffold](/aspnet/core/security/authentication/scaffold-identity)

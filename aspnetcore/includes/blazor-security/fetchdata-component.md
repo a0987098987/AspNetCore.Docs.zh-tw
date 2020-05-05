@@ -5,7 +5,7 @@
 
 `@attribute [Authorize]`指示詞會向 Blazor WebAssembly 授權系統指出，使用者必須獲得授權，才能流覽此元件。 *用戶端*應用程式中的屬性存在，並不會防止在沒有適當認證的情況下呼叫伺服器上的 API。 *伺服器*應用程式也必須在`[Authorize]`適當的端點上使用，才能正確地保護它們。
 
-`AuthenticationService.RequestAccessToken();`負責要求可新增至要求以呼叫 API 的存取權杖。 如果已快取權杖，或服務能夠在沒有使用者互動的情況下布建新的存取權杖，則權杖要求會成功。 否則，權杖要求會失敗。
+`IAccessTokenProvider.RequestAccessToken();`負責要求可新增至要求以呼叫 API 的存取權杖。 如果已快取權杖，或服務能夠在沒有使用者互動的情況下布建新的存取權杖，則權杖要求會成功。 否則，權杖要求會失敗，並`AccessTokenNotAvailableException`出現錯誤，在`try-catch`語句中攔截到。
 
 為了取得要包含在要求中的實際權杖，應用程式必須藉由呼叫`tokenResult.TryGetToken(out var token)`來檢查要求是否成功。 
 

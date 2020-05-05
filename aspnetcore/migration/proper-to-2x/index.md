@@ -4,13 +4,19 @@ author: isaac2004
 description: 取得將現有 ASP.NET MVC 或 Web API 應用程式，移轉至 ASP.NET Core.web 的指導
 ms.author: scaddie
 ms.date: 10/18/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: migration/proper-to-2x/index
-ms.openlocfilehash: 68a45dc50e00bead564500a12509b62a4a193ec4
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 985c08e0994314cec8d52a6651681c93aca96514
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79511080"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82766507"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core"></a>從 ASP.NET 移轉至 ASP.NET Core
 
@@ -18,9 +24,9 @@ ms.locfileid: "79511080"
 
 這篇文章可作為將 ASP.NET 應用程式移轉至 ASP.NET Core 的參考指南。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-[.NET 核心 SDK 2.2 或更高版本](https://dotnet.microsoft.com/download)
+[.NET Core SDK 2.2 或更新版本](https://dotnet.microsoft.com/download)
 
 ## <a name="target-frameworks"></a>目標 Framework
 
@@ -143,7 +149,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 在 ASP.NET 中，靜態檔案會儲存在不同目錄中，於檢視中提供參考。
 
-在ASP.NET核心中,靜態檔存儲在"Web 根"(*&lt;&gt;內容根 /wwwroot)* 中,除非另有配置。 從 `Startup.Configure` 叫用 `UseStaticFiles` 擴充方法，將檔案載入至要求管線：
+在 ASP.NET Core 中，除非另有設定，否則靜態檔案會儲存在「web 根目錄」（*&lt;內容根目錄&gt;/wwwroot*）中。 從 `Startup.Configure` 叫用 `UseStaticFiles` 擴充方法，將檔案載入至要求管線：
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
@@ -155,13 +161,13 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 > [!NOTE]
 > 如需在 ASP.NET Core 中提供靜態檔案更深入的參考，請參閱[靜態檔案](xref:fundamentals/static-files)。
 
-## <a name="multi-value-cookies"></a>多價值餅乾
+## <a name="multi-value-cookies"></a>多重值 cookie
 
-ASP.NET核心不支援[多值 Cookie。](xref:System.Web.HttpCookie.Values) 每個值創建一個 Cookie。
+ASP.NET Core 中不支援[多重值的 cookie](xref:System.Web.HttpCookie.Values) 。 為每個值建立一個 cookie。
 
-## <a name="partial-app-migration"></a>部分應用移轉
+## <a name="partial-app-migration"></a>部分應用程式遷移
 
-部分應用遷移的一種方法是創建 IIS 子應用程式,並且僅在保留應用的 URL 結構的同時,將某些路由從 ASP.NET 4.x 移動到 ASP.NET 酷睿。 例如,考慮*應用程式從應用程式Host.config*檔案中的網址結構:
+部分應用程式遷移的其中一個方法是建立 IIS 子應用程式，並只將特定路由從 ASP.NET 4.x 移至 ASP.NET Core，同時保留該應用程式的 URL 結構。 例如，請考慮*applicationhost.config*檔案中應用程式的 URL 結構：
 
 ```xml
 <sites>
@@ -181,7 +187,7 @@ ASP.NET核心不支援[多值 Cookie。](xref:System.Web.HttpCookie.Values) 每�
 </sites>
 ```
 
-目錄結構:
+目錄結構：
 
 ```
 .

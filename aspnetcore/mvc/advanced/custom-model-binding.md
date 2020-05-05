@@ -4,13 +4,19 @@ author: ardalis
 description: 了解模型繫結如何讓控制器動作直接使用 ASP.NET Core 中的模型類型。
 ms.author: riande
 ms.date: 01/06/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 511cf39bfedfc55d2f75842daf4445d2aaf4872d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 109bebe79c9e77d26b02ca27367b8ff33191a4b4
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659863"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776691"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -20,7 +26,7 @@ ms.locfileid: "78659863"
 
 模型繫結可直接透過模型類型 (傳入作為方法引數) 來執行控制器動作，而不用透過 HTTP 要求。 內送要求資料與應用程式模型之間的對應是由模型繫結器來處理。 開發人員可以透過實作自訂模型繫結器，來擴充內建模型繫結功能 (不過一般而言，您並不需要撰寫自己的提供者)。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="default-model-binder-limitations"></a>預設模型繫結器限制
 
@@ -28,15 +34,15 @@ ms.locfileid: "78659863"
 
 ## <a name="model-binding-review"></a>模型繫結檢閱
 
-模型繫結使用特定定義來描述其作業類型。 「簡單型別」是指從輸入中的單一字串進行轉換。 「複雜類型」是指從多個輸入值進行轉換。 架構會根據是否有 `TypeConverter` 來判斷是否為不同類型。 如果您有不需要外部資源的簡單 `string` -> `SomeType` 對應，建議您建立型別轉換器。
+模型繫結使用特定定義來描述其作業類型。 「簡單型別」** 是指從輸入中的單一字串進行轉換。 「複雜類型」** 是指從多個輸入值進行轉換。 架構會根據是否有 `TypeConverter` 來判斷是否為不同類型。 如果您有不需要外部資源的簡單 `string` -> `SomeType` 對應，建議您建立型別轉換器。
 
-在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮可以用來將 base64 編碼的字串轉換成位元組陣列的 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
+在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>可以用來將 base64 編碼的字串轉換成位元組陣列的。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>使用 ByteArrayModelBinder
 
 Base64 編碼字串可用來代表二進位資料。 例如，影像可以編碼為字串。 此範例會在[Base64String](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt)中將影像包含為 base64 編碼的字串。
 
-ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> 會將 `byte[]` 引數對應到 `ByteArrayModelBinder`：
+ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 會<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider>將`byte[]`引數`ByteArrayModelBinder`對應至：
 
 ```csharp
 public IModelBinder GetBinder(ModelBinderProviderContext context)
@@ -56,7 +62,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 }
 ```
 
-建立您自己的自訂模型系結器時，您可以執行自己的 `IModelBinderProvider` 類型，或使用 <xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute>。
+建立您自己的自訂模型系結器時，您`IModelBinderProvider`可以執行自己的<xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute>型別，或使用。
 
 下列範例示範如何使用 `ByteArrayModelBinder`，將 Base64 編碼字串轉換成 `byte[]`，並將結果儲存至檔案：
 
@@ -79,11 +85,11 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 - 使用 Entity Framework Core 來擷取相關聯的實體。
 - 將相關聯的實體當作引數傳遞至動作方法。
 
-下列範例會在 `ModelBinder` 模型上使用 `Author` 屬性：
+下列範例會在 `Author` 模型上使用 `ModelBinder` 屬性：
 
 [!code-csharp[](custom-model-binding/samples/3.x/CustomModelBindingSample/Data/Author.cs?highlight=6)]
 
-在上述程式碼中，`ModelBinder` 屬性指定應該用來繫結 `IModelBinder` 動作參數的 `Author` 類型。
+在上述程式碼中，`ModelBinder` 屬性指定應該用來繫結 `Author` 動作參數的 `IModelBinder` 類型。
 
 下列 `AuthorEntityBinder` 類別可繫結 `Author` 參數，做法是使用 Entity Framework Core 和 `authorId` 從資料來源擷取實體：
 
@@ -106,7 +112,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 ### <a name="implementing-a-modelbinderprovider"></a>實作 ModelBinderProvider
 
-除了套用屬性，您還可以實作 `IModelBinderProvider`。 這是內建架構繫結器的實作方式。 當您指定繫結器的作業類型時，您會指定其所產生的引數類型，而**不是**繫結器接受的輸入。 下列繫結器提供者可搭配 `AuthorEntityBinder` 使用。 當它新增至提供者的 MVC 集合時，您不需要在 `ModelBinder` 或 `Author` 型別參數上使用 `Author` 屬性。
+除了套用屬性，您還可以實作 `IModelBinderProvider`。 這是內建架構繫結器的實作方式。 當您指定繫結器的作業類型時，您會指定其所產生的引數類型，而**不是**繫結器接受的輸入。 下列繫結器提供者可搭配 `AuthorEntityBinder` 使用。 當它新增至提供者的 MVC 集合時，您不需要在 `Author` 或 `Author` 型別參數上使用 `ModelBinder` 屬性。
 
 [!code-csharp[](custom-model-binding/samples/3.x/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
 
@@ -135,7 +141,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 - 不應該嘗試設定狀態碼或傳回結果 (例如 404 找不到)。 如果模型繫結失敗，[動作篩選](xref:mvc/controllers/filters)或動作方法本身內的邏輯應該會處理失敗。
 - 最適合用來排除動作方法中的重複程式碼和交叉關注。
-- 通常不應該用來將字串轉換成自訂類型，<xref:System.ComponentModel.TypeConverter> 通常是較好的選項。
+- 一般而言，不應該用來將字串轉換成自訂類型，<xref:System.ComponentModel.TypeConverter> 通常是較好的選擇。
 
 ::: moniker-end
 ::: moniker range="< aspnetcore-3.0"
@@ -144,7 +150,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 模型繫結可直接透過模型類型 (傳入作為方法引數) 來執行控制器動作，而不用透過 HTTP 要求。 內送要求資料與應用程式模型之間的對應是由模型繫結器來處理。 開發人員可以透過實作自訂模型繫結器，來擴充內建模型繫結功能 (不過一般而言，您並不需要撰寫自己的提供者)。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/advanced/custom-model-binding/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="default-model-binder-limitations"></a>預設模型繫結器限制
 
@@ -152,15 +158,15 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 ## <a name="model-binding-review"></a>模型繫結檢閱
 
-模型繫結使用特定定義來描述其作業類型。 「簡單型別」是指從輸入中的單一字串進行轉換。 「複雜類型」是指從多個輸入值進行轉換。 架構會根據是否有 `TypeConverter` 來判斷是否為不同類型。 如果您有不需要外部資源的簡單 `string` -> `SomeType` 對應，建議您建立型別轉換器。
+模型繫結使用特定定義來描述其作業類型。 「簡單型別」** 是指從輸入中的單一字串進行轉換。 「複雜類型」** 是指從多個輸入值進行轉換。 架構會根據是否有 `TypeConverter` 來判斷是否為不同類型。 如果您有不需要外部資源的簡單 `string` -> `SomeType` 對應，建議您建立型別轉換器。
 
-在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮可以用來將 base64 編碼的字串轉換成位元組陣列的 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
+在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>可以用來將 base64 編碼的字串轉換成位元組陣列的。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>使用 ByteArrayModelBinder
 
 Base64 編碼字串可用來代表二進位資料。 例如，影像可以編碼為字串。 此範例會在[Base64String](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt)中將影像包含為 base64 編碼的字串。
 
-ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> 會將 `byte[]` 引數對應到 `ByteArrayModelBinder`：
+ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 會<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider>將`byte[]`引數`ByteArrayModelBinder`對應至：
 
 ```csharp
 public IModelBinder GetBinder(ModelBinderProviderContext context)
@@ -179,7 +185,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 }
 ```
 
-建立您自己的自訂模型系結器時，您可以執行自己的 `IModelBinderProvider` 類型，或使用 <xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute>。
+建立您自己的自訂模型系結器時，您`IModelBinderProvider`可以執行自己的<xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute>型別，或使用。
 
 下列範例示範如何使用 `ByteArrayModelBinder`，將 Base64 編碼字串轉換成 `byte[]`，並將結果儲存至檔案：
 
@@ -201,11 +207,11 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 - 使用 Entity Framework Core 來擷取相關聯的實體。
 - 將相關聯的實體當作引數傳遞至動作方法。
 
-下列範例會在 `ModelBinder` 模型上使用 `Author` 屬性：
+下列範例會在 `Author` 模型上使用 `ModelBinder` 屬性：
 
 [!code-csharp[](custom-model-binding/samples/2.x/CustomModelBindingSample/Data/Author.cs?highlight=6)]
 
-在上述程式碼中，`ModelBinder` 屬性指定應該用來繫結 `IModelBinder` 動作參數的 `Author` 類型。
+在上述程式碼中，`ModelBinder` 屬性指定應該用來繫結 `Author` 動作參數的 `IModelBinder` 類型。
 
 下列 `AuthorEntityBinder` 類別可繫結 `Author` 參數，做法是使用 Entity Framework Core 和 `authorId` 從資料來源擷取實體：
 
@@ -228,7 +234,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 ### <a name="implementing-a-modelbinderprovider"></a>實作 ModelBinderProvider
 
-除了套用屬性，您還可以實作 `IModelBinderProvider`。 這是內建架構繫結器的實作方式。 當您指定繫結器的作業類型時，您會指定其所產生的引數類型，而**不是**繫結器接受的輸入。 下列繫結器提供者可搭配 `AuthorEntityBinder` 使用。 當它新增至提供者的 MVC 集合時，您不需要在 `ModelBinder` 或 `Author` 型別參數上使用 `Author` 屬性。
+除了套用屬性，您還可以實作 `IModelBinderProvider`。 這是內建架構繫結器的實作方式。 當您指定繫結器的作業類型時，您會指定其所產生的引數類型，而**不是**繫結器接受的輸入。 下列繫結器提供者可搭配 `AuthorEntityBinder` 使用。 當它新增至提供者的 MVC 集合時，您不需要在 `Author` 或 `Author` 型別參數上使用 `ModelBinder` 屬性。
 
 [!code-csharp[](custom-model-binding/samples/2.x/CustomModelBindingSample/Binders/AuthorEntityBinderProvider.cs?highlight=17-20)]
 
@@ -257,6 +263,6 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 - 不應該嘗試設定狀態碼或傳回結果 (例如 404 找不到)。 如果模型繫結失敗，[動作篩選](xref:mvc/controllers/filters)或動作方法本身內的邏輯應該會處理失敗。
 - 最適合用來排除動作方法中的重複程式碼和交叉關注。
-- 通常不應該用來將字串轉換成自訂類型，<xref:System.ComponentModel.TypeConverter> 通常是較好的選項。
+- 一般而言，不應該用來將字串轉換成自訂類型，<xref:System.ComponentModel.TypeConverter> 通常是較好的選擇。
 
 ::: moniker-end

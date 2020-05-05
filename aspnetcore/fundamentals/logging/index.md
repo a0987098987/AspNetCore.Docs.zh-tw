@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 4/23/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/logging/index
-ms.openlocfilehash: 7be8cef3377132ed43efde209db67401d7bdb6dc
-ms.sourcegitcommit: 7bb14d005155a5044c7902a08694ee8ccb20c113
+ms.openlocfilehash: ca62e374c6031ca3c2d438df87f2d13636d9c612
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82110911"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776099"
 ---
 # <a name="logging-in-net-core-and-aspnet-core"></a>.NET Core 與 ASP.NET Core 中的記錄
 
@@ -372,11 +378,11 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 資訊 = 2
 
-  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例： `Request received for path /api/todo`
+  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例：`Request received for path /api/todo`
 
 * 警告 = 3
 
-  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例： `FileNotFoundException for file quotes.txt.`
+  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例：`FileNotFoundException for file quotes.txt.`
 
 * 錯誤 = 4
 
@@ -536,7 +542,7 @@ System.Exception: Item not found exception.
 | 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
 | 5      | 主控台       | 所有類別                          | 資訊       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
-| 7      | 所有提供者 | System                                  | 偵錯             |
+| 7      | 所有提供者 | System (系統)                                  | 偵錯             |
 | 8      | 偵錯         | Microsoft                               | 追蹤             |
 
 建立 `ILogger` 物件時，`ILoggerFactory` 物件會針對每個提供者選取一個規則來套用到該記錄器。 由 `ILogger` 執行個體寫入的所有訊息都會根據選取的規則進行篩選。 系統會從可用的規則中，盡可能選取對每個提供者和類別配對最明確的規則。
@@ -586,7 +592,7 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| 類別                            | 注意 |
+| 類別                            | 備忘錄 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
@@ -766,7 +772,7 @@ dotnet tool install --global dotnet-trace
 
 1. 使用[Perfview](#perfview)開啟追蹤。 開啟*nettrace*檔案，並流覽追蹤事件。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [效能分析公用程式追蹤（dotnet-追蹤）](/dotnet/core/diagnostics/dotnet-trace) （.net Core 檔）
 * [效能分析公用程式追蹤（dotnet 追蹤）](https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-trace-instructions.md) （dotnet/診斷 GitHub 存放庫檔）
@@ -1148,11 +1154,11 @@ ASP.NET Core 定義下列記錄層級，並從最低嚴重性排列到最高嚴�
 
 * 資訊 = 2
 
-  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例： `Request received for path /api/todo`
+  針對一般應用程式流程的追蹤。 這些記錄通常有一些長期值。 範例：`Request received for path /api/todo`
 
 * 警告 = 3
 
-  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例： `FileNotFoundException for file quotes.txt.`
+  針對應用程式流程中發生的異常或意外事件。 這些記錄可能包含不會造成應用程式停止，但可能需要進行調查的錯誤或其他狀況。 已處理的例外狀況即為使用 `Warning` 記錄層級的常見位置。 範例：`FileNotFoundException for file quotes.txt.`
 
 * 錯誤 = 4
 
@@ -1302,7 +1308,7 @@ System.Exception: Item not found exception.
 | 4      | 主控台       | Microsoft.AspNetCore.Mvc.Razor          | 錯誤             |
 | 5      | 主控台       | 所有類別                          | 資訊       |
 | 6      | 所有提供者 | 所有類別                          | 偵錯             |
-| 7      | 所有提供者 | System                                  | 偵錯             |
+| 7      | 所有提供者 | System (系統)                                  | 偵錯             |
 | 8      | 偵錯         | Microsoft                               | 追蹤             |
 
 建立 `ILogger` 物件時，`ILoggerFactory` 物件會針對每個提供者選取一個規則來套用到該記錄器。 由 `ILogger` 執行個體寫入的所有訊息都會根據選取的規則進行篩選。 系統會從可用的規則中，盡可能選取對每個提供者和類別配對最明確的規則。
@@ -1352,13 +1358,13 @@ System.Exception: Item not found exception.
 
 以下是由 ASP.NET Core 與 Entity Framework Core 所使用的一些類別，以及有關它們可傳回哪些記錄的附註：
 
-| 類別                            | 注意 |
+| 類別                            | 備忘錄 |
 | ----------------------------------- | ----- |
 | Microsoft.AspNetCore                | 一般 ASP.NET Core 診斷。 |
 | Microsoft.AspNetCore.DataProtection | 已考慮、發現及使用哪些金鑰。 |
 | Microsoft.AspNetCore.HostFiltering  | 允許主機。 |
 | Microsoft.AspNetCore.Hosting        | HTTP 要求花了多少時間完成，以及其開始時間。 載入了哪些裝載啟動組件。 |
-| Microsoft.AspNetCore.Mvc            | MVC 與 Razor 診斷。 模型繫結、篩選執行、檢視編譯、動作選取。 |
+| Microsoft.AspNetCore.Mvc            | MVC 和Razor診斷。 模型繫結、篩選執行、檢視編譯、動作選取。 |
 | Microsoft.AspNetCore.Routing        | 路由比對資訊。 |
 | Microsoft.AspNetCore.Server         | 連線開始、停止與保持運作回應。 HTTPS 憑證資訊。 |
 | Microsoft.AspNetCore.StaticFiles    | 提供的檔案。 |

@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 03/17/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/routing
-ms.openlocfilehash: 291ec33f951008df10f85336c7abd0b3d0a50bbc
-ms.sourcegitcommit: c19e388c83c981232e6f128d97440262adfe06e2
+ms.openlocfilehash: 017fd4d3ab45b75355dabb400ff0e5cbf7009d82
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2020
-ms.locfileid: "82727711"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82771203"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -67,7 +70,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 ```
 
 > [!IMPORTANT]
-> 若要讓 Url 正確解析，應用程式必須在`<base>`其*Wwwroot/index.html*檔（Blazor WebAssembly）中包含標記，或在`href`屬性（`<base href="/">`）中指定應用程式基底路徑的*Pages/_Host. cshtml*檔案（Blazor 伺服器）。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#app-base-path>。
+> 若要讓 Url 正確解析，應用程式必須在`<base>`其*Wwwroot/index.html*檔（Blazor WebAssembly）中包含標記，或在`href`屬性（`<base href="/">`）中指定應用程式基底路徑的*Pages/_Host. cshtml*檔案（Blazor 伺服器）。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
@@ -167,7 +170,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 > [!NOTE]
 > Razor 元件（*razor*）中`*`/`**`**不**支援*Catch-all*參數語法（）。
 
-如需詳細資訊，請參閱 <xref:fundamentals/routing>。
+如需詳細資訊，請參閱<xref:fundamentals/routing>。
 
 ## <a name="navlink-component"></a>NavLink 元件
 
@@ -200,7 +203,7 @@ Blazor 伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routin
 
 用於<xref:Microsoft.AspNetCore.Components.NavigationManager>在 c # 程式碼中處理 uri 和導覽。 `NavigationManager`提供下表所示的事件和方法。
 
-| member | 描述 |
+| member | 說明 |
 | ------ | ----------- |
 | Uri | 取得目前的絕對 URI。 |
 | BaseUri | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 通常會`BaseUri`對應至`href` *wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）中檔`<base>`元素的屬性。 |

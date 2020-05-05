@@ -1,25 +1,31 @@
 ---
 title: ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 author: rick-anderson
-description: 本教程展示如何使用 OAuth 2.0 與外部身份驗證提供者一起建構ASP.NET酷睿應用。
+description: 本教學課程示範如何使用 OAuth 2.0 搭配外部驗證提供者來建立 ASP.NET Core 應用程式。
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/23/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: c698edbd85d665509366287b1dcad08e276e71cc
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 880aeea4dce5f5ae6533a3293067d89f98587e72
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78668039"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777146"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
 作者：[Valeriy Novytskyy](https://github.com/01binary) 和 [Rick Anderson](https://twitter.com/RickAndMSFT)
 
-本教程演示如何構建ASP.NET酷睿 3.0 應用,使用戶能夠使用OAuth 2.0使用外部身份驗證提供程式的認證認證。
+本教學課程示範如何建立 ASP.NET Core 3.0 應用程式，讓使用者能夠使用 OAuth 2.0 搭配外部驗證提供者的認證來登入。
 
-[Facebook、](xref:security/authentication/facebook-logins)[推特](xref:security/authentication/twitter-logins)、[谷歌](xref:security/authentication/google-logins)和[微軟](xref:security/authentication/microsoft-logins)供應商在以下部分中介紹,並使用本文中創建的啟動專案。 您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。
+下列各節涵蓋[Facebook](xref:security/authentication/facebook-logins)、 [Twitter](xref:security/authentication/twitter-logins)、 [Google](xref:security/authentication/google-logins)和[Microsoft](xref:security/authentication/microsoft-logins)提供者，並使用本文中建立的入門專案。 您可透過 [AspNet.Security.OAuth.Providers](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) 和 [AspNet.Security.OpenId.Providers](https://github.com/aspnet-contrib/AspNet.Security.OpenId.Providers) 這類協力廠商套件，取得其他提供者。
 
 讓使用者透過現有認證登入：
 
@@ -35,13 +41,13 @@ ms.locfileid: "78668039"
 * 建立新專案。
 * 選取 [ASP.NET Core Web 應用程式]**** 和 [下一步]****。
 * 提供**專案名稱**並確認或變更**位置**。 選取 [建立]  。
-* 選擇最新的版本的 ASP.NET 核心 **(ASP.NET核心 [X.Y]),** 然後選擇 Web**應用程式**。
+* 在下拉式（**ASP.NET Core {X. Y}**）中選取最新版本的 ASP.NET Core，然後選取 [ **Web 應用程式**]。
 * 選取 [驗證]**** 下的 [變更]****，並將驗證設定為 [個別使用者帳戶]****。 選取 [確定]  。
 * 在 [建立新的 ASP.NET Core Web 應用程式]**** 視窗中選取 [建立]****。
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* 打開端子。  對於視覺工作室代碼,您可以打開[整合終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
+* 開啟終端機。  對於 Visual Studio Code，您可以開啟[整合式終端](https://code.visualstudio.com/docs/editor/integrated-terminal)機。
 
 * 將目錄 (`cd`) 變更為其中包含專案的資料夾。
 
@@ -51,7 +57,7 @@ ms.locfileid: "78668039"
   dotnet new webapp -o WebApp1 -au Individual -uld
   ```
 
-  對於 macOS 和 Linux,執行以下命令:
+  針對 macOS 和 Linux，請執行下列命令：
 
   ```dotnetcli
   dotnet new webapp -o WebApp1 -au Individual
@@ -59,7 +65,7 @@ ms.locfileid: "78668039"
 
   * `dotnet new` 命令會在 [WebApp1]** 資料夾中建立新的 Razor Pages 專案。
   * `-au Individual` 會建立程式碼以進行個別驗證。
-  * `-uld`使用 LocalDB,這是 Windows 的 SQL Server 快速的輕量級版本。 省略 `-uld` 以使用 SQLite。
+  * `-uld`使用 LocalDB，這是 Windows SQL Server Express 的輕量版本。 省略 `-uld` 以使用 SQLite。
   * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [WebApp1]** 資料夾。
 
 ---
@@ -103,7 +109,7 @@ ms.locfileid: "78668039"
 
 ![Web 應用程式的 [管理] 檢視](index/_static/pass1a.png)
 
-* 選擇 **"創建"**
+* 選取 [**建立**]
 
 ![[設定密碼] 頁面](index/_static/pass2a.png)
 
@@ -111,7 +117,7 @@ ms.locfileid: "78668039"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關如何自定義登入按鈕的資訊,請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/10563)。
+* 如需如何自訂登入按鈕的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/10563)。
 * 本文介紹了外部驗證，並說明將外部登入新增至 ASP.NET Core 應用程式所需的必要條件。
 * 請參考提供者的特定頁面，以設定應用程式所需的提供者登入項目。
-* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。
+* 您想要保存有關使用者與其存取和重新整理權杖的額外資料。 如需詳細資訊，請參閱<xref:security/authentication/social/additional-claims>。

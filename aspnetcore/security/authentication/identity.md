@@ -1,16 +1,22 @@
 ---
-title: ASP.NET Core 上的身分識別簡介
+title: Identity簡介 ASP.NET Core
 author: rick-anderson
-description: 將身分識別與 ASP.NET Core 應用程式搭配使用。 瞭解如何設定密碼需求（RequireDigit、RequiredLength、RequiredUniqueChars 等）。
+description: 搭配Identity ASP.NET Core 應用程式使用。 瞭解如何設定密碼需求（RequireDigit、RequiredLength、RequiredUniqueChars 等）。
 ms.author: riande
 ms.date: 01/15/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 4bc5f206b3aee7c2d34055703acc5b6c5218f964
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: d596a8357c5c812b94950809eedf35718328747c
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205939"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777003"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>ASP.NET Core 上的身分識別簡介
 
@@ -159,7 +165,7 @@ PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請�
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-基底`Controller`類別會公開`User`可從控制器方法存取的屬性。 例如，您可以列舉`User.Claims`並做出授權決策。 如需詳細資訊，請參閱 <xref:security/authorization/introduction>。
+基底`Controller`類別會公開`User`可從控制器方法存取的屬性。 例如，您可以列舉`User.Claims`並做出授權決策。 如需詳細資訊，請參閱<xref:security/authorization/introduction>。
 
 ### <a name="log-out"></a>登出
 
@@ -377,7 +383,7 @@ PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請�
 
 [!code-csharp[](identity/sample/WebApp1/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=10-11)]
 
-基類`Controller`會公開可從`User`控制器方法存取的屬性。 例如，您可以列舉`User.Claims`並做出授權決策。 如需詳細資訊，請參閱 <xref:security/authorization/introduction>。
+基類`Controller`會公開可從`User`控制器方法存取的屬性。 例如，您可以列舉`User.Claims`並做出授權決策。 如需詳細資訊，請參閱<xref:security/authorization/introduction>。
 
 ### <a name="log-out"></a>登出
 
@@ -391,30 +397,30 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 [!code-csharp[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
-## <a name="test-identity"></a>測試身分識別
+## <a name="test-identity"></a>測驗Identity
 
-預設的 Web 專案範本允許匿名存取首頁。 若要測試身分識別[`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) ，請將新增至 [隱私權] 頁面。
+預設的 Web 專案範本允許匿名存取首頁。 若要Identity進行測試[`[Authorize]`](/dotnet/api/microsoft.aspnetcore.authorization.authorizeattribute) ，請將新增至 [隱私權] 頁面。
 
 [!code-csharp[](identity/sample/WebApp1/Pages/Privacy.cshtml.cs?highlight=7)]
 
 如果您已登入，請登出。執行應用程式並選取 [**隱私權**] 連結。 系統會將您重新導向至 [登入] 頁面。
 
-### <a name="explore-identity"></a>探索身分識別
+### <a name="explore-identity"></a>看Identity
 
-若要更詳細地探索身分識別：
+若要Identity更詳細地探索：
 
 * [建立完整身分識別 UI 來源](xref:security/authentication/scaffold-identity#create-full-identity-ui-source)
 * 檢查每個頁面的來源，並逐步執行偵錯工具。
 
-## <a name="identity-components"></a>身分識別元件
+## <a name="identity-components"></a>Identity要素
 
-所有身分識別相依的 NuGet 套件都包含在[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中。
+所有相依Identity的 NuGet 套件都包含在[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中。
 
-身分識別的主要套件是[AspNetCore。](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/) 此套件包含 ASP.NET Core 身分識別的核心介面集，並且包含在中`Microsoft.AspNetCore.Identity.EntityFrameworkCore`。
+的主要封裝Identity是[AspNetCore。Identity ](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity/) 此套件包含 ASP.NET Core Identity的核心介面集，由`Microsoft.AspNetCore.Identity.EntityFrameworkCore`所包含。
 
-## <a name="migrating-to-aspnet-core-identity"></a>遷移至 ASP.NET Core 身分識別
+## <a name="migrating-to-aspnet-core-identity"></a>遷移至 ASP.NET CoreIdentity
 
-如需有關遷移現有身分識別存放區的詳細資訊和指引，請參閱[遷移驗證和身分識別](xref:migration/identity)。
+如需有關遷移現有Identity存放區的詳細資訊和指引，請參閱[遷移驗證和Identity ](xref:migration/identity)。
 
 ## <a name="setting-password-strength"></a>設定密碼強度
 
@@ -422,8 +428,8 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需使用 SQLite 設定身分識別的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/5131)。
-* [設定身分識別](xref:security/authentication/identity-configuration)
+* 如需Identity使用 SQLite 進行設定的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/5131)。
+* [配置Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
 * <xref:security/authentication/add-user-data>
 * <xref:security/authentication/identity-enable-qrcodes>

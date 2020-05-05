@@ -5,13 +5,19 @@ description: 探索 ASP.NET Core 如何支援 Open Web Interface for .NET (OWIN)
 ms.author: riande
 ms.custom: H1Hack27Feb2017
 ms.date: 12/18/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/owin
-ms.openlocfilehash: 14b23ba6d284413e20417bbd4142e19a656350ac
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: defbf428634a04e6fa3862926136dc98b88da589
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78666681"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775956"
 ---
 # <a name="open-web-interface-for-net-owin-with-aspnet-core"></a>具有 ASP.NET Core 的 Open Web Interface for .NET (OWIN)
 
@@ -29,7 +35,7 @@ OWIN 提供分離層，可讓兩個利用不同物件模型的架構一起使用
 > [!NOTE]
 > 使用這些配接器將伴隨效能成本增加。 僅使用 ASP.NET Core 元件的應用程式不應使用 `Microsoft.AspNetCore.Owin` 套件或配接器。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/owin/sample)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="running-owin-middleware-in-the-aspnet-core-pipeline"></a>在 ASP.NET Core 管線中執行 OWIN 中介軟體
 
@@ -237,7 +243,7 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="request-data-owin-v100"></a>要求資料 (OWIN 1.0.0 版)
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | owin.RequestScheme | `String` |  |
 | owin.RequestMethod  | `String` | |    
@@ -250,13 +256,13 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="request-data-owin-v110"></a>要求資料 (OWIN 1.1.0 版)
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | owin.RequestId | `String` | 選用 |
 
 ### <a name="response-data-owin-v100"></a>回應資料 (OWIN 1.0.0 版)
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | owin.ResponseStatusCode | `int` | 選用 |
 | owin.ResponseReasonPhrase | `String` | 選用 |
@@ -265,14 +271,14 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="other-data-owin-v100"></a>其他資料 (OWIN 1.0.0 版)
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | owin.CallCancelled | `CancellationToken` |  |
 | owin.Version  | `String` | |   
 
 ### <a name="common-keys"></a>共同索引鍵
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | ssl.ClientCertificate | `X509Certificate` |  |
 | ssl.LoadClientCertAsync  | `Func<Task>` | |    
@@ -285,13 +291,13 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="sendfiles-v030"></a>SendFiles 0.3.0 版
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | sendfile.SendAsync | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) | 每個要求 |
 
 ### <a name="opaque-v030"></a>Opaque 0.3.0 版
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | opaque.Version | `String` |  |
 | opaque.Upgrade | `OpaqueUpgrade` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -300,7 +306,7 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ### <a name="websocket-v030"></a>WebSocket 0.3.0 版
 
-| Key               | 值 (類型) | 描述 |
+| Key               | 值 (類型) | 說明 |
 | ----------------- | ------------ | ----------- |
 | websocket.Version | `String` |  |
 | websocket.Accept | `WebSocketAccept` | 請參閱[委派簽章](https://owin.org/spec/extensions/owin-SendFile-Extension-v0.3.0.htm) |
@@ -315,5 +321,5 @@ OWIN 仰賴 `IDictionary<string,object>` 物件在 HTTP 要求/回應交換中�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [中間件](xref:fundamentals/middleware/index)
+* [中介軟體](xref:fundamentals/middleware/index)
 * [伺服器](xref:fundamentals/servers/index)

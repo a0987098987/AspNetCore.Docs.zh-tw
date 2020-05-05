@@ -4,13 +4,19 @@ author: rick-anderson
 description: 瞭解 ASP.NET Core 資料保護金鑰管理 Api 的執行細節。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/implementation/key-management
-ms.openlocfilehash: c571222d734fa69183563aefa5cc6ce5a10e7612
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 0f54ceedf3558fb4fa2349903461fdfdb4dc02e6
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664707"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776899"
 ---
 # <a name="key-management-in-aspnet-core"></a>ASP.NET Core 中的金鑰管理
 
@@ -59,7 +65,7 @@ services.AddDataProtection()
        .SetDefaultKeyLifetime(TimeSpan.FromDays(14));
 ```
 
-系統管理員也可以變更全系統的預設值，不過明確呼叫 `SetDefaultKeyLifetime` 將會覆寫任何全系統原則。 預設金鑰存留期不得少於7天。
+管理員也可以變更全系統的預設值，不過明確呼叫`SetDefaultKeyLifetime`將會覆寫任何全系統原則。 預設金鑰存留期不得少於7天。
 
 ## <a name="automatic-key-ring-refresh"></a>自動金鑰迴圈重新整理
 
@@ -68,11 +74,11 @@ services.AddDataProtection()
 >[!WARNING]
 > 開發人員應該很少（如果有的話）需要直接使用金鑰管理 Api。 資料保護系統會如上述所述執行自動金鑰管理。
 
-資料保護系統會公開介面 `IKeyManager`，可用來檢查和變更金鑰環。 提供 `IDataProtectionProvider` 實例的 DI 系統也可以為您的耗用量提供 `IKeyManager` 的實例。 或者，您可以直接從 `IServiceProvider` 提取 `IKeyManager`，如下列範例所示。
+資料保護系統會公開介面`IKeyManager` ，可用來檢查並變更金鑰環。 提供實例的 DI 系統也`IDataProtectionProvider`可以`IKeyManager`為您的取用提供的實例。 或者，您可以`IKeyManager`直接從提取， `IServiceProvider`如下列範例所示。
 
-修改金鑰通道（明確建立新的金鑰或執行撤銷）的任何作業，都會使記憶體中的快取失效。 下一次呼叫 `Protect` 或 `Unprotect` 會導致資料保護系統重新讀取金鑰信號，然後重新建立快取。
+修改金鑰通道（明確建立新的金鑰或執行撤銷）的任何作業，都會使記憶體中的快取失效。 下一次呼叫`Protect`或`Unprotect`時，將會導致資料保護系統重新讀取金鑰信號，並重建快取。
 
-下列範例示範如何使用 `IKeyManager` 介面來檢查和操作金鑰環，包括撤銷現有的金鑰，以及手動產生新的金鑰。
+下列範例示範如何使用`IKeyManager`介面來檢查和操作金鑰信號，包括撤銷現有的金鑰，以及手動產生新的金鑰。
 
 [!code-csharp[](key-management/samples/key-management.cs)]
 

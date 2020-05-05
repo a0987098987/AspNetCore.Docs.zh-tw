@@ -1,25 +1,31 @@
 ---
 title: ASP.NET Core MVC 中的模型驗證
 author: rick-anderson
-description: 了解 ASP.NET Core MVC 和 Razor Pages 中的模型驗證。
+description: 深入瞭解 ASP.NET Core MVC 和Razor頁面中的模型驗證。
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/15/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: 0e3d4f4705dbfdae00943de2d85c603b6762a2f8
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
+ms.openlocfilehash: a0f7c070514de26ae007526a5587c13d26d1eb1b
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82205887"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777172"
 ---
-# <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和 Razor Pages 中的模型驗證
+# <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和Razor頁面中的模型驗證
 
 ::: moniker range=">= aspnetcore-3.0"
 
 依[Kirk Larkin](https://github.com/serpent5)
 
-本文說明如何在 ASP.NET Core MVC 或 Razor Pages 應用程式中驗證使用者輸入。
+本文說明如何在 ASP.NET Core MVC 或Razor Pages 應用程式中驗證使用者輸入。
 
 [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
@@ -27,7 +33,7 @@ ms.locfileid: "82205887"
 
 模型狀態代表來自兩個子系統的錯誤：模型繫結和模型驗證。 源自[模型](model-binding.md)系結的錯誤通常是資料轉換錯誤。 例如，在整數位段中輸入 "x"。 模型驗證會在模型系結之後發生，並報告資料不符合商務規則的錯誤。 例如，在欄位中輸入0時，預期會有1到5之間的評等。
 
-模型系結和模型驗證會在執行控制器動作或 Razor Pages 處理常式方法之前進行。 針對 Web 應用程式，此應用程式的責任為檢查 `ModelState.IsValid` 並做出適當回應。 Web 應用程式通常會重新顯示頁面，並出現錯誤訊息：
+模型系結和模型驗證會在執行控制器動作或Razor頁面處理常式方法之前進行。 針對 Web 應用程式，此應用程式的責任為檢查 `ModelState.IsValid` 並做出適當回應。 Web 應用程式通常會重新顯示頁面，並出現錯誤訊息：
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml.cs?name=snippet_OnPostAsync&highlight=3-6)]
 
@@ -367,7 +373,7 @@ $.get({
 
 ## <a name="disable-client-side-validation"></a>停用用戶端驗證
 
-下列程式碼會停用 Razor Pages 中的用戶端驗證：
+下列程式碼會停用頁面Razor中的用戶端驗證：
 
 [!code-csharp[](validation/samples/3.x/ValidationSample/Startup.cs?name=snippet_DisableClientValidation&highlight=2-5)]
 
@@ -376,7 +382,7 @@ $.get({
 * 將所有 *. cshtml*檔案`_ValidationScriptsPartial`中的參考批註在一起。
 * 移除*Pages\Shared\_ValidationScriptsPartial. cshtml*檔案的內容。
 
-上述方法不會防止用戶端驗證 ASP.NET Core 身分識別 Razor 類別庫。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity>。
+上述方法不會防止 ASP.NET Core Identity Razor類別庫的用戶端驗證。 如需詳細資訊，請參閱<xref:security/authentication/scaffold-identity>。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -387,7 +393,7 @@ $.get({
 
 ::: moniker range="< aspnetcore-3.0"
 
-本文說明如何在 ASP.NET Core MVC 或 Razor Pages 應用程式中驗證使用者輸入。
+本文說明如何在 ASP.NET Core MVC 或Razor Pages 應用程式中驗證使用者輸入。
 
 [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/models/validation/sample) ([如何下載](xref:index#how-to-download-a-sample))。
 
@@ -395,7 +401,7 @@ $.get({
 
 模型狀態代表來自兩個子系統的錯誤：模型繫結和模型驗證。 源自[模型繫結](model-binding.md)的錯誤通常是資料轉換錯誤 (例如在必須輸入整數的欄位中輸入 "x")。 模型驗證發生於模型繫結之後，並會在資料不符合商務規則時回報錯誤 (例如在必須輸入 1 到 5 之間評等的欄位中輸入 0)。
 
-模型繫結和驗證會在執行控制器動作或 Razor Pages 處理常式方法之前進行。 針對 Web 應用程式，此應用程式的責任為檢查 `ModelState.IsValid` 並做出適當回應。 Web 應用程式通常會重新顯示頁面，並出現錯誤訊息：
+模型系結和驗證會在執行控制器動作或Razor頁面處理常式方法之前進行。 針對 Web 應用程式，此應用程式的責任為檢查 `ModelState.IsValid` 並做出適當回應。 Web 應用程式通常會重新顯示頁面，並出現錯誤訊息：
 
 [!code-csharp[](validation/samples_snapshot/2.x/Create.cshtml.cs?name=snippet&highlight=3-6)]
 
@@ -418,7 +424,7 @@ $.get({
 內建驗證屬性包括：
 
 * `[CreditCard]`：驗證屬性是否具有信用卡格式。
-* `[Compare]`：驗證模型中的兩個屬性是否相符。 例如， *Register.cshtml.cs*檔案會使用`[Compare]`來驗證兩個輸入的密碼相符。 [Scaffold 身分識別](xref:security/authentication/scaffold-identity)] 以查看註冊程式碼。
+* `[Compare]`：驗證模型中的兩個屬性是否相符。 例如， *Register.cshtml.cs*檔案會使用`[Compare]`來驗證兩個輸入的密碼相符。 [Scaffold Identity ](xref:security/authentication/scaffold-identity)以查看註冊程式碼。
 * `[EmailAddress]`：驗證屬性是否具有電子郵件格式。
 * `[Phone]`：驗證屬性是否具有電話號碼格式。
 * `[Range]`：驗證屬性值是否落在指定的範圍內。
@@ -428,7 +434,7 @@ $.get({
 * `[Url]`：驗證屬性是否具有 URL 格式。
 * `[Remote]`：藉由在伺服器上呼叫動作方法，驗證用戶端上的輸入。 如需此屬性行為的詳細資料，請參閱[ `[Remote]`屬性](#remote-attribute)。
 
-搭配用戶端`[RegularExpression]`驗證使用屬性時，會在用戶端上以 JavaScript 執行 RegEx。 這表示將會使用[ECMAScript](/dotnet/standard/base-types/regular-expression-options#ecmascript-matching-behavior)比對行為。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/dotnet/corefx/issues/42487) \(英文\)。
+搭配用戶端`[RegularExpression]`驗證使用屬性時，會在用戶端上以 JavaScript 執行 RegEx。 這表示將會使用[ECMAScript](/dotnet/standard/base-types/regular-expression-options#ecmascript-matching-behavior)比對行為。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/corefx/issues/42487)。
 
 您可以在 [System.ComponentModel.DataAnnotations](xref:System.ComponentModel.DataAnnotations) 命名空間中找到驗證屬性的完整清單。
 
@@ -742,7 +748,7 @@ $.get({
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup2.cs?name=snippet_DisableClientValidation)]
 
-以及在 Razor Pages 中：
+和在Razor頁面中：
 
 [!code-csharp[](validation/samples_snapshot/2.x/Startup3.cs?name=snippet_DisableClientValidation)]
 

@@ -4,13 +4,19 @@ author: rick-anderson
 description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 DataAnnotations。
 ms.author: riande
 ms.date: 12/13/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 87b3cb2f4429157123d30274d1f12cd589c1cc99
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 444c870fcf9e866f0c382e32af174442d11d3af5
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80242506"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777575"
 ---
 # <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
 
@@ -36,7 +42,7 @@ ms.locfileid: "80242506"
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
-[標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。 在上面的代碼中,`AnchorTagHelper`動態生成來自控制器操作方法和路`href`由 ID 的 HTML 屬性值。使用您最喜愛的瀏覽器**中的 View Source**或使用開發人員工具檢查生成的標記。 產生的 HTML 部分如下所示：
+[標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中Razor的 HTML 元素。 在上述程式碼中， `AnchorTagHelper`會從控制器動作`href`方法和路由識別碼動態產生 HTML 屬性值。您可以從您慣用的瀏覽器使用**View Source** ，或使用開發人員工具來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
  <td>
@@ -56,7 +62,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 <a name="get-post"></a>
 
-開啟 `Movies` 控制器，並檢查兩個 `Edit` 動作方法。 下列程式碼示範 `HTTP GET Edit` 方法，這個方法會擷取電影，並填入 *Edit.cshtml* Razor 檔案所產生的編輯表單。
+開啟 `Movies` 控制器，並檢查兩個 `Edit` 動作方法。 下列程式碼顯示`HTTP GET Edit`方法，它會提取電影，並填入編輯的 *. cshtml* Razor檔案所產生的編輯表單。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -114,7 +120,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 包含 Scaffold 的程式碼會使用數個標記協助程式方法來簡化 HTML 標記。 [標籤標記協助程式](xref:mvc/views/working-with-forms)顯示欄位的名稱 ("Title"、"ReleaseDate"、"Genre" 或 "Price")。 [輸入標記協助程式](xref:mvc/views/working-with-forms)轉譯 HTML `<input>` 元素。 [驗證標記協助程式](xref:mvc/views/working-with-forms)則顯示與該屬性相關聯的任何驗證訊息。
 
-執行應用程式，並巡覽至 `/Movies` URL。 按下 **「編輯」** 連結。 在瀏覽器中，檢視頁面的原始檔。 `<form>` 元素產生的 HTML 如下所示。
+執行應用程式，並巡覽至 `/Movies` URL。 按一下 [**編輯**] 連結。 在瀏覽器中，檢視頁面的原始檔。 `<form>` 元素產生的 HTML 如下所示。
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Shared/edit_view_source.html?highlight=1,6,10,17,24,28)]
 
@@ -161,5 +167,5 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 * [驗證標記協助程式](xref:mvc/views/working-with-forms)
 
 > [!div class="step-by-step"]
-> [前一個](working-with-sql.md)
-> [下一個](search.md)  
+> [上一頁](working-with-sql.md)
+> [下一頁](search.md)  

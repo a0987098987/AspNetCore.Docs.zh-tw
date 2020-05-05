@@ -5,19 +5,25 @@ description: 瞭解資料保護的概念，以及 ASP.NET Core 資料保護 Api 
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/introduction
-ms.openlocfilehash: 37f170a3e8a46ef2215b0999358d46dd402636df
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: db2c22454fc6c7e663ca603e9d70b6c12ce31af4
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664441"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775800"
 ---
 # <a name="aspnet-core-data-protection"></a>ASP.NET Core 資料保護
 
 Web 應用程式通常需要儲存安全性敏感的資料。 Windows 為傳統型應用程式提供 DPAPI，但這不適用於 web 應用程式。 ASP.NET Core 資料保護堆疊提供簡單、容易使用的密碼編譯 API，開發人員可用來保護資料，包括金鑰管理和輪替。
 
-ASP.NET Core 資料保護堆疊的設計，是用來做為 ASP.NET 1.x-4.x 中 &lt;machineKey&gt; 元素的長期取代。 其設計目的是要解決舊版密碼編譯堆疊的許多缺點，同時為現代應用程式可能遇到的大多數使用案例提供現成的解決方案。
+ASP.NET Core 資料保護堆疊的設計，是用來做為 ASP.NET 1.x-4.x 中&lt;machineKey&gt;元素的長期取代。 其設計目的是要解決舊版密碼編譯堆疊的許多缺點，同時為現代應用程式可能遇到的大多數使用案例提供現成的解決方案。
 
 ## <a name="problem-statement"></a>問題陳述
 
@@ -67,15 +73,15 @@ ASP.NET Core 的資料保護 Api 主要不適用於機密承載的無限持續�
 
 資料保護堆疊是由五個封裝所組成。
 
-* [AspNetCore. DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/)包含用來建立資料保護服務的 <xref:Microsoft.AspNetCore.DataProtection.IDataProtectionProvider> 和 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> 介面。 它也包含有用的擴充方法來使用這些類型（例如， [idataprotector 加密](xref:Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Protect*)）。 如果資料保護系統在別處具現化，而您正在使用 API，請參考 `Microsoft.AspNetCore.DataProtection.Abstractions`。
+* [AspNetCore. DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Abstractions/)包含建立資料保護服務的<xref:Microsoft.AspNetCore.DataProtection.IDataProtectionProvider>和<xref:Microsoft.AspNetCore.DataProtection.IDataProtector>介面。 它也包含有用的擴充方法來使用這些類型（例如， [idataprotector 加密](xref:Microsoft.AspNetCore.DataProtection.DataProtectionCommonExtensions.Protect*)）。 如果資料保護系統在別處具現化，而且您正在使用 API， `Microsoft.AspNetCore.DataProtection.Abstractions`請參考。
 
-* [AspNetCore. DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection/)包含資料保護系統的核心實行，包括核心密碼編譯作業、金鑰管理、設定和擴充性。 若要具現化資料保護系統（例如，將它新增至 <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>）或修改或擴充其行為，請參考 `Microsoft.AspNetCore.DataProtection`。
+* [AspNetCore. DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection/)包含資料保護系統的核心實行，包括核心密碼編譯作業、金鑰管理、設定和擴充性。 若要具現化資料保護系統（例如，將其新增<xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>至），或修改或擴充其行為`Microsoft.AspNetCore.DataProtection`，請參考。
 
-* [AspNetCore. DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/)包含額外的 api，開發人員可能會發現有用但不屬於核心套件。 例如，此套件包含 factory 方法，可將資料保護系統具現化，以將金鑰儲存在檔案系統上的位置，而不需要相依性插入（請參閱 <xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>）。 它也包含限制受保護裝載之存留期的擴充方法（請參閱 <xref:Microsoft.AspNetCore.DataProtection.ITimeLimitedDataProtector>）。
+* [AspNetCore. DataProtection](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.Extensions/)包含額外的 api，開發人員可能會發現有用但不屬於核心套件。 例如，此套件包含 factory 方法，可將資料保護系統具現化，以將金鑰儲存在檔案系統上的位置，而<xref:Microsoft.AspNetCore.DataProtection.DataProtectionProvider>不需要相依性插入（請參閱）。 它也包含限制受保護裝載之存留期的擴充方法（ <xref:Microsoft.AspNetCore.DataProtection.ITimeLimitedDataProtector>請參閱）。
 
-* [SystemWeb](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.SystemWeb/)可以安裝到現有的 ASP.NET 4.x 應用程式，以將其 `<machineKey>` 作業重新導向，以使用新的 ASP.NET Core 資料保護堆疊。 如需詳細資訊，請參閱 <xref:security/data-protection/compatibility/replacing-machinekey>。
+* [SystemWeb](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.SystemWeb/)可以安裝到現有的 ASP.NET 4.x 應用程式中，以將其`<machineKey>`作業重新導向至使用新的 ASP.NET Core 資料保護堆疊。 如需詳細資訊，請參閱<xref:security/data-protection/compatibility/replacing-machinekey>。
 
-* [AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Cryptography.KeyDerivation/)會提供 PBKDF2 密碼雜湊常式的執行，並可供必須安全處理使用者密碼的系統使用。 如需詳細資訊，請參閱 <xref:security/data-protection/consumer-apis/password-hashing>。
+* [AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Cryptography.KeyDerivation/)會提供 PBKDF2 密碼雜湊常式的執行，並可供必須安全處理使用者密碼的系統使用。 如需詳細資訊，請參閱<xref:security/data-protection/consumer-apis/password-hashing>。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -1,18 +1,24 @@
 ---
-title: 從 ASP.NET MVC 遷移至 ASP.NET Core MVC
+title: 從 ASP.NET MVC 移轉至 ASP.NET Core MVC
 author: ardalis
 description: 瞭解如何開始將 ASP.NET MVC 專案遷移至 ASP.NET Core MVC。
 ms.author: riande
 ms.date: 04/06/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: migration/mvc
-ms.openlocfilehash: 6c9449fb43960d05db8aa6dcba64d3d830834cdb
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 59a10c002958e5f719dbd59686f21df69da5f43e
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661165"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777042"
 ---
-# <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>從 ASP.NET MVC 遷移至 ASP.NET Core MVC
+# <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>從 ASP.NET MVC 移轉至 ASP.NET Core MVC
 
 作者： [Rick Anderson](https://twitter.com/RickAndMSFT)、 [Daniel Roth](https://github.com/danroth27)、 [Steve Smith](https://ardalis.com/)和[Scott Addie](https://scottaddie.com)
 
@@ -37,7 +43,7 @@ ms.locfileid: "78661165"
 
 ![[新增專案] 對話方塊](mvc/_static/new_core.png)
 
-![新增 ASP.NET Web 應用程式 對話方塊：在 ASP.NET Core 範本 面板中選取了空白專案範本](mvc/_static/new-project-select-empty-aspnet5-template.png)
+![[新增 ASP.NET Web 應用程式] 對話方塊：在 ASP.NET Core 範本] 面板中選取了空白專案範本](mvc/_static/new-project-select-empty-aspnet5-template.png)
 
 * *選擇性：* 使用*Web 應用程式*專案範本建立新的 ASP.NET Core 應用程式。 將專案命名為*WebApp1*，然後選取**個別使用者帳戶**的驗證選項。 將此應用程式重新命名為*FullAspNetCore*。 建立這個專案可讓您省下轉換的時間。 您可以查看範本產生的程式碼，以查看最終結果，或將程式碼複製到轉換專案。 當您停滯在轉換步驟，與範本產生的專案進行比較時，這也很有説明。
 
@@ -61,13 +67,13 @@ ms.locfileid: "78661165"
 
 ::: moniker-end
 
-`Microsoft.AspNetCore.Mvc` 是 ASP.NET Core MVC 架構。 `Microsoft.AspNetCore.StaticFiles` 是靜態檔案處理常式。 ASP.NET Core 執行時間是模組化的，而且您必須明確加入宣告以提供靜態檔案（請參閱[靜態](xref:fundamentals/static-files)檔案）。
+`Microsoft.AspNetCore.Mvc`是 ASP.NET Core MVC 架構。 `Microsoft.AspNetCore.StaticFiles`這是靜態檔案處理常式。 ASP.NET Core 執行時間是模組化的，而且您必須明確加入宣告以提供靜態檔案（請參閱[靜態](xref:fundamentals/static-files)檔案）。
 
 * 開啟*Startup.cs*檔案，並變更程式碼以符合下列內容：
 
   [!code-csharp[](mvc/sample/Startup.cs?highlight=13,26-31)]
 
-`UseStaticFiles` 擴充方法會加入靜態檔案處理常式。 如先前所述，ASP.NET 執行時間是模組化的，您必須明確加入宣告靜態檔案。 `UseMvc` 擴充方法會新增路由。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)和[路由](xref:fundamentals/routing)。
+`UseStaticFiles`擴充方法會加入靜態檔案處理常式。 如先前所述，ASP.NET 執行時間是模組化的，您必須明確加入宣告靜態檔案。 `UseMvc`擴充方法會新增路由。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)和[路由](xref:fundamentals/routing)。
 
 ## <a name="add-a-controller-and-view"></a>新增控制器和視圖
 
@@ -83,7 +89,7 @@ ms.locfileid: "78661165"
 
 * 新增*Views/Home*資料夾。
 
-* 將名為*Index*的**Razor View**新增至*Views/Home*資料夾。
+* 將名為*Index. cshtml*的** Razor視圖**新增至*Views/Home*資料夾。
 
 ![[新增項目] 對話方塊](mvc/_static/view.png)
 
@@ -117,15 +123,15 @@ ms.locfileid: "78661165"
 
 * filters
 
-* 登入/登出、身分識別（這會在下一個教學課程中完成）。
+* 登入/登出Identity （這會在下一個教學課程中完成）。
 
 ## <a name="controllers-and-views"></a>控制器和視圖
 
-* 將 ASP.NET MVC `HomeController` 中的每個方法複製到新的 `HomeController`。 請注意，在 ASP.NET MVC 中，內建範本的控制器動作方法傳回類型為[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx);在 ASP.NET Core MVC 中，動作方法會改為傳回 `IActionResult`。 `ActionResult` 會執行 `IActionResult`，因此不需要變更動作方法的傳回型別。
+* 將 ASP.NET MVC `HomeController`中的每個方法複製到新`HomeController`的。 請注意，在 ASP.NET MVC 中，內建範本的控制器動作方法傳回類型為[ActionResult](https://msdn.microsoft.com/library/system.web.mvc.actionresult(v=vs.118).aspx);在 ASP.NET Core MVC 中，動作方法會`IActionResult`改為傳回。 `ActionResult`會`IActionResult`執行，因此不需要變更動作方法的傳回型別。
 
-* 將*About. cshtml*、 *Contact*和*Index. cshtml* Razor view 檔案從 ASP.NET MVC 專案複製到 ASP.NET Core 專案。
+* 將 [*關於*ASP.NET MVC] 專案中的 [About]、[ *Contact*] 和 [ *Index. cshtml* Razor ] 檔案複製到 ASP.NET Core 專案。
 
-* 執行 ASP.NET Core 應用程式，並測試每個方法。 我們尚未遷移版面配置檔案或樣式，因此轉譯的視圖只會包含視圖檔案中的內容。 您不會有 `About` 和 `Contact` 視圖的配置檔案產生連結，因此您必須從瀏覽器叫用（以專案中使用的埠號碼取代**4492** ）。
+* 執行 ASP.NET Core 應用程式，並測試每個方法。 我們尚未遷移版面配置檔案或樣式，因此轉譯的視圖只會包含視圖檔案中的內容。 您不會有`About`和`Contact` views 的配置檔案產生連結，因此您必須從瀏覽器叫用（以專案中使用的埠號碼取代**4492** ）。
 
   * `http://localhost:4492/home/about`
 
@@ -155,15 +161,15 @@ ms.locfileid: "78661165"
 
 開啟 *_Layout 的 cshtml*檔案，並進行下列變更（完成的程式碼如下所示）：
 
-* 將 `@Styles.Render("~/Content/css")` 取代為 `<link>` 元素，以載入*啟動程式 .css* （請參閱下文）。
+* 取代`@Styles.Render("~/Content/css")`為要`<link>`載入*啟動*程式的元素（請參閱下文）。
 
 * 移除 `@Scripts.Render("~/bundles/modernizr")`。
 
-* 將 `@Html.Partial("_LoginPartial")` 行加上批註（以 `@*...*@`括住這一行）。 如需詳細資訊，請參閱[將驗證和身分識別遷移至 ASP.NET Core](xref:migration/identity)
+* 將`@Html.Partial("_LoginPartial")`行標記為批註（以`@*...*@`括住行）。 如需詳細資訊，請參閱[遷移驗證和Identity ASP.NET Core](xref:migration/identity)
 
-* 將 `@Scripts.Render("~/bundles/jquery")` 取代為 `<script>` 元素（請參閱下文）。
+* 取代`@Scripts.Render("~/bundles/jquery")`為`<script>`元素（請參閱下文）。
 
-* 將 `@Scripts.Render("~/bundles/bootstrap")` 取代為 `<script>` 元素（請參閱下文）。
+* 取代`@Scripts.Render("~/bundles/bootstrap")`為`<script>`元素（請參閱下文）。
 
 啟動載入 CSS 的取代標記包含：
 
@@ -196,7 +202,7 @@ JQuery 和啟動程式 JavaScript 包含的取代標記：
 
 ## <a name="solve-http-500-errors"></a>解決 HTTP 500 錯誤
 
-有許多問題可能會導致 HTTP 500 錯誤訊息，其中不包含問題來源的相關資訊。 例如，如果*Views/_ViewImports. cshtml*檔案包含的命名空間不存在於您的專案中，您將會收到 HTTP 500 錯誤。 根據預設，在 ASP.NET Core 應用程式中，`UseDeveloperExceptionPage` 延伸模組會新增至 `IApplicationBuilder`，並在設定為*開發*時執行。 下列程式碼將詳細說明這一點：
+有許多問題可能會導致 HTTP 500 錯誤訊息，其中不包含問題來源的相關資訊。 例如，如果*Views/_ViewImports. cshtml*檔案包含的命名空間不存在於您的專案中，您將會收到 HTTP 500 錯誤。 根據預設，在 ASP.NET Core 應用程式`UseDeveloperExceptionPage`中，延伸模組會`IApplicationBuilder`新增至，並在設定為*開發*時執行。 下列程式碼將詳細說明這一點：
 
 [!code-csharp[](mvc/sample/Startup.cs?highlight=19-22)]
 

@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 05/02/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 6cf1de6e68d04505ce4ba5d18f2a7d0bbe5be333
-ms.sourcegitcommit: c19e388c83c981232e6f128d97440262adfe06e2
+ms.openlocfilehash: 052a787fbe6411dbaa953f10fcd982dfbd41f1af
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2020
-ms.locfileid: "82727649"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82769451"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET Core Blazor
 
@@ -86,7 +89,7 @@ ms.locfileid: "82727649"
 
 1. 使用 Blazor 伺服器，使用 Visual Studio Code 偵錯工具執行應用程式。
 
-   透過 Blazor WebAssembly，使用 **.Net Core 啟動（Blazor 獨立式）** 啟動設定來啟動應用程式，然後在 Chrome 啟動設定（需要 chrome）**中使用 .Net Core Debug Blazor Web 元件**來啟動瀏覽器。 如需詳細資訊，請參閱 <xref:blazor/debug#visual-studio-code>。
+   透過 Blazor WebAssembly，使用 **.Net Core 啟動（Blazor 獨立式）** 啟動設定來啟動應用程式，然後在 Chrome 啟動設定（需要 chrome）**中使用 .Net Core Debug Blazor Web 元件**來啟動瀏覽器。 如需詳細資訊，請參閱<xref:blazor/debug#visual-studio-code>。
 
 1. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 

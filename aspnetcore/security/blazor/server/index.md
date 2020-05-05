@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 05/02/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/server/index
-ms.openlocfilehash: 324b3e8ed2d931c81bb41381caa469b0ec2f2fda
-ms.sourcegitcommit: c19e388c83c981232e6f128d97440262adfe06e2
+ms.openlocfilehash: bbd8b6fcd357b8929bf097450854d98fbea2570e
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/02/2020
-ms.locfileid: "82727804"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82772631"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>保護 ASP.NET Core Blazor 伺服器應用程式
 
@@ -50,7 +53,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 下表顯示允許的驗證值 (`{AUTHENTICATION}`)。
 
-| 驗證機制 | 描述 |
+| 驗證機制 | 說明 |
 | ------------------------ | ----------- |
 | `None` (預設值)         | 不需要驗證 |
 | `Individual`             | 以 ASP.NET Core 身分識別儲存在應用程式中的使用者 |
@@ -84,7 +87,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 下表顯示允許的驗證值 (`{AUTHENTICATION}`)。
 
-| 驗證機制 | 描述 |
+| 驗證機制 | 說明 |
 | ------------------------ | ----------- |
 | `None` (預設值)         | 不需要驗證 |
 | `Individual`             | 以 ASP.NET Core 身分識別儲存在應用程式中的使用者 |

@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: performance/response-compression
-ms.openlocfilehash: 8fc68f2303bfcf16d279b829ab9441a80119f1bb
-ms.sourcegitcommit: 755952496316fdb0923689109b536b609ce525ee
+ms.openlocfilehash: 12a39ccfefdcaec6251a9804011aefde3bbae7b2
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82643076"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776665"
 ---
 # <a name="response-compression-in-aspnet-core"></a>ASP.NET Core 中的回應壓縮
 
@@ -42,7 +48,7 @@ ms.locfileid: "82643076"
 
 當用戶端可以處理壓縮內容時，用戶端必須透過要求傳送`Accept-Encoding`標頭，以通知伺服器其功能。 當伺服器傳送壓縮的內容時，它必須在`Content-Encoding`標頭中包含有關壓縮回應編碼方式的資訊。 下表顯示中介軟體支援的內容編碼方式。
 
-| `Accept-Encoding`標頭值 | 支援的中介軟體 | 描述 |
+| `Accept-Encoding`標頭值 | 支援的中介軟體 | 說明 |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | 是 (預設)        | [Brotli 壓縮資料格式](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | 否                   | [DEFLATE 壓縮資料格式](https://tools.ietf.org/html/rfc1951) |
@@ -76,11 +82,11 @@ ms.locfileid: "82643076"
 * 使用 Gzip 和自訂壓縮提供者來壓縮應用程式回應。
 * 如何將 MIME 類型新增至 MIME 類型的預設清單以進行壓縮。
 
-## <a name="package"></a>套件
+## <a name="package"></a>封裝
 
 回應壓縮中介軟體是由[AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)套件所提供，它會隱含地包含在 ASP.NET Core 應用程式中。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 下列程式碼示範如何針對預設 MIME 類型和壓縮提供者（[Brotli](#brotli-compression-provider)和[Gzip](#gzip-compression-provider)）啟用回應壓縮中介軟體：
 
@@ -101,7 +107,7 @@ public class Startup
 
 注意：
 
-* `app.UseResponseCompression`必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#middleware-order>。
+* `app.UseResponseCompression`必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index#middleware-order>。
 * 使用[Fiddler](https://www.telerik.com/fiddler)、 [Firebug](https://getfirebug.com/)或[Postman](https://www.getpostman.com/)之類的工具來設定`Accept-Encoding`要求標頭，並研究回應標頭、大小和主體。
 
 不使用`Accept-Encoding`標頭將要求提交至範例應用程式，並觀察回應是否已解壓縮。 `Content-Encoding`和`Vary`標頭不存在於回應中。
@@ -136,7 +142,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用<xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions>設定壓縮等級。 Brotli 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| Compression Level | 描述 |
+| Compression Level | 說明 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |
@@ -176,7 +182,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用<xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>設定壓縮等級。 Gzip 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| Compression Level | 描述 |
+| Compression Level | 說明 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |
@@ -288,7 +294,7 @@ public void ConfigureServices(IServiceCollection services)
 
 當用戶端可以處理壓縮內容時，用戶端必須透過要求傳送`Accept-Encoding`標頭，以通知伺服器其功能。 當伺服器傳送壓縮的內容時，它必須在`Content-Encoding`標頭中包含有關壓縮回應編碼方式的資訊。 下表顯示中介軟體支援的內容編碼方式。
 
-| `Accept-Encoding`標頭值 | 支援的中介軟體 | 描述 |
+| `Accept-Encoding`標頭值 | 支援的中介軟體 | 說明 |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | 是 (預設)        | [Brotli 壓縮資料格式](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | 否                   | [DEFLATE 壓縮資料格式](https://tools.ietf.org/html/rfc1951) |
@@ -322,11 +328,11 @@ public void ConfigureServices(IServiceCollection services)
 * 使用 Gzip 和自訂壓縮提供者來壓縮應用程式回應。
 * 如何將 MIME 類型新增至 MIME 類型的預設清單以進行壓縮。
 
-## <a name="package"></a>套件
+## <a name="package"></a>封裝
 
 若要在專案中包含中介軟體，請新增[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)的參考，其中包含[AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 下列程式碼示範如何針對預設 MIME 類型和壓縮提供者（[Brotli](#brotli-compression-provider)和[Gzip](#gzip-compression-provider)）啟用回應壓縮中介軟體：
 
@@ -347,7 +353,7 @@ public class Startup
 
 注意：
 
-* `app.UseResponseCompression`必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#middleware-order>。
+* `app.UseResponseCompression`必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index#middleware-order>。
 * 使用[Fiddler](https://www.telerik.com/fiddler)、 [Firebug](https://getfirebug.com/)或[Postman](https://www.getpostman.com/)之類的工具來設定`Accept-Encoding`要求標頭，並研究回應標頭、大小和主體。
 
 不使用`Accept-Encoding`標頭將要求提交至範例應用程式，並觀察回應是否已解壓縮。 `Content-Encoding`和`Vary`標頭不存在於回應中。
@@ -382,7 +388,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用<xref:Microsoft.AspNetCore.ResponseCompression.BrotliCompressionProviderOptions>設定壓縮等級。 Brotli 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| Compression Level | 描述 |
+| Compression Level | 說明 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |
@@ -422,7 +428,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用<xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>設定壓縮等級。 Gzip 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| Compression Level | 描述 |
+| Compression Level | 說明 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |
@@ -533,7 +539,7 @@ public void ConfigureServices(IServiceCollection services)
 
 當用戶端可以處理壓縮內容時，用戶端必須透過要求傳送`Accept-Encoding`標頭，以通知伺服器其功能。 當伺服器傳送壓縮的內容時，它必須在`Content-Encoding`標頭中包含有關壓縮回應編碼方式的資訊。 下表顯示中介軟體支援的內容編碼方式。
 
-| `Accept-Encoding`標頭值 | 支援的中介軟體 | 描述 |
+| `Accept-Encoding`標頭值 | 支援的中介軟體 | 說明 |
 | ------------------------------- | :------------------: | ----------- |
 | `br`                            | 否                   | [Brotli 壓縮資料格式](https://tools.ietf.org/html/rfc7932) |
 | `deflate`                       | 否                   | [DEFLATE 壓縮資料格式](https://tools.ietf.org/html/rfc1951) |
@@ -567,11 +573,11 @@ public void ConfigureServices(IServiceCollection services)
 * 使用 Gzip 和自訂壓縮提供者來壓縮應用程式回應。
 * 如何將 MIME 類型新增至 MIME 類型的預設清單以進行壓縮。
 
-## <a name="package"></a>套件
+## <a name="package"></a>封裝
 
 若要在專案中包含中介軟體，請新增[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)的參考，其中包含[AspNetCore. ResponseCompression](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCompression/)封裝。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 下列程式碼示範如何為預設 MIME 類型和[Gzip 壓縮提供者](#gzip-compression-provider)啟用回應壓縮中介軟體：
 
@@ -592,7 +598,7 @@ public class Startup
 
 注意：
 
-* `app.UseResponseCompression`必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#middleware-order>。
+* `app.UseResponseCompression`必須在壓縮回應的任何中介軟體之前呼叫。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index#middleware-order>。
 * 使用[Fiddler](https://www.telerik.com/fiddler)、 [Firebug](https://getfirebug.com/)或[Postman](https://www.getpostman.com/)之類的工具來設定`Accept-Encoding`要求標頭，並研究回應標頭、大小和主體。
 
 不使用`Accept-Encoding`標頭將要求提交至範例應用程式，並觀察回應是否已解壓縮。 `Content-Encoding`和`Vary`標頭不存在於回應中。
@@ -627,7 +633,7 @@ public void ConfigureServices(IServiceCollection services)
 
 使用<xref:Microsoft.AspNetCore.ResponseCompression.GzipCompressionProviderOptions>設定壓縮等級。 Gzip 壓縮提供者預設為最快速的壓縮層級（[CompressionLevel](xref:System.IO.Compression.CompressionLevel)），這可能不會產生最有效率的壓縮。 如果需要最有效率的壓縮，請設定中介軟體以獲得最佳壓縮。
 
-| Compression Level | 描述 |
+| Compression Level | 說明 |
 | ----------------- | ----------- |
 | [CompressionLevel。最快](xref:System.IO.Compression.CompressionLevel) | 即使產生的輸出未以最佳方式壓縮，壓縮也應該儘快完成。 |
 | [CompressionLevel. NoCompression](xref:System.IO.Compression.CompressionLevel) | 不應該執行壓縮。 |

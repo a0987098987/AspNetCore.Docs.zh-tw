@@ -4,13 +4,19 @@ author: rick-anderson
 description: 探索不同的 ASP.NET Core 資料保護擴充性主題。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/extensibility/index
-ms.openlocfilehash: 6a5a50f13fa3c7c437ec7d98da4dab67e4870f71
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 7b73f4ba9315ad662c59f421668c0ed78602526a
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78663559"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775761"
 ---
 # <a name="aspnet-core-data-protection-extensibility-apis"></a>ASP.NET Core 資料保護擴充性 API
 

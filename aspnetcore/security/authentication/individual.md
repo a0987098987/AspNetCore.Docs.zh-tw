@@ -4,19 +4,25 @@ author: rick-anderson
 description: 根據使用個別使用者帳戶所建立 ASP.NET Core 專案來探索文章。
 ms.author: riande
 ms.date: 12/11/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/individual
-ms.openlocfilehash: 7ef0d5eabded61d04fb9fe7be384a663ad7ea5f4
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 26f53b6452e307bbd0816c1a3604f38b04c6af15
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659618"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82768646"
 ---
 # <a name="articles-based-on-aspnet-core-projects-created-with-individual-user-accounts"></a>以個別使用者帳戶所建立 ASP.NET Core 專案為基礎的文章
 
 ASP.NET Core 身分識別包含在具有 [個別使用者帳戶] 選項之 Visual Studio 的專案範本中。
 
-驗證範本可在 .NET Core CLI 中使用 `-au Individual`：
+.NET Core CLI 提供驗證範本`-au Individual`：
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -42,7 +48,7 @@ dotnet new razor -au Individual
 
 ## <a name="no-authentication"></a>不需要驗證
 
-使用 `-au` 選項在 .NET Core CLI 中指定驗證。 在 Visual Studio 中，新的 web 應用程式可以使用 [**變更驗證**] 對話方塊。 Visual Studio 中新 web 應用程式的預設值為 [**無驗證**]。
+使用`-au`選項在 .NET Core CLI 中指定驗證。 在 Visual Studio 中，新的 web 應用程式可以使用 [**變更驗證**] 對話方塊。 Visual Studio 中新 web 應用程式的預設值為 [**無驗證**]。
 
 建立不含驗證的專案：
 
@@ -53,7 +59,7 @@ dotnet new razor -au Individual
 
 ## <a name="windows-authentication"></a>Windows 驗證
 
-使用 `-au Windows` 選項，為 .NET Core CLI 中的新 web 應用程式指定 Windows 驗證。 在 Visual Studio 中，[**變更驗證**] 對話方塊會提供**Windows 驗證**選項。
+在 .NET Core CLI 中使用`-au Windows`選項，為新的 web 應用程式指定 Windows 驗證。 在 Visual Studio 中，[**變更驗證**] 對話方塊會提供**Windows 驗證**選項。
 
 如果已選取 [Windows 驗證]，則會將應用程式設定為使用[Windows 驗證 IIS 模組](xref:host-and-deploy/iis/modules)。 Windows 驗證適用于內部網路網站。
 
@@ -61,7 +67,7 @@ dotnet new razor -au Individual
 
 下表顯示適用于新 web 應用程式的驗證選項：
 
-| 選項 | 驗證類型 | 連結以取得詳細資訊 |
+| 選項 | 驗證類型 | 連結取得詳細資訊 |
  | ----------------- | ------------ | ---------- |
 | None            |  不需要驗證 | | 
 | 個人      |  個別驗證 | <xref:security/authentication/identity>
@@ -74,7 +80,7 @@ dotnet new razor -au Individual
 
 下表顯示使用 Visual Studio 建立新的 web 應用程式時可用的驗證選項：
 
-| 選項 | 驗證類型 | 連結以取得詳細資訊 |
+| 選項 | 驗證類型 | 連結取得詳細資訊 |
  | ----------------- | ------------ | ---------- |
 | None            |  不需要驗證 | | 
 | 個別使用者帳戶/儲存應用程式中的使用者帳戶 |  個別驗證 | <xref:security/authentication/identity> |

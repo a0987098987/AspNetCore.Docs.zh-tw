@@ -4,13 +4,19 @@ author: rick-anderson
 description: 瞭解 ASP.NET Core 資料保護內容標頭的執行詳細資料。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 518423f5df93924d3df144994e4beb1755cd0bfc
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 381cc137d1de87e87f36c3b32a6a551a318ed3cf
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78666576"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776951"
 ---
 # <a name="context-headers-in-aspnet-core"></a>ASP.NET Core 中的內容標頭
 
@@ -20,9 +26,9 @@ ms.locfileid: "78666576"
 
 在資料保護系統中，「金鑰」是指可提供已驗證加密服務的物件。 每個金鑰都是以唯一識別碼（GUID）來識別，而且它會攜帶其演算法資訊和 entropic 材質。 它的目的是要讓每個金鑰都具有獨特的熵，但是系統無法強制執行，而且我們也需要將金鑰環中現有金鑰的演算法資訊修改為手動變更金鑰信號的開發人員。 為了達到我們的安全性需求，在這些情況下，資料保護系統具有[密碼](https://www.microsoft.com/en-us/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/)編譯彈性的概念，可讓您在多個密碼編譯演算法中安全使用單一 entropic 值。
 
-大部分支援密碼編譯靈活性的系統，都是在裝載內包含關於演算法的一些識別資訊。 演算法的 OID 通常是很好的候選。 不過，我們遇到的一個問題是，有多種方式可以指定相同的演算法：「AES」（CNG）和受管理的 Aes、AesManaged、AesCryptoServiceProvider、AesCng 和 RijndaelManaged （指定的特定參數）類別實際上是相同的而且我們需要維護所有這些的對應到正確的 OID。 如果開發人員想要提供自訂演算法（或甚至是 AES！的另一個實作為），他們必須告訴我們其 OID。 這個額外的註冊步驟讓系統設定特別困難。
+大部分支援密碼編譯靈活性的系統，都是在裝載內包含關於演算法的一些識別資訊。 演算法的 OID 通常是很好的候選。 不過，我們遇到的一個問題是，有多種方式可以指定相同的演算法：「AES」（CNG）和受管理的 Aes、AesManaged、AesCryptoServiceProvider、AesCng 和 RijndaelManaged （指定的特定參數）類別實際上都是相同的，因此我們需要維護所有這些的對應到正確的 OID。 如果開發人員想要提供自訂演算法（或甚至是 AES！的另一個實作為），他們必須告訴我們其 OID。 這個額外的註冊步驟讓系統設定特別困難。
 
-回頭執行後，我們決定我們已從錯誤的方向中接近問題。 OID 會告訴您演算法的意義，但我們並不會特別在意這一點。 如果我們需要以兩種不同的演算法安全地使用單一 entropic 值，我們就不需要知道演算法實際上是什麼。 我們真正在意的是它們的表現方式。 任何適當的對稱式區塊加密演算法也是強式隨機排列（PRP）：修正輸入（金鑰、連結模式、IV、純文字），而加密文字輸出的機率會與任何其他對稱區塊密碼不同提供相同輸入的演算法。 同樣地，任何適當的索引鍵雜湊函式也是強式的偽虛擬函式（PRF），而且在指定固定的輸入集時，其輸出將回應非常正面與任何其他索引雜湊函數不同。
+回頭執行後，我們決定我們已從錯誤的方向中接近問題。 OID 會告訴您演算法的意義，但我們並不會特別在意這一點。 如果我們需要以兩種不同的演算法安全地使用單一 entropic 值，我們就不需要知道演算法實際上是什麼。 我們真正在意的是它們的表現方式。 任何適當的對稱式區塊加密演算法也是強式隨機排列（PRP）：修正輸入（金鑰、連結模式、IV、純文字），而加密文字輸出的機率會與任何其他對稱式區塊加密演算法（提供相同的輸入）不同。 同樣地，任何適當的索引鍵雜湊函式也是強式的偽虛擬函式（PRF），而且在指定固定的輸入集時，其輸出將回應非常正面與任何其他索引雜湊函數不同。
 
 我們使用此強式 Prp 和 PRFs 的概念來建立內容標頭。 此內容標頭基本上會作為任何指定作業所使用之演算法的穩定指紋，並提供資料保護系統所需的密碼編譯靈活性。 此標頭是可重現的，稍後會用來做為子機碼[衍生進程](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation)的一部分。 有兩種不同的方式可以建立內容標頭，視基礎演算法的作業模式而定。
 

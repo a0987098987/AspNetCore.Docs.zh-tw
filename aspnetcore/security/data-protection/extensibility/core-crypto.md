@@ -4,13 +4,19 @@ author: rick-anderson
 description: 瞭解 IAuthenticatedEncryptor、IAuthenticatedEncryptorDescriptor、IAuthenticatedEncryptorDescriptorDeserializer 和最上層的 factory。
 ms.author: riande
 ms.date: 08/11/2017
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/extensibility/core-crypto
-ms.openlocfilehash: a5f651e3313cc579b995b45905826a5bffcc241c
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: c63cc124e1893f23c18581841194fa66848a2a1e
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663566"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776418"
 ---
 # <a name="core-cryptography-extensibility-in-aspnet-core"></a>ASP.NET Core 中的核心密碼編譯擴充性
 
@@ -120,7 +126,7 @@ IAuthenticatedEncryptor 和 IAuthenticatedEncryptorDescriptor 之間的主要差
 
 描述元可以透過其 ExportToXml 常式進行序列化。 此常式會傳回 XmlSerializedDescriptorInfo，其中包含兩個屬性：描述元的 System.xml.linq.xelement> 標記法，以及代表[IAuthenticatedEncryptorDescriptorDeserializer](xref:security/data-protection/extensibility/core-crypto#data-protection-extensibility-core-crypto-iauthenticatedencryptordescriptordeserializer)的類型，可以用來 resurrect 此描述項（提供對應的 system.xml.linq.xelement>）。
 
-序列化的描述項可能會包含機密資訊，例如密碼編譯金鑰內容。 資料保護系統在保存到儲存體之前，有內建的加密資訊支援。 若要利用這一點，描述項應該將包含敏感性資訊的元素標記為屬性名稱 "requiresEncryption" （xmlns "<http://schemas.asp.net/2015/03/dataProtection>"），值 "true"。
+序列化的描述項可能會包含機密資訊，例如密碼編譯金鑰內容。 資料保護系統在保存到儲存體之前，有內建的加密資訊支援。 若要利用這種方式，描述項應該將包含敏感性資訊的元素標記為屬性名稱 "requiresEncryption" （xmlns "<http://schemas.asp.net/2015/03/dataProtection>"），值 "true"。
 
 >[!TIP]
 > 有一個 helper API 可用於設定此屬性。 呼叫位於 System.xml.linq.xelement> 命名空間 AspNetCore 的擴充方法 MarkAsRequiresEncryption （）。

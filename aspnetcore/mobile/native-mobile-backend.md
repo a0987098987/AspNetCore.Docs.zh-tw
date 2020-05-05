@@ -4,13 +4,19 @@ author: ardalis
 description: 了解如何使用 ASP.NET Core MVC 建立後端服務，以支援原生行動應用程式。
 ms.author: riande
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: dcd0a29af197ff0ca210c17bdff62b802219fb2d
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 1ffaf61bb21f44681f530e35e746a30e9e158c6d
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664581"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777263"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>使用 ASP.NET Core 建立原生行動應用程式的後端服務
 
@@ -63,7 +69,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 > [!NOTE]
 > 請確定您是直接執行應用程式，而非在 IIS Express 之後執行，因為其根據預設會忽略所有非本機的要求。 在命令提示字元中執行 [dotnet run](/dotnet/core/tools/dotnet-run)，或從 Visual Studio 工具列的 [偵錯目標] 下拉式功能表中選擇應用程式名稱設定檔。
 
-新增一個模型類別來代表待辦項目。 標示具有 `[Required]` 屬性的必要欄位：
+新增一個模型類別來代表待辦項目。 使用`[Required]`屬性標記必要欄位：
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
@@ -96,7 +102,7 @@ API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使
 
 ### <a name="reading-items"></a>讀取項目
 
-您可以藉由對 `List` 方法傳送 GET 要求來要求項目清單。 `[HttpGet]` 方法上的 `List` 屬性表示這項動作應該僅用於處理 GET 要求。 此動作的路由為在控制器上指定的路由。 您不見得需要使用動作名稱作為路由的一部分。 您只需要確認每個動作都有一個唯一且明確的路由。 路由屬性可套用在控制器和方法層級上，以建置特定的路由。
+您可以藉由對 `List` 方法傳送 GET 要求來要求項目清單。 `List` 方法上的 `[HttpGet]` 屬性表示這項動作應該僅用於處理 GET 要求。 此動作的路由為在控制器上指定的路由。 您不見得需要使用動作名稱作為路由的一部分。 您只需要確認每個動作都有一個唯一且明確的路由。 路由屬性可套用在控制器和方法層級上，以建置特定的路由。
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Controllers/ToDoItemsController.cs?range=19-23)]
 
@@ -108,7 +114,7 @@ API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使
 
 ### <a name="creating-items"></a>建立項目
 
-根據慣例，建立新的資料項目會對應到 HTTP POST 動詞命令。 `Create` 方法已套用 `[HttpPost]` 屬性，並接受 `ToDoItem` 實例。 因為 `item` 引數會傳入 POST 的主體，所以這個參數會指定 `[FromBody]` 屬性。
+根據慣例，建立新的資料項目會對應到 HTTP POST 動詞命令。 `Create`方法已套用`[HttpPost]`屬性並接受`ToDoItem`實例。 因為自`item`變數會傳入 POST 的主體，所以這個參數會指定`[FromBody]`屬性。
 
 在方法中，項目會經過有效性的檢查，以及是否先前存在過資料存放區中。若沒有發現任何問題，則該項目便會新增至存放庫中。 檢查 `ModelState.IsValid` 會執行 [模型驗證](../mvc/models/validation.md)，並且應該要在每個接受使用者輸入的 API 方法中執行。
 

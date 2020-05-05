@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/10/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: ceb2ad857649dcfa8d04420dcc37792495edc3ff
-ms.sourcegitcommit: 6f1b516e0c899a49afe9a29044a2383ce2ada3c7
+ms.openlocfilehash: af2bea1b3a149ef8d80970031e939dc083d94a03
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81224020"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775891"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -32,17 +38,17 @@ ms.locfileid: "81224020"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
-   1. 存[取下載 .NET 核心頁面](https://dotnet.microsoft.com/download/dotnet-core)。
-   1. 選擇最新的非預覽 .NET 核心版本。
-   1. 在 **「運行應用 - 執行時**」下,在表中下載最新的非預覽運行時。
-   1. 選擇 Linux**套件管理員說明**連結,然後按照 Ubuntu 版本的 Ubuntu 說明進行操作。
+   1. 請造訪[下載 .Net Core 頁面](https://dotnet.microsoft.com/download/dotnet-core)。
+   1. 選取最新的非預覽 .NET Core 版本。
+   1. 在 [**執行應用程式-運行**時間] 下的表格中，下載最新的非預覽執行時間。
+   1. 選取 [Linux**套件管理員指示**] 連結，並遵循 ubuntu 版本的 ubuntu 指示。
 1. 現有的 ASP.NET Core 應用程式。
 
-在升級共用框架后的任何時候,重新啟動伺服器託管的ASP.NET核心應用。
+在未來升級共用架構之後的任何時間點，重新開機伺服器所裝載的 ASP.NET Core 應用程式。
 
 ## <a name="publish-and-copy-over-the-app"></a>跨應用程式發佈與複製
 
@@ -81,11 +87,11 @@ Kestrel 非常適用於從 ASP.NET Core 提供動態內容。 不過，Web 服�
 
 為達到本指南的目的，使用 Nginx 的單一執行個體。 它會在相同的伺服器上和 HTTP 伺服器一起執行。 您可以根據需求，選擇不同的設定。
 
-由於請求是透過反向代理轉寄的,請使用[Microsoft.AspNetCore.HTTPOverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)套件中的[轉寄標頭中間件](xref:host-and-deploy/proxy-load-balancer)。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
+因為反向 proxy 會轉送要求，所以請使用[AspNetCore. 來自 microsoft.aspnetcore.HTTPoverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)套件中的[轉送標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
 
 任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
 
-<xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*>在調用其他中間件之前調用`Startup.Configure`方法。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
+呼叫其他<xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*>中介軟體`Startup.Configure`之前，先叫用頂端的方法。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
 // using Microsoft.AspNetCore.HttpOverrides;
@@ -111,7 +117,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer>。
+如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
 
 ### <a name="install-nginx"></a>安裝 Nginx
 
@@ -149,7 +155,7 @@ server {
 }
 ```
 
-如果應用是依賴於 SignalR WebSocket 的 Blazor<xref:host-and-deploy/blazor/server#linux-with-nginx>Server 應用`Connection`,請參閱有關如何設置 標頭的資訊。
+如果應用程式是依賴Blazor SignalR websocket 的伺服器應用程式，請參閱<xref:host-and-deploy/blazor/server#linux-with-nginx> ，以取得如何設定`Connection`標頭的相關資訊。
 
 當沒有任何與 `server_name` 相符的項目時，Nginx 會使用預設伺服器。 如果未定義任何預設伺服器，則設定檔中的第一個伺服器就是預設伺服器。 最佳做法是，在您的設定檔中新增一個會傳回狀態碼 444 的特定預設伺服器。 預設伺服器設定範例如下：
 
@@ -179,7 +185,7 @@ server {
 
 ## <a name="monitor-the-app"></a>監視應用程式
 
-伺服器已設定完成，可將對 `http://<serveraddress>:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。 不過，並未設定 Nginx 來管理 Kestrel 處理序。 您可以使用 *systemd* 來建立服務檔案，以啟動並監視基礎 Web 應用程式。 *系統化*是一個 init 系統,它為啟動、停止和管理進程提供了許多強大的功能。 
+伺服器已設定完成，可將對 `http://<serveraddress>:80` 發出的要求轉送給在位於 `http://127.0.0.1:5000` 的 Kestrel 上執行的 ASP.NET Core 應用程式。 不過，並未設定 Nginx 來管理 Kestrel 處理序。 您可以使用 *systemd* 來建立服務檔案，以啟動並監視基礎 Web 應用程式。 *systemd*是 init 系統，提供許多強大的功能來啟動、停止和管理進程。 
 
 ### <a name="create-the-service-file"></a>建立服務檔
 
@@ -211,7 +217,7 @@ Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 WantedBy=multi-user.target
 ```
 
-在前面的示例中,管理服務的使用者由`User`選項指定。 使用者`www-data`( ) 必須存在並且對應用程式的文件擁有適當的擁有權。
+在上述範例中，管理服務的使用者是由`User`選項指定。 使用者（`www-data`）必須存在，且具有應用程式檔案的適當擁有權。
 
 使用 `TimeoutStopSec` 可設定應用程式收到初始中斷訊號之後等待關閉的時間。 如果應用程式在此期間後未關閉，則會發出 SIGKILL 來終止應用程式。 提供不具單位的秒值 (例如 `150`)、時間範圍值 (例如 `2min 30s`) 或 `infinity` (表示停用逾時)。 `TimeoutStopSec` 在管理員設定檔 (*systemd-system.conf*、*system.conf.d*、*systemd-user.conf*、*user.conf.d*) 的預設值為 `DefaultTimeoutStopSec`。 大多數發行版本的預設逾時為 90 秒。
 
@@ -296,7 +302,7 @@ sudo journalctl -fu kestrel-helloapp.service --since "2016-10-18" --until "2016-
 
 ## <a name="long-request-header-fields"></a>要求標頭欄位太長
 
-代理伺服器預設設定通常將請求標頭欄位限制為 4 K 或 8 K,具體取決於平臺。 應用可能需要的字段時間可能高於預設值(例如,使用[Azure 活動目錄](https://azure.microsoft.com/services/active-directory/)的應用)。 如果需要較長的欄位,代理伺服器的預設設置需要調整。 要應用的值取決於方案。 如需詳細資訊，請參閱您的伺服器文件。
+Proxy 伺服器預設設定通常會將要求標頭欄位限制為 4 K 或 8 K （視平臺而定）。 應用程式可能需要比預設值更長的欄位（例如，使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)的應用程式）。 如果需要較長的欄位，proxy 伺服器的預設設定需要調整。 要套用的值取決於案例。 如需詳細資訊，請參閱您的伺服器文件。
 
 * [proxy_buffer_size](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffer_size)
 * [proxy_buffers](https://nginx.org/docs/http/ngx_http_proxy_module.html#proxy_buffers)
@@ -314,7 +320,7 @@ Linux 安全性模組 (LSM) 是 Linux 2.6 之後 Linux 核心所包含的一個�
 
 ### <a name="configure-the-firewall"></a>設定防火牆
 
-關閉所有不在使用中的外部連接埠。 簡單的防火牆 (ufw)`iptables`通過提供用於配置防火牆的 CLI 提供了前端。
+關閉所有不在使用中的外部連接埠。 簡單的防火牆（ufw）提供用來設定`iptables`防火牆的 CLI，藉以提供的前端。
 
 > [!WARNING]
 > 如未正確設定，防火牆會禁止存取整個系統。 未指定正確的 SSH 連接埠，將會導致您無法存取系統 (若您使用 SSH 連線至該連接埠)。 預設連接埠為 22。 如需詳細資訊，請參閱 [ufw 簡介](https://help.ubuntu.com/community/UFW)與[手冊](https://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html)。
@@ -405,7 +411,7 @@ sudo nano /etc/nginx/nginx.conf
 
 ## <a name="additional-nginx-suggestions"></a>其他 Nginx 建議
 
-升級伺服器上的共用框架后,重新啟動伺服器託管ASP.NET核心應用。
+升級伺服器上的共用架構之後，請重新開機伺服器所主控的 ASP.NET Core 應用程式。
 
 ## <a name="additional-resources"></a>其他資源
 

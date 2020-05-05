@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/11/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: d9beae68cc869b665ff5d2b6cf34f120406098dc
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 4d0200cd412cce6eda473a64d132d74d8641db34
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78661886"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777094"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -28,15 +34,15 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 
 * [DELETE](#test-http-delete-requests)
 * [GET](#test-http-get-requests)
-* [HEAD](#test-http-head-requests)
-* [OPTIONS](#test-http-options-requests)
-* [PATCH](#test-http-patch-requests)
+* [前端](#test-http-head-requests)
+* [選項](#test-http-options-requests)
+* [跳](#test-http-patch-requests)
 * [POST](#test-http-post-requests)
-* [PUT](#test-http-put-requests)
+* [提出](#test-http-put-requests)
 
 若要跟著做，[請檢視或下載範例 ASP.NET Core web API](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/http-repl/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [!INCLUDE [2.1-SDK](~/includes/2.1-SDK.md)]
 
@@ -48,9 +54,9 @@ HTTP「讀取、求值、輸出」迴圈 (REPL) 是：
 dotnet tool install -g Microsoft.dotnet-httprepl
 ```
 
-會從 [Microsoft.dotnet-httprepl](/dotnet/core/tools/global-tools#install-a-global-tool) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](https://www.nuget.org/packages/Microsoft.dotnet-httprepl)。
+會從 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](/dotnet/core/tools/global-tools#install-a-global-tool)。
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 成功安裝工具後，請執行以下命令來啟動 HTTP REPL：
 
@@ -365,8 +371,8 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 
 根據預設，HTTP REPL 有一組相對路徑，在執行 `connect` 命令時 (不使用 `--swagger` 選項)，HTTP REPL 會用來尋找 Swagger 文件。 這些相對路徑會與 `connect` 命令中指定的根路徑和基本路徑結合。 預設的相對路徑為：
 
-- *swagger.json*
-- *swagger/v1/swagger.json*
+- *swagger. json*
+- *swagger/v1/swagger. json*
 - */swagger.json*
 - */swagger/v1/swagger.json*
 
@@ -554,7 +560,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 
 若要發出 HTTP PUT 要求：
 
-1. *選擇性*：在修改資料之前，請先執行 `get` 命令來加以流覽：
+1. *選擇性*：執行`get`命令以在修改資料之前先加以流覽：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -616,7 +622,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     Server: Kestrel
     ```
 
-1. *選擇性*：發出 `get` 命令以查看修改。 舉例來說，如果您在文字編輯器中鍵入 "Cherry"，`get` 會傳回以下內容：
+1. *選擇性*：發出`get`命令以查看修改。 舉例來說，如果您在文字編輯器中鍵入 "Cherry"，`get` 會傳回以下內容：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -667,7 +673,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 
 若要發出 HTTP DELETE 要求：
 
-1. *選擇性*：在修改資料之前，請先執行 `get` 命令來加以流覽：
+1. *選擇性*：執行`get`命令以在修改資料之前先加以流覽：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -707,7 +713,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
     Server: Kestrel
     ```
 
-1. *選擇性*：發出 `get` 命令以查看修改。 在本範例中，`get` 會傳回以下內容：
+1. *選擇性*：發出`get`命令以查看修改。 在本範例中，`get` 會傳回以下內容：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -852,7 +858,7 @@ set header Authorization "bearer <TOKEN VALUE>"
     httprepl https://management.azure.com
     ```
 
-1. 設定 `Authorization` HTTP 要求標頭：
+1. 設定`Authorization` HTTP 要求標頭：
 
     ```console
     https://management.azure.com/> set header Authorization "bearer <ACCESS TOKEN>"

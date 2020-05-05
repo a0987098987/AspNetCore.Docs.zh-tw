@@ -4,19 +4,25 @@ author: rick-anderson
 description: 探索如何取代 ASP.NET 中的 machineKey，以允許使用新的、更安全的資料保護系統。
 ms.author: riande
 ms.date: 04/06/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 2317cb50cfe63226baf336ebfc5d681d1cebe5c6
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 72e736f820ec243a7ad1461fc70e2711ac8b76ee
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667983"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777458"
 ---
 # <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>取代中的 ASP.NET machineKey ASP.NET Core
 
 <a name="compatibility-replacing-machinekey"></a>
 
-ASP.NET 中的 `<machineKey>` 元素的實作為[可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分的呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制（包括新的資料保護系統）來路由傳送。
+ASP.NET 中`<machineKey>`元素的實作為[可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分的呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制（包括新的資料保護系統）來路由傳送。
 
 ## <a name="package-installation"></a>套件安裝
 
@@ -32,7 +38,7 @@ ASP.NET 中的 `<machineKey>` 元素的實作為[可取代](https://blogs.msdn.m
 ```
 
 >[!TIP]
-> 您可以檢查如 `__VIEWSTATE`之類的欄位（如下列範例所示），以判斷新的資料保護系統是否為作用中。 "CfDJ8" 是神奇 "09 F0 C9 F0" 標頭的 base64 標記法，可識別資料保護系統所保護的承載。
+> 您可以檢查之類`__VIEWSTATE`的欄位（如下列範例所示），以判斷新的資料保護系統是否作用中。 "CfDJ8" 是神奇 "09 F0 C9 F0" 標頭的 base64 標記法，可識別資料保護系統所保護的承載。
 
 ```html
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="CfDJ8AWPr2EQPTBGs3L2GCZOpk...">
@@ -67,9 +73,9 @@ namespace DataProtectionDemo
 ```
 
 >[!TIP]
-> 您也可以使用 `<machineKey applicationName="my-app" ... />` 來取代對 SetApplicationName 的明確呼叫。 這是一種便利的機制，如果他們想要設定的是應用程式名稱，就可以避免強制開發人員建立 DataProtectionStartup 衍生的型別。
+> 您也可以使用`<machineKey applicationName="my-app" ... />`來取代對 SetApplicationName 的明確呼叫。 這是一種便利的機制，如果他們想要設定的是應用程式名稱，就可以避免強制開發人員建立 DataProtectionStartup 衍生的型別。
 
-若要啟用此自訂設定，請回到 web.config，然後尋找封裝安裝新增至設定檔的 `<appSettings>` 專案。 它看起來會像下面這樣的標記：
+若要啟用此自訂設定，請回到 web.config 並尋找封裝安裝新增`<appSettings>`至設定檔的元素。 它看起來會像下面這樣的標記：
 
 ```xml
 <appSettings>

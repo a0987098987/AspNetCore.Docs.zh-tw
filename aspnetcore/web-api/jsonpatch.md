@@ -5,28 +5,34 @@ description: 了解如何處理 ASP.NET Core Web API 中的 JSON Patch 要求。
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/02/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: web-api/jsonpatch
-ms.openlocfilehash: be4115e870dac818aeb6b1e65ddfb21e89d9cf25
-ms.sourcegitcommit: 9675db7bf4b67ae269f9226b6f6f439b5cce4603
+ms.openlocfilehash: 3a78fa268cce8cff10fedf5814d61ce0e5faaf4b
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80625872"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82766663"
 ---
-# <a name="jsonpatch-in-aspnet-core-web-api"></a><span data-ttu-id="699c7-103">ASP.NET Core Web API 中的 JsonPatch</span><span class="sxs-lookup"><span data-stu-id="699c7-103">JsonPatch in ASP.NET Core web API</span></span>
+# <a name="jsonpatch-in-aspnet-core-web-api"></a><span data-ttu-id="e0572-103">ASP.NET Core Web API 中的 JsonPatch</span><span class="sxs-lookup"><span data-stu-id="e0572-103">JsonPatch in ASP.NET Core web API</span></span>
 
-<span data-ttu-id="699c7-104">湯姆[·戴克斯特拉](https://github.com/tdykstra)和[柯克·拉金](https://github.com/serpent5)</span><span class="sxs-lookup"><span data-stu-id="699c7-104">By [Tom Dykstra](https://github.com/tdykstra) and [Kirk Larkin](https://github.com/serpent5)</span></span>
+<span data-ttu-id="e0572-104">由[Tom 作者: dykstra](https://github.com/tdykstra)和[Kirk Larkin](https://github.com/serpent5)</span><span class="sxs-lookup"><span data-stu-id="e0572-104">By [Tom Dykstra](https://github.com/tdykstra) and [Kirk Larkin](https://github.com/serpent5)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="699c7-105">本文說明如何處理 ASP.NET Core Web API 中的 JSON Patch 要求。</span><span class="sxs-lookup"><span data-stu-id="699c7-105">This article explains how to handle JSON Patch requests in an ASP.NET Core web API.</span></span>
+<span data-ttu-id="e0572-105">本文說明如何處理 ASP.NET Core Web API 中的 JSON Patch 要求。</span><span class="sxs-lookup"><span data-stu-id="e0572-105">This article explains how to handle JSON Patch requests in an ASP.NET Core web API.</span></span>
 
-## <a name="package-installation"></a><span data-ttu-id="699c7-106">套件安裝</span><span class="sxs-lookup"><span data-stu-id="699c7-106">Package installation</span></span>
+## <a name="package-installation"></a><span data-ttu-id="e0572-106">套件安裝</span><span class="sxs-lookup"><span data-stu-id="e0572-106">Package installation</span></span>
 
-<span data-ttu-id="699c7-107">要在應用中啟用 JSON 修補程式支援,請完成以下步驟:</span><span class="sxs-lookup"><span data-stu-id="699c7-107">To enable JSON Patch support in your app, complete the following steps:</span></span>
+<span data-ttu-id="e0572-107">若要在您的應用程式中啟用 JSON 修補程式支援，請完成下列步驟：</span><span class="sxs-lookup"><span data-stu-id="e0572-107">To enable JSON Patch support in your app, complete the following steps:</span></span>
 
-1. <span data-ttu-id="699c7-108">安裝[微軟.AspNetCore.Mvc.牛頓軟日森](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/)NuGet套件。</span><span class="sxs-lookup"><span data-stu-id="699c7-108">Install the [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet package.</span></span>
-1. <span data-ttu-id="699c7-109">更新要調用<xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*>的`Startup.ConfigureServices`專案 方法。</span><span class="sxs-lookup"><span data-stu-id="699c7-109">Update the project's `Startup.ConfigureServices` method to call <xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*>.</span></span> <span data-ttu-id="699c7-110">例如：</span><span class="sxs-lookup"><span data-stu-id="699c7-110">For example:</span></span>
+1. <span data-ttu-id="e0572-108">安裝[AspNetCore NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="e0572-108">Install the [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet package.</span></span>
+1. <span data-ttu-id="e0572-109">更新專案的`Startup.ConfigureServices`方法以呼叫<xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*>。</span><span class="sxs-lookup"><span data-stu-id="e0572-109">Update the project's `Startup.ConfigureServices` method to call <xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*>.</span></span> <span data-ttu-id="e0572-110">例如：</span><span class="sxs-lookup"><span data-stu-id="e0572-110">For example:</span></span>
 
     ```csharp
     services
@@ -34,49 +40,49 @@ ms.locfileid: "80625872"
         .AddNewtonsoftJson();
     ```
 
-<span data-ttu-id="699c7-111">`AddNewtonsoftJson`與 MVC 服務註冊方法相容:</span><span class="sxs-lookup"><span data-stu-id="699c7-111">`AddNewtonsoftJson` is compatible with the MVC service registration methods:</span></span>
+<span data-ttu-id="e0572-111">`AddNewtonsoftJson`與 MVC 服務註冊方法相容：</span><span class="sxs-lookup"><span data-stu-id="e0572-111">`AddNewtonsoftJson` is compatible with the MVC service registration methods:</span></span>
 
 * <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddRazorPages*>
 * <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllersWithViews*>
 * <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllers*>
 
-## <a name="json-patch-addnewtonsoftjson-and-systemtextjson"></a><span data-ttu-id="699c7-112">JSON 補丁, 加入牛頓軟體 Json, 和系統.文本.Json</span><span class="sxs-lookup"><span data-stu-id="699c7-112">JSON Patch, AddNewtonsoftJson, and System.Text.Json</span></span>
+## <a name="json-patch-addnewtonsoftjson-and-systemtextjson"></a><span data-ttu-id="e0572-112">JSON Patch、AddNewtonsoftJson 和 System.web</span><span class="sxs-lookup"><span data-stu-id="e0572-112">JSON Patch, AddNewtonsoftJson, and System.Text.Json</span></span>
 
-<span data-ttu-id="699c7-113">`AddNewtonsoftJson`替換`System.Text.Json`用於格式化**所有**JSON 內容的基於的輸入和輸出。</span><span class="sxs-lookup"><span data-stu-id="699c7-113">`AddNewtonsoftJson` replaces the `System.Text.Json`-based input and output formatters used for formatting **all** JSON content.</span></span> <span data-ttu-id="699c7-114">要使用 添加對`Newtonsoft.Json`JSON 修補程式的支援,同時使其他為事保持不變,`Startup.ConfigureServices`請更新專案 的方法,如下所示:</span><span class="sxs-lookup"><span data-stu-id="699c7-114">To add support for JSON Patch using `Newtonsoft.Json`, while leaving the other formatters unchanged, update the project's `Startup.ConfigureServices` method as follows:</span></span>
+<span data-ttu-id="e0572-113">`AddNewtonsoftJson``System.Text.Json`取代以為基礎的輸入和輸出格式器，用於格式化**所有**JSON 內容。</span><span class="sxs-lookup"><span data-stu-id="e0572-113">`AddNewtonsoftJson` replaces the `System.Text.Json`-based input and output formatters used for formatting **all** JSON content.</span></span> <span data-ttu-id="e0572-114">若要使用`Newtonsoft.Json`新增對 JSON 修補程式的支援，同時讓其他格式器保持不變`Startup.ConfigureServices` ，請更新專案的方法，如下所示：</span><span class="sxs-lookup"><span data-stu-id="e0572-114">To add support for JSON Patch using `Newtonsoft.Json`, while leaving the other formatters unchanged, update the project's `Startup.ConfigureServices` method as follows:</span></span>
 
 [!code-csharp[](jsonpatch/samples/3.0/WebApp1/Startup.cs?name=snippet)]
 
-<span data-ttu-id="699c7-115">前面的代碼需要`Microsoft.AspNetCore.Mvc.NewtonsoftJson`套件與`using`以下 語句:</span><span class="sxs-lookup"><span data-stu-id="699c7-115">The preceding code requires the `Microsoft.AspNetCore.Mvc.NewtonsoftJson` package and the following `using` statements:</span></span>
+<span data-ttu-id="e0572-115">上述程式碼需要`Microsoft.AspNetCore.Mvc.NewtonsoftJson`封裝和下列`using`語句：</span><span class="sxs-lookup"><span data-stu-id="e0572-115">The preceding code requires the `Microsoft.AspNetCore.Mvc.NewtonsoftJson` package and the following `using` statements:</span></span>
 
 [!code-csharp[](jsonpatch/samples/3.0/WebApp1/Startup.cs?name=snippet1)]
 
-## <a name="patch-http-request-method"></a><span data-ttu-id="699c7-116">PATCH HTTP 要求方法</span><span class="sxs-lookup"><span data-stu-id="699c7-116">PATCH HTTP request method</span></span>
+## <a name="patch-http-request-method"></a><span data-ttu-id="e0572-116">PATCH HTTP 要求方法</span><span class="sxs-lookup"><span data-stu-id="e0572-116">PATCH HTTP request method</span></span>
 
-<span data-ttu-id="699c7-117">PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來更新現有的資源。</span><span class="sxs-lookup"><span data-stu-id="699c7-117">The PUT and [PATCH](https://tools.ietf.org/html/rfc5789) methods are used to update an existing resource.</span></span> <span data-ttu-id="699c7-118">它們之間的差異是 PUT 會取代整個資源，而 PATCH 只會指定變更。</span><span class="sxs-lookup"><span data-stu-id="699c7-118">The difference between them is that PUT replaces the entire resource, while PATCH specifies only the changes.</span></span>
+<span data-ttu-id="e0572-117">PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來更新現有的資源。</span><span class="sxs-lookup"><span data-stu-id="e0572-117">The PUT and [PATCH](https://tools.ietf.org/html/rfc5789) methods are used to update an existing resource.</span></span> <span data-ttu-id="e0572-118">它們之間的差異是 PUT 會取代整個資源，而 PATCH 只會指定變更。</span><span class="sxs-lookup"><span data-stu-id="e0572-118">The difference between them is that PUT replaces the entire resource, while PATCH specifies only the changes.</span></span>
 
-## <a name="json-patch"></a><span data-ttu-id="699c7-119">JSON Patch</span><span class="sxs-lookup"><span data-stu-id="699c7-119">JSON Patch</span></span>
+## <a name="json-patch"></a><span data-ttu-id="e0572-119">JSON Patch</span><span class="sxs-lookup"><span data-stu-id="e0572-119">JSON Patch</span></span>
 
-<span data-ttu-id="699c7-120">[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。</span><span class="sxs-lookup"><span data-stu-id="699c7-120">[JSON Patch](https://tools.ietf.org/html/rfc6902) is a format for specifying updates to be applied to a resource.</span></span> <span data-ttu-id="699c7-121">JSON Patch 文件具有一個「作業」\*\* 陣列。</span><span class="sxs-lookup"><span data-stu-id="699c7-121">A JSON Patch document has an array of *operations*.</span></span> <span data-ttu-id="699c7-122">每個操作標識特定類型的更改。</span><span class="sxs-lookup"><span data-stu-id="699c7-122">Each operation identifies a particular type of change.</span></span> <span data-ttu-id="699c7-123">此類更改的範例包括添加陣列元素或替換屬性值。</span><span class="sxs-lookup"><span data-stu-id="699c7-123">Examples of such changes include adding an array element or replacing a property value.</span></span>
+<span data-ttu-id="e0572-120">[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。</span><span class="sxs-lookup"><span data-stu-id="e0572-120">[JSON Patch](https://tools.ietf.org/html/rfc6902) is a format for specifying updates to be applied to a resource.</span></span> <span data-ttu-id="e0572-121">JSON Patch 文件具有一個「作業」\*\* 陣列。</span><span class="sxs-lookup"><span data-stu-id="e0572-121">A JSON Patch document has an array of *operations*.</span></span> <span data-ttu-id="e0572-122">每個作業都會識別特定類型的變更。</span><span class="sxs-lookup"><span data-stu-id="e0572-122">Each operation identifies a particular type of change.</span></span> <span data-ttu-id="e0572-123">這類變更的範例包括新增陣列元素或取代屬性值。</span><span class="sxs-lookup"><span data-stu-id="e0572-123">Examples of such changes include adding an array element or replacing a property value.</span></span>
 
-<span data-ttu-id="699c7-124">例如,以下 JSON 文檔表示資源、資源的 JSON 修補程式文件以及應用修補程式操作的結果。</span><span class="sxs-lookup"><span data-stu-id="699c7-124">For example, the following JSON documents represent a resource, a JSON Patch document for the resource, and the result of applying the Patch operations.</span></span>
+<span data-ttu-id="e0572-124">例如，下列 JSON 檔代表資源、資源的 JSON 修補程式檔，以及套用修補程式作業的結果。</span><span class="sxs-lookup"><span data-stu-id="e0572-124">For example, the following JSON documents represent a resource, a JSON Patch document for the resource, and the result of applying the Patch operations.</span></span>
 
-### <a name="resource-example"></a><span data-ttu-id="699c7-125">資源範例</span><span class="sxs-lookup"><span data-stu-id="699c7-125">Resource example</span></span>
+### <a name="resource-example"></a><span data-ttu-id="e0572-125">資源範例</span><span class="sxs-lookup"><span data-stu-id="e0572-125">Resource example</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/customer.json)]
 
-### <a name="json-patch-example"></a><span data-ttu-id="699c7-126">JSON 修補範例</span><span class="sxs-lookup"><span data-stu-id="699c7-126">JSON patch example</span></span>
+### <a name="json-patch-example"></a><span data-ttu-id="e0572-126">JSON 修補範例</span><span class="sxs-lookup"><span data-stu-id="e0572-126">JSON patch example</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/add.json)]
 
-<span data-ttu-id="699c7-127">在上述 JSON 中：</span><span class="sxs-lookup"><span data-stu-id="699c7-127">In the preceding JSON:</span></span>
+<span data-ttu-id="e0572-127">在上述 JSON 中：</span><span class="sxs-lookup"><span data-stu-id="e0572-127">In the preceding JSON:</span></span>
 
-* <span data-ttu-id="699c7-128">`op` 屬性會指出作業的類型。</span><span class="sxs-lookup"><span data-stu-id="699c7-128">The `op` property indicates the type of operation.</span></span>
-* <span data-ttu-id="699c7-129">`path` 屬性會指出要更新的元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-129">The `path` property indicates the element to update.</span></span>
-* <span data-ttu-id="699c7-130">`value` 屬性會提供新值。</span><span class="sxs-lookup"><span data-stu-id="699c7-130">The `value` property provides the new value.</span></span>
+* <span data-ttu-id="e0572-128">`op` 屬性會指出作業的類型。</span><span class="sxs-lookup"><span data-stu-id="e0572-128">The `op` property indicates the type of operation.</span></span>
+* <span data-ttu-id="e0572-129">`path` 屬性會指出要更新的元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-129">The `path` property indicates the element to update.</span></span>
+* <span data-ttu-id="e0572-130">`value` 屬性會提供新值。</span><span class="sxs-lookup"><span data-stu-id="e0572-130">The `value` property provides the new value.</span></span>
 
-### <a name="resource-after-patch"></a><span data-ttu-id="699c7-131">修補之後的資源</span><span class="sxs-lookup"><span data-stu-id="699c7-131">Resource after patch</span></span>
+### <a name="resource-after-patch"></a><span data-ttu-id="e0572-131">修補之後的資源</span><span class="sxs-lookup"><span data-stu-id="e0572-131">Resource after patch</span></span>
 
-<span data-ttu-id="699c7-132">以下是套用上述 JSON Patch 文件之後的資源：</span><span class="sxs-lookup"><span data-stu-id="699c7-132">Here's the resource after applying the preceding JSON Patch document:</span></span>
+<span data-ttu-id="e0572-132">以下是套用上述 JSON Patch 文件之後的資源：</span><span class="sxs-lookup"><span data-stu-id="e0572-132">Here's the resource after applying the preceding JSON Patch document:</span></span>
 
 ```json
 {
@@ -98,60 +104,60 @@ ms.locfileid: "80625872"
 }
 ```
 
-<span data-ttu-id="699c7-133">將 JSON 修補程式文件應用於資源所做的更改是原子的。</span><span class="sxs-lookup"><span data-stu-id="699c7-133">The changes made by applying a JSON Patch document to a resource are atomic.</span></span> <span data-ttu-id="699c7-134">如果清單中的任何操作失敗,則不應用清單中的任何操作。</span><span class="sxs-lookup"><span data-stu-id="699c7-134">If any operation in the list fails, no operation in the list is applied.</span></span>
+<span data-ttu-id="e0572-133">將 JSON 修補檔套用至資源所做的變更是不可部分完成的。</span><span class="sxs-lookup"><span data-stu-id="e0572-133">The changes made by applying a JSON Patch document to a resource are atomic.</span></span> <span data-ttu-id="e0572-134">如果清單中的任何作業失敗，則不會套用清單中的任何作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-134">If any operation in the list fails, no operation in the list is applied.</span></span>
 
-## <a name="path-syntax"></a><span data-ttu-id="699c7-135">路徑語法</span><span class="sxs-lookup"><span data-stu-id="699c7-135">Path syntax</span></span>
+## <a name="path-syntax"></a><span data-ttu-id="e0572-135">路徑語法</span><span class="sxs-lookup"><span data-stu-id="e0572-135">Path syntax</span></span>
 
-<span data-ttu-id="699c7-136">作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。</span><span class="sxs-lookup"><span data-stu-id="699c7-136">The [path](https://tools.ietf.org/html/rfc6901) property of an operation object has slashes between levels.</span></span> <span data-ttu-id="699c7-137">例如： `"/address/zipCode"` 。</span><span class="sxs-lookup"><span data-stu-id="699c7-137">For example, `"/address/zipCode"`.</span></span>
+<span data-ttu-id="e0572-136">作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。</span><span class="sxs-lookup"><span data-stu-id="e0572-136">The [path](https://tools.ietf.org/html/rfc6901) property of an operation object has slashes between levels.</span></span> <span data-ttu-id="e0572-137">例如： `"/address/zipCode"` 。</span><span class="sxs-lookup"><span data-stu-id="e0572-137">For example, `"/address/zipCode"`.</span></span>
 
-<span data-ttu-id="699c7-138">以零為起始的索引可用來指定陣列元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-138">Zero-based indexes are used to specify array elements.</span></span> <span data-ttu-id="699c7-139">`addresses` 陣列的第一個元素會在 `/addresses/0` 上。</span><span class="sxs-lookup"><span data-stu-id="699c7-139">The first element of the `addresses` array would be at `/addresses/0`.</span></span> <span data-ttu-id="699c7-140">要`add`將陣列的末尾,請使用連字元 ()`-`而不是索引編`/addresses/-`號: 。</span><span class="sxs-lookup"><span data-stu-id="699c7-140">To `add` to the end of an array, use a hyphen (`-`) rather than an index number: `/addresses/-`.</span></span>
+<span data-ttu-id="e0572-138">以零為起始的索引可用來指定陣列元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-138">Zero-based indexes are used to specify array elements.</span></span> <span data-ttu-id="e0572-139">`addresses` 陣列的第一個元素會在 `/addresses/0` 上。</span><span class="sxs-lookup"><span data-stu-id="e0572-139">The first element of the `addresses` array would be at `/addresses/0`.</span></span> <span data-ttu-id="e0572-140">到`add`陣列結尾，請使用連字號（`-`），而不是索引編號：。 `/addresses/-`</span><span class="sxs-lookup"><span data-stu-id="e0572-140">To `add` to the end of an array, use a hyphen (`-`) rather than an index number: `/addresses/-`.</span></span>
 
-### <a name="operations"></a><span data-ttu-id="699c7-141">作業</span><span class="sxs-lookup"><span data-stu-id="699c7-141">Operations</span></span>
+### <a name="operations"></a><span data-ttu-id="e0572-141">作業</span><span class="sxs-lookup"><span data-stu-id="e0572-141">Operations</span></span>
 
-<span data-ttu-id="699c7-142">下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：</span><span class="sxs-lookup"><span data-stu-id="699c7-142">The following table shows supported operations as defined in the [JSON Patch specification](https://tools.ietf.org/html/rfc6902):</span></span>
+<span data-ttu-id="e0572-142">下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：</span><span class="sxs-lookup"><span data-stu-id="e0572-142">The following table shows supported operations as defined in the [JSON Patch specification](https://tools.ietf.org/html/rfc6902):</span></span>
 
-|<span data-ttu-id="699c7-143">作業</span><span class="sxs-lookup"><span data-stu-id="699c7-143">Operation</span></span>  | <span data-ttu-id="699c7-144">注意</span><span class="sxs-lookup"><span data-stu-id="699c7-144">Notes</span></span> |
+|<span data-ttu-id="e0572-143">作業</span><span class="sxs-lookup"><span data-stu-id="e0572-143">Operation</span></span>  | <span data-ttu-id="e0572-144">備忘錄</span><span class="sxs-lookup"><span data-stu-id="e0572-144">Notes</span></span> |
 |-----------|--------------------------------|
-| `add`     | <span data-ttu-id="699c7-145">加入屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-145">Add a property or array element.</span></span> <span data-ttu-id="699c7-146">針對現有的屬性：設定值。</span><span class="sxs-lookup"><span data-stu-id="699c7-146">For existing property: set value.</span></span>|
-| `remove`  | <span data-ttu-id="699c7-147">移除屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-147">Remove a property or array element.</span></span> |
-| `replace` | <span data-ttu-id="699c7-148">與 `remove` 之後接著在同一個位置上 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-148">Same as `remove` followed by `add` at same location.</span></span> |
-| `move`    | <span data-ttu-id="699c7-149">與從來源 `remove` 之後接著使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-149">Same as `remove` from source followed by `add` to destination using value from source.</span></span> |
-| `copy`    | <span data-ttu-id="699c7-150">與使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-150">Same as `add` to destination using value from source.</span></span> |
-| `test`    | <span data-ttu-id="699c7-151">如果 `path` 上的值 = 所提供的 `value`，即會傳回成功狀態碼。</span><span class="sxs-lookup"><span data-stu-id="699c7-151">Return success status code if value at `path` = provided `value`.</span></span>|
+| `add`     | <span data-ttu-id="e0572-145">加入屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-145">Add a property or array element.</span></span> <span data-ttu-id="e0572-146">針對現有的屬性：設定值。</span><span class="sxs-lookup"><span data-stu-id="e0572-146">For existing property: set value.</span></span>|
+| `remove`  | <span data-ttu-id="e0572-147">移除屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-147">Remove a property or array element.</span></span> |
+| `replace` | <span data-ttu-id="e0572-148">與 `remove` 之後接著在同一個位置上 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-148">Same as `remove` followed by `add` at same location.</span></span> |
+| `move`    | <span data-ttu-id="e0572-149">與從來源 `remove` 之後接著使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-149">Same as `remove` from source followed by `add` to destination using value from source.</span></span> |
+| `copy`    | <span data-ttu-id="e0572-150">與使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-150">Same as `add` to destination using value from source.</span></span> |
+| `test`    | <span data-ttu-id="e0572-151">如果 `path` 上的值 = 所提供的 `value`，即會傳回成功狀態碼。</span><span class="sxs-lookup"><span data-stu-id="e0572-151">Return success status code if value at `path` = provided `value`.</span></span>|
 
-## <a name="json-patch-in-aspnet-core"></a><span data-ttu-id="699c7-152">ASP.NET核心中的 JSON 修補程式</span><span class="sxs-lookup"><span data-stu-id="699c7-152">JSON Patch in ASP.NET Core</span></span>
+## <a name="json-patch-in-aspnet-core"></a><span data-ttu-id="e0572-152">ASP.NET Core 中的 JSON 修補程式</span><span class="sxs-lookup"><span data-stu-id="e0572-152">JSON Patch in ASP.NET Core</span></span>
 
-<span data-ttu-id="699c7-153">[Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) \(英文\) NuGet 套件中會提供 JSON Patch 的 ASP.NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="699c7-153">The ASP.NET Core implementation of JSON Patch is provided in the [Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) NuGet package.</span></span>
+<span data-ttu-id="e0572-153">[Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) \(英文\) NuGet 套件中會提供 JSON Patch 的 ASP.NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="e0572-153">The ASP.NET Core implementation of JSON Patch is provided in the [Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) NuGet package.</span></span>
 
-## <a name="action-method-code"></a><span data-ttu-id="699c7-154">動作方法程式碼</span><span class="sxs-lookup"><span data-stu-id="699c7-154">Action method code</span></span>
+## <a name="action-method-code"></a><span data-ttu-id="e0572-154">動作方法程式碼</span><span class="sxs-lookup"><span data-stu-id="e0572-154">Action method code</span></span>
 
-<span data-ttu-id="699c7-155">在 API 控制器中，JSON Patch 的動作方法：</span><span class="sxs-lookup"><span data-stu-id="699c7-155">In an API controller, an action method for JSON Patch:</span></span>
+<span data-ttu-id="e0572-155">在 API 控制器中，JSON Patch 的動作方法：</span><span class="sxs-lookup"><span data-stu-id="e0572-155">In an API controller, an action method for JSON Patch:</span></span>
 
-* <span data-ttu-id="699c7-156">使用 `HttpPatch` 屬性來標註。</span><span class="sxs-lookup"><span data-stu-id="699c7-156">Is annotated with the `HttpPatch` attribute.</span></span>
-* <span data-ttu-id="699c7-157">接受`JsonPatchDocument<T>`,`[FromBody]`通常使用 。</span><span class="sxs-lookup"><span data-stu-id="699c7-157">Accepts a `JsonPatchDocument<T>`, typically with `[FromBody]`.</span></span>
-* <span data-ttu-id="699c7-158">呼叫修補文件上的 `ApplyTo` 以套用變更。</span><span class="sxs-lookup"><span data-stu-id="699c7-158">Calls `ApplyTo` on the patch document to apply the changes.</span></span>
+* <span data-ttu-id="e0572-156">使用 `HttpPatch` 屬性來標註。</span><span class="sxs-lookup"><span data-stu-id="e0572-156">Is annotated with the `HttpPatch` attribute.</span></span>
+* <span data-ttu-id="e0572-157">接受`JsonPatchDocument<T>`，通常使用`[FromBody]`。</span><span class="sxs-lookup"><span data-stu-id="e0572-157">Accepts a `JsonPatchDocument<T>`, typically with `[FromBody]`.</span></span>
+* <span data-ttu-id="e0572-158">呼叫修補文件上的 `ApplyTo` 以套用變更。</span><span class="sxs-lookup"><span data-stu-id="e0572-158">Calls `ApplyTo` on the patch document to apply the changes.</span></span>
 
-<span data-ttu-id="699c7-159">以下是範例：</span><span class="sxs-lookup"><span data-stu-id="699c7-159">Here's an example:</span></span>
+<span data-ttu-id="e0572-159">以下是範例：</span><span class="sxs-lookup"><span data-stu-id="e0572-159">Here's an example:</span></span>
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
-<span data-ttu-id="699c7-160">範例應用程式的此代碼適用於以下`Customer`模型:</span><span class="sxs-lookup"><span data-stu-id="699c7-160">This code from the sample app works with the following `Customer` model:</span></span>
+<span data-ttu-id="e0572-160">範例應用程式中的這段程式碼可`Customer`與下列模型搭配運作：</span><span class="sxs-lookup"><span data-stu-id="e0572-160">This code from the sample app works with the following `Customer` model:</span></span>
 
 [!code-csharp[](jsonpatch/samples/2.2/Models/Customer.cs?name=snippet_Customer)]
 
 [!code-csharp[](jsonpatch/samples/2.2/Models/Order.cs?name=snippet_Order)]
 
-<span data-ttu-id="699c7-161">範例動作方法：</span><span class="sxs-lookup"><span data-stu-id="699c7-161">The sample action method:</span></span>
+<span data-ttu-id="e0572-161">範例動作方法：</span><span class="sxs-lookup"><span data-stu-id="e0572-161">The sample action method:</span></span>
 
-* <span data-ttu-id="699c7-162">建構 `Customer`。</span><span class="sxs-lookup"><span data-stu-id="699c7-162">Constructs a `Customer`.</span></span>
-* <span data-ttu-id="699c7-163">套用修補檔案。</span><span class="sxs-lookup"><span data-stu-id="699c7-163">Applies the patch.</span></span>
-* <span data-ttu-id="699c7-164">在回應本文中傳回結果。</span><span class="sxs-lookup"><span data-stu-id="699c7-164">Returns the result in the body of the response.</span></span>
+* <span data-ttu-id="e0572-162">建構 `Customer`。</span><span class="sxs-lookup"><span data-stu-id="e0572-162">Constructs a `Customer`.</span></span>
+* <span data-ttu-id="e0572-163">套用修補檔案。</span><span class="sxs-lookup"><span data-stu-id="e0572-163">Applies the patch.</span></span>
+* <span data-ttu-id="e0572-164">在回應本文中傳回結果。</span><span class="sxs-lookup"><span data-stu-id="e0572-164">Returns the result in the body of the response.</span></span>
 
-<span data-ttu-id="699c7-165">在實際的應用程式中，程式碼會從資料庫之類的存放區擷取資料，並在套用修補檔案之後更新資料庫。</span><span class="sxs-lookup"><span data-stu-id="699c7-165">In a real app, the code would retrieve the data from a store such as a database and update the database after applying the patch.</span></span>
+<span data-ttu-id="e0572-165">在實際的應用程式中，程式碼會從資料庫之類的存放區擷取資料，並在套用修補檔案之後更新資料庫。</span><span class="sxs-lookup"><span data-stu-id="e0572-165">In a real app, the code would retrieve the data from a store such as a database and update the database after applying the patch.</span></span>
 
-### <a name="model-state"></a><span data-ttu-id="699c7-166">模型狀態</span><span class="sxs-lookup"><span data-stu-id="699c7-166">Model state</span></span>
+### <a name="model-state"></a><span data-ttu-id="e0572-166">模型狀態</span><span class="sxs-lookup"><span data-stu-id="e0572-166">Model state</span></span>
 
-<span data-ttu-id="699c7-167">上述動作方法範例會呼叫 `ApplyTo` 的多載，以取得模型狀態作為它的其中一個參數。</span><span class="sxs-lookup"><span data-stu-id="699c7-167">The preceding action method example calls an overload of `ApplyTo` that takes model state as one of its parameters.</span></span> <span data-ttu-id="699c7-168">使用此選項，您就能在回應中收到錯誤訊息。</span><span class="sxs-lookup"><span data-stu-id="699c7-168">With this option, you can get error messages in responses.</span></span> <span data-ttu-id="699c7-169">下列範例會針對 `test` 作業顯示「400 不正確的要求」回應的本文：</span><span class="sxs-lookup"><span data-stu-id="699c7-169">The following example shows the body of a 400 Bad Request response for a `test` operation:</span></span>
+<span data-ttu-id="e0572-167">上述動作方法範例會呼叫 `ApplyTo` 的多載，以取得模型狀態作為它的其中一個參數。</span><span class="sxs-lookup"><span data-stu-id="e0572-167">The preceding action method example calls an overload of `ApplyTo` that takes model state as one of its parameters.</span></span> <span data-ttu-id="e0572-168">使用此選項，您就能在回應中收到錯誤訊息。</span><span class="sxs-lookup"><span data-stu-id="e0572-168">With this option, you can get error messages in responses.</span></span> <span data-ttu-id="e0572-169">下列範例會針對 `test` 作業顯示「400 不正確的要求」回應的本文：</span><span class="sxs-lookup"><span data-stu-id="e0572-169">The following example shows the body of a 400 Bad Request response for a `test` operation:</span></span>
 
 ```json
 {
@@ -161,134 +167,134 @@ ms.locfileid: "80625872"
 }
 ```
 
-### <a name="dynamic-objects"></a><span data-ttu-id="699c7-170">動態物件</span><span class="sxs-lookup"><span data-stu-id="699c7-170">Dynamic objects</span></span>
+### <a name="dynamic-objects"></a><span data-ttu-id="e0572-170">動態物件</span><span class="sxs-lookup"><span data-stu-id="e0572-170">Dynamic objects</span></span>
 
-<span data-ttu-id="699c7-171">以下操作方法範例展示如何將修補程式應用於動態物件:</span><span class="sxs-lookup"><span data-stu-id="699c7-171">The following action method example shows how to apply a patch to a dynamic object:</span></span>
+<span data-ttu-id="e0572-171">下列動作方法範例顯示如何將修補程式套用至動態物件：</span><span class="sxs-lookup"><span data-stu-id="e0572-171">The following action method example shows how to apply a patch to a dynamic object:</span></span>
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_Dynamic)]
 
-## <a name="the-add-operation"></a><span data-ttu-id="699c7-172">新增作業</span><span class="sxs-lookup"><span data-stu-id="699c7-172">The add operation</span></span>
+## <a name="the-add-operation"></a><span data-ttu-id="e0572-172">新增作業</span><span class="sxs-lookup"><span data-stu-id="e0572-172">The add operation</span></span>
 
-* <span data-ttu-id="699c7-173">如果 `path` 指向陣列元素：將新元素插入至 `path` 所指定的元素之前。</span><span class="sxs-lookup"><span data-stu-id="699c7-173">If `path` points to an array element: inserts new element before the one specified by `path`.</span></span>
-* <span data-ttu-id="699c7-174">如果 `path` 指向屬性：設定屬性值。</span><span class="sxs-lookup"><span data-stu-id="699c7-174">If `path` points to a property: sets the property value.</span></span>
-* <span data-ttu-id="699c7-175">如果 `path` 指向不存在的位置：</span><span class="sxs-lookup"><span data-stu-id="699c7-175">If `path` points to a nonexistent location:</span></span>
-  * <span data-ttu-id="699c7-176">如果要修補的資源是動態物件：加入屬性。</span><span class="sxs-lookup"><span data-stu-id="699c7-176">If the resource to patch is a dynamic object: adds a property.</span></span>
-  * <span data-ttu-id="699c7-177">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="699c7-177">If the resource to patch is a static object: the request fails.</span></span>
+* <span data-ttu-id="e0572-173">如果 `path` 指向陣列元素：將新元素插入至 `path` 所指定的元素之前。</span><span class="sxs-lookup"><span data-stu-id="e0572-173">If `path` points to an array element: inserts new element before the one specified by `path`.</span></span>
+* <span data-ttu-id="e0572-174">如果 `path` 指向屬性：設定屬性值。</span><span class="sxs-lookup"><span data-stu-id="e0572-174">If `path` points to a property: sets the property value.</span></span>
+* <span data-ttu-id="e0572-175">如果 `path` 指向不存在的位置：</span><span class="sxs-lookup"><span data-stu-id="e0572-175">If `path` points to a nonexistent location:</span></span>
+  * <span data-ttu-id="e0572-176">如果要修補的資源是動態物件：加入屬性。</span><span class="sxs-lookup"><span data-stu-id="e0572-176">If the resource to patch is a dynamic object: adds a property.</span></span>
+  * <span data-ttu-id="e0572-177">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="e0572-177">If the resource to patch is a static object: the request fails.</span></span>
 
-<span data-ttu-id="699c7-178">下列範例修補文件會設定 `CustomerName` 的值，並將 `Order` 物件加入至 `Orders` 陣列的結尾處。</span><span class="sxs-lookup"><span data-stu-id="699c7-178">The following sample patch document sets the value of `CustomerName` and adds an `Order` object to the end of the `Orders` array.</span></span>
+<span data-ttu-id="e0572-178">下列範例修補文件會設定 `CustomerName` 的值，並將 `Order` 物件加入至 `Orders` 陣列的結尾處。</span><span class="sxs-lookup"><span data-stu-id="e0572-178">The following sample patch document sets the value of `CustomerName` and adds an `Order` object to the end of the `Orders` array.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/add.json)]
 
-## <a name="the-remove-operation"></a><span data-ttu-id="699c7-179">移除作業</span><span class="sxs-lookup"><span data-stu-id="699c7-179">The remove operation</span></span>
+## <a name="the-remove-operation"></a><span data-ttu-id="e0572-179">移除作業</span><span class="sxs-lookup"><span data-stu-id="e0572-179">The remove operation</span></span>
 
-* <span data-ttu-id="699c7-180">如果 `path` 指向陣列元素：移除該元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-180">If `path` points to an array element: removes the element.</span></span>
-* <span data-ttu-id="699c7-181">如果 `path` 指向屬性：</span><span class="sxs-lookup"><span data-stu-id="699c7-181">If `path` points to a property:</span></span>
-  * <span data-ttu-id="699c7-182">如果要修補的資源是動態物件：移除屬性。</span><span class="sxs-lookup"><span data-stu-id="699c7-182">If resource to patch is a dynamic object: removes the property.</span></span>
-  * <span data-ttu-id="699c7-183">如果要修補的資源是靜態物件：</span><span class="sxs-lookup"><span data-stu-id="699c7-183">If resource to patch is a static object:</span></span>
-    * <span data-ttu-id="699c7-184">如果屬性可為 Null：將它設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="699c7-184">If the property is nullable: sets it to null.</span></span>
-    * <span data-ttu-id="699c7-185">如果屬性不可為 Null，則將它設定為 `default<T>`。</span><span class="sxs-lookup"><span data-stu-id="699c7-185">If the property is non-nullable, sets it to `default<T>`.</span></span>
+* <span data-ttu-id="e0572-180">如果 `path` 指向陣列元素：移除該元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-180">If `path` points to an array element: removes the element.</span></span>
+* <span data-ttu-id="e0572-181">如果 `path` 指向屬性：</span><span class="sxs-lookup"><span data-stu-id="e0572-181">If `path` points to a property:</span></span>
+  * <span data-ttu-id="e0572-182">如果要修補的資源是動態物件：移除屬性。</span><span class="sxs-lookup"><span data-stu-id="e0572-182">If resource to patch is a dynamic object: removes the property.</span></span>
+  * <span data-ttu-id="e0572-183">如果要修補的資源是靜態物件：</span><span class="sxs-lookup"><span data-stu-id="e0572-183">If resource to patch is a static object:</span></span>
+    * <span data-ttu-id="e0572-184">如果屬性可為 Null：將它設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="e0572-184">If the property is nullable: sets it to null.</span></span>
+    * <span data-ttu-id="e0572-185">如果屬性不可為 Null，則將它設定為 `default<T>`。</span><span class="sxs-lookup"><span data-stu-id="e0572-185">If the property is non-nullable, sets it to `default<T>`.</span></span>
 
-<span data-ttu-id="699c7-186">以下範例修補程式文件集`CustomerName`為 null 與`Orders[0]`刪除:</span><span class="sxs-lookup"><span data-stu-id="699c7-186">The following sample patch document sets `CustomerName` to null and deletes `Orders[0]`:</span></span>
+<span data-ttu-id="e0572-186">下列範例修補檔會將`CustomerName`設定為 null 並`Orders[0]`刪除：</span><span class="sxs-lookup"><span data-stu-id="e0572-186">The following sample patch document sets `CustomerName` to null and deletes `Orders[0]`:</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/remove.json)]
 
-## <a name="the-replace-operation"></a><span data-ttu-id="699c7-187">取代作業</span><span class="sxs-lookup"><span data-stu-id="699c7-187">The replace operation</span></span>
+## <a name="the-replace-operation"></a><span data-ttu-id="e0572-187">取代作業</span><span class="sxs-lookup"><span data-stu-id="e0572-187">The replace operation</span></span>
 
-<span data-ttu-id="699c7-188">此作業在功能上與 `remove` 之後接著 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-188">This operation is functionally the same as a `remove` followed by an `add`.</span></span>
+<span data-ttu-id="e0572-188">此作業在功能上與 `remove` 之後接著 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-188">This operation is functionally the same as a `remove` followed by an `add`.</span></span>
 
-<span data-ttu-id="699c7-189">以下範例修補程式文件設定的值`CustomerName``Orders[0]`, 並將取代為`Order`新 物件:</span><span class="sxs-lookup"><span data-stu-id="699c7-189">The following sample patch document sets the value of `CustomerName` and replaces `Orders[0]`with a new `Order` object:</span></span>
+<span data-ttu-id="e0572-189">下列範例修補檔會設定的值`CustomerName` ，並將`Orders[0]`取代為新`Order`的物件：</span><span class="sxs-lookup"><span data-stu-id="e0572-189">The following sample patch document sets the value of `CustomerName` and replaces `Orders[0]`with a new `Order` object:</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/replace.json)]
 
-## <a name="the-move-operation"></a><span data-ttu-id="699c7-190">移動作業</span><span class="sxs-lookup"><span data-stu-id="699c7-190">The move operation</span></span>
+## <a name="the-move-operation"></a><span data-ttu-id="e0572-190">移動作業</span><span class="sxs-lookup"><span data-stu-id="e0572-190">The move operation</span></span>
 
-* <span data-ttu-id="699c7-191">如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `from` 元素上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="699c7-191">If `path` points to an array element: copies `from` element to location of `path` element, then runs a `remove` operation on the `from` element.</span></span>
-* <span data-ttu-id="699c7-192">如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="699c7-192">If `path` points to a property: copies value of `from` property to `path` property, then runs a `remove` operation on the `from` property.</span></span>
-* <span data-ttu-id="699c7-193">如果 `path` 指向不存在的屬性：</span><span class="sxs-lookup"><span data-stu-id="699c7-193">If `path` points to a nonexistent property:</span></span>
-  * <span data-ttu-id="699c7-194">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="699c7-194">If the resource to patch is a static object: the request fails.</span></span>
-  * <span data-ttu-id="699c7-195">如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="699c7-195">If the resource to patch is a dynamic object: copies `from` property to location indicated by `path`, then runs a `remove` operation on the `from` property.</span></span>
+* <span data-ttu-id="e0572-191">如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `from` 元素上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-191">If `path` points to an array element: copies `from` element to location of `path` element, then runs a `remove` operation on the `from` element.</span></span>
+* <span data-ttu-id="e0572-192">如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-192">If `path` points to a property: copies value of `from` property to `path` property, then runs a `remove` operation on the `from` property.</span></span>
+* <span data-ttu-id="e0572-193">如果 `path` 指向不存在的屬性：</span><span class="sxs-lookup"><span data-stu-id="e0572-193">If `path` points to a nonexistent property:</span></span>
+  * <span data-ttu-id="e0572-194">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="e0572-194">If the resource to patch is a static object: the request fails.</span></span>
+  * <span data-ttu-id="e0572-195">如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-195">If the resource to patch is a dynamic object: copies `from` property to location indicated by `path`, then runs a `remove` operation on the `from` property.</span></span>
 
-<span data-ttu-id="699c7-196">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="699c7-196">The following sample patch document:</span></span>
+<span data-ttu-id="e0572-196">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="e0572-196">The following sample patch document:</span></span>
 
-* <span data-ttu-id="699c7-197">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="699c7-197">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
-* <span data-ttu-id="699c7-198">將 `Orders[0].OrderName` 設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="699c7-198">Sets `Orders[0].OrderName` to null.</span></span>
-* <span data-ttu-id="699c7-199">將 `Orders[1]` 移到 `Orders[0]` 前面。</span><span class="sxs-lookup"><span data-stu-id="699c7-199">Moves `Orders[1]` to before `Orders[0]`.</span></span>
+* <span data-ttu-id="e0572-197">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="e0572-197">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
+* <span data-ttu-id="e0572-198">將 `Orders[0].OrderName` 設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="e0572-198">Sets `Orders[0].OrderName` to null.</span></span>
+* <span data-ttu-id="e0572-199">將 `Orders[1]` 移到 `Orders[0]` 前面。</span><span class="sxs-lookup"><span data-stu-id="e0572-199">Moves `Orders[1]` to before `Orders[0]`.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/move.json)]
 
-## <a name="the-copy-operation"></a><span data-ttu-id="699c7-200">複製作業</span><span class="sxs-lookup"><span data-stu-id="699c7-200">The copy operation</span></span>
+## <a name="the-copy-operation"></a><span data-ttu-id="e0572-200">複製作業</span><span class="sxs-lookup"><span data-stu-id="e0572-200">The copy operation</span></span>
 
-<span data-ttu-id="699c7-201">此作業在功能上與不含最後 `remove` 步驟的 `move` 作業相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-201">This operation is functionally the same as a `move` operation without the final `remove` step.</span></span>
+<span data-ttu-id="e0572-201">此作業在功能上與不含最後 `remove` 步驟的 `move` 作業相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-201">This operation is functionally the same as a `move` operation without the final `remove` step.</span></span>
 
-<span data-ttu-id="699c7-202">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="699c7-202">The following sample patch document:</span></span>
+<span data-ttu-id="e0572-202">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="e0572-202">The following sample patch document:</span></span>
 
-* <span data-ttu-id="699c7-203">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="699c7-203">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
-* <span data-ttu-id="699c7-204">在 `Orders[0]` 前面插入 `Orders[1]` 的複本。</span><span class="sxs-lookup"><span data-stu-id="699c7-204">Inserts a copy of `Orders[1]` before `Orders[0]`.</span></span>
+* <span data-ttu-id="e0572-203">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="e0572-203">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
+* <span data-ttu-id="e0572-204">在 `Orders[0]` 前面插入 `Orders[1]` 的複本。</span><span class="sxs-lookup"><span data-stu-id="e0572-204">Inserts a copy of `Orders[1]` before `Orders[0]`.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/copy.json)]
 
-## <a name="the-test-operation"></a><span data-ttu-id="699c7-205">測試作業</span><span class="sxs-lookup"><span data-stu-id="699c7-205">The test operation</span></span>
+## <a name="the-test-operation"></a><span data-ttu-id="e0572-205">測試作業</span><span class="sxs-lookup"><span data-stu-id="e0572-205">The test operation</span></span>
 
-<span data-ttu-id="699c7-206">如果 `path` 所指出位置上的值與 `value` 中所提供的值不同，則要求會失敗。</span><span class="sxs-lookup"><span data-stu-id="699c7-206">If the value at the location indicated by `path` is different from the value provided in `value`, the request fails.</span></span> <span data-ttu-id="699c7-207">在該情況下，整個 PATCH 要求會失敗，即使修補文件中的所有其他作業都成功也一樣。</span><span class="sxs-lookup"><span data-stu-id="699c7-207">In that case, the whole PATCH request fails even if all other operations in the patch document would otherwise succeed.</span></span>
+<span data-ttu-id="e0572-206">如果 `path` 所指出位置上的值與 `value` 中所提供的值不同，則要求會失敗。</span><span class="sxs-lookup"><span data-stu-id="e0572-206">If the value at the location indicated by `path` is different from the value provided in `value`, the request fails.</span></span> <span data-ttu-id="e0572-207">在該情況下，整個 PATCH 要求會失敗，即使修補文件中的所有其他作業都成功也一樣。</span><span class="sxs-lookup"><span data-stu-id="e0572-207">In that case, the whole PATCH request fails even if all other operations in the patch document would otherwise succeed.</span></span>
 
-<span data-ttu-id="699c7-208">`test` 作業通常會用來防止在發生並行衝突時進行更新。</span><span class="sxs-lookup"><span data-stu-id="699c7-208">The `test` operation is commonly used to prevent an update when there's a concurrency conflict.</span></span>
+<span data-ttu-id="e0572-208">`test` 作業通常會用來防止在發生並行衝突時進行更新。</span><span class="sxs-lookup"><span data-stu-id="e0572-208">The `test` operation is commonly used to prevent an update when there's a concurrency conflict.</span></span>
 
-<span data-ttu-id="699c7-209">如果 `CustomerName` 的初始值是 "John"，則下列範例修補文件不會有任何作用，因為測試失敗：</span><span class="sxs-lookup"><span data-stu-id="699c7-209">The following sample patch document has no effect if the initial value of `CustomerName` is "John", because the test fails:</span></span>
+<span data-ttu-id="e0572-209">如果 `CustomerName` 的初始值是 "John"，則下列範例修補文件不會有任何作用，因為測試失敗：</span><span class="sxs-lookup"><span data-stu-id="e0572-209">The following sample patch document has no effect if the initial value of `CustomerName` is "John", because the test fails:</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/test-fail.json)]
 
-## <a name="get-the-code"></a><span data-ttu-id="699c7-210">取得程式碼</span><span class="sxs-lookup"><span data-stu-id="699c7-210">Get the code</span></span>
+## <a name="get-the-code"></a><span data-ttu-id="e0572-210">取得程式碼</span><span class="sxs-lookup"><span data-stu-id="e0572-210">Get the code</span></span>
 
-<span data-ttu-id="699c7-211">[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples)。</span><span class="sxs-lookup"><span data-stu-id="699c7-211">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples).</span></span> <span data-ttu-id="699c7-212">([如何下載](xref:index#how-to-download-a-sample))。</span><span class="sxs-lookup"><span data-stu-id="699c7-212">([How to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="e0572-211">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples)。</span><span class="sxs-lookup"><span data-stu-id="e0572-211">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples).</span></span> <span data-ttu-id="e0572-212">([如何下載](xref:index#how-to-download-a-sample))。</span><span class="sxs-lookup"><span data-stu-id="e0572-212">([How to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="699c7-213">若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：</span><span class="sxs-lookup"><span data-stu-id="699c7-213">To test the sample, run the app and send HTTP requests with the following settings:</span></span>
+<span data-ttu-id="e0572-213">若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：</span><span class="sxs-lookup"><span data-stu-id="e0572-213">To test the sample, run the app and send HTTP requests with the following settings:</span></span>
 
-* <span data-ttu-id="699c7-214">URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span><span class="sxs-lookup"><span data-stu-id="699c7-214">URL: `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span></span>
-* <span data-ttu-id="699c7-215">HTTP 方法：`PATCH`</span><span class="sxs-lookup"><span data-stu-id="699c7-215">HTTP method: `PATCH`</span></span>
-* <span data-ttu-id="699c7-216">標題：`Content-Type: application/json-patch+json`</span><span class="sxs-lookup"><span data-stu-id="699c7-216">Header: `Content-Type: application/json-patch+json`</span></span>
-* <span data-ttu-id="699c7-217">正文:複製並粘貼 JSON 修補程式文檔示例之一(來自*JSON*專案資料夾)。</span><span class="sxs-lookup"><span data-stu-id="699c7-217">Body: Copy and paste one of the JSON patch document samples from the *JSON* project folder.</span></span>
+* <span data-ttu-id="e0572-214">URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span><span class="sxs-lookup"><span data-stu-id="e0572-214">URL: `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span></span>
+* <span data-ttu-id="e0572-215">HTTP 方法：`PATCH`</span><span class="sxs-lookup"><span data-stu-id="e0572-215">HTTP method: `PATCH`</span></span>
+* <span data-ttu-id="e0572-216">標題：`Content-Type: application/json-patch+json`</span><span class="sxs-lookup"><span data-stu-id="e0572-216">Header: `Content-Type: application/json-patch+json`</span></span>
+* <span data-ttu-id="e0572-217">主體：從*json*專案資料夾複製並貼上其中一個 json 修補程式檔範例。</span><span class="sxs-lookup"><span data-stu-id="e0572-217">Body: Copy and paste one of the JSON patch document samples from the *JSON* project folder.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="699c7-218">其他資源</span><span class="sxs-lookup"><span data-stu-id="699c7-218">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e0572-218">其他資源</span><span class="sxs-lookup"><span data-stu-id="e0572-218">Additional resources</span></span>
 
-* <span data-ttu-id="699c7-219">[IETF RFC 5789 PATCH 方法規格](https://tools.ietf.org/html/rfc5789) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="699c7-219">[IETF RFC 5789 PATCH method specification](https://tools.ietf.org/html/rfc5789)</span></span>
-* <span data-ttu-id="699c7-220">[IETF RFC 6902 JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="699c7-220">[IETF RFC 6902 JSON Patch specification](https://tools.ietf.org/html/rfc6902)</span></span>
-* <span data-ttu-id="699c7-221">[IETF RFC 6901 JSON Patch 路徑格式規格](https://tools.ietf.org/html/rfc6901) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="699c7-221">[IETF RFC 6901 JSON Patch path format spec](https://tools.ietf.org/html/rfc6901)</span></span>
-* <span data-ttu-id="699c7-222">[JSON Patch 文件](https://jsonpatch.com/) \(英文\)。</span><span class="sxs-lookup"><span data-stu-id="699c7-222">[JSON Patch documentation](https://jsonpatch.com/).</span></span> <span data-ttu-id="699c7-223">包含用於建立 JSON Patch 文件的資源連結。</span><span class="sxs-lookup"><span data-stu-id="699c7-223">Includes links to resources for creating JSON Patch documents.</span></span>
-* [<span data-ttu-id="699c7-224">ASP.NET Core JSON Patch 原始程式碼</span><span class="sxs-lookup"><span data-stu-id="699c7-224">ASP.NET Core JSON Patch source code</span></span>](https://github.com/dotnet/AspNetCore/tree/master/src/Features/JsonPatch/src)
+* <span data-ttu-id="e0572-219">[IETF RFC 5789 PATCH 方法規格](https://tools.ietf.org/html/rfc5789) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="e0572-219">[IETF RFC 5789 PATCH method specification](https://tools.ietf.org/html/rfc5789)</span></span>
+* <span data-ttu-id="e0572-220">[IETF RFC 6902 JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="e0572-220">[IETF RFC 6902 JSON Patch specification](https://tools.ietf.org/html/rfc6902)</span></span>
+* <span data-ttu-id="e0572-221">[IETF RFC 6901 JSON Patch 路徑格式規格](https://tools.ietf.org/html/rfc6901) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="e0572-221">[IETF RFC 6901 JSON Patch path format spec](https://tools.ietf.org/html/rfc6901)</span></span>
+* <span data-ttu-id="e0572-222">[JSON Patch 文件](https://jsonpatch.com/) \(英文\)。</span><span class="sxs-lookup"><span data-stu-id="e0572-222">[JSON Patch documentation](https://jsonpatch.com/).</span></span> <span data-ttu-id="e0572-223">包含用於建立 JSON Patch 文件的資源連結。</span><span class="sxs-lookup"><span data-stu-id="e0572-223">Includes links to resources for creating JSON Patch documents.</span></span>
+* [<span data-ttu-id="e0572-224">ASP.NET Core JSON Patch 原始程式碼</span><span class="sxs-lookup"><span data-stu-id="e0572-224">ASP.NET Core JSON Patch source code</span></span>](https://github.com/dotnet/AspNetCore/tree/master/src/Features/JsonPatch/src)
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="699c7-225">本文說明如何處理 ASP.NET Core Web API 中的 JSON Patch 要求。</span><span class="sxs-lookup"><span data-stu-id="699c7-225">This article explains how to handle JSON Patch requests in an ASP.NET Core web API.</span></span>
+<span data-ttu-id="e0572-225">本文說明如何處理 ASP.NET Core Web API 中的 JSON Patch 要求。</span><span class="sxs-lookup"><span data-stu-id="e0572-225">This article explains how to handle JSON Patch requests in an ASP.NET Core web API.</span></span>
 
-## <a name="patch-http-request-method"></a><span data-ttu-id="699c7-226">PATCH HTTP 要求方法</span><span class="sxs-lookup"><span data-stu-id="699c7-226">PATCH HTTP request method</span></span>
+## <a name="patch-http-request-method"></a><span data-ttu-id="e0572-226">PATCH HTTP 要求方法</span><span class="sxs-lookup"><span data-stu-id="e0572-226">PATCH HTTP request method</span></span>
 
-<span data-ttu-id="699c7-227">PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來更新現有的資源。</span><span class="sxs-lookup"><span data-stu-id="699c7-227">The PUT and [PATCH](https://tools.ietf.org/html/rfc5789) methods are used to update an existing resource.</span></span> <span data-ttu-id="699c7-228">它們之間的差異是 PUT 會取代整個資源，而 PATCH 只會指定變更。</span><span class="sxs-lookup"><span data-stu-id="699c7-228">The difference between them is that PUT replaces the entire resource, while PATCH specifies only the changes.</span></span>
+<span data-ttu-id="e0572-227">PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來更新現有的資源。</span><span class="sxs-lookup"><span data-stu-id="e0572-227">The PUT and [PATCH](https://tools.ietf.org/html/rfc5789) methods are used to update an existing resource.</span></span> <span data-ttu-id="e0572-228">它們之間的差異是 PUT 會取代整個資源，而 PATCH 只會指定變更。</span><span class="sxs-lookup"><span data-stu-id="e0572-228">The difference between them is that PUT replaces the entire resource, while PATCH specifies only the changes.</span></span>
 
-## <a name="json-patch"></a><span data-ttu-id="699c7-229">JSON Patch</span><span class="sxs-lookup"><span data-stu-id="699c7-229">JSON Patch</span></span>
+## <a name="json-patch"></a><span data-ttu-id="e0572-229">JSON Patch</span><span class="sxs-lookup"><span data-stu-id="e0572-229">JSON Patch</span></span>
 
-<span data-ttu-id="699c7-230">[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。</span><span class="sxs-lookup"><span data-stu-id="699c7-230">[JSON Patch](https://tools.ietf.org/html/rfc6902) is a format for specifying updates to be applied to a resource.</span></span> <span data-ttu-id="699c7-231">JSON Patch 文件具有一個「作業」\*\* 陣列。</span><span class="sxs-lookup"><span data-stu-id="699c7-231">A JSON Patch document has an array of *operations*.</span></span> <span data-ttu-id="699c7-232">每個作業都會識別特定類型的變更，例如，加入陣列元素或取代屬性值。</span><span class="sxs-lookup"><span data-stu-id="699c7-232">Each operation identifies a particular type of change, such as add an array element or replace a property value.</span></span>
+<span data-ttu-id="e0572-230">[JSON Patch](https://tools.ietf.org/html/rfc6902) \(英文\) 是一種格式，可用來指定要套用至資源的更新。</span><span class="sxs-lookup"><span data-stu-id="e0572-230">[JSON Patch](https://tools.ietf.org/html/rfc6902) is a format for specifying updates to be applied to a resource.</span></span> <span data-ttu-id="e0572-231">JSON Patch 文件具有一個「作業」\*\* 陣列。</span><span class="sxs-lookup"><span data-stu-id="e0572-231">A JSON Patch document has an array of *operations*.</span></span> <span data-ttu-id="e0572-232">每個作業都會識別特定類型的變更，例如，加入陣列元素或取代屬性值。</span><span class="sxs-lookup"><span data-stu-id="e0572-232">Each operation identifies a particular type of change, such as add an array element or replace a property value.</span></span>
 
-<span data-ttu-id="699c7-233">例如，下列 JSON 文件代表一個資源、一份適用於該資源的 JSON 修補文件，以及套用修補作業的結果。</span><span class="sxs-lookup"><span data-stu-id="699c7-233">For example, the following JSON documents represent a resource, a JSON patch document for the resource, and the result of applying the patch operations.</span></span>
+<span data-ttu-id="e0572-233">例如，下列 JSON 文件代表一個資源、一份適用於該資源的 JSON 修補文件，以及套用修補作業的結果。</span><span class="sxs-lookup"><span data-stu-id="e0572-233">For example, the following JSON documents represent a resource, a JSON patch document for the resource, and the result of applying the patch operations.</span></span>
 
-### <a name="resource-example"></a><span data-ttu-id="699c7-234">資源範例</span><span class="sxs-lookup"><span data-stu-id="699c7-234">Resource example</span></span>
+### <a name="resource-example"></a><span data-ttu-id="e0572-234">資源範例</span><span class="sxs-lookup"><span data-stu-id="e0572-234">Resource example</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/customer.json)]
 
-### <a name="json-patch-example"></a><span data-ttu-id="699c7-235">JSON 修補範例</span><span class="sxs-lookup"><span data-stu-id="699c7-235">JSON patch example</span></span>
+### <a name="json-patch-example"></a><span data-ttu-id="e0572-235">JSON 修補範例</span><span class="sxs-lookup"><span data-stu-id="e0572-235">JSON patch example</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/add.json)]
 
-<span data-ttu-id="699c7-236">在上述 JSON 中：</span><span class="sxs-lookup"><span data-stu-id="699c7-236">In the preceding JSON:</span></span>
+<span data-ttu-id="e0572-236">在上述 JSON 中：</span><span class="sxs-lookup"><span data-stu-id="e0572-236">In the preceding JSON:</span></span>
 
-* <span data-ttu-id="699c7-237">`op` 屬性會指出作業的類型。</span><span class="sxs-lookup"><span data-stu-id="699c7-237">The `op` property indicates the type of operation.</span></span>
-* <span data-ttu-id="699c7-238">`path` 屬性會指出要更新的元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-238">The `path` property indicates the element to update.</span></span>
-* <span data-ttu-id="699c7-239">`value` 屬性會提供新值。</span><span class="sxs-lookup"><span data-stu-id="699c7-239">The `value` property provides the new value.</span></span>
+* <span data-ttu-id="e0572-237">`op` 屬性會指出作業的類型。</span><span class="sxs-lookup"><span data-stu-id="e0572-237">The `op` property indicates the type of operation.</span></span>
+* <span data-ttu-id="e0572-238">`path` 屬性會指出要更新的元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-238">The `path` property indicates the element to update.</span></span>
+* <span data-ttu-id="e0572-239">`value` 屬性會提供新值。</span><span class="sxs-lookup"><span data-stu-id="e0572-239">The `value` property provides the new value.</span></span>
 
-### <a name="resource-after-patch"></a><span data-ttu-id="699c7-240">修補之後的資源</span><span class="sxs-lookup"><span data-stu-id="699c7-240">Resource after patch</span></span>
+### <a name="resource-after-patch"></a><span data-ttu-id="e0572-240">修補之後的資源</span><span class="sxs-lookup"><span data-stu-id="e0572-240">Resource after patch</span></span>
 
-<span data-ttu-id="699c7-241">以下是套用上述 JSON Patch 文件之後的資源：</span><span class="sxs-lookup"><span data-stu-id="699c7-241">Here's the resource after applying the preceding JSON Patch document:</span></span>
+<span data-ttu-id="e0572-241">以下是套用上述 JSON Patch 文件之後的資源：</span><span class="sxs-lookup"><span data-stu-id="e0572-241">Here's the resource after applying the preceding JSON Patch document:</span></span>
 
 ```json
 {
@@ -310,60 +316,60 @@ ms.locfileid: "80625872"
 }
 ```
 
-<span data-ttu-id="699c7-242">藉由將 JSON Patch 文件套用至資源所做的變更是不可部分完成的：如果清單中有任何作業失敗，就不會套用清單中的任何作業。</span><span class="sxs-lookup"><span data-stu-id="699c7-242">The changes made by applying a JSON Patch document to a resource are atomic: if any operation in the list fails, no operation in the list is applied.</span></span>
+<span data-ttu-id="e0572-242">藉由將 JSON Patch 文件套用至資源所做的變更是不可部分完成的：如果清單中有任何作業失敗，就不會套用清單中的任何作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-242">The changes made by applying a JSON Patch document to a resource are atomic: if any operation in the list fails, no operation in the list is applied.</span></span>
 
-## <a name="path-syntax"></a><span data-ttu-id="699c7-243">路徑語法</span><span class="sxs-lookup"><span data-stu-id="699c7-243">Path syntax</span></span>
+## <a name="path-syntax"></a><span data-ttu-id="e0572-243">路徑語法</span><span class="sxs-lookup"><span data-stu-id="e0572-243">Path syntax</span></span>
 
-<span data-ttu-id="699c7-244">作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。</span><span class="sxs-lookup"><span data-stu-id="699c7-244">The [path](https://tools.ietf.org/html/rfc6901) property of an operation object has slashes between levels.</span></span> <span data-ttu-id="699c7-245">例如： `"/address/zipCode"` 。</span><span class="sxs-lookup"><span data-stu-id="699c7-245">For example, `"/address/zipCode"`.</span></span>
+<span data-ttu-id="e0572-244">作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。</span><span class="sxs-lookup"><span data-stu-id="e0572-244">The [path](https://tools.ietf.org/html/rfc6901) property of an operation object has slashes between levels.</span></span> <span data-ttu-id="e0572-245">例如： `"/address/zipCode"` 。</span><span class="sxs-lookup"><span data-stu-id="e0572-245">For example, `"/address/zipCode"`.</span></span>
 
-<span data-ttu-id="699c7-246">以零為起始的索引可用來指定陣列元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-246">Zero-based indexes are used to specify array elements.</span></span> <span data-ttu-id="699c7-247">`addresses` 陣列的第一個元素會在 `/addresses/0` 上。</span><span class="sxs-lookup"><span data-stu-id="699c7-247">The first element of the `addresses` array would be at `/addresses/0`.</span></span> <span data-ttu-id="699c7-248">若要 `add` 到陣列結尾處，請使用連字號 (-) 而不是索引號碼：`/addresses/-`。</span><span class="sxs-lookup"><span data-stu-id="699c7-248">To `add` to the end of an array, use a hyphen (-) rather than an index number: `/addresses/-`.</span></span>
+<span data-ttu-id="e0572-246">以零為起始的索引可用來指定陣列元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-246">Zero-based indexes are used to specify array elements.</span></span> <span data-ttu-id="e0572-247">`addresses` 陣列的第一個元素會在 `/addresses/0` 上。</span><span class="sxs-lookup"><span data-stu-id="e0572-247">The first element of the `addresses` array would be at `/addresses/0`.</span></span> <span data-ttu-id="e0572-248">若要 `add` 到陣列結尾處，請使用連字號 (-) 而不是索引號碼：`/addresses/-`。</span><span class="sxs-lookup"><span data-stu-id="e0572-248">To `add` to the end of an array, use a hyphen (-) rather than an index number: `/addresses/-`.</span></span>
 
-### <a name="operations"></a><span data-ttu-id="699c7-249">作業</span><span class="sxs-lookup"><span data-stu-id="699c7-249">Operations</span></span>
+### <a name="operations"></a><span data-ttu-id="e0572-249">作業</span><span class="sxs-lookup"><span data-stu-id="e0572-249">Operations</span></span>
 
-<span data-ttu-id="699c7-250">下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：</span><span class="sxs-lookup"><span data-stu-id="699c7-250">The following table shows supported operations as defined in the [JSON Patch specification](https://tools.ietf.org/html/rfc6902):</span></span>
+<span data-ttu-id="e0572-250">下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：</span><span class="sxs-lookup"><span data-stu-id="e0572-250">The following table shows supported operations as defined in the [JSON Patch specification](https://tools.ietf.org/html/rfc6902):</span></span>
 
-|<span data-ttu-id="699c7-251">作業</span><span class="sxs-lookup"><span data-stu-id="699c7-251">Operation</span></span>  | <span data-ttu-id="699c7-252">注意</span><span class="sxs-lookup"><span data-stu-id="699c7-252">Notes</span></span> |
+|<span data-ttu-id="e0572-251">作業</span><span class="sxs-lookup"><span data-stu-id="e0572-251">Operation</span></span>  | <span data-ttu-id="e0572-252">備忘錄</span><span class="sxs-lookup"><span data-stu-id="e0572-252">Notes</span></span> |
 |-----------|--------------------------------|
-| `add`     | <span data-ttu-id="699c7-253">加入屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-253">Add a property or array element.</span></span> <span data-ttu-id="699c7-254">針對現有的屬性：設定值。</span><span class="sxs-lookup"><span data-stu-id="699c7-254">For existing property: set value.</span></span>|
-| `remove`  | <span data-ttu-id="699c7-255">移除屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-255">Remove a property or array element.</span></span> |
-| `replace` | <span data-ttu-id="699c7-256">與 `remove` 之後接著在同一個位置上 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-256">Same as `remove` followed by `add` at same location.</span></span> |
-| `move`    | <span data-ttu-id="699c7-257">與從來源 `remove` 之後接著使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-257">Same as `remove` from source followed by `add` to destination using value from source.</span></span> |
-| `copy`    | <span data-ttu-id="699c7-258">與使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-258">Same as `add` to destination using value from source.</span></span> |
-| `test`    | <span data-ttu-id="699c7-259">如果 `path` 上的值 = 所提供的 `value`，即會傳回成功狀態碼。</span><span class="sxs-lookup"><span data-stu-id="699c7-259">Return success status code if value at `path` = provided `value`.</span></span>|
+| `add`     | <span data-ttu-id="e0572-253">加入屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-253">Add a property or array element.</span></span> <span data-ttu-id="e0572-254">針對現有的屬性：設定值。</span><span class="sxs-lookup"><span data-stu-id="e0572-254">For existing property: set value.</span></span>|
+| `remove`  | <span data-ttu-id="e0572-255">移除屬性或陣列元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-255">Remove a property or array element.</span></span> |
+| `replace` | <span data-ttu-id="e0572-256">與 `remove` 之後接著在同一個位置上 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-256">Same as `remove` followed by `add` at same location.</span></span> |
+| `move`    | <span data-ttu-id="e0572-257">與從來源 `remove` 之後接著使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-257">Same as `remove` from source followed by `add` to destination using value from source.</span></span> |
+| `copy`    | <span data-ttu-id="e0572-258">與使用來源的值 `add` 到目的地相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-258">Same as `add` to destination using value from source.</span></span> |
+| `test`    | <span data-ttu-id="e0572-259">如果 `path` 上的值 = 所提供的 `value`，即會傳回成功狀態碼。</span><span class="sxs-lookup"><span data-stu-id="e0572-259">Return success status code if value at `path` = provided `value`.</span></span>|
 
-## <a name="jsonpatch-in-aspnet-core"></a><span data-ttu-id="699c7-260">ASP.NET Core 中的 JsonPatch</span><span class="sxs-lookup"><span data-stu-id="699c7-260">JsonPatch in ASP.NET Core</span></span>
+## <a name="jsonpatch-in-aspnet-core"></a><span data-ttu-id="e0572-260">ASP.NET Core 中的 JsonPatch</span><span class="sxs-lookup"><span data-stu-id="e0572-260">JsonPatch in ASP.NET Core</span></span>
 
-<span data-ttu-id="699c7-261">[Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) \(英文\) NuGet 套件中會提供 JSON Patch 的 ASP.NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="699c7-261">The ASP.NET Core implementation of JSON Patch is provided in the [Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) NuGet package.</span></span> <span data-ttu-id="699c7-262">此套件隨附於 [Microsoft.AspnetCore.App](xref:fundamentals/metapackage-app) 中繼套件中。</span><span class="sxs-lookup"><span data-stu-id="699c7-262">The package is included in the [Microsoft.AspnetCore.App](xref:fundamentals/metapackage-app) metapackage.</span></span>
+<span data-ttu-id="e0572-261">[Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) \(英文\) NuGet 套件中會提供 JSON Patch 的 ASP.NET Core 實作。</span><span class="sxs-lookup"><span data-stu-id="e0572-261">The ASP.NET Core implementation of JSON Patch is provided in the [Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/microsoft.aspnetcore.jsonpatch/) NuGet package.</span></span> <span data-ttu-id="e0572-262">此套件隨附於 [Microsoft.AspnetCore.App](xref:fundamentals/metapackage-app) 中繼套件中。</span><span class="sxs-lookup"><span data-stu-id="e0572-262">The package is included in the [Microsoft.AspnetCore.App](xref:fundamentals/metapackage-app) metapackage.</span></span>
 
-## <a name="action-method-code"></a><span data-ttu-id="699c7-263">動作方法程式碼</span><span class="sxs-lookup"><span data-stu-id="699c7-263">Action method code</span></span>
+## <a name="action-method-code"></a><span data-ttu-id="e0572-263">動作方法程式碼</span><span class="sxs-lookup"><span data-stu-id="e0572-263">Action method code</span></span>
 
-<span data-ttu-id="699c7-264">在 API 控制器中，JSON Patch 的動作方法：</span><span class="sxs-lookup"><span data-stu-id="699c7-264">In an API controller, an action method for JSON Patch:</span></span>
+<span data-ttu-id="e0572-264">在 API 控制器中，JSON Patch 的動作方法：</span><span class="sxs-lookup"><span data-stu-id="e0572-264">In an API controller, an action method for JSON Patch:</span></span>
 
-* <span data-ttu-id="699c7-265">使用 `HttpPatch` 屬性來標註。</span><span class="sxs-lookup"><span data-stu-id="699c7-265">Is annotated with the `HttpPatch` attribute.</span></span>
-* <span data-ttu-id="699c7-266">接受`JsonPatchDocument<T>`,`[FromBody]`通常使用 。</span><span class="sxs-lookup"><span data-stu-id="699c7-266">Accepts a `JsonPatchDocument<T>`, typically with `[FromBody]`.</span></span>
-* <span data-ttu-id="699c7-267">呼叫修補文件上的 `ApplyTo` 以套用變更。</span><span class="sxs-lookup"><span data-stu-id="699c7-267">Calls `ApplyTo` on the patch document to apply the changes.</span></span>
+* <span data-ttu-id="e0572-265">使用 `HttpPatch` 屬性來標註。</span><span class="sxs-lookup"><span data-stu-id="e0572-265">Is annotated with the `HttpPatch` attribute.</span></span>
+* <span data-ttu-id="e0572-266">接受`JsonPatchDocument<T>`，通常使用`[FromBody]`。</span><span class="sxs-lookup"><span data-stu-id="e0572-266">Accepts a `JsonPatchDocument<T>`, typically with `[FromBody]`.</span></span>
+* <span data-ttu-id="e0572-267">呼叫修補文件上的 `ApplyTo` 以套用變更。</span><span class="sxs-lookup"><span data-stu-id="e0572-267">Calls `ApplyTo` on the patch document to apply the changes.</span></span>
 
-<span data-ttu-id="699c7-268">以下是範例：</span><span class="sxs-lookup"><span data-stu-id="699c7-268">Here's an example:</span></span>
+<span data-ttu-id="e0572-268">以下是範例：</span><span class="sxs-lookup"><span data-stu-id="e0572-268">Here's an example:</span></span>
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
-<span data-ttu-id="699c7-269">這段來自範例應用程式的程式碼會使用下列 `Customer` 模型。</span><span class="sxs-lookup"><span data-stu-id="699c7-269">This code from the sample app works with the following `Customer` model.</span></span>
+<span data-ttu-id="e0572-269">這段來自範例應用程式的程式碼會使用下列 `Customer` 模型。</span><span class="sxs-lookup"><span data-stu-id="e0572-269">This code from the sample app works with the following `Customer` model.</span></span>
 
 [!code-csharp[](jsonpatch/samples/2.2/Models/Customer.cs?name=snippet_Customer)]
 
 [!code-csharp[](jsonpatch/samples/2.2/Models/Order.cs?name=snippet_Order)]
 
-<span data-ttu-id="699c7-270">範例動作方法：</span><span class="sxs-lookup"><span data-stu-id="699c7-270">The sample action method:</span></span>
+<span data-ttu-id="e0572-270">範例動作方法：</span><span class="sxs-lookup"><span data-stu-id="e0572-270">The sample action method:</span></span>
 
-* <span data-ttu-id="699c7-271">建構 `Customer`。</span><span class="sxs-lookup"><span data-stu-id="699c7-271">Constructs a `Customer`.</span></span>
-* <span data-ttu-id="699c7-272">套用修補檔案。</span><span class="sxs-lookup"><span data-stu-id="699c7-272">Applies the patch.</span></span>
-* <span data-ttu-id="699c7-273">在回應本文中傳回結果。</span><span class="sxs-lookup"><span data-stu-id="699c7-273">Returns the result in the body of the response.</span></span>
+* <span data-ttu-id="e0572-271">建構 `Customer`。</span><span class="sxs-lookup"><span data-stu-id="e0572-271">Constructs a `Customer`.</span></span>
+* <span data-ttu-id="e0572-272">套用修補檔案。</span><span class="sxs-lookup"><span data-stu-id="e0572-272">Applies the patch.</span></span>
+* <span data-ttu-id="e0572-273">在回應本文中傳回結果。</span><span class="sxs-lookup"><span data-stu-id="e0572-273">Returns the result in the body of the response.</span></span>
 
- <span data-ttu-id="699c7-274">在實際的應用程式中，程式碼會從資料庫之類的存放區擷取資料，並在套用修補檔案之後更新資料庫。</span><span class="sxs-lookup"><span data-stu-id="699c7-274">In a real app, the code would retrieve the data from a store such as a database and update the database after applying the patch.</span></span>
+ <span data-ttu-id="e0572-274">在實際的應用程式中，程式碼會從資料庫之類的存放區擷取資料，並在套用修補檔案之後更新資料庫。</span><span class="sxs-lookup"><span data-stu-id="e0572-274">In a real app, the code would retrieve the data from a store such as a database and update the database after applying the patch.</span></span>
 
-### <a name="model-state"></a><span data-ttu-id="699c7-275">模型狀態</span><span class="sxs-lookup"><span data-stu-id="699c7-275">Model state</span></span>
+### <a name="model-state"></a><span data-ttu-id="e0572-275">模型狀態</span><span class="sxs-lookup"><span data-stu-id="e0572-275">Model state</span></span>
 
-<span data-ttu-id="699c7-276">上述動作方法範例會呼叫 `ApplyTo` 的多載，以取得模型狀態作為它的其中一個參數。</span><span class="sxs-lookup"><span data-stu-id="699c7-276">The preceding action method example calls an overload of `ApplyTo` that takes model state as one of its parameters.</span></span> <span data-ttu-id="699c7-277">使用此選項，您就能在回應中收到錯誤訊息。</span><span class="sxs-lookup"><span data-stu-id="699c7-277">With this option, you can get error messages in responses.</span></span> <span data-ttu-id="699c7-278">下列範例會針對 `test` 作業顯示「400 不正確的要求」回應的本文：</span><span class="sxs-lookup"><span data-stu-id="699c7-278">The following example shows the body of a 400 Bad Request response for a `test` operation:</span></span>
+<span data-ttu-id="e0572-276">上述動作方法範例會呼叫 `ApplyTo` 的多載，以取得模型狀態作為它的其中一個參數。</span><span class="sxs-lookup"><span data-stu-id="e0572-276">The preceding action method example calls an overload of `ApplyTo` that takes model state as one of its parameters.</span></span> <span data-ttu-id="e0572-277">使用此選項，您就能在回應中收到錯誤訊息。</span><span class="sxs-lookup"><span data-stu-id="e0572-277">With this option, you can get error messages in responses.</span></span> <span data-ttu-id="e0572-278">下列範例會針對 `test` 作業顯示「400 不正確的要求」回應的本文：</span><span class="sxs-lookup"><span data-stu-id="e0572-278">The following example shows the body of a 400 Bad Request response for a `test` operation:</span></span>
 
 ```json
 {
@@ -373,99 +379,99 @@ ms.locfileid: "80625872"
 }
 ```
 
-### <a name="dynamic-objects"></a><span data-ttu-id="699c7-279">動態物件</span><span class="sxs-lookup"><span data-stu-id="699c7-279">Dynamic objects</span></span>
+### <a name="dynamic-objects"></a><span data-ttu-id="e0572-279">動態物件</span><span class="sxs-lookup"><span data-stu-id="e0572-279">Dynamic objects</span></span>
 
-<span data-ttu-id="699c7-280">下列動作方法範例示範如何將修補檔案套用至動態物件。</span><span class="sxs-lookup"><span data-stu-id="699c7-280">The following action method example shows how to apply a patch to a dynamic object.</span></span>
+<span data-ttu-id="e0572-280">下列動作方法範例示範如何將修補檔案套用至動態物件。</span><span class="sxs-lookup"><span data-stu-id="e0572-280">The following action method example shows how to apply a patch to a dynamic object.</span></span>
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_Dynamic)]
 
-## <a name="the-add-operation"></a><span data-ttu-id="699c7-281">新增作業</span><span class="sxs-lookup"><span data-stu-id="699c7-281">The add operation</span></span>
+## <a name="the-add-operation"></a><span data-ttu-id="e0572-281">新增作業</span><span class="sxs-lookup"><span data-stu-id="e0572-281">The add operation</span></span>
 
-* <span data-ttu-id="699c7-282">如果 `path` 指向陣列元素：將新元素插入至 `path` 所指定的元素之前。</span><span class="sxs-lookup"><span data-stu-id="699c7-282">If `path` points to an array element: inserts new element before the one specified by `path`.</span></span>
-* <span data-ttu-id="699c7-283">如果 `path` 指向屬性：設定屬性值。</span><span class="sxs-lookup"><span data-stu-id="699c7-283">If `path` points to a property: sets the property value.</span></span>
-* <span data-ttu-id="699c7-284">如果 `path` 指向不存在的位置：</span><span class="sxs-lookup"><span data-stu-id="699c7-284">If `path` points to a nonexistent location:</span></span>
-  * <span data-ttu-id="699c7-285">如果要修補的資源是動態物件：加入屬性。</span><span class="sxs-lookup"><span data-stu-id="699c7-285">If the resource to patch is a dynamic object: adds a property.</span></span>
-  * <span data-ttu-id="699c7-286">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="699c7-286">If the resource to patch is a static object: the request fails.</span></span>
+* <span data-ttu-id="e0572-282">如果 `path` 指向陣列元素：將新元素插入至 `path` 所指定的元素之前。</span><span class="sxs-lookup"><span data-stu-id="e0572-282">If `path` points to an array element: inserts new element before the one specified by `path`.</span></span>
+* <span data-ttu-id="e0572-283">如果 `path` 指向屬性：設定屬性值。</span><span class="sxs-lookup"><span data-stu-id="e0572-283">If `path` points to a property: sets the property value.</span></span>
+* <span data-ttu-id="e0572-284">如果 `path` 指向不存在的位置：</span><span class="sxs-lookup"><span data-stu-id="e0572-284">If `path` points to a nonexistent location:</span></span>
+  * <span data-ttu-id="e0572-285">如果要修補的資源是動態物件：加入屬性。</span><span class="sxs-lookup"><span data-stu-id="e0572-285">If the resource to patch is a dynamic object: adds a property.</span></span>
+  * <span data-ttu-id="e0572-286">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="e0572-286">If the resource to patch is a static object: the request fails.</span></span>
 
-<span data-ttu-id="699c7-287">下列範例修補文件會設定 `CustomerName` 的值，並將 `Order` 物件加入至 `Orders` 陣列的結尾處。</span><span class="sxs-lookup"><span data-stu-id="699c7-287">The following sample patch document sets the value of `CustomerName` and adds an `Order` object to the end of the `Orders` array.</span></span>
+<span data-ttu-id="e0572-287">下列範例修補文件會設定 `CustomerName` 的值，並將 `Order` 物件加入至 `Orders` 陣列的結尾處。</span><span class="sxs-lookup"><span data-stu-id="e0572-287">The following sample patch document sets the value of `CustomerName` and adds an `Order` object to the end of the `Orders` array.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/add.json)]
 
-## <a name="the-remove-operation"></a><span data-ttu-id="699c7-288">移除作業</span><span class="sxs-lookup"><span data-stu-id="699c7-288">The remove operation</span></span>
+## <a name="the-remove-operation"></a><span data-ttu-id="e0572-288">移除作業</span><span class="sxs-lookup"><span data-stu-id="e0572-288">The remove operation</span></span>
 
-* <span data-ttu-id="699c7-289">如果 `path` 指向陣列元素：移除該元素。</span><span class="sxs-lookup"><span data-stu-id="699c7-289">If `path` points to an array element: removes the element.</span></span>
-* <span data-ttu-id="699c7-290">如果 `path` 指向屬性：</span><span class="sxs-lookup"><span data-stu-id="699c7-290">If `path` points to a property:</span></span>
-  * <span data-ttu-id="699c7-291">如果要修補的資源是動態物件：移除屬性。</span><span class="sxs-lookup"><span data-stu-id="699c7-291">If resource to patch is a dynamic object: removes the property.</span></span>
-  * <span data-ttu-id="699c7-292">如果要修補的資源是靜態物件：</span><span class="sxs-lookup"><span data-stu-id="699c7-292">If resource to patch is a static object:</span></span>
-    * <span data-ttu-id="699c7-293">如果屬性可為 Null：將它設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="699c7-293">If the property is nullable: sets it to null.</span></span>
-    * <span data-ttu-id="699c7-294">如果屬性不可為 Null，則將它設定為 `default<T>`。</span><span class="sxs-lookup"><span data-stu-id="699c7-294">If the property is non-nullable, sets it to `default<T>`.</span></span>
+* <span data-ttu-id="e0572-289">如果 `path` 指向陣列元素：移除該元素。</span><span class="sxs-lookup"><span data-stu-id="e0572-289">If `path` points to an array element: removes the element.</span></span>
+* <span data-ttu-id="e0572-290">如果 `path` 指向屬性：</span><span class="sxs-lookup"><span data-stu-id="e0572-290">If `path` points to a property:</span></span>
+  * <span data-ttu-id="e0572-291">如果要修補的資源是動態物件：移除屬性。</span><span class="sxs-lookup"><span data-stu-id="e0572-291">If resource to patch is a dynamic object: removes the property.</span></span>
+  * <span data-ttu-id="e0572-292">如果要修補的資源是靜態物件：</span><span class="sxs-lookup"><span data-stu-id="e0572-292">If resource to patch is a static object:</span></span>
+    * <span data-ttu-id="e0572-293">如果屬性可為 Null：將它設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="e0572-293">If the property is nullable: sets it to null.</span></span>
+    * <span data-ttu-id="e0572-294">如果屬性不可為 Null，則將它設定為 `default<T>`。</span><span class="sxs-lookup"><span data-stu-id="e0572-294">If the property is non-nullable, sets it to `default<T>`.</span></span>
 
-<span data-ttu-id="699c7-295">下列範例修補文件會將 `CustomerName` 設定為 Null 並刪除 `Orders[0]`。</span><span class="sxs-lookup"><span data-stu-id="699c7-295">The following sample patch document sets `CustomerName` to null and deletes `Orders[0]`.</span></span>
+<span data-ttu-id="e0572-295">下列範例修補文件會將 `CustomerName` 設定為 Null 並刪除 `Orders[0]`。</span><span class="sxs-lookup"><span data-stu-id="e0572-295">The following sample patch document sets `CustomerName` to null and deletes `Orders[0]`.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/remove.json)]
 
-## <a name="the-replace-operation"></a><span data-ttu-id="699c7-296">取代作業</span><span class="sxs-lookup"><span data-stu-id="699c7-296">The replace operation</span></span>
+## <a name="the-replace-operation"></a><span data-ttu-id="e0572-296">取代作業</span><span class="sxs-lookup"><span data-stu-id="e0572-296">The replace operation</span></span>
 
-<span data-ttu-id="699c7-297">此作業在功能上與 `remove` 之後接著 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-297">This operation is functionally the same as a `remove` followed by an `add`.</span></span>
+<span data-ttu-id="e0572-297">此作業在功能上與 `remove` 之後接著 `add` 相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-297">This operation is functionally the same as a `remove` followed by an `add`.</span></span>
 
-<span data-ttu-id="699c7-298">下列範例修補文件會設定 `CustomerName` 的值，並使用新的 `Order` 物件來取代 `Orders[0]`。</span><span class="sxs-lookup"><span data-stu-id="699c7-298">The following sample patch document sets the value of `CustomerName` and replaces `Orders[0]`with a new `Order` object.</span></span>
+<span data-ttu-id="e0572-298">下列範例修補文件會設定 `CustomerName` 的值，並使用新的 `Order` 物件來取代 `Orders[0]`。</span><span class="sxs-lookup"><span data-stu-id="e0572-298">The following sample patch document sets the value of `CustomerName` and replaces `Orders[0]`with a new `Order` object.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/replace.json)]
 
-## <a name="the-move-operation"></a><span data-ttu-id="699c7-299">移動作業</span><span class="sxs-lookup"><span data-stu-id="699c7-299">The move operation</span></span>
+## <a name="the-move-operation"></a><span data-ttu-id="e0572-299">移動作業</span><span class="sxs-lookup"><span data-stu-id="e0572-299">The move operation</span></span>
 
-* <span data-ttu-id="699c7-300">如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `from` 元素上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="699c7-300">If `path` points to an array element: copies `from` element to location of `path` element, then runs a `remove` operation on the `from` element.</span></span>
-* <span data-ttu-id="699c7-301">如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="699c7-301">If `path` points to a property: copies value of `from` property to `path` property, then runs a `remove` operation on the `from` property.</span></span>
-* <span data-ttu-id="699c7-302">如果 `path` 指向不存在的屬性：</span><span class="sxs-lookup"><span data-stu-id="699c7-302">If `path` points to a nonexistent property:</span></span>
-  * <span data-ttu-id="699c7-303">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="699c7-303">If the resource to patch is a static object: the request fails.</span></span>
-  * <span data-ttu-id="699c7-304">如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="699c7-304">If the resource to patch is a dynamic object: copies `from` property to location indicated by `path`, then runs a `remove` operation on the `from` property.</span></span>
+* <span data-ttu-id="e0572-300">如果 `path` 指向陣列元素：將 `from` 元素複製到 `path` 元素的位置，然後在 `from` 元素上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-300">If `path` points to an array element: copies `from` element to location of `path` element, then runs a `remove` operation on the `from` element.</span></span>
+* <span data-ttu-id="e0572-301">如果 `path` 指向屬性：將 `from` 屬性的值複製到 `path` 屬性，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-301">If `path` points to a property: copies value of `from` property to `path` property, then runs a `remove` operation on the `from` property.</span></span>
+* <span data-ttu-id="e0572-302">如果 `path` 指向不存在的屬性：</span><span class="sxs-lookup"><span data-stu-id="e0572-302">If `path` points to a nonexistent property:</span></span>
+  * <span data-ttu-id="e0572-303">如果要修補的資源是靜態物件：要求失敗。</span><span class="sxs-lookup"><span data-stu-id="e0572-303">If the resource to patch is a static object: the request fails.</span></span>
+  * <span data-ttu-id="e0572-304">如果要修補的資源是動態物件：將 `from` 屬性複製到 `path` 所指出的位置，然後在 `from` 屬性上執行 `remove` 作業。</span><span class="sxs-lookup"><span data-stu-id="e0572-304">If the resource to patch is a dynamic object: copies `from` property to location indicated by `path`, then runs a `remove` operation on the `from` property.</span></span>
 
-<span data-ttu-id="699c7-305">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="699c7-305">The following sample patch document:</span></span>
+<span data-ttu-id="e0572-305">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="e0572-305">The following sample patch document:</span></span>
 
-* <span data-ttu-id="699c7-306">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="699c7-306">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
-* <span data-ttu-id="699c7-307">將 `Orders[0].OrderName` 設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="699c7-307">Sets `Orders[0].OrderName` to null.</span></span>
-* <span data-ttu-id="699c7-308">將 `Orders[1]` 移到 `Orders[0]` 前面。</span><span class="sxs-lookup"><span data-stu-id="699c7-308">Moves `Orders[1]` to before `Orders[0]`.</span></span>
+* <span data-ttu-id="e0572-306">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="e0572-306">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
+* <span data-ttu-id="e0572-307">將 `Orders[0].OrderName` 設定為 Null。</span><span class="sxs-lookup"><span data-stu-id="e0572-307">Sets `Orders[0].OrderName` to null.</span></span>
+* <span data-ttu-id="e0572-308">將 `Orders[1]` 移到 `Orders[0]` 前面。</span><span class="sxs-lookup"><span data-stu-id="e0572-308">Moves `Orders[1]` to before `Orders[0]`.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/move.json)]
 
-## <a name="the-copy-operation"></a><span data-ttu-id="699c7-309">複製作業</span><span class="sxs-lookup"><span data-stu-id="699c7-309">The copy operation</span></span>
+## <a name="the-copy-operation"></a><span data-ttu-id="e0572-309">複製作業</span><span class="sxs-lookup"><span data-stu-id="e0572-309">The copy operation</span></span>
 
-<span data-ttu-id="699c7-310">此作業在功能上與不含最後 `remove` 步驟的 `move` 作業相同。</span><span class="sxs-lookup"><span data-stu-id="699c7-310">This operation is functionally the same as a `move` operation without the final `remove` step.</span></span>
+<span data-ttu-id="e0572-310">此作業在功能上與不含最後 `remove` 步驟的 `move` 作業相同。</span><span class="sxs-lookup"><span data-stu-id="e0572-310">This operation is functionally the same as a `move` operation without the final `remove` step.</span></span>
 
-<span data-ttu-id="699c7-311">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="699c7-311">The following sample patch document:</span></span>
+<span data-ttu-id="e0572-311">下列範例修補文件：</span><span class="sxs-lookup"><span data-stu-id="e0572-311">The following sample patch document:</span></span>
 
-* <span data-ttu-id="699c7-312">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="699c7-312">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
-* <span data-ttu-id="699c7-313">在 `Orders[0]` 前面插入 `Orders[1]` 的複本。</span><span class="sxs-lookup"><span data-stu-id="699c7-313">Inserts a copy of `Orders[1]` before `Orders[0]`.</span></span>
+* <span data-ttu-id="e0572-312">將 `Orders[0].OrderName` 的值複製到 `CustomerName`。</span><span class="sxs-lookup"><span data-stu-id="e0572-312">Copies the value of `Orders[0].OrderName` to `CustomerName`.</span></span>
+* <span data-ttu-id="e0572-313">在 `Orders[0]` 前面插入 `Orders[1]` 的複本。</span><span class="sxs-lookup"><span data-stu-id="e0572-313">Inserts a copy of `Orders[1]` before `Orders[0]`.</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/copy.json)]
 
-## <a name="the-test-operation"></a><span data-ttu-id="699c7-314">測試作業</span><span class="sxs-lookup"><span data-stu-id="699c7-314">The test operation</span></span>
+## <a name="the-test-operation"></a><span data-ttu-id="e0572-314">測試作業</span><span class="sxs-lookup"><span data-stu-id="e0572-314">The test operation</span></span>
 
-<span data-ttu-id="699c7-315">如果 `path` 所指出位置上的值與 `value` 中所提供的值不同，則要求會失敗。</span><span class="sxs-lookup"><span data-stu-id="699c7-315">If the value at the location indicated by `path` is different from the value provided in `value`, the request fails.</span></span> <span data-ttu-id="699c7-316">在該情況下，整個 PATCH 要求會失敗，即使修補文件中的所有其他作業都成功也一樣。</span><span class="sxs-lookup"><span data-stu-id="699c7-316">In that case, the whole PATCH request fails even if all other operations in the patch document would otherwise succeed.</span></span>
+<span data-ttu-id="e0572-315">如果 `path` 所指出位置上的值與 `value` 中所提供的值不同，則要求會失敗。</span><span class="sxs-lookup"><span data-stu-id="e0572-315">If the value at the location indicated by `path` is different from the value provided in `value`, the request fails.</span></span> <span data-ttu-id="e0572-316">在該情況下，整個 PATCH 要求會失敗，即使修補文件中的所有其他作業都成功也一樣。</span><span class="sxs-lookup"><span data-stu-id="e0572-316">In that case, the whole PATCH request fails even if all other operations in the patch document would otherwise succeed.</span></span>
 
-<span data-ttu-id="699c7-317">`test` 作業通常會用來防止在發生並行衝突時進行更新。</span><span class="sxs-lookup"><span data-stu-id="699c7-317">The `test` operation is commonly used to prevent an update when there's a concurrency conflict.</span></span>
+<span data-ttu-id="e0572-317">`test` 作業通常會用來防止在發生並行衝突時進行更新。</span><span class="sxs-lookup"><span data-stu-id="e0572-317">The `test` operation is commonly used to prevent an update when there's a concurrency conflict.</span></span>
 
-<span data-ttu-id="699c7-318">如果 `CustomerName` 的初始值是 "John"，則下列範例修補文件不會有任何作用，因為測試失敗：</span><span class="sxs-lookup"><span data-stu-id="699c7-318">The following sample patch document has no effect if the initial value of `CustomerName` is "John", because the test fails:</span></span>
+<span data-ttu-id="e0572-318">如果 `CustomerName` 的初始值是 "John"，則下列範例修補文件不會有任何作用，因為測試失敗：</span><span class="sxs-lookup"><span data-stu-id="e0572-318">The following sample patch document has no effect if the initial value of `CustomerName` is "John", because the test fails:</span></span>
 
 [!code-json[](jsonpatch/samples/2.2/JSON/test-fail.json)]
 
-## <a name="get-the-code"></a><span data-ttu-id="699c7-319">取得程式碼</span><span class="sxs-lookup"><span data-stu-id="699c7-319">Get the code</span></span>
+## <a name="get-the-code"></a><span data-ttu-id="e0572-319">取得程式碼</span><span class="sxs-lookup"><span data-stu-id="e0572-319">Get the code</span></span>
 
-<span data-ttu-id="699c7-320">[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2)。</span><span class="sxs-lookup"><span data-stu-id="699c7-320">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2).</span></span> <span data-ttu-id="699c7-321">([如何下載](xref:index#how-to-download-a-sample))。</span><span class="sxs-lookup"><span data-stu-id="699c7-321">([How to download](xref:index#how-to-download-a-sample)).</span></span>
+<span data-ttu-id="e0572-320">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2)。</span><span class="sxs-lookup"><span data-stu-id="e0572-320">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/jsonpatch/samples/2.2).</span></span> <span data-ttu-id="e0572-321">([如何下載](xref:index#how-to-download-a-sample))。</span><span class="sxs-lookup"><span data-stu-id="e0572-321">([How to download](xref:index#how-to-download-a-sample)).</span></span>
 
-<span data-ttu-id="699c7-322">若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：</span><span class="sxs-lookup"><span data-stu-id="699c7-322">To test the sample, run the app and send HTTP requests with the following settings:</span></span>
+<span data-ttu-id="e0572-322">若要測試範例，請執行應用程式，並使用下列設定來傳送 HTTP 要求：</span><span class="sxs-lookup"><span data-stu-id="e0572-322">To test the sample, run the app and send HTTP requests with the following settings:</span></span>
 
-* <span data-ttu-id="699c7-323">URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span><span class="sxs-lookup"><span data-stu-id="699c7-323">URL: `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span></span>
-* <span data-ttu-id="699c7-324">HTTP 方法：`PATCH`</span><span class="sxs-lookup"><span data-stu-id="699c7-324">HTTP method: `PATCH`</span></span>
-* <span data-ttu-id="699c7-325">標題：`Content-Type: application/json-patch+json`</span><span class="sxs-lookup"><span data-stu-id="699c7-325">Header: `Content-Type: application/json-patch+json`</span></span>
-* <span data-ttu-id="699c7-326">正文:複製並粘貼 JSON 修補程式文檔示例之一(來自*JSON*專案資料夾)。</span><span class="sxs-lookup"><span data-stu-id="699c7-326">Body: Copy and paste one of the JSON patch document samples from the *JSON* project folder.</span></span>
+* <span data-ttu-id="e0572-323">URL： `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span><span class="sxs-lookup"><span data-stu-id="e0572-323">URL: `http://localhost:{port}/jsonpatch/jsonpatchwithmodelstate`</span></span>
+* <span data-ttu-id="e0572-324">HTTP 方法：`PATCH`</span><span class="sxs-lookup"><span data-stu-id="e0572-324">HTTP method: `PATCH`</span></span>
+* <span data-ttu-id="e0572-325">標題：`Content-Type: application/json-patch+json`</span><span class="sxs-lookup"><span data-stu-id="e0572-325">Header: `Content-Type: application/json-patch+json`</span></span>
+* <span data-ttu-id="e0572-326">主體：從*json*專案資料夾複製並貼上其中一個 json 修補程式檔範例。</span><span class="sxs-lookup"><span data-stu-id="e0572-326">Body: Copy and paste one of the JSON patch document samples from the *JSON* project folder.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="699c7-327">其他資源</span><span class="sxs-lookup"><span data-stu-id="699c7-327">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="e0572-327">其他資源</span><span class="sxs-lookup"><span data-stu-id="e0572-327">Additional resources</span></span>
 
-* <span data-ttu-id="699c7-328">[IETF RFC 5789 PATCH 方法規格](https://tools.ietf.org/html/rfc5789) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="699c7-328">[IETF RFC 5789 PATCH method specification](https://tools.ietf.org/html/rfc5789)</span></span>
-* <span data-ttu-id="699c7-329">[IETF RFC 6902 JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="699c7-329">[IETF RFC 6902 JSON Patch specification](https://tools.ietf.org/html/rfc6902)</span></span>
-* <span data-ttu-id="699c7-330">[IETF RFC 6901 JSON Patch 路徑格式規格](https://tools.ietf.org/html/rfc6901) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="699c7-330">[IETF RFC 6901 JSON Patch path format spec](https://tools.ietf.org/html/rfc6901)</span></span>
-* <span data-ttu-id="699c7-331">[JSON Patch 文件](https://jsonpatch.com/) \(英文\)。</span><span class="sxs-lookup"><span data-stu-id="699c7-331">[JSON Patch documentation](https://jsonpatch.com/).</span></span> <span data-ttu-id="699c7-332">包含用於建立 JSON Patch 文件的資源連結。</span><span class="sxs-lookup"><span data-stu-id="699c7-332">Includes links to resources for creating JSON Patch documents.</span></span>
-* [<span data-ttu-id="699c7-333">ASP.NET Core JSON Patch 原始程式碼</span><span class="sxs-lookup"><span data-stu-id="699c7-333">ASP.NET Core JSON Patch source code</span></span>](https://github.com/dotnet/AspNetCore/tree/master/src/Features/JsonPatch/src)
+* <span data-ttu-id="e0572-328">[IETF RFC 5789 PATCH 方法規格](https://tools.ietf.org/html/rfc5789) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="e0572-328">[IETF RFC 5789 PATCH method specification](https://tools.ietf.org/html/rfc5789)</span></span>
+* <span data-ttu-id="e0572-329">[IETF RFC 6902 JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="e0572-329">[IETF RFC 6902 JSON Patch specification](https://tools.ietf.org/html/rfc6902)</span></span>
+* <span data-ttu-id="e0572-330">[IETF RFC 6901 JSON Patch 路徑格式規格](https://tools.ietf.org/html/rfc6901) \(英文\)</span><span class="sxs-lookup"><span data-stu-id="e0572-330">[IETF RFC 6901 JSON Patch path format spec](https://tools.ietf.org/html/rfc6901)</span></span>
+* <span data-ttu-id="e0572-331">[JSON Patch 文件](https://jsonpatch.com/) \(英文\)。</span><span class="sxs-lookup"><span data-stu-id="e0572-331">[JSON Patch documentation](https://jsonpatch.com/).</span></span> <span data-ttu-id="e0572-332">包含用於建立 JSON Patch 文件的資源連結。</span><span class="sxs-lookup"><span data-stu-id="e0572-332">Includes links to resources for creating JSON Patch documents.</span></span>
+* [<span data-ttu-id="e0572-333">ASP.NET Core JSON Patch 原始程式碼</span><span class="sxs-lookup"><span data-stu-id="e0572-333">ASP.NET Core JSON Patch source code</span></span>](https://github.com/dotnet/AspNetCore/tree/master/src/Features/JsonPatch/src)
 
 ::: moniker-end

@@ -1,246 +1,252 @@
 ---
-title: 套用應用程式到應用程式服務 - 使用 ASP.NET 核心和 Azure 進行 DevOps
+title: 使用 ASP.NET Core 和 Azure 將應用程式部署到 App Service DevOps
 author: CamSoper
-description: 將ASP.NET核心應用部署到Azure應用服務,這是使用ASP.NET核心和Azure的DevOps的第一步。
+description: 將 ASP.NET Core 應用程式部署至 Azure App Service，這是使用 ASP.NET Core 和 Azure 進行 DevOps 的第一個步驟。
 ms.author: casoper
 ms.custom: mvc, seodec18
 ms.date: 10/24/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: d7ee3e42d320d35c2aaff6e097203c45289ec5b1
-ms.sourcegitcommit: fbdb8b9ab5a52656384b117ff6e7c92ae070813c
+ms.openlocfilehash: 811b6d047e344fa98ce14f436d3cd8f03c786aff
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81228123"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82767027"
 ---
-# <a name="deploy-an-app-to-app-service"></a><span data-ttu-id="3b947-103">套用應用到應用服務</span><span class="sxs-lookup"><span data-stu-id="3b947-103">Deploy an app to App Service</span></span>
+# <a name="deploy-an-app-to-app-service"></a><span data-ttu-id="2d14e-103">將應用程式部署至 App Service</span><span class="sxs-lookup"><span data-stu-id="2d14e-103">Deploy an app to App Service</span></span>
 
-<span data-ttu-id="3b947-104">[Azure 應用服務](/azure/app-service/)是 Azure 的 Web 託管平臺。</span><span class="sxs-lookup"><span data-stu-id="3b947-104">[Azure App Service](/azure/app-service/) is Azure's web hosting platform.</span></span> <span data-ttu-id="3b947-105">將 Web 應用部署到 Azure 應用服務可以手動完成,也可以由自動化過程完成。</span><span class="sxs-lookup"><span data-stu-id="3b947-105">Deploying a web app to Azure App Service can be done manually or by an automated process.</span></span> <span data-ttu-id="3b947-106">本指南的這一部分討論了可以使用命令行手動或腳本觸發的部署方法,或者使用 Visual Studio 手動觸發。</span><span class="sxs-lookup"><span data-stu-id="3b947-106">This section of the guide discusses deployment methods that can be triggered manually or by script using the command line, or triggered manually using Visual Studio.</span></span>
+<span data-ttu-id="2d14e-104">[Azure App Service](/azure/app-service/)是 Azure 的 web 裝載平臺。</span><span class="sxs-lookup"><span data-stu-id="2d14e-104">[Azure App Service](/azure/app-service/) is Azure's web hosting platform.</span></span> <span data-ttu-id="2d14e-105">將 web 應用程式部署至 Azure App Service 可以手動方式或透過自動化程式來完成。</span><span class="sxs-lookup"><span data-stu-id="2d14e-105">Deploying a web app to Azure App Service can be done manually or by an automated process.</span></span> <span data-ttu-id="2d14e-106">本指南的這一節將討論可以手動觸發的部署方法，或是使用命令列以腳本手動觸發，或使用 Visual Studio 以手動方式觸發。</span><span class="sxs-lookup"><span data-stu-id="2d14e-106">This section of the guide discusses deployment methods that can be triggered manually or by script using the command line, or triggered manually using Visual Studio.</span></span>
 
-<span data-ttu-id="3b947-107">在本節中,您將完成以下任務:</span><span class="sxs-lookup"><span data-stu-id="3b947-107">In this section, you'll accomplish the following tasks:</span></span>
+<span data-ttu-id="2d14e-107">在本節中，您將完成下列工作：</span><span class="sxs-lookup"><span data-stu-id="2d14e-107">In this section, you'll accomplish the following tasks:</span></span>
 
-* <span data-ttu-id="3b947-108">下載並生成示例應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-108">Download and build the sample app.</span></span>
-* <span data-ttu-id="3b947-109">使用 Azure 雲外殼創建 Azure 應用服務 Web 應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-109">Create an Azure App Service Web App using the Azure Cloud Shell.</span></span>
-* <span data-ttu-id="3b947-110">使用 Git 將示例應用部署到 Azure。</span><span class="sxs-lookup"><span data-stu-id="3b947-110">Deploy the sample app to Azure using Git.</span></span>
-* <span data-ttu-id="3b947-111">使用 Visual Studio 將更改部署到應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-111">Deploy a change to the app using Visual Studio.</span></span>
-* <span data-ttu-id="3b947-112">向 Web 應用添加暫存槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-112">Add a staging slot to the web app.</span></span>
-* <span data-ttu-id="3b947-113">將更新部署到暫存槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-113">Deploy an update to the staging slot.</span></span>
-* <span data-ttu-id="3b947-114">交換預備與生產位置。</span><span class="sxs-lookup"><span data-stu-id="3b947-114">Swap the staging and production slots.</span></span>
+* <span data-ttu-id="2d14e-108">下載並建立範例應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-108">Download and build the sample app.</span></span>
+* <span data-ttu-id="2d14e-109">使用 Azure Cloud Shell 建立 Azure App Service Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-109">Create an Azure App Service Web App using the Azure Cloud Shell.</span></span>
+* <span data-ttu-id="2d14e-110">使用 Git 將範例應用程式部署至 Azure。</span><span class="sxs-lookup"><span data-stu-id="2d14e-110">Deploy the sample app to Azure using Git.</span></span>
+* <span data-ttu-id="2d14e-111">使用 Visual Studio 將變更部署至應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-111">Deploy a change to the app using Visual Studio.</span></span>
+* <span data-ttu-id="2d14e-112">將預備位置新增至 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-112">Add a staging slot to the web app.</span></span>
+* <span data-ttu-id="2d14e-113">將更新部署至預備位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-113">Deploy an update to the staging slot.</span></span>
+* <span data-ttu-id="2d14e-114">交換預備與生產位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-114">Swap the staging and production slots.</span></span>
 
-## <a name="download-and-test-the-app"></a><span data-ttu-id="3b947-115">下載並測試應用程式</span><span class="sxs-lookup"><span data-stu-id="3b947-115">Download and test the app</span></span>
+## <a name="download-and-test-the-app"></a><span data-ttu-id="2d14e-115">下載並測試應用程式</span><span class="sxs-lookup"><span data-stu-id="2d14e-115">Download and test the app</span></span>
 
-<span data-ttu-id="3b947-116">這個指南中使用的應用程式是預先建構 ASP.NET 核心應用程式,[簡單的飼料閱讀器](https://github.com/Azure-Samples/simple-feed-reader/)。</span><span class="sxs-lookup"><span data-stu-id="3b947-116">The app used in this guide is a pre-built ASP.NET Core app, [Simple Feed Reader](https://github.com/Azure-Samples/simple-feed-reader/).</span></span> <span data-ttu-id="3b947-117">它是 Razor Pages 應用`Microsoft.SyndicationFeed.ReaderWriter`, 它使用 API 檢索 RSS/Atom 源並在清單中顯示新聞專案。</span><span class="sxs-lookup"><span data-stu-id="3b947-117">It's a Razor Pages app that uses the `Microsoft.SyndicationFeed.ReaderWriter` API to retrieve an RSS/Atom feed and display the news items in a list.</span></span>
+<span data-ttu-id="2d14e-116">本指南中使用的應用程式是預先建立的 ASP.NET Core 應用程式、簡單的摘要[讀取器](https://github.com/Azure-Samples/simple-feed-reader/)。</span><span class="sxs-lookup"><span data-stu-id="2d14e-116">The app used in this guide is a pre-built ASP.NET Core app, [Simple Feed Reader](https://github.com/Azure-Samples/simple-feed-reader/).</span></span> <span data-ttu-id="2d14e-117">它是Razor頁面應用程式，使用`Microsoft.SyndicationFeed.ReaderWriter` API 來抓取 RSS/Atom 摘要，並將新聞專案顯示在清單中。</span><span class="sxs-lookup"><span data-stu-id="2d14e-117">It's a Razor Pages app that uses the `Microsoft.SyndicationFeed.ReaderWriter` API to retrieve an RSS/Atom feed and display the news items in a list.</span></span>
 
-<span data-ttu-id="3b947-118">隨意查看代碼,但請務必瞭解此應用程式沒有什麼特別之處。</span><span class="sxs-lookup"><span data-stu-id="3b947-118">Feel free to review the code, but it's important to understand that there's nothing special about this app.</span></span> <span data-ttu-id="3b947-119">它只是一個簡單的ASP.NET核心應用程式,用於說明目的。</span><span class="sxs-lookup"><span data-stu-id="3b947-119">It's just a simple ASP.NET Core app for illustrative purposes.</span></span>
+<span data-ttu-id="2d14e-118">您可以自由地檢查程式碼，但請務必瞭解，這不是關於此應用程式的任何特殊資訊。</span><span class="sxs-lookup"><span data-stu-id="2d14e-118">Feel free to review the code, but it's important to understand that there's nothing special about this app.</span></span> <span data-ttu-id="2d14e-119">這只是一個簡單的 ASP.NET Core 應用程式，供說明之用。</span><span class="sxs-lookup"><span data-stu-id="2d14e-119">It's just a simple ASP.NET Core app for illustrative purposes.</span></span>
 
-<span data-ttu-id="3b947-120">從命令外殼下載代碼、生成專案並按如下方式運行它。</span><span class="sxs-lookup"><span data-stu-id="3b947-120">From a command shell, download the code, build the project, and run it as follows.</span></span>
+<span data-ttu-id="2d14e-120">從命令 shell 下載程式代碼、建立專案，然後如下所示執行。</span><span class="sxs-lookup"><span data-stu-id="2d14e-120">From a command shell, download the code, build the project, and run it as follows.</span></span>
 
-> <span data-ttu-id="3b947-121">*注意:Linux/macOS 用戶應該對路徑進行適當的更改,例如,使用正向斜杠`/`() 而不是`\`反斜杠 ()。*</span><span class="sxs-lookup"><span data-stu-id="3b947-121">*Note: Linux/macOS users should make appropriate changes for paths, e.g., using forward slash (`/`) rather than back slash (`\`).*</span></span>
+> <span data-ttu-id="2d14e-121">*注意： Linux/macOS 使用者應該對路徑進行適當的變更，例如，使用正斜線（`/`），而不是反`\`斜杠（）。*</span><span class="sxs-lookup"><span data-stu-id="2d14e-121">*Note: Linux/macOS users should make appropriate changes for paths, e.g., using forward slash (`/`) rather than back slash (`\`).*</span></span>
 
-1. <span data-ttu-id="3b947-122">將代碼複製到本地電腦上的資料夾。</span><span class="sxs-lookup"><span data-stu-id="3b947-122">Clone the code to a folder on your local machine.</span></span>
+1. <span data-ttu-id="2d14e-122">將程式碼複製到本機電腦上的資料夾。</span><span class="sxs-lookup"><span data-stu-id="2d14e-122">Clone the code to a folder on your local machine.</span></span>
 
     ```console
     git clone https://github.com/Azure-Samples/simple-feed-reader/
     ```
 
-2. <span data-ttu-id="3b947-123">將工作資料夾更改為已創建*的簡單源閱讀器*資料夾。</span><span class="sxs-lookup"><span data-stu-id="3b947-123">Change your working folder to the *simple-feed-reader* folder that was created.</span></span>
+2. <span data-ttu-id="2d14e-123">將工作資料夾變更為已建立的「*簡易摘要讀取器*」資料夾。</span><span class="sxs-lookup"><span data-stu-id="2d14e-123">Change your working folder to the *simple-feed-reader* folder that was created.</span></span>
 
     ```console
     cd .\simple-feed-reader\SimpleFeedReader
     ```
 
-3. <span data-ttu-id="3b947-124">還原包,並生成解決方案。</span><span class="sxs-lookup"><span data-stu-id="3b947-124">Restore the packages, and build the solution.</span></span>
+3. <span data-ttu-id="2d14e-124">還原套件，並建立解決方案。</span><span class="sxs-lookup"><span data-stu-id="2d14e-124">Restore the packages, and build the solution.</span></span>
 
     ```dotnetcli
     dotnet build
     ```
 
-4. <span data-ttu-id="3b947-125">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="3b947-125">Run the app.</span></span>
+4. <span data-ttu-id="2d14e-125">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-125">Run the app.</span></span>
 
     ```dotnetcli
     dotnet run
     ```
 
-    ![點網執行命令成功](./media/deploying-to-app-service/dotnet-run.png)
+    ![Dotnet 執行命令成功](./media/deploying-to-app-service/dotnet-run.png)
 
-5. <span data-ttu-id="3b947-127">開啟瀏覽器並瀏覽至 `http://localhost:5000` 。</span><span class="sxs-lookup"><span data-stu-id="3b947-127">Open a browser and navigate to `http://localhost:5000`.</span></span> <span data-ttu-id="3b947-128">該應用程式允許您鍵入或貼上聯合源網址並查看新聞專案清單。</span><span class="sxs-lookup"><span data-stu-id="3b947-128">The app allows you to type or paste a syndication feed URL and view a list of news items.</span></span>
+5. <span data-ttu-id="2d14e-127">開啟瀏覽器並瀏覽至 `http://localhost:5000` 。</span><span class="sxs-lookup"><span data-stu-id="2d14e-127">Open a browser and navigate to `http://localhost:5000`.</span></span> <span data-ttu-id="2d14e-128">應用程式可讓您輸入或貼上新聞訂閱摘要 URL，並查看新聞專案的清單。</span><span class="sxs-lookup"><span data-stu-id="2d14e-128">The app allows you to type or paste a syndication feed URL and view a list of news items.</span></span>
 
-     ![顯示 RSS 原始內容的應用程式](./media/deploying-to-app-service/app-in-browser.png)
+     ![顯示 RSS 摘要內容的應用程式](./media/deploying-to-app-service/app-in-browser.png)
 
-6. <span data-ttu-id="3b947-130">一旦您滿意應用程式工作正常,通過按命令 shell 中的**Ctrl**+**C**將其關閉。</span><span class="sxs-lookup"><span data-stu-id="3b947-130">Once you're satisfied the app is working correctly, shut it down by pressing **Ctrl**+**C** in the command shell.</span></span>
+6. <span data-ttu-id="2d14e-130">當您滿意應用程式正常運作後，請在命令介面中按**Ctrl**+**C**來將它關閉。</span><span class="sxs-lookup"><span data-stu-id="2d14e-130">Once you're satisfied the app is working correctly, shut it down by pressing **Ctrl**+**C** in the command shell.</span></span>
 
-## <a name="create-the-azure-app-service-web-app"></a><span data-ttu-id="3b947-131">建立 Azure 應用服務 Web 應用</span><span class="sxs-lookup"><span data-stu-id="3b947-131">Create the Azure App Service Web App</span></span>
+## <a name="create-the-azure-app-service-web-app"></a><span data-ttu-id="2d14e-131">建立 Azure App Service Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="2d14e-131">Create the Azure App Service Web App</span></span>
 
-<span data-ttu-id="3b947-132">要部署應用程式,您需要建立套用服務[Web 應用](/azure/app-service/app-service-web-overview)。</span><span class="sxs-lookup"><span data-stu-id="3b947-132">To deploy the app, you'll need to create an App Service [Web App](/azure/app-service/app-service-web-overview).</span></span> <span data-ttu-id="3b947-133">建立 Web 應用程式後,您將使用 Git 從本地電腦部署到它。</span><span class="sxs-lookup"><span data-stu-id="3b947-133">After creation of the Web App, you'll deploy to it from your local machine using Git.</span></span>
+<span data-ttu-id="2d14e-132">若要部署應用程式，您必須建立 App Service [Web 應用程式](/azure/app-service/app-service-web-overview)。</span><span class="sxs-lookup"><span data-stu-id="2d14e-132">To deploy the app, you'll need to create an App Service [Web App](/azure/app-service/app-service-web-overview).</span></span> <span data-ttu-id="2d14e-133">建立 Web 應用程式之後，您會使用 Git 從本機電腦進行部署。</span><span class="sxs-lookup"><span data-stu-id="2d14e-133">After creation of the Web App, you'll deploy to it from your local machine using Git.</span></span>
 
-1. <span data-ttu-id="3b947-134">登入 [Azure Cloud Shell](https://shell.azure.com/bash)。</span><span class="sxs-lookup"><span data-stu-id="3b947-134">Sign in to the [Azure Cloud Shell](https://shell.azure.com/bash).</span></span> <span data-ttu-id="3b947-135">注意:首次登錄時,雲外殼會提示為配置檔創建存儲帳戶。</span><span class="sxs-lookup"><span data-stu-id="3b947-135">Note: When you sign in for the first time, Cloud Shell prompts to create a storage account for configuration files.</span></span> <span data-ttu-id="3b947-136">接受預設值或提供唯一名稱。</span><span class="sxs-lookup"><span data-stu-id="3b947-136">Accept the defaults or provide a unique name.</span></span>
+1. <span data-ttu-id="2d14e-134">登入 [Azure Cloud Shell](https://shell.azure.com/bash)。</span><span class="sxs-lookup"><span data-stu-id="2d14e-134">Sign in to the [Azure Cloud Shell](https://shell.azure.com/bash).</span></span> <span data-ttu-id="2d14e-135">注意：當您第一次登入時，Cloud Shell 會提示您建立設定檔的儲存體帳戶。</span><span class="sxs-lookup"><span data-stu-id="2d14e-135">Note: When you sign in for the first time, Cloud Shell prompts to create a storage account for configuration files.</span></span> <span data-ttu-id="2d14e-136">接受預設值，或提供唯一的名稱。</span><span class="sxs-lookup"><span data-stu-id="2d14e-136">Accept the defaults or provide a unique name.</span></span>
 
-2. <span data-ttu-id="3b947-137">在以下步驟中,請使用雲外殼。</span><span class="sxs-lookup"><span data-stu-id="3b947-137">Use the Cloud Shell for the following steps.</span></span>
+2. <span data-ttu-id="2d14e-137">請使用 Cloud Shell 來執行下列步驟。</span><span class="sxs-lookup"><span data-stu-id="2d14e-137">Use the Cloud Shell for the following steps.</span></span>
 
-    <span data-ttu-id="3b947-138">a.</span><span class="sxs-lookup"><span data-stu-id="3b947-138">a.</span></span> <span data-ttu-id="3b947-139">聲明一個變數來存儲 Web 應用的名稱。</span><span class="sxs-lookup"><span data-stu-id="3b947-139">Declare a variable to store your web app's name.</span></span> <span data-ttu-id="3b947-140">名稱必須是唯一才能在預設 URL 中使用。</span><span class="sxs-lookup"><span data-stu-id="3b947-140">The name must be unique to be used in the default URL.</span></span> <span data-ttu-id="3b947-141">使用`$RANDOM`Bash 函數建構名稱可確保唯一`webappname99999`性和格式 的結果。</span><span class="sxs-lookup"><span data-stu-id="3b947-141">Using the `$RANDOM` Bash function to construct the name guarantees uniqueness and results in the format `webappname99999`.</span></span>
+    <span data-ttu-id="2d14e-138">a.</span><span class="sxs-lookup"><span data-stu-id="2d14e-138">a.</span></span> <span data-ttu-id="2d14e-139">宣告變數以儲存 web 應用程式的名稱。</span><span class="sxs-lookup"><span data-stu-id="2d14e-139">Declare a variable to store your web app's name.</span></span> <span data-ttu-id="2d14e-140">名稱必須是唯一的，才能在預設 URL 中使用。</span><span class="sxs-lookup"><span data-stu-id="2d14e-140">The name must be unique to be used in the default URL.</span></span> <span data-ttu-id="2d14e-141">使用`$RANDOM` Bash 函式來建立名稱保證唯一性，並產生格式`webappname99999`。</span><span class="sxs-lookup"><span data-stu-id="2d14e-141">Using the `$RANDOM` Bash function to construct the name guarantees uniqueness and results in the format `webappname99999`.</span></span>
 
     ```console
     webappname=mywebapp$RANDOM
     ```
 
-    <span data-ttu-id="3b947-142">b.</span><span class="sxs-lookup"><span data-stu-id="3b947-142">b.</span></span> <span data-ttu-id="3b947-143">建立資源群組。</span><span class="sxs-lookup"><span data-stu-id="3b947-143">Create a resource group.</span></span> <span data-ttu-id="3b947-144">資源組提供了一種聚合要作為組管理的 Azure 資源的方法。</span><span class="sxs-lookup"><span data-stu-id="3b947-144">Resource groups provide a means to aggregate Azure resources to be managed as a group.</span></span>
+    <span data-ttu-id="2d14e-142">b.</span><span class="sxs-lookup"><span data-stu-id="2d14e-142">b.</span></span> <span data-ttu-id="2d14e-143">建立資源群組。</span><span class="sxs-lookup"><span data-stu-id="2d14e-143">Create a resource group.</span></span> <span data-ttu-id="2d14e-144">資源群組提供了一種方法，可匯總要以群組方式管理的 Azure 資源。</span><span class="sxs-lookup"><span data-stu-id="2d14e-144">Resource groups provide a means to aggregate Azure resources to be managed as a group.</span></span>
 
     ```azurecli
     az group create --location centralus --name AzureTutorial
     ```
 
-    <span data-ttu-id="3b947-145">這個`az`指令呼叫[Azure CLI](/cli/azure/)。</span><span class="sxs-lookup"><span data-stu-id="3b947-145">The `az` command invokes the [Azure CLI](/cli/azure/).</span></span> <span data-ttu-id="3b947-146">CLI 可以在本地運行,但在雲外殼中使用它可以節省時間和配置。</span><span class="sxs-lookup"><span data-stu-id="3b947-146">The CLI can be run locally, but using it in the Cloud Shell saves time and configuration.</span></span>
+    <span data-ttu-id="2d14e-145">`az`命令會叫用[Azure CLI](/cli/azure/)。</span><span class="sxs-lookup"><span data-stu-id="2d14e-145">The `az` command invokes the [Azure CLI](/cli/azure/).</span></span> <span data-ttu-id="2d14e-146">CLI 可以在本機執行，但在 Cloud Shell 中使用會節省時間和設定。</span><span class="sxs-lookup"><span data-stu-id="2d14e-146">The CLI can be run locally, but using it in the Cloud Shell saves time and configuration.</span></span>
 
-    <span data-ttu-id="3b947-147">c.</span><span class="sxs-lookup"><span data-stu-id="3b947-147">c.</span></span> <span data-ttu-id="3b947-148">在 S1 層中創建應用服務計畫。</span><span class="sxs-lookup"><span data-stu-id="3b947-148">Create an App Service plan in the S1 tier.</span></span> <span data-ttu-id="3b947-149">應用服務計劃是共用相同定價層的 Web 應用的分組。</span><span class="sxs-lookup"><span data-stu-id="3b947-149">An App Service plan is a grouping of web apps that share the same pricing tier.</span></span> <span data-ttu-id="3b947-150">S1 層不是免費的,但它是暫存槽功能所必需的。</span><span class="sxs-lookup"><span data-stu-id="3b947-150">The S1 tier isn't free, but it's required for the staging slots feature.</span></span>
+    <span data-ttu-id="2d14e-147">c.</span><span class="sxs-lookup"><span data-stu-id="2d14e-147">c.</span></span> <span data-ttu-id="2d14e-148">在 S1 層中建立 App Service 計畫。</span><span class="sxs-lookup"><span data-stu-id="2d14e-148">Create an App Service plan in the S1 tier.</span></span> <span data-ttu-id="2d14e-149">App Service 計畫是共用相同定價層的 web 應用程式群組。</span><span class="sxs-lookup"><span data-stu-id="2d14e-149">An App Service plan is a grouping of web apps that share the same pricing tier.</span></span> <span data-ttu-id="2d14e-150">S1 層不是免費的，但它是預備位置功能的必要項。</span><span class="sxs-lookup"><span data-stu-id="2d14e-150">The S1 tier isn't free, but it's required for the staging slots feature.</span></span>
 
     ```azurecli
     az appservice plan create --name $webappname --resource-group AzureTutorial --sku S1
     ```
 
-    <span data-ttu-id="3b947-151">d.</span><span class="sxs-lookup"><span data-stu-id="3b947-151">d.</span></span> <span data-ttu-id="3b947-152">使用同一資源組中的應用服務計劃創建 Web 應用資源。</span><span class="sxs-lookup"><span data-stu-id="3b947-152">Create the web app resource using the App Service plan in the same resource group.</span></span>
+    <span data-ttu-id="2d14e-151">d.</span><span class="sxs-lookup"><span data-stu-id="2d14e-151">d.</span></span> <span data-ttu-id="2d14e-152">在相同的資源群組中，使用 App Service 方案建立 web 應用程式資源。</span><span class="sxs-lookup"><span data-stu-id="2d14e-152">Create the web app resource using the App Service plan in the same resource group.</span></span>
 
     ```azurecli
     az webapp create --name $webappname --resource-group AzureTutorial --plan $webappname
     ```
 
-    <span data-ttu-id="3b947-153">e.</span><span class="sxs-lookup"><span data-stu-id="3b947-153">e.</span></span> <span data-ttu-id="3b947-154">設置部署憑據。</span><span class="sxs-lookup"><span data-stu-id="3b947-154">Set the deployment credentials.</span></span> <span data-ttu-id="3b947-155">這些部署憑據適用於訂閱中的所有 Web 應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-155">These deployment credentials apply to all the web apps in your subscription.</span></span> <span data-ttu-id="3b947-156">不要在使用者名中使用特殊字元。</span><span class="sxs-lookup"><span data-stu-id="3b947-156">Don't use special characters in the user name.</span></span>
+    <span data-ttu-id="2d14e-153">e.</span><span class="sxs-lookup"><span data-stu-id="2d14e-153">e.</span></span> <span data-ttu-id="2d14e-154">設定部署認證。</span><span class="sxs-lookup"><span data-stu-id="2d14e-154">Set the deployment credentials.</span></span> <span data-ttu-id="2d14e-155">這些部署認證適用于您訂用帳戶中的所有 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-155">These deployment credentials apply to all the web apps in your subscription.</span></span> <span data-ttu-id="2d14e-156">請勿在使用者名稱中使用特殊字元。</span><span class="sxs-lookup"><span data-stu-id="2d14e-156">Don't use special characters in the user name.</span></span>
 
     ```azurecli
     az webapp deployment user set --user-name REPLACE_WITH_USER_NAME --password REPLACE_WITH_PASSWORD
     ```
 
-    <span data-ttu-id="3b947-157">f.</span><span class="sxs-lookup"><span data-stu-id="3b947-157">f.</span></span> <span data-ttu-id="3b947-158">將 Web 應用設定為接受來自本地 Git 部署並顯示*Git 部署 URL。*</span><span class="sxs-lookup"><span data-stu-id="3b947-158">Configure the web app to accept deployments from local Git and display the *Git deployment URL*.</span></span> <span data-ttu-id="3b947-159">**請注意此網址 回報**。</span><span class="sxs-lookup"><span data-stu-id="3b947-159">**Note this URL for reference later**.</span></span>
+    <span data-ttu-id="2d14e-157">f.</span><span class="sxs-lookup"><span data-stu-id="2d14e-157">f.</span></span> <span data-ttu-id="2d14e-158">將 web 應用程式設定為接受本機 Git 的部署，並顯示*Git 部署 URL*。</span><span class="sxs-lookup"><span data-stu-id="2d14e-158">Configure the web app to accept deployments from local Git and display the *Git deployment URL*.</span></span> <span data-ttu-id="2d14e-159">**請記下此 URL 以供稍後參考**。</span><span class="sxs-lookup"><span data-stu-id="2d14e-159">**Note this URL for reference later**.</span></span>
 
     ```azurecli
     echo Git deployment URL: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --query url --output tsv)
     ```
 
-    <span data-ttu-id="3b947-160">g.</span><span class="sxs-lookup"><span data-stu-id="3b947-160">g.</span></span> <span data-ttu-id="3b947-161">顯示*Web 應用程式網址*。</span><span class="sxs-lookup"><span data-stu-id="3b947-161">Display the *web app URL*.</span></span> <span data-ttu-id="3b947-162">瀏覽到此 URL 以檢視空白 Web 應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-162">Browse to this URL to see the blank web app.</span></span> <span data-ttu-id="3b947-163">**請注意此網址 回報**。</span><span class="sxs-lookup"><span data-stu-id="3b947-163">**Note this URL for reference later**.</span></span>
+    <span data-ttu-id="2d14e-160">g.</span><span class="sxs-lookup"><span data-stu-id="2d14e-160">g.</span></span> <span data-ttu-id="2d14e-161">顯示*web 應用程式 URL*。</span><span class="sxs-lookup"><span data-stu-id="2d14e-161">Display the *web app URL*.</span></span> <span data-ttu-id="2d14e-162">流覽至此 URL，以查看空白的 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-162">Browse to this URL to see the blank web app.</span></span> <span data-ttu-id="2d14e-163">**請記下此 URL 以供稍後參考**。</span><span class="sxs-lookup"><span data-stu-id="2d14e-163">**Note this URL for reference later**.</span></span>
 
     ```console
     echo Web app URL: http://$webappname.azurewebsites.net
     ```
 
-3. <span data-ttu-id="3b947-164">在本地電腦上使用命令外殼,導航到 Web 應用的專案資料夾(`.\simple-feed-reader\SimpleFeedReader`例如。</span><span class="sxs-lookup"><span data-stu-id="3b947-164">Using a command shell on your local machine, navigate to the web app's project folder (for example, `.\simple-feed-reader\SimpleFeedReader`).</span></span> <span data-ttu-id="3b947-165">執行以下指令以設定 Git 以推送到部署網址:</span><span class="sxs-lookup"><span data-stu-id="3b947-165">Execute the following commands to set up Git to push to the deployment URL:</span></span>
+3. <span data-ttu-id="2d14e-164">在您的本機電腦上使用命令 shell，流覽至 web 應用程式的專案資料夾（例如`.\simple-feed-reader\SimpleFeedReader`）。</span><span class="sxs-lookup"><span data-stu-id="2d14e-164">Using a command shell on your local machine, navigate to the web app's project folder (for example, `.\simple-feed-reader\SimpleFeedReader`).</span></span> <span data-ttu-id="2d14e-165">執行下列命令來設定 Git 以推送至部署 URL：</span><span class="sxs-lookup"><span data-stu-id="2d14e-165">Execute the following commands to set up Git to push to the deployment URL:</span></span>
 
-    <span data-ttu-id="3b947-166">a.</span><span class="sxs-lookup"><span data-stu-id="3b947-166">a.</span></span> <span data-ttu-id="3b947-167">將遠端 URL 新增到本地儲存庫。</span><span class="sxs-lookup"><span data-stu-id="3b947-167">Add the remote URL to the local repository.</span></span>
+    <span data-ttu-id="2d14e-166">a.</span><span class="sxs-lookup"><span data-stu-id="2d14e-166">a.</span></span> <span data-ttu-id="2d14e-167">將遠端 URL 新增至本機存放庫。</span><span class="sxs-lookup"><span data-stu-id="2d14e-167">Add the remote URL to the local repository.</span></span>
 
     ```console
     git remote add azure-prod GIT_DEPLOYMENT_URL
     ```
 
-    <span data-ttu-id="3b947-168">b.</span><span class="sxs-lookup"><span data-stu-id="3b947-168">b.</span></span> <span data-ttu-id="3b947-169">將本地*主*分支推送到*azure prod* *遠端的主分支*。</span><span class="sxs-lookup"><span data-stu-id="3b947-169">Push the local *master* branch to the *azure-prod* remote's *master* branch.</span></span>
+    <span data-ttu-id="2d14e-168">b.</span><span class="sxs-lookup"><span data-stu-id="2d14e-168">b.</span></span> <span data-ttu-id="2d14e-169">將本機*master*分支推送至*azure 生產*遠端的*主要*分支。</span><span class="sxs-lookup"><span data-stu-id="2d14e-169">Push the local *master* branch to the *azure-prod* remote's *master* branch.</span></span>
 
     ```console
     git push azure-prod master
     ```
 
-    <span data-ttu-id="3b947-170">系統會提示您獲得之前創建的部署憑據。</span><span class="sxs-lookup"><span data-stu-id="3b947-170">You'll be prompted for the deployment credentials you created earlier.</span></span> <span data-ttu-id="3b947-171">觀察命令 shell 中的輸出。</span><span class="sxs-lookup"><span data-stu-id="3b947-171">Observe the output in the command shell.</span></span> <span data-ttu-id="3b947-172">Azure 遠端生成ASP.NET核心應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-172">Azure builds the ASP.NET Core app remotely.</span></span>
+    <span data-ttu-id="2d14e-170">系統會提示您輸入稍早建立的部署認證。</span><span class="sxs-lookup"><span data-stu-id="2d14e-170">You'll be prompted for the deployment credentials you created earlier.</span></span> <span data-ttu-id="2d14e-171">觀察命令 shell 中的輸出。</span><span class="sxs-lookup"><span data-stu-id="2d14e-171">Observe the output in the command shell.</span></span> <span data-ttu-id="2d14e-172">Azure 會從遠端建立 ASP.NET Core 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-172">Azure builds the ASP.NET Core app remotely.</span></span>
 
-4. <span data-ttu-id="3b947-173">在瀏覽器中,導航到*Web 應用 URL*並注意已生成和部署應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-173">In a browser, navigate to the *Web app URL* and note the app has been built and deployed.</span></span> <span data-ttu-id="3b947-174">可以使用將其他更改提交到本地 Git`git commit`儲存庫。</span><span class="sxs-lookup"><span data-stu-id="3b947-174">Additional changes can be committed to the local Git repository with `git commit`.</span></span> <span data-ttu-id="3b947-175">這些更改使用前面的`git push`命令推送到 Azure。</span><span class="sxs-lookup"><span data-stu-id="3b947-175">These changes are pushed to Azure with the preceding `git push` command.</span></span>
+4. <span data-ttu-id="2d14e-173">在瀏覽器中，流覽至*Web 應用程式 URL* ，並記下已建立並部署應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-173">In a browser, navigate to the *Web app URL* and note the app has been built and deployed.</span></span> <span data-ttu-id="2d14e-174">您可以使用`git commit`，將其他變更認可至本機 Git 存放庫。</span><span class="sxs-lookup"><span data-stu-id="2d14e-174">Additional changes can be committed to the local Git repository with `git commit`.</span></span> <span data-ttu-id="2d14e-175">這些變更會使用上述`git push`命令推送至 Azure。</span><span class="sxs-lookup"><span data-stu-id="2d14e-175">These changes are pushed to Azure with the preceding `git push` command.</span></span>
 
-## <a name="deployment-with-visual-studio"></a><span data-ttu-id="3b947-176">使用視覺化工作室進行部署</span><span class="sxs-lookup"><span data-stu-id="3b947-176">Deployment with Visual Studio</span></span>
+## <a name="deployment-with-visual-studio"></a><span data-ttu-id="2d14e-176">使用 Visual Studio 部署</span><span class="sxs-lookup"><span data-stu-id="2d14e-176">Deployment with Visual Studio</span></span>
 
-> <span data-ttu-id="3b947-177">*注意:此部分僅適用於 Windows。Linux 和macOS用戶應該進行下面的步驟2中描述的更改。保存檔,並將更改提交到本地存儲庫。 `git commit`最後,使用`git push`推送更改,如第一部分。*</span><span class="sxs-lookup"><span data-stu-id="3b947-177">*Note: This section applies to Windows only. Linux and macOS users should make the change described in step 2 below. Save the file, and commit the change to the local repository with `git commit`. Finally, push the change with `git push`, as in the first section.*</span></span>
+> <span data-ttu-id="2d14e-177">*注意：本節僅適用于 Windows。Linux 和 macOS 使用者應該進行下列步驟2所述的變更。儲存檔案，並使用`git commit`將變更認可至本機存放庫。最後，使用`git push`推送變更，如第一節所示。*</span><span class="sxs-lookup"><span data-stu-id="2d14e-177">*Note: This section applies to Windows only. Linux and macOS users should make the change described in step 2 below. Save the file, and commit the change to the local repository with `git commit`. Finally, push the change with `git push`, as in the first section.*</span></span>
 
-<span data-ttu-id="3b947-178">應用已從命令外殼部署。</span><span class="sxs-lookup"><span data-stu-id="3b947-178">The app has already been deployed from the command shell.</span></span> <span data-ttu-id="3b947-179">讓我們使用 Visual Studio 的整合工具將更新部署到應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-179">Let's use Visual Studio's integrated tools to deploy an update to the app.</span></span> <span data-ttu-id="3b947-180">在幕後,Visual Studio 完成與命令列工具相同的任務,但在 Visual Studio 熟悉的 UI 中完成。</span><span class="sxs-lookup"><span data-stu-id="3b947-180">Behind the scenes, Visual Studio accomplishes the same thing as the command line tooling, but within Visual Studio's familiar UI.</span></span>
+<span data-ttu-id="2d14e-178">已從命令 shell 部署應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-178">The app has already been deployed from the command shell.</span></span> <span data-ttu-id="2d14e-179">讓我們使用 Visual Studio 的整合式工具，將更新部署到應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-179">Let's use Visual Studio's integrated tools to deploy an update to the app.</span></span> <span data-ttu-id="2d14e-180">在幕後，Visual Studio 完成與命令列工具相同的工作，但在 Visual Studio 的熟悉 UI 中。</span><span class="sxs-lookup"><span data-stu-id="2d14e-180">Behind the scenes, Visual Studio accomplishes the same thing as the command line tooling, but within Visual Studio's familiar UI.</span></span>
 
-1. <span data-ttu-id="3b947-181">在視覺工作室打開*簡單閱讀器.sln。*</span><span class="sxs-lookup"><span data-stu-id="3b947-181">Open *SimpleFeedReader.sln* in Visual Studio.</span></span>
-2. <span data-ttu-id="3b947-182">在解決方案資源管理員中,開啟*頁面\Index.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="3b947-182">In Solution Explorer, open *Pages\Index.cshtml*.</span></span> <span data-ttu-id="3b947-183">將 `<h2>Simple Feed Reader</h2>` 變更為 `<h2>Simple Feed Reader - V2</h2>`。</span><span class="sxs-lookup"><span data-stu-id="3b947-183">Change `<h2>Simple Feed Reader</h2>` to `<h2>Simple Feed Reader - V2</h2>`.</span></span>
-3. <span data-ttu-id="3b947-184">按**Ctrl**+**移位**+**B**可生成應用程式。</span><span class="sxs-lookup"><span data-stu-id="3b947-184">Press **Ctrl**+**Shift**+**B** to build the app.</span></span>
-4. <span data-ttu-id="3b947-185">在解決方案資源管理器中,右鍵單擊專案並按一下「**發布**」。</span><span class="sxs-lookup"><span data-stu-id="3b947-185">In Solution Explorer, right-click on the project and click **Publish**.</span></span>
+1. <span data-ttu-id="2d14e-181">在 Visual Studio 中開啟*SimpleFeedReader* 。</span><span class="sxs-lookup"><span data-stu-id="2d14e-181">Open *SimpleFeedReader.sln* in Visual Studio.</span></span>
+2. <span data-ttu-id="2d14e-182">在方案總管中，開啟*Pages\Index.cshtml*。</span><span class="sxs-lookup"><span data-stu-id="2d14e-182">In Solution Explorer, open *Pages\Index.cshtml*.</span></span> <span data-ttu-id="2d14e-183">將 `<h2>Simple Feed Reader</h2>` 變更為 `<h2>Simple Feed Reader - V2</h2>`。</span><span class="sxs-lookup"><span data-stu-id="2d14e-183">Change `<h2>Simple Feed Reader</h2>` to `<h2>Simple Feed Reader - V2</h2>`.</span></span>
+3. <span data-ttu-id="2d14e-184">按**Ctrl**+**Shift**+**B**來建立應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-184">Press **Ctrl**+**Shift**+**B** to build the app.</span></span>
+4. <span data-ttu-id="2d14e-185">在方案總管中，以滑鼠右鍵按一下專案，然後按一下 [**發佈**]。</span><span class="sxs-lookup"><span data-stu-id="2d14e-185">In Solution Explorer, right-click on the project and click **Publish**.</span></span>
 
-    ![顯示右鍵按一下、發佈功能的螢幕擷取](./media/deploying-to-app-service/publish.png)
-5. <span data-ttu-id="3b947-187">Visual Studio 可以創建新的應用服務資源,但此更新將通過現有部署發佈。</span><span class="sxs-lookup"><span data-stu-id="3b947-187">Visual Studio can create a new App Service resource, but this update will be published over the existing deployment.</span></span> <span data-ttu-id="3b947-188">在「**選擇發佈目標**」對話框中,從左側清單中選擇**應用服務**,然後選擇 **「選擇現有**」。</span><span class="sxs-lookup"><span data-stu-id="3b947-188">In the **Pick a publish target** dialog, select **App Service** from the list on the left, and then select **Select Existing**.</span></span> <span data-ttu-id="3b947-189">按一下 **[發行]**。</span><span class="sxs-lookup"><span data-stu-id="3b947-189">Click **Publish**.</span></span>
-6. <span data-ttu-id="3b947-190">在 **「應用服務」** 對話框中,確認用於創建 Azure 訂閱的 Microsoft 或組織帳戶顯示在右上角。</span><span class="sxs-lookup"><span data-stu-id="3b947-190">In the **App Service** dialog, confirm that the Microsoft or Organizational account used to create your Azure subscription is displayed in the upper right.</span></span> <span data-ttu-id="3b947-191">如果不是,請按下下拉清單並添加它。</span><span class="sxs-lookup"><span data-stu-id="3b947-191">If it's not, click the drop-down and add it.</span></span>
-7. <span data-ttu-id="3b947-192">確認選擇了正確的 Azure**訂閱**。</span><span class="sxs-lookup"><span data-stu-id="3b947-192">Confirm that the correct Azure **Subscription** is selected.</span></span> <span data-ttu-id="3b947-193">對於**檢視**,請選擇 **「資源群組**」 。。</span><span class="sxs-lookup"><span data-stu-id="3b947-193">For **View**, select **Resource Group**.</span></span> <span data-ttu-id="3b947-194">展開**Azure 教程**資源組,然後選擇現有的 Web 應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-194">Expand the **AzureTutorial** resource group and then select the existing web app.</span></span> <span data-ttu-id="3b947-195">按一下 [確定]  。</span><span class="sxs-lookup"><span data-stu-id="3b947-195">Click **OK**.</span></span>
+    ![顯示以滑鼠右鍵按一下、發佈的螢幕擷取畫面](./media/deploying-to-app-service/publish.png)
+5. <span data-ttu-id="2d14e-187">Visual Studio 可以建立新的 App Service 資源，但此更新將會透過現有部署發行。</span><span class="sxs-lookup"><span data-stu-id="2d14e-187">Visual Studio can create a new App Service resource, but this update will be published over the existing deployment.</span></span> <span data-ttu-id="2d14e-188">在 [**挑選發行目標**] 對話方塊中，從左側清單中選取 [ **App Service** ]，然後選取 [**選取現有**的]。</span><span class="sxs-lookup"><span data-stu-id="2d14e-188">In the **Pick a publish target** dialog, select **App Service** from the list on the left, and then select **Select Existing**.</span></span> <span data-ttu-id="2d14e-189">按一下 **[發行]**。</span><span class="sxs-lookup"><span data-stu-id="2d14e-189">Click **Publish**.</span></span>
+6. <span data-ttu-id="2d14e-190">在 [ **App Service** ] 對話方塊中，確認用來建立 Azure 訂用帳戶的 Microsoft 或組織帳戶會顯示在右上方。</span><span class="sxs-lookup"><span data-stu-id="2d14e-190">In the **App Service** dialog, confirm that the Microsoft or Organizational account used to create your Azure subscription is displayed in the upper right.</span></span> <span data-ttu-id="2d14e-191">如果不是，請按一下下拉式並新增它。</span><span class="sxs-lookup"><span data-stu-id="2d14e-191">If it's not, click the drop-down and add it.</span></span>
+7. <span data-ttu-id="2d14e-192">確認已選取正確的 Azure**訂**用帳戶。</span><span class="sxs-lookup"><span data-stu-id="2d14e-192">Confirm that the correct Azure **Subscription** is selected.</span></span> <span data-ttu-id="2d14e-193">針對 [ **View**]，選取 [**資源群組**]。</span><span class="sxs-lookup"><span data-stu-id="2d14e-193">For **View**, select **Resource Group**.</span></span> <span data-ttu-id="2d14e-194">展開 [ **AzureTutorial** ] 資源群組，然後選取現有的 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-194">Expand the **AzureTutorial** resource group and then select the existing web app.</span></span> <span data-ttu-id="2d14e-195">按一下 [確定]  。</span><span class="sxs-lookup"><span data-stu-id="2d14e-195">Click **OK**.</span></span>
 
-    ![顯示發佈應用服務對話框的螢幕截圖](./media/deploying-to-app-service/publish-dialog.png)
+    ![顯示 [發行 App Service] 對話方塊的螢幕擷取畫面](./media/deploying-to-app-service/publish-dialog.png)
 
-<span data-ttu-id="3b947-197">可視化工作室生成應用並將其部署到 Azure。</span><span class="sxs-lookup"><span data-stu-id="3b947-197">Visual Studio builds and deploys the app to Azure.</span></span> <span data-ttu-id="3b947-198">瀏覽到 Web 應用 URL。</span><span class="sxs-lookup"><span data-stu-id="3b947-198">Browse to the web app URL.</span></span> <span data-ttu-id="3b947-199">驗證`<h2>`元素修改是否為即時。</span><span class="sxs-lookup"><span data-stu-id="3b947-199">Validate that the `<h2>` element modification is live.</span></span>
+<span data-ttu-id="2d14e-197">Visual Studio 建立應用程式並將其部署至 Azure。</span><span class="sxs-lookup"><span data-stu-id="2d14e-197">Visual Studio builds and deploys the app to Azure.</span></span> <span data-ttu-id="2d14e-198">流覽至 web 應用程式 URL。</span><span class="sxs-lookup"><span data-stu-id="2d14e-198">Browse to the web app URL.</span></span> <span data-ttu-id="2d14e-199">`<h2>`驗證專案修改是否已上線。</span><span class="sxs-lookup"><span data-stu-id="2d14e-199">Validate that the `<h2>` element modification is live.</span></span>
 
-![具有已變更標題的應用程式](./media/deploying-to-app-service/app-v2.png)
+![已變更標題的應用程式](./media/deploying-to-app-service/app-v2.png)
 
-## <a name="deployment-slots"></a><span data-ttu-id="3b947-201">部署位置</span><span class="sxs-lookup"><span data-stu-id="3b947-201">Deployment slots</span></span>
+## <a name="deployment-slots"></a><span data-ttu-id="2d14e-201">部署位置</span><span class="sxs-lookup"><span data-stu-id="2d14e-201">Deployment slots</span></span>
 
-<span data-ttu-id="3b947-202">部署槽支援暫存更改,而不會影響在生產中運行的應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-202">Deployment slots support the staging of changes without impacting the app running in production.</span></span> <span data-ttu-id="3b947-203">一旦品質保證團隊驗證了應用的暫存版本,就可以交換生產和暫存槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-203">Once the staged version of the app is validated by a quality assurance team, the production and staging slots can be swapped.</span></span> <span data-ttu-id="3b947-204">以這種方式將暫存中的應用程式提升為生產。</span><span class="sxs-lookup"><span data-stu-id="3b947-204">The app in staging is promoted to production in this manner.</span></span> <span data-ttu-id="3b947-205">以下步驟創建暫存槽,部署一些更改,並在驗證后將暫存槽與生產交換。</span><span class="sxs-lookup"><span data-stu-id="3b947-205">The following steps create a staging slot, deploy some changes to it, and swap the staging slot with production after verification.</span></span>
+<span data-ttu-id="2d14e-202">部署位置支援變更的暫存，而不會影響在生產環境中執行的應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-202">Deployment slots support the staging of changes without impacting the app running in production.</span></span> <span data-ttu-id="2d14e-203">一旦應用程式的階段式版本由品質保證小組驗證，就可以交換生產和預備位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-203">Once the staged version of the app is validated by a quality assurance team, the production and staging slots can be swapped.</span></span> <span data-ttu-id="2d14e-204">預備環境中的應用程式會以這種方式升級到生產。</span><span class="sxs-lookup"><span data-stu-id="2d14e-204">The app in staging is promoted to production in this manner.</span></span> <span data-ttu-id="2d14e-205">下列步驟會建立預備位置、對其部署一些變更，並在驗證後交換預備位置與生產位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-205">The following steps create a staging slot, deploy some changes to it, and swap the staging slot with production after verification.</span></span>
 
-1. <span data-ttu-id="3b947-206">登錄到 Azure[雲外殼](https://shell.azure.com/bash)(如果尚未登錄)。</span><span class="sxs-lookup"><span data-stu-id="3b947-206">Sign in to the [Azure Cloud Shell](https://shell.azure.com/bash), if not already signed in.</span></span>
-2. <span data-ttu-id="3b947-207">創建暫存槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-207">Create the staging slot.</span></span>
+1. <span data-ttu-id="2d14e-206">如果尚未登入，請登入[Azure Cloud Shell](https://shell.azure.com/bash)。</span><span class="sxs-lookup"><span data-stu-id="2d14e-206">Sign in to the [Azure Cloud Shell](https://shell.azure.com/bash), if not already signed in.</span></span>
+2. <span data-ttu-id="2d14e-207">建立預備位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-207">Create the staging slot.</span></span>
 
-    <span data-ttu-id="3b947-208">a.</span><span class="sxs-lookup"><span data-stu-id="3b947-208">a.</span></span> <span data-ttu-id="3b947-209">創建名稱*暫存*的部署槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-209">Create a deployment slot with the name *staging*.</span></span>
+    <span data-ttu-id="2d14e-208">a.</span><span class="sxs-lookup"><span data-stu-id="2d14e-208">a.</span></span> <span data-ttu-id="2d14e-209">建立名為*預備*的部署位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-209">Create a deployment slot with the name *staging*.</span></span>
 
     ```azurecli
     az webapp deployment slot create --name $webappname --resource-group AzureTutorial --slot staging
     ```
 
-    <span data-ttu-id="3b947-210">b.</span><span class="sxs-lookup"><span data-stu-id="3b947-210">b.</span></span> <span data-ttu-id="3b947-211">將暫存槽配置為使用本地 Git 的部署,並獲取**暫存**部署 URL。</span><span class="sxs-lookup"><span data-stu-id="3b947-211">Configure the staging slot to use deployment from local Git and get the **staging** deployment URL.</span></span> <span data-ttu-id="3b947-212">**請注意此網址 回報**。</span><span class="sxs-lookup"><span data-stu-id="3b947-212">**Note this URL for reference later**.</span></span>
+    <span data-ttu-id="2d14e-210">b.</span><span class="sxs-lookup"><span data-stu-id="2d14e-210">b.</span></span> <span data-ttu-id="2d14e-211">將預備位置設定為使用本機 Git 的部署，並取得**預備**部署 URL。</span><span class="sxs-lookup"><span data-stu-id="2d14e-211">Configure the staging slot to use deployment from local Git and get the **staging** deployment URL.</span></span> <span data-ttu-id="2d14e-212">**請記下此 URL 以供稍後參考**。</span><span class="sxs-lookup"><span data-stu-id="2d14e-212">**Note this URL for reference later**.</span></span>
 
     ```azurecli
     echo Git deployment URL for staging: $(az webapp deployment source config-local-git --name $webappname --resource-group AzureTutorial --slot staging --query url --output tsv)
     ```
 
-    <span data-ttu-id="3b947-213">c.</span><span class="sxs-lookup"><span data-stu-id="3b947-213">c.</span></span> <span data-ttu-id="3b947-214">顯示暫存槽的 URL。</span><span class="sxs-lookup"><span data-stu-id="3b947-214">Display the staging slot's URL.</span></span> <span data-ttu-id="3b947-215">瀏覽到 URL 以查看空暫存槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-215">Browse to the URL to see the empty staging slot.</span></span> <span data-ttu-id="3b947-216">**請注意此網址 回報**。</span><span class="sxs-lookup"><span data-stu-id="3b947-216">**Note this URL for reference later**.</span></span>
+    <span data-ttu-id="2d14e-213">c.</span><span class="sxs-lookup"><span data-stu-id="2d14e-213">c.</span></span> <span data-ttu-id="2d14e-214">顯示預備位置的 URL。</span><span class="sxs-lookup"><span data-stu-id="2d14e-214">Display the staging slot's URL.</span></span> <span data-ttu-id="2d14e-215">流覽至 URL，以查看空的預備位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-215">Browse to the URL to see the empty staging slot.</span></span> <span data-ttu-id="2d14e-216">**請記下此 URL 以供稍後參考**。</span><span class="sxs-lookup"><span data-stu-id="2d14e-216">**Note this URL for reference later**.</span></span>
 
     ```console
     echo Staging web app URL: http://$webappname-staging.azurewebsites.net
     ```
 
-3. <span data-ttu-id="3b947-217">在文字編輯器或 Visual Studio 中,再次修改*Pages/Index.cshtml,* 以便`<h2>`元素讀取`<h2>Simple Feed Reader - V3</h2>`並保存檔。</span><span class="sxs-lookup"><span data-stu-id="3b947-217">In a text editor or Visual Studio, modify *Pages/Index.cshtml* again so that the `<h2>` element reads `<h2>Simple Feed Reader - V3</h2>` and save the file.</span></span>
+3. <span data-ttu-id="2d14e-217">在文字編輯器或 Visual Studio 中，再次修改*Pages/Index. cshtml* ，讓`<h2>`元素讀取`<h2>Simple Feed Reader - V3</h2>`並儲存檔案。</span><span class="sxs-lookup"><span data-stu-id="2d14e-217">In a text editor or Visual Studio, modify *Pages/Index.cshtml* again so that the `<h2>` element reads `<h2>Simple Feed Reader - V3</h2>` and save the file.</span></span>
 
-4. <span data-ttu-id="3b947-218">使用 Visual Studio*的團隊資源管理員*選項卡中的 **「更改」** 頁,或使用本地電腦的命令外殼輸入以下內容,將檔案提交到本地 Git 儲存函式庫:</span><span class="sxs-lookup"><span data-stu-id="3b947-218">Commit the file to the local Git repository, using either the **Changes** page in Visual Studio's *Team Explorer* tab, or by entering the following using the local machine's command shell:</span></span>
+4. <span data-ttu-id="2d14e-218">使用 Visual Studio 的 [ *Team Explorer* ] 索引標籤中的 [**變更**] 頁面，或使用本機電腦的命令 shell 輸入下列內容，將檔案認可至本機 Git 存放庫：</span><span class="sxs-lookup"><span data-stu-id="2d14e-218">Commit the file to the local Git repository, using either the **Changes** page in Visual Studio's *Team Explorer* tab, or by entering the following using the local machine's command shell:</span></span>
 
     ```console
     git commit -a -m "upgraded to V3"
     ```
 
-5. <span data-ttu-id="3b947-219">使用本地電腦的命令外殼,將暫存部署網址 加入為 Git 遙控器,然後推送提交的變更:</span><span class="sxs-lookup"><span data-stu-id="3b947-219">Using the local machine's command shell, add the staging deployment URL as a Git remote and push the committed changes:</span></span>
+5. <span data-ttu-id="2d14e-219">使用本機電腦的命令 shell，將預備部署 URL 新增為 Git 遠端，並推送認可的變更：</span><span class="sxs-lookup"><span data-stu-id="2d14e-219">Using the local machine's command shell, add the staging deployment URL as a Git remote and push the committed changes:</span></span>
 
-    <span data-ttu-id="3b947-220">a.</span><span class="sxs-lookup"><span data-stu-id="3b947-220">a.</span></span> <span data-ttu-id="3b947-221">將用於暫存的遠端 URL 添加到本地 Git 儲存庫。</span><span class="sxs-lookup"><span data-stu-id="3b947-221">Add the remote URL for staging to the local Git repository.</span></span>
+    <span data-ttu-id="2d14e-220">a.</span><span class="sxs-lookup"><span data-stu-id="2d14e-220">a.</span></span> <span data-ttu-id="2d14e-221">將預備環境的遠端 URL 新增至本機 Git 存放庫。</span><span class="sxs-lookup"><span data-stu-id="2d14e-221">Add the remote URL for staging to the local Git repository.</span></span>
 
     ```console
     git remote add azure-staging <Git_staging_deployment_URL>
     ```
 
-    <span data-ttu-id="3b947-222">b.</span><span class="sxs-lookup"><span data-stu-id="3b947-222">b.</span></span> <span data-ttu-id="3b947-223">將本地*主*分支推送到*Azure 暫存\*\*遠端的主分支*。</span><span class="sxs-lookup"><span data-stu-id="3b947-223">Push the local *master* branch to the *azure-staging* remote's *master* branch.</span></span>
+    <span data-ttu-id="2d14e-222">b.</span><span class="sxs-lookup"><span data-stu-id="2d14e-222">b.</span></span> <span data-ttu-id="2d14e-223">將本機*master*分支推送至*azure 預備*遠端的*主要*分支。</span><span class="sxs-lookup"><span data-stu-id="2d14e-223">Push the local *master* branch to the *azure-staging* remote's *master* branch.</span></span>
 
     ```console
     git push azure-staging master
     ```
 
-    <span data-ttu-id="3b947-224">在 Azure 生成和部署應用時等待。</span><span class="sxs-lookup"><span data-stu-id="3b947-224">Wait while Azure builds and deploys the app.</span></span>
+    <span data-ttu-id="2d14e-224">等候 Azure 建立及部署應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-224">Wait while Azure builds and deploys the app.</span></span>
 
-6. <span data-ttu-id="3b947-225">要驗證 V3 已部署到暫存槽,請打開兩個瀏覽器視窗。</span><span class="sxs-lookup"><span data-stu-id="3b947-225">To verify that V3 has been deployed to the staging slot, open two browser windows.</span></span> <span data-ttu-id="3b947-226">在一個視窗中,導航到原始 Web 應用 URL。</span><span class="sxs-lookup"><span data-stu-id="3b947-226">In one window, navigate to the original web app URL.</span></span> <span data-ttu-id="3b947-227">在其他視窗中,導航到暫存 Web 應用 URL。</span><span class="sxs-lookup"><span data-stu-id="3b947-227">In the other window, navigate to the staging web app URL.</span></span> <span data-ttu-id="3b947-228">生產 URL 為應用程式的 V2 提供服務。</span><span class="sxs-lookup"><span data-stu-id="3b947-228">The production URL serves V2 of the app.</span></span> <span data-ttu-id="3b947-229">暫存 URL 為應用程式的 V3 提供服務。</span><span class="sxs-lookup"><span data-stu-id="3b947-229">The staging URL serves V3 of the app.</span></span>
+6. <span data-ttu-id="2d14e-225">若要確認 V3 已部署至預備位置，請開啟兩個瀏覽器視窗。</span><span class="sxs-lookup"><span data-stu-id="2d14e-225">To verify that V3 has been deployed to the staging slot, open two browser windows.</span></span> <span data-ttu-id="2d14e-226">在一個視窗中，流覽至原始的 web 應用程式 URL。</span><span class="sxs-lookup"><span data-stu-id="2d14e-226">In one window, navigate to the original web app URL.</span></span> <span data-ttu-id="2d14e-227">在另一個視窗中，流覽至預備 web 應用程式 URL。</span><span class="sxs-lookup"><span data-stu-id="2d14e-227">In the other window, navigate to the staging web app URL.</span></span> <span data-ttu-id="2d14e-228">生產 URL 會提供應用程式的第2版。</span><span class="sxs-lookup"><span data-stu-id="2d14e-228">The production URL serves V2 of the app.</span></span> <span data-ttu-id="2d14e-229">預備 URL 提供應用程式的 V3。</span><span class="sxs-lookup"><span data-stu-id="2d14e-229">The staging URL serves V3 of the app.</span></span>
 
-    ![比較瀏覽器視窗的螢幕擷取](./media/deploying-to-app-service/ready-to-swap.png)
+    ![比較瀏覽器視窗的螢幕擷取畫面](./media/deploying-to-app-service/ready-to-swap.png)
 
-7. <span data-ttu-id="3b947-231">在雲外殼中,將已驗證/預熱的暫存槽交換到生產中。</span><span class="sxs-lookup"><span data-stu-id="3b947-231">In the Cloud Shell, swap the verified/warmed-up staging slot into production.</span></span>
+7. <span data-ttu-id="2d14e-231">在 Cloud Shell 中，將已驗證/準備就緒的預備位置交換到生產環境。</span><span class="sxs-lookup"><span data-stu-id="2d14e-231">In the Cloud Shell, swap the verified/warmed-up staging slot into production.</span></span>
 
     ```azurecli
     az webapp deployment slot swap --name $webappname --resource-group AzureTutorial --slot staging
     ```
 
-8. <span data-ttu-id="3b947-232">通過刷新兩個瀏覽器窗口來驗證交換是否發生。</span><span class="sxs-lookup"><span data-stu-id="3b947-232">Verify that the swap occurred by refreshing the two browser windows.</span></span>
+8. <span data-ttu-id="2d14e-232">重新整理兩個瀏覽器視窗，以確認交換是否已發生。</span><span class="sxs-lookup"><span data-stu-id="2d14e-232">Verify that the swap occurred by refreshing the two browser windows.</span></span>
 
-    ![比較交換瀏覽器視窗](./media/deploying-to-app-service/swapped.png)
+    ![在交換之後比較瀏覽器視窗](./media/deploying-to-app-service/swapped.png)
 
-## <a name="summary"></a><span data-ttu-id="3b947-234">總結</span><span class="sxs-lookup"><span data-stu-id="3b947-234">Summary</span></span>
+## <a name="summary"></a><span data-ttu-id="2d14e-234">摘要</span><span class="sxs-lookup"><span data-stu-id="2d14e-234">Summary</span></span>
 
-<span data-ttu-id="3b947-235">在本節中,已完成以下任務:</span><span class="sxs-lookup"><span data-stu-id="3b947-235">In this section, the following tasks were completed:</span></span>
+<span data-ttu-id="2d14e-235">在本節中，已完成下列工作：</span><span class="sxs-lookup"><span data-stu-id="2d14e-235">In this section, the following tasks were completed:</span></span>
 
-* <span data-ttu-id="3b947-236">下載並構建了示例應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-236">Downloaded and built the sample app.</span></span>
-* <span data-ttu-id="3b947-237">使用 Azure 雲外殼創建 Azure 應用服務 Web 應用。</span><span class="sxs-lookup"><span data-stu-id="3b947-237">Created an Azure App Service Web App using the Azure Cloud Shell.</span></span>
-* <span data-ttu-id="3b947-238">使用 Git 將示例應用部署到 Azure。</span><span class="sxs-lookup"><span data-stu-id="3b947-238">Deployed the sample app to Azure using Git.</span></span>
-* <span data-ttu-id="3b947-239">使用 Visual Studio 對應用部署了更改。</span><span class="sxs-lookup"><span data-stu-id="3b947-239">Deployed a change to the app using Visual Studio.</span></span>
-* <span data-ttu-id="3b947-240">向 Web 應用添加了暫存槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-240">Added a staging slot to the web app.</span></span>
-* <span data-ttu-id="3b947-241">已部署到暫存槽的更新。</span><span class="sxs-lookup"><span data-stu-id="3b947-241">Deployed an update to the staging slot.</span></span>
-* <span data-ttu-id="3b947-242">已交換暫存和生產插槽。</span><span class="sxs-lookup"><span data-stu-id="3b947-242">Swapped the staging and production slots.</span></span>
+* <span data-ttu-id="2d14e-236">已下載並建立範例應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-236">Downloaded and built the sample app.</span></span>
+* <span data-ttu-id="2d14e-237">使用 Azure Cloud Shell 建立 Azure App Service Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-237">Created an Azure App Service Web App using the Azure Cloud Shell.</span></span>
+* <span data-ttu-id="2d14e-238">使用 Git 將範例應用程式部署至 Azure。</span><span class="sxs-lookup"><span data-stu-id="2d14e-238">Deployed the sample app to Azure using Git.</span></span>
+* <span data-ttu-id="2d14e-239">使用 Visual Studio 將變更部署至應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-239">Deployed a change to the app using Visual Studio.</span></span>
+* <span data-ttu-id="2d14e-240">已將預備位置新增至 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="2d14e-240">Added a staging slot to the web app.</span></span>
+* <span data-ttu-id="2d14e-241">已將更新部署至預備位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-241">Deployed an update to the staging slot.</span></span>
+* <span data-ttu-id="2d14e-242">已交換預備和生產位置。</span><span class="sxs-lookup"><span data-stu-id="2d14e-242">Swapped the staging and production slots.</span></span>
 
-<span data-ttu-id="3b947-243">在下一節中,您將學習如何使用 Azure 管道構建 DevOps 管道。</span><span class="sxs-lookup"><span data-stu-id="3b947-243">In the next section, you'll learn how to build a DevOps pipeline with Azure Pipelines.</span></span>
+<span data-ttu-id="2d14e-243">在下一節中，您將瞭解如何使用 Azure Pipelines 建立 DevOps 管線。</span><span class="sxs-lookup"><span data-stu-id="2d14e-243">In the next section, you'll learn how to build a DevOps pipeline with Azure Pipelines.</span></span>
 
-## <a name="additional-reading"></a><span data-ttu-id="3b947-244">其他閱讀資料</span><span class="sxs-lookup"><span data-stu-id="3b947-244">Additional reading</span></span>
+## <a name="additional-reading"></a><span data-ttu-id="2d14e-244">其他閱讀資料</span><span class="sxs-lookup"><span data-stu-id="2d14e-244">Additional reading</span></span>
 
-* [<span data-ttu-id="3b947-245">Web Apps 概觀</span><span class="sxs-lookup"><span data-stu-id="3b947-245">Web Apps overview</span></span>](/azure/app-service/app-service-web-overview)
-* [<span data-ttu-id="3b947-246">在 Azure App Service 中建置 .NET Core 和 SQL Database Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="3b947-246">Build a .NET Core and SQL Database web app in Azure App Service</span></span>](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
-* [<span data-ttu-id="3b947-247">設定 Azure App Service 的部署認證</span><span class="sxs-lookup"><span data-stu-id="3b947-247">Configure deployment credentials for Azure App Service</span></span>](/azure/app-service/app-service-deployment-credentials)
-* [<span data-ttu-id="3b947-248">在 Azure App Service 中設定預備環境</span><span class="sxs-lookup"><span data-stu-id="3b947-248">Set up staging environments in Azure App Service</span></span>](/azure/app-service/web-sites-staged-publishing)
+* [<span data-ttu-id="2d14e-245">Web 應用程式概觀</span><span class="sxs-lookup"><span data-stu-id="2d14e-245">Web Apps overview</span></span>](/azure/app-service/app-service-web-overview)
+* [<span data-ttu-id="2d14e-246">在 Azure App Service 中建置 .NET Core 和 SQL Database Web 應用程式</span><span class="sxs-lookup"><span data-stu-id="2d14e-246">Build a .NET Core and SQL Database web app in Azure App Service</span></span>](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
+* [<span data-ttu-id="2d14e-247">設定 Azure App Service 的部署認證</span><span class="sxs-lookup"><span data-stu-id="2d14e-247">Configure deployment credentials for Azure App Service</span></span>](/azure/app-service/app-service-deployment-credentials)
+* [<span data-ttu-id="2d14e-248">在 Azure App Service 中設定預備環境</span><span class="sxs-lookup"><span data-stu-id="2d14e-248">Set up staging environments in Azure App Service</span></span>](/azure/app-service/web-sites-staged-publishing)

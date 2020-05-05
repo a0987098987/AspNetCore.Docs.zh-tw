@@ -5,113 +5,119 @@ description: 此教學課程時間不長，會使用 ASP.NET Core 建立及執�
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: getting-started
-ms.openlocfilehash: 86a0c8d017138a949fddc0356f3de548d368a4c0
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 565cde233d6fc5f085ae1709e167e73980d5c3c2
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80417602"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776229"
 ---
-# <a name="tutorial-get-started-with-aspnet-core"></a><span data-ttu-id="ba35c-103">教學課程：ASP.NET Core 使用者入門</span><span class="sxs-lookup"><span data-stu-id="ba35c-103">Tutorial: Get started with ASP.NET Core</span></span>
+# <a name="tutorial-get-started-with-aspnet-core"></a><span data-ttu-id="61c0e-103">教學課程：ASP.NET Core 使用者入門</span><span class="sxs-lookup"><span data-stu-id="61c0e-103">Tutorial: Get started with ASP.NET Core</span></span>
 
-<span data-ttu-id="ba35c-104">本教學示範如何使用 .NET核心 CLI 創建和執行ASP.NET核心 Web 應用。</span><span class="sxs-lookup"><span data-stu-id="ba35c-104">This tutorial shows how to create and run an ASP.NET Core web app using the .NET Core CLI.</span></span>
+<span data-ttu-id="61c0e-104">本教學課程說明如何使用 .NET Core CLI 建立和執行 ASP.NET Core web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="61c0e-104">This tutorial shows how to create and run an ASP.NET Core web app using the .NET Core CLI.</span></span>
 
-<span data-ttu-id="ba35c-105">您將學習如何：</span><span class="sxs-lookup"><span data-stu-id="ba35c-105">You'll learn how to:</span></span>
+<span data-ttu-id="61c0e-105">您將學習如何：</span><span class="sxs-lookup"><span data-stu-id="61c0e-105">You'll learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="ba35c-106">建立 Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="ba35c-106">Create a web app project.</span></span>
-> * <span data-ttu-id="ba35c-107">信任開發憑證。</span><span class="sxs-lookup"><span data-stu-id="ba35c-107">Trust the development certificate.</span></span>
-> * <span data-ttu-id="ba35c-108">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="ba35c-108">Run the app.</span></span>
-> * <span data-ttu-id="ba35c-109">編輯 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="ba35c-109">Edit a Razor page.</span></span>
+> * <span data-ttu-id="61c0e-106">建立 Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="61c0e-106">Create a web app project.</span></span>
+> * <span data-ttu-id="61c0e-107">信任開發憑證。</span><span class="sxs-lookup"><span data-stu-id="61c0e-107">Trust the development certificate.</span></span>
+> * <span data-ttu-id="61c0e-108">執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="61c0e-108">Run the app.</span></span>
+> * <span data-ttu-id="61c0e-109">編輯 Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="61c0e-109">Edit a Razor page.</span></span>
 
-<span data-ttu-id="ba35c-110">最後，您會在本機電腦上執行一個運作正常的 Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="ba35c-110">At the end, you'll have a working web app running on your local machine.</span></span>
+<span data-ttu-id="61c0e-110">最後，您會在本機電腦上執行一個運作正常的 Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="61c0e-110">At the end, you'll have a working web app running on your local machine.</span></span>
 
 ![Web 應用程式首頁](_static/home-page.png)
 
-## <a name="prerequisites"></a><span data-ttu-id="ba35c-112">Prerequisites</span><span class="sxs-lookup"><span data-stu-id="ba35c-112">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="61c0e-112">先決條件</span><span class="sxs-lookup"><span data-stu-id="61c0e-112">Prerequisites</span></span>
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
-## <a name="create-a-web-app-project"></a><span data-ttu-id="ba35c-113">建立 Web 應用程式專案</span><span class="sxs-lookup"><span data-stu-id="ba35c-113">Create a web app project</span></span>
+## <a name="create-a-web-app-project"></a><span data-ttu-id="61c0e-113">建立 Web 應用程式專案</span><span class="sxs-lookup"><span data-stu-id="61c0e-113">Create a web app project</span></span>
 
-<span data-ttu-id="ba35c-114">開啟命令殼層，並輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="ba35c-114">Open a command shell, and enter the following command:</span></span>
+<span data-ttu-id="61c0e-114">開啟命令殼層，並輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="61c0e-114">Open a command shell, and enter the following command:</span></span>
 
 ```dotnetcli
 dotnet new webapp -o aspnetcoreapp
 ```
 
-<span data-ttu-id="ba35c-115">上述命令會：</span><span class="sxs-lookup"><span data-stu-id="ba35c-115">The preceding command:</span></span>
+<span data-ttu-id="61c0e-115">上述命令會：</span><span class="sxs-lookup"><span data-stu-id="61c0e-115">The preceding command:</span></span>
 
-* <span data-ttu-id="ba35c-116">創建新的 Web 應用。</span><span class="sxs-lookup"><span data-stu-id="ba35c-116">Creates a new web app.</span></span>  
-* <span data-ttu-id="ba35c-117">參數`-o aspnetcoreapp`創建一個名為*aspnetcoreapp*的目錄,該目錄具有應用的源檔。</span><span class="sxs-lookup"><span data-stu-id="ba35c-117">The `-o aspnetcoreapp` parameter creates a directory named *aspnetcoreapp* with the source files for the app.</span></span>
+* <span data-ttu-id="61c0e-116">建立新的 web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="61c0e-116">Creates a new web app.</span></span>  
+* <span data-ttu-id="61c0e-117">`-o aspnetcoreapp`參數會建立名為*aspnetcoreapp*的目錄，其中包含應用程式的來源檔案。</span><span class="sxs-lookup"><span data-stu-id="61c0e-117">The `-o aspnetcoreapp` parameter creates a directory named *aspnetcoreapp* with the source files for the app.</span></span>
 
-### <a name="trust-the-development-certificate"></a><span data-ttu-id="ba35c-118">信任開發憑證</span><span class="sxs-lookup"><span data-stu-id="ba35c-118">Trust the development certificate</span></span>
+### <a name="trust-the-development-certificate"></a><span data-ttu-id="61c0e-118">信任開發憑證</span><span class="sxs-lookup"><span data-stu-id="61c0e-118">Trust the development certificate</span></span>
 
-<span data-ttu-id="ba35c-119">信任 HTTPS 開發憑證：</span><span class="sxs-lookup"><span data-stu-id="ba35c-119">Trust the HTTPS development certificate:</span></span>
+<span data-ttu-id="61c0e-119">信任 HTTPS 開發憑證：</span><span class="sxs-lookup"><span data-stu-id="61c0e-119">Trust the HTTPS development certificate:</span></span>
 
-# <a name="windows"></a>[<span data-ttu-id="ba35c-120">Windows</span><span class="sxs-lookup"><span data-stu-id="ba35c-120">Windows</span></span>](#tab/windows)
+# <a name="windows"></a>[<span data-ttu-id="61c0e-120">Windows</span><span class="sxs-lookup"><span data-stu-id="61c0e-120">Windows</span></span>](#tab/windows)
 
 ```dotnetcli
 dotnet dev-certs https --trust
 ```
 
-<span data-ttu-id="ba35c-121">上述命令會顯示以下對話方塊：</span><span class="sxs-lookup"><span data-stu-id="ba35c-121">The preceding command displays the following dialog:</span></span>
+<span data-ttu-id="61c0e-121">上述命令會顯示以下對話方塊：</span><span class="sxs-lookup"><span data-stu-id="61c0e-121">The preceding command displays the following dialog:</span></span>
 
 ![安全性警告對話方塊](~/getting-started/_static/cert.png)
 
-<span data-ttu-id="ba35c-123">若您同意信任開發憑證，請選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="ba35c-123">Select **Yes** if you agree to trust the development certificate.</span></span>
+<span data-ttu-id="61c0e-123">若您同意信任開發憑證，請選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="61c0e-123">Select **Yes** if you agree to trust the development certificate.</span></span>
 
-# <a name="macos"></a>[<span data-ttu-id="ba35c-124">macOS</span><span class="sxs-lookup"><span data-stu-id="ba35c-124">macOS</span></span>](#tab/macos)
+# <a name="macos"></a>[<span data-ttu-id="61c0e-124">macOS</span><span class="sxs-lookup"><span data-stu-id="61c0e-124">macOS</span></span>](#tab/macos)
 
 ```dotnetcli
 dotnet dev-certs https --trust
 ```
 
-<span data-ttu-id="ba35c-125">上述命令會顯示以下訊息：</span><span class="sxs-lookup"><span data-stu-id="ba35c-125">The preceding command displays the following message:</span></span>
+<span data-ttu-id="61c0e-125">上述命令會顯示以下訊息：</span><span class="sxs-lookup"><span data-stu-id="61c0e-125">The preceding command displays the following message:</span></span>
 
-<span data-ttu-id="ba35c-126">*請求信任 HTTPS 開發證書。如果憑證尚未受信任,我們將執行以下命令:*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`</span><span class="sxs-lookup"><span data-stu-id="ba35c-126">*Trusting the HTTPS development certificate was requested. If the certificate is not already trusted, we will run the following command:* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`</span></span>
+<span data-ttu-id="61c0e-126">*已要求信任 HTTPS 開發憑證。如果憑證尚未受到信任，我們會執行下列命令：*`'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`</span><span class="sxs-lookup"><span data-stu-id="61c0e-126">*Trusting the HTTPS development certificate was requested. If the certificate is not already trusted, we will run the following command:* `'sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain <<certificate>>'`</span></span>
 
-<span data-ttu-id="ba35c-127">此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。</span><span class="sxs-lookup"><span data-stu-id="ba35c-127">This command might prompt you for your password to install the certificate on the system keychain.</span></span> <span data-ttu-id="ba35c-128">若您同意信任開發憑證，請輸入您的密碼。</span><span class="sxs-lookup"><span data-stu-id="ba35c-128">Enter your password if you agree to trust the development certificate.</span></span>
+<span data-ttu-id="61c0e-127">此命令可能會提示您提供密碼，以在系統金鑰鏈上安裝憑證。</span><span class="sxs-lookup"><span data-stu-id="61c0e-127">This command might prompt you for your password to install the certificate on the system keychain.</span></span> <span data-ttu-id="61c0e-128">若您同意信任開發憑證，請輸入您的密碼。</span><span class="sxs-lookup"><span data-stu-id="61c0e-128">Enter your password if you agree to trust the development certificate.</span></span>
 
-# <a name="linux"></a>[<span data-ttu-id="ba35c-129">Linux</span><span class="sxs-lookup"><span data-stu-id="ba35c-129">Linux</span></span>](#tab/linux)
+# <a name="linux"></a>[<span data-ttu-id="61c0e-129">Linux</span><span class="sxs-lookup"><span data-stu-id="61c0e-129">Linux</span></span>](#tab/linux)
 
-<span data-ttu-id="ba35c-130">請參閱您 Linux 發行版本的文件，來了解如何信任 HTTPS 開發憑證。</span><span class="sxs-lookup"><span data-stu-id="ba35c-130">See the documentation for your Linux distribution on how to trust the HTTPS development certificate.</span></span>
+<span data-ttu-id="61c0e-130">請參閱您 Linux 發行版本的文件，來了解如何信任 HTTPS 開發憑證。</span><span class="sxs-lookup"><span data-stu-id="61c0e-130">See the documentation for your Linux distribution on how to trust the HTTPS development certificate.</span></span>
 
 ---
 
-<span data-ttu-id="ba35c-131">如需詳細資訊，請參閱[信任 ASP.NET Core HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)</span><span class="sxs-lookup"><span data-stu-id="ba35c-131">For more information, see [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)</span></span>
+<span data-ttu-id="61c0e-131">如需詳細資訊，請參閱[信任 ASP.NET Core HTTPS 開發憑證](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)</span><span class="sxs-lookup"><span data-stu-id="61c0e-131">For more information, see [Trust the ASP.NET Core HTTPS development certificate](xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos)</span></span>
 
-## <a name="run-the-app"></a><span data-ttu-id="ba35c-132">執行應用程式</span><span class="sxs-lookup"><span data-stu-id="ba35c-132">Run the app</span></span>
+## <a name="run-the-app"></a><span data-ttu-id="61c0e-132">執行應用程式</span><span class="sxs-lookup"><span data-stu-id="61c0e-132">Run the app</span></span>
 
-<span data-ttu-id="ba35c-133">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="ba35c-133">Run the following commands:</span></span>
+<span data-ttu-id="61c0e-133">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="61c0e-133">Run the following commands:</span></span>
 
 ```dotnetcli
 cd aspnetcoreapp
 dotnet watch run
 ```
 
-<span data-ttu-id="ba35c-134">命令殼層指出應用程式已啟動之後，瀏覽到 `https://localhost:5001`。</span><span class="sxs-lookup"><span data-stu-id="ba35c-134">After the command shell indicates that the app has started, browse to `https://localhost:5001`.</span></span>
+<span data-ttu-id="61c0e-134">命令殼層指出應用程式已啟動之後，瀏覽到 `https://localhost:5001`。</span><span class="sxs-lookup"><span data-stu-id="61c0e-134">After the command shell indicates that the app has started, browse to `https://localhost:5001`.</span></span>
 
-## <a name="edit-a-razor-page"></a><span data-ttu-id="ba35c-135">編輯 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="ba35c-135">Edit a Razor page</span></span>
+## <a name="edit-a-razor-page"></a><span data-ttu-id="61c0e-135">編輯Razor頁面</span><span class="sxs-lookup"><span data-stu-id="61c0e-135">Edit a Razor page</span></span>
 
-<span data-ttu-id="ba35c-136">開啟*頁面/Index.cshtml,* 使用以下突顯的標記修改並儲存頁面:</span><span class="sxs-lookup"><span data-stu-id="ba35c-136">Open *Pages/Index.cshtml* and modify and save the page with the following highlighted markup:</span></span>
+<span data-ttu-id="61c0e-136">開啟*Pages/Index. cshtml* ，並以下列反白顯示的標記修改並儲存頁面：</span><span class="sxs-lookup"><span data-stu-id="61c0e-136">Open *Pages/Index.cshtml* and modify and save the page with the following highlighted markup:</span></span>
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-<span data-ttu-id="ba35c-137">瀏覽`https://localhost:5001`到,刷新頁面,並驗證顯示更改。</span><span class="sxs-lookup"><span data-stu-id="ba35c-137">Browse to `https://localhost:5001`, refresh the page, and verify the changes are displayed.</span></span>
+<span data-ttu-id="61c0e-137">流覽至`https://localhost:5001`、重新整理頁面，然後確認是否顯示變更。</span><span class="sxs-lookup"><span data-stu-id="61c0e-137">Browse to `https://localhost:5001`, refresh the page, and verify the changes are displayed.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="ba35c-138">後續步驟</span><span class="sxs-lookup"><span data-stu-id="ba35c-138">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="61c0e-138">後續步驟</span><span class="sxs-lookup"><span data-stu-id="61c0e-138">Next steps</span></span>
 
-<span data-ttu-id="ba35c-139">在本教學課程中，您已了解如何：</span><span class="sxs-lookup"><span data-stu-id="ba35c-139">In this tutorial, you learned how to:</span></span>
+<span data-ttu-id="61c0e-139">在本教學課程中，您已了解如何：</span><span class="sxs-lookup"><span data-stu-id="61c0e-139">In this tutorial, you learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="ba35c-140">建立 Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="ba35c-140">Create a web app project.</span></span>
-> * <span data-ttu-id="ba35c-141">信任開發憑證。</span><span class="sxs-lookup"><span data-stu-id="ba35c-141">Trust the development certificate.</span></span>
-> * <span data-ttu-id="ba35c-142">執行專案。</span><span class="sxs-lookup"><span data-stu-id="ba35c-142">Run the project.</span></span>
-> * <span data-ttu-id="ba35c-143">進行變更。</span><span class="sxs-lookup"><span data-stu-id="ba35c-143">Make a change.</span></span>
+> * <span data-ttu-id="61c0e-140">建立 Web 應用程式專案。</span><span class="sxs-lookup"><span data-stu-id="61c0e-140">Create a web app project.</span></span>
+> * <span data-ttu-id="61c0e-141">信任開發憑證。</span><span class="sxs-lookup"><span data-stu-id="61c0e-141">Trust the development certificate.</span></span>
+> * <span data-ttu-id="61c0e-142">執行專案。</span><span class="sxs-lookup"><span data-stu-id="61c0e-142">Run the project.</span></span>
+> * <span data-ttu-id="61c0e-143">進行變更。</span><span class="sxs-lookup"><span data-stu-id="61c0e-143">Make a change.</span></span>
 
-<span data-ttu-id="ba35c-144">若要深入了解 ASP.NET Core，請參閱簡介中的建議學習路徑：</span><span class="sxs-lookup"><span data-stu-id="ba35c-144">To learn more about ASP.NET Core, see the recommended learning path in the introduction:</span></span>
+<span data-ttu-id="61c0e-144">若要深入了解 ASP.NET Core，請參閱簡介中的建議學習路徑：</span><span class="sxs-lookup"><span data-stu-id="61c0e-144">To learn more about ASP.NET Core, see the recommended learning path in the introduction:</span></span>
 
 > [!div class="nextstepaction"]
 > <xref:index#recommended-learning-path>

@@ -1,88 +1,94 @@
 ---
 title: Versioning gRPC 服務
 author: jamesnk
-description: 瞭解如何對 gRPC 服務進行版本控制。
+description: 瞭解如何版本 gRPC 服務。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 01/09/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: grpc/versioning
-ms.openlocfilehash: 9bd76009ba28a1abef25a98686afea6753d4a8f4
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: dcf089f1e5f27639d048e91ee3aa42c7da6d8398
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78664112"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775358"
 ---
 # <a name="versioning-grpc-services"></a>Versioning gRPC 服務
 
-由[詹姆斯·牛頓-金](https://twitter.com/jamesnk)
+依[James 牛頓-王](https://twitter.com/jamesnk)
 
-添加到應用的新功能可能需要向用戶端提供的 gRPC 服務進行更改,有時以意外和中斷的方式更改。 當 gRPC 服務變更時:
+新增至應用程式的新功能可能需要提供給用戶端的 gRPC 服務變更，有時是以非預期和中斷的方式。 當 gRPC services 變更時：
 
-* 應考慮更改如何影響客戶。
-* 應實施支援更改的版本控制策略。
+* 應針對變更對用戶端的影響提供考慮。
+* 應執行支援變更的版本控制策略。
 
 ## <a name="backwards-compatibility"></a>回溯相容性
 
-gRPC 協定旨在支援隨時間變化的服務。 通常,gRPC 服務和方法的添加是非突破的。 非重大更改允許現有用戶端在不進行更改的情況下繼續工作。 更改或刪除 gRPC 服務正在中斷更改。 當 gRPC 服務發生重大更改時,必須更新和重新部署使用該服務的用戶端。
+GRPC 通訊協定是設計用來支援隨時間變更的服務。 一般來說，gRPC 服務和方法的新增功能不會中斷。 非重大變更可讓現有的用戶端繼續運作，而不需要變更。 變更或刪除 gRPC 服務是重大變更。 當 gRPC 服務有重大變更時，必須更新並重新部署使用該服務的用戶端。
 
-對服務進行不重大變更具有許多好處:
+對服務進行非重大變更有一些優點：
 
-* 現有客戶端繼續運行。
-* 避免將更改通知用戶端並更新它們所涉及的工作。
-* 只需要記錄和維護一個版本的服務。
+* 現有的用戶端會繼續執行。
+* 避免與通知用戶端重大變更並加以更新所牽涉到的工作。
+* 只有一個服務版本需要記載和維護。
 
 ### <a name="non-breaking-changes"></a>非中斷性變更
 
-這些更改在 gRPC 協定等級和 .NET 二進位級上是非突破的。
+這些變更不會在 gRPC 通訊協定層級和 .NET 二進位層級中斷。
 
 * **新增服務**
-* **新增新方法**
-* **將欄位加入到請求訊息**- 新增到請求訊息的欄位在未設定時使用伺服器上的[預設值](https://developers.google.com/protocol-buffers/docs/proto3#default)進行反序列化。 要進行非重大更改,當舊用戶端未設置新欄位時,服務必須成功。
-* **傳回回應訊息加入欄位**- 加入到回應訊息的欄位將反序列化到用戶端上訊息的[未知欄位](https://developers.google.com/protocol-buffers/docs/proto3#unknowns)集合中。
-* **向枚舉**- 枚舉添加值將序列化為數值。 新的枚舉值在用戶端上反序列化到沒有枚舉名稱的枚舉值。 要進行非重大更改,較舊的用戶端在接收新的枚舉值時必須正確運行。
+* **將新方法加入至服務**
+* **將欄位加入至要求訊息**-新增至要求訊息的欄位會在未設定時，以伺服器上的[預設值](https://developers.google.com/protocol-buffers/docs/proto3#default)進行還原序列化。 若要做為非中斷變更，當舊的用戶端未設定新欄位時，服務必須成功。
+* **將欄位加入至**回應訊息-新增至回應訊息的欄位會還原序列化至用戶端上的訊息[未知欄位](https://developers.google.com/protocol-buffers/docs/proto3#unknowns)集合中。
+* **將值加入至 enum 列舉**會序列化為數值。 新的列舉值會在用戶端上還原序列化為不含列舉名稱的列舉值。 若要做為非中斷變更，較舊的用戶端必須在收到新的列舉值時正確執行。
 
-### <a name="binary-breaking-changes"></a>二進位中斷變更
+### <a name="binary-breaking-changes"></a>二進位中斷性變更
 
-以下更改在 gRPC 協定等級不會中斷,但如果用戶端升級到最新的 *.proto*協定或用戶端 .NET 程式集,則需要更新用戶端。 如果您計劃將 gRPC 庫發佈到 NuGet,則二進位兼容性非常重要。
+下列變更在 gRPC 通訊協定層級不會中斷，但如果用戶端升級至最新的*proto*合約或用戶端 .net 元件，則需要更新。 如果您打算將 gRPC 程式庫發佈至 NuGet，二進位相容性就很重要。
 
-* **從刪除的欄位中移除欄位**值將反序列化為訊息的[未知欄位](https://developers.google.com/protocol-buffers/docs/proto3#unknowns)。 這不是 gRPC 協定中斷更改,但如果用戶端升級到最新協定,則需要更新用戶端。 將來不會意外重用已刪除的欄位編號,這一點很重要。 為確保這種情況不會發生,請使用 Protobuf 的[保留](https://developers.google.com/protocol-buffers/docs/proto3#reserved)關鍵字在郵件上指定已刪除的欄位號和名稱。
-* **重新命名訊息**- 訊息名稱通常不在網路上發送,因此這不是 gRPC 協定中斷更改。 如果用戶端升級到最新合同,則需要更新該用戶端。 在網路上**發送消息名稱**的一種方式是使用[Any](https://developers.google.com/protocol-buffers/docs/proto3#any)欄位,當消息名稱用於識別訊息類型時。
-* **變更csharp_namespace** `csharp_namespace`- 更改將更改產生的 .NET 類型的命名空間。 這不是 gRPC 協定中斷更改,但如果用戶端升級到最新協定,則需要更新用戶端。
+* 從已移除的欄位**移除欄位**值，會還原序列化為訊息的[未知欄位](https://developers.google.com/protocol-buffers/docs/proto3#unknowns)。 這不是 gRPC 的通訊協定重大變更，但如果用戶端升級至最新的合約，則需要更新。 重要的是，在未來不小心重複使用移除的欄位號碼。 若要確保不會發生這種情況，請使用 Protobuf 的[reserved](https://developers.google.com/protocol-buffers/docs/proto3#reserved)關鍵字，在訊息上指定已刪除的欄位編號和名稱。
+* 重新**命名訊息**：通常不會在網路上傳送訊息名稱，因此這不是 gRPC 的通訊協定中斷變更。 如果用戶端升級至最新的合約，則需要更新。 當訊息名稱用來識別訊息類型時，在網路**上傳送訊息**名稱的一種情況就是使用[任何](https://developers.google.com/protocol-buffers/docs/proto3#any)欄位。
+* 變更**csharp_namespace**變更`csharp_namespace`將會變更所產生之 .net 類型的命名空間。 這不是 gRPC 的通訊協定重大變更，但如果用戶端升級至最新的合約，則需要更新。
 
-### <a name="protocol-breaking-changes"></a>協定中斷變更
+### <a name="protocol-breaking-changes"></a>通訊協定重大變更
 
-以下項目是協定與二進制變更:
+下列專案是通訊協定和二進位中斷性變更：
 
-* **重命名字段**- 使用 Protobuf 內容時,欄位名稱僅在生成的代碼中使用。 欄位編號用於標識網路上的欄位。 重命名字段不是 Protobuf 的中斷協定更改。 但是,如果伺服器正在使用 JSON 內容,則重命名字段是一個重大更改。
-* **變更欄位資料類型**- 將欄位的資料類型更改為[不相容的類型](https://developers.google.com/protocol-buffers/docs/proto3#updating)將導致消息序列化時出錯。 即使新數據類型相容,如果用戶端升級到最新協定,它也可能需要更新以支援新類型。
-* **變更欄位編號**- 使用 Protobuf 有效負載時,欄位編號用於識別網路上的欄位。
-* **重新命名套件、服務或方法**- gRPC 使用套件名稱、服務名稱和方法名稱來生成 URL。 用戶端從伺服器獲取 *「未執行」* 狀態。
-* **刪除服務或方法**- 用戶端在呼叫已刪除的方法時從伺服器獲取*UN實現*狀態。
+* 重新**命名欄位**-使用 Protobuf 內容時，功能變數名稱只會用於產生的程式碼中。 欄位編號是用來識別網路上的欄位。 重新命名欄位不是 Protobuf 的通訊協定中斷變更。 不過，如果伺服器使用 JSON 內容，則重新命名欄位是一種中斷變更。
+* **變更欄位資料**類型-將欄位的資料類型變更為[不相容的類型](https://developers.google.com/protocol-buffers/docs/proto3#updating)，會在還原序列化訊息時造成錯誤。 即使新的資料類型是相容的，如果用戶端升級至最新的合約，就可能需要更新它以支援新的類型。
+* **變更欄位編號**-使用 Protobuf 裝載時，會使用欄位號碼來識別網路上的欄位。
+* 重新**命名封裝、服務或方法**gRPC 會使用封裝名稱、服務名稱和方法名稱來建立 URL。 用戶端會從伺服器取得未*實現*的狀態。
+* **移除服務或方法**-呼叫已移除的方法時，用戶端會從伺服器*取得未完成的狀態*。
 
-### <a name="behavior-breaking-changes"></a>行為中斷變更
+### <a name="behavior-breaking-changes"></a>行為重大變更
 
-進行非重大更改時,還必須考慮較舊的用戶端是否可以繼續使用新的服務行為。 例如,向要求訊息加入新欄位:
+進行非中斷性變更時，您也必須考慮舊的用戶端是否可以繼續使用新的服務行為。 例如，將新欄位新增至要求訊息：
 
-* 不是協定崩潰的更改嗎?
-* 如果未設置新欄位,則在伺服器上返回錯誤狀態,將使其成為舊用戶端的重大變化。
+* 不是通訊協定中斷變更。
+* 如果未設定新欄位，則傳回伺服器上的錯誤狀態，使其成為舊用戶端的重大變更。
 
-行為相容性由特定於應用的代碼決定。
+行為相容性取決於您的應用程式專屬程式碼。
 
-## <a name="version-number-services"></a>版本號碼
+## <a name="version-number-services"></a>版本號碼服務
 
-服務應努力與舊用戶端保持向後相容。 最終,對應用的更改可能需要重大更改。 中斷舊用戶端並強制它們隨服務一起更新並不是一個好的用戶體驗。 在進行重大更改時保持向後相容性的一種方法是發佈服務的多個版本。
+服務應該致力於維持與舊用戶端的回溯相容性。 應用程式最終的變更可能需要重大變更。 中斷舊的用戶端，並強制它們與您的服務一起更新，並不是很好的使用者體驗。 在進行重大變更時，維護回溯相容性的方法是發佈服務的多個版本。
 
-gRPC 支援可選[的包](https://developers.google.com/protocol-buffers/docs/proto3#packages)指定器,它的功能很像 .NET 命名空間。 事實上,如果未`option csharp_namespace`在`package` *.proto*檔中設置 ,則將用作生成的 .NET 類型的 .NET 命名空間。 該套件可用於為服務及其訊息指定版本號:
+gRPC 支援選擇性的[封裝](https://developers.google.com/protocol-buffers/docs/proto3#packages)規範，其功能非常類似 .net 命名空間。 事實上，如果`option csharp_namespace`不`package`是在*proto*檔案中設定，將會使用做為所產生 .net 類型的 .net 命名空間。 封裝可以用來指定您的服務和其訊息的版本號碼：
 
 [!code-protobuf[](versioning/sample/greet.v1.proto?highlight=3)]
 
-包名稱與服務名稱相結合以標識服務位址。 服務位址允許並行託管服務的多個版本:
+封裝名稱會與服務名稱結合，以識別服務位址。 服務位址可讓多個版本的服務並存裝載：
 
 * `greet.v1.Greeter`
 * `greet.v2.Greeter`
 
-版本化服務的實現在*Startup.cs*註冊:
+版本服務的執行會在*Startup.cs*中註冊：
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -95,14 +101,14 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-在包名稱中包含版本號後,您有機會發佈具有重大更改的服務的*v2*版本,同時繼續支援調用*v1*版本的舊用戶端。 用戶端更新後使用*v2*服務後,您可以選擇刪除舊版本。 排程發佈服務的多個版本時:
+在封裝名稱中包含版本號碼，可讓您有機會發佈服務的*v2*版本與重大變更，同時繼續支援呼叫*v1*版本的舊版用戶端。 一旦用戶端已更新為使用*v2*服務，您可以選擇移除舊版本。 在規劃發行服務的多個版本時：
 
-* 如果合理,避免進行重大更改。
-* 除非進行重大更改,否則不要更新版本號。
-* 進行重大更改時,請更新版本號。
+* 若合理，請避免中斷性變更。
+* 除非進行重大變更，否則請勿更新版本號碼。
+* 當您進行重大變更時，請更新版本號碼。
 
-發佈服務的多個版本會複製它。 為了減少重複,請考慮將業務邏輯從服務實現移動到可由新舊實現重用的集中位置:
+發行服務的多個版本會將它重複。 若要減少重複的情況，請考慮將商務邏輯從服務的部署移至可供舊的和新的執行重複使用的集中位置：
 
 [!code-csharp[](versioning/sample/GreeterServiceV1.cs?highlight=10,19)]
 
-使用不同套件名稱產生的服務和訊息是不同的 **.NET 型態**。 將業務邏輯移動到集中位置需要將消息映射到常見類型。
+以不同的套件名稱產生的服務和訊息是**不同的 .net 類型**。 將商務邏輯移至集中位置需要將訊息對應至一般類型。

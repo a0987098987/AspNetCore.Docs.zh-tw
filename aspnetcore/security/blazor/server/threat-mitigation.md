@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 04/27/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/server/threat-mitigation
-ms.openlocfilehash: 9a5e313153e5c5c17fc723cc9768c49ffd828007
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
-ms.translationtype: MT
+ms.openlocfilehash: 2c87e6cef5a16b394b03dac1635f18d09593eb94
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206379"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774180"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>ASP.NET Core Blazor 伺服器的威脅緩和方針
 
@@ -42,7 +45,7 @@ Blazor 伺服器應用程式會採用具*狀態*的資料處理模型，其中�
 
 阻絕服務（DoS）攻擊通常會設法耗盡應用程式或伺服器的資源。 不過，資源耗盡不一定是系統遭受攻擊的結果。 例如，有限的資源可能會因為高使用者需求而耗盡。 [拒絕服務（dos）攻擊](#denial-of-service-dos-attacks)一節會進一步涵蓋 DoS。
 
-Blazor framework 外部的資源（例如資料庫和檔案控制代碼，用來讀取和寫入檔案）可能也會遇到資源耗盡的情況。 如需詳細資訊，請參閱 <xref:performance/performance-best-practices>。
+Blazor framework 外部的資源（例如資料庫和檔案控制代碼，用來讀取和寫入檔案）可能也會遇到資源耗盡的情況。 如需詳細資訊，請參閱<xref:performance/performance-best-practices>。
 
 ### <a name="cpu"></a>CPU
 
@@ -126,7 +129,7 @@ Blazor 用戶端會在每個會話建立單一連線，只要開啟瀏覽器視�
 
 請採取下列預防措施來防範前述案例：
 
-* 在[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中包裝 JS interop 呼叫，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱 <xref:blazor/handle-errors#javascript-interop>。
+* 在[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中包裝 JS interop 呼叫，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱<xref:blazor/handle-errors#javascript-interop>。
 * 在採取任何動作之前，請先驗證從 JS interop 調用傳回的資料，包括錯誤訊息。
 
 ### <a name="net-methods-invoked-from-the-browser"></a>從瀏覽器叫用的 .NET 方法
@@ -342,13 +345,13 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 
 若要讓 XSS 弱點存在，應用程式必須在呈現的頁面中納入使用者輸入。 Blazor伺服器元件會執行編譯時期步驟，其中*razor*檔案中的標記會轉換成程式 c # 邏輯。 在執行時間，c # 邏輯會建立描述元素、文字和子元件的轉譯*樹狀結構*。 這會透過一系列的 JavaScript 指示套用至瀏覽器的 DOM （或在進行預建的情況下序列化為 HTML）：
 
-* 透過一般 Razor 語法呈現的使用者輸入（例如， `@someStringValue`）不會公開 XSS 弱點，因為 Razor 語法是透過只能寫入文字的命令新增至 DOM。 即使值包含 HTML 標籤，值也會顯示為靜態文字。 預先呈現時，輸出會以 HTML 編碼，這也會將內容顯示為靜態文字。
+* 透過一般Razor語法轉譯的使用者輸入（例如`@someStringValue`）不會公開 XSS 弱點，因為Razor語法是透過只能寫入文字的命令加入至 DOM。 即使值包含 HTML 標籤，值也會顯示為靜態文字。 預先呈現時，輸出會以 HTML 編碼，這也會將內容顯示為靜態文字。
 * 不允許腳本標記，且不應包含在應用程式的元件轉譯樹狀結構中。 如果腳本標記包含在元件的標記中，就會產生編譯時期錯誤。
-* 元件作者可以在 c # 中撰寫元件，而不需使用 Razor。 元件作者負責在發出輸出時使用正確的 Api。 例如，使用`builder.AddContent(0, someUserSuppliedString)` ，而*不* `builder.AddMarkupContent(0, someUserSuppliedString)`是，後者可能會建立 XSS 弱點。
+* 元件作者可以在 c # 中撰寫元件Razor，而不需使用。 元件作者負責在發出輸出時使用正確的 Api。 例如，使用`builder.AddContent(0, someUserSuppliedString)` ，而*不* `builder.AddMarkupContent(0, someUserSuppliedString)`是，後者可能會建立 XSS 弱點。
 
 在保護 XSS 攻擊的過程中，請考慮執行 XSS 緩和措施，例如[內容安全性原則（CSP）](https://developer.mozilla.org/docs/Web/HTTP/CSP)。
 
-如需詳細資訊，請參閱 <xref:security/cross-site-scripting>。
+如需詳細資訊，請參閱<xref:security/cross-site-scripting>。
 
 ### <a name="cross-origin-protection"></a>跨原始來源保護
 
@@ -357,7 +360,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 * Blazor除非採取額外的措施來防止伺服器應用程式，否則可以跨原始位置存取。 若要停用跨原始來源存取，請在端點中停用 CORS，方法是將 CORS 中介軟體新增`DisableCorsAttribute`至管線Blazor ，並將新增至端點中繼資料，或藉由[ SignalR設定跨原始來源資源分享](xref:signalr/security#cross-origin-resource-sharing)來限制允許的來源集合。
 * 如果已啟用 CORS，則可能需要額外的步驟來保護應用程式，視 CORS 設定而定。 如果已全域啟用 CORS，則Blazor可以停用伺服器中樞的 cors，方法是`DisableCorsAttribute`在呼叫`hub.MapBlazorHub()`之後將中繼資料新增至端點中繼資料。
 
-如需詳細資訊，請參閱 <xref:security/anti-request-forgery>。
+如需詳細資訊，請參閱<xref:security/anti-request-forgery>。
 
 ### <a name="click-jacking"></a>按一下-劫持
 
@@ -385,7 +388,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 * 可能的話，請使用相對連結。
 * 先驗證絕對連結目的地是否有效，再將它們包含在頁面中。
 
-如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
+如需詳細資訊，請參閱<xref:security/preventing-open-redirects>。
 
 ## <a name="security-checklist"></a>安全性檢查清單
 

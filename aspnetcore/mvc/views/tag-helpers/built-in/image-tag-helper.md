@@ -5,13 +5,19 @@ description: 示範如何使用影像標籤協助程式。
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/06/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/views/tag-helpers/builtin-th/image-tag-helper
-ms.openlocfilehash: 964072ad276f7e3e411ee41cb03a2efb9d05c585
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e1e3566f09c44d70650fa1f21e1921e76e46d384
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78663993"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777406"
 ---
 # <a name="image-tag-helper-in-aspnet-core"></a>ASP.NET Core 的影像標籤協助程式
 
@@ -38,7 +44,7 @@ ms.locfileid: "78663993"
 
 ### <a name="asp-append-version"></a>asp-append-version
 
-使用 `asp-append-version` 值與 `true` 屬性指定 `src` 時，即會叫用影像標籤協助程式。
+使用 `true` 值與 `src` 屬性指定 `asp-append-version` 時，即會叫用影像標籤協助程式。
 
 下列範例使用影像標籤協助程式：
 

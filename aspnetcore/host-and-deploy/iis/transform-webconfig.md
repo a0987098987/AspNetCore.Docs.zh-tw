@@ -6,29 +6,35 @@ monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: 069b9bb516644a1a722235b33d4916460488ebf2
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: f7e1fb0adc669b4bffa02e6688231c8f1447bd98
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78657931"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775930"
 ---
 # <a name="transform-webconfig"></a>轉換 web.config
 
-由[維傑·拉馬克里什南](https://github.com/vijayrkn)
+依[Vijay Ramakrishnan](https://github.com/vijayrkn)
 
 對 *web.config* 檔案的轉換可在發佈應用程式時，根據下列條件進行套用：
 
 * [建置組態](#build-configuration)
 * [設定檔](#profile)
 * [環境](#environment)
-* [自訂](#custom)
+* [Custom](#custom)
 
 這些轉換會針對下列任一 *web.config* 產生案例進行：
 
 * 由 `Microsoft.NET.Sdk.Web` SDK 自動產生。
-* 由應用[內容根](xref:fundamentals/index#content-root)中的開發人員提供。
+* 由開發人員在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中提供。
 
 ## <a name="build-configuration"></a>建置組態
 
@@ -138,7 +144,7 @@ dotnet publish --configuration Release /p:EnvironmentName=Production
 
 已指定環境名稱時，`ASPNETCORE_ENVIRONMENT` 環境變數會自動新增至 *web.config* 檔案。
 
-## <a name="custom"></a>Custom
+## <a name="custom"></a>自訂
 
 自訂轉換會第四個執行，亦即在 [組建組態](#build-configuration)[設定檔](#profile)及[環境](#environment)轉換之後執行。
 

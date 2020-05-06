@@ -4,13 +4,19 @@ author: rick-anderson
 description: 瞭解待用 ASP.NET Core 資料保護金鑰加密的執行詳細資料。
 ms.author: riande
 ms.date: 07/16/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/implementation/key-encryption-at-rest
-ms.openlocfilehash: 52c3137dbe467096364b42430c92aecc7c15e313
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: e68b8e09dbd876c6f0d37242ebaa415994b3b808
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658386"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776925"
 ---
 # <a name="key-encryption-at-rest-in-aspnet-core"></a>ASP.NET Core 中的待用金鑰加密
 
@@ -23,7 +29,7 @@ ms.locfileid: "78658386"
 
 ## <a name="azure-key-vault"></a>Azure 金鑰保存庫
 
-若要將金鑰儲存在[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)中，請在 `Startup` 類別中設定具有[ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault)的系統：
+若要將金鑰儲存在[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)中，請[ProtectKeysWithAzureKeyVault](/dotnet/api/microsoft.aspnetcore.dataprotection.azuredataprotectionbuilderextensions.protectkeyswithazurekeyvault)在`Startup`類別中設定具有 ProtectKeysWithAzureKeyVault 的系統：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -53,7 +59,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如果呼叫不含任何參數的 `ProtectKeysWithDpapi`，只有目前的 Windows 使用者帳戶可以解密保存的金鑰環。 您可以選擇性地指定電腦上的任何使用者帳戶（而不只是目前的使用者帳戶）能夠解密金鑰環：
+如果`ProtectKeysWithDpapi`呼叫時不含任何參數，則只有目前的 Windows 使用者帳戶可以解密保存的金鑰環。 您可以選擇性地指定電腦上的任何使用者帳戶（而不只是目前的使用者帳戶）能夠解密金鑰環：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -100,7 +106,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-另外還有 `ProtectKeysWithDpapiNG`的無參數多載。 使用此便利方法來指定規則 "SID = {CURRENT_ACCOUNT_SID}"，其中*CURRENT_ACCOUNT_SID*是目前 Windows 使用者帳戶的 SID：
+也有的無參數多載`ProtectKeysWithDpapiNG`。 使用此便利方法來指定規則 "SID = {CURRENT_ACCOUNT_SID}"，其中*CURRENT_ACCOUNT_SID*是目前 Windows 使用者帳戶的 SID：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)

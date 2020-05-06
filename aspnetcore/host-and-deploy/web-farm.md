@@ -6,17 +6,23 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/web-farm
-ms.openlocfilehash: 316c87e5f49593c05991a94cbe5e55d175a49bb3
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 3474b6b1d85774a15a912efcb37ec8f206695eaf
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78659366"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776353"
 ---
 # <a name="host-aspnet-core-in-a-web-farm"></a>在 Web 伺服陣列上裝載 ASP.NET Core
 
-由[克裡斯·羅斯](https://github.com/Tratcher)
+依[Chris Ross](https://github.com/Tratcher)
 
 *Web 伺服陣列*是一組兩個或多個 Web 伺服器 (或稱為「節點」**)，用於裝載應用程式的多個執行個體。 當使用者的要求抵達 Web 伺服陣列時，「負載平衡器」** 會將要求分散到 Web 伺服陣列的節點。 Web 伺服陣列改善：
 
@@ -50,9 +56,9 @@ ms.locfileid: "78659366"
 
 應用程式使用 [ASP.NET Core 資料保護系統](xref:security/data-protection/introduction)來保護資料。 資料保護會依賴一組儲存在*金鑰環*中的密碼編譯金鑰。 初始化資料保護系統時，會套用在本機儲存金鑰環的[預設設定](xref:security/data-protection/configuration/default-settings)。 在預設設定下，Web 伺服陣列的每個節點上都會儲存一個唯一的金鑰環。 因此，每個 Web 伺服陣列節點都無法解密由任何其他節點上的應用程式加密的資料。 預設設定通常不適用於在 Web 伺服陣列中裝載應用程式。 實作共用金鑰環的替代方式，是一律將使用者要求路由至相同的節點。 如需有關 Web 伺服陣列部署的資料保護系統設定詳細資訊，請參閱 <xref:security/data-protection/configuration/overview>。
 
-### <a name="caching"></a>Caching
+### <a name="caching"></a>快取
 
-在 Web 伺服陣列環境中，快取機制必須跨 Web 伺服陣列節點共用快取項目。 快取必須依賴於通用 Redis 快取、共用的 SQL Server 資料庫，或跨 Web 伺服陣列共用快取項目的自訂快取實作。 如需詳細資訊，請參閱 <xref:performance/caching/distributed>。
+在 Web 伺服陣列環境中，快取機制必須跨 Web 伺服陣列節點共用快取項目。 快取必須依賴於通用 Redis 快取、共用的 SQL Server 資料庫，或跨 Web 伺服陣列共用快取項目的自訂快取實作。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
 
 ## <a name="dependent-components"></a>相依元件
 
@@ -61,10 +67,10 @@ ms.locfileid: "78659366"
 | 狀況 | 相依於 &hellip; |
 | -------- | ------------------- |
 | 驗證 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/cookie> 和 <xref:security/cookie-sharing>。 |
-| 身分識別 | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱 <xref:security/authentication/identity>。 |
-| 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>有關詳細資訊,請參閱[工作階段和狀態管理:工作階段狀態](xref:fundamentals/app-state#session-state)。 |
-| TempData | 數據保護(加密 Cookie)(請參<xref:security/data-protection/configuration/overview>閱 )或會話(請參閱[工作階段和狀態管理:工作階段狀態](xref:fundamentals/app-state#session-state))。<br><br>有關詳細資訊,請參閱[工作階段和狀態管理:TempData](xref:fundamentals/app-state#tempdata)。 |
-| 防偽 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱 <xref:security/anti-request-forgery>。 |
+| Identity | 驗證及資料庫設定。<br><br>如需詳細資訊，請參閱<xref:security/authentication/identity>。 |
+| 工作階段 | 資料保護 (加密的 cookie) (請參閱 <xref:security/data-protection/configuration/overview>) 和快取 (請參閱 <xref:performance/caching/distributed>)。<br><br>如需詳細資訊，請參閱[會話和狀態管理：會話狀態](xref:fundamentals/app-state#session-state)。 |
+| TempData | 資料保護（加密的 cookie）（ <xref:security/data-protection/configuration/overview>請參閱）或會話（請參閱[會話和狀態管理：會話狀態](xref:fundamentals/app-state#session-state)）。<br><br>如需詳細資訊，請參閱[會話和狀態管理： TempData](xref:fundamentals/app-state#tempdata)。 |
+| 防偽 | 資料保護 (請參閱 <xref:security/data-protection/configuration/overview>)。<br><br>如需詳細資訊，請參閱<xref:security/anti-request-forgery>。 |
 
 ## <a name="troubleshoot"></a>疑難排解
 
@@ -77,7 +83,7 @@ ms.locfileid: "78659366"
 如果**間歇性**發生下列任何徵兆，則問題通常可追溯到 Web 伺服陣列環境的不正確資料保護或快取設定：
 
 * 驗證中斷 &ndash; 驗證 cookie 的設定不正確或無法解密。 OAuth (Facebook、Microsoft、Twitter) 或 OpenIdConnect 登入失敗並出現錯誤「相互關聯失敗」。
-* 授權中斷 &ndash; 身分識別會遺失。
+* 授權中斷&ndash; Identity會遺失。
 * 工作階段狀態將會遺失資料。
 * 快取項目會消失。
 * TempData 將會失敗。
@@ -91,6 +97,6 @@ ms.locfileid: "78659366"
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Windows](/azure/virtual-machines/extensions/custom-script-windows)&ndash;下載的自定義腳本擴展在 Azure 虛擬機器上執行文稿,這對於部署後配置和軟體安裝非常有用。
+* 適用于&ndash; [Windows 的自訂腳本擴充](/azure/virtual-machines/extensions/custom-script-windows)功能會在 Azure 虛擬機器上下載和執行腳本，這對於部署後設定和軟體安裝很有用。
 * <xref:host-and-deploy/proxy-load-balancer>
  

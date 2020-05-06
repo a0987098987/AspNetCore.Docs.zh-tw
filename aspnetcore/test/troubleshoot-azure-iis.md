@@ -1,70 +1,76 @@
 ---
-title: 在 Azure 應用服務和 IIS 上 ASP.NET 核心故障
+title: 疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 author: rick-anderson
-description: 瞭解如何診斷 ASP.NET核心應用的 Azure 應用服務和 Internet 資訊服務 (IIS) 部署的問題。
+description: 瞭解如何診斷 ASP.NET Core 應用程式的 Azure App Service 和 Internet Information Services （IIS）部署問題。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: f994cd1274bda9082a7cd8b637968b2769db1671
-ms.sourcegitcommit: 5547d920f322e5a823575c031529e4755ab119de
+ms.openlocfilehash: 09b004abd423abc9cc8e83d3bb3fea1dddf09e14
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81661704"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776626"
 ---
-# <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>在 Azure 應用服務和 IIS 上 ASP.NET 核心故障
+# <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 
 作者：[Justin Kotalik](https://github.com/jkotalik)
 
 ::: moniker range=">= aspnetcore-3.0"
 
-本文提供有關常見應用啟動錯誤的資訊,以及有關如何在將應用部署到 Azure 應用服務或 IIS 時診斷錯誤的說明:
+本文提供有關一般應用程式啟動錯誤的資訊，以及如何在將應用程式部署至 Azure App Service 或 IIS 時診斷錯誤的指示：
 
 [應用程式啟動錯誤](#app-startup-errors)  
-解釋常見的啟動 HTTP 狀態代碼方案。
+說明常見的啟動 HTTP 狀態碼案例。
 
-[Azure 應用服務上的故障排除](#troubleshoot-on-azure-app-service)  
-為部署到 Azure 應用服務的應用提供故障排除建議。
+[針對 Azure App Service 進行疑難排解](#troubleshoot-on-azure-app-service)  
+提供部署至 Azure App Service 之應用程式的疑難排解建議。
 
 [針對 IIS 進行疑難排解](#troubleshoot-on-iis)  
-為部署到IIS或本地在IIS Express上運行的應用提供故障排除建議。 本指南適用於 Windows 伺服器和 Windows 桌面部署。
+提供部署至 IIS 或在本機 IIS Express 上執行之應用程式的疑難排解建議。 本指南適用于 Windows Server 和 Windows 桌面部署。
 
-[清除包快取](#clear-package-caches)  
-說明在執行主要升級或更改包版本時,不連貫的包破壞應用時應執行的操作。
+[清除套件快取](#clear-package-caches)  
+說明當一致封裝在執行主要升級或變更封裝版本時，中斷應用程式時該怎麼辦。
 
 [其他資源](#additional-resources)  
-列出其他故障排除主題。
+列出其他疑難排解主題。
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 *502.5 - 進程失敗*或*500.30 -* 本地調試時發生的啟動失敗,可以使用本主題中的建議進行診斷。
+在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 使用本主題中的建議，可以診斷在本機進行偵錯工具時所發生的*502.5-進程失敗*或*500.30 啟動失敗*。
 
 ### <a name="40314-forbidden"></a>403.14 禁止
 
-應用無法啟動。 紀錄以下錯誤:
+應用程式無法啟動。 會記錄下列錯誤：
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-該錯誤通常是由託管系統上的部署中斷引起的,其中包括以下任何方案:
+此錯誤通常是因為主控系統上的部署中斷所造成，其中包括下列任何一種情況：
 
-* 該應用程式被部署到託管系統上的錯誤資料夾。
-* 部署過程無法將應用的所有檔案和資料夾移動到託管系統上的部署資料夾。
-* 部署中缺少*Web.config*檔,或者*Web.config*檔內容格式不正確。
+* 應用程式會部署到裝載系統上錯誤的資料夾。
+* 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
+* 部署中遺漏*web.config*檔案，或*web.config*檔案內容的格式不正確。
 
 執行下列步驟：
 
-1. 從託管系統上的部署資料夾中刪除所有檔案和資料夾。
-1. 使用一般部署方法(如 Visual Studio、PowerShell 或手動部署)將應用*發佈*資料夾的內容重新部署到託管系統:
-   * 確認部署中存在*Web.config*檔,並且其內容正確。
-   * 在 Azure 應用服務上託管時,確認應用已部署`D:\home\site\wwwroot`到該資料夾。
-   * 當套用用 IIS 託管時,確認應用程式已部署到**IIS 管理員****的基本設定**中顯示的 IIS**實體路徑**。
-1. 通過將託管系統上的部署與專案的*發佈*資料夾的內容進行比較,確認應用的所有檔和資料夾都已部署。
+1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
+1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
+   * 請確認*web.config*檔案存在於部署中，而且其內容正確。
+   * 在 Azure App Service 上裝載時，請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
+   * 當應用程式由 IIS 裝載時，請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
+1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容，確認已部署所有應用程式的檔案和資料夾。
 
-有關已發布的ASP.NET核心應用佈局的詳細資訊,請參<xref:host-and-deploy/directory-structure>閱 。 有關*Web.config*檔的詳細資訊,請<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>參閱 。
+如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊， <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
 
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
@@ -76,7 +82,7 @@ The Web server is configured to not list the contents of this directory.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-載入[核心模組元件ASP.NET](xref:host-and-deploy/aspnet-core-module)發生未知錯誤。 請採取下列其中一個動作：
+載入[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)元件時發生未知的錯誤。 請採取下列其中一個動作：
 
 * 連絡 [Microsoft 支援服務](https://support.microsoft.com/oas/default.aspx?prid=15832) (依序選取 [開發人員工具]**** 和 [ASP.NET Core]****)。
 * 在 Stack Overflow 上詢問問題。
@@ -86,18 +92,18 @@ The Web server is configured to not list the contents of this directory.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動 .NET 核心 CLR 進程,但未能啟動。 通常從應用程式事件記錄檔和 ASP.NET Core 模組 stdout 記錄檔中的項目，即可判斷啟動失敗的原因。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動 .NET Core CLR 同進程，但無法啟動。 通常從應用程式事件記錄檔和 ASP.NET Core 模組 stdout 記錄檔中的項目，即可判斷啟動失敗的原因。
 
-常見的故障條件:
+常見的失敗狀況：
 
-* 由於目標是不存在的ASP.NET核心共用框架的版本,因此應用配置錯誤。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
-* 使用 Azure 金鑰保管庫時,缺少對密鑰保管庫的許可權。 檢查目標密鑰保管庫中的訪問策略,以確保授予正確的許可權。
+* 應用程式設定錯誤，因為以不存在的 ASP.NET Core 共用架構版本為目標。 請檢查安裝在目標機器上的 ASP.NET Core 共用架構版本為何。
+* 使用 Azure Key Vault，缺少 Key Vault 的許可權。 檢查目標 Key Vault 中的存取原則，以確定已授與正確的許可權。
 
 ### <a name="50031-ancm-failed-to-find-native-dependencies"></a>500.31 ANCM 找不到原生相依性
 
 背景工作處理序失敗。 應用程式未啟動。
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)嘗試啟動 .NET 核心運行時的進程,但它無法啟動。 此啟動失敗的最常見原因是當 `Microsoft.NETCore.App` 或 `Microsoft.AspNetCore.App` 執行階段未安裝時。 如果應用程式部署至目標 ASP.NET Core 3.0，但電腦上無該版本，就會發生此錯誤。 範例錯誤訊息如下：
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)嘗試在同進程中啟動 .net Core 執行時間，但無法啟動。 此啟動失敗的最常見原因是當 `Microsoft.NETCore.App` 或 `Microsoft.AspNetCore.App` 執行階段未安裝時。 如果應用程式部署至目標 ASP.NET Core 3.0，但電腦上無該版本，就會發生此錯誤。 範例錯誤訊息如下：
 
 ```
 The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
@@ -132,7 +138,7 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-應用程式未參考 `Microsoft.AspNetCore.App` 架構。 只有面向`Microsoft.AspNetCore.App`框架的應用才能由[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)託管。
+應用程式未參考 `Microsoft.AspNetCore.App` 架構。 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)只能主控`Microsoft.AspNetCore.App`以架構為目標的應用程式。
 
 若要修正這個錯誤，請確認應用程式以 `Microsoft.AspNetCore.App` 架構為目標。 檢查 `.runtimeconfig.json` 以驗證應用程式是否以該架構為目標。
 
@@ -144,13 +150,13 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 
 ### <a name="50035-ancm-multiple-in-process-applications-in-same-process"></a>500.35 ANCM 同一程序中有多個同處理序應用程式
 
-工作進程無法在同一進程中運行多個進程內應用。
+工作者進程無法在同一個進程中執行多個同進程應用程式。
 
 若要修正這個錯誤，請在不同的 IIS 應用程式集區中執行應用程式。
 
 ### <a name="50036-ancm-out-of-process-handler-load-failure"></a>500.36 ANCM 跨處理序處理常式載入失敗
 
-跨處理序要求處理常式 *aspnetcorev2_outofprocess.dll* 不在 *aspnetcorev2.dll* 檔案旁邊。 這表示[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)的安裝損壞。
+跨處理序要求處理常式 *aspnetcorev2_outofprocess.dll* 不在 *aspnetcorev2.dll* 檔案旁邊。 這表示[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)安裝損毀。
 
 若要修正這個錯誤，請修復 [.NET Core 裝載套件組合](xref:host-and-deploy/iis/index#install-the-net-core-hosting-bundle) (適用於 IIS) 或 Visual Studio (適用於 IIS Express) 安裝。
 
@@ -160,14 +166,14 @@ ANCM 無法在提供的啟動時間限制內啟動。 根據預設，逾時值�
 
 在同一部電腦上啟動大量的應用程式時，就會發生此錯誤。 檢查伺服器在啟動期間是否出現 CPU/記憶體的使用量尖峰。 多個應用程式的啟動程序可能需要交錯進行。
 
-### <a name="50038-ancm-application-dll-not-found"></a>500.38 未找到 ANCM 應用程式 DLL
+### <a name="50038-ancm-application-dll-not-found"></a>500.38 找不到 ANCM 應用程式 DLL
 
-ANCM 未能找到應用程式 DLL,該應用程式應位於可執行檔旁邊。
+ANCM 找不到應用程式 DLL，其應該位於可執行檔的旁邊。
 
-使用進程內託管模型託管打包為[單檔可執行檔](/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)的應用時,將發生此錯誤。 進程內模型要求 ANCM 將 .NET Core 應用載入到現有的 IIS 進程中。 單檔部署模型不支援此方案。 使用應用的項目檔中的以下方法**之一**來修復此錯誤:
+使用同進程裝載模型來裝載封裝為[單一檔案可執行](/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)檔的應用程式時，就會發生此錯誤。 同進程模型要求 ANCM 將 .NET Core 應用程式載入至現有的 IIS 進程。 單一檔案部署模型不支援此案例。 在應用程式的專案檔中，使用下列**其中一**種方法來修正此錯誤：
 
-1. 通過將`PublishSingleFile`MSBuild 屬性`false`設置為禁用單檔發佈。
-1. 通過將`AspNetCoreHostingModel`MSBuild 屬性`OutOfProcess`設置為 ,切換到進程外託管模型。
+1. 將`PublishSingleFile` MSBuild 屬性設定為，以`false`停用單一檔案發行。
+1. 將`AspNetCoreHostingModel` MSBuild 屬性設定為`OutOfProcess`，以切換至跨進程裝載模型。
 
 ### <a name="5025-process-failure"></a>502.5 處理序失敗
 
@@ -199,7 +205,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
    * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
    * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
 
-確認專案檔中的`<Platform>`MSBuild 屬性與應用的已發佈位之間沒有衝突。
+確認專案檔中的`<Platform>` MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
 
 ### <a name="connection-reset"></a>連線重設
 
@@ -207,13 +213,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ### <a name="default-startup-limits"></a>預設啟動限制
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)設定了 120 秒的預設*啟動時間限制*。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是以120秒的預設*startupTimeLimit*來設定。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
 
-## <a name="troubleshoot-on-azure-app-service"></a>Azure 應用服務上的故障排除
+## <a name="troubleshoot-on-azure-app-service"></a>針對 Azure App Service 進行疑難排解
 
 [!INCLUDE [Azure App Service Preview Notice](~/includes/azure-apps-preview-notice.md)]
 
-### <a name="application-event-log-azure-app-service"></a>應用程式事件紀錄(Azure 應用服務)
+### <a name="application-event-log-azure-app-service"></a>應用程式事件記錄檔（Azure App Service）
 
 若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題]**** 刀鋒視窗：
 
@@ -289,7 +295,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
 
-### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET核心模組固定紀錄(Azure 應用服務)
+### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET Core 模組 stdout 記錄檔（Azure App Service）
 
 ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄檔」中所沒有的實用訊息。 啟用及檢視 stdout 記錄檔：
 
@@ -313,14 +319,14 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 選取 [儲存]**** 以儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
 >
 > 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-### <a name="aspnet-core-module-debug-log-azure-app-service"></a>ASP.NET核心模組除錯紀錄(Azure 應用服務)
+### <a name="aspnet-core-module-debug-log-azure-app-service"></a>ASP.NET Core 模組的 debug 記錄檔（Azure App Service）
 
 ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入的記錄。 啟用及檢視 stdout 記錄檔：
 
@@ -329,10 +335,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
    * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
      1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
      1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-     1. 打開路徑**站點** > **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
+     1. 開啟路徑**site** > **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
 1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-1. 打開路徑**站點** > **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
+1. 開啟路徑**site** > **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
 
 完成疑難排解時，請停用偵錯記錄：
@@ -342,14 +348,14 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * 從 *web.config* 檔案本機移除 `<handlerSettings>` 並重新部署應用程式。
 * 使用 Kudu 主控台來編輯 *web.config* 檔案並移除 `<handlerSettings>` 區段。 儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
 
 > [!WARNING]
 > 無法停用偵錯記錄，可能會造成應用程式或伺服器發生失敗。 記錄檔大小沒有任何限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用偵錯記錄。
 >
 > 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-### <a name="slow-or-hanging-app-azure-app-service"></a>慢速或掛起應用(Azure 應用服務)
+### <a name="slow-or-hanging-app-azure-app-service"></a>緩慢或懸掛應用程式（Azure App Service）
 
 當應用程式針對要求回應緩慢或無回應時，請參閱下列文章：
 
@@ -406,11 +412,11 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ## <a name="troubleshoot-on-iis"></a>針對 IIS 進行疑難排解
 
-### <a name="application-event-log-iis"></a>應用程式事件紀錄 (IIS)
+### <a name="application-event-log-iis"></a>應用程式事件記錄檔（IIS）
 
 存取「應用程式事件記錄檔」：
 
-1. 打開"開始"功能表,搜索*事件查看器*,然後選擇 **「事件查看器」** 應用。
+1. 開啟 [開始] 功能表，搜尋 [*事件檢視器*]，然後選取 [**事件檢視器**] 應用程式。
 1. 在 [事件檢視器]**** 中，開啟 [Windows 記錄]**** 節點。
 1. 選取 [應用程式]**** 以開啟「應用程式事件記錄檔」。
 1. 搜尋與失敗應用程式相關的錯誤。 錯誤在 [來源]** 資料行中的值會是 *IIS AspNetCore Module* 或 *IIS Express AspNetCore Module*。
@@ -435,7 +441,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
-### <a name="aspnet-core-module-stdout-log-iis"></a>ASP.NET核心模組固定紀錄 (IIS)
+### <a name="aspnet-core-module-stdout-log-iis"></a>ASP.NET Core 模組 stdout 記錄檔（IIS）
 
 啟用及檢視 stdout 記錄檔：
 
@@ -454,16 +460,16 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。
 >
 > 針對 ASP.NET Core 應用程式中的例行性記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-### <a name="aspnet-core-module-debug-log-iis"></a>ASP.NET核心模組除錯紀錄 (IIS)
+### <a name="aspnet-core-module-debug-log-iis"></a>ASP.NET Core 模組的調試記錄檔（IIS）
 
-將以下處理程式設定加入到應用程式的*Web.config*檔,以開啟 ASP.NET 核心模組除錯紀錄:
+將下列處理常式設定新增至應用程式*的 web.config 檔案*，以啟用 ASP.NET Core 模組的 debug 記錄檔：
 
 ```xml
 <aspNetCore ...>
@@ -476,7 +482,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 確認為記錄指定的路徑存在，而且應用程式集區的身分識別具有該位置的寫入權限。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
 
 ### <a name="enable-the-developer-exception-page"></a>啟用開發人員例外頁面
 
@@ -500,9 +506,9 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 若應用程式能夠回應要求、請使用終端機內嵌中介軟體從應用程式取得要求、連線與額外資料。 如如需詳細資訊與範例程式碼，請參閱 <xref:test/troubleshoot#obtain-data-from-an-app>。
 
-### <a name="slow-or-hanging-app-iis"></a>慢速或暫停應用程式 (IIS)
+### <a name="slow-or-hanging-app-iis"></a>緩慢或懸掛應用程式（IIS）
 
-*崩潰轉儲*是系統記憶體的快照,可幫助確定應用崩潰、啟動失敗或應用慢速的原因。
+損*毀*傾印是系統記憶體的快照集，有助於判斷應用程式損毀、啟動失敗或應用程式緩慢的原因。
 
 #### <a name="app-crashes-or-encounters-an-exception"></a>應用程式損毀或發生例外狀況
 
@@ -543,23 +549,23 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>應用程式停止回應、在啟動期間失敗，或正常執行
 
-當應用*掛起*(停止回應但不崩潰)、在啟動期間失敗或正常運行時,請參閱[使用者模式轉儲檔:選擇最佳工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)以選擇適當的工具來生成轉儲。
+當*應用程式*當機（停止回應但未損毀）、啟動期間失敗，或正常執行時，請參閱使用者模式傾印檔案[：選擇最適合的工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)來選取適當的工具以產生傾印。
 
 #### <a name="analyze-the-dump"></a>分析傾印
 
 您可以使用數種方法來分析傾印。 如需詳細資訊，請參閱[分析使用者模式傾印檔案](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file)。
 
-## <a name="clear-package-caches"></a>清除包快取
+## <a name="clear-package-caches"></a>清除套件快取
 
-在升級開發電腦上的 .NET Core SDK 或更改應用中的包版本後,正常運行的應用可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
+升級開發電腦上的 .NET Core SDK 或變更應用程式內的套件版本之後，正常運作的應用程式可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
 
 1. 刪除 [bin]** 和 [obj]** 資料夾。
-1. 通過執行[dotnet nuget 本地變數](/dotnet/core/tools/dotnet-nuget-locals)來清除包快取 -- 從命令 shell 中清除。
+1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除包快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具`nuget locals all -clear`執行命令 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
-1. 在重新部署應用之前,請刪除伺服器上的部署資料夾中的所有檔。
+1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -571,7 +577,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 ### <a name="azure-documentation"></a>Azure 文件
 
 * [ASP.NET Core 的 Application Insights](/azure/application-insights/app-insights-asp-net-core)
-* [使用視覺化工作室在 Azure 應用服務中排除 Web 應用故障的遠端除錯 Web 應用部分](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
+* [使用 Visual Studio 在 Azure App Service 中疑難排解 web 應用程式的遠端偵錯程式一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
 * [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)
 * [作法：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)
 * [使用 Visual Studio 疑難排解 Azure App Service 中的 Web 應用程式](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
@@ -583,11 +589,11 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ### <a name="visual-studio-documentation"></a>Visual Studio 文件
 
-* [遠端除錯ASP.NET視覺化工作室 2017 中 Azure 中的 IIS 核心](/visualstudio/debugger/remote-debugging-azure)
-* [遠端除錯ASP.NET視覺化工作室遠端 IIS 電腦上的核心](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
-* [使用視覺化工作室學習除錯](/visualstudio/debugger/getting-started-with-the-debugger)
+* [Visual Studio 2017 中 Azure 上 IIS 的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)
+* [Visual Studio 2017 中遠端 IIS 電腦上的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
+* [瞭解如何使用 Visual Studio 進行調試](/visualstudio/debugger/getting-started-with-the-debugger)
 
-### <a name="visual-studio-code-documentation"></a>視覺化工作室代碼文件
+### <a name="visual-studio-code-documentation"></a>Visual Studio Code 檔
 
 * [使用 Visual Studio Code 偵錯](https://code.visualstudio.com/docs/editor/debugging)
 
@@ -595,51 +601,51 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ::: moniker range="= aspnetcore-2.2"
 
-本文提供有關常見應用啟動錯誤的資訊,以及有關如何在將應用部署到 Azure 應用服務或 IIS 時診斷錯誤的說明:
+本文提供有關一般應用程式啟動錯誤的資訊，以及如何在將應用程式部署至 Azure App Service 或 IIS 時診斷錯誤的指示：
 
 [應用程式啟動錯誤](#app-startup-errors)  
-解釋常見的啟動 HTTP 狀態代碼方案。
+說明常見的啟動 HTTP 狀態碼案例。
 
-[Azure 應用服務上的故障排除](#troubleshoot-on-azure-app-service)  
-為部署到 Azure 應用服務的應用提供故障排除建議。
+[針對 Azure App Service 進行疑難排解](#troubleshoot-on-azure-app-service)  
+提供部署至 Azure App Service 之應用程式的疑難排解建議。
 
 [針對 IIS 進行疑難排解](#troubleshoot-on-iis)  
-為部署到IIS或本地在IIS Express上運行的應用提供故障排除建議。 本指南適用於 Windows 伺服器和 Windows 桌面部署。
+提供部署至 IIS 或在本機 IIS Express 上執行之應用程式的疑難排解建議。 本指南適用于 Windows Server 和 Windows 桌面部署。
 
-[清除包快取](#clear-package-caches)  
-說明在執行主要升級或更改包版本時,不連貫的包破壞應用時應執行的操作。
+[清除套件快取](#clear-package-caches)  
+說明當一致封裝在執行主要升級或變更封裝版本時，中斷應用程式時該怎麼辦。
 
 [其他資源](#additional-resources)  
-列出其他故障排除主題。
+列出其他疑難排解主題。
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 *502.5 - 進程失敗*或*500.30 -* 本地調試時發生的啟動失敗,可以使用本主題中的建議進行診斷。
+在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 使用本主題中的建議，可以診斷在本機進行偵錯工具時所發生的*502.5-進程失敗*或*500.30 啟動失敗*。
 
 ### <a name="40314-forbidden"></a>403.14 禁止
 
-應用無法啟動。 紀錄以下錯誤:
+應用程式無法啟動。 會記錄下列錯誤：
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-該錯誤通常是由託管系統上的部署中斷引起的,其中包括以下任何方案:
+此錯誤通常是因為主控系統上的部署中斷所造成，其中包括下列任何一種情況：
 
-* 該應用程式被部署到託管系統上的錯誤資料夾。
-* 部署過程無法將應用的所有檔案和資料夾移動到託管系統上的部署資料夾。
-* 部署中缺少*Web.config*檔,或者*Web.config*檔內容格式不正確。
+* 應用程式會部署到裝載系統上錯誤的資料夾。
+* 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
+* 部署中遺漏*web.config*檔案，或*web.config*檔案內容的格式不正確。
 
 執行下列步驟：
 
-1. 從託管系統上的部署資料夾中刪除所有檔案和資料夾。
-1. 使用一般部署方法(如 Visual Studio、PowerShell 或手動部署)將應用*發佈*資料夾的內容重新部署到託管系統:
-   * 確認部署中存在*Web.config*檔,並且其內容正確。
-   * 在 Azure 應用服務上託管時,確認應用已部署`D:\home\site\wwwroot`到該資料夾。
-   * 當套用用 IIS 託管時,確認應用程式已部署到**IIS 管理員****的基本設定**中顯示的 IIS**實體路徑**。
-1. 通過將託管系統上的部署與專案的*發佈*資料夾的內容進行比較,確認應用的所有檔和資料夾都已部署。
+1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
+1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
+   * 請確認*web.config*檔案存在於部署中，而且其內容正確。
+   * 在 Azure App Service 上裝載時，請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
+   * 當應用程式由 IIS 裝載時，請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
+1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容，確認已部署所有應用程式的檔案和資料夾。
 
-有關已發布的ASP.NET核心應用佈局的詳細資訊,請參<xref:host-and-deploy/directory-structure>閱 。 有關*Web.config*檔的詳細資訊,請<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>參閱 。
+如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊， <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
 
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
@@ -651,7 +657,7 @@ The Web server is configured to not list the contents of this directory.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)找不到 .NET Core CLR 並查找行程內請求處理程式 *(aspnetcorev2_inprocess.dll*)。 請檢查︰
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)找不到 .NET Core CLR，而且找不到同進程要求處理常式（*aspnetcorev2_inprocess .dll*）。 請檢查︰
 
 * 應用程式以 [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) NuGet 套件或 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)為目標。
 * 應用程式設為目標的 ASP.NET Core 共用架構版本有安裝在目標機器上。
@@ -660,7 +666,7 @@ The Web server is configured to not list the contents of this directory.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)找不到進程外託管請求處理程式。 請確定 *aspnetcorev2_outofprocess.dll* 出現在子資料夾中，且位於 *aspnetcorev2.dll* 旁。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)找不到跨進程主控要求處理常式。 請確定 *aspnetcorev2_outofprocess.dll* 出現在子資料夾中，且位於 *aspnetcorev2.dll* 旁。
 
 ### <a name="5025-process-failure"></a>502.5 處理序失敗
 
@@ -692,7 +698,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
    * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
    * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
 
-確認專案檔中的`<Platform>`MSBuild 屬性與應用的已發佈位之間沒有衝突。
+確認專案檔中的`<Platform>` MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
 
 ### <a name="connection-reset"></a>連線重設
 
@@ -700,13 +706,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ### <a name="default-startup-limits"></a>預設啟動限制
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)設定了 120 秒的預設*啟動時間限制*。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是以120秒的預設*startupTimeLimit*來設定。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
 
-## <a name="troubleshoot-on-azure-app-service"></a>Azure 應用服務上的故障排除
+## <a name="troubleshoot-on-azure-app-service"></a>針對 Azure App Service 進行疑難排解
 
 [!INCLUDE [Azure App Service Preview Notice](~/includes/azure-apps-preview-notice.md)]
 
-### <a name="application-event-log-azure-app-service"></a>應用程式事件紀錄(Azure 應用服務)
+### <a name="application-event-log-azure-app-service"></a>應用程式事件記錄檔（Azure App Service）
 
 若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題]**** 刀鋒視窗：
 
@@ -782,7 +788,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
 
-### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET核心模組固定紀錄(Azure 應用服務)
+### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET Core 模組 stdout 記錄檔（Azure App Service）
 
 ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄檔」中所沒有的實用訊息。 啟用及檢視 stdout 記錄檔：
 
@@ -806,14 +812,14 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 選取 [儲存]**** 以儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
 >
 > 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-### <a name="aspnet-core-module-debug-log-azure-app-service"></a>ASP.NET核心模組除錯紀錄(Azure 應用服務)
+### <a name="aspnet-core-module-debug-log-azure-app-service"></a>ASP.NET Core 模組的 debug 記錄檔（Azure App Service）
 
 ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入的記錄。 啟用及檢視 stdout 記錄檔：
 
@@ -822,10 +828,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
    * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
      1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
      1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-     1. 打開路徑**站點** > **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
+     1. 開啟路徑**site** > **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
 1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-1. 打開路徑**站點** > **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
+1. 開啟路徑**site** > **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
 
 完成疑難排解時，請停用偵錯記錄：
@@ -835,14 +841,14 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * 從 *web.config* 檔案本機移除 `<handlerSettings>` 並重新部署應用程式。
 * 使用 Kudu 主控台來編輯 *web.config* 檔案並移除 `<handlerSettings>` 區段。 儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
 
 > [!WARNING]
 > 無法停用偵錯記錄，可能會造成應用程式或伺服器發生失敗。 記錄檔大小沒有任何限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用偵錯記錄。
 >
 > 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-### <a name="slow-or-hanging-app-azure-app-service"></a>慢速或掛起應用(Azure 應用服務)
+### <a name="slow-or-hanging-app-azure-app-service"></a>緩慢或懸掛應用程式（Azure App Service）
 
 當應用程式針對要求回應緩慢或無回應時，請參閱下列文章：
 
@@ -899,11 +905,11 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ## <a name="troubleshoot-on-iis"></a>針對 IIS 進行疑難排解
 
-### <a name="application-event-log-iis"></a>應用程式事件紀錄 (IIS)
+### <a name="application-event-log-iis"></a>應用程式事件記錄檔（IIS）
 
 存取「應用程式事件記錄檔」：
 
-1. 打開"開始"功能表,搜索*事件查看器*,然後選擇 **「事件查看器」** 應用。
+1. 開啟 [開始] 功能表，搜尋 [*事件檢視器*]，然後選取 [**事件檢視器**] 應用程式。
 1. 在 [事件檢視器]**** 中，開啟 [Windows 記錄]**** 節點。
 1. 選取 [應用程式]**** 以開啟「應用程式事件記錄檔」。
 1. 搜尋與失敗應用程式相關的錯誤。 錯誤在 [來源]** 資料行中的值會是 *IIS AspNetCore Module* 或 *IIS Express AspNetCore Module*。
@@ -928,7 +934,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
-### <a name="aspnet-core-module-stdout-log-iis"></a>ASP.NET核心模組固定紀錄 (IIS)
+### <a name="aspnet-core-module-stdout-log-iis"></a>ASP.NET Core 模組 stdout 記錄檔（IIS）
 
 啟用及檢視 stdout 記錄檔：
 
@@ -947,16 +953,16 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。
 >
 > 針對 ASP.NET Core 應用程式中的例行性記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-### <a name="aspnet-core-module-debug-log-iis"></a>ASP.NET核心模組除錯紀錄 (IIS)
+### <a name="aspnet-core-module-debug-log-iis"></a>ASP.NET Core 模組的調試記錄檔（IIS）
 
-將以下處理程式設定加入到應用程式的*Web.config*檔,以開啟 ASP.NET 核心模組除錯紀錄:
+將下列處理常式設定新增至應用程式*的 web.config 檔案*，以啟用 ASP.NET Core 模組的 debug 記錄檔：
 
 ```xml
 <aspNetCore ...>
@@ -969,7 +975,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 確認為記錄指定的路徑存在，而且應用程式集區的身分識別具有該位置的寫入權限。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
 
 ### <a name="enable-the-developer-exception-page"></a>啟用開發人員例外頁面
 
@@ -993,9 +999,9 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 若應用程式能夠回應要求、請使用終端機內嵌中介軟體從應用程式取得要求、連線與額外資料。 如如需詳細資訊與範例程式碼，請參閱 <xref:test/troubleshoot#obtain-data-from-an-app>。
 
-### <a name="slow-or-hanging-app-iis"></a>慢速或暫停應用程式 (IIS)
+### <a name="slow-or-hanging-app-iis"></a>緩慢或懸掛應用程式（IIS）
 
-*崩潰轉儲*是系統記憶體的快照,可幫助確定應用崩潰、啟動失敗或應用慢速的原因。
+損*毀*傾印是系統記憶體的快照集，有助於判斷應用程式損毀、啟動失敗或應用程式緩慢的原因。
 
 #### <a name="app-crashes-or-encounters-an-exception"></a>應用程式損毀或發生例外狀況
 
@@ -1036,23 +1042,23 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>應用程式停止回應、在啟動期間失敗，或正常執行
 
-當應用*掛起*(停止回應但不崩潰)、在啟動期間失敗或正常運行時,請參閱[使用者模式轉儲檔:選擇最佳工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)以選擇適當的工具來生成轉儲。
+當*應用程式*當機（停止回應但未損毀）、啟動期間失敗，或正常執行時，請參閱使用者模式傾印檔案[：選擇最適合的工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)來選取適當的工具以產生傾印。
 
 #### <a name="analyze-the-dump"></a>分析傾印
 
 您可以使用數種方法來分析傾印。 如需詳細資訊，請參閱[分析使用者模式傾印檔案](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file)。
 
-## <a name="clear-package-caches"></a>清除包快取
+## <a name="clear-package-caches"></a>清除套件快取
 
-在升級開發電腦上的 .NET Core SDK 或更改應用中的包版本後,正常運行的應用可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
+升級開發電腦上的 .NET Core SDK 或變更應用程式內的套件版本之後，正常運作的應用程式可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
 
 1. 刪除 [bin]** 和 [obj]** 資料夾。
-1. 通過執行[dotnet nuget 本地變數](/dotnet/core/tools/dotnet-nuget-locals)來清除包快取 -- 從命令 shell 中清除。
+1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除包快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具`nuget locals all -clear`執行命令 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
-1. 在重新部署應用之前,請刪除伺服器上的部署資料夾中的所有檔。
+1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -1064,7 +1070,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 ### <a name="azure-documentation"></a>Azure 文件
 
 * [ASP.NET Core 的 Application Insights](/azure/application-insights/app-insights-asp-net-core)
-* [使用視覺化工作室在 Azure 應用服務中排除 Web 應用故障的遠端除錯 Web 應用部分](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
+* [使用 Visual Studio 在 Azure App Service 中疑難排解 web 應用程式的遠端偵錯程式一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
 * [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)
 * [作法：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)
 * [使用 Visual Studio 疑難排解 Azure App Service 中的 Web 應用程式](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
@@ -1076,11 +1082,11 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ### <a name="visual-studio-documentation"></a>Visual Studio 文件
 
-* [遠端除錯ASP.NET視覺化工作室 2017 中 Azure 中的 IIS 核心](/visualstudio/debugger/remote-debugging-azure)
-* [遠端除錯ASP.NET視覺化工作室遠端 IIS 電腦上的核心](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
-* [使用視覺化工作室學習除錯](/visualstudio/debugger/getting-started-with-the-debugger)
+* [Visual Studio 2017 中 Azure 上 IIS 的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)
+* [Visual Studio 2017 中遠端 IIS 電腦上的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
+* [瞭解如何使用 Visual Studio 進行調試](/visualstudio/debugger/getting-started-with-the-debugger)
 
-### <a name="visual-studio-code-documentation"></a>視覺化工作室代碼文件
+### <a name="visual-studio-code-documentation"></a>Visual Studio Code 檔
 
 * [使用 Visual Studio Code 偵錯](https://code.visualstudio.com/docs/editor/debugging)
 
@@ -1088,51 +1094,51 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ::: moniker range="< aspnetcore-2.2"
 
-本文提供有關常見應用啟動錯誤的資訊,以及有關如何在將應用部署到 Azure 應用服務或 IIS 時診斷錯誤的說明:
+本文提供有關一般應用程式啟動錯誤的資訊，以及如何在將應用程式部署至 Azure App Service 或 IIS 時診斷錯誤的指示：
 
 [應用程式啟動錯誤](#app-startup-errors)  
-解釋常見的啟動 HTTP 狀態代碼方案。
+說明常見的啟動 HTTP 狀態碼案例。
 
-[Azure 應用服務上的故障排除](#troubleshoot-on-azure-app-service)  
-為部署到 Azure 應用服務的應用提供故障排除建議。
+[針對 Azure App Service 進行疑難排解](#troubleshoot-on-azure-app-service)  
+提供部署至 Azure App Service 之應用程式的疑難排解建議。
 
 [針對 IIS 進行疑難排解](#troubleshoot-on-iis)  
-為部署到IIS或本地在IIS Express上運行的應用提供故障排除建議。 本指南適用於 Windows 伺服器和 Windows 桌面部署。
+提供部署至 IIS 或在本機 IIS Express 上執行之應用程式的疑難排解建議。 本指南適用于 Windows Server 和 Windows 桌面部署。
 
-[清除包快取](#clear-package-caches)  
-說明在執行主要升級或更改包版本時,不連貫的包破壞應用時應執行的操作。
+[清除套件快取](#clear-package-caches)  
+說明當一致封裝在執行主要升級或變更封裝版本時，中斷應用程式時該怎麼辦。
 
 [其他資源](#additional-resources)  
-列出其他故障排除主題。
+列出其他疑難排解主題。
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 可以使用本主題中的建議診斷本地除錯時發生的*502.5 行程失敗*。
+在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 使用本主題中的建議，可以診斷本機上的偵錯工具發生的*502.5 進程失敗*。
 
 ### <a name="40314-forbidden"></a>403.14 禁止
 
-應用無法啟動。 紀錄以下錯誤:
+應用程式無法啟動。 會記錄下列錯誤：
 
 ```
 The Web server is configured to not list the contents of this directory.
 ```
 
-該錯誤通常是由託管系統上的部署中斷引起的,其中包括以下任何方案:
+此錯誤通常是因為主控系統上的部署中斷所造成，其中包括下列任何一種情況：
 
-* 該應用程式被部署到託管系統上的錯誤資料夾。
-* 部署過程無法將應用的所有檔案和資料夾移動到託管系統上的部署資料夾。
-* 部署中缺少*Web.config*檔,或者*Web.config*檔內容格式不正確。
+* 應用程式會部署到裝載系統上錯誤的資料夾。
+* 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
+* 部署中遺漏*web.config*檔案，或*web.config*檔案內容的格式不正確。
 
 執行下列步驟：
 
-1. 從託管系統上的部署資料夾中刪除所有檔案和資料夾。
-1. 使用一般部署方法(如 Visual Studio、PowerShell 或手動部署)將應用*發佈*資料夾的內容重新部署到託管系統:
-   * 確認部署中存在*Web.config*檔,並且其內容正確。
-   * 在 Azure 應用服務上託管時,確認應用已部署`D:\home\site\wwwroot`到該資料夾。
-   * 當套用用 IIS 託管時,確認應用程式已部署到**IIS 管理員****的基本設定**中顯示的 IIS**實體路徑**。
-1. 通過將託管系統上的部署與專案的*發佈*資料夾的內容進行比較,確認應用的所有檔和資料夾都已部署。
+1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
+1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
+   * 請確認*web.config*檔案存在於部署中，而且其內容正確。
+   * 在 Azure App Service 上裝載時，請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
+   * 當應用程式由 IIS 裝載時，請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
+1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容，確認已部署所有應用程式的檔案和資料夾。
 
-有關已發布的ASP.NET核心應用佈局的詳細資訊,請參<xref:host-and-deploy/directory-structure>閱 。 有關*Web.config*檔的詳細資訊,請<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>參閱 。
+如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊， <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
 
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
@@ -1170,7 +1176,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
    * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
    * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
 
-確認專案檔中的`<Platform>`MSBuild 屬性與應用的已發佈位之間沒有衝突。
+確認專案檔中的`<Platform>` MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
 
 ### <a name="connection-reset"></a>連線重設
 
@@ -1178,13 +1184,13 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 ### <a name="default-startup-limits"></a>預設啟動限制
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)設定了 120 秒的預設*啟動時間限制*。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)是以120秒的預設*startupTimeLimit*來設定。 保留預設值時，在模組記錄處理序失敗之前，應用程式最多可花費兩分鐘來進行啟動。 如需有關設定模組的資訊，請參閱 [aspNetCore 元素的屬性](xref:host-and-deploy/aspnet-core-module#attributes-of-the-aspnetcore-element)。
 
-## <a name="troubleshoot-on-azure-app-service"></a>Azure 應用服務上的故障排除
+## <a name="troubleshoot-on-azure-app-service"></a>針對 Azure App Service 進行疑難排解
 
 [!INCLUDE [Azure App Service Preview Notice](~/includes/azure-apps-preview-notice.md)]
 
-### <a name="application-event-log-azure-app-service"></a>應用程式事件紀錄(Azure 應用服務)
+### <a name="application-event-log-azure-app-service"></a>應用程式事件記錄檔（Azure App Service）
 
 若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題]**** 刀鋒視窗：
 
@@ -1260,7 +1266,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
 
-### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET核心模組固定紀錄(Azure 應用服務)
+### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET Core 模組 stdout 記錄檔（Azure App Service）
 
 ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄檔」中所沒有的實用訊息。 啟用及檢視 stdout 記錄檔：
 
@@ -1284,14 +1290,14 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 選取 [儲存]**** 以儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
 >
 > 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
 
-### <a name="slow-or-hanging-app-azure-app-service"></a>慢速或掛起應用(Azure 應用服務)
+### <a name="slow-or-hanging-app-azure-app-service"></a>緩慢或懸掛應用程式（Azure App Service）
 
 當應用程式針對要求回應緩慢或無回應時，請參閱下列文章：
 
@@ -1348,11 +1354,11 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 ## <a name="troubleshoot-on-iis"></a>針對 IIS 進行疑難排解
 
-### <a name="application-event-log-iis"></a>應用程式事件紀錄 (IIS)
+### <a name="application-event-log-iis"></a>應用程式事件記錄檔（IIS）
 
 存取「應用程式事件記錄檔」：
 
-1. 打開"開始"功能表,搜索*事件查看器*,然後選擇 **「事件查看器」** 應用。
+1. 開啟 [開始] 功能表，搜尋 [*事件檢視器*]，然後選取 [**事件檢視器**] 應用程式。
 1. 在 [事件檢視器]**** 中，開啟 [Windows 記錄]**** 節點。
 1. 選取 [應用程式]**** 以開啟「應用程式事件記錄檔」。
 1. 搜尋與失敗應用程式相關的錯誤。 錯誤在 [來源]** 資料行中的值會是 *IIS AspNetCore Module* 或 *IIS Express AspNetCore Module*。
@@ -1377,7 +1383,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
-### <a name="aspnet-core-module-stdout-log-iis"></a>ASP.NET核心模組固定紀錄 (IIS)
+### <a name="aspnet-core-module-stdout-log-iis"></a>ASP.NET Core 模組 stdout 記錄檔（IIS）
 
 啟用及檢視 stdout 記錄檔：
 
@@ -1396,7 +1402,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 儲存檔案。
 
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。
@@ -1424,9 +1430,9 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 若應用程式能夠回應要求、請使用終端機內嵌中介軟體從應用程式取得要求、連線與額外資料。 如如需詳細資訊與範例程式碼，請參閱 <xref:test/troubleshoot#obtain-data-from-an-app>。
 
-### <a name="slow-or-hanging-app-iis"></a>慢速或暫停應用程式 (IIS)
+### <a name="slow-or-hanging-app-iis"></a>緩慢或懸掛應用程式（IIS）
 
-*崩潰轉儲*是系統記憶體的快照,可幫助確定應用崩潰、啟動失敗或應用慢速的原因。
+損*毀*傾印是系統記憶體的快照集，有助於判斷應用程式損毀、啟動失敗或應用程式緩慢的原因。
 
 #### <a name="app-crashes-or-encounters-an-exception"></a>應用程式損毀或發生例外狀況
 
@@ -1467,23 +1473,23 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 #### <a name="app-hangs-fails-during-startup-or-runs-normally"></a>應用程式停止回應、在啟動期間失敗，或正常執行
 
-當應用*掛起*(停止回應但不崩潰)、在啟動期間失敗或正常運行時,請參閱[使用者模式轉儲檔:選擇最佳工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)以選擇適當的工具來生成轉儲。
+當*應用程式*當機（停止回應但未損毀）、啟動期間失敗，或正常執行時，請參閱使用者模式傾印檔案[：選擇最適合的工具](/windows-hardware/drivers/debugger/user-mode-dump-files#choosing-the-best-tool)來選取適當的工具以產生傾印。
 
 #### <a name="analyze-the-dump"></a>分析傾印
 
 您可以使用數種方法來分析傾印。 如需詳細資訊，請參閱[分析使用者模式傾印檔案](/windows-hardware/drivers/debugger/analyzing-a-user-mode-dump-file)。
 
-## <a name="clear-package-caches"></a>清除包快取
+## <a name="clear-package-caches"></a>清除套件快取
 
-在升級開發電腦上的 .NET Core SDK 或更改應用中的包版本後,正常運行的應用可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
+升級開發電腦上的 .NET Core SDK 或變更應用程式內的套件版本之後，正常運作的應用程式可能會立即失敗。 在某些情況下，執行主要升級時，不一致的套件可能會中斷應用程式。 大多數這些問題都可依照下列指示來進行修正：
 
 1. 刪除 [bin]** 和 [obj]** 資料夾。
-1. 通過執行[dotnet nuget 本地變數](/dotnet/core/tools/dotnet-nuget-locals)來清除包快取 -- 從命令 shell 中清除。
+1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除包快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具`nuget locals all -clear`執行命令 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
-1. 在重新部署應用之前,請刪除伺服器上的部署資料夾中的所有檔。
+1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -1495,7 +1501,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 ### <a name="azure-documentation"></a>Azure 文件
 
 * [ASP.NET Core 的 Application Insights](/azure/application-insights/app-insights-asp-net-core)
-* [使用視覺化工作室在 Azure 應用服務中排除 Web 應用故障的遠端除錯 Web 應用部分](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
+* [使用 Visual Studio 在 Azure App Service 中疑難排解 web 應用程式的遠端偵錯程式一節](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio#remotedebug)
 * [Azure App Service 診斷概觀](/azure/app-service/app-service-diagnostics)
 * [作法：監視 Azure App Service 中的應用程式](/azure/app-service/web-sites-monitor)
 * [使用 Visual Studio 疑難排解 Azure App Service 中的 Web 應用程式](/azure/app-service/web-sites-dotnet-troubleshoot-visual-studio)
@@ -1507,11 +1513,11 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 ### <a name="visual-studio-documentation"></a>Visual Studio 文件
 
-* [遠端除錯ASP.NET視覺化工作室 2017 中 Azure 中的 IIS 核心](/visualstudio/debugger/remote-debugging-azure)
-* [遠端除錯ASP.NET視覺化工作室遠端 IIS 電腦上的核心](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
-* [使用視覺化工作室學習除錯](/visualstudio/debugger/getting-started-with-the-debugger)
+* [Visual Studio 2017 中 Azure 上 IIS 的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)
+* [Visual Studio 2017 中遠端 IIS 電腦上的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
+* [瞭解如何使用 Visual Studio 進行調試](/visualstudio/debugger/getting-started-with-the-debugger)
 
-### <a name="visual-studio-code-documentation"></a>視覺化工作室代碼文件
+### <a name="visual-studio-code-documentation"></a>Visual Studio Code 檔
 
 * [使用 Visual Studio Code 偵錯](https://code.visualstudio.com/docs/editor/debugging)
 

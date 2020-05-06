@@ -4,13 +4,19 @@ author: rick-anderson
 description: 瞭解 ASP.NET Core 資料保護子機碼衍生和已驗證加密的執行詳細資料。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/implementation/subkeyderivation
-ms.openlocfilehash: bbfde378755b09cd5b1217b8cf66249b9fa1d6ad
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: c4b4076d532e33b48b3438f842507a8cda2d71b6
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660549"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776847"
 ---
 # <a name="subkey-derivation-and-authenticated-encryption-in-aspnet-core"></a>ASP.NET Core 中的子機碼衍生和驗證的加密
 
@@ -19,21 +25,21 @@ ms.locfileid: "78660549"
 金鑰通道中的大部分金鑰都會包含某種形式的熵，而且會有一些演算法資訊，說明「CBC 模式加密 + HMAC 驗證」或「GCM 加密 + 驗證」。 在這些情況下，我們會將內嵌的熵稱為此金鑰的主要金鑰資料（或公里），而我們會執行金鑰衍生函式來衍生金鑰，以用於實際的密碼編譯作業。
 
 > [!NOTE]
-> 金鑰是抽象的，自訂的執行可能不會如下所示。 如果金鑰提供自己的 `IAuthenticatedEncryptor` 執行，而不是使用其中一個內建工廠，本節所述的機制將不再適用。
+> 金鑰是抽象的，自訂的執行可能不會如下所示。 如果索引鍵提供自己的`IAuthenticatedEncryptor`實作為，而不是使用其中一個內建工廠，本節中所述的機制將不再適用。
 
 <a name="data-protection-implementation-subkey-derivation-aad"></a>
 
 ## <a name="additional-authenticated-data-and-subkey-derivation"></a>其他已驗證的資料和子機碼衍生
 
-`IAuthenticatedEncryptor` 介面會作為所有已驗證之加密作業的核心介面。 其 `Encrypt` 方法會採用兩個緩衝區：純文字和 additionalAuthenticatedData （AAD）。 純文字內容不會變更 `IDataProtector.Protect`的呼叫，但是 AAD 是由系統產生，並由三個元件所組成：
+`IAuthenticatedEncryptor`介面可作為所有已驗證之加密作業的核心介面。 其`Encrypt`方法採用兩個緩衝區：純文字和 ADDITIONALAUTHENTICATEDDATA （AAD）。 純文字內容不會變更的呼叫`IDataProtector.Protect`，但是 AAD 是由系統產生，並由三個元件所組成：
 
 1. 32-bit 魔術 header 09 F0 C9 F0，可識別此版本的資料保護系統。
 
 2. 128位金鑰識別碼。
 
-3. 從目的鏈形成的可變長度字串，其會建立執行此作業的 `IDataProtector`。
+3. 從建立執行此作業之的`IDataProtector`目的鏈形成的可變長度字串。
 
-因為 AAD 對於這三個元件的元組而言是唯一的，所以我們可以使用它來從公里衍生新的金鑰，而不是在所有的密碼編譯作業中使用公里本身。 對於 `IAuthenticatedEncryptor.Encrypt`的每個呼叫，會進行下列金鑰衍生程式：
+因為 AAD 對於這三個元件的元組而言是唯一的，所以我們可以使用它來從公里衍生新的金鑰，而不是在所有的密碼編譯作業中使用公里本身。 對於的每個`IAuthenticatedEncryptor.Encrypt`呼叫，會進行下列金鑰衍生程式：
 
 （K_E，K_H） = SP800_108_CTR_HMACSHA512 （K_M，AAD，coNtextHeader | | keyModifier）
 
@@ -47,7 +53,7 @@ ms.locfileid: "78660549"
 
 * coNtext = coNtextHeader | |keyModifier
 
-內容標頭的長度是可變的，基本上是做為衍生 K_E 和 K_H 的演算法指紋。 金鑰修飾詞是在每次呼叫 `Encrypt` 時隨機產生的128位字串，可確保在此特定驗證加密作業中，KH 是唯一的，即使 KDF 的所有其他輸入都是常數。
+內容標頭的長度是可變的，基本上是做為衍生 K_E 和 K_H 的演算法指紋。 金鑰修飾詞是針對每次呼叫`Encrypt`而隨機產生的128位字串，可確保此特定驗證加密作業的 KE 和 KH 是唯一的，即使 KDF 的所有其他輸入都是常數。
 
 針對 CBC 模式加密 + HMAC 驗證作業，|K_E |這是對稱區塊加密金鑰的長度，而是 |K_H |這是 HMAC 常式的摘要大小。 針對 GCM 加密 + 驗證作業，|K_H |= 0。
 
@@ -60,7 +66,7 @@ ms.locfileid: "78660549"
 *output： = keyModifier | |iv | |E_cbc （K_E，iv，資料） | |HMAC （K_H，iv | |E_cbc （K_E，iv，資料））*
 
 > [!NOTE]
-> `IDataProtector.Protect` 的執行會在將[魔術標頭和金鑰識別碼](xref:security/data-protection/implementation/authenticated-encryption-details)傳回給呼叫端之前，先在輸出前面加上。 由於魔術標頭和金鑰識別碼是[AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad)的隱含部分，而且因為金鑰修飾詞是以輸入的形式送到 KDF，這表示最後傳回的承載的每一個位元組都會由 MAC 驗證。
+> 在`IDataProtector.Protect`將[魔術標頭和金鑰識別碼](xref:security/data-protection/implementation/authenticated-encryption-details)傳回給呼叫端之前，此實作為會在輸出前面加上。 由於魔術標頭和金鑰識別碼是[AAD](xref:security/data-protection/implementation/subkeyderivation#data-protection-implementation-subkey-derivation-aad)的隱含部分，而且因為金鑰修飾詞是以輸入的形式送到 KDF，這表示最後傳回的承載的每一個位元組都會由 MAC 驗證。
 
 ## <a name="galoiscounter-mode-encryption--validation"></a>Galois/計數器模式加密 + 驗證
 

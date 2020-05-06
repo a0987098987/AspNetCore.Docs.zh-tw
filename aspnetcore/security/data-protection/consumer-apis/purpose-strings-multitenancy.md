@@ -4,21 +4,27 @@ author: rick-anderson
 description: 瞭解目的字串階層和多租使用者，因為它與 ASP.NET Core 資料保護 Api 相關。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/consumer-apis/purpose-strings-multitenancy
-ms.openlocfilehash: 1133d40e7b325d58b3f70e7387494dae36ff8ac9
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 73edb8082d2df263bc1e6d73fee1360fa6840514
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78664749"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776769"
 ---
 # <a name="purpose-hierarchy-and-multi-tenancy-in-aspnet-core"></a>ASP.NET Core 中的目的階層和多租使用者
 
-由於 `IDataProtector` 也會隱含地 `IDataProtectionProvider`，因此可以將目的連結在一起。 就這一點而言，`provider.CreateProtector([ "purpose1", "purpose2" ])` 相當於 `provider.CreateProtector("purpose1").CreateProtector("purpose2")`。
+由於也`IDataProtector`是隱含的`IDataProtectionProvider`，因此可以將目的連結在一起。 就這一點而言`provider.CreateProtector([ "purpose1", "purpose2" ])` ，相當於`provider.CreateProtector("purpose1").CreateProtector("purpose2")`。
 
-這可讓您透過資料保護系統來進行一些有趣的階層式關聯性。 在先前的[SecureMessage](xref:security/data-protection/consumer-apis/purpose-strings#data-protection-contoso-purpose)範例中，SecureMessage 元件可以事先呼叫 `provider.CreateProtector("Contoso.Messaging.SecureMessage")`，並將結果快取至私用 `_myProvider` 欄位。 接著，您可以透過對 `_myProvider.CreateProtector("User: username")`的呼叫來建立未來的保護裝置，並使用這些保護裝置來保護個別訊息。
+這可讓您透過資料保護系統來進行一些有趣的階層式關聯性。 在先前的[SecureMessage](xref:security/data-protection/consumer-apis/purpose-strings#data-protection-contoso-purpose)範例中，SecureMessage 元件可以事先呼叫`provider.CreateProtector("Contoso.Messaging.SecureMessage")`一次，並將結果快取至私`_myProvider`用欄位。 接著，您可以透過對的呼叫來`_myProvider.CreateProtector("User: username")`建立未來的保護裝置，並使用這些保護裝置來保護個別訊息。
 
-這也可以翻轉。 假設有一個裝載多個租使用者的單一邏輯應用程式（CMS 看似合理），而且每個租使用者都可以使用自己的驗證和狀態管理系統來設定。 傘應用程式具有單一主要提供者，它會呼叫 `provider.CreateProtector("Tenant 1")` 並 `provider.CreateProtector("Tenant 2")`，為每個租使用者提供自己的資料保護系統隔離片段。 然後，租使用者可以根據自己的需求來衍生自己的個別保護裝置，但不管他們嘗試如何建立與系統中任何其他租使用者相衝突的保護裝置。 以圖形方式呈現，如下所示。
+這也可以翻轉。 假設有一個裝載多個租使用者的單一邏輯應用程式（CMS 看似合理），而且每個租使用者都可以使用自己的驗證和狀態管理系統來設定。 傘應用程式具有單一主要提供者，它會呼叫`provider.CreateProtector("Tenant 1")`並`provider.CreateProtector("Tenant 2")`為每個租使用者提供自己的資料保護系統隔離配量。 然後，租使用者可以根據自己的需求來衍生自己的個別保護裝置，但不管他們嘗試如何建立與系統中任何其他租使用者相衝突的保護裝置。 以圖形方式呈現，如下所示。
 
 ![多租使用者用途](purpose-strings-multitenancy/_static/purposes-multi-tenancy.png)
 

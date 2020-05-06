@@ -5,19 +5,25 @@ description: 了解如何將 Swashbuckle 新增至 ASP.NET Core Web API 專案�
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 01/17/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: da848ef9c5fa85f5186d1b6f0a6111d8c8d069c4
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 6e4d80afa1c38344321ad45031ff21fec71ae0a4
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78661298"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776717"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
 由 [Shayne Boyer](https://twitter.com/spboyer) 和 [Scott Addie](https://twitter.com/Scott_Addie) 提供
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/web-api-help-pages-using-swagger/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 Swashbuckle 有三個主要元件：
 
@@ -34,7 +40,7 @@ Swashbuckle 有三個主要元件：
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從 [套件管理員主控台]**** 視窗中：
-  * 跳到**檢視** > **其他 Windows** > **套件管理員主控台**
+  * 移至 [**查看** > **其他 Windows** > **套件管理員主控台**]
   * 巡覽至 *TodoApi.csproj* 檔案所在目錄
   * 執行下列命令：
 
@@ -43,7 +49,7 @@ Swashbuckle 有三個主要元件：
     ```
 
 * 從 [管理 NuGet 套件]**** 對話方塊中：
-  * 右鍵按下**解決方案資源管理員** > **管理 NuGet 套件**中的專案
+  * 以滑鼠右鍵按一下**方案總管** > **管理 NuGet 套件**] 中的專案
   * 將 [套件來源]**** 設定為 "nuget.org"
   * 請確定已啟用 [包含發行前版本] 選項
   * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
@@ -115,7 +121,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.0.0
 
 ::: moniker-end
 
-上述 `UseSwaggerUI` 方法呼叫會啟用[靜態檔案中介軟體](xref:fundamentals/static-files)。 如果定位為 .NET 框架或 .NET Core 1.x,則將[Microsoft.AspNetCore.靜態檔](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/)NuGet 包添加到專案中。
+上述 `UseSwaggerUI` 方法呼叫會啟用[靜態檔案中介軟體](xref:fundamentals/static-files)。 如果以 .NET Framework 或 .NET Core 1.x 為目標，請將[StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) NuGet 套件新增至專案。
 
 啟動應用程式，並巡覽至 `http://localhost:<port>/swagger/v1/swagger.json`。 描述端點的已產生文件隨即出現，如 [Swagger 規格 (swagger.json)](xref:tutorials/web-api-help-pages-using-swagger#swagger-specification-swaggerjson) 中所示。
 
@@ -167,8 +173,8 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range="<= aspnetcore-1.1"
 
-* 右鍵按下**解決方案資源管理員**的項目並選擇**屬性**。
-* 選取**的 '選項**卡的 **'輸出'** 部分下的**XML 文件檔**框。
+* 以滑鼠右鍵按一下**方案總管**中的專案，然後選取 [**屬性**]。
+* 在 [**組建**] 索引標籤的 [**輸出**] 區段下，選取 [ **XML**檔檔案] 方塊。
 
 ::: moniker-end
 
@@ -176,7 +182,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* 從 [Solution Pad]** 中，按下 [控制項]****，然後按一下專案名稱。 瀏覽到**工具** > **編輯檔案**。
+* 從 [Solution Pad]** 中，按下 [控制項]****，然後按一下專案名稱。 流覽至 [**工具** > ] [**編輯**檔案]。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
@@ -186,7 +192,7 @@ XML 註解可以使用下列方式啟用：
 ::: moniker range="<= aspnetcore-1.1"
 
 * 開啟 [專案選項]**** 對話方塊 > [組建]**[編譯器]** > ****
-* 勾選「**一般選項**」 部份下的 **「產生 xml 文件**」 框
+* 勾選 [**一般選項**] 區段底下的 [**產生 xml 檔**] 方塊
 
 ::: moniker-end
 
@@ -244,7 +250,7 @@ warning CS1591: Missing XML comment for publicly visible type or member 'TodoCon
 
 ::: moniker-end
 
-若只要針對特定成員隱藏，請將程式碼放在 [#pragma 警告](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning)前置處理器指示詞中。 此方法對於不應通過 API 文檔公開的代碼很有用。在下面的示例中,整個`Program`類將忽略警告代碼 CS1591。 會在類別定義結尾處還原強制執行的警告碼。 以逗號分隔清單指定多個警告碼。
+若只要針對特定成員隱藏，請將程式碼放在 [#pragma 警告](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning)前置處理器指示詞中。 這個方法適用于不應透過 API 檔公開的程式碼。在下列範例中，會忽略整個`Program`類別的警告程式碼 CS1591。 會在類別定義結尾處還原強制執行的警告碼。 以逗號分隔清單指定多個警告碼。
 
 ```csharp
 namespace TodoApi
@@ -290,9 +296,9 @@ namespace TodoApi
 
 ::: moniker-end
 
-在前面的代碼中,[反射](/dotnet/csharp/programming-guide/concepts/reflection)用於建構與 Web API 專案符合的 XML 檔名。 [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) 屬性用來建構 XML 檔案的路徑。 某些 Swagger 功能 (例如輸入參數的結構描述，或來自相對應屬性的 HTTP 方法和回應碼) 能在不使用 XML 文件檔案的情況下運作。 對於大部分的功能 (也就是方法摘要，以及參數和回應碼的描述) 而言，皆必須使用 XML 檔案。
+在上述程式碼中，[反映](/dotnet/csharp/programming-guide/concepts/reflection)是用來建立符合 Web API 專案的 XML 檔案名。 [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) 屬性用來建構 XML 檔案的路徑。 某些 Swagger 功能 (例如輸入參數的結構描述，或來自相對應屬性的 HTTP 方法和回應碼) 能在不使用 XML 文件檔案的情況下運作。 對於大部分的功能 (也就是方法摘要，以及參數和回應碼的描述) 而言，皆必須使用 XML 檔案。
 
-將三斜線註解新增至動作，即可透過將描述新增至區段標頭來增強 Swagger UI。 在[\<](/dotnet/csharp/programming-guide/xmldoc/summary)`Delete`操作上方新增摘要>元素:
+將三斜線註解新增至動作，即可透過將描述新增至區段標頭來增強 Swagger UI。 在`Delete`動作上方加入[ \<摘要>](/dotnet/csharp/programming-guide/xmldoc/summary)元素：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Delete&highlight=1-3)]
 
@@ -329,7 +335,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 }
 ```
 
-`Create`[向\<操作方法文件添加備註>](/dotnet/csharp/programming-guide/xmldoc/remarks)元素。 它會補充 `<summary>` 項目中指定的資訊，並提供更強固的 Swagger UI。 `<remarks>` 項目內容可以包含文字、JSON 或 XML。
+將[ \<備註>](/dotnet/csharp/programming-guide/xmldoc/remarks)元素新增至`Create`動作方法檔。 它會補充 `<summary>` 項目中指定的資訊，並提供更強固的 Swagger UI。 `<remarks>` 項目內容可以包含文字、JSON 或 XML。
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -355,7 +361,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 ### <a name="data-annotations"></a>資料註解
 
-使用在[System.元件模型.DataAnnotations](/dotnet/api/system.componentmodel.dataannotations)命名空間中找到的屬性標記模型,以説明驅動 Swagger UI 元件。
+使用在[DataAnnotations](/dotnet/api/system.componentmodel.dataannotations)命名空間中找到的屬性來標記模型，以協助驅動 Swagger UI 元件。
 
 將 `[Required]` 屬性 (attribute) 新增至 `TodoItem` 類別的 `Name` 屬性 (property)：
 
@@ -443,7 +449,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 ::: moniker range=">= aspnetcore-2.2"
 
-在 ASP.NET Core 2.2 或更新版本中，慣例可作為使用 `[ProducesResponseType]` 明確裝飾個別動作的替代方案。 如需詳細資訊，請參閱 <xref:web-api/advanced/conventions>。
+在 ASP.NET Core 2.2 或更新版本中，慣例可作為使用 `[ProducesResponseType]` 明確裝飾個別動作的替代方案。 如需詳細資訊，請參閱<xref:web-api/advanced/conventions>。
 
 ::: moniker-end
 

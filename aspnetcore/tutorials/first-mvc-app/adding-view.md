@@ -4,13 +4,19 @@ author: rick-anderson
 description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 8/04/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 5510fb6844452571ca764e21640f0bd16444c782
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: c89e0f0428fa7556fcd6b75cdfc1dd19109ec1c8
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78660206"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774596"
 ---
 # <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
 
@@ -44,7 +50,7 @@ ms.locfileid: "78660206"
 
   * 保留 [名稱]**** 方塊值 *Index.cshtml*。
 
-  * 選擇 **"添加"**
+  * 選取 [**新增**]
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view.png)
 
@@ -61,10 +67,10 @@ ms.locfileid: "78660206"
 * 依序以滑鼠右鍵按一下 *Views/HelloWorld* 資料夾、[新增] > [新增檔案]****。
 * 在 [新增檔案]**** 對話方塊中：
 
-  * 在左邊窗格中選擇**ASP .NET 核心**。
-  * 在中心窗格中選擇**MVC 檢視頁面**。
-  * 在 **「名稱」** 方塊鍵入*索引*。
-  * 選擇 **"新建**"。
+  * 在左窗格中選取 [ **ASP .Net Core** ]。
+  * 選取中央窗格中的 [ **MVC 視圖] 頁面**。
+  * 在 [**名稱**] 方塊中輸入*Index* 。
+  * 選取 [ **新增**]。
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view_mac.png)
 
@@ -86,7 +92,7 @@ ms.locfileid: "78660206"
 
 ## <a name="change-the-title-footer-and-menu-link-in-the-layout-file"></a>變更配置檔案中的標題、頁尾及功能表連結
 
-將*檢視/共用/_Layout.cshtml*文件的內容替換為以下標記。 所做的變更已醒目提示：
+以下列標記取代*Views/Shared/_Layout. cshtml*檔案的內容。 所做的變更已醒目提示：
 
 [!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
@@ -97,7 +103,7 @@ ms.locfileid: "78660206"
 
 在上述標記中，由於此應用程式未使用[區域](xref:mvc/controllers/areas)，因此省略了 `asp-area=""` [錨點標籤協助程式屬性](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)和屬性值。
 
-**注意**`Movies`: 控制器尚未實現。 此時，`Movie App` 連結無法運作。
+**注意**： `Movies`控制器尚未執行。 此時，`Movie App` 連結無法運作。
 
 儲存您的變更並選取 **Privacy** 連結。 請注意，瀏覽器索引標籤上的標題會顯示 **Privacy Policy - Movie App**，而不是 **Privacy Policy - Mvc Movie**：
 
@@ -127,7 +133,7 @@ ms.locfileid: "78660206"
 <title>@ViewData["Title"] - Movie App</title>
 ```
 
-儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在瀏覽器中按 Ctrl+F5 以強制載入來自伺服器的回應。瀏覽器標題是使用`ViewData["Title"]`我們在*Index.cshtml*檢視範本中設置並在佈局檔中添加的其他"-電影應用"創建的。
+儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在瀏覽器中按 Ctrl + F5，以強制載入伺服器的回應。）建立瀏覽器標題時， `ViewData["Title"]`我們會在 [ *. cshtml* ] 視圖範本中設定，並在版面配置檔案中新增額外的「-電影應用程式」。
 
 *Index.cshtml* 檢視範本中的內容已與 *Views/Shared/_Layout.cshtml* 檢視範本合併。 單一 HTML 回應會傳送到瀏覽器。 版面配置範本可讓您輕鬆進行變更，然後套用到應用程式中的所有頁面。 若要深入了解，請參閱[版面配置](xref:mvc/views/layout)。
 
@@ -168,8 +174,8 @@ ms.locfileid: "78660206"
 在下一個教學課程中，將會建立電影資料庫。
 
 > [!div class="step-by-step"]
-> [前一個](adding-controller.md)
-> [下一個](adding-model.md)
+> [上一頁](adding-controller.md)
+> [下一頁](adding-model.md)
 
 ::: moniker-end
 
@@ -201,7 +207,7 @@ ms.locfileid: "78660206"
 
   * 保留 [名稱]**** 方塊值 *Index.cshtml*。
 
-  * 選擇 **"添加"**
+  * 選取 [**新增**]
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view.png)
 
@@ -221,13 +227,13 @@ ms.locfileid: "78660206"
   * 選取左窗格的 [Web]****。
   * 選取中間窗格的 [空的 HTML 檔案]****。
   * 在 [名稱]** 方塊中，鍵入 **Index.cshtml**。
-  * 選擇 **"新建**"。
+  * 選取 [ **新增**]。
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view_mac.png)
 
 ---
 
-使用下列內容取代 *Views/HelloWorld/Index.cshtml* Razor 檢視檔案的內容：
+以下列內容取代*Views/HelloWorld/Index. cshtml* Razor視圖檔案的內容：
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
@@ -257,7 +263,7 @@ ms.locfileid: "78660206"
 > We haven't implemented the `Movies` controller yet, so if you click the `Movie App` link, you get a 404 (Not found) error.
 -->
 
-**注意**`Movies`: 控制器尚未實現。 此時，`Movie App` 連結無法運作。
+**注意**： `Movies`控制器尚未執行。 此時，`Movie App` 連結無法運作。
 
 儲存您的變更並選取 **Privacy** 連結。 請注意，瀏覽器索引標籤上的標題會顯示 **Privacy Policy - Movie App**，而不是 **Privacy Policy - Mvc Movie**：
 
@@ -287,9 +293,9 @@ ms.locfileid: "78660206"
 <title>@ViewData["Title"] - Movie App</title>
 ```
 
-儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在瀏覽器中按 Ctrl+F5 以強制載入來自伺服器的回應。瀏覽器標題是使用`ViewData["Title"]`我們在*Index.cshtml*檢視範本中設置並在佈局檔中添加的其他"-電影應用"創建的。
+儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在瀏覽器中按 Ctrl + F5，以強制載入伺服器的回應。）建立瀏覽器標題時， `ViewData["Title"]`我們會在 [ *. cshtml* ] 視圖範本中設定，並在版面配置檔案中新增額外的「-電影應用程式」。
 
-同時也請注意，*Index.cshtml* 檢視範本中的內容如何與 *Views/Shared/_Layout.cshtml* 檢視範本和已傳送至瀏覽器的單一 HTML 回應合併。 版面配置範本可讓您輕鬆進行會套用到應用程式之所有頁面的變更。 要瞭解更多資訊,請參閱[佈局](xref:mvc/views/layout)。
+同時也請注意，*Index.cshtml* 檢視範本中的內容如何與 *Views/Shared/_Layout.cshtml* 檢視範本和已傳送至瀏覽器的單一 HTML 回應合併。 版面配置範本可讓您輕鬆進行會套用到應用程式之所有頁面的變更。 若要深入瞭解，請參閱[版面](xref:mvc/views/layout)配置。
 
 ![電影清單檢視](~/tutorials/first-mvc-app/adding-view/_static/hell3.png)
 
@@ -328,7 +334,7 @@ ms.locfileid: "78660206"
 在下一個教學課程中，將會建立電影資料庫。
 
 > [!div class="step-by-step"]
-> [前一個](adding-controller.md)
-> [下一個](adding-model.md)
+> [上一頁](adding-controller.md)
+> [下一頁](adding-model.md)
 
 ::: moniker-end

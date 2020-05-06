@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 4/1/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 79a46cac4122728e84fa6f5acb3defa182092bec
-ms.sourcegitcommit: 56861af66bb364a5d60c3c72d133d854b4cf292d
-ms.translationtype: MT
+ms.openlocfilehash: e2b1672066a5b3c0bb6bc44e316bda93ae0f21b7
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206121"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774898"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -24,7 +30,7 @@ By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com
 
 應用程式可以使用下列內容來設定路由：
 
-- 控制器
+- Controllers
 - Razor Pages
 - SignalR
 - gRPC 服務
@@ -348,7 +354,7 @@ URL 比對作業會以一組可設定的階段來運作。 在每個階段中，
 * 具有常值文字的區段會被視為比參數區段更明確。
 * 具有條件約束的參數區段在沒有的情況下會被視為較明確。
 * 複雜的區段會被視為具有條件約束的參數區段。
-* Catch 所有參數都是最不明確的。
+* Catch-all 參數是最不明確的。 如需有關 catch all 路由的重要資訊，請參閱[路由範本參考](#rtr)中的**全部攔截**。
 
 如需確切值的參考，請參閱[GitHub 上的原始程式碼](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Template/RoutePrecedence.cs#L189)。
 
@@ -383,7 +389,7 @@ URL 產生：
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器最方便的方式，就是透過擴充方法來執行特定網址類別型的作業：
 
-| 擴充方法 | 描述 |
+| 擴充方法 | 說明 |
 | ---------------- | ----------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |
@@ -415,6 +421,8 @@ URL 產生：
 * 稱為「**全部攔截**」參數。 例如，`blog/{**slug}`：
   * 會比對開頭為的`/blog`任何 URI，並在其後面加上任何值。
   * 下列`/blog`值會指派給 [[資訊](https://developer.mozilla.org/docs/Glossary/Slug)區路線] 路由值。
+
+[!INCLUDE[](~/includes/catchall.md)]
 
 全部擷取參數也可以符合空字串。
 
@@ -1098,7 +1106,7 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器的最便利方式是透過執行特定位址類型作業的擴充方法。
 
-| 擴充方法   | 描述                                                         |
+| 擴充方法   | 說明                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |

@@ -6,14 +6,18 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 54d3f1e7b0c94d69781c052694305a389a675019
-ms.sourcegitcommit: f0aeeab6ab6e09db713bb9b7862c45f4d447771b
+ms.openlocfilehash: 3b510c7f4788a59145ef16720276fc7e4560f07e
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80977167"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774141"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
@@ -21,17 +25,17 @@ ms.locfileid: "80977167"
 
 ## <a name="openapi-analyzers--conventions"></a>OpenAPI 分析器與慣例
 
-OpenAPI (之前稱為 Swagger) 是用來描述 REST API 的語言無關規格。 OpenAPI 生態系統中已有工具，可讓您使用此規格來探索、測試和產生用戶端程式碼。 支援在ASP.NET核心MVC中生成和可視化OpenAPI文檔,通過社區驅動的專案(如[NSwag](https://github.com/RicoSuter/NSwag)和[Swashbuckle)](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)提供。 ASP.NET Core 2.2 提供改善的工具和執行階段體驗來建立 OpenAPI 文件。
+OpenAPI (之前稱為 Swagger) 是用來描述 REST API 的語言無關規格。 OpenAPI 生態系統中已有工具，可讓您使用此規格來探索、測試和產生用戶端程式碼。 在 ASP.NET Core MVC 中產生和視覺化 OpenAPI 檔的支援是透過社區驅動專案（例如[NSwag](https://github.com/RicoSuter/NSwag)和[Swashbuckle](https://github.com/domaindrivendev/Swashbuckle.AspNetCore)）提供。 ASP.NET Core 2.2 提供改善的工具和執行階段體驗來建立 OpenAPI 文件。
 
 如需詳細資訊，請參閱下列資源：
 
 * <xref:web-api/advanced/analyzers>
 * <xref:web-api/advanced/conventions>
-* [ASP.NET核心 2.2.0 預覽1:openAPI 分析儀&約定](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
+* [ASP.NET Core 2.2.0-preview1： OpenAPI 分析器 & 慣例](https://blogs.msdn.microsoft.com/webdev/2018/08/23/asp-net-core-2-20-preview1-open-api-analyzers-conventions/)
 
 ## <a name="problem-details-support"></a>問題詳細資料支援
 
-ASP.NET核心 2.1`ProblemDetails`引入了 ,基於[RFC 7807](https://tools.ietf.org/html/rfc7807)規範,用於攜帶帶有 HTTP 回應的錯誤詳細資訊。 在 2.2 中，`ProblemDetails` 是對具有 `ApiControllerAttribute` 屬性之控制器中用戶端錯誤碼的標準回應。 傳回用戶端錯誤狀態碼 (4xx) 的 `IActionResult` 現在會傳回 `ProblemDetails` 主體。 結果中也會包含相互關聯識別碼，可用來透過要求記錄檔與錯誤相互關聯。 對於用戶端錯誤，`ProducesResponseType` 預設會使用 `ProblemDetails` 作為回應類型。 這會記載於使用 NSwag 或 Swashbuckle.AspNetCore 產生的 OpenAPI/Swagger 輸出中。
+ASP.NET Core 2.1 引進`ProblemDetails`的是以[RFC 7807](https://tools.ietf.org/html/rfc7807)規格為基礎，其使用 HTTP 回應來攜帶錯誤的詳細資料。 在 2.2 中，`ProblemDetails` 是對具有 `ApiControllerAttribute` 屬性之控制器中用戶端錯誤碼的標準回應。 傳回用戶端錯誤狀態碼 (4xx) 的 `IActionResult` 現在會傳回 `ProblemDetails` 主體。 結果中也會包含相互關聯識別碼，可用來透過要求記錄檔與錯誤相互關聯。 對於用戶端錯誤，`ProducesResponseType` 預設會使用 `ProblemDetails` 作為回應類型。 這會記載於使用 NSwag 或 Swashbuckle.AspNetCore 產生的 OpenAPI/Swagger 輸出中。
 
 ## <a name="endpoint-routing"></a>端點路由
 
@@ -43,7 +47,7 @@ ASP.NET Core 2.2 使用新的「端點路由」** 系統來改善要求的分派
 * [路由參數轉換器](https://www.hanselman.com/blog/ASPNETCore22ParameterTransformersForCleanURLGenerationAndSlugsInRazorPagesOrMVC.aspx) (請參閱＜Routing＞(路由)**** 一節)
 * [IRouter 路由與端點路由之間的差異](xref:fundamentals/routing?view=aspnetcore-2.2#differences-from-earlier-versions-of-routing)
 
-## <a name="health-checks"></a>健康情況檢查
+## <a name="health-checks"></a>健康狀態檢查
 
 新的健康狀態檢查服務可讓您更輕鬆地在需要健康狀態檢查的環境中 (例如 Kubernetes) 使用 ASP.NET Core。 健康狀態檢查包括中介軟體，以及定義 `IHealthCheck` 抽象概念和服務的一組程式庫。
 
@@ -57,12 +61,12 @@ ASP.NET Core 2.2 使用新的「端點路由」** 系統來改善要求的分派
 
 ASP.NET Core 2.2 新增 HTTP/2 支援。
 
-HTTP/2 是 HTTP 通訊協定的主要版本。 HTTP/2 的顯著功能包括:
+HTTP/2 是 HTTP 通訊協定的主要版本。 值得注意的 HTTP/2 功能包括：
 
-* 支持標頭壓縮。
-* 通過單個連接進行完全多路複用的流。
+* 支援標頭壓縮。
+* 透過單一連線的完整多工串流。
 
-雖然 HTTP/2 保留 HTTP 的語義(例如 HTTP 標頭和方法),但它是 HTTP/1.x 對用戶端和伺服器之間數據框架和發送方式的一個重大更改。
+雖然 HTTP/2 會保留 HTTP 的語法（例如，HTTP 標頭和方法），但這是從 HTTP/1.x 進行的重大變更，以瞭解資料在用戶端與伺服器之間的框架和傳送方式。
 
 這項框架處理變更導致伺服器和用戶端必須交涉所使用的通訊協定版本。 Application-Layer Protocol Negotiation (ALPN) 是 TLS 延伸模組，可讓伺服器和用戶端交涉在其 TLS 信號交換過程中所使用的通訊協定版本。 雖然您可能事先知道伺服器與用戶端之間的通訊協定，但所有主要瀏覽器都支援 ALPN 作為建立 HTTP/2 連線的唯一方式。
 
@@ -81,11 +85,11 @@ HTTP/2 是 HTTP 通訊協定的主要版本。 HTTP/2 的顯著功能包括:
 
 如需詳細資訊，請參閱 [IIS 的同處理序裝載](xref:host-and-deploy/aspnet-core-module?view=aspnetcore-2.2#in-process-hosting-model)。
 
-## <a name="opno-locsignalr-java-client"></a>SignalRJava 用戶端
+## <a name="signalr-java-client"></a>SignalRJAVA 用戶端
 
-ASP.NET核心 2.2 引入SignalR了 的 Java 用戶端。 此用戶端支援從 JAVASignalR代碼 (包括 Android 應用)連接到 ASP.NET 核心伺服器。
+ASP.NET Core 2.2 引進的 JAVA 用戶端SignalR。 此用戶端支援從 JAVA 程式SignalR代碼連接到 ASP.NET Core 伺服器，包括 Android 應用程式。
 
-有關詳細資訊,請參閱[ASP.NETSignalR核心 Java 用戶端](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2)。
+如需詳細資訊，請參閱[ASP.NET Core SignalR JAVA 用戶端](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2)。
 
 ## <a name="cors-improvements"></a>CORS 改善
 
@@ -107,7 +111,7 @@ ASP.NET Core Web 專案範本已更新為 [Bootstrap 4](https://getbootstrap.com
 
 ## <a name="validation-performance"></a>驗證效能
 
-MVC 的驗證系統設計為可擴展且靈活,允許您根據請求確定哪些驗證器適用於給定模型。 這有助於撰寫複雜的驗證提供者。 但是,在最常見的情況下,應用程式僅使用內置驗證器,並且不需要這種額外的靈活性。 內建驗證程式包括 DataAnnotations (例如 [Required] 和 [StringLength]) 以及 `IValidatableObject`。
+MVC 的驗證系統設計成可延伸和彈性，可讓您根據每個要求判斷哪些驗證程式適用于指定的模型。 這有助於撰寫複雜的驗證提供者。 不過，在最常見的情況下，應用程式只會使用內建的驗證程式，而不需要這個額外的彈性。 內建驗證程式包括 DataAnnotations (例如 [Required] 和 [StringLength]) 以及 `IValidatableObject`。
 
 在 ASP.NET Core 2.2 中，若 MVC 判斷指定的模型圖形不需要驗證，則會跳過驗證。 當驗證無法驗證或沒有任何驗證程式的模型時，跳過驗證可大幅改善效能。 這包括諸如基本類型集合 (例如 `byte[]`、`string[]`、`Dictionary<string, string>`) 的物件，或沒有許多驗證程式的複雜物件圖形。
 

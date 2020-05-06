@@ -5,13 +5,19 @@ description: 了解如何使用變更權杖來追蹤變更。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.date: 10/07/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/change-tokens
-ms.openlocfilehash: 70451e219f1295b854e2f84aac55f0cfd1786b19
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 40868c57507989e1d3040df2cbe2feb4871d4394
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78656342"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774791"
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
 
@@ -19,11 +25,11 @@ ms.locfileid: "78656342"
 
 「變更權杖」** 是用來追蹤狀態變更的一般用途低階建置組塊。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="ichangetoken-interface"></a>IChangeToken 介面
 
-<xref:Microsoft.Extensions.Primitives.IChangeToken> 會傳播已發生變更的通知。 `IChangeToken` 位於 <xref:Microsoft.Extensions.Primitives?displayProperty=fullName> 命名空間內。 [Microsoft.擴展.原始 NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/)包隱式提供給ASP.NET核心應用。
+<xref:Microsoft.Extensions.Primitives.IChangeToken> 會傳播已發生變更的通知。 `IChangeToken` 位於 <xref:Microsoft.Extensions.Primitives?displayProperty=fullName> 命名空間內。 會以隱含方式為 ASP.NET Core 應用程式提供了[Microsoft Extensions 原型](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/)NuGet 套件。
 
 `IChangeToken` 有兩個屬性：
 
@@ -34,7 +40,7 @@ ms.locfileid: "78656342"
 
 ## <a name="changetoken-class"></a>ChangeToken 類別
 
-<xref:Microsoft.Extensions.Primitives.ChangeToken> 靜態類別用來傳播已發生變更的通知。 `ChangeToken` 位於 <xref:Microsoft.Extensions.Primitives?displayProperty=fullName> 命名空間內。 [Microsoft.擴展.原始 NuGet](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/)包隱式提供給ASP.NET核心應用。
+<xref:Microsoft.Extensions.Primitives.ChangeToken> 靜態類別用來傳播已發生變更的通知。 `ChangeToken` 位於 <xref:Microsoft.Extensions.Primitives?displayProperty=fullName> 命名空間內。 會以隱含方式為 ASP.NET Core 應用程式提供了[Microsoft Extensions 原型](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/)NuGet 套件。
 
 [ChangeToken.OnChange(Func\<IChangeToken>, Action)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 方法會登錄每當權杖變更時要呼叫的 `Action`：
 
@@ -113,8 +119,8 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 此執行個體中的 `state` 是用來存取監視狀態的 `IConfigurationMonitor` 執行個體參考。 會使用兩個屬性：
 
-* `MonitoringEnabled`&ndash;指示回調是否應運行其自定義代碼。
-* `CurrentState`&ndash;描述用於 UI 的當前監視狀態。
+* `MonitoringEnabled`&ndash;指出回呼是否應執行其自訂程式碼。
+* `CurrentState`&ndash;描述目前在 UI 中使用的監視狀態。
 
 `InvokeChanged` 方法類似於之前的方法，不同之處在於：
 
@@ -141,7 +147,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 UI 啟用和停用監視中的按鈕。
 
-*頁面/索引.cshtml*:
+*Pages/Index. cshtml*：
 
 [!code-cshtml[](change-tokens/samples/3.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
@@ -170,7 +176,7 @@ UI 啟用和停用監視中的按鈕。
 1. 使用 [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 從檔案提供者取得變更權杖。 修改檔案時，就會觸發權杖的回呼。
 1. 使用[滑動期限](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration)快取檔案內容。 變更權杖附有 [MemoryCacheEntryExtensions.AddExpirationToke](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*)，可在快取的檔案變更時收回快取項目。
 
-在下面的範例中,檔案存儲在應用[的內容根目錄](xref:fundamentals/index#content-root)中。 `IWebHostEnvironment.ContentRootFileProvider`取得指向<xref:Microsoft.Extensions.FileProviders.IFileProvider>應用程式的`IWebHostEnvironment.ContentRootPath`。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
+在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 `IWebHostEnvironment.ContentRootFileProvider`是用來取得<xref:Microsoft.Extensions.FileProviders.IFileProvider>指向應用程式的。 `IWebHostEnvironment.ContentRootPath` `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Services/FileService.cs?name=snippet1)]
 
@@ -217,7 +223,7 @@ var compositeChangeToken =
 
 「變更權杖」** 是用來追蹤狀態變更的一般用途低階建置組塊。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/change-tokens/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="ichangetoken-interface"></a>IChangeToken 介面
 
@@ -311,8 +317,8 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 此執行個體中的 `state` 是用來存取監視狀態的 `IConfigurationMonitor` 執行個體參考。 會使用兩個屬性：
 
-* `MonitoringEnabled`&ndash;指示回調是否應運行其自定義代碼。
-* `CurrentState`&ndash;描述用於 UI 的當前監視狀態。
+* `MonitoringEnabled`&ndash;指出回呼是否應執行其自訂程式碼。
+* `CurrentState`&ndash;描述目前在 UI 中使用的監視狀態。
 
 `InvokeChanged` 方法類似於之前的方法，不同之處在於：
 
@@ -339,7 +345,7 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 UI 啟用和停用監視中的按鈕。
 
-*頁面/索引.cshtml*:
+*Pages/Index. cshtml*：
 
 [!code-cshtml[](change-tokens/samples/2.x/SampleApp/Pages/Index.cshtml?name=snippet_Buttons)]
 
@@ -368,7 +374,7 @@ UI 啟用和停用監視中的按鈕。
 1. 使用 [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 從檔案提供者取得變更權杖。 修改檔案時，就會觸發權杖的回呼。
 1. 使用[滑動期限](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration)快取檔案內容。 變更權杖附有 [MemoryCacheEntryExtensions.AddExpirationToke](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*)，可在快取的檔案變更時收回快取項目。
 
-在下面的範例中,檔案存儲在應用[的內容根目錄](xref:fundamentals/index#content-root)中。 [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootFileProvider) 是用來取得指向應用程式 <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootPath> 的 <xref:Microsoft.Extensions.FileProviders.IFileProvider>。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
+在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 [IHostingEnvironment.ContentRootFileProvider](xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootFileProvider) 是用來取得指向應用程式 <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.ContentRootPath> 的 <xref:Microsoft.Extensions.FileProviders.IFileProvider>。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
 
 [!code-csharp[](change-tokens/samples/2.x/SampleApp/Services/FileService.cs?name=snippet1)]
 

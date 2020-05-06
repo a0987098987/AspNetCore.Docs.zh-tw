@@ -1,39 +1,45 @@
 ---
-title: .NET 內核上的 gRPC 簡介
+title: .NET Core 上的 gRPC 簡介
 author: juntaoluo
 description: 了解搭配 Kestrel 伺服器及 ASP.NET Core 堆疊的 gRPC 服務。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
 ms.date: 09/20/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: grpc/index
-ms.openlocfilehash: d97eea1da28424680a3cfa38102637b1e20ff661
-ms.sourcegitcommit: 72792e349458190b4158fcbacb87caf3fc605268
+ms.openlocfilehash: 2d7d683051fd1eb97f3f57d75bd582109166a6cd
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78667311"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82768844"
 ---
-# <a name="introduction-to-grpc-on-net-core"></a><span data-ttu-id="24afd-103">.NET 內核上的 gRPC 簡介</span><span class="sxs-lookup"><span data-stu-id="24afd-103">Introduction to gRPC on .NET Core</span></span>
+# <a name="introduction-to-grpc-on-net-core"></a><span data-ttu-id="24cb9-103">.NET Core 上的 gRPC 簡介</span><span class="sxs-lookup"><span data-stu-id="24cb9-103">Introduction to gRPC on .NET Core</span></span>
 
-<span data-ttu-id="24afd-104">由[約翰·羅](https://github.com/juntaoluo)和[詹姆斯·牛頓-金](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="24afd-104">By [John Luo](https://github.com/juntaoluo) and [James Newton-King](https://twitter.com/jamesnk)</span></span>
+<span data-ttu-id="24cb9-104">依[John 羅文](https://github.com/juntaoluo)和[James 的牛頓-王](https://twitter.com/jamesnk)</span><span class="sxs-lookup"><span data-stu-id="24cb9-104">By [John Luo](https://github.com/juntaoluo) and [James Newton-King](https://twitter.com/jamesnk)</span></span>
 
-<span data-ttu-id="24afd-105">[gRPC](https://grpc.io/docs/guides/) 是不限於語言的高效能遠端程序呼叫 (RPC) 架構。</span><span class="sxs-lookup"><span data-stu-id="24afd-105">[gRPC](https://grpc.io/docs/guides/) is a language agnostic, high-performance Remote Procedure Call (RPC) framework.</span></span>
+<span data-ttu-id="24cb9-105">[gRPC](https://grpc.io/docs/guides/) 是不限於語言的高效能遠端程序呼叫 (RPC) 架構。</span><span class="sxs-lookup"><span data-stu-id="24cb9-105">[gRPC](https://grpc.io/docs/guides/) is a language agnostic, high-performance Remote Procedure Call (RPC) framework.</span></span>
 
-<span data-ttu-id="24afd-106">gRPC 的主要優點包括：</span><span class="sxs-lookup"><span data-stu-id="24afd-106">The main benefits of gRPC are:</span></span>
-* <span data-ttu-id="24afd-107">現代、高性能、輕量級的 RPC 框架。</span><span class="sxs-lookup"><span data-stu-id="24afd-107">Modern, high-performance, lightweight RPC framework.</span></span>
-* <span data-ttu-id="24afd-108">根據預設使用 Protocol Buffers 的合約優先式 API 開發，使您得以進行不限於語言的實作。</span><span class="sxs-lookup"><span data-stu-id="24afd-108">Contract-first API development, using Protocol Buffers by default, allowing for language agnostic implementations.</span></span>
-* <span data-ttu-id="24afd-109">適用於多種語言的工具，可產生強型別伺服器及用戶端。</span><span class="sxs-lookup"><span data-stu-id="24afd-109">Tooling available for many languages to generate strongly-typed servers and clients.</span></span>
-* <span data-ttu-id="24afd-110">支援用戶端、伺服器及雙向資料流呼叫。</span><span class="sxs-lookup"><span data-stu-id="24afd-110">Supports client, server, and bi-directional streaming calls.</span></span>
-* <span data-ttu-id="24afd-111">透過 Protobuf 二進位序列化減少網路使用量。</span><span class="sxs-lookup"><span data-stu-id="24afd-111">Reduced network usage with Protobuf binary serialization.</span></span>
+<span data-ttu-id="24cb9-106">gRPC 的主要優點包括：</span><span class="sxs-lookup"><span data-stu-id="24cb9-106">The main benefits of gRPC are:</span></span>
+* <span data-ttu-id="24cb9-107">現代化、高效能、輕量的 RPC 架構。</span><span class="sxs-lookup"><span data-stu-id="24cb9-107">Modern, high-performance, lightweight RPC framework.</span></span>
+* <span data-ttu-id="24cb9-108">根據預設使用 Protocol Buffers 的合約優先式 API 開發，使您得以進行不限於語言的實作。</span><span class="sxs-lookup"><span data-stu-id="24cb9-108">Contract-first API development, using Protocol Buffers by default, allowing for language agnostic implementations.</span></span>
+* <span data-ttu-id="24cb9-109">適用於多種語言的工具，可產生強型別伺服器及用戶端。</span><span class="sxs-lookup"><span data-stu-id="24cb9-109">Tooling available for many languages to generate strongly-typed servers and clients.</span></span>
+* <span data-ttu-id="24cb9-110">支援用戶端、伺服器及雙向資料流呼叫。</span><span class="sxs-lookup"><span data-stu-id="24cb9-110">Supports client, server, and bi-directional streaming calls.</span></span>
+* <span data-ttu-id="24cb9-111">透過 Protobuf 二進位序列化減少網路使用量。</span><span class="sxs-lookup"><span data-stu-id="24cb9-111">Reduced network usage with Protobuf binary serialization.</span></span>
 
-<span data-ttu-id="24afd-112">這些優點讓 gRPC 非常適合：</span><span class="sxs-lookup"><span data-stu-id="24afd-112">These benefits make gRPC ideal for:</span></span>
-* <span data-ttu-id="24afd-113">首重效率的輕量型微服務。</span><span class="sxs-lookup"><span data-stu-id="24afd-113">Lightweight microservices where efficiency is critical.</span></span>
-* <span data-ttu-id="24afd-114">必須使用多種語言進行開發的多語言系統。</span><span class="sxs-lookup"><span data-stu-id="24afd-114">Polyglot systems where multiple languages are required for development.</span></span>
-* <span data-ttu-id="24afd-115">必須處理資料流要求或回應的點對點即時服務。</span><span class="sxs-lookup"><span data-stu-id="24afd-115">Point-to-point real-time services that need to handle streaming requests or responses.</span></span>
+<span data-ttu-id="24cb9-112">這些優點讓 gRPC 非常適合：</span><span class="sxs-lookup"><span data-stu-id="24cb9-112">These benefits make gRPC ideal for:</span></span>
+* <span data-ttu-id="24cb9-113">首重效率的輕量型微服務。</span><span class="sxs-lookup"><span data-stu-id="24cb9-113">Lightweight microservices where efficiency is critical.</span></span>
+* <span data-ttu-id="24cb9-114">必須使用多種語言進行開發的多語言系統。</span><span class="sxs-lookup"><span data-stu-id="24cb9-114">Polyglot systems where multiple languages are required for development.</span></span>
+* <span data-ttu-id="24cb9-115">必須處理資料流要求或回應的點對點即時服務。</span><span class="sxs-lookup"><span data-stu-id="24cb9-115">Point-to-point real-time services that need to handle streaming requests or responses.</span></span>
 
-## <a name="c-tooling-support-for-proto-files"></a><span data-ttu-id="24afd-116">C# 對 .proto 檔案的工具支援</span><span class="sxs-lookup"><span data-stu-id="24afd-116">C# Tooling support for .proto files</span></span>
+## <a name="c-tooling-support-for-proto-files"></a><span data-ttu-id="24cb9-116">適用于 proto 檔案的 c # 工具支援</span><span class="sxs-lookup"><span data-stu-id="24cb9-116">C# Tooling support for .proto files</span></span>
 
-<span data-ttu-id="24afd-117">gRPC 使用協定優先的方法進行 API 開發。</span><span class="sxs-lookup"><span data-stu-id="24afd-117">gRPC uses a contract-first approach to API development.</span></span> <span data-ttu-id="24afd-118">服務和訊息在*\*.proto*檔案中定義:</span><span class="sxs-lookup"><span data-stu-id="24afd-118">Services and messages are defined in *\*.proto* files:</span></span>
+<span data-ttu-id="24cb9-117">gRPC 會使用合約優先的方法來開發 API。</span><span class="sxs-lookup"><span data-stu-id="24cb9-117">gRPC uses a contract-first approach to API development.</span></span> <span data-ttu-id="24cb9-118">服務和訊息定義于\* \*proto\*檔案中：</span><span class="sxs-lookup"><span data-stu-id="24cb9-118">Services and messages are defined in *\*.proto* files:</span></span>
 
 ```protobuf
 syntax = "proto3";
@@ -51,10 +57,10 @@ message HelloReply {
 }
 ```
 
-<span data-ttu-id="24afd-119">服務的 .NET 型態、用戶端和訊息通過在專案中包含*\*.proto*檔案自動產生:</span><span class="sxs-lookup"><span data-stu-id="24afd-119">.NET types for services, clients and messages are automatically generated by including *\*.proto* files in a project:</span></span>
+<span data-ttu-id="24cb9-119">服務、用戶端和訊息的 .net 類型會透過在專案中包含\* \*proto\*檔案的方式自動產生：</span><span class="sxs-lookup"><span data-stu-id="24cb9-119">.NET types for services, clients and messages are automatically generated by including *\*.proto* files in a project:</span></span>
 
-* <span data-ttu-id="24afd-120">添加對[Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/)套件的包引用。</span><span class="sxs-lookup"><span data-stu-id="24afd-120">Add a package reference to [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) package.</span></span>
-* <span data-ttu-id="24afd-121">將*\*.proto*檔案`<Protobuf>`添加到專案組。</span><span class="sxs-lookup"><span data-stu-id="24afd-121">Add *\*.proto* files to the `<Protobuf>` item group.</span></span>
+* <span data-ttu-id="24cb9-120">將套件參考新增至[Grpc](https://www.nuget.org/packages/Grpc.Tools/)套件。</span><span class="sxs-lookup"><span data-stu-id="24cb9-120">Add a package reference to [Grpc.Tools](https://www.nuget.org/packages/Grpc.Tools/) package.</span></span>
+* <span data-ttu-id="24cb9-121">將\* \*proto\*檔案加入至`<Protobuf>`專案群組。</span><span class="sxs-lookup"><span data-stu-id="24cb9-121">Add *\*.proto* files to the `<Protobuf>` item group.</span></span>
 
 ```xml
 <ItemGroup>
@@ -62,13 +68,13 @@ message HelloReply {
 </ItemGroup>
 ```
 
-<span data-ttu-id="24afd-122">有關 gRPC 工具支援的詳細資訊,請<xref:grpc/basics>參閱 。</span><span class="sxs-lookup"><span data-stu-id="24afd-122">For more information on gRPC tooling support, see <xref:grpc/basics>.</span></span>
+<span data-ttu-id="24cb9-122">如需 gRPC 工具支援的詳細資訊， <xref:grpc/basics>請參閱。</span><span class="sxs-lookup"><span data-stu-id="24cb9-122">For more information on gRPC tooling support, see <xref:grpc/basics>.</span></span>
 
-## <a name="grpc-services-on-aspnet-core"></a><span data-ttu-id="24afd-123">ASP.NET核心上的 gRPC 服務</span><span class="sxs-lookup"><span data-stu-id="24afd-123">gRPC services on ASP.NET Core</span></span>
+## <a name="grpc-services-on-aspnet-core"></a><span data-ttu-id="24cb9-123">ASP.NET Core 上的 gRPC 服務</span><span class="sxs-lookup"><span data-stu-id="24cb9-123">gRPC services on ASP.NET Core</span></span>
 
-<span data-ttu-id="24afd-124">gRPC 服務可以託管在 ASP.NET 核心上。</span><span class="sxs-lookup"><span data-stu-id="24afd-124">gRPC services can be hosted on ASP.NET Core.</span></span> <span data-ttu-id="24afd-125">服務與流行的ASP.NET核心功能(如日誌記錄、依賴項注入 (DI)、身份驗證和授權)完全整合。</span><span class="sxs-lookup"><span data-stu-id="24afd-125">Services have full integration with popular ASP.NET Core features such as logging, dependency injection (DI), authentication and authorization.</span></span>
+<span data-ttu-id="24cb9-124">gRPC 服務可以裝載于 ASP.NET Core 上。</span><span class="sxs-lookup"><span data-stu-id="24cb9-124">gRPC services can be hosted on ASP.NET Core.</span></span> <span data-ttu-id="24cb9-125">服務具有與熱門 ASP.NET Core 功能的完整整合，例如記錄、相依性插入（DI）、驗證和授權。</span><span class="sxs-lookup"><span data-stu-id="24cb9-125">Services have full integration with popular ASP.NET Core features such as logging, dependency injection (DI), authentication and authorization.</span></span>
 
-<span data-ttu-id="24afd-126">gRPC 服務專案樣本提供啟動服務:</span><span class="sxs-lookup"><span data-stu-id="24afd-126">The gRPC service project template provides a starter service:</span></span>
+<span data-ttu-id="24cb9-126">GRPC 服務專案範本提供入門服務：</span><span class="sxs-lookup"><span data-stu-id="24cb9-126">The gRPC service project template provides a starter service:</span></span>
 
 ```csharp
 public class GreeterService : Greeter.GreeterBase
@@ -92,7 +98,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-<span data-ttu-id="24afd-127">`GreeterService`從類型繼承,`GreeterBase`該類型是`Greeter`從*\*.proto*檔案中的服務生成的類型。</span><span class="sxs-lookup"><span data-stu-id="24afd-127">`GreeterService` inherits from the `GreeterBase` type, which is generated from the `Greeter` service in the *\*.proto* file.</span></span> <span data-ttu-id="24afd-128">該服務可供*Startup.cs*客戶端存取:</span><span class="sxs-lookup"><span data-stu-id="24afd-128">The service is made accessible to clients in *Startup.cs*:</span></span>
+<span data-ttu-id="24cb9-127">`GreeterService`繼承自`GreeterBase`類型，這是從\* \*proto\*檔案中`Greeter`的服務產生的。</span><span class="sxs-lookup"><span data-stu-id="24cb9-127">`GreeterService` inherits from the `GreeterBase` type, which is generated from the `Greeter` service in the *\*.proto* file.</span></span> <span data-ttu-id="24cb9-128">此服務可供*Startup.cs*中的用戶端存取：</span><span class="sxs-lookup"><span data-stu-id="24cb9-128">The service is made accessible to clients in *Startup.cs*:</span></span>
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -101,11 +107,11 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-<span data-ttu-id="24afd-129">要瞭解有關 ASP.NET核心上的 gRPC 服務<xref:grpc/aspnetcore>的更多詳細資訊,請參閱 。</span><span class="sxs-lookup"><span data-stu-id="24afd-129">To learn more about gRPC services on ASP.NET Core, see <xref:grpc/aspnetcore>.</span></span>
+<span data-ttu-id="24cb9-129">若要深入瞭解 ASP.NET Core 上的 gRPC 服務， <xref:grpc/aspnetcore>請參閱。</span><span class="sxs-lookup"><span data-stu-id="24cb9-129">To learn more about gRPC services on ASP.NET Core, see <xref:grpc/aspnetcore>.</span></span>
 
-## <a name="call-grpc-services-with-a-net-client"></a><span data-ttu-id="24afd-130">使用 .NET 用戶端呼叫 gRPC 服務</span><span class="sxs-lookup"><span data-stu-id="24afd-130">Call gRPC services with a .NET client</span></span>
+## <a name="call-grpc-services-with-a-net-client"></a><span data-ttu-id="24cb9-130">使用 .NET 用戶端呼叫 gRPC 服務</span><span class="sxs-lookup"><span data-stu-id="24cb9-130">Call gRPC services with a .NET client</span></span>
 
-<span data-ttu-id="24afd-131">gRPC 用戶端是從[*\*.proto*檔生成的](xref:grpc/basics#generated-c-assets)具體用戶端類型。</span><span class="sxs-lookup"><span data-stu-id="24afd-131">gRPC clients are concrete client types that are [generated from *\*.proto* files](xref:grpc/basics#generated-c-assets).</span></span> <span data-ttu-id="24afd-132">具體的 gRPC 用戶端具有在*\*.proto*檔中轉換為 gRPC 服務的方法。</span><span class="sxs-lookup"><span data-stu-id="24afd-132">The concrete gRPC client has methods that translate to the gRPC service in the *\*.proto* file.</span></span>
+<span data-ttu-id="24cb9-131">gRPC 用戶端是[從\* \*proto\*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。</span><span class="sxs-lookup"><span data-stu-id="24cb9-131">gRPC clients are concrete client types that are [generated from *\*.proto* files](xref:grpc/basics#generated-c-assets).</span></span> <span data-ttu-id="24cb9-132">具體的 gRPC 用戶端具有轉譯為\* \*proto\*檔案中 gRPC 服務的方法。</span><span class="sxs-lookup"><span data-stu-id="24cb9-132">The concrete gRPC client has methods that translate to the gRPC service in the *\*.proto* file.</span></span>
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
@@ -117,13 +123,13 @@ var response = await client.SayHelloAsync(
 Console.WriteLine(response.Message);
 ```
 
-<span data-ttu-id="24afd-133">gRPC 用戶端使用通道創建,該通道表示與 gRPC 服務的長期連接。</span><span class="sxs-lookup"><span data-stu-id="24afd-133">A gRPC client is created using a channel, which represents a long-lived connection to a gRPC service.</span></span> <span data-ttu-id="24afd-134">可以使用 建立`GrpcChannel.ForAddress`色版 。</span><span class="sxs-lookup"><span data-stu-id="24afd-134">A channel can be created using `GrpcChannel.ForAddress`.</span></span>
+<span data-ttu-id="24cb9-133">GRPC 用戶端是使用通道所建立，這代表 gRPC 服務的長時間連接。</span><span class="sxs-lookup"><span data-stu-id="24cb9-133">A gRPC client is created using a channel, which represents a long-lived connection to a gRPC service.</span></span> <span data-ttu-id="24cb9-134">您可以使用`GrpcChannel.ForAddress`來建立通道。</span><span class="sxs-lookup"><span data-stu-id="24cb9-134">A channel can be created using `GrpcChannel.ForAddress`.</span></span>
 
-<span data-ttu-id="24afd-135">有關建立客戶端和呼叫不同服務方法的詳細資訊,請參<xref:grpc/client>閱 。</span><span class="sxs-lookup"><span data-stu-id="24afd-135">For more information on creating clients, and calling different service methods, see <xref:grpc/client>.</span></span>
+<span data-ttu-id="24cb9-135">如需建立用戶端和呼叫不同服務方法的詳細資訊， <xref:grpc/client>請參閱。</span><span class="sxs-lookup"><span data-stu-id="24cb9-135">For more information on creating clients, and calling different service methods, see <xref:grpc/client>.</span></span>
 
 [!INCLUDE[](~/includes/gRPCazure.md)]
 
-## <a name="additional-resources"></a><span data-ttu-id="24afd-136">其他資源</span><span class="sxs-lookup"><span data-stu-id="24afd-136">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="24cb9-136">其他資源</span><span class="sxs-lookup"><span data-stu-id="24cb9-136">Additional resources</span></span>
 
 * <xref:grpc/basics>
 * <xref:grpc/aspnetcore>

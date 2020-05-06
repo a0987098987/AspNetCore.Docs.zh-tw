@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/servers/httpsys
-ms.openlocfilehash: 3e858a974d6a5c008969c3c51a507880cc25a7ff
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 5ff5eed1c8ad6f8863fe16e0c76ab104658ddc0c
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78666919"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82769867"
 ---
 # <a name="httpsys-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 HTTP.sys 網頁伺服器實作
 
@@ -40,7 +46,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -88,14 +94,14 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 | -------- | ----------- | :-----: |
 | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `false` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
-| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值由[認證方案的數量](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes): `Basic` `Kerberos` `Negotiate`、`None``NTLM`、 與與 。 | `None` |
+| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由[AuthenticationSchemes 列舉](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes)所提供： `Basic`、 `Kerberos`、 `Negotiate`、 `None`和`NTLM`。 | `None` |
 | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(全機<br>設定) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>（全電腦<br>設 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
-| `RequestQueueMode` | 這指示伺服器是負責創建和配置請求佇列,還是應附加到現有佇列。<br>大多數現有配置選項在附加到現有佇列時不適用。 | `RequestQueueMode.Create` |
-| `RequestQueueName` | HTTP.sys 請求佇列的名稱。 | `null`( 匿名佇列 ) |
+| `RequestQueueMode` | 這會指出伺服器是否負責建立和設定要求佇列，或是否應附加至現有的佇列。<br>附加至現有的佇列時，大部分的現有設定選項都不適用。 | `RequestQueueMode.Create` |
+| `RequestQueueName` | Http.sys 要求佇列的名稱。 | `null`（匿名佇列） |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.Timeouts> | 公開 HTTP.sys <xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager> 設定，這也可在登錄中設定。 API 連結可提供包括預設值在內每個設定的詳細資訊：<ul><li>[TimeoutManager.DrainEntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.DrainEntityBody) &ndash; HTTP 伺服器 API 清空持續連線上實體內容的允許時間。</li><li>[TimeoutManager.EntityBody](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.EntityBody) &ndash; 要求實體內容到達的允許時間。</li><li>[TimeoutManager.HeaderWait](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.HeaderWait) &ndash; HTTP 伺服器 API 剖析要求標頭的允許時間。</li><li>[TimeoutManager.IdleConnection](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.IdleConnection) &ndash; 允許連線閒置的時間。</li><li>[TimeoutManager.MinSendBytesPerSecond](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.MinSendBytesPerSecond) &ndash; 回應的最低傳送速率。</li><li>[TimeoutManager.RequestQueue](xref:Microsoft.AspNetCore.Server.HttpSys.TimeoutManager.RequestQueue) &ndash; 在應用程式 擷取要求之前，將要求保留於要求佇列中的允許時間。</li></ul> |  |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.UrlPrefixes> | 指定 <xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection> 以向 HTTP.sys 註冊。 最實用的是 [UrlPrefixCollection.Add](xref:Microsoft.AspNetCore.Server.HttpSys.UrlPrefixCollection.Add*)，可用來將前置詞加入集合。 處置接聽程式之前可隨時修改這些內容。 |  |
@@ -164,7 +170,7 @@ public IActionResult MyActionMethod()
    HTTP.sys 使用 [HTTP Server API UrlPrefix 字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。
 
    > [!WARNING]
-   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 有關詳細資訊,請參閱[RFC 7230:第 5.4 節:主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
+   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 如需詳細資訊，請參閱[RFC 7230：第5.4 節：主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 1. 在伺服器上預先註冊 URL 首碼。
 
@@ -176,8 +182,8 @@ public IActionResult MyActionMethod()
    netsh http add urlacl url=<URL> user=<USER>
    ```
 
-   * `<URL>`&ndash;完全合格的統一資源定位器 (URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
-   * `<USER>`&ndash;指定使用者或使用者組名稱。
+   * `<URL>`&ndash;完整的統一資源定位器（URL）。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
+   * `<USER>`&ndash;指定使用者或使用者組名。
 
    在以下範例中，伺服器的本機 IP 位址是 `10.0.0.4`：
 
@@ -201,10 +207,10 @@ public IActionResult MyActionMethod()
    netsh http add sslcert ipport=<IP>:<PORT> certhash=<THUMBPRINT> appid="{<GUID>}"
    ```
 
-   * `<IP>`&ndash;指定結合的本地 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
-   * `<PORT>`&ndash;指定綁定的埠。
-   * `<THUMBPRINT>`&ndash; X.509 證書指紋。
-   * `<GUID>`&ndash;開發人員生成的 GUID 表示應用以用於提供資訊。
+   * `<IP>`&ndash;指定系結的本機 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
+   * `<PORT>`&ndash;指定系結的埠。
+   * `<THUMBPRINT>`&ndash; X.509 憑證指紋。
+   * `<GUID>`&ndash;開發人員產生的 GUID，代表應用程式以供參考之用。
 
    為了便於參考，請將 GUID 以套件標記的形式儲存在應用程式中：
 
@@ -244,7 +250,7 @@ public IActionResult MyActionMethod()
 
    以下是 *netsh.exe* 的參考文件：
 
-   * [超文字傳輸通訊協定 (HTTP) 的 Netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
+   * [超文字傳輸通訊協定 (HTTP) 的 netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
    * [UrlPrefix 字串](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 1. 執行應用程式。
@@ -293,7 +299,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -341,10 +347,10 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 | -------- | ----------- | :-----: |
 | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `false` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
-| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值由[認證方案的數量](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes): `Basic` `Kerberos` `Negotiate`、`None``NTLM`、 與與 。 | `None` |
+| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由[AuthenticationSchemes 列舉](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes)所提供： `Basic`、 `Kerberos`、 `Negotiate`、 `None`和`NTLM`。 | `None` |
 | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(全機<br>設定) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>（全電腦<br>設 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
@@ -415,7 +421,7 @@ public IActionResult MyActionMethod()
    HTTP.sys 使用 [HTTP Server API UrlPrefix 字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。
 
    > [!WARNING]
-   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 有關詳細資訊,請參閱[RFC 7230:第 5.4 節:主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
+   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 如需詳細資訊，請參閱[RFC 7230：第5.4 節：主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 1. 在伺服器上預先註冊 URL 首碼。
 
@@ -427,8 +433,8 @@ public IActionResult MyActionMethod()
    netsh http add urlacl url=<URL> user=<USER>
    ```
 
-   * `<URL>`&ndash;完全合格的統一資源定位器 (URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
-   * `<USER>`&ndash;指定使用者或使用者組名稱。
+   * `<URL>`&ndash;完整的統一資源定位器（URL）。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
+   * `<USER>`&ndash;指定使用者或使用者組名。
 
    在以下範例中，伺服器的本機 IP 位址是 `10.0.0.4`：
 
@@ -452,10 +458,10 @@ public IActionResult MyActionMethod()
    netsh http add sslcert ipport=<IP>:<PORT> certhash=<THUMBPRINT> appid="{<GUID>}"
    ```
 
-   * `<IP>`&ndash;指定結合的本地 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
-   * `<PORT>`&ndash;指定綁定的埠。
-   * `<THUMBPRINT>`&ndash; X.509 證書指紋。
-   * `<GUID>`&ndash;開發人員生成的 GUID 表示應用以用於提供資訊。
+   * `<IP>`&ndash;指定系結的本機 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
+   * `<PORT>`&ndash;指定系結的埠。
+   * `<THUMBPRINT>`&ndash; X.509 憑證指紋。
+   * `<GUID>`&ndash;開發人員產生的 GUID，代表應用程式以供參考之用。
 
    為了便於參考，請將 GUID 以套件標記的形式儲存在應用程式中：
 
@@ -495,7 +501,7 @@ public IActionResult MyActionMethod()
 
    以下是 *netsh.exe* 的參考文件：
 
-   * [超文字傳輸通訊協定 (HTTP) 的 Netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
+   * [超文字傳輸通訊協定 (HTTP) 的 netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
    * [UrlPrefix 字串](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 1. 執行應用程式。
@@ -544,7 +550,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -580,7 +586,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ### <a name="configure-the-aspnet-core-app-to-use-httpsys"></a>設定 ASP.NET Core 應用程式使用 HTTP.sys
 
-使用[Microsoft.AspNetCore.App 元包](xref:fundamentals/metapackage-app)[(nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/))時,專案檔中的包引用不需要。 若不是使用 `Microsoft.AspNetCore.App` 中繼套件，請將套件參考加入 [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)。
+使用[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)（[nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)）時，不需要專案檔中的套件參考。 若不是使用 `Microsoft.AspNetCore.App` 中繼套件，請將套件參考加入 [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)。
 
 建置主機時，呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderHttpSysExtensions.UseHttpSys*> 擴充方法，並指定任何必要的 <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions>。 下列範例會將選項設定為它們的預設值：
 
@@ -594,10 +600,10 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 | -------- | ----------- | :-----: |
 | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `true` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
-| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值由[認證方案的數量](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes): `Basic` `Kerberos` `Negotiate`、`None``NTLM`、 與與 。 | `None` |
+| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由[AuthenticationSchemes 列舉](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes)所提供： `Basic`、 `Kerberos`、 `Negotiate`、 `None`和`NTLM`。 | `None` |
 | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(全機<br>設定) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>（全電腦<br>設 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
@@ -668,7 +674,7 @@ public IActionResult MyActionMethod()
    HTTP.sys 使用 [HTTP Server API UrlPrefix 字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。
 
    > [!WARNING]
-   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 有關詳細資訊,請參閱[RFC 7230:第 5.4 節:主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
+   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 如需詳細資訊，請參閱[RFC 7230：第5.4 節：主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 1. 在伺服器上預先註冊 URL 首碼。
 
@@ -680,8 +686,8 @@ public IActionResult MyActionMethod()
    netsh http add urlacl url=<URL> user=<USER>
    ```
 
-   * `<URL>`&ndash;完全合格的統一資源定位器 (URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
-   * `<USER>`&ndash;指定使用者或使用者組名稱。
+   * `<URL>`&ndash;完整的統一資源定位器（URL）。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
+   * `<USER>`&ndash;指定使用者或使用者組名。
 
    在以下範例中，伺服器的本機 IP 位址是 `10.0.0.4`：
 
@@ -705,10 +711,10 @@ public IActionResult MyActionMethod()
    netsh http add sslcert ipport=<IP>:<PORT> certhash=<THUMBPRINT> appid="{<GUID>}"
    ```
 
-   * `<IP>`&ndash;指定結合的本地 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
-   * `<PORT>`&ndash;指定綁定的埠。
-   * `<THUMBPRINT>`&ndash; X.509 證書指紋。
-   * `<GUID>`&ndash;開發人員生成的 GUID 表示應用以用於提供資訊。
+   * `<IP>`&ndash;指定系結的本機 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
+   * `<PORT>`&ndash;指定系結的埠。
+   * `<THUMBPRINT>`&ndash; X.509 憑證指紋。
+   * `<GUID>`&ndash;開發人員產生的 GUID，代表應用程式以供參考之用。
 
    為了便於參考，請將 GUID 以套件標記的形式儲存在應用程式中：
 
@@ -748,7 +754,7 @@ public IActionResult MyActionMethod()
 
    以下是 *netsh.exe* 的參考文件：
 
-   * [超文字傳輸通訊協定 (HTTP) 的 Netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
+   * [超文字傳輸通訊協定 (HTTP) 的 netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
    * [UrlPrefix 字串](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 1. 執行應用程式。
@@ -797,7 +803,7 @@ HTTP.sys 支援下列功能：
 * Windows 7 或更新版本
 * Windows Server 2008 R2 或更新版本
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/servers/httpsys/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="when-to-use-httpsys"></a>使用 HTTP.sys 的時機
 
@@ -833,7 +839,7 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 
 ### <a name="configure-the-aspnet-core-app-to-use-httpsys"></a>設定 ASP.NET Core 應用程式使用 HTTP.sys
 
-使用[Microsoft.AspNetCore.App 元包](xref:fundamentals/metapackage-app)[(nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/))時,專案檔中的包引用不需要。 若不是使用 `Microsoft.AspNetCore.App` 中繼套件，請將套件參考加入 [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)。
+使用[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)（[nuget.org](https://www.nuget.org/packages/Microsoft.AspNetCore.App/)）時，不需要專案檔中的套件參考。 若不是使用 `Microsoft.AspNetCore.App` 中繼套件，請將套件參考加入 [Microsoft.AspNetCore.Server.HttpSys](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.HttpSys/)。
 
 建置主機時，呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderHttpSysExtensions.UseHttpSys*> 擴充方法，並指定任何必要的 <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions>。 下列範例會將選項設定為它們的預設值：
 
@@ -847,10 +853,10 @@ HTTP.sys 使用 Kerberos 驗證通訊協定委派給核心模式驗證。 Kerber
 | -------- | ----------- | :-----: |
 | [AllowSynchronousIO](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.AllowSynchronousIO) | 控制是否允許 `HttpContext.Request.Body` 和 `HttpContext.Response.Body` 同步輸出/輸入。 | `true` |
 | [Authentication.AllowAnonymous](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.AllowAnonymous) | 允許匿名要求。 | `true` |
-| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值由[認證方案的數量](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes): `Basic` `Kerberos` `Negotiate`、`None``NTLM`、 與與 。 | `None` |
+| [Authentication.Schemes](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationManager.Schemes) | 指定允許的驗證配置。 處置接聽程式之前可隨時修改。 值是由[AuthenticationSchemes 列舉](xref:Microsoft.AspNetCore.Server.HttpSys.AuthenticationSchemes)所提供： `Basic`、 `Kerberos`、 `Negotiate`、 `None`和`NTLM`。 | `None` |
 | [EnableResponseCaching](xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.EnableResponseCaching) | 針對含有合格標頭的回應嘗試[核心模式](/windows-hardware/drivers/gettingstarted/user-mode-and-kernel-mode)快取。 回應可能不包含 `Set-Cookie`、`Vary` 或 `Pragma` 標頭。 它必須包含為 `public` 的 `Cache-Control` 標頭，且有 `shared-max-age` 或 `max-age` 值，或是 `Expires` 標頭。 | `true` |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxAccepts> | 可同時接受的數目上限。 | 5 &times; [Environment.<br>ProcessorCount](xref:System.Environment.ProcessorCount) |
-| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>(全機<br>設定) |
+| <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxConnections> | 可接受的同時連線數量上限。 使用 `-1` 為無限多個。 使用 `null` 以使用登錄之整個電腦的設定。 | `null`<br>（全電腦<br>設 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.MaxRequestBodySize> | 請參閱 <a href="#maxrequestbodysize">MaxRequestBodySize</a> 小節。 | 30000000 位元組<br>(~28.6 MB) |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.RequestQueueLimit> | 可以加入佇列的最大要求數目。 | 1000 |
 | <xref:Microsoft.AspNetCore.Server.HttpSys.HttpSysOptions.ThrowWriteExceptions> | 指出若回應本文因為用戶端中斷連線而寫入失敗時，應擲回例外狀況或正常完成。 | `false`<br>(正常完成) |
@@ -921,7 +927,7 @@ public IActionResult MyActionMethod()
    HTTP.sys 使用 [HTTP Server API UrlPrefix 字串格式](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)。
 
    > [!WARNING]
-   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 有關詳細資訊,請參閱[RFC 7230:第 5.4 節:主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
+   > 請**勿**使用最上層萬用字元繫結 (`http://*:80/`與 `http://+:80`)。 最上層萬用字元繫結會導致應用程式安全性弱點。 這對強式與弱式萬用字元皆適用。 請使用明確的主機名稱或 IP 位址，而不要使用萬用字元。 若您擁有整個父網域 (相對於有弱點的 `*.com`) 的控制權，則子網域萬用字元繫結 (例如 `*.mysub.com`) 便不構成安全性風險。 如需詳細資訊，請參閱[RFC 7230：第5.4 節：主機](https://tools.ietf.org/html/rfc7230#section-5.4)。
 
 1. 在伺服器上預先註冊 URL 首碼。
 
@@ -933,8 +939,8 @@ public IActionResult MyActionMethod()
    netsh http add urlacl url=<URL> user=<USER>
    ```
 
-   * `<URL>`&ndash;完全合格的統一資源定位器 (URL)。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
-   * `<USER>`&ndash;指定使用者或使用者組名稱。
+   * `<URL>`&ndash;完整的統一資源定位器（URL）。 請勿使用萬用字元繫結。 請使用有效的主機名稱或本機 IP 位址。 URL 必須包含結尾斜線。**
+   * `<USER>`&ndash;指定使用者或使用者組名。
 
    在以下範例中，伺服器的本機 IP 位址是 `10.0.0.4`：
 
@@ -958,10 +964,10 @@ public IActionResult MyActionMethod()
    netsh http add sslcert ipport=<IP>:<PORT> certhash=<THUMBPRINT> appid="{<GUID>}"
    ```
 
-   * `<IP>`&ndash;指定結合的本地 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
-   * `<PORT>`&ndash;指定綁定的埠。
-   * `<THUMBPRINT>`&ndash; X.509 證書指紋。
-   * `<GUID>`&ndash;開發人員生成的 GUID 表示應用以用於提供資訊。
+   * `<IP>`&ndash;指定系結的本機 IP 位址。 請勿使用萬用字元繫結。 請使用有效的 IP 位址。
+   * `<PORT>`&ndash;指定系結的埠。
+   * `<THUMBPRINT>`&ndash; X.509 憑證指紋。
+   * `<GUID>`&ndash;開發人員產生的 GUID，代表應用程式以供參考之用。
 
    為了便於參考，請將 GUID 以套件標記的形式儲存在應用程式中：
 
@@ -1001,7 +1007,7 @@ public IActionResult MyActionMethod()
 
    以下是 *netsh.exe* 的參考文件：
 
-   * [超文字傳輸通訊協定 (HTTP) 的 Netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
+   * [超文字傳輸通訊協定 (HTTP) 的 netsh 命令](https://technet.microsoft.com/library/cc725882.aspx)
    * [UrlPrefix 字串](https://msdn.microsoft.com/library/windows/desktop/aa364698.aspx)
 
 1. 執行應用程式。

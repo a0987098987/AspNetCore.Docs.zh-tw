@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 04/30/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: e86047c9a830cd3ea906d0798f61d90eaee5a18c
-ms.sourcegitcommit: 6318d2bdd63116e178c34492a904be85ec9ac108
+ms.openlocfilehash: 1579b92dbc9db08bfdc5572e5d4245bd18d50590
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82604827"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773784"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>搭配使用 ASP.NET Core SignalR 與 Blazor WebAssembly
 
@@ -36,7 +39,7 @@ ms.locfileid: "82604827"
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -268,7 +271,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 > * 新增SignalR用戶端程式庫
 > * 新增SignalR中樞
 > * 新增SignalR服務和SignalR中樞的端點
-> * 新增 Razor 元件程式碼以進行聊天
+> * 新增Razor聊天的元件程式碼
 
 若要深入瞭解如何Blazor建立應用程式， Blazor請參閱檔：
 

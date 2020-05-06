@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 04/06/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: 269be9ece674b39d03cb50720f4fb182c565a639
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: d3207969dfbeb9a81e0da88f38a38c6889bbfba9
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78659646"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775865"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>ASP.NET Core 的部分標記協助程式
 
@@ -20,11 +26,11 @@ ms.locfileid: "78659646"
 
 如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/built-in/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="overview"></a>概觀
 
-部分標記協助程式用於在 Razor 頁面和 MVC 應用程式中呈現[部分檢視](xref:mvc/views/partial)。 請考慮它：
+部分標記協助程式用於呈現頁面和 MVC 應用程式中Razor的[部分視圖](xref:mvc/views/partial)。 請考慮它：
 
 * 需要 ASP.NET Core 2.1 或更新版本。
 * 是 [HTML 協助程式語法](xref:mvc/views/partial#reference-a-partial-view)的替代方法。
@@ -43,7 +49,7 @@ ms.locfileid: "78659646"
 
 部分標記協助程式屬性的清查如下。
 
-## <a name="name"></a>NAME
+## <a name="name"></a>name
 
 `name` 屬性 (Attribute) 是必要項。 它會指出要呈現之部分檢視的名稱或路徑。 當提供部分檢視名稱時，就會起始[檢視探索](xref:mvc/views/overview#view-discovery)程序。 提供明確的路徑時，則會略過該程序。 如需了解所有可接受的 `name` 值，請參閱[部分檢視探索](xref:mvc/views/partial#partial-view-discovery)。
 
@@ -63,7 +69,7 @@ ms.locfileid: "78659646"
 
 [!code-csharp[](samples/TagHelpersBuiltIn/Pages/Product.cshtml.cs?highlight=8)]
 
-## <a name="model"></a>model
+## <a name="model"></a>模型
 
 `model`　屬性指派要傳遞至部分檢視的模型執行個體。 `model` 屬性不能與 [for](#for) 屬性一起使用。
 

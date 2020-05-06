@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/17/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 77f07ba89de4449c6d13006a5fd61499cb5cdfc0
-ms.sourcegitcommit: 3d07e21868dafc503530ecae2cfa18a7490b58a6
+ms.openlocfilehash: 72f433ffdc7d08e23fb68fc6ed9903a39959363b
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81642742"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775982"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -38,7 +44,7 @@ ms.locfileid: "81642742"
 以下為支援的作業系統：
 
 * Windows 7 或更新版本
-* Windows 伺服器 2012 R2 或更高版本
+* Windows Server 2012 R2 或更新版本
 
 [HTTP.sys 伺服器](xref:fundamentals/servers/httpsys) (先前稱為 WebListener) 不適用搭配 IIS 的反向 Proxy 設定。 請使用 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)。
 
@@ -62,7 +68,7 @@ ms.locfileid: "81642742"
 
 使用同處理序裝載，ASP.NET Core 應用程式會在與其 IIS 工作者處理序相同的處理序中執行。 因為要求未透過回送介面卡 (將連出網路流量傳回同一部電腦的網路介面) 進行 proxy 處理，所以同處理序裝載會提供優於跨處理序裝載的效能。 IIS 透過 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 來執行處理程序管理。
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module):
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)：
 
 * 執行應用程式初始化。
   * 載入 [CoreCLR](/dotnet/standard/glossary#coreclr)。
@@ -75,7 +81,7 @@ ms.locfileid: "81642742"
 
 ![同處理序代管內的 ASP.NET Core 模組案例](index/_static/ancm-inprocess.png)
 
-要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET核心模組接收本機請求並將其傳遞到IIS HTTP 伺服器`IISHttpServer`()。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
+要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP`IISHttpServer`伺服器（）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
 
 IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會透過 IIS HTTP 伺服器傳回 IIS。 IIS 會將回應傳送到起始該要求的用戶端。
 
@@ -88,7 +94,7 @@ IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介
 
 ### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
 
-由於ASP.NET Core 應用在獨立於IIS工作流程的進程中運行,因此ASP.NET核心模組處理流程管理。 此模組會在第一個要求到達時啟動 ASP.NET Core 應用程式的處理序，並在應用程式關閉或損毀時將它重新啟動。 此行為基本上與執行同處理序，並由 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 所管理的應用程式相同。
+因為 ASP.NET Core 應用程式會在與 IIS 背景工作進程不同的進程中執行，所以 ASP.NET Core 模組會處理進程管理。 此模組會在第一個要求到達時啟動 ASP.NET Core 應用程式的處理序，並在應用程式關閉或損毀時將它重新啟動。 此行為基本上與執行同處理序，並由 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 所管理的應用程式相同。
 
 下圖說明 IIS、ASP.NET Core 模組和跨處理序裝載應用程式之間的關聯性：
 
@@ -108,7 +114,7 @@ Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core �
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-在*Program.cs*( Program.cs<xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>`CreateHostBuilder`) 中 建構主機時,呼叫 以開啟 IIS 整合:
+在（Program.cs）中`CreateHostBuilder`建立*Program.cs*主機時，請<xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>呼叫以啟用 IIS 整合：
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -135,7 +141,7 @@ services.Configure<IISServerOptions>(options =>
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
-| `AllowSynchronousIO`           | `false` | `HttpContext.Request`和是否允許同步`HttpContext.Response`I/O。 |
+| `AllowSynchronousIO`           | `false` | 是否允許`HttpContext.Request`和的同步 i/o `HttpContext.Response`。 |
 | `MaxRequestBodySize`           | `30000000`  | 取得或設定 `HttpRequest` 的要求本文大小上限。 請注意，IIS 本身具有限制 `maxAllowedContentLength`，此限制將在 `IISServerOptions` 中設定 `MaxRequestBodySize` 時處理。 變更 `MaxRequestBodySize` 將不會影響 `maxAllowedContentLength`。 若要增加 `maxAllowedContentLength`，請在 *web.config* 中新增項目，以將 `maxAllowedContentLength` 設定為較高的值。 如需更多詳細資料，請參閱[組態](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/#configuration)。 |
 
 **跨處理序裝載模型**
@@ -181,15 +187,15 @@ services.Configure<IISOptions>(options =>
 </PropertyGroup>
 ```
 
-使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
+使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ### <a name="webconfig-file-location"></a>web.config 檔案位置
 
-為了正確設定[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)*,Web.config*檔必須存在於已部署應用[的內容根](xref:fundamentals/index#content-root)路徑(通常是應用基礎路徑)中。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
+為了正確設定[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module) *，web.config 檔案*必須存在於已部署應用程式的[內容根](xref:fundamentals/index#content-root)路徑（通常是應用程式基底路徑）。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
-敏感檔案存在於應用程式的物理路徑上,例如*\<程式集>.runtimeconfig.json、**\<程式集>.xml(XML*文件註釋)和*\<程式集>.deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
+機密檔案存在於應用程式的實體路徑，例如* \<元件>. .runtimeconfig.json. json*、 * \<元件> .xml* （xml 檔批註）和* \<元件>. .deps.json。* 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
-***Web.config*檔必須始終存在於部署中,正確命名,並能夠配置網站以進行正常啟動。切勿從生產部署中刪除*Web.config*檔。**
+***Web.config*檔案必須隨時存在於部署中、正確命名，而且能夠將網站設定為正常啟動。絕對不要從生產環境部署*移除 web.config 檔案*。**
 
 ### <a name="transform-webconfig"></a>轉換 web.config
 
@@ -210,12 +216,12 @@ services.Configure<IISOptions>(options =>
    ![在選取角色服務步驟中，選取預設的角色服務。](index/_static/role-services-ws2016.png)
 
    **Windows 驗證 (選擇性)**  
-   要啟用 Windows 認證,可以展開以下節點 **:Web 伺服器** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器** > **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 要開啟 WebSocket,請展開以下節點 **:Web 伺服器** > **應用程式開發**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器** > **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
-1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝 Web 伺服器 (IIS) 角色後,不需要重新啟動**伺服器 /IIS。**
+1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝**網頁伺服器（iis）** 角色之後，不需要重新開機伺服器/iis。
 
 **Windows 桌面作業系統**
 
@@ -232,10 +238,10 @@ services.Configure<IISOptions>(options =>
 1. 接受**全球資訊網服務**的預設功能，或自訂 IIS 功能。
 
    **Windows 驗證 (選擇性)**  
-   要啟用 Windows 認證,可以展開以下節點:**萬維網服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 要啟用 WebSocket,請展開以下節點:**萬維 Web 服務** > **應用程式開發功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務** > ] [**應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 若 IIS 安裝需要重新啟動，請重新啟動系統。
 
@@ -243,7 +249,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="install-the-net-core-hosting-bundle"></a>安裝 .NET Core 裝載套件組合
 
-在主控系統上安裝 .NET Core 裝載套件組合**。 該捆綁套件安裝 .NET 核心執行時、.NET 核心庫和[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
+在主控系統上安裝 .NET Core 裝載套件組合**。 套件組合會安裝 .NET Core 執行時間、.NET Core 程式庫和[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
 
 > [!IMPORTANT]
 > 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
@@ -260,10 +266,10 @@ services.Configure<IISOptions>(options =>
 
 若要取得安裝程式的先前版本：
 
-1. 導航到[下載 .NET 核心](https://dotnet.microsoft.com/download/dotnet-core)頁面。
-1. 選擇所需的 .NET 核心版本。
+1. 流覽至 [[下載 .Net Core](https://dotnet.microsoft.com/download/dotnet-core) ] 頁面。
+1. 選取所需的 .NET Core 版本。
 1. 在 [執行應用程式 - 執行階段]**** 欄中，尋找想要的 .NET Core 執行階段版本列。
-1. 使用**託管捆綁包**連結下載安裝程式。
+1. 使用**裝載**套件組合連結來下載安裝程式。
 
 > [!WARNING]
 > 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) \(英文 \)。
@@ -272,12 +278,12 @@ services.Configure<IISOptions>(options =>
 
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
-   * `OPT_NO_ANCM=1`&ndash;跳過安裝ASP.NET核心模組。
-   * `OPT_NO_RUNTIME=1`&ndash;跳過安裝 .NET 核心運行時。 當伺服器時會承載[自包含部署 (SCD) 時使用](/dotnet/core/deploying/#self-contained-deployments-scd)。
-   * `OPT_NO_SHAREDFX=1`&ndash;跳過安裝ASP.NET共用框架(ASP.NET運行時)。 當伺服器時會承載[自包含部署 (SCD) 時使用](/dotnet/core/deploying/#self-contained-deployments-scd)。
-   * `OPT_NO_X86=1`&ndash;跳過安裝 x86 運行時。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
-1. 重新啟動系統或在命令外殼中執行以下命令:
+   * `OPT_NO_ANCM=1`&ndash;略過安裝 ASP.NET Core 模組。
+   * `OPT_NO_RUNTIME=1`&ndash;略過安裝 .net Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1`&ndash;略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_X86=1`&ndash;略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+1. 重新開機系統，或在命令 shell 中執行下列命令：
 
    ```console
    net stop was /y
@@ -285,7 +291,7 @@ services.Configure<IISOptions>(options =>
    ```
    重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
 
-ASP.NET Core 不會對共用框架包的修補程式版本採用前滾行為。 透過安裝新的託管捆綁包升級共用框架後,重新啟動系統或在命令外殼中執行以下命令:
+ASP.NET Core 不採用共用架構封裝修補程式版本的向前復原行為。 藉由安裝新的裝載套件組合來升級共用架構之後，請重新開機系統，或在命令 shell 中執行下列命令：
 
 ```console
 net stop was /y
@@ -303,9 +309,9 @@ net start w3svc
 
 1. 在主控系統上，請建立資料夾以容納應用程式的已發行資料夾和檔案。 在下列步驟中，您提供資料夾路徑給 IIS，作為應用程式的實體路徑。 如需應用程式之部署資料夾和檔案配置的詳細資訊，請參閱 <xref:host-and-deploy/directory-structure>。
 
-1. 在 IIS 管理員中,在 **「連接」** 面板中打開伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
+1. 在 [IIS 管理員] 中 **，在 [** 連線] 面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
 
-1. 提供**網站名稱**，並將**實體路徑**設定為應用程式的部署資料夾。 提供**繫結**器設定,並透過選擇 **「確定**」 的網站:
+1. 提供**網站名稱**，並將**實體路徑**設定為應用程式的部署資料夾。 藉由**Binding**選取 **[確定]** 來提供系結設定並建立網站：
 
    ![在新增網站步驟中提供站台名稱、實體路徑和主機名稱。](index/_static/add-website-ws2016.png)
 
@@ -328,7 +334,7 @@ net start w3svc
 
 1. 確認處理序模型身分識別具有適當的權限。
 
-   如果應用池(**進程模型** > **識別**)的預設標識從**應用程式池標識**更改為其他標識,請驗證新標識是否具有訪問應用資料夾、資料庫和其他所需資源所需的許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
+   如果應用程式集區的預設識別（**進程模型** > **識別**）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
 
 **Windows 驗證設定 (選擇性)**  
 如需詳細資訊，請參閱[設定 Windows 驗證](xref:security/authentication/windowsauth)主題。
@@ -367,7 +373,7 @@ net start w3svc
 
 * 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
 * 在伺服器上的 IIS 管理員中手動停止應用程式集區。
-* 使用 PowerShell 丟棄*app_offline.htm(* 需要 PowerShell 5 或更高版本):
+* 使用 PowerShell 卸載*app_offline .htm* （需要 PowerShell 5 或更新版本）：
 
   ```powershell
   $pathToApp = 'PATH_TO_APP'
@@ -424,7 +430,7 @@ net start w3svc
 
 * **設定資料保護的全電腦原則**
 
-  針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>。
+  針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱<xref:security/data-protection/introduction>。
 
 ## <a name="virtual-directories"></a>虛擬目錄
 
@@ -450,7 +456,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-有關程序內託管模型和設定ASP.NET核心模組的詳細資訊,請參閱<xref:host-and-deploy/aspnet-core-module>。
+如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -458,7 +464,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 如需詳細資訊，請參閱下列主題：
 
-* [系統.webServer\<>的 設定參考](/iis/configuration/system.webServer/)
+* [System.webserver>的\<設定參考](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 
@@ -473,7 +479,7 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 * `<connectionStrings>`
 * `<location>`
 
-使用其他組態提供者設定的 ASP.NET Core 應用程式。 有關詳細資訊,請參閱[設定](xref:fundamentals/configuration/index)。
+使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[Configuration](xref:fundamentals/configuration/index)。
 
 ## <a name="application-pools"></a>應用程式集區
 
@@ -542,13 +548,13 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 *此節只適用於以 .NET Framework 為目標的 ASP.NET Core 應用程式。*
 
-針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 要瞭解如何在*Web.config 中*設定應用程式的 IIS 處理程式以傳遞 OPTIONS 請求,請參閱[在 ASP.NET Web API 2 中啟用跨源請求:CORS 的工作原理](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
+針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 若要瞭解如何在 web.config 中設定應用程式的 IIS 處理*程式來傳遞*選項要求，請參閱[在 ASP.NET Web API 2 中啟用跨原始來源要求： CORS 的運作方式](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
 
 ## <a name="application-initialization-module-and-idle-timeout"></a>應用程式初始化模組與閒置逾時
 
 在 IIS 中由 ASP.NET Core 模組版本 2 裝載時：
 
-* [應用程式初始化模組](#application-initialization-module)&ndash;應用託管[的進程內](#in-process-hosting-model)或[進程外](#out-of-process-hosting-model)可以配置為在工作進程重新啟動或伺服器重新啟動時自動啟動。
+* [應用程式初始化模組](#application-initialization-module) &ndash;應用程式的裝載同[進程](#in-process-hosting-model)或跨[進程](#out-of-process-hosting-model)，可以設定為在背景工作進程重新開機或伺服器重新開機時自動啟動。
 * [閒置逾時](#idle-timeout) &ndash; 應用程式的裝載 [同處理序](#in-process-hosting-model)可設定為在無活動期間不逾時。
 
 ### <a name="application-initialization-module"></a>應用程式初始化模組
@@ -621,7 +627,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 * [IIS 文件](/iis)
 * [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* [.NET 核心應用程式部署](/dotnet/core/deploying/)
+* [.NET Core 應用程式部署](/dotnet/core/deploying/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/directory-structure>
 * <xref:host-and-deploy/iis/modules>
@@ -674,7 +680,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 使用同處理序裝載，ASP.NET Core 應用程式會在與其 IIS 工作者處理序相同的處理序中執行。 因為要求未透過回送介面卡 (將連出網路流量傳回同一部電腦的網路介面) 進行 proxy 處理，所以同處理序裝載會提供優於跨處理序裝載的效能。 IIS 透過 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 來執行處理程序管理。
 
-[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module):
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)：
 
 * 執行應用程式初始化。
   * 載入 [CoreCLR](/dotnet/standard/glossary#coreclr)。
@@ -687,7 +693,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 ![同處理序代管內的 ASP.NET Core 模組案例](index/_static/ancm-inprocess.png)
 
-要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET核心模組接收本機請求並將其傳遞到IIS HTTP 伺服器`IISHttpServer`()。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
+要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP`IISHttpServer`伺服器（）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
 
 IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會透過 IIS HTTP 伺服器傳回 IIS。 IIS 會將回應傳送到起始該要求的用戶端。
 
@@ -697,7 +703,7 @@ IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介
 
 ### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
 
-由於ASP.NET Core 應用在獨立於IIS工作流程的進程中運行,因此ASP.NET核心模組處理流程管理。 此模組會在第一個要求到達時啟動 ASP.NET Core 應用程式的處理序，並在應用程式關閉或損毀時將它重新啟動。 此行為基本上與執行同處理序，並由 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 所管理的應用程式相同。
+因為 ASP.NET Core 應用程式會在與 IIS 背景工作進程不同的進程中執行，所以 ASP.NET Core 模組會處理進程管理。 此模組會在第一個要求到達時啟動 ASP.NET Core 應用程式的處理序，並在應用程式關閉或損毀時將它重新啟動。 此行為基本上與執行同處理序，並由 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 所管理的應用程式相同。
 
 下圖說明 IIS、ASP.NET Core 模組和跨處理序裝載應用程式之間的關聯性：
 
@@ -717,7 +723,7 @@ Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core �
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-在*Program.cs*( Program.cs<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>`CreateWebHostBuilder`) 中 建構主機時,呼叫 以開啟 IIS 整合:
+在（Program.cs）中`CreateWebHostBuilder`建立*Program.cs*主機時，請<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>呼叫以啟用 IIS 整合：
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -788,15 +794,15 @@ services.Configure<IISOptions>(options =>
 </PropertyGroup>
 ```
 
-使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
+使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ### <a name="webconfig-file-location"></a>web.config 檔案位置
 
-為了正確設定[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)*,Web.config*檔必須存在於已部署應用[的內容根](xref:fundamentals/index#content-root)路徑(通常是應用基礎路徑)中。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
+為了正確設定[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module) *，web.config 檔案*必須存在於已部署應用程式的[內容根](xref:fundamentals/index#content-root)路徑（通常是應用程式基底路徑）。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
-敏感檔案存在於應用程式的物理路徑上,例如*\<程式集>.runtimeconfig.json、**\<程式集>.xml(XML*文件註釋)和*\<程式集>.deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
+機密檔案存在於應用程式的實體路徑，例如* \<元件>. .runtimeconfig.json. json*、 * \<元件> .xml* （xml 檔批註）和* \<元件>. .deps.json。* 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
-***Web.config*檔必須始終存在於部署中,正確命名,並能夠配置網站以進行正常啟動。切勿從生產部署中刪除*Web.config*檔。**
+***Web.config*檔案必須隨時存在於部署中、正確命名，而且能夠將網站設定為正常啟動。絕對不要從生產環境部署*移除 web.config 檔案*。**
 
 ### <a name="transform-webconfig"></a>轉換 web.config
 
@@ -817,12 +823,12 @@ services.Configure<IISOptions>(options =>
    ![在選取角色服務步驟中，選取預設的角色服務。](index/_static/role-services-ws2016.png)
 
    **Windows 驗證 (選擇性)**  
-   要啟用 Windows 認證,可以展開以下節點 **:Web 伺服器** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器** > **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 要開啟 WebSocket,請展開以下節點 **:Web 伺服器** > **應用程式開發**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器** > **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
-1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝 Web 伺服器 (IIS) 角色後,不需要重新啟動**伺服器 /IIS。**
+1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝**網頁伺服器（iis）** 角色之後，不需要重新開機伺服器/iis。
 
 **Windows 桌面作業系統**
 
@@ -839,10 +845,10 @@ services.Configure<IISOptions>(options =>
 1. 接受**全球資訊網服務**的預設功能，或自訂 IIS 功能。
 
    **Windows 驗證 (選擇性)**  
-   要啟用 Windows 認證,可以展開以下節點:**萬維網服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 要啟用 WebSocket,請展開以下節點:**萬維 Web 服務** > **應用程式開發功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務** > ] [**應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 若 IIS 安裝需要重新啟動，請重新啟動系統。
 
@@ -850,7 +856,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="install-the-net-core-hosting-bundle"></a>安裝 .NET Core 裝載套件組合
 
-在主控系統上安裝 .NET Core 裝載套件組合**。 該捆綁套件安裝 .NET 核心執行時、.NET 核心庫和[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
+在主控系統上安裝 .NET Core 裝載套件組合**。 套件組合會安裝 .NET Core 執行時間、.NET Core 程式庫和[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
 
 > [!IMPORTANT]
 > 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
@@ -859,10 +865,10 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="download"></a>下載
 
-1. 導航到[下載 .NET 核心](https://dotnet.microsoft.com/download/dotnet-core)頁面。
-1. 選擇所需的 .NET 核心版本。
+1. 流覽至 [[下載 .Net Core](https://dotnet.microsoft.com/download/dotnet-core) ] 頁面。
+1. 選取所需的 .NET Core 版本。
 1. 在 [執行應用程式 - 執行階段]**** 欄中，尋找想要的 .NET Core 執行階段版本列。
-1. 使用**託管捆綁包**連結下載安裝程式。
+1. 使用**裝載**套件組合連結來下載安裝程式。
 
 > [!WARNING]
 > 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) \(英文 \)。
@@ -871,12 +877,12 @@ services.Configure<IISOptions>(options =>
 
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
-   * `OPT_NO_ANCM=1`&ndash;跳過安裝ASP.NET核心模組。
-   * `OPT_NO_RUNTIME=1`&ndash;跳過安裝 .NET 核心運行時。 當伺服器時會承載[自包含部署 (SCD) 時使用](/dotnet/core/deploying/#self-contained-deployments-scd)。
-   * `OPT_NO_SHAREDFX=1`&ndash;跳過安裝ASP.NET共用框架(ASP.NET運行時)。 當伺服器時會承載[自包含部署 (SCD) 時使用](/dotnet/core/deploying/#self-contained-deployments-scd)。
-   * `OPT_NO_X86=1`&ndash;跳過安裝 x86 運行時。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
-1. 重新啟動系統或在命令外殼中執行以下命令:
+   * `OPT_NO_ANCM=1`&ndash;略過安裝 ASP.NET Core 模組。
+   * `OPT_NO_RUNTIME=1`&ndash;略過安裝 .net Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1`&ndash;略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_X86=1`&ndash;略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+1. 重新開機系統，或在命令 shell 中執行下列命令：
 
    ```console
    net stop was /y
@@ -884,9 +890,9 @@ services.Configure<IISOptions>(options =>
    ```
    重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
 
-安裝託管捆綁包時,無需手動停止 IIS 中的單個網站。 IIS 重新啟動時,託管應用 (IIS 網站)重新啟動。 應用在收到第一個請求(包括來自[應用程式初始化模組](#application-initialization-module-and-idle-timeout))時再次啟動。
+安裝裝載套件組合時，不需要手動停止 IIS 中的個別網站。 裝載的應用程式（IIS 網站）會在 IIS 重新開機時重新開機。 應用程式會在收到第一個要求時重新開機，包括從[應用程式初始化模組](#application-initialization-module-and-idle-timeout)。
 
-ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS託管的應用使用IIS重新啟動時,應用在收到第一個請求時會載入其引用包的最新修補程式版本。 如果未重新啟動 IIS,則當輔助行程被回收並收到第一個請求時,應用將重新啟動並表現出滾前行為。
+ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 當 IIS 所裝載的應用程式使用 IIS 重新開機時，應用程式會在收到第一個要求時，以其所參考套件的最新修補程式版本來載入。 如果未重新開機 IIS，應用程式會在其工作者進程回收時重新開機並展示向前復原行為，並接收其第一個要求。
 
 > [!NOTE]
 > 如需 IIS 共用組態的資訊，請參閱[使用 IIS 共用組態的 ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
@@ -899,9 +905,9 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 1. 在主控系統上，請建立資料夾以容納應用程式的已發行資料夾和檔案。 在下列步驟中，您提供資料夾路徑給 IIS，作為應用程式的實體路徑。 如需應用程式之部署資料夾和檔案配置的詳細資訊，請參閱 <xref:host-and-deploy/directory-structure>。
 
-1. 在 IIS 管理員中,在 **「連接」** 面板中打開伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
+1. 在 [IIS 管理員] 中 **，在 [** 連線] 面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
 
-1. 提供**網站名稱**，並將**實體路徑**設定為應用程式的部署資料夾。 提供**繫結**器設定,並透過選擇 **「確定**」 的網站:
+1. 提供**網站名稱**，並將**實體路徑**設定為應用程式的部署資料夾。 藉由**Binding**選取 **[確定]** 來提供系結設定並建立網站：
 
    ![在新增網站步驟中提供站台名稱、實體路徑和主機名稱。](index/_static/add-website-ws2016.png)
 
@@ -924,7 +930,7 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 1. 確認處理序模型身分識別具有適當的權限。
 
-   如果應用池(**進程模型** > **識別**)的預設標識從**應用程式池標識**更改為其他標識,請驗證新標識是否具有訪問應用資料夾、資料庫和其他所需資源所需的許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
+   如果應用程式集區的預設識別（**進程模型** > **識別**）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
 
 **Windows 驗證設定 (選擇性)**  
 如需詳細資訊，請參閱[設定 Windows 驗證](xref:security/authentication/windowsauth)主題。
@@ -963,7 +969,7 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 * 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
 * 在伺服器上的 IIS 管理員中手動停止應用程式集區。
-* 使用 PowerShell 丟棄*app_offline.htm(* 需要 PowerShell 5 或更高版本):
+* 使用 PowerShell 卸載*app_offline .htm* （需要 PowerShell 5 或更新版本）：
 
   ```powershell
   $pathToApp = 'PATH_TO_APP'
@@ -1020,7 +1026,7 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 * **設定資料保護的全電腦原則**
 
-  針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>。
+  針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱<xref:security/data-protection/introduction>。
 
 ## <a name="virtual-directories"></a>虛擬目錄
 
@@ -1046,7 +1052,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-有關程序內託管模型和設定ASP.NET核心模組的詳細資訊,請參閱<xref:host-and-deploy/aspnet-core-module>。
+如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -1054,7 +1060,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 如需詳細資訊，請參閱下列主題：
 
-* [系統.webServer\<>的 設定參考](/iis/configuration/system.webServer/)
+* [System.webserver>的\<設定參考](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 
@@ -1069,7 +1075,7 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 * `<connectionStrings>`
 * `<location>`
 
-使用其他組態提供者設定的 ASP.NET Core 應用程式。 有關詳細資訊,請參閱[設定](xref:fundamentals/configuration/index)。
+使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[Configuration](xref:fundamentals/configuration/index)。
 
 ## <a name="application-pools"></a>應用程式集區
 
@@ -1138,13 +1144,13 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 *此節只適用於以 .NET Framework 為目標的 ASP.NET Core 應用程式。*
 
-針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 要瞭解如何在*Web.config 中*設定應用程式的 IIS 處理程式以傳遞 OPTIONS 請求,請參閱[在 ASP.NET Web API 2 中啟用跨源請求:CORS 的工作原理](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
+針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 若要瞭解如何在 web.config 中設定應用程式的 IIS 處理*程式來傳遞*選項要求，請參閱[在 ASP.NET Web API 2 中啟用跨原始來源要求： CORS 的運作方式](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
 
 ## <a name="application-initialization-module-and-idle-timeout"></a>應用程式初始化模組與閒置逾時
 
 在 IIS 中由 ASP.NET Core 模組版本 2 裝載時：
 
-* [應用程式初始化模組](#application-initialization-module)&ndash;應用託管[的進程內](#in-process-hosting-model)或[進程外](#out-of-process-hosting-model)可以配置為在工作進程重新啟動或伺服器重新啟動時自動啟動。
+* [應用程式初始化模組](#application-initialization-module) &ndash;應用程式的裝載同[進程](#in-process-hosting-model)或跨[進程](#out-of-process-hosting-model)，可以設定為在背景工作進程重新開機或伺服器重新開機時自動啟動。
 * [閒置逾時](#idle-timeout) &ndash; 應用程式的裝載 [同處理序](#in-process-hosting-model)可設定為在無活動期間不逾時。
 
 ### <a name="application-initialization-module"></a>應用程式初始化模組
@@ -1217,7 +1223,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 * [IIS 文件](/iis)
 * [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* [.NET 核心應用程式部署](/dotnet/core/deploying/)
+* [.NET Core 應用程式部署](/dotnet/core/deploying/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/directory-structure>
 * <xref:host-and-deploy/iis/modules>
@@ -1276,7 +1282,7 @@ ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，其
 
 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的通訊埠上將要求路由至 IIS，此通訊埠通常是 80 (HTTP) 或 443 (HTTPS)。 此模組會在應用程式的隨機通訊埠上將要求轉送至 Kestrel，而且不會是通訊埠 80 或 443。
 
-模組在啟動時透過環境變數指定連接埠[,IIS 整合的中間元件](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)設定伺服器以`http://localhost:{port}`偵聽 。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
+此模組會在啟動時透過環境變數指定埠，而[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)會設定伺服器來接聽`http://localhost:{port}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
 
 Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的 HTTP 用戶端。
 
@@ -1298,7 +1304,7 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-在*Program.cs*( Program.cs<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>`CreateWebHostBuilder`) 中 建構主機時,呼叫 以開啟 IIS 整合:
+在（Program.cs）中`CreateWebHostBuilder`建立*Program.cs*主機時，請<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>呼叫以啟用 IIS 整合：
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -1356,15 +1362,15 @@ services.Configure<IISOptions>(options =>
 </PropertyGroup>
 ```
 
-使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module>。
+使 Web SDK 無法轉換檔案時，應該由開發人員手動設定 *processPath* 和 *arguments*。 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ### <a name="webconfig-file-location"></a>web.config 檔案位置
 
-為了正確設定[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)*,Web.config*檔必須存在於已部署應用[的內容根](xref:fundamentals/index#content-root)路徑(通常是應用基礎路徑)中。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
+為了正確設定[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module) *，web.config 檔案*必須存在於已部署應用程式的[內容根](xref:fundamentals/index#content-root)路徑（通常是應用程式基底路徑）。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
-敏感檔案存在於應用程式的物理路徑上,例如*\<程式集>.runtimeconfig.json、**\<程式集>.xml(XML*文件註釋)和*\<程式集>.deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
+機密檔案存在於應用程式的實體路徑，例如* \<元件>. .runtimeconfig.json. json*、 * \<元件> .xml* （xml 檔批註）和* \<元件>. .deps.json。* 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
-***Web.config*檔必須始終存在於部署中,正確命名,並能夠配置網站以進行正常啟動。切勿從生產部署中刪除*Web.config*檔。**
+***Web.config*檔案必須隨時存在於部署中、正確命名，而且能夠將網站設定為正常啟動。絕對不要從生產環境部署*移除 web.config 檔案*。**
 
 ### <a name="transform-webconfig"></a>轉換 web.config
 
@@ -1385,12 +1391,12 @@ services.Configure<IISOptions>(options =>
    ![在選取角色服務步驟中，選取預設的角色服務。](index/_static/role-services-ws2016.png)
 
    **Windows 驗證 (選擇性)**  
-   要啟用 Windows 認證,可以展開以下節點 **:Web 伺服器** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器** > **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 要開啟 WebSocket,請展開以下節點 **:Web 伺服器** > **應用程式開發**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器** > **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
-1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝 Web 伺服器 (IIS) 角色後,不需要重新啟動**伺服器 /IIS。**
+1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝**網頁伺服器（iis）** 角色之後，不需要重新開機伺服器/iis。
 
 **Windows 桌面作業系統**
 
@@ -1407,10 +1413,10 @@ services.Configure<IISOptions>(options =>
 1. 接受**全球資訊網服務**的預設功能，或自訂 IIS 功能。
 
    **Windows 驗證 (選擇性)**  
-   要啟用 Windows 認證,可以展開以下節點:**萬維網服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 要啟用 WebSocket,請展開以下節點:**萬維 Web 服務** > **應用程式開發功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務** > ] [**應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 若 IIS 安裝需要重新啟動，請重新啟動系統。
 
@@ -1418,7 +1424,7 @@ services.Configure<IISOptions>(options =>
 
 ## <a name="install-the-net-core-hosting-bundle"></a>安裝 .NET Core 裝載套件組合
 
-在主控系統上安裝 .NET Core 裝載套件組合**。 該捆綁套件安裝 .NET 核心執行時、.NET 核心庫和[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
+在主控系統上安裝 .NET Core 裝載套件組合**。 套件組合會安裝 .NET Core 執行時間、.NET Core 程式庫和[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
 
 > [!IMPORTANT]
 > 若裝載套件組合在 IIS 之前安裝，則必須對該套件組合安裝進行修復。 請在安裝 IIS 之後，再次執行裝載套件組合安裝程式。
@@ -1427,10 +1433,10 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="download"></a>下載
 
-1. 導航到[下載 .NET 核心](https://dotnet.microsoft.com/download/dotnet-core)頁面。
-1. 選擇所需的 .NET 核心版本。
+1. 流覽至 [[下載 .Net Core](https://dotnet.microsoft.com/download/dotnet-core) ] 頁面。
+1. 選取所需的 .NET Core 版本。
 1. 在 [執行應用程式 - 執行階段]**** 欄中，尋找想要的 .NET Core 執行階段版本列。
-1. 使用**託管捆綁包**連結下載安裝程式。
+1. 使用**裝載**套件組合連結來下載安裝程式。
 
 > [!WARNING]
 > 某些安裝程式包含已達到期生命週期結束 (EOL) 的發行版本，這些發行版本已不受 Microsoft 支援。 如需詳細資訊，請參閱[支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core) \(英文 \)。
@@ -1439,12 +1445,12 @@ services.Configure<IISOptions>(options =>
 
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
-   * `OPT_NO_ANCM=1`&ndash;跳過安裝ASP.NET核心模組。
-   * `OPT_NO_RUNTIME=1`&ndash;跳過安裝 .NET 核心運行時。 當伺服器時會承載[自包含部署 (SCD) 時使用](/dotnet/core/deploying/#self-contained-deployments-scd)。
-   * `OPT_NO_SHAREDFX=1`&ndash;跳過安裝ASP.NET共用框架(ASP.NET運行時)。 當伺服器時會承載[自包含部署 (SCD) 時使用](/dotnet/core/deploying/#self-contained-deployments-scd)。
-   * `OPT_NO_X86=1`&ndash;跳過安裝 x86 運行時。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
-1. 重新啟動系統或在命令外殼中執行以下命令:
+   * `OPT_NO_ANCM=1`&ndash;略過安裝 ASP.NET Core 模組。
+   * `OPT_NO_RUNTIME=1`&ndash;略過安裝 .net Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1`&ndash;略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_X86=1`&ndash;略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+1. 重新開機系統，或在命令 shell 中執行下列命令：
 
    ```console
    net stop was /y
@@ -1452,9 +1458,9 @@ services.Configure<IISOptions>(options =>
    ```
    重新啟動 IIS 將能偵測到由安裝程式對系統路徑 (此為環境變數) 所做出的變更。
 
-安裝託管捆綁包時,無需手動停止 IIS 中的單個網站。 IIS 重新啟動時,託管應用 (IIS 網站)重新啟動。 應用在收到第一個請求(包括來自[應用程式初始化模組](#application-initialization-module-and-idle-timeout))時再次啟動。
+安裝裝載套件組合時，不需要手動停止 IIS 中的個別網站。 裝載的應用程式（IIS 網站）會在 IIS 重新開機時重新開機。 應用程式會在收到第一個要求時重新開機，包括從[應用程式初始化模組](#application-initialization-module-and-idle-timeout)。
 
-ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS託管的應用使用IIS重新啟動時,應用在收到第一個請求時會載入其引用包的最新修補程式版本。 如果未重新啟動 IIS,則當輔助行程被回收並收到第一個請求時,應用將重新啟動並表現出滾前行為。
+ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 當 IIS 所裝載的應用程式使用 IIS 重新開機時，應用程式會在收到第一個要求時，以其所參考套件的最新修補程式版本來載入。 如果未重新開機 IIS，應用程式會在其工作者進程回收時重新開機並展示向前復原行為，並接收其第一個要求。
 
 > [!NOTE]
 > 如需 IIS 共用組態的資訊，請參閱[使用 IIS 共用組態的 ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration)。
@@ -1467,9 +1473,9 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 1. 在主控系統上，請建立資料夾以容納應用程式的已發行資料夾和檔案。 在下列步驟中，您提供資料夾路徑給 IIS，作為應用程式的實體路徑。 如需應用程式之部署資料夾和檔案配置的詳細資訊，請參閱 <xref:host-and-deploy/directory-structure>。
 
-1. 在 IIS 管理員中,在 **「連接」** 面板中打開伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
+1. 在 [IIS 管理員] 中 **，在 [** 連線] 面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
 
-1. 提供**網站名稱**，並將**實體路徑**設定為應用程式的部署資料夾。 提供**繫結**器設定,並透過選擇 **「確定**」 的網站:
+1. 提供**網站名稱**，並將**實體路徑**設定為應用程式的部署資料夾。 藉由**Binding**選取 **[確定]** 來提供系結設定並建立網站：
 
    ![在新增網站步驟中提供站台名稱、實體路徑和主機名稱。](index/_static/add-website-ws2016.png)
 
@@ -1492,7 +1498,7 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 1. 確認處理序模型身分識別具有適當的權限。
 
-   如果應用池(**進程模型** > **識別**)的預設標識從**應用程式池標識**更改為其他標識,請驗證新標識是否具有訪問應用資料夾、資料庫和其他所需資源所需的許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
+   如果應用程式集區的預設識別（**進程模型** > **Identity**）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
 
 **Windows 驗證設定 (選擇性)**  
 如需詳細資訊，請參閱[設定 Windows 驗證](xref:security/authentication/windowsauth)主題。
@@ -1531,7 +1537,7 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 * 使用 Web Deploy 並參考專案檔中的 `Microsoft.NET.Sdk.Web`。 *app_offline.htm* 檔案是放在 Web 應用程式目錄的根目錄中。 當檔案存在時，ASP.NET Core 模組會正常關閉應用程式，並在部署期間提供 *app_offline.htm* 檔案。 如需詳細資訊，請參閱 [ASP.NET Core 模組組態參考](xref:host-and-deploy/aspnet-core-module#app_offlinehtm)。
 * 在伺服器上的 IIS 管理員中手動停止應用程式集區。
-* 使用 PowerShell 丟棄*app_offline.htm(* 需要 PowerShell 5 或更高版本):
+* 使用 PowerShell 卸載*app_offline .htm* （需要 PowerShell 5 或更新版本）：
 
   ```powershell
   $pathToApp = 'PATH_TO_APP'
@@ -1588,7 +1594,7 @@ ASP.NET Core 對共用框架包的修補程式版本採用前滾行為。 當IIS
 
 * **設定資料保護的全電腦原則**
 
-  針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>。
+  針對取用資料保護 API 的所有應用程式，資料保護系統僅支援有限的預設[全電腦原則](xref:security/data-protection/configuration/machine-wide-policy)設定。 如需詳細資訊，請參閱<xref:security/data-protection/introduction>。
 
 ## <a name="virtual-directories"></a>虛擬目錄
 
@@ -1647,7 +1653,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-有關程序內託管模型和設定ASP.NET核心模組的詳細資訊,請參閱<xref:host-and-deploy/aspnet-core-module>。
+如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -1655,7 +1661,7 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 如需詳細資訊，請參閱下列主題：
 
-* [系統.webServer\<>的 設定參考](/iis/configuration/system.webServer/)
+* [System.webserver>的\<設定參考](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 
@@ -1670,15 +1676,15 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 * `<connectionStrings>`
 * `<location>`
 
-使用其他組態提供者設定的 ASP.NET Core 應用程式。 有關詳細資訊,請參閱[設定](xref:fundamentals/configuration/index)。
+使用其他組態提供者設定的 ASP.NET Core 應用程式。 如需詳細資訊，請參閱[Configuration](xref:fundamentals/configuration/index)。
 
 ## <a name="application-pools"></a>應用程式集區
 
 在伺服器上裝載多個網站時，建議您在其各自的應用程式集區中執行各個應用程式，讓應用程式彼此隔離。 IIS [新增網站]**** 對話方塊預設成此組態。 當提供**網站名稱**時，文字會自動轉移至 [應用程式集區]**** 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
 
-## <a name="application-pool-identity"></a>應用程式集區身分識別
+## <a name="application-pool-identity"></a>應用程式集區Identity
 
-應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，於應用程式集區的 [進階設定]**** 下，確定 [身分識別]**** 設定為使用 **ApplicationPoolIdentity**：
+應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，于應用程式集區的 [**高級設定**] **Identity** 底下，確定已設定為使用**ApplicationPoolIdentity**：
 
 ![應用程式集區進階設定對話方塊](index/_static/apppool-identity.png)
 
@@ -1729,13 +1735,13 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 *此節只適用於以 .NET Framework 為目標的 ASP.NET Core 應用程式。*
 
-針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 要瞭解如何在*Web.config 中*設定應用程式的 IIS 處理程式以傳遞 OPTIONS 請求,請參閱[在 ASP.NET Web API 2 中啟用跨源請求:CORS 的工作原理](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
+針對以 .NET Framework 為目標的 ASP.NET Core 應用程式，在 IIS 中OPTIONS 要求預設不會傳遞到應用程式。 若要瞭解如何在 web.config 中設定應用程式的 IIS 處理*程式來傳遞*選項要求，請參閱[在 ASP.NET Web API 2 中啟用跨原始來源要求： CORS 的運作方式](/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api#how-cors-works)。
 
 ## <a name="deployment-resources-for-iis-administrators"></a>IIS 系統管理員的部署資源
 
 * [IIS 文件](/iis)
 * [IIS 中的 IIS 管理員使用者入門](/iis/get-started/getting-started-with-iis/getting-started-with-the-iis-manager-in-iis-7-and-iis-8)
-* [.NET 核心應用程式部署](/dotnet/core/deploying/)
+* [.NET Core 應用程式部署](/dotnet/core/deploying/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/directory-structure>
 * <xref:host-and-deploy/iis/modules>

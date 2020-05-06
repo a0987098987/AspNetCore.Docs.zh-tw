@@ -4,13 +4,19 @@ author: rick-anderson
 description: 瞭解如何藉由將角色傳遞至授權屬性來限制 ASP.NET Core 控制器和動作存取。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authorization/roles
-ms.openlocfilehash: 28aa3df6aa661d0b762df78fe611cd827af43f75
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 01d4239377b128f711a110a821e1afea58ca14a7
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658393"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776535"
 ---
 # <a name="role-based-authorization-in-aspnet-core"></a>ASP.NET Core 中以角色為基礎的授權
 
@@ -20,9 +26,9 @@ ms.locfileid: "78658393"
 
 ## <a name="adding-role-checks"></a>新增角色檢查
 
-以角色為基礎的授權檢查是由開發人員在其程式碼中，對控制器或控制器內的動作進行內嵌的宣告式&mdash;，指定目前使用者必須是其成員的角色，以存取要求的資源。
+以角色為基礎的授權檢查&mdash;是由開發人員在其程式碼中，對控制器或控制器內的動作進行內嵌，並指定目前使用者必須是其成員的角色，以存取要求的資源。
 
-例如，下列程式碼會針對屬於 `Administrator` 角色成員的使用者，限制對 `AdministrationController` 上任何動作的存取權：
+例如，下列程式碼會針對屬於`AdministrationController` `Administrator`角色成員的使用者，限制對的任何動作的存取權：
 
 ```csharp
 [Authorize(Roles = "Administrator")]
@@ -40,9 +46,9 @@ public class SalaryController : Controller
 }
 ```
 
-只有身為 `HRManager` 角色或 `Finance` 角色成員的使用者，才能存取此控制器。
+只有身為`HRManager`角色或`Finance`角色成員的使用者才能存取此控制器。
 
-如果您套用多個屬性，則存取使用者必須是指定之所有角色的成員;下列範例會要求使用者必須同時是 `PowerUser` 和 `ControlPanelUser` 角色的成員。
+如果您套用多個屬性，則存取使用者必須是指定之所有角色的成員;下列範例會要求使用者必須同時是`PowerUser`和`ControlPanelUser`角色的成員。
 
 ```csharp
 [Authorize(Roles = "PowerUser")]
@@ -69,7 +75,7 @@ public class ControlPanelController : Controller
 }
 ```
 
-在先前的程式碼片段中，`Administrator` 角色或 `PowerUser` 角色的成員可以存取控制器和 `SetTime` 動作，但只有 `Administrator` 角色的成員可以存取 `ShutDown` 動作。
+在先前的代碼`Administrator`段中，角色或`PowerUser`角色的成員可以存取控制器和`SetTime`動作，但只有`Administrator`角色的成員可以存取此`ShutDown`動作。
 
 您也可以鎖定控制器，但允許匿名、未經驗證的個別動作存取。
 
@@ -90,10 +96,10 @@ public class ControlPanelController : Controller
 
 ::: moniker range=">= aspnetcore-2.0"
 
-針對 Razor Pages，可以透過下列其中一種方式來套用 `AuthorizeAttribute`：
+針對Razor頁面， `AuthorizeAttribute`可以透過下列其中一種方式來套用：
 
 * 使用[慣例](xref:razor-pages/razor-pages-conventions#page-model-action-conventions)，或
-* 將 `AuthorizeAttribute` 套用至 `PageModel` 實例：
+* 將套用`AuthorizeAttribute`至`PageModel`實例：
 
 ```csharp
 [Authorize(Policy = "RequireAdministratorRole")]
@@ -106,14 +112,14 @@ public class UpdateModel : PageModel
 ```
 
 > [!IMPORTANT]
-> 篩選屬性（包括 `AuthorizeAttribute`）只能套用至 PageModel，而且不能套用至特定頁面處理常式方法。
+> 篩選屬性（包括`AuthorizeAttribute`）只能套用至 PageModel，而且不能套用至特定頁面處理常式方法。
 ::: moniker-end
 
 <a name="security-authorization-role-policy"></a>
 
 ## <a name="policy-based-role-checks"></a>以原則為基礎的角色檢查
 
-您也可以使用新的原則語法來表示角色需求，其中開發人員會在啟動時註冊原則，作為授權服務設定的一部分。 這通常會發生在*Startup.cs*檔案的 `ConfigureServices()` 中。
+您也可以使用新的原則語法來表示角色需求，其中開發人員會在啟動時註冊原則，作為授權服務設定的一部分。 這通常會發生`ConfigureServices()`在*Startup.cs*檔案的中。
 
 ::: moniker range=">= aspnetcore-3.0"
 ```csharp
@@ -146,7 +152,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 ::: moniker-end
 
-原則會使用 `AuthorizeAttribute` 屬性上的 `Policy` 屬性來套用：
+原則會在`AuthorizeAttribute`屬性上`Policy`使用屬性來套用：
 
 ```csharp
 [Authorize(Policy = "RequireAdministratorRole")]
@@ -156,16 +162,16 @@ public IActionResult Shutdown()
 }
 ```
 
-如果您想要在需求中指定多個允許的角色，您可以將它們指定為 `RequireRole` 方法的參數：
+如果您想要在需求中指定多個允許的角色，您可以將它們指定為`RequireRole`方法的參數：
 
 ```csharp
 options.AddPolicy("ElevatedRights", policy =>
                   policy.RequireRole("Administrator", "PowerUser", "BackupAdministrator"));
 ```
 
-這個範例會授權屬於 `Administrator`、`PowerUser` 或 `BackupAdministrator` 角色的使用者。
+這個範例會授權屬於、 `Administrator` `PowerUser`或`BackupAdministrator`角色的使用者。
 
-### <a name="add-role-services-to-identity"></a>將角色服務新增至身分識別
+### <a name="add-role-services-to-identity"></a>將角色服務新增至Identity
 
 附加[AddRoles](/dotnet/api/microsoft.aspnetcore.identity.identitybuilder.addroles#Microsoft_AspNetCore_Identity_IdentityBuilder_AddRoles__1)以新增角色服務：
 

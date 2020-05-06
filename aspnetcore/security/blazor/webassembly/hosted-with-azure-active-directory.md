@@ -8,16 +8,19 @@ ms.custom: mvc
 ms.date: 04/24/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 8557ea1695f18fbe1ee3543ff438228ced27465d
-ms.sourcegitcommit: 6d271f4b4c3cd1e82267f51d9bfb6de221c394fe
+ms.openlocfilehash: 3a2f3bdd194b9153c5d59af7adfad3a3c8c56b23
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82150022"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776034"
 ---
-# <a name="secure-an-aspnet-core-opno-locblazor-webassembly-hosted-app-with-azure-active-directory"></a>使用 Azure Active Directory 保護Blazor ASP.NET Core WebAssembly 託管應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory"></a>使用 Azure Active Directory 保護Blazor ASP.NET Core WebAssembly 託管應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
@@ -90,7 +93,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access`）。
 1. 選取 [新增權限]  。
-1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是] **** 加以確認。
+1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是]  確認。
 
 記錄*用戶端應用*程式識別碼（用戶端識別碼）（例如`33333333-3333-3333-3333-333333333333`）。
 
@@ -139,7 +142,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 ```
 
-### <a name="useridentityname"></a>User.Identity.Name
+### <a name="useridentityname"></a>使用者.Identity.檔案名
 
 根據預設，伺服器應用程式 API 會`User.Identity.Name`填入來自`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`宣告類型的值（例如`2d64b3da-d9d5-42c6-9352-53d8df33d770@contoso.onmicrosoft.com`）。
 
@@ -236,7 +239,7 @@ builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("{APP ASSEMBLY}.ServerAPI"));
 ```
 
-使用`AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal`封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援。 這個方法會設定應用程式與身分識別提供者（IP）互動所需的所有服務。
+使用`AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal`封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援。 這個方法會設定應用程式與Identity提供者（IP）互動所需的所有服務。
 
 *Program.cs*：
 

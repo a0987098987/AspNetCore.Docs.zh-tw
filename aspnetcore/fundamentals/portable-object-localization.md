@@ -4,13 +4,19 @@ author: sebastienros
 description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
 ms.author: scaddie
 ms.date: 09/26/2017
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 08002564eb68bc04eebaeafed560202d0d69958a
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 1e544b0f504c2776c678c51bff598cf011b52610
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78656188"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776047"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
@@ -20,7 +26,7 @@ ms.locfileid: "78656188"
 
 **注意：** Orchard Core 不是 Microsoft 產品。 因此，Microsoft 不提供這項功能的支援。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/POLocalization)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="what-is-a-po-file"></a>什麼是 PO 檔案？
 
@@ -83,7 +89,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 [!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-將下列程式碼新增至所選擇的 Razor 檢視。 此範例中使用 *About.cshtml*。
+將下列程式碼新增至Razor您選擇的視圖。 此範例中使用 *About.cshtml*。
 
 [!code-cshtml[](localization/sample/POLocalization/Views/Home/About.cshtml)]
 
@@ -91,7 +97,7 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 ### <a name="creating-a-po-file"></a>建立 PO 檔案
 
-在應用程式根資料夾中創建名為*\<>.po*的檔。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
+在您的應用程式根資料夾中，建立名為* \<文化特性代碼>. po*的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
 
 [!code-text[](localization/sample/POLocalization/fr.po)]
 
@@ -187,11 +193,11 @@ Existuje 5 položek.
 
 ### <a name="contextualizing-strings"></a>內容化字串
 
-應用程式通常包含要在數個位置中翻譯的字串。 相同的字串可能在應用程式內的特定位置 (Razor 檢視或類別檔案) 具有不同的翻譯。 PO 檔案支援檔案內容的概念，可用來對所表示的字串進行分類。 使用檔案內容，字串可以根據檔案內容 (或缺乏檔案內容) 翻譯成不同的內容。
+應用程式通常包含要在數個位置中翻譯的字串。 相同的字串在應用程式內的特定位置（Razor views 或類別檔案）可能會有不同的翻譯。 PO 檔案支援檔案內容的概念，可用來對所表示的字串進行分類。 使用檔案內容，字串可以根據檔案內容 (或缺乏檔案內容) 翻譯成不同的內容。
 
 PO 當地語系化服務會使用翻譯字串時所使用的完整類別或檢視的名稱。 這是透過在 `msgctxt` 項目上設定值來完成的。
 
-考慮對先前的 *fr.po* 範例進行微幅新增。 位於 *Views/Home/About.cshtml* 的 Razor 檢視，可以藉由設定保留的 `msgctxt` 項目值來定義為檔案內容：
+考慮對先前的 *fr.po* 範例進行微幅新增。 您Razor可以藉由設定保留`msgctxt`專案的值，將位於*Views/Home/About. cshtml*的視圖定義為檔案內容：
 
 ```text
 msgctxt "Views.Home.About"

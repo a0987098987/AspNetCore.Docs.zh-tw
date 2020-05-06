@@ -1,18 +1,24 @@
 ---
-title: 將搜尋新增至 ASP.NET Core Razor 頁面
+title: 將搜尋新增至Razor ASP.NET Core 頁面
 author: rick-anderson
-description: 示範如何將搜尋新增至 ASP.NET Core Razor 頁面
+description: 說明如何將搜尋新增至 ASP.NET Core Razor頁面
 ms.author: riande
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: 8228207b0f37a6923b29891ac3115dd0be115501
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: baa5e1cb2098a60155a4196f0e602feeff04f102
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78667703"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774994"
 ---
-# <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至 ASP.NET Core Razor 頁面
+# <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至Razor ASP.NET Core 頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -80,7 +86,7 @@ ASP.NET Core 執行階段使用[模型繫結](xref:mvc/models/model-binding)來�
 
 HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpers/intro)：
 
-* [表單標記說明程式](xref:mvc/views/working-with-forms#the-form-tag-helper)。 提交表單時，系統會透過查詢字串將篩選字串傳送至 *Pages/Movies/Index* 頁面。
+* [表單標記](xref:mvc/views/working-with-forms#the-form-tag-helper)協助程式。 提交表單時，系統會透過查詢字串將篩選字串傳送至 *Pages/Movies/Index* 頁面。
 * [輸入標記協助程式](xref:mvc/views/working-with-forms#the-input-tag-helper)
 
 儲存變更並測試篩選條件。
@@ -101,7 +107,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增至 Razor 頁面
+### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增Razor至頁面
 
 更新 *Index.cshtml*，如下所示：
 
@@ -111,11 +117,11 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 ## <a name="additional-resources"></a>其他資源
 
-* [本教學的 YouTube 版本](https://youtu.be/4B6pHtdyo08)
+* [本教學課程的 YouTube 版本](https://youtu.be/4B6pHtdyo08)
 
 > [!div class="step-by-step"]
-> [上一篇:更新](xref:tutorials/razor-pages/da1)
-> [頁面下一頁:新增新欄位](xref:tutorials/razor-pages/new-field)
+> [上一步：更新頁面](xref:tutorials/razor-pages/da1)
+> [下一步：新增欄位](xref:tutorials/razor-pages/new-field)
 
 ::: moniker-end
 
@@ -182,7 +188,7 @@ ASP.NET Core 執行階段使用[模型繫結](xref:mvc/models/model-binding)來�
 
 HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpers/intro)：
 
-* [表單標記說明程式](xref:mvc/views/working-with-forms#the-form-tag-helper)。 提交表單時，系統會透過查詢字串將篩選字串傳送至 *Pages/Movies/Index* 頁面。
+* [表單標記](xref:mvc/views/working-with-forms#the-form-tag-helper)協助程式。 提交表單時，系統會透過查詢字串將篩選字串傳送至 *Pages/Movies/Index* 頁面。
 * [輸入標記協助程式](xref:mvc/views/working-with-forms#the-input-tag-helper)
 
 儲存變更並測試篩選條件。
@@ -203,21 +209,21 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增至 Razor 頁面
+### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增Razor至頁面
 
 更新 *Index.cshtml*，如下所示：
 
 [!code-cshtml[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/IndexFormGenreNoRating.cshtml?highlight=16-18&range=1-26)]
 
 依據內容類型、電影標題和這兩者進行搜尋，藉以測試應用程式。
-前面的代碼使用[選擇標記説明器](xref:mvc/views/working-with-forms#the-select-tag-helper)和選項標記説明程式。
+上述程式碼會使用[Select 標記](xref:mvc/views/working-with-forms#the-select-tag-helper)協助程式和選項標籤協助程式。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [本教學的 YouTube 版本](https://youtu.be/4B6pHtdyo08)
+* [本教學課程的 YouTube 版本](https://youtu.be/4B6pHtdyo08)
 
 > [!div class="step-by-step"]
-> [上一篇:更新](xref:tutorials/razor-pages/da1)
-> [頁面下一頁:新增新欄位](xref:tutorials/razor-pages/new-field)
+> [上一步：更新頁面](xref:tutorials/razor-pages/da1)
+> [下一步：新增欄位](xref:tutorials/razor-pages/new-field)
 
 ::: moniker-end

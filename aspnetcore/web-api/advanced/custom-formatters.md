@@ -4,13 +4,19 @@ author: rick-anderson
 description: 了解如何建立和使用 ASP.NET Core 中的 Web API 自訂格式器。
 ms.author: riande
 ms.date: 02/08/2017
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: dd25cda460ba758cd07de094eaadd1f2d8c28657
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 0836fc288a015adb9a6223c5a2b681b1b03bded4
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667668"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777315"
 ---
 # <a name="custom-formatters-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的自訂格式器
 
@@ -22,7 +28,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。 如需純文字的自訂輸入格式器範例，請參閱 GitHub 上的[TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) 。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="when-to-use-custom-formatters"></a>自訂格式器的使用時機
 
@@ -36,7 +42,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 
 * 如果您想要將資料序列化以傳送到用戶端，請建立輸出格式器類別。
 * 如果您想要將從用戶端接收的資料還原序列化，請建立輸入格式器類別。
-* 將您的格式器執行個體新增至 `InputFormatters`MvcOptions`OutputFormatters` 中的 [ 和 ](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions) 集合。
+* 將您的格式器執行個體新增至 [MvcOptions](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions) 中的 `InputFormatters` 和 `OutputFormatters` 集合。
 
 下列各節將提供每個步驟的指引與程式碼範例。
 
@@ -86,7 +92,7 @@ ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料
 * 在執行階段期間，可能會傳回衍生的類別。
 * 您必須知道在執行階段期間，動作傳回的衍生類別是哪一個。
 
-例如，假設您的動作方法簽章傳回 `Person` 類型，但它可能會傳回衍生自 `Student` 的 `Instructor` 或 `Person` 類型。 如果您希望格式器只處理 `Student` 物件，請檢查您提供給 [ 方法之內容物件中的](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)物件`CanWriteResult`類型。 請注意，當動作方法傳回 `CanWriteResult` 時，您不需要使用 `IActionResult`；在此情況下，`CanWriteType` 方法會接收執行階段類型。
+例如，假設您的動作方法簽章傳回 `Person` 類型，但它可能會傳回衍生自 `Person` 的 `Student` 或 `Instructor` 類型。 如果您希望格式器只處理 `Student` 物件，請檢查您提供給 `CanWriteResult` 方法之內容物件中的[物件](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)類型。 請注意，當動作方法傳回 `IActionResult` 時，您不需要使用 `CanWriteResult`；在此情況下，`CanWriteType` 方法會接收執行階段類型。
 
 <a id="read-write"></a>
 
@@ -115,7 +121,8 @@ BEGIN:VCARD
 VERSION:2.1
 N:Davolio;Nancy
 FN:Nancy Davolio
-UID:20293482-9240-4d68-b475-325df4a83728
+no-loc: [Blazor, "Identity", "Let's Encrypt", Razor, SignalR]
+uid:20293482-9240-4d68-b475-325df4a83728
 END:VCARD
 ```
 

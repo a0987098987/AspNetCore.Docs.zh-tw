@@ -1,123 +1,129 @@
 ---
 title: 在瀏覽器應用程式中使用 gRPC
 author: jamesnk
-description: 瞭解如何在ASP.NET酷睿配置 gRPC 服務,以便使用 gRPC-Web 從瀏覽器應用調用 gRPC 服務。
+description: 瞭解如何在 ASP.NET Core 上設定 gRPC 服務，以使用 gRPC-Web 從瀏覽器應用程式呼叫。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.date: 04/15/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: grpc/browser
-ms.openlocfilehash: a20e604488b1fb919f18932599ba690bfa308f0c
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: a74f7acb54b4601a0c30ff1a39dc30231e2b5a78
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440762"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774739"
 ---
 # <a name="use-grpc-in-browser-apps"></a>在瀏覽器應用程式中使用 gRPC
 
-由[詹姆斯·牛頓-金](https://twitter.com/jamesnk)
+依[James 牛頓-王](https://twitter.com/jamesnk)
 
 > [!IMPORTANT]
-> **.NET 中的 gRPC-Web 支援是實驗性的**
+> **gRPC-.NET 中的 Web 支援為實驗性**
 >
-> gRPC-Web for .NET 是一個實驗專案,而不是一個承諾的產品。 我們想要：
+> gRPC-適用于 .NET 的 Web 是實驗性專案，而不是認可的產品。 我們想要：
 >
-> * 測試我們實現 gRPC-Web 的方法有效。
-> * 與通過代理設定 gRPC-Web 的傳統方式相比,獲取此方法對 .NET 開發人員是否有用的回饋。
+> * 測試我們用來執行 gRPC 的方法-Web works。
+> * 如果這種方法對 .NET 開發人員來說很有用，請取得意見反應，相較于傳統的方法是透過 proxy 設定 gRPC Web。
 >
-> 請留下回饋,[https://github.com/grpc/grpc-dotnet](https://github.com/grpc/grpc-dotnet)以確保我們建構開發者喜歡並高效使用的東西。
+> 請留下意見反應[https://github.com/grpc/grpc-dotnet](https://github.com/grpc/grpc-dotnet) ，以確保我們建立了開發人員所需的專案，並提高生產力。
 
-無法從基於瀏覽器的應用調用 HTTP/2 gRPC 服務。 [gRPC-Web](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md)是一種協定,允許瀏覽器 JavaScript 和 Blazor 應用調用 gRPC 服務。 本文介紹如何在 .NET 核心中使用 gRPC-Web。
+您無法從以瀏覽器為基礎的應用程式呼叫 HTTP/2 gRPC 服務。 [gRPC-Web](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-WEB.md)是一種通訊協定，可讓Blazor瀏覽器 JavaScript 和應用程式呼叫 gRPC 服務。 本文說明如何在 .NET Core 中使用 gRPC-Web。
 
-## <a name="grpc-web-in-aspnet-core-vs-envoy"></a>gRPC-Web ASP.NET核心與特使
+## <a name="grpc-web-in-aspnet-core-vs-envoy"></a>gRPC-Web in ASP.NET Core 與 Envoy 的比較
 
-有關如何將 gRPC-Web 新增到 ASP.NET 核心應用有兩種選擇:
+有兩種方式可讓您選擇如何將 gRPC 新增至 ASP.NET Core 應用程式：
 
-* 在 ASP.NET核心中支援 gRPC-Web 與 gRPC HTTP/2 一起。 此選項使用`Grpc.AspNetCore.Web`包提供的中間件。
-* 使用[特使代理的](https://www.envoyproxy.io/)gRPC-Web 支援將 gRPC-Web 轉換為 gRPC HTTP/2。 然後,翻譯的呼叫將轉發到ASP.NET核心應用。
+* 在 ASP.NET Core 中支援 gRPC 和 gRPC HTTP/2。 此選項會使用封裝所`Grpc.AspNetCore.Web`提供的中介軟體。
+* 使用[Envoy proxy 的](https://www.envoyproxy.io/)GRPC-web 支援，將 GRPC-web 轉譯為 gRPC HTTP/2。 然後，將已轉譯的呼叫轉送到 ASP.NET Core 應用程式。
 
-每種方法都有優缺點。 如果您已經在應用環境中使用特使作為代理,則使用它提供 gRPC-Web 支援可能也有意義。 如果想要一個簡單的 gRPC-Web 解決方案,只需要ASP.NET`Grpc.AspNetCore.Web`核心, 這是一個不錯的選擇。
+每種方法都有優缺點。 如果您已經在應用程式的環境中使用 Envoy 作為 proxy，也可以使用它來提供 gRPC Web 支援。 如果您想要只需要 ASP.NET Core 的簡單 gRPC Web 解決方案， `Grpc.AspNetCore.Web`是不錯的選擇。
 
-## <a name="configure-grpc-web-in-aspnet-core"></a>在 ASP.NET核心中設定 gRPC-Web
+## <a name="configure-grpc-web-in-aspnet-core"></a>在 ASP.NET Core 中設定 gRPC-Web
 
-ASP.NET核心中託管的 gRPC 服務可以配置為支援 gRPC-Web 以及 HTTP/2 gRPC。 gRPC-Web 不需要對服務進行任何更改。 唯一的修改是啟動配置。
+ASP.NET Core 中裝載的 gRPC 服務可以設定為支援 gRPC-Web 與 HTTP/2 gRPC。 gRPC-Web 不需要對服務進行任何變更。 唯一的修改是啟動設定。
 
-要啟用具有ASP.NET核心 gRPC 服務的 gRPC-Web:
+若要使用 ASP.NET Core gRPC 服務啟用 gRPC-Web：
 
-* 添加對[Grpc.AspNetCore.Web](https://www.nuget.org/packages/Grpc.AspNetCore.Web)包的引用。
-* 使用 gRPC-Web,透過`AddGrpcWeb`新增`UseGrpcWeb`與*Startup.cs*:
+* 新增對[Grpc. AspNetCore. Web](https://www.nuget.org/packages/Grpc.AspNetCore.Web)封裝的參考。
+* 藉由將和`AddGrpcWeb` `UseGrpcWeb`新增至*Startup.cs*，將應用程式設定為使用 gRPC Web：
 
 [!code-csharp[](~/grpc/browser/sample/Startup.cs?name=snippet_1&highlight=10,14)]
 
 上述程式碼：
 
-* 在路由後與終結點之前加入 gRPC-Web`UseGrpcWeb`中間件 。
-* 指定方法`endpoints.MapGrpcService<GreeterService>()`支援 gRPC-Web。 `EnableGrpcWeb` 
+* 加入 gRPC-Web 中介軟體， `UseGrpcWeb`在路由之後和結束點之前。
+* 指定`endpoints.MapGrpcService<GreeterService>()`方法支援使用`EnableGrpcWeb`的 gRPC Web。 
 
-或者,通過添加到`services.AddGrpcWeb(o => o.GrpcWebEnabled = true);`配置服務,將所有服務配置為支援 gRPC-Web。
+或者，將新增`services.AddGrpcWeb(o => o.GrpcWebEnabled = true);`至 ConfigureServices 來設定所有服務以支援 gRPC Web。
 
 [!code-csharp[](~/grpc/browser/sample/AllServicesSupportExample_Startup.cs?name=snippet_1&highlight=6,13)]
 
 > [!NOTE]
-> 在 .NET Core [3.x 中由 Http.sys 託管](xref:fundamentals/servers/httpsys)時,存在導致 gRPC-Web 失敗這一已知問題。
+> 已知的問題是，當[HTTP.sys](xref:fundamentals/servers/httpsys)在 .net Core 3.x 中裝載時，會導致 gRPC 失敗。
 >
-> 此處[提供了一](https://github.com/grpc/grpc-dotnet/issues/853#issuecomment-610078202)種解決方法,用於使 gRPC-Web 在 Http.sys 上工作。
+> 您可以在[這裡](https://github.com/grpc/grpc-dotnet/issues/853#issuecomment-610078202)取得在 HTTP.sys 上運作 gRPC 的因應措施。
 
 ### <a name="grpc-web-and-cors"></a>gRPC-Web 和 CORS
 
-流覽器安全性可防止網頁向與服務網頁的域不同的域發出請求。 此限制適用於使用瀏覽器應用進行 gRPC-Web 調用。 例如,所`https://www.contoso.com`服務的瀏覽器應用被阻止調用 託管在的`https://services.contoso.com`gRPC-Web 服務。 跨源資源分享 (CORS) 可用於放寬此限制。
+瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制適用于使用瀏覽器應用程式進行 gRPC Web 呼叫。 例如，服務`https://www.contoso.com`所提供的瀏覽器應用程式遭到封鎖，無法呼叫裝載于`https://services.contoso.com`的 gRPC Web 服務。 跨原始來源資源分享（CORS）可以用來放寬這種限制。
 
-要允許瀏覽器應用進行交叉源 gRPC-Web 調用,請[ASP.NET核心 中設置 CORS。](xref:security/cors) 使用內建的 CORS 支援,並使用 公開特定於<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*>gRPC 的標頭。
+若要允許您的瀏覽器應用程式進行跨原始來源的 gRPC 呼叫，請[在 ASP.NET Core 中設定 CORS](xref:security/cors)。 使用內建的 CORS 支援，並使用<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithExposedHeaders*>公開 gRPC 特有的標頭。
 
 [!code-csharp[](~/grpc/browser/sample/CORS_Startup.cs?name=snippet_1&highlight=5-11,19,24)]
 
 上述程式碼：
 
-* 呼叫`AddCors`以添加 CORS 服務並配置一個 CORS 策略,該策略公開 gRPC 特定的標頭。
-* 在`UseCors`路由後和終結點之前添加 CORS 中間件的調用。
-* 指定方法`endpoints.MapGrpcService<GreeterService>()`支援`RequiresCors`具有的 CORS。
+* 呼叫`AddCors`以新增 cors 服務，並設定會公開 gRPC 特定標頭的 CORS 原則。
+* 呼叫`UseCors` ，以在路由和結束端點之後加入 CORS 中介軟體。
+* 指定`endpoints.MapGrpcService<GreeterService>()`方法支援 CORS 與`RequiresCors`。
 
 ## <a name="call-grpc-web-from-the-browser"></a>從瀏覽器呼叫 gRPC-Web
 
-瀏覽器應用可以使用 gRPC-Web 調用 gRPC 服務。 從瀏覽器使用 gRPC-Web 呼叫 gRPC 服務時有一些要求和限制:
+瀏覽器應用程式可以使用 gRPC 來呼叫 gRPC 服務。 從瀏覽器呼叫具有 gRPC 的 gRPC 服務時，有一些需求和限制：
 
-* 伺服器必須配置為支援 gRPC-Web。
-* 不支援用戶端流式處理和雙向流式處理調用。 支援伺服器流。
-* 在不同的域上調用 gRPC 服務需要在伺服器上配置[CORS。](xref:security/cors)
+* 伺服器必須已設定為支援 gRPC-Web。
+* 不支援用戶端串流和雙向串流呼叫。 支援伺服器串流。
+* 若要在不同的網域上呼叫 gRPC 服務，必須在伺服器上設定[CORS](xref:security/cors) 。
 
 ### <a name="javascript-grpc-web-client"></a>JavaScript gRPC-Web 用戶端
 
-有一個JavaScriptgRPC-Web用戶端。 有關如何使用 JavaScript 中的 gRPC-Web 的說明,請參閱[使用 gRPC-Web 撰寫 JavaScript 客戶端碼](https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway/examples/helloworld#write-client-code)。
+有一個 JavaScript gRPC Web 用戶端。 如需如何從 JavaScript 使用 gRPC Web 的指示，請參閱[使用 gRPC 撰寫 javascript 用戶端程式代碼](https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway/examples/helloworld#write-client-code)。
 
 ### <a name="configure-grpc-web-with-the-net-grpc-client"></a>使用 .NET gRPC 用戶端設定 gRPC-Web
 
-.NET gRPC 用戶端可以配置為進行 gRPC-Web 調用。 這對於[Blazor WebAssembly](xref:blazor/index#blazor-webassembly)應用很有用,這些應用託管在瀏覽器中,並且具有相同的 JavaScript 代碼的 HTTP 限制。 使用 .NET 用戶端呼叫 gRPC-Web[與 HTTP/2 gRPC 相同](xref:grpc/client)。 唯一的修改是如何創建通道。
+您可以設定 .NET gRPC 用戶端進行 gRPC-Web 呼叫。 這適用于[ Blazor WebAssembly](xref:blazor/index#blazor-webassembly)應用程式（裝載于瀏覽器中），並具有 JavaScript 程式碼的相同 HTTP 限制。 使用 .NET 用戶端呼叫 gRPC Web 與[HTTP/2 gRPC 相同](xref:grpc/client)。 唯一的修改是建立通道的方式。
 
-要使用 gRPC-Web:
+若要使用 gRPC-Web：
 
-* 添加對[Grpc.Net.Client.Web](https://www.nuget.org/packages/Grpc.Net.Client.Web)包的引用。
-* 確保對[Grpc.Net.Client](https://www.nuget.org/packages/Grpc.Net.Client)包的引用為 2.27.0 或更高。
-* 將通道設定為使用`GrpcWebHandler`:
+* 將參考新增至[Grpc 的 .net. Web](https://www.nuget.org/packages/Grpc.Net.Client.Web)封裝。
+* 請確定[Grpc .net. 用戶端](https://www.nuget.org/packages/Grpc.Net.Client)封裝的參考已2.27.0 或更高。
+* 設定通道以使用`GrpcWebHandler`：
 
 [!code-csharp[](~/grpc/browser/sample/Handler.cs?name=snippet_1)]
 
 上述程式碼：
 
-* 配置通道以使用 gRPC-Web。
-* 創建用戶端並使用通道進行呼叫。
+* 設定通道以使用 gRPC-Web。
+* 建立用戶端，並使用通道進行呼叫。
 
-建立`GrpcWebHandler`時具有以下設定選項:
+建立`GrpcWebHandler`時，具有下列設定選項：
 
-* **內部處理程式**:<xref:System.Net.Http.HttpMessageHandler>使 gRPC HTTP 要求`HttpClientHandler`的基礎,例如 。
-* **模式**:指定 gRPC`Content-Type``application/grpc-web`HTTP`application/grpc-web-text`請求 是 或的枚舉類型。
-    * `GrpcWebMode.GrpcWeb`配置內容,無需編碼即可發送。 預設值。
-    * `GrpcWebMode.GrpcWebText`將內容配置為基本編碼。 瀏覽器中的伺服器流式調用是必需的。
-* **HTTPVersion** `Version` : HTTP 協定用於在基礎 gRPC HTTP 請求上設定[HTTPRequestMessage.Version。](xref:System.Net.Http.HttpRequestMessage.Version) gRPC-Web 不需要特定版本,除非指定,否則不會覆蓋預設值。
+* **InnerHandler**：發出 gRPC <xref:System.Net.Http.HttpMessageHandler> HTTP 要求的基礎，例如`HttpClientHandler`。
+* **模式**：指定 gRPC HTTP 要求`Content-Type`為`application/grpc-web`或`application/grpc-web-text`的列舉類型。
+    * `GrpcWebMode.GrpcWeb`設定要在沒有編碼的情況下傳送的內容。 預設值。
+    * `GrpcWebMode.GrpcWebText`將內容設定為 base64 編碼。 瀏覽器中的伺服器串流呼叫所需。
+* **HttpVersion**：用來`Version`在基礎 gRPC Http 要求上設定[HttpRequestMessage](xref:System.Net.Http.HttpRequestMessage.Version)的 HTTP 通訊協定。 gRPC-Web 不需要特定版本，除非指定，否則不會覆寫預設值。
 
 > [!IMPORTANT]
-> 生成的 gRPC 用戶端具有用於調用一元方法的同步和非同步方法。 例如,`SayHello`是同步`SayHelloAsync`和非同步。 在 Blazor WebAssembly 應用中調用同步方法將導致應用無回應。 在 Blazor WebAssembly 中必須始終使用非同步方法。
+> 產生的 gRPC 用戶端具有呼叫一元方法的同步和非同步方法。 例如， `SayHello`會同步處理， `SayHelloAsync`而且是非同步。 在Blazor WebAssembly 應用程式中呼叫同步處理方法，會導致應用程式沒有回應。 非同步方法必須一律在 WebAssembly 中Blazor使用。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [GRPC](https://github.com/grpc/grpc-web)
+* [適用于 Web 用戶端的 gRPC GitHub 專案](https://github.com/grpc/grpc-web)
 * <xref:security/cors>

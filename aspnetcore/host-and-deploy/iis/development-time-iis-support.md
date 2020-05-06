@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: f87a1d8cf41248f14932908c0633f98a7198853f
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: a6719b4f84b1bc60c7c2aea2aa3a97ef79f43e2e
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78664042"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777016"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -22,9 +28,9 @@ ms.locfileid: "78664042"
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* [適用於 Windows 的視覺化工作室](https://visualstudio.microsoft.com/downloads/)
+* [適用于 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
 * **.NET Core 跨平台開發**工作負載
 * X.509 安全性憑證 (以取得 HTTPS 支援)
@@ -60,7 +66,7 @@ IIS 的網站必須含有下列設定：
 
 針對需要 HTTPS 的新專案，請在 [建立新的 ASP.NET Core Web 應用程式]**** 視窗中，選取 [針對 HTTPS 進行設定]**** 核取方塊。 選取該核取方塊會在建立應用程式時，將 [HTTPS 重新導向和 HSTS 中介軟體](xref:security/enforcing-ssl)加入該應用程式。
 
-針對需要 HTTPS 的現有專案，請使用 `Startup.Configure`中的 HTTPS 重新導向和 HSTS 中介軟體。 如需詳細資訊，請參閱 <xref:security/enforcing-ssl>。
+針對需要 HTTPS 的現有專案，請使用 `Startup.Configure`中的 HTTPS 重新導向和 HSTS 中介軟體。 如需詳細資訊，請參閱<xref:security/enforcing-ssl>。
 
 針對使用 HTTP 的專案，[HTTPS 重新導向和 HSTS 中介軟體](xref:security/enforcing-ssl)並不會被加入至應用程式。 您不需要進行任何應用程式設定。
 
@@ -68,7 +74,7 @@ IIS 的網站必須含有下列設定：
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援：
 
-1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性]  。 打開**調試**選項卡。
+1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性]  。 開啟 [**調試**] 索引標籤。
 1. 針對 [設定檔]****，選取 [新增]**** 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定]**** 以建立設定檔。
 1. 針對 [啟動]**** 設定，從清單中選取 [IIS]****。
 1. 選取 [啟動瀏覽器]**** 的核取方塊並提供端點 URL。
@@ -117,7 +123,7 @@ IIS 的網站必須含有下列設定：
 以系統管理員身分執行 Visual Studio：
 
 * 確認建置設定下拉式清單已設定為 [偵錯]****。
-* 將[「開始除錯」按鈕](/visualstudio/debugger/debugger-feature-tour)設定為**IIS**設定檔,然後選擇該按鈕以啟動應用。
+* 將 [[開始調試](/visualstudio/debugger/debugger-feature-tour)程式] 按鈕設定為**IIS**設定檔，然後選取 [] 按鈕來啟動應用程式。
 
 如果不是以系統管理員身分執行，Visual Studio 可能會提示您重新啟動。 若收到提示，請重新啟動 Visual Studio。
 
@@ -137,9 +143,9 @@ IIS 的網站必須含有下列設定：
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-* [適用於 Windows 的視覺化工作室](https://visualstudio.microsoft.com/downloads/)
+* [適用于 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
 * **.NET Core 跨平台開發**工作負載
 * X.509 安全性憑證 (以取得 HTTPS 支援)
@@ -175,7 +181,7 @@ IIS 的網站必須含有下列設定：
 
 針對需要 HTTPS 的新專案，請在 [建立新的 ASP.NET Core Web 應用程式]**** 視窗中，選取 [針對 HTTPS 進行設定]**** 核取方塊。 選取該核取方塊會在建立應用程式時，將 [HTTPS 重新導向和 HSTS 中介軟體](xref:security/enforcing-ssl)加入該應用程式。
 
-針對需要 HTTPS 的現有專案，請使用 `Startup.Configure`中的 HTTPS 重新導向和 HSTS 中介軟體。 如需詳細資訊，請參閱 <xref:security/enforcing-ssl>。
+針對需要 HTTPS 的現有專案，請使用 `Startup.Configure`中的 HTTPS 重新導向和 HSTS 中介軟體。 如需詳細資訊，請參閱<xref:security/enforcing-ssl>。
 
 針對使用 HTTP 的專案，[HTTPS 重新導向和 HSTS 中介軟體](xref:security/enforcing-ssl)並不會被加入至應用程式。 您不需要進行任何應用程式設定。
 
@@ -183,7 +189,7 @@ IIS 的網站必須含有下列設定：
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援：
 
-1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性]  。 打開**調試**選項卡。
+1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性]  。 開啟 [**調試**] 索引標籤。
 1. 針對 [設定檔]****，選取 [新增]**** 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定]**** 以建立設定檔。
 1. 針對 [啟動]**** 設定，從清單中選取 [IIS]****。
 1. 選取 [啟動瀏覽器]**** 的核取方塊並提供端點 URL。
@@ -232,7 +238,7 @@ IIS 的網站必須含有下列設定：
 以系統管理員身分執行 Visual Studio：
 
 * 確認建置設定下拉式清單已設定為 [偵錯]****。
-* 將[「開始除錯」按鈕](/visualstudio/debugger/debugger-feature-tour)設定為**IIS**設定檔,然後選擇該按鈕以啟動應用。
+* 將 [[開始調試](/visualstudio/debugger/debugger-feature-tour)程式] 按鈕設定為**IIS**設定檔，然後選取 [] 按鈕來啟動應用程式。
 
 如果不是以系統管理員身分執行，Visual Studio 可能會提示您重新啟動。 若收到提示，請重新啟動 Visual Studio。
 

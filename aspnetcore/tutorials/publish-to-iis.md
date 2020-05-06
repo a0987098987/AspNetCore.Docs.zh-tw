@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/03/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: 47f78ba78741a8e0175ce801c0c0e51f091273a8
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: aa79ce604539b4f09d6f17d4f43da28a6b615f53
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79511388"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774570"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>將 ASP.NET Core 應用程式發佈到 IIS
 
@@ -25,7 +31,7 @@ ms.locfileid: "79511388"
 > * 在 IIS 管理員中建立 IIS 網站。
 > * 部署 ASP.NET Core 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 在部署電腦上安裝 [.NET Core SDK](/dotnet/core/sdk)。
 * 使用 **Web Server (IIS)** 伺服器角色設定的 Windows Server。 若您的伺服器並未設為使用 IIS 來裝載網站，請遵循 <xref:host-and-deploy/iis/index#iis-configuration> 一文中＜IIS 組態＞** 一節內的指導，然後返回本教學課程。
@@ -41,7 +47,7 @@ ms.locfileid: "79511388"
 
 ## <a name="install-the-net-core-hosting-bundle"></a>安裝 .NET Core 裝載套件組合
 
-在 IIS 伺服器上安裝 *.NET Core 裝載套件組合*。 該捆綁套件安裝 .NET 核心執行時、.NET 核心庫和[ASP.NET核心模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
+在 IIS 伺服器上安裝 *.NET Core 裝載套件組合*。 套件組合會安裝 .NET Core 執行時間、.NET Core 程式庫和[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)。 此模組可讓 ASP.NET Core 應用程式在 IIS 背後執行。
 
 使用下列連結下載安裝程式：
 
@@ -55,7 +61,7 @@ ms.locfileid: "79511388"
 
 1. 在 IIS 伺服器上，建立資料夾以包含應用程式的發佈資料夾和檔案。 在下列步驟中，您提供資料夾路徑給 IIS，作為應用程式的實體路徑。
 
-1. 在 IIS 管理員中,在 **「連接」** 面板中打開伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
+1. 在 [IIS 管理員] 中 **，在 [** 連線] 面板中開啟伺服器的節點。 以滑鼠右鍵按一下 [網站]**** 資料夾。 從操作功能表選取 [新增網站]****。
 
 1. 提供**網站名稱**，並將**實體路徑**設定為您建立的應用程式部署資料夾。 提供**繫結**組態，然後選取 [確定]**** 來建立網站。
 
@@ -72,7 +78,7 @@ ms.locfileid: "79511388"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 右鍵單擊**解決方案資源管理器**中的專案,然後選擇 **「發布」。**
+1. 以滑鼠右鍵按一下**方案總管**中的專案，然後選取 [**發佈**]。
 1. 在 [挑選發佈目標]**** 對話方塊中，選取 [資料夾]**** 發佈選項。
 1. 設定 [資料夾或檔案共用]**** 路徑。
    * 若您針對部署電腦上提供為網路共用的 IIS 網站建立資料夾，則請提供指向共用的路徑。 目前的使用者必須具備寫入存取權限才能發佈到共用。

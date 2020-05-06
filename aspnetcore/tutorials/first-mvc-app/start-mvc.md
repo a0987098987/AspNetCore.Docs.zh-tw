@@ -4,13 +4,19 @@ author: rick-anderson
 description: 了解如何開始使用 ASP.NET Core MVC。
 ms.author: riande
 ms.date: 10/16/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 901257efdfbc7b36249233745175f5ed253da2c7
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 0b28e99d9c56d92e157e9010880e58ec5165196a
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78662474"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774981"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
@@ -34,7 +40,7 @@ ms.locfileid: "78662474"
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -83,10 +89,10 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
    code -r MvcMovie
    ```
 
-  * **"MvcMovie"中缺少一個對話框,其中包含用於生成和調試所需的資產。添加它們?**  選取 [是]****。
+  * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]****。
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`:在可視化工作室代碼中載入*MvcMovie.csproj*專案檔。
+  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie*專案檔案。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -98,9 +104,9 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![macOS [新增專案] 對話方塊](./start-mvc/_static/new_project_mvc_vsmac.png)
 
-* 在 **'設定新的ASP.NET核心 Web API 對話框**中,設定 **.NET 核心 3.1****的目標框架**。
+* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，設定 **.net Core 3.1**的**目標 Framework** 。
 
-  ![macOS .NET 核心 3.1 選擇](./start-mvc/_static/new_project_31_vsmac.png)
+  ![macOS .NET Core 3.1 選項](./start-mvc/_static/new_project_31_vsmac.png)
 
 * 將專案命名為 **MvcMovie**，然後選取 [建立]****。
 
@@ -142,7 +148,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-選擇 **「在不** > **除錯的情況下執行啟動**」以啟動應用。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
+選取 [**執行** > ] [**啟動但不**進行偵測] 來啟動應用程式。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
@@ -182,7 +188,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/mvc-intro/download.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -231,10 +237,10 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
    code -r MvcMovie
    ```
 
-  * **"MvcMovie"中缺少一個對話框,其中包含用於生成和調試所需的資產。添加它們?**  選取 [是]****。
+  * 此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' MvcMovie ' 中遺漏了 debug。要新增它們嗎？**  選取 [是]****。
 
   * `dotnet new mvc -o MvcMovie`：在 *MvcMovie* 資料夾中建立新的 ASP.NET Core MVC 專案。
-  * `code -r MvcMovie`:在可視化工作室代碼中載入*MvcMovie.csproj*專案檔。
+  * `code -r MvcMovie`：載入 Visual Studio Code 中的*MvcMovie*專案檔案。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -246,7 +252,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![macOS [新增專案] 對話方塊](./start-mvc/_static/new_project_mvc_vsmac.png)
 
-* 在 **「設定新的ASP.NET核心 Web API**對話框中,接受 **.NET Core 2.2**的預設**目標框架**。
+* 在 [**設定新的 ASP.NET Core WEB API** ] 對話方塊中，接受預設的 [ **.net Core 2.2**]**目標 Framework** 。
 
   ![macOS .NET Core 2.2 選取項目](./start-mvc/_static/new_project_22_vsmac.png)
 
@@ -300,7 +306,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-選擇 **「在不** > **除錯的情況下執行啟動**」以啟動應用。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
+選取 [**執行** > ] [**啟動但不**進行偵測] 來啟動應用程式。 Visual Studio for Mac 會啟動 [Kestrel](xref:fundamentals/servers/index#kestrel) 伺服器、啟動瀏覽器，然後巡覽至 `http://localhost:port`，其中 *port* 是隨機選擇的連接埠號碼。
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 

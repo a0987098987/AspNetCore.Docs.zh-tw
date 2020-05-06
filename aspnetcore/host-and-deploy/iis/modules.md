@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/13/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 0f13ef3eb1da03960ef1fa54d33532b6ebbdc128
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 7262b9ea18e4cf6acd278d087fcc44262f8f9c80
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78657903"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775943"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -22,35 +28,35 @@ ms.locfileid: "78657903"
 
 下表指出可搭配 ASP.NET Core 應用程式和 ASP.NET Core 模組運作的原生 IIS 模組。
 
-| 模組 | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
+| Module | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
 | --- | :---: | --- |
-| **匿名身份驗證**<br>`AnonymousAuthenticationModule`                                  | 是 | |
-| **基本身份驗證**<br>`BasicAuthenticationModule`                                          | 是 | |
+| **匿名驗證**<br>`AnonymousAuthenticationModule`                                  | 是 | |
+| **基本驗證**<br>`BasicAuthenticationModule`                                          | 是 | |
 | **用戶端憑證對應驗證**<br>`CertificateMappingAuthenticationModule`      | 是 | |
 | **CGI**<br>`CgiModule`                                                                           | 否  | |
 | **設定驗證**<br>`ConfigurationValidationModule`                                  | 是 | |
 | **HTTP 錯誤**<br>`CustomErrorModule`                                                           | 否  | [狀態碼頁面中介軟體](xref:fundamentals/error-handling#usestatuscodepages) |
-| **自訂紀錄記錄**<br>`CustomLoggingModule`                                                      | 是 | |
-| **預設文件**<br>`DefaultDocumentModule`                                                  | 否  | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
+| **自訂記錄**<br>`CustomLoggingModule`                                                      | 是 | |
+| **預設檔**<br>`DefaultDocumentModule`                                                  | 否  | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
 | **摘要式驗證**<br>`DigestAuthenticationModule`                                        | 是 | |
-| **瀏覽目錄**<br>`DirectoryListingModule`                                               | 否  | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
-| **動態壓縮**<br>`DynamicCompressionModule`                                            | 是 | [回應壓縮中間件](xref:performance/response-compression) |
-| **失敗的要求追蹤**<br>`FailedRequestsTracingModule`                                     | 是 | [ASP.NET核心紀錄記錄](xref:fundamentals/logging/index#tracesource-provider) |
-| **檔案快取**<br>`FileCacheModule`                                                            | 否  | [回應快取中間件](xref:performance/caching/middleware) |
-| **HTTP 快取**<br>`HttpCacheModule`                                                            | 否  | [回應快取中間件](xref:performance/caching/middleware) |
-| **HTTP 記錄**<br>`HttpLoggingModule`                                                          | 是 | [ASP.NET核心紀錄記錄](xref:fundamentals/logging/index) |
-| **HTTP 重定向**<br>`HttpRedirectionModule`                                                  | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
+| **流覽目錄**<br>`DirectoryListingModule`                                               | 否  | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
+| **動態壓縮**<br>`DynamicCompressionModule`                                            | 是 | [回應壓縮中介軟體](xref:performance/response-compression) |
+| **失敗的要求追蹤**<br>`FailedRequestsTracingModule`                                     | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index#tracesource-provider) |
+| **檔案快取**<br>`FileCacheModule`                                                            | 否  | [回應快取中介軟體](xref:performance/caching/middleware) |
+| **HTTP 快取**<br>`HttpCacheModule`                                                            | 否  | [回應快取中介軟體](xref:performance/caching/middleware) |
+| **HTTP 記錄**<br>`HttpLoggingModule`                                                          | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index) |
+| **HTTP 重新導向**<br>`HttpRedirectionModule`                                                  | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **HTTP 追蹤**<br>`TracingModule`                                                              | 是 | |
 | **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | 是 | |
-| **IP 及網域限制**<br>`IpRestrictionModule`                                          | 是 | |
-| **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | 是 | [中間件](xref:fundamentals/middleware/index) |
-| **ISAPI**<br>`IsapiModule`                                                                       | 是 | [中間件](xref:fundamentals/middleware/index) |
+| **IP 和網域限制**<br>`IpRestrictionModule`                                          | 是 | |
+| **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | 是 | [中介軟體](xref:fundamentals/middleware/index) |
+| **ISAPI**<br>`IsapiModule`                                                                       | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **通訊協定支援**<br>`ProtocolSupportModule`                                                  | 是 | |
-| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [網址重寫中間件`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
+| **要求篩選**<br>`RequestFilteringModule`                                                | 是 | [URL 重寫中介軟體`IRule`](xref:fundamentals/url-rewriting#irule-based-rule) |
 | **要求監視器**<br>`RequestMonitorModule`                                                    | 是 | |
 | **URL 重新寫入**&#8224;<br>`RewriteModule`                                                      | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **伺服器端包含**<br>`ServerSideIncludeModule`                                            | 否  | |
-| **靜態壓縮**<br>`StaticCompressionModule`                                              | 否  | [回應壓縮中間件](xref:performance/response-compression) |
+| **靜態壓縮**<br>`StaticCompressionModule`                                              | 否  | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **靜態內容**<br>`StaticFileModule`                                                         | 否  | [靜態檔案中介軟體](xref:fundamentals/static-files) |
 | **權杖快取**<br>`TokenCacheModule`                                                          | 是 | |
 | **URI 快取**<br>`UriCacheModule`                                                              | 是 | |
@@ -63,20 +69,20 @@ ms.locfileid: "78657903"
 
 當應用程式集區的 .NET CLR 版本已設定為 [沒有 Managed 程式碼]**** 時，受控模組對所裝載的 ASP.NET Core 應用程式「沒有」** 作用。 ASP.NET Core 在數種案例中都有提供中介軟體替代方案。
 
-| 模組                  | ASP.NET Core 選項 |
+| Module                  | ASP.NET Core 選項 |
 | ----------------------- | ------------------- |
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
 | FileAuthorization       | |
 | FormsAuthentication     | [Cookie 驗證中介軟體](xref:security/authentication/cookie) |
-| OutputCache             | [回應快取中間件](xref:performance/caching/middleware) |
+| OutputCache             | [回應快取中介軟體](xref:performance/caching/middleware) |
 | 設定檔                 | |
 | RoleManager             | |
 | ScriptModule-4.0        | |
 | 工作階段                 | [工作階段中介軟體](xref:fundamentals/app-state) |
 | UrlAuthorization        | |
 | UrlMappingsModule       | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
-| UrlRoutingModule-4.0    | [ASP.NET Core 身分識別](xref:security/authentication/identity) |
+| UrlRoutingModule-4.0    | [ASP.NET CoreIdentity](xref:security/authentication/identity) |
 | WindowsAuthentication   | |
 
 ## <a name="iis-manager-application-changes"></a>IIS 管理員應用程式變更
@@ -107,9 +113,9 @@ ms.locfileid: "78657903"
 
 1. 將伺服器層級的模組解除鎖定。 選取「IIS 管理員」[連線]**** 資訊看板中的 IIS 伺服器。 開啟 [IIS]**** 區域中的 [模組]****。 選取清單中的模組。 在右邊的 [動作]**** 資訊看板上，選取 [解除鎖定]****。 若模組的動作項目顯示為**鎖定**，就代表該模組已經解除鎖定，且不需要任何動作。 將您打算稍後從 *web.config* 移除的模組都解除鎖定。
 
-2. 部署應用程式,而不在`<modules>` *Web.config*中設置部分。如果應用部署時包含該節*web.config*,`<modules>`而未首先在IIS管理器中解鎖該節,則配置管理器在嘗試解鎖該部分時會引發異常。 因此，請在沒有 `<modules>` 區段的情況下部署應用程式。
+2. 部署應用程式，而`<modules>`不使用*web.config 中的區段。* 如果應用程式是以包含`<modules>`區段的*web.config*部署，但未在 IIS 管理員中先解除鎖定區段，則當嘗試解除鎖定區段時，Configuration Manager 會擲回例外狀況。 因此，請在沒有 `<modules>` 區段的情況下部署應用程式。
 
-3. 解鎖`<modules>`*Web.config*的部分。在 **"連接"** 側邊欄中,在 **「網站」** 中選擇網站。 在 [管理]**** 區域中，開啟 [設定編輯器]****。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作]**** 資訊看板上，選取將區段 [解除鎖定]****。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
+3. 解除鎖定`<modules>` *web.config*的區段。在 [**連接**] 提要欄位中，選取 [**網站**] 中的網站。 在 [管理]**** 區域中，開啟 [設定編輯器]****。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作]**** 資訊看板上，選取將區段 [解除鎖定]****。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
 
 4. 將 `<modules>` 區段新增至具有 `<remove>` 元素的應用程式本機 *web.config* 檔案，以從應用程式移除該模組。 新增多個 `<remove>` 元素以移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 使用此方法移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
 
@@ -168,4 +174,4 @@ Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 * [IIS 架構簡介：IIS 中的模組](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [IIS 模組概觀](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [自訂 IIS 7.0 角色和模組](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS\<系統.web 伺服器>](/iis/configuration/system.webServer/)
+* [IIS \<system.webserver>](/iis/configuration/system.webServer/)

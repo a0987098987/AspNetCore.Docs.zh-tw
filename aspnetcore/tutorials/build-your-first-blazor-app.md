@@ -1,36 +1,40 @@
 ---
-title: 建置第Blazor一個應用程式
+title: 建立您的Blazor第一個應用程式
 author: guardrex
-description: 逐步Blazor構建應用。
+description: 逐步建立Blazor應用程式。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/20/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 138057c2ceb9ed01bdf958c01f5cf2275387df23
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 5a5a56ee646cba21a883df2cf686cb1ccb18d7f9
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "79989438"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776600"
 ---
-# <a name="build-your-first-opno-locblazor-app"></a>建置第Blazor一個應用程式
+# <a name="build-your-first-blazor-app"></a>建立您的Blazor第一個應用程式
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
 [!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
-本教程演示如何構建和修改Blazor應用。
+本教學課程說明如何建立和修改Blazor應用程式。
 
 ## <a name="build-components"></a>組建元件
 
-1. 按照本文中的<xref:blazor/get-started>指南為本教程創建Blazor專案。 將專案命名為 *ToDoList*。
+1. 請遵循<xref:blazor/get-started>本文中的指導方針，為Blazor本教學課程建立專案。 將專案命名為 *ToDoList*。
 
-1. 瀏覽到 *「主頁」* 資料夾中應用的三個頁面:主頁、計數器和提取數據。 這些頁面會透過 Razor 元件檔案 *Index.razor*、*Counter.razor* 及 *FetchData.razor* 來實作。
+1. 流覽至每個應用程式的 [ *pages* ] 資料夾中的三個頁面： [首頁]、[計數器] 和 [提取資料]。 這些頁面是由元件檔案Razor *Index. razor*、 *razor*和*FetchData*所執行。
 
-1. 在 [計數器] 頁面上，選取 [按我]**** 按鈕以在不重新整理頁面的情況下讓計數器遞增。 在網頁中增加計數器通常需要編寫 JavaScript。 使用Blazor可以改為編寫 C#。
+1. 在 [計數器] 頁面上，選取 [按我]**** 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript。 使用Blazor，您可以改為撰寫 c #。
 
 1. 檢查 *Counter.razor`Counter` 檔案中 * 元件的實作。
 
@@ -38,7 +42,7 @@ ms.locfileid: "79989438"
 
    [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/Counter1.razor)]
 
-   `Counter` 元件的 UI 是使用 HTML 來定義的。 動態轉譯邏輯 (例如迴圈、條件、運算式) 是使用內嵌的 C# 語法 (稱為 [Razor](xref:mvc/views/razor)) 來新增的。 HTML 標記和 C# 轉譯邏輯會在組建時轉換為元件類別。 所產生 .NET 類別的名稱會與檔案名稱相符。
+   `Counter` 元件的 UI 是使用 HTML 來定義的。 動態轉譯邏輯（例如，迴圈、條件、運算式）是使用名[Razor](xref:mvc/views/razor)為的內嵌 c # 語法加入。 HTML 標記和 C# 轉譯邏輯會在組建時轉換為元件類別。 所產生 .NET 類別的名稱會與檔案名稱相符。
 
    元件類別的成員均定義於 `@code` 區塊中。 在 `@code` 區塊中，會指定元件狀態 (屬性、欄位) 來處理事件或定義其他元件邏輯。 然後會使用這些成員作為元件轉譯邏輯的一部分，並用於處理事件。
 
@@ -61,7 +65,7 @@ ms.locfileid: "79989438"
 
 1. 透過將 `<Counter />` 元素新增至 `Index` 元件 (*Index.razor*)，來將 `Counter` 元件新增至應用程式的 `Index` 元件。
 
-   如果您正在此體驗中使用BlazorWebAssembly,`Index`則元件將`SurveyPrompt`使用 元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用此Blazor伺服器套用的此體驗,則將`<Counter />`元素加入元件`Index`:
+   如果您在此Blazor體驗中使用 WebAssembly， `Index`元件`SurveyPrompt`會使用元件。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用Blazor伺服器應用程式來進行此體驗，請將`<Counter />`元素新增至`Index`元件：
 
    *Pages/Index.razor*：
 
@@ -71,12 +75,12 @@ ms.locfileid: "79989438"
 
 ## <a name="component-parameters"></a>元件參數
 
-元件也可以有參數。 元件參數使用具有`[Parameter]`屬性的元件類上的公共屬性進行定義。 使用這些屬性來指定標記中元件的引數。
+元件也可以有參數。 元件參數是在元件類別上使用具有`[Parameter]`屬性的公用屬性來定義。 使用這些屬性來指定標記中元件的引數。
 
-1. 更新元件的`@code`C# 代碼,如下所示:
+1. 更新元件的`@code` c # 程式碼，如下所示：
 
-   * 使用`[Parameter]`屬性`IncrementAmount`添加公共屬性。
-   * 增加`IncrementCount`的值 時`IncrementAmount`, 將方法更改`currentCount`為使用 屬性。
+   * 新增具有`[Parameter]`屬性`IncrementAmount`的公用屬性。
+   * 當增加`IncrementCount`的值時， `IncrementAmount`請將方法變更為使用`currentCount`屬性。
 
    *Pages/Counter.razor*：
 
@@ -101,13 +105,13 @@ ms.locfileid: "79989438"
 
 ## <a name="dependency-injection"></a>相依性插入
 
-### <a name="opno-locblazor-server-experience"></a>Blazor伺服器體驗
+### <a name="blazor-server-experience"></a>Blazor伺服器體驗
 
-如果使用Blazor伺服器應用,則該`WeatherForecastService`服務`Startup.ConfigureServices`在中 註冊為[單例](xref:fundamentals/dependency-injection#service-lifetimes)。 該服務的實體可透過[相依相依 (DI)](xref:fundamentals/dependency-injection)在整個應用中可用:
+如果使用Blazor伺服器應用程式， `WeatherForecastService`服務會在中`Startup.ConfigureServices`註冊為[單一實例](xref:fundamentals/dependency-injection#service-lifetimes)。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-這個`@inject`指令用於將`WeatherForecastService`服務的實體注入到元件中`FetchData`。
+`@inject`指示詞是用來將`WeatherForecastService`服務的實例插入`FetchData`元件中。
 
 *Pages/FetchData.razor*：
 
@@ -117,15 +121,15 @@ ms.locfileid: "79989438"
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-### <a name="opno-locblazor-webassembly-experience"></a>Blazor網路組裝體驗
+### <a name="blazor-webassembly-experience"></a>BlazorWebAssembly 體驗
 
-如果使用BlazorWebAssembly`HttpClient`應用, 則注入以從*wwwroot/範例資料*資料夾中的*weather.json*檔中獲取天氣預報數據。
+如果使用Blazor WebAssembly 應用程式， `HttpClient`則會插入，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
 
 *Pages/FetchData.razor*：
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData1_client.razor?highlight=7-8)]
 
-循環[`@foreach`](/dotnet/csharp/language-reference/keywords/foreach-in)將每個預測實體呈現為天氣資料表中的行:
+[`@foreach`](/dotnet/csharp/language-reference/keywords/foreach-in)迴圈是用來將每個預測實例轉譯為天氣資料之資料表中的資料列：
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData3.razor?highlight=11-19)]
 
@@ -133,7 +137,7 @@ ms.locfileid: "79989438"
 
 在實作簡單待辦事項清單的應用程式中新增元件。
 
-1. 向`Todo`*「主頁」* 資料夾中的應用添加新的 Razor 元件。 在可視化工作室中,右鍵按**下 「頁面」** 資料夾**Add** > ,然後選擇「**添加新專案** > **剃刀元件**」。。 命名元件的檔案*Todo.razor*。 在其他開發環境中,向名為*Todo.razor*的**Pages**資料夾添加空白檔。
+1. 在 [ `Todo` Razor *Pages* ] 資料夾中，將新的元件新增至應用程式。 在 Visual Studio 中，以滑鼠右鍵按一下 [**頁面**] 資料夾，然後選取 [**加入** > **新專案** >  ** Razor元件**]。 將元件的檔案命名為*Todo*。 在其他開發環境中，將空白檔案新增至名為 [ *Todo. razor*] 的 [ **Pages** ] 資料夾。
 
 1. 提供元件的初始標記：
 

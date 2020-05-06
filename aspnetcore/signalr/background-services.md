@@ -1,37 +1,41 @@
 ---
-title: 在背景服務中 SignalR 主機 ASP.NET Core
+title: 背景服務SignalR中的主機 ASP.NET Core
 author: bradygaster
-description: 瞭解如何從 .NET Core BackgroundService 類別將訊息傳送至 SignalR 用戶端。
+description: 瞭解如何從 .NET Core BackgroundService SignalR類別將訊息傳送至用戶端。
 monikerRange: '>= aspnetcore-2.2'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 86319cc93febab18c29e2fb6366cef0d025943ba
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: d5f1668d601f520939956985e46c62f3a5bdfcfa
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78658141"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82777289"
 ---
-# <a name="host-aspnet-core-opno-locsignalr-in-background-services"></a>在背景服務中 SignalR 主機 ASP.NET Core
+# <a name="host-aspnet-core-signalr-in-background-services"></a>背景服務SignalR中的主機 ASP.NET Core
 
 依[Brady Gaster](https://twitter.com/bradygaster)
 
 本文提供下列指引：
 
-* 使用以 ASP.NET Core 主控的背景工作進程來裝載 SignalR 中樞。
+* 使用SignalR以 ASP.NET Core 主控的背景工作進程來裝載中樞。
 * 從 .NET Core [BackgroundService](xref:Microsoft.Extensions.Hosting.BackgroundService)中將訊息傳送至已連線的用戶端。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/background-service/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
-## <a name="enable-opno-locsignalr-in-startup"></a>在啟動時啟用 SignalR
+## <a name="enable-signalr-in-startup"></a>在SignalR啟動時啟用
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在背景工作進程的內容中裝載 ASP.NET Core SignalR 中樞，等同于在 ASP.NET Core web 應用程式中裝載中樞。 在 `Startup.ConfigureServices` 方法中，呼叫 `services.AddSignalR` 會將必要的服務新增至 ASP.NET Core 相依性插入（DI）層，以支援 SignalR。 在 `Startup.Configure`中，會在 `UseEndpoints` 回呼中呼叫 `MapHub` 方法，以連接 ASP.NET Core 要求管線中的中樞端點。
+在背景SignalR工作進程的內容中裝載 ASP.NET Core 中樞，等同于在 ASP.NET Core web 應用程式中裝載中樞。 在`Startup.ConfigureServices`方法中，呼叫`services.AddSignalR`會將必要的服務新增至 ASP.NET Core 相依性插入（DI）層SignalR以支援。 在`Startup.Configure`中， `MapHub`會在`UseEndpoints`回呼中呼叫方法，以連接 ASP.NET Core 要求管線中的中樞端點。
 
 ```csharp
 public class Startup
@@ -62,44 +66,44 @@ public class Startup
 
 ::: moniker range="<= aspnetcore-2.2"
 
-在背景工作進程的內容中裝載 ASP.NET Core SignalR 中樞，等同于在 ASP.NET Core web 應用程式中裝載中樞。 在 `Startup.ConfigureServices` 方法中，呼叫 `services.AddSignalR` 會將必要的服務新增至 ASP.NET Core 相依性插入（DI）層，以支援 SignalR。 在 `Startup.Configure`中，會呼叫 `UseSignalR` 方法來連接 ASP.NET Core 要求管線中的中樞端點。
+在背景SignalR工作進程的內容中裝載 ASP.NET Core 中樞，等同于在 ASP.NET Core web 應用程式中裝載中樞。 在`Startup.ConfigureServices`方法中，呼叫`services.AddSignalR`會將必要的服務新增至 ASP.NET Core 相依性插入（DI）層SignalR以支援。 在`Startup.Configure`中， `UseSignalR`會呼叫方法來連接 ASP.NET Core 要求管線中的中樞端點。
 
 [!code-csharp[Startup](background-service/sample/Server/Startup.cs?name=Startup)]
 
 ::: moniker-end
 
-在上述範例中，`ClockHub` 類別會執行 `Hub<T>` 類別，以建立強型別中樞。 `ClockHub` 已在 `Startup` 類別中設定，以回應端點 `/hubs/clock`的要求。
+在上述範例中， `ClockHub`類別會實作為`Hub<T>`建立強型別中樞的類別。 `ClockHub`已在`Startup`類別中設定，以回應端點`/hubs/clock`上的要求。
 
-如需強型別中樞的詳細資訊，請參閱[在適用于 ASP.NET Core 的 SignalR 中使用中樞](xref:signalr/hubs#strongly-typed-hubs)。
+如需強型別中樞的詳細資訊，請參閱[在中SignalR使用中樞以進行 ASP.NET Core](xref:signalr/hubs#strongly-typed-hubs)。
 
 > [!NOTE]
-> 這種功能並不限於[中樞\<t >](xref:Microsoft.AspNetCore.SignalR.Hub`1)類別。 任何繼承自[中樞](xref:Microsoft.AspNetCore.SignalR.Hub)的類別（例如[DynamicHub](xref:Microsoft.AspNetCore.SignalR.DynamicHub)）也都可以使用。
+> 此功能不限於[\<中樞 t>](xref:Microsoft.AspNetCore.SignalR.Hub`1)類別。 任何繼承自[中樞](xref:Microsoft.AspNetCore.SignalR.Hub)的類別（例如[DynamicHub](xref:Microsoft.AspNetCore.SignalR.DynamicHub)）也都可以使用。
 
 [!code-csharp[Startup](background-service/sample/Server/ClockHub.cs?name=ClockHub)]
 
-強型別 `ClockHub` 所使用的介面是 `IClock` 介面。
+強型別所使用的介面`ClockHub`是`IClock`介面。
 
 [!code-csharp[Startup](background-service/sample/HubServiceInterfaces/IClock.cs?name=IClock)]
 
-## <a name="call-a-opno-locsignalr-hub-from-a-background-service"></a>從背景服務呼叫 SignalR 中樞
+## <a name="call-a-signalr-hub-from-a-background-service"></a>從背景SignalR服務呼叫中樞
 
-在啟動期間，會使用 `AddHostedService`來啟用 `Worker` 類別，也就是 `BackgroundService`。
+在啟動期間， `Worker`會使用來`BackgroundService` `AddHostedService`啟用類別（a）。
 
 ```csharp
 services.AddHostedService<Worker>();
 ```
 
-由於 SignalR 也會在 `Startup` 階段中啟用，其中每個中樞都會附加至 ASP.NET Core 的 HTTP 要求管線中的個別端點，而每個中樞都是由伺服器上的 `IHubContext<T>` 表示。 使用 ASP.NET Core 的 DI 功能，由裝載層具現化的其他類別（例如 `BackgroundService` 類別、MVC 控制器類別或 Razor 頁面模型），可以藉由接受在架構中的 `IHubContext<ClockHub, IClock>` 實例，來取得伺服器端中樞的參考。
+由於SignalR也會在`Startup`階段中啟用，因此每個中樞都會附加至 ASP.NET Core 的 HTTP 要求管線中的個別端點，而每個中樞都會由伺服器`IHubContext<T>`上的表示。 使用 ASP.NET Core 的 DI 功能，由裝載層（例如`BackgroundService`類別、MVC 控制器類別或Razor頁面模型）具現化的其他類別，可以藉由接受在架構中的`IHubContext<ClockHub, IClock>`實例來取得伺服器端中樞的參考。
 
 [!code-csharp[Startup](background-service/sample/Server/Worker.cs?name=Worker)]
 
-隨著在背景服務中反復呼叫 `ExecuteAsync` 方法，伺服器的目前日期和時間會使用 `ClockHub`傳送至已連線的用戶端。
+隨著在`ExecuteAsync`背景服務中反復呼叫方法，伺服器的目前日期和時間會使用傳送至已連線的用戶端`ClockHub`。
 
-## <a name="react-to-opno-locsignalr-events-with-background-services"></a>使用背景服務回應 SignalR 事件
+## <a name="react-to-signalr-events-with-background-services"></a>使用背景SignalR服務回應事件
 
-就像使用適用于 SignalR 的 JavaScript 用戶端或 .NET 傳統型應用程式的單一頁面應用程式，可以使用 <xref:signalr/dotnet-client>，`BackgroundService` 或 `IHostedService` 的執行也可以用來連接到 SignalR 中樞並回應事件。
+就像使用SignalR適用于的 JavaScript 用戶端或 .net 傳統型應用程式的單一頁面應用程式<xref:signalr/dotnet-client>，可以使用來`BackgroundService`執行`IHostedService` ，或執行也可以用來連接SignalR到中樞並回應事件。
 
-`ClockHubClient` 類別會同時執行 `IClock` 介面和 `IHostedService` 介面。 如此一來，就可以在 `Startup` 連續執行並從伺服器回應中樞事件時，啟用此功能。
+`ClockHubClient`類別會同時執行`IClock`介面和`IHostedService`介面。 如此一來，就可以在`Startup`持續執行期間啟用此功能，並從伺服器回應中樞事件。
 
 ```csharp
 public partial class ClockHubClient : IClock, IHostedService
@@ -107,15 +111,15 @@ public partial class ClockHubClient : IClock, IHostedService
 }
 ```
 
-在初始化期間，`ClockHubClient` 會建立 `HubConnection` 的實例，並啟用 `IClock.ShowTime` 方法做為中樞 `ShowTime` 事件的處理常式。
+在初始化期間， `ClockHubClient`會建立的實例`HubConnection` ，並啟用`IClock.ShowTime`方法做為中樞`ShowTime`事件的處理常式。
 
 [!code-csharp[The ClockHubClient constructor](background-service/sample/Clients.ConsoleTwo/ClockHubClient.cs?name=ClockHubClientCtor)]
 
-在 `IHostedService.StartAsync` 的執行中，`HubConnection` 會以非同步方式啟動。
+在`IHostedService.StartAsync`執行`HubConnection`時，會以非同步方式啟動。
 
 [!code-csharp[StartAsync method](background-service/sample/Clients.ConsoleTwo/ClockHubClient.cs?name=StartAsync)]
 
-在 `IHostedService.StopAsync` 方法期間，會以非同步方式處置 `HubConnection`。
+在`IHostedService.StopAsync`方法期間， `HubConnection`會以非同步方式處置。
 
 [!code-csharp[StopAsync method](background-service/sample/Clients.ConsoleTwo/ClockHubClient.cs?name=StopAsync)]
 

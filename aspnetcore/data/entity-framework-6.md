@@ -5,13 +5,19 @@ description: 本文示範如何在 ASP.NET Core 應用程式中使用 Entity Fra
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/24/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: 85cf86dcb22ef94cfc87975abaab176e4f1227d3
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 7c77ecb663bebcaf0c6239f07ac15dda23f17b9c
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78656384"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775475"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 與 Entity Framework 6 使用者入門
 
@@ -23,7 +29,7 @@ ms.locfileid: "78656384"
 
 若要使用 Entity Framework 6，您的專案必須針對 .NET Framework 進行編譯，因為 Entity Framework 6 不支援 .NET Core。 如果您需要跨平台功能，則必須升級至 [Entity Framework Core](/ef/)。
 
-在ASP.NET核心應用程式中使用實體框架 6 的建議方法是將 EF6 上下文和模型類放在面向 .NET Framework 的類庫專案中。 從 ASP.NET Core 專案新增類別庫的參考。 請參閱[使用 EF6 和 ASP.NET Core 專案的 Visual Studio 方案](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)範例。
+在 ASP.NET Core 應用程式中使用 Entity Framework 6 的建議方式是將 EF6 內容和模型類別放在以 .NET Framework 為目標的類別庫專案中。 從 ASP.NET Core 專案新增類別庫的參考。 請參閱[使用 EF6 和 ASP.NET Core 專案的 Visual Studio 方案](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/entity-framework-6/sample/)範例。
 
 您無法將 EF6 內容置於 ASP.NET Core 專案中，因為 .NET Core 專案不支援 EF6 命令 (例如 *Enable-Migrations*) 需要的所有功能。
 
@@ -31,7 +37,7 @@ ms.locfileid: "78656384"
 
 ## <a name="reference-full-framework-and-ef6-in-the-aspnet-core-project"></a>在 ASP.NET Core 專案中參考完整 Framework 和 EF6
 
-您的ASP.NET核心專案需要以 .NET 框架為目標,並參考 EF6。 例如，ASP.NET Core 專案的 *.csproj* 檔案看起來類似下列範例 (只顯示檔案的相關部分)。
+您的 ASP.NET Core 專案必須以 .NET Framework 為目標並參考 EF6。 例如，ASP.NET Core 專案的 *.csproj* 檔案看起來類似下列範例 (只顯示檔案的相關部分)。
 
 [!code-xml[](entity-framework-6/sample/MVCCore/MVCCore.csproj?range=3-9&highlight=2)]
 
@@ -67,10 +73,10 @@ ms.locfileid: "78656384"
 
 * 建立方案。
 
-* **Add** >  > 新增專案 Web**ASP.NET核心 Web 應用程式** > **New Project****Web**
+* **加入** > **新的專案** > **web** > **ASP.NET Core web 應用程式**
   * 在專案範本選取項目對話方塊中，選取下拉式清單中的 API 和.NET Framework
 
-* **Add****New Project****Windows Desktop** > **Class Library (.NET Framework)** 新增專案 > Windows 桌面類別庫 (.NET > 框架)
+* **加入** > **新的專案** > **Windows 桌面** > **類別庫（.NET Framework）**
 
 * 在這兩個專案的 [套件管理員主控台]**** (PMC) 中，執行 `Install-Package Entityframework` 命令。
 

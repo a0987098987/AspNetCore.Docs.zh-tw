@@ -1,20 +1,26 @@
 ---
-title: 教程:處理併發 - ASP.NET MVC 與 EF 核心
+title: 教學課程：使用 EF Core 處理並行 ASP.NET MVC
 description: 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 6839e383093b993ff55095f26cf88cd68708f001
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: bbf04e3500b11a339dc59b6086d910b76eace735
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78657392"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773597"
 ---
-# <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>教程:處理併發 - ASP.NET MVC 與 EF 核心
+# <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 處理並行 ASP.NET MVC
 
 在先前的教學課程中，您學會了如何更新資料。 本教學課程會顯示如何在多位使用者同時更新相同實體時處理衝突。
 
@@ -37,7 +43,7 @@ ms.locfileid: "78657392"
 > * 更新 [刪除] 頁面
 > * 更新 [詳細資料] 及 [建立] 檢視
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [更新相關資料](update-related-data.md)
 
@@ -75,11 +81,11 @@ Jana 先按了一下 [儲存]****，並且在瀏覽器返回 [索引] 頁面時�
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
-     下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，且預算的金額已還原到美金 $350,000.00 元。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。 (來自用戶端的所有值都優先於資料存儲中的值。如本節簡介中所述,如果您不執行任何用於併發處理的編碼,則將自動發生這種情況。
+     下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，且預算的金額已還原到美金 $350,000.00 元。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。 （用戶端的所有值會優先于資料存放區中的內容）。如本節簡介中所述，如果您沒有針對並行處理進行任何編碼，則會自動發生。
 
 * 您可以防止 John 的變更更新到資料庫中。
 
-     一般而言，您會顯示一個錯誤訊息，將資料目前的狀態顯示給他，然後允許他重新套用他所作出的變更 (若他還是要變更的話)。 這稱為「存放區獲勝 (Store Wins)」** 案例。 (數據存儲值優先於用戶端提交的值。您將在本教程中實現"商店贏"方案。 這個方法可確保沒有任何變更會在使用者收到警示，告知其發生的事情前遭到覆寫。
+     一般而言，您會顯示一個錯誤訊息，將資料目前的狀態顯示給他，然後允許他重新套用他所作出的變更 (若他還是要變更的話)。 這稱為「存放區獲勝 (Store Wins)」** 案例。 （資料存放區的值會優先于用戶端所提交的值。）在本教學課程中，您將會實行「存放區獲勝」案例。 這個方法可確保沒有任何變更會在使用者收到警示，告知其發生的事情前遭到覆寫。
 
 ### <a name="detecting-concurrency-conflicts"></a>偵測並行衝突
 
@@ -240,7 +246,7 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 public async Task<IActionResult> Delete(Department department)
 ```
 
-您也將動作方法的名稱從 `DeleteConfirmed` 變更為 `Delete`。 Scaffold 程式碼使用了 `DeleteConfirmed` 的名稱來給予 HttpPost 方法一個唯一的簽章。 (CLR 要求重載方法具有不同的方法參數。現在簽名是唯一的,您可以堅持 MVC 約定,對 HTTPPost 和 HttpGet 刪除方法使用相同的名稱。
+您也將動作方法的名稱從 `DeleteConfirmed` 變更為 `Delete`。 Scaffold 程式碼使用了 `DeleteConfirmed` 的名稱來給予 HttpPost 方法一個唯一的簽章。 （CLR 需要多載的方法，才能有不同的方法參數）。由於簽章是唯一的，因此您可以使用 MVC 慣例，並針對 HttpPost 和 HttpGet delete 方法使用相同的名稱。
 
 若部門已遭刪除，`AnyAsync` 方法會傳回 false，應用程式便會直接返回 Index 方法。
 
@@ -312,4 +318,4 @@ public async Task<IActionResult> Delete(Department department)
 若要了解如何為 Instructor 和 Student 實體實作依階層建立資料表的繼承，請前往下一個教學課程。
 
 > [!div class="nextstepaction"]
-> [下一頁:實現每個層次結構的表繼承](inheritance.md)
+> [下一步：執行每個階層的資料表繼承](inheritance.md)

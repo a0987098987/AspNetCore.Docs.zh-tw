@@ -4,19 +4,25 @@ author: rick-anderson
 description: 本教學課程會示範如何在 ASP.NET Core 應用程式中安裝及使用 .NET Core CLI 檔案監看員 (dotnet 監看式) 工具。
 ms.author: riande
 ms.date: 05/31/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/dotnet-watch
-ms.openlocfilehash: bedb3e6a65839db915ca7bc821a267a14d34bf30
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 17fc7fd2d65fd314d9f6f9530db5d511af248569
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78667409"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776587"
 ---
 # <a name="develop-aspnet-core-apps-using-a-file-watcher"></a>使用檔案監看員開發 ASP.NET Core 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Victor Hurdugaci](https://twitter.com/victorhurdugaci)
 
-[點網監視](https://www.nuget.org/packages/dotnet-watch)是在源檔更改時運行[.NET Core CLI](/dotnet/core/tools)命令的工具。 例如，檔案變更會觸發編譯、測試執行或部署。
+[dotnet watch](https://www.nuget.org/packages/dotnet-watch)是一種工具，會在來源檔案變更時執行[.NET Core CLI](/dotnet/core/tools)命令。 例如，檔案變更會觸發編譯、測試執行或部署。
 
 本教學課程使用現有的 Web API 與兩個端點：一個傳回加總，另一個傳回產品。 本教學課程已修正產品方法的 Bug。
 
@@ -154,7 +160,7 @@ public static int Product(int a, int b)
 
 `dotnet-watch` 不限制為 C# 專案。 您可以建立自訂的監看式專案來處理不同的案例。 請考慮下列專案配置：
 
-* **測試/**
+* **測驗**
   * *UnitTests/UnitTests.csproj*
   * *IntegrationTests/IntegrationTests.csproj*
 
@@ -185,4 +191,4 @@ dotnet watch msbuild /t:Test
 
 ## <a name="dotnet-watch-in-github"></a>GitHub 中的 `dotnet-watch`
 
-`dotnet-watch`是 GitHub[點網/ AspNetCore 儲存庫](https://github.com/dotnet/AspNetCore/tree/master/src/Tools/dotnet-watch)的一部分。
+`dotnet-watch`是 GitHub [dotnet/AspNetCore 存放庫](https://github.com/dotnet/AspNetCore/tree/master/src/Tools/dotnet-watch)的一部分。

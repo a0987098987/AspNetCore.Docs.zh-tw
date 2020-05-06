@@ -4,13 +4,19 @@ author: rick-anderson
 description: 如何將驗證新增至 ASP.NET Core 應用程式。
 ms.author: riande
 ms.date: 04/13/2017
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: ecf3d011b38347eb32020df00e44d93ca789443a
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 6e46a4ace7c99096f1a7d47946a21fd7a5c657e7
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80242532"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776190"
 ---
 # <a name="add-validation-to-an-aspnet-core-mvc-app"></a>將驗證新增至 ASP.NET Core MVC 應用程式
 
@@ -55,7 +61,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 您可以在 `[HttpPost] Create` 方法中設定中斷點，並確認永遠不會呼叫該方法，用戶端驗證就不會在偵測到驗證錯誤時，提交表單資料。 如果您停用瀏覽器的 JavaScript，然後提交有錯誤的表單，就會叫用中斷點。 您仍可使用沒有 JavaScript 的完整驗證。 
 
-下圖演示如何在 Firefox 瀏覽器中禁用 JavaScript。
+下圖顯示如何在 Firefox 瀏覽器中停用 JavaScript。
 
 ![Firefox：在 [選項] 的 [內容] 索引標籤中，取消核取 [啟用 Javascript] 核取方塊。](~/tutorials/first-mvc-app/validation/_static/ff.png)
 
@@ -127,5 +133,5 @@ public DateTime ReleaseDate { get; set; }
 * [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
 
 > [!div class="step-by-step"]
-> [前一個](new-field.md)
-> [下一個](details.md)  
+> [上一頁](new-field.md)
+> [下一頁](details.md)  

@@ -1,17 +1,23 @@
 ---
-title: 將驗證新增至 ASP.NET Core Razor 頁面
+title: 將驗證新增至 ASP.NET Core Razor頁面
 author: rick-anderson
-description: 了解如何將驗證新增至 ASP.NET Core 中的 Razor 頁面。
+description: 探索如何將驗證新增至 ASP.NET Core Razor中的頁面。
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: f283234ed8a32dc9b7904bc6fee1cc9c04741029
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 91f0ac5fcd607f2423f9fc4647413b2bbb2336fc
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78666016"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773771"
 ---
 # <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -93,7 +99,7 @@ DataAnnotations 命名空間提供一組內建的驗證屬性 (attribute)，其�
    }
   ```
   
-或, 您可以在[伺服器上關閉客戶端認證](xref:mvc/models/validation#disable-client-side-validation)。
+或者，您可以[停用伺服器上的用戶端驗證](xref:mvc/models/validation#disable-client-side-validation)。
 
 下列程式碼顯示稍早在此教學課程中包含 Scaffold 的部分 *Create.cshtml* 頁面。 Create 和 Edit 頁面會使用它來顯示初始表單，以及在發生錯誤時重新顯示格式。
 
@@ -209,9 +215,9 @@ SQLite 不需要移轉。
 
 ### <a name="publish-to-azure"></a>發佈至 Azure
 
-有關部署到 Azure 的資訊,請參閱[教學:使用 SQL 資料庫在 Azure 中建構 ASP.NET 核心應用](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。
+如需部署至 Azure 的詳細資訊，請參閱[教學課程：在 Azure 中使用 SQL Database 建立 ASP.NET Core 應用程式](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。
 
-感謝您看完這份 Razor 頁面簡介。 完成本教學課程之後，非常建議您繼續參閱 [Razor 頁面與 EF Core 使用者入門](xref:data/ef-rp/intro)。
+感謝您完成這篇Razor頁面簡介。 [開始使用Razor頁面和 EF Core](xref:data/ef-rp/intro)是本教學課程的絕佳追蹤。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -219,7 +225,7 @@ SQLite 不需要移轉。
 * <xref:fundamentals/localization>
 * <xref:mvc/views/tag-helpers/intro>
 * <xref:mvc/views/tag-helpers/authoring>
-* [本教學的 YouTube 版本](https://youtu.be/b63m66eu7us)
+* [本教學課程的 YouTube 版本](https://youtu.be/b63m66eu7us)
 
 > [!div class="step-by-step"]
 > [上一步：新增欄位](xref:tutorials/razor-pages/new-field)

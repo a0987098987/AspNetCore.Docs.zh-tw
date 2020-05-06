@@ -4,13 +4,19 @@ author: rick-anderson
 description: 深入瞭解 ASP.NET Core 中的金鑰儲存提供者，以及如何設定金鑰儲存位置。
 ms.author: riande
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: 19f64e816d88d2fc156915e31dc147645c5a630a
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: a8d38f17b066a0aa9a38b1bdfea3491f733cf1bc
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78662957"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776873"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
@@ -31,7 +37,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-`DirectoryInfo` 可以指向本機電腦上的目錄，也可以指向網路共用上的資料夾。 如果指向本機電腦上的目錄（而且案例是只有本機電腦上的應用程式需要存取權才能使用此存放庫），請考慮使用[WINDOWS DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) （在 windows 上）來加密待用金鑰。 否則，請考慮使用[x.509 憑證](xref:security/data-protection/implementation/key-encryption-at-rest)來加密待用金鑰。
+`DirectoryInfo`可以指向本機電腦上的目錄，也可以指向網路共用上的資料夾。 如果指向本機電腦上的目錄（而且案例是只有本機電腦上的應用程式需要存取權才能使用此存放庫），請考慮使用[WINDOWS DPAPI](xref:security/data-protection/implementation/key-encryption-at-rest) （在 windows 上）來加密待用金鑰。 否則，請考慮使用[x.509 憑證](xref:security/data-protection/implementation/key-encryption-at-rest)來加密待用金鑰。
 
 ## <a name="azure-storage"></a>Azure 儲存體
 
@@ -141,17 +147,17 @@ public void ConfigureServices(IServiceCollection services)
 
 使用此套件，可以在多個 web 應用程式實例之間共用金鑰。
 
-若要設定 EF Core 提供者，請呼叫[PersistKeysToDbCoNtext\<TCoNtext >](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
+若要設定 EF Core 提供者，請[呼叫\<PersistKeysToDbCoNtext TCoNtext>](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
 
 [!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-20)]
 
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
-泛型參數（`TContext`）必須繼承自[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並執行[IDataProtectionKeyCoNtext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext)：
+泛型參數（ `TContext`）必須繼承自[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並執行[IDataProtectionKeyCoNtext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext)：
 
 [!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
 
-建立 `DataProtectionKeys` 資料表。
+建立`DataProtectionKeys`資料表。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -173,9 +179,9 @@ dotnet ef database update --context MyKeysContext
 
 ---
 
-`MyKeysContext` 是上述程式碼範例中定義的 `DbContext`。 如果您使用不同名稱的 `DbContext`，請以您的 `DbContext` 名稱取代 `MyKeysContext`。
+`MyKeysContext`是上述`DbContext`程式碼範例中定義的。 如果您使用的是`DbContext`不同的名稱，請以您`DbContext`的`MyKeysContext`名稱取代。
 
-`DataProtectionKeys` 類別/實體會採用下表所示的結構。
+`DataProtectionKeys`類別/實體採用下表所示的結構。
 
 | 屬性/欄位 | CLR 型別 | SQL 型別              |
 | -------------- | -------- | --------------------- |

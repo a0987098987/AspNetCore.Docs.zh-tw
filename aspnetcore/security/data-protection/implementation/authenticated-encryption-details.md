@@ -4,13 +4,19 @@ author: rick-anderson
 description: 瞭解 ASP.NET Core 資料保護已驗證加密的執行詳細資料。
 ms.author: riande
 ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/data-protection/implementation/authenticated-encryption-details
-ms.openlocfilehash: 9def03e6b27e19fc34a839e923d6152e086889db
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 3066cd505781ed2ddad46626dda9d9ce35307877
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78667759"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776964"
 ---
 # <a name="authenticated-encryption-details-in-aspnet-core"></a>ASP.NET Core 中已驗證的加密詳細資料
 
@@ -55,4 +61,4 @@ AA FF EE 57 57 2F 40 4C 3F 7F CC 9D CC D9 32 3E
 餘數包含裝載，且為所用格式的特定內容。
 
 > [!WARNING]
-> 受指定金鑰保護的所有承載都將以相同的20位元組（魔術值、金鑰識別碼）標頭開頭。 系統管理員可以使用此事實來進行診斷，以估計承載的產生時間。 例如，上述裝載對應于 key {0c819c80-6619-4019-9536-53f8aaffee57}。 如果在檢查金鑰存放庫之後，發現此特定金鑰的啟用日期為2015-01-01，而其到期日為2015-03-01，則合理地假設該視窗內產生的承載（如果未遭修改），請提供或接受小的任一端的巧克力因素。
+> 受指定金鑰保護的所有承載都將以相同的20位元組（魔術值、金鑰識別碼）標頭開頭。 系統管理員可以使用此事實來進行診斷，以估計承載的產生時間。 例如，上述裝載對應于 key {0c819c80-6619-4019-9536-53f8aaffee57}。 如果在檢查金鑰存放庫之後，發現此特定金鑰的啟用日期為2015-01-01，而其到期日為2015-03-01，則合理假設該視窗內產生的承載（如果未遭修改），則在任一側提供或採用小型巧克力因素。

@@ -1,45 +1,51 @@
 ---
-title: ASP.NET核心的 gRPC 中的安全注意事項
+title: ASP.NET Core 的 gRPC 中的安全性考慮
 author: jamesnk
-description: 瞭解 gRPC ASP.NET核心的安全注意事項。
+description: 瞭解 gRPC for ASP.NET Core 的安全性考慮。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
 ms.date: 07/07/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: grpc/security
-ms.openlocfilehash: f84bec0ef485b701b2be36384a2e49b9b28e473d
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 8bbe198087f8ba80abfe6b518f8223c719801a85
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78667318"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774951"
 ---
-# <a name="security-considerations-in-grpc-for-aspnet-core"></a>ASP.NET核心的 gRPC 中的安全注意事項
+# <a name="security-considerations-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的安全性考慮
 
-由[詹姆斯·牛頓-金](https://twitter.com/jamesnk)
+依[James 牛頓-王](https://twitter.com/jamesnk)
 
-本文提供有關使用 .NET Core 保護 gRPC 的資訊。
+本文提供使用 .NET Core 保護 gRPC 的相關資訊。
 
 ## <a name="transport-security"></a>傳輸安全性
 
-使用 HTTP/2 發送和接收 gRPC 消息。 我們建議:
+gRPC 訊息會使用 HTTP/2 進行傳送和接收。 我們建議：
 
-* [傳輸層安全 (TLS)](https://tools.ietf.org/html/rfc5246)用於保護生產 gRPC 應用中的消息。
-* gRPC 服務應僅偵聽和回應安全埠。
+* [傳輸層安全性（TLS）](https://tools.ietf.org/html/rfc5246)可用來保護生產 gRPC 應用程式中的訊息。
+* gRPC 服務應該只接聽並回應安全的埠。
 
-TLS 在 Kestrel 中配置。 有關設定 Kestrel 終結點的詳細資訊,請參閱[Kestrel 終結點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)。
+TLS 是在 Kestrel 中設定。 如需設定 Kestrel 端點的詳細資訊，請參閱[Kestrel 端點](xref:fundamentals/servers/kestrel#endpoint-configuration)設定。
 
 ## <a name="exceptions"></a>例外狀況
 
-異常消息通常被視為不應向客戶端顯示的敏感數據。 默認情況下,gRPC不會將 gRPC 服務引發的異常的詳細資訊發送到用戶端。 相反,用戶端會收到一條泛型消息,指示發生錯誤。 例外訊息傳遞到客戶端可以重寫(例如,在開發或測試中)與[啟用詳細錯誤](xref:grpc/configuration#configure-services-options)。 異常消息不應在生產應用中向客戶端公開。
+例外狀況訊息通常會被視為不應該向用戶端顯示的敏感性資料。 根據預設，gRPC 不會將 gRPC 服務擲回之例外狀況的詳細資料傳送給用戶端。 相反地，用戶端會收到一般訊息，指出發生錯誤。 您可以使用[EnableDetailedErrors](xref:grpc/configuration#configure-services-options)來覆寫傳遞給用戶端的例外狀況訊息（例如，在開發或測試中）。 例外狀況訊息不應在生產環境應用程式中公開給用戶端。
 
 ## <a name="message-size-limits"></a>訊息大小限制
 
-傳入到 gRPC 用戶端和服務的消息將載入到記憶體中。 消息大小限制是一種機制,有助於防止 gRPC 消耗過多的資源。
+傳入訊息至 gRPC 用戶端和服務會載入記憶體中。 訊息大小限制是一種機制，可協助防止 gRPC 耗用過多的資源。
 
-gRPC 使用每封郵件大小限制來管理傳入和傳出消息。 默認情況下,gRPC將傳入消息限制為 4 MB。 傳出郵件沒有限制。
+gRPC 會使用每個訊息的大小限制來管理傳入和傳出訊息。 根據預設，gRPC 會將傳入訊息限制為 4 MB。 外寄訊息沒有任何限制。
 
-在伺服器上,gRPC 訊息限制可以設定為應用中的所有服務`AddGrpc`:
+在伺服器上，可以使用下列方式`AddGrpc`為應用程式中的所有服務設定 gRPC 訊息限制：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -52,14 +58,14 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-也可以為使用`AddServiceOptions<TService>`的單個服務配置限制。 有關設定訊息大小限制的詳細資訊,請參考[gRPC 設定](xref:grpc/configuration)。
+您也可以使用`AddServiceOptions<TService>`來設定個別服務的限制。 如需設定訊息大小限制的詳細資訊，請參閱[gRPC configuration](xref:grpc/configuration)。
 
 ## <a name="client-certificate-validation"></a>用戶端憑證驗證
 
-建立連線時,最初將驗證[客戶端憑證](https://tools.ietf.org/html/rfc5246#section-7.4.4)。 默認情況下,Kestrel 不執行連接客戶端證書的其他驗證。
+建立連接時，一開始會驗證[用戶端憑證](https://tools.ietf.org/html/rfc5246#section-7.4.4)。 根據預設，Kestrel 不會對連接的用戶端憑證執行額外的驗證。
 
-我們建議由用戶端證書保護的 gRPC 服務使用[Microsoft.AspNetCore.身份驗證.證書](xref:security/authentication/certauth)包。 ASP.NET核心認證認證將對用戶端憑證執行其他驗證,包括:
+我們建議以用戶端憑證保護的 gRPC 服務使用[AspNetCore 憑證](xref:security/authentication/certauth)封裝。 ASP.NET Core 認證驗證將在用戶端憑證上執行額外的驗證，包括：
 
-* 憑證具有有效的延伸金鑰使用 (EKU)
-* 在其有效期內
+* 憑證具有有效的延伸金鑰使用（EKU）
+* 在其有效期間內
 * 檢查憑證撤銷

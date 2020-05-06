@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.2'
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/09/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/directory-structure
-ms.openlocfilehash: 3ed27db31c5fda8376ed108568ea74b657d30531
-ms.sourcegitcommit: 4506a8f71ece921010ad6b7edebc8b200618f40d
+ms.openlocfilehash: 29031556882dd471a5036b79dcb93a515bc98a33
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81002934"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776392"
 ---
 # <a name="aspnet-core-directory-structure"></a>ASP.NET Core 目錄結構
 
@@ -23,13 +29,13 @@ ms.locfileid: "81002934"
 * 應用程式檔案
 * 組態檔
 * 靜態資產
-* Packages
+* 套件
 * 執行階段 (僅限[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd))
 
 | 應用程式類型 | 目錄結構 |
 | -------- | ------------------- |
-| [與框架相關的執行 (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>查看&dagger;MVC 應用;如果檢視未預寫</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>【程式集名稱]{.延伸* .exe 延伸在 Windows 上,macOS 或 Linux 上沒有擴展</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>建立傾印([Linux 建立轉印實用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.所以(Linux 共用物件庫)</li><li>\*.a(macOS 存檔)</li><li>\*.dylib(macOS 動態庫)</li></ul></li></ul> |
-| [自包含部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>檢視&dagger;MVC 應用程式(如果檢視未預編譯)</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
+| [Framework 相依可執行檔（FDE）](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; MVC 應用程式;如果未先行編譯 views</li><li>頁面&dagger; MVC 或 Razor Pages 應用程式（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{元件名稱}{.EXTENSION} 在 Windows 上的副檔名，在 macOS 或 Linux 上沒有延伸模組</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>createdump （[Linux createdump 公用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy)）</li><li>\*。因此（Linux 共用物件程式庫）</li><li>\*. a （macOS archive）</li><li>\*. dylib （macOS 動態連結程式庫）</li></ul></li></ul> |
+| [獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>如果&dagger;未先行編譯 views，則會查看 MVC 應用程式</li><li>頁面&dagger; MVC 或 Razor Pages 應用程式（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
 
 &dagger;表示是目錄
 
@@ -40,7 +46,7 @@ ms.locfileid: "81002934"
 ## <a name="additional-resources"></a>其他資源
 
 * [dotnet publish](/dotnet/core/tools/dotnet-publish)
-* [.NET 核心應用程式部署](/dotnet/core/deploying/)
+* [.NET Core 應用程式部署](/dotnet/core/deploying/)
 * [目標 Framework](/dotnet/standard/frameworks)
 * [.NET Core RID 類別目錄](/dotnet/core/rid-catalog)
 
@@ -53,13 +59,13 @@ ms.locfileid: "81002934"
 * 應用程式檔案
 * 組態檔
 * 靜態資產
-* Packages
+* 套件
 * 執行階段 (僅限[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd))
 
 | 應用程式類型 | 目錄結構 |
 | -------- | ------------------- |
-| [與框架相關的執行 (FDE)](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>查看&dagger;MVC 應用;如果檢視未預寫</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>【程式集名稱]{.延伸* .exe 延伸在 Windows 上,macOS 或 Linux 上沒有擴展</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>建立傾印([Linux 建立轉印實用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy))</li><li>\*.所以(Linux 共用物件庫)</li><li>\*.a(macOS 存檔)</li><li>\*.dylib(macOS 動態庫)</li></ul></li></ul> |
-| [自包含部署 (SCD)](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>檢視&dagger;MVC 應用程式(如果檢視未預編譯)</li><li>頁面&dagger;MVC 或 Razor 頁面應用(如果頁面未預編譯)</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
+| [Framework 相依可執行檔（FDE）](/dotnet/core/deploying/#framework-dependent-executables-fde) | <ul><li>publish&dagger;<ul><li>Views&dagger; MVC 應用程式;如果未先行編譯 views</li><li>頁面&dagger; MVC 或Razor頁面應用程式（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{元件名稱}{.EXTENSION} 在 Windows 上的副檔名，在 macOS 或 Linux 上沒有延伸模組</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li><li>createdump （[Linux createdump 公用程式](https://github.com/dotnet/coreclr/blob/master/Documentation/botr/xplat-minidump-generation.md#configurationpolicy)）</li><li>\*。因此（Linux 共用物件程式庫）</li><li>\*. a （macOS archive）</li><li>\*. dylib （macOS 動態連結程式庫）</li></ul></li></ul> |
+| [獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd) | <ul><li>publish&dagger;<ul><li>如果&dagger;未先行編譯 views，則會查看 MVC 應用程式</li><li>頁面&dagger; MVC 或Razor頁面應用程式（如果未先行編譯頁面）</li><li>wwwroot&dagger;</li><li>\*.dll 檔案</li><li>{組件名稱}.deps.json</li><li>{組件名稱}.dll</li><li>{組件名稱}.exe</li><li>{組件名稱}.pdb</li><li>{組件名稱}.Views.dll</li><li>{組件名稱}.Views.pdb</li><li>{組件名稱}.runtimeconfig.json</li><li>web.config (IIS 部署)</li></ul></li></ul> |
 
 &dagger;表示是目錄
 
@@ -93,7 +99,7 @@ ms.locfileid: "81002934"
 ## <a name="additional-resources"></a>其他資源
 
 * [dotnet publish](/dotnet/core/tools/dotnet-publish)
-* [.NET 核心應用程式部署](/dotnet/core/deploying/)
+* [.NET Core 應用程式部署](/dotnet/core/deploying/)
 * [目標 Framework](/dotnet/standard/frameworks)
 * [.NET Core RID 類別目錄](/dotnet/core/rid-catalog)
 

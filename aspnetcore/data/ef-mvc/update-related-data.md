@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 54783ebbac26a10a92716b5e53ed6cd7cc8bb65d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 32d3a22b85675d817286e3e72b8b9c8e63df6ca6
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773493"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850418"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 
@@ -231,7 +231,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 <a id="notepad"></a>
 > [!NOTE]
-> 當您將程式碼貼至 Visual Studio 時，分行符號可能會變更，而讓程式碼斷行。 如果程式碼在貼上之後看起來不同，請按 Ctrl+Z 一次以復原自動格式化。 這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 Visual Studio 2019 已修正這個問題。
+> 當您將程式碼貼至 Visual Studio 時，分行符號可能會變更，而讓程式碼斷行。 如果程式碼在貼上之後看起來不同，請按 Ctrl+Z 一次以復原自動格式化。 這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@:</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 Visual Studio 2019 已修正這個問題。
 
 [!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 

@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: azure/devops/tools-and-downloads
-ms.openlocfilehash: 321d506760d057914136f77c15e85043fa9d9832
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 1917a329a5dcbe60542541cfcdc746799307e3d5
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766533"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850405"
 ---
 # <a name="tools-and-downloads"></a>工具及下載
 
@@ -27,7 +27,7 @@ Azure 提供數個介面來布建和管理資源，例如[Azure 入口網站](ht
 
 需要下列訂用帳戶：
 
-* Azure &mdash;如果您沒有帳戶，請[取得免費試用版](https://azure.microsoft.com/free/)。
+* Azure &mdash;如果您沒有帳戶，請[取得免費試用版](https://azure.microsoft.com/free/dotnet/)。
 * 您&mdash;的 Azure DevOps 訂用帳戶和組織 Azure DevOps Services 在第4章中建立。
 * GitHub &mdash;如果您沒有帳戶，請[免費註冊](https://github.com/join)。
 

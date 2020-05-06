@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: 86808e6bdd3bb669a62ad9e333b11df4c09a9cd3
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: d62889ba6dba6748ce3d047f0d37b3a904199496
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774635"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850431"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>在 ASP.NET Core 中使用 Azure Active Directory B2C 進行雲端驗證
 
@@ -36,11 +36,11 @@ ms.locfileid: "82774635"
 > * 使用 Visual Studio 建立 ASP.NET Core web 應用程式，並將其設定為使用 Azure AD B2C 的租使用者進行驗證
 > * 設定原則來控制 Azure AD B2C 租使用者的行為
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 此逐步解說需要下列各項：
 
-* [Microsoft Azure 訂用帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* [Microsoft Azure 訂用帳戶](https://azure.microsoft.com/free/dotnet/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
 ## <a name="create-the-azure-active-directory-b2c-tenant"></a>建立 Azure Active Directory B2C 租使用者
@@ -55,7 +55,7 @@ ms.locfileid: "82774635"
 
 | 設定                       | 值                     | 備忘錄                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **名稱**                      | *&lt;應用程式名稱&gt;*        | 輸入應用程式的**名稱**，以向取用者描述您的應用程式。                                                                                                                                 |
+| **Name**                      | *&lt;應用程式名稱&gt;*        | 輸入應用程式的**名稱**，以向取用者描述您的應用程式。                                                                                                                                 |
 | **包含 Web 應用程式 / Web API** | 是                       |                                                                                                                                                                                                    |
 | **允許隱含流程**       | 是                       |                                                                                                                                                                                                    |
 | **回復 URL**                 | `https://localhost:44300/signin-oidc` | 回覆 URL 是 Azure AD B2C 傳回您應用程式要求之任何權杖的所在端點。 Visual Studio 提供要使用的回復 URL。 現在請輸入`https://localhost:44300/signin-oidc`來完成表單。 |
@@ -168,4 +168,4 @@ services.Configure<JwtBearerOptions>(
 * 設定其他身分識別提供者，例如[Microsoft](/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)、 [Facebook](/azure/active-directory-b2c/active-directory-b2c-setup-fb-app)、 [Google](/azure/active-directory-b2c/active-directory-b2c-setup-goog-app)、 [Amazon](/azure/active-directory-b2c/active-directory-b2c-setup-amzn-app)、 [Twitter](/azure/active-directory-b2c/active-directory-b2c-setup-twitter-app)等等。
 * [使用 [Azure AD] 圖形 API](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet)從 Azure AD B2C 租使用者中取出額外的使用者資訊，例如群組成員資格。
 * [使用 Azure AD B2C 保護 ASP.NET Core Web API](https://azure.microsoft.com/resources/samples/active-directory-b2c-dotnetcore-webapi/)。
-* [使用 Azure AD B2C 從 .net web 應用程式呼叫 .net Web API](/azure/active-directory-b2c/active-directory-b2c-devquickstarts-web-api-dotnet)。
+* [教學課程：使用 Azure Active Directory B2C 授與 ASP.NET Web API 的存取權](/azure/active-directory-b2c/tutorial-web-api-dotnet)。

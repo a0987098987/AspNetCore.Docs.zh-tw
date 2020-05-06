@@ -12,18 +12,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/ws-federation
-ms.openlocfilehash: ce0c484e84bc2ddb4a1d287246c63663f3875924
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: fede3887ad7dacd40cf3bb5d1b785392a9bc1480
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82768425"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850457"
 ---
 # <a name="authenticate-users-with-ws-federation-in-aspnet-core"></a>在 ASP.NET Core 中使用 WS-同盟來驗證使用者
 
-本教學課程示範如何讓使用者使用 WS-同盟驗證提供者（例如 Active Directory 同盟服務（ADFS）或[Azure Active Directory](/azure/active-directory/) （AAD））進行登入。 它會使用[Facebook、Google 及外部提供者驗證](xref:security/authentication/social/index)中所述的 ASP.NET Core 2.0 範例應用程式。
+本教學課程示範如何讓使用者使用 WS-同盟驗證提供者（例如 Active Directory 同盟服務（ADFS）或[Azure Active Directory](/azure/active-directory/) （AAD））進行登入。 它會使用[Facebook、Google 及外部提供者驗證](xref:security/authentication/social/index)中所述的 ASP.NET Core 範例應用程式。
 
-針對 ASP.NET Core 2.0 應用程式，WS-同盟支援是由[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.WsFederation)提供。 WsFederation。 此元件是從 Owin 進行移植。 [WsFederation](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation)並共用其中許多元件的機制。 不過，這些元件的差異在於幾個重要的方式。
+針對 ASP.NET Core 應用程式，WS-同盟支援是由[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.WsFederation)提供。 WsFederation。 此元件是從 Owin 進行移植。 [WsFederation](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation)並共用其中許多元件的機制。 不過，這些元件的差異在於幾個重要的方式。
 
 根據預設，新的中介軟體：
 

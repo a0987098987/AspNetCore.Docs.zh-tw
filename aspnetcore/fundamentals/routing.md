@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: e2b1672066a5b3c0bb6bc44e316bda93ae0f21b7
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: HT
+ms.openlocfilehash: 2dd44a561debddac13250174a8e74dd912302d60
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774898"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850509"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -563,7 +563,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中使用的正則運算式通常以`^`字元開頭，並符合字串的開始位置。 運算式通常以`$`字元結尾，並符合字串的結尾。 `^`和`$`字元可確保正則運算式符合整個路由參數值。 如果沒有`^`和`$`字元，正則運算式會比對字串內的任何子字串，這通常是不需要的。 下表提供範例，並說明它們符合或無法符合的原因：
 
-| 運算是   | 字串    | 比對 | 註解               |
+| 運算是   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
@@ -581,6 +581,8 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 您可以藉由執行<xref:Microsoft.AspNetCore.Routing.IRouteConstraint>介面來建立自訂路由條件約束。 `IRouteConstraint`介面<xref:System.Web.Routing.IRouteConstraint.Match*>包含， `true`如果條件約束已滿足，則會傳回`false` ，否則會傳回。
 
 很少需要自訂路由條件約束。 在執行自訂路由條件約束之前，請考慮使用替代專案，例如模型系結。
+
+[ASP.NET Core[條件約束](https://github.com/dotnet/aspnetcore/tree/master/src/Http/Routing/src/Constraints)] 資料夾會提供建立條件約束的良好範例。 例如， [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18)。
 
 若要使用自`IRouteConstraint`定義，則必須向服務容器<xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>中的應用程式註冊路由條件約束類型。 `ConstraintMap` 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 `IRouteConstraint` 實作。 更新應用程式的 `ConstraintMap` 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如：
 
@@ -1482,7 +1484,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中使用的正則運算式通常會以`^`插入號字元開頭，並比對字串的開始位置。 這些運算式通常會以貨幣符號`$`字元結尾，並比對字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算是   | 字串    | 比對 | 註解               |
+| 運算是   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
@@ -1926,7 +1928,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算是   | 字串    | 比對 | 註解               |
+| 運算是   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |

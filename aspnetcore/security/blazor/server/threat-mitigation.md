@@ -5,7 +5,7 @@ description: 瞭解如何減輕Blazor伺服器應用程式的安全性威脅。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/27/2020
+ms.date: 05/05/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/server/threat-mitigation
-ms.openlocfilehash: 2c87e6cef5a16b394b03dac1635f18d09593eb94
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: f43a46f53dc50cde43c88460b8bd3d6fb7a7076f
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774180"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850496"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>ASP.NET Core Blazor 伺服器的威脅緩和方針
 

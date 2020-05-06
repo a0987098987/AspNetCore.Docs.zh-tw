@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 3a865c2c42cb71e109331675460456a27dc500fc
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 0b9f5f15403c7d18d68a41baa2a59582cf039f44
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775306"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850561"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio 與 Git 持續部署至 Azure
 
@@ -30,9 +30,9 @@ ms.locfileid: "82775306"
 另請參閱[使用 Azure Pipelines 建立您的第一個管線](/azure/devops/pipelines/get-started-yaml)，顯示如何使用 Azure DevOps Services，為 [Azure App Service](/azure/app-service/app-service-web-overview) 設定持續傳遞 (CD) 工作流程。 Azure Pipelines (一種 Azure DevOps Services 服務) 可輕鬆設定強大的部署管線，為託管於 Azure App Service 的應用程式發佈更新。 您可以透過 Azure 入口網站設定這個管道，以建置，執行測試，部署到預備位置，然後再部署到實際執行環境。
 
 > [!NOTE]
-> 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 若要取得帳戶，請[啟動 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F)或[註冊免費試用](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 若要取得帳戶，請[啟動 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F)或[註冊免費試用](https://azure.microsoft.com/free/dotnet/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程假設您已安裝下列軟體：
 

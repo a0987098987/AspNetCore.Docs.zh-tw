@@ -11,12 +11,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: ca9c7f9dba55e58e1e2fa2131d4e78d92aaa2838
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 0541a85756e0084f4a420a0742ad923d732a9365
+ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774245"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82850548"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端和伺服器
 
@@ -39,15 +39,15 @@ ms.locfileid: "82774245"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vs-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-[!INCLUDE[](~/includes/net-core-prereqs-mac-3.0.md)]
+[!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
@@ -136,7 +136,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 * 開啟第二個 Visual Studio 執行個體，並選取 [建立新專案]****。
 * 在 [建立新專案]**** 對話方塊中，選取 [主控台應用程式 (.NET Core)]**** 並選取 [下一步]****。
-* 在 [名稱]**** 文字方塊中，輸入 **GrpcGreeterClient**，並選取 [建立]****。
+* 在 [**專案名稱**] 文字方塊中，輸入**GrpcGreeterClient** ，然後選取 [**建立**]。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 

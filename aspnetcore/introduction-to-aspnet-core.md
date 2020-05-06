@@ -7,14 +7,17 @@ ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: index
-ms.openlocfilehash: d70998d0149a0cc7018946a93ab63b5e10b76b78
-ms.sourcegitcommit: f9a5069577e8f7c53f8bcec9e13e117950f4f033
+ms.openlocfilehash: 7f46051193681ecac59428b77ca1e36830c7bb63
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82558922"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82776332"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -170,7 +173,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
    |狀況  |教學課程  |
    |----------|----------|
-   | 針對全新開發        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
+   | 針對全新開發        |[Razor具有 Entity Framework Core 的頁面](xref:data/ef-rp/intro) |
    | 針對維護 MVC 應用程式 |[搭配 Entity Framework Core 的 MVC](xref:data/ef-mvc/intro) |
 
 1. 閱讀適用于所有應用程式類型之 ASP.NET Core[基本](xref:fundamentals/index)概念的總覽。

@@ -5,13 +5,19 @@ description: 了解如何使用快取標籤協助程式。
 ms.author: riande
 ms.custom: mvc
 ms.date: 10/10/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: db9e1a968588410f11e5f137dfdd4542df505ebc
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: ced10a7b7b221188fdac2a4e3c54f66292110ece
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78662733"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773938"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
@@ -101,7 +107,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例                                    |
 | -------------- | ------------------------------------------- |
-| String         | `User-Agent`, `User-Agent,content-encoding` |
+| 字串         | `User-Agent`, `User-Agent,content-encoding` |
 
 `vary-by-header` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。
 
@@ -117,9 +123,9 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例             |
 | -------------- | -------------------- |
-| String         | `Make`, `Make,Model` |
+| 字串         | `Make`, `Make,Model` |
 
-`vary-by-query` 接受查詢字串 (<xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*>) 中 <xref:Microsoft.AspNetCore.Http.HttpRequest.Query*> 的逗點分隔清單，當任何所列索引碼的值變更時，會觸發快取重新整理。
+`vary-by-query` 接受查詢字串 (<xref:Microsoft.AspNetCore.Http.HttpRequest.Query*>) 中 <xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*> 的逗點分隔清單，當任何所列索引碼的值變更時，會觸發快取重新整理。
 
 下列範例會監視 `Make` 與 `Model` 的值。 此範例會快取展示給網頁伺服器之每個不同 `Make` 與 `Model` 的內容：
 
@@ -133,7 +139,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例             |
 | -------------- | -------------------- |
-| String         | `Make`, `Make,Model` |
+| 字串         | `Make`, `Make,Model` |
 
 `vary-by-route` 接受路由參數名稱的逗點分隔清單，當路由資料參數值變更時，這些路由參數名稱會觸發快取重新整理。
 
@@ -147,7 +153,7 @@ routes.MapRoute(
     template: "{controller=Home}/{action=Index}/{Make?}/{Model?}");
 ```
 
-*Index.cshtml*：
+*Index. cshtml*：
 
 ```cshtml
 <cache vary-by-route="Make,Model">
@@ -159,7 +165,7 @@ routes.MapRoute(
 
 | 屬性類型 | 範例                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
-| String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
+| 字串         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
 `vary-by-cookie` 接受 Cookie 名稱的逗點分隔清單，當 Cookie 值變更時，這些 Cookie 名稱會觸發快取重新整理。
 
@@ -193,7 +199,7 @@ routes.MapRoute(
 
 | 屬性類型 | 範例  |
 | -------------- | -------- |
-| String         | `@Model` |
+| 字串         | `@Model` |
 
 `vary-by` 可自訂要快取哪些資料。 當屬性字串值所參考的物件變更時，就會更新快取標籤協助程式的內容。 通常會對此屬性指派模型值的字串串連。 實際上，這會導致更新任何串連值都會使快取失效的情節。
 
@@ -212,7 +218,7 @@ public IActionResult Index(string myParam1, string myParam2, string myParam3)
 }
 ```
 
-*Index.cshtml*：
+*Index. cshtml*：
 
 ```cshtml
 <cache vary-by="@Model">

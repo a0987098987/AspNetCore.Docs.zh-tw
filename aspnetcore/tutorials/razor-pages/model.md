@@ -1,16 +1,22 @@
 ---
-title: 將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
+title: 在 ASP.NET Core 中將模型Razor新增至頁面應用程式
 author: rick-anderson
 description: 了解如何使用 Entity Framework Core (EF Core)，新增用來管理資料庫中電影的類別。
 ms.author: riande
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: 7f7c2a09b74e6007ee3ea9c038398bac54988186
-ms.sourcegitcommit: 77c046331f3d633d7cc247ba77e58b89e254f487
+ms.openlocfilehash: d093d7c4dc1b355c0042f300f70a830653b168c0
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81488867"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82769828"
 ---
 # <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
 
@@ -20,7 +26,7 @@ ms.locfileid: "81488867"
 
 <!-- In the next update on the CLI version, let the scaffolder do the same work the VS driven scaffolder does. That is, create the DB context, etc -->
 
-在本節中,將添加用於管理影片的類。 應用的模型類使用[實體框架核心 (EF Core)](/ef/core)處理資料庫。 EF Core 是一種物件關係映射器 (O/RM),可簡化數據存取。
+在本節中，會加入類別來管理電影。 應用程式的模型類別會使用[Entity Framework Core （EF Core）](/ef/core)來處理資料庫。 EF Core 是物件關聯式對應程式（O/RM），可簡化資料存取。
 
 模型類別稱為 POCO 類別 (來自「簡單的 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們會定義資料儲存在資料庫中的屬性。
 
@@ -32,7 +38,7 @@ ms.locfileid: "81488867"
 
 以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]**** > [新增資料夾]****。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選擇 **「添加** > **類**」。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [**新增** > **類別**]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -47,8 +53,8 @@ ms.locfileid: "81488867"
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 在解決方案墊中,右鍵單擊**RazorPagesMovie**專案**Add**,然後>選擇"**添加新資料夾..."** 命名資料夾*模型*。
-* 右鍵按下 *"模型"* 資料夾,**Add**>然後選擇 「**添加新檔..."。**
+* 在 Solution Pad 中，以滑鼠右鍵按一下**RazorPagesMovie**專案，然後選取 [**加入** > **新資料夾**]。將資料夾命名為*模型*。
+* 以滑鼠右鍵按一下 [*模型*] 資料夾，然後**選取** > [**新增檔案 ...**]。
 * 在 [新增檔案]**** 對話方塊中：
 
   * 在左窗格中選取 [一般]****。
@@ -102,7 +108,7 @@ ms.locfileid: "81488867"
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* **對於 Windows**:執行以下指令:
+* **針對 Windows**：執行下列命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
@@ -126,18 +132,18 @@ ms.locfileid: "81488867"
 * 以滑鼠右鍵按一下 [Pages]** 資料夾 > [新增]** [新增資料夾]** > ****。
 * 將資料夾命名為 *Movies*
 
-右鍵單擊 *"頁面/電影*"資料夾 **>添加新**>**基架..."**
+以滑鼠右鍵按一下 [ *Pages/電影*] 資料夾 >**加入** > **新**的 [樣板]]。
 
 ![前述指示中的圖片。](model/_static/scaMac.png)
 
-在 **"新建基架"對話框中**,選擇 **"使用實體框架 (CRUD)** > **下一步**剃刀頁面"。
+在 [**新增**架構] 對話方塊中，選取 [ **Razor Pages 使用 Entity Framework （CRUD）** > **] [下一步]**。
 
 ![前述指示中的圖片。](model/_static/add_scaffoldMac.png)
 
 完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)**** 對話方塊：
 
-* 在**模型"類**中,下拉、選擇或鍵入**影片(RazorPagesMovie.Model)。**
-* 在 **「數據上下文」類**行中,鍵入新類 RazorPagesMovie 的名稱。**資料**。剃刀頁電影上下文。 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
+* 在 [**模型類別**] 下拉式選，選取或輸入**Movie （RazorPagesMovie）**。
+* 在 [**資料內容類別**] 列中，輸入新類別的名稱 RazorPagesMovie。**資料**。RazorpagesmoviecoNtext-21. 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
 * 選取 [新增]  。
 
 ![前述指示中的圖片。](model/_static/arpMac.png)
@@ -146,13 +152,13 @@ ms.locfileid: "81488867"
 
 ### <a name="add-ef-tools"></a>新增 EF 工具
 
-執行以下 .NET 核心 CLI 指令:
+執行下列 .NET Core CLI 命令：
 
 ```dotnetcli
 dotnet tool install --global dotnet-ef
 ```
 
-前面的命令為 .NET 核心 CLI 添加了實體框架核心工具。
+上述命令會加入 .NET Core CLI 的 Entity Framework Core 工具。
 
 ---
 
@@ -226,13 +232,13 @@ Update-Database
 
 ---
 
-前面的命令生成以下警告:「未為實體類型」Movie"上的十進位列"價格"指定類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
+上述命令會產生下列警告：「實體類型 ' Movie ' 的十進位資料行 ' Price ' 未指定任何類型。 如果它們不符合預設的有效位數和小數位數，會導致以無訊息模式截斷這些值。 使用 'HasColumnType()' 明確指定可容納所有值的 SQL Server 資料行類型。」
 
 您可以忽略該警告，稍後的教學課程中將修正此問題。
 
-遷移命令生成代碼以創建初始資料庫架構。 架構基於`DbContext`中 指定的模型。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
+[遷移] 命令會產生程式碼來建立初始資料庫架構。 架構是以中`DbContext`指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
 
-該`update`命令`Up`在尚未應用的遷移中運行該方法。 在這種情況下,`update``Up`在*建立資料庫的移轉\</ 時間戳>_InitialCreate.cs*檔中執行該方法。
+`update`命令會在尚未`Up`套用的遷移中執行方法。 在此情況下`update` ，會`Up`在建立資料庫的「*遷移/\<時間戳記>_InitialCreate .cs*檔案中執行方法。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -293,15 +299,15 @@ Login failed for user 'User-name'.
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一篇:](xref:tutorials/razor-pages/razor-pages-start)
-> [開始下一步: 腳手架剃刀頁](xref:tutorials/razor-pages/page)
+> [上一步：開始](xref:tutorials/razor-pages/razor-pages-start)
+> 使用[下一步： scaffold Razor Pages](xref:tutorials/razor-pages/page)
 
 ::: moniker-end
 
 <!--  ::: moniker previous version   -->
 ::: moniker range="< aspnetcore-3.0"
 
-在本節中,將添加類,用於在跨平臺[SQLite 資料庫中](https://www.sqlite.org/index.html)管理影片。 從ASP.NET核心範本創建的應用使用SQLite資料庫。 該應用程式的模型類與[實體框架核心 (EF Core)](/ef/core) [(SQLite EF 核心資料庫提供者](/ef/core/providers/sqlite)) 一起使用,以便與資料庫一起使用。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取。
+在本節中，會加入類別來管理跨平臺[SQLite 資料庫](https://www.sqlite.org/index.html)中的電影。 從 ASP.NET Core 範本建立的應用程式會使用 SQLite 資料庫。 應用程式的模型類別會與[Entity Framework Core （EF Core）](/ef/core) （[SQLite EF Core 資料庫提供者](/ef/core/providers/sqlite)）搭配使用，以使用資料庫。 EF Core 是一種物件關聯式對應 (ORM) 架構，可簡化資料存取。
 
 模型類別稱為 POCO 類別 (來自「簡單的 CLR 物件」)，因為它們對 EF Core 沒有任何相依性。 它們會定義資料儲存在資料庫中的屬性。
 
@@ -313,7 +319,7 @@ Login failed for user 'User-name'.
 
 以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]**** > [新增資料夾]****。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選擇 **「添加** > **類**」。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [**新增** > **類別**]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -382,7 +388,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 
-* **對於 Windows**:執行以下指令:
+* **針對 Windows**：執行下列命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Movie -dc RazorPagesMovieContext -udl -outDir Pages\Movies --referenceScriptLibraries
@@ -407,14 +413,14 @@ to use Data, it should not use models. That will make the namespace the same for
 
 ![前述指示中的圖片。](model/_static/scaMac.png)
 
-在 **「新增新基架」對話框中**,**選擇使用實體框架 (CRUD)** >**添加**的剃刀頁面。
+在 [**加入新**的架構] 對話方塊中，選取 [ **Razor Pages 使用 Entity Framework （CRUD）** > ] [**新增**]。
 
 ![前述指示中的圖片。](model/_static/add_scaffoldMac.png)
 
 完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)**** 對話方塊：
 
-* 在**模型"類**下拉清單中,選擇或鍵入 **「影片**」。
-* 在 **「資料上下文類」行**中,鍵入 **「RazorPages MovieContext」,** 這將創建具有正確命名空間的新 db 上下文類。 在這種情況下,這將是**RazorPages 電影.模型.RazorPages 電影上下文**。
+* 在 [**模型類別**] 下拉式選，選取或輸入**Movie**。
+* 在 [**資料內容類別**] 列中，輸入選取**razorpagesmoviecoNtext-21** ，這會使用正確的命名空間建立新的 db 內容類別。 在此情況下，它會是**RazorPagesMovie。 razorpagesmoviecoNtext-21**。
 * 選取 [新增]  。
 
 ![前述指示中的圖片。](model/_static/arpMac.png)
@@ -458,7 +464,7 @@ Add-Migration Initial
 Update-Database
 ```
 
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 參數`InitialCreate`用於命名遷移。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations>。
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate`引數是用來命名遷移。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
 
 `Update-Database` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
 
@@ -472,7 +478,7 @@ Update-Database
 
 ---
 > [!NOTE]
-> 前面的命令生成以下警告:"*未為實體類型"Movie"上的十進位列"價格"指定類型。如果值不適合預設精度和比例,則會導致值被靜默截斷。顯式指定 SQL Server 列類型,該類型可以使用"HasColumnType()「容納所有值。* 您可以忽略該警告,它將在後面的教程中修復。
+> 上述命令會產生下列警告：「*實體類型 ' Movie ' 的十進位資料行 ' Price ' 未指定任何類型。如果值不符合預設的有效位數和小數位數，這會導致以無訊息模式截斷值。使用 ' HasColumnType （） ' 明確指定可容納所有值的 SQL server 資料行類型。*」您可以忽略該警告，其將在稍後的教學課程中修正。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -533,7 +539,7 @@ Login failed for user 'User-name'.
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一篇:](xref:tutorials/razor-pages/razor-pages-start)
-> [開始下一步: 腳手架剃刀頁](xref:tutorials/razor-pages/page)
+> [上一步：開始](xref:tutorials/razor-pages/razor-pages-start)
+> 使用[下Razor一步： scaffold 頁面](xref:tutorials/razor-pages/page)
 
 ::: moniker-end

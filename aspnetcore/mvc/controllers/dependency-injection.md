@@ -4,13 +4,19 @@ author: ardalis
 description: 了解 ASP.NET Core MVC 控制器如何在 ASP.NET Core 中，透過其含有相依性插入的建構函式明確要求其相依性。
 ms.author: riande
 ms.date: 02/24/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/controllers/dependency-injection
-ms.openlocfilehash: 202b62d4b30c5c61c407abdc8509a2a75e181cb6
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: a7df6a5fa2d49efc332c4684ea8192f143cdebf5
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78660080"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775696"
 ---
 # <a name="dependency-injection-into-controllers-in-aspnet-core"></a>ASP.NET Core 控制器的相依性插入
 
@@ -20,7 +26,7 @@ ms.locfileid: "78660080"
 
 ASP.NET Core MVC 控制器會透過建構函式明確地要求相依性。 ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection) 支援。 DI 可讓您更輕鬆地測試和維護應用程式。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/controllers/dependency-injection/sample)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="constructor-injection"></a>建構函式插入
 
@@ -52,7 +58,7 @@ ASP.NET Core MVC 控制器會透過建構函式明確地要求相依性。 ASP.N
 
 ## <a name="access-settings-from-a-controller"></a>從控制器存取設定
 
-從控制器存取應用程式或組態設定是常見的模式。 *中所述的「選項模式」* <xref:fundamentals/configuration/options>是管理設定的慣用方法。 一般而言，不要將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 直接插入至控制器。
+從控制器存取應用程式或組態設定是常見的模式。 <xref:fundamentals/configuration/options> 中所述的「選項模式」** 是管理設定的慣用方法。 一般而言，不要將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 直接插入至控制器。
 
 建立要代表選項的類別。 例如：
 

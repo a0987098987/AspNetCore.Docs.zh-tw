@@ -1,20 +1,26 @@
 ---
-title: 教學:使用 EF 核心更新相關資料 - ASP.NET MVC
+title: 教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 description: 在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 author: rick-anderson
 ms.author: riande
 ms.custom: mvc
 ms.date: 03/27/2019
 ms.topic: tutorial
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 83d662659fb4bc7a2867be563e4e36927d2adafe
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 54783ebbac26a10a92716b5e53ed6cd7cc8bb65d
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78657140"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773493"
 ---
-# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學:使用 EF 核心更新相關資料 - ASP.NET MVC
+# <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 
 在先前的教學課程中，您顯示了相關資料。在本教學課程中，您會藉由更新外部索引鍵欄位和導覽屬性來更新相關資料。
 
@@ -33,7 +39,7 @@ ms.locfileid: "78657140"
 > * 更新 [刪除] 頁面
 > * 將辦公室位置和課程新增至 [建立] 頁面
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [讀取相關資料](read-related-data.md)
 
@@ -101,7 +107,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ![Course [建立] 頁面](update-related-data/_static/course-create.png)
 
-按一下頁面底部的 [新增]  。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
+按一下 [建立]  。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
 
 按一下 Courses [索引] 頁面中課程的 [編輯]****。
 

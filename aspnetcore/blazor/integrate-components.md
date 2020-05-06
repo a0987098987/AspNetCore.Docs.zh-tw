@@ -1,5 +1,5 @@
 ---
-title: 將 ASP.NET Core Razor 元件整合至 Razor Pages 和 MVC 應用程式
+title: 將 ASP.NET Core Razor元件整合Razor至頁面和 MVC 應用程式
 author: guardrex
 description: 瞭解應用程式中Blazor元件和 DOM 元素的資料系結案例。
 monikerRange: '>= aspnetcore-3.1'
@@ -8,14 +8,17 @@ ms.custom: mvc
 ms.date: 04/25/2020
 no-loc:
 - Blazor
+- Identity
+- Let's Encrypt
+- Razor
 - SignalR
 uid: blazor/integrate-components
-ms.openlocfilehash: 4e2103b7e8b65478808093d7a31e8cfe29b04984
-ms.sourcegitcommit: f9a5069577e8f7c53f8bcec9e13e117950f4f033
+ms.openlocfilehash: eb4378223c40594ac52f50b7b890785067515555
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82558913"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82771770"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將 ASP.NET Core Razor 元件整合至 Razor Pages 和 MVC 應用程式
 
@@ -125,7 +128,7 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
    * 會資源清單到頁面中。
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
 
-   | 轉譯模式 | 描述 |
+   | 轉譯模式 | 說明 |
    | ----------- | ----------- |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將`App`元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 不包含來自`App`元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
@@ -199,7 +202,7 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
    * 會資源清單到頁面中。
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動 Blazor 應用程式所需的資訊。
 
-   | 轉譯模式 | 描述 |
+   | 轉譯模式 | 說明 |
    | ----------- | ----------- |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將`App`元件轉譯為靜態 HTML，並包含Blazor伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現Blazor伺服器應用程式的標記。 不包含來自`App`元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動Blazor應用程式。 |
@@ -247,7 +250,7 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 
 ### <a name="render-stateful-interactive-components"></a>呈現具狀態的互動式元件
 
-可設定狀態的互動式元件可以新增至 Razor 頁面或視圖。
+可設定狀態的Razor互動式元件可以新增至頁面或視圖。
 
 當頁面或視圖呈現時：
 
@@ -255,7 +258,7 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 * 用來進行預呈現的初始元件狀態會遺失。
 * 建立連接時，會建立新SignalR的元件狀態。
 
-下列 Razor 頁面會呈現`Counter`元件：
+下列Razor頁面會呈現`Counter`元件：
 
 ```cshtml
 <h1>My Razor Page</h1>
@@ -269,11 +272,11 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 }
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
+如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
 
 ### <a name="render-noninteractive-components"></a>呈現非互動式元件
 
-在下列 Razor 頁面中， `Counter`元件會以靜態方式轉譯，並具有使用表單指定的初始值。 由於元件是以靜態方式呈現，因此元件不是互動式的：
+在下列Razor頁面中， `Counter`元件會使用以表單指定的初始值，以靜態方式呈現。 由於元件是以靜態方式呈現，因此元件不是互動式的：
 
 ```cshtml
 <h1>My Razor Page</h1>
@@ -292,7 +295,7 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 }
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
+如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
 
 ## <a name="component-namespaces"></a>元件命名空間
 
@@ -305,6 +308,6 @@ Razor 元件可以整合到 Razor Pages 和 MVC 應用程式中。 當頁面或�
 @using MyAppNamespace.Components
 ```
 
-*_ViewImports. cshtml*檔案位於 MVC 應用程式的 Razor Pages 應用程式或*Views*資料夾的*Pages*資料夾中。
+*_ViewImports. cshtml*檔案位於 MVC 應用程式的*Pages* Razor pages 應用程式或*Views*資料夾的 pages 資料夾中。
 
-如需詳細資訊，請參閱 <xref:blazor/components#import-components>。
+如需詳細資訊，請參閱<xref:blazor/components#import-components>。

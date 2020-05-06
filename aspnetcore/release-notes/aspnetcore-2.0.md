@@ -5,26 +5,32 @@ description: 深入了解 ASP.NET Core 2.0 的新功能。
 ms.author: riande
 ms.custom: mvc
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: aspnetcore-2.0
-ms.openlocfilehash: 5ca43bab1496aa9fda65282cbb0b1177ad8689eb
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: b1fc486633ab7c7d7bee4f8981a978747b2890da
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78667255"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82775813"
 ---
 # <a name="whats-new-in-aspnet-core-20"></a>ASP.NET Core 2.0 的新功能
 
 本文會重點說明 ASP.NET Core 2.0 最重要的變更，附有相關文件的連結。
 
-## <a name="razor-pages"></a>Razor 頁面
+## <a name="razor-pages"></a>Razor頁面
 
-Razor 頁面是 ASP.NET Core MVC 的新功能，更容易編寫以頁面為焦點的案例程式碼，也更具生產力。
+Razor頁面是 ASP.NET Core MVC 的新功能，可讓撰寫以頁面為焦點的案例更輕鬆且更具生產力。
 
 如需詳細資訊，請參閱簡介與教學課程：
 
-* [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
+* [Razor頁面簡介](xref:razor-pages/index)
+* [開始使用Razor頁面](xref:tutorials/razor-pages/razor-pages-start)
 
 ## <a name="aspnet-core-metapackage"></a>ASP.NET Core 中繼套件
 
@@ -64,15 +70,15 @@ ASP.NET Core 2.0 套件以 .NET Standard 2.0 為目標。 套件可供其他 .NE
 
 如需已規劃文件狀態的資訊，請參閱 [GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/3054)。
 
-## <a name="identity-update"></a>身分識別更新
+## <a name="identity-update"></a>Identity更新
 
-我們讓建置使用 ASP.NET Core 2.0 身分識別的安全 Web API 變得更容易。 您可以取得存取權杖來存取使用 [Microsoft 驗證程式庫 (MSAL)](https://www.nuget.org/packages/Microsoft.Identity.Client) 的 Web API。
+我們使用Identity ASP.NET Core 2.0 中的，讓您更輕鬆地建立安全的 web api。 您可以取得存取權杖來存取使用 [Microsoft 驗證程式庫 (MSAL)](https://www.nuget.org/packages/Microsoft.Identity.Client) 的 Web API。
 
 如需 2.0 驗證變更的詳細資訊，請參閱下列資源：
 
 * [ASP.NET Core 中的帳戶確認和密碼復原](xref:security/authentication/accconfirm)
 * [允許為 ASP.NET Core 中的驗證器應用程式產生 QR 代碼](xref:security/authentication/identity-enable-qrcodes)
-* [將驗證及識別移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
+* [Identity將驗證遷移到 ASP.NET Core 2。0](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="spa-templates"></a>SPA 範本
 
@@ -104,7 +110,7 @@ var entityTag = new EntityTagHeaderValue("\"MyCalculatedEtagValue\"");
 return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNow.AddSeconds(-5), entityTag: entityTag);
 ```
 
-返回到存取者的檔`ETag`具有`LastModified`和值的相應 HTTP 標頭。
+傳回給您的訪客的檔案具有`ETag`和`LastModified`值的適當 HTTP 標頭。
 
 如果應用程式訪客要求內容與範圍要求標頭，ASP.NET Core 會辨識要求並處理標頭。 如果要求的內容可以部分傳送，ASP.NET Core 會適當略過，並只傳回要求的位元組集合。 您不需要將任何特殊的處理常式寫入方法，來調整或處理這項功能；會為您自動處理。
 
@@ -124,13 +130,13 @@ return File(data, "text/plain", "downloadName.txt", lastModified: DateTime.UtcNo
 
 ## <a name="automatic-precompilation"></a>自動先行編譯
 
-預設在發佈期間即已啟用 Razor 檢視預先編譯，減少發佈輸出大小和應用程式啟動時間。
+Razor預設會在發行期間啟用「查看預先編譯」，以減少發行輸出大小和應用程式啟動時間。
 
-如需詳細資訊，請參閱 [ASP.NET Core 中的 Razor 檢視編譯與先行編譯](xref:mvc/views/view-compilation)。
+如需詳細資訊，請參閱[ Razor ASP.NET Core 中的 view 編譯和](xref:mvc/views/view-compilation)先行編譯。
 
-## <a name="razor-support-for-c-71"></a>針對 C# 7.1 的 Razor 支援
+## <a name="razor-support-for-c-71"></a>Razorc # 7.1 的支援
 
-Razor 檢視引擎已更新，可使用新的 Roslyn 編譯器 。 這包括支援預設運算式、推斷 Tuple 名稱和使用泛型比對模式等 C# 7.1 功能。 若要在專案中使用 C# 7.1，請在專案檔中新增下列屬性，然後重新載入方案：
+Razor視圖引擎已更新，可與新的 Roslyn 編譯器搭配使用。 這包括支援預設運算式、推斷 Tuple 名稱和使用泛型比對模式等 C# 7.1 功能。 若要在專案中使用 C# 7.1，請在專案檔中新增下列屬性，然後重新載入方案：
 
 ```xml
 <LangVersion>latest</LangVersion>
@@ -152,7 +158,7 @@ Razor 檢視引擎已更新，可使用新的 Roslyn 編譯器 。 這包括支�
 如需如何將 ASP.NET Core 1.x 應用程式移轉至 ASP.NET Core 2.0的指引，請參閱下列資源：
 
 * [從 ASP.NET Core 1.x 移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/index)
-* [將驗證及識別移轉至 ASP.NET Core 2.0](xref:migration/1x-to-2x/identity-2x)
+* [Identity將驗證遷移到 ASP.NET Core 2。0](xref:migration/1x-to-2x/identity-2x)
 
 ## <a name="additional-information"></a>其他資訊
 

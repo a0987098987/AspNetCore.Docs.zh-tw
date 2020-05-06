@@ -4,19 +4,25 @@ author: ardalis
 description: 了解如何讀取及操作應用程式模型，來修改 ASP.NET Core 中 MVC 項目的行為方式。
 ms.author: riande
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/controllers/application-model
-ms.openlocfilehash: 4b6c978e5752eb320412a1c204df8e3d288fe4a1
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: 5e31d2e6611321bec7442534ce41350de10478e0
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78666429"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82768659"
 ---
 # <a name="work-with-the-application-model-in-aspnet-core"></a>在 ASP.NET Core 中使用應用程式模型
 
 作者：[Steve Smith](https://ardalis.com/)
 
-ASP.NET Core MVC 定義了一個「應用程式模型」，代表 MVC 應用程式的元件。 您可以讀取及操作此模型來修改 MVC 項目的行為。 根據預設，MVC 遵循特定慣例來判斷哪些類別會被視為控制器、對這些類別的哪些方法是動作，以及參數和路由的行為方式。 您可以自訂此行為，以符合您的應用程式需求，方法是建立自己的慣例，並將其全域套用或作為屬性來套用。
+ASP.NET Core MVC 定義了一個「應用程式模型」**，代表 MVC 應用程式的元件。 您可以讀取及操作此模型來修改 MVC 項目的行為。 根據預設，MVC 遵循特定慣例來判斷哪些類別會被視為控制器、對這些類別的哪些方法是動作，以及參數和路由的行為方式。 您可以自訂此行為，以符合您的應用程式需求，方法是建立自己的慣例，並將其全域套用或作為屬性來套用。
 
 ## <a name="models-and-providers"></a>模型和提供者
 
@@ -38,7 +44,7 @@ ASP.NET Core MVC 應用程式模型具有下列結構：
 
 ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iapplicationmodelprovider) 介面定義的提供者模式來載入應用程式模型。 本節涵蓋此提供者運作方式的一些內部實作詳細資料。 這是進階的主題 - 大部分使用應用程式模型的應用程式都應該遵照慣例這樣做。
 
-`IApplicationModelProvider` 介面的實作會彼此「包裝」，每個實作根據其 `OnProvidersExecuting` 屬性以遞增順序呼叫 `Order`。 然後以相反順序呼叫 `OnProvidersExecuted` 方法。 架構會定義數個提供者：
+`IApplicationModelProvider` 介面的實作會彼此「包裝」，每個實作根據其 `Order` 屬性以遞增順序呼叫 `OnProvidersExecuting`。 然後以相反順序呼叫 `OnProvidersExecuted` 方法。 架構會定義數個提供者：
 
 先是 (`Order=-1000`)：
 
@@ -63,7 +69,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 * 將動作方法參數新增至內容
 * 套用路由和其他屬性
 
-某些內建行為由 `DefaultApplicationModelProvider` 實作。 此提供者負責建構 [`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)，而它則會參考 [`ActionModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel)、[`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel) 和 [`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel) 執行個體。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
+某些內建行為由 `DefaultApplicationModelProvider` 實作。 這個提供者[`ControllerModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.controllermodel)會負責建立，而後者又會參考[`ActionModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.actionmodel)、 [`PropertyModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.propertymodel)和[`ParameterModel`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.parametermodel)實例。 `DefaultApplicationModelProvider` 類別是內部架構實作詳細資料，未來將會變更。 
 
 `AuthorizationApplicationModelProvider` 負責套用與 `AuthorizeFilter` 和 `AllowAnonymousFilter` 屬性建立關聯的行為。 [進一步了解這些屬性](xref:security/authorization/simple)。
 
@@ -80,7 +86,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 * [`IActionModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iactionmodelconvention)
 * [`IParameterModelConvention`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.iparametermodelconvention)
 
-藉由將慣例新增至 MVC 選項或實作 `Attribute` 並將其套用至控制器、動作或動作參數 (類似於 [`Filters`](xref:mvc/controllers/filters)) 來套用慣例。 與篩選條件不同的是，只有在應用程式啟動時才會執行慣例，而不會在每個要求當中執行。
+藉由將慣例新增至 MVC 選項或執行`Attribute`，並將其套用至控制器、動作或動作參數（類似于[`Filters`](xref:mvc/controllers/filters)）來套用。 與篩選條件不同的是，只有在應用程式啟動時才會執行慣例，而不會在每個要求當中執行。
 
 ### <a name="sample-modifying-the-applicationmodel"></a>範例：修改 ApplicationModel
 
@@ -88,7 +94,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/ApplicationDescription.cs)]
 
-在 `ConfigureServices` 中的 `Startup` 中新增 MVC 時，應用程式模型慣例會套用為選項。
+在 `Startup` 中的 `ConfigureServices` 中新增 MVC 時，應用程式模型慣例會套用為選項。
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=5)]
 
@@ -130,7 +136,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 
 ### <a name="sample-modifying-the-actionmodel-name"></a>範例：修改 ActionModel 名稱
 
-下列慣例會修改 `ActionModel` 以更新其所套用之動作的「名稱」。 新的名稱會當作傳給屬性的參數。 這個新名稱由路由使用，因此它會影響用來連線到此動作方法的路由。
+下列慣例會修改 `ActionModel` 以更新其所套用之動作的「名稱」**。 新的名稱會當作傳給屬性的參數。 這個新名稱由路由使用，因此它會影響用來連線到此動作方法的路由。
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/CustomActionNameAttribute.cs)]
 
@@ -154,7 +160,7 @@ ASP.NET Core MVC 使用 [IApplicationModelProvider](/dotnet/api/microsoft.aspnet
 [!code-csharp[](./application-model/sample/src/AppModelSample/Startup.cs?name=ConfigureServices&highlight=6)]
 
 > [!TIP]
-> 您可以藉由使用 [ 存取 ](xref:fundamentals/middleware/index)，將慣例新增到您的`MvcOptions`中介軟體`services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));`
+> 您可以藉由使用 `services.Configure<MvcOptions>(c => c.Conventions.Add(YOURCONVENTION));` 存取 `MvcOptions`，將慣例新增到您的[中介軟體](xref:fundamentals/middleware/index)
 
 這個範例將此慣例套用到不使用控制器名稱中包含 "Namespace" 之屬性路由的路由。 下列控制器示範此慣例：
 
@@ -167,7 +173,7 @@ ASP.NET Core MVC 會使用與 ASP.NET Web API 2 不同的一組慣例。 您可�
 > [!NOTE]
 > 深入了解[從 ASP.NET Web API 移轉](xref:migration/webapi)。
 
-若要使用 Web API 相容性填充碼，您必須將套件新增到您的專案，然後藉由在 `AddWebApiConventions` 中呼叫 `Startup` 來新增慣例：
+若要使用 Web API 相容性填充碼，您必須將套件新增到您的專案，然後藉由在 `Startup` 中呼叫 `AddWebApiConventions` 來新增慣例：
 
 ```csharp
 services.AddMvc().AddWebApiConventions();
@@ -196,11 +202,11 @@ services.AddMvc().AddWebApiConventions();
 
 `UseWebApiRoutesAttribute` 控制是否套用 `WebApiApplicationModelConvention` 控制器慣例。 啟用時，這個慣例會用來將[區域](xref:mvc/controllers/areas)的支援新增到路由。
 
-除了一組慣例之外，相容性套件還包括 `System.Web.Http.ApiController` 基底類別，以取代 Web API 提供的類別。 這可讓您針對 Web API 撰寫且繼承自其 `ApiController` 的控制器如同設計般地運作，同時在 ASP.NET Core MVC 上執行。 先前列出的所有 `UseWebApi*` 屬性都會套用至基底控制器類別。 `ApiController` 會公開屬性、方法和與 Web API 中之結果類型相容的結果類型。
+除了一組慣例之外，相容性套件還包括 `System.Web.Http.ApiController` 基底類別，以取代 Web API 提供的類別。 這可讓您針對 Web API 撰寫且繼承自其 `ApiController` 的控制器如同設計般地運作，同時在 ASP.NET Core MVC 上執行。 先前列出的`UseWebApi*`所有屬性都會套用至基底控制器類別。 `ApiController` 會公開屬性、方法和與 Web API 中之結果類型相容的結果類型。
 
 ## <a name="using-apiexplorer-to-document-your-app"></a>使用 ApiExplorer 記載您的應用程式
 
-應用程式模型會在可用來周遊應用程式結構的每個層級公開 [`ApiExplorer`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.apiexplorermodel) 屬性。 這可以用來[使用 Swagger 等工具為您的 Web API 產生說明頁面](xref:tutorials/web-api-help-pages-using-swagger)。 `ApiExplorer` 屬性會公開 `IsVisible` 屬性，它可以設定來指定應該公開您應用程式模型中的哪些部分。 您可以使用慣例來設定這項設定：
+應用程式模型會公開[`ApiExplorer`](/dotnet/api/microsoft.aspnetcore.mvc.applicationmodels.apiexplorermodel)每個層級上的屬性，以用來流覽應用程式的結構。 這可以用來[使用 Swagger 等工具為您的 Web API 產生說明頁面](xref:tutorials/web-api-help-pages-using-swagger)。 `ApiExplorer` 屬性會公開 `IsVisible` 屬性，它可以設定來指定應該公開您應用程式模型中的哪些部分。 您可以使用慣例來設定這項設定：
 
 [!code-csharp[](./application-model/sample/src/AppModelSample/Conventions/EnableApiExplorerApplicationConvention.cs)]
 

@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/12/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: fundamentals/configuration/options
-ms.openlocfilehash: 756d3d57122642ab10ab671c9accb75975c3799d
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: efce2caf37534823016c12b298afd277bab22030
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78665456"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82769932"
 ---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
@@ -21,15 +27,15 @@ ms.locfileid: "78665456"
 選項模式使用類別來代表一組相關的設定。 當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
 
 * [介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
-* 應用不同部分&ndash;[的"關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)"設置不相互依賴或耦合。
+* 應用程式不同部分的[疑慮](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash;設定不會彼此相依或彼此結合。
 
 選項也提供驗證設定資料的機制。 如需詳細資訊，請參閱[選項驗證](#options-validation)一節。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="package"></a>Package
+## <a name="package"></a>封裝
 
-[Microsoft.擴展.選項.配置擴展包](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/)在ASP.NET核心應用中隱式引用。
+ASP.NET Core 應用程式中會隱含地參考[microsoft.extensions.options.configurationextensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/)套件。
 
 ## <a name="options-interfaces"></a>選項介面
 
@@ -106,7 +112,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs*:
+*Index.cshtml.cs*：
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -114,7 +120,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
+您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 
 每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。 在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。
 
@@ -136,7 +142,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-該方法`GetSection`需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。
+`GetSection`方法需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。
 
 範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 
@@ -160,16 +166,16 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 subOption1 = subvalue1_from_json, subOption2 = 200
 ```
 
-## <a name="options-injection"></a>選項注入
+## <a name="options-injection"></a>選項插入
 
-選項注入在示例應用中演示為範例 4。
+範例應用程式中的範例4示範了選項插入。
 
-注入<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>到:
+插入<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> ：
 
-* 帶有 Razor[`@inject`](xref:mvc/views/razor#inject)指令的 Razor 頁面或 MVC 檢視。
+* [`@inject`](xref:mvc/views/razor#inject)具有Razor Razor指示詞的頁面或 MVC 視圖。
 * 頁面或視圖模型。
 
-範例應用程式中的以下範例<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>注入到頁面模型 (*頁面 / Index.cshtml.cs):*
+下列來自範例應用程式的範例會<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>插入頁面模型中（*Pages/Index. cshtml .cs*）：
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -187,14 +193,14 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-範例應用中的範例<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>5 演示了重新載入 配置數據的一個範例。
+使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>重載設定資料時，會在範例應用程式的範例5中示範。
 
-在<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>請求的生存期內訪問和緩存時,每個請求都會計算一次 使用選項。
+使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>，在要求的存留期記憶體取和快取時，會針對每個要求計算一次選項。
 
-和 之間的`IOptionsMonitor``IOptionsSnapshot`區別 是:
+和`IOptionsMonitor` `IOptionsSnapshot`之間的差異在於：
 
-* `IOptionsMonitor`是一個隨時檢索當前選項值的單[例服務](xref:fundamentals/dependency-injection#singleton),這在單例依賴項中特別有用。
-* `IOptionsSnapshot`是[作用域服務](xref:fundamentals/dependency-injection#scoped),在構造物件時提供選項`IOptionsSnapshot<T>`的 快照。 選項快照設計用於臨時性和作用域依賴項。
+* `IOptionsMonitor`是一項[單一服務](xref:fundamentals/dependency-injection#singleton)，可隨時抓取目前的選項值，這在單一相依性中特別有用。
+* `IOptionsSnapshot`是已設定[範圍的服務](xref:fundamentals/dependency-injection#scoped)，會在`IOptionsSnapshot<T>`物件建立時提供選項的快照集。 選項快照集的設計目的是要搭配暫時性和範圍相依性使用。
 
 下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。 對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。
 
@@ -210,7 +216,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。 保存*應用程式設定.json*檔。 重新整理瀏覽器，以查看選項值更新：
+將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。 儲存*appsettings json*檔案。 重新整理瀏覽器，以查看選項值更新：
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
@@ -220,7 +226,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用中,命名選項使用[選項服務收集擴展聲明。設定](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*),稱為[「\<設定命名選項」選項>。配置](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 命名選項區分大小寫。
+「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[\<configurenamedoptions .configure TOptions>。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
@@ -281,7 +287,7 @@ services.AddOptions<MyOptions>("optionalName")
 
 在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：
 
-* 將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 `OptionsBuilder<TOptions>`提供[設定](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)的重載,允許最多使用五個服務來設定選項:
+* 將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 `OptionsBuilder<TOptions>`提供[設定的多載，讓](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)您可以使用最多五個服務來設定選項：
 
   ```csharp
   services.AddOptions<MyOptions>("optionalName")
@@ -326,10 +332,10 @@ catch (OptionsValidationException e)
 
 上述範例會將具名的選項執行個體設定為 `optionalOptionsName`。 預設選項執行個體為 `Options.DefaultName`。
 
-當選項執行個體建立之後，便會執行驗證。 選項實例保證在首次訪問時通過驗證。
+當選項執行個體建立之後，便會執行驗證。 選項實例保證會在第一次存取時通過驗證。
 
 > [!IMPORTANT]
-> 選項驗證在創建選項實例后不防止選項修改。 例如,在`IOptionsSnapshot`首次訪問選項時,每個請求創建和驗證一次選項。 在`IOptionsSnapshot`*後續訪問*請求時,不會再次驗證這些選項。
+> 選項驗證不會在建立 options 實例之後防護選項的修改。 例如，當`IOptionsSnapshot`第一次存取選項時，會針對每個要求建立及驗證一個選項。 `IOptionsSnapshot` *針對相同要求*的後續存取嘗試時，不會再次驗證這些選項。
 
 `Validate` 方法可接受 `Func<TOptions, bool>`。 若要完整地自訂驗證，請實作 `IValidateOptions<TOptions>`，它允許：
 
@@ -350,7 +356,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations`在ASP.NET核心應用中隱式引用。
+透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations`在 ASP.NET Core 應用程式中會以隱含方式參考。
 
 ```csharp
 using System.ComponentModel.DataAnnotations;
@@ -447,13 +453,13 @@ public void Configure(IApplicationBuilder app,
 選項模式使用類別來代表一組相關的設定。 當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
 
 * [介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
-* 應用不同部分&ndash;[的"關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)"設置不相互依賴或耦合。
+* 應用程式不同部分的[疑慮](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash;設定不會彼此相依或彼此結合。
 
 選項也提供驗證設定資料的機制。 如需詳細資訊，請參閱[選項驗證](#options-validation)一節。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
 
@@ -532,7 +538,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs*:
+*Index.cshtml.cs*：
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -540,7 +546,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
+您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 
 每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。 在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。
 
@@ -562,7 +568,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-該方法`GetSection`需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。
+`GetSection`方法需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。
 
 範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 
@@ -586,16 +592,16 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 subOption1 = subvalue1_from_json, subOption2 = 200
 ```
 
-## <a name="options-injection"></a>選項注入
+## <a name="options-injection"></a>選項插入
 
-選項注入在示例應用中演示為範例 4。
+範例應用程式中的範例4示範了選項插入。
 
-注入<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>到:
+插入<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> ：
 
-* 帶有 Razor[`@inject`](xref:mvc/views/razor#inject)指令的 Razor 頁面或 MVC 檢視。
+* [`@inject`](xref:mvc/views/razor#inject)具有Razor Razor指示詞的頁面或 MVC 視圖。
 * 頁面或視圖模型。
 
-範例應用程式中的以下範例<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>注入到頁面模型 (*頁面 / Index.cshtml.cs):*
+下列來自範例應用程式的範例會<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>插入頁面模型中（*Pages/Index. cshtml .cs*）：
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -613,14 +619,14 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-範例應用中的範例<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>5 演示了重新載入 配置數據的一個範例。
+使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>重載設定資料時，會在範例應用程式的範例5中示範。
 
-在<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>請求的生存期內訪問和緩存時,每個請求都會計算一次 使用選項。
+使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>，在要求的存留期記憶體取和快取時，會針對每個要求計算一次選項。
 
-和 之間的`IOptionsMonitor``IOptionsSnapshot`區別 是:
+和`IOptionsMonitor` `IOptionsSnapshot`之間的差異在於：
 
-* `IOptionsMonitor`是一個隨時檢索當前選項值的單[例服務](xref:fundamentals/dependency-injection#singleton),這在單例依賴項中特別有用。
-* `IOptionsSnapshot`是[作用域服務](xref:fundamentals/dependency-injection#scoped),在構造物件時提供選項`IOptionsSnapshot<T>`的 快照。 選項快照設計用於臨時性和作用域依賴項。
+* `IOptionsMonitor`是一項[單一服務](xref:fundamentals/dependency-injection#singleton)，可隨時抓取目前的選項值，這在單一相依性中特別有用。
+* `IOptionsSnapshot`是已設定[範圍的服務](xref:fundamentals/dependency-injection#scoped)，會在`IOptionsSnapshot<T>`物件建立時提供選項的快照集。 選項快照集的設計目的是要搭配暫時性和範圍相依性使用。
 
 下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。 對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。
 
@@ -636,7 +642,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。 保存*應用程式設定.json*檔。 重新整理瀏覽器，以查看選項值更新：
+將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。 儲存*appsettings json*檔案。 重新整理瀏覽器，以查看選項值更新：
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
@@ -646,7 +652,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用中,命名選項使用[選項服務收集擴展聲明。設定](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*),稱為[「\<設定命名選項」選項>。配置](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 命名選項區分大小寫。
+「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[\<configurenamedoptions .configure TOptions>。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
@@ -750,10 +756,10 @@ catch (OptionsValidationException e)
 
 上述範例會將具名的選項執行個體設定為 `optionalOptionsName`。 預設選項執行個體為 `Options.DefaultName`。
 
-當選項執行個體建立之後，便會執行驗證。 選項實例保證在首次訪問時通過驗證。
+當選項執行個體建立之後，便會執行驗證。 選項實例保證會在第一次存取時通過驗證。
 
 > [!IMPORTANT]
-> 選項驗證在創建選項實例后不防止選項修改。 例如,在`IOptionsSnapshot`首次訪問選項時,每個請求創建和驗證一次選項。 在`IOptionsSnapshot`*後續訪問*請求時,不會再次驗證這些選項。
+> 選項驗證不會在建立 options 實例之後防護選項的修改。 例如，當`IOptionsSnapshot`第一次存取選項時，會針對每個要求建立及驗證一個選項。 `IOptionsSnapshot` *針對相同要求*的後續存取嘗試時，不會再次驗證這些選項。
 
 `Validate` 方法可接受 `Func<TOptions, bool>`。 若要完整地自訂驗證，請實作 `IValidateOptions<TOptions>`，它允許：
 
@@ -774,7 +780,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations`包含在[微軟.AspNetCore.App元包](xref:fundamentals/metapackage-app)中。
+透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。 `Microsoft.Extensions.Options.DataAnnotations`包含在[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中。
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -869,13 +875,13 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 選項模式使用類別來代表一組相關的設定。 當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
 
 * [介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
-* 應用不同部分&ndash;[的"關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns)"設置不相互依賴或耦合。
+* 應用程式不同部分的[疑慮](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash;設定不會彼此相依或彼此結合。
 
 選項也提供驗證設定資料的機制。 如需詳細資訊，請參閱[選項驗證](#options-validation)一節。
 
-[檢視或下載範例代碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
 
@@ -954,7 +960,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-*Index.cshtml.cs*:
+*Index.cshtml.cs*：
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -962,7 +968,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index>。
+您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
 
 每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。 在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。
 
@@ -984,7 +990,7 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-該方法`GetSection`需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。
+`GetSection`方法需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。
 
 範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：
 
@@ -1030,7 +1036,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 ## <a name="reload-configuration-data-with-ioptionssnapshot"></a>使用 IOptionsSnapshot 重新載入設定資料
 
-範例應用中的範例<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>5 演示了重新載入 配置數據的一個範例。
+使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>重載設定資料時，會在範例應用程式的範例5中示範。
 
 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 支援以最小的處理負擔來重新載入選項。
 
@@ -1050,7 +1056,7 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。 保存*應用程式設定.json*檔。 重新整理瀏覽器，以查看選項值更新：
+將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。 儲存*appsettings json*檔案。 重新整理瀏覽器，以查看選項值更新：
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
@@ -1060,7 +1066,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用中,命名選項使用[選項服務收集擴展聲明。設定](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*),稱為[「\<設定命名選項」選項>。配置](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 命名選項區分大小寫。
+「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[\<configurenamedoptions .configure TOptions>。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 

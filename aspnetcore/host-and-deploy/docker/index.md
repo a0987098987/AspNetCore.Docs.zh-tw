@@ -5,13 +5,19 @@ description: 探索資源連結以了解如何在 Docker 容器中裝載 ASP.NET
 ms.author: riande
 ms.custom: mvc
 ms.date: 01/08/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: host-and-deploy/docker/index
-ms.openlocfilehash: 78eb6f467c7e779e1bf998e8ac8e917a90895db9
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: 94996f279929f6e3837efb613c99927edbd9143e
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440723"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774583"
 ---
 # <a name="host-aspnet-core-in-docker-containers"></a>在 Docker 容器中裝載 ASP.NET Core
 
@@ -23,7 +29,7 @@ ms.locfileid: "81440723"
 [什麼是 Docker](/dotnet/standard/microservices-architecture/container-docker-introduction/docker-defined)  
 探索 Docker 開放原始碼專案，將應用程式自動化部署為可攜式且可自足的容器，在雲端或內部部署上執行。
 
-[Docker 字語](/dotnet/standard/microservices-architecture/container-docker-introduction/docker-terminology)  
+[Docker 術語](/dotnet/standard/microservices-architecture/container-docker-introduction/docker-terminology)  
 了解 Docker 技術的詞彙和定義。
 
 [Docker 容器、映像和登錄](/dotnet/standard/microservices-architecture/container-docker-introduction/docker-containers-images-registries)  
@@ -31,7 +37,7 @@ ms.locfileid: "81440723"
 
 <xref:host-and-deploy/docker/building-net-docker-images> 了解如何建置和 Docker 化 ASP.NET Core 應用程式。 瀏覽 Microsoft 維護的 Docker 映像，並檢查使用案例。
 
-[視覺化工作室容器工具](xref:host-and-deploy/docker/visual-studio-tools-for-docker)  
+[Visual Studio 容器工具](xref:host-and-deploy/docker/visual-studio-tools-for-docker)  
 探索 Visual Studio 如何在 Docker for Windows 上支援建置、偵錯和執行以 .NET Framework 或 .NET Core 為目標的 ASP.NET Core 應用程式。 同時支援 Windows 和 Linux 容器。
 
 [發佈至 Azure Container Registry](/azure/vs-azure-tools-docker-hosting-web-apps-in-docker)  
@@ -40,4 +46,4 @@ ms.locfileid: "81440723"
 [設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)  
 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 透過 Proxy 傳遞要求通常會遮住原始要求的相關資訊，例如配置和用戶端 IP。 可能必須以手動方式將一些關於要求的資訊轉送至應用程式。
 
-[使用 Docker 與小型容器的 GC](xref:performance/memory#sc)討論使用小型容器的 GC 選擇。
+[使用 Docker 和小型容器的 GC](xref:performance/memory#sc)討論具有小型容器的 GC 選取範圍。

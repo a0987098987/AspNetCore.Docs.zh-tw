@@ -6,36 +6,42 @@ monikerRange: '>= aspnetcore-2.2'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: web-api/advanced/conventions
-ms.openlocfilehash: d49b51d11d3f14d0c3edbe1765d74fd63e3ac061
-ms.sourcegitcommit: 9a129f5f3e31cc449742b164d5004894bfca90aa
+ms.openlocfilehash: f74327cd5bb6a5794c90ffdd3896f2b343e175a6
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78657749"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82774882"
 ---
 # <a name="use-web-api-conventions"></a>使用 Web API 慣例
 
 作者：[Pranav Krishnamoorthy](https://github.com/pranavkm) 和 [Scott Addie](https://github.com/scottaddie)
 
-ASP.NET Core 2.2 和更新版本包含擷取常見 [API 文件](xref:tutorials/web-api-help-pages-using-swagger)的方式，並將其套用至多個動作、控制器，或組件內的所有控制器。 Web API 慣例是以[`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute)裝飾個別動作的替代方案。
+ASP.NET Core 2.2 和更新版本包含擷取常見 [API 文件](xref:tutorials/web-api-help-pages-using-swagger)的方式，並將其套用至多個動作、控制器，或組件內的所有控制器。 Web API 慣例是用[`[ProducesResponseType]`](xref:Microsoft.AspNetCore.Mvc.ProducesResponseTypeAttribute)來裝飾個別動作的替代方案。
 
 慣例可讓您：
 
 * 定義從特定動作類型傳回的最常見傳回型別和狀態碼。
 * 識別偏離已定義標準的動作。
 
-ASP.NET Core MVC 2.2 和更新版本在 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName> 中包含一組預設慣例。 這些慣例是以 ASP.NET Core *API* 專案範本中所提供的控制器 (**ValuesController.cs**) 為基礎。 若動作遵循範本中的模式，就應該可以成功使用預設慣例。 如果預設慣例不符合您的需求，請參閱[建立 Web API 慣例](#create-web-api-conventions)。
+ASP.NET Core MVC 2.2 和更新版本在 <xref:Microsoft.AspNetCore.Mvc.DefaultApiConventions?displayProperty=fullName> 中包含一組預設慣例。 這些慣例是以 ASP.NET Core **API** 專案範本中所提供的控制器 (*ValuesController.cs*) 為基礎。 若動作遵循範本中的模式，就應該可以成功使用預設慣例。 如果預設慣例不符合您的需求，請參閱[建立 Web API 慣例](#create-web-api-conventions)。
 
 在執行階段，<xref:Microsoft.AspNetCore.Mvc.ApiExplorer> 了解慣例。 `ApiExplorer` 是 MVC 與 [OpenAPI](https://www.openapis.org/) (也稱為 Swagger) 文件產生器通訊的抽象層。 來自套用慣例的屬性會與動作建立關聯，且包含在動作的 OpenAPI 文件中。 [API 分析器](xref:web-api/advanced/analyzers)也了解慣例。 若您的動作為非傳統的 (例如，其傳回未由套用慣例所記載的狀態碼)，就會出現警告，建議您記載狀態碼。
 
-[檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample) \(英文\) ([如何下載](xref:index#how-to-download-a-sample))
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/conventions/sample)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="apply-web-api-conventions"></a>套用 Web API 慣例
 
 慣例不會進行撰寫；各個動作可能僅會與一個慣例建立關聯。 相較於較不特定的慣例，更特定的慣例擁有較高的優先順序。 當兩個以上相同屬性的慣例套用至動作時，慣例就具有不確定性。 下列選項的作用為將慣例套用至動作，其順序為從最特定到最不特定：
 
-1. `Microsoft.AspNetCore.Mvc.ApiConventionMethodAttribute` &mdash; 會套用至個別的動作，並指定套用的慣例類型和慣例方法。
+1. `Microsoft.AspNetCore.Mvc.ApiConventionMethodAttribute`&mdash;適用于個別動作，並指定套用的慣例類型和慣例方法。
 
     在下列範例中，預設慣例類型的 `Microsoft.AspNetCore.Mvc.DefaultApiConventions.Put` 慣例方法會套用至 `Update` 動作：
 
@@ -89,7 +95,7 @@ public static class MyAppConventions
 如果沒有更特定的中繼資料屬性，將此慣例套用至組件可確保：
 
 * 將慣例方法套用至任何名為 `Find` 的動作。
-* `id` 動作中有名為 `Find` 的參數。
+* `Find` 動作中有名為 `id` 的參數。
 
 ### <a name="naming-requirements"></a>命名需求
 

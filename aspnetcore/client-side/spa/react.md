@@ -6,13 +6,19 @@ monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
 ms.date: 03/07/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: spa/react
-ms.openlocfilehash: 9703a62eb7f779974382fe0fb01702d9fcd37d64
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 1dd352f1a00d30df915fe1936d7dcb34af1b6634
+ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78664959"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82773672"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
@@ -20,7 +26,7 @@ ms.locfileid: "78664959"
 
 這個範本相當於建立一個 ASP.NET Core 專案作為 API 後端，以及建立一個標準 CRA React 專案作為 UI，但是可以將這兩個專案裝載至單一應用程式專案中，這樣便可視為一個整體進行建置與發行。
 
-React 專案範本不是用於伺服器端呈現 (SSR)。 對於具有反應和 Node.js 的 SSR,請考慮[Next.js](https://github.com/zeit/next.js/)或[Razzle](https://github.com/jaredpalmer/razzle)。
+[回應] 專案範本不是用於伺服器端轉譯（SSR）。 針對具有回應和 node.js 的 SSR，請考慮使用[Next .js](https://github.com/zeit/next.js/)或[Razzle](https://github.com/jaredpalmer/razzle)。
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
@@ -80,15 +86,15 @@ npm install --save <package_name>
 
 專案已設定為：當 ASP.NET Core 應用程式在開發模式中啟動時，便在背景啟動它自己的 CRA 程式開發伺服器執行個體。 因為這表示您不需要手動執行不同的伺服器，所以省了不少麻煩。
 
-此預設設定有一個缺點。 每當您修改 C# 程式碼後，需要重新啟動 ASP.NET Core 應用程式，CRA 伺服器才會重新啟動。 大約幾秒鐘時間，才會開始備份。 如果您經常編輯 C# 程式碼，且不想要等候 CRA 伺服器重新啟動，可以在外部執行 CRA 伺服器，與 ASP.NET Core 程序獨立開來。 若要這樣做：
+此預設設定有一個缺點。 每當您修改 C# 程式碼後，需要重新啟動 ASP.NET Core 應用程式，CRA 伺服器才會重新啟動。 大約幾秒鐘時間，才會開始備份。 如果您經常編輯 C# 程式碼，且不想要等候 CRA 伺服器重新啟動，可以在外部執行 CRA 伺服器，與 ASP.NET Core 程序獨立開來。 操作方法：
 
-1. 使用以下設定*將 .env*檔案加入*客戶端套用*子目錄:
+1. 使用下列設定，將*env*檔案新增至*ClientApp*子目錄：
 
     ```
     BROWSER=none
     ```
 
-    這將阻止 Web 瀏覽器在外部啟動 CRA 伺服器時打開。
+    這會防止您的網頁瀏覽器在外部啟動 CRA 伺服器時開啟。
 
 2. 在命令提示字元中，切換至 *ClientApp* 子目錄，然後啟動 CRA 程式開發伺服器：
 
@@ -106,7 +112,7 @@ npm install --save <package_name>
 當您啟動 ASP.NET Core 應用程式，它並不會啟動 CRA 伺服器。 而是改為使用您手動啟動的執行個體。 這樣可以加快它的啟動和重新啟動速度。 不用每一次都要等候 React 應用程式來重新建置。
 
 > [!IMPORTANT]
-> 「伺服器端呈現」不是此範本的支援功能。 我們使用此範本的目標是通過"創建-反應應用程式"滿足奇偶校驗。 因此,不支援"創建-反應應用"專案(如 SSR)中未包括的方案和功能,並留給用戶作為練習。
+> 「伺服器端轉譯」不是此範本支援的功能。 此範本的目標是要符合與「建立-回應應用程式」的同位檢查。 因此，不支援「建立-回應應用程式」專案（例如 SSR）中未包含的案例和功能，而且會保留為使用者的練習。
 
 ## <a name="additional-resources"></a>其他資源
 

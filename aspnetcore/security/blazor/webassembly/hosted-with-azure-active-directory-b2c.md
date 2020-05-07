@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 05068853615a63611188175d95c27f1442973a86
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: b451df023bdea3e76725d5d1301f3c3f44ea5d99
+ms.sourcegitcommit: 30fcf69556b6b6ec54a3879e280d5f61f018b48f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82768204"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82876201"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 保護Blazor ASP.NET Core WebAssembly 託管應用程式
 
@@ -172,7 +172,7 @@ services.Configure<JwtBearerOptions>(
 
 ```json
 {
-  "AzureAd": {
+  "AzureAdB2C": {
     "Instance": "https://{ORGANIZATION}.b2clogin.com/",
     "ClientId": "{SERVER API APP CLIENT ID}",
     "Domain": "{DOMAIN}",
@@ -185,7 +185,7 @@ services.Configure<JwtBearerOptions>(
 
 ```json
 {
-  "AzureAd": {
+  "AzureAdB2C": {
     "Instance": "https://contoso.b2clogin.com/",
     "ClientId": "41451fa7-82d9-4673-8fa5-69eff5a761fd",
     "Domain": "contoso.onmicrosoft.com",

@@ -25,7 +25,7 @@ ms.locfileid: "82775501"
 
 [Webpack](https://webpack.js.org/) 可讓開發人員組合並建置 Web 應用程式的用戶端資源。 本教學課程示範如何在其以 [TypeScript](https://www.typescriptlang.org/) 撰寫的 ASP.NET Core SignalR Web 應用程式中使用 Webpack。
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * Scaffold 入門 ASP.NET Core SignalR 應用程式
@@ -38,7 +38,7 @@ ms.locfileid: "82775501"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -295,7 +295,7 @@ dotnet add package Microsoft.TypeScript.MSBuild
 
 ::: moniker range="< aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

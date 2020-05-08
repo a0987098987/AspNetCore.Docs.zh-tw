@@ -5,7 +5,7 @@ description: 瞭解如何使用 ASP.NET Core、內容傳遞Blazor網路（CDN）
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/04/2020
+ms.date: 05/07/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 9bc1e3aaadb7310f6ea338eea2726bdc592aa06a
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: e136a401beffe9cc7e29906b3631ab3f068b30fd
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776405"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967593"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -79,6 +79,12 @@ Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像是 Bla
 *獨立部署*可將 Blazor WebAssembly 應用程式當做一組直接由用戶端要求的靜態檔案來提供。 所有靜態檔案伺服器都能夠支援 Blazor 應用程式。
 
 獨立部署資產會發佈到 */BIN/RELEASE/{TARGET FRAMEWORK}/publish/wwwroot*資料夾中。
+
+### <a name="azure-app-service"></a>Azure App Service
+
+Blazor WebAssembly 應用程式可以部署到 Windows 上的 Azure App 服務，在[IIS](#iis)上裝載應用程式。
+
+目前不支援將獨立 Blazor WebAssembly 應用程式部署至適用于 Linux 的 Azure App Service。 目前無法使用可裝載應用程式的 Linux 伺服器映射。 正在進行工作，以啟用此案例。
 
 ### <a name="iis"></a>IIS
 
@@ -347,7 +353,7 @@ Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸�
 
 `loadBootResource`參數會出現在下表中。
 
-| 參數    | 說明 |
+| 參數    | 描述 |
 | ------------ | ----------- |
 | `type`       | 資源類型。 運算子類型： `assembly`、 `pdb`、 `dotnetjs`、 `dotnetwasm`、`timezonedata` |
 | `name`       | 資源名稱。 |

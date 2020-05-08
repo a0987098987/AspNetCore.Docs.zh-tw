@@ -75,7 +75,7 @@ ms.locfileid: "82775748"
 * `ContactManagerAuthorizationHandler`：允許管理員核准或拒絕連絡人。
 * `ContactAdministratorsAuthorizationHandler`：可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程是先進的。 您應該已熟悉：
 
@@ -314,7 +314,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * 管理員可以核准/拒絕連絡人資料。 此`Details`視圖會顯示 [**核准**] 和 [**拒絕**] 按鈕。
 * 系統管理員可以核准/拒絕和編輯/刪除所有資料。
 
-| User                | 由應用程式植入 | 選項。                                  |
+| User                | 由應用程式植入 | 選項                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | 否                | 編輯/刪除自己的資料。                |
 | manager@contoso.com | 是               | 核准/拒絕和編輯/刪除自己的資料。 |
@@ -411,7 +411,7 @@ dotnet ef database update
 * `ContactManagerAuthorizationHandler`：允許管理員核准或拒絕連絡人。
 * `ContactAdministratorsAuthorizationHandler`：可讓系統管理員核准或拒絕連絡人，以及編輯/刪除連絡人。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程是先進的。 您應該已熟悉：
 
@@ -641,7 +641,7 @@ dotnet user-secrets set SeedUserPW <PW>
 * 管理員可以核准/拒絕連絡人資料。 此`Details`視圖會顯示 [**核准**] 和 [**拒絕**] 按鈕。
 * 系統管理員可以核准/拒絕和編輯/刪除所有資料。
 
-| User                | 由應用程式植入 | 選項。                                  |
+| User                | 由應用程式植入 | 選項                                  |
 | ------------------- | :---------------: | ---------------------------------------- |
 | test@example.com    | 否                | 編輯/刪除自己的資料。                |
 | manager@contoso.com | 是               | 核准/拒絕和編輯/刪除自己的資料。 |

@@ -32,7 +32,7 @@ ms.locfileid: "82777328"
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/add-user-data)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 ::: moniker range=">= aspnetcore-3.0"
 

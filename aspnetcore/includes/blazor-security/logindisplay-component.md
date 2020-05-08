@@ -1,4 +1,4 @@
-`LoginDisplay` 元件（*shared/LoginDisplay*）會在 `MainLayout` 元件（*shared/MainLayout*）中轉譯，並管理下列行為：
+元件（*shared/LoginDisplay* `MainLayout` ）會在元件（*shared/MainLayout*）中轉譯，並管理下列行為： `LoginDisplay`
 
 * 針對已驗證的使用者：
   * 顯示目前的使用者名稱。

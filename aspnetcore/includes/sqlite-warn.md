@@ -14,6 +14,6 @@
 > 撰寫此型別的資料庫特定程式碼不在本教學課程範圍內。 反之，當嘗試套用移轉失敗時，本教學課程會卸除並重新建立資料庫。 如需詳細資訊，請參閱下列資源：
 >
 > * [SQLite EF Core 資料庫提供者限制](/ef/core/providers/sqlite/limitations)
-> * [自訂移碼](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [資料種子設定](/ef/core/modeling/data-seeding)
+> * [自訂移轉程式碼](/ef/core/managing-schemas/migrations/#customize-migration-code)
+> * [資料植入](/ef/core/modeling/data-seeding)
 > * [SQLite ALTER TABLE 陳述式](https://sqlite.org/lang_altertable.html) \(英文\)

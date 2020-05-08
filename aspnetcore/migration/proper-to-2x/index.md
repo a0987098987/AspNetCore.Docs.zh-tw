@@ -24,7 +24,7 @@ ms.locfileid: "82766507"
 
 這篇文章可作為將 ASP.NET 應用程式移轉至 ASP.NET Core 的參考指南。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 [.NET Core SDK 2.2 或更新版本](https://dotnet.microsoft.com/download)
 

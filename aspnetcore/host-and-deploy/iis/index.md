@@ -5,7 +5,7 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/17/2020
+ms.date: 05/07/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 72f433ffdc7d08e23fb68fc6ed9903a39959363b
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 157cfc4c42d5e057e9b2ebd04c93d80db55419c9
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775982"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967489"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -59,6 +59,8 @@ ms.locfileid: "82775982"
 * 需要提供給 64 位元應用程式使用的較大虛擬記憶體位址空間。
 * 需要較大的 IIS 堆疊大小。
 * 有 64 位元原生相依性。
+
+針對32位（x86）發行的應用程式必須為其 IIS 應用程式集區啟用32位。 如需詳細資訊，請參閱[建立 IIS 網站](#create-the-iis-site)一節。
 
 使用 64 位元 (x64) .NET Core SDK 來發行 64 位元應用程式。 主機系統上必須有 64 位元執行階段存在。
 
@@ -137,7 +139,7 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -155,7 +157,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -326,11 +328,13 @@ net start w3svc
 
    ![將 .NET CLR 版本設為 [沒有受控碼]。](index/_static/edit-apppool-ws2016.png)
 
-    ASP.NET Core 會在不同的處理序中執行，並管理執行階段。 ASP.NET Core 不仰賴載入桌面 CLR (.NET CLR)&mdash;會使用 .NET Core 的核心通用語言執行平台 (CoreCLR) 來開機以在背景工作處理序中裝載應用程式。 將 [.NET CLR 版本]**** 設定為 [沒有受控碼]**** 是選擇性的，但建議這樣做。
+    ASP.NET Core 會在不同的處理序中執行，並管理執行階段。 ASP.NET Core 不依賴載入桌面 CLR （.NET CLR）。 .NET Core 的核心通用語言執行時間（CoreCLR）會啟動以在背景工作進程中裝載應用程式。 將 [.NET CLR 版本]**** 設定為 [沒有受控碼]**** 是選擇性的，但建議這樣做。
 
-1. *ASP.NET Core 2.2 或更新版本*：對於使用[同處理序主控模型](#in-process-hosting-model)的 64 位元 (x64) [獨立式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。
+1. *ASP.NET Core 2.2 或更新版本*：
 
-   在 IIS 管理員的 [動作]**** 資訊看板 > [應用程式集區]**** 中，選取 [設定應用程式集區預設值]**** 或 [進階設定]****。 找到 [啟用 32 位元應用程式]****，然後將其值設定為 `False`。 此設定不會影響為[處理程序外裝載](xref:host-and-deploy/aspnet-core-module#out-of-process-hosting-model)部署的應用程式。
+   * 針對以使用同[進程裝載模型](#in-process-hosting-model)的32位 SDK 發行的32位（x86）獨立式[部署](/dotnet/core/deploying/#self-contained-deployments-scd)，請啟用32位的應用程式集區。 在 IIS 管理員中，流覽至 [**連接**] 提要欄位中的 [**應用程式**集區]。 選取應用程式的應用程式集區。 在 [**動作**] 提要欄位中，選取 [ **Advanced Settings**]。 將 [**啟用32位應用程式**] 設定為`True`。 
+
+   * 對於使用[同處理序主控模型](#in-process-hosting-model)的 64 位元 (x64) [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。 在 IIS 管理員中，流覽至 [**連接**] 提要欄位中的 [**應用程式**集區]。 選取應用程式的應用程式集區。 在 [**動作**] 提要欄位中，選取 [ **Advanced Settings**]。 將 [**啟用32位應用程式**] 設定為`False`。 
 
 1. 確認處理序模型身分識別具有適當的權限。
 
@@ -746,7 +750,7 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -762,7 +766,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -1316,7 +1320,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 ### <a name="iis-options"></a>IIS 選項
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
@@ -1330,7 +1334,7 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | 預設 | 設定 |
+| 選項                         | 預設值 | 設定 |
 | ------------------------------ | :-----: | ------- |
 | `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
 | `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |

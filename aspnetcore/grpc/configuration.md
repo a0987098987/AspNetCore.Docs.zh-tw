@@ -34,7 +34,7 @@ gRPC 服務會在`AddGrpc` *Startup.cs*中以設定。 下表說明設定 gRPC �
 | CompressionProviders | gzip | 用來壓縮和解壓縮訊息的壓縮提供者集合。 您可以建立自訂壓縮提供者，並將其新增至集合。 預設設定的提供者支援**gzip**壓縮。 |
 | <span style="word-break:normal;word-wrap:normal">ResponseCompressionAlgorithm</span> | `null` | 壓縮演算法，用來壓縮從伺服器傳送的訊息。 演算法必須符合中`CompressionProviders`的壓縮提供者。 若要讓演算法壓縮回應，用戶端必須在**grpc-accept-encoding**標頭中傳送它，以指示它支援演算法。 |
 | ResponseCompressionLevel | `null` | 壓縮層級，用來壓縮從伺服器傳送的訊息。 |
-| 攔截器 | None | 以每個 gRPC 呼叫執行的攔截器集合。 攔截器會依照其註冊的循序執行。 全域設定的攔截器會在設定單一服務的攔截器之前執行。 如需 gRPC 攔截器的詳細資訊，請參閱[GRPC 攔截器與中介軟體](xref:grpc/migration#grpc-interceptors-vs-middleware)。 |
+| 攔截器 | 無 | 以每個 gRPC 呼叫執行的攔截器集合。 攔截器會依照其註冊的循序執行。 全域設定的攔截器會在設定單一服務的攔截器之前執行。 如需 gRPC 攔截器的詳細資訊，請參閱[GRPC 攔截器與中介軟體](xref:grpc/migration#grpc-interceptors-vs-middleware)。 |
 
 您可以為所有服務設定選項，方法是提供選項委派給`AddGrpc`中`Startup.ConfigureServices`的呼叫：
 

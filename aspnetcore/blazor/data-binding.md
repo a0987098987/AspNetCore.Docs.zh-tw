@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/data-binding
-ms.openlocfilehash: 73e73869d58e4a22e9dbee059f69fd15605ce2ce
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: b4951c5eb712b15db3a7c1ccd57ae01c530a23ef
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767547"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967164"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>ASP.NET Core Blazor資料系結
 
@@ -66,21 +66,21 @@ Razor元件會透過以欄位、屬性或[`@bind`](xref:mvc/views/razor#bind) Ra
 
 不同`onchange`于當元素失去焦點時引發的， `oninput`會在文字方塊的值變更時引發。
 
-使用`@bind-{ATTRIBUTE}` with `@bind-{ATTRIBUTE}:event`語法來系結以外的元素`value`屬性。 在下列範例中，當`_paragraphStyle`值變更時，會更新段落的樣式：
+使用`@bind-{ATTRIBUTE}` with `@bind-{ATTRIBUTE}:event`語法來系結以外的元素`value`屬性。 在下列範例中，當`paragraphStyle`值變更時，會更新段落的樣式：
 
 ```razor
 @page "/binding-example"
 
 <p>
-    <input type="text" @bind="_paragraphStyle" />
+    <input type="text" @bind="paragraphStyle" />
 </p>
 
-<p @bind-style="_paragraphStyle" @bind-style:event="onchange">
+<p @bind-style="paragraphStyle" @bind-style:event="onchange">
     Blazorify the app!
 </p>
 
 @code {
-    private string _paragraphStyle = "color:red";
+    private string paragraphStyle = "color:red";
 }
 ```
 
@@ -250,7 +250,7 @@ Password:
 
 <input @oninput="OnPasswordChanged" 
        required 
-       type="@(_showPassword ? "text" : "password")" 
+       type="@(showPassword ? "text" : "password")" 
        value="@Password" />
 
 <button class="btn btn-primary" @onclick="ToggleShowPassword">
@@ -258,7 +258,7 @@ Password:
 </button>
 
 @code {
-    private bool _showPassword;
+    private bool showPassword;
 
     [Parameter]
     public string Password { get; set; }
@@ -275,7 +275,7 @@ Password:
 
     private void ToggleShowPassword()
     {
-        _showPassword = !_showPassword;
+        showPassword = !showPassword;
     }
 }
 ```
@@ -287,16 +287,16 @@ Password:
 
 <h1>Parent Component</h1>
 
-<PasswordField @bind-Password="_password" />
+<PasswordField @bind-Password="password" />
 
 @code {
-    private string _password;
+    private string password;
 }
 ```
 
 若要對上述範例中的密碼執行檢查或陷印錯誤：
 
-* 建立的支援欄位（ `Password` `_password`在下列範例程式碼中）。
+* 建立的支援欄位（ `Password` `password`在下列範例程式碼中）。
 * 執行`Password` setter 中的檢查或陷阱錯誤。
 
 如果密碼的值中使用了空格，下列範例會向使用者提供立即的意見反應：
@@ -308,36 +308,36 @@ Password:
 
 <input @oninput="OnPasswordChanged" 
        required 
-       type="@(_showPassword ? "text" : "password")" 
+       type="@(showPassword ? "text" : "password")" 
        value="@Password" />
 
 <button class="btn btn-primary" @onclick="ToggleShowPassword">
     Show password
 </button>
 
-<span class="text-danger">@_validationMessage</span>
+<span class="text-danger">@validationMessage</span>
 
 @code {
-    private bool _showPassword;
-    private string _password;
-    private string _validationMessage;
+    private bool showPassword;
+    private string password;
+    private string validationMessage;
 
     [Parameter]
     public string Password
     {
-        get { return _password ?? string.Empty; }
+        get { return password ?? string.Empty; }
         set
         {
-            if (_password != value)
+            if (password != value)
             {
                 if (value.Contains(' '))
                 {
-                    _validationMessage = "Spaces not allowed!";
+                    validationMessage = "Spaces not allowed!";
                 }
                 else
                 {
-                    _password = value;
-                    _validationMessage = string.Empty;
+                    password = value;
+                    validationMessage = string.Empty;
                 }
             }
         }
@@ -355,7 +355,7 @@ Password:
 
     private void ToggleShowPassword()
     {
-        _showPassword = !_showPassword;
+        showPassword = !showPassword;
     }
 }
 ```

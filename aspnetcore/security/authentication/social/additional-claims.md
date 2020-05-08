@@ -28,7 +28,7 @@ ASP.NET Core 應用程式可以從外部驗證提供者（例如 Facebook、Goog
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 決定要在應用程式中支援的外部驗證提供者。 針對每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱<xref:security/authentication/social/index>。 範例應用程式會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
 
@@ -51,7 +51,7 @@ OAuth 驗證提供者會使用用戶端識別碼和用戶端密碼，與應用�
 
 藉由指定， <xref:Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Scope*>指定要從提供者抓取的許可權清單。 下表顯示一般外部提供者的驗證範圍。
 
-| 提供者  | 影響範圍                                                            |
+| 提供者  | 範圍                                                            |
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `https://www.googleapis.com/auth/userinfo.profile`               |
@@ -168,7 +168,7 @@ ASP.NET Core 應用程式可以從外部驗證提供者（例如 Facebook、Goog
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/social/additional-claims/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 決定要在應用程式中支援的外部驗證提供者。 針對每個提供者，註冊應用程式，並取得用戶端識別碼和用戶端密碼。 如需詳細資訊，請參閱<xref:security/authentication/social/index>。 範例應用程式會使用[Google 驗證提供者](xref:security/authentication/google-logins)。
 
@@ -191,7 +191,7 @@ OAuth 驗證提供者會使用用戶端識別碼和用戶端密碼，與應用�
 
 藉由指定， <xref:Microsoft.AspNetCore.Authentication.OAuth.OAuthOptions.Scope*>指定要從提供者抓取的許可權清單。 下表顯示一般外部提供者的驗證範圍。
 
-| 提供者  | 影響範圍                                                            |
+| 提供者  | 範圍                                                            |
 | --------- | ---------------------------------------------------------------- |
 | Facebook  | `https://www.facebook.com/dialog/oauth`                          |
 | Google    | `https://www.googleapis.com/auth/userinfo.profile`               |

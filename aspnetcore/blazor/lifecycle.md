@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: 87c65776684f9cc91b868b8e88926e46b25592ff
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 571f14247efe08ac6abbd6d1e2720656f94c213c
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82771516"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967450"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor生命週期
 
@@ -30,7 +30,7 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 ### <a name="component-initialization-methods"></a>元件初始化方法
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync*>當<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized*>元件從其父元件接收到其初始參數之後，就會叫用和。 當`OnInitializedAsync`元件執行非同步作業時使用，而且應該在作業完成時重新整理。
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>當<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>元件從其父元件接收到其初始參數之後，就會叫用和。 當`OnInitializedAsync`元件執行非同步作業時使用，而且應該在作業完成時重新整理。
 
 針對同步作業，覆寫`OnInitialized`：
 
@@ -63,7 +63,7 @@ Blazor將[其內容](xref:blazor/hosting-model-configuration#render-mode)呼叫`
 
 ### <a name="before-parameters-are-set"></a>設定參數之前
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync*>在轉譯樹狀結構中設定元件的父系所提供的參數：
+<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>在轉譯樹狀結構中設定元件的父系所提供的參數：
 
 ```csharp
 public override async Task SetParametersAsync(ParameterView parameters)
@@ -84,7 +84,7 @@ public override async Task SetParametersAsync(ParameterView parameters)
 
 ### <a name="after-parameters-are-set"></a>設定參數之後
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync*>系統<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet*>會呼叫和：
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A>系統<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet%2A>會呼叫和：
 
 * 當元件初始化並從其父元件收到第一組參數時。
 * 當父元件重新呈現和提供時：
@@ -112,7 +112,7 @@ protected override void OnParametersSet()
 
 ### <a name="after-component-render"></a>元件呈現之後
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync*>在<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender*>元件完成呈現之後，會呼叫和。 此時會填入元素和元件參考。 使用此階段來執行使用轉譯內容的其他初始化步驟，例如啟用在轉譯的 DOM 元素上操作的協力廠商 JavaScript 程式庫。
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A>在<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A>元件完成呈現之後，會呼叫和。 此時會填入元素和元件參考。 使用此階段來執行使用轉譯內容的其他初始化步驟，例如啟用在轉譯的 DOM 元素上操作的協力廠商 JavaScript 程式庫。
 
 `OnAfterRenderAsync`和`firstRender` `OnAfterRender`的參數：
 
@@ -150,7 +150,7 @@ protected override void OnAfterRender(bool firstRender)
 
 ### <a name="suppress-ui-refreshing"></a>隱藏 UI 重新整理
 
-覆<xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender*>寫以隱藏 UI 重新整理。 如果執行傳回`true`，則會重新整理 UI：
+覆<xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A>寫以隱藏 UI 重新整理。 如果執行傳回`true`，則會重新整理 UI：
 
 ```csharp
 protected override bool ShouldRender()
@@ -167,7 +167,7 @@ protected override bool ShouldRender()
 
 ## <a name="state-changes"></a>狀態變更
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged*>通知元件其狀態已變更。 當適用時， `StateHasChanged`呼叫會導致元件重新顯示。
+<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>通知元件其狀態已變更。 當適用時， `StateHasChanged`呼叫會導致元件重新顯示。
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>處理轉譯時的未完成非同步動作
 
@@ -198,7 +198,7 @@ protected override bool ShouldRender()
 ```
 
 > [!NOTE]
-> 不<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged*>支援`Dispose`在中呼叫。 `StateHasChanged`可能會在卸載轉譯器的過程中叫用，因此不支援在該時間點要求 UI 更新。
+> 不<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>支援`Dispose`在中呼叫。 `StateHasChanged`可能會在卸載轉譯器的過程中叫用，因此不支援在該時間點要求 UI 更新。
 
 取消訂閱來自 .NET 事件的事件處理常式。 下列[ Blazor表單](xref:blazor/forms-validation)範例示範如何在`Dispose`方法中解除掛接事件處理常式：
 
@@ -234,7 +234,7 @@ protected override bool ShouldRender()
 ```csharp
 public class WeatherForecastService
 {
-    private static readonly string[] _summaries = new[]
+    private static readonly string[] summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild",
         "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -265,7 +265,7 @@ public class WeatherForecastService
             {
                 Date = startDate.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
-                Summary = _summaries[rng.Next(_summaries.Length)]
+                Summary = summaries[rng.Next(summaries.Length)]
             }).ToArray();
         });
     }

@@ -25,7 +25,7 @@ ms.locfileid: "82776268"
 
 這篇文章可作為 ASP.NET 應用程式移轉至 ASP.NET Core 2.0 的參考指南。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 從 .Net 下載安裝下列**其中一**項[： Windows](https://dotnet.microsoft.com/download)：
 

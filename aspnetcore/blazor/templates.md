@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: c84d6415728bf56836d98cfa66d1b9d46d2eadc8
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 705fa32ee72221b3c18653e9f3495b9cd61e9ad1
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82770897"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967424"
 ---
 # <a name="aspnet-core-blazor-templates"></a>ASP.NET Core Blazor範本
 
@@ -56,9 +56,9 @@ dotnet new blazorserver --help
 
 * *Startup.cs* （Blazor伺服器） &ndash;包含應用程式的啟動邏輯。 `Startup`類別會定義兩個方法：
 
-  * `ConfigureServices`&ndash;設定應用程式的相依性[插入（DI）](xref:fundamentals/dependency-injection)服務。 在Blazor伺服器應用程式中，會藉由<xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor*>呼叫來新增`WeatherForecastService`服務，並將新增至服務容器，以供`FetchData`範例元件使用。
+  * `ConfigureServices`&ndash;設定應用程式的相依性[插入（DI）](xref:fundamentals/dependency-injection)服務。 在Blazor伺服器應用程式中，會藉由<xref:Microsoft.Extensions.DependencyInjection.ComponentServiceCollectionExtensions.AddServerSideBlazor%2A>呼叫來新增`WeatherForecastService`服務，並將新增至服務容器，以供`FetchData`範例元件使用。
   * `Configure`&ndash;設定應用程式的要求處理管線：
-    * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub*>呼叫來設定端點，以與瀏覽器進行即時連接。 連接是使用[SignalR](xref:signalr/introduction)建立的，這是將即時 web 功能新增至應用程式的架構。
+    * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A>呼叫來設定端點，以與瀏覽器進行即時連接。 連接是使用[SignalR](xref:signalr/introduction)建立的，這是將即時 web 功能新增至應用程式的架構。
     * 呼叫[MapFallbackToPage （"/_Host"）](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*)來設定應用程式的根頁面（*Pages/_Host. cshtml*）並啟用導覽。
 
 * *wwwroot/index.html* （Blazor WebAssembly） &ndash;實作為 html 網頁之應用程式的根頁面：

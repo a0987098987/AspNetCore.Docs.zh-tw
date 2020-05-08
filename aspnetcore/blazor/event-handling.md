@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/event-handling
-ms.openlocfilehash: a9b0d0efd4afd4941bd4d93f33adecdf3288992f
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: aa338bbe61eec14bc1e1b3606e11e26bfb0e6a09
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767066"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967463"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 事件處理
 
@@ -77,19 +77,19 @@ Razor 元件提供事件處理功能。 對於名為[`@on{EVENT}`](xref:mvc/view
 
 下`EventArgs`表顯示支援的。
 
-| 事件            | 類別                | DOM 事件和注意事項 |
+| Event - 事件            | 類別                | DOM 事件和注意事項 |
 | ---------------- | -------------------- | -------------------- |
 | 剪貼簿        | `ClipboardEventArgs` | `oncut`, `oncopy`, `onpaste` |
 | 拖曳             | `DragEventArgs`      | `ondrag`, `ondragstart`, `ondragenter`, `ondragleave`, `ondragover`, `ondrop`, `ondragend`<br><br>`DataTransfer`並`DataTransferItem`按住拖曳的專案資料。 |
 | 錯誤            | `ErrorEventArgs`     | `onerror` |
-| 事件            | `EventArgs`          | *一般*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*剪貼簿*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*輸入*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*媒體*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
+| Event - 事件            | `EventArgs`          | *一般*<br>`onactivate`, `onbeforeactivate`, `onbeforedeactivate`, `ondeactivate`, `onended`, `onfullscreenchange`, `onfullscreenerror`, `onloadeddata`, `onloadedmetadata`, `onpointerlockchange`, `onpointerlockerror`, `onreadystatechange`, `onscroll`<br><br>*剪貼簿*<br>`onbeforecut`, `onbeforecopy`, `onbeforepaste`<br><br>*輸入*<br>`oninvalid`, `onreset`, `onselect`, `onselectionchange`, `onselectstart`, `onsubmit`<br><br>*媒體*<br>`oncanplay`, `oncanplaythrough`, `oncuechange`, `ondurationchange`, `onemptied`, `onpause`, `onplay`, `onplaying`, `onratechange`, `onseeked`, `onseeking`, `onstalled`, `onstop`, `onsuspend`, `ontimeupdate`, `onvolumechange`, `onwaiting` |
 | Focus            | `FocusEventArgs`     | `onfocus`, `onblur`, `onfocusin`, `onfocusout`<br><br>不包含的`relatedTarget`支援。 |
 | 輸入            | `ChangeEventArgs`    | `onchange`, `oninput` |
 | 鍵盤         | `KeyboardEventArgs`  | `onkeydown`, `onkeypress`, `onkeyup` |
 | 滑鼠            | `MouseEventArgs`     | `onclick`, `oncontextmenu`, `ondblclick`, `onmousedown`, `onmouseup`, `onmouseover`, `onmousemove`, `onmouseout` |
 | 滑鼠指標    | `PointerEventArgs`   | `onpointerdown`, `onpointerup`, `onpointercancel`, `onpointermove`, `onpointerover`, `onpointerout`, `onpointerenter`, `onpointerleave`, `ongotpointercapture`, `onlostpointercapture` |
 | 滑鼠滾輪      | `WheelEventArgs`     | `onwheel`, `onmousewheel` |
-| 進度         | `ProgressEventArgs`  | `onabort`, `onload`, `onloadend`, `onloadstart`, `onprogress`, `ontimeout` |
+| 今日         | `ProgressEventArgs`  | `onabort`, `onload`, `onloadend`, `onloadstart`, `onprogress`, `ontimeout` |
 | 觸控            | `TouchEventArgs`     | `ontouchstart`, `ontouchend`, `ontouchmove`, `ontouchenter`, `ontouchleave`, `ontouchcancel`<br><br>`TouchPoint`代表觸控裝置上的單一連絡人點。 |
 
 如需詳細資訊，請參閱下列資源：
@@ -108,7 +108,7 @@ Razor 元件提供事件處理功能。 對於名為[`@on{EVENT}`](xref:mvc/view
 關閉其他值（例如反覆運算一組專案時）通常會很方便。 下列範例會建立三個按鈕，在 UI 中`UpdateHeading`選取時，每個`MouseEventArgs`都會呼叫傳遞事件引數`buttonNumber`（）和其按鈕編號（）：
 
 ```razor
-<h2>@_message</h2>
+<h2>@message</h2>
 
 @for (var i = 1; i < 4; i++)
 {
@@ -121,11 +121,11 @@ Razor 元件提供事件處理功能。 對於名為[`@on{EVENT}`](xref:mvc/view
 }
 
 @code {
-    private string _message = "Select a button to learn its position.";
+    private string message = "Select a button to learn its position.";
 
     private void UpdateHeading(MouseEventArgs e, int buttonNumber)
     {
-        _message = $"You selected Button #{buttonNumber} at " +
+        message = $"You selected Button #{buttonNumber} at " +
             $"mouse position: {e.ClientX} X {e.ClientY}.";
     }
 }
@@ -157,28 +157,28 @@ Razor 元件提供事件處理功能。 對於名為[`@on{EVENT}`](xref:mvc/view
     by the parent component.
 </ChildComponent>
 
-<p><b>@_messageText</b></p>
+<p><b>@messageText</b></p>
 
 @code {
-    private string _messageText;
+    private string messageText;
 
     private void ShowMessage(MouseEventArgs e)
     {
-        _messageText = $"Blaze a new trail with Blazor! ({e.ScreenX}, {e.ScreenY})";
+        messageText = $"Blaze a new trail with Blazor! ({e.ScreenX}, {e.ScreenY})";
     }
 }
 ```
 
 當您在中選取按鈕時`ChildComponent`：
 
-* 會`ParentComponent`呼叫`ShowMessage`的方法。 `_messageText`會更新並顯示在中`ParentComponent`。
+* 會`ParentComponent`呼叫`ShowMessage`的方法。 `messageText`會更新並顯示在中`ParentComponent`。
 * 回呼的方法[StateHasChanged](xref:blazor/lifecycle#state-changes) （`ShowMessage`）中不需要呼叫 StateHasChanged。 `StateHasChanged`會自動呼叫來 rerender `ParentComponent`，就像子事件會觸發元件 rerendering 在子系內執行的事件處理常式一樣。
 
 `EventCallback`和`EventCallback<T>`允許非同步委派。 `EventCallback<T>`是強型別，而且需要特定的引數類型。 `EventCallback`是弱型別，並允許任何引數類型。
 
 ```razor
 <ChildComponent 
-    OnClickCallback="@(async () => { await Task.Yield(); _messageText = "Blaze It!"; })" />
+    OnClickCallback="@(async () => { await Task.Yield(); messageText = "Blaze It!"; })" />
 ```
 
 使用叫`EventCallback`用`EventCallback<T>` `InvokeAsync`或，並等待<xref:System.Threading.Tasks.Task>：
@@ -198,16 +198,16 @@ await callback.InvokeAsync(arg);
 在輸入裝置上選取索引鍵，且元素焦點位於文字方塊上時，瀏覽器通常會在文字方塊中顯示索引鍵的字元。 在下列範例中，會藉由指定`@onkeypress:preventDefault`指示詞屬性來防止預設行為。 計數器會遞增，而且索引**+** 鍵不會被捕捉`<input>`到元素的值中：
 
 ```razor
-<input value="@_count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
+<input value="@count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
 
 @code {
-    private int _count = 0;
+    private int count = 0;
 
     private void KeyHandler(KeyboardEventArgs e)
     {
         if (e.Key == "+")
         {
-            _count++;
+            count++;
         }
     }
 }
@@ -215,10 +215,10 @@ await callback.InvokeAsync(arg);
 
 指定不`@on{EVENT}:preventDefault`含值的屬性，相當於`@on{EVENT}:preventDefault="true"`。
 
-屬性的值也可以是運算式。 在下列範例中， `_shouldPreventDefault`是設定`bool`為`true`或`false`的欄位：
+屬性的值也可以是運算式。 在下列範例中， `shouldPreventDefault`是設定`bool`為`true`或`false`的欄位：
 
 ```razor
-<input @onkeypress:preventDefault="_shouldPreventDefault" />
+<input @onkeypress:preventDefault="shouldPreventDefault" />
 ```
 
 不需要事件處理常式來防止預設動作。 事件處理常式和防止預設動作案例可以獨立使用。
@@ -231,7 +231,7 @@ await callback.InvokeAsync(arg);
 
 ```razor
 <label>
-    <input @bind="_stopPropagation" type="checkbox" />
+    <input @bind="stopPropagation" type="checkbox" />
     Stop Propagation
 </label>
 
@@ -242,13 +242,13 @@ await callback.InvokeAsync(arg);
         Child div that doesn't stop propagation when selected.
     </div>
 
-    <div @onclick="OnSelectChildDiv" @onclick:stopPropagation="_stopPropagation">
+    <div @onclick="OnSelectChildDiv" @onclick:stopPropagation="stopPropagation">
         Child div that stops propagation when selected.
     </div>
 </div>
 
 @code {
-    private bool _stopPropagation = false;
+    private bool stopPropagation = false;
 
     private void OnSelectParentDiv() => 
         Console.WriteLine($"The parent div was selected. {DateTime.Now}");

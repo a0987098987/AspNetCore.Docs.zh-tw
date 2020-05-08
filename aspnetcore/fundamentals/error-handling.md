@@ -44,7 +44,7 @@ ms.locfileid: "82775033"
 * 堆疊追蹤
 * 查詢字串參數 (如果有的話)
 * Cookie (如果有的話)
-* headers
+* 標頭
 
 若要在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/error-handling/samples) \(英文\) 中查看開發人員例外狀況頁面，請使用 `DevEnvironment` 前置處理器指示詞，並選取首頁上的 [觸發例外狀況]****。
 

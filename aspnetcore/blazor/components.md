@@ -1,5 +1,5 @@
 ---
-title: 建立和使用 ASP.NET Core Razor元件
+title: 建立和使用 ASP.NET Core razor 元件
 author: guardrex
 description: 瞭解如何建立和使用Razor元件，包括如何系結至資料、處理事件，以及管理元件生命週期。
 monikerRange: '>= aspnetcore-3.1'
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: f8b1ffef1b8375337f66c93d9b4652ad3c5dd616
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 9e36a3239e703e1279feafc65288a1f9ec82c277
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767743"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967177"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor元件
 
@@ -40,15 +40,15 @@ Blazor應用程式是使用*元件*所建立。 「元件」（component）是�
 
 元件成員可以使用開頭為的 c # 運算式，做為元件轉譯邏輯的一部分`@`。 例如，c # 欄位是藉由在功能變數名稱`@`前面加上的方式來呈現。 下列範例會評估並呈現：
 
-* `_headingFontStyle`至的 CSS 屬性值`font-style`。
-* `_headingText`至`<h1>`元素的內容。
+* `headingFontStyle`至的 CSS 屬性值`font-style`。
+* `headingText`至`<h1>`元素的內容。
 
 ```razor
-<h1 style="font-style:@_headingFontStyle">@_headingText</h1>
+<h1 style="font-style:@headingFontStyle">@headingText</h1>
 
 @code {
-    private string _headingFontStyle = "italic";
-    private string _headingText = "Put on your new Blazor!";
+    private string headingFontStyle = "italic";
+    private string headingText = "Put on your new Blazor!";
 }
 ```
 
@@ -291,22 +291,22 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 * 定義與子元件類型相同的欄位。
 
 ```razor
-<MyLoginDialog @ref="_loginDialog" ... />
+<MyLoginDialog @ref="loginDialog" ... />
 
 @code {
-    private MyLoginDialog _loginDialog;
+    private MyLoginDialog loginDialog;
 
     private void OnSomething()
     {
-        _loginDialog.Show();
+        loginDialog.Show();
     }
 }
 ```
 
-當元件呈現時， `_loginDialog`欄位會填入`MyLoginDialog`子元件實例。 接著，您可以在元件實例上叫用 .NET 方法。
+當元件呈現時， `loginDialog`欄位會填入`MyLoginDialog`子元件實例。 接著，您可以在元件實例上叫用 .NET 方法。
 
 > [!IMPORTANT]
-> 只有`_loginDialog`在轉譯元件之後才會填入變數，而且其輸出會包含`MyLoginDialog`元素。 直到該點為止，沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考，請使用[OnAfterRenderAsync 或 OnAfterRender 方法](xref:blazor/lifecycle#after-component-render)。
+> 只有`loginDialog`在轉譯元件之後才會填入變數，而且其輸出會包含`MyLoginDialog`元素。 直到該點為止，沒有任何可參考的內容。 若要在元件完成呈現之後操作元件參考，請使用[OnAfterRenderAsync 或 OnAfterRender 方法](xref:blazor/lifecycle#after-component-render)。
 
 若要參考迴圈中的元件，請參閱[捕捉多個類似子元件的參考（dotnet/aspnetcore #13358）](https://github.com/dotnet/aspnetcore/issues/13358)。
 
@@ -358,10 +358,10 @@ public class NotifierService
 @inject NotifierService Notifier
 @implements IDisposable
 
-<p>Last update: @_lastNotification.key = @_lastNotification.value</p>
+<p>Last update: @lastNotification.key = @lastNotification.value</p>
 
 @code {
-    private (string key, int value) _lastNotification;
+    private (string key, int value) lastNotification;
 
     protected override void OnInitialized()
     {
@@ -372,7 +372,7 @@ public class NotifierService
     {
         await InvokeAsync(() =>
         {
-            _lastNotification = (key, value);
+            lastNotification = (key, value);
             StateHasChanged();
         });
     }
@@ -519,14 +519,14 @@ public class NotifierService
 下列`Expander`元件：
 
 * 接受來自`Expanded`父系的元件參數值。
-* 將元件參數值指派給[OnInitialized 事件](xref:blazor/lifecycle#component-initialization-methods)中的`_expanded`私用*欄位*（）。
+* 將元件參數值指派給[OnInitialized 事件](xref:blazor/lifecycle#component-initialization-methods)中的`expanded`私用*欄位*（）。
 * 會使用私用欄位來維護其內部切換狀態。
 
 ```razor
 <div @onclick="@Toggle">
-    Toggle (Expanded = @_expanded)
+    Toggle (Expanded = @expanded)
 
-    @if (_expanded)
+    @if (expanded)
     {
         @ChildContent
     }
@@ -539,16 +539,16 @@ public class NotifierService
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    private bool _expanded;
+    private bool expanded;
 
     protected override void OnInitialized()
     {
-        _expanded = Expanded;
+        expanded = Expanded;
     }
 
     private void Toggle()
     {
-        _expanded = !_expanded;
+        expanded = !expanded;
     }
 }
 ```
@@ -569,16 +569,16 @@ Razor元件是以部分類別的形式產生。 Razor元件是使用下列其中
 
 <h1>Counter</h1>
 
-<p>Current count: @_currentCount</p>
+<p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
-    private int _currentCount = 0;
+    private int currentCount = 0;
 
     void IncrementCount()
     {
-        _currentCount++;
+        currentCount++;
     }
 }
 ```
@@ -592,7 +592,7 @@ Razor元件是以部分類別的形式產生。 Razor元件是使用下列其中
 
 <h1>Counter</h1>
 
-<p>Current count: @_currentCount</p>
+<p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 ```
@@ -604,11 +604,11 @@ namespace BlazorApp.Pages
 {
     public partial class Counter
     {
-        private int _currentCount = 0;
+        private int currentCount = 0;
 
         void IncrementCount()
         {
-            _currentCount++;
+            currentCount++;
         }
     }
 }
@@ -741,10 +741,10 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為`false`或`
 下列範例顯示如何使用`MarkupString`類型，將靜態 HTML 內容的區塊新增至元件的轉譯輸出：
 
 ```html
-@((MarkupString)_myMarkup)
+@((MarkupString)myMarkup)
 
 @code {
-    private string _myMarkup = 
+    private string myMarkup = 
         "<p class='markup'>This is a <em>markup string</em>.</p>";
 }
 ```
@@ -782,7 +782,7 @@ public class ThemeInfo
             <NavMenu />
         </div>
         <div class="col-sm-9">
-            <CascadingValue Value="_theme">
+            <CascadingValue Value="theme">
                 <div class="content px-4">
                     @Body
                 </div>
@@ -792,7 +792,7 @@ public class ThemeInfo
 </div>
 
 @code {
-    private ThemeInfo _theme = new ThemeInfo { ButtonClass = "btn-success" };
+    private ThemeInfo theme = new ThemeInfo { ButtonClass = "btn-success" };
 }
 ```
 
@@ -809,7 +809,7 @@ public class ThemeInfo
 
 <h1>Cascading Values & Parameters</h1>
 
-<p>Current count: @_currentCount</p>
+<p>Current count: @currentCount</p>
 
 <p>
     <button class="btn" @onclick="IncrementCount">
@@ -824,14 +824,14 @@ public class ThemeInfo
 </p>
 
 @code {
-    private int _currentCount = 0;
+    private int currentCount = 0;
 
     [CascadingParameter]
     protected ThemeInfo ThemeInfo { get; set; }
 
     private void IncrementCount()
     {
-        _currentCount++;
+        currentCount++;
     }
 }
 ```
@@ -839,14 +839,14 @@ public class ThemeInfo
 若要在相同的子樹中串聯多個相同類型的值， `Name`請提供唯一`CascadingValue`的字串給每`CascadingParameter`個元件及其對應的。 在下列範例中，兩`CascadingValue`個元件依名稱串聯`MyCascadingType`不同的實例：
 
 ```razor
-<CascadingValue Value=@_parentCascadeParameter1 Name="CascadeParam1">
+<CascadingValue Value=@parentCascadeParameter1 Name="CascadeParam1">
     <CascadingValue Value=@ParentCascadeParameter2 Name="CascadeParam2">
         ...
     </CascadingValue>
 </CascadingValue>
 
 @code {
-    private MyCascadingType _parentCascadeParameter1;
+    private MyCascadingType parentCascadeParameter1;
 
     [Parameter]
     public MyCascadingType ParentCascadeParameter2 { get; set; }
@@ -926,13 +926,13 @@ public class ThemeInfo
 下列範例說明如何指定`RenderFragment`和`RenderFragment<T>`值，並直接在元件中呈現範本。 轉譯片段也可以當做引數傳遞至樣板[化元件](xref:blazor/templated-components)。
 
 ```razor
-@_timeTemplate
+@timeTemplate
 
-@_petTemplate(new Pet { Name = "Rex" })
+@petTemplate(new Pet { Name = "Rex" })
 
 @code {
-    private RenderFragment _timeTemplate = @<p>The time is @DateTime.Now.</p>;
-    private RenderFragment<Pet> _petTemplate = (pet) => @<p>Pet: @pet.Name</p>;
+    private RenderFragment timeTemplate = @<p>The time is @DateTime.Now.</p>;
+    private RenderFragment<Pet> petTemplate = (pet) => @<p>Pet: @pet.Name</p>;
 
     private class Pet
     {

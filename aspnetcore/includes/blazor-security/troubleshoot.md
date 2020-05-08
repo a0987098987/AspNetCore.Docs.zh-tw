@@ -20,7 +20,7 @@ Cookie 和網站資料可以跨應用程式更新保存，並干擾測試和疑�
   * 在 [**引數**] 欄位中，提供瀏覽器用來以 incognito 或私用模式開啟的命令列選項，以及應用程式的 URL。 例如：
     * Google Chrome &ndash;`--incognito --new-window https://localhost:5001`
     * Mozilla Firefox &ndash;`-private -url https://localhost:5001`
-  * 在 [**易記名稱**] 欄位中提供名稱。 例如，`Firefox Auth Testing`。
+  * 在 [**易記名稱**] 欄位中提供名稱。 例如： `Firefox Auth Testing` 。
   * 選取 [**確定]** 按鈕。
   * 若要避免針對使用應用程式測試的每個反復專案選取瀏覽器設定檔，請將設定檔設定為預設值，並將**設定為預設**按鈕。
   * 請確定在應用程式、測試使用者或提供者設定的任何變更之間，IDE 已關閉瀏覽器。

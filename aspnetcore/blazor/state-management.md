@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: 75d9a66eb25201c2993b8f922754b8aa7ab84615
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 5e14a0697fbc98575970b93dfa12c68e9f561c56
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82771155"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967411"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor狀態管理
 
@@ -175,26 +175,26 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 語句可以放入 _Imports 的 razor 檔案中，而不是在元件中。 *_Imports.razor* `@using` 使用 *_Imports razor*檔案可讓應用程式或整個應用程式的較大區段使用命名空間。
 
-若要將`_currentCount`值保存在`Counter`專案範本的元件中，請修改`IncrementCount`要使用`ProtectedSessionStore.SetAsync`的方法：
+若要將`currentCount`值保存在`Counter`專案範本的元件中，請修改`IncrementCount`要使用`ProtectedSessionStore.SetAsync`的方法：
 
 ```csharp
 private async Task IncrementCount()
 {
-    _currentCount++;
-    await ProtectedSessionStore.SetAsync("count", _currentCount);
+    currentCount++;
+    await ProtectedSessionStore.SetAsync("count", currentCount);
 }
 ```
 
 在更大、更實際的應用程式中，個別欄位的儲存是不太可能發生的情況。 應用程式較可能儲存包含複雜狀態的整個模型物件。 `ProtectedSessionStore`自動序列化和還原序列化 JSON 資料。
 
-在上述程式碼範例中， `_currentCount`資料會在使用者`sessionStorage['count']`的瀏覽器中儲存為。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果`sessionStorage['count']`是在瀏覽器的開發人員主控台中評估，則可以看到加密的資料。
+在上述程式碼範例中， `currentCount`資料會在使用者`sessionStorage['count']`的瀏覽器中儲存為。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果`sessionStorage['count']`是在瀏覽器的開發人員主控台中評估，則可以看到加密的資料。
 
-若要在`_currentCount`使用者稍後回到`Counter`元件時復原資料（包括它們是否在全新的線路上），請使用`ProtectedSessionStore.GetAsync`：
+若要在`currentCount`使用者稍後回到`Counter`元件時復原資料（包括它們是否在全新的線路上），請使用`ProtectedSessionStore.GetAsync`：
 
 ```csharp
 protected override async Task OnInitializedAsync()
 {
-    _currentCount = await ProtectedSessionStore.GetAsync<int>("count");
+    currentCount = await ProtectedSessionStore.GetAsync<int>("count");
 }
 ```
 
@@ -211,18 +211,18 @@ protected override async Task OnInitializedAsync()
 
 由於瀏覽器儲存體是非同步（透過網路連線存取），因此在載入資料並可供元件使用之前，一律會有一段時間。 若要獲得最佳結果，請在載入進行時轉譯載入狀態訊息，而不是顯示空白或預設的資料。
 
-其中一種方法是追蹤資料是否為`null` （仍在載入中）。 在預設`Counter`元件中，計數會保留在中`int`。 將`_currentCount`問號（`?`）新增至類型（`int`），使其成為可為 null：
+其中一種方法是追蹤資料是否為`null` （仍在載入中）。 在預設`Counter`元件中，計數會保留在中`int`。 將`currentCount`問號（`?`）新增至類型（`int`），使其成為可為 null：
 
 ```csharp
-private int? _currentCount;
+private int? currentCount;
 ```
 
 不是無條件地顯示 [計數] 和 [**遞增**] 按鈕，而是只有在載入資料時，才選擇顯示這些元素：
 
 ```razor
-@if (_currentCount.HasValue)
+@if (currentCount.HasValue)
 {
-    <p>Current count: <strong>@_currentCount</strong></p>
+    <p>Current count: <strong>@currentCount</strong></p>
 
     <button @onclick="IncrementCount">Increment</button>
 }
@@ -256,8 +256,8 @@ else
 ... rendering code goes here ...
 
 @code {
-    private int? _currentCount;
-    private bool _isConnected = false;
+    private int? currentCount;
+    private bool isConnected = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -265,7 +265,7 @@ else
         {
             // When execution reaches this point, the first *interactive* render
             // is complete. The component has an active connection to the browser.
-            _isConnected = true;
+            isConnected = true;
             await LoadStateAsync();
             StateHasChanged();
         }
@@ -273,13 +273,13 @@ else
 
     private async Task LoadStateAsync()
     {
-        _currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
+        currentCount = await ProtectedLocalStore.GetAsync<int>("prerenderedCount");
     }
 
     private async Task IncrementCount()
     {
-        _currentCount++;
-        await ProtectedSessionStore.SetAsync("count", _currentCount);
+        currentCount++;
+        await ProtectedSessionStore.SetAsync("count", currentCount);
     }
 }
 ```
@@ -294,7 +294,7 @@ else
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 
-@if (_hasLoaded)
+@if (hasLoaded)
 {
     <CascadingValue Value="@this">
         @ChildContent
@@ -306,7 +306,7 @@ else
 }
 
 @code {
-    private bool _hasLoaded;
+    private bool hasLoaded;
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
@@ -316,7 +316,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         CurrentCount = await ProtectedSessionStore.GetAsync<int>("count");
-        _hasLoaded = true;
+        hasLoaded = true;
     }
 
     public async Task SaveChangesAsync()

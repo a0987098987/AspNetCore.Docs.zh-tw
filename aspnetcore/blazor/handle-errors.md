@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/handle-errors
-ms.openlocfilehash: 7eefc988da275c0efccd97958d04e76f04e7cad4
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 7601e448a52be5e1064326929281e72ad28a0e65
+ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82772109"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82967151"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>處理 ASP.NET Core Blazor應用程式中的錯誤
 
@@ -191,7 +191,7 @@ Blazor將大部分未處理的例外狀況視為發生的嚴重錯誤。 如果�
 
 ### <a name="component-disposal"></a>元件處置
 
-例如，元件可能會從 UI 移除，因為使用者已流覽至另一個頁面。 當執行的元件從<xref:System.IDisposable?displayProperty=fullName> UI 中移除時，架構會呼叫元件的<xref:System.IDisposable.Dispose*>方法。
+例如，元件可能會從 UI 移除，因為使用者已流覽至另一個頁面。 當執行的元件從<xref:System.IDisposable?displayProperty=fullName> UI 中移除時，架構會呼叫元件的<xref:System.IDisposable.Dispose%2A>方法。
 
 如果元件的`Dispose`方法擲回未處理的例外狀況，則例外狀況對Blazor伺服器線路而言是嚴重的。 如果處置邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
 

@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/24/2020
+ms.date: 05/06/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 3ea2b7632fc41e1c8ad72292e45a93e081b6edbe
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 6f884cbfc9ac50f38c415af522d3d09a3ef38712
+ms.sourcegitcommit: 363e3a2a035f4082cb92e7b75ed150ba304258b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776151"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82976840"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>使用 Microsoft 帳戶Blazor保護 ASP.NET Core WebAssembly 獨立應用程式
 
@@ -173,5 +173,6 @@ builder.Services.AddMsalAuthentication(options =>
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:security/blazor/webassembly/additional-scenarios>
+* <xref:security/blazor/webassembly/aad-groups-roles>
 * [快速入門：使用 Microsoft 身分識別平台來註冊應用程式](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)
 * [快速入門：設定應用程式以公開 Web API](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)

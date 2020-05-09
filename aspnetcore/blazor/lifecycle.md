@@ -5,7 +5,7 @@ description: 瞭解如何在 ASP.NET Core Razor Blazor應用程式中使用元�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/16/2020
+ms.date: 05/07/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: 571f14247efe08ac6abbd6d1e2720656f94c213c
-ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
+ms.openlocfilehash: 81699158a161d0e9c9621235840979ebcd634a7e
+ms.sourcegitcommit: 363e3a2a035f4082cb92e7b75ed150ba304258b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967450"
+ms.locfileid: "82976697"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor生命週期
 
@@ -277,3 +277,73 @@ public class WeatherForecastService
 ## <a name="detect-when-the-app-is-prerendering"></a>偵測應用程式何時已進行預呈現
 
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
+
+## <a name="cancelable-background-work"></a>可取消的背景工作
+
+元件通常會執行長時間執行的背景工作，例如進行網路呼叫<xref:System.Net.Http.HttpClient>（）並與資料庫互動。 在幾種情況下，最好停止背景工作以節省系統資源。 例如，當使用者離開元件時，背景非同步作業不會自動停止。
+
+背景工作專案可能需要取消的其他原因包括：
+
+* 執行中的背景工作使用了錯誤的輸入資料或處理參數來啟動。
+* 目前執行中的背景工作專案集必須以一組新的工作專案取代。
+* 必須變更目前正在執行之工作的優先順序。
+* 必須關閉應用程式，才能將它重新部署到伺服器。
+* 伺服器資源會受到限制，請強制 backgound 工作專案的重新排定。
+
+若要在元件中執行可取消的背景工作模式：
+
+* 使用<xref:System.Threading.CancellationTokenSource>和<xref:System.Threading.CancellationToken>。
+* 在[元件的處置](#component-disposal-with-idisposable)和任何點上，手動解除標記時，請呼叫[CancellationTokenSource](xref:System.Threading.CancellationTokenSource.Cancel%2A) ，以表示應該取消背景工作。
+* 在非同步呼叫傳回之後，呼叫<xref:System.Threading.CancellationToken.ThrowIfCancellationRequested%2A>權杖上的。
+
+在下例中︰
+
+* `await Task.Delay(5000, cts.Token);`代表長時間執行的非同步背景工作。
+* `BackgroundResourceMethod`代表長時間執行的背景方法，如果在`Resource`呼叫方法之前處置，則不應該啟動。
+
+```razor
+@implements IDisposable
+@using System.Threading
+
+<button @onclick="LongRunningWork">Trigger long running work</button>
+
+@code {
+    private Resource resource = new Resource();
+    private CancellationTokenSource cts = new CancellationTokenSource();
+
+    protected async Task LongRunningWork()
+    {
+        await Task.Delay(5000, cts.Token);
+
+        cts.Token.ThrowIfCancellationRequested();
+        resource.BackgroundResourceMethod();
+    }
+
+    public void Dispose()
+    {
+        cts.Cancel();
+        cts.Dispose();
+        resource.Dispose();
+    }
+
+    private class Resource : IDisposable
+    {
+        private bool disposed;
+
+        public void BackgroundResourceMethod()
+        {
+            if (disposed)
+            {
+                throw new ObjectDisposedException(nameof(Resource));
+            }
+            
+            ...
+        }
+        
+        public void Dispose()
+        {
+            disposed = true;
+        }
+    }
+}
+```

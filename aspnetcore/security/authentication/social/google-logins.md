@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/google-logins
-ms.openlocfilehash: 06a5cf77e47d9fc618fddf3a096001a4f31688be
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 8b1eee7ff088fb1229ec1d2dd538ea4f01e094c3
+ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776990"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83003100"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google external 登入設定
 
@@ -28,7 +28,7 @@ ms.locfileid: "82776990"
 ## <a name="create-a-google-api-console-project-and-client-id"></a>建立 Google API 主控台專案和用戶端識別碼
 
 * 安裝[AspNetCore。 Google](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Google)。
-* 流覽至 [將[Google 登入整合到您的 web 應用程式](https://developers.google.com/identity/sign-in/web/devconsole-project)]，然後選取 [**設定專案**]。
+* 流覽至 [將[Google 登入整合到您的 web 應用程式](https://developers.google.com/identity/sign-in/web/sign-in)]，然後選取 [**設定專案**]。
 * 在 [**設定您的 OAuth 用戶端**] 對話方塊中，選取 [ **Web 服務器**]。
 * 在 [**授權重新導向 uri** ] 文字輸入方塊中，設定 [重新導向 uri]。 例如， `https://localhost:44312/signin-google`
 * 儲存**用戶端識別碼**和**用戶端密碼**。

@@ -1,5 +1,5 @@
 ---
-title: 建立和使用 ASP.NET Core razor 元件
+title: 建立和使用 ASP.NET Core Razor元件
 author: guardrex
 description: 瞭解如何建立和使用Razor元件，包括如何系結至資料、處理事件，以及管理元件生命週期。
 monikerRange: '>= aspnetcore-3.1'
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: 9e36a3239e703e1279feafc65288a1f9ec82c277
-ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
+ms.openlocfilehash: de8696488292dfc409c5ed83ea0b88a54a001696
+ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967177"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83003063"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor元件
 

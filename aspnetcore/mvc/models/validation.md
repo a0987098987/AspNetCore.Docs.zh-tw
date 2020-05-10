@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/models/validation
-ms.openlocfilehash: a0f7c070514de26ae007526a5587c13d26d1eb1b
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 56c8d799b98cc09b8cfff12744c6eeb46af4f8e6
+ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777172"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83003170"
 ---
 # <a name="model-validation-in-aspnet-core-mvc-and-razor-pages"></a>ASP.NET Core MVC 和Razor頁面中的模型驗證
 
@@ -55,7 +55,7 @@ ms.locfileid: "82777172"
 
 下列是部分內建驗證屬性：
 
-* `[CreditCard]`：驗證屬性是否具有信用卡格式。
+* `[CreditCard]`：驗證屬性是否具有信用卡格式。 需要[JQuery 驗證其他方法](https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js)。
 * `[Compare]`：驗證模型中的兩個屬性是否相符。
 * `[EmailAddress]`：驗證屬性是否具有電子郵件格式。
 * `[Phone]`：驗證屬性是否具有電話號碼格式。
@@ -122,7 +122,7 @@ services.AddControllers(options => options.SuppressImplicitRequiredAttributeForN
 
 實作遠端驗證：
 
-1. 為 JavaScript 建立動作方法來呼叫。  JQuery 驗證[遠端](https://jqueryvalidation.org/remote-method/)方法會預期 JSON 回應：
+1. 為 JavaScript 建立動作方法來呼叫。  JQuery 驗證[遠端](https://jqueryvalidation.org/remote-method/)方法預期會有 JSON 回應：
 
    * `true` 表示輸入資料有效。
    * `false`、`undefined` 或 `null` 表示輸入無效。 顯示預設錯誤訊息。
@@ -248,7 +248,7 @@ public string MiddleName { get; set; }
 
 [!code-cshtml[](validation/samples/3.x/ValidationSample/Views/Shared/_ValidationScriptsPartial.cshtml?name=snippet_Scripts)]
 
-[jQuery 低調驗證](https://github.com/aspnet/jquery-validation-unobtrusive) (jQuery Unobtrusive Validation) 指令碼是建置在熱門 [jQuery 驗證](https://jqueryvalidation.org/) 外掛程式上的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (Property) 上的伺服器端驗證屬性 (Attribute)，另一次在用戶端指令碼中。 反之，[標記協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)使用模型屬性 (Property) 中的驗證屬性 (Attribute) 和類型中繼資料，來轉譯需要驗證之表單項目的 HTML 5 `data-` 屬性 (Attribute)。 jQuery 低調驗證會剖析 `data-` 屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用標記協助程式來顯示用戶端的驗證錯誤，如下所示：
+[JQuery 不顯眼的驗證](https://github.com/aspnet/jquery-validation-unobtrusive)腳本是以熱門[jQuery 驗證](https://jqueryvalidation.org/)外掛程式為基礎的自訂 Microsoft 前端程式庫。 若沒有 jQuery 低調驗證，您就必須在兩個地方撰寫相同的驗證邏輯程式碼：一次在模型屬性 (Property) 上的伺服器端驗證屬性 (Attribute)，另一次在用戶端指令碼中。 反之，[標記協助程式](xref:mvc/views/tag-helpers/intro)和 [HTML 協助程式](xref:mvc/views/overview)使用模型屬性 (Property) 中的驗證屬性 (Attribute) 和類型中繼資料，來轉譯需要驗證之表單項目的 HTML 5 `data-` 屬性 (Attribute)。 jQuery 不顯眼的`data-`驗證會剖析屬性並將邏輯傳遞至 jQuery 驗證，以有效地將伺服器端驗證邏輯「複製」到用戶端。 您可以使用標記協助程式來顯示用戶端的驗證錯誤，如下所示：
 
 [!code-cshtml[](validation/samples/3.x/ValidationSample/Pages/Movies/Create.cshtml?name=snippet_ReleaseDate&highlight=3-4)]
 
@@ -265,7 +265,7 @@ public string MiddleName { get; set; }
 </div>
 ```
 
-請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `Movie.ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jquery 不顯眼的驗證會將此值傳遞至 jquery Validate [required （）](https://jqueryvalidation.org/required-method/)方法，然後在伴隨** \<的範圍內>** 元素中顯示該訊息。
+請注意，HTML 輸出中的 `data-` 屬性 (attribute) 會對應至 `Movie.ReleaseDate` 屬性 (property) 的驗證屬性 (attribute)。 `data-val-required` 屬性包含使用者未填入發行日期欄位時所要顯示的錯誤訊息。 jquery 不顯眼的驗證會將此值傳遞至 jquery 驗證[所需的（）](https://jqueryvalidation.org/required-method/)方法，然後在伴隨** \<的範圍>** 元素中顯示該訊息。
 
 資料型別驗證是根據屬性的 .NET 型別，除非是由 `[DataType]` 屬性覆寫。 瀏覽器具有自己的預設錯誤訊息，但 jQuery 驗證低調驗證套件可以覆寫這些訊息。 `[DataType]` 屬性和子類別 (例如 `[EmailAddress]`) 可讓您指定錯誤訊息。
 
@@ -275,7 +275,7 @@ public string MiddleName { get; set; }
 
 ### <a name="add-validation-to-dynamic-forms"></a>將驗證新增至動態表單
 
-jQuery 低調驗證會在第一次載入頁面時將驗證邏輯和傳遞參數至 jQuery 驗證。 因此，驗證不會在動態產生的表單上自動運作。 若要啟用驗證，請指示 jQuery 低調驗證在建立動態表單之後立即進行剖析。 例如，下列程式碼會在透過 AJAX 新增的表單上設定用戶端驗證。
+當頁面第一次載入時，jQuery 不顯眼的驗證會將驗證邏輯和參數傳遞至 jQuery 驗證。 因此，驗證不會在動態產生的表單上自動運作。 若要啟用驗證，請指示 jQuery 低調驗證在建立動態表單之後立即進行剖析。 例如，下列程式碼會在透過 AJAX 新增的表單上設定用戶端驗證。
 
 ```javascript
 $.get({
@@ -294,7 +294,7 @@ $.get({
 })
 ```
 
-`$.validator.unobtrusive.parse()` 方法接受 jQuery 選取器的一個引數。 此方法會指示 jQuery 低調驗證在該選取器內剖析表單的 `data-` 屬性。 然後，這些屬性的值會傳遞至 jQuery 驗證外掛程式。
+`$.validator.unobtrusive.parse()` 方法接受 jQuery 選取器的一個引數。 此方法會指示 jQuery 低調驗證在該選取器內剖析表單的 `data-` 屬性。 這些屬性的值接著會傳遞至 jQuery 驗證外掛程式。
 
 ### <a name="add-validation-to-dynamic-controls"></a>將驗證新增至動態控制項
 
@@ -310,7 +310,7 @@ $.get({
     success: function(newInputHTML) {
         var form = document.getElementById("my-form");
         form.insertAdjacentHTML("beforeend", newInputHTML);
-        $(form).removeData("validator")    // Added by jQuery Validate
+        $(form).removeData("validator")    // Added by jQuery Validation
                .removeData("unobtrusiveValidation");   // Added by jQuery Unobtrusive Validation
         $.validator.unobtrusive.parse(form);
     }
@@ -319,11 +319,11 @@ $.get({
 
 ## <a name="custom-client-side-validation"></a>自訂用戶端驗證
 
-自訂用戶端驗證是透過產生使用自訂 jQuery 驗證配接器的 `data-` HTML 屬性來進行。 下列配接器程式碼範例，是針對本文稍早介紹的 `[ClassicMovie]` 和 `[ClassicMovieWithClientValidator]` 屬性所撰寫：
+自訂用戶端驗證是透過產生`data-`可與自訂 jQuery 驗證介面卡搭配使用的 HTML 屬性來完成。 下列配接器程式碼範例，是針對本文稍早介紹的 `[ClassicMovie]` 和 `[ClassicMovieWithClientValidator]` 屬性所撰寫：
 
 [!code-javascript[](validation/samples/3.x/ValidationSample/wwwroot/js/classicMovieValidator.js)]
 
-如需如何撰寫配接器的資訊，請參閱 [jQuery 驗證文件](https://jqueryvalidation.org/documentation/)。
+如需如何寫入介面卡的相關資訊，請參閱[JQuery 驗證檔](https://jqueryvalidation.org/documentation/)。
 
 用於指定欄位之配接器的使用，是由 `data-` 屬性觸發，因此會：
 

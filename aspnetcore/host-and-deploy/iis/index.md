@@ -5,7 +5,7 @@ description: 了解如何在 Windows Server Internet Information Services (IIS) 
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/07/2020
+ms.date: 5/7/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/iis/index
-ms.openlocfilehash: 157cfc4c42d5e057e9b2ebd04c93d80db55419c9
-ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
+ms.openlocfilehash: c3841babe213a9a3f303b8f9b83a947fd33ad647
+ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967489"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83003123"
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -77,22 +77,26 @@ ms.locfileid: "82967489"
   * 呼叫 `Program.Main`。
 * 處理 IIS 原生要求的存留期。
 
-以 .NET Framework 為目標的 ASP.NET Core 應用程式不支援處理序內裝載模型。
-
 下圖說明 IIS、ASP.NET Core 模組和同處理序裝載應用程式之間的關聯性：
 
 ![同處理序代管內的 ASP.NET Core 模組案例](index/_static/ancm-inprocess.png)
 
-要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP`IISHttpServer`伺服器（）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
+1. 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。
+1. 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。
+1. ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP`IISHttpServer`伺服器（）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
 
-IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會透過 IIS HTTP 伺服器傳回 IIS。 IIS 會將回應傳送到起始該要求的用戶端。
+在 IIS HTTP 伺服器處理要求之後：
 
-現有的應用程式可以選擇同處理序裝載，但 [dotnet new](/dotnet/core/tools/dotnet-new) 範本預設會對所有 IIS 和 IIS Express 案例使用同處理序裝載模型。
+1. 要求會傳送至 ASP.NET Core 中介軟體管線。
+1. 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。
+1. 應用程式的回應會透過 IIS HTTP 伺服器傳回 IIS。
+1. IIS 會將回應傳送到起始該要求的用戶端。
 
-`CreateDefaultBuilder` 會透過呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS*> 方法來啟動 [CoreCLR](/dotnet/standard/glossary#coreclr) 以新增 <xref:Microsoft.AspNetCore.Hosting.Server.IServer>，並在 IIS 工作者處理序 (*w3wp.exe* 或 *iisexpress.exe*) 內裝載應用程式。 效能測試指出，相較於跨處理序裝載 .NET Core 應用程式，並將要求 Proxy 處理至 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器，裝載於同處理序可提供明顯更高的要求輸送量。
+同進程裝載是加入宣告現有的應用程式。 ASP.NET Core 的 web 範本會使用同進程裝載模型。
 
-> [!NOTE]
-> 發佈為單一檔案可執行檔的應用程式無法由同處理序裝載模型載入。
+`CreateDefaultBuilder` 會透過呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIIS*> 方法來啟動 [CoreCLR](/dotnet/standard/glossary#coreclr) 以新增 <xref:Microsoft.AspNetCore.Hosting.Server.IServer>，並在 IIS 工作者處理序 (*w3wp.exe* 或 *iisexpress.exe*) 內裝載應用程式。 效能測試指出，相較於將 .NET Core 應用程式裝載於處理序外，並將要求 Proxy 處理至 [Kestrel](xref:fundamentals/servers/kestrel)，裝載於處理序內可提供明顯更高的要求輸送量。
+
+發佈為單一檔案可執行檔的應用程式無法由同處理序裝載模型載入。
 
 ### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
 
@@ -102,11 +106,14 @@ IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介
 
 ![非同處理序代管內的 ASP.NET Core 模組案例](index/_static/ancm-outofprocess.png)
 
-要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的通訊埠上將要求路由至 IIS，此通訊埠通常是 80 (HTTP) 或 443 (HTTPS)。 此模組會在應用程式的隨機通訊埠上將要求轉送至 Kestrel，而且不會是通訊埠 80 或 443。
+1. 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。
+1. 驅動程式會將要求路由至網站設定之埠上的 IIS。 設定的埠通常是80（HTTP）或443（HTTPS）。
+1. 模組會在應用程式的隨機埠上將要求轉送至 Kestrel。 隨機埠不是80或443。
 
-此模組在啟動時透過環境變數指定連接埠，而 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> 延伸模組則會設定伺服器來接聽 `http://localhost:{PORT}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
+<!-- make this a bullet list -->
+ASP.NET Core 模組會在啟動時透過環境變數指定埠。 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>延伸模組會設定伺服器來接聽`http://localhost:{PORT}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 模組不支援 HTTPS 轉送。 即使 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
 
-Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的 HTTP 用戶端。
+在 Kestrel 拾取來自模組的要求之後，會將要求轉送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，將它轉送回起始要求的 HTTP 用戶端。
 
 如需 ASP.NET Core 模組組態指南，請參閱 <xref:host-and-deploy/aspnet-core-module>。
 
@@ -165,7 +172,14 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
-用來設定轉送標頭中介軟體及 ASP.NET Core 模組的 [IIS 整合中介軟體](#enable-the-iisintegration-components)會設定為轉送配置 (HTTP/HTTPS) 與發出要求的遠端 IP 位址。 其他 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
+[IIS 整合中介軟體](#enable-the-iisintegration-components)和 ASP.NET Core 模組已設定為轉送：
+
+* 配置（HTTP/HTTPS）。
+* 發出要求的遠端 IP 位址。
+
+[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定轉送的標頭中介軟體。
+
+其他 Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他設定。 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](xref:host-and-deploy/proxy-load-balancer)。
 
 ### <a name="webconfig-file"></a>web.config 檔案
 
@@ -201,7 +215,7 @@ services.Configure<IISOptions>(options =>
 
 ### <a name="transform-webconfig"></a>轉換 web.config
 
-如需在發佈時轉換 *web.config* (例如依據設定、設定檔或環境設定環境變數)，請參閱<xref:host-and-deploy/iis/transform-webconfig>。
+如果您需要在發行時轉換*web.config* ，請參閱<xref:host-and-deploy/iis/transform-webconfig>。 您可能需要在 [發行] 上轉換*web.config* ，以根據設定、設定檔或環境設定環境變數。
 
 ## <a name="iis-configuration"></a>IIS 組態
 
@@ -682,7 +696,11 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 ### <a name="in-process-hosting-model"></a>同處理序裝載模型
 
-使用同處理序裝載，ASP.NET Core 應用程式會在與其 IIS 工作者處理序相同的處理序中執行。 因為要求未透過回送介面卡 (將連出網路流量傳回同一部電腦的網路介面) 進行 proxy 處理，所以同處理序裝載會提供優於跨處理序裝載的效能。 IIS 透過 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 來執行處理程序管理。
+使用同處理序裝載，ASP.NET Core 應用程式會在與其 IIS 工作者處理序相同的處理序中執行。 同進程裝載可提供跨進程裝載的效能提升，原因如下：
+
+* 要求不會透過回送介面卡進行 proxy 處理。 回送介面卡是一種網路介面，可將連出的網路流量傳回給同一部電腦。
+
+IIS 透過 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-managing-iis/features-of-the-windows-process-activation-service-was) 來執行處理程序管理。
 
 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)：
 

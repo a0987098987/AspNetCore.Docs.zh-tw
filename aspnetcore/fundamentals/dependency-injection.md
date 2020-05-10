@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 8a4ee8bee09b3d6e9de932dab17bbc5c6494a492
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 3e31be02f21f8c28c1d98d47d9a744b3a8502253
+ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767521"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "83003186"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -215,7 +215,7 @@ public void ConfigureServices(IServiceCollection services)
 
 服務註冊擴充方法提供在特定案例中很有用的多載。
 
-| 方法 | 自動<br>物件<br>處置 | 多個<br>實作 | 傳遞引數 |
+| 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
@@ -546,6 +546,12 @@ public void ConfigureServices(IServiceCollection services)
 
 DI 是靜態/全域物件存取模式的「替代」** 選項。 如果您將 DI 與靜態物件存取混合，則可能無法實現 DI 的優點。
 
+## <a name="recommended-patterns-for-multi-tenancy-in-di"></a>DI 中的多租使用者建議模式
+
+[Orchard Core](https://github.com/OrchardCMS/OrchardCore)提供多租使用者。 如需詳細資訊，請參閱[Orchard Core 檔](https://docs.orchardcore.net/en/dev/)。
+
+https://github.com/OrchardCMS/OrchardCore.Samples如需如何使用 Orchard Core Framework 建立模組化和多租使用者應用程式的範例，而不含任何 CMS 特有的功能，請參閱範例應用程式。
+
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:mvc/views/dependency-injection>
@@ -752,7 +758,7 @@ public void ConfigureServices(IServiceCollection services)
 
 服務註冊擴充方法提供在特定案例中很有用的多載。
 
-| 方法 | 自動<br>物件<br>處置 | 多個<br>實作 | 傳遞引數 |
+| 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |

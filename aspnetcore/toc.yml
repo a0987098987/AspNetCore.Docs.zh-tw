@@ -339,14 +339,16 @@
                   uid: security/blazor/webassembly/standalone-with-azure-active-directory
                 - name: 獨立的 AAD B2C
                   uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
-                - name: 使用 Identity Server 託管
-                  uid: security/blazor/webassembly/hosted-with-identity-server
                 - name: 使用 AAD 託管
                   uid: security/blazor/webassembly/hosted-with-azure-active-directory
                 - name: 使用 AAD B2C 託管
                   uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
+                - name: 使用 Identity Server 託管
+                  uid: security/blazor/webassembly/hosted-with-identity-server
                 - name: 其他案例
                   uid: security/blazor/webassembly/additional-scenarios
+                - name: AAD 群組及角色
+                  uid: security/blazor/webassembly/aad-groups-roles
             - name: Blazor 伺服器
               items:
                 - name: 總覽
@@ -1134,14 +1136,16 @@
               uid: security/blazor/webassembly/standalone-with-azure-active-directory
             - name: 獨立的 AAD B2C
               uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
-            - name: 使用 Identity Server 託管
-              uid: security/blazor/webassembly/hosted-with-identity-server
             - name: 使用 AAD 託管
               uid: security/blazor/webassembly/hosted-with-azure-active-directory
             - name: 使用 AAD B2C 託管
               uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
+            - name: 使用 Identity Server 託管
+              uid: security/blazor/webassembly/hosted-with-identity-server
             - name: 其他案例
               uid: security/blazor/webassembly/additional-scenarios
+            - name: AAD 群組及角色
+              uid: security/blazor/webassembly/aad-groups-roles
         - name: Blazor 伺服器
           items:
             - name: 總覽

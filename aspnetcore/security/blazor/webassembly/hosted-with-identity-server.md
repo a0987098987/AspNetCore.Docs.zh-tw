@@ -1,11 +1,11 @@
 ---
-title: 使用Identity伺服器保護Blazor ASP.NET Core WebAssembly 託管應用程式
+title: Blazor使用伺服器保護 ASP.NET Core WebAssembly 託管應用程式 Identity
 author: guardrex
-description: 從使用 IdentityServer 後Blazor端的 Visual Studio 中，建立具有驗證的新[IdentityServer](https://identityserver.io/)託管應用程式
+description: Blazor從使用[IdentityServer](https://identityserver.io/)後端的 Visual Studio 中，建立具有驗證的新託管應用程式
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/24/2020
+ms.date: 05/11/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,14 +13,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-identity-server
-ms.openlocfilehash: bf2298618e922df412e0742177afd390c4116388
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 2ab43ac5f4de398c57707de23a06a1650f6140cb
+ms.sourcegitcommit: 1250c90c8d87c2513532be5683640b65bfdf9ddb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82768115"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83153626"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>使用Identity伺服器保護Blazor ASP.NET Core WebAssembly 託管應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Blazor使用伺服器保護 ASP.NET Core WebAssembly 託管應用程式 Identity
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
@@ -28,10 +28,10 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 [!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
-若要在 Visual Studio Blazor中建立新的託管應用程式，以使用[IdentityServer](https://identityserver.io/)來驗證使用者和 API 呼叫：
+若要 Blazor 在 Visual Studio 中建立新的託管應用程式，以使用[IdentityServer](https://identityserver.io/)來驗證使用者和 API 呼叫：
 
-1. 使用 Visual Studio 建立新** Blazor的 WebAssembly**應用程式。 如需詳細資訊，請參閱<xref:blazor/get-started>。
-1. 在 [**建立新Blazor的應用程式**] 對話方塊中，選取 [**驗證**] 區段中的 [**變更**]。
+1. 使用 Visual Studio 建立新的** Blazor WebAssembly**應用程式。 如需詳細資訊，請參閱<xref:blazor/get-started>。
+1. 在 [**建立新的 Blazor 應用程式**] 對話方塊中，選取 [**驗證**] 區段中的 [**變更**]。
 1. 選取 [**個別使用者帳戶**]，後面接著 **[確定]**。
 1. 選取 [ **Advanced** ] 區段中的 [ **ASP.NET Core 託管**] 核取方塊。
 1. 選取 [建立]**** 按鈕。
@@ -42,7 +42,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 dotnet new blazorwasm -au Individual -ho
 ```
 
-若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如`-o BlazorSample`）的 output 選項。 資料夾名稱也會成為專案名稱的一部分。
+若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
 
 ## <a name="server-app-configuration"></a>伺服器應用程式設定
 
@@ -66,14 +66,14 @@ dotnet new blazorwasm -au Individual -ho
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * IdentityServer 使用額外<xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>的協助程式方法，在 IdentityServer 上設定一些預設的 ASP.NET Core 慣例：
+  * IdentityServer 使用額外的協助 <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> 程式方法，在 IdentityServer 上設定一些預設的 ASP.NET Core 慣例：
 
     ```csharp
     services.AddIdentityServer()
         .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
     ```
 
-  * 使用其他<xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> helper 方法進行驗證，以設定應用程式來驗證 IdentityServer 所產生的 JWT 權杖：
+  * 使用其他 helper 方法進行驗證，以設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 應用程式來驗證 IdentityServer 所產生的 JWT 權杖：
 
     ```csharp
     services.AddAuthentication()
@@ -103,32 +103,32 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="addapiauthorization"></a>AddApiAuthorization
 
-<xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> Helper 方法會設定 ASP.NET Core 案例的[IdentityServer](https://identityserver.io/) 。 IdentityServer 是功能強大且可擴充的架構，可處理應用程式的安全性考慮。 IdentityServer 會在最常見的案例中公開不必要的複雜性。 因此，會提供一組慣例和設定選項，讓我們考慮一個良好的起點。 一旦您的驗證需要變更，IdentityServer 的完整功能仍然可以自訂驗證以符合應用程式的需求。
+<xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>Helper 方法會設定 ASP.NET Core 案例的[IdentityServer](https://identityserver.io/) 。 IdentityServer 是功能強大且可擴充的架構，可處理應用程式的安全性考慮。 IdentityServer 會在最常見的案例中公開不必要的複雜性。 因此，會提供一組慣例和設定選項，讓我們考慮一個良好的起點。 一旦您的驗證需要變更，IdentityServer 的完整功能仍然可以自訂驗證以符合應用程式的需求。
 
 ### <a name="addidentityserverjwt"></a>AddIdentityServerJwt
 
-<xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> Helper 方法會將應用程式的原則配置設定為預設驗證處理常式。 此原則設定為允許Identity處理路由至Identity URL 空間`/Identity`中任何子路徑的所有要求。 會<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler>處理所有其他要求。 此外，這個方法也會：
+<xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>Helper 方法會將應用程式的原則配置設定為預設驗證處理常式。 此原則設定為允許 Identity 處理路由至 URL 空間中任何子路徑的所有要求 Identity `/Identity` 。 會 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 處理所有其他要求。 此外，這個方法也會：
 
-* 向 IdentityServer `{APPLICATION NAME}API`註冊具有預設範圍的`{APPLICATION NAME}API`API 資源。
+* 向 `{APPLICATION NAME}API` IdentityServer 註冊具有預設範圍的 API 資源 `{APPLICATION NAME}API` 。
 * 設定 JWT 持有人權杖中介軟體，以驗證 IdentityServer 針對應用程式所簽發的權杖。
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-在`WeatherForecastController` （*控制器/WeatherForecastController*）中， [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)屬性會套用至類別。 屬性會指出使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置，這是由<xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>設定為先前所述的原則配置。 Helper 方法會將<xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler>設定為應用程式要求的預設處理常式。
+在 `WeatherForecastController` （*控制器/WeatherForecastController*）中， [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性會套用至類別。 屬性會指出使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置，這是由設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 為先前所述的原則配置。 Helper 方法會將設定 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 為應用程式要求的預設處理常式。
 
 ### <a name="applicationdbcontext"></a>[ApplicationdbcoNtext]
 
-`ApplicationDbContext`在（*Data/[applicationdbcoNtext]*）中，會使用<xref:Microsoft.EntityFrameworkCore.DbContext>相同的， Identity因為它會擴充<xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601>以包含 IdentityServer 的架構。 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。
+在 `ApplicationDbContext` （*Data/[applicationdbcoNtext]*）中，會使用相同的， <xref:Microsoft.EntityFrameworkCore.DbContext> Identity 因為它會擴充 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 以包含 IdentityServer 的架構。 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。
 
-若要取得資料庫架構的完整控制權，請從Identity <xref:Microsoft.EntityFrameworkCore.DbContext>其中一個可用的類別繼承，並透過在Identity `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` `OnModelCreating`方法中呼叫來設定內容以包含架構。
+若要取得資料庫架構的完整控制權，請從其中一個可用的類別繼承， Identity <xref:Microsoft.EntityFrameworkCore.DbContext> 並透過 Identity `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` 在方法中呼叫來設定內容以包含架構 `OnModelCreating` 。
 
 ### <a name="oidcconfigurationcontroller"></a>OidcConfigurationController
 
-在`OidcConfigurationController` （*控制器/OidcConfigurationController*）中，會布建用戶端端點來提供 OIDC 參數。
+在 `OidcConfigurationController` （*控制器/OidcConfigurationController*）中，會布建用戶端端點來提供 OIDC 參數。
 
 ### <a name="app-settings-files"></a>應用程式佈建檔案
 
-在專案根目錄的應用程式佈建檔案（*appsettings*）中， `IdentityServer`區段會描述已設定的用戶端清單。 在下列範例中，有一個用戶端。 用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId`參數。 此設定檔會指出正在設定的應用程式類型。 此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。 <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
+在專案根目錄的應用程式佈建檔案（*appsettings*）中，區段會 `IdentityServer` 描述已設定的用戶端清單。 在下列範例中，有一個用戶端。 用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId` 參數。 此設定檔會指出正在設定的應用程式類型。 此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。 <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 
 ```json
 "IdentityServer": {
@@ -144,7 +144,7 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="authentication-package"></a>驗證套件
 
-建立應用程式以使用個別使用者帳戶（`Individual`）時，應用程式會在應用程式的專案檔中`Microsoft.AspNetCore.Components.WebAssembly.Authentication`自動接收套件的套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
+建立應用程式以使用個別使用者帳戶（）時 `Individual` ，應用程式會 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 在應用程式的專案檔中自動接收套件的套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
 
 如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：
 
@@ -154,17 +154,17 @@ dotnet new blazorwasm -au Individual -ho
     Version="{VERSION}" />
 ```
 
-將`{VERSION}`前述套件參考中的取代為發行項中`Microsoft.AspNetCore.Blazor.Templates` <xref:blazor/get-started>所顯示的套件版本。
+`{VERSION}`將前述套件參考中的取代為發行 `Microsoft.AspNetCore.Blazor.Templates` 項中所顯示的套件版本 <xref:blazor/get-started> 。
 
 ### <a name="api-authorization-support"></a>API 授權支援
 
-驗證使用者的支援是由`Microsoft.AspNetCore.Components.WebAssembly.Authentication`套件內提供的擴充方法插入服務容器中。 這個方法會設定應用程式與現有授權系統互動所需的所有服務。
+驗證使用者的支援是由套件內提供的擴充方法插入服務容器中 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 。 這個方法會設定應用程式與現有授權系統互動所需的所有服務。
 
 ```csharp
 builder.Services.AddApiAuthorization();
 ```
 
-根據預設，它會從`_configuration/{client-id}`依照慣例載入應用程式的設定。 依照慣例，用戶端識別碼會設定為應用程式的元件名稱。 您可以使用選項呼叫多載，將此 URL 變更為指向不同的端點。
+根據預設，它會從依照慣例載入應用程式的設定 `_configuration/{client-id}` 。 依照慣例，用戶端識別碼會設定為應用程式的元件名稱。 您可以使用選項呼叫多載，將此 URL 變更為指向不同的端點。
 
 ### <a name="imports-file"></a>匯入檔案
 
@@ -184,11 +184,11 @@ builder.Services.AddApiAuthorization();
 
 ### <a name="logindisplay-component"></a>LoginDisplay 元件
 
-元件（*shared/LoginDisplay* `MainLayout` ）會在元件（*shared/MainLayout*）中轉譯，並管理下列行為： `LoginDisplay`
+`LoginDisplay`元件（*Shared/LoginDisplay*）會在 `MainLayout` 元件（*shared/MainLayout*）中轉譯，並管理下列行為：
 
 * 針對已驗證的使用者：
   * 顯示目前的使用者名稱。
-  * 提供 ASP.NET Core Identity中 [使用者設定檔] 頁面的連結。
+  * 提供 ASP.NET Core 中 [使用者設定檔] 頁面的連結 Identity 。
   * 提供用來登出應用程式的按鈕。
 * 匿名使用者：
   * 提供註冊的選項。
@@ -241,3 +241,4 @@ builder.Services.AddApiAuthorization();
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:security/blazor/webassembly/additional-scenarios>
+* [在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求](xref:security/blazor/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)

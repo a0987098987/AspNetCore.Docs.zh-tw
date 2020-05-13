@@ -11,12 +11,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/key-storage-providers
-ms.openlocfilehash: a8d38f17b066a0aa9a38b1bdfea3491f733cf1bc
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: cdf10cd26f3eb9af386f782475eeabbda50f0df9
+ms.sourcegitcommit: 1250c90c8d87c2513532be5683640b65bfdf9ddb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776873"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83153352"
 ---
 # <a name="key-storage-providers-in-aspnet-core"></a>ASP.NET Core 中的金鑰儲存提供者
 
@@ -143,21 +143,21 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="entity-framework-core"></a>Entity Framework Core
 
-[AspNetCore. DataProtection. microsoft.entityframeworkcore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/)套件提供使用 Entity Framework Core 將資料保護金鑰儲存至資料庫的機制。 `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore` NuGet 套件必須新增至專案檔，而不是[AspNetCore. 應用程式中繼套件](xref:fundamentals/metapackage-app)的一部分。
+[AspNetCore. DataProtection. microsoft.entityframeworkcore](https://www.nuget.org/packages/Microsoft.AspNetCore.DataProtection.EntityFrameworkCore/)套件提供使用 Entity Framework Core 將資料保護金鑰儲存至資料庫的機制。 `Microsoft.AspNetCore.DataProtection.EntityFrameworkCore`NuGet 套件必須新增至專案檔，而不是[AspNetCore. 應用程式中繼套件](xref:fundamentals/metapackage-app)的一部分。
 
 使用此套件，可以在多個 web 應用程式實例之間共用金鑰。
 
-若要設定 EF Core 提供者，請[呼叫\<PersistKeysToDbCoNtext TCoNtext>](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
+若要設定 EF Core 提供者，請呼叫[PersistKeysToDbCoNtext \< TCoNtext>](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcoredataprotectionextensions.persistkeystodbcontext)方法：
 
 [!code-csharp[Main](key-storage-providers/sample/Startup.cs?name=snippet&highlight=13-20)]
 
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
-泛型參數（ `TContext`）必須繼承自[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並執行[IDataProtectionKeyCoNtext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext)：
+泛型參數（ `TContext` ）必須繼承自[DbCoNtext](/dotnet/api/microsoft.entityframeworkcore.dbcontext)並執行[IDataProtectionKeyCoNtext](/dotnet/api/microsoft.aspnetcore.dataprotection.entityframeworkcore.idataprotectionkeycontext)：
 
 [!code-csharp[Main](key-storage-providers/sample/MyKeysContext.cs)]
 
-建立`DataProtectionKeys`資料表。
+建立 `DataProtectionKeys` 資料表。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -179,13 +179,13 @@ dotnet ef database update --context MyKeysContext
 
 ---
 
-`MyKeysContext`是上述`DbContext`程式碼範例中定義的。 如果您使用的是`DbContext`不同的名稱，請以您`DbContext`的`MyKeysContext`名稱取代。
+`MyKeysContext`是 `DbContext` 上述程式碼範例中定義的。 如果您使用的是 `DbContext` 不同的名稱，請以您 `DbContext` 的名稱取代 `MyKeysContext` 。
 
 `DataProtectionKeys`類別/實體採用下表所示的結構。
 
 | 屬性/欄位 | CLR 型別 | SQL 型別              |
 | -------------- | -------- | --------------------- |
-| `Id`           | `int`    | `int`、PK、not null   |
+| `Id`           | `int`    | `int`、PK、 `IDENTITY(1,1)` 、not null   |
 | `FriendlyName` | `string` | `nvarchar(MAX)`、null |
 | `Xml`          | `string` | `nvarchar(MAX)`、null |
 

@@ -1,11 +1,11 @@
 ---
-title: 使用驗證連結Blazor庫保護 ASP.NET Core WebAssembly 獨立應用程式
+title: Blazor使用驗證程式庫保護 ASP.NET Core WebAssembly 獨立應用程式
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/24/2020
+ms.date: 05/11/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,14 +13,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 6907a1213a6a9089e2aed885093c2fd38f972ad0
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 219364ef2e699ff1029536effd106a80ec02825c
+ms.sourcegitcommit: 1250c90c8d87c2513532be5683640b65bfdf9ddb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82768048"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83153406"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>使用驗證連結Blazor庫保護 ASP.NET Core WebAssembly 獨立應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Blazor使用驗證程式庫保護 ASP.NET Core WebAssembly 獨立應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
@@ -30,19 +30,19 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 *若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*
 
-若要建立Blazor使用`Microsoft.AspNetCore.Components.WebAssembly.Authentication`程式庫的 WebAssembly 獨立應用程式，請在命令 shell 中執行下列命令：
+若要建立 Blazor 使用程式庫的 WebAssembly 獨立應用程式 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` ，請在命令 shell 中執行下列命令：
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual
 ```
 
-若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如`-o BlazorSample`）的 output 選項。 資料夾名稱也會成為專案名稱的一部分。
+若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
 
-在 Visual Studio 中，[建立Blazor WebAssembly 應用程式](xref:blazor/get-started)。 使用 [**儲存使用者帳戶應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。
+在 Visual Studio 中，[建立 Blazor WebAssembly 應用程式](xref:blazor/get-started)。 使用 [**儲存使用者帳戶應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。
 
 ## <a name="authentication-package"></a>驗證套件
 
-建立應用程式以使用個別使用者帳戶時，應用程式會在應用程式的專案檔中`Microsoft.AspNetCore.Components.WebAssembly.Authentication`自動接收套件的套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
+建立應用程式以使用個別使用者帳戶時，應用程式會 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 在應用程式的專案檔中自動接收套件的套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
 
 如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：
 
@@ -52,11 +52,11 @@ dotnet new blazorwasm -au Individual
     Version="{VERSION}" />
 ```
 
-將`{VERSION}`前述套件參考中的取代為發行項中`Microsoft.AspNetCore.Blazor.Templates` <xref:blazor/get-started>所顯示的套件版本。
+`{VERSION}`將前述套件參考中的取代為發行 `Microsoft.AspNetCore.Blazor.Templates` 項中所顯示的套件版本 <xref:blazor/get-started> 。
 
 ## <a name="authentication-service-support"></a>驗證服務支援
 
-使用`AddOidcAuthentication` `Microsoft.AspNetCore.Components.WebAssembly.Authentication`封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援。 這個方法會設定應用程式與Identity提供者（IP）互動所需的所有服務。
+使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 `AddOidcAuthentication` `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 。 這個方法會設定應用程式與 Identity 提供者（IP）互動所需的所有服務。
 
 *Program.cs*：
 
@@ -82,7 +82,7 @@ Configuration 是由*wwwroot/appsettings*檔案所提供：
 
 ## <a name="access-token-scopes"></a>存取權杖範圍
 
-Blazor WebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍`OidcProviderOptions`：
+BlazorWebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍 `OidcProviderOptions` ：
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
@@ -139,3 +139,4 @@ builder.Services.AddOidcAuthentication(options =>
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:security/blazor/webassembly/additional-scenarios>
+* [在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求](xref:security/blazor/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)

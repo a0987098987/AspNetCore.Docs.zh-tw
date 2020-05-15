@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/memory
-ms.openlocfilehash: 8d4e4bf08bc9f414ceee4c35afea58f997880ccd
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 1967fb1942b4003d498800f6cf4c9dd280aca24e
+ms.sourcegitcommit: 688b6f448d87b6f7f4440182d72388eaa68d2935
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774479"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83393857"
 ---
 # <a name="cache-in-memory-in-aspnet-core"></a>ASP.NET Core 中的記憶體快取
 
@@ -35,7 +35,7 @@ ASP.NET Core 支援數種不同的快取。 最簡單的快取是以[IMemoryCach
 
 Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以避免快取一致性問題。 針對某些應用程式，分散式快取可支援比記憶體內部快取更高的相應放大。 使用分散式快取會將快取記憶體卸載至外部進程。
 
-記憶體內部快取可以儲存任何物件。 分散式快取介面僅限於`byte[]`。 記憶體內部和分散式快取存放區會以索引鍵/值組的形式快取專案。
+記憶體內部快取可以儲存任何物件。 分散式快取介面僅限於 `byte[]` 。 記憶體內部和分散式快取存放區會以索引鍵/值組的形式快取專案。
 
 ## <a name="systemruntimecachingmemorycache"></a>System.web. Caching/MemoryCache
 
@@ -45,9 +45,9 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 以 .NET Standard 2.0 或更新版本為目標的任何[.net 執行](/dotnet/standard/net-standard#net-implementation-support)。 例如，ASP.NET Core 2.0 或更新版本。
 * .NET Framework 4.5 或更新版本。
 
-[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache`建議`System.Runtime.Caching`使用/ `MemoryCache` Microsoft Extensions. Caching. Memory （如本文所述），因為它已更緊密整合到 ASP.NET Core 中。 例如， `IMemoryCache`會以原生方式使用 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)。
+建議使用[Microsoft Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` （如本文所述）， `System.Runtime.Caching` / `MemoryCache` 因為它已更緊密整合到 ASP.NET Core 中。 例如，會 `IMemoryCache` 以原生方式使用 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)。
 
-將`System.Runtime.Caching` / `MemoryCache`程式碼從 ASP.NET 4.x 移植到 ASP.NET Core 時，請使用做為相容性橋接器。
+將程式 `System.Runtime.Caching` / `MemoryCache` 代碼從 ASP.NET 4.x 移植到 ASP.NET Core 時，請使用做為相容性橋接器。
 
 ## <a name="cache-guidelines"></a>快取指導方針
 
@@ -60,11 +60,11 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 ## <a name="use-imemorycache"></a>使用 IMemoryCache
 
 > [!WARNING]
-> 從相依性[插入](xref:fundamentals/dependency-injection)使用*共用*記憶體快取， `SetSize`並`Size`呼叫、 `SizeLimit`或來限制快取大小，可能會導致應用程式失敗。 在快取上設定大小限制時，所有專案在新增時都必須指定大小。 這可能會導致問題，因為開發人員可能無法完全控制使用共用快取的內容。 例如，Entity Framework Core 使用共用快取，且未指定大小。 如果應用程式設定快取大小限制，並使用 EF Core，應用程式會`InvalidOperationException`擲回。
-> 使用`SetSize`、 `Size`或`SizeLimit`來限制快取時，請建立單一快取來進行快取。 如需詳細資訊和範例，請參閱[使用 SetSize、大小和 SizeLimit 來限制](#use-setsize-size-and-sizelimit-to-limit-cache-size)快取大小。
+> 從相依性[插入](xref:fundamentals/dependency-injection)使用*共用*記憶體快取，並呼叫 `SetSize` 、 `Size` 或 `SizeLimit` 來限制快取大小，可能會導致應用程式失敗。 在快取上設定大小限制時，所有專案在新增時都必須指定大小。 這可能會導致問題，因為開發人員可能無法完全控制使用共用快取的內容。 例如，Entity Framework Core 使用共用快取，且未指定大小。 如果應用程式設定快取大小限制，並使用 EF Core，應用程式會擲回 `InvalidOperationException` 。
+> 使用 `SetSize` 、 `Size` 或來限制快取時，請建立單一快取 `SizeLimit` 來進行快取。 如需詳細資訊和範例，請參閱[使用 SetSize、大小和 SizeLimit 來限制](#use-setsize-size-and-sizelimit-to-limit-cache-size)快取大小。
 > 共用快取是由其他架構或程式庫共用。 例如，EF Core 使用共用快取，且未指定大小。 
 
-記憶體內部快取是使用相依性[插入](xref:fundamentals/dependency-injection)從應用程式參考的*服務*。 在此`IMemoryCache`函數中要求實例：
+記憶體內部快取是使用相依性[插入](xref:fundamentals/dependency-injection)從應用程式參考的*服務*。 `IMemoryCache`在此函數中要求實例：
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ctor)]
 
@@ -78,7 +78,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 [!code-cshtml[](memory/3.0sample/WebCacheSample/Views/Home/Cache.cshtml)]
 
-當超時`DateTime`時間內有要求時，快取的值會保留在快取中。
+`DateTime`當超時時間內有要求時，快取的值會保留在快取中。
 
 下列程式碼會使用[getorcreate 設定](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreate#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreate__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry___0__)和[GetOrCreateAsync](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.getorcreateasync#Microsoft_Extensions_Caching_Memory_CacheExtensions_GetOrCreateAsync__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_System_Func_Microsoft_Extensions_Caching_Memory_ICacheEntry_System_Threading_Tasks_Task___0___)來快取資料。
 
@@ -100,7 +100,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 上述程式碼可確保資料不會快取超過絕對時間。
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>、 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*>和<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*>是類別中的<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions>擴充方法。 這些方法會擴充的功能<xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>。
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>、 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> 和 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.Get*> 是類別中的擴充方法 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions> 。 這些方法會擴充的功能 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache> 。
 
 ## <a name="memorycacheentryoptions"></a>MemoryCacheEntryOptions
 
@@ -121,28 +121,28 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 如果 web 應用程式主要是快取字串，則每個快取專案大小都可以是字串長度。
 * 應用程式可以將所有專案的大小指定為1，而大小限制是專案的計數。
 
-如果<xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit>未設定，快取會成長而不受限制。 當系統記憶體不足時，ASP.NET Core 執行時間不會修剪快取。 應用程式必須架構為：
+如果 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> 未設定，快取會成長而不受限制。 當系統記憶體不足時，ASP.NET Core 執行時間不會修剪快取。 應用程式必須架構為：
 
 * 限制快取成長。
-* 當<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*>可用<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*>的記憶體受到限制時，呼叫或：
+* <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*> 當可用的記憶體受到限制時，呼叫或：
 
-下列程式碼會建立可透過相依<xref:Microsoft.Extensions.Caching.Memory.MemoryCache>性[插入](xref:fundamentals/dependency-injection)來存取的無單位固定大小：
+下列程式碼會建立可透過相依 <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> 性[插入](xref:fundamentals/dependency-injection)來存取的無單位固定大小：
 
 [!code-csharp[](memory/sample/RPcache/Services/MyMemoryCache.cs?name=snippet)]
 
-`SizeLimit`沒有單位。 如果已設定快取大小限制，則快取的專案必須以其認為最適合的任何單位來指定大小。 快取實例的所有使用者都應使用相同的單位系統。 如果快取的專案大小總和超過所指定的值，則不會快取專案`SizeLimit`。 如果未設定快取大小限制，則會忽略在該專案上設定的快取大小。
+`SizeLimit`沒有單位。 如果已設定快取大小限制，則快取的專案必須以其認為最適合的任何單位來指定大小。 快取實例的所有使用者都應使用相同的單位系統。 如果快取的專案大小總和超過所指定的值，則不會快取專案 `SizeLimit` 。 如果未設定快取大小限制，則會忽略在該專案上設定的快取大小。
 
-下列程式碼會`MyMemoryCache`向相依性[插入](xref:fundamentals/dependency-injection)容器註冊。
+下列程式碼會 `MyMemoryCache` 向相依性[插入](xref:fundamentals/dependency-injection)容器註冊。
 
 [!code-csharp[](memory/3.0sample/RPcache/Startup.cs?name=snippet)]
 
 `MyMemoryCache`會建立為可感知此大小限制快取之元件的獨立記憶體快取，並知道如何適當地設定快取專案大小。
 
-下列程式碼會`MyMemoryCache`使用：
+下列程式碼會使用 `MyMemoryCache` ：
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/SetSize.cshtml.cs?name=snippet)]
 
-快取專案的大小可以透過<xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.Size>或<xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.SetSize*>擴充方法來設定：
+快取專案的大小可以透過 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.Size> 或擴充方法來設定 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.SetSize*> ：
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/SetSize.cshtml.cs?name=snippet2&highlight=9,10,14,15)]
 
@@ -156,7 +156,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 具有最早絕對到期的專案。
 * 具有最早滑動到期日的專案。
 
-具有優先順序<xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove>的固定專案永遠不會被移除。 下列程式碼會移除快取專案並`Compact`呼叫：
+具有優先順序的固定專案永遠不會 <xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove> 被移除。 下列程式碼會移除快取專案並呼叫 `Compact` ：
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/TestCache.cshtml.cs?name=snippet3)]
 
@@ -164,15 +164,15 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如果相依專案過期，如何讓快取專案過期。 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken>會新增至快取的專案。 在`Cancel`上呼叫時`CancellationTokenSource`，會收回這兩個快取專案。
+下列範例示範如果相依專案過期，如何讓快取專案過期。 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken>會新增至快取的專案。 `Cancel`在上呼叫時 `CancellationTokenSource` ，會收回這兩個快取專案。
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ed)]
 
-使用<xref:System.Threading.CancellationTokenSource>可讓多個快取專案收回為群組。 使用上述`using`程式碼中的模式時，在`using`區塊內建立的快取專案將會繼承觸發程式和到期設定。
+使用 <xref:System.Threading.CancellationTokenSource> 可讓多個快取專案收回為群組。 使用 `using` 上述程式碼中的模式時，在區塊內建立的快取專案 `using` 將會繼承觸發程式和到期設定。
 
 ## <a name="additional-notes"></a>其他注意事項
 
-* 到期不會在背景中發生。 沒有任何計時器會主動掃描快取中是否有過期的專案。 快取上的任何活動`Get`（ `Set`、 `Remove`、）都可以觸發過期專案的背景掃描。 `CancellationTokenSource` （<xref:System.Threading.CancellationTokenSource.CancelAfter*>）上的計時器也會移除專案，並觸發已過期專案的掃描。 下列範例會使用[CancellationTokenSource （TimeSpan）](/dotnet/api/system.threading.cancellationtokensource.-ctor)作為已註冊的權杖。 當此標記引發時，它會立即移除該專案，並引發收回回呼：
+* 到期不會在背景中發生。 沒有任何計時器會主動掃描快取中是否有過期的專案。 快取上的任何活動（ `Get` 、 `Set` 、 `Remove` ）都可以觸發過期專案的背景掃描。 （）上的 `CancellationTokenSource` 計時器 <xref:System.Threading.CancellationTokenSource.CancelAfter*> 也會移除專案，並觸發已過期專案的掃描。 下列範例會使用[CancellationTokenSource （TimeSpan）](/dotnet/api/system.threading.cancellationtokensource.-ctor)作為已註冊的權杖。 當此標記引發時，它會立即移除該專案，並引發收回回呼：
 
 [!code-csharp[](memory/3.0sample/WebCacheSample/Controllers/HomeController.cs?name=snippet_ae)]
 
@@ -183,8 +183,12 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 * 當有一個快取專案用來建立另一個時，子系會複製父系專案的到期權杖和以時間為基礎的到期設定。 子系不會因為手動移除或更新父專案而過期。
 
-* 用<xref:Microsoft.Extensions.Caching.Memory.ICacheEntry.PostEvictionCallbacks>來設定將在從快取中收回快取專案之後引發的回呼。
-* 大部分的應用程式`IMemoryCache`都已啟用。 例如，在中`AddMvc` `ConfigureServices`呼叫`AddControllersWithViews`、 `AddRazorPages`、 `AddMvcCore().AddRazorViewEngine`、和許多其他`Add{Service}`方法，會啟用`IMemoryCache`。 對於未呼叫上述`Add{Service}`其中一種方法的應用程式，可能需要在中<xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> `ConfigureServices`呼叫。
+* 用 <xref:Microsoft.Extensions.Caching.Memory.ICacheEntry.PostEvictionCallbacks> 來設定將在從快取中收回快取專案之後引發的回呼。
+* 大部分的應用程式 `IMemoryCache` 都已啟用。 例如， `AddMvc` 在中呼叫、、 `AddControllersWithViews` `AddRazorPages` 、 `AddMvcCore().AddRazorViewEngine` 和許多其他 `Add{Service}` 方法，會 `ConfigureServices` 啟用 `IMemoryCache` 。 對於未呼叫上述其中一種方法的應用程式 `Add{Service}` ，可能需要 <xref:Microsoft.Extensions.DependencyInjection.MemoryCacheServiceCollectionExtensions.AddMemoryCache*> 在中呼叫 `ConfigureServices` 。
+
+## <a name="background-cache-update"></a>背景快取更新
+
+使用[背景服務](xref:fundamentals/host/hosted-services)（例如） <xref:Microsoft.Extensions.Hosting.IHostedService> 來更新快取。 背景服務可以重新計算專案，然後只有在準備就緒時，才將它們指派給快取。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -212,7 +216,7 @@ ASP.NET Core 支援數種不同的快取。 最簡單的快取是以[IMemoryCach
 
 Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以避免快取一致性問題。 針對某些應用程式，分散式快取可支援比記憶體內部快取更高的相應放大。 使用分散式快取會將快取記憶體卸載至外部進程。
 
-記憶體內部快取可以儲存任何物件。 分散式快取介面僅限於`byte[]`。 記憶體內部和分散式快取存放區會以索引鍵/值組的形式快取專案。
+記憶體內部快取可以儲存任何物件。 分散式快取介面僅限於 `byte[]` 。 記憶體內部和分散式快取存放區會以索引鍵/值組的形式快取專案。
 
 ## <a name="systemruntimecachingmemorycache"></a>System.web. Caching/MemoryCache
 
@@ -222,9 +226,9 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 以 .NET Standard 2.0 或更新版本為目標的任何[.net 執行](/dotnet/standard/net-standard#net-implementation-support)。 例如，ASP.NET Core 2.0 或更新版本。
 * .NET Framework 4.5 或更新版本。
 
-[Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache`建議`System.Runtime.Caching`使用/ `MemoryCache` Microsoft Extensions. Caching. Memory （如本文所述），因為它已更緊密整合到 ASP.NET Core 中。 例如， `IMemoryCache`會以原生方式使用 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)。
+建議使用[Microsoft Extensions. Caching. Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/) / `IMemoryCache` （如本文所述）， `System.Runtime.Caching` / `MemoryCache` 因為它已更緊密整合到 ASP.NET Core 中。 例如，會 `IMemoryCache` 以原生方式使用 ASP.NET Core 相依性[插入](xref:fundamentals/dependency-injection)。
 
-將`System.Runtime.Caching` / `MemoryCache`程式碼從 ASP.NET 4.x 移植到 ASP.NET Core 時，請使用做為相容性橋接器。
+將程式 `System.Runtime.Caching` / `MemoryCache` 代碼從 ASP.NET 4.x 移植到 ASP.NET Core 時，請使用做為相容性橋接器。
 
 ## <a name="cache-guidelines"></a>快取指導方針
 
@@ -237,14 +241,14 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 ## <a name="using-imemorycache"></a>使用 IMemoryCache
 
 > [!WARNING]
-> 從相依性[插入](xref:fundamentals/dependency-injection)使用*共用*記憶體快取， `SetSize`並`Size`呼叫、 `SizeLimit`或來限制快取大小，可能會導致應用程式失敗。 在快取上設定大小限制時，所有專案在新增時都必須指定大小。 這可能會導致問題，因為開發人員可能無法完全控制使用共用快取的內容。 例如，Entity Framework Core 使用共用快取，且未指定大小。 如果應用程式設定快取大小限制，並使用 EF Core，應用程式會`InvalidOperationException`擲回。
-> 使用`SetSize`、 `Size`或`SizeLimit`來限制快取時，請建立單一快取來進行快取。 如需詳細資訊和範例，請參閱[使用 SetSize、大小和 SizeLimit 來限制](#use-setsize-size-and-sizelimit-to-limit-cache-size)快取大小。
+> 從相依性[插入](xref:fundamentals/dependency-injection)使用*共用*記憶體快取，並呼叫 `SetSize` 、 `Size` 或 `SizeLimit` 來限制快取大小，可能會導致應用程式失敗。 在快取上設定大小限制時，所有專案在新增時都必須指定大小。 這可能會導致問題，因為開發人員可能無法完全控制使用共用快取的內容。 例如，Entity Framework Core 使用共用快取，且未指定大小。 如果應用程式設定快取大小限制，並使用 EF Core，應用程式會擲回 `InvalidOperationException` 。
+> 使用 `SetSize` 、 `Size` 或來限制快取時，請建立單一快取 `SizeLimit` 來進行快取。 如需詳細資訊和範例，請參閱[使用 SetSize、大小和 SizeLimit 來限制](#use-setsize-size-and-sizelimit-to-limit-cache-size)快取大小。
 
-記憶體內部快取是使用相依性插入從您的應用程式參考的一[項](../../fundamentals/dependency-injection.md)*服務*。 在`AddMemoryCache`中`ConfigureServices`呼叫：
+記憶體內部快取是使用相依性插入從您的應用程式參考的一[項](../../fundamentals/dependency-injection.md)*服務*。 `AddMemoryCache`在中呼叫 `ConfigureServices` ：
 
 [!code-csharp[](memory/sample/WebCache/Startup.cs?highlight=9)]
 
-在此`IMemoryCache`函數中要求實例：
+`IMemoryCache`在此函數中要求實例：
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ctor)]
 
@@ -260,7 +264,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 [!code-cshtml[](memory/sample/WebCache/Views/Home/Cache.cshtml)]
 
-當超時`DateTime`時間內有要求時，快取的值會保留在快取中。 下圖顯示從快取中抓取的目前時間和較舊的時間：
+`DateTime`當超時時間內有要求時，快取的值會保留在快取中。 下圖顯示從快取中抓取的目前時間和較舊的時間：
 
 ![顯示兩個不同時間的索引視圖](memory/_static/time.png)
 
@@ -272,14 +276,14 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_gct)]
 
-<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>、 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*>和[Get](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.get#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_)是[CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)類別的擴充方法部分，可延伸的功能<xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>。 如需其他快取方法的說明，請參閱[IMemoryCache 方法](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)和[CacheExtensions 方法](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)。
+<xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreate*>、 <xref:Microsoft.Extensions.Caching.Memory.CacheExtensions.GetOrCreateAsync*> 和[Get](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions.get#Microsoft_Extensions_Caching_Memory_CacheExtensions_Get__1_Microsoft_Extensions_Caching_Memory_IMemoryCache_System_Object_)是[CacheExtensions](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)類別的擴充方法部分，可延伸的功能 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache> 。 如需其他快取方法的說明，請參閱[IMemoryCache 方法](/dotnet/api/microsoft.extensions.caching.memory.imemorycache)和[CacheExtensions 方法](/dotnet/api/microsoft.extensions.caching.memory.cacheextensions)。
 
 ## <a name="memorycacheentryoptions"></a>MemoryCacheEntryOptions
 
 下列範例：
 
 * 設定滑動到期時間。 存取此快取專案的要求將會重設滑動到期時鐘。
-* 將快取優先順序設定`CacheItemPriority.NeverRemove`為。
+* 將快取優先順序設定為 `CacheItemPriority.NeverRemove` 。
 * 設定在從快取中收回專案之後，將會呼叫的[PostEvictionDelegate](/dotnet/api/microsoft.extensions.caching.memory.postevictiondelegate) 。 回呼會在與從快取中移除專案的程式碼不同的執行緒上執行。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_et&highlight=14-21)]
@@ -293,24 +297,24 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 如果 web 應用程式主要是快取字串，則每個快取專案大小都可以是字串長度。
 * 應用程式可以將所有專案的大小指定為1，而大小限制是專案的計數。
 
-如果<xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit>未設定，則快取會成長而不受限制。 當系統記憶體不足時，ASP.NET Core 執行時間不會修剪快取。 應用程式的架構大致如下：
+如果 <xref:Microsoft.Extensions.Caching.Memory.MemoryCacheOptions.SizeLimit> 未設定，則快取會成長而不受限制。 當系統記憶體不足時，ASP.NET Core 執行時間不會修剪快取。 應用程式的架構大致如下：
 
 * 限制快取成長。
-* 當<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*>可用<xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*>的記憶體受到限制時，呼叫或：
+* <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Compact*> <xref:Microsoft.Extensions.Caching.Memory.MemoryCache.Remove*> 當可用的記憶體受到限制時，呼叫或：
 
-下列程式碼會建立可透過相依<xref:Microsoft.Extensions.Caching.Memory.MemoryCache>性[插入](xref:fundamentals/dependency-injection)來存取的無單位固定大小：
+下列程式碼會建立可透過相依 <xref:Microsoft.Extensions.Caching.Memory.MemoryCache> 性[插入](xref:fundamentals/dependency-injection)來存取的無單位固定大小：
 
 [!code-csharp[](memory/sample/RPcache/Services/MyMemoryCache.cs?name=snippet)]
 
-`SizeLimit`沒有單位。 如果已設定快取大小限制，則快取的專案必須以其認為最適合的任何單位來指定大小。 快取實例的所有使用者都應使用相同的單位系統。 如果快取的專案大小總和超過所指定的值，則不會快取專案`SizeLimit`。 如果未設定快取大小限制，則會忽略在該專案上設定的快取大小。
+`SizeLimit`沒有單位。 如果已設定快取大小限制，則快取的專案必須以其認為最適合的任何單位來指定大小。 快取實例的所有使用者都應使用相同的單位系統。 如果快取的專案大小總和超過所指定的值，則不會快取專案 `SizeLimit` 。 如果未設定快取大小限制，則會忽略在該專案上設定的快取大小。
 
-下列程式碼會`MyMemoryCache`向相依性[插入](xref:fundamentals/dependency-injection)容器註冊。
+下列程式碼會 `MyMemoryCache` 向相依性[插入](xref:fundamentals/dependency-injection)容器註冊。
 
 [!code-csharp[](memory/sample/RPcache/Startup.cs?name=snippet&highlight=5)]
 
 `MyMemoryCache`會建立為可感知此大小限制快取之元件的獨立記憶體快取，並知道如何適當地設定快取專案大小。
 
-下列程式碼會`MyMemoryCache`使用：
+下列程式碼會使用 `MyMemoryCache` ：
 
 [!code-csharp[](memory/sample/RPcache/Pages/About.cshtml.cs?name=snippet)]
 
@@ -328,7 +332,7 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 具有最早絕對到期的專案。
 * 具有最早滑動到期日的專案。
 
-具有優先順序<xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove>的固定專案永遠不會被移除。
+具有優先順序的固定專案永遠不會 <xref:Microsoft.Extensions.Caching.Memory.CacheItemPriority.NeverRemove> 被移除。
 
 [!code-csharp[](memory/3.0sample/RPcache/Pages/TestCache.cshtml.cs?name=snippet3)]
 
@@ -336,11 +340,11 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 
 ## <a name="cache-dependencies"></a>快取相依性
 
-下列範例示範如果相依專案過期，如何讓快取專案過期。 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken>會新增至快取的專案。 在`Cancel`上呼叫時`CancellationTokenSource`，會收回這兩個快取專案。
+下列範例示範如果相依專案過期，如何讓快取專案過期。 <xref:Microsoft.Extensions.Primitives.CancellationChangeToken>會新增至快取的專案。 `Cancel`在上呼叫時 `CancellationTokenSource` ，會收回這兩個快取專案。
 
 [!code-csharp[](memory/sample/WebCache/Controllers/HomeController.cs?name=snippet_ed)]
 
-使用`CancellationTokenSource`可讓多個快取專案收回為群組。 使用上述`using`程式碼中的模式時，在`using`區塊內建立的快取專案將會繼承觸發程式和到期設定。
+使用 `CancellationTokenSource` 可讓多個快取專案收回為群組。 使用 `using` 上述程式碼中的模式時，在區塊內建立的快取專案 `using` 將會繼承觸發程式和到期設定。
 
 ## <a name="additional-notes"></a>其他注意事項
 
@@ -352,6 +356,10 @@ Web 伺服陣列中的非粘滯話需要[分散式](distributed.md)快取，以�
 * 當有一個快取專案用來建立另一個時，子系會複製父系專案的到期權杖和以時間為基礎的到期設定。 子系不會因為手動移除或更新父專案而過期。
 
 * 使用[PostEvictionCallbacks](/dotnet/api/microsoft.extensions.caching.memory.icacheentry.postevictioncallbacks#Microsoft_Extensions_Caching_Memory_ICacheEntry_PostEvictionCallbacks)設定在從快取中收回快取專案之後，將會引發的回呼。
+
+## <a name="background-cache-update"></a>背景快取更新
+
+使用[背景服務](xref:fundamentals/host/hosted-services)（例如） <xref:Microsoft.Extensions.Hosting.IHostedService> 來更新快取。 背景服務可以重新計算專案，然後只有在準備就緒時，才將它們指派給快取。
 
 ## <a name="additional-resources"></a>其他資源
 

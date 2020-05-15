@@ -27,6 +27,7 @@
     - name: 1.1 中的新功能
       uid: aspnetcore-1.1
 - name: 教學課程
+  displayName: tutorial
   items:
     - name: Web 應用程式
       items:
@@ -154,20 +155,19 @@
               uid: data/ef-mvc/inheritance
             - name: 進階主題
               uid: data/ef-mvc/advanced
-- name: 教學課程 (Microsoft Learn)
-  displayName: tutorial
-  items:
-    - name: Web 應用程式
-      displayName: 'tutorial, razor, razor pages, ui'
-      href: /learn/modules/create-razor-pages-aspnet-core/
-    - name: Web API 應用程式
-      href: /learn/modules/build-web-api-net-core/
-    - name: 資料存取
-      displayName: 'tutorial, ef, entity framework'
-      href: /learn/modules/persist-data-ef-core/
-    - name: Web 應用程式安全性
-      displayName: 'tutorial, identity'
-      href: /learn/modules/secure-aspnet-core-identity/
+    - name: Microsoft Learn 課程模組
+      items:
+        - name: Web 應用程式
+          displayName: 'tutorial, razor, razor pages, ui'
+          href: /learn/modules/create-razor-pages-aspnet-core/
+        - name: Web API 應用程式 >>
+          href: /learn/modules/build-web-api-net-core/
+        - name: 資料存取 >>
+          displayName: 'tutorial, ef, entity framework'
+          href: /learn/modules/persist-data-ef-core/
+        - name: Web 應用程式安全性 >>
+          displayName: 'tutorial, identity'
+          href: /learn/modules/secure-aspnet-core-identity/
 - name: 基礎
   items:
     - name: 總覽

@@ -1,24 +1,13 @@
 ---
-title: ASP.NET Core Web API 中的 JsonPatch
-author: rick-anderson
-description: 了解如何處理 ASP.NET Core Web API 中的 JSON Patch 要求。
-ms.author: riande
-ms.custom: mvc
-ms.date: 04/02/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: web-api/jsonpatch
-ms.openlocfilehash: 3a78fa268cce8cff10fedf5814d61ce0e5faaf4b
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766663"
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
+
 # <a name="jsonpatch-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的 JsonPatch
 
 由[Tom 作者: dykstra](https://github.com/tdykstra)和[Kirk Larkin](https://github.com/serpent5)
@@ -31,8 +20,8 @@ ms.locfileid: "82766663"
 
 若要在您的應用程式中啟用 JSON 修補程式支援，請完成下列步驟：
 
-1. 安裝[AspNetCore NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件。
-1. 更新專案的`Startup.ConfigureServices`方法以呼叫<xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*>。 例如：
+1. 安裝 [`Microsoft.AspNetCore.Mvc.NewtonsoftJson`](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/) NuGet 套件。
+1. 更新專案的 `Startup.ConfigureServices` 方法以呼叫 <xref:Microsoft.Extensions.DependencyInjection.NewtonsoftJsonMvcBuilderExtensions.AddNewtonsoftJson*> 。 例如：
 
     ```csharp
     services
@@ -48,11 +37,11 @@ ms.locfileid: "82766663"
 
 ## <a name="json-patch-addnewtonsoftjson-and-systemtextjson"></a>JSON Patch、AddNewtonsoftJson 和 System.web
 
-`AddNewtonsoftJson``System.Text.Json`取代以為基礎的輸入和輸出格式器，用於格式化**所有**JSON 內容。 若要使用`Newtonsoft.Json`新增對 JSON 修補程式的支援，同時讓其他格式器保持不變`Startup.ConfigureServices` ，請更新專案的方法，如下所示：
+`AddNewtonsoftJson`取代 `System.Text.Json` 以為基礎的輸入和輸出格式器，用於格式化**所有**JSON 內容。 若要使用新增對 JSON 修補程式的支援 `Newtonsoft.Json` ，同時讓其他格式器保持不變，請更新專案的 `Startup.ConfigureServices` 方法，如下所示：
 
 [!code-csharp[](jsonpatch/samples/3.0/WebApp1/Startup.cs?name=snippet)]
 
-上述程式碼需要`Microsoft.AspNetCore.Mvc.NewtonsoftJson`封裝和下列`using`語句：
+上述程式碼需要 `Microsoft.AspNetCore.Mvc.NewtonsoftJson` 封裝和下列 `using` 語句：
 
 [!code-csharp[](jsonpatch/samples/3.0/WebApp1/Startup.cs?name=snippet1)]
 
@@ -108,22 +97,152 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="path-syntax"></a>路徑語法
 
-作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。 例如： `"/address/zipCode"` 。
+作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。 例如：`"/address/zipCode"`。
 
-以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 到`add`陣列結尾，請使用連字號（`-`），而不是索引編號：。 `/addresses/-`
+以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 到 `add` 陣列結尾，請使用連字號（ `-` ），而不是索引編號： `/addresses/-` 。
 
 ### <a name="operations"></a>作業
 
 下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：
 
-|作業  | 注意 |
-|-----------|--------------------------------|
-| `add`     | 加入屬性或陣列元素。 針對現有的屬性：設定值。|
-| `remove`  | 移除屬性或陣列元素。 |
-| `replace` | 與 `remove` 之後接著在同一個位置上 `add` 相同。 |
-| `move`    | 與從來源 `remove` 之後接著使用來源的值 `add` 到目的地相同。 |
-| `copy`    | 與使用來源的值 `add` 到目的地相同。 |
-| `test`    | 如果 `path` 上的值 = 所提供的 `value`，即會傳回成功狀態碼。|
+|作業  | 備忘稿 |
+|---
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------|---
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------| |`add`     |新增屬性或陣列元素。 針對現有的屬性： set 值。 ||`remove`  |移除屬性或陣列元素。 | |`replace` |相同于， `remove` 後面接著 `add` 相同的位置。 | |`move`    |與 `remove` 從來源開始，然後 `add` 使用來源的值，後面接著至目的地。 | |`copy`    |`add`使用來源的值，與目的地相同。 | |`test`    |如果提供的值為，則傳回成功狀態碼 `path` `value` 。 |
 
 ## <a name="json-patch-in-aspnet-core"></a>ASP.NET Core 中的 JSON 修補程式
 
@@ -134,14 +253,14 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 在 API 控制器中，JSON Patch 的動作方法：
 
 * 使用 `HttpPatch` 屬性來標註。
-* 接受`JsonPatchDocument<T>`，通常使用`[FromBody]`。
+* 接受 `JsonPatchDocument<T>` ，通常使用 `[FromBody]` 。
 * 呼叫修補文件上的 `ApplyTo` 以套用變更。
 
-以下是範例：
+以下為範例：
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 
-範例應用程式中的這段程式碼可`Customer`與下列模型搭配運作：
+範例應用程式中的這段程式碼可與下列模型搭配運作 `Customer` ：
 
 [!code-csharp[](jsonpatch/samples/2.2/Models/Customer.cs?name=snippet_Customer)]
 
@@ -194,7 +313,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
     * 如果屬性可為 Null：將它設定為 Null。
     * 如果屬性不可為 Null，則將它設定為 `default<T>`。
 
-下列範例修補檔會將`CustomerName`設定為 null 並`Orders[0]`刪除：
+下列範例修補檔會將設定 `CustomerName` 為 null 並刪除 `Orders[0]` ：
 
 [!code-json[](jsonpatch/samples/2.2/JSON/remove.json)]
 
@@ -202,7 +321,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 此作業在功能上與 `remove` 之後接著 `add` 相同。
 
-下列範例修補檔會設定的值`CustomerName` ，並將`Orders[0]`取代為新`Order`的物件：
+下列範例修補檔會設定的值 `CustomerName` ，並將取代 `Orders[0]` 為新的 `Order` 物件：
 
 [!code-json[](jsonpatch/samples/2.2/JSON/replace.json)]
 
@@ -320,7 +439,7 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 ## <a name="path-syntax"></a>路徑語法
 
-作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。 例如： `"/address/zipCode"` 。
+作業物件的 [path](https://tools.ietf.org/html/rfc6901) \(英文\) 屬性在層級之間有斜線。 例如：`"/address/zipCode"`。
 
 以零為起始的索引可用來指定陣列元素。 `addresses` 陣列的第一個元素會在 `/addresses/0` 上。 若要 `add` 到陣列結尾處，請使用連字號 (-) 而不是索引號碼：`/addresses/-`。
 
@@ -328,14 +447,144 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 
 下表顯示支援的作業，如 [JSON Patch 規格](https://tools.ietf.org/html/rfc6902) \(英文\) 中所定義：
 
-|作業  | 注意 |
-|-----------|--------------------------------|
-| `add`     | 加入屬性或陣列元素。 針對現有的屬性：設定值。|
-| `remove`  | 移除屬性或陣列元素。 |
-| `replace` | 與 `remove` 之後接著在同一個位置上 `add` 相同。 |
-| `move`    | 與從來源 `remove` 之後接著使用來源的值 `add` 到目的地相同。 |
-| `copy`    | 與使用來源的值 `add` 到目的地相同。 |
-| `test`    | 如果 `path` 上的值 = 所提供的 `value`，即會傳回成功狀態碼。|
+|作業  | 備忘稿 |
+|---
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------|---
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------| |`add`     |新增屬性或陣列元素。 針對現有的屬性： set 值。 ||`remove`  |移除屬性或陣列元素。 | |`replace` |相同于， `remove` 後面接著 `add` 相同的位置。 | |`move`    |與 `remove` 從來源開始，然後 `add` 使用來源的值，後面接著至目的地。 | |`copy`    |`add`使用來源的值，與目的地相同。 | |`test`    |如果提供的值為，則傳回成功狀態碼 `path` `value` 。 |
 
 ## <a name="jsonpatch-in-aspnet-core"></a>ASP.NET Core 中的 JsonPatch
 
@@ -346,10 +595,10 @@ PUT 和 [PATCH](https://tools.ietf.org/html/rfc5789) \(英文\) 方法均用來�
 在 API 控制器中，JSON Patch 的動作方法：
 
 * 使用 `HttpPatch` 屬性來標註。
-* 接受`JsonPatchDocument<T>`，通常使用`[FromBody]`。
+* 接受 `JsonPatchDocument<T>` ，通常使用 `[FromBody]` 。
 * 呼叫修補文件上的 `ApplyTo` 以套用變更。
 
-以下是範例：
+以下為範例：
 
 [!code-csharp[](jsonpatch/samples/2.2/Controllers/HomeController.cs?name=snippet_PatchAction&highlight=1,3,9)]
 

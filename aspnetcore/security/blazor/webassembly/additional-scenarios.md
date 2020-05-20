@@ -1,32 +1,16 @@
 ---
-title: ASP.NET Core Blazor WebAssembly 其他安全性案例
-author: guardrex
-description: 瞭解如何設定 Blazor WebAssembly 以進行其他安全性案例。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 05/11/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: security/blazor/webassembly/additional-scenarios
-ms.openlocfilehash: d460f65e996f1f77136a426b03d6eb548d9e309e
-ms.sourcegitcommit: 1250c90c8d87c2513532be5683640b65bfdf9ddb
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83153481"
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 其他安全性案例
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)
-
-[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
-
-[!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
 ## <a name="attach-tokens-to-outgoing-requests"></a>將權杖附加到連出要求
 
@@ -260,7 +244,7 @@ if (tokenResult.TryGetToken(out var token))
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>具有 Fetch API 要求選項的 HttpClient 和 HttpRequestMessage
 
-在 Blazor WebAssembly 應用程式的 WebAssembly 上執行時[HttpClient](xref:fundamentals/http-requests) ，您 <xref:System.Net.Http.HttpRequestMessage> 可以使用 HttpClient 和來自訂要求。 例如，您可以指定 HTTP 方法和要求標頭。 下列元件會對 `POST` 伺服器上的 To Do LIST API 端點提出要求，並顯示回應主體：
+在 WebAssembly 應用程式的 WebAssembly 上執行時 Blazor ， [HttpClient](xref:fundamentals/http-requests)和 <xref:System.Net.Http.HttpRequestMessage> 可以用來自訂要求。 例如，您可以指定 HTTP 方法和要求標頭。 下列元件會對 `POST` 伺服器上的 To Do LIST API 端點提出要求，並顯示回應主體：
 
 ```razor
 @page "/todorequest"
@@ -327,11 +311,231 @@ if (tokenResult.TryGetToken(out var token))
 您可以使用 `HttpRequestMessage` 下表所示的擴充方法來設定 HTTP 提取要求選項。
 
 | `HttpRequestMessage`擴充方法 | Fetch 要求屬性 |
-| ------------------------------------- | ---------------------- |
-| `SetBrowserRequestCredentials`        | [憑證](https://developer.mozilla.org/docs/Web/API/Request/credentials) |
-| `SetBrowserRequestCache`              | [高速](https://developer.mozilla.org/docs/Web/API/Request/cache) |
-| `SetBrowserRequestMode`               | [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) |
-| `SetBrowserRequestIntegrity`          | [完整性](https://developer.mozilla.org/docs/Web/API/Request/integrity) |
+| ---
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------- |---標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------- | |`SetBrowserRequestCredentials`         |  [認證](https://developer.mozilla.org/docs/Web/API/Request/credentials)| `SetBrowserRequestCache` |               | 快[取 | |](https://developer.mozilla.org/docs/Web/API/Request/cache)`SetBrowserRequestMode`                |  [模式](https://developer.mozilla.org/docs/Web/API/Request/mode)| `SetBrowserRequestIntegrity` |           | [完整性](https://developer.mozilla.org/docs/Web/API/Request/integrity) |
 
 您可以使用更泛型的擴充方法來設定其他選項 `SetBrowserRequestOption` 。
  
@@ -366,7 +570,7 @@ app.UseCors(policy =>
 
 ## <a name="handle-token-request-errors"></a>處理權杖要求錯誤
 
-當單一頁面應用程式（SPA）使用 Open ID Connect （OIDC）來驗證使用者時，驗證狀態會在 SPA 和識別提供者（IP）中的本機維護，其格式為使用者提供其認證時所設定的會話 cookie。
+當單一頁面應用程式（SPA）使用 Open ID Connect （OIDC）來驗證使用者時，驗證狀態會在 SPA 和 Identity 提供者（IP）中的本機維護，其格式為使用者提供其認證所設定的會話 cookie。
 
 IP 為使用者發出的權杖通常會在短時間內有效，大約一小時，因此用戶端應用程式必須定期提取新的權杖。 否則，在授與的權杖過期之後，使用者會被登出。 在大多數情況下，OIDC 用戶端可以布建新的權杖，而不需要使用者重新驗證，因為它會保留在 IP 內的驗證狀態或「會話」。
 
@@ -507,16 +711,141 @@ IP 為使用者發出的權杖通常會在短時間內有效，大約一小時�
 根據預設，連結 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 庫會使用下表所示的路由來代表不同的驗證狀態。
 
 | 路由                            | 目的 |
-| -------------------------------- | ------- |
-| `authentication/login`           | 觸發登入作業。 |
-| `authentication/login-callback`  | 處理任何登入作業的結果。 |
-| `authentication/login-failed`    | 當登入作業因某些原因而失敗時，會顯示錯誤訊息。 |
-| `authentication/logout`          | 觸發登出作業。 |
-| `authentication/logout-callback` | 處理登出作業的結果。 |
-| `authentication/logout-failed`   | 當登出作業因某些原因而失敗時，會顯示錯誤訊息。 |
-| `authentication/logged-out`      | 表示使用者已成功登出。 |
-| `authentication/profile`         | 觸發操作以編輯使用者設定檔。 |
-| `authentication/register`        | 觸發操作以註冊新的使用者。 |
+| ---
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------------- |---標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |`authentication/login`           |觸發登入作業。 | |`authentication/login-callback`  |處理任何登入作業的結果。 | |`authentication/login-failed`    |當登入作業因某些原因而失敗時，會顯示錯誤訊息。 | |`authentication/logout`          |觸發登出作業。 | |`authentication/logout-callback` |處理登出作業的結果。 | |`authentication/logout-failed`   |當登出作業因某些原因而失敗時，會顯示錯誤訊息。 | |`authentication/logged-out`      |表示使用者已成功登出。 | |`authentication/profile`         |觸發操作以編輯使用者設定檔。 | |`authentication/register`        |觸發操作以註冊新的使用者。 |
 
 上表中顯示的路由可透過來設定 `RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths` 。 設定選項以提供自訂路由時，請確認應用程式具有處理每個路徑的路由。
 
@@ -587,16 +916,213 @@ builder.Services.AddApiAuthorization(options => {
 `RemoteAuthenticatorView`有一個片段，可用於下表所示的每個驗證路由。
 
 | 路由                            | 片段                |
-| -------------------------------- | ----------------------- |
-| `authentication/login`           | `<LoggingIn>`           |
-| `authentication/login-callback`  | `<CompletingLoggingIn>` |
-| `authentication/login-failed`    | `<LogInFailed>`         |
-| `authentication/logout`          | `<LogOut>`              |
-| `authentication/logout-callback` | `<CompletingLogOut>`    |
-| `authentication/logout-failed`   | `<LogOutFailed>`        |
-| `authentication/logged-out`      | `<LogOutSucceeded>`     |
-| `authentication/profile`         | `<UserProfile>`         |
-| `authentication/register`        | `<Registering>`         |
+| ---
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------------- |---標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------ | | `authentication/login`           | `<LoggingIn>`           | | `authentication/login-callback`  | `<CompletingLoggingIn>` | | `authentication/login-failed`    | `<LogInFailed>`         | | `authentication/logout`          | `<LogOut>`              | | `authentication/logout-callback` | `<CompletingLogOut>`    | | `authentication/logout-failed`   | `<LogOutFailed>`        | | `authentication/logged-out`      | `<LogOutSucceeded>`     | | `authentication/profile`         | `<UserProfile>`         | | `authentication/register`        | `<Registering>`         |
 
 ## <a name="customize-the-user"></a>自訂使用者
 
@@ -829,3 +1355,31 @@ Identity使用協力廠商登入提供者進行設定。 取得協力廠商 API 
 
 * 伺服器可以儲存重新整理權杖，並確保應用程式不會失去協力廠商資源的存取權。
 * 應用程式無法從可能包含更多敏感性許可權的伺服器洩漏存取權杖。
+
+## <a name="use-open-id-connect-oidc-v20-endpoints"></a>使用 Open ID Connect （OIDC） v2.0 端點
+
+驗證程式庫和 Blazor 範本會使用 OPEN ID Connect （OIDC） v1.0 端點。 若要使用 v2.0 端點，請設定 JWT 持有人 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> 選項。 在下列範例中，會將區段附加至屬性，以針對 v2.0 設定 AAD `v2.0` `Authority` ：
+
+```csharp
+builder.Services.Configure<JwtBearerOptions>(
+    AzureADDefaults.JwtBearerAuthenticationScheme, 
+    options =>
+    {
+        options.Authority += "/v2.0";
+    });
+```
+
+或者，您也可以在應用程式設定（*appsettings*）檔案中進行設定：
+
+```json
+{
+  "Local": {
+    "Authority": "https://login.microsoftonline.com/common/oauth2/v2.0/",
+    ...
+  }
+}
+```
+
+如果在區段上對授權單位的追蹤不適合應用程式的 OIDC 提供者（例如使用非 AAD 提供者），請 `Authority` 直接設定屬性。 請在 `JwtBearerOptions` 應用程式佈建檔中，以金鑰設定或的屬性 `Authority` 。
+
+針對 v2.0 端點，識別碼權杖中的宣告清單會變更。 如需詳細資訊，請參閱[為何要更新至 Microsoft 身分識別平臺（v2.0）？](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)。

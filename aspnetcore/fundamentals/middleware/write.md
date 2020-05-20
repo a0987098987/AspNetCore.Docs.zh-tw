@@ -1,30 +1,20 @@
 ---
-title: 撰寫自訂的 ASP.NET Core 中介軟體
-author: rick-anderson
-description: 了解如何撰寫自訂的 ASP.NET Core 中介軟體。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 5/6/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/middleware/write
-ms.openlocfilehash: 6852c1831d1f71af7f4fad3288fd6f897dfaa65f
-ms.sourcegitcommit: 30fcf69556b6b6ec54a3879e280d5f61f018b48f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82876188"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="write-custom-aspnet-core-middleware"></a>撰寫自訂的 ASP.NET Core 中介軟體
 
 由 [Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Steve Smith](https://ardalis.com/) 撰寫
 
 中介軟體為組成應用程式管線的軟體，用以處理要求與回應。 ASP.NET Core 提供一組豐富的內建中介軟體元件，但在某些情況下，您可能想要撰寫自訂的中介軟體。
+
+> [!NOTE]
+> 本主題說明如何撰寫以*慣例為基礎的*中介軟體。 如需使用強式類型和每個要求啟用的方法，請參閱 <xref:fundamentals/middleware/extensibility> 。
 
 ## <a name="middleware-class"></a>中介軟體類別
 

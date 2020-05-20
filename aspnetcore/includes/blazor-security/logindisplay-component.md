@@ -1,4 +1,4 @@
-元件（*shared/LoginDisplay* `MainLayout` ）會在元件（*shared/MainLayout*）中轉譯，並管理下列行為： `LoginDisplay`
+`LoginDisplay`元件（*Shared/LoginDisplay*）會在 `MainLayout` 元件（*shared/MainLayout*）中轉譯，並管理下列行為：
 
 * 針對已驗證的使用者：
   * 顯示目前的使用者名稱。
@@ -14,7 +14,7 @@
 <AuthorizeView>
     <Authorized>
         Hello, @context.User.Identity.Name!
-        <button class="nav-link btn btn-link" @onclick="BeginSignOut">
+        <button class="nav-link btn btn-link" @onclick="BeginLogout">
             Log out
         </button>
     </Authorized>
@@ -24,7 +24,7 @@
 </AuthorizeView>
 
 @code {
-    private async Task BeginSignOut(MouseEventArgs args)
+    private async Task BeginLogout(MouseEventArgs args)
     {
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");

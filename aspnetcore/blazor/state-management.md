@@ -1,45 +1,31 @@
 ---
-title: ASP.NET Core Blazor狀態管理
-author: guardrex
-description: 瞭解如何在伺服器應用程式Blazor中保存狀態。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 03/17/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: blazor/state-management
-ms.openlocfilehash: 5e14a0697fbc98575970b93dfa12c68e9f561c56
-ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967411"
+標題： ' ASP.NET Core Blazor 狀態管理 ' 作者：描述：「瞭解如何在伺服器應用程式中保存狀態」 Blazor 。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
-# <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor狀態管理
+# <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
-
-[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
 
 Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
 
 保留給使用者線路的狀態範例包括：
 
-* 呈現的 UI&mdash;是元件實例和其最新轉譯輸出的階層。
+* 呈現的 UI：元件實例及其最新轉譯輸出的階層。
 * 元件實例中任何欄位和屬性的值。
 * 保留在範圍為線路之相依性[插入（DI）](xref:fundamentals/dependency-injection)服務實例中的資料。
 
 > [!NOTE]
-> 本文解決伺服器應用程式中Blazor的狀態持續性。 BlazorWebAssembly apps 可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要的自訂解決方案或協力廠商套件超出本文的範圍。
+> 本文解決伺服器應用程式中的狀態持續性 Blazor 。 BlazorWebAssembly apps 可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要的自訂解決方案或協力廠商套件超出本文的範圍。
 
 ## <a name="blazor-circuits"></a>Blazor獲得
 
-如果使用者遇到暫時性的網路連線遺失，會Blazor嘗試將使用者重新連接到其原始線路，讓他們可以繼續使用應用程式。 不過，不一定能夠將使用者重新連接到伺服器記憶體中的原始線路：
+如果使用者遇到暫時性的網路連線遺失， Blazor 會嘗試將使用者重新連接到其原始線路，讓他們可以繼續使用應用程式。 不過，不一定能夠將使用者重新連接到伺服器記憶體中的原始線路：
 
 * 伺服器無法永久保留中斷連線的線路。 伺服器必須在超時之後或伺服器處於記憶體不足的壓力時，釋放中斷連線的線路。
 * 在多伺服器、負載平衡的部署環境中，任何指定的時間都可能無法使用任何伺服器處理要求。 當不再需要處理要求的整體量時，個別伺服器可能會失敗或自動移除。 當使用者嘗試重新連線時，源伺服器可能無法使用。
@@ -56,12 +42,12 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 一般而言，跨線路維護狀態適用于使用者主動建立資料的情況，而不只是讀取已經存在的資料。
 
-若要保留超過單一線路的狀態，*請勿只將資料儲存在伺服器的記憶體中*。 應用程式必須將資料保存到其他儲存位置。 狀態持續性不&mdash;是自動的，您必須在開發應用程式時採取步驟來執行具狀態的資料持續性。
+若要保留超過單一線路的狀態，*請勿只將資料儲存在伺服器的記憶體中*。 應用程式必須將資料保存到其他儲存位置。 狀態持續性不是自動的。 開發應用程式時，您必須採取步驟來執行具狀態的資料持續性。
 
 通常只有在高價值的狀態下，使用者才需要建立資料持續性。 在下列範例中，保存狀態可以節省商務工作的時間或輔助：
 
-* 多步驟 webform &ndash;當使用者的狀態遺失時，針對多步驟程式的數個已完成步驟重新輸入資料非常耗時。 如果使用者離開多步驟表單，並在稍後返回表單，則會在此案例中失去狀態。
-* 購物車&ndash;可以維護應用程式中代表潛在收益的任何商業重要元件。 失去其狀態的使用者，因此其購物車，可能會在日後返回網站時購買較少的產品或服務。
+* 多步驟 webform &ndash; 當使用者的狀態遺失時，針對多步驟程式的數個已完成步驟重新輸入資料非常耗時。 如果使用者離開多步驟表單，並在稍後返回表單，則會在此案例中失去狀態。
+* 購物車 &ndash; 可以維護應用程式中代表潛在收益的任何商業重要元件。 失去其狀態的使用者，因此其購物車，可能會在日後返回網站時購買較少的產品或服務。
 
 通常不需要保留容易重新建立的狀態，例如輸入登入對話方塊中未提交的使用者名稱。
 
@@ -70,7 +56,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 ## <a name="where-to-persist-state"></a>保存狀態的位置
 
-在Blazor伺服器應用程式中保存狀態有三個常見的位置。 每個方法最適合不同的案例，而且有不同的注意事項：
+在伺服器應用程式中保存狀態有三個常見的位置 Blazor 。 每個方法最適合不同的案例，而且有不同的注意事項：
 
 * [資料庫中的伺服器端](#server-side-in-a-database)
 * [URL](#url)
@@ -99,23 +85,23 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 瀏覽器的網址列內容會保留：
 
 * 如果使用者手動重載頁面。
-* 如果 web 伺服器變成無法使用&mdash;，則會強制使用者重載頁面，以便連接到不同的伺服器。
+* 如果網頁伺服器變得無法使用，而且會強制使用者重載頁面，以便連接到不同的伺服器。
 
-如需使用`@page`指示詞定義 URL 模式的詳細資訊<xref:blazor/routing>，請參閱。
+如需使用指示詞定義 URL 模式的詳細資訊 `@page` ，請參閱 <xref:blazor/routing> 。
 
 ### <a name="client-side-in-the-browser"></a>瀏覽器中的用戶端
 
-對於使用者主動建立的暫時性資料，常見的備份存放區是瀏覽器的`localStorage`和`sessionStorage`集合。 若已放棄迴圈，則不需要應用程式來管理或清除已儲存的狀態，這是優於伺服器端儲存體的優點。
+對於使用者主動建立的暫時性資料，常見的備份存放區是瀏覽器的 `localStorage` 和 `sessionStorage` 集合。 若已放棄迴圈，則不需要應用程式來管理或清除已儲存的狀態，這是優於伺服器端儲存體的優點。
 
 > [!NOTE]
-> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[ Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)。 `localStorage`和`sessionStorage`可以在 WebAssembly apps Blazor中使用，但只能透過撰寫自訂程式碼或使用協力廠商套件。
+> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[ Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)。 `localStorage`和 `sessionStorage` 可以在 WebAssembly apps 中使用， Blazor 但只能透過撰寫自訂程式碼或使用協力廠商套件。
 
-`localStorage`和`sessionStorage`的差異如下：
+`localStorage`和 `sessionStorage` 的差異如下：
 
-* `localStorage`的範圍設定為使用者的瀏覽器。 如果使用者重載頁面，或關閉並重新開啟瀏覽器，則狀態會保持不變。 如果使用者開啟多個瀏覽器索引標籤，則狀態會在索引標籤之間共用。 資料會保存`localStorage`在中，直到明確清除為止。
+* `localStorage`的範圍設定為使用者的瀏覽器。 如果使用者重載頁面，或關閉並重新開啟瀏覽器，則狀態會保持不變。 如果使用者開啟多個瀏覽器索引標籤，則狀態會在索引標籤之間共用。 資料會保存在中， `localStorage` 直到明確清除為止。
 * `sessionStorage`的範圍設定為使用者的瀏覽器索引標籤。如果使用者重載索引標籤，則狀態會保持不變。 如果使用者關閉索引標籤或瀏覽器，則狀態會遺失。 如果使用者開啟多個瀏覽器索引標籤，每個索引標籤都有自己獨立的資料版本。
 
-一般而言， `sessionStorage`使用較安全。 `sessionStorage`避免使用者開啟多個索引標籤並遇到下列問題的風險：
+一般而言， `sessionStorage` 使用較安全。 `sessionStorage`避免使用者開啟多個索引標籤並遇到下列問題的風險：
 
 * 索引標籤上狀態儲存體中的 bug。
 * 當索引標籤覆寫其他索引標籤的狀態時，會造成混淆的行為。
@@ -126,34 +112,34 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 * 類似于使用伺服器端資料庫，載入和儲存資料是非同步。
 * 與伺服器端資料庫不同的是，預先呈現期間無法使用儲存體，因為在預先呈現階段期間，瀏覽器中不存在要求的頁面。
-* 儲存幾 kb 的資料可合理保存Blazor伺服器應用程式。 除了幾 kb 以外，您還必須考慮效能上的影響，因為資料是透過網路載入和儲存。
+* 儲存幾 kb 的資料可合理保存 Blazor 伺服器應用程式。 除了幾 kb 以外，您還必須考慮效能上的影響，因為資料是透過網路載入和儲存。
 * 使用者可能會看到或篡改資料。 ASP.NET Core[資料保護](xref:security/data-protection/introduction)可以降低風險。
 
 ## <a name="third-party-browser-storage-solutions"></a>協力廠商瀏覽器儲存解決方案
 
-協力廠商 NuGet 套件提供使用`localStorage`和`sessionStorage`的 api。
+協力廠商 NuGet 套件提供使用和的 Api `localStorage` `sessionStorage` 。
 
 值得考慮選擇以透明方式使用 ASP.NET Core[資料保護](xref:security/data-protection/introduction)的套件。 ASP.NET Core 資料保護會將儲存的資料加密，並降低篡改已儲存資料的潛在風險。 如果 JSON 序列化資料是以純文字儲存，則使用者可以使用瀏覽器開發人員工具來查看資料，同時也會修改儲存的資料。 保護資料不一定會有問題，因為資料在本質上可能是很簡單的。 例如，讀取或修改 UI 專案的預存色彩對使用者或組織而言並不會有嚴重的安全性風險。 避免允許使用者檢查或篡改*敏感性資料*。
 
 ## <a name="protected-browser-storage-experimental-package"></a>受保護的瀏覽器儲存體實驗性封裝
 
-提供`localStorage`和`sessionStorage` [資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例是[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
+提供和[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例 `localStorage` `sessionStorage` 是[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
 
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage`是不支援的實驗性封裝，目前不適用於生產環境使用。
 
 ### <a name="installation"></a>安裝
 
-若要安裝`Microsoft.AspNetCore.ProtectedBrowserStorage`套件：
+若要安裝 `Microsoft.AspNetCore.ProtectedBrowserStorage` 套件：
 
-1. 在Blazor伺服器應用程式專案中，將套件參考新增至[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
-1. 在最上層 HTML 中（例如，在預設專案範本的*Pages/_Host. cshtml*檔案中），加入下列`<script>`標記：
+1. 在 Blazor 伺服器應用程式專案中，將套件參考新增至[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
+1. 在最上層 HTML 中（例如，在預設專案範本的*Pages/_Host. cshtml*檔案中），加入下列 `<script>` 標記：
 
    ```html
    <script src="_content/Microsoft.AspNetCore.ProtectedBrowserStorage/protectedBrowserStorage.js"></script>
    ```
 
-1. 在`Startup.ConfigureServices`方法中，呼叫`AddProtectedBrowserStorage`以將`localStorage`和`sessionStorage`服務新增至服務集合：
+1. 在 `Startup.ConfigureServices` 方法中，呼叫 `AddProtectedBrowserStorage` 以將 `localStorage` 和 `sessionStorage` 服務新增至服務集合：
 
    ```csharp
    services.AddProtectedBrowserStorage();
@@ -161,21 +147,21 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 ### <a name="save-and-load-data-within-a-component"></a>儲存和載入元件中的資料
 
-在需要將資料載入或儲存至瀏覽器儲存體的任何元件[`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component)中，使用來插入下列任一項的實例：
+在需要將資料載入或儲存至瀏覽器儲存體的任何元件中，使用 [`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component) 來插入下列任一項的實例：
 
 * `ProtectedLocalStorage`
 * `ProtectedSessionStorage`
 
-選擇取決於您想要使用的備份存放區。 在下列範例中， `sessionStorage`會使用：
+選擇取決於您想要使用的備份存放區。 在下列範例中， `sessionStorage` 會使用：
 
 ```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
 
-語句可以放入 _Imports 的 razor 檔案中，而不是在元件中。 *_Imports.razor* `@using` 使用 *_Imports razor*檔案可讓應用程式或整個應用程式的較大區段使用命名空間。
+`@using`語句可以放入 *_Imports 的 razor*檔案中，而不是在元件中。 使用 *_Imports razor*檔案可讓應用程式或整個應用程式的較大區段使用命名空間。
 
-若要將`currentCount`值保存在`Counter`專案範本的元件中，請修改`IncrementCount`要使用`ProtectedSessionStore.SetAsync`的方法：
+若要將 `currentCount` 值保存在 `Counter` 專案範本的元件中，請修改 `IncrementCount` 要使用的方法 `ProtectedSessionStore.SetAsync` ：
 
 ```csharp
 private async Task IncrementCount()
@@ -187,9 +173,9 @@ private async Task IncrementCount()
 
 在更大、更實際的應用程式中，個別欄位的儲存是不太可能發生的情況。 應用程式較可能儲存包含複雜狀態的整個模型物件。 `ProtectedSessionStore`自動序列化和還原序列化 JSON 資料。
 
-在上述程式碼範例中， `currentCount`資料會在使用者`sessionStorage['count']`的瀏覽器中儲存為。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果`sessionStorage['count']`是在瀏覽器的開發人員主控台中評估，則可以看到加密的資料。
+在上述程式碼範例中， `currentCount` 資料會 `sessionStorage['count']` 在使用者的瀏覽器中儲存為。 資料不會以純文字儲存，而是使用 ASP.NET Core 的[資料保護](xref:security/data-protection/introduction)來保護。 如果 `sessionStorage['count']` 是在瀏覽器的開發人員主控台中評估，則可以看到加密的資料。
 
-若要在`currentCount`使用者稍後回到`Counter`元件時復原資料（包括它們是否在全新的線路上），請使用`ProtectedSessionStore.GetAsync`：
+若要 `currentCount` 在使用者稍後回到元件時復原資料 `Counter` （包括它們是否在全新的線路上），請使用 `ProtectedSessionStore.GetAsync` ：
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -198,7 +184,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-如果元件的參數包含導覽狀態，請呼叫`ProtectedSessionStore.GetAsync`並在中`OnParametersSetAsync`指派結果，而`OnInitializedAsync`不是。 `OnInitializedAsync`只有在第一次具現化元件時，才會呼叫一次。 `OnInitializedAsync`如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱<xref:blazor/lifecycle>。
+如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在中指派結果 `OnParametersSetAsync` ，而不是 `OnInitializedAsync` 。 `OnInitializedAsync`只有在第一次具現化元件時，才會呼叫一次。 `OnInitializedAsync`如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱<xref:blazor/lifecycle>。
 
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：
@@ -211,7 +197,7 @@ protected override async Task OnInitializedAsync()
 
 由於瀏覽器儲存體是非同步（透過網路連線存取），因此在載入資料並可供元件使用之前，一律會有一段時間。 若要獲得最佳結果，請在載入進行時轉譯載入狀態訊息，而不是顯示空白或預設的資料。
 
-其中一種方法是追蹤資料是否為`null` （仍在載入中）。 在預設`Counter`元件中，計數會保留在中`int`。 將`currentCount`問號（`?`）新增至類型（`int`），使其成為可為 null：
+其中一種方法是追蹤資料是否為 `null` （仍在載入中）。 在預設 `Counter` 元件中，計數會保留在中 `int` 。 將 `currentCount` 問號（ `?` ）新增至類型（），使其成為可為 null `int` ：
 
 ```csharp
 private int? currentCount;
@@ -239,15 +225,15 @@ else
 * 與使用者的瀏覽器之間的互動連接不存在。
 * 瀏覽器還沒有可執行 JavaScript 程式碼的頁面。
 
-`localStorage`或`sessionStorage`在預做期間無法使用。 如果元件嘗試與存放裝置互動，則會產生類似下列的錯誤：
+`localStorage`或 `sessionStorage` 在預做期間無法使用。 如果元件嘗試與存放裝置互動，則會產生類似下列的錯誤：
 
 > 目前無法發出 JavaScript interop 呼叫。 這是因為正在資源清單元件。
 
-解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 因為應用程式無法提供任何有用的內容，直到`localStorage`或`sessionStorage`可供使用，因此會增加複雜性並不會讓應用程式受益。
+解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 因為應用程式無法提供任何有用的內容，直到 `localStorage` 或可供使用，因此會增加複雜性並不會讓應用程式受益 `sessionStorage` 。
 
-若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案`render-mode` ，並將[元件標記](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)協助<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server>程式的變更為。
+若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，並將 `render-mode` [元件標記](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)協助程式的變更為 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> 。
 
-如果是其他未使用`localStorage`或的頁面，則`sessionStorage`會進行預呈現。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
+如果是其他未使用或的頁面，則會進行預呈現 `localStorage` `sessionStorage` 。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
 
 ```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
@@ -288,7 +274,7 @@ else
 
 如果許多元件都依賴以瀏覽器為基礎的儲存體，則重新執行狀態提供者程式碼很多次會建立程式碼重複。 避免程式碼重複的其中一個選項是建立一個可封裝狀態提供者邏輯的*狀態供應器父元件*。 子元件可以使用持續性資料，而不考慮狀態持續性機制。
 
-在下列`CounterStateProvider`元件範例中，會保存計數器資料：
+在下列元件範例中 `CounterStateProvider` ，會保存計數器資料：
 
 ```razor
 @using Microsoft.AspNetCore.ProtectedBrowserStorage
@@ -328,7 +314,7 @@ else
 
 `CounterStateProvider`元件在載入完成之前，不會呈現其子內容來處理載入階段。
 
-若要使用`CounterStateProvider`元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取該狀態`CounterStateProvider` ，請將`Router`元件包裝`App`在元件中的周圍（*razor*）：
+若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取該狀態，請將 `CounterStateProvider` 元件包裝 `Router` 在元件中的周圍 `App` （*razor*）：
 
 ```razor
 <CounterStateProvider>
@@ -338,7 +324,7 @@ else
 </CounterStateProvider>
 ```
 
-包裝的元件會接收並可修改保存的計數器狀態。 下列`Counter`元件會執行模式：
+包裝的元件會接收並可修改保存的計數器狀態。 下列 `Counter` 元件會執行模式：
 
 ```razor
 @page "/counter"
@@ -359,9 +345,9 @@ else
 }
 ```
 
-先前的元件不需要與互動`ProtectedBrowserStorage`，也不會處理「載入」階段。
+先前的元件不需要與互動 `ProtectedBrowserStorage` ，也不會處理「載入」階段。
 
-如先前所述，若要處理`CounterStateProvider`已進行的已修訂，可以修改，讓取用計數器資料的所有元件都能自動以可處理方式使用。 如需詳細資訊，請參閱處理預進行[處理](#handle-prerendering)一節。
+如先前所述，若要處理已進行的已 `CounterStateProvider` 修訂，可以修改，讓取用計數器資料的所有元件都能自動以可處理方式使用。 如需詳細資訊，請參閱處理預進行[處理](#handle-prerendering)一節。
 
 一般情況下，建議使用*狀態供應器父元件*模式：
 

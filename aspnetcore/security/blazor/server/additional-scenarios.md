@@ -1,11 +1,11 @@
 ---
 title: ASP.NET Core Blazor Server 其他安全性案例
 author: guardrex
-description: 瞭解如何設定Blazor伺服器以進行其他安全性案例。
+description: 瞭解如何設定 Blazor 伺服器以進行其他安全性案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/27/2020
+ms.date: 05/19/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,22 +13,22 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/server/additional-scenarios
-ms.openlocfilehash: 95e9e57889fdbb5270f895874c9b8148ae4ca48d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 9d26cde4d8964a8285241bb0158d8e6f8d5f8dbc
+ms.sourcegitcommit: 16b3abec1ed70f9a206f0cfa7cf6404eebaf693d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82772800"
+ms.lasthandoff: 05/17/2020
+ms.locfileid: "83444070"
 ---
 # <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server 其他安全性案例
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)
 
-## <a name="pass-tokens-to-a-blazor-server-app"></a>將權杖傳遞至Blazor伺服器應用程式
+## <a name="pass-tokens-to-a-blazor-server-app"></a>將權杖傳遞至 Blazor 伺服器應用程式
 
-您可以使用本節所Razor述的方法Blazor ，將伺服器應用程式中元件外部可用的權杖傳遞給元件。 如需範例程式碼，包括`Startup.ConfigureServices`完整的範例，請參閱將[權杖傳遞給伺服器Blazor端應用程式](https://github.com/javiercn/blazor-server-aad-sample)。
+您 Razor Blazor 可以使用本節所述的方法，將伺服器應用程式中元件外部可用的權杖傳遞給元件。 如需範例程式碼，包括完整的 `Startup.ConfigureServices` 範例，請參閱將[權杖傳遞給伺服器端 Blazor 應用程式](https://github.com/javiercn/blazor-server-aad-sample)。
 
-驗證服務器Blazor應用程式的方式與一般Razor頁面或 MVC 應用程式一樣。 布建權杖並將其儲存至驗證 cookie。 例如：
+驗證 Blazor 伺服器應用程式的方式與一般 Razor 頁面或 MVC 應用程式一樣。 布建權杖並將其儲存至驗證 cookie。 例如：
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -56,7 +56,7 @@ public class InitialApplicationState
 }
 ```
 
-定義可**scoped**在Blazor應用程式內使用的範圍權杖提供者服務，以從相依性[插入（DI）](xref:blazor/dependency-injection)解析權杖：
+定義可在應用程式內使用的**範圍**權杖提供者服務， Blazor 以從相依性[插入（DI）](xref:blazor/dependency-injection)解析權杖：
 
 ```csharp
 public class TokenProvider
@@ -66,7 +66,7 @@ public class TokenProvider
 }
 ```
 
-在`Startup.ConfigureServices`中，為新增服務：
+在中 `Startup.ConfigureServices` ，為新增服務：
 
 * `IHttpClientFactory`
 * `TokenProvider`
@@ -76,7 +76,7 @@ services.AddHttpClient();
 services.AddScoped<TokenProvider>();
 ```
 
-在 *_Host 的 cshtml*檔案中，建立和實例， `InitialApplicationState`並將它當做參數傳遞給應用程式：
+在 *_Host 的 cshtml*檔案中，建立和實例， `InitialApplicationState` 並將它當做參數傳遞給應用程式：
 
 ```cshtml
 @using Microsoft.AspNetCore.Authentication
@@ -97,7 +97,7 @@ services.AddScoped<TokenProvider>();
 </app>
 ```
 
-在`App`元件（*razor*）中，解析服務，並使用參數中的資料進行初始化：
+在 `App` 元件（*razor*）中，解析服務，並使用參數中的資料進行初始化：
 
 ```razor
 @inject TokenProvider TokenProvider
@@ -147,3 +147,64 @@ public class WeatherForecastService
     }
 }
 ```
+
+## <a name="use-open-id-connect-oidc-v20-endpoints"></a>使用 Open ID Connect （OIDC） v2.0 端點
+
+驗證程式庫和 Blazor 範本會使用 OPEN ID Connect （OIDC） v1.0 端點。 若要使用 v2.0 端點，請 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> 在中設定選項 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> ：
+
+```csharp
+services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, 
+    options =>
+    {
+        options.Authority += "/v2.0";
+    }
+```
+
+或者，您也可以在應用程式設定（*appsettings*）檔案中進行設定：
+
+```json
+{
+  "AzureAd": {
+    "Authority": "https://login.microsoftonline.com/common/oauth2/v2.0/",
+    ...
+  }
+}
+```
+
+如果在區段上對授權單位的追蹤不適合應用程式的 OIDC 提供者（例如使用非 AAD 提供者），請 `Authority` 直接設定屬性。 請在 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> 應用程式佈建檔中，以金鑰設定或的屬性 `Authority` 。
+
+### <a name="code-changes"></a>程式碼變更
+
+* 針對 v2.0 端點，識別碼權杖中的宣告清單會變更。 如需詳細資訊，請參閱[為何要更新至 Microsoft 身分識別平臺（v2.0）？](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison) 在 Azure 檔中。
+* 因為在 v2.0 端點的範圍 Uri 中指定了資源，所以請移除 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> 中的屬性設定 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> ：
+
+  ```csharp
+  services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options => 
+      {
+          ...
+          options.Resource = "...";    // REMOVE THIS LINE
+          ...
+      }
+      ```
+
+  For more information, see [Scopes, not resources](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#scopes-not-resources) in the Azure documentation.
+
+### App ID URI
+
+* When using v2.0 endpoints, APIs define an *App ID URI*, which is meant to represent a unique identifier for the API.
+* All scopes include the App ID URI as a prefix, and v2.0 endpoints emit access tokens with the App ID URI as the audience.
+* When using V2.0 endpoints, the client ID configured in the Server API changes from the API Application ID (Client ID) to the App ID URI.
+
+*appsettings.json*:
+
+```json
+{
+  "AzureAd": {
+    ...
+    "ClientId": "https://{TENANT}.onmicrosoft.com/{APP NAME}"
+    ...
+  }
+}
+```
+
+您可以在 OIDC 提供者應用程式註冊描述中找到要使用的應用程式識別碼 URI。

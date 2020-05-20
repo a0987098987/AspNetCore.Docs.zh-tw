@@ -1,50 +1,36 @@
 ---
-title: 裝載和部署 ASP.NET Core Blazor WebAssembly
-author: guardrex
-description: 瞭解如何使用 ASP.NET Core、內容傳遞Blazor網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 05/07/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: e136a401beffe9cc7e29906b3631ab3f068b30fd
-ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967593"
+標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
 By [Luke Latham](https://github.com/guardrex)、 [Rainer Stropek](https://www.timecockpit.com)、 [Daniel Roth](https://github.com/danroth27)、 [Ben Adams](https://twitter.com/ben_a_adams)和[Safia Abdalla](https://safia.rocks)
 
-[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
+使用[ Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)：
 
-使用[Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)：
-
-* Blazor 應用程式、其相依性和 .NET 執行時間會以平行方式下載至瀏覽器。
+* Blazor應用程式、其相依性和 .net 執行時間會以平行方式下載至瀏覽器。
 * 應用程式會直接在瀏覽器 UI 執行緒上執行。
 
 支援下列部署策略：
 
-* Blazor 應用程式由 ASP.NET Core 應用程式提供服務。 此策略已於[搭配 ASP.NET Core 的已裝載部署](#hosted-deployment-with-aspnet-core)一節中涵蓋。
-* Blazor 應用程式放在靜態裝載的網頁伺服器或服務上，其中 .NET 不會用來提供服務給 Blazor 應用程式。 此策略涵蓋于[獨立部署](#standalone-deployment)一節，其中包含將 Blazor WebAssembly 應用程式裝載為 IIS 子應用程式的相關資訊。
+* Blazor應用程式是由 ASP.NET Core 應用程式提供。 此策略已於[搭配 ASP.NET Core 的已裝載部署](#hosted-deployment-with-aspnet-core)一節中涵蓋。
+* Blazor應用程式會放在靜態裝載的 web 伺服器或服務上，其中 .net 不會用來服務 Blazor 應用程式。 此策略在[獨立部署](#standalone-deployment)一節中涵蓋，其中包括裝載 Blazor WebAssembly 應用程式作為 IIS 子應用程式的相關資訊。
 
 ## <a name="brotli-precompression"></a>Brotli precompression
 
-發行 Blazor WebAssembly 應用程式時，會使用最高層級的[Brotli 壓縮演算法](https://tools.ietf.org/html/rfc7932)來 precompressed 輸出，以減少應用程式大小，並移除執行時間壓縮的需求。
+Blazor發佈 WebAssembly 應用程式時，會使用最高層級的[Brotli 壓縮演算法](https://tools.ietf.org/html/rfc7932)precompressed 輸出，以減少應用程式大小，並移除執行時間壓縮的需求。
 
 如需 IIS *web.config*壓縮設定，請參閱[iis： Brotli 和 Gzip 壓縮](#brotli-and-gzip-compression)一節。
 
 ## <a name="rewrite-urls-for-correct-routing"></a>重寫 URL 以便正確地路由
 
-Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像是 Blazor 伺服器（裝載的應用程式）中的路由要求一樣簡單。 假設有兩個元件的 Blazor WebAssembly 應用程式：
+WebAssembly 應用程式中頁面元件的路由要求 Blazor ，並不像伺服器上裝載的 Blazor 應用程式中的路由要求一樣簡單。 假設有 Blazor 兩個元件的 WebAssembly 應用程式：
 
 * *Main.razor* &ndash; 載入應用程式根目錄，同時包含 `About` 元件 (`href="About"`) 的連結。
 * *About.razor* &ndash; `About` 元件。
@@ -54,21 +40,21 @@ Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像是 Bla
 1. 瀏覽器提出要求。
 1. 傳回預設頁面，這通常是 *index.html*。
 1. *index.html* 啟動載入應用程式。
-1. Blazor 的路由器會載入，且會轉譯 Razor `Main` 元件。
+1. Blazor的路由器會載入，並 Razor `Main` 呈現元件。
 
-在主頁面中，選取用戶端 `About` 元件的連結有用，因為 Blazor 路由器會停止瀏覽器，使其不再從網際網路對 `www.contoso.com` 提出針對 `About` 的要求，並自行提供轉譯的 `About` 元件。 *Blazor WebAssembly 應用程式內*內部端點的所有要求都以相同的方式工作：要求不會對網際網路上伺服器裝載的資源觸發瀏覽器型要求。 路由器會在內部處理要求。
+在主頁面中，選取元件的連結可 `About` 在用戶端上運作，因為 Blazor 路由器會阻止瀏覽器針對在網際網路上提出要求， `www.contoso.com` `About` 並提供所呈現 `About` 元件本身。 * Blazor WebAssembly 應用程式內*內部端點的所有要求都以相同的方式工作：要求不會對網際網路上伺服器裝載的資源觸發瀏覽器型要求。 路由器會在內部處理要求。
 
 如果使用瀏覽器之網址列提出對 `www.contoso.com/About` 的要求，則要求會失敗。 在應用程式的網際網路主機上沒有這類資源存在，因此會傳回「404 - 找不到」** 的回應。
 
-因為瀏覽器會提出要求給以網際網路為基礎的主機以取得用戶端頁面，所以網頁伺服器和裝載服務必須針對實際上不在伺服器上資源，將所有要求重新撰寫至 *index.html* 頁面。 當傳回*index. html*時，應用程式的 Blazor 路由器會接管並回應正確的資源。
+因為瀏覽器會提出要求給以網際網路為基礎的主機以取得用戶端頁面，所以網頁伺服器和裝載服務必須針對實際上不在伺服器上資源，將所有要求重新撰寫至 *index.html* 頁面。 當傳回*index. html*時，應用程式的 Blazor 路由器會接管並以正確的資源回應。
 
 部署到 IIS 伺服器時，您可以使用 URL 重寫模組搭配應用*程式已發佈的 web.config 檔案*。 如需詳細資訊，請參閱[IIS](#iis)一節。
 
 ## <a name="hosted-deployment-with-aspnet-core"></a>搭配 ASP.NET Core 的已裝載部署
 
-*託管部署*可從 web 伺服器上執行的[ASP.NET Core 應用程式](xref:index)，將 Blazor WebAssembly 應用程式提供給瀏覽器。
+*託管部署* Blazor 可從 web 伺服器上執行的[ASP.NET Core 應用程式](xref:index)，將 WebAssembly 應用程式提供給瀏覽器。
 
-用戶端 Blazor WebAssembly 應用程式會發佈到伺服器應用程式的 */BIN/RELEASE/{TARGET FRAMEWORK}/publish/wwwroot*資料夾中，以及伺服器應用程式的任何其他靜態 web 資產。 這兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對**裝載的部署**，Visual Studio 包括**Blazor WebAssembly 應用程式**專案範本（`blazorwasm`使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的範本）和選取的裝載選項（`-ho|--hosted`使用`dotnet new`命令時）。
+用戶端 Blazor WebAssembly 應用程式會發佈到伺服器應用程式的 */bin/Release/{TARGET FRAMEWORK}/publish/wwwroot*資料夾，以及伺服器應用程式的任何其他靜態 web 資產。 這兩個應用程式會一起部署。 需要有能夠裝載 ASP.NET Core 應用程式的網頁伺服器。 針對裝載的部署，Visual Studio 包括** Blazor WebAssembly 應用程式**專案範本（ `blazorwasm` 使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的範本）和選取**Hosted**的裝載選項（ `-ho|--hosted` 使用命令時 `dotnet new` ）。
 
 如需 ASP.NET Core 應用程式裝載和部署的詳細資訊，請參閱 <xref:host-and-deploy/index>。
 
@@ -76,25 +62,25 @@ Blazor WebAssembly 應用程式中頁面元件的路由要求，並不像是 Bla
 
 ## <a name="standalone-deployment"></a>獨立部署
 
-*獨立部署*可將 Blazor WebAssembly 應用程式當做一組直接由用戶端要求的靜態檔案來提供。 所有靜態檔案伺服器都能夠支援 Blazor 應用程式。
+*獨立部署* Blazor 會將 WebAssembly 應用程式當做一組直接由用戶端要求的靜態檔案來提供。 任何靜態檔案伺服器都可以服務 Blazor 應用程式。
 
 獨立部署資產會發佈到 */BIN/RELEASE/{TARGET FRAMEWORK}/publish/wwwroot*資料夾中。
 
 ### <a name="azure-app-service"></a>Azure App Service
 
-Blazor WebAssembly 應用程式可以部署到 Windows 上的 Azure App 服務，在[IIS](#iis)上裝載應用程式。
+BlazorWebAssembly apps 可以部署到 Windows 上的 Azure App 服務，在[IIS](#iis)上裝載應用程式。
 
-目前不支援將獨立 Blazor WebAssembly 應用程式部署至適用于 Linux 的 Azure App Service。 目前無法使用可裝載應用程式的 Linux 伺服器映射。 正在進行工作，以啟用此案例。
+Blazor目前不支援將獨立 WebAssembly 應用程式部署至適用于 Linux 的 Azure App Service。 目前無法使用可裝載應用程式的 Linux 伺服器映射。 正在進行工作，以啟用此案例。
 
 ### <a name="iis"></a>IIS
 
-IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 IIS 來裝載 Blazor，請參閱[在 IIS 上建置靜態網站](/iis/manage/creating-websites/scenario-build-a-static-website-on-iis)。
+IIS 是適用于應用程式的靜態檔案伺服器 Blazor 。 若要設定 IIS 來裝載 Blazor ，請參閱[在 Iis 上建立靜態網站](/iis/manage/creating-websites/scenario-build-a-static-website-on-iis)。
 
 已發行的資產會建立在 */bin/Release/{TARGET FRAMEWORK}/publish* 資料夾中。 在網頁伺服器或裝載服務上，裝載 *publish* 資料夾的內容。
 
 #### <a name="webconfig"></a>web.config
 
-發佈 Blazor 專案時，會建立 *web.config* 檔案，並使用下列 IIS 組態：
+Blazor發行專案時，會使用下列 IIS 設定來建立*web.config*檔案：
 
 * 針對下列副檔名設定 MIME 類型：
   * *.dll* &ndash;`application/octet-stream`
@@ -133,7 +119,7 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
 
 * 停用繼承的 ASP.NET Core 模組處理常式。
 
-  將`<handlers>`區段新增至檔案，以移除 Blazor 應用*程式已發佈的 web.config 檔案*中的處理常式：
+  Blazor將區段新增至檔案，以移除應用程式已發佈的*web.config*檔案中的處理常式 `<handlers>` ：
 
   ```xml
   <handlers>
@@ -141,7 +127,7 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
   </handlers>
   ```
 
-* 使用`inheritInChildApplications`設定為`false`的`<location>`元素，停用根（ `<system.webServer>`父系）應用程式區段的繼承：
+* `<system.webServer>`使用設定為的元素，停用根（父系）應用程式區段的繼承 `<location>` `inheritInChildApplications` `false` ：
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -161,22 +147,22 @@ IIS 是足以支援 Blazor 應用程式的靜態檔案伺服器。 若要設定 
 
 #### <a name="brotli-and-gzip-compression"></a>Brotli 和 Gzip 壓縮
 
-您可以*透過 web.config 來設定 IIS，以*提供 Brotli 或 Gzip 壓縮 Blazor 資產。 如需設定範例，請參閱[web.config](webassembly/_samples/web.config?raw=true)。
+您可以*透過 web.config 來設定 IIS，以*提供 Brotli 或 Gzip 壓縮的 Blazor 資產。 如需設定範例，請參閱[web.config](webassembly/_samples/web.config?raw=true)。
 
 #### <a name="troubleshooting"></a>疑難排解
 
-如果收到「500 - 內部伺服器錯誤」**，且 IIS 管理員在嘗試存取網站設定時擲回錯誤，請確認是否已安裝 URL Rewrite 模組。 未安裝此模組時，IIS 無法剖析 *web.config* 檔案。 這導致 IIS 管理員無法載入網站的組態，且網站無法提供 Blazor 的靜態檔案。
+如果收到「500 - 內部伺服器錯誤」**，且 IIS 管理員在嘗試存取網站設定時擲回錯誤，請確認是否已安裝 URL Rewrite 模組。 未安裝此模組時，IIS 無法剖析 *web.config* 檔案。 這可防止 IIS 管理員從服務的靜態檔案載入網站的設定和網站 Blazor 。
 
 如需針對部署至 IIS 進行疑難排解的詳細資訊，請參閱 <xref:test/troubleshoot-azure-iis>。
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
-[Azure 儲存體](/azure/storage/)靜態檔案裝載允許裝載無伺服器 Blazor 應用程式。 支援自訂網域名稱、Azure 內容傳遞網路 (CDN) 及 HTTPS。
+[Azure 儲存體](/azure/storage/)靜態檔案裝載允許無伺服器 Blazor 應用程式裝載。 支援自訂網域名稱、Azure 內容傳遞網路 (CDN) 及 HTTPS。
 
 當 Blob 服務針對儲存體帳戶上的靜態網站裝載啟用時：
 
 * 將 [索引文件名稱]**** 設定為 `index.html`。
-* 將 [錯誤文件路徑]**** 設定為 `index.html`。 Razor 元件和其他非檔案端點不會位於由 Blob 服務所存放之靜態內容中的實體路徑上。 當系統接收到針對這些資源之一，且應由 Blazor 路由器處理的要求時，由 Blob 服務所產生的「404 - 找不到」** 錯誤會將要求路由至**錯誤文件路徑**。 系統會傳回 *index.html* Blob，且 Blazor 路由器會載入並處理該路徑。
+* 將 [錯誤文件路徑]**** 設定為 `index.html`。 Razor元件和其他非檔案端點不會位於 blob 服務所儲存之靜態內容中的實體路徑。 收到路由器應處理的其中一個資源的要求時 Blazor ，由 blob 服務產生的*404-找不*到的錯誤會將要求路由傳送至**錯誤檔路徑**。 會傳回*索引 .html* blob，且 Blazor 路由器會載入並處理路徑。
 
 如需詳細資訊，請參閱 [Azure 儲存體中的靜態網站裝載](/azure/storage/blobs/storage-blob-static-website)。
 
@@ -202,7 +188,7 @@ http {
 
 ### <a name="nginx-in-docker"></a>Docker 中的 Nginx
 
-若要在 Docker 中使用 Nginx 裝載 Blazor，請設定 Dockerfile 以使用以 Alpine 為基礎的 Nginx 映像。 更新 Dockerfile，將 *nginx.config* 檔案複製到容器內。
+若要 Blazor 使用 Nginx 在 Docker 中裝載，請將 Dockerfile 設定為使用以 Alpine 為基礎的 Nginx 映射。 更新 Dockerfile，將 *nginx.config* 檔案複製到容器內。
 
 如下列範例所示，新增一行至 Dockerfile：
 
@@ -214,7 +200,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ### <a name="apache"></a>Apache
 
-若要將 Blazor WebAssembly 應用程式部署到 CentOS 7 或更新版本：
+若要將 Blazor WebAssembly 應用程式部署至 CentOS 7 或更新版本：
 
 1. 建立 Apache 設定檔。 下列範例是一個簡化的設定檔案（*blazorapp*）：
 
@@ -252,9 +238,9 @@ COPY nginx.conf /etc/nginx/nginx.conf
    </VirtualHost>
    ```
 
-1. 將 Apache 設定檔案放在`/etc/httpd/conf.d/`目錄中，這是 CentOS 7 中的預設 Apache 設定目錄。
+1. 將 Apache 設定檔案放在 `/etc/httpd/conf.d/` 目錄中，這是 CentOS 7 中的預設 Apache 設定目錄。
 
-1. 將應用程式的檔案放入`/var/www/blazorapp`目錄`DocumentRoot`中（在設定檔中指定的位置）。
+1. 將應用程式的檔案放入 `/var/www/blazorapp` 目錄中（在 `DocumentRoot` 設定檔中指定的位置）。
 
 1. 重新開機 Apache 服務。
 
@@ -268,7 +254,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="host-configuration-values"></a>主機組態值
 
-[Blazor WebAssembly apps](xref:blazor/hosting-models#blazor-webassembly)可以在開發環境中的執行時間，接受下列主機設定值做為命令列引數。
+[ Blazor WebAssembly apps](xref:blazor/hosting-models#blazor-webassembly)可以在開發環境中的執行時間，接受下列主機設定值做為命令列引數。
 
 ### <a name="content-root"></a>內容根目錄
 
@@ -286,7 +272,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
   "commandLineArgs": "--contentroot=/content-root-path"
   ```
 
-* 在 Visual Studio 中，于 [**屬性** > ] [**調試** > **程式引數**] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
+* 在 Visual Studio 中，于 [**屬性**] [  >  **調試**  >  **程式引數**] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
 
   ```console
   --contentroot=/content-root-path
@@ -294,7 +280,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ### <a name="path-base"></a>路徑基底
 
-引數`href`會設定應用程式以非根相對 URL 路徑在本機執行的應用程式基底路徑（ `<base>`此標籤會設定為預備和`/`生產以外的路徑）。 `--pathbase` 在下列範例中，`/relative-URL-path` 是應用程式的路徑基底。 如需詳細資訊，請參閱[應用程式基底路徑](xref:host-and-deploy/blazor/index#app-base-path)。
+`--pathbase`引數會設定應用程式以非根相對 URL 路徑在本機執行的應用程式基底路徑（此標籤 `<base>` `href` 會設定為 `/` 預備和生產以外的路徑）。 在下列範例中，`/relative-URL-path` 是應用程式的路徑基底。 如需詳細資訊，請參閱[應用程式基底路徑](xref:host-and-deploy/blazor/index#app-base-path)。
 
 > [!IMPORTANT]
 > 不同於提供給 `<base>` 標籤 `href` 的路徑，在傳遞 `--pathbase` 引數值時請勿包含尾端的斜線 (`/`)。 如果應用程式基底路徑提供於 `<base>` 標籤作為 `<base href="/CoolApp/">` (包括尾端的斜線)，請將命令列引數值傳遞為 `--pathbase=/CoolApp` (不含尾端的斜線)。
@@ -311,7 +297,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
   "commandLineArgs": "--pathbase=/relative-URL-path"
   ```
 
-* 在 Visual Studio 中，于 [**屬性** > ] [**調試** > **程式引數**] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
+* 在 Visual Studio 中，于 [**屬性**] [  >  **調試**  >  **程式引數**] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
 
   ```console
   --pathbase=/relative-URL-path
@@ -333,7 +319,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
   "commandLineArgs": "--urls=http://127.0.0.1:0"
   ```
 
-* 在 Visual Studio 中，于 [**屬性** > ] [**調試** > **程式引數**] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
+* 在 Visual Studio 中，于 [**屬性**] [  >  **調試**  >  **程式引數**] 中指定引數。 在 Visual Studio 屬性頁中設定引數，會將引數新增至 *launchSettings.json* 檔案。
 
   ```console
   --urls=http://127.0.0.1:0
@@ -341,30 +327,88 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸出元件中移除不必要的 IL。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。
+Blazor在每個發行組建上執行中繼語言（IL）連結，以從輸出元件移除不必要的 IL。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。
 
 ## <a name="custom-boot-resource-loading"></a>自訂開機資源載入
 
-您可以使用`loadBootResource`函式來初始化 Blazor WebAssembly 應用程式，以覆寫內建的開機資源載入機制。 在`loadBootResource`下列情況下使用：
+BlazorWebAssembly 應用程式可以使用函式進行初始化， `loadBootResource` 以覆寫內建的開機資源載入機制。 `loadBootResource`在下列情況下使用：
 
 * 允許使用者從 CDN 載入靜態資源，例如時區資料或*dotnet wasm。*
 * 使用 HTTP 要求載入壓縮的元件，並將它們解壓縮到不支援從伺服器提取壓縮內容的主機用戶端上。
-* 將每個`fetch`要求重新導向至新名稱，以將資源別名設為不同名稱。
+* 將每個要求重新導向至新名稱，以將資源別名設為不同名稱 `fetch` 。
 
 `loadBootResource`參數會出現在下表中。
 
-| 參數    | 描述 |
-| ------------ | ----------- |
-| `type`       | 資源類型。 運算子類型： `assembly`、 `pdb`、 `dotnetjs`、 `dotnetwasm`、`timezonedata` |
-| `name`       | 資源名稱。 |
-| `defaultUri` | 資源的相對或絕對 URI。 |
-| `integrity`  | 代表回應中預期內容的完整性字串。 |
+| 參數    | 說明 |
+| ---
+標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題：「裝載和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |`type`       |資源的類型。 運算子類型： `assembly` 、 `pdb` 、 `dotnetjs` 、 `dotnetwasm` 、 `timezonedata` | | `name`      |資源的名稱。 | |`defaultUri` |資源的相對或絕對 URI。 | |`integrity`  |代表回應中預期內容的完整性字串。 |
 
 `loadBootResource`傳回下列任何一項，以覆寫載入進程：
 
-* URI 字串。 在下列範例（*wwwroot/index.html*）中，從 CDN 提供下列檔案`https://my-awesome-cdn.com/`：
+* URI 字串。 在下列範例（*wwwroot/index.html*）中，從 CDN 提供下列檔案 `https://my-awesome-cdn.com/` ：
 
-  * *dotnet.\*.js*
+  * *dotnet。 \*node.js*
   * *dotnet. wasm*
   * 時區資料
 
@@ -387,9 +431,9 @@ Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸�
   </script>
   ```
 
-* `Promise<Response>`. 在標`integrity`頭中傳遞參數，以保留預設的完整性檢查行為。
+* `Promise<Response>`. `integrity`在標頭中傳遞參數，以保留預設的完整性檢查行為。
 
-  下列範例（*wwwroot/index.html*）會將自訂 HTTP 標頭新增至輸出要求，並`integrity`將參數傳遞至`fetch`呼叫：
+  下列範例（*wwwroot/index.html*）會將自訂 HTTP 標頭新增至輸出要求，並將參數傳遞至 `integrity` `fetch` 呼叫：
   
   ```html
   <script src="_framework/blazor.webassembly.js" autostart="false"></script>
@@ -410,7 +454,7 @@ Blazor 會在每個發行組建上執行中繼語言（IL）連結，以從輸�
 
 外部來源必須傳回瀏覽器所需的 CORS 標頭，以允許跨原始來源資源載入。 根據預設，Cdn 通常會提供必要的標頭。
 
-您只需要指定自訂行為的類型。 根據預設載入行為`loadBootResource` ，架構會載入未指定的類型。
+您只需要指定自訂行為的類型。 根據 `loadBootResource` 預設載入行為，架構會載入未指定的類型。
 
 ## <a name="change-the-filename-extension-of-dll-files"></a>變更 DLL 檔案的副檔名
 
@@ -427,11 +471,23 @@ dir .\_framework\_bin | rename-item -NewName { $_.name -replace ".dll\b",".bin" 
 ((Get-Content .\_framework\blazor.boot.json -Raw) -replace '.dll"','.bin"') | Set-Content .\_framework\blazor.boot.json
 ```
 
+如果服務工作者資產也在使用中，請新增下列命令：
+
+```powershell
+((Get-Content .\service-worker-assets.js -Raw) -replace '.dll"','.bin"') | Set-Content .\service-worker-assets.js
+```
+
 在 Linux 或 macOS 上：
 
 ```console
 for f in _framework/_bin/*; do mv "$f" "`echo $f | sed -e 's/\.dll\b/.bin/g'`"; done
 sed -i 's/\.dll"/.bin"/g' _framework/blazor.boot.json
+```
+
+如果服務工作者資產也在使用中，請新增下列命令：
+
+```console
+sed -i 's/\.dll"/.bin"/g' service-worker-assets.js
 ```
    
 若要使用與*bin*不同的副檔名，請在上述命令中取代 *. bin* 。
@@ -440,6 +496,8 @@ sed -i 's/\.dll"/.bin"/g' _framework/blazor.boot.json
 
 * 移除壓縮的*blazor gz*和*blazor.boot.json.br*檔案。 此方法會停用壓縮。
 * 重新壓縮已更新的*blazor*檔案。
+
+先前的指導方針也適用于服務工作者資產正在使用時。 移除或重新壓縮*wwwroot/服務-worker-node.js*和*wwwroot/service-worker-assets。 gz*。 否則，瀏覽器中的檔案完整性檢查會失敗。
 
 下列 Windows 範例會使用放在專案根目錄中的 PowerShell 腳本。
 
@@ -452,6 +510,12 @@ dir $filepath\bin\Release\$tfm\wwwroot\_framework\_bin | rename-item -NewName { 
 Remove-Item $filepath\bin\Release\$tfm\wwwroot\_framework\blazor.boot.json.gz
 ```
 
+如果服務工作者資產也在使用中，請新增下列命令：
+
+```powershell
+((Get-Content $filepath\bin\Release\$tfm\wwwroot\service-worker-assets.js -Raw) -replace '.dll"','.bin"') | Set-Content $filepath\bin\Release\$tfm\wwwroot\service-worker-assets.js
+```
+
 在專案檔中，腳本會在發行應用程式之後執行：
 
 ```xml
@@ -461,3 +525,4 @@ Remove-Item $filepath\bin\Release\$tfm\wwwroot\_framework\blazor.boot.json.gz
 ```
 
 若要提供意見反應，請造訪[aspnetcore/問題 #5477](https://github.com/dotnet/aspnetcore/issues/5477)。
+ 

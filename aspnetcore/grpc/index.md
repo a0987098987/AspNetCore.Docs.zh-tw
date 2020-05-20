@@ -1,23 +1,11 @@
 ---
-title: .NET Core 上的 gRPC 簡介
-author: juntaoluo
-description: 了解搭配 Kestrel 伺服器及 ASP.NET Core 堆疊的 gRPC 服務。
-monikerRange: '>= aspnetcore-3.0'
-ms.author: johluo
-ms.date: 09/20/2019
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: grpc/index
-ms.openlocfilehash: 2d7d683051fd1eb97f3f57d75bd582109166a6cd
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82768844"
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>.NET Core 上的 gRPC 簡介
 
@@ -37,9 +25,11 @@ gRPC 的主要優點包括：
 * 必須使用多種語言進行開發的多語言系統。
 * 必須處理資料流要求或回應的點對點即時服務。
 
+[!INCLUDE[](~/includes/gRPCazure.md)]
+
 ## <a name="c-tooling-support-for-proto-files"></a>適用于 proto 檔案的 c # 工具支援
 
-gRPC 會使用合約優先的方法來開發 API。 服務和訊息定義于* \*proto*檔案中：
+gRPC 會使用合約優先的方法來開發 API。 服務和訊息定義于* \* proto*檔案中：
 
 ```protobuf
 syntax = "proto3";
@@ -57,10 +47,10 @@ message HelloReply {
 }
 ```
 
-服務、用戶端和訊息的 .net 類型會透過在專案中包含* \*proto*檔案的方式自動產生：
+服務、用戶端和訊息的 .NET 類型會透過在專案中包含* \* proto*檔案的方式自動產生：
 
 * 將套件參考新增至[Grpc](https://www.nuget.org/packages/Grpc.Tools/)套件。
-* 將* \*proto*檔案加入至`<Protobuf>`專案群組。
+* 將* \* proto*檔案加入至 `<Protobuf>` 專案群組。
 
 ```xml
 <ItemGroup>
@@ -68,7 +58,7 @@ message HelloReply {
 </ItemGroup>
 ```
 
-如需 gRPC 工具支援的詳細資訊， <xref:grpc/basics>請參閱。
+如需 gRPC 工具支援的詳細資訊，請參閱 <xref:grpc/basics> 。
 
 ## <a name="grpc-services-on-aspnet-core"></a>ASP.NET Core 上的 gRPC 服務
 
@@ -98,7 +88,7 @@ public class GreeterService : Greeter.GreeterBase
 }
 ```
 
-`GreeterService`繼承自`GreeterBase`類型，這是從* \*proto*檔案中`Greeter`的服務產生的。 此服務可供*Startup.cs*中的用戶端存取：
+`GreeterService`繼承自 `GreeterBase` 類型，這是從 `Greeter` * \* proto*檔案中的服務產生的。 此服務可供*Startup.cs*中的用戶端存取：
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -107,11 +97,11 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-若要深入瞭解 ASP.NET Core 上的 gRPC 服務， <xref:grpc/aspnetcore>請參閱。
+若要深入瞭解 ASP.NET Core 上的 gRPC 服務，請參閱 <xref:grpc/aspnetcore> 。
 
 ## <a name="call-grpc-services-with-a-net-client"></a>使用 .NET 用戶端呼叫 gRPC 服務
 
-gRPC 用戶端是[從* \*proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體的 gRPC 用戶端具有轉譯為* \*proto*檔案中 gRPC 服務的方法。
+gRPC 用戶端是[從* \* proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體的 gRPC 用戶端具有轉譯為* \* proto*檔案中 gRPC 服務的方法。
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
@@ -123,11 +113,9 @@ var response = await client.SayHelloAsync(
 Console.WriteLine(response.Message);
 ```
 
-GRPC 用戶端是使用通道所建立，這代表 gRPC 服務的長時間連接。 您可以使用`GrpcChannel.ForAddress`來建立通道。
+GRPC 用戶端是使用通道所建立，這代表 gRPC 服務的長時間連接。 您可以使用來建立通道 `GrpcChannel.ForAddress` 。
 
-如需建立用戶端和呼叫不同服務方法的詳細資訊， <xref:grpc/client>請參閱。
-
-[!INCLUDE[](~/includes/gRPCazure.md)]
+如需建立用戶端和呼叫不同服務方法的詳細資訊，請參閱 <xref:grpc/client> 。
 
 ## <a name="additional-resources"></a>其他資源
 

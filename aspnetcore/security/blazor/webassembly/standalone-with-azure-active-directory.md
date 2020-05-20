@@ -1,32 +1,15 @@
 ---
-title: Blazor使用 Azure Active Directory 保護 ASP.NET Core WebAssembly 獨立應用程式
-author: guardrex
-description: ''
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 05/11/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: security/blazor/webassembly/standalone-with-azure-active-directory
-ms.openlocfilehash: 512fab439686e54b1d21576c7dad7b3cd320a8b1
-ms.sourcegitcommit: 1250c90c8d87c2513532be5683640b65bfdf9ddb
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83153587"
+標題：「 Blazor 使用 Azure Active Directory 的作者來保護 ASP.NET Core WebAssembly 獨立應用程式：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory"></a>Blazor使用 Azure Active Directory 保護 ASP.NET Core WebAssembly 獨立應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
-
-[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
-
-[!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
 
 若要建立 Blazor 使用[AZURE ACTIVE DIRECTORY （AAD）](https://azure.microsoft.com/services/active-directory/)進行驗證的 WebAssembly 獨立應用程式：
 
@@ -34,31 +17,38 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 在 Azure 入口網站的**Azure Active Directory**  >  **應用程式註冊**] 區域中註冊 AAD 應用程式：
 
-1. 提供應用程式的**名稱**（例如** Blazor 用戶端 AAD**）。
+1. 提供應用程式的**名稱**（例如， ** Blazor 獨立 AAD**）。
 1. 選擇**支援的帳戶類型**。 只有在此體驗中，您可以選取**此組織目錄中的帳戶**。
-1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web**]，並提供的 [重新導向 uri] `https://localhost:5001/authentication/login-callback` 。
+1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web**]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 針對 IIS Express，隨機產生的埠可以在 [**調試**程式] 面板的 [屬性] 中找到。
 1. 停用**Permissions**[授與系統  >  **管理員收到給 openid 和 offline_access 許可權**] 核取方塊的許可權。
 1. 選取 [註冊]  。
-
-在 [**驗證**  >  **平臺**設定]  >  **Web**：
-
-1. 確認的重新**導向 URI** `https://localhost:5001/authentication/login-callback` 存在。
-1. 針對 **[隱含授**與]，選取 [**存取權杖**] 和 [**識別碼權杖**] 的核取方塊。
-1. 此體驗可接受應用程式的其餘預設值。
-1. 選取 [儲存]**** 按鈕。
 
 記錄下列資訊：
 
 * 應用程式識別碼（用戶端識別碼）（例如， `11111111-1111-1111-1111-111111111111` ）
 * 目錄識別碼（租使用者識別碼）（例如， `22222222-2222-2222-2222-222222222222` ）
 
-以先前記錄的資訊取代下列命令中的預留位置，並在命令 shell 中執行命令：
+在 [**驗證**  >  **平臺**設定]  >  **Web**：
+
+1. 確認的重新**導向 URI** `https://localhost:{PORT}/authentication/login-callback` 存在。
+1. 針對 **[隱含授**與]，選取 [**存取權杖**] 和 [**識別碼權杖**] 的核取方塊。
+1. 此體驗可接受應用程式的其餘預設值。
+1. 選取 [儲存]**** 按鈕。
+
+建立應用程式。 以先前記錄的資訊取代下列命令中的預留位置，並在命令 shell 中執行命令：
 
 ```dotnetcli
 dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "{TENANT ID}"
 ```
 
 若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
+
+建立應用程式之後，您應該能夠：
+
+* 使用 AAD 使用者帳戶登入應用程式。
+* 要求 Microsoft Api 的存取權杖。 如需詳細資訊，請參閱
+  * [存取權杖範圍](#access-token-scopes)
+  * [快速入門：設定應用程式以公開 Web api](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)。
 
 ## <a name="authentication-package"></a>驗證套件
 
@@ -68,16 +58,14 @@ dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "{TENA
 
 ```xml
 <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" 
-    Version="{VERSION}" />
+  Version="3.2.0" />
 ```
-
-`{VERSION}`將前述套件參考中的取代為發行 `Microsoft.AspNetCore.Blazor.Templates` 項中所顯示的套件版本 <xref:blazor/get-started> 。
 
 `Microsoft.Authentication.WebAssembly.Msal`封裝可傳遞會將 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 套件新增至應用程式。
 
 ## <a name="authentication-service-support"></a>驗證服務支援
 
-使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 `AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal` 。 這個方法會設定應用程式與 Identity 提供者（IP）互動所需的所有服務。
+使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 `AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal` 。 這個方法會設定應用程式與 Identity 提供者（IP）互動所需的服務。
 
 *Program.cs*：
 
@@ -88,7 +76,7 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-`AddMsalAuthentication`方法會接受回呼來設定驗證應用程式所需的參數。 當您註冊應用程式時，可以從 Microsoft 帳戶設定取得設定應用程式所需的值。
+`AddMsalAuthentication`方法會接受回呼來設定驗證應用程式所需的參數。 當您註冊應用程式時，可以從 AAD 設定取得設定應用程式所需的值。
 
 Configuration 是由*wwwroot/appsettings*檔案所提供：
 
@@ -96,7 +84,8 @@ Configuration 是由*wwwroot/appsettings*檔案所提供：
 {
   "AzureAd": {
     "Authority": "https://login.microsoftonline.com/{TENANT ID}",
-    "ClientId": "{CLIENT ID}"
+    "ClientId": "{CLIENT ID}",
+    "ValidateAuthority": true
   }
 }
 ```
@@ -107,7 +96,8 @@ Configuration 是由*wwwroot/appsettings*檔案所提供：
 {
   "AzureAd": {
     "Authority": "https://login.microsoftonline.com/e86c78e2-...-918e0565a45e",
-    "ClientId": "41451fa7-82d9-4673-8fa5-69eff5a761fd"
+    "ClientId": "41451fa7-82d9-4673-8fa5-69eff5a761fd",
+    "ValidateAuthority": true
   }
 }
 ```
@@ -124,18 +114,7 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-> [!NOTE]
-> 如果 Azure 入口網站提供範圍 URI，且應用程式在收到來自 API 的*401 未經授權*回應時擲回**未處理的例外**狀況，請嘗試使用不包含配置和主機的範圍 uri。 例如，Azure 入口網站可能會提供下列其中一個範圍 URI 格式：
->
-> * `https://{ORGANIZATION}.onmicrosoft.com/{API CLIENT ID OR CUSTOM VALUE}/{SCOPE NAME}`
-> * `api://{API CLIENT ID OR CUSTOM VALUE}/{SCOPE NAME}`
->
-> 提供不含配置和主機的範圍 URI：
->
-> ```csharp
-> options.ProviderOptions.DefaultAccessTokenScopes.Add(
->     "{API CLIENT ID OR CUSTOM VALUE}/{SCOPE NAME}");
-> ```
+[!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
 
 如需詳細資訊，請參閱*其他案例*文章的下列章節：
 

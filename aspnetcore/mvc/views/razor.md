@@ -1,7 +1,7 @@
 ---
 title: ASP.NET Core 的 razor 語法參考
 author: rick-anderson
-description: 瞭解將Razor以伺服器為基礎的程式碼內嵌到網頁中的標記語法。
+description: 瞭解將 Razor 以伺服器為基礎的程式碼內嵌到網頁中的標記語法。
 ms.author: riande
 ms.date: 02/12/2020
 no-loc:
@@ -11,12 +11,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 3e77b25e2660688d0040d47840e47dab8f260197
-ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
+ms.openlocfilehash: 2831fd2edd029043e9457cd213e32f1a82c2872e
+ms.sourcegitcommit: 69e1a79a572b0af17d08e81af12c594b7316f2e1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83003194"
+ms.lasthandoff: 05/15/2020
+ms.locfileid: "83424414"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>ASP.NET Core 的 Razor 語法參考
 
@@ -235,7 +235,7 @@ Razor 程式碼區塊會以 `@` 開頭，並以 `{}` 括住。 不同於運算�
 
 ### <a name="explicit-line-transition"></a>明確行轉換
 
-若要在程式碼區塊內將整行的其餘部分轉譯為 HTML `@:` ，請使用語法：
+若要在程式碼區塊內將整行的其餘部分轉譯為 HTML，請使用 `@:` 語法：
 
 ```cshtml
 @for (var i = 0; i < people.Length; i++)
@@ -473,7 +473,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 }
 ```
 
-若是 Razor 元件， `@code`則是的[`@functions`](#functions)別名，並建議`@functions`使用。 允許一個以上的 `@code` 區塊。
+若是 Razor 元件， `@code` 則是的別名， [`@functions`](#functions) 並建議使用 `@functions` 。 允許一個以上的 `@code` 區塊。
 
 ::: moniker-end
 
@@ -639,7 +639,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 <div>The Login Email: @Model.Email</div>
 ```
 
-`@model` 指示詞會指定 `Model` 屬性的類型。 該指示詞會將 `RazorPage<T>` 中的 `T` 指定為檢視從中衍生的產生類別。 若未指定 `@model` 指示詞，`Model` 屬性的類型為 `dynamic`。 如需詳細資訊，請參閱[強型別@model模型和關鍵字](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-and-the--keyword)。
+`@model` 指示詞會指定 `Model` 屬性的類型。 該指示詞會將 `RazorPage<T>` 中的 `T` 指定為檢視從中衍生的產生類別。 若未指定 `@model` 指示詞，`Model` 屬性的類型為 `dynamic`。 如需詳細資訊，請參閱強型別[模型和 @model 關鍵字](xref:tutorials/first-mvc-app/adding-model#strongly-typed-models-and-the--keyword)。
 
 ### <a name="namespace"></a>\@namespace
 
@@ -682,7 +682,7 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 `@page` 指示詞會根據其出現的檔案類型而有不同的效果。 指示詞：
 
-* *.cshtml* 檔案中的 in 表示檔案是 Razor 頁面。 如需詳細資訊，請參閱[自訂路由](xref:razor-pages/index#custom-routes)和<xref:razor-pages/index>。
+* *.cshtml* 檔案中的 in 表示檔案是 Razor 頁面。 如需詳細資訊，請參閱[自訂路由](xref:razor-pages/index#custom-routes)和 <xref:razor-pages/index> 。
 * 指定 Razor 元件應該直接處理要求。 如需詳細資訊，請參閱<xref:blazor/routing>。
 
 ::: moniker-end
@@ -707,13 +707,15 @@ Razor 會公開 `Model` 屬性，以存取傳遞至檢視的模型：
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在[Razor 元件](xref:blazor/components)中`@using` ，也會控制哪些元件在範圍內。
+在[Razor 元件](xref:blazor/components)中， `@using` 也會控制哪些元件在範圍內。
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-3.0"
 
 ## <a name="directive-attributes"></a>指示詞屬性
+
+Razor 指示詞屬性會以隱含運算式表示，並在符號後面加上保留關鍵字 `@` 。 指示詞屬性通常會變更剖析元素或啟用不同功能的方式。
 
 ### <a name="attributes"></a>\@attributes
 
@@ -769,7 +771,7 @@ Razor 提供元件的事件處理功能。 如需詳細資訊，請參閱<xref:b
 
 此案例僅適用於 Razor 元件 (.razor)。**
 
-`@typeparam`指示詞會為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱<xref:blazor/templated-components#generic-typed-components>。
+指示詞會 `@typeparam` 為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱<xref:blazor/templated-components#generic-typed-components>。
 
 ::: moniker-end
 
@@ -878,7 +880,7 @@ public class Pet
 
 [標籤協助程式](xref:mvc/views/tag-helpers/intro)有三個相關的指示詞。
 
-| 指示詞 | 函數 |
+| 指示詞 | 函式 |
 | --------- | -------- |
 | [`@addTagHelper`](xref:mvc/views/tag-helpers/intro#add-helper-label) | 使標籤協助程式可供檢視。 |
 | [`@removeTagHelper`](xref:mvc/views/tag-helpers/intro#remove-razor-directives-label) | 移除先前從檢視新增的標籤協助程式。 |
@@ -889,21 +891,21 @@ public class Pet
 ### <a name="razor-keywords"></a>Razor字
 
 * page (需要 ASP.NET Core 2.1 或更新版本)
-* 命名空間
+* namespace
 * functions
 * 繼承
 * model
 * section
 * helper (ASP.NET Core 目前不支援)
 
-Razor關鍵字會以`@(Razor Keyword)`進行轉義（例如， `@(functions)`）。
+Razor關鍵字會以進行轉義 `@(Razor Keyword)` （例如， `@(functions)` ）。
 
-### <a name="c-razor-keywords"></a>C Razor # 關鍵字
+### <a name="c-razor-keywords"></a>C # Razor 關鍵字
 
 * case
 * do
 * default
-* for
+* 對象
 * foreach
 * if
 * else
@@ -915,19 +917,19 @@ Razor關鍵字會以`@(Razor Keyword)`進行轉義（例如， `@(functions)`）
 * using
 * while
 
-C Razor # 關鍵字必須使用`@(@C# Razor Keyword)` （例如`@(@case)`）進行雙重轉義。 第一個`@`會將Razor剖析器進行轉義。 第二個 `@` 會將 C# 剖析器逸出。
+C # Razor 關鍵字必須使用（例如）進行雙重轉義 `@(@C# Razor Keyword)` `@(@case)` 。 第一個會將剖析器進行 `@` 轉義 Razor 。 第二個 `@` 會將 C# 剖析器逸出。
 
 ### <a name="reserved-keywords-not-used-by-razor"></a>未使用的保留關鍵字Razor
 
-* Class - 類別
+* class
 
-## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>檢查為Razor視圖產生的 c # 類別
+## <a name="inspect-the-razor-c-class-generated-for-a-view"></a>檢查 Razor 為視圖產生的 c # 類別
 
 ::: moniker range=">= aspnetcore-2.1"
 
-在[ Razor ](xref:razor-pages/sdk) .NET Core SDK 2.1 或更新版本中，SDK 會處理Razor檔案的編譯。 建立專案時， Razor SDK 會在專案根目錄中產生*obj/<build_configuration>/<target_framework_monikerRazor>/* 目錄。 *Razor* 目錄中的目錄結構會反映專案的目錄結構。
+在 .NET Core SDK 2.1 或更新版本中， [ Razor SDK](xref:razor-pages/sdk)會處理檔案的編譯 Razor 。 建立專案時，SDK 會 Razor 在專案根目錄中產生*obj/<build_configuration>/<target_framework_moniker Razor>/* 目錄。 目錄中的目錄結構會 *Razor* 反映專案的目錄結構。
 
-在以 .NET Core 2.1 為目標的 ASP.NET Core Razor 2.1 頁面專案中，請考慮下列目錄結構：
+在以 .NET Core 2.1 為目標的 ASP.NET Core 2.1 頁面專案中，請考慮下列目錄結構 Razor ：
 
 * **區域**
   * **管理中心**
@@ -959,7 +961,7 @@ C Razor # 關鍵字必須使用`@(@C# Razor Keyword)` （例如`@(@case)`）進�
           * *_ViewStart.g.cshtml.cs*
           * *Index.g.cshtml.cs*
 
-若要查看針對*Pages/Index*所產生的類別，請開啟*obj/Debug/netcoreapp 2.1Razor//Pages/Index.g.cshtml.cs*。
+若要查看針對*Pages/Index*所產生的類別，請開啟*obj/Debug/netcoreapp 2.1/ Razor /Pages/Index.g.cshtml.cs*。
 
 ::: moniker-end
 
@@ -981,7 +983,7 @@ C Razor # 關鍵字必須使用`@(@C# Razor Keyword)` （例如`@(@case)`）進�
 
 ## <a name="view-lookups-and-case-sensitivity"></a>檢視查閱和區分大小寫
 
-Razor View engine 會針對 views 執行區分大小寫的查閱。 不過，實際查閱則取決於基礎檔案系統：
+RazorView engine 會針對 views 執行區分大小寫的查閱。 不過，實際查閱則取決於基礎檔案系統：
 
 * 檔案式來源：
   * 在具有不區分大小寫之檔案系統的作業系統上 (例如 Windows)，實體檔案提供者查閱不會區分大小寫。 例如，`return View("Test")` 針對 */Views/Home/Test.cshtml* 和 */Views/home/test.cshtml* (以及任何其他大小寫變體) 會有相符的結果。
@@ -997,4 +999,4 @@ Razor View engine 會針對 views 執行區分大小寫的查閱。 不過，實
 
 ## <a name="additional-resources"></a>其他資源
 
-[使用Razor語法進行 ASP.NET Web 程式設計的簡介](/aspnet/web-pages/overview/getting-started/introducing-razor-syntax-c)提供許多使用語法進行Razor程式設計的範例。
+[使用 ASP.NET Web 程式設計的 Razor 簡介語法](/aspnet/web-pages/overview/getting-started/introducing-razor-syntax-c)提供許多使用語法進行程式設計的範例 Razor 。

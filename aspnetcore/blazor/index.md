@@ -1,30 +1,18 @@
 ---
-title: ASP.NET Core 簡介Blazor
-author: guardrex
-description: 探索 ASP.NET Core Blazor，這是一種在 ASP.NET Core 應用程式中使用 .net 建立互動式用戶端 web UI 的方式。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc, seoapril2019
-ms.date: 03/25/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: blazor/index
-ms.openlocfilehash: ced3e2cc0428fccf6f0b2eba7a3f045e07002234
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82771946"
+標題：「ASP.NET Core Blazor 的作者簡介：描述：」探索 ASP.NET Core Blazor ，這是在 ASP.NET Core 應用程式中使用 .net 建立互動式用戶端 web UI 的方式。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>ASP.NET Core 簡介Blazor
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-*歡迎使用Blazor！*
+*歡迎使用 Blazor ！*
 
 Blazor是使用 .NET 建立互動式用戶端 web UI 的架構：
 
@@ -42,20 +30,20 @@ Blazor是使用 .NET 建立互動式用戶端 web UI 的架構：
 * 使用 Windows、Linux 和 macOS 版的 Visual Studio 保持生產力。
 * 以常用的語言、架構和工具建置，不僅穩定、功能豐富，而且容易使用。
 
-## <a name="components"></a>元件
+## <a name="components"></a>單元
 
-Blazor應用程式是以*元件*為基礎。 中Blazor的元件是 UI 的元素，例如頁面、對話方塊或資料輸入表單。
+Blazor應用程式是以*元件*為基礎。 中的元件 Blazor 是 UI 的元素，例如頁面、對話方塊或資料輸入表單。
 
 元件是內建在 .NET 組件中且具有下列功能的 .NET 類別：
 
 * 定義彈性 UI 轉譯邏輯。
 * 處理使用者動作。
 * 可以為巢狀結構，且可重複使用。
-* 可以共用並散佈為[ Razor類別庫](xref:razor-pages/ui-class)或[NuGet 套件](/nuget/what-is-nuget)。
+* 可以共用並散佈為[ Razor 類別庫](xref:razor-pages/ui-class)或[NuGet 套件](/nuget/what-is-nuget)。
 
-元件類別通常是以副檔名為[Razor](xref:mvc/views/razor) *razor*的標記頁面形式撰寫。 中Blazor的元件正式地稱為「 * Razor元件*」。 Razor是結合 HTML 標籤與為開發人員生產力而設計之 c # 程式碼的語法。 Razor可讓您在具有[IntelliSense](/visualstudio/ide/using-intellisense)支援的同一個檔案中，于 HTML 標籤和 c # 之間切換。 Razor頁面和 MVC 也會Razor使用。 不同Razor于以要求/回應模型為基礎的頁面和 MVC，元件專門用於用戶端 UI 邏輯和組合。
+元件類別通常是以 [Razor](xref:mvc/views/razor) 副檔名為*razor*的標記頁面形式撰寫。 中的元件 Blazor 正式地稱為「 * Razor 元件*」。 Razor是結合 HTML 標籤與為開發人員生產力而設計之 c # 程式碼的語法。 Razor可讓您在具有[IntelliSense](/visualstudio/ide/using-intellisense)支援的同一個檔案中，于 HTML 標籤和 c # 之間切換。 Razor頁面和 MVC 也會使用 Razor 。 不同 Razor 于以要求/回應模型為基礎的頁面和 MVC，元件專門用於用戶端 UI 邏輯和組合。
 
-下列Razor標記示範元件（*Dialog*），可以嵌套在另一個元件中：
+下列 Razor 標記示範元件（*Dialog*），可以嵌套在另一個元件中：
 
 ```razor
 <div>
@@ -110,8 +98,6 @@ Welcome to your new app.
 
 ## <a name="blazor-webassembly"></a>BlazorWebAssembly
 
-[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
-
 BlazorWebAssembly 是使用 .NET 建立互動式用戶端 web 應用程式的單一頁面應用程式架構。 BlazorWebAssembly 會使用開放式 web 標準，而不需要外掛程式或程式碼轉譯，並可在所有新式網頁瀏覽器中運作，包括行動瀏覽器。
 
 在網頁瀏覽器內執行 .NET 程式碼已可藉由 [WebAssembly](https://webassembly.org) (縮寫為 *wasm*) 達成。 WebAssembly 是一種精簡的位元組程式碼格式，針對快速下載和最快執行速度而最佳化。 WebAssembly 是開放式的 Web 標準，在不含外掛程式的網頁瀏覽器中支援。
@@ -120,11 +106,11 @@ WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，�
 
 ![BlazorWebAssembly 會使用 WebAssembly 在瀏覽器中執行 .NET 程式碼。](index/_static/blazor-webassembly.png)
 
-在流覽Blazor器中建立並執行 WebAssembly 應用程式時：
+在 Blazor 瀏覽器中建立並執行 WebAssembly 應用程式時：
 
-* C # 程式碼Razor檔案和檔案會編譯成 .net 元件。
+* C # 程式碼檔案和檔案 Razor 會編譯成 .net 元件。
 * 組件和 .NET 執行階段會下載至瀏覽器中。
-* BlazorWebAssembly 會啟動 .NET 執行時間，並設定執行時間以載入應用程式的元件。 Blazor WebAssembly 執行時間會使用 JavaScript interop 來處理 DOM 操作和瀏覽器 API 呼叫。
+* BlazorWebAssembly 會啟動 .NET 執行時間，並設定執行時間以載入應用程式的元件。 BlazorWebAssembly 執行時間會使用 JavaScript interop 來處理 DOM 操作和瀏覽器 API 呼叫。
 
 發佈的應用程式大小 (它的「承載大小」**) 是應用程式使用性的重要效能因素。 大型應用程式需要相對較長的時間才能下載至瀏覽器，這點會對使用者體驗造成傷害。 BlazorWebAssembly 會優化承載大小以縮短下載時間：
 
@@ -134,13 +120,13 @@ WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，�
 
 ## <a name="blazor-server"></a>Blazor伺服器
 
-Blazor將元件轉譯邏輯與 UI 更新的套用方式分離。 Blazor伺服器提供在 ASP.NET Core 應用Razor程式的伺服器上裝載元件的支援。 UI 更新會透過[SignalR](xref:signalr/introduction)連接來處理。
+Blazor將元件轉譯邏輯與 UI 更新的套用方式分離。 Blazor伺服器提供 Razor 在 ASP.NET Core 應用程式的伺服器上裝載元件的支援。 UI 更新會透過連接來處理 [SignalR](xref:signalr/introduction) 。
 
 執行階段會處理將 UI 事件從瀏覽器傳送到伺服器，然後在執行元件之後，套用由伺服器傳送回瀏覽器的 UI 更新。
 
 Blazor伺服器用來與瀏覽器通訊的連接也會用來處理 JavaScript interop 呼叫。
 
-![Blazor伺服器會在伺服器上執行 .NET 程式碼，並透過SignalR連接與用戶端上的檔物件模型互動](index/_static/blazor-server.png)
+![Blazor伺服器會在伺服器上執行 .NET 程式碼，並透過連接與用戶端上的檔物件模型互動 SignalR](index/_static/blazor-server.png)
 
 ## <a name="javascript-interop"></a>JavaScript Interop
 
@@ -151,7 +137,7 @@ Blazor伺服器用來與瀏覽器通訊的連接也會用來處理 JavaScript in
 
 ## <a name="code-sharing-and-net-standard"></a>程式碼共用和 .NET Standard
 
-Blazor執行[.NET Standard 2.0](/dotnet/standard/net-standard)。 .NET Standard 是所有 .NET 實作都具備的 .NET API 正式規格。 .NET Standard 類別庫可以跨不同的 .NET 平臺（例如Blazor、.NET FRAMEWORK、.net Core、Xamarin、Mono 和 Unity）共用。
+Blazor執行[.NET Standard 2.0](/dotnet/standard/net-standard)。 .NET Standard 是所有 .NET 實作都具備的 .NET API 正式規格。 .NET Standard 類別庫可以跨不同的 .NET 平臺（例如 Blazor 、.NET Framework、.Net Core、Xamarin、Mono 和 Unity）共用。
 
 網頁瀏覽器內不適用的 API (例如，存取檔案系統、開啟通訊端與執行緒) 均會擲回 <xref:System.PlatformNotSupportedException>。
 
@@ -163,4 +149,4 @@ Blazor執行[.NET Standard 2.0](/dotnet/standard/net-standard)。 .NET Standard 
 * [C # 指南](/dotnet/csharp/)
 * <xref:mvc/views/razor>
 * [HTML](https://www.w3.org/html/)
-* 絕佳的社區連結[ Blazor ](https://github.com/AdrienTorris/awesome-blazor)
+* [很 Blazor 棒](https://github.com/AdrienTorris/awesome-blazor)社區連結

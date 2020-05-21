@@ -1,24 +1,11 @@
 ---
-title: ASP.NET Core 中的整合測試
-author: rick-anderson
-description: 了解整合測試如何確保應用程式的元件在基礎結構層級 (包括資料庫、檔案系統和網路) 正確運作。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 05/11/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: test/integration-tests
-ms.openlocfilehash: 5a11fd574baccba32f3224e47c01685c81c6d686
-ms.sourcegitcommit: 69e1a79a572b0af17d08e81af12c594b7316f2e1
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83424207"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -32,11 +19,11 @@ ms.locfileid: "83424207"
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-範例應用程式是 Razor Pages 應用程式，並假設對 Razor Pages 有基本瞭解。 如果不熟悉 Razor Pages，請參閱下列主題：
+範例應用程式是 Razor 頁面應用程式，並假設有對頁面的基本瞭解 Razor 。 如果不熟悉 Razor 頁面，請參閱下列主題：
 
-* [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
-* [Razor Pages 單元測試](xref:test/razor-pages-tests)
+* [頁面簡介 Razor](xref:razor-pages/index)
+* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [Razor頁面單元測試](xref:test/razor-pages-tests)
 
 > [!NOTE]
 > 針對測試 Spa，建議使用[Selenium](https://www.seleniumhq.org/)這類工具，這可將瀏覽器自動化。
@@ -103,7 +90,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 > [!NOTE]
 > 建立應用程式的測試專案時，請將單元測試從整合測試分成不同的專案。 這有助於確保基礎結構測試元件不會不小心包含在單元測試中。 區隔單元和整合測試也可以控制要執行哪一組測試。
 
-Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任何差異。 唯一的差異在於測試的命名方式。 在 Razor Pages 應用程式中，頁面端點的測試通常是在頁面模型類別之後命名（例如，用 `IndexPageTests` 來測試索引頁面的元件整合）。 在 MVC 應用程式中，通常會以控制器類別來組織測試，並在其測試的控制器之後命名（例如， `HomeControllerTests` 測試主控制器的元件整合）。
+Razor頁面應用程式和 MVC 應用程式的測試設定之間幾乎沒有任何差異。 唯一的差異在於測試的命名方式。 在 Razor 頁面應用程式中，頁面端點的測試通常是在頁面模型類別之後命名（例如，用 `IndexPageTests` 來測試索引頁面的元件整合）。 在 MVC 應用程式中，通常會以控制器類別來組織測試，並在其測試的控制器之後命名（例如， `HomeControllerTests` 測試主控制器的元件整合）。
 
 ## <a name="test-app-prerequisites"></a>測試應用程式必要條件
 
@@ -121,7 +108,7 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 Entity Framework Core 也會用於測試中。 應用程式參考：
 
 * [AspNetCore. Microsoft.entityframeworkcore](https://www.nuget.org/packages/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore)
-* [AspNetCore. Identity. Microsoft.entityframeworkcore](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.EntityFrameworkCore)
+* [AspNetCore Identity 。Microsoft.entityframeworkcore](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.EntityFrameworkCore)
 * [Microsoft.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore)
 * [Microsoft.EntityFrameworkCore.InMemory](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory)
 * [Microsoft.entityframeworkcore 工具](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools)
@@ -155,6 +142,8 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
    [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)中的資料庫植入是由 `InitializeDbForTests` 方法執行。 此方法會在[整合測試範例：測試應用程式組織](#test-app-organization)一節中說明。
 
    SUT 的資料庫內容會在其方法中註冊 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureServices` 回呼會在*after*應用程式的程式 `Startup.ConfigureServices` 代碼執行之後執行。 執行順序是 ASP.NET Core 3.0 版本之[泛型主機](xref:fundamentals/host/generic-host)的重大變更。 若要針對測試使用不同于應用程式資料庫的資料庫，則必須在中取代應用程式的資料庫內容 `builder.ConfigureServices` 。
+
+   對於仍然使用 [Web 主機} （x：基礎/主機/Web 主機）的 SUTs，測試應用程式的 `builder.ConfigureServices` 回呼會在 SUT 的程式碼*之前*執行 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureTestServices` 回呼會*在之後*執行。
 
    範例應用程式會尋找資料庫內容的服務描述元，並使用描述項來移除服務註冊。 接下來，factory 會加入新 `ApplicationDbContext` 的，其會使用記憶體內部資料庫進行測試。
 
@@ -213,11 +202,45 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 下表顯示建立實例時[WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)可用的預設 WebApplicationFactoryClientOptions `HttpClient` 。
 
 | 選項 | 描述 | 預設 |
-| ------ | ----------- | ------- |
-| [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | 取得或設定 `HttpClient` 實例是否應該自動遵循重新導向回應。 | `true` |
-| [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | 取得或設定實例的基底位址 `HttpClient` 。 | `http://localhost` |
-| [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | 取得或設定 `HttpClient` 實例是否應處理 cookie。 | `true` |
-| [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | 取得或設定實例應遵循的重新導向回應數目上限 `HttpClient` 。 | 7 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) |取得或設定 `HttpClient` 實例是否應該自動遵循重新導向回應。 | `true`| |[BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) |取得或設定實例的基底位址 `HttpClient` 。 | `http://localhost`| |[HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) |取得或設定 `HttpClient` 實例是否應處理 cookie。 | `true`| |[MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) |取得或設定實例應遵循的重新導向回應數目上限 `HttpClient` 。 |7 |
 
 建立 `WebApplicationFactoryClientOptions` 類別，並將它傳遞給[CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient)方法（程式碼範例中會顯示預設值）：
 
@@ -289,7 +312,7 @@ _client = _factory.CreateClient(clientOptions);
 * 將未驗證的使用者重新導向至應用程式的登入頁面。
 * 傳回已驗證使用者的內容。
 
-在 SUT 中， `/SecurePage` 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
+在 SUT 中， `/SecurePage` 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[ Razor 頁面授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
@@ -358,9 +381,78 @@ protected override IWebHostBuilder CreateWebHostBuilder() =>
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
 | App | 專案目錄 | 說明 |
-| --- | ----------------- | ----------- |
-| 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
-| 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |
+| --- | ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |訊息應用程式（SUT） |*src/RazorPagesProject* |可讓使用者加入、刪除一個、刪除全部及分析訊息。 | |測試應用程式 |*測試/RazorPagesProject。測試*|用來整合測試 SUT。 |
 
 測試可以使用 IDE 的內建測試功能來執行，例如[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列，請在 [測試]/[RazorPagesProject] 的命令提示字元中執行下列命令 *。測試*目錄：
 
@@ -370,7 +462,7 @@ dotnet test
 
 ### <a name="message-app-sut-organization"></a>訊息應用程式（SUT）組織
 
-SUT 是具有下列特性的 Razor Pages 訊息系統：
+SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 * 應用程式的 [索引] 頁面（*pages/index. cshtml*和*pages/Index. CSHTML*）提供 UI 和頁面模型方法來控制訊息的新增、刪除和分析（每個訊息的平均單字）。
 * 訊息是由 `Message` 類別（*Data/message .cs*）描述，其中包含兩個屬性： `Id` （key）和 `Text` （message）。 `Text`屬性是必要的，而且限制為200個字元。
@@ -381,18 +473,93 @@ SUT 是具有下列特性的 Razor Pages 訊息系統：
 
 &#8224;EF 主題使用[InMemory 進行測試](/ef/core/miscellaneous/testing/in-memory)中，說明如何使用記憶體內部資料庫來測試 MSTest。 本主題使用[xUnit](https://xunit.github.io/)測試架構。 跨不同測試架構的測試概念和測試執行類似，但不完全相同。
 
-雖然應用程式不會使用存放庫模式，而且不是有效的[工作單位（UoW）模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)範例，Razor Pages 支援這些開發模式。 如需詳細資訊，請參閱[設計基礎結構持續性層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（範例會執行存放庫模式）。
+雖然應用程式不會使用存放庫模式，而且不是有效的[工作單位（UoW）模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)範例，但 Razor 頁面支援這些開發模式。 如需詳細資訊，請參閱[設計基礎結構持續性層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（範例會執行存放庫模式）。
 
 ### <a name="test-app-organization"></a>測試應用程式組織
 
 測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
 
 | 測試應用程式目錄 | 說明 |
-| ------------------ | ----------- |
-| *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
-| *BasicTests* | 包含路由和內容類型的測試方法。 |
-| *IntegrationTests* | 包含使用自訂類別之索引頁面的整合測試 `WebApplicationFactory` 。 |
-| *Helper/公用程式* | <ul><li>*Utilities.cs*包含 `InitializeDbForTests` 用來植入具有測試資料之資料庫的方法。</li><li>*HtmlHelpers.cs*提供方法來傳回 AngleSharp `IHtmlDocument` 供測試方法使用。</li><li>*HttpClientExtensions.cs*提供的多載， `SendAsync` 以將要求提交至 SUT。</li></ul> |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |*AuthTests* |包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> | |*BasicTests* |包含路由和內容類型的測試方法。 | |*IntegrationTests* |包含使用自訂類別之索引頁面的整合測試 `WebApplicationFactory` 。 | |Helper */公用程式* | <ul><li>*Utilities.cs*包含 `InitializeDbForTests` 用來植入具有測試資料之資料庫的方法。</li><li>*HtmlHelpers.cs*提供方法來傳回 AngleSharp `IHtmlDocument` 供測試方法使用。</li><li>*HttpClientExtensions.cs*提供的多載， `SendAsync` 以將要求提交至 SUT。</li></ul> |
 
 測試架構為[xUnit](https://xunit.github.io/)。 整合測試會使用[AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost)進行，其中包含[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)。 由於[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing)會使用測試封裝來設定測試主機和測試伺服器，因此 `TestHost` 和封裝不需要測試應用程式的 `TestServer` 專案檔或測試應用程式中的開發人員設定中的直接套件參考。
 
@@ -406,6 +573,8 @@ SUT 是具有下列特性的 Razor Pages 訊息系統：
 
 SUT 的資料庫內容會在其方法中註冊 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureServices` 回呼會在*after*應用程式的程式 `Startup.ConfigureServices` 代碼執行之後執行。 若要針對測試使用不同的資料庫，則必須在中取代應用程式的資料庫內容 `builder.ConfigureServices` 。 如需詳細資訊，請參閱[自訂 WebApplicationFactory](#customize-webapplicationfactory)一節。
 
+對於仍然使用 [Web 主機} （x：基礎/主機/Web 主機）的 SUTs，測試應用程式的 `builder.ConfigureServices` 回呼會在 SUT 的程式碼*之前*執行 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureTestServices` 回呼會*在之後*執行。
+
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
@@ -416,11 +585,11 @@ SUT 的資料庫內容會在其方法中註冊 `Startup.ConfigureServices` 。 �
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-範例應用程式是 Razor Pages 應用程式，並假設對 Razor Pages 有基本瞭解。 如果不熟悉 Razor Pages，請參閱下列主題：
+範例應用程式是 Razor 頁面應用程式，並假設有對頁面的基本瞭解 Razor 。 如果不熟悉 Razor 頁面，請參閱下列主題：
 
-* [Razor 頁面簡介](xref:razor-pages/index)
-* [開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start)
-* [Razor Pages 單元測試](xref:test/razor-pages-tests)
+* [頁面簡介 Razor](xref:razor-pages/index)
+* [開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)
+* [Razor頁面單元測試](xref:test/razor-pages-tests)
 
 > [!NOTE]
 > 針對測試 Spa，建議使用[Selenium](https://www.seleniumhq.org/)這類工具，這可將瀏覽器自動化。
@@ -487,7 +656,7 @@ ASP.NET Core 中的整合測試需要下列各項：
 > [!NOTE]
 > 建立應用程式的測試專案時，請將單元測試從整合測試分成不同的專案。 這有助於確保基礎結構測試元件不會不小心包含在單元測試中。 區隔單元和整合測試也可以控制要執行哪一組測試。
 
-Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任何差異。 唯一的差異在於測試的命名方式。 在 Razor Pages 應用程式中，頁面端點的測試通常是在頁面模型類別之後命名（例如，用 `IndexPageTests` 來測試索引頁面的元件整合）。 在 MVC 應用程式中，通常會以控制器類別來組織測試，並在其測試的控制器之後命名（例如， `HomeControllerTests` 測試主控制器的元件整合）。
+Razor頁面應用程式和 MVC 應用程式的測試設定之間幾乎沒有任何差異。 唯一的差異在於測試的命名方式。 在 Razor 頁面應用程式中，頁面端點的測試通常是在頁面模型類別之後命名（例如，用 `IndexPageTests` 來測試索引頁面的元件整合）。 在 MVC 應用程式中，通常會以控制器類別來組織測試，並在其測試的控制器之後命名（例如， `HomeControllerTests` 測試主控制器的元件整合）。
 
 ## <a name="test-app-prerequisites"></a>測試應用程式必要條件
 
@@ -526,7 +695,7 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 
 藉由繼承自 `WebApplicationFactory` 來建立一或多個自訂處理站，可以獨立于測試類別建立 Web 主機設定：
 
-1. 繼承自 `WebApplicationFactory` ，並覆寫[ConfigureWebHost](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.configurewebhost)。 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)允許使用[ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices)來設定服務集合：
+1. 繼承自 `WebApplicationFactory` ，並覆寫[ConfigureWebHost](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.configurewebhost)。 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)允許使用[ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.istartup.configureservices)來設定服務集合，這會在應用程式的之前執行 `Startup.ConfigureServices` 。 [IWebHostBuilder](/dotnet/api/microsoft.aspnetcore.hosting.iwebhostbuilder)允許使用[ConfigureTestServices](/dotnet/api/microsoft.aspnetcore.testhost.webhostbuilderextensions.configuretestservices)覆寫和修改服務集合中的已註冊服務：
 
    [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/CustomWebApplicationFactory.cs?name=snippet1)]
 
@@ -574,11 +743,45 @@ Razor Pages 應用程式和 MVC 應用程式的測試設定之間幾乎沒有任
 下表顯示建立實例時[WebApplicationFactoryClientOptions](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions)可用的預設 WebApplicationFactoryClientOptions `HttpClient` 。
 
 | 選項 | 描述 | 預設 |
-| ------ | ----------- | ------- |
-| [AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) | 取得或設定 `HttpClient` 實例是否應該自動遵循重新導向回應。 | `true` |
-| [BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) | 取得或設定實例的基底位址 `HttpClient` 。 | `http://localhost` |
-| [HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) | 取得或設定 `HttpClient` 實例是否應處理 cookie。 | `true` |
-| [MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) | 取得或設定實例應遵循的重新導向回應數目上限 `HttpClient` 。 | 7 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |[AllowAutoRedirect](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.allowautoredirect) |取得或設定 `HttpClient` 實例是否應該自動遵循重新導向回應。 | `true`| |[BaseAddress](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.baseaddress) |取得或設定實例的基底位址 `HttpClient` 。 | `http://localhost`| |[HandleCookies](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.handlecookies) |取得或設定 `HttpClient` 實例是否應處理 cookie。 | `true`| |[MaxAutomaticRedirections](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactoryclientoptions.maxautomaticredirections) |取得或設定實例應遵循的重新導向回應數目上限 `HttpClient` 。 |7 |
 
 建立 `WebApplicationFactoryClientOptions` 類別，並將它傳遞給[CreateClient](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1.createclient)方法（程式碼範例中會顯示預設值）：
 
@@ -650,7 +853,7 @@ _client = _factory.CreateClient(clientOptions);
 * 將未驗證的使用者重新導向至應用程式的登入頁面。
 * 傳回已驗證使用者的內容。
 
-在 SUT 中， `/SecurePage` 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[Razor Pages 授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
+在 SUT 中， `/SecurePage` 頁面會使用[AuthorizePage](/dotnet/api/microsoft.extensions.dependencyinjection.pageconventioncollectionextensions.authorizepage)慣例將[AuthorizeFilter](/dotnet/api/microsoft.aspnetcore.mvc.authorization.authorizefilter)套用至頁面。 如需詳細資訊，請參閱[ Razor 頁面授權慣例](xref:security/authorization/razor-pages-authorization#require-authorization-to-access-a-page)。
 
 [!code-csharp[](integration-tests/samples/2.x/IntegrationTestsSample/src/RazorPagesProject/Startup.cs?name=snippet1)]
 
@@ -747,9 +950,78 @@ public class CustomWebApplicationFactory<TStartup>
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
 | App | 專案目錄 | 說明 |
-| --- | ----------------- | ----------- |
-| 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
-| 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |
+| --- | ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |訊息應用程式（SUT） |*src/RazorPagesProject* |可讓使用者加入、刪除一個、刪除全部及分析訊息。 | |測試應用程式 |*測試/RazorPagesProject。測試*|用來整合測試 SUT。 |
 
 測試可以使用 IDE 的內建測試功能來執行，例如[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列，請在 [測試]/[RazorPagesProject] 的命令提示字元中執行下列命令 *。測試*目錄：
 
@@ -759,7 +1031,7 @@ dotnet test
 
 ### <a name="message-app-sut-organization"></a>訊息應用程式（SUT）組織
 
-SUT 是具有下列特性的 Razor Pages 訊息系統：
+SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 * 應用程式的 [索引] 頁面（*pages/index. cshtml*和*pages/Index. CSHTML*）提供 UI 和頁面模型方法來控制訊息的新增、刪除和分析（每個訊息的平均單字）。
 * 訊息是由 `Message` 類別（*Data/message .cs*）描述，其中包含兩個屬性： `Id` （key）和 `Text` （message）。 `Text`屬性是必要的，而且限制為200個字元。
@@ -770,18 +1042,93 @@ SUT 是具有下列特性的 Razor Pages 訊息系統：
 
 &#8224;EF 主題使用[InMemory 進行測試](/ef/core/miscellaneous/testing/in-memory)中，說明如何使用記憶體內部資料庫來測試 MSTest。 本主題使用[xUnit](https://xunit.github.io/)測試架構。 跨不同測試架構的測試概念和測試執行類似，但不完全相同。
 
-雖然應用程式不會使用存放庫模式，而且不是有效的[工作單位（UoW）模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)範例，Razor Pages 支援這些開發模式。 如需詳細資訊，請參閱[設計基礎結構持續性層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（範例會執行存放庫模式）。
+雖然應用程式不會使用存放庫模式，而且不是有效的[工作單位（UoW）模式](https://martinfowler.com/eaaCatalog/unitOfWork.html)範例，但 Razor 頁面支援這些開發模式。 如需詳細資訊，請參閱[設計基礎結構持續性層](/dotnet/standard/microservices-architecture/microservice-ddd-cqrs-patterns/infrastructure-persistence-layer-design)和[測試控制器邏輯](/aspnet/core/mvc/controllers/testing)（範例會執行存放庫模式）。
 
 ### <a name="test-app-organization"></a>測試應用程式組織
 
 測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
 
 | 測試應用程式目錄 | 說明 |
-| ------------------ | ----------- |
-| *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
-| *BasicTests* | 包含路由和內容類型的測試方法。 |
-| *IntegrationTests* | 包含使用自訂類別之索引頁面的整合測試 `WebApplicationFactory` 。 |
-| *Helper/公用程式* | <ul><li>*Utilities.cs*包含 `InitializeDbForTests` 用來植入具有測試資料之資料庫的方法。</li><li>*HtmlHelpers.cs*提供方法來傳回 AngleSharp `IHtmlDocument` 供測試方法使用。</li><li>*HttpClientExtensions.cs*提供的多載， `SendAsync` 以將要求提交至 SUT。</li></ul> |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |*AuthTests* |包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> | |*BasicTests* |包含路由和內容類型的測試方法。 | |*IntegrationTests* |包含使用自訂類別之索引頁面的整合測試 `WebApplicationFactory` 。 | |Helper */公用程式* | <ul><li>*Utilities.cs*包含 `InitializeDbForTests` 用來植入具有測試資料之資料庫的方法。</li><li>*HtmlHelpers.cs*提供方法來傳回 AngleSharp `IHtmlDocument` 供測試方法使用。</li><li>*HttpClientExtensions.cs*提供的多載， `SendAsync` 以將要求提交至 SUT。</li></ul> |
 
 測試架構為[xUnit](https://xunit.github.io/)。 整合測試會使用[AspNetCore. TestHost](/dotnet/api/microsoft.aspnetcore.testhost)進行，其中包含[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver)。 由於[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing)會使用測試封裝來設定測試主機和測試伺服器，因此 `TestHost` 和封裝不需要測試應用程式的 `TestServer` 專案檔或測試應用程式中的開發人員設定中的直接套件參考。
 

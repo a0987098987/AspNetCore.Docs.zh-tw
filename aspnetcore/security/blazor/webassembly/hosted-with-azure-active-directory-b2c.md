@@ -63,7 +63,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 在**Azure Active Directory**  >  **應用程式註冊**中，選取 [**新增註冊**]。
 1. 提供應用程式的**名稱**（例如， ** Blazor 用戶端 AAD B2C**）。
 1. 針對**支援的帳戶類型**，請選取 [多租使用者] 選項： [**任何組織目錄中的帳戶] 或 [任何身分識別提供者]。用於驗證 Azure AD B2C 的使用者。**
-1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web**]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 針對 IIS Express，在 [**調試**程式] 面板的伺服器應用程式屬性中，可以找到隨機產生的埠。
+1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，在 [**調試**程式] 面板的伺服器應用程式屬性中，可以找到應用程式的隨機產生埠。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 [[建立應用程式](#create-the-app)] 區段中會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
 1. 確認**許可權**  >  **授與系統管理員收到給 openid，並已啟用 offline_access 許可權**。
 1. 選取 [註冊]  。
 
@@ -108,6 +108,13 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 >
 > 此外，由裝載的範本所設定的範圍 Blazor 可能會重複應用程式識別碼 URI 主機。 確認 `DefaultAccessTokenScopes` 在 `Program.Main` *用戶端應用程式*的（*Program.cs*）中為集合設定的範圍是正確的。
 
+> [!NOTE]
+> 在 Azure 入口網站中，*用戶端應用程式的***驗證**  >  **平臺**  >  設定**Web**重新  >  **導向 URI**會針對使用預設設定在 Kestrel 伺服器上執行的應用程式，設定為埠5001。
+>
+> 如果*用戶端應用程式*是在隨機 IIS Express 埠上執行，則可以在 [**調試**程式] 面板的*伺服器應用程式*屬性中找到應用程式的埠。
+>
+> 如果未在*用戶端應用程式的*已知埠之前設定埠，請回到 Azure 入口網站中的*用戶端應用程式*註冊，並使用正確的埠更新重新導向 URI。
+
 ## <a name="server-app-configuration"></a>伺服器應用程式設定
 
 *本節適用于解決方案的**伺服器**應用程式。*
@@ -118,7 +125,7 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 
 ```xml
 <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureADB2C.UI" 
-  Version="3.2.0" />
+  Version="3.1.4" />
 ```
 
 ### <a name="authentication-service-support"></a>驗證服務支援

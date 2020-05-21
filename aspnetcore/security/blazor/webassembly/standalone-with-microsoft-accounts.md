@@ -1,70 +1,77 @@
 ---
-<span data-ttu-id="58b53-101">標題： ' Blazor 使用 Microsoft 帳戶保護 ASP.NET Core WebAssembly 獨立應用程式的作者：描述： monikerRange：毫秒。作者： ms. 自訂： ms. 日期：無 loc：</span><span class="sxs-lookup"><span data-stu-id="58b53-101">title: 'Secure an ASP.NET Core Blazor WebAssembly standalone app with Microsoft Accounts' author: description: monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="58b53-102">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="58b53-102">'Blazor'</span></span>
-- <span data-ttu-id="58b53-103">'Identity'</span><span class="sxs-lookup"><span data-stu-id="58b53-103">'Identity'</span></span>
-- <span data-ttu-id="58b53-104">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="58b53-104">'Let's Encrypt'</span></span>
-- <span data-ttu-id="58b53-105">'Razor'</span><span class="sxs-lookup"><span data-stu-id="58b53-105">'Razor'</span></span>
-- <span data-ttu-id="58b53-106">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="58b53-106">'SignalR' uid:</span></span> 
+<span data-ttu-id="5d3db-101">標題： ' Blazor 使用 Microsoft 帳戶保護 ASP.NET Core WebAssembly 獨立應用程式的作者：描述： monikerRange：毫秒。作者： ms. 自訂： ms. 日期：無 loc：</span><span class="sxs-lookup"><span data-stu-id="5d3db-101">title: 'Secure an ASP.NET Core Blazor WebAssembly standalone app with Microsoft Accounts' author: description: monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="5d3db-102">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="5d3db-102">'Blazor'</span></span>
+- <span data-ttu-id="5d3db-103">'Identity'</span><span class="sxs-lookup"><span data-stu-id="5d3db-103">'Identity'</span></span>
+- <span data-ttu-id="5d3db-104">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="5d3db-104">'Let's Encrypt'</span></span>
+- <span data-ttu-id="5d3db-105">'Razor'</span><span class="sxs-lookup"><span data-stu-id="5d3db-105">'Razor'</span></span>
+- <span data-ttu-id="5d3db-106">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="5d3db-106">'SignalR' uid:</span></span> 
 
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a><span data-ttu-id="58b53-107">Blazor使用 Microsoft 帳戶保護 ASP.NET Core WebAssembly 獨立應用程式</span><span class="sxs-lookup"><span data-stu-id="58b53-107">Secure an ASP.NET Core Blazor WebAssembly standalone app with Microsoft Accounts</span></span>
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a><span data-ttu-id="5d3db-107">Blazor使用 Microsoft 帳戶保護 ASP.NET Core WebAssembly 獨立應用程式</span><span class="sxs-lookup"><span data-stu-id="5d3db-107">Secure an ASP.NET Core Blazor WebAssembly standalone app with Microsoft Accounts</span></span>
 
-<span data-ttu-id="58b53-108">By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="58b53-108">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="5d3db-108">By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="5d3db-108">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="58b53-109">若要建立 Blazor WebAssembly 獨立應用程式，以使用[具有 AZURE ACTIVE DIRECTORY （AAD）的 Microsoft 帳戶](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)進行驗證：</span><span class="sxs-lookup"><span data-stu-id="58b53-109">To create a Blazor WebAssembly standalone app that uses [Microsoft Accounts with Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) for authentication:</span></span>
+<span data-ttu-id="5d3db-109">若要建立 Blazor WebAssembly 獨立應用程式，以使用[具有 AZURE ACTIVE DIRECTORY （AAD）的 Microsoft 帳戶](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)進行驗證：</span><span class="sxs-lookup"><span data-stu-id="5d3db-109">To create a Blazor WebAssembly standalone app that uses [Microsoft Accounts with Azure Active Directory (AAD)](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal) for authentication:</span></span>
 
-[<span data-ttu-id="58b53-110">建立 AAD 租使用者和 web 應用程式</span><span class="sxs-lookup"><span data-stu-id="58b53-110">Create an AAD tenant and web application</span></span>](/azure/active-directory/develop/v2-overview)
+[<span data-ttu-id="5d3db-110">建立 AAD 租使用者和 web 應用程式</span><span class="sxs-lookup"><span data-stu-id="5d3db-110">Create an AAD tenant and web application</span></span>](/azure/active-directory/develop/v2-overview)
 
-<span data-ttu-id="58b53-111">在 Azure 入口網站的**Azure Active Directory**  >  **應用程式註冊**] 區域中註冊 AAD 應用程式：</span><span class="sxs-lookup"><span data-stu-id="58b53-111">Register a AAD app in the **Azure Active Directory** > **App registrations** area of the Azure portal:</span></span>
+<span data-ttu-id="5d3db-111">在 Azure 入口網站的**Azure Active Directory**  >  **應用程式註冊**] 區域中註冊 AAD 應用程式：</span><span class="sxs-lookup"><span data-stu-id="5d3db-111">Register a AAD app in the **Azure Active Directory** > **App registrations** area of the Azure portal:</span></span>
 
-1. <span data-ttu-id="58b53-112">提供應用程式的**名稱**（例如， \*\* Blazor 獨立 AAD Microsoft 帳戶\*\*）。</span><span class="sxs-lookup"><span data-stu-id="58b53-112">Provide a **Name** for the app (for example, **Blazor Standalone AAD Microsoft Accounts**).</span></span>
-1. <span data-ttu-id="58b53-113">在 [**支援的帳戶類型**] 中，選取 [**任何組織目錄中的帳戶**]。</span><span class="sxs-lookup"><span data-stu-id="58b53-113">In **Supported account types**, select **Accounts in any organizational directory**.</span></span>
-1. <span data-ttu-id="58b53-114">將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web**]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。</span><span class="sxs-lookup"><span data-stu-id="58b53-114">Leave the **Redirect URI** drop down set to **Web**, and provide the following redirect URI: `https://localhost:{PORT}/authentication/login-callback`.</span></span> <span data-ttu-id="58b53-115">在 Kestrel 上執行之應用程式的預設埠是5001。</span><span class="sxs-lookup"><span data-stu-id="58b53-115">The default port for an app running on Kestrel is 5001.</span></span> <span data-ttu-id="58b53-116">針對 IIS Express，隨機產生的埠可以在 [**調試**程式] 面板的 [屬性] 中找到。</span><span class="sxs-lookup"><span data-stu-id="58b53-116">For IIS Express, the randomly generated port can be found in the app's properties in the **Debug** panel.</span></span>
-1. <span data-ttu-id="58b53-117">停用**Permissions**[授與系統  >  **管理員收到給 openid 和 offline_access 許可權**] 核取方塊的許可權。</span><span class="sxs-lookup"><span data-stu-id="58b53-117">Disable the **Permissions** > **Grant admin concent to openid and offline_access permissions** check box.</span></span>
-1. <span data-ttu-id="58b53-118">選取 [註冊]  。</span><span class="sxs-lookup"><span data-stu-id="58b53-118">Select **Register**.</span></span>
+1. <span data-ttu-id="5d3db-112">提供應用程式的**名稱**（例如， \*\* Blazor 獨立 AAD Microsoft 帳戶\*\*）。</span><span class="sxs-lookup"><span data-stu-id="5d3db-112">Provide a **Name** for the app (for example, **Blazor Standalone AAD Microsoft Accounts**).</span></span>
+1. <span data-ttu-id="5d3db-113">在 [**支援的帳戶類型**] 中，選取 [**任何組織目錄中的帳戶**]。</span><span class="sxs-lookup"><span data-stu-id="5d3db-113">In **Supported account types**, select **Accounts in any organizational directory**.</span></span>
+1. <span data-ttu-id="5d3db-114">將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。</span><span class="sxs-lookup"><span data-stu-id="5d3db-114">Leave the **Redirect URI** drop down set to **Web** and provide the following redirect URI: `https://localhost:{PORT}/authentication/login-callback`.</span></span> <span data-ttu-id="5d3db-115">在 Kestrel 上執行之應用程式的預設埠是5001。</span><span class="sxs-lookup"><span data-stu-id="5d3db-115">The default port for an app running on Kestrel is 5001.</span></span> <span data-ttu-id="5d3db-116">如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。</span><span class="sxs-lookup"><span data-stu-id="5d3db-116">If the app is run on a different Kestrel port, use the app's port.</span></span> <span data-ttu-id="5d3db-117">針對 IIS Express，應用程式的隨機產生埠可以在 [**調試**程式] 面板的 [屬性] 中找到。</span><span class="sxs-lookup"><span data-stu-id="5d3db-117">For IIS Express, the randomly generated port for the app can be found in the app's properties in the **Debug** panel.</span></span> <span data-ttu-id="5d3db-118">由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。</span><span class="sxs-lookup"><span data-stu-id="5d3db-118">Since the app doesn't exist at this point and the IIS Express port isn't known, return to this step after the app is created and update the redirect URI.</span></span> <span data-ttu-id="5d3db-119">本主題稍後會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。</span><span class="sxs-lookup"><span data-stu-id="5d3db-119">A remark appears later in this topic to remind IIS Express users to update the redirect URI.</span></span>
+1. <span data-ttu-id="5d3db-120">停用**Permissions**[授與系統  >  **管理員收到給 openid 和 offline_access 許可權**] 核取方塊的許可權。</span><span class="sxs-lookup"><span data-stu-id="5d3db-120">Disable the **Permissions** > **Grant admin concent to openid and offline_access permissions** check box.</span></span>
+1. <span data-ttu-id="5d3db-121">選取 [註冊]  。</span><span class="sxs-lookup"><span data-stu-id="5d3db-121">Select **Register**.</span></span>
 
-<span data-ttu-id="58b53-119">記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。</span><span class="sxs-lookup"><span data-stu-id="58b53-119">Record the Application ID (Client ID) (for example, `11111111-1111-1111-1111-111111111111`).</span></span>
+<span data-ttu-id="5d3db-122">記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。</span><span class="sxs-lookup"><span data-stu-id="5d3db-122">Record the Application ID (Client ID) (for example, `11111111-1111-1111-1111-111111111111`).</span></span>
 
-<span data-ttu-id="58b53-120">在 [**驗證**  >  **平臺**設定]  >  **Web**：</span><span class="sxs-lookup"><span data-stu-id="58b53-120">In **Authentication** > **Platform configurations** > **Web**:</span></span>
+<span data-ttu-id="5d3db-123">在 [**驗證**  >  **平臺**設定]  >  **Web**：</span><span class="sxs-lookup"><span data-stu-id="5d3db-123">In **Authentication** > **Platform configurations** > **Web**:</span></span>
 
-1. <span data-ttu-id="58b53-121">確認的重新**導向 URI** `https://localhost:{PORT}/authentication/login-callback` 存在。</span><span class="sxs-lookup"><span data-stu-id="58b53-121">Confirm the **Redirect URI** of `https://localhost:{PORT}/authentication/login-callback` is present.</span></span>
-1. <span data-ttu-id="58b53-122">針對 **[隱含授**與]，選取 [**存取權杖**] 和 [**識別碼權杖**] 的核取方塊。</span><span class="sxs-lookup"><span data-stu-id="58b53-122">For **Implicit grant**, select the check boxes for **Access tokens** and **ID tokens**.</span></span>
-1. <span data-ttu-id="58b53-123">此體驗可接受應用程式的其餘預設值。</span><span class="sxs-lookup"><span data-stu-id="58b53-123">The remaining defaults for the app are acceptable for this experience.</span></span>
-1. <span data-ttu-id="58b53-124">選取 [儲存]\*\*\*\* 按鈕。</span><span class="sxs-lookup"><span data-stu-id="58b53-124">Select the **Save** button.</span></span>
+1. <span data-ttu-id="5d3db-124">確認的重新**導向 URI** `https://localhost:{PORT}/authentication/login-callback` 存在。</span><span class="sxs-lookup"><span data-stu-id="5d3db-124">Confirm the **Redirect URI** of `https://localhost:{PORT}/authentication/login-callback` is present.</span></span>
+1. <span data-ttu-id="5d3db-125">針對 **[隱含授**與]，選取 [**存取權杖**] 和 [**識別碼權杖**] 的核取方塊。</span><span class="sxs-lookup"><span data-stu-id="5d3db-125">For **Implicit grant**, select the check boxes for **Access tokens** and **ID tokens**.</span></span>
+1. <span data-ttu-id="5d3db-126">此體驗可接受應用程式的其餘預設值。</span><span class="sxs-lookup"><span data-stu-id="5d3db-126">The remaining defaults for the app are acceptable for this experience.</span></span>
+1. <span data-ttu-id="5d3db-127">選取 [儲存]\*\*\*\* 按鈕。</span><span class="sxs-lookup"><span data-stu-id="5d3db-127">Select the **Save** button.</span></span>
 
-<span data-ttu-id="58b53-125">建立應用程式。</span><span class="sxs-lookup"><span data-stu-id="58b53-125">Create the app.</span></span> <span data-ttu-id="58b53-126">以先前記錄的資訊取代下列命令中的預留位置，並在命令 shell 中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="58b53-126">Replace the placeholders in the following command with the information recorded earlier and execute the following command in a command shell:</span></span>
+<span data-ttu-id="5d3db-128">建立應用程式。</span><span class="sxs-lookup"><span data-stu-id="5d3db-128">Create the app.</span></span> <span data-ttu-id="5d3db-129">以先前記錄的資訊取代下列命令中的預留位置，並在命令 shell 中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="5d3db-129">Replace the placeholders in the following command with the information recorded earlier and execute the following command in a command shell:</span></span>
 
 ```dotnetcli
 dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "common"
 ```
 
-<span data-ttu-id="58b53-127">若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。</span><span class="sxs-lookup"><span data-stu-id="58b53-127">To specify the output location, which creates a project folder if it doesn't exist, include the output option in the command with a path (for example, `-o BlazorSample`).</span></span> <span data-ttu-id="58b53-128">資料夾名稱也會成為專案名稱的一部分。</span><span class="sxs-lookup"><span data-stu-id="58b53-128">The folder name also becomes part of the project's name.</span></span>
+<span data-ttu-id="5d3db-130">若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。</span><span class="sxs-lookup"><span data-stu-id="5d3db-130">To specify the output location, which creates a project folder if it doesn't exist, include the output option in the command with a path (for example, `-o BlazorSample`).</span></span> <span data-ttu-id="5d3db-131">資料夾名稱也會成為專案名稱的一部分。</span><span class="sxs-lookup"><span data-stu-id="5d3db-131">The folder name also becomes part of the project's name.</span></span>
 
-<span data-ttu-id="58b53-129">建立應用程式之後，您應該能夠：</span><span class="sxs-lookup"><span data-stu-id="58b53-129">After creating the app, you should be able to:</span></span>
+> [!NOTE]
+> <span data-ttu-id="5d3db-132">在 Azure 入口網站中，應用程式的**驗證**  >  **平臺**  >  設定**Web**重新  >  **導向 URI**會針對使用預設設定在 Kestrel 伺服器上執行的應用程式進行通訊埠5001。</span><span class="sxs-lookup"><span data-stu-id="5d3db-132">In the Azure portal, the app's **Authentication** > **Platform configurations** > **Web** > **Redirect URI** is configured for port 5001 for apps that run on the Kestrel server with default settings.</span></span>
+>
+> <span data-ttu-id="5d3db-133">如果應用程式是在隨機 IIS Express 埠上執行，則可以在 [**調試**程式] 面板的 [屬性] 中找到應用程式的埠。</span><span class="sxs-lookup"><span data-stu-id="5d3db-133">If the app is run on a random IIS Express port, the port for the app can be found in the app's properties in the **Debug** panel.</span></span>
+>
+> <span data-ttu-id="5d3db-134">如果先前未使用應用程式的已知埠設定埠，請回到 Azure 入口網站中的應用程式註冊，並使用正確的埠更新重新導向 URI。</span><span class="sxs-lookup"><span data-stu-id="5d3db-134">If the port wasn't configured earlier with the app's known port, return to the app's registration in the Azure portal and update the redirect URI with the correct port.</span></span>
 
-* <span data-ttu-id="58b53-130">使用 Microsoft 帳戶登入應用程式。</span><span class="sxs-lookup"><span data-stu-id="58b53-130">Log into the app using a Microsoft account.</span></span>
-* <span data-ttu-id="58b53-131">要求 Microsoft Api 的存取權杖。</span><span class="sxs-lookup"><span data-stu-id="58b53-131">Request access tokens for Microsoft APIs.</span></span> <span data-ttu-id="58b53-132">如需詳細資訊，請參閱</span><span class="sxs-lookup"><span data-stu-id="58b53-132">For more information, see:</span></span>
-  * [<span data-ttu-id="58b53-133">存取權杖範圍</span><span class="sxs-lookup"><span data-stu-id="58b53-133">Access token scopes</span></span>](#access-token-scopes)
-  * <span data-ttu-id="58b53-134">[快速入門：設定應用程式以公開 Web api](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)。</span><span class="sxs-lookup"><span data-stu-id="58b53-134">[Quickstart: Configure an application to expose web APIs](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis).</span></span>
+<span data-ttu-id="5d3db-135">建立應用程式之後，您應該能夠：</span><span class="sxs-lookup"><span data-stu-id="5d3db-135">After creating the app, you should be able to:</span></span>
 
-## <a name="authentication-package"></a><span data-ttu-id="58b53-135">驗證套件</span><span class="sxs-lookup"><span data-stu-id="58b53-135">Authentication package</span></span>
+* <span data-ttu-id="5d3db-136">使用 Microsoft 帳戶登入應用程式。</span><span class="sxs-lookup"><span data-stu-id="5d3db-136">Log into the app using a Microsoft account.</span></span>
+* <span data-ttu-id="5d3db-137">要求 Microsoft Api 的存取權杖。</span><span class="sxs-lookup"><span data-stu-id="5d3db-137">Request access tokens for Microsoft APIs.</span></span> <span data-ttu-id="5d3db-138">如需詳細資訊，請參閱</span><span class="sxs-lookup"><span data-stu-id="5d3db-138">For more information, see:</span></span>
+  * [<span data-ttu-id="5d3db-139">存取權杖範圍</span><span class="sxs-lookup"><span data-stu-id="5d3db-139">Access token scopes</span></span>](#access-token-scopes)
+  * <span data-ttu-id="5d3db-140">[快速入門：設定應用程式以公開 Web api](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)。</span><span class="sxs-lookup"><span data-stu-id="5d3db-140">[Quickstart: Configure an application to expose web APIs](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis).</span></span>
 
-<span data-ttu-id="58b53-136">建立應用程式以使用工作或學校帳戶（）時 `SingleOrg` ，應用程式會自動接收[Microsoft 驗證程式庫](/azure/active-directory/develop/msal-overview)（）的套件參考 `Microsoft.Authentication.WebAssembly.Msal` 。</span><span class="sxs-lookup"><span data-stu-id="58b53-136">When an app is created to use Work or School Accounts (`SingleOrg`), the app automatically receives a package reference for the [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview) (`Microsoft.Authentication.WebAssembly.Msal`).</span></span> <span data-ttu-id="58b53-137">封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。</span><span class="sxs-lookup"><span data-stu-id="58b53-137">The package provides a set of primitives that help the app authenticate users and obtain tokens to call protected APIs.</span></span>
+## <a name="authentication-package"></a><span data-ttu-id="5d3db-141">驗證套件</span><span class="sxs-lookup"><span data-stu-id="5d3db-141">Authentication package</span></span>
 
-<span data-ttu-id="58b53-138">如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：</span><span class="sxs-lookup"><span data-stu-id="58b53-138">If adding authentication to an app, manually add the package to the app's project file:</span></span>
+<span data-ttu-id="5d3db-142">建立應用程式以使用工作或學校帳戶（）時 `SingleOrg` ，應用程式會自動接收[Microsoft 驗證程式庫](/azure/active-directory/develop/msal-overview)（）的套件參考 `Microsoft.Authentication.WebAssembly.Msal` 。</span><span class="sxs-lookup"><span data-stu-id="5d3db-142">When an app is created to use Work or School Accounts (`SingleOrg`), the app automatically receives a package reference for the [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview) (`Microsoft.Authentication.WebAssembly.Msal`).</span></span> <span data-ttu-id="5d3db-143">封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。</span><span class="sxs-lookup"><span data-stu-id="5d3db-143">The package provides a set of primitives that help the app authenticate users and obtain tokens to call protected APIs.</span></span>
+
+<span data-ttu-id="5d3db-144">如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：</span><span class="sxs-lookup"><span data-stu-id="5d3db-144">If adding authentication to an app, manually add the package to the app's project file:</span></span>
 
 ```xml
 <PackageReference Include="Microsoft.Authentication.WebAssembly.Msal" 
   Version="3.2.0" />
 ```
 
-<span data-ttu-id="58b53-139">`Microsoft.Authentication.WebAssembly.Msal`封裝可傳遞會將 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 套件新增至應用程式。</span><span class="sxs-lookup"><span data-stu-id="58b53-139">The `Microsoft.Authentication.WebAssembly.Msal` package transitively adds the `Microsoft.AspNetCore.Components.WebAssembly.Authentication` package to the app.</span></span>
+<span data-ttu-id="5d3db-145">`Microsoft.Authentication.WebAssembly.Msal`封裝可傳遞會將 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 套件新增至應用程式。</span><span class="sxs-lookup"><span data-stu-id="5d3db-145">The `Microsoft.Authentication.WebAssembly.Msal` package transitively adds the `Microsoft.AspNetCore.Components.WebAssembly.Authentication` package to the app.</span></span>
 
-## <a name="authentication-service-support"></a><span data-ttu-id="58b53-140">驗證服務支援</span><span class="sxs-lookup"><span data-stu-id="58b53-140">Authentication service support</span></span>
+## <a name="authentication-service-support"></a><span data-ttu-id="5d3db-146">驗證服務支援</span><span class="sxs-lookup"><span data-stu-id="5d3db-146">Authentication service support</span></span>
 
-<span data-ttu-id="58b53-141">使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 `AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal` 。</span><span class="sxs-lookup"><span data-stu-id="58b53-141">Support for authenticating users is registered in the service container with the `AddMsalAuthentication` extension method provided by the `Microsoft.Authentication.WebAssembly.Msal` package.</span></span> <span data-ttu-id="58b53-142">這個方法會設定應用程式與 Identity 提供者（IP）互動所需的所有服務。</span><span class="sxs-lookup"><span data-stu-id="58b53-142">This method sets up all of the services required for the app to interact with the Identity Provider (IP).</span></span>
+<span data-ttu-id="5d3db-147">使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 `AddMsalAuthentication` `Microsoft.Authentication.WebAssembly.Msal` 。</span><span class="sxs-lookup"><span data-stu-id="5d3db-147">Support for authenticating users is registered in the service container with the `AddMsalAuthentication` extension method provided by the `Microsoft.Authentication.WebAssembly.Msal` package.</span></span> <span data-ttu-id="5d3db-148">這個方法會設定應用程式與 Identity 提供者（IP）互動所需的所有服務。</span><span class="sxs-lookup"><span data-stu-id="5d3db-148">This method sets up all of the services required for the app to interact with the Identity Provider (IP).</span></span>
 
-<span data-ttu-id="58b53-143">*Program.cs*：</span><span class="sxs-lookup"><span data-stu-id="58b53-143">*Program.cs*:</span></span>
+<span data-ttu-id="5d3db-149">*Program.cs*：</span><span class="sxs-lookup"><span data-stu-id="5d3db-149">*Program.cs*:</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
@@ -73,9 +80,9 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-<span data-ttu-id="58b53-144">`AddMsalAuthentication`方法會接受回呼來設定驗證應用程式所需的參數。</span><span class="sxs-lookup"><span data-stu-id="58b53-144">The `AddMsalAuthentication` method accepts a callback to configure the parameters required to authenticate an app.</span></span> <span data-ttu-id="58b53-145">當您註冊應用程式時，可以從 AAD 設定取得設定應用程式所需的值。</span><span class="sxs-lookup"><span data-stu-id="58b53-145">The values required for configuring the app can be obtained from the AAD configuration when you register the app.</span></span>
+<span data-ttu-id="5d3db-150">`AddMsalAuthentication`方法會接受回呼來設定驗證應用程式所需的參數。</span><span class="sxs-lookup"><span data-stu-id="5d3db-150">The `AddMsalAuthentication` method accepts a callback to configure the parameters required to authenticate an app.</span></span> <span data-ttu-id="5d3db-151">當您註冊應用程式時，可以從 AAD 設定取得設定應用程式所需的值。</span><span class="sxs-lookup"><span data-stu-id="5d3db-151">The values required for configuring the app can be obtained from the AAD configuration when you register the app.</span></span>
 
-<span data-ttu-id="58b53-146">Configuration 是由*wwwroot/appsettings*檔案所提供：</span><span class="sxs-lookup"><span data-stu-id="58b53-146">Configuration is supplied by the *wwwroot/appsettings.json* file:</span></span>
+<span data-ttu-id="5d3db-152">Configuration 是由*wwwroot/appsettings*檔案所提供：</span><span class="sxs-lookup"><span data-stu-id="5d3db-152">Configuration is supplied by the *wwwroot/appsettings.json* file:</span></span>
 
 ```json
 {
@@ -87,7 +94,7 @@ builder.Services.AddMsalAuthentication(options =>
 }
 ```
 
-<span data-ttu-id="58b53-147">範例：</span><span class="sxs-lookup"><span data-stu-id="58b53-147">Example:</span></span>
+<span data-ttu-id="5d3db-153">範例：</span><span class="sxs-lookup"><span data-stu-id="5d3db-153">Example:</span></span>
 
 ```json
 {
@@ -99,9 +106,9 @@ builder.Services.AddMsalAuthentication(options =>
 }
 ```
 
-## <a name="access-token-scopes"></a><span data-ttu-id="58b53-148">存取權杖範圍</span><span class="sxs-lookup"><span data-stu-id="58b53-148">Access token scopes</span></span>
+## <a name="access-token-scopes"></a><span data-ttu-id="5d3db-154">存取權杖範圍</span><span class="sxs-lookup"><span data-stu-id="5d3db-154">Access token scopes</span></span>
 
-<span data-ttu-id="58b53-149">BlazorWebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。</span><span class="sxs-lookup"><span data-stu-id="58b53-149">The Blazor WebAssembly template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="58b53-150">若要在登入流程中布建存取權杖，請將範圍新增至的預設存取權杖範圍 `MsalProviderOptions` ：</span><span class="sxs-lookup"><span data-stu-id="58b53-150">To provision an access token as part of the sign-in flow, add the scope to the default access token scopes of the `MsalProviderOptions`:</span></span>
+<span data-ttu-id="5d3db-155">BlazorWebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。</span><span class="sxs-lookup"><span data-stu-id="5d3db-155">The Blazor WebAssembly template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="5d3db-156">若要在登入流程中布建存取權杖，請將範圍新增至的預設存取權杖範圍 `MsalProviderOptions` ：</span><span class="sxs-lookup"><span data-stu-id="5d3db-156">To provision an access token as part of the sign-in flow, add the scope to the default access token scopes of the `MsalProviderOptions`:</span></span>
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
@@ -113,41 +120,41 @@ builder.Services.AddMsalAuthentication(options =>
 
 [!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
 
-<span data-ttu-id="58b53-151">如需詳細資訊，請參閱*其他案例*文章的下列章節：</span><span class="sxs-lookup"><span data-stu-id="58b53-151">For more information, see the following sections of the *Additional scenarios* article:</span></span>
+<span data-ttu-id="5d3db-157">如需詳細資訊，請參閱*其他案例*文章的下列章節：</span><span class="sxs-lookup"><span data-stu-id="5d3db-157">For more information, see the following sections of the *Additional scenarios* article:</span></span>
 
-* [<span data-ttu-id="58b53-152">要求其他存取權杖</span><span class="sxs-lookup"><span data-stu-id="58b53-152">Request additional access tokens</span></span>](xref:security/blazor/webassembly/additional-scenarios#request-additional-access-tokens)
-* [<span data-ttu-id="58b53-153">將權杖附加到連出要求</span><span class="sxs-lookup"><span data-stu-id="58b53-153">Attach tokens to outgoing requests</span></span>](xref:security/blazor/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)
+* [<span data-ttu-id="5d3db-158">要求其他存取權杖</span><span class="sxs-lookup"><span data-stu-id="5d3db-158">Request additional access tokens</span></span>](xref:security/blazor/webassembly/additional-scenarios#request-additional-access-tokens)
+* [<span data-ttu-id="5d3db-159">將權杖附加到連出要求</span><span class="sxs-lookup"><span data-stu-id="5d3db-159">Attach tokens to outgoing requests</span></span>](xref:security/blazor/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)
 
-## <a name="imports-file"></a><span data-ttu-id="58b53-154">匯入檔案</span><span class="sxs-lookup"><span data-stu-id="58b53-154">Imports file</span></span>
+## <a name="imports-file"></a><span data-ttu-id="5d3db-160">匯入檔案</span><span class="sxs-lookup"><span data-stu-id="5d3db-160">Imports file</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/imports-file-standalone.md)]
 
-## <a name="index-page"></a><span data-ttu-id="58b53-155">索引頁面</span><span class="sxs-lookup"><span data-stu-id="58b53-155">Index page</span></span>
+## <a name="index-page"></a><span data-ttu-id="5d3db-161">索引頁面</span><span class="sxs-lookup"><span data-stu-id="5d3db-161">Index page</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/index-page-msal.md)]
 
-## <a name="app-component"></a><span data-ttu-id="58b53-156">應用程式元件</span><span class="sxs-lookup"><span data-stu-id="58b53-156">App component</span></span>
+## <a name="app-component"></a><span data-ttu-id="5d3db-162">應用程式元件</span><span class="sxs-lookup"><span data-stu-id="5d3db-162">App component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/app-component.md)]
 
-## <a name="redirecttologin-component"></a><span data-ttu-id="58b53-157">RedirectToLogin 元件</span><span class="sxs-lookup"><span data-stu-id="58b53-157">RedirectToLogin component</span></span>
+## <a name="redirecttologin-component"></a><span data-ttu-id="5d3db-163">RedirectToLogin 元件</span><span class="sxs-lookup"><span data-stu-id="5d3db-163">RedirectToLogin component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
 
-## <a name="logindisplay-component"></a><span data-ttu-id="58b53-158">LoginDisplay 元件</span><span class="sxs-lookup"><span data-stu-id="58b53-158">LoginDisplay component</span></span>
+## <a name="logindisplay-component"></a><span data-ttu-id="5d3db-164">LoginDisplay 元件</span><span class="sxs-lookup"><span data-stu-id="5d3db-164">LoginDisplay component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/logindisplay-component.md)]
 
-## <a name="authentication-component"></a><span data-ttu-id="58b53-159">驗證元件</span><span class="sxs-lookup"><span data-stu-id="58b53-159">Authentication component</span></span>
+## <a name="authentication-component"></a><span data-ttu-id="5d3db-165">驗證元件</span><span class="sxs-lookup"><span data-stu-id="5d3db-165">Authentication component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
 
-## <a name="additional-resources"></a><span data-ttu-id="58b53-160">其他資源</span><span class="sxs-lookup"><span data-stu-id="58b53-160">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="5d3db-166">其他資源</span><span class="sxs-lookup"><span data-stu-id="5d3db-166">Additional resources</span></span>
 
 * <xref:security/blazor/webassembly/additional-scenarios>
-* [<span data-ttu-id="58b53-161">在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求</span><span class="sxs-lookup"><span data-stu-id="58b53-161">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>](xref:security/blazor/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
+* [<span data-ttu-id="5d3db-167">在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求</span><span class="sxs-lookup"><span data-stu-id="5d3db-167">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>](xref:security/blazor/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/blazor/webassembly/aad-groups-roles>
-* [<span data-ttu-id="58b53-162">快速入門：使用 Microsoft 身分識別平台來註冊應用程式</span><span class="sxs-lookup"><span data-stu-id="58b53-162">Quickstart: Register an application with the Microsoft identity platform</span></span>](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)
-* [<span data-ttu-id="58b53-163">快速入門：設定應用程式以公開 Web API</span><span class="sxs-lookup"><span data-stu-id="58b53-163">Quickstart: Configure an application to expose web APIs</span></span>](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)
+* [<span data-ttu-id="5d3db-168">快速入門：使用 Microsoft 身分識別平台來註冊應用程式</span><span class="sxs-lookup"><span data-stu-id="5d3db-168">Quickstart: Register an application with the Microsoft identity platform</span></span>](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)
+* [<span data-ttu-id="5d3db-169">快速入門：設定應用程式以公開 Web API</span><span class="sxs-lookup"><span data-stu-id="5d3db-169">Quickstart: Configure an application to expose web APIs</span></span>](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)

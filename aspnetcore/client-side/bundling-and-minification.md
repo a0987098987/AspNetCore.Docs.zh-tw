@@ -69,7 +69,7 @@ ms.locfileid: "82770949"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>選擇捆綁和縮制策略
 
-MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 設定檔案的組合和縮制。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制&mdash;（例如 linting 和影像優化）時，協力廠商工具是很好的組合。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
+MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 設定檔案的組合和縮制。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制 &mdash; （例如 linting 和影像優化）時，協力廠商工具是很好的組合。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
 
 ## <a name="configure-bundling-and-minification"></a>設定捆綁和縮制
 
@@ -93,7 +93,7 @@ MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 
 
 * `outputFileName`：要輸出的配套檔案名。 可以包含來自*bundleconfig.json*的相對路徑。 **必填**
 * `inputFiles`：要組合在一起的檔案陣列。 這些是設定檔的相對路徑。 （**選擇性**） * 空白值會產生空的輸出檔。 支援[萬用字元模式。](https://www.tldp.org/LDP/abs/html/globbingref.html)
-* `minify`：輸出類型的縮制選項。 **選擇性**，*預設值`minify: { enabled: true }` -*
+* `minify`：輸出類型的縮制選項。 **選擇性**，*預設值 `minify: { enabled: true }` -*
   * 每個輸出檔案類型都有可用的設定選項。
     * [CSS Minifier](https://github.com/madskristensen/BundlerMinifier/wiki/cssminifier)
     * [JavaScript Minifier](https://github.com/madskristensen/BundlerMinifier/wiki/JavaScript-Minifier-settings)
@@ -129,7 +129,7 @@ MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 
 
 使用您的瀏覽器中的[環境](xref:mvc/views/tag-helpers/builtin-th/environment-tag-helper)標籤協助程式，指定要包含在頁面中的檔案。 環境標籤協助程式只會在特定[環境](xref:fundamentals/environments)中執行時呈現其內容。
 
-下列`environment`標記會在`Development`環境中執行時呈現未處理的 CSS 檔案：
+下列標記會在 `environment` 環境中執行時呈現未處理的 CSS 檔案 `Development` ：
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -143,7 +143,7 @@ MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 
 
 ::: moniker-end
 
-在以外`environment`的環境中執行時，下列標記會轉譯配套和縮減的 CSS `Development`檔案。 例如，在或`Production` `Staging`中執行時，會觸發這些樣式表單的呈現：
+在以外的環境中執行時，下列標記會轉譯 `environment` 配套和縮減的 CSS 檔案 `Development` 。 例如，在或中執行時，會 `Production` `Staging` 觸發這些樣式表單的呈現：
 
 ::: moniker range=">= aspnetcore-2.0"
 
@@ -163,10 +163,10 @@ MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 
 
 ### <a name="manually-convert-the-bundling-and-minification-workflow-to-use-gulp"></a>手動將配套與縮制工作流程轉換為使用 Gulp
 
-將包含下列`devDependencies`的*package. json*檔案新增至專案根目錄：
+將包含下列的*package. json*檔案新增 `devDependencies` 至專案根目錄：
 
 > [!WARNING]
-> `gulp-uglify`模組不支援 ECMASCRIPT （ES） 2015/ES6 和更新版本。 安裝[gulp-terser](https://www.npmjs.com/package/gulp-terser) ，而`gulp-uglify`不是使用 ES2015/ES6 或更新版本。
+> `gulp-uglify`模組不支援 ECMAScript （ES） 2015/ES6 和更新版本。 安裝[gulp-terser](https://www.npmjs.com/package/gulp-terser) ，而不是 `gulp-uglify` 使用 ES2015/ES6 或更新版本。
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
@@ -192,7 +192,7 @@ npm i -g gulp-cli
 
 [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
-在此範例中， `MyPreCompileTarget`目標內定義的任何工作都會在預先`Build`定義的目標之前執行。 與下列類似的輸出會出現在 Visual Studio 的 [輸出] 視窗中：
+在此範例中，目標內定義的任何工作都會在 `MyPreCompileTarget` 預先定義的目標之前執行 `Build` 。 與下列類似的輸出會出現在 Visual Studio 的 [輸出] 視窗中：
 
 ```console
 1>------ Build started: Project: BuildBundlerMinifierApp, Configuration: Debug Any CPU ------

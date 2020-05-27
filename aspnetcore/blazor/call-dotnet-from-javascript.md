@@ -1,30 +1,30 @@
 ---
-<span data-ttu-id="8fca3-101">標題： ' ASP.NET Core ' author： ' 中的 JavaScript 函式呼叫 .NET 方法的 Blazor 詳細說明： ' 瞭解如何從應用程式中的 javascript 函式叫用 .net 方法 Blazor 。 '</span><span class="sxs-lookup"><span data-stu-id="8fca3-101">title: 'Call .NET methods from JavaScript functions in ASP.NET Core Blazor' author: description: 'Learn how to invoke .NET methods from JavaScript functions in Blazor apps.'</span></span>
-<span data-ttu-id="8fca3-102">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="8fca3-102">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="8fca3-103">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="8fca3-103">'Blazor'</span></span>
-- <span data-ttu-id="8fca3-104">'Identity'</span><span class="sxs-lookup"><span data-stu-id="8fca3-104">'Identity'</span></span>
-- <span data-ttu-id="8fca3-105">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="8fca3-105">'Let's Encrypt'</span></span>
-- <span data-ttu-id="8fca3-106">'Razor'</span><span class="sxs-lookup"><span data-stu-id="8fca3-106">'Razor'</span></span>
-- <span data-ttu-id="8fca3-107">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="8fca3-107">'SignalR' uid:</span></span> 
+<span data-ttu-id="46751-101">標題： ' ASP.NET Core ' author： ' 中的 JavaScript 函式呼叫 .NET 方法的 Blazor 詳細說明： ' 瞭解如何從應用程式中的 javascript 函式叫用 .net 方法 Blazor 。 '</span><span class="sxs-lookup"><span data-stu-id="46751-101">title: 'Call .NET methods from JavaScript functions in ASP.NET Core Blazor' author: description: 'Learn how to invoke .NET methods from JavaScript functions in Blazor apps.'</span></span>
+<span data-ttu-id="46751-102">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="46751-102">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="46751-103">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="46751-103">'Blazor'</span></span>
+- <span data-ttu-id="46751-104">'Identity'</span><span class="sxs-lookup"><span data-stu-id="46751-104">'Identity'</span></span>
+- <span data-ttu-id="46751-105">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="46751-105">'Let's Encrypt'</span></span>
+- <span data-ttu-id="46751-106">'Razor'</span><span class="sxs-lookup"><span data-stu-id="46751-106">'Razor'</span></span>
+- <span data-ttu-id="46751-107">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="46751-107">'SignalR' uid:</span></span> 
 
 ---
-# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a><span data-ttu-id="8fca3-108">從 ASP.NET Core 中的 JavaScript 函數呼叫 .NET 方法Blazor</span><span class="sxs-lookup"><span data-stu-id="8fca3-108">Call .NET methods from JavaScript functions in ASP.NET Core Blazor</span></span>
+# <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a><span data-ttu-id="46751-108">從 ASP.NET Core 中的 JavaScript 函數呼叫 .NET 方法Blazor</span><span class="sxs-lookup"><span data-stu-id="46751-108">Call .NET methods from JavaScript functions in ASP.NET Core Blazor</span></span>
 
-<span data-ttu-id="8fca3-109">By [Javier Calvarro Nelson](https://github.com/javiercn)、 [Daniel Roth](https://github.com/danroth27)、 [Shashikant](http://wisne.co)Rudrawadi 和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="8fca3-109">By [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co), and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="46751-109">By [Javier Calvarro Nelson](https://github.com/javiercn)、 [Daniel Roth](https://github.com/danroth27)、 [Shashikant](http://wisne.co)Rudrawadi 和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="46751-109">By [Javier Calvarro Nelson](https://github.com/javiercn), [Daniel Roth](https://github.com/danroth27), [Shashikant Rudrawadi](http://wisne.co), and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="8fca3-110">Blazor應用程式可以從 javascript 函數的 .net 方法和 .net 方法叫用 javascript 函式。</span><span class="sxs-lookup"><span data-stu-id="8fca3-110">A Blazor app can invoke JavaScript functions from .NET methods and .NET methods from JavaScript functions.</span></span> <span data-ttu-id="8fca3-111">這些案例稱為*JavaScript 互通性*（*JS interop*）。</span><span class="sxs-lookup"><span data-stu-id="8fca3-111">These scenarios are called *JavaScript interoperability* (*JS interop*).</span></span>
+<span data-ttu-id="46751-110">Blazor應用程式可以從 javascript 函數的 .net 方法和 .net 方法叫用 javascript 函式。</span><span class="sxs-lookup"><span data-stu-id="46751-110">A Blazor app can invoke JavaScript functions from .NET methods and .NET methods from JavaScript functions.</span></span> <span data-ttu-id="46751-111">這些案例稱為*JavaScript 互通性*（*JS interop*）。</span><span class="sxs-lookup"><span data-stu-id="46751-111">These scenarios are called *JavaScript interoperability* (*JS interop*).</span></span>
 
-<span data-ttu-id="8fca3-112">本文涵蓋從 JavaScript 叫用 .NET 方法。</span><span class="sxs-lookup"><span data-stu-id="8fca3-112">This article covers invoking .NET methods from JavaScript.</span></span> <span data-ttu-id="8fca3-113">如需如何從 .NET 呼叫 JavaScript 函式的詳細資訊，請參閱 <xref:blazor/call-javascript-from-dotnet> 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-113">For information on how to call JavaScript functions from .NET, see <xref:blazor/call-javascript-from-dotnet>.</span></span>
+<span data-ttu-id="46751-112">本文涵蓋從 JavaScript 叫用 .NET 方法。</span><span class="sxs-lookup"><span data-stu-id="46751-112">This article covers invoking .NET methods from JavaScript.</span></span> <span data-ttu-id="46751-113">如需如何從 .NET 呼叫 JavaScript 函式的詳細資訊，請參閱 <xref:blazor/call-javascript-from-dotnet> 。</span><span class="sxs-lookup"><span data-stu-id="46751-113">For information on how to call JavaScript functions from .NET, see <xref:blazor/call-javascript-from-dotnet>.</span></span>
 
-<span data-ttu-id="8fca3-114">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="8fca3-114">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="46751-114">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="46751-114">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="static-net-method-call"></a><span data-ttu-id="8fca3-115">靜態 .NET 方法呼叫</span><span class="sxs-lookup"><span data-stu-id="8fca3-115">Static .NET method call</span></span>
+## <a name="static-net-method-call"></a><span data-ttu-id="46751-115">靜態 .NET 方法呼叫</span><span class="sxs-lookup"><span data-stu-id="46751-115">Static .NET method call</span></span>
 
-<span data-ttu-id="8fca3-116">若要從 JavaScript 叫用靜態 .NET 方法，請使用 `DotNet.invokeMethod` 或 `DotNet.invokeMethodAsync` 函數。</span><span class="sxs-lookup"><span data-stu-id="8fca3-116">To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions.</span></span> <span data-ttu-id="8fca3-117">傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。</span><span class="sxs-lookup"><span data-stu-id="8fca3-117">Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments.</span></span> <span data-ttu-id="8fca3-118">若要支援伺服器案例，最好先進行非同步版本 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-118">The asynchronous version is preferred to support Blazor Server scenarios.</span></span> <span data-ttu-id="8fca3-119">.NET 方法必須是公用的、靜態的，而且具有 `[JSInvokable]` 屬性。</span><span class="sxs-lookup"><span data-stu-id="8fca3-119">The .NET method must be public, static, and have the `[JSInvokable]` attribute.</span></span> <span data-ttu-id="8fca3-120">目前不支援呼叫開放式泛型方法。</span><span class="sxs-lookup"><span data-stu-id="8fca3-120">Calling open generic methods isn't currently supported.</span></span>
+<span data-ttu-id="46751-116">若要從 JavaScript 叫用靜態 .NET 方法，請使用 `DotNet.invokeMethod` 或 `DotNet.invokeMethodAsync` 函數。</span><span class="sxs-lookup"><span data-stu-id="46751-116">To invoke a static .NET method from JavaScript, use the `DotNet.invokeMethod` or `DotNet.invokeMethodAsync` functions.</span></span> <span data-ttu-id="46751-117">傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。</span><span class="sxs-lookup"><span data-stu-id="46751-117">Pass in the identifier of the static method you wish to call, the name of the assembly containing the function, and any arguments.</span></span> <span data-ttu-id="46751-118">若要支援伺服器案例，最好先進行非同步版本 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="46751-118">The asynchronous version is preferred to support Blazor Server scenarios.</span></span> <span data-ttu-id="46751-119">.NET 方法必須是公用的、靜態的，而且具有 [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) 屬性。</span><span class="sxs-lookup"><span data-stu-id="46751-119">The .NET method must be public, static, and have the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute.</span></span> <span data-ttu-id="46751-120">目前不支援呼叫開放式泛型方法。</span><span class="sxs-lookup"><span data-stu-id="46751-120">Calling open generic methods isn't currently supported.</span></span>
 
-<span data-ttu-id="8fca3-121">範例應用程式包含可傳回陣列的 c # 方法 `int` 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-121">The sample app includes a C# method to return an `int` array.</span></span> <span data-ttu-id="8fca3-122">`JSInvokable`屬性會套用至方法。</span><span class="sxs-lookup"><span data-stu-id="8fca3-122">The `JSInvokable` attribute is applied to the method.</span></span>
+<span data-ttu-id="46751-121">範例應用程式包含可傳回陣列的 c # 方法 `int` 。</span><span class="sxs-lookup"><span data-stu-id="46751-121">The sample app includes a C# method to return an `int` array.</span></span> <span data-ttu-id="46751-122">[`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute)屬性會套用至方法。</span><span class="sxs-lookup"><span data-stu-id="46751-122">The [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute is applied to the method.</span></span>
 
-<span data-ttu-id="8fca3-123">*Pages/JsInterop. razor*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-123">*Pages/JsInterop.razor*:</span></span>
+<span data-ttu-id="46751-123">*Pages/JsInterop. razor*：</span><span class="sxs-lookup"><span data-stu-id="46751-123">*Pages/JsInterop.razor*:</span></span>
 
 ```razor
 <button type="button" class="btn btn-primary"
@@ -41,23 +41,23 @@
 }
 ```
 
-<span data-ttu-id="8fca3-124">提供給用戶端的 JavaScript 會叫用 c # .NET 方法。</span><span class="sxs-lookup"><span data-stu-id="8fca3-124">JavaScript served to the client invokes the C# .NET method.</span></span>
+<span data-ttu-id="46751-124">提供給用戶端的 JavaScript 會叫用 c # .NET 方法。</span><span class="sxs-lookup"><span data-stu-id="46751-124">JavaScript served to the client invokes the C# .NET method.</span></span>
 
-<span data-ttu-id="8fca3-125">*wwwroot/exampleJsInterop*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-125">*wwwroot/exampleJsInterop.js*:</span></span>
+<span data-ttu-id="46751-125">*wwwroot/exampleJsInterop*：</span><span class="sxs-lookup"><span data-stu-id="46751-125">*wwwroot/exampleJsInterop.js*:</span></span>
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=8-14)]
 
-<span data-ttu-id="8fca3-126">選取 [**觸發程式 .net 靜態方法 ReturnArrayAsync** ] 按鈕時，請檢查瀏覽器的 網頁程式開發人員工具中的主控台輸出。</span><span class="sxs-lookup"><span data-stu-id="8fca3-126">When the **Trigger .NET static method ReturnArrayAsync** button is selected, examine the console output in the browser's web developer tools.</span></span>
+<span data-ttu-id="46751-126">選取 [**觸發程式 .net 靜態方法 ReturnArrayAsync** ] 按鈕時，請檢查瀏覽器的 網頁程式開發人員工具中的主控台輸出。</span><span class="sxs-lookup"><span data-stu-id="46751-126">When the **Trigger .NET static method ReturnArrayAsync** button is selected, examine the console output in the browser's web developer tools.</span></span>
 
-<span data-ttu-id="8fca3-127">主控台輸出如下：</span><span class="sxs-lookup"><span data-stu-id="8fca3-127">The console output is:</span></span>
+<span data-ttu-id="46751-127">主控台輸出如下：</span><span class="sxs-lookup"><span data-stu-id="46751-127">The console output is:</span></span>
 
 ```console
 Array(4) [ 1, 2, 3, 4 ]
 ```
 
-<span data-ttu-id="8fca3-128">第四個數組值會推送至所傳回的陣列（ `data.push(4);` ） `ReturnArrayAsync` 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-128">The fourth array value is pushed to the array (`data.push(4);`) returned by `ReturnArrayAsync`.</span></span>
+<span data-ttu-id="46751-128">第四個數組值會推送至所傳回的陣列（ `data.push(4);` ） `ReturnArrayAsync` 。</span><span class="sxs-lookup"><span data-stu-id="46751-128">The fourth array value is pushed to the array (`data.push(4);`) returned by `ReturnArrayAsync`.</span></span>
 
-<span data-ttu-id="8fca3-129">根據預設，方法識別碼是方法名稱，但您可以使用此函數來指定不同的識別碼 `JSInvokableAttribute` ：</span><span class="sxs-lookup"><span data-stu-id="8fca3-129">By default, the method identifier is the method name, but you can specify a different identifier using the `JSInvokableAttribute` constructor:</span></span>
+<span data-ttu-id="46751-129">根據預設，方法識別碼是方法名稱，但您可以使用屬性（attribute）函式來指定不同的識別碼 [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) ：</span><span class="sxs-lookup"><span data-stu-id="46751-129">By default, the method identifier is the method name, but you can specify a different identifier using the [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) attribute constructor:</span></span>
 
 ```csharp
 @code {
@@ -69,7 +69,7 @@ Array(4) [ 1, 2, 3, 4 ]
 }
 ```
 
-<span data-ttu-id="8fca3-130">在用戶端 JavaScript 檔案中：</span><span class="sxs-lookup"><span data-stu-id="8fca3-130">In the client-side JavaScript file:</span></span>
+<span data-ttu-id="46751-130">在用戶端 JavaScript 檔案中：</span><span class="sxs-lookup"><span data-stu-id="46751-130">In the client-side JavaScript file:</span></span>
 
 ```javascript
 returnArrayAsyncJs: function () {
@@ -81,21 +81,21 @@ returnArrayAsyncJs: function () {
 }
 ```
 
-## <a name="instance-method-call"></a><span data-ttu-id="8fca3-131">實例方法呼叫</span><span class="sxs-lookup"><span data-stu-id="8fca3-131">Instance method call</span></span>
+## <a name="instance-method-call"></a><span data-ttu-id="46751-131">實例方法呼叫</span><span class="sxs-lookup"><span data-stu-id="46751-131">Instance method call</span></span>
 
-<span data-ttu-id="8fca3-132">您也可以從 JavaScript 呼叫 .NET 實例方法。</span><span class="sxs-lookup"><span data-stu-id="8fca3-132">You can also call .NET instance methods from JavaScript.</span></span> <span data-ttu-id="8fca3-133">若要從 JavaScript 叫用 .NET 實例方法：</span><span class="sxs-lookup"><span data-stu-id="8fca3-133">To invoke a .NET instance method from JavaScript:</span></span>
+<span data-ttu-id="46751-132">您也可以從 JavaScript 呼叫 .NET 實例方法。</span><span class="sxs-lookup"><span data-stu-id="46751-132">You can also call .NET instance methods from JavaScript.</span></span> <span data-ttu-id="46751-133">若要從 JavaScript 叫用 .NET 實例方法：</span><span class="sxs-lookup"><span data-stu-id="46751-133">To invoke a .NET instance method from JavaScript:</span></span>
 
-* <span data-ttu-id="8fca3-134">以傳址方式將 .NET 實例傳遞至 JavaScript：</span><span class="sxs-lookup"><span data-stu-id="8fca3-134">Pass the .NET instance by reference to JavaScript:</span></span>
-  * <span data-ttu-id="8fca3-135">對進行靜態呼叫 `DotNetObjectReference.Create` 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-135">Make a static call to `DotNetObjectReference.Create`.</span></span>
-  * <span data-ttu-id="8fca3-136">將實例包裝在 `DotNetObjectReference` 實例中，並 `Create` 在實例上呼叫 `DotNetObjectReference` 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-136">Wrap the instance in a `DotNetObjectReference` instance and call `Create` on the `DotNetObjectReference` instance.</span></span> <span data-ttu-id="8fca3-137">處置 `DotNetObjectReference` 物件（本章節稍後會顯示一個範例）。</span><span class="sxs-lookup"><span data-stu-id="8fca3-137">Dispose of `DotNetObjectReference` objects (an example appears later in this section).</span></span>
-* <span data-ttu-id="8fca3-138">使用或函數，在實例上叫用 .NET 實例方法 `invokeMethod` `invokeMethodAsync` 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-138">Invoke .NET instance methods on the instance using the `invokeMethod` or `invokeMethodAsync` functions.</span></span> <span data-ttu-id="8fca3-139">從 JavaScript 叫用其他 .NET 方法時，也可以將 .NET 實例當做引數傳遞。</span><span class="sxs-lookup"><span data-stu-id="8fca3-139">The .NET instance can also be passed as an argument when invoking other .NET methods from JavaScript.</span></span>
+* <span data-ttu-id="46751-134">以傳址方式將 .NET 實例傳遞至 JavaScript：</span><span class="sxs-lookup"><span data-stu-id="46751-134">Pass the .NET instance by reference to JavaScript:</span></span>
+  * <span data-ttu-id="46751-135">對進行靜態呼叫 <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A?displayProperty=nameWithType> 。</span><span class="sxs-lookup"><span data-stu-id="46751-135">Make a static call to <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A?displayProperty=nameWithType>.</span></span>
+  * <span data-ttu-id="46751-136">將實例包裝在 <xref:Microsoft.JSInterop.DotNetObjectReference> 實例中，並 <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A> 在實例上呼叫 <xref:Microsoft.JSInterop.DotNetObjectReference> 。</span><span class="sxs-lookup"><span data-stu-id="46751-136">Wrap the instance in a <xref:Microsoft.JSInterop.DotNetObjectReference> instance and call <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A> on the <xref:Microsoft.JSInterop.DotNetObjectReference> instance.</span></span> <span data-ttu-id="46751-137">處置 <xref:Microsoft.JSInterop.DotNetObjectReference> 物件（本章節稍後會顯示一個範例）。</span><span class="sxs-lookup"><span data-stu-id="46751-137">Dispose of <xref:Microsoft.JSInterop.DotNetObjectReference> objects (an example appears later in this section).</span></span>
+* <span data-ttu-id="46751-138">使用或函數，在實例上叫用 .NET 實例方法 `invokeMethod` `invokeMethodAsync` 。</span><span class="sxs-lookup"><span data-stu-id="46751-138">Invoke .NET instance methods on the instance using the `invokeMethod` or `invokeMethodAsync` functions.</span></span> <span data-ttu-id="46751-139">從 JavaScript 叫用其他 .NET 方法時，也可以將 .NET 實例當做引數傳遞。</span><span class="sxs-lookup"><span data-stu-id="46751-139">The .NET instance can also be passed as an argument when invoking other .NET methods from JavaScript.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="8fca3-140">範例應用程式會將訊息記錄到用戶端主控台。</span><span class="sxs-lookup"><span data-stu-id="8fca3-140">The sample app logs messages to the client-side console.</span></span> <span data-ttu-id="8fca3-141">如需範例應用程式所示範的下列範例，請在瀏覽器的開發人員工具中檢查瀏覽器的主控台輸出。</span><span class="sxs-lookup"><span data-stu-id="8fca3-141">For the following examples demonstrated by the sample app, examine the browser's console output in the browser's developer tools.</span></span>
+> <span data-ttu-id="46751-140">範例應用程式會將訊息記錄到用戶端主控台。</span><span class="sxs-lookup"><span data-stu-id="46751-140">The sample app logs messages to the client-side console.</span></span> <span data-ttu-id="46751-141">如需範例應用程式所示範的下列範例，請在瀏覽器的開發人員工具中檢查瀏覽器的主控台輸出。</span><span class="sxs-lookup"><span data-stu-id="46751-141">For the following examples demonstrated by the sample app, examine the browser's console output in the browser's developer tools.</span></span>
 
-<span data-ttu-id="8fca3-142">選取 [**觸發程式 .net 實例方法 HelloHelper. SayHello** ] 按鈕時， `ExampleJsInterop.CallHelloHelperSayHello` 會呼叫，並將名稱傳遞 `Blazor` 至方法。</span><span class="sxs-lookup"><span data-stu-id="8fca3-142">When the **Trigger .NET instance method HelloHelper.SayHello** button is selected, `ExampleJsInterop.CallHelloHelperSayHello` is called and passes a name, `Blazor`, to the method.</span></span>
+<span data-ttu-id="46751-142">選取 [**觸發程式 .net 實例方法 HelloHelper. SayHello** ] 按鈕時， `ExampleJsInterop.CallHelloHelperSayHello` 會呼叫，並將名稱傳遞 `Blazor` 至方法。</span><span class="sxs-lookup"><span data-stu-id="46751-142">When the **Trigger .NET instance method HelloHelper.SayHello** button is selected, `ExampleJsInterop.CallHelloHelperSayHello` is called and passes a name, `Blazor`, to the method.</span></span>
 
-<span data-ttu-id="8fca3-143">*Pages/JsInterop. razor*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-143">*Pages/JsInterop.razor*:</span></span>
+<span data-ttu-id="46751-143">*Pages/JsInterop. razor*：</span><span class="sxs-lookup"><span data-stu-id="46751-143">*Pages/JsInterop.razor*:</span></span>
 
 ```razor
 <button type="button" class="btn btn-primary" @onclick="TriggerNetInstanceMethod">
@@ -111,31 +111,31 @@ returnArrayAsyncJs: function () {
 }
 ```
 
-<span data-ttu-id="8fca3-144">`CallHelloHelperSayHello``sayHello`使用的新實例叫用 JavaScript 函數 `HelloHelper` 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-144">`CallHelloHelperSayHello` invokes the JavaScript function `sayHello` with a new instance of `HelloHelper`.</span></span>
+<span data-ttu-id="46751-144">`CallHelloHelperSayHello``sayHello`使用的新實例叫用 JavaScript 函數 `HelloHelper` 。</span><span class="sxs-lookup"><span data-stu-id="46751-144">`CallHelloHelperSayHello` invokes the JavaScript function `sayHello` with a new instance of `HelloHelper`.</span></span>
 
-<span data-ttu-id="8fca3-145">*JsInteropClasses/ExampleJsInterop .cs*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-145">*JsInteropClasses/ExampleJsInterop.cs*:</span></span>
+<span data-ttu-id="46751-145">*JsInteropClasses/ExampleJsInterop .cs*：</span><span class="sxs-lookup"><span data-stu-id="46751-145">*JsInteropClasses/ExampleJsInterop.cs*:</span></span>
 
 [!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/ExampleJsInterop.cs?name=snippet1&highlight=11-18)]
 
-<span data-ttu-id="8fca3-146">*wwwroot/exampleJsInterop*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-146">*wwwroot/exampleJsInterop.js*:</span></span>
+<span data-ttu-id="46751-146">*wwwroot/exampleJsInterop*：</span><span class="sxs-lookup"><span data-stu-id="46751-146">*wwwroot/exampleJsInterop.js*:</span></span>
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=15-18)]
 
-<span data-ttu-id="8fca3-147">名稱會傳遞至的函式 `HelloHelper` ，以設定 `HelloHelper.Name` 屬性。</span><span class="sxs-lookup"><span data-stu-id="8fca3-147">The name is passed to `HelloHelper`'s constructor, which sets the `HelloHelper.Name` property.</span></span> <span data-ttu-id="8fca3-148">執行 JavaScript 函式時 `sayHello` ， `HelloHelper.SayHello` 會傳回 `Hello, {Name}!` 訊息，由 javascript 函數寫入主控台。</span><span class="sxs-lookup"><span data-stu-id="8fca3-148">When the JavaScript function `sayHello` is executed, `HelloHelper.SayHello` returns the `Hello, {Name}!` message, which is written to the console by the JavaScript function.</span></span>
+<span data-ttu-id="46751-147">名稱會傳遞至的函式 `HelloHelper` ，以設定 `HelloHelper.Name` 屬性。</span><span class="sxs-lookup"><span data-stu-id="46751-147">The name is passed to `HelloHelper`'s constructor, which sets the `HelloHelper.Name` property.</span></span> <span data-ttu-id="46751-148">執行 JavaScript 函式時 `sayHello` ， `HelloHelper.SayHello` 會傳回 `Hello, {Name}!` 訊息，由 javascript 函數寫入主控台。</span><span class="sxs-lookup"><span data-stu-id="46751-148">When the JavaScript function `sayHello` is executed, `HelloHelper.SayHello` returns the `Hello, {Name}!` message, which is written to the console by the JavaScript function.</span></span>
 
-<span data-ttu-id="8fca3-149">*JsInteropClasses/HelloHelper .cs*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-149">*JsInteropClasses/HelloHelper.cs*:</span></span>
+<span data-ttu-id="46751-149">*JsInteropClasses/HelloHelper .cs*：</span><span class="sxs-lookup"><span data-stu-id="46751-149">*JsInteropClasses/HelloHelper.cs*:</span></span>
 
 [!code-csharp[](./common/samples/3.x/BlazorWebAssemblySample/JsInteropClasses/HelloHelper.cs?name=snippet1&highlight=5,10-11)]
 
-<span data-ttu-id="8fca3-150">瀏覽器 網頁程式開發人員工具中的主控台輸出：</span><span class="sxs-lookup"><span data-stu-id="8fca3-150">Console output in the browser's web developer tools:</span></span>
+<span data-ttu-id="46751-150">瀏覽器 網頁程式開發人員工具中的主控台輸出：</span><span class="sxs-lookup"><span data-stu-id="46751-150">Console output in the browser's web developer tools:</span></span>
 
 ```console
 Hello, Blazor!
 ```
 
-<span data-ttu-id="8fca3-151">若要避免記憶體流失，並允許在建立的元件上進行垃圾收集 `DotNetObjectReference` ，請採用下列其中一種方法：</span><span class="sxs-lookup"><span data-stu-id="8fca3-151">To avoid a memory leak and allow garbage collection on a component that creates a `DotNetObjectReference`, adopt one of the following approaches:</span></span>
+<span data-ttu-id="46751-151">若要避免記憶體流失，並允許在建立的元件上進行垃圾收集 <xref:Microsoft.JSInterop.DotNetObjectReference> ，請採用下列其中一種方法：</span><span class="sxs-lookup"><span data-stu-id="46751-151">To avoid a memory leak and allow garbage collection on a component that creates a <xref:Microsoft.JSInterop.DotNetObjectReference>, adopt one of the following approaches:</span></span>
 
-* <span data-ttu-id="8fca3-152">處置建立實例之類別中的物件 `DotNetObjectReference` ：</span><span class="sxs-lookup"><span data-stu-id="8fca3-152">Dispose of the object in the class that created the `DotNetObjectReference` instance:</span></span>
+* <span data-ttu-id="46751-152">處置建立實例之類別中的物件 <xref:Microsoft.JSInterop.DotNetObjectReference> ：</span><span class="sxs-lookup"><span data-stu-id="46751-152">Dispose of the object in the class that created the <xref:Microsoft.JSInterop.DotNetObjectReference> instance:</span></span>
 
   ```csharp
   public class ExampleJsInterop : IDisposable
@@ -164,7 +164,7 @@ Hello, Blazor!
   }
   ```
 
-  <span data-ttu-id="8fca3-153">類別中所顯示的上述模式 `ExampleJsInterop` 也可以在元件中執行：</span><span class="sxs-lookup"><span data-stu-id="8fca3-153">The preceding pattern shown in the `ExampleJsInterop` class can also be implemented in a component:</span></span>
+  <span data-ttu-id="46751-153">類別中所顯示的上述模式 `ExampleJsInterop` 也可以在元件中執行：</span><span class="sxs-lookup"><span data-stu-id="46751-153">The preceding pattern shown in the `ExampleJsInterop` class can also be implemented in a component:</span></span>
 
   ```razor
   @page "/JSInteropComponent"
@@ -197,7 +197,7 @@ Hello, Blazor!
   }
   ```
 
-* <span data-ttu-id="8fca3-154">當元件或類別未處置時 `DotNetObjectReference` ，請呼叫來處置用戶端上的物件 `.dispose()` ：</span><span class="sxs-lookup"><span data-stu-id="8fca3-154">When the component or class doesn't dispose of the `DotNetObjectReference`, dispose of the object on the client by calling `.dispose()`:</span></span>
+* <span data-ttu-id="46751-154">當元件或類別未處置時 <xref:Microsoft.JSInterop.DotNetObjectReference> ，請呼叫來處置用戶端上的物件 `.dispose()` ：</span><span class="sxs-lookup"><span data-stu-id="46751-154">When the component or class doesn't dispose of the <xref:Microsoft.JSInterop.DotNetObjectReference>, dispose of the object on the client by calling `.dispose()`:</span></span>
 
   ```javascript
   window.myFunction = (dotnetHelper) => {
@@ -206,14 +206,14 @@ Hello, Blazor!
   }
   ```
 
-## <a name="component-instance-method-call"></a><span data-ttu-id="8fca3-155">元件實例方法呼叫</span><span class="sxs-lookup"><span data-stu-id="8fca3-155">Component instance method call</span></span>
+## <a name="component-instance-method-call"></a><span data-ttu-id="46751-155">元件實例方法呼叫</span><span class="sxs-lookup"><span data-stu-id="46751-155">Component instance method call</span></span>
 
-<span data-ttu-id="8fca3-156">若要叫用元件的 .NET 方法：</span><span class="sxs-lookup"><span data-stu-id="8fca3-156">To invoke a component's .NET methods:</span></span>
+<span data-ttu-id="46751-156">若要叫用元件的 .NET 方法：</span><span class="sxs-lookup"><span data-stu-id="46751-156">To invoke a component's .NET methods:</span></span>
 
-* <span data-ttu-id="8fca3-157">使用或函式 `invokeMethod` `invokeMethodAsync` ，對元件進行靜態方法呼叫。</span><span class="sxs-lookup"><span data-stu-id="8fca3-157">Use the `invokeMethod` or `invokeMethodAsync` function to make a static method call to the component.</span></span>
-* <span data-ttu-id="8fca3-158">元件的靜態方法會將其實例方法的呼叫包裝為叫用的 `Action` 。</span><span class="sxs-lookup"><span data-stu-id="8fca3-158">The component's static method wraps the call to its instance method as an invoked `Action`.</span></span>
+* <span data-ttu-id="46751-157">使用或函式 `invokeMethod` `invokeMethodAsync` ，對元件進行靜態方法呼叫。</span><span class="sxs-lookup"><span data-stu-id="46751-157">Use the `invokeMethod` or `invokeMethodAsync` function to make a static method call to the component.</span></span>
+* <span data-ttu-id="46751-158">元件的靜態方法會將其實例方法的呼叫包裝為叫用的 <xref:System.Action> 。</span><span class="sxs-lookup"><span data-stu-id="46751-158">The component's static method wraps the call to its instance method as an invoked <xref:System.Action>.</span></span>
 
-<span data-ttu-id="8fca3-159">在用戶端 JavaScript 中：</span><span class="sxs-lookup"><span data-stu-id="8fca3-159">In the client-side JavaScript:</span></span>
+<span data-ttu-id="46751-159">在用戶端 JavaScript 中：</span><span class="sxs-lookup"><span data-stu-id="46751-159">In the client-side JavaScript:</span></span>
 
 ```javascript
 function updateMessageCallerJS() {
@@ -221,7 +221,7 @@ function updateMessageCallerJS() {
 }
 ```
 
-<span data-ttu-id="8fca3-160">*Pages/JSInteropComponent. razor*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-160">*Pages/JSInteropComponent.razor*:</span></span>
+<span data-ttu-id="46751-160">*Pages/JSInteropComponent. razor*：</span><span class="sxs-lookup"><span data-stu-id="46751-160">*Pages/JSInteropComponent.razor*:</span></span>
 
 ```razor
 @page "/JSInteropComponent"
@@ -257,15 +257,15 @@ function updateMessageCallerJS() {
 }
 ```
 
-<span data-ttu-id="8fca3-161">有數個元件時，每個都有實例方法來呼叫，請使用 helper 類別來叫用每個元件的實例方法（as `Action` ）。</span><span class="sxs-lookup"><span data-stu-id="8fca3-161">When there are several components, each with instance methods to call, use a helper class to invoke the instance methods (as `Action`s) of each component.</span></span>
+<span data-ttu-id="46751-161">有數個元件時，每個都有實例方法來呼叫，請使用 helper 類別來叫用每個元件的實例方法（as <xref:System.Action> ）。</span><span class="sxs-lookup"><span data-stu-id="46751-161">When there are several components, each with instance methods to call, use a helper class to invoke the instance methods (as <xref:System.Action>s) of each component.</span></span>
 
-<span data-ttu-id="8fca3-162">在下例中︰</span><span class="sxs-lookup"><span data-stu-id="8fca3-162">In the following example:</span></span>
+<span data-ttu-id="46751-162">在下例中︰</span><span class="sxs-lookup"><span data-stu-id="46751-162">In the following example:</span></span>
 
-* <span data-ttu-id="8fca3-163">此 `JSInterop` 元件包含多個 `ListItem` 元件。</span><span class="sxs-lookup"><span data-stu-id="8fca3-163">The `JSInterop` component contains several `ListItem` components.</span></span>
-* <span data-ttu-id="8fca3-164">每個 `ListItem` 元件都是由一個訊息和一個按鈕所組成。</span><span class="sxs-lookup"><span data-stu-id="8fca3-164">Each `ListItem` component is composed of a message and a button.</span></span>
-* <span data-ttu-id="8fca3-165">選取 [ `ListItem` 元件] 按鈕時，該 `ListItem` `UpdateMessage` 方法會變更清單專案文字，並隱藏按鈕。</span><span class="sxs-lookup"><span data-stu-id="8fca3-165">When a `ListItem` component button is selected, that `ListItem`'s `UpdateMessage` method changes the list item text and hides the button.</span></span>
+* <span data-ttu-id="46751-163">此 `JSInteropExample` 元件包含多個 `ListItem` 元件。</span><span class="sxs-lookup"><span data-stu-id="46751-163">The `JSInteropExample` component contains several `ListItem` components.</span></span>
+* <span data-ttu-id="46751-164">每個 `ListItem` 元件都是由一個訊息和一個按鈕所組成。</span><span class="sxs-lookup"><span data-stu-id="46751-164">Each `ListItem` component is composed of a message and a button.</span></span>
+* <span data-ttu-id="46751-165">選取 [ `ListItem` 元件] 按鈕時，該 `ListItem` `UpdateMessage` 方法會變更清單專案文字，並隱藏按鈕。</span><span class="sxs-lookup"><span data-stu-id="46751-165">When a `ListItem` component button is selected, that `ListItem`'s `UpdateMessage` method changes the list item text and hides the button.</span></span>
 
-<span data-ttu-id="8fca3-166">*MessageUpdateInvokeHelper.cs*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-166">*MessageUpdateInvokeHelper.cs*:</span></span>
+<span data-ttu-id="46751-166">*MessageUpdateInvokeHelper.cs*：</span><span class="sxs-lookup"><span data-stu-id="46751-166">*MessageUpdateInvokeHelper.cs*:</span></span>
 
 ```csharp
 using System;
@@ -288,7 +288,7 @@ public class MessageUpdateInvokeHelper
 }
 ```
 
-<span data-ttu-id="8fca3-167">在用戶端 JavaScript 中：</span><span class="sxs-lookup"><span data-stu-id="8fca3-167">In the client-side JavaScript:</span></span>
+<span data-ttu-id="46751-167">在用戶端 JavaScript 中：</span><span class="sxs-lookup"><span data-stu-id="46751-167">In the client-side JavaScript:</span></span>
 
 ```javascript
 window.updateMessageCallerJS = (dotnetHelper) => {
@@ -297,7 +297,7 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 }
 ```
 
-<span data-ttu-id="8fca3-168">*共用/全部的 razor*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-168">*Shared/ListItem.razor*:</span></span>
+<span data-ttu-id="46751-168">*共用/全部的 razor*：</span><span class="sxs-lookup"><span data-stu-id="46751-168">*Shared/ListItem.razor*:</span></span>
 
 ```razor
 @inject IJSRuntime JsRuntime
@@ -332,10 +332,10 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 }
 ```
 
-<span data-ttu-id="8fca3-169">*Pages/JSInterop. razor*：</span><span class="sxs-lookup"><span data-stu-id="8fca3-169">*Pages/JSInterop.razor*:</span></span>
+<span data-ttu-id="46751-169">*Pages/JSInteropExample. razor*：</span><span class="sxs-lookup"><span data-stu-id="46751-169">*Pages/JSInteropExample.razor*:</span></span>
 
 ```razor
-@page "/JSInterop"
+@page "/JSInteropExample"
 
 <h1>List of components</h1>
 
@@ -349,20 +349,20 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 
 [!INCLUDE[Share interop code in a class library](~/includes/blazor-share-interop-code.md)]
 
-## <a name="avoid-circular-object-references"></a><span data-ttu-id="8fca3-170">避免迴圈物件參考</span><span class="sxs-lookup"><span data-stu-id="8fca3-170">Avoid circular object references</span></span>
+## <a name="avoid-circular-object-references"></a><span data-ttu-id="46751-170">避免迴圈物件參考</span><span class="sxs-lookup"><span data-stu-id="46751-170">Avoid circular object references</span></span>
 
-<span data-ttu-id="8fca3-171">在用戶端上，包含迴圈參考的物件無法序列化為下列任一項：</span><span class="sxs-lookup"><span data-stu-id="8fca3-171">Objects that contain circular references can't be serialized on the client for either:</span></span>
+<span data-ttu-id="46751-171">在用戶端上，包含迴圈參考的物件無法序列化為下列任一項：</span><span class="sxs-lookup"><span data-stu-id="46751-171">Objects that contain circular references can't be serialized on the client for either:</span></span>
 
-* <span data-ttu-id="8fca3-172">.NET 方法呼叫。</span><span class="sxs-lookup"><span data-stu-id="8fca3-172">.NET method calls.</span></span>
-* <span data-ttu-id="8fca3-173">當傳回類型具有迴圈參考時，來自 c # 的 JavaScript 方法呼叫。</span><span class="sxs-lookup"><span data-stu-id="8fca3-173">JavaScript method calls from C# when the return type has circular references.</span></span>
+* <span data-ttu-id="46751-172">.NET 方法呼叫。</span><span class="sxs-lookup"><span data-stu-id="46751-172">.NET method calls.</span></span>
+* <span data-ttu-id="46751-173">當傳回類型具有迴圈參考時，來自 c # 的 JavaScript 方法呼叫。</span><span class="sxs-lookup"><span data-stu-id="46751-173">JavaScript method calls from C# when the return type has circular references.</span></span>
 
-<span data-ttu-id="8fca3-174">如需詳細資訊，請參閱下列問題：</span><span class="sxs-lookup"><span data-stu-id="8fca3-174">For more information, see the following issues:</span></span>
+<span data-ttu-id="46751-174">如需詳細資訊，請參閱下列問題：</span><span class="sxs-lookup"><span data-stu-id="46751-174">For more information, see the following issues:</span></span>
 
-* [<span data-ttu-id="8fca3-175">不支援迴圈參考，接受兩個（dotnet/aspnetcore #20525）</span><span class="sxs-lookup"><span data-stu-id="8fca3-175">Circular references are not supported, take two (dotnet/aspnetcore #20525)</span></span>](https://github.com/dotnet/aspnetcore/issues/20525)
-* [<span data-ttu-id="8fca3-176">提案：在序列化時加入用來處理迴圈參考的機制（dotnet/runtime #30820）</span><span class="sxs-lookup"><span data-stu-id="8fca3-176">Proposal: Add mechanism to handle circular references when serializing (dotnet/runtime #30820)</span></span>](https://github.com/dotnet/runtime/issues/30820)
+* [<span data-ttu-id="46751-175">不支援迴圈參考，接受兩個（dotnet/aspnetcore #20525）</span><span class="sxs-lookup"><span data-stu-id="46751-175">Circular references are not supported, take two (dotnet/aspnetcore #20525)</span></span>](https://github.com/dotnet/aspnetcore/issues/20525)
+* [<span data-ttu-id="46751-176">提案：在序列化時加入用來處理迴圈參考的機制（dotnet/runtime #30820）</span><span class="sxs-lookup"><span data-stu-id="46751-176">Proposal: Add mechanism to handle circular references when serializing (dotnet/runtime #30820)</span></span>](https://github.com/dotnet/runtime/issues/30820)
 
-## <a name="additional-resources"></a><span data-ttu-id="8fca3-177">其他資源</span><span class="sxs-lookup"><span data-stu-id="8fca3-177">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="46751-177">其他資源</span><span class="sxs-lookup"><span data-stu-id="46751-177">Additional resources</span></span>
 
 * <xref:blazor/call-javascript-from-dotnet>
-* [<span data-ttu-id="8fca3-178">InteropComponent razor 範例（dotnet/AspNetCore GitHub 存放庫，3.1 發行分支）</span><span class="sxs-lookup"><span data-stu-id="8fca3-178">InteropComponent.razor example (dotnet/AspNetCore GitHub repository, 3.1 release branch)</span></span>](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
-* <span data-ttu-id="8fca3-179">[在伺服器應用程式中執行大型資料傳輸 Blazor](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span><span class="sxs-lookup"><span data-stu-id="8fca3-179">[Perform large data transfers in Blazor Server apps](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span></span>
+* [<span data-ttu-id="46751-178">InteropComponent razor 範例（dotnet/AspNetCore GitHub 存放庫，3.1 發行分支）</span><span class="sxs-lookup"><span data-stu-id="46751-178">InteropComponent.razor example (dotnet/AspNetCore GitHub repository, 3.1 release branch)</span></span>](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
+* <span data-ttu-id="46751-179">[在伺服器應用程式中執行大型資料傳輸 Blazor](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span><span class="sxs-lookup"><span data-stu-id="46751-179">[Perform large data transfers in Blazor Server apps](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)</span></span>

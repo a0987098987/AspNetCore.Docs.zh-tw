@@ -1,293 +1,137 @@
 ---
-title: ASP.NET Core 中的選項模式
-author: rick-anderson
-description: 了解如何使用選項模式來代表 ASP.NET Core 應用程式中的一組相關設定。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 02/12/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/configuration/options
-ms.openlocfilehash: efce2caf37534823016c12b298afd277bab22030
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82769932"
----
-# <a name="options-pattern-in-aspnet-core"></a><span data-ttu-id="2f003-103">ASP.NET Core 中的選項模式</span><span class="sxs-lookup"><span data-stu-id="2f003-103">Options pattern in ASP.NET Core</span></span>
+<span data-ttu-id="22091-101">標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="22091-101">title: author: description: monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="22091-102">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="22091-102">'Blazor'</span></span>
+- <span data-ttu-id="22091-103">'Identity'</span><span class="sxs-lookup"><span data-stu-id="22091-103">'Identity'</span></span>
+- <span data-ttu-id="22091-104">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="22091-104">'Let's Encrypt'</span></span>
+- <span data-ttu-id="22091-105">'Razor'</span><span class="sxs-lookup"><span data-stu-id="22091-105">'Razor'</span></span>
+- <span data-ttu-id="22091-106">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="22091-106">'SignalR' uid:</span></span> 
+
+--- 
+# <a name="options-pattern-in-aspnet-core"></a><span data-ttu-id="22091-107">ASP.NET Core 中的選項模式</span><span class="sxs-lookup"><span data-stu-id="22091-107">Options pattern in ASP.NET Core</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="2f003-104">選項模式使用類別來代表一組相關的設定。</span><span class="sxs-lookup"><span data-stu-id="2f003-104">The options pattern uses classes to represent groups of related settings.</span></span> <span data-ttu-id="2f003-105">當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：</span><span class="sxs-lookup"><span data-stu-id="2f003-105">When [configuration settings](xref:fundamentals/configuration/index) are isolated by scenario into separate classes, the app adheres to two important software engineering principles:</span></span>
+<span data-ttu-id="22091-108">By [Kirk Larkin](https://twitter.com/serpent5)和[Rick Anderson](https://twitter.com/RickAndMSFT)。</span><span class="sxs-lookup"><span data-stu-id="22091-108">By [Kirk Larkin](https://twitter.com/serpent5) and [Rick Anderson](https://twitter.com/RickAndMSFT).</span></span>
 
-* <span data-ttu-id="2f003-106">[介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。</span><span class="sxs-lookup"><span data-stu-id="2f003-106">The [Interface Segregation Principle (ISP) or Encapsulation](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.</span></span>
-* <span data-ttu-id="2f003-107">應用程式不同部分的[疑慮](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash;設定不會彼此相依或彼此結合。</span><span class="sxs-lookup"><span data-stu-id="2f003-107">[Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; Settings for different parts of the app aren't dependent or coupled to one another.</span></span>
+<span data-ttu-id="22091-109">選項模式會使用類別來提供相關設定群組的強型別存取。</span><span class="sxs-lookup"><span data-stu-id="22091-109">The options pattern uses classes to provide strongly typed access to groups of related settings.</span></span> <span data-ttu-id="22091-110">當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：</span><span class="sxs-lookup"><span data-stu-id="22091-110">When [configuration settings](xref:fundamentals/configuration/index) are isolated by scenario into separate classes, the app adheres to two important software engineering principles:</span></span>
 
-<span data-ttu-id="2f003-108">選項也提供驗證設定資料的機制。</span><span class="sxs-lookup"><span data-stu-id="2f003-108">Options also provide a mechanism to validate configuration data.</span></span> <span data-ttu-id="2f003-109">如需詳細資訊，請參閱[選項驗證](#options-validation)一節。</span><span class="sxs-lookup"><span data-stu-id="2f003-109">For more information, see the [Options validation](#options-validation) section.</span></span>
+* <span data-ttu-id="22091-111">[介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。</span><span class="sxs-lookup"><span data-stu-id="22091-111">The [Interface Segregation Principle (ISP) or Encapsulation](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.</span></span>
+* <span data-ttu-id="22091-112">[關注](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; 點分離應用程式不同部分的設定不會彼此相依或彼此結合。</span><span class="sxs-lookup"><span data-stu-id="22091-112">[Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; Settings for different parts of the app aren't dependent or coupled to one another.</span></span>
 
-<span data-ttu-id="2f003-110">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="2f003-110">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="22091-113">選項也提供驗證設定資料的機制。</span><span class="sxs-lookup"><span data-stu-id="22091-113">Options also provide a mechanism to validate configuration data.</span></span> <span data-ttu-id="22091-114">如需詳細資訊，請參閱[選項驗證](#options-validation)一節。</span><span class="sxs-lookup"><span data-stu-id="22091-114">For more information, see the [Options validation](#options-validation) section.</span></span>
 
-## <a name="package"></a><span data-ttu-id="2f003-111">封裝</span><span class="sxs-lookup"><span data-stu-id="2f003-111">Package</span></span>
+<span data-ttu-id="22091-115">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="22091-115">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-<span data-ttu-id="2f003-112">ASP.NET Core 應用程式中會隱含地參考[microsoft.extensions.options.configurationextensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/)套件。</span><span class="sxs-lookup"><span data-stu-id="2f003-112">The [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) package is implicitly referenced in ASP.NET Core apps.</span></span>
+<a name="optpat"></a>
 
-## <a name="options-interfaces"></a><span data-ttu-id="2f003-113">選項介面</span><span class="sxs-lookup"><span data-stu-id="2f003-113">Options interfaces</span></span>
+## <a name="bind-hierarchical-configuration"></a><span data-ttu-id="22091-116">系結階層式設定</span><span class="sxs-lookup"><span data-stu-id="22091-116">Bind hierarchical configuration</span></span>
 
-<span data-ttu-id="2f003-114"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 是用來擷取選項並管理 `TOptions` 執行個體的選項通知。</span><span class="sxs-lookup"><span data-stu-id="2f003-114"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> is used to retrieve options and manage options notifications for `TOptions` instances.</span></span> <span data-ttu-id="2f003-115"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 支援以下案例：</span><span class="sxs-lookup"><span data-stu-id="2f003-115"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> supports the following scenarios:</span></span>
+[!INCLUDE[](~/includes/bind.md)]
 
-* <span data-ttu-id="2f003-116">變更通知</span><span class="sxs-lookup"><span data-stu-id="2f003-116">Change notifications</span></span>
-* [<span data-ttu-id="2f003-117">具名選項</span><span class="sxs-lookup"><span data-stu-id="2f003-117">Named options</span></span>](#named-options-support-with-iconfigurenamedoptions)
-* [<span data-ttu-id="2f003-118">可重新載入的設定</span><span class="sxs-lookup"><span data-stu-id="2f003-118">Reloadable configuration</span></span>](#reload-configuration-data-with-ioptionssnapshot)
-* <span data-ttu-id="2f003-119">選擇性選項無效判定 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span><span class="sxs-lookup"><span data-stu-id="2f003-119">Selective options invalidation (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span></span>
+<a name="oi"></a>
 
-<span data-ttu-id="2f003-120">[設定後](#options-post-configuration)案例可讓您在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生時設定或變更選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-120">[Post-configuration](#options-post-configuration) scenarios allow you to set or change options after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs.</span></span>
+## <a name="options-interfaces"></a><span data-ttu-id="22091-117">選項介面</span><span class="sxs-lookup"><span data-stu-id="22091-117">Options interfaces</span></span>
 
-<span data-ttu-id="2f003-121"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 負責建立新的選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-121"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> is responsible for creating new options instances.</span></span> <span data-ttu-id="2f003-122">它有單一 <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> 方法。</span><span class="sxs-lookup"><span data-stu-id="2f003-122">It has a single <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> method.</span></span> <span data-ttu-id="2f003-123">預設實作會接受所有已註冊的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 與 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>，並先執行所有設定，接著執行設定後作業。</span><span class="sxs-lookup"><span data-stu-id="2f003-123">The default implementation takes all registered <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> and runs all the configurations first, followed by the post-configuration.</span></span> <span data-ttu-id="2f003-124">它會區別 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 和 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>，且只會呼叫適當的介面。</span><span class="sxs-lookup"><span data-stu-id="2f003-124">It distinguishes between <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and only calls the appropriate interface.</span></span>
+<span data-ttu-id="22091-118"><xref:Microsoft.Extensions.Options.IOptions%601>:</span><span class="sxs-lookup"><span data-stu-id="22091-118"><xref:Microsoft.Extensions.Options.IOptions%601>:</span></span>
 
-<span data-ttu-id="2f003-125"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會由 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 用來快取 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-125"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> is used by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to cache `TOptions` instances.</span></span> <span data-ttu-id="2f003-126"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會使監視器中的選項執行個體失效，以便重新計算值 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>)。</span><span class="sxs-lookup"><span data-stu-id="2f003-126">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> invalidates options instances in the monitor so that the value is recomputed (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>).</span></span> <span data-ttu-id="2f003-127">值可以使用 <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*> 手動導入。</span><span class="sxs-lookup"><span data-stu-id="2f003-127">Values can be manually introduced with <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*>.</span></span> <span data-ttu-id="2f003-128"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> 方法用於應該視需要重新建立所有具名執行個體時。</span><span class="sxs-lookup"><span data-stu-id="2f003-128">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> method is used when all named instances should be recreated on demand.</span></span>
+* <span data-ttu-id="22091-119">不***支援：***</span><span class="sxs-lookup"><span data-stu-id="22091-119">Does ***not*** support:</span></span>
+  * <span data-ttu-id="22091-120">在應用程式啟動後讀取設定資料。</span><span class="sxs-lookup"><span data-stu-id="22091-120">Reading of configuration data after the app has started.</span></span>
+  * [<span data-ttu-id="22091-121">具名選項</span><span class="sxs-lookup"><span data-stu-id="22091-121">Named options</span></span>](#named)
+* <span data-ttu-id="22091-122">會註冊為[Singleton](xref:fundamentals/dependency-injection#singleton) ，並可插入至任何[服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)。</span><span class="sxs-lookup"><span data-stu-id="22091-122">Is registered as a [Singleton](xref:fundamentals/dependency-injection#singleton) and can be injected into any [service lifetime](xref:fundamentals/dependency-injection#service-lifetimes).</span></span>
 
-<span data-ttu-id="2f003-129"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 在應該於收到每個要求時重新計算選項的案例中很實用用。</span><span class="sxs-lookup"><span data-stu-id="2f003-129"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is useful in scenarios where options should be recomputed on every request.</span></span> <span data-ttu-id="2f003-130">如需詳細資訊，請參閱[使用 IOptionsSnapshot 重新載入設定資料](#reload-configuration-data-with-ioptionssnapshot)一節。</span><span class="sxs-lookup"><span data-stu-id="2f003-130">For more information, see the [Reload configuration data with IOptionsSnapshot](#reload-configuration-data-with-ioptionssnapshot) section.</span></span>
+<span data-ttu-id="22091-123"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>:</span><span class="sxs-lookup"><span data-stu-id="22091-123"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>:</span></span>
 
-<span data-ttu-id="2f003-131"><xref:Microsoft.Extensions.Options.IOptions%601> 可用於支援選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-131"><xref:Microsoft.Extensions.Options.IOptions%601> can be used to support options.</span></span> <span data-ttu-id="2f003-132">不過，<xref:Microsoft.Extensions.Options.IOptions%601> 不支援前面的 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 案例。</span><span class="sxs-lookup"><span data-stu-id="2f003-132">However, <xref:Microsoft.Extensions.Options.IOptions%601> doesn't support the preceding scenarios of <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span> <span data-ttu-id="2f003-133">您可以在現有架構與程式庫中繼續使用 <xref:Microsoft.Extensions.Options.IOptions%601>，此程式庫已使用 <xref:Microsoft.Extensions.Options.IOptions%601> 介面且不需要 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 提供的案例。</span><span class="sxs-lookup"><span data-stu-id="2f003-133">You may continue to use <xref:Microsoft.Extensions.Options.IOptions%601> in existing frameworks and libraries that already use the <xref:Microsoft.Extensions.Options.IOptions%601> interface and don't require the scenarios provided by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span>
+* <span data-ttu-id="22091-124">適用于應該在每個要求上重新計算選項的案例。</span><span class="sxs-lookup"><span data-stu-id="22091-124">Is useful in scenarios where options should be recomputed on every request.</span></span> <span data-ttu-id="22091-125">如需詳細資訊，請參閱[使用 IOptionsSnapshot 來讀取更新的資料](#ios)。</span><span class="sxs-lookup"><span data-stu-id="22091-125">For more information, see [Use IOptionsSnapshot to read updated data](#ios).</span></span>
+* <span data-ttu-id="22091-126">已註冊為已設定[範圍](xref:fundamentals/dependency-injection#scoped)，因此無法插入單一服務中。</span><span class="sxs-lookup"><span data-stu-id="22091-126">Is registered as [Scoped](xref:fundamentals/dependency-injection#scoped) and therefore cannot be injected into a Singleton service.</span></span>
+* <span data-ttu-id="22091-127">支援[命名選項](#named)</span><span class="sxs-lookup"><span data-stu-id="22091-127">Supports [named options](#named)</span></span>
 
-## <a name="general-options-configuration"></a><span data-ttu-id="2f003-134">一般選項設定</span><span class="sxs-lookup"><span data-stu-id="2f003-134">General options configuration</span></span>
+<span data-ttu-id="22091-128"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601>:</span><span class="sxs-lookup"><span data-stu-id="22091-128"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601>:</span></span>
 
-<span data-ttu-id="2f003-135">一般選項設定是以範例應用程式中的範例 1 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-135">General options configuration is demonstrated as Example 1 in the sample app.</span></span>
+* <span data-ttu-id="22091-129">用來抓取實例的選項和管理選項通知 `TOptions` 。</span><span class="sxs-lookup"><span data-stu-id="22091-129">Is used to retrieve options and manage options notifications for `TOptions` instances.</span></span>
+* <span data-ttu-id="22091-130">會註冊為[Singleton](xref:fundamentals/dependency-injection#singleton) ，並可插入至任何[服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)。</span><span class="sxs-lookup"><span data-stu-id="22091-130">Is registered as a [Singleton](xref:fundamentals/dependency-injection#singleton) and can be injected into any [service lifetime](xref:fundamentals/dependency-injection#service-lifetimes).</span></span>
+* <span data-ttu-id="22091-131">支援：</span><span class="sxs-lookup"><span data-stu-id="22091-131">Supports:</span></span>
+  * <span data-ttu-id="22091-132">變更通知</span><span class="sxs-lookup"><span data-stu-id="22091-132">Change notifications</span></span>
+  * [<span data-ttu-id="22091-133">具名選項</span><span class="sxs-lookup"><span data-stu-id="22091-133">Named options</span></span>](#named-options-support-with-iconfigurenamedoptions)
+  * [<span data-ttu-id="22091-134">可重新載入的設定</span><span class="sxs-lookup"><span data-stu-id="22091-134">Reloadable configuration</span></span>](#ios)
+  * <span data-ttu-id="22091-135">選擇性選項無效判定 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span><span class="sxs-lookup"><span data-stu-id="22091-135">Selective options invalidation (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span></span>
+  
+<span data-ttu-id="22091-136">[後續](#options-post-configuration)設定案例會在進行所有設定之後，啟用設定或變更選項 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 。</span><span class="sxs-lookup"><span data-stu-id="22091-136">[Post-configuration](#options-post-configuration) scenarios enable setting or changing options after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs.</span></span>
 
-<span data-ttu-id="2f003-136">選項類別必須為非抽象，且具有公用的無參數建構函式。</span><span class="sxs-lookup"><span data-stu-id="2f003-136">An options class must be non-abstract with a public parameterless constructor.</span></span> <span data-ttu-id="2f003-137">下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。</span><span class="sxs-lookup"><span data-stu-id="2f003-137">The following class, `MyOptions`, has two properties, `Option1` and `Option2`.</span></span> <span data-ttu-id="2f003-138">設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。</span><span class="sxs-lookup"><span data-stu-id="2f003-138">Setting default values is optional, but the class constructor in the following example sets the default value of `Option1`.</span></span> <span data-ttu-id="2f003-139">`Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-139">`Option2` has a default value set by initializing the property directly (*Models/MyOptions.cs*):</span></span>
+<span data-ttu-id="22091-137"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 負責建立新的選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-137"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> is responsible for creating new options instances.</span></span> <span data-ttu-id="22091-138">它有單一 <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> 方法。</span><span class="sxs-lookup"><span data-stu-id="22091-138">It has a single <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> method.</span></span> <span data-ttu-id="22091-139">預設實作會接受所有已註冊的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 與 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>，並先執行所有設定，接著執行設定後作業。</span><span class="sxs-lookup"><span data-stu-id="22091-139">The default implementation takes all registered <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> and runs all the configurations first, followed by the post-configuration.</span></span> <span data-ttu-id="22091-140">它會區別 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 和 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>，且只會呼叫適當的介面。</span><span class="sxs-lookup"><span data-stu-id="22091-140">It distinguishes between <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and only calls the appropriate interface.</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
+<span data-ttu-id="22091-141"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會由 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 用來快取 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-141"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> is used by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to cache `TOptions` instances.</span></span> <span data-ttu-id="22091-142"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會使監視器中的選項執行個體失效，以便重新計算值 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>)。</span><span class="sxs-lookup"><span data-stu-id="22091-142">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> invalidates options instances in the monitor so that the value is recomputed (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>).</span></span> <span data-ttu-id="22091-143">值可以使用 <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*> 手動導入。</span><span class="sxs-lookup"><span data-stu-id="22091-143">Values can be manually introduced with <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*>.</span></span> <span data-ttu-id="22091-144"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> 方法用於應該視需要重新建立所有具名執行個體時。</span><span class="sxs-lookup"><span data-stu-id="22091-144">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> method is used when all named instances should be recreated on demand.</span></span>
 
-<span data-ttu-id="2f003-140">`MyOptions` 類別使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> 新增到服務容器，並繫結到設定：</span><span class="sxs-lookup"><span data-stu-id="2f003-140">The `MyOptions` class is added to the service container with <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> and bound to configuration:</span></span>
+<a name="ios"></a>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example1)]
+## <a name="use-ioptionssnapshot-to-read-updated-data"></a><span data-ttu-id="22091-145">使用 IOptionsSnapshot 來讀取更新的資料</span><span class="sxs-lookup"><span data-stu-id="22091-145">Use IOptionsSnapshot to read updated data</span></span>
 
-<span data-ttu-id="2f003-141">下列頁面模型使用[建構函式相依性插入](xref:mvc/controllers/dependency-injection)搭配 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 來存取設定 (*Pages/Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-141">The following page model uses [constructor dependency injection](xref:mvc/controllers/dependency-injection) with <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to access the settings (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-146">使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> ，在要求的存留期記憶體取和快取時，會針對每個要求計算一次選項。</span><span class="sxs-lookup"><span data-stu-id="22091-146">Using <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>, options are computed once per request when accessed and cached for the lifetime of the request.</span></span> <span data-ttu-id="22091-147">當應用程式啟動時，如果使用支援讀取更新設定值的設定提供者，就會讀取設定的變更。</span><span class="sxs-lookup"><span data-stu-id="22091-147">Changes to the configuration are read after the app starts when using configuration providers that support reading updated configuration values.</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
+<span data-ttu-id="22091-148">和之間的差異在於 `IOptionsMonitor` `IOptionsSnapshot` ：</span><span class="sxs-lookup"><span data-stu-id="22091-148">The difference between `IOptionsMonitor` and `IOptionsSnapshot` is that:</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=2,8)]
+* <span data-ttu-id="22091-149">`IOptionsMonitor`是一項[單一服務](xref:fundamentals/dependency-injection#singleton)，可隨時抓取目前的選項值，這在單一相依性中特別有用。</span><span class="sxs-lookup"><span data-stu-id="22091-149">`IOptionsMonitor` is a [singleton service](xref:fundamentals/dependency-injection#singleton) that retrieves current option values at any time, which is especially useful in singleton dependencies.</span></span>
+* <span data-ttu-id="22091-150">`IOptionsSnapshot`是已設定[範圍的服務](xref:fundamentals/dependency-injection#scoped)，會在物件建立時提供選項的快照集 `IOptionsSnapshot<T>` 。</span><span class="sxs-lookup"><span data-stu-id="22091-150">`IOptionsSnapshot` is a [scoped service](xref:fundamentals/dependency-injection#scoped) and provides a snapshot of the options at the time the `IOptionsSnapshot<T>` object is constructed.</span></span> <span data-ttu-id="22091-151">選項快照集的設計目的是要搭配暫時性和範圍相依性使用。</span><span class="sxs-lookup"><span data-stu-id="22091-151">Options snapshots are designed for use with transient and scoped dependencies.</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
+<span data-ttu-id="22091-152">下列程式碼會使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 。</span><span class="sxs-lookup"><span data-stu-id="22091-152">The following code uses <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>.</span></span>
 
-<span data-ttu-id="2f003-142">範例的 *appsettings.json* 檔案指定 `option1` 和 `option2` 的值：</span><span class="sxs-lookup"><span data-stu-id="2f003-142">The sample's *appsettings.json* file specifies values for `option1` and `option2`:</span></span>
+[!code-csharp[](options/samples/3.x/OptionsSample/Pages/TestSnap.cshtml.cs?name=snippet)]
 
-[!code-json[](options/samples/3.x/OptionsSample/appsettings.json?highlight=2-3)]
+<span data-ttu-id="22091-153">下列程式碼會註冊系結到的設定實例 `MyOptions` ：</span><span class="sxs-lookup"><span data-stu-id="22091-153">The following code registers a configuration instance which `MyOptions` binds against:</span></span>
 
-<span data-ttu-id="2f003-143">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-143">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
+[!code-csharp[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/Startup3.cs?name=snippet_Example2)]
 
-```html
-option1 = value1_from_json, option2 = -1
-```
+<span data-ttu-id="22091-154">在上述程式碼中，會讀取應用程式啟動後對 JSON 設定檔案的變更。</span><span class="sxs-lookup"><span data-stu-id="22091-154">In the preceding code, changes to the JSON configuration file after the app has started are read.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="2f003-144">使用自訂 <xref:System.Configuration.ConfigurationBuilder> 從設定檔載入選項設定時，請確認已正確設定基底路徑：</span><span class="sxs-lookup"><span data-stu-id="2f003-144">When using a custom <xref:System.Configuration.ConfigurationBuilder> to load options configuration from a settings file, confirm that the base path is set correctly:</span></span>
->
-> ```csharp
-> var configBuilder = new ConfigurationBuilder()
->    .SetBasePath(Directory.GetCurrentDirectory())
->    .AddJsonFile("appsettings.json", optional: true);
-> var config = configBuilder.Build();
->
-> services.Configure<MyOptions>(config);
-> ```
->
-> <span data-ttu-id="2f003-145">透過 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 從設定檔載入選項設定時，不需要明確設定基底路徑。</span><span class="sxs-lookup"><span data-stu-id="2f003-145">Explicitly setting the base path isn't required when loading options configuration from the settings file via <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.</span></span>
+## <a name="ioptionsmonitor"></a><span data-ttu-id="22091-155">IOptionsMonitor</span><span class="sxs-lookup"><span data-stu-id="22091-155">IOptionsMonitor</span></span>
 
-## <a name="configure-simple-options-with-a-delegate"></a><span data-ttu-id="2f003-146">使用委派設定簡單的選項</span><span class="sxs-lookup"><span data-stu-id="2f003-146">Configure simple options with a delegate</span></span>
+<span data-ttu-id="22091-156">下列程式碼會註冊系結到的設定實例 `MyOptions` 。</span><span class="sxs-lookup"><span data-stu-id="22091-156">The following code registers a configuration instance which `MyOptions` binds against.</span></span>
 
-<span data-ttu-id="2f003-147">使用委派設定簡單的選項是以範例應用程式中的範例 2 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-147">Configuring simple options with a delegate is demonstrated as Example 2 in the sample app.</span></span>
+[!code-csharp[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/Startup3.cs?name=snippet_Example2)]
 
-<span data-ttu-id="2f003-148">使用委派來設定選項值。</span><span class="sxs-lookup"><span data-stu-id="2f003-148">Use a delegate to set options values.</span></span> <span data-ttu-id="2f003-149">範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-149">The sample app uses the `MyOptionsWithDelegateConfig` class (*Models/MyOptionsWithDelegateConfig.cs*):</span></span>
+<span data-ttu-id="22091-157">下列範例會使用 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>：</span><span class="sxs-lookup"><span data-stu-id="22091-157">The following example uses <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>:</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
+[!code-csharp[](options/samples/3.x/OptionsSample/Pages/TestMonitor.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="2f003-150">在下列程式碼中，第二個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-150">In the following code, a second <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="2f003-151">它使用委派，以 `MyOptionsWithDelegateConfig` 設定繫結：</span><span class="sxs-lookup"><span data-stu-id="2f003-151">It uses a delegate to configure the binding with `MyOptionsWithDelegateConfig`:</span></span>
+<span data-ttu-id="22091-158">在上述程式碼中，根據預設，會讀取應用程式啟動後對 JSON 設定檔進行的變更。</span><span class="sxs-lookup"><span data-stu-id="22091-158">In the preceding code, by default, changes to the JSON configuration file after the app has started are read.</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example2)]
+<a name="named"></a>
 
-<span data-ttu-id="2f003-152">*Index.cshtml.cs*：</span><span class="sxs-lookup"><span data-stu-id="2f003-152">*Index.cshtml.cs*:</span></span>
+## <a name="named-options-support-using-iconfigurenamedoptions"></a><span data-ttu-id="22091-159">命名選項支援使用 IConfigureNamedOptions</span><span class="sxs-lookup"><span data-stu-id="22091-159">Named options support using IConfigureNamedOptions</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
+<span data-ttu-id="22091-160">已命名的選項：</span><span class="sxs-lookup"><span data-stu-id="22091-160">Named options:</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=3,9)]
+* <span data-ttu-id="22091-161">當多個設定區段系結至相同的屬性時，會很有用。</span><span class="sxs-lookup"><span data-stu-id="22091-161">Are useful when multiple configuration sections bind to the same properties.</span></span>
+* <span data-ttu-id="22091-162">區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="22091-162">Are case sensitive.</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
+<span data-ttu-id="22091-163">請考慮下列*appsettings json*檔案：</span><span class="sxs-lookup"><span data-stu-id="22091-163">Consider the following *appsettings.json* file:</span></span>
 
-<span data-ttu-id="2f003-153">您可以新增多個設定提供者。</span><span class="sxs-lookup"><span data-stu-id="2f003-153">You can add multiple configuration providers.</span></span> <span data-ttu-id="2f003-154">設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。</span><span class="sxs-lookup"><span data-stu-id="2f003-154">Configuration providers are available from NuGet packages and are applied in the order that they're registered.</span></span> <span data-ttu-id="2f003-155">如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。</span><span class="sxs-lookup"><span data-stu-id="2f003-155">For more information, see <xref:fundamentals/configuration/index>.</span></span>
+[!code-json[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/appsettings.NO.json)]
 
-<span data-ttu-id="2f003-156">每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-156">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="2f003-157">在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。</span><span class="sxs-lookup"><span data-stu-id="2f003-157">In the preceding example, the values of `Option1` and `Option2` are both specified in *appsettings.json*, but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
+<span data-ttu-id="22091-164">並不是建立兩個類別來系結 `TopItem:Month` 和，而是 `TopItem:Year` 針對每個區段使用下列類別：</span><span class="sxs-lookup"><span data-stu-id="22091-164">Rather than creating two classes to bind `TopItem:Month` and `TopItem:Year`, the following class is used for each section:</span></span>
 
-<span data-ttu-id="2f003-158">啟用多個設定服務時，最後一個指定的設定來源會「勝出」\*\* 並設定此組態值。</span><span class="sxs-lookup"><span data-stu-id="2f003-158">When more than one configuration service is enabled, the last configuration source specified *wins* and sets the configuration value.</span></span> <span data-ttu-id="2f003-159">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-159">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
+[!code-csharp[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/Models/TopItemSettings.cs)]
 
-```html
-delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
-```
+<span data-ttu-id="22091-165">下列程式碼會設定已命名的選項：</span><span class="sxs-lookup"><span data-stu-id="22091-165">The following code configures the named options:</span></span>
 
-## <a name="suboptions-configuration"></a><span data-ttu-id="2f003-160">子選項組態</span><span class="sxs-lookup"><span data-stu-id="2f003-160">Suboptions configuration</span></span>
+[!code-csharp[](~/fundamentals/configuration/options/samples/3.x/OptionsSample/StartupNO.cs?name=snippet_Example2)]
 
-<span data-ttu-id="2f003-161">子選項組態是以範例應用程式中的範例 3 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-161">Suboptions configuration is demonstrated as Example 3 in the sample app.</span></span>
+<span data-ttu-id="22091-166">下列程式碼會顯示已命名的選項：</span><span class="sxs-lookup"><span data-stu-id="22091-166">The following code displays the named options:</span></span>
 
-<span data-ttu-id="2f003-162">應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。</span><span class="sxs-lookup"><span data-stu-id="2f003-162">Apps should create options classes that pertain to specific scenario groups (classes) in the app.</span></span> <span data-ttu-id="2f003-163">需要組態值的應用程式組件應該只能存取它們使用的設定值。</span><span class="sxs-lookup"><span data-stu-id="2f003-163">Parts of the app that require configuration values should only have access to the configuration values that they use.</span></span>
+[!code-csharp[](options/samples/3.x/OptionsSample/Pages/TestNO.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="2f003-164">將選項繫結至組態時，選項類型中的每一個屬性都會繫結至 `property[:sub-property:]` 格式的組態索引鍵。</span><span class="sxs-lookup"><span data-stu-id="2f003-164">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="2f003-165">例如，`MyOptions.Option1` 屬性繫結至索引鍵 `Option1`，其是從 *appsettings.json* 中的 `option1` 屬性讀取。</span><span class="sxs-lookup"><span data-stu-id="2f003-165">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *appsettings.json*.</span></span>
+<span data-ttu-id="22091-167">所有選項都是具名執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-167">All options are named instances.</span></span> <span data-ttu-id="22091-168"><xref:Microsoft.Extensions.Options.IConfigureOptions%601>實例會被視為以實例為目標 `Options.DefaultName` ，也就是 `string.Empty` 。</span><span class="sxs-lookup"><span data-stu-id="22091-168"><xref:Microsoft.Extensions.Options.IConfigureOptions%601> instances are treated as targeting the `Options.DefaultName` instance, which is `string.Empty`.</span></span> <span data-ttu-id="22091-169"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 也會實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>。</span><span class="sxs-lookup"><span data-stu-id="22091-169"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> also implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601>.</span></span> <span data-ttu-id="22091-170"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 的預設實作有邏輯可以適當地使用每個項目。</span><span class="sxs-lookup"><span data-stu-id="22091-170">The default implementation of the <xref:Microsoft.Extensions.Options.IOptionsFactory%601> has logic to use each appropriately.</span></span> <span data-ttu-id="22091-171">已命名的 `null` 選項可用來以所有命名的實例為目標，而不是特定的已命名實例。</span><span class="sxs-lookup"><span data-stu-id="22091-171">The `null` named option is used to target all of the named instances instead of a specific named instance.</span></span> <span data-ttu-id="22091-172"><xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*>並 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 使用此慣例。</span><span class="sxs-lookup"><span data-stu-id="22091-172"><xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> and <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> use this convention.</span></span>
 
-<span data-ttu-id="2f003-166">在下列程式碼中，第三個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-166">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="2f003-167">它將 `MySubOptions` 繫結至 *appSettings.json* 檔案的 `subsection` 區段：</span><span class="sxs-lookup"><span data-stu-id="2f003-167">It binds `MySubOptions` to the section `subsection` of the *appsettings.json* file:</span></span>
+## <a name="optionsbuilder-api"></a><span data-ttu-id="22091-173">OptionsBuilder API</span><span class="sxs-lookup"><span data-stu-id="22091-173">OptionsBuilder API</span></span>
 
-[!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example3)]
+<span data-ttu-id="22091-174"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> 會用於設定 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-174"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> is used to configure `TOptions` instances.</span></span> <span data-ttu-id="22091-175">因為 `OptionsBuilder` 僅為初始 `AddOptions<TOptions>(string optionsName)` 呼叫的單一參數，而不是出現在所有後續呼叫的參數，所以其可簡化建立具名選項的程序。</span><span class="sxs-lookup"><span data-stu-id="22091-175">`OptionsBuilder` streamlines creating named options as it's only a single parameter to the initial `AddOptions<TOptions>(string optionsName)` call instead of appearing in all of the subsequent calls.</span></span> <span data-ttu-id="22091-176">選項驗證及接受服務依存性的 `ConfigureOptions` 多載，只可透過 `OptionsBuilder` 使用。</span><span class="sxs-lookup"><span data-stu-id="22091-176">Options validation and the `ConfigureOptions` overloads that accept service dependencies are only available via `OptionsBuilder`.</span></span>
 
-<span data-ttu-id="2f003-168">`GetSection`方法需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。</span><span class="sxs-lookup"><span data-stu-id="2f003-168">The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.</span></span>
+<span data-ttu-id="22091-177">`OptionsBuilder`在 [[選項驗證](#val)] 區段中使用。</span><span class="sxs-lookup"><span data-stu-id="22091-177">`OptionsBuilder` is used in the [Options validation](#val) section.</span></span>
 
-<span data-ttu-id="2f003-169">範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：</span><span class="sxs-lookup"><span data-stu-id="2f003-169">The sample's *appsettings.json* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
+## <a name="use-di-services-to-configure-options"></a><span data-ttu-id="22091-178">使用 DI 服務來設定選項</span><span class="sxs-lookup"><span data-stu-id="22091-178">Use DI services to configure options</span></span>
 
-[!code-json[](options/samples/3.x/OptionsSample/appsettings.json?highlight=4-7)]
+<span data-ttu-id="22091-179">在以兩種方式設定選項時，可以從相依性插入存取服務：</span><span class="sxs-lookup"><span data-stu-id="22091-179">Services can be accessed from dependency injection while configuring options in two ways:</span></span>
 
-<span data-ttu-id="2f003-170">`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存選項值 (*Models/MySubOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-170">The `MySubOptions` class defines properties, `SubOption1` and `SubOption2`, to hold the options values (*Models/MySubOptions.cs*):</span></span>
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
-
-<span data-ttu-id="2f003-171">頁面模型的 `OnGet` 方法會傳回具有選項值 (*Pages/Index.cshtml.cs*) 的字串：</span><span class="sxs-lookup"><span data-stu-id="2f003-171">The page model's `OnGet` method returns a string with the options values (*Pages/Index.cshtml.cs*):</span></span>
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=4,10)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example3)]
-
-<span data-ttu-id="2f003-172">當應用程式執行時，`OnGet` 方法會傳回字串，顯示子選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-172">When the app is run, the `OnGet` method returns a string showing the suboption class values:</span></span>
-
-```html
-subOption1 = subvalue1_from_json, subOption2 = 200
-```
-
-## <a name="options-injection"></a><span data-ttu-id="2f003-173">選項插入</span><span class="sxs-lookup"><span data-stu-id="2f003-173">Options injection</span></span>
-
-<span data-ttu-id="2f003-174">範例應用程式中的範例4示範了選項插入。</span><span class="sxs-lookup"><span data-stu-id="2f003-174">Options injection is demonstrated as Example 4 in the sample app.</span></span>
-
-<span data-ttu-id="2f003-175">插入<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> ：</span><span class="sxs-lookup"><span data-stu-id="2f003-175">Inject <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into:</span></span>
-
-* <span data-ttu-id="2f003-176">[`@inject`](xref:mvc/views/razor#inject)具有Razor Razor指示詞的頁面或 MVC 視圖。</span><span class="sxs-lookup"><span data-stu-id="2f003-176">A Razor page or MVC view with the [`@inject`](xref:mvc/views/razor#inject) Razor directive.</span></span>
-* <span data-ttu-id="2f003-177">頁面或視圖模型。</span><span class="sxs-lookup"><span data-stu-id="2f003-177">A page or view model.</span></span>
-
-<span data-ttu-id="2f003-178">下列來自範例應用程式的範例會<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>插入頁面模型中（*Pages/Index. cshtml .cs*）：</span><span class="sxs-lookup"><span data-stu-id="2f003-178">The following example from the sample app injects <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into a page model (*Pages/Index.cshtml.cs*):</span></span>
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=2,8)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example4)]
-
-<span data-ttu-id="2f003-179">範例應用程式會顯示如何使用 `@inject` 指示詞來插入 `IOptionsMonitor<MyOptions>`：</span><span class="sxs-lookup"><span data-stu-id="2f003-179">The sample app shows how to inject `IOptionsMonitor<MyOptions>` with an `@inject` directive:</span></span>
-
-[!code-cshtml[](options/samples/3.x/OptionsSample/Pages/Index.cshtml?range=1-10&highlight=4)]
-
-<span data-ttu-id="2f003-180">執行應用程式時，轉譯的頁面中會顯示選項值：</span><span class="sxs-lookup"><span data-stu-id="2f003-180">When the app is run, the options values are shown in the rendered page:</span></span>
-
-![選項值 Option1:：value1_from_json 和 Option2: -1 是從模型藉由插入至檢視來載入。](options/_static/view.png)
-
-## <a name="reload-configuration-data-with-ioptionssnapshot"></a><span data-ttu-id="2f003-182">使用 IOptionsSnapshot 重新載入設定資料</span><span class="sxs-lookup"><span data-stu-id="2f003-182">Reload configuration data with IOptionsSnapshot</span></span>
-
-<span data-ttu-id="2f003-183">使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>重載設定資料時，會在範例應用程式的範例5中示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-183">Reloading configuration data with <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is demonstrated in Example 5 in the sample app.</span></span>
-
-<span data-ttu-id="2f003-184">使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>，在要求的存留期記憶體取和快取時，會針對每個要求計算一次選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-184">Using <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>, options are computed once per request when accessed and cached for the lifetime of the request.</span></span>
-
-<span data-ttu-id="2f003-185">和`IOptionsMonitor` `IOptionsSnapshot`之間的差異在於：</span><span class="sxs-lookup"><span data-stu-id="2f003-185">The difference between `IOptionsMonitor` and `IOptionsSnapshot` is that:</span></span>
-
-* <span data-ttu-id="2f003-186">`IOptionsMonitor`是一項[單一服務](xref:fundamentals/dependency-injection#singleton)，可隨時抓取目前的選項值，這在單一相依性中特別有用。</span><span class="sxs-lookup"><span data-stu-id="2f003-186">`IOptionsMonitor` is a [singleton service](xref:fundamentals/dependency-injection#singleton) that retrieves current option values at any time, which is especially useful in singleton dependencies.</span></span>
-* <span data-ttu-id="2f003-187">`IOptionsSnapshot`是已設定[範圍的服務](xref:fundamentals/dependency-injection#scoped)，會在`IOptionsSnapshot<T>`物件建立時提供選項的快照集。</span><span class="sxs-lookup"><span data-stu-id="2f003-187">`IOptionsSnapshot` is a [scoped service](xref:fundamentals/dependency-injection#scoped) and provides a snapshot of the options at the time the `IOptionsSnapshot<T>` object is constructed.</span></span> <span data-ttu-id="2f003-188">選項快照集的設計目的是要搭配暫時性和範圍相依性使用。</span><span class="sxs-lookup"><span data-stu-id="2f003-188">Options snapshots are designed for use with transient and scoped dependencies.</span></span>
-
-<span data-ttu-id="2f003-189">下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。</span><span class="sxs-lookup"><span data-stu-id="2f003-189">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *appsettings.json* changes (*Pages/Index.cshtml.cs*).</span></span> <span data-ttu-id="2f003-190">對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。</span><span class="sxs-lookup"><span data-stu-id="2f003-190">Multiple requests to the server return constant values provided by the *appsettings.json* file until the file is changed and configuration reloads.</span></span>
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=5,11)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
-
-<span data-ttu-id="2f003-191">下圖顯示從 *appsettings.json* 檔案載入的初始 `option1` 和 `option2` 值：</span><span class="sxs-lookup"><span data-stu-id="2f003-191">The following image shows the initial `option1` and `option2` values loaded from the *appsettings.json* file:</span></span>
-
-```html
-snapshot option1 = value1_from_json, snapshot option2 = -1
-```
-
-<span data-ttu-id="2f003-192">將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。</span><span class="sxs-lookup"><span data-stu-id="2f003-192">Change the values in the *appsettings.json* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="2f003-193">儲存*appsettings json*檔案。</span><span class="sxs-lookup"><span data-stu-id="2f003-193">Save the *appsettings.json* file.</span></span> <span data-ttu-id="2f003-194">重新整理瀏覽器，以查看選項值更新：</span><span class="sxs-lookup"><span data-stu-id="2f003-194">Refresh the browser to see that the options values are updated:</span></span>
-
-```html
-snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
-```
-
-## <a name="named-options-support-with-iconfigurenamedoptions"></a><span data-ttu-id="2f003-195">IConfigureNamedOptions 的具名選項支援</span><span class="sxs-lookup"><span data-stu-id="2f003-195">Named options support with IConfigureNamedOptions</span></span>
-
-<span data-ttu-id="2f003-196"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-196">Named options support with <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> is demonstrated as Example 6 in the sample app.</span></span>
-
-<span data-ttu-id="2f003-197">「具名選項」支援可讓應用程式區別具名選項組態。</span><span class="sxs-lookup"><span data-stu-id="2f003-197">Named options support allows the app to distinguish between named options configurations.</span></span> <span data-ttu-id="2f003-198">在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[\<configurenamedoptions .configure TOptions>。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。</span><span class="sxs-lookup"><span data-stu-id="2f003-198">In the sample app, named options are declared with [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*), which calls the [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) extension method.</span></span> <span data-ttu-id="2f003-199">已命名的選項會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="2f003-199">Named options are case sensitive.</span></span>
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Startup.cs?name=snippet_Example6)]
-
-<span data-ttu-id="2f003-200">範例應用程式會使用　<xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*) 來存取具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-200">The sample app accesses the named options with <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):</span></span>
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet2&highlight=6,12-13)]
-
-[!code-csharp[](options/samples/3.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example6)]
-
-<span data-ttu-id="2f003-201">執行範例應用程式後，會傳回具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-201">Running the sample app, the named options are returned:</span></span>
-
-```html
-named_options_1: option1 = value1_from_json, option2 = -1
-named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
-```
-
-<span data-ttu-id="2f003-202">`named_options_1` 值會從設定提供，這會從 *appsettings.json* 檔案載入。</span><span class="sxs-lookup"><span data-stu-id="2f003-202">`named_options_1` values are provided from configuration, which are loaded from the *appsettings.json* file.</span></span> <span data-ttu-id="2f003-203">`named_options_2` 值是由以下提供：</span><span class="sxs-lookup"><span data-stu-id="2f003-203">`named_options_2` values are provided by:</span></span>
-
-* <span data-ttu-id="2f003-204">`ConfigureServices` 中 `Option1` 的 `named_options_2` 委派。</span><span class="sxs-lookup"><span data-stu-id="2f003-204">The `named_options_2` delegate in `ConfigureServices` for `Option1`.</span></span>
-* <span data-ttu-id="2f003-205">`MyOptions` 類別所提供的 `Option2` 預設值。</span><span class="sxs-lookup"><span data-stu-id="2f003-205">The default value for `Option2` provided by the `MyOptions` class.</span></span>
-
-## <a name="configure-all-options-with-the-configureall-method"></a><span data-ttu-id="2f003-206">使用 ConfigureAll 方法設定所有選項</span><span class="sxs-lookup"><span data-stu-id="2f003-206">Configure all options with the ConfigureAll method</span></span>
-
-<span data-ttu-id="2f003-207">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 方法設定所有選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-207">Configure all options instances with the <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> method.</span></span> <span data-ttu-id="2f003-208">下列程式碼會為具有共通值的所有設定執行個體設定 `Option1`。</span><span class="sxs-lookup"><span data-stu-id="2f003-208">The following code configures `Option1` for all configuration instances with a common value.</span></span> <span data-ttu-id="2f003-209">將下列程式碼手動新增至 `Startup.ConfigureServices` 方法：</span><span class="sxs-lookup"><span data-stu-id="2f003-209">Add the following code manually to the `Startup.ConfigureServices` method:</span></span>
-
-```csharp
-services.ConfigureAll<MyOptions>(myOptions => 
-{
-    myOptions.Option1 = "ConfigureAll replacement value";
-});
-```
-
-<span data-ttu-id="2f003-210">新增程式碼之後執行範例應用程式，就會產生下列結果：</span><span class="sxs-lookup"><span data-stu-id="2f003-210">Running the sample app after adding the code produces the following result:</span></span>
-
-```html
-named_options_1: option1 = ConfigureAll replacement value, option2 = -1
-named_options_2: option1 = ConfigureAll replacement value, option2 = 5
-```
-
-> [!NOTE]
-> <span data-ttu-id="2f003-211">所有選項都是具名執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-211">All options are named instances.</span></span> <span data-ttu-id="2f003-212">現有的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。</span><span class="sxs-lookup"><span data-stu-id="2f003-212">Existing <xref:Microsoft.Extensions.Options.IConfigureOptions%601> instances are treated as targeting the `Options.DefaultName` instance, which is `string.Empty`.</span></span> <span data-ttu-id="2f003-213"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 也會實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>。</span><span class="sxs-lookup"><span data-stu-id="2f003-213"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> also implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601>.</span></span> <span data-ttu-id="2f003-214"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 的預設實作有邏輯可以適當地使用每個項目。</span><span class="sxs-lookup"><span data-stu-id="2f003-214">The default implementation of the <xref:Microsoft.Extensions.Options.IOptionsFactory%601> has logic to use each appropriately.</span></span> <span data-ttu-id="2f003-215">`null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 與 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 使用此慣例)。</span><span class="sxs-lookup"><span data-stu-id="2f003-215">The `null` named option is used to target all of the named instances instead of a specific named instance (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> and <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> use this convention).</span></span>
-
-## <a name="optionsbuilder-api"></a><span data-ttu-id="2f003-216">OptionsBuilder API</span><span class="sxs-lookup"><span data-stu-id="2f003-216">OptionsBuilder API</span></span>
-
-<span data-ttu-id="2f003-217"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> 會用於設定 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-217"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> is used to configure `TOptions` instances.</span></span> <span data-ttu-id="2f003-218">因為 `OptionsBuilder` 僅為初始 `AddOptions<TOptions>(string optionsName)` 呼叫的單一參數，而不是出現在所有後續呼叫的參數，所以其可簡化建立具名選項的程序。</span><span class="sxs-lookup"><span data-stu-id="2f003-218">`OptionsBuilder` streamlines creating named options as it's only a single parameter to the initial `AddOptions<TOptions>(string optionsName)` call instead of appearing in all of the subsequent calls.</span></span> <span data-ttu-id="2f003-219">選項驗證及接受服務依存性的 `ConfigureOptions` 多載，只可透過 `OptionsBuilder` 使用。</span><span class="sxs-lookup"><span data-stu-id="2f003-219">Options validation and the `ConfigureOptions` overloads that accept service dependencies are only available via `OptionsBuilder`.</span></span>
-
-```csharp
-// Options.DefaultName = "" is used.
-services.AddOptions<MyOptions>().Configure(o => o.Property = "default");
-
-services.AddOptions<MyOptions>("optionalName")
-    .Configure(o => o.Property = "named");
-```
-
-## <a name="use-di-services-to-configure-options"></a><span data-ttu-id="2f003-220">使用 DI 服務來設定選項</span><span class="sxs-lookup"><span data-stu-id="2f003-220">Use DI services to configure options</span></span>
-
-<span data-ttu-id="2f003-221">在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：</span><span class="sxs-lookup"><span data-stu-id="2f003-221">You can access other services from dependency injection while configuring options in two ways:</span></span>
-
-* <span data-ttu-id="2f003-222">將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。</span><span class="sxs-lookup"><span data-stu-id="2f003-222">Pass a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) on [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1).</span></span> <span data-ttu-id="2f003-223">`OptionsBuilder<TOptions>`提供[設定的多載，讓](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)您可以使用最多五個服務來設定選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-223">`OptionsBuilder<TOptions>` provides overloads of [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) that allow use up to five services to configure options:</span></span>
+* <span data-ttu-id="22091-180">將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。</span><span class="sxs-lookup"><span data-stu-id="22091-180">Pass a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) on [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1).</span></span> <span data-ttu-id="22091-181">`OptionsBuilder<TOptions>`提供[設定的多載，以](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)允許使用最多五個服務來設定選項：</span><span class="sxs-lookup"><span data-stu-id="22091-181">`OptionsBuilder<TOptions>` provides overloads of [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) that allow use of up to five services to configure options:</span></span>
 
   ```csharp
   services.AddOptions<MyOptions>("optionalName")
@@ -296,58 +140,62 @@ services.AddOptions<MyOptions>("optionalName")
               o.Property = DoSomethingWith(s, s2, s3, s4, s5));
   ```
 
-* <span data-ttu-id="2f003-224">建立您自己的類型來實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 或 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，並將該類型註冊為服務。</span><span class="sxs-lookup"><span data-stu-id="2f003-224">Create your own type that implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601> or <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and register the type as a service.</span></span>
+* <span data-ttu-id="22091-182">建立類型來執行 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 或 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> ，並將類型註冊為服務。</span><span class="sxs-lookup"><span data-stu-id="22091-182">Create a type that implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601> or <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and register the type as a service.</span></span>
 
-<span data-ttu-id="2f003-225">我們建議您將設定委派傳遞到 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)，因為建立服務更複雜。</span><span class="sxs-lookup"><span data-stu-id="2f003-225">We recommend passing a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*), since creating a service is more complex.</span></span> <span data-ttu-id="2f003-226">建立您自己的類型相當於，當您使用 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 時此架構可為您執行的動作。</span><span class="sxs-lookup"><span data-stu-id="2f003-226">Creating your own type is equivalent to what the framework does for you when you use [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*).</span></span> <span data-ttu-id="2f003-227">呼叫 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 會註冊暫時性泛型 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，其具有會接受所指定泛型服務類型的建構函式。</span><span class="sxs-lookup"><span data-stu-id="2f003-227">Calling [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) registers a transient generic <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>, which has a constructor that accepts the generic service types specified.</span></span> 
+<span data-ttu-id="22091-183">我們建議您將設定委派傳遞到 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)，因為建立服務更複雜。</span><span class="sxs-lookup"><span data-stu-id="22091-183">We recommend passing a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*), since creating a service is more complex.</span></span> <span data-ttu-id="22091-184">建立類型相當於呼叫[Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)時的架構所執行的工作。</span><span class="sxs-lookup"><span data-stu-id="22091-184">Creating a type is equivalent to what the framework does when calling [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*).</span></span> <span data-ttu-id="22091-185">呼叫 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 會註冊暫時性泛型 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，其具有會接受所指定泛型服務類型的建構函式。</span><span class="sxs-lookup"><span data-stu-id="22091-185">Calling [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) registers a transient generic <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>, which has a constructor that accepts the generic service types specified.</span></span> 
 
-## <a name="options-validation"></a><span data-ttu-id="2f003-228">選項驗證</span><span class="sxs-lookup"><span data-stu-id="2f003-228">Options validation</span></span>
+<a name="val"></a>
 
-<span data-ttu-id="2f003-229">選項驗證可讓您在設定選項之後驗證選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-229">Options validation allows you to validate options when options are configured.</span></span> <span data-ttu-id="2f003-230">搭配驗證方法呼叫 `Validate`，若選項有效會傳回 `true`，若為無效則傳回 `false`：</span><span class="sxs-lookup"><span data-stu-id="2f003-230">Call `Validate` with a validation method that returns `true` if options are valid and `false` if they aren't valid:</span></span>
+## <a name="options-validation"></a><span data-ttu-id="22091-186">選項驗證</span><span class="sxs-lookup"><span data-stu-id="22091-186">Options validation</span></span>
 
-```csharp
-// Registration
-services.AddOptions<MyOptions>("optionalOptionsName")
-    .Configure(o => { }) // Configure the options
-    .Validate(o => YourValidationShouldReturnTrueIfValid(o), 
-        "custom error");
+<span data-ttu-id="22091-187">選項驗證會啟用要驗證的選項值。</span><span class="sxs-lookup"><span data-stu-id="22091-187">Options validation enables option values to be validated.</span></span>
 
-// Consumption
-var monitor = services.BuildServiceProvider()
-    .GetService<IOptionsMonitor<MyOptions>>();
-  
-try
-{
-    var options = monitor.Get("optionalOptionsName");
-}
-catch (OptionsValidationException e) 
-{
-   // e.OptionsName returns "optionalOptionsName"
-   // e.OptionsType returns typeof(MyOptions)
-   // e.Failures returns a list of errors, which would contain 
-   //     "custom error"
-}
-```
+<span data-ttu-id="22091-188">請考慮下列*appsettings json*檔案：</span><span class="sxs-lookup"><span data-stu-id="22091-188">Consider the following *appsettings.json* file:</span></span>
 
-[!INCLUDE[about the series](~/includes/code-comments-loc.md)]
+[!code-json[](~/fundamentals/configuration/options/samples/3.x/OptionsValidationSample/appsettings.Dev2.json)]
 
-<span data-ttu-id="2f003-231">上述範例會將具名的選項執行個體設定為 `optionalOptionsName`。</span><span class="sxs-lookup"><span data-stu-id="2f003-231">The preceding example sets the named options instance to `optionalOptionsName`.</span></span> <span data-ttu-id="2f003-232">預設選項執行個體為 `Options.DefaultName`。</span><span class="sxs-lookup"><span data-stu-id="2f003-232">The default options instance is `Options.DefaultName`.</span></span>
+<span data-ttu-id="22091-189">下列類別會系結至設定 `"MyConfig"` 區段，並套用幾個 `DataAnnotations` 規則：</span><span class="sxs-lookup"><span data-stu-id="22091-189">The following class binds to the `"MyConfig"` configuration section and applies a couple of `DataAnnotations` rules:</span></span>
 
-<span data-ttu-id="2f003-233">當選項執行個體建立之後，便會執行驗證。</span><span class="sxs-lookup"><span data-stu-id="2f003-233">Validation runs when the options instance is created.</span></span> <span data-ttu-id="2f003-234">選項實例保證會在第一次存取時通過驗證。</span><span class="sxs-lookup"><span data-stu-id="2f003-234">An options instance is guaranteed to pass validation the first time it's accessed.</span></span>
+[!code-csharp[](options/samples/3.x/OptionsValidationSample/Configuration/MyConfigOptions.cs?name=snippet)]
 
-> [!IMPORTANT]
-> <span data-ttu-id="2f003-235">選項驗證不會在建立 options 實例之後防護選項的修改。</span><span class="sxs-lookup"><span data-stu-id="2f003-235">Options validation doesn't guard against options modifications after the options instance is created.</span></span> <span data-ttu-id="2f003-236">例如，當`IOptionsSnapshot`第一次存取選項時，會針對每個要求建立及驗證一個選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-236">For example, `IOptionsSnapshot` options are created and validated once per request when the options are first accessed.</span></span> <span data-ttu-id="2f003-237">`IOptionsSnapshot` *針對相同要求*的後續存取嘗試時，不會再次驗證這些選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-237">The `IOptionsSnapshot` options aren't validated again on subsequent access attempts *for the same request*.</span></span>
+<span data-ttu-id="22091-190">下列程式碼會呼叫， <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions%2A> 以取得系結至類別並啟用驗證的[OptionsBuilder \< TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) `MyConfigOptions` `DataAnnotations` ：</span><span class="sxs-lookup"><span data-stu-id="22091-190">The following code calls <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions%2A> to get an  [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) that binds to the `MyConfigOptions` class and enables `DataAnnotations` validation:</span></span>
 
-<span data-ttu-id="2f003-238">`Validate` 方法可接受 `Func<TOptions, bool>`。</span><span class="sxs-lookup"><span data-stu-id="2f003-238">The `Validate` method accepts a `Func<TOptions, bool>`.</span></span> <span data-ttu-id="2f003-239">若要完整地自訂驗證，請實作 `IValidateOptions<TOptions>`，它允許：</span><span class="sxs-lookup"><span data-stu-id="2f003-239">To fully customize validation, implement `IValidateOptions<TOptions>`, which allows:</span></span>
+[!code-csharp[](options/samples/3.x/OptionsValidationSample/Startup.cs?name=snippet)]
 
-* <span data-ttu-id="2f003-240">多種選項類型的驗證：`class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`</span><span class="sxs-lookup"><span data-stu-id="2f003-240">Validation of multiple options types: `class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`</span></span>
-* <span data-ttu-id="2f003-241">取決於另一個選項類型的驗證：`public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`</span><span class="sxs-lookup"><span data-stu-id="2f003-241">Validation that depends on another option type: `public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`</span></span>
+<span data-ttu-id="22091-191">下列程式碼會顯示設定值或驗證錯誤：</span><span class="sxs-lookup"><span data-stu-id="22091-191">The following code displays the configuration values or the validation errors:</span></span>
 
-<span data-ttu-id="2f003-242">`IValidateOptions` 可驗證：</span><span class="sxs-lookup"><span data-stu-id="2f003-242">`IValidateOptions` validates:</span></span>
+[!code-csharp[](options/samples/3.x/OptionsValidationSample/Controllers/HomeController.cs?name=snippet)]
 
-* <span data-ttu-id="2f003-243">特定的具名選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-243">A specific named options instance.</span></span>
-* <span data-ttu-id="2f003-244">所有選項 (當 `name` 為 `null` 時)。</span><span class="sxs-lookup"><span data-stu-id="2f003-244">All options when `name` is `null`.</span></span>
+<span data-ttu-id="22091-192">下列程式碼會使用委派來套用更複雜的驗證規則：</span><span class="sxs-lookup"><span data-stu-id="22091-192">The following code applies a more complex validation rule using a delegate:</span></span>
 
-<span data-ttu-id="2f003-245">從以下的介面實作傳回 `ValidateOptionsResult`：</span><span class="sxs-lookup"><span data-stu-id="2f003-245">Return a `ValidateOptionsResult` from your implementation of the interface:</span></span>
+[!code-csharp[](options/samples/3.x/OptionsValidationSample/Startup2.cs?name=snippet)]
+
+### <a name="ivalidateoptions-for-complex-validation"></a><span data-ttu-id="22091-193">複雜驗證的 IValidateOptions</span><span class="sxs-lookup"><span data-stu-id="22091-193">IValidateOptions for complex validation</span></span>
+
+<span data-ttu-id="22091-194">下列類別會實行 <xref:Microsoft.Extensions.Options.IValidateOptions`1> ：</span><span class="sxs-lookup"><span data-stu-id="22091-194">The following class implements <xref:Microsoft.Extensions.Options.IValidateOptions`1>:</span></span>
+
+[!code-csharp[](options/samples/3.x/OptionsValidationSample/Configuration/MyConfigValidation.cs?name=snippet)]
+
+<span data-ttu-id="22091-195">`IValidateOptions`可將驗證程式代碼移出 `StartUp` 和移入類別。</span><span class="sxs-lookup"><span data-stu-id="22091-195">`IValidateOptions` enables moving the validation code out of `StartUp` and into a class.</span></span>
+
+<span data-ttu-id="22091-196">使用上述程式碼，會在中啟用驗證， `Startup.ConfigureServices` 並使用下列程式碼：</span><span class="sxs-lookup"><span data-stu-id="22091-196">Using the preceding code, validation is enabled in `Startup.ConfigureServices` with the following code:</span></span>
+
+[!code-csharp[](options/samples/3.x/OptionsValidationSample/StartupValidation.cs?name=snippet)]
+
+<!-- The following comment doesn't seem that useful 
+Options validation doesn't guard against options modifications after the options instance is created. For example, `IOptionsSnapshot` options are created and validated once per request when the options are first accessed. The `IOptionsSnapshot` options aren't validated again on subsequent access attempts *for the same request*.
+
+The `Validate` method accepts a `Func<TOptions, bool>`. To fully customize validation, implement `IValidateOptions<TOptions>`, which allows:
+
+* Validation of multiple options types: `class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`
+* Validation that depends on another option type: `public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`
+
+`IValidateOptions` validates:
+
+* A specific named options instance.
+* All options when `name` is `null`.
+
+Return a `ValidateOptionsResult` from your implementation of the interface:
 
 ```csharp
 public interface IValidateOptions<TOptions> where TOptions : class
@@ -356,56 +204,13 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-<span data-ttu-id="2f003-246">透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。</span><span class="sxs-lookup"><span data-stu-id="2f003-246">Data Annotation-based validation is available from the [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) package by calling the <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> method on `OptionsBuilder<TOptions>`.</span></span> <span data-ttu-id="2f003-247">`Microsoft.Extensions.Options.DataAnnotations`在 ASP.NET Core 應用程式中會以隱含方式參考。</span><span class="sxs-lookup"><span data-stu-id="2f003-247">`Microsoft.Extensions.Options.DataAnnotations` is implicitly referenced in ASP.NET Core apps.</span></span>
+Data Annotation-based validation is available from the [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) package by calling the <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> method on `OptionsBuilder<TOptions>`. `Microsoft.Extensions.Options.DataAnnotations` is implicitly referenced in ASP.NET Core apps.
 
-```csharp
-using System.ComponentModel.DataAnnotations;
-using Microsoft.Extensions.DependencyInjection;
+-->
 
-private class AnnotatedOptions
-{
-    [Required]
-    public string Required { get; set; }
+## <a name="options-post-configuration"></a><span data-ttu-id="22091-197">選項設定後作業</span><span class="sxs-lookup"><span data-stu-id="22091-197">Options post-configuration</span></span>
 
-    [StringLength(5, ErrorMessage = "Too long.")]
-    public string StringLength { get; set; }
-
-    [Range(-5, 5, ErrorMessage = "Out of range.")]
-    public int IntRange { get; set; }
-}
-
-[Fact]
-public void CanValidateDataAnnotations()
-{
-    var services = new ServiceCollection();
-    services.AddOptions<AnnotatedOptions>()
-        .Configure(o =>
-        {
-            o.StringLength = "111111";
-            o.IntRange = 10;
-            o.Custom = "nowhere";
-        })
-        .ValidateDataAnnotations();
-
-    var sp = services.BuildServiceProvider();
-
-    var error = Assert.Throws<OptionsValidationException>(() => 
-        sp.GetRequiredService<IOptionsMonitor<AnnotatedOptions>>().CurrentValue);
-    ValidateFailure<AnnotatedOptions>(error, Options.DefaultName, 1,
-        "DataAnnotation validation failed for members Required " +
-            "with the error 'The Required field is required.'.",
-        "DataAnnotation validation failed for members StringLength " +
-            "with the error 'Too long.'.",
-        "DataAnnotation validation failed for members IntRange " +
-            "with the error 'Out of range.'.");
-}
-```
-
-<span data-ttu-id="2f003-248">我們考慮在之後的版本中加入積極式驗證 (啟動時快速檢錯)。</span><span class="sxs-lookup"><span data-stu-id="2f003-248">Eager validation (fail fast at startup) is under consideration for a future release.</span></span>
-
-## <a name="options-post-configuration"></a><span data-ttu-id="2f003-249">選項設定後作業</span><span class="sxs-lookup"><span data-stu-id="2f003-249">Options post-configuration</span></span>
-
-<span data-ttu-id="2f003-250">使用 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> 來設定設定後作業。</span><span class="sxs-lookup"><span data-stu-id="2f003-250">Set post-configuration with <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>.</span></span> <span data-ttu-id="2f003-251">設定後作業會在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生後執行：</span><span class="sxs-lookup"><span data-stu-id="2f003-251">Post-configuration runs after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs:</span></span>
+<span data-ttu-id="22091-198">使用 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> 來設定設定後作業。</span><span class="sxs-lookup"><span data-stu-id="22091-198">Set post-configuration with <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>.</span></span> <span data-ttu-id="22091-199">設定後作業會在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生後執行：</span><span class="sxs-lookup"><span data-stu-id="22091-199">Post-configuration runs after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs:</span></span>
 
 ```csharp
 services.PostConfigure<MyOptions>(myOptions =>
@@ -414,7 +219,7 @@ services.PostConfigure<MyOptions>(myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-252"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> 可用來後置設定具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-252"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> is available to post-configure named options:</span></span>
+<span data-ttu-id="22091-200"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> 可用來後置設定具名選項：</span><span class="sxs-lookup"><span data-stu-id="22091-200"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> is available to post-configure named options:</span></span>
 
 ```csharp
 services.PostConfigure<MyOptions>("named_options_1", myOptions =>
@@ -423,7 +228,7 @@ services.PostConfigure<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-253">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 後置設定所有設定執行個體：</span><span class="sxs-lookup"><span data-stu-id="2f003-253">Use <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> to post-configure all configuration instances:</span></span>
+<span data-ttu-id="22091-201">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 後置設定所有設定執行個體：</span><span class="sxs-lookup"><span data-stu-id="22091-201">Use <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> to post-configure all configuration instances:</span></span>
 
 ```csharp
 services.PostConfigureAll<MyOptions>(myOptions =>
@@ -432,9 +237,9 @@ services.PostConfigureAll<MyOptions>(myOptions =>
 });
 ```
 
-## <a name="accessing-options-during-startup"></a><span data-ttu-id="2f003-254">在啟動期間存取選項</span><span class="sxs-lookup"><span data-stu-id="2f003-254">Accessing options during startup</span></span>
+## <a name="accessing-options-during-startup"></a><span data-ttu-id="22091-202">在啟動期間存取選項</span><span class="sxs-lookup"><span data-stu-id="22091-202">Accessing options during startup</span></span>
 
-<span data-ttu-id="2f003-255"><xref:Microsoft.Extensions.Options.IOptions%601> 與 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 可用於 `Startup.Configure`，因為服務是在 `Configure` 方法執行之前建置。</span><span class="sxs-lookup"><span data-stu-id="2f003-255"><xref:Microsoft.Extensions.Options.IOptions%601> and <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> can be used in `Startup.Configure`, since services are built before the `Configure` method executes.</span></span>
+<span data-ttu-id="22091-203"><xref:Microsoft.Extensions.Options.IOptions%601> 與 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 可用於 `Startup.Configure`，因為服務是在 `Configure` 方法執行之前建置。</span><span class="sxs-lookup"><span data-stu-id="22091-203"><xref:Microsoft.Extensions.Options.IOptions%601> and <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> can be used in `Startup.Configure`, since services are built before the `Configure` method executes.</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app, 
@@ -444,57 +249,61 @@ public void Configure(IApplicationBuilder app,
 }
 ```
 
-<span data-ttu-id="2f003-256">請勿在 `Startup.ConfigureServices` 中使用 <xref:Microsoft.Extensions.Options.IOptions%601> 或 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>。</span><span class="sxs-lookup"><span data-stu-id="2f003-256">Don't use <xref:Microsoft.Extensions.Options.IOptions%601> or <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="2f003-257">可能會因為服務註冊的順序而有不一致的選項狀態存在。</span><span class="sxs-lookup"><span data-stu-id="2f003-257">An inconsistent options state may exist due to the ordering of service registrations.</span></span>
+<span data-ttu-id="22091-204">請勿在 `Startup.ConfigureServices` 中使用 <xref:Microsoft.Extensions.Options.IOptions%601> 或 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>。</span><span class="sxs-lookup"><span data-stu-id="22091-204">Don't use <xref:Microsoft.Extensions.Options.IOptions%601> or <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="22091-205">可能會因為服務註冊的順序而有不一致的選項狀態存在。</span><span class="sxs-lookup"><span data-stu-id="22091-205">An inconsistent options state may exist due to the ordering of service registrations.</span></span>
+
+## <a name="optionsconfigurationextensions-nuget-package"></a><span data-ttu-id="22091-206">Microsoft.extensions.options.configurationextensions NuGet 套件</span><span class="sxs-lookup"><span data-stu-id="22091-206">Options.ConfigurationExtensions NuGet package</span></span>
+
+<span data-ttu-id="22091-207">ASP.NET Core 應用程式中會隱含地參考[microsoft.extensions.options.configurationextensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/)套件。</span><span class="sxs-lookup"><span data-stu-id="22091-207">The [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) package is implicitly referenced in ASP.NET Core apps.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.2"
 
-<span data-ttu-id="2f003-258">選項模式使用類別來代表一組相關的設定。</span><span class="sxs-lookup"><span data-stu-id="2f003-258">The options pattern uses classes to represent groups of related settings.</span></span> <span data-ttu-id="2f003-259">當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：</span><span class="sxs-lookup"><span data-stu-id="2f003-259">When [configuration settings](xref:fundamentals/configuration/index) are isolated by scenario into separate classes, the app adheres to two important software engineering principles:</span></span>
+<span data-ttu-id="22091-208">選項模式使用類別來代表一組相關的設定。</span><span class="sxs-lookup"><span data-stu-id="22091-208">The options pattern uses classes to represent groups of related settings.</span></span> <span data-ttu-id="22091-209">當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：</span><span class="sxs-lookup"><span data-stu-id="22091-209">When [configuration settings](xref:fundamentals/configuration/index) are isolated by scenario into separate classes, the app adheres to two important software engineering principles:</span></span>
 
-* <span data-ttu-id="2f003-260">[介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。</span><span class="sxs-lookup"><span data-stu-id="2f003-260">The [Interface Segregation Principle (ISP) or Encapsulation](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.</span></span>
-* <span data-ttu-id="2f003-261">應用程式不同部分的[疑慮](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash;設定不會彼此相依或彼此結合。</span><span class="sxs-lookup"><span data-stu-id="2f003-261">[Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; Settings for different parts of the app aren't dependent or coupled to one another.</span></span>
+* <span data-ttu-id="22091-210">[介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。</span><span class="sxs-lookup"><span data-stu-id="22091-210">The [Interface Segregation Principle (ISP) or Encapsulation](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.</span></span>
+* <span data-ttu-id="22091-211">[關注](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; 點分離應用程式不同部分的設定不會彼此相依或彼此結合。</span><span class="sxs-lookup"><span data-stu-id="22091-211">[Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; Settings for different parts of the app aren't dependent or coupled to one another.</span></span>
 
-<span data-ttu-id="2f003-262">選項也提供驗證設定資料的機制。</span><span class="sxs-lookup"><span data-stu-id="2f003-262">Options also provide a mechanism to validate configuration data.</span></span> <span data-ttu-id="2f003-263">如需詳細資訊，請參閱[選項驗證](#options-validation)一節。</span><span class="sxs-lookup"><span data-stu-id="2f003-263">For more information, see the [Options validation](#options-validation) section.</span></span>
+<span data-ttu-id="22091-212">選項也提供驗證設定資料的機制。</span><span class="sxs-lookup"><span data-stu-id="22091-212">Options also provide a mechanism to validate configuration data.</span></span> <span data-ttu-id="22091-213">如需詳細資訊，請參閱[選項驗證](#options-validation)一節。</span><span class="sxs-lookup"><span data-stu-id="22091-213">For more information, see the [Options validation](#options-validation) section.</span></span>
 
-<span data-ttu-id="2f003-264">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="2f003-264">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="22091-214">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="22091-214">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2f003-265">先決條件</span><span class="sxs-lookup"><span data-stu-id="2f003-265">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="22091-215">先決條件</span><span class="sxs-lookup"><span data-stu-id="22091-215">Prerequisites</span></span>
 
-<span data-ttu-id="2f003-266">參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="2f003-266">Reference the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) or add a package reference to the [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) package.</span></span>
+<span data-ttu-id="22091-216">參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="22091-216">Reference the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) or add a package reference to the [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) package.</span></span>
 
-## <a name="options-interfaces"></a><span data-ttu-id="2f003-267">選項介面</span><span class="sxs-lookup"><span data-stu-id="2f003-267">Options interfaces</span></span>
+## <a name="options-interfaces"></a><span data-ttu-id="22091-217">選項介面</span><span class="sxs-lookup"><span data-stu-id="22091-217">Options interfaces</span></span>
 
-<span data-ttu-id="2f003-268"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 是用來擷取選項並管理 `TOptions` 執行個體的選項通知。</span><span class="sxs-lookup"><span data-stu-id="2f003-268"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> is used to retrieve options and manage options notifications for `TOptions` instances.</span></span> <span data-ttu-id="2f003-269"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 支援以下案例：</span><span class="sxs-lookup"><span data-stu-id="2f003-269"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> supports the following scenarios:</span></span>
+<span data-ttu-id="22091-218"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 是用來擷取選項並管理 `TOptions` 執行個體的選項通知。</span><span class="sxs-lookup"><span data-stu-id="22091-218"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> is used to retrieve options and manage options notifications for `TOptions` instances.</span></span> <span data-ttu-id="22091-219"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 支援以下案例：</span><span class="sxs-lookup"><span data-stu-id="22091-219"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> supports the following scenarios:</span></span>
 
-* <span data-ttu-id="2f003-270">變更通知</span><span class="sxs-lookup"><span data-stu-id="2f003-270">Change notifications</span></span>
-* [<span data-ttu-id="2f003-271">具名選項</span><span class="sxs-lookup"><span data-stu-id="2f003-271">Named options</span></span>](#named-options-support-with-iconfigurenamedoptions)
-* [<span data-ttu-id="2f003-272">可重新載入的設定</span><span class="sxs-lookup"><span data-stu-id="2f003-272">Reloadable configuration</span></span>](#reload-configuration-data-with-ioptionssnapshot)
-* <span data-ttu-id="2f003-273">選擇性選項無效判定 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span><span class="sxs-lookup"><span data-stu-id="2f003-273">Selective options invalidation (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span></span>
+* <span data-ttu-id="22091-220">變更通知</span><span class="sxs-lookup"><span data-stu-id="22091-220">Change notifications</span></span>
+* [<span data-ttu-id="22091-221">具名選項</span><span class="sxs-lookup"><span data-stu-id="22091-221">Named options</span></span>](#named-options-support-with-iconfigurenamedoptions)
+* [<span data-ttu-id="22091-222">可重新載入的設定</span><span class="sxs-lookup"><span data-stu-id="22091-222">Reloadable configuration</span></span>](#reload-configuration-data-with-ioptionssnapshot)
+* <span data-ttu-id="22091-223">選擇性選項無效判定 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span><span class="sxs-lookup"><span data-stu-id="22091-223">Selective options invalidation (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span></span>
 
-<span data-ttu-id="2f003-274">[設定後](#options-post-configuration)案例可讓您在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生時設定或變更選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-274">[Post-configuration](#options-post-configuration) scenarios allow you to set or change options after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs.</span></span>
+<span data-ttu-id="22091-224">[設定後](#options-post-configuration)案例可讓您在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生時設定或變更選項。</span><span class="sxs-lookup"><span data-stu-id="22091-224">[Post-configuration](#options-post-configuration) scenarios allow you to set or change options after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs.</span></span>
 
-<span data-ttu-id="2f003-275"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 負責建立新的選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-275"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> is responsible for creating new options instances.</span></span> <span data-ttu-id="2f003-276">它有單一 <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> 方法。</span><span class="sxs-lookup"><span data-stu-id="2f003-276">It has a single <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> method.</span></span> <span data-ttu-id="2f003-277">預設實作會接受所有已註冊的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 與 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>，並先執行所有設定，接著執行設定後作業。</span><span class="sxs-lookup"><span data-stu-id="2f003-277">The default implementation takes all registered <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> and runs all the configurations first, followed by the post-configuration.</span></span> <span data-ttu-id="2f003-278">它會區別 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 和 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>，且只會呼叫適當的介面。</span><span class="sxs-lookup"><span data-stu-id="2f003-278">It distinguishes between <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and only calls the appropriate interface.</span></span>
+<span data-ttu-id="22091-225"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 負責建立新的選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-225"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> is responsible for creating new options instances.</span></span> <span data-ttu-id="22091-226">它有單一 <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> 方法。</span><span class="sxs-lookup"><span data-stu-id="22091-226">It has a single <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> method.</span></span> <span data-ttu-id="22091-227">預設實作會接受所有已註冊的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 與 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>，並先執行所有設定，接著執行設定後作業。</span><span class="sxs-lookup"><span data-stu-id="22091-227">The default implementation takes all registered <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> and runs all the configurations first, followed by the post-configuration.</span></span> <span data-ttu-id="22091-228">它會區別 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 和 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>，且只會呼叫適當的介面。</span><span class="sxs-lookup"><span data-stu-id="22091-228">It distinguishes between <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and only calls the appropriate interface.</span></span>
 
-<span data-ttu-id="2f003-279"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會由 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 用來快取 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-279"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> is used by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to cache `TOptions` instances.</span></span> <span data-ttu-id="2f003-280"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會使監視器中的選項執行個體失效，以便重新計算值 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>)。</span><span class="sxs-lookup"><span data-stu-id="2f003-280">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> invalidates options instances in the monitor so that the value is recomputed (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>).</span></span> <span data-ttu-id="2f003-281">值可以使用 <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*> 手動導入。</span><span class="sxs-lookup"><span data-stu-id="2f003-281">Values can be manually introduced with <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*>.</span></span> <span data-ttu-id="2f003-282"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> 方法用於應該視需要重新建立所有具名執行個體時。</span><span class="sxs-lookup"><span data-stu-id="2f003-282">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> method is used when all named instances should be recreated on demand.</span></span>
+<span data-ttu-id="22091-229"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會由 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 用來快取 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-229"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> is used by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to cache `TOptions` instances.</span></span> <span data-ttu-id="22091-230"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會使監視器中的選項執行個體失效，以便重新計算值 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>)。</span><span class="sxs-lookup"><span data-stu-id="22091-230">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> invalidates options instances in the monitor so that the value is recomputed (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>).</span></span> <span data-ttu-id="22091-231">值可以使用 <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*> 手動導入。</span><span class="sxs-lookup"><span data-stu-id="22091-231">Values can be manually introduced with <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*>.</span></span> <span data-ttu-id="22091-232"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> 方法用於應該視需要重新建立所有具名執行個體時。</span><span class="sxs-lookup"><span data-stu-id="22091-232">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> method is used when all named instances should be recreated on demand.</span></span>
 
-<span data-ttu-id="2f003-283"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 在應該於收到每個要求時重新計算選項的案例中很實用用。</span><span class="sxs-lookup"><span data-stu-id="2f003-283"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is useful in scenarios where options should be recomputed on every request.</span></span> <span data-ttu-id="2f003-284">如需詳細資訊，請參閱[使用 IOptionsSnapshot 重新載入設定資料](#reload-configuration-data-with-ioptionssnapshot)一節。</span><span class="sxs-lookup"><span data-stu-id="2f003-284">For more information, see the [Reload configuration data with IOptionsSnapshot](#reload-configuration-data-with-ioptionssnapshot) section.</span></span>
+<span data-ttu-id="22091-233"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 在應該於收到每個要求時重新計算選項的案例中很實用用。</span><span class="sxs-lookup"><span data-stu-id="22091-233"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is useful in scenarios where options should be recomputed on every request.</span></span> <span data-ttu-id="22091-234">如需詳細資訊，請參閱[使用 IOptionsSnapshot 重新載入設定資料](#reload-configuration-data-with-ioptionssnapshot)一節。</span><span class="sxs-lookup"><span data-stu-id="22091-234">For more information, see the [Reload configuration data with IOptionsSnapshot](#reload-configuration-data-with-ioptionssnapshot) section.</span></span>
 
-<span data-ttu-id="2f003-285"><xref:Microsoft.Extensions.Options.IOptions%601> 可用於支援選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-285"><xref:Microsoft.Extensions.Options.IOptions%601> can be used to support options.</span></span> <span data-ttu-id="2f003-286">不過，<xref:Microsoft.Extensions.Options.IOptions%601> 不支援前面的 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 案例。</span><span class="sxs-lookup"><span data-stu-id="2f003-286">However, <xref:Microsoft.Extensions.Options.IOptions%601> doesn't support the preceding scenarios of <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span> <span data-ttu-id="2f003-287">您可以在現有架構與程式庫中繼續使用 <xref:Microsoft.Extensions.Options.IOptions%601>，此程式庫已使用 <xref:Microsoft.Extensions.Options.IOptions%601> 介面且不需要 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 提供的案例。</span><span class="sxs-lookup"><span data-stu-id="2f003-287">You may continue to use <xref:Microsoft.Extensions.Options.IOptions%601> in existing frameworks and libraries that already use the <xref:Microsoft.Extensions.Options.IOptions%601> interface and don't require the scenarios provided by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span>
+<span data-ttu-id="22091-235"><xref:Microsoft.Extensions.Options.IOptions%601> 可用於支援選項。</span><span class="sxs-lookup"><span data-stu-id="22091-235"><xref:Microsoft.Extensions.Options.IOptions%601> can be used to support options.</span></span> <span data-ttu-id="22091-236">不過，<xref:Microsoft.Extensions.Options.IOptions%601> 不支援前面的 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 案例。</span><span class="sxs-lookup"><span data-stu-id="22091-236">However, <xref:Microsoft.Extensions.Options.IOptions%601> doesn't support the preceding scenarios of <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span> <span data-ttu-id="22091-237">您可以在現有架構與程式庫中繼續使用 <xref:Microsoft.Extensions.Options.IOptions%601>，此程式庫已使用 <xref:Microsoft.Extensions.Options.IOptions%601> 介面且不需要 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 提供的案例。</span><span class="sxs-lookup"><span data-stu-id="22091-237">You may continue to use <xref:Microsoft.Extensions.Options.IOptions%601> in existing frameworks and libraries that already use the <xref:Microsoft.Extensions.Options.IOptions%601> interface and don't require the scenarios provided by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span>
 
-## <a name="general-options-configuration"></a><span data-ttu-id="2f003-288">一般選項設定</span><span class="sxs-lookup"><span data-stu-id="2f003-288">General options configuration</span></span>
+## <a name="general-options-configuration"></a><span data-ttu-id="22091-238">一般選項設定</span><span class="sxs-lookup"><span data-stu-id="22091-238">General options configuration</span></span>
 
-<span data-ttu-id="2f003-289">一般選項設定是以範例應用程式中的範例 1 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-289">General options configuration is demonstrated as Example 1 in the sample app.</span></span>
+<span data-ttu-id="22091-239">一般選項設定是以範例應用程式中的範例 1 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-239">General options configuration is demonstrated as Example 1 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-290">選項類別必須為非抽象，且具有公用的無參數建構函式。</span><span class="sxs-lookup"><span data-stu-id="2f003-290">An options class must be non-abstract with a public parameterless constructor.</span></span> <span data-ttu-id="2f003-291">下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。</span><span class="sxs-lookup"><span data-stu-id="2f003-291">The following class, `MyOptions`, has two properties, `Option1` and `Option2`.</span></span> <span data-ttu-id="2f003-292">設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。</span><span class="sxs-lookup"><span data-stu-id="2f003-292">Setting default values is optional, but the class constructor in the following example sets the default value of `Option1`.</span></span> <span data-ttu-id="2f003-293">`Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-293">`Option2` has a default value set by initializing the property directly (*Models/MyOptions.cs*):</span></span>
+<span data-ttu-id="22091-240">選項類別必須為非抽象，且具有公用的無參數建構函式。</span><span class="sxs-lookup"><span data-stu-id="22091-240">An options class must be non-abstract with a public parameterless constructor.</span></span> <span data-ttu-id="22091-241">下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。</span><span class="sxs-lookup"><span data-stu-id="22091-241">The following class, `MyOptions`, has two properties, `Option1` and `Option2`.</span></span> <span data-ttu-id="22091-242">設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。</span><span class="sxs-lookup"><span data-stu-id="22091-242">Setting default values is optional, but the class constructor in the following example sets the default value of `Option1`.</span></span> <span data-ttu-id="22091-243">`Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-243">`Option2` has a default value set by initializing the property directly (*Models/MyOptions.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
 
-<span data-ttu-id="2f003-294">`MyOptions` 類別使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> 新增到服務容器，並繫結到設定：</span><span class="sxs-lookup"><span data-stu-id="2f003-294">The `MyOptions` class is added to the service container with <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> and bound to configuration:</span></span>
+<span data-ttu-id="22091-244">`MyOptions` 類別使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> 新增到服務容器，並繫結到設定：</span><span class="sxs-lookup"><span data-stu-id="22091-244">The `MyOptions` class is added to the service container with <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> and bound to configuration:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example1)]
 
-<span data-ttu-id="2f003-295">下列頁面模型使用[建構函式相依性插入](xref:mvc/controllers/dependency-injection)搭配 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 來存取設定 (*Pages/Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-295">The following page model uses [constructor dependency injection](xref:mvc/controllers/dependency-injection) with <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to access the settings (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-245">下列頁面模型使用[建構函式相依性插入](xref:mvc/controllers/dependency-injection)搭配 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 來存取設定 (*Pages/Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-245">The following page model uses [constructor dependency injection](xref:mvc/controllers/dependency-injection) with <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to access the settings (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -502,18 +311,18 @@ public void Configure(IApplicationBuilder app,
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
-<span data-ttu-id="2f003-296">範例的 *appsettings.json* 檔案指定 `option1` 和 `option2` 的值：</span><span class="sxs-lookup"><span data-stu-id="2f003-296">The sample's *appsettings.json* file specifies values for `option1` and `option2`:</span></span>
+<span data-ttu-id="22091-246">範例的 *appsettings.json* 檔案指定 `option1` 和 `option2` 的值：</span><span class="sxs-lookup"><span data-stu-id="22091-246">The sample's *appsettings.json* file specifies values for `option1` and `option2`:</span></span>
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=2-3)]
 
-<span data-ttu-id="2f003-297">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-297">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
+<span data-ttu-id="22091-247">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="22091-247">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
 ```html
 option1 = value1_from_json, option2 = -1
 ```
 
 > [!NOTE]
-> <span data-ttu-id="2f003-298">使用自訂 <xref:System.Configuration.ConfigurationBuilder> 從設定檔載入選項設定時，請確認已正確設定基底路徑：</span><span class="sxs-lookup"><span data-stu-id="2f003-298">When using a custom <xref:System.Configuration.ConfigurationBuilder> to load options configuration from a settings file, confirm that the base path is set correctly:</span></span>
+> <span data-ttu-id="22091-248">使用自訂 <xref:System.Configuration.ConfigurationBuilder> 從設定檔載入選項設定時，請確認已正確設定基底路徑：</span><span class="sxs-lookup"><span data-stu-id="22091-248">When using a custom <xref:System.Configuration.ConfigurationBuilder> to load options configuration from a settings file, confirm that the base path is set correctly:</span></span>
 >
 > ```csharp
 > var configBuilder = new ConfigurationBuilder()
@@ -524,21 +333,21 @@ option1 = value1_from_json, option2 = -1
 > services.Configure<MyOptions>(config);
 > ```
 >
-> <span data-ttu-id="2f003-299">透過 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 從設定檔載入選項設定時，不需要明確設定基底路徑。</span><span class="sxs-lookup"><span data-stu-id="2f003-299">Explicitly setting the base path isn't required when loading options configuration from the settings file via <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.</span></span>
+> <span data-ttu-id="22091-249">透過 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 從設定檔載入選項設定時，不需要明確設定基底路徑。</span><span class="sxs-lookup"><span data-stu-id="22091-249">Explicitly setting the base path isn't required when loading options configuration from the settings file via <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.</span></span>
 
-## <a name="configure-simple-options-with-a-delegate"></a><span data-ttu-id="2f003-300">使用委派設定簡單的選項</span><span class="sxs-lookup"><span data-stu-id="2f003-300">Configure simple options with a delegate</span></span>
+## <a name="configure-simple-options-with-a-delegate"></a><span data-ttu-id="22091-250">使用委派設定簡單的選項</span><span class="sxs-lookup"><span data-stu-id="22091-250">Configure simple options with a delegate</span></span>
 
-<span data-ttu-id="2f003-301">使用委派設定簡單的選項是以範例應用程式中的範例 2 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-301">Configuring simple options with a delegate is demonstrated as Example 2 in the sample app.</span></span>
+<span data-ttu-id="22091-251">使用委派設定簡單的選項是以範例應用程式中的範例 2 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-251">Configuring simple options with a delegate is demonstrated as Example 2 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-302">使用委派來設定選項值。</span><span class="sxs-lookup"><span data-stu-id="2f003-302">Use a delegate to set options values.</span></span> <span data-ttu-id="2f003-303">範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-303">The sample app uses the `MyOptionsWithDelegateConfig` class (*Models/MyOptionsWithDelegateConfig.cs*):</span></span>
+<span data-ttu-id="22091-252">使用委派來設定選項值。</span><span class="sxs-lookup"><span data-stu-id="22091-252">Use a delegate to set options values.</span></span> <span data-ttu-id="22091-253">範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-253">The sample app uses the `MyOptionsWithDelegateConfig` class (*Models/MyOptionsWithDelegateConfig.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
-<span data-ttu-id="2f003-304">在下列程式碼中，第二個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-304">In the following code, a second <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="2f003-305">它使用委派，以 `MyOptionsWithDelegateConfig` 設定繫結：</span><span class="sxs-lookup"><span data-stu-id="2f003-305">It uses a delegate to configure the binding with `MyOptionsWithDelegateConfig`:</span></span>
+<span data-ttu-id="22091-254">在下列程式碼中，第二個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="22091-254">In the following code, a second <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="22091-255">它使用委派，以 `MyOptionsWithDelegateConfig` 設定繫結：</span><span class="sxs-lookup"><span data-stu-id="22091-255">It uses a delegate to configure the binding with `MyOptionsWithDelegateConfig`:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-<span data-ttu-id="2f003-306">*Index.cshtml.cs*：</span><span class="sxs-lookup"><span data-stu-id="2f003-306">*Index.cshtml.cs*:</span></span>
+<span data-ttu-id="22091-256">*Index.cshtml.cs*：</span><span class="sxs-lookup"><span data-stu-id="22091-256">*Index.cshtml.cs*:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -546,39 +355,39 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-<span data-ttu-id="2f003-307">您可以新增多個設定提供者。</span><span class="sxs-lookup"><span data-stu-id="2f003-307">You can add multiple configuration providers.</span></span> <span data-ttu-id="2f003-308">設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。</span><span class="sxs-lookup"><span data-stu-id="2f003-308">Configuration providers are available from NuGet packages and are applied in the order that they're registered.</span></span> <span data-ttu-id="2f003-309">如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。</span><span class="sxs-lookup"><span data-stu-id="2f003-309">For more information, see <xref:fundamentals/configuration/index>.</span></span>
+<span data-ttu-id="22091-257">您可以新增多個設定提供者。</span><span class="sxs-lookup"><span data-stu-id="22091-257">You can add multiple configuration providers.</span></span> <span data-ttu-id="22091-258">設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。</span><span class="sxs-lookup"><span data-stu-id="22091-258">Configuration providers are available from NuGet packages and are applied in the order that they're registered.</span></span> <span data-ttu-id="22091-259">如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。</span><span class="sxs-lookup"><span data-stu-id="22091-259">For more information, see <xref:fundamentals/configuration/index>.</span></span>
 
-<span data-ttu-id="2f003-310">每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-310">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="2f003-311">在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。</span><span class="sxs-lookup"><span data-stu-id="2f003-311">In the preceding example, the values of `Option1` and `Option2` are both specified in *appsettings.json*, but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
+<span data-ttu-id="22091-260">每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。</span><span class="sxs-lookup"><span data-stu-id="22091-260">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="22091-261">在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。</span><span class="sxs-lookup"><span data-stu-id="22091-261">In the preceding example, the values of `Option1` and `Option2` are both specified in *appsettings.json*, but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
 
-<span data-ttu-id="2f003-312">啟用多個設定服務時，最後一個指定的設定來源會「勝出」\*\* 並設定此組態值。</span><span class="sxs-lookup"><span data-stu-id="2f003-312">When more than one configuration service is enabled, the last configuration source specified *wins* and sets the configuration value.</span></span> <span data-ttu-id="2f003-313">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-313">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
+<span data-ttu-id="22091-262">啟用多個設定服務時，最後一個指定的設定來源會「勝出」\*\* 並設定此組態值。</span><span class="sxs-lookup"><span data-stu-id="22091-262">When more than one configuration service is enabled, the last configuration source specified *wins* and sets the configuration value.</span></span> <span data-ttu-id="22091-263">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="22091-263">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
 ```html
 delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 ```
 
-## <a name="suboptions-configuration"></a><span data-ttu-id="2f003-314">子選項組態</span><span class="sxs-lookup"><span data-stu-id="2f003-314">Suboptions configuration</span></span>
+## <a name="suboptions-configuration"></a><span data-ttu-id="22091-264">子選項組態</span><span class="sxs-lookup"><span data-stu-id="22091-264">Suboptions configuration</span></span>
 
-<span data-ttu-id="2f003-315">子選項組態是以範例應用程式中的範例 3 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-315">Suboptions configuration is demonstrated as Example 3 in the sample app.</span></span>
+<span data-ttu-id="22091-265">子選項組態是以範例應用程式中的範例 3 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-265">Suboptions configuration is demonstrated as Example 3 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-316">應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。</span><span class="sxs-lookup"><span data-stu-id="2f003-316">Apps should create options classes that pertain to specific scenario groups (classes) in the app.</span></span> <span data-ttu-id="2f003-317">需要組態值的應用程式組件應該只能存取它們使用的設定值。</span><span class="sxs-lookup"><span data-stu-id="2f003-317">Parts of the app that require configuration values should only have access to the configuration values that they use.</span></span>
+<span data-ttu-id="22091-266">應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。</span><span class="sxs-lookup"><span data-stu-id="22091-266">Apps should create options classes that pertain to specific scenario groups (classes) in the app.</span></span> <span data-ttu-id="22091-267">需要組態值的應用程式組件應該只能存取它們使用的設定值。</span><span class="sxs-lookup"><span data-stu-id="22091-267">Parts of the app that require configuration values should only have access to the configuration values that they use.</span></span>
 
-<span data-ttu-id="2f003-318">將選項繫結至組態時，選項類型中的每一個屬性都會繫結至 `property[:sub-property:]` 格式的組態索引鍵。</span><span class="sxs-lookup"><span data-stu-id="2f003-318">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="2f003-319">例如，`MyOptions.Option1` 屬性繫結至索引鍵 `Option1`，其是從 *appsettings.json* 中的 `option1` 屬性讀取。</span><span class="sxs-lookup"><span data-stu-id="2f003-319">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *appsettings.json*.</span></span>
+<span data-ttu-id="22091-268">將選項繫結至組態時，選項類型中的每一個屬性都會繫結至 `property[:sub-property:]` 格式的組態索引鍵。</span><span class="sxs-lookup"><span data-stu-id="22091-268">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="22091-269">例如，`MyOptions.Option1` 屬性繫結至索引鍵 `Option1`，其是從 *appsettings.json* 中的 `option1` 屬性讀取。</span><span class="sxs-lookup"><span data-stu-id="22091-269">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *appsettings.json*.</span></span>
 
-<span data-ttu-id="2f003-320">在下列程式碼中，第三個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-320">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="2f003-321">它將 `MySubOptions` 繫結至 *appSettings.json* 檔案的 `subsection` 區段：</span><span class="sxs-lookup"><span data-stu-id="2f003-321">It binds `MySubOptions` to the section `subsection` of the *appsettings.json* file:</span></span>
+<span data-ttu-id="22091-270">在下列程式碼中，第三個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="22091-270">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="22091-271">它將 `MySubOptions` 繫結至 *appSettings.json* 檔案的 `subsection` 區段：</span><span class="sxs-lookup"><span data-stu-id="22091-271">It binds `MySubOptions` to the section `subsection` of the *appsettings.json* file:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-<span data-ttu-id="2f003-322">`GetSection`方法需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。</span><span class="sxs-lookup"><span data-stu-id="2f003-322">The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.</span></span>
+<span data-ttu-id="22091-272">`GetSection`方法需要 <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> 命名空間。</span><span class="sxs-lookup"><span data-stu-id="22091-272">The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.</span></span>
 
-<span data-ttu-id="2f003-323">範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：</span><span class="sxs-lookup"><span data-stu-id="2f003-323">The sample's *appsettings.json* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
+<span data-ttu-id="22091-273">範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：</span><span class="sxs-lookup"><span data-stu-id="22091-273">The sample's *appsettings.json* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
-<span data-ttu-id="2f003-324">`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存選項值 (*Models/MySubOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-324">The `MySubOptions` class defines properties, `SubOption1` and `SubOption2`, to hold the options values (*Models/MySubOptions.cs*):</span></span>
+<span data-ttu-id="22091-274">`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存選項值 (*Models/MySubOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-274">The `MySubOptions` class defines properties, `SubOption1` and `SubOption2`, to hold the options values (*Models/MySubOptions.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
 
-<span data-ttu-id="2f003-325">頁面模型的 `OnGet` 方法會傳回具有選項值 (*Pages/Index.cshtml.cs*) 的字串：</span><span class="sxs-lookup"><span data-stu-id="2f003-325">The page model's `OnGet` method returns a string with the options values (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-275">頁面模型的 `OnGet` 方法會傳回具有選項值 (*Pages/Index.cshtml.cs*) 的字串：</span><span class="sxs-lookup"><span data-stu-id="22091-275">The page model's `OnGet` method returns a string with the options values (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
 
@@ -586,22 +395,22 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example3)]
 
-<span data-ttu-id="2f003-326">當應用程式執行時，`OnGet` 方法會傳回字串，顯示子選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-326">When the app is run, the `OnGet` method returns a string showing the suboption class values:</span></span>
+<span data-ttu-id="22091-276">當應用程式執行時，`OnGet` 方法會傳回字串，顯示子選項類別值：</span><span class="sxs-lookup"><span data-stu-id="22091-276">When the app is run, the `OnGet` method returns a string showing the suboption class values:</span></span>
 
 ```html
 subOption1 = subvalue1_from_json, subOption2 = 200
 ```
 
-## <a name="options-injection"></a><span data-ttu-id="2f003-327">選項插入</span><span class="sxs-lookup"><span data-stu-id="2f003-327">Options injection</span></span>
+## <a name="options-injection"></a><span data-ttu-id="22091-277">選項插入</span><span class="sxs-lookup"><span data-stu-id="22091-277">Options injection</span></span>
 
-<span data-ttu-id="2f003-328">範例應用程式中的範例4示範了選項插入。</span><span class="sxs-lookup"><span data-stu-id="2f003-328">Options injection is demonstrated as Example 4 in the sample app.</span></span>
+<span data-ttu-id="22091-278">範例應用程式中的範例4示範了選項插入。</span><span class="sxs-lookup"><span data-stu-id="22091-278">Options injection is demonstrated as Example 4 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-329">插入<xref:Microsoft.Extensions.Options.IOptionsMonitor%601> ：</span><span class="sxs-lookup"><span data-stu-id="2f003-329">Inject <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into:</span></span>
+<span data-ttu-id="22091-279">插入 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> ：</span><span class="sxs-lookup"><span data-stu-id="22091-279">Inject <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into:</span></span>
 
-* <span data-ttu-id="2f003-330">[`@inject`](xref:mvc/views/razor#inject)具有Razor Razor指示詞的頁面或 MVC 視圖。</span><span class="sxs-lookup"><span data-stu-id="2f003-330">A Razor page or MVC view with the [`@inject`](xref:mvc/views/razor#inject) Razor directive.</span></span>
-* <span data-ttu-id="2f003-331">頁面或視圖模型。</span><span class="sxs-lookup"><span data-stu-id="2f003-331">A page or view model.</span></span>
+* <span data-ttu-id="22091-280">具有指示詞的 Razor 頁面或 MVC 視圖 [`@inject`](xref:mvc/views/razor#inject) Razor 。</span><span class="sxs-lookup"><span data-stu-id="22091-280">A Razor page or MVC view with the [`@inject`](xref:mvc/views/razor#inject) Razor directive.</span></span>
+* <span data-ttu-id="22091-281">頁面或視圖模型。</span><span class="sxs-lookup"><span data-stu-id="22091-281">A page or view model.</span></span>
 
-<span data-ttu-id="2f003-332">下列來自範例應用程式的範例會<xref:Microsoft.Extensions.Options.IOptionsMonitor%601>插入頁面模型中（*Pages/Index. cshtml .cs*）：</span><span class="sxs-lookup"><span data-stu-id="2f003-332">The following example from the sample app injects <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into a page model (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-282">下列來自範例應用程式的範例會插入 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 頁面模型中（*Pages/Index. cshtml .cs*）：</span><span class="sxs-lookup"><span data-stu-id="22091-282">The following example from the sample app injects <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> into a page model (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -609,26 +418,26 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example4)]
 
-<span data-ttu-id="2f003-333">範例應用程式會顯示如何使用 `@inject` 指示詞來插入 `IOptionsMonitor<MyOptions>`：</span><span class="sxs-lookup"><span data-stu-id="2f003-333">The sample app shows how to inject `IOptionsMonitor<MyOptions>` with an `@inject` directive:</span></span>
+<span data-ttu-id="22091-283">範例應用程式會顯示如何使用 `@inject` 指示詞來插入 `IOptionsMonitor<MyOptions>`：</span><span class="sxs-lookup"><span data-stu-id="22091-283">The sample app shows how to inject `IOptionsMonitor<MyOptions>` with an `@inject` directive:</span></span>
 
 [!code-cshtml[](options/samples/2.x/OptionsSample/Pages/Index.cshtml?range=1-10&highlight=4)]
 
-<span data-ttu-id="2f003-334">執行應用程式時，轉譯的頁面中會顯示選項值：</span><span class="sxs-lookup"><span data-stu-id="2f003-334">When the app is run, the options values are shown in the rendered page:</span></span>
+<span data-ttu-id="22091-284">執行應用程式時，轉譯的頁面中會顯示選項值：</span><span class="sxs-lookup"><span data-stu-id="22091-284">When the app is run, the options values are shown in the rendered page:</span></span>
 
 ![選項值 Option1:：value1_from_json 和 Option2: -1 是從模型藉由插入至檢視來載入。](options/_static/view.png)
 
-## <a name="reload-configuration-data-with-ioptionssnapshot"></a><span data-ttu-id="2f003-336">使用 IOptionsSnapshot 重新載入設定資料</span><span class="sxs-lookup"><span data-stu-id="2f003-336">Reload configuration data with IOptionsSnapshot</span></span>
+## <a name="reload-configuration-data-with-ioptionssnapshot"></a><span data-ttu-id="22091-286">使用 IOptionsSnapshot 重新載入設定資料</span><span class="sxs-lookup"><span data-stu-id="22091-286">Reload configuration data with IOptionsSnapshot</span></span>
 
-<span data-ttu-id="2f003-337">使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>重載設定資料時，會在範例應用程式的範例5中示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-337">Reloading configuration data with <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is demonstrated in Example 5 in the sample app.</span></span>
+<span data-ttu-id="22091-287">使用重載設定資料 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 時，會在範例應用程式的範例5中示範。</span><span class="sxs-lookup"><span data-stu-id="22091-287">Reloading configuration data with <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is demonstrated in Example 5 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-338">使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>，在要求的存留期記憶體取和快取時，會針對每個要求計算一次選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-338">Using <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>, options are computed once per request when accessed and cached for the lifetime of the request.</span></span>
+<span data-ttu-id="22091-288">使用 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> ，在要求的存留期記憶體取和快取時，會針對每個要求計算一次選項。</span><span class="sxs-lookup"><span data-stu-id="22091-288">Using <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>, options are computed once per request when accessed and cached for the lifetime of the request.</span></span>
 
-<span data-ttu-id="2f003-339">和`IOptionsMonitor` `IOptionsSnapshot`之間的差異在於：</span><span class="sxs-lookup"><span data-stu-id="2f003-339">The difference between `IOptionsMonitor` and `IOptionsSnapshot` is that:</span></span>
+<span data-ttu-id="22091-289">和之間的差異在於 `IOptionsMonitor` `IOptionsSnapshot` ：</span><span class="sxs-lookup"><span data-stu-id="22091-289">The difference between `IOptionsMonitor` and `IOptionsSnapshot` is that:</span></span>
 
-* <span data-ttu-id="2f003-340">`IOptionsMonitor`是一項[單一服務](xref:fundamentals/dependency-injection#singleton)，可隨時抓取目前的選項值，這在單一相依性中特別有用。</span><span class="sxs-lookup"><span data-stu-id="2f003-340">`IOptionsMonitor` is a [singleton service](xref:fundamentals/dependency-injection#singleton) that retrieves current option values at any time, which is especially useful in singleton dependencies.</span></span>
-* <span data-ttu-id="2f003-341">`IOptionsSnapshot`是已設定[範圍的服務](xref:fundamentals/dependency-injection#scoped)，會在`IOptionsSnapshot<T>`物件建立時提供選項的快照集。</span><span class="sxs-lookup"><span data-stu-id="2f003-341">`IOptionsSnapshot` is a [scoped service](xref:fundamentals/dependency-injection#scoped) and provides a snapshot of the options at the time the `IOptionsSnapshot<T>` object is constructed.</span></span> <span data-ttu-id="2f003-342">選項快照集的設計目的是要搭配暫時性和範圍相依性使用。</span><span class="sxs-lookup"><span data-stu-id="2f003-342">Options snapshots are designed for use with transient and scoped dependencies.</span></span>
+* <span data-ttu-id="22091-290">`IOptionsMonitor`是一項[單一服務](xref:fundamentals/dependency-injection#singleton)，可隨時抓取目前的選項值，這在單一相依性中特別有用。</span><span class="sxs-lookup"><span data-stu-id="22091-290">`IOptionsMonitor` is a [singleton service](xref:fundamentals/dependency-injection#singleton) that retrieves current option values at any time, which is especially useful in singleton dependencies.</span></span>
+* <span data-ttu-id="22091-291">`IOptionsSnapshot`是已設定[範圍的服務](xref:fundamentals/dependency-injection#scoped)，會在物件建立時提供選項的快照集 `IOptionsSnapshot<T>` 。</span><span class="sxs-lookup"><span data-stu-id="22091-291">`IOptionsSnapshot` is a [scoped service](xref:fundamentals/dependency-injection#scoped) and provides a snapshot of the options at the time the `IOptionsSnapshot<T>` object is constructed.</span></span> <span data-ttu-id="22091-292">選項快照集的設計目的是要搭配暫時性和範圍相依性使用。</span><span class="sxs-lookup"><span data-stu-id="22091-292">Options snapshots are designed for use with transient and scoped dependencies.</span></span>
 
-<span data-ttu-id="2f003-343">下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。</span><span class="sxs-lookup"><span data-stu-id="2f003-343">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *appsettings.json* changes (*Pages/Index.cshtml.cs*).</span></span> <span data-ttu-id="2f003-344">對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。</span><span class="sxs-lookup"><span data-stu-id="2f003-344">Multiple requests to the server return constant values provided by the *appsettings.json* file until the file is changed and configuration reloads.</span></span>
+<span data-ttu-id="22091-293">下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。</span><span class="sxs-lookup"><span data-stu-id="22091-293">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *appsettings.json* changes (*Pages/Index.cshtml.cs*).</span></span> <span data-ttu-id="22091-294">對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。</span><span class="sxs-lookup"><span data-stu-id="22091-294">Multiple requests to the server return constant values provided by the *appsettings.json* file until the file is changed and configuration reloads.</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -636,27 +445,27 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
-<span data-ttu-id="2f003-345">下圖顯示從 *appsettings.json* 檔案載入的初始 `option1` 和 `option2` 值：</span><span class="sxs-lookup"><span data-stu-id="2f003-345">The following image shows the initial `option1` and `option2` values loaded from the *appsettings.json* file:</span></span>
+<span data-ttu-id="22091-295">下圖顯示從 *appsettings.json* 檔案載入的初始 `option1` 和 `option2` 值：</span><span class="sxs-lookup"><span data-stu-id="22091-295">The following image shows the initial `option1` and `option2` values loaded from the *appsettings.json* file:</span></span>
 
 ```html
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-<span data-ttu-id="2f003-346">將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。</span><span class="sxs-lookup"><span data-stu-id="2f003-346">Change the values in the *appsettings.json* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="2f003-347">儲存*appsettings json*檔案。</span><span class="sxs-lookup"><span data-stu-id="2f003-347">Save the *appsettings.json* file.</span></span> <span data-ttu-id="2f003-348">重新整理瀏覽器，以查看選項值更新：</span><span class="sxs-lookup"><span data-stu-id="2f003-348">Refresh the browser to see that the options values are updated:</span></span>
+<span data-ttu-id="22091-296">將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。</span><span class="sxs-lookup"><span data-stu-id="22091-296">Change the values in the *appsettings.json* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="22091-297">儲存*appsettings json*檔案。</span><span class="sxs-lookup"><span data-stu-id="22091-297">Save the *appsettings.json* file.</span></span> <span data-ttu-id="22091-298">重新整理瀏覽器，以查看選項值更新：</span><span class="sxs-lookup"><span data-stu-id="22091-298">Refresh the browser to see that the options values are updated:</span></span>
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 ```
 
-## <a name="named-options-support-with-iconfigurenamedoptions"></a><span data-ttu-id="2f003-349">IConfigureNamedOptions 的具名選項支援</span><span class="sxs-lookup"><span data-stu-id="2f003-349">Named options support with IConfigureNamedOptions</span></span>
+## <a name="named-options-support-with-iconfigurenamedoptions"></a><span data-ttu-id="22091-299">IConfigureNamedOptions 的具名選項支援</span><span class="sxs-lookup"><span data-stu-id="22091-299">Named options support with IConfigureNamedOptions</span></span>
 
-<span data-ttu-id="2f003-350"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-350">Named options support with <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> is demonstrated as Example 6 in the sample app.</span></span>
+<span data-ttu-id="22091-300"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-300">Named options support with <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> is demonstrated as Example 6 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-351">「具名選項」支援可讓應用程式區別具名選項組態。</span><span class="sxs-lookup"><span data-stu-id="2f003-351">Named options support allows the app to distinguish between named options configurations.</span></span> <span data-ttu-id="2f003-352">在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[\<configurenamedoptions .configure TOptions>。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。</span><span class="sxs-lookup"><span data-stu-id="2f003-352">In the sample app, named options are declared with [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*), which calls the [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) extension method.</span></span> <span data-ttu-id="2f003-353">已命名的選項會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="2f003-353">Named options are case sensitive.</span></span>
+<span data-ttu-id="22091-301">「具名選項」支援可讓應用程式區別具名選項組態。</span><span class="sxs-lookup"><span data-stu-id="22091-301">Named options support allows the app to distinguish between named options configurations.</span></span> <span data-ttu-id="22091-302">在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure \< TOptions >。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。</span><span class="sxs-lookup"><span data-stu-id="22091-302">In the sample app, named options are declared with [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*), which calls the [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) extension method.</span></span> <span data-ttu-id="22091-303">已命名的選項會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="22091-303">Named options are case sensitive.</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
-<span data-ttu-id="2f003-354">範例應用程式會使用　<xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*) 來存取具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-354">The sample app accesses the named options with <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-304">範例應用程式會使用　<xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*) 來存取具名選項：</span><span class="sxs-lookup"><span data-stu-id="22091-304">The sample app accesses the named options with <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
 
@@ -664,21 +473,21 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example6)]
 
-<span data-ttu-id="2f003-355">執行範例應用程式後，會傳回具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-355">Running the sample app, the named options are returned:</span></span>
+<span data-ttu-id="22091-305">執行範例應用程式後，會傳回具名選項：</span><span class="sxs-lookup"><span data-stu-id="22091-305">Running the sample app, the named options are returned:</span></span>
 
 ```html
 named_options_1: option1 = value1_from_json, option2 = -1
 named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 ```
 
-<span data-ttu-id="2f003-356">`named_options_1` 值會從設定提供，這會從 *appsettings.json* 檔案載入。</span><span class="sxs-lookup"><span data-stu-id="2f003-356">`named_options_1` values are provided from configuration, which are loaded from the *appsettings.json* file.</span></span> <span data-ttu-id="2f003-357">`named_options_2` 值是由以下提供：</span><span class="sxs-lookup"><span data-stu-id="2f003-357">`named_options_2` values are provided by:</span></span>
+<span data-ttu-id="22091-306">`named_options_1` 值會從設定提供，這會從 *appsettings.json* 檔案載入。</span><span class="sxs-lookup"><span data-stu-id="22091-306">`named_options_1` values are provided from configuration, which are loaded from the *appsettings.json* file.</span></span> <span data-ttu-id="22091-307">`named_options_2` 值是由以下提供：</span><span class="sxs-lookup"><span data-stu-id="22091-307">`named_options_2` values are provided by:</span></span>
 
-* <span data-ttu-id="2f003-358">`ConfigureServices` 中 `Option1` 的 `named_options_2` 委派。</span><span class="sxs-lookup"><span data-stu-id="2f003-358">The `named_options_2` delegate in `ConfigureServices` for `Option1`.</span></span>
-* <span data-ttu-id="2f003-359">`MyOptions` 類別所提供的 `Option2` 預設值。</span><span class="sxs-lookup"><span data-stu-id="2f003-359">The default value for `Option2` provided by the `MyOptions` class.</span></span>
+* <span data-ttu-id="22091-308">`ConfigureServices` 中 `Option1` 的 `named_options_2` 委派。</span><span class="sxs-lookup"><span data-stu-id="22091-308">The `named_options_2` delegate in `ConfigureServices` for `Option1`.</span></span>
+* <span data-ttu-id="22091-309">`MyOptions` 類別所提供的 `Option2` 預設值。</span><span class="sxs-lookup"><span data-stu-id="22091-309">The default value for `Option2` provided by the `MyOptions` class.</span></span>
 
-## <a name="configure-all-options-with-the-configureall-method"></a><span data-ttu-id="2f003-360">使用 ConfigureAll 方法設定所有選項</span><span class="sxs-lookup"><span data-stu-id="2f003-360">Configure all options with the ConfigureAll method</span></span>
+## <a name="configure-all-options-with-the-configureall-method"></a><span data-ttu-id="22091-310">使用 ConfigureAll 方法設定所有選項</span><span class="sxs-lookup"><span data-stu-id="22091-310">Configure all options with the ConfigureAll method</span></span>
 
-<span data-ttu-id="2f003-361">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 方法設定所有選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-361">Configure all options instances with the <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> method.</span></span> <span data-ttu-id="2f003-362">下列程式碼會為具有共通值的所有設定執行個體設定 `Option1`。</span><span class="sxs-lookup"><span data-stu-id="2f003-362">The following code configures `Option1` for all configuration instances with a common value.</span></span> <span data-ttu-id="2f003-363">將下列程式碼手動新增至 `Startup.ConfigureServices` 方法：</span><span class="sxs-lookup"><span data-stu-id="2f003-363">Add the following code manually to the `Startup.ConfigureServices` method:</span></span>
+<span data-ttu-id="22091-311">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 方法設定所有選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-311">Configure all options instances with the <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> method.</span></span> <span data-ttu-id="22091-312">下列程式碼會為具有共通值的所有設定執行個體設定 `Option1`。</span><span class="sxs-lookup"><span data-stu-id="22091-312">The following code configures `Option1` for all configuration instances with a common value.</span></span> <span data-ttu-id="22091-313">將下列程式碼手動新增至 `Startup.ConfigureServices` 方法：</span><span class="sxs-lookup"><span data-stu-id="22091-313">Add the following code manually to the `Startup.ConfigureServices` method:</span></span>
 
 ```csharp
 services.ConfigureAll<MyOptions>(myOptions => 
@@ -687,7 +496,7 @@ services.ConfigureAll<MyOptions>(myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-364">新增程式碼之後執行範例應用程式，就會產生下列結果：</span><span class="sxs-lookup"><span data-stu-id="2f003-364">Running the sample app after adding the code produces the following result:</span></span>
+<span data-ttu-id="22091-314">新增程式碼之後執行範例應用程式，就會產生下列結果：</span><span class="sxs-lookup"><span data-stu-id="22091-314">Running the sample app after adding the code produces the following result:</span></span>
 
 ```html
 named_options_1: option1 = ConfigureAll replacement value, option2 = -1
@@ -695,11 +504,11 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 ```
 
 > [!NOTE]
-> <span data-ttu-id="2f003-365">所有選項都是具名執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-365">All options are named instances.</span></span> <span data-ttu-id="2f003-366">現有的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。</span><span class="sxs-lookup"><span data-stu-id="2f003-366">Existing <xref:Microsoft.Extensions.Options.IConfigureOptions%601> instances are treated as targeting the `Options.DefaultName` instance, which is `string.Empty`.</span></span> <span data-ttu-id="2f003-367"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 也會實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>。</span><span class="sxs-lookup"><span data-stu-id="2f003-367"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> also implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601>.</span></span> <span data-ttu-id="2f003-368"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 的預設實作有邏輯可以適當地使用每個項目。</span><span class="sxs-lookup"><span data-stu-id="2f003-368">The default implementation of the <xref:Microsoft.Extensions.Options.IOptionsFactory%601> has logic to use each appropriately.</span></span> <span data-ttu-id="2f003-369">`null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 與 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 使用此慣例)。</span><span class="sxs-lookup"><span data-stu-id="2f003-369">The `null` named option is used to target all of the named instances instead of a specific named instance (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> and <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> use this convention).</span></span>
+> <span data-ttu-id="22091-315">所有選項都是具名執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-315">All options are named instances.</span></span> <span data-ttu-id="22091-316">現有的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。</span><span class="sxs-lookup"><span data-stu-id="22091-316">Existing <xref:Microsoft.Extensions.Options.IConfigureOptions%601> instances are treated as targeting the `Options.DefaultName` instance, which is `string.Empty`.</span></span> <span data-ttu-id="22091-317"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 也會實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>。</span><span class="sxs-lookup"><span data-stu-id="22091-317"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> also implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601>.</span></span> <span data-ttu-id="22091-318"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 的預設實作有邏輯可以適當地使用每個項目。</span><span class="sxs-lookup"><span data-stu-id="22091-318">The default implementation of the <xref:Microsoft.Extensions.Options.IOptionsFactory%601> has logic to use each appropriately.</span></span> <span data-ttu-id="22091-319">`null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 與 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 使用此慣例)。</span><span class="sxs-lookup"><span data-stu-id="22091-319">The `null` named option is used to target all of the named instances instead of a specific named instance (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> and <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> use this convention).</span></span>
 
-## <a name="optionsbuilder-api"></a><span data-ttu-id="2f003-370">OptionsBuilder API</span><span class="sxs-lookup"><span data-stu-id="2f003-370">OptionsBuilder API</span></span>
+## <a name="optionsbuilder-api"></a><span data-ttu-id="22091-320">OptionsBuilder API</span><span class="sxs-lookup"><span data-stu-id="22091-320">OptionsBuilder API</span></span>
 
-<span data-ttu-id="2f003-371"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> 會用於設定 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-371"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> is used to configure `TOptions` instances.</span></span> <span data-ttu-id="2f003-372">因為 `OptionsBuilder` 僅為初始 `AddOptions<TOptions>(string optionsName)` 呼叫的單一參數，而不是出現在所有後續呼叫的參數，所以其可簡化建立具名選項的程序。</span><span class="sxs-lookup"><span data-stu-id="2f003-372">`OptionsBuilder` streamlines creating named options as it's only a single parameter to the initial `AddOptions<TOptions>(string optionsName)` call instead of appearing in all of the subsequent calls.</span></span> <span data-ttu-id="2f003-373">選項驗證及接受服務依存性的 `ConfigureOptions` 多載，只可透過 `OptionsBuilder` 使用。</span><span class="sxs-lookup"><span data-stu-id="2f003-373">Options validation and the `ConfigureOptions` overloads that accept service dependencies are only available via `OptionsBuilder`.</span></span>
+<span data-ttu-id="22091-321"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> 會用於設定 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-321"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> is used to configure `TOptions` instances.</span></span> <span data-ttu-id="22091-322">因為 `OptionsBuilder` 僅為初始 `AddOptions<TOptions>(string optionsName)` 呼叫的單一參數，而不是出現在所有後續呼叫的參數，所以其可簡化建立具名選項的程序。</span><span class="sxs-lookup"><span data-stu-id="22091-322">`OptionsBuilder` streamlines creating named options as it's only a single parameter to the initial `AddOptions<TOptions>(string optionsName)` call instead of appearing in all of the subsequent calls.</span></span> <span data-ttu-id="22091-323">選項驗證及接受服務依存性的 `ConfigureOptions` 多載，只可透過 `OptionsBuilder` 使用。</span><span class="sxs-lookup"><span data-stu-id="22091-323">Options validation and the `ConfigureOptions` overloads that accept service dependencies are only available via `OptionsBuilder`.</span></span>
 
 ```csharp
 // Options.DefaultName = "" is used.
@@ -709,11 +518,11 @@ services.AddOptions<MyOptions>("optionalName")
     .Configure(o => o.Property = "named");
 ```
 
-## <a name="use-di-services-to-configure-options"></a><span data-ttu-id="2f003-374">使用 DI 服務來設定選項</span><span class="sxs-lookup"><span data-stu-id="2f003-374">Use DI services to configure options</span></span>
+## <a name="use-di-services-to-configure-options"></a><span data-ttu-id="22091-324">使用 DI 服務來設定選項</span><span class="sxs-lookup"><span data-stu-id="22091-324">Use DI services to configure options</span></span>
 
-<span data-ttu-id="2f003-375">在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：</span><span class="sxs-lookup"><span data-stu-id="2f003-375">You can access other services from dependency injection while configuring options in two ways:</span></span>
+<span data-ttu-id="22091-325">在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：</span><span class="sxs-lookup"><span data-stu-id="22091-325">You can access other services from dependency injection while configuring options in two ways:</span></span>
 
-* <span data-ttu-id="2f003-376">將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。</span><span class="sxs-lookup"><span data-stu-id="2f003-376">Pass a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) on [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1).</span></span> <span data-ttu-id="2f003-377">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 提供 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 的多載，可讓您最多使用五個服務來設定選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-377">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) provides overloads of [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) that allow you to use up to five services to configure options:</span></span>
+* <span data-ttu-id="22091-326">將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。</span><span class="sxs-lookup"><span data-stu-id="22091-326">Pass a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) on [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1).</span></span> <span data-ttu-id="22091-327">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 提供 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 的多載，可讓您最多使用五個服務來設定選項：</span><span class="sxs-lookup"><span data-stu-id="22091-327">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) provides overloads of [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) that allow you to use up to five services to configure options:</span></span>
 
   ```csharp
   services.AddOptions<MyOptions>("optionalName")
@@ -722,13 +531,13 @@ services.AddOptions<MyOptions>("optionalName")
               o.Property = DoSomethingWith(s, s2, s3, s4, s5));
   ```
 
-* <span data-ttu-id="2f003-378">建立您自己的類型來實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 或 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，並將該類型註冊為服務。</span><span class="sxs-lookup"><span data-stu-id="2f003-378">Create your own type that implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601> or <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and register the type as a service.</span></span>
+* <span data-ttu-id="22091-328">建立您自己的類型來實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 或 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，並將該類型註冊為服務。</span><span class="sxs-lookup"><span data-stu-id="22091-328">Create your own type that implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601> or <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and register the type as a service.</span></span>
 
-<span data-ttu-id="2f003-379">我們建議您將設定委派傳遞到 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)，因為建立服務更複雜。</span><span class="sxs-lookup"><span data-stu-id="2f003-379">We recommend passing a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*), since creating a service is more complex.</span></span> <span data-ttu-id="2f003-380">建立您自己的類型相當於，當您使用 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 時此架構可為您執行的動作。</span><span class="sxs-lookup"><span data-stu-id="2f003-380">Creating your own type is equivalent to what the framework does for you when you use [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*).</span></span> <span data-ttu-id="2f003-381">呼叫 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 會註冊暫時性泛型 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，其具有會接受所指定泛型服務類型的建構函式。</span><span class="sxs-lookup"><span data-stu-id="2f003-381">Calling [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) registers a transient generic <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>, which has a constructor that accepts the generic service types specified.</span></span> 
+<span data-ttu-id="22091-329">我們建議您將設定委派傳遞到 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)，因為建立服務更複雜。</span><span class="sxs-lookup"><span data-stu-id="22091-329">We recommend passing a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*), since creating a service is more complex.</span></span> <span data-ttu-id="22091-330">建立您自己的類型相當於，當您使用 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 時此架構可為您執行的動作。</span><span class="sxs-lookup"><span data-stu-id="22091-330">Creating your own type is equivalent to what the framework does for you when you use [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*).</span></span> <span data-ttu-id="22091-331">呼叫 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 會註冊暫時性泛型 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，其具有會接受所指定泛型服務類型的建構函式。</span><span class="sxs-lookup"><span data-stu-id="22091-331">Calling [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) registers a transient generic <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>, which has a constructor that accepts the generic service types specified.</span></span> 
 
-## <a name="options-validation"></a><span data-ttu-id="2f003-382">選項驗證</span><span class="sxs-lookup"><span data-stu-id="2f003-382">Options validation</span></span>
+## <a name="options-validation"></a><span data-ttu-id="22091-332">選項驗證</span><span class="sxs-lookup"><span data-stu-id="22091-332">Options validation</span></span>
 
-<span data-ttu-id="2f003-383">選項驗證可讓您在設定選項之後驗證選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-383">Options validation allows you to validate options when options are configured.</span></span> <span data-ttu-id="2f003-384">搭配驗證方法呼叫 `Validate`，若選項有效會傳回 `true`，若為無效則傳回 `false`：</span><span class="sxs-lookup"><span data-stu-id="2f003-384">Call `Validate` with a validation method that returns `true` if options are valid and `false` if they aren't valid:</span></span>
+<span data-ttu-id="22091-333">選項驗證可讓您在設定選項之後驗證選項。</span><span class="sxs-lookup"><span data-stu-id="22091-333">Options validation allows you to validate options when options are configured.</span></span> <span data-ttu-id="22091-334">搭配驗證方法呼叫 `Validate`，若選項有效會傳回 `true`，若為無效則傳回 `false`：</span><span class="sxs-lookup"><span data-stu-id="22091-334">Call `Validate` with a validation method that returns `true` if options are valid and `false` if they aren't valid:</span></span>
 
 ```csharp
 // Registration
@@ -754,24 +563,24 @@ catch (OptionsValidationException e)
 }
 ```
 
-<span data-ttu-id="2f003-385">上述範例會將具名的選項執行個體設定為 `optionalOptionsName`。</span><span class="sxs-lookup"><span data-stu-id="2f003-385">The preceding example sets the named options instance to `optionalOptionsName`.</span></span> <span data-ttu-id="2f003-386">預設選項執行個體為 `Options.DefaultName`。</span><span class="sxs-lookup"><span data-stu-id="2f003-386">The default options instance is `Options.DefaultName`.</span></span>
+<span data-ttu-id="22091-335">上述範例會將具名的選項執行個體設定為 `optionalOptionsName`。</span><span class="sxs-lookup"><span data-stu-id="22091-335">The preceding example sets the named options instance to `optionalOptionsName`.</span></span> <span data-ttu-id="22091-336">預設選項執行個體為 `Options.DefaultName`。</span><span class="sxs-lookup"><span data-stu-id="22091-336">The default options instance is `Options.DefaultName`.</span></span>
 
-<span data-ttu-id="2f003-387">當選項執行個體建立之後，便會執行驗證。</span><span class="sxs-lookup"><span data-stu-id="2f003-387">Validation runs when the options instance is created.</span></span> <span data-ttu-id="2f003-388">選項實例保證會在第一次存取時通過驗證。</span><span class="sxs-lookup"><span data-stu-id="2f003-388">An options instance is guaranteed to pass validation the first time it's accessed.</span></span>
+<span data-ttu-id="22091-337">當選項執行個體建立之後，便會執行驗證。</span><span class="sxs-lookup"><span data-stu-id="22091-337">Validation runs when the options instance is created.</span></span> <span data-ttu-id="22091-338">選項實例保證會在第一次存取時通過驗證。</span><span class="sxs-lookup"><span data-stu-id="22091-338">An options instance is guaranteed to pass validation the first time it's accessed.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="2f003-389">選項驗證不會在建立 options 實例之後防護選項的修改。</span><span class="sxs-lookup"><span data-stu-id="2f003-389">Options validation doesn't guard against options modifications after the options instance is created.</span></span> <span data-ttu-id="2f003-390">例如，當`IOptionsSnapshot`第一次存取選項時，會針對每個要求建立及驗證一個選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-390">For example, `IOptionsSnapshot` options are created and validated once per request when the options are first accessed.</span></span> <span data-ttu-id="2f003-391">`IOptionsSnapshot` *針對相同要求*的後續存取嘗試時，不會再次驗證這些選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-391">The `IOptionsSnapshot` options aren't validated again on subsequent access attempts *for the same request*.</span></span>
+> <span data-ttu-id="22091-339">選項驗證不會在建立 options 實例之後防護選項的修改。</span><span class="sxs-lookup"><span data-stu-id="22091-339">Options validation doesn't guard against options modifications after the options instance is created.</span></span> <span data-ttu-id="22091-340">例如， `IOptionsSnapshot` 當第一次存取選項時，會針對每個要求建立及驗證一個選項。</span><span class="sxs-lookup"><span data-stu-id="22091-340">For example, `IOptionsSnapshot` options are created and validated once per request when the options are first accessed.</span></span> <span data-ttu-id="22091-341">`IOptionsSnapshot`*針對相同要求*的後續存取嘗試時，不會再次驗證這些選項。</span><span class="sxs-lookup"><span data-stu-id="22091-341">The `IOptionsSnapshot` options aren't validated again on subsequent access attempts *for the same request*.</span></span>
 
-<span data-ttu-id="2f003-392">`Validate` 方法可接受 `Func<TOptions, bool>`。</span><span class="sxs-lookup"><span data-stu-id="2f003-392">The `Validate` method accepts a `Func<TOptions, bool>`.</span></span> <span data-ttu-id="2f003-393">若要完整地自訂驗證，請實作 `IValidateOptions<TOptions>`，它允許：</span><span class="sxs-lookup"><span data-stu-id="2f003-393">To fully customize validation, implement `IValidateOptions<TOptions>`, which allows:</span></span>
+<span data-ttu-id="22091-342">`Validate` 方法可接受 `Func<TOptions, bool>`。</span><span class="sxs-lookup"><span data-stu-id="22091-342">The `Validate` method accepts a `Func<TOptions, bool>`.</span></span> <span data-ttu-id="22091-343">若要完整地自訂驗證，請實作 `IValidateOptions<TOptions>`，它允許：</span><span class="sxs-lookup"><span data-stu-id="22091-343">To fully customize validation, implement `IValidateOptions<TOptions>`, which allows:</span></span>
 
-* <span data-ttu-id="2f003-394">多種選項類型的驗證：`class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`</span><span class="sxs-lookup"><span data-stu-id="2f003-394">Validation of multiple options types: `class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`</span></span>
-* <span data-ttu-id="2f003-395">取決於另一個選項類型的驗證：`public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`</span><span class="sxs-lookup"><span data-stu-id="2f003-395">Validation that depends on another option type: `public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`</span></span>
+* <span data-ttu-id="22091-344">多種選項類型的驗證：`class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`</span><span class="sxs-lookup"><span data-stu-id="22091-344">Validation of multiple options types: `class ValidateTwo : IValidateOptions<Option1>, IValidationOptions<Option2>`</span></span>
+* <span data-ttu-id="22091-345">取決於另一個選項類型的驗證：`public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`</span><span class="sxs-lookup"><span data-stu-id="22091-345">Validation that depends on another option type: `public DependsOnAnotherOptionValidator(IOptionsMonitor<AnotherOption> options)`</span></span>
 
-<span data-ttu-id="2f003-396">`IValidateOptions` 可驗證：</span><span class="sxs-lookup"><span data-stu-id="2f003-396">`IValidateOptions` validates:</span></span>
+<span data-ttu-id="22091-346">`IValidateOptions` 可驗證：</span><span class="sxs-lookup"><span data-stu-id="22091-346">`IValidateOptions` validates:</span></span>
 
-* <span data-ttu-id="2f003-397">特定的具名選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-397">A specific named options instance.</span></span>
-* <span data-ttu-id="2f003-398">所有選項 (當 `name` 為 `null` 時)。</span><span class="sxs-lookup"><span data-stu-id="2f003-398">All options when `name` is `null`.</span></span>
+* <span data-ttu-id="22091-347">特定的具名選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-347">A specific named options instance.</span></span>
+* <span data-ttu-id="22091-348">所有選項 (當 `name` 為 `null` 時)。</span><span class="sxs-lookup"><span data-stu-id="22091-348">All options when `name` is `null`.</span></span>
 
-<span data-ttu-id="2f003-399">從以下的介面實作傳回 `ValidateOptionsResult`：</span><span class="sxs-lookup"><span data-stu-id="2f003-399">Return a `ValidateOptionsResult` from your implementation of the interface:</span></span>
+<span data-ttu-id="22091-349">從以下的介面實作傳回 `ValidateOptionsResult`：</span><span class="sxs-lookup"><span data-stu-id="22091-349">Return a `ValidateOptionsResult` from your implementation of the interface:</span></span>
 
 ```csharp
 public interface IValidateOptions<TOptions> where TOptions : class
@@ -780,7 +589,7 @@ public interface IValidateOptions<TOptions> where TOptions : class
 }
 ```
 
-<span data-ttu-id="2f003-400">透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。</span><span class="sxs-lookup"><span data-stu-id="2f003-400">Data Annotation-based validation is available from the [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) package by calling the <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> method on `OptionsBuilder<TOptions>`.</span></span> <span data-ttu-id="2f003-401">`Microsoft.Extensions.Options.DataAnnotations`包含在[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中。</span><span class="sxs-lookup"><span data-stu-id="2f003-401">`Microsoft.Extensions.Options.DataAnnotations` is included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).</span></span>
+<span data-ttu-id="22091-350">透過呼叫 `OptionsBuilder<TOptions>` 上的 <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> 方法，就可從 [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) 套件使用資料註解型驗證。</span><span class="sxs-lookup"><span data-stu-id="22091-350">Data Annotation-based validation is available from the [Microsoft.Extensions.Options.DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) package by calling the <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations*> method on `OptionsBuilder<TOptions>`.</span></span> <span data-ttu-id="22091-351">`Microsoft.Extensions.Options.DataAnnotations`包含在[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)中。</span><span class="sxs-lookup"><span data-stu-id="22091-351">`Microsoft.Extensions.Options.DataAnnotations` is included in the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app).</span></span>
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
@@ -824,11 +633,11 @@ public void CanValidateDataAnnotations()
 }
 ```
 
-<span data-ttu-id="2f003-402">我們考慮在之後的版本中加入積極式驗證 (啟動時快速檢錯)。</span><span class="sxs-lookup"><span data-stu-id="2f003-402">Eager validation (fail fast at startup) is under consideration for a future release.</span></span>
+<span data-ttu-id="22091-352">我們考慮在之後的版本中加入積極式驗證 (啟動時快速檢錯)。</span><span class="sxs-lookup"><span data-stu-id="22091-352">Eager validation (fail fast at startup) is under consideration for a future release.</span></span>
 
-## <a name="options-post-configuration"></a><span data-ttu-id="2f003-403">選項設定後作業</span><span class="sxs-lookup"><span data-stu-id="2f003-403">Options post-configuration</span></span>
+## <a name="options-post-configuration"></a><span data-ttu-id="22091-353">選項設定後作業</span><span class="sxs-lookup"><span data-stu-id="22091-353">Options post-configuration</span></span>
 
-<span data-ttu-id="2f003-404">使用 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> 來設定設定後作業。</span><span class="sxs-lookup"><span data-stu-id="2f003-404">Set post-configuration with <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>.</span></span> <span data-ttu-id="2f003-405">設定後作業會在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生後執行：</span><span class="sxs-lookup"><span data-stu-id="2f003-405">Post-configuration runs after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs:</span></span>
+<span data-ttu-id="22091-354">使用 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> 來設定設定後作業。</span><span class="sxs-lookup"><span data-stu-id="22091-354">Set post-configuration with <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>.</span></span> <span data-ttu-id="22091-355">設定後作業會在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生後執行：</span><span class="sxs-lookup"><span data-stu-id="22091-355">Post-configuration runs after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs:</span></span>
 
 ```csharp
 services.PostConfigure<MyOptions>(myOptions =>
@@ -837,7 +646,7 @@ services.PostConfigure<MyOptions>(myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-406"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> 可用來後置設定具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-406"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> is available to post-configure named options:</span></span>
+<span data-ttu-id="22091-356"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> 可用來後置設定具名選項：</span><span class="sxs-lookup"><span data-stu-id="22091-356"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> is available to post-configure named options:</span></span>
 
 ```csharp
 services.PostConfigure<MyOptions>("named_options_1", myOptions =>
@@ -846,7 +655,7 @@ services.PostConfigure<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-407">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 後置設定所有設定執行個體：</span><span class="sxs-lookup"><span data-stu-id="2f003-407">Use <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> to post-configure all configuration instances:</span></span>
+<span data-ttu-id="22091-357">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 後置設定所有設定執行個體：</span><span class="sxs-lookup"><span data-stu-id="22091-357">Use <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> to post-configure all configuration instances:</span></span>
 
 ```csharp
 services.PostConfigureAll<MyOptions>(myOptions =>
@@ -855,9 +664,9 @@ services.PostConfigureAll<MyOptions>(myOptions =>
 });
 ```
 
-## <a name="accessing-options-during-startup"></a><span data-ttu-id="2f003-408">在啟動期間存取選項</span><span class="sxs-lookup"><span data-stu-id="2f003-408">Accessing options during startup</span></span>
+## <a name="accessing-options-during-startup"></a><span data-ttu-id="22091-358">在啟動期間存取選項</span><span class="sxs-lookup"><span data-stu-id="22091-358">Accessing options during startup</span></span>
 
-<span data-ttu-id="2f003-409"><xref:Microsoft.Extensions.Options.IOptions%601> 與 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 可用於 `Startup.Configure`，因為服務是在 `Configure` 方法執行之前建置。</span><span class="sxs-lookup"><span data-stu-id="2f003-409"><xref:Microsoft.Extensions.Options.IOptions%601> and <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> can be used in `Startup.Configure`, since services are built before the `Configure` method executes.</span></span>
+<span data-ttu-id="22091-359"><xref:Microsoft.Extensions.Options.IOptions%601> 與 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 可用於 `Startup.Configure`，因為服務是在 `Configure` 方法執行之前建置。</span><span class="sxs-lookup"><span data-stu-id="22091-359"><xref:Microsoft.Extensions.Options.IOptions%601> and <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> can be used in `Startup.Configure`, since services are built before the `Configure` method executes.</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> optionsAccessor)
@@ -866,57 +675,57 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 }
 ```
 
-<span data-ttu-id="2f003-410">請勿在 `Startup.ConfigureServices` 中使用 <xref:Microsoft.Extensions.Options.IOptions%601> 或 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>。</span><span class="sxs-lookup"><span data-stu-id="2f003-410">Don't use <xref:Microsoft.Extensions.Options.IOptions%601> or <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="2f003-411">可能會因為服務註冊的順序而有不一致的選項狀態存在。</span><span class="sxs-lookup"><span data-stu-id="2f003-411">An inconsistent options state may exist due to the ordering of service registrations.</span></span>
+<span data-ttu-id="22091-360">請勿在 `Startup.ConfigureServices` 中使用 <xref:Microsoft.Extensions.Options.IOptions%601> 或 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>。</span><span class="sxs-lookup"><span data-stu-id="22091-360">Don't use <xref:Microsoft.Extensions.Options.IOptions%601> or <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="22091-361">可能會因為服務註冊的順序而有不一致的選項狀態存在。</span><span class="sxs-lookup"><span data-stu-id="22091-361">An inconsistent options state may exist due to the ordering of service registrations.</span></span>
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.1"
 
-<span data-ttu-id="2f003-412">選項模式使用類別來代表一組相關的設定。</span><span class="sxs-lookup"><span data-stu-id="2f003-412">The options pattern uses classes to represent groups of related settings.</span></span> <span data-ttu-id="2f003-413">當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：</span><span class="sxs-lookup"><span data-stu-id="2f003-413">When [configuration settings](xref:fundamentals/configuration/index) are isolated by scenario into separate classes, the app adheres to two important software engineering principles:</span></span>
+<span data-ttu-id="22091-362">選項模式使用類別來代表一組相關的設定。</span><span class="sxs-lookup"><span data-stu-id="22091-362">The options pattern uses classes to represent groups of related settings.</span></span> <span data-ttu-id="22091-363">當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：</span><span class="sxs-lookup"><span data-stu-id="22091-363">When [configuration settings](xref:fundamentals/configuration/index) are isolated by scenario into separate classes, the app adheres to two important software engineering principles:</span></span>
 
-* <span data-ttu-id="2f003-414">[介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。</span><span class="sxs-lookup"><span data-stu-id="2f003-414">The [Interface Segregation Principle (ISP) or Encapsulation](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.</span></span>
-* <span data-ttu-id="2f003-415">應用程式不同部分的[疑慮](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash;設定不會彼此相依或彼此結合。</span><span class="sxs-lookup"><span data-stu-id="2f003-415">[Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; Settings for different parts of the app aren't dependent or coupled to one another.</span></span>
+* <span data-ttu-id="22091-364">[介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。</span><span class="sxs-lookup"><span data-stu-id="22091-364">The [Interface Segregation Principle (ISP) or Encapsulation](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; Scenarios (classes) that depend on configuration settings depend only on the configuration settings that they use.</span></span>
+* <span data-ttu-id="22091-365">[關注](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; 點分離應用程式不同部分的設定不會彼此相依或彼此結合。</span><span class="sxs-lookup"><span data-stu-id="22091-365">[Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; Settings for different parts of the app aren't dependent or coupled to one another.</span></span>
 
-<span data-ttu-id="2f003-416">選項也提供驗證設定資料的機制。</span><span class="sxs-lookup"><span data-stu-id="2f003-416">Options also provide a mechanism to validate configuration data.</span></span> <span data-ttu-id="2f003-417">如需詳細資訊，請參閱[選項驗證](#options-validation)一節。</span><span class="sxs-lookup"><span data-stu-id="2f003-417">For more information, see the [Options validation](#options-validation) section.</span></span>
+<span data-ttu-id="22091-366">選項也提供驗證設定資料的機制。</span><span class="sxs-lookup"><span data-stu-id="22091-366">Options also provide a mechanism to validate configuration data.</span></span> <span data-ttu-id="22091-367">如需詳細資訊，請參閱[選項驗證](#options-validation)一節。</span><span class="sxs-lookup"><span data-stu-id="22091-367">For more information, see the [Options validation](#options-validation) section.</span></span>
 
-<span data-ttu-id="2f003-418">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="2f003-418">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="22091-368">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="22091-368">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2f003-419">先決條件</span><span class="sxs-lookup"><span data-stu-id="2f003-419">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="22091-369">先決條件</span><span class="sxs-lookup"><span data-stu-id="22091-369">Prerequisites</span></span>
 
-<span data-ttu-id="2f003-420">參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="2f003-420">Reference the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) or add a package reference to the [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) package.</span></span>
+<span data-ttu-id="22091-370">參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="22091-370">Reference the [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) or add a package reference to the [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) package.</span></span>
 
-## <a name="options-interfaces"></a><span data-ttu-id="2f003-421">選項介面</span><span class="sxs-lookup"><span data-stu-id="2f003-421">Options interfaces</span></span>
+## <a name="options-interfaces"></a><span data-ttu-id="22091-371">選項介面</span><span class="sxs-lookup"><span data-stu-id="22091-371">Options interfaces</span></span>
 
-<span data-ttu-id="2f003-422"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 是用來擷取選項並管理 `TOptions` 執行個體的選項通知。</span><span class="sxs-lookup"><span data-stu-id="2f003-422"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> is used to retrieve options and manage options notifications for `TOptions` instances.</span></span> <span data-ttu-id="2f003-423"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 支援以下案例：</span><span class="sxs-lookup"><span data-stu-id="2f003-423"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> supports the following scenarios:</span></span>
+<span data-ttu-id="22091-372"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 是用來擷取選項並管理 `TOptions` 執行個體的選項通知。</span><span class="sxs-lookup"><span data-stu-id="22091-372"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> is used to retrieve options and manage options notifications for `TOptions` instances.</span></span> <span data-ttu-id="22091-373"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 支援以下案例：</span><span class="sxs-lookup"><span data-stu-id="22091-373"><xref:Microsoft.Extensions.Options.IOptionsMonitor%601> supports the following scenarios:</span></span>
 
-* <span data-ttu-id="2f003-424">變更通知</span><span class="sxs-lookup"><span data-stu-id="2f003-424">Change notifications</span></span>
-* [<span data-ttu-id="2f003-425">具名選項</span><span class="sxs-lookup"><span data-stu-id="2f003-425">Named options</span></span>](#named-options-support-with-iconfigurenamedoptions)
-* [<span data-ttu-id="2f003-426">可重新載入的設定</span><span class="sxs-lookup"><span data-stu-id="2f003-426">Reloadable configuration</span></span>](#reload-configuration-data-with-ioptionssnapshot)
-* <span data-ttu-id="2f003-427">選擇性選項無效判定 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span><span class="sxs-lookup"><span data-stu-id="2f003-427">Selective options invalidation (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span></span>
+* <span data-ttu-id="22091-374">變更通知</span><span class="sxs-lookup"><span data-stu-id="22091-374">Change notifications</span></span>
+* [<span data-ttu-id="22091-375">具名選項</span><span class="sxs-lookup"><span data-stu-id="22091-375">Named options</span></span>](#named-options-support-with-iconfigurenamedoptions)
+* [<span data-ttu-id="22091-376">可重新載入的設定</span><span class="sxs-lookup"><span data-stu-id="22091-376">Reloadable configuration</span></span>](#reload-configuration-data-with-ioptionssnapshot)
+* <span data-ttu-id="22091-377">選擇性選項無效判定 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span><span class="sxs-lookup"><span data-stu-id="22091-377">Selective options invalidation (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601>)</span></span>
 
-<span data-ttu-id="2f003-428">[設定後](#options-post-configuration)案例可讓您在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生時設定或變更選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-428">[Post-configuration](#options-post-configuration) scenarios allow you to set or change options after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs.</span></span>
+<span data-ttu-id="22091-378">[設定後](#options-post-configuration)案例可讓您在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生時設定或變更選項。</span><span class="sxs-lookup"><span data-stu-id="22091-378">[Post-configuration](#options-post-configuration) scenarios allow you to set or change options after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs.</span></span>
 
-<span data-ttu-id="2f003-429"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 負責建立新的選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-429"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> is responsible for creating new options instances.</span></span> <span data-ttu-id="2f003-430">它有單一 <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> 方法。</span><span class="sxs-lookup"><span data-stu-id="2f003-430">It has a single <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> method.</span></span> <span data-ttu-id="2f003-431">預設實作會接受所有已註冊的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 與 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>，並先執行所有設定，接著執行設定後作業。</span><span class="sxs-lookup"><span data-stu-id="2f003-431">The default implementation takes all registered <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> and runs all the configurations first, followed by the post-configuration.</span></span> <span data-ttu-id="2f003-432">它會區別 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 和 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>，且只會呼叫適當的介面。</span><span class="sxs-lookup"><span data-stu-id="2f003-432">It distinguishes between <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and only calls the appropriate interface.</span></span>
+<span data-ttu-id="22091-379"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 負責建立新的選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-379"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> is responsible for creating new options instances.</span></span> <span data-ttu-id="22091-380">它有單一 <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> 方法。</span><span class="sxs-lookup"><span data-stu-id="22091-380">It has a single <xref:Microsoft.Extensions.Options.IOptionsFactory`1.Create*> method.</span></span> <span data-ttu-id="22091-381">預設實作會接受所有已註冊的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 與 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>，並先執行所有設定，接著執行設定後作業。</span><span class="sxs-lookup"><span data-stu-id="22091-381">The default implementation takes all registered <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> and runs all the configurations first, followed by the post-configuration.</span></span> <span data-ttu-id="22091-382">它會區別 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 和 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>，且只會呼叫適當的介面。</span><span class="sxs-lookup"><span data-stu-id="22091-382">It distinguishes between <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and <xref:Microsoft.Extensions.Options.IConfigureOptions%601> and only calls the appropriate interface.</span></span>
 
-<span data-ttu-id="2f003-433"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會由 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 用來快取 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-433"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> is used by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to cache `TOptions` instances.</span></span> <span data-ttu-id="2f003-434"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會使監視器中的選項執行個體失效，以便重新計算值 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>)。</span><span class="sxs-lookup"><span data-stu-id="2f003-434">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> invalidates options instances in the monitor so that the value is recomputed (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>).</span></span> <span data-ttu-id="2f003-435">值可以使用 <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*> 手動導入。</span><span class="sxs-lookup"><span data-stu-id="2f003-435">Values can be manually introduced with <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*>.</span></span> <span data-ttu-id="2f003-436"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> 方法用於應該視需要重新建立所有具名執行個體時。</span><span class="sxs-lookup"><span data-stu-id="2f003-436">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> method is used when all named instances should be recreated on demand.</span></span>
+<span data-ttu-id="22091-383"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會由 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 用來快取 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-383"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> is used by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to cache `TOptions` instances.</span></span> <span data-ttu-id="22091-384"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> 會使監視器中的選項執行個體失效，以便重新計算值 (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>)。</span><span class="sxs-lookup"><span data-stu-id="22091-384">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache%601> invalidates options instances in the monitor so that the value is recomputed (<xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryRemove*>).</span></span> <span data-ttu-id="22091-385">值可以使用 <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*> 手動導入。</span><span class="sxs-lookup"><span data-stu-id="22091-385">Values can be manually introduced with <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.TryAdd*>.</span></span> <span data-ttu-id="22091-386"><xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> 方法用於應該視需要重新建立所有具名執行個體時。</span><span class="sxs-lookup"><span data-stu-id="22091-386">The <xref:Microsoft.Extensions.Options.IOptionsMonitorCache`1.Clear*> method is used when all named instances should be recreated on demand.</span></span>
 
-<span data-ttu-id="2f003-437"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 在應該於收到每個要求時重新計算選項的案例中很實用用。</span><span class="sxs-lookup"><span data-stu-id="2f003-437"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is useful in scenarios where options should be recomputed on every request.</span></span> <span data-ttu-id="2f003-438">如需詳細資訊，請參閱[使用 IOptionsSnapshot 重新載入設定資料](#reload-configuration-data-with-ioptionssnapshot)一節。</span><span class="sxs-lookup"><span data-stu-id="2f003-438">For more information, see the [Reload configuration data with IOptionsSnapshot](#reload-configuration-data-with-ioptionssnapshot) section.</span></span>
+<span data-ttu-id="22091-387"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 在應該於收到每個要求時重新計算選項的案例中很實用用。</span><span class="sxs-lookup"><span data-stu-id="22091-387"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is useful in scenarios where options should be recomputed on every request.</span></span> <span data-ttu-id="22091-388">如需詳細資訊，請參閱[使用 IOptionsSnapshot 重新載入設定資料](#reload-configuration-data-with-ioptionssnapshot)一節。</span><span class="sxs-lookup"><span data-stu-id="22091-388">For more information, see the [Reload configuration data with IOptionsSnapshot](#reload-configuration-data-with-ioptionssnapshot) section.</span></span>
 
-<span data-ttu-id="2f003-439"><xref:Microsoft.Extensions.Options.IOptions%601> 可用於支援選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-439"><xref:Microsoft.Extensions.Options.IOptions%601> can be used to support options.</span></span> <span data-ttu-id="2f003-440">不過，<xref:Microsoft.Extensions.Options.IOptions%601> 不支援前面的 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 案例。</span><span class="sxs-lookup"><span data-stu-id="2f003-440">However, <xref:Microsoft.Extensions.Options.IOptions%601> doesn't support the preceding scenarios of <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span> <span data-ttu-id="2f003-441">您可以在現有架構與程式庫中繼續使用 <xref:Microsoft.Extensions.Options.IOptions%601>，此程式庫已使用 <xref:Microsoft.Extensions.Options.IOptions%601> 介面且不需要 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 提供的案例。</span><span class="sxs-lookup"><span data-stu-id="2f003-441">You may continue to use <xref:Microsoft.Extensions.Options.IOptions%601> in existing frameworks and libraries that already use the <xref:Microsoft.Extensions.Options.IOptions%601> interface and don't require the scenarios provided by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span>
+<span data-ttu-id="22091-389"><xref:Microsoft.Extensions.Options.IOptions%601> 可用於支援選項。</span><span class="sxs-lookup"><span data-stu-id="22091-389"><xref:Microsoft.Extensions.Options.IOptions%601> can be used to support options.</span></span> <span data-ttu-id="22091-390">不過，<xref:Microsoft.Extensions.Options.IOptions%601> 不支援前面的 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 案例。</span><span class="sxs-lookup"><span data-stu-id="22091-390">However, <xref:Microsoft.Extensions.Options.IOptions%601> doesn't support the preceding scenarios of <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span> <span data-ttu-id="22091-391">您可以在現有架構與程式庫中繼續使用 <xref:Microsoft.Extensions.Options.IOptions%601>，此程式庫已使用 <xref:Microsoft.Extensions.Options.IOptions%601> 介面且不需要 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 提供的案例。</span><span class="sxs-lookup"><span data-stu-id="22091-391">You may continue to use <xref:Microsoft.Extensions.Options.IOptions%601> in existing frameworks and libraries that already use the <xref:Microsoft.Extensions.Options.IOptions%601> interface and don't require the scenarios provided by <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>.</span></span>
 
-## <a name="general-options-configuration"></a><span data-ttu-id="2f003-442">一般選項設定</span><span class="sxs-lookup"><span data-stu-id="2f003-442">General options configuration</span></span>
+## <a name="general-options-configuration"></a><span data-ttu-id="22091-392">一般選項設定</span><span class="sxs-lookup"><span data-stu-id="22091-392">General options configuration</span></span>
 
-<span data-ttu-id="2f003-443">一般選項設定是以範例應用程式中的範例 1 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-443">General options configuration is demonstrated as Example 1 in the sample app.</span></span>
+<span data-ttu-id="22091-393">一般選項設定是以範例應用程式中的範例 1 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-393">General options configuration is demonstrated as Example 1 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-444">選項類別必須為非抽象，且具有公用的無參數建構函式。</span><span class="sxs-lookup"><span data-stu-id="2f003-444">An options class must be non-abstract with a public parameterless constructor.</span></span> <span data-ttu-id="2f003-445">下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。</span><span class="sxs-lookup"><span data-stu-id="2f003-445">The following class, `MyOptions`, has two properties, `Option1` and `Option2`.</span></span> <span data-ttu-id="2f003-446">設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。</span><span class="sxs-lookup"><span data-stu-id="2f003-446">Setting default values is optional, but the class constructor in the following example sets the default value of `Option1`.</span></span> <span data-ttu-id="2f003-447">`Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-447">`Option2` has a default value set by initializing the property directly (*Models/MyOptions.cs*):</span></span>
+<span data-ttu-id="22091-394">選項類別必須為非抽象，且具有公用的無參數建構函式。</span><span class="sxs-lookup"><span data-stu-id="22091-394">An options class must be non-abstract with a public parameterless constructor.</span></span> <span data-ttu-id="22091-395">下列 `MyOptions` 類別有兩個屬性，`Option1` 和 `Option2`。</span><span class="sxs-lookup"><span data-stu-id="22091-395">The following class, `MyOptions`, has two properties, `Option1` and `Option2`.</span></span> <span data-ttu-id="22091-396">設定預設值為選擇性，但在下列範例中，類別建構函式會設定 `Option1` 的預設值。</span><span class="sxs-lookup"><span data-stu-id="22091-396">Setting default values is optional, but the class constructor in the following example sets the default value of `Option1`.</span></span> <span data-ttu-id="22091-397">`Option2` 的預設值直接藉由初始化屬性來設定 (*Models/MyOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-397">`Option2` has a default value set by initializing the property directly (*Models/MyOptions.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptions.cs?name=snippet1)]
 
-<span data-ttu-id="2f003-448">`MyOptions` 類別使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> 新增到服務容器，並繫結到設定：</span><span class="sxs-lookup"><span data-stu-id="2f003-448">The `MyOptions` class is added to the service container with <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> and bound to configuration:</span></span>
+<span data-ttu-id="22091-398">`MyOptions` 類別使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> 新增到服務容器，並繫結到設定：</span><span class="sxs-lookup"><span data-stu-id="22091-398">The `MyOptions` class is added to the service container with <xref:Microsoft.Extensions.DependencyInjection.OptionsConfigurationServiceCollectionExtensions.Configure*> and bound to configuration:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example1)]
 
-<span data-ttu-id="2f003-449">下列頁面模型使用[建構函式相依性插入](xref:mvc/controllers/dependency-injection)搭配 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 來存取設定 (*Pages/Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-449">The following page model uses [constructor dependency injection](xref:mvc/controllers/dependency-injection) with <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to access the settings (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-399">下列頁面模型使用[建構函式相依性插入](xref:mvc/controllers/dependency-injection)搭配 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 來存取設定 (*Pages/Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-399">The following page model uses [constructor dependency injection](xref:mvc/controllers/dependency-injection) with <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> to access the settings (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -924,18 +733,18 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example1)]
 
-<span data-ttu-id="2f003-450">範例的 *appsettings.json* 檔案指定 `option1` 和 `option2` 的值：</span><span class="sxs-lookup"><span data-stu-id="2f003-450">The sample's *appsettings.json* file specifies values for `option1` and `option2`:</span></span>
+<span data-ttu-id="22091-400">範例的 *appsettings.json* 檔案指定 `option1` 和 `option2` 的值：</span><span class="sxs-lookup"><span data-stu-id="22091-400">The sample's *appsettings.json* file specifies values for `option1` and `option2`:</span></span>
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=2-3)]
 
-<span data-ttu-id="2f003-451">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-451">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
+<span data-ttu-id="22091-401">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="22091-401">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
 ```html
 option1 = value1_from_json, option2 = -1
 ```
 
 > [!NOTE]
-> <span data-ttu-id="2f003-452">使用自訂 <xref:System.Configuration.ConfigurationBuilder> 從設定檔載入選項設定時，請確認已正確設定基底路徑：</span><span class="sxs-lookup"><span data-stu-id="2f003-452">When using a custom <xref:System.Configuration.ConfigurationBuilder> to load options configuration from a settings file, confirm that the base path is set correctly:</span></span>
+> <span data-ttu-id="22091-402">使用自訂 <xref:System.Configuration.ConfigurationBuilder> 從設定檔載入選項設定時，請確認已正確設定基底路徑：</span><span class="sxs-lookup"><span data-stu-id="22091-402">When using a custom <xref:System.Configuration.ConfigurationBuilder> to load options configuration from a settings file, confirm that the base path is set correctly:</span></span>
 >
 > ```csharp
 > var configBuilder = new ConfigurationBuilder()
@@ -946,21 +755,21 @@ option1 = value1_from_json, option2 = -1
 > services.Configure<MyOptions>(config);
 > ```
 >
-> <span data-ttu-id="2f003-453">透過 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 從設定檔載入選項設定時，不需要明確設定基底路徑。</span><span class="sxs-lookup"><span data-stu-id="2f003-453">Explicitly setting the base path isn't required when loading options configuration from the settings file via <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.</span></span>
+> <span data-ttu-id="22091-403">透過 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 從設定檔載入選項設定時，不需要明確設定基底路徑。</span><span class="sxs-lookup"><span data-stu-id="22091-403">Explicitly setting the base path isn't required when loading options configuration from the settings file via <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>.</span></span>
 
-## <a name="configure-simple-options-with-a-delegate"></a><span data-ttu-id="2f003-454">使用委派設定簡單的選項</span><span class="sxs-lookup"><span data-stu-id="2f003-454">Configure simple options with a delegate</span></span>
+## <a name="configure-simple-options-with-a-delegate"></a><span data-ttu-id="22091-404">使用委派設定簡單的選項</span><span class="sxs-lookup"><span data-stu-id="22091-404">Configure simple options with a delegate</span></span>
 
-<span data-ttu-id="2f003-455">使用委派設定簡單的選項是以範例應用程式中的範例 2 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-455">Configuring simple options with a delegate is demonstrated as Example 2 in the sample app.</span></span>
+<span data-ttu-id="22091-405">使用委派設定簡單的選項是以範例應用程式中的範例 2 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-405">Configuring simple options with a delegate is demonstrated as Example 2 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-456">使用委派來設定選項值。</span><span class="sxs-lookup"><span data-stu-id="2f003-456">Use a delegate to set options values.</span></span> <span data-ttu-id="2f003-457">範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-457">The sample app uses the `MyOptionsWithDelegateConfig` class (*Models/MyOptionsWithDelegateConfig.cs*):</span></span>
+<span data-ttu-id="22091-406">使用委派來設定選項值。</span><span class="sxs-lookup"><span data-stu-id="22091-406">Use a delegate to set options values.</span></span> <span data-ttu-id="22091-407">範例應用程式使用 `MyOptionsWithDelegateConfig` 類別 (*Models/MyOptionsWithDelegateConfig.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-407">The sample app uses the `MyOptionsWithDelegateConfig` class (*Models/MyOptionsWithDelegateConfig.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MyOptionsWithDelegateConfig.cs?name=snippet1)]
 
-<span data-ttu-id="2f003-458">在下列程式碼中，第二個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-458">In the following code, a second <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="2f003-459">它使用委派，以 `MyOptionsWithDelegateConfig` 設定繫結：</span><span class="sxs-lookup"><span data-stu-id="2f003-459">It uses a delegate to configure the binding with `MyOptionsWithDelegateConfig`:</span></span>
+<span data-ttu-id="22091-408">在下列程式碼中，第二個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="22091-408">In the following code, a second <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="22091-409">它使用委派，以 `MyOptionsWithDelegateConfig` 設定繫結：</span><span class="sxs-lookup"><span data-stu-id="22091-409">It uses a delegate to configure the binding with `MyOptionsWithDelegateConfig`:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example2)]
 
-<span data-ttu-id="2f003-460">*Index.cshtml.cs*：</span><span class="sxs-lookup"><span data-stu-id="2f003-460">*Index.cshtml.cs*:</span></span>
+<span data-ttu-id="22091-410">*Index.cshtml.cs*：</span><span class="sxs-lookup"><span data-stu-id="22091-410">*Index.cshtml.cs*:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=10)]
 
@@ -968,39 +777,39 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-<span data-ttu-id="2f003-461">您可以新增多個設定提供者。</span><span class="sxs-lookup"><span data-stu-id="2f003-461">You can add multiple configuration providers.</span></span> <span data-ttu-id="2f003-462">設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。</span><span class="sxs-lookup"><span data-stu-id="2f003-462">Configuration providers are available from NuGet packages and are applied in the order that they're registered.</span></span> <span data-ttu-id="2f003-463">如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。</span><span class="sxs-lookup"><span data-stu-id="2f003-463">For more information, see <xref:fundamentals/configuration/index>.</span></span>
+<span data-ttu-id="22091-411">您可以新增多個設定提供者。</span><span class="sxs-lookup"><span data-stu-id="22091-411">You can add multiple configuration providers.</span></span> <span data-ttu-id="22091-412">設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。</span><span class="sxs-lookup"><span data-stu-id="22091-412">Configuration providers are available from NuGet packages and are applied in the order that they're registered.</span></span> <span data-ttu-id="22091-413">如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。</span><span class="sxs-lookup"><span data-stu-id="22091-413">For more information, see <xref:fundamentals/configuration/index>.</span></span>
 
-<span data-ttu-id="2f003-464">每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-464">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="2f003-465">在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。</span><span class="sxs-lookup"><span data-stu-id="2f003-465">In the preceding example, the values of `Option1` and `Option2` are both specified in *appsettings.json*, but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
+<span data-ttu-id="22091-414">每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。</span><span class="sxs-lookup"><span data-stu-id="22091-414">Each call to <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> adds an <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service to the service container.</span></span> <span data-ttu-id="22091-415">在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。</span><span class="sxs-lookup"><span data-stu-id="22091-415">In the preceding example, the values of `Option1` and `Option2` are both specified in *appsettings.json*, but the values of `Option1` and `Option2` are overridden by the configured delegate.</span></span>
 
-<span data-ttu-id="2f003-466">啟用多個設定服務時，最後一個指定的設定來源會「勝出」\*\* 並設定此組態值。</span><span class="sxs-lookup"><span data-stu-id="2f003-466">When more than one configuration service is enabled, the last configuration source specified *wins* and sets the configuration value.</span></span> <span data-ttu-id="2f003-467">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-467">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
+<span data-ttu-id="22091-416">啟用多個設定服務時，最後一個指定的設定來源會「勝出」\*\* 並設定此組態值。</span><span class="sxs-lookup"><span data-stu-id="22091-416">When more than one configuration service is enabled, the last configuration source specified *wins* and sets the configuration value.</span></span> <span data-ttu-id="22091-417">當應用程式執行時，頁面模型的 `OnGet` 方法會傳回字串，顯示選項類別值：</span><span class="sxs-lookup"><span data-stu-id="22091-417">When the app is run, the page model's `OnGet` method returns a string showing the option class values:</span></span>
 
 ```html
 delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 ```
 
-## <a name="suboptions-configuration"></a><span data-ttu-id="2f003-468">子選項組態</span><span class="sxs-lookup"><span data-stu-id="2f003-468">Suboptions configuration</span></span>
+## <a name="suboptions-configuration"></a><span data-ttu-id="22091-418">子選項組態</span><span class="sxs-lookup"><span data-stu-id="22091-418">Suboptions configuration</span></span>
 
-<span data-ttu-id="2f003-469">子選項組態是以範例應用程式中的範例 3 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-469">Suboptions configuration is demonstrated as Example 3 in the sample app.</span></span>
+<span data-ttu-id="22091-419">子選項組態是以範例應用程式中的範例 3 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-419">Suboptions configuration is demonstrated as Example 3 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-470">應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。</span><span class="sxs-lookup"><span data-stu-id="2f003-470">Apps should create options classes that pertain to specific scenario groups (classes) in the app.</span></span> <span data-ttu-id="2f003-471">需要組態值的應用程式組件應該只能存取它們使用的設定值。</span><span class="sxs-lookup"><span data-stu-id="2f003-471">Parts of the app that require configuration values should only have access to the configuration values that they use.</span></span>
+<span data-ttu-id="22091-420">應用程式應該建立屬於應用程式中特定案例群組 (類別) 的選項類別。</span><span class="sxs-lookup"><span data-stu-id="22091-420">Apps should create options classes that pertain to specific scenario groups (classes) in the app.</span></span> <span data-ttu-id="22091-421">需要組態值的應用程式組件應該只能存取它們使用的設定值。</span><span class="sxs-lookup"><span data-stu-id="22091-421">Parts of the app that require configuration values should only have access to the configuration values that they use.</span></span>
 
-<span data-ttu-id="2f003-472">將選項繫結至組態時，選項類型中的每一個屬性都會繫結至 `property[:sub-property:]` 格式的組態索引鍵。</span><span class="sxs-lookup"><span data-stu-id="2f003-472">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="2f003-473">例如，`MyOptions.Option1` 屬性繫結至索引鍵 `Option1`，其是從 *appsettings.json* 中的 `option1` 屬性讀取。</span><span class="sxs-lookup"><span data-stu-id="2f003-473">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *appsettings.json*.</span></span>
+<span data-ttu-id="22091-422">將選項繫結至組態時，選項類型中的每一個屬性都會繫結至 `property[:sub-property:]` 格式的組態索引鍵。</span><span class="sxs-lookup"><span data-stu-id="22091-422">When binding options to configuration, each property in the options type is bound to a configuration key of the form `property[:sub-property:]`.</span></span> <span data-ttu-id="22091-423">例如，`MyOptions.Option1` 屬性繫結至索引鍵 `Option1`，其是從 *appsettings.json* 中的 `option1` 屬性讀取。</span><span class="sxs-lookup"><span data-stu-id="22091-423">For example, the `MyOptions.Option1` property is bound to the key `Option1`, which is read from the `option1` property in *appsettings.json*.</span></span>
 
-<span data-ttu-id="2f003-474">在下列程式碼中，第三個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="2f003-474">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="2f003-475">它將 `MySubOptions` 繫結至 *appSettings.json* 檔案的 `subsection` 區段：</span><span class="sxs-lookup"><span data-stu-id="2f003-475">It binds `MySubOptions` to the section `subsection` of the *appsettings.json* file:</span></span>
+<span data-ttu-id="22091-424">在下列程式碼中，第三個 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務新增至服務容器。</span><span class="sxs-lookup"><span data-stu-id="22091-424">In the following code, a third <xref:Microsoft.Extensions.Options.IConfigureOptions%601> service is added to the service container.</span></span> <span data-ttu-id="22091-425">它將 `MySubOptions` 繫結至 *appSettings.json* 檔案的 `subsection` 區段：</span><span class="sxs-lookup"><span data-stu-id="22091-425">It binds `MySubOptions` to the section `subsection` of the *appsettings.json* file:</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example3)]
 
-<span data-ttu-id="2f003-476">`GetSection`方法需要<xref:Microsoft.Extensions.Configuration?displayProperty=fullName>命名空間。</span><span class="sxs-lookup"><span data-stu-id="2f003-476">The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.</span></span>
+<span data-ttu-id="22091-426">`GetSection`方法需要 <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> 命名空間。</span><span class="sxs-lookup"><span data-stu-id="22091-426">The `GetSection` method requires the <xref:Microsoft.Extensions.Configuration?displayProperty=fullName> namespace.</span></span>
 
-<span data-ttu-id="2f003-477">範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：</span><span class="sxs-lookup"><span data-stu-id="2f003-477">The sample's *appsettings.json* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
+<span data-ttu-id="22091-427">範例的 *appsettings.json* 檔案會定義 `subsection` 成員，並具有 `suboption1` 和 `suboption2` 的索引鍵：</span><span class="sxs-lookup"><span data-stu-id="22091-427">The sample's *appsettings.json* file defines a `subsection` member with keys for `suboption1` and `suboption2`:</span></span>
 
 [!code-json[](options/samples/2.x/OptionsSample/appsettings.json?highlight=4-7)]
 
-<span data-ttu-id="2f003-478">`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存選項值 (*Models/MySubOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-478">The `MySubOptions` class defines properties, `SubOption1` and `SubOption2`, to hold the options values (*Models/MySubOptions.cs*):</span></span>
+<span data-ttu-id="22091-428">`MySubOptions` 類別會定義屬性 `SubOption1` 和 `SubOption2`，來保存選項值 (*Models/MySubOptions.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-428">The `MySubOptions` class defines properties, `SubOption1` and `SubOption2`, to hold the options values (*Models/MySubOptions.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Models/MySubOptions.cs?name=snippet1)]
 
-<span data-ttu-id="2f003-479">頁面模型的 `OnGet` 方法會傳回具有選項值 (*Pages/Index.cshtml.cs*) 的字串：</span><span class="sxs-lookup"><span data-stu-id="2f003-479">The page model's `OnGet` method returns a string with the options values (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-429">頁面模型的 `OnGet` 方法會傳回具有選項值 (*Pages/Index.cshtml.cs*) 的字串：</span><span class="sxs-lookup"><span data-stu-id="22091-429">The page model's `OnGet` method returns a string with the options values (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=11)]
 
@@ -1008,17 +817,17 @@ delegate_option1 = value1_configured_by_delegate, delegate_option2 = 500
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example3)]
 
-<span data-ttu-id="2f003-480">當應用程式執行時，`OnGet` 方法會傳回字串，顯示子選項類別值：</span><span class="sxs-lookup"><span data-stu-id="2f003-480">When the app is run, the `OnGet` method returns a string showing the suboption class values:</span></span>
+<span data-ttu-id="22091-430">當應用程式執行時，`OnGet` 方法會傳回字串，顯示子選項類別值：</span><span class="sxs-lookup"><span data-stu-id="22091-430">When the app is run, the `OnGet` method returns a string showing the suboption class values:</span></span>
 
 ```html
 subOption1 = subvalue1_from_json, subOption2 = 200
 ```
 
-## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a><span data-ttu-id="2f003-481">檢視模型提供的選項或使用直接檢視插入提供的選項</span><span class="sxs-lookup"><span data-stu-id="2f003-481">Options provided by a view model or with direct view injection</span></span>
+## <a name="options-provided-by-a-view-model-or-with-direct-view-injection"></a><span data-ttu-id="22091-431">檢視模型提供的選項或使用直接檢視插入提供的選項</span><span class="sxs-lookup"><span data-stu-id="22091-431">Options provided by a view model or with direct view injection</span></span>
 
-<span data-ttu-id="2f003-482">檢視模型提供的選項或使用直接檢視插入提供的選項是以範例應用程式中的範例 4 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-482">Options provided by a view model or with direct view injection is demonstrated as Example 4 in the sample app.</span></span>
+<span data-ttu-id="22091-432">檢視模型提供的選項或使用直接檢視插入提供的選項是以範例應用程式中的範例 4 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-432">Options provided by a view model or with direct view injection is demonstrated as Example 4 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-483">可以在檢視模型中提供選項，或藉由將 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 直接插入至檢視來提供選項 (*Pages/Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="2f003-483">Options can be supplied in a view model or by injecting <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> directly into a view (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-433">可以在檢視模型中提供選項，或藉由將 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 直接插入至檢視來提供選項 (*Pages/Index.cshtml.cs*)：</span><span class="sxs-lookup"><span data-stu-id="22091-433">Options can be supplied in a view model or by injecting <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> directly into a view (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=9)]
 
@@ -1026,23 +835,23 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example4)]
 
-<span data-ttu-id="2f003-484">範例應用程式會顯示如何使用 `@inject` 指示詞來插入 `IOptionsMonitor<MyOptions>`：</span><span class="sxs-lookup"><span data-stu-id="2f003-484">The sample app shows how to inject `IOptionsMonitor<MyOptions>` with an `@inject` directive:</span></span>
+<span data-ttu-id="22091-434">範例應用程式會顯示如何使用 `@inject` 指示詞來插入 `IOptionsMonitor<MyOptions>`：</span><span class="sxs-lookup"><span data-stu-id="22091-434">The sample app shows how to inject `IOptionsMonitor<MyOptions>` with an `@inject` directive:</span></span>
 
 [!code-cshtml[](options/samples/2.x/OptionsSample/Pages/Index.cshtml?range=1-10&highlight=4)]
 
-<span data-ttu-id="2f003-485">執行應用程式時，轉譯的頁面中會顯示選項值：</span><span class="sxs-lookup"><span data-stu-id="2f003-485">When the app is run, the options values are shown in the rendered page:</span></span>
+<span data-ttu-id="22091-435">執行應用程式時，轉譯的頁面中會顯示選項值：</span><span class="sxs-lookup"><span data-stu-id="22091-435">When the app is run, the options values are shown in the rendered page:</span></span>
 
 ![選項值 Option1:：value1_from_json 和 Option2: -1 是從模型藉由插入至檢視來載入。](options/_static/view.png)
 
-## <a name="reload-configuration-data-with-ioptionssnapshot"></a><span data-ttu-id="2f003-487">使用 IOptionsSnapshot 重新載入設定資料</span><span class="sxs-lookup"><span data-stu-id="2f003-487">Reload configuration data with IOptionsSnapshot</span></span>
+## <a name="reload-configuration-data-with-ioptionssnapshot"></a><span data-ttu-id="22091-437">使用 IOptionsSnapshot 重新載入設定資料</span><span class="sxs-lookup"><span data-stu-id="22091-437">Reload configuration data with IOptionsSnapshot</span></span>
 
-<span data-ttu-id="2f003-488">使用<xref:Microsoft.Extensions.Options.IOptionsSnapshot%601>重載設定資料時，會在範例應用程式的範例5中示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-488">Reloading configuration data with <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is demonstrated in Example 5 in the sample app.</span></span>
+<span data-ttu-id="22091-438">使用重載設定資料 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 時，會在範例應用程式的範例5中示範。</span><span class="sxs-lookup"><span data-stu-id="22091-438">Reloading configuration data with <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is demonstrated in Example 5 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-489"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 支援以最小的處理負擔來重新載入選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-489"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> supports reloading options with minimal processing overhead.</span></span>
+<span data-ttu-id="22091-439"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> 支援以最小的處理負擔來重新載入選項。</span><span class="sxs-lookup"><span data-stu-id="22091-439"><xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> supports reloading options with minimal processing overhead.</span></span>
 
-<span data-ttu-id="2f003-490">在要求的存留期內存取及快取選項時，會針對每個要求計算一次選項。</span><span class="sxs-lookup"><span data-stu-id="2f003-490">Options are computed once per request when accessed and cached for the lifetime of the request.</span></span>
+<span data-ttu-id="22091-440">在要求的存留期內存取及快取選項時，會針對每個要求計算一次選項。</span><span class="sxs-lookup"><span data-stu-id="22091-440">Options are computed once per request when accessed and cached for the lifetime of the request.</span></span>
 
-<span data-ttu-id="2f003-491">下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。</span><span class="sxs-lookup"><span data-stu-id="2f003-491">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *appsettings.json* changes (*Pages/Index.cshtml.cs*).</span></span> <span data-ttu-id="2f003-492">對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。</span><span class="sxs-lookup"><span data-stu-id="2f003-492">Multiple requests to the server return constant values provided by the *appsettings.json* file until the file is changed and configuration reloads.</span></span>
+<span data-ttu-id="22091-441">下列範例示範在 *appsettings.json* 變更之後如何建立新的 <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> (*Pages/Index.cshtml.cs*)。</span><span class="sxs-lookup"><span data-stu-id="22091-441">The following example demonstrates how a new <xref:Microsoft.Extensions.Options.IOptionsSnapshot%601> is created after *appsettings.json* changes (*Pages/Index.cshtml.cs*).</span></span> <span data-ttu-id="22091-442">對伺服器的多個要求會傳回 *appsettings.json* 檔案所提供的常數值，直到檔案變更並重新載入組態為止。</span><span class="sxs-lookup"><span data-stu-id="22091-442">Multiple requests to the server return constant values provided by the *appsettings.json* file until the file is changed and configuration reloads.</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=12)]
 
@@ -1050,27 +859,27 @@ subOption1 = subvalue1_from_json, subOption2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example5)]
 
-<span data-ttu-id="2f003-493">下圖顯示從 *appsettings.json* 檔案載入的初始 `option1` 和 `option2` 值：</span><span class="sxs-lookup"><span data-stu-id="2f003-493">The following image shows the initial `option1` and `option2` values loaded from the *appsettings.json* file:</span></span>
+<span data-ttu-id="22091-443">下圖顯示從 *appsettings.json* 檔案載入的初始 `option1` 和 `option2` 值：</span><span class="sxs-lookup"><span data-stu-id="22091-443">The following image shows the initial `option1` and `option2` values loaded from the *appsettings.json* file:</span></span>
 
 ```html
 snapshot option1 = value1_from_json, snapshot option2 = -1
 ```
 
-<span data-ttu-id="2f003-494">將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。</span><span class="sxs-lookup"><span data-stu-id="2f003-494">Change the values in the *appsettings.json* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="2f003-495">儲存*appsettings json*檔案。</span><span class="sxs-lookup"><span data-stu-id="2f003-495">Save the *appsettings.json* file.</span></span> <span data-ttu-id="2f003-496">重新整理瀏覽器，以查看選項值更新：</span><span class="sxs-lookup"><span data-stu-id="2f003-496">Refresh the browser to see that the options values are updated:</span></span>
+<span data-ttu-id="22091-444">將 *appsettings.json* 檔案中的值變更為 `value1_from_json UPDATED` 和 `200`。</span><span class="sxs-lookup"><span data-stu-id="22091-444">Change the values in the *appsettings.json* file to `value1_from_json UPDATED` and `200`.</span></span> <span data-ttu-id="22091-445">儲存*appsettings json*檔案。</span><span class="sxs-lookup"><span data-stu-id="22091-445">Save the *appsettings.json* file.</span></span> <span data-ttu-id="22091-446">重新整理瀏覽器，以查看選項值更新：</span><span class="sxs-lookup"><span data-stu-id="22091-446">Refresh the browser to see that the options values are updated:</span></span>
 
 ```html
 snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 ```
 
-## <a name="named-options-support-with-iconfigurenamedoptions"></a><span data-ttu-id="2f003-497">IConfigureNamedOptions 的具名選項支援</span><span class="sxs-lookup"><span data-stu-id="2f003-497">Named options support with IConfigureNamedOptions</span></span>
+## <a name="named-options-support-with-iconfigurenamedoptions"></a><span data-ttu-id="22091-447">IConfigureNamedOptions 的具名選項支援</span><span class="sxs-lookup"><span data-stu-id="22091-447">Named options support with IConfigureNamedOptions</span></span>
 
-<span data-ttu-id="2f003-498"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。</span><span class="sxs-lookup"><span data-stu-id="2f003-498">Named options support with <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> is demonstrated as Example 6 in the sample app.</span></span>
+<span data-ttu-id="22091-448"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。</span><span class="sxs-lookup"><span data-stu-id="22091-448">Named options support with <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> is demonstrated as Example 6 in the sample app.</span></span>
 
-<span data-ttu-id="2f003-499">「具名選項」支援可讓應用程式區別具名選項組態。</span><span class="sxs-lookup"><span data-stu-id="2f003-499">Named options support allows the app to distinguish between named options configurations.</span></span> <span data-ttu-id="2f003-500">在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[\<configurenamedoptions .configure TOptions>。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。</span><span class="sxs-lookup"><span data-stu-id="2f003-500">In the sample app, named options are declared with [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*), which calls the [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) extension method.</span></span> <span data-ttu-id="2f003-501">已命名的選項會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="2f003-501">Named options are case sensitive.</span></span>
+<span data-ttu-id="22091-449">「具名選項」支援可讓應用程式區別具名選項組態。</span><span class="sxs-lookup"><span data-stu-id="22091-449">Named options support allows the app to distinguish between named options configurations.</span></span> <span data-ttu-id="22091-450">在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure \< TOptions >。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。</span><span class="sxs-lookup"><span data-stu-id="22091-450">In the sample app, named options are declared with [OptionsServiceCollectionExtensions.Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*), which calls the [ConfigureNamedOptions\<TOptions>.Configure](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*) extension method.</span></span> <span data-ttu-id="22091-451">已命名的選項會區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="22091-451">Named options are case sensitive.</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
-<span data-ttu-id="2f003-502">範例應用程式會使用　<xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*) 來存取具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-502">The sample app accesses the named options with <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):</span></span>
+<span data-ttu-id="22091-452">範例應用程式會使用　<xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*) 來存取具名選項：</span><span class="sxs-lookup"><span data-stu-id="22091-452">The sample app accesses the named options with <xref:Microsoft.Extensions.Options.IOptionsSnapshot`1.Get*> (*Pages/Index.cshtml.cs*):</span></span>
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?range=13-14)]
 
@@ -1078,21 +887,21 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example6)]
 
-<span data-ttu-id="2f003-503">執行範例應用程式後，會傳回具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-503">Running the sample app, the named options are returned:</span></span>
+<span data-ttu-id="22091-453">執行範例應用程式後，會傳回具名選項：</span><span class="sxs-lookup"><span data-stu-id="22091-453">Running the sample app, the named options are returned:</span></span>
 
 ```html
 named_options_1: option1 = value1_from_json, option2 = -1
 named_options_2: option1 = named_options_2_value1_from_action, option2 = 5
 ```
 
-<span data-ttu-id="2f003-504">`named_options_1` 值會從設定提供，這會從 *appsettings.json* 檔案載入。</span><span class="sxs-lookup"><span data-stu-id="2f003-504">`named_options_1` values are provided from configuration, which are loaded from the *appsettings.json* file.</span></span> <span data-ttu-id="2f003-505">`named_options_2` 值是由以下提供：</span><span class="sxs-lookup"><span data-stu-id="2f003-505">`named_options_2` values are provided by:</span></span>
+<span data-ttu-id="22091-454">`named_options_1` 值會從設定提供，這會從 *appsettings.json* 檔案載入。</span><span class="sxs-lookup"><span data-stu-id="22091-454">`named_options_1` values are provided from configuration, which are loaded from the *appsettings.json* file.</span></span> <span data-ttu-id="22091-455">`named_options_2` 值是由以下提供：</span><span class="sxs-lookup"><span data-stu-id="22091-455">`named_options_2` values are provided by:</span></span>
 
-* <span data-ttu-id="2f003-506">`ConfigureServices` 中 `Option1` 的 `named_options_2` 委派。</span><span class="sxs-lookup"><span data-stu-id="2f003-506">The `named_options_2` delegate in `ConfigureServices` for `Option1`.</span></span>
-* <span data-ttu-id="2f003-507">`MyOptions` 類別所提供的 `Option2` 預設值。</span><span class="sxs-lookup"><span data-stu-id="2f003-507">The default value for `Option2` provided by the `MyOptions` class.</span></span>
+* <span data-ttu-id="22091-456">`ConfigureServices` 中 `Option1` 的 `named_options_2` 委派。</span><span class="sxs-lookup"><span data-stu-id="22091-456">The `named_options_2` delegate in `ConfigureServices` for `Option1`.</span></span>
+* <span data-ttu-id="22091-457">`MyOptions` 類別所提供的 `Option2` 預設值。</span><span class="sxs-lookup"><span data-stu-id="22091-457">The default value for `Option2` provided by the `MyOptions` class.</span></span>
 
-## <a name="configure-all-options-with-the-configureall-method"></a><span data-ttu-id="2f003-508">使用 ConfigureAll 方法設定所有選項</span><span class="sxs-lookup"><span data-stu-id="2f003-508">Configure all options with the ConfigureAll method</span></span>
+## <a name="configure-all-options-with-the-configureall-method"></a><span data-ttu-id="22091-458">使用 ConfigureAll 方法設定所有選項</span><span class="sxs-lookup"><span data-stu-id="22091-458">Configure all options with the ConfigureAll method</span></span>
 
-<span data-ttu-id="2f003-509">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 方法設定所有選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-509">Configure all options instances with the <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> method.</span></span> <span data-ttu-id="2f003-510">下列程式碼會為具有共通值的所有設定執行個體設定 `Option1`。</span><span class="sxs-lookup"><span data-stu-id="2f003-510">The following code configures `Option1` for all configuration instances with a common value.</span></span> <span data-ttu-id="2f003-511">將下列程式碼手動新增至 `Startup.ConfigureServices` 方法：</span><span class="sxs-lookup"><span data-stu-id="2f003-511">Add the following code manually to the `Startup.ConfigureServices` method:</span></span>
+<span data-ttu-id="22091-459">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 方法設定所有選項執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-459">Configure all options instances with the <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> method.</span></span> <span data-ttu-id="22091-460">下列程式碼會為具有共通值的所有設定執行個體設定 `Option1`。</span><span class="sxs-lookup"><span data-stu-id="22091-460">The following code configures `Option1` for all configuration instances with a common value.</span></span> <span data-ttu-id="22091-461">將下列程式碼手動新增至 `Startup.ConfigureServices` 方法：</span><span class="sxs-lookup"><span data-stu-id="22091-461">Add the following code manually to the `Startup.ConfigureServices` method:</span></span>
 
 ```csharp
 services.ConfigureAll<MyOptions>(myOptions => 
@@ -1101,7 +910,7 @@ services.ConfigureAll<MyOptions>(myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-512">新增程式碼之後執行範例應用程式，就會產生下列結果：</span><span class="sxs-lookup"><span data-stu-id="2f003-512">Running the sample app after adding the code produces the following result:</span></span>
+<span data-ttu-id="22091-462">新增程式碼之後執行範例應用程式，就會產生下列結果：</span><span class="sxs-lookup"><span data-stu-id="22091-462">Running the sample app after adding the code produces the following result:</span></span>
 
 ```html
 named_options_1: option1 = ConfigureAll replacement value, option2 = -1
@@ -1109,11 +918,11 @@ named_options_2: option1 = ConfigureAll replacement value, option2 = 5
 ```
 
 > [!NOTE]
-> <span data-ttu-id="2f003-513">所有選項都是具名執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-513">All options are named instances.</span></span> <span data-ttu-id="2f003-514">現有的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。</span><span class="sxs-lookup"><span data-stu-id="2f003-514">Existing <xref:Microsoft.Extensions.Options.IConfigureOptions%601> instances are treated as targeting the `Options.DefaultName` instance, which is `string.Empty`.</span></span> <span data-ttu-id="2f003-515"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 也會實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>。</span><span class="sxs-lookup"><span data-stu-id="2f003-515"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> also implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601>.</span></span> <span data-ttu-id="2f003-516"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 的預設實作有邏輯可以適當地使用每個項目。</span><span class="sxs-lookup"><span data-stu-id="2f003-516">The default implementation of the <xref:Microsoft.Extensions.Options.IOptionsFactory%601> has logic to use each appropriately.</span></span> <span data-ttu-id="2f003-517">`null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 與 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 使用此慣例)。</span><span class="sxs-lookup"><span data-stu-id="2f003-517">The `null` named option is used to target all of the named instances instead of a specific named instance (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> and <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> use this convention).</span></span>
+> <span data-ttu-id="22091-463">所有選項都是具名執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-463">All options are named instances.</span></span> <span data-ttu-id="22091-464">現有的 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 執行個體會視為以 `Options.DefaultName` 執行個體為目標，也就是 `string.Empty`。</span><span class="sxs-lookup"><span data-stu-id="22091-464">Existing <xref:Microsoft.Extensions.Options.IConfigureOptions%601> instances are treated as targeting the `Options.DefaultName` instance, which is `string.Empty`.</span></span> <span data-ttu-id="22091-465"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 也會實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601>。</span><span class="sxs-lookup"><span data-stu-id="22091-465"><xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> also implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601>.</span></span> <span data-ttu-id="22091-466"><xref:Microsoft.Extensions.Options.IOptionsFactory%601> 的預設實作有邏輯可以適當地使用每個項目。</span><span class="sxs-lookup"><span data-stu-id="22091-466">The default implementation of the <xref:Microsoft.Extensions.Options.IOptionsFactory%601> has logic to use each appropriately.</span></span> <span data-ttu-id="22091-467">`null` 具名選項用來以所有具名執行個體為目標，而不是特定的具名執行個體 (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> 與 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 使用此慣例)。</span><span class="sxs-lookup"><span data-stu-id="22091-467">The `null` named option is used to target all of the named instances instead of a specific named instance (<xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.ConfigureAll*> and <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> use this convention).</span></span>
 
-## <a name="optionsbuilder-api"></a><span data-ttu-id="2f003-518">OptionsBuilder API</span><span class="sxs-lookup"><span data-stu-id="2f003-518">OptionsBuilder API</span></span>
+## <a name="optionsbuilder-api"></a><span data-ttu-id="22091-468">OptionsBuilder API</span><span class="sxs-lookup"><span data-stu-id="22091-468">OptionsBuilder API</span></span>
 
-<span data-ttu-id="2f003-519"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> 會用於設定 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="2f003-519"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> is used to configure `TOptions` instances.</span></span> <span data-ttu-id="2f003-520">因為 `OptionsBuilder` 僅為初始 `AddOptions<TOptions>(string optionsName)` 呼叫的單一參數，而不是出現在所有後續呼叫的參數，所以其可簡化建立具名選項的程序。</span><span class="sxs-lookup"><span data-stu-id="2f003-520">`OptionsBuilder` streamlines creating named options as it's only a single parameter to the initial `AddOptions<TOptions>(string optionsName)` call instead of appearing in all of the subsequent calls.</span></span> <span data-ttu-id="2f003-521">選項驗證及接受服務依存性的 `ConfigureOptions` 多載，只可透過 `OptionsBuilder` 使用。</span><span class="sxs-lookup"><span data-stu-id="2f003-521">Options validation and the `ConfigureOptions` overloads that accept service dependencies are only available via `OptionsBuilder`.</span></span>
+<span data-ttu-id="22091-469"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> 會用於設定 `TOptions` 執行個體。</span><span class="sxs-lookup"><span data-stu-id="22091-469"><xref:Microsoft.Extensions.Options.OptionsBuilder%601> is used to configure `TOptions` instances.</span></span> <span data-ttu-id="22091-470">因為 `OptionsBuilder` 僅為初始 `AddOptions<TOptions>(string optionsName)` 呼叫的單一參數，而不是出現在所有後續呼叫的參數，所以其可簡化建立具名選項的程序。</span><span class="sxs-lookup"><span data-stu-id="22091-470">`OptionsBuilder` streamlines creating named options as it's only a single parameter to the initial `AddOptions<TOptions>(string optionsName)` call instead of appearing in all of the subsequent calls.</span></span> <span data-ttu-id="22091-471">選項驗證及接受服務依存性的 `ConfigureOptions` 多載，只可透過 `OptionsBuilder` 使用。</span><span class="sxs-lookup"><span data-stu-id="22091-471">Options validation and the `ConfigureOptions` overloads that accept service dependencies are only available via `OptionsBuilder`.</span></span>
 
 ```csharp
 // Options.DefaultName = "" is used.
@@ -1123,11 +932,11 @@ services.AddOptions<MyOptions>("optionalName")
     .Configure(o => o.Property = "named");
 ```
 
-## <a name="use-di-services-to-configure-options"></a><span data-ttu-id="2f003-522">使用 DI 服務來設定選項</span><span class="sxs-lookup"><span data-stu-id="2f003-522">Use DI services to configure options</span></span>
+## <a name="use-di-services-to-configure-options"></a><span data-ttu-id="22091-472">使用 DI 服務來設定選項</span><span class="sxs-lookup"><span data-stu-id="22091-472">Use DI services to configure options</span></span>
 
-<span data-ttu-id="2f003-523">在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：</span><span class="sxs-lookup"><span data-stu-id="2f003-523">You can access other services from dependency injection while configuring options in two ways:</span></span>
+<span data-ttu-id="22091-473">在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：</span><span class="sxs-lookup"><span data-stu-id="22091-473">You can access other services from dependency injection while configuring options in two ways:</span></span>
 
-* <span data-ttu-id="2f003-524">將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。</span><span class="sxs-lookup"><span data-stu-id="2f003-524">Pass a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) on [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1).</span></span> <span data-ttu-id="2f003-525">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 提供 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 的多載，可讓您最多使用五個服務來設定選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-525">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) provides overloads of [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) that allow you to use up to five services to configure options:</span></span>
+* <span data-ttu-id="22091-474">將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。</span><span class="sxs-lookup"><span data-stu-id="22091-474">Pass a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) on [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1).</span></span> <span data-ttu-id="22091-475">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 提供 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 的多載，可讓您最多使用五個服務來設定選項：</span><span class="sxs-lookup"><span data-stu-id="22091-475">[OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) provides overloads of [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) that allow you to use up to five services to configure options:</span></span>
 
   ```csharp
   services.AddOptions<MyOptions>("optionalName")
@@ -1136,13 +945,13 @@ services.AddOptions<MyOptions>("optionalName")
               o.Property = DoSomethingWith(s, s2, s3, s4, s5));
   ```
 
-* <span data-ttu-id="2f003-526">建立您自己的類型來實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 或 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，並將該類型註冊為服務。</span><span class="sxs-lookup"><span data-stu-id="2f003-526">Create your own type that implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601> or <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and register the type as a service.</span></span>
+* <span data-ttu-id="22091-476">建立您自己的類型來實作 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 或 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，並將該類型註冊為服務。</span><span class="sxs-lookup"><span data-stu-id="22091-476">Create your own type that implements <xref:Microsoft.Extensions.Options.IConfigureOptions%601> or <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> and register the type as a service.</span></span>
 
-<span data-ttu-id="2f003-527">我們建議您將設定委派傳遞到 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)，因為建立服務更複雜。</span><span class="sxs-lookup"><span data-stu-id="2f003-527">We recommend passing a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*), since creating a service is more complex.</span></span> <span data-ttu-id="2f003-528">建立您自己的類型相當於，當您使用 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 時此架構可為您執行的動作。</span><span class="sxs-lookup"><span data-stu-id="2f003-528">Creating your own type is equivalent to what the framework does for you when you use [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*).</span></span> <span data-ttu-id="2f003-529">呼叫 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 會註冊暫時性泛型 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，其具有會接受所指定泛型服務類型的建構函式。</span><span class="sxs-lookup"><span data-stu-id="2f003-529">Calling [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) registers a transient generic <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>, which has a constructor that accepts the generic service types specified.</span></span> 
+<span data-ttu-id="22091-477">我們建議您將設定委派傳遞到 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)，因為建立服務更複雜。</span><span class="sxs-lookup"><span data-stu-id="22091-477">We recommend passing a configuration delegate to [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*), since creating a service is more complex.</span></span> <span data-ttu-id="22091-478">建立您自己的類型相當於，當您使用 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 時此架構可為您執行的動作。</span><span class="sxs-lookup"><span data-stu-id="22091-478">Creating your own type is equivalent to what the framework does for you when you use [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*).</span></span> <span data-ttu-id="22091-479">呼叫 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 會註冊暫時性泛型 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>，其具有會接受所指定泛型服務類型的建構函式。</span><span class="sxs-lookup"><span data-stu-id="22091-479">Calling [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) registers a transient generic <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601>, which has a constructor that accepts the generic service types specified.</span></span> 
 
-## <a name="options-post-configuration"></a><span data-ttu-id="2f003-530">選項設定後作業</span><span class="sxs-lookup"><span data-stu-id="2f003-530">Options post-configuration</span></span>
+## <a name="options-post-configuration"></a><span data-ttu-id="22091-480">選項設定後作業</span><span class="sxs-lookup"><span data-stu-id="22091-480">Options post-configuration</span></span>
 
-<span data-ttu-id="2f003-531">使用 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> 來設定設定後作業。</span><span class="sxs-lookup"><span data-stu-id="2f003-531">Set post-configuration with <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>.</span></span> <span data-ttu-id="2f003-532">設定後作業會在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生後執行：</span><span class="sxs-lookup"><span data-stu-id="2f003-532">Post-configuration runs after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs:</span></span>
+<span data-ttu-id="22091-481">使用 <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601> 來設定設定後作業。</span><span class="sxs-lookup"><span data-stu-id="22091-481">Set post-configuration with <xref:Microsoft.Extensions.Options.IPostConfigureOptions%601>.</span></span> <span data-ttu-id="22091-482">設定後作業會在所有 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 設定發生後執行：</span><span class="sxs-lookup"><span data-stu-id="22091-482">Post-configuration runs after all <xref:Microsoft.Extensions.Options.IConfigureOptions%601> configuration occurs:</span></span>
 
 ```csharp
 services.PostConfigure<MyOptions>(myOptions =>
@@ -1151,7 +960,7 @@ services.PostConfigure<MyOptions>(myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-533"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> 可用來後置設定具名選項：</span><span class="sxs-lookup"><span data-stu-id="2f003-533"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> is available to post-configure named options:</span></span>
+<span data-ttu-id="22091-483"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> 可用來後置設定具名選項：</span><span class="sxs-lookup"><span data-stu-id="22091-483"><xref:Microsoft.Extensions.Options.IPostConfigureOptions`1.PostConfigure*> is available to post-configure named options:</span></span>
 
 ```csharp
 services.PostConfigure<MyOptions>("named_options_1", myOptions =>
@@ -1160,7 +969,7 @@ services.PostConfigure<MyOptions>("named_options_1", myOptions =>
 });
 ```
 
-<span data-ttu-id="2f003-534">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 後置設定所有設定執行個體：</span><span class="sxs-lookup"><span data-stu-id="2f003-534">Use <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> to post-configure all configuration instances:</span></span>
+<span data-ttu-id="22091-484">使用 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> 後置設定所有設定執行個體：</span><span class="sxs-lookup"><span data-stu-id="22091-484">Use <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.PostConfigureAll*> to post-configure all configuration instances:</span></span>
 
 ```csharp
 services.PostConfigureAll<MyOptions>(myOptions =>
@@ -1169,9 +978,9 @@ services.PostConfigureAll<MyOptions>(myOptions =>
 });
 ```
 
-## <a name="accessing-options-during-startup"></a><span data-ttu-id="2f003-535">在啟動期間存取選項</span><span class="sxs-lookup"><span data-stu-id="2f003-535">Accessing options during startup</span></span>
+## <a name="accessing-options-during-startup"></a><span data-ttu-id="22091-485">在啟動期間存取選項</span><span class="sxs-lookup"><span data-stu-id="22091-485">Accessing options during startup</span></span>
 
-<span data-ttu-id="2f003-536"><xref:Microsoft.Extensions.Options.IOptions%601> 與 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 可用於 `Startup.Configure`，因為服務是在 `Configure` 方法執行之前建置。</span><span class="sxs-lookup"><span data-stu-id="2f003-536"><xref:Microsoft.Extensions.Options.IOptions%601> and <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> can be used in `Startup.Configure`, since services are built before the `Configure` method executes.</span></span>
+<span data-ttu-id="22091-486"><xref:Microsoft.Extensions.Options.IOptions%601> 與 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> 可用於 `Startup.Configure`，因為服務是在 `Configure` 方法執行之前建置。</span><span class="sxs-lookup"><span data-stu-id="22091-486"><xref:Microsoft.Extensions.Options.IOptions%601> and <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> can be used in `Startup.Configure`, since services are built before the `Configure` method executes.</span></span>
 
 ```csharp
 public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> optionsAccessor)
@@ -1180,10 +989,10 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 }
 ```
 
-<span data-ttu-id="2f003-537">請勿在 `Startup.ConfigureServices` 中使用 <xref:Microsoft.Extensions.Options.IOptions%601> 或 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>。</span><span class="sxs-lookup"><span data-stu-id="2f003-537">Don't use <xref:Microsoft.Extensions.Options.IOptions%601> or <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="2f003-538">可能會因為服務註冊的順序而有不一致的選項狀態存在。</span><span class="sxs-lookup"><span data-stu-id="2f003-538">An inconsistent options state may exist due to the ordering of service registrations.</span></span>
+<span data-ttu-id="22091-487">請勿在 `Startup.ConfigureServices` 中使用 <xref:Microsoft.Extensions.Options.IOptions%601> 或 <xref:Microsoft.Extensions.Options.IOptionsMonitor%601>。</span><span class="sxs-lookup"><span data-stu-id="22091-487">Don't use <xref:Microsoft.Extensions.Options.IOptions%601> or <xref:Microsoft.Extensions.Options.IOptionsMonitor%601> in `Startup.ConfigureServices`.</span></span> <span data-ttu-id="22091-488">可能會因為服務註冊的順序而有不一致的選項狀態存在。</span><span class="sxs-lookup"><span data-stu-id="22091-488">An inconsistent options state may exist due to the ordering of service registrations.</span></span>
 
 ::: moniker-end
 
-## <a name="additional-resources"></a><span data-ttu-id="2f003-539">其他資源</span><span class="sxs-lookup"><span data-stu-id="2f003-539">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="22091-489">其他資源</span><span class="sxs-lookup"><span data-stu-id="22091-489">Additional resources</span></span>
 
 * <xref:fundamentals/configuration/index>

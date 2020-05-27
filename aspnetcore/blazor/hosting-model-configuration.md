@@ -1,30 +1,30 @@
 ---
-<span data-ttu-id="912a7-101">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-101">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-102">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-102">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-103">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-103">'Blazor'</span></span>
-- <span data-ttu-id="912a7-104">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-104">'Identity'</span></span>
-- <span data-ttu-id="912a7-105">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-105">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-106">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-106">'Razor'</span></span>
-- <span data-ttu-id="912a7-107">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-107">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-101">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-101">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-102">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-102">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-103">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-103">'Blazor'</span></span>
+- <span data-ttu-id="f0807-104">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-104">'Identity'</span></span>
+- <span data-ttu-id="f0807-105">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-105">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-106">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-106">'Razor'</span></span>
+- <span data-ttu-id="f0807-107">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-107">'SignalR' uid:</span></span> 
 
 ---
-# <a name="aspnet-core-blazor-hosting-model-configuration"></a><span data-ttu-id="912a7-108">ASP.NET Core Blazor 裝載模型設定</span><span class="sxs-lookup"><span data-stu-id="912a7-108">ASP.NET Core Blazor hosting model configuration</span></span>
+# <a name="aspnet-core-blazor-hosting-model-configuration"></a><span data-ttu-id="f0807-108">ASP.NET Core Blazor 裝載模型設定</span><span class="sxs-lookup"><span data-stu-id="f0807-108">ASP.NET Core Blazor hosting model configuration</span></span>
 
-<span data-ttu-id="912a7-109">作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="912a7-109">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="f0807-109">作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="f0807-109">By [Daniel Roth](https://github.com/danroth27) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="912a7-110">本文涵蓋主控模型設定。</span><span class="sxs-lookup"><span data-stu-id="912a7-110">This article covers hosting model configuration.</span></span>
+<span data-ttu-id="f0807-110">本文涵蓋主控模型設定。</span><span class="sxs-lookup"><span data-stu-id="f0807-110">This article covers hosting model configuration.</span></span>
 
-## <a name="blazor-webassembly"></a>Blazor<span data-ttu-id="912a7-111">WebAssembly</span><span class="sxs-lookup"><span data-stu-id="912a7-111"> WebAssembly</span></span>
+## <a name="blazor-webassembly"></a>Blazor<span data-ttu-id="f0807-111">WebAssembly</span><span class="sxs-lookup"><span data-stu-id="f0807-111"> WebAssembly</span></span>
 
-### <a name="environment"></a><span data-ttu-id="912a7-112">環境</span><span class="sxs-lookup"><span data-stu-id="912a7-112">Environment</span></span>
+### <a name="environment"></a><span data-ttu-id="f0807-112">環境</span><span class="sxs-lookup"><span data-stu-id="f0807-112">Environment</span></span>
 
-<span data-ttu-id="912a7-113">在本機執行應用程式時，環境會預設為開發。</span><span class="sxs-lookup"><span data-stu-id="912a7-113">When running an app locally, the environment defaults to Development.</span></span> <span data-ttu-id="912a7-114">當應用程式發佈時，環境會預設為 [生產]。</span><span class="sxs-lookup"><span data-stu-id="912a7-114">When the app is published, the environment defaults to Production.</span></span>
+<span data-ttu-id="f0807-113">在本機執行應用程式時，環境會預設為開發。</span><span class="sxs-lookup"><span data-stu-id="f0807-113">When running an app locally, the environment defaults to Development.</span></span> <span data-ttu-id="f0807-114">當應用程式發佈時，環境會預設為 [生產]。</span><span class="sxs-lookup"><span data-stu-id="f0807-114">When the app is published, the environment defaults to Production.</span></span>
 
-<span data-ttu-id="912a7-115">裝載的 Blazor WebAssembly 應用程式會透過中介軟體來從伺服器挑選環境，藉由新增標頭來將環境傳達給瀏覽器 `blazor-environment` 。</span><span class="sxs-lookup"><span data-stu-id="912a7-115">A hosted Blazor WebAssembly app picks up the environment from the server via a middleware that communicates the environment to the browser by adding the `blazor-environment` header.</span></span> <span data-ttu-id="912a7-116">標頭的值為環境。</span><span class="sxs-lookup"><span data-stu-id="912a7-116">The value of the header is the environment.</span></span> <span data-ttu-id="912a7-117">裝載的 Blazor 應用程式和伺服器應用程式會共用相同的環境。</span><span class="sxs-lookup"><span data-stu-id="912a7-117">The hosted Blazor app and the server app share the same environment.</span></span> <span data-ttu-id="912a7-118">如需詳細資訊，包括如何設定環境，請參閱 <xref:fundamentals/environments> 。</span><span class="sxs-lookup"><span data-stu-id="912a7-118">For more information, including how to configure the environment, see <xref:fundamentals/environments>.</span></span>
+<span data-ttu-id="f0807-115">裝載的 Blazor WebAssembly 應用程式會透過中介軟體來從伺服器挑選環境，藉由新增標頭來將環境傳達給瀏覽器 `blazor-environment` 。</span><span class="sxs-lookup"><span data-stu-id="f0807-115">A hosted Blazor WebAssembly app picks up the environment from the server via a middleware that communicates the environment to the browser by adding the `blazor-environment` header.</span></span> <span data-ttu-id="f0807-116">標頭的值為環境。</span><span class="sxs-lookup"><span data-stu-id="f0807-116">The value of the header is the environment.</span></span> <span data-ttu-id="f0807-117">裝載的 Blazor 應用程式和伺服器應用程式會共用相同的環境。</span><span class="sxs-lookup"><span data-stu-id="f0807-117">The hosted Blazor app and the server app share the same environment.</span></span> <span data-ttu-id="f0807-118">如需詳細資訊，包括如何設定環境，請參閱 <xref:fundamentals/environments> 。</span><span class="sxs-lookup"><span data-stu-id="f0807-118">For more information, including how to configure the environment, see <xref:fundamentals/environments>.</span></span>
 
-<span data-ttu-id="912a7-119">針對在本機執行的獨立應用程式，開發伺服器會新增 `blazor-environment` 標頭以指定開發環境。</span><span class="sxs-lookup"><span data-stu-id="912a7-119">For a standalone app running locally, the development server adds the `blazor-environment` header to specify the Development environment.</span></span> <span data-ttu-id="912a7-120">若要指定其他裝載環境的環境，請新增 `blazor-environment` 標頭。</span><span class="sxs-lookup"><span data-stu-id="912a7-120">To specify the environment for other hosting environments, add the `blazor-environment` header.</span></span>
+<span data-ttu-id="f0807-119">針對在本機執行的獨立應用程式，開發伺服器會新增 `blazor-environment` 標頭以指定開發環境。</span><span class="sxs-lookup"><span data-stu-id="f0807-119">For a standalone app running locally, the development server adds the `blazor-environment` header to specify the Development environment.</span></span> <span data-ttu-id="f0807-120">若要指定其他裝載環境的環境，請新增 `blazor-environment` 標頭。</span><span class="sxs-lookup"><span data-stu-id="f0807-120">To specify the environment for other hosting environments, add the `blazor-environment` header.</span></span>
 
-<span data-ttu-id="912a7-121">在 IIS 的下列範例中，將自訂標頭加入至*已發佈的 web.config 檔案*。</span><span class="sxs-lookup"><span data-stu-id="912a7-121">In the following example for IIS, add the custom header to the published *web.config* file.</span></span> <span data-ttu-id="912a7-122">Web.config*檔案*位於*bin/RELEASE/{TARGET FRAMEWORK}/publish*資料夾中：</span><span class="sxs-lookup"><span data-stu-id="912a7-122">The *web.config* file is located in the *bin/Release/{TARGET FRAMEWORK}/publish* folder:</span></span>
+<span data-ttu-id="f0807-121">在 IIS 的下列範例中，將自訂標頭加入至*已發佈的 web.config 檔案*。</span><span class="sxs-lookup"><span data-stu-id="f0807-121">In the following example for IIS, add the custom header to the published *web.config* file.</span></span> <span data-ttu-id="f0807-122">Web.config*檔案*位於*bin/RELEASE/{TARGET FRAMEWORK}/publish*資料夾中：</span><span class="sxs-lookup"><span data-stu-id="f0807-122">The *web.config* file is located in the *bin/Release/{TARGET FRAMEWORK}/publish* folder:</span></span>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -43,9 +43,9 @@
 ```
 
 > [!NOTE]
-> <span data-ttu-id="912a7-123">若要使用 IIS 的自訂*web.config*檔案，而該檔案不會在應用程式發行至*發行*資料夾時遭到覆寫，請參閱 <xref:host-and-deploy/blazor/webassembly#use-a-custom-webconfig> 。</span><span class="sxs-lookup"><span data-stu-id="912a7-123">To use a custom *web.config* file for IIS that isn't overwritten when the app is published to the *publish* folder, see <xref:host-and-deploy/blazor/webassembly#use-a-custom-webconfig>.</span></span>
+> <span data-ttu-id="f0807-123">若要使用 IIS 的自訂*web.config*檔案，而該檔案不會在應用程式發行至*發行*資料夾時遭到覆寫，請參閱 <xref:host-and-deploy/blazor/webassembly#use-a-custom-webconfig> 。</span><span class="sxs-lookup"><span data-stu-id="f0807-123">To use a custom *web.config* file for IIS that isn't overwritten when the app is published to the *publish* folder, see <xref:host-and-deploy/blazor/webassembly#use-a-custom-webconfig>.</span></span>
 
-<span data-ttu-id="912a7-124">藉由插入和讀取屬性，在元件中取得應用程式的環境 `IWebAssemblyHostEnvironment` `Environment` ：</span><span class="sxs-lookup"><span data-stu-id="912a7-124">Obtain the app's environment in a component by injecting `IWebAssemblyHostEnvironment` and reading the `Environment` property:</span></span>
+<span data-ttu-id="f0807-124">藉由插入和讀取屬性，在元件中取得應用程式的環境 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment> ：</span><span class="sxs-lookup"><span data-stu-id="f0807-124">Obtain the app's environment in a component by injecting <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> and reading the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment> property:</span></span>
 
 ```razor
 @page "/"
@@ -57,7 +57,7 @@
 <p>Environment: @HostEnvironment.Environment</p>
 ```
 
-<span data-ttu-id="912a7-125">在啟動期間， `WebAssemblyHostBuilder` `IWebAssemblyHostEnvironment` 會透過屬性公開 `HostEnvironment` ，讓開發人員在其程式碼中具有環境特定邏輯：</span><span class="sxs-lookup"><span data-stu-id="912a7-125">During startup, the `WebAssemblyHostBuilder` exposes the `IWebAssemblyHostEnvironment` through the `HostEnvironment` property, which enables developers to have environment-specific logic in their code:</span></span>
+<span data-ttu-id="f0807-125">在啟動期間， <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder> <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> 會透過屬性公開 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.HostEnvironment> ，讓開發人員在其程式碼中具有環境特定邏輯：</span><span class="sxs-lookup"><span data-stu-id="f0807-125">During startup, the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder> exposes the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> through the <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.WebAssemblyHostBuilder.HostEnvironment> property, which enables developers to have environment-specific logic in their code:</span></span>
 
 ```csharp
 if (builder.HostEnvironment.Environment == "Custom")
@@ -66,12 +66,12 @@ if (builder.HostEnvironment.Environment == "Custom")
 };
 ```
 
-<span data-ttu-id="912a7-126">下列便利的擴充方法可讓您檢查目前的環境，以進行開發、生產、預備和自訂環境名稱：</span><span class="sxs-lookup"><span data-stu-id="912a7-126">The following convenience extension methods permit checking the current environment for Development, Production, Staging, and custom environment names:</span></span>
+<span data-ttu-id="f0807-126">下列便利的擴充方法可讓您檢查目前的環境，以進行開發、生產、預備和自訂環境名稱：</span><span class="sxs-lookup"><span data-stu-id="f0807-126">The following convenience extension methods permit checking the current environment for Development, Production, Staging, and custom environment names:</span></span>
 
 * `IsDevelopment()`
 * `IsProduction()`
 * `IsStaging()`
-* <span data-ttu-id="912a7-127">' IsEnvironment （"{環境名稱}"）</span><span class="sxs-lookup"><span data-stu-id="912a7-127">\`IsEnvironment("{ENVIRONMENT NAME}")</span></span>
+* `IsEnvironment("{ENVIRONMENT NAME}")`
 
 ```csharp
 if (builder.HostEnvironment.IsStaging())
@@ -85,25 +85,25 @@ if (builder.HostEnvironment.IsEnvironment("Custom"))
 };
 ```
 
-<span data-ttu-id="912a7-128">`IWebAssemblyHostEnvironment.BaseAddress`當服務無法使用時，可以在啟動期間使用此屬性 `NavigationManager` 。</span><span class="sxs-lookup"><span data-stu-id="912a7-128">The `IWebAssemblyHostEnvironment.BaseAddress` property can be used during startup when the `NavigationManager` service isn't available.</span></span>
+<span data-ttu-id="f0807-127"><xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType>當服務無法使用時，可以在啟動期間使用此屬性 <xref:Microsoft.AspNetCore.Components.NavigationManager> 。</span><span class="sxs-lookup"><span data-stu-id="f0807-127">The <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> property can be used during startup when the <xref:Microsoft.AspNetCore.Components.NavigationManager> service isn't available.</span></span>
 
-### <a name="configuration"></a><span data-ttu-id="912a7-129">組態</span><span class="sxs-lookup"><span data-stu-id="912a7-129">Configuration</span></span>
+### <a name="configuration"></a><span data-ttu-id="f0807-128">組態</span><span class="sxs-lookup"><span data-stu-id="f0807-128">Configuration</span></span>
 
-Blazor<span data-ttu-id="912a7-130">WebAssembly 會從載入設定：</span><span class="sxs-lookup"><span data-stu-id="912a7-130"> WebAssembly loads configuration from:</span></span>
+Blazor<span data-ttu-id="f0807-129">WebAssembly 會從載入設定：</span><span class="sxs-lookup"><span data-stu-id="f0807-129"> WebAssembly loads configuration from:</span></span>
 
-* <span data-ttu-id="912a7-131">應用程式佈建檔案（預設為）：</span><span class="sxs-lookup"><span data-stu-id="912a7-131">App settings files by default:</span></span>
-  * <span data-ttu-id="912a7-132">*wwwroot/appsettings. json*</span><span class="sxs-lookup"><span data-stu-id="912a7-132">*wwwroot/appsettings.json*</span></span>
-  * <span data-ttu-id="912a7-133">*wwwroot/appsettings。{環境}. json*</span><span class="sxs-lookup"><span data-stu-id="912a7-133">*wwwroot/appsettings.{ENVIRONMENT}.json*</span></span>
-* <span data-ttu-id="912a7-134">應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="912a7-134">Other [configuration providers](xref:fundamentals/configuration/index) registered by the app.</span></span> <span data-ttu-id="912a7-135">並非所有提供者都適用于 Blazor WebAssembly apps。</span><span class="sxs-lookup"><span data-stu-id="912a7-135">Not all providers are appropriate for Blazor WebAssembly apps.</span></span> <span data-ttu-id="912a7-136">澄清 Blazor [ Blazor WASM （dotnet/AspNetCore #18134）的設定提供者](https://github.com/dotnet/AspNetCore.Docs/issues/18134)，即可追蹤支援 WebAssembly 的提供者。</span><span class="sxs-lookup"><span data-stu-id="912a7-136">Clarification on which providers are supported for Blazor WebAssembly is tracked by [Clarify configuration providers for Blazor WASM (dotnet/AspNetCore.Docs #18134)](https://github.com/dotnet/AspNetCore.Docs/issues/18134).</span></span>
+* <span data-ttu-id="f0807-130">應用程式佈建檔案（預設為）：</span><span class="sxs-lookup"><span data-stu-id="f0807-130">App settings files by default:</span></span>
+  * <span data-ttu-id="f0807-131">*wwwroot/appsettings. json*</span><span class="sxs-lookup"><span data-stu-id="f0807-131">*wwwroot/appsettings.json*</span></span>
+  * <span data-ttu-id="f0807-132">*wwwroot/appsettings。{環境}. json*</span><span class="sxs-lookup"><span data-stu-id="f0807-132">*wwwroot/appsettings.{ENVIRONMENT}.json*</span></span>
+* <span data-ttu-id="f0807-133">應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。</span><span class="sxs-lookup"><span data-stu-id="f0807-133">Other [configuration providers](xref:fundamentals/configuration/index) registered by the app.</span></span> <span data-ttu-id="f0807-134">並非所有提供者都適用于 Blazor WebAssembly apps。</span><span class="sxs-lookup"><span data-stu-id="f0807-134">Not all providers are appropriate for Blazor WebAssembly apps.</span></span> <span data-ttu-id="f0807-135">澄清 Blazor [ Blazor WASM （dotnet/AspNetCore #18134）的設定提供者](https://github.com/dotnet/AspNetCore.Docs/issues/18134)，即可追蹤支援 WebAssembly 的提供者。</span><span class="sxs-lookup"><span data-stu-id="f0807-135">Clarification on which providers are supported for Blazor WebAssembly is tracked by [Clarify configuration providers for Blazor WASM (dotnet/AspNetCore.Docs #18134)](https://github.com/dotnet/AspNetCore.Docs/issues/18134).</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="912a7-137">Blazor使用者可以看到 WebAssembly 應用程式中的設定。</span><span class="sxs-lookup"><span data-stu-id="912a7-137">Configuration in a Blazor WebAssembly app is visible to users.</span></span> <span data-ttu-id="912a7-138">**請勿在設定中儲存應用程式秘密或認證。**</span><span class="sxs-lookup"><span data-stu-id="912a7-138">**Don't store app secrets or credentials in configuration.**</span></span>
+> <span data-ttu-id="f0807-136">Blazor使用者可以看到 WebAssembly 應用程式中的設定。</span><span class="sxs-lookup"><span data-stu-id="f0807-136">Configuration in a Blazor WebAssembly app is visible to users.</span></span> <span data-ttu-id="f0807-137">**請勿在設定中儲存應用程式秘密或認證。**</span><span class="sxs-lookup"><span data-stu-id="f0807-137">**Don't store app secrets or credentials in configuration.**</span></span>
 
-<span data-ttu-id="912a7-139">如需設定提供者的詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。</span><span class="sxs-lookup"><span data-stu-id="912a7-139">For more information on configuration providers, see <xref:fundamentals/configuration/index>.</span></span>
+<span data-ttu-id="f0807-138">如需設定提供者的詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。</span><span class="sxs-lookup"><span data-stu-id="f0807-138">For more information on configuration providers, see <xref:fundamentals/configuration/index>.</span></span>
 
-#### <a name="app-settings-configuration"></a><span data-ttu-id="912a7-140">應用程式設定</span><span class="sxs-lookup"><span data-stu-id="912a7-140">App settings configuration</span></span>
+#### <a name="app-settings-configuration"></a><span data-ttu-id="f0807-139">應用程式設定</span><span class="sxs-lookup"><span data-stu-id="f0807-139">App settings configuration</span></span>
 
-<span data-ttu-id="912a7-141">*wwwroot/appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="912a7-141">*wwwroot/appsettings.json*:</span></span>
+<span data-ttu-id="f0807-140">*wwwroot/appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="f0807-140">*wwwroot/appsettings.json*:</span></span>
 
 ```json
 {
@@ -111,7 +111,7 @@ Blazor<span data-ttu-id="912a7-130">WebAssembly 會從載入設定：</span><spa
 }
 ```
 
-<span data-ttu-id="912a7-142">將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 實例插入元件以存取設定資料：</span><span class="sxs-lookup"><span data-stu-id="912a7-142">Inject an <xref:Microsoft.Extensions.Configuration.IConfiguration> instance into a component to access the configuration data:</span></span>
+<span data-ttu-id="f0807-141">將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 實例插入元件以存取設定資料：</span><span class="sxs-lookup"><span data-stu-id="f0807-141">Inject an <xref:Microsoft.Extensions.Configuration.IConfiguration> instance into a component to access the configuration data:</span></span>
 
 ```razor
 @page "/"
@@ -123,11 +123,11 @@ Blazor<span data-ttu-id="912a7-130">WebAssembly 會從載入設定：</span><spa
 <p>Message: @Configuration["message"]</p>
 ```
 
-#### <a name="provider-configuration"></a><span data-ttu-id="912a7-143">提供者設定</span><span class="sxs-lookup"><span data-stu-id="912a7-143">Provider configuration</span></span>
+#### <a name="provider-configuration"></a><span data-ttu-id="f0807-142">提供者設定</span><span class="sxs-lookup"><span data-stu-id="f0807-142">Provider configuration</span></span>
 
-<span data-ttu-id="912a7-144">下列範例會使用 <xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationSource> 來提供額外的設定：</span><span class="sxs-lookup"><span data-stu-id="912a7-144">The following example uses a <xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationSource> to supply additional configuration:</span></span>
+<span data-ttu-id="f0807-143">下列範例會使用 <xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationSource> 來提供額外的設定：</span><span class="sxs-lookup"><span data-stu-id="f0807-143">The following example uses a <xref:Microsoft.Extensions.Configuration.Memory.MemoryConfigurationSource> to supply additional configuration:</span></span>
 
-<span data-ttu-id="912a7-145">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="912a7-145">`Program.Main`:</span></span>
+<span data-ttu-id="f0807-144">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="f0807-144">`Program.Main`:</span></span>
 
 ```csharp
 using Microsoft.Extensions.Configuration.Memory;
@@ -151,7 +151,7 @@ var memoryConfig = new MemoryConfigurationSource { InitialData = vehicleData };
 builder.Configuration.Add(memoryConfig);
 ```
 
-<span data-ttu-id="912a7-146">將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 實例插入元件以存取設定資料：</span><span class="sxs-lookup"><span data-stu-id="912a7-146">Inject an <xref:Microsoft.Extensions.Configuration.IConfiguration> instance into a component to access the configuration data:</span></span>
+<span data-ttu-id="f0807-145">將 <xref:Microsoft.Extensions.Configuration.IConfiguration> 實例插入元件以存取設定資料：</span><span class="sxs-lookup"><span data-stu-id="f0807-145">Inject an <xref:Microsoft.Extensions.Configuration.IConfiguration> instance into a component to access the configuration data:</span></span>
 
 ```razor
 @page "/"
@@ -176,9 +176,9 @@ builder.Configuration.Add(memoryConfig);
 }
 ```
 
-<span data-ttu-id="912a7-147">若要將*wwwroot*資料夾中的其他設定檔讀取到設定中，請使用 `HttpClient` 來取得檔案的內容。</span><span class="sxs-lookup"><span data-stu-id="912a7-147">To read other configuration files from the *wwwroot* folder into configuration, use an `HttpClient` to obtain the file's content.</span></span> <span data-ttu-id="912a7-148">使用此方法時，現有的 `HttpClient` 服務註冊可以使用已建立的本機用戶端來讀取檔案，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="912a7-148">When using this approach, the existing `HttpClient` service registration can use the local client created to read the file, as the following example shows:</span></span>
+<span data-ttu-id="f0807-146">若要將*wwwroot*資料夾中的其他設定檔讀取到設定中，請使用 <xref:System.Net.Http.HttpClient> 來取得檔案的內容。</span><span class="sxs-lookup"><span data-stu-id="f0807-146">To read other configuration files from the *wwwroot* folder into configuration, use an <xref:System.Net.Http.HttpClient> to obtain the file's content.</span></span> <span data-ttu-id="f0807-147">使用此方法時，現有的 <xref:System.Net.Http.HttpClient> 服務註冊可以使用已建立的本機用戶端來讀取檔案，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="f0807-147">When using this approach, the existing <xref:System.Net.Http.HttpClient> service registration can use the local client created to read the file, as the following example shows:</span></span>
 
-<span data-ttu-id="912a7-149">*wwwroot/cars*：</span><span class="sxs-lookup"><span data-stu-id="912a7-149">*wwwroot/cars.json*:</span></span>
+<span data-ttu-id="f0807-148">*wwwroot/cars*：</span><span class="sxs-lookup"><span data-stu-id="f0807-148">*wwwroot/cars.json*:</span></span>
 
 ```json
 {
@@ -186,7 +186,7 @@ builder.Configuration.Add(memoryConfig);
 }
 ```
 
-<span data-ttu-id="912a7-150">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="912a7-150">`Program.Main`:</span></span>
+<span data-ttu-id="f0807-149">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="f0807-149">`Program.Main`:</span></span>
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -206,9 +206,9 @@ using var stream = await response.Content.ReadAsStreamAsync();
 builder.Configuration.AddJsonStream(stream);
 ```
 
-#### <a name="authentication-configuration"></a><span data-ttu-id="912a7-151">驗證設定</span><span class="sxs-lookup"><span data-stu-id="912a7-151">Authentication configuration</span></span>
+#### <a name="authentication-configuration"></a><span data-ttu-id="f0807-150">驗證設定</span><span class="sxs-lookup"><span data-stu-id="f0807-150">Authentication configuration</span></span>
 
-<span data-ttu-id="912a7-152">*wwwroot/appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="912a7-152">*wwwroot/appsettings.json*:</span></span>
+<span data-ttu-id="f0807-151">*wwwroot/appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="f0807-151">*wwwroot/appsettings.json*:</span></span>
 
 ```json
 {
@@ -219,16 +219,16 @@ builder.Configuration.AddJsonStream(stream);
 }
 ```
 
-<span data-ttu-id="912a7-153">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="912a7-153">`Program.Main`:</span></span>
+<span data-ttu-id="f0807-152">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="f0807-152">`Program.Main`:</span></span>
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
     builder.Configuration.Bind("AzureAD", options);
 ```
 
-#### <a name="logging-configuration"></a><span data-ttu-id="912a7-154">記錄設定</span><span class="sxs-lookup"><span data-stu-id="912a7-154">Logging configuration</span></span>
+#### <a name="logging-configuration"></a><span data-ttu-id="f0807-153">記錄設定</span><span class="sxs-lookup"><span data-stu-id="f0807-153">Logging configuration</span></span>
 
-<span data-ttu-id="912a7-155">*wwwroot/appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="912a7-155">*wwwroot/appsettings.json*:</span></span>
+<span data-ttu-id="f0807-154">*wwwroot/appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="f0807-154">*wwwroot/appsettings.json*:</span></span>
 
 ```json
 {
@@ -242,41 +242,41 @@ builder.Services.AddOidcAuthentication(options =>
 }
 ```
 
-<span data-ttu-id="912a7-156">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="912a7-156">`Program.Main`:</span></span>
+<span data-ttu-id="f0807-155">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="f0807-155">`Program.Main`:</span></span>
 
 ```csharp
 builder.Logging.AddConfiguration(
     builder.Configuration.GetSection("Logging"));
 ```
 
-#### <a name="host-builder-configuration"></a><span data-ttu-id="912a7-157">主機產生器設定</span><span class="sxs-lookup"><span data-stu-id="912a7-157">Host builder configuration</span></span>
+#### <a name="host-builder-configuration"></a><span data-ttu-id="f0807-156">主機產生器設定</span><span class="sxs-lookup"><span data-stu-id="f0807-156">Host builder configuration</span></span>
 
-<span data-ttu-id="912a7-158">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="912a7-158">`Program.Main`:</span></span>
+<span data-ttu-id="f0807-157">`Program.Main`:</span><span class="sxs-lookup"><span data-stu-id="f0807-157">`Program.Main`:</span></span>
 
 ```csharp
 var hostname = builder.Configuration["HostName"];
 ```
 
-#### <a name="cached-configuration"></a><span data-ttu-id="912a7-159">快取設定</span><span class="sxs-lookup"><span data-stu-id="912a7-159">Cached configuration</span></span>
+#### <a name="cached-configuration"></a><span data-ttu-id="f0807-158">快取設定</span><span class="sxs-lookup"><span data-stu-id="f0807-158">Cached configuration</span></span>
 
-<span data-ttu-id="912a7-160">系統會快取設定檔以供離線使用。</span><span class="sxs-lookup"><span data-stu-id="912a7-160">Configuration files are cached for offline use.</span></span> <span data-ttu-id="912a7-161">使用[漸進式 Web 應用程式（pwa）](xref:blazor/progressive-web-app)，您只能在建立新的部署時更新設定檔。</span><span class="sxs-lookup"><span data-stu-id="912a7-161">With [Progressive Web Applications (PWAs)](xref:blazor/progressive-web-app), you can only update configuration files when creating a new deployment.</span></span> <span data-ttu-id="912a7-162">在部署之間編輯設定檔沒有任何作用，因為：</span><span class="sxs-lookup"><span data-stu-id="912a7-162">Editing configuration files between deployments has no effect because:</span></span>
+<span data-ttu-id="f0807-159">系統會快取設定檔以供離線使用。</span><span class="sxs-lookup"><span data-stu-id="f0807-159">Configuration files are cached for offline use.</span></span> <span data-ttu-id="f0807-160">使用[漸進式 Web 應用程式（pwa）](xref:blazor/progressive-web-app)，您只能在建立新的部署時更新設定檔。</span><span class="sxs-lookup"><span data-stu-id="f0807-160">With [Progressive Web Applications (PWAs)](xref:blazor/progressive-web-app), you can only update configuration files when creating a new deployment.</span></span> <span data-ttu-id="f0807-161">在部署之間編輯設定檔沒有任何作用，因為：</span><span class="sxs-lookup"><span data-stu-id="f0807-161">Editing configuration files between deployments has no effect because:</span></span>
 
-* <span data-ttu-id="912a7-163">使用者有檔案的快取版本，這些檔案會繼續使用。</span><span class="sxs-lookup"><span data-stu-id="912a7-163">Users have cached versions of the files that they continue to use.</span></span>
-* <span data-ttu-id="912a7-164">PWA 的*service-worker*和*service-worker-assets*檔案必須在編譯時重建，在使用者下一次線上流覽應用程式時，該應用程式會發出通知。</span><span class="sxs-lookup"><span data-stu-id="912a7-164">The PWA's *service-worker.js* and *service-worker-assets.js* files must be rebuilt on compilation, which signal to the app on the user's next online visit that the app has been redeployed.</span></span>
+* <span data-ttu-id="f0807-162">使用者有檔案的快取版本，這些檔案會繼續使用。</span><span class="sxs-lookup"><span data-stu-id="f0807-162">Users have cached versions of the files that they continue to use.</span></span>
+* <span data-ttu-id="f0807-163">PWA 的*service-worker*和*service-worker-assets*檔案必須在編譯時重建，在使用者下一次線上流覽應用程式時，該應用程式會發出通知。</span><span class="sxs-lookup"><span data-stu-id="f0807-163">The PWA's *service-worker.js* and *service-worker-assets.js* files must be rebuilt on compilation, which signal to the app on the user's next online visit that the app has been redeployed.</span></span>
 
-<span data-ttu-id="912a7-165">如需 Pwa 如何處理背景更新的詳細資訊，請參閱 <xref:blazor/progressive-web-app#background-updates> 。</span><span class="sxs-lookup"><span data-stu-id="912a7-165">For more information on how background updates are handled by PWAs, see <xref:blazor/progressive-web-app#background-updates>.</span></span>
+<span data-ttu-id="f0807-164">如需 Pwa 如何處理背景更新的詳細資訊，請參閱 <xref:blazor/progressive-web-app#background-updates> 。</span><span class="sxs-lookup"><span data-stu-id="f0807-164">For more information on how background updates are handled by PWAs, see <xref:blazor/progressive-web-app#background-updates>.</span></span>
 
-### <a name="logging"></a><span data-ttu-id="912a7-166">記錄</span><span class="sxs-lookup"><span data-stu-id="912a7-166">Logging</span></span>
+### <a name="logging"></a><span data-ttu-id="f0807-165">記錄</span><span class="sxs-lookup"><span data-stu-id="f0807-165">Logging</span></span>
 
-<span data-ttu-id="912a7-167">如需 Blazor WebAssembly 記錄支援的詳細資訊，請參閱 <xref:fundamentals/logging/index#create-logs-in-blazor> 。</span><span class="sxs-lookup"><span data-stu-id="912a7-167">For information on Blazor WebAssembly logging support, see <xref:fundamentals/logging/index#create-logs-in-blazor>.</span></span>
+<span data-ttu-id="f0807-166">如需 Blazor WebAssembly 記錄支援的詳細資訊，請參閱 <xref:fundamentals/logging/index#create-logs-in-blazor> 。</span><span class="sxs-lookup"><span data-stu-id="f0807-166">For information on Blazor WebAssembly logging support, see <xref:fundamentals/logging/index#create-logs-in-blazor>.</span></span>
 
-## <a name="blazor-server"></a>Blazor<span data-ttu-id="912a7-168">伺服器</span><span class="sxs-lookup"><span data-stu-id="912a7-168"> Server</span></span>
+## <a name="blazor-server"></a>Blazor<span data-ttu-id="f0807-167">伺服器</span><span class="sxs-lookup"><span data-stu-id="f0807-167"> Server</span></span>
 
-### <a name="reflect-the-connection-state-in-the-ui"></a><span data-ttu-id="912a7-169">反映 UI 中的連接狀態</span><span class="sxs-lookup"><span data-stu-id="912a7-169">Reflect the connection state in the UI</span></span>
+### <a name="reflect-the-connection-state-in-the-ui"></a><span data-ttu-id="f0807-168">反映 UI 中的連接狀態</span><span class="sxs-lookup"><span data-stu-id="f0807-168">Reflect the connection state in the UI</span></span>
 
-<span data-ttu-id="912a7-170">當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。</span><span class="sxs-lookup"><span data-stu-id="912a7-170">When the client detects that the connection has been lost, a default UI is displayed to the user while the client attempts to reconnect.</span></span> <span data-ttu-id="912a7-171">如果重新連線失敗，則會提供使用者重試的選項。</span><span class="sxs-lookup"><span data-stu-id="912a7-171">If reconnection fails, the user is provided the option to retry.</span></span>
+<span data-ttu-id="f0807-169">當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。</span><span class="sxs-lookup"><span data-stu-id="f0807-169">When the client detects that the connection has been lost, a default UI is displayed to the user while the client attempts to reconnect.</span></span> <span data-ttu-id="f0807-170">如果重新連線失敗，則會提供使用者重試的選項。</span><span class="sxs-lookup"><span data-stu-id="f0807-170">If reconnection fails, the user is provided the option to retry.</span></span>
 
-<span data-ttu-id="912a7-172">若要自訂 UI，請 `id` `components-reconnect-modal` 在 [ `<body>` *_Host. cshtml* ] 頁面的中，定義具有之的元素 Razor ：</span><span class="sxs-lookup"><span data-stu-id="912a7-172">To customize the UI, define an element with an `id` of `components-reconnect-modal` in the `<body>` of the *_Host.cshtml* Razor page:</span></span>
+<span data-ttu-id="f0807-171">若要自訂 UI，請 `id` `components-reconnect-modal` 在 [ `<body>` *_Host. cshtml* ] 頁面的中，定義具有之的元素 Razor ：</span><span class="sxs-lookup"><span data-stu-id="f0807-171">To customize the UI, define an element with an `id` of `components-reconnect-modal` in the `<body>` of the *_Host.cshtml* Razor page:</span></span>
 
 ```cshtml
 <div id="components-reconnect-modal">
@@ -284,184 +284,184 @@ var hostname = builder.Configuration["HostName"];
 </div>
 ```
 
-<span data-ttu-id="912a7-173">下表描述套用至元素的 CSS 類別 `components-reconnect-modal` 。</span><span class="sxs-lookup"><span data-stu-id="912a7-173">The following table describes the CSS classes applied to the `components-reconnect-modal` element.</span></span>
+<span data-ttu-id="f0807-172">下表描述套用至元素的 CSS 類別 `components-reconnect-modal` 。</span><span class="sxs-lookup"><span data-stu-id="f0807-172">The following table describes the CSS classes applied to the `components-reconnect-modal` element.</span></span>
 
-| <span data-ttu-id="912a7-174">CSS 類別</span><span class="sxs-lookup"><span data-stu-id="912a7-174">CSS class</span></span>                       | <span data-ttu-id="912a7-175">表示&hellip;</span><span class="sxs-lookup"><span data-stu-id="912a7-175">Indicates&hellip;</span></span> |
+| <span data-ttu-id="f0807-173">CSS 類別</span><span class="sxs-lookup"><span data-stu-id="f0807-173">CSS class</span></span>                       | <span data-ttu-id="f0807-174">表示&hellip;</span><span class="sxs-lookup"><span data-stu-id="f0807-174">Indicates&hellip;</span></span> |
 | ---
-<span data-ttu-id="912a7-176">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-176">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-177">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-177">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-178">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-178">'Blazor'</span></span>
-- <span data-ttu-id="912a7-179">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-179">'Identity'</span></span>
-- <span data-ttu-id="912a7-180">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-180">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-181">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-181">'Razor'</span></span>
-- <span data-ttu-id="912a7-182">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-182">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-175">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-175">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-176">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-176">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-177">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-177">'Blazor'</span></span>
+- <span data-ttu-id="f0807-178">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-178">'Identity'</span></span>
+- <span data-ttu-id="f0807-179">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-179">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-180">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-180">'Razor'</span></span>
+- <span data-ttu-id="f0807-181">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-181">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-183">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-183">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-184">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-184">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-185">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-185">'Blazor'</span></span>
-- <span data-ttu-id="912a7-186">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-186">'Identity'</span></span>
-- <span data-ttu-id="912a7-187">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-187">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-188">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-188">'Razor'</span></span>
-- <span data-ttu-id="912a7-189">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-189">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-182">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-182">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-183">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-183">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-184">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-184">'Blazor'</span></span>
+- <span data-ttu-id="f0807-185">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-185">'Identity'</span></span>
+- <span data-ttu-id="f0807-186">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-186">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-187">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-187">'Razor'</span></span>
+- <span data-ttu-id="f0807-188">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-188">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-190">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-190">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-191">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-191">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-192">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-192">'Blazor'</span></span>
-- <span data-ttu-id="912a7-193">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-193">'Identity'</span></span>
-- <span data-ttu-id="912a7-194">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-194">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-195">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-195">'Razor'</span></span>
-- <span data-ttu-id="912a7-196">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-196">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-189">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-189">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-190">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-190">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-191">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-191">'Blazor'</span></span>
+- <span data-ttu-id="f0807-192">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-192">'Identity'</span></span>
+- <span data-ttu-id="f0807-193">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-193">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-194">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-194">'Razor'</span></span>
+- <span data-ttu-id="f0807-195">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-195">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-197">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-197">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-198">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-198">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-199">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-199">'Blazor'</span></span>
-- <span data-ttu-id="912a7-200">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-200">'Identity'</span></span>
-- <span data-ttu-id="912a7-201">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-201">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-202">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-202">'Razor'</span></span>
-- <span data-ttu-id="912a7-203">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-203">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-196">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-196">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-197">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-197">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-198">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-198">'Blazor'</span></span>
+- <span data-ttu-id="f0807-199">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-199">'Identity'</span></span>
+- <span data-ttu-id="f0807-200">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-200">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-201">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-201">'Razor'</span></span>
+- <span data-ttu-id="f0807-202">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-202">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-204">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-204">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-205">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-205">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-206">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-206">'Blazor'</span></span>
-- <span data-ttu-id="912a7-207">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-207">'Identity'</span></span>
-- <span data-ttu-id="912a7-208">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-208">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-209">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-209">'Razor'</span></span>
-- <span data-ttu-id="912a7-210">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-210">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-203">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-203">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-204">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-204">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-205">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-205">'Blazor'</span></span>
+- <span data-ttu-id="f0807-206">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-206">'Identity'</span></span>
+- <span data-ttu-id="f0807-207">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-207">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-208">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-208">'Razor'</span></span>
+- <span data-ttu-id="f0807-209">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-209">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-211">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-211">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-212">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-212">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-213">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-213">'Blazor'</span></span>
-- <span data-ttu-id="912a7-214">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-214">'Identity'</span></span>
-- <span data-ttu-id="912a7-215">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-215">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-216">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-216">'Razor'</span></span>
-- <span data-ttu-id="912a7-217">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-217">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-210">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-210">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-211">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-211">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-212">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-212">'Blazor'</span></span>
+- <span data-ttu-id="f0807-213">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-213">'Identity'</span></span>
+- <span data-ttu-id="f0807-214">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-214">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-215">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-215">'Razor'</span></span>
+- <span data-ttu-id="f0807-216">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-216">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-218">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-218">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-219">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-219">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-220">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-220">'Blazor'</span></span>
-- <span data-ttu-id="912a7-221">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-221">'Identity'</span></span>
-- <span data-ttu-id="912a7-222">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-222">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-223">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-223">'Razor'</span></span>
-- <span data-ttu-id="912a7-224">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-224">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-217">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-217">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-218">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-218">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-219">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-219">'Blazor'</span></span>
+- <span data-ttu-id="f0807-220">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-220">'Identity'</span></span>
+- <span data-ttu-id="f0807-221">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-221">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-222">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-222">'Razor'</span></span>
+- <span data-ttu-id="f0807-223">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-223">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-225">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-225">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-226">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-226">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-227">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-227">'Blazor'</span></span>
-- <span data-ttu-id="912a7-228">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-228">'Identity'</span></span>
-- <span data-ttu-id="912a7-229">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-229">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-230">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-230">'Razor'</span></span>
-- <span data-ttu-id="912a7-231">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-231">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-224">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-224">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-225">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-225">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-226">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-226">'Blazor'</span></span>
+- <span data-ttu-id="f0807-227">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-227">'Identity'</span></span>
+- <span data-ttu-id="f0807-228">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-228">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-229">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-229">'Razor'</span></span>
+- <span data-ttu-id="f0807-230">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-230">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-232">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-232">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-233">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-233">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-234">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-234">'Blazor'</span></span>
-- <span data-ttu-id="912a7-235">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-235">'Identity'</span></span>
-- <span data-ttu-id="912a7-236">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-236">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-237">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-237">'Razor'</span></span>
-- <span data-ttu-id="912a7-238">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-238">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-231">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-231">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-232">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-232">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-233">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-233">'Blazor'</span></span>
+- <span data-ttu-id="f0807-234">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-234">'Identity'</span></span>
+- <span data-ttu-id="f0807-235">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-235">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-236">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-236">'Razor'</span></span>
+- <span data-ttu-id="f0807-237">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-237">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-239">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-239">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-240">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-240">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-241">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-241">'Blazor'</span></span>
-- <span data-ttu-id="912a7-242">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-242">'Identity'</span></span>
-- <span data-ttu-id="912a7-243">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-243">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-244">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-244">'Razor'</span></span>
-- <span data-ttu-id="912a7-245">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-245">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-238">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-238">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-239">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-239">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-240">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-240">'Blazor'</span></span>
+- <span data-ttu-id="f0807-241">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-241">'Identity'</span></span>
+- <span data-ttu-id="f0807-242">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-242">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-243">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-243">'Razor'</span></span>
+- <span data-ttu-id="f0807-244">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-244">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-246">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-246">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-247">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-247">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-248">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-248">'Blazor'</span></span>
-- <span data-ttu-id="912a7-249">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-249">'Identity'</span></span>
-- <span data-ttu-id="912a7-250">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-250">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-251">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-251">'Razor'</span></span>
-- <span data-ttu-id="912a7-252">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-252">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-245">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-245">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-246">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-246">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-247">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-247">'Blazor'</span></span>
+- <span data-ttu-id="f0807-248">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-248">'Identity'</span></span>
+- <span data-ttu-id="f0807-249">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-249">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-250">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-250">'Razor'</span></span>
+- <span data-ttu-id="f0807-251">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-251">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-253">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-253">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-254">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-254">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-255">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-255">'Blazor'</span></span>
-- <span data-ttu-id="912a7-256">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-256">'Identity'</span></span>
-- <span data-ttu-id="912a7-257">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-257">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-258">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-258">'Razor'</span></span>
-- <span data-ttu-id="912a7-259">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-259">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-252">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-252">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-253">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-253">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-254">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-254">'Blazor'</span></span>
+- <span data-ttu-id="f0807-255">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-255">'Identity'</span></span>
+- <span data-ttu-id="f0807-256">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-256">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-257">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-257">'Razor'</span></span>
+- <span data-ttu-id="f0807-258">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-258">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-260">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-260">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-261">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-261">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-262">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-262">'Blazor'</span></span>
-- <span data-ttu-id="912a7-263">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-263">'Identity'</span></span>
-- <span data-ttu-id="912a7-264">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-264">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-265">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-265">'Razor'</span></span>
-- <span data-ttu-id="912a7-266">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-266">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-259">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-259">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-260">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-260">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-261">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-261">'Blazor'</span></span>
+- <span data-ttu-id="f0807-262">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-262">'Identity'</span></span>
+- <span data-ttu-id="f0807-263">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-263">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-264">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-264">'Razor'</span></span>
+- <span data-ttu-id="f0807-265">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-265">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="912a7-267">---------------- |---標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-267">---------------- | --- title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-268">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-268">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-269">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-269">'Blazor'</span></span>
-- <span data-ttu-id="912a7-270">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-270">'Identity'</span></span>
-- <span data-ttu-id="912a7-271">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-271">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-272">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-272">'Razor'</span></span>
-- <span data-ttu-id="912a7-273">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-273">'SignalR' uid:</span></span> 
-
--
-<span data-ttu-id="912a7-274">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-274">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-275">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-275">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-276">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-276">'Blazor'</span></span>
-- <span data-ttu-id="912a7-277">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-277">'Identity'</span></span>
-- <span data-ttu-id="912a7-278">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-278">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-279">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-279">'Razor'</span></span>
-- <span data-ttu-id="912a7-280">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-280">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-266">---------------- |---標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-266">---------------- | --- title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-267">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-267">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-268">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-268">'Blazor'</span></span>
+- <span data-ttu-id="f0807-269">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-269">'Identity'</span></span>
+- <span data-ttu-id="f0807-270">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-270">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-271">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-271">'Razor'</span></span>
+- <span data-ttu-id="f0807-272">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-272">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-281">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-281">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-282">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-282">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-283">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-283">'Blazor'</span></span>
-- <span data-ttu-id="912a7-284">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-284">'Identity'</span></span>
-- <span data-ttu-id="912a7-285">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-285">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-286">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-286">'Razor'</span></span>
-- <span data-ttu-id="912a7-287">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-287">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-273">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-273">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-274">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-274">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-275">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-275">'Blazor'</span></span>
+- <span data-ttu-id="f0807-276">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-276">'Identity'</span></span>
+- <span data-ttu-id="f0807-277">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-277">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-278">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-278">'Razor'</span></span>
+- <span data-ttu-id="f0807-279">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-279">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-288">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-288">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-289">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-289">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-290">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-290">'Blazor'</span></span>
-- <span data-ttu-id="912a7-291">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-291">'Identity'</span></span>
-- <span data-ttu-id="912a7-292">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-292">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-293">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-293">'Razor'</span></span>
-- <span data-ttu-id="912a7-294">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-294">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-280">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-280">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-281">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-281">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-282">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-282">'Blazor'</span></span>
+- <span data-ttu-id="f0807-283">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-283">'Identity'</span></span>
+- <span data-ttu-id="f0807-284">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-284">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-285">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-285">'Razor'</span></span>
+- <span data-ttu-id="f0807-286">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-286">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-295">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-295">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-296">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-296">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-297">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-297">'Blazor'</span></span>
-- <span data-ttu-id="912a7-298">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-298">'Identity'</span></span>
-- <span data-ttu-id="912a7-299">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-299">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-300">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-300">'Razor'</span></span>
-- <span data-ttu-id="912a7-301">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-301">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-287">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-287">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-288">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-288">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-289">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-289">'Blazor'</span></span>
+- <span data-ttu-id="f0807-290">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-290">'Identity'</span></span>
+- <span data-ttu-id="f0807-291">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-291">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-292">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-292">'Razor'</span></span>
+- <span data-ttu-id="f0807-293">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-293">'SignalR' uid:</span></span> 
 
 -
-<span data-ttu-id="912a7-302">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-302">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-303">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-303">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-304">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-304">'Blazor'</span></span>
-- <span data-ttu-id="912a7-305">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-305">'Identity'</span></span>
-- <span data-ttu-id="912a7-306">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-306">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-307">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-307">'Razor'</span></span>
-- <span data-ttu-id="912a7-308">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-308">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-294">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-294">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-295">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-295">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-296">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-296">'Blazor'</span></span>
+- <span data-ttu-id="f0807-297">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-297">'Identity'</span></span>
+- <span data-ttu-id="f0807-298">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-298">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-299">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-299">'Razor'</span></span>
+- <span data-ttu-id="f0807-300">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-300">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="912a7-309">--------- | |`components-reconnect-show`     |遺失的連接。</span><span class="sxs-lookup"><span data-stu-id="912a7-309">--------- | | `components-reconnect-show`     | A lost connection.</span></span> <span data-ttu-id="912a7-310">用戶端正在嘗試重新連線。</span><span class="sxs-lookup"><span data-stu-id="912a7-310">The client is attempting to reconnect.</span></span> <span data-ttu-id="912a7-311">顯示強制回應。</span><span class="sxs-lookup"><span data-stu-id="912a7-311">Show the modal.</span></span> <span data-ttu-id="912a7-312">| |`components-reconnect-hide`     |系統會將使用中的連接重新建立至伺服器。</span><span class="sxs-lookup"><span data-stu-id="912a7-312">| | `components-reconnect-hide`     | An active connection is re-established to the server.</span></span> <span data-ttu-id="912a7-313">隱藏強制回應。</span><span class="sxs-lookup"><span data-stu-id="912a7-313">Hide the modal.</span></span> <span data-ttu-id="912a7-314">| |`components-reconnect-failed`   |重新連接失敗，可能是因為網路失敗。</span><span class="sxs-lookup"><span data-stu-id="912a7-314">| | `components-reconnect-failed`   | Reconnection failed, probably due to a network failure.</span></span> <span data-ttu-id="912a7-315">若要嘗試重新連接，請呼叫 `window.Blazor.reconnect()` 。</span><span class="sxs-lookup"><span data-stu-id="912a7-315">To attempt reconnection, call `window.Blazor.reconnect()`.</span></span> <span data-ttu-id="912a7-316">| |`components-reconnect-rejected` |已拒絕重新連接。</span><span class="sxs-lookup"><span data-stu-id="912a7-316">| | `components-reconnect-rejected` | Reconnection rejected.</span></span> <span data-ttu-id="912a7-317">已達到伺服器但拒絕連線，而且伺服器上的使用者狀態遺失。</span><span class="sxs-lookup"><span data-stu-id="912a7-317">The server was reached but refused the connection, and the user's state on the server is lost.</span></span> <span data-ttu-id="912a7-318">若要重載應用程式，請呼叫 `location.reload()` 。</span><span class="sxs-lookup"><span data-stu-id="912a7-318">To reload the app, call `location.reload()`.</span></span> <span data-ttu-id="912a7-319">當下列情況發生時，可能會產生此連接狀態：</span><span class="sxs-lookup"><span data-stu-id="912a7-319">This connection state may result when:</span></span><ul><li><span data-ttu-id="912a7-320">伺服器端線路發生損毀。</span><span class="sxs-lookup"><span data-stu-id="912a7-320">A crash in the server-side circuit occurs.</span></span></li><li><span data-ttu-id="912a7-321">用戶端中斷連線的時間夠長，伺服器才會捨棄使用者的狀態。</span><span class="sxs-lookup"><span data-stu-id="912a7-321">The client is disconnected long enough for the server to drop the user's state.</span></span> <span data-ttu-id="912a7-322">系統會處置與使用者互動之元件的實例。</span><span class="sxs-lookup"><span data-stu-id="912a7-322">Instances of the components that the user is interacting with are disposed.</span></span></li><li><span data-ttu-id="912a7-323">伺服器會重新開機，或回收應用程式的背景工作進程。</span><span class="sxs-lookup"><span data-stu-id="912a7-323">The server is restarted, or the app's worker process is recycled.</span></span></li></ul> |
+-
+<span data-ttu-id="f0807-301">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-301">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
+<span data-ttu-id="f0807-302">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="f0807-302">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="f0807-303">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="f0807-303">'Blazor'</span></span>
+- <span data-ttu-id="f0807-304">'Identity'</span><span class="sxs-lookup"><span data-stu-id="f0807-304">'Identity'</span></span>
+- <span data-ttu-id="f0807-305">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="f0807-305">'Let's Encrypt'</span></span>
+- <span data-ttu-id="f0807-306">'Razor'</span><span class="sxs-lookup"><span data-stu-id="f0807-306">'Razor'</span></span>
+- <span data-ttu-id="f0807-307">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="f0807-307">'SignalR' uid:</span></span> 
 
-### <a name="render-mode"></a><span data-ttu-id="912a7-324">轉譯模式</span><span class="sxs-lookup"><span data-stu-id="912a7-324">Render mode</span></span>
+<span data-ttu-id="f0807-308">--------- | |`components-reconnect-show`     |遺失的連接。</span><span class="sxs-lookup"><span data-stu-id="f0807-308">--------- | | `components-reconnect-show`     | A lost connection.</span></span> <span data-ttu-id="f0807-309">用戶端正在嘗試重新連線。</span><span class="sxs-lookup"><span data-stu-id="f0807-309">The client is attempting to reconnect.</span></span> <span data-ttu-id="f0807-310">顯示強制回應。</span><span class="sxs-lookup"><span data-stu-id="f0807-310">Show the modal.</span></span> <span data-ttu-id="f0807-311">| |`components-reconnect-hide`     |系統會將使用中的連接重新建立至伺服器。</span><span class="sxs-lookup"><span data-stu-id="f0807-311">| | `components-reconnect-hide`     | An active connection is re-established to the server.</span></span> <span data-ttu-id="f0807-312">隱藏強制回應。</span><span class="sxs-lookup"><span data-stu-id="f0807-312">Hide the modal.</span></span> <span data-ttu-id="f0807-313">| |`components-reconnect-failed`   |重新連接失敗，可能是因為網路失敗。</span><span class="sxs-lookup"><span data-stu-id="f0807-313">| | `components-reconnect-failed`   | Reconnection failed, probably due to a network failure.</span></span> <span data-ttu-id="f0807-314">若要嘗試重新連接，請呼叫 `window.Blazor.reconnect()` 。</span><span class="sxs-lookup"><span data-stu-id="f0807-314">To attempt reconnection, call `window.Blazor.reconnect()`.</span></span> <span data-ttu-id="f0807-315">| |`components-reconnect-rejected` |已拒絕重新連接。</span><span class="sxs-lookup"><span data-stu-id="f0807-315">| | `components-reconnect-rejected` | Reconnection rejected.</span></span> <span data-ttu-id="f0807-316">已達到伺服器但拒絕連線，而且伺服器上的使用者狀態遺失。</span><span class="sxs-lookup"><span data-stu-id="f0807-316">The server was reached but refused the connection, and the user's state on the server is lost.</span></span> <span data-ttu-id="f0807-317">若要重載應用程式，請呼叫 `location.reload()` 。</span><span class="sxs-lookup"><span data-stu-id="f0807-317">To reload the app, call `location.reload()`.</span></span> <span data-ttu-id="f0807-318">當下列情況發生時，可能會產生此連接狀態：</span><span class="sxs-lookup"><span data-stu-id="f0807-318">This connection state may result when:</span></span><ul><li><span data-ttu-id="f0807-319">伺服器端線路發生損毀。</span><span class="sxs-lookup"><span data-stu-id="f0807-319">A crash in the server-side circuit occurs.</span></span></li><li><span data-ttu-id="f0807-320">用戶端中斷連線的時間夠長，伺服器才會捨棄使用者的狀態。</span><span class="sxs-lookup"><span data-stu-id="f0807-320">The client is disconnected long enough for the server to drop the user's state.</span></span> <span data-ttu-id="f0807-321">系統會處置與使用者互動之元件的實例。</span><span class="sxs-lookup"><span data-stu-id="f0807-321">Instances of the components that the user is interacting with are disposed.</span></span></li><li><span data-ttu-id="f0807-322">伺服器會重新開機，或回收應用程式的背景工作進程。</span><span class="sxs-lookup"><span data-stu-id="f0807-322">The server is restarted, or the app's worker process is recycled.</span></span></li></ul> |
 
-Blazor<span data-ttu-id="912a7-325">伺服器應用程式預設會設定為伺服器上預先呈現的 UI，然後才會建立與伺服器的用戶端連接。</span><span class="sxs-lookup"><span data-stu-id="912a7-325"> Server apps are set up by default to prerender the UI on the server before the client connection to the server is established.</span></span> <span data-ttu-id="912a7-326">這會在 [ *_Host. cshtml* ] 頁面中設定 Razor ：</span><span class="sxs-lookup"><span data-stu-id="912a7-326">This is set up in the *_Host.cshtml* Razor page:</span></span>
+### <a name="render-mode"></a><span data-ttu-id="f0807-323">轉譯模式</span><span class="sxs-lookup"><span data-stu-id="f0807-323">Render mode</span></span>
+
+Blazor<span data-ttu-id="f0807-324">伺服器應用程式預設會設定為伺服器上預先呈現的 UI，然後才會建立與伺服器的用戶端連接。</span><span class="sxs-lookup"><span data-stu-id="f0807-324"> Server apps are set up by default to prerender the UI on the server before the client connection to the server is established.</span></span> <span data-ttu-id="f0807-325">這會在 [ *_Host. cshtml* ] 頁面中設定 Razor ：</span><span class="sxs-lookup"><span data-stu-id="f0807-325">This is set up in the *_Host.cshtml* Razor page:</span></span>
 
 ```cshtml
 <body>
@@ -473,113 +473,27 @@ Blazor<span data-ttu-id="912a7-325">伺服器應用程式預設會設定為伺�
 </body>
 ```
 
-<span data-ttu-id="912a7-327">`RenderMode`設定元件是否：</span><span class="sxs-lookup"><span data-stu-id="912a7-327">`RenderMode` configures whether the component:</span></span>
+<span data-ttu-id="f0807-326"><xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode>設定元件是否：</span><span class="sxs-lookup"><span data-stu-id="f0807-326"><xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> configures whether the component:</span></span>
 
-* <span data-ttu-id="912a7-328">會資源清單到頁面中。</span><span class="sxs-lookup"><span data-stu-id="912a7-328">Is prerendered into the page.</span></span>
-* <span data-ttu-id="912a7-329">會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="912a7-329">Is rendered as static HTML on the page or if it includes the necessary information to bootstrap a Blazor app from the user agent.</span></span>
+* <span data-ttu-id="f0807-327">會資源清單到頁面中。</span><span class="sxs-lookup"><span data-stu-id="f0807-327">Is prerendered into the page.</span></span>
+* <span data-ttu-id="f0807-328">會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="f0807-328">Is rendered as static HTML on the page or if it includes the necessary information to bootstrap a Blazor app from the user agent.</span></span>
 
-| `RenderMode`        | <span data-ttu-id="912a7-330">說明</span><span class="sxs-lookup"><span data-stu-id="912a7-330">Description</span></span> |
-| ---
-<span data-ttu-id="912a7-331">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-331">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-332">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-332">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-333">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-333">'Blazor'</span></span>
-- <span data-ttu-id="912a7-334">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-334">'Identity'</span></span>
-- <span data-ttu-id="912a7-335">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-335">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-336">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-336">'Razor'</span></span>
-- <span data-ttu-id="912a7-337">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-337">'SignalR' uid:</span></span> 
+| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | <span data-ttu-id="f0807-329">說明</span><span class="sxs-lookup"><span data-stu-id="f0807-329">Description</span></span> |
+| --- | --- |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | <span data-ttu-id="f0807-330">將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。</span><span class="sxs-lookup"><span data-stu-id="f0807-330">Renders the component into static HTML and includes a marker for a Blazor Server app.</span></span> <span data-ttu-id="f0807-331">當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-331">When the user-agent starts, this marker is used to bootstrap a Blazor app.</span></span> |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | <span data-ttu-id="f0807-332">呈現 Blazor 伺服器應用程式的標記。</span><span class="sxs-lookup"><span data-stu-id="f0807-332">Renders a marker for a Blazor Server app.</span></span> <span data-ttu-id="f0807-333">不包含來自元件的輸出。</span><span class="sxs-lookup"><span data-stu-id="f0807-333">Output from the component isn't included.</span></span> <span data-ttu-id="f0807-334">當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。</span><span class="sxs-lookup"><span data-stu-id="f0807-334">When the user-agent starts, this marker is used to bootstrap a Blazor app.</span></span> |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | <span data-ttu-id="f0807-335">將元件轉譯為靜態 HTML。</span><span class="sxs-lookup"><span data-stu-id="f0807-335">Renders the component into static HTML.</span></span> |
 
--
-<span data-ttu-id="912a7-338">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-338">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-339">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-339">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-340">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-340">'Blazor'</span></span>
-- <span data-ttu-id="912a7-341">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-341">'Identity'</span></span>
-- <span data-ttu-id="912a7-342">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-342">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-343">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-343">'Razor'</span></span>
-- <span data-ttu-id="912a7-344">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-344">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-336">不支援從靜態 HTML 網頁轉譯伺服器元件。</span><span class="sxs-lookup"><span data-stu-id="f0807-336">Rendering server components from a static HTML page isn't supported.</span></span>
 
--
-<span data-ttu-id="912a7-345">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-345">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-346">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-346">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-347">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-347">'Blazor'</span></span>
-- <span data-ttu-id="912a7-348">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-348">'Identity'</span></span>
-- <span data-ttu-id="912a7-349">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-349">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-350">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-350">'Razor'</span></span>
-- <span data-ttu-id="912a7-351">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-351">'SignalR' uid:</span></span> 
+### <a name="configure-the-signalr-client-for-blazor-server-apps"></a><span data-ttu-id="f0807-337">設定 SignalR Blazor 伺服器應用程式的用戶端</span><span class="sxs-lookup"><span data-stu-id="f0807-337">Configure the SignalR client for Blazor Server apps</span></span>
 
--
-<span data-ttu-id="912a7-352">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-352">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-353">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-353">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-354">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-354">'Blazor'</span></span>
-- <span data-ttu-id="912a7-355">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-355">'Identity'</span></span>
-- <span data-ttu-id="912a7-356">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-356">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-357">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-357">'Razor'</span></span>
-- <span data-ttu-id="912a7-358">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-358">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-338">有時候，您需要設定 SignalR 伺服器應用程式所使用的用戶端 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="f0807-338">Sometimes, you need to configure the SignalR client used by Blazor Server apps.</span></span> <span data-ttu-id="f0807-339">例如，您可能會想要在用戶端上設定記錄 SignalR 來診斷連線問題。</span><span class="sxs-lookup"><span data-stu-id="f0807-339">For example, you might want to configure logging on the SignalR client to diagnose a connection issue.</span></span>
 
--
-<span data-ttu-id="912a7-359">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-359">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-360">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-360">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-361">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-361">'Blazor'</span></span>
-- <span data-ttu-id="912a7-362">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-362">'Identity'</span></span>
-- <span data-ttu-id="912a7-363">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-363">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-364">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-364">'Razor'</span></span>
-- <span data-ttu-id="912a7-365">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-365">'SignalR' uid:</span></span> 
+<span data-ttu-id="f0807-340">若要 SignalR 在*Pages/_Host. cshtml*檔案中設定用戶端：</span><span class="sxs-lookup"><span data-stu-id="f0807-340">To configure the SignalR client in the *Pages/_Host.cshtml* file:</span></span>
 
--
-<span data-ttu-id="912a7-366">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-366">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-367">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-367">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-368">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-368">'Blazor'</span></span>
-- <span data-ttu-id="912a7-369">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-369">'Identity'</span></span>
-- <span data-ttu-id="912a7-370">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-370">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-371">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-371">'Razor'</span></span>
-- <span data-ttu-id="912a7-372">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-372">'SignalR' uid:</span></span> 
-
--
-<span data-ttu-id="912a7-373">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-373">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-374">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-374">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-375">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-375">'Blazor'</span></span>
-- <span data-ttu-id="912a7-376">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-376">'Identity'</span></span>
-- <span data-ttu-id="912a7-377">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-377">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-378">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-378">'Razor'</span></span>
-- <span data-ttu-id="912a7-379">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-379">'SignalR' uid:</span></span> 
-
-<span data-ttu-id="912a7-380">---------- |---標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-380">---------- | --- title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-381">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-381">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-382">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-382">'Blazor'</span></span>
-- <span data-ttu-id="912a7-383">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-383">'Identity'</span></span>
-- <span data-ttu-id="912a7-384">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-384">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-385">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-385">'Razor'</span></span>
-- <span data-ttu-id="912a7-386">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-386">'SignalR' uid:</span></span> 
-
--
-<span data-ttu-id="912a7-387">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-387">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-388">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-388">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-389">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-389">'Blazor'</span></span>
-- <span data-ttu-id="912a7-390">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-390">'Identity'</span></span>
-- <span data-ttu-id="912a7-391">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-391">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-392">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-392">'Razor'</span></span>
-- <span data-ttu-id="912a7-393">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-393">'SignalR' uid:</span></span> 
-
--
-<span data-ttu-id="912a7-394">標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者：描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-394">title: 'ASP.NET Core Blazor hosting model configuration' author: description: 'Learn about Blazor hosting model configuration, including how to integrate Razor components into Razor Pages and MVC apps.'</span></span>
-<span data-ttu-id="912a7-395">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="912a7-395">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
-- <span data-ttu-id="912a7-396">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="912a7-396">'Blazor'</span></span>
-- <span data-ttu-id="912a7-397">'Identity'</span><span class="sxs-lookup"><span data-stu-id="912a7-397">'Identity'</span></span>
-- <span data-ttu-id="912a7-398">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="912a7-398">'Let's Encrypt'</span></span>
-- <span data-ttu-id="912a7-399">'Razor'</span><span class="sxs-lookup"><span data-stu-id="912a7-399">'Razor'</span></span>
-- <span data-ttu-id="912a7-400">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="912a7-400">'SignalR' uid:</span></span> 
-
-<span data-ttu-id="912a7-401">------ | |`ServerPrerendered` |將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。</span><span class="sxs-lookup"><span data-stu-id="912a7-401">------ | | `ServerPrerendered` | Renders the component into static HTML and includes a marker for a Blazor Server app.</span></span> <span data-ttu-id="912a7-402">當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-402">When the user-agent starts, this marker is used to bootstrap a Blazor app.</span></span> <span data-ttu-id="912a7-403">| |`Server`            |呈現 Blazor 伺服器應用程式的標記。</span><span class="sxs-lookup"><span data-stu-id="912a7-403">| | `Server`            | Renders a marker for a Blazor Server app.</span></span> <span data-ttu-id="912a7-404">不包含來自元件的輸出。</span><span class="sxs-lookup"><span data-stu-id="912a7-404">Output from the component isn't included.</span></span> <span data-ttu-id="912a7-405">當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。</span><span class="sxs-lookup"><span data-stu-id="912a7-405">When the user-agent starts, this marker is used to bootstrap a Blazor app.</span></span> <span data-ttu-id="912a7-406">| |`Static`            |將元件轉譯為靜態 HTML。</span><span class="sxs-lookup"><span data-stu-id="912a7-406">| | `Static`            | Renders the component into static HTML.</span></span> |
-
-<span data-ttu-id="912a7-407">不支援從靜態 HTML 網頁轉譯伺服器元件。</span><span class="sxs-lookup"><span data-stu-id="912a7-407">Rendering server components from a static HTML page isn't supported.</span></span>
-
-### <a name="configure-the-signalr-client-for-blazor-server-apps"></a><span data-ttu-id="912a7-408">設定 SignalR Blazor 伺服器應用程式的用戶端</span><span class="sxs-lookup"><span data-stu-id="912a7-408">Configure the SignalR client for Blazor Server apps</span></span>
-
-<span data-ttu-id="912a7-409">有時候，您需要設定 SignalR 伺服器應用程式所使用的用戶端 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="912a7-409">Sometimes, you need to configure the SignalR client used by Blazor Server apps.</span></span> <span data-ttu-id="912a7-410">例如，您可能會想要在用戶端上設定記錄 SignalR 來診斷連線問題。</span><span class="sxs-lookup"><span data-stu-id="912a7-410">For example, you might want to configure logging on the SignalR client to diagnose a connection issue.</span></span>
-
-<span data-ttu-id="912a7-411">若要 SignalR 在*Pages/_Host. cshtml*檔案中設定用戶端：</span><span class="sxs-lookup"><span data-stu-id="912a7-411">To configure the SignalR client in the *Pages/_Host.cshtml* file:</span></span>
-
-* <span data-ttu-id="912a7-412">將 `autostart="false"` 屬性加入至 `<script>` 腳本的標記 `blazor.server.js` 。</span><span class="sxs-lookup"><span data-stu-id="912a7-412">Add an `autostart="false"` attribute to the `<script>` tag for the `blazor.server.js` script.</span></span>
-* <span data-ttu-id="912a7-413">呼叫 `Blazor.start` 並傳入指定產生器的設定物件 SignalR 。</span><span class="sxs-lookup"><span data-stu-id="912a7-413">Call `Blazor.start` and pass in a configuration object that specifies the SignalR builder.</span></span>
+* <span data-ttu-id="f0807-341">將 `autostart="false"` 屬性加入至 `<script>` 腳本的標記 `blazor.server.js` 。</span><span class="sxs-lookup"><span data-stu-id="f0807-341">Add an `autostart="false"` attribute to the `<script>` tag for the `blazor.server.js` script.</span></span>
+* <span data-ttu-id="f0807-342">呼叫 `Blazor.start` 並傳入指定產生器的設定物件 SignalR 。</span><span class="sxs-lookup"><span data-stu-id="f0807-342">Call `Blazor.start` and pass in a configuration object that specifies the SignalR builder.</span></span>
 
 ```html
 <script src="_framework/blazor.server.js" autostart="false"></script>
@@ -592,6 +506,6 @@ Blazor<span data-ttu-id="912a7-325">伺服器應用程式預設會設定為伺�
 </script>
 ```
 
-### <a name="logging"></a><span data-ttu-id="912a7-414">記錄</span><span class="sxs-lookup"><span data-stu-id="912a7-414">Logging</span></span>
+### <a name="logging"></a><span data-ttu-id="f0807-343">記錄</span><span class="sxs-lookup"><span data-stu-id="f0807-343">Logging</span></span>
 
-<span data-ttu-id="912a7-415">如需 Blazor 伺服器記錄支援的詳細資訊，請參閱 <xref:fundamentals/logging/index#create-logs-in-blazor> 。</span><span class="sxs-lookup"><span data-stu-id="912a7-415">For information on Blazor Server logging support, see <xref:fundamentals/logging/index#create-logs-in-blazor>.</span></span>
+<span data-ttu-id="f0807-344">如需 Blazor 伺服器記錄支援的詳細資訊，請參閱 <xref:fundamentals/logging/index#create-logs-in-blazor> 。</span><span class="sxs-lookup"><span data-stu-id="f0807-344">For information on Blazor Server logging support, see <xref:fundamentals/logging/index#create-logs-in-blazor>.</span></span>

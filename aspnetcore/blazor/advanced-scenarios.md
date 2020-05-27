@@ -1,32 +1,20 @@
 ---
-title: ASP.NET Core Blazor advanced 案例
-author: guardrex
-description: 深入瞭解中的 advanced Blazor案例，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 02/18/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: blazor/advanced-scenarios
-ms.openlocfilehash: b47e7b1d7ff148bb5a8d299d3d2089999f017863
-ms.sourcegitcommit: 84b46594f57608f6ac4f0570172c7051df507520
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82967333"
+<span data-ttu-id="21515-101">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-101">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-102">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-102">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-103">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-103">'Blazor'</span></span>
+- <span data-ttu-id="21515-104">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-104">'Identity'</span></span>
+- <span data-ttu-id="21515-105">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-105">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-106">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-106">'Razor'</span></span>
+- <span data-ttu-id="21515-107">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-107">'SignalR' uid:</span></span> 
+
 ---
-# <a name="aspnet-core-blazor-advanced-scenarios"></a><span data-ttu-id="b249f-103">ASP.NET Core Blazor 的先進案例</span><span class="sxs-lookup"><span data-stu-id="b249f-103">ASP.NET Core Blazor advanced scenarios</span></span>
+# <a name="aspnet-core-blazor-advanced-scenarios"></a><span data-ttu-id="21515-108">ASP.NET Core Blazor advanced 案例</span><span class="sxs-lookup"><span data-stu-id="21515-108">ASP.NET Core Blazor advanced scenarios</span></span>
 
-<span data-ttu-id="b249f-104">By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="b249f-104">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
+<span data-ttu-id="21515-109">By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="21515-109">By [Luke Latham](https://github.com/guardrex) and [Daniel Roth](https://github.com/danroth27)</span></span>
 
-## <a name="blazor-server-circuit-handler"></a><span data-ttu-id="b249f-105">Blazor 伺服器線路處理常式</span><span class="sxs-lookup"><span data-stu-id="b249f-105">Blazor Server circuit handler</span></span>
+## <a name="blazor-server-circuit-handler"></a>Blazor<span data-ttu-id="21515-110">伺服器線路處理常式</span><span class="sxs-lookup"><span data-stu-id="21515-110"> Server circuit handler</span></span>
 
-<span data-ttu-id="b249f-106">Blazor 伺服器可讓程式碼定義*電路處理常式*，以允許對使用者線路狀態的變更執行程式碼。</span><span class="sxs-lookup"><span data-stu-id="b249f-106">Blazor Server allows code to define a *circuit handler*, which allows running code on changes to the state of a user's circuit.</span></span> <span data-ttu-id="b249f-107">線路處理常式是透過衍生自`CircuitHandler`並在應用程式的服務容器中註冊類別來執行。</span><span class="sxs-lookup"><span data-stu-id="b249f-107">A circuit handler is implemented by deriving from `CircuitHandler` and registering the class in the app's service container.</span></span> <span data-ttu-id="b249f-108">下列的線路處理常式範例會追蹤開啟的 SignalR 連接：</span><span class="sxs-lookup"><span data-stu-id="b249f-108">The following example of a circuit handler tracks open SignalR connections:</span></span>
+Blazor<span data-ttu-id="21515-111">伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。</span><span class="sxs-lookup"><span data-stu-id="21515-111"> Server allows code to define a *circuit handler*, which allows running code on changes to the state of a user's circuit.</span></span> <span data-ttu-id="21515-112">線路處理常式是透過衍生自 `CircuitHandler` 並在應用程式的服務容器中註冊類別來執行。</span><span class="sxs-lookup"><span data-stu-id="21515-112">A circuit handler is implemented by deriving from `CircuitHandler` and registering the class in the app's service container.</span></span> <span data-ttu-id="21515-113">下列線路處理常式範例會追蹤開啟的 SignalR 連接：</span><span class="sxs-lookup"><span data-stu-id="21515-113">The following example of a circuit handler tracks open SignalR connections:</span></span>
 
 ```csharp
 using System.Collections.Generic;
@@ -58,7 +46,7 @@ public class TrackingCircuitHandler : CircuitHandler
 }
 ```
 
-<span data-ttu-id="b249f-109">線路處理常式是使用 DI 註冊。</span><span class="sxs-lookup"><span data-stu-id="b249f-109">Circuit handlers are registered using DI.</span></span> <span data-ttu-id="b249f-110">範圍實例會針對每個線路實例而建立。</span><span class="sxs-lookup"><span data-stu-id="b249f-110">Scoped instances are created per instance of a circuit.</span></span> <span data-ttu-id="b249f-111">使用上述`TrackingCircuitHandler`範例中的時，會建立單一服務，因為必須追蹤所有線路的狀態：</span><span class="sxs-lookup"><span data-stu-id="b249f-111">Using the `TrackingCircuitHandler` in the preceding example, a singleton service is created because the state of all circuits must be tracked:</span></span>
+<span data-ttu-id="21515-114">線路處理常式是使用 DI 註冊。</span><span class="sxs-lookup"><span data-stu-id="21515-114">Circuit handlers are registered using DI.</span></span> <span data-ttu-id="21515-115">範圍實例會針對每個線路實例而建立。</span><span class="sxs-lookup"><span data-stu-id="21515-115">Scoped instances are created per instance of a circuit.</span></span> <span data-ttu-id="21515-116">使用 `TrackingCircuitHandler` 上述範例中的時，會建立單一服務，因為必須追蹤所有線路的狀態：</span><span class="sxs-lookup"><span data-stu-id="21515-116">Using the `TrackingCircuitHandler` in the preceding example, a singleton service is created because the state of all circuits must be tracked:</span></span>
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -68,18 +56,18 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="b249f-112">如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對 Blazor 伺服器線路而言是嚴重的。</span><span class="sxs-lookup"><span data-stu-id="b249f-112">If a custom circuit handler's methods throw an unhandled exception, the exception is fatal to the Blazor Server circuit.</span></span> <span data-ttu-id="b249f-113">若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。</span><span class="sxs-lookup"><span data-stu-id="b249f-113">To tolerate exceptions in a handler's code or called methods, wrap the code in one or more [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) statements with error handling and logging.</span></span>
+<span data-ttu-id="21515-117">如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對伺服器線路而言是嚴重的 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="21515-117">If a custom circuit handler's methods throw an unhandled exception, the exception is fatal to the Blazor Server circuit.</span></span> <span data-ttu-id="21515-118">若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。</span><span class="sxs-lookup"><span data-stu-id="21515-118">To tolerate exceptions in a handler's code or called methods, wrap the code in one or more [try-catch](/dotnet/csharp/language-reference/keywords/try-catch) statements with error handling and logging.</span></span>
 
-<span data-ttu-id="b249f-114">當線路因使用者已中斷連線而結束，而架構正在清除線路狀態時，架構會處置線路的 DI 範圍。</span><span class="sxs-lookup"><span data-stu-id="b249f-114">When a circuit ends because a user has disconnected and the framework is cleaning up the circuit state, the framework disposes of the circuit's DI scope.</span></span> <span data-ttu-id="b249f-115">處置範圍會處置任何執行<xref:System.IDisposable?displayProperty=fullName>的線路範圍 DI 服務。</span><span class="sxs-lookup"><span data-stu-id="b249f-115">Disposing the scope disposes any circuit-scoped DI services that implement <xref:System.IDisposable?displayProperty=fullName>.</span></span> <span data-ttu-id="b249f-116">如果任何 DI 服務在處置期間擲回未處理的例外狀況，則架構會記錄例外狀況。</span><span class="sxs-lookup"><span data-stu-id="b249f-116">If any DI service throws an unhandled exception during disposal, the framework logs the exception.</span></span>
+<span data-ttu-id="21515-119">當線路因使用者已中斷連線而結束，而架構正在清除線路狀態時，架構會處置線路的 DI 範圍。</span><span class="sxs-lookup"><span data-stu-id="21515-119">When a circuit ends because a user has disconnected and the framework is cleaning up the circuit state, the framework disposes of the circuit's DI scope.</span></span> <span data-ttu-id="21515-120">處置範圍會處置任何執行的線路範圍 DI 服務 <xref:System.IDisposable?displayProperty=fullName> 。</span><span class="sxs-lookup"><span data-stu-id="21515-120">Disposing the scope disposes any circuit-scoped DI services that implement <xref:System.IDisposable?displayProperty=fullName>.</span></span> <span data-ttu-id="21515-121">如果任何 DI 服務在處置期間擲回未處理的例外狀況，則架構會記錄例外狀況。</span><span class="sxs-lookup"><span data-stu-id="21515-121">If any DI service throws an unhandled exception during disposal, the framework logs the exception.</span></span>
 
-## <a name="manual-rendertreebuilder-logic"></a><span data-ttu-id="b249f-117">手動 RenderTreeBuilder 邏輯</span><span class="sxs-lookup"><span data-stu-id="b249f-117">Manual RenderTreeBuilder logic</span></span>
+## <a name="manual-rendertreebuilder-logic"></a><span data-ttu-id="21515-122">手動 RenderTreeBuilder 邏輯</span><span class="sxs-lookup"><span data-stu-id="21515-122">Manual RenderTreeBuilder logic</span></span>
 
-<span data-ttu-id="b249f-118">`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder`提供操作元件和專案的方法，包括在 c # 程式碼中手動建立元件。</span><span class="sxs-lookup"><span data-stu-id="b249f-118">`Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder` provides methods for manipulating components and elements, including building components manually in C# code.</span></span>
+<span data-ttu-id="21515-123"><xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder>提供操作元件和專案的方法，包括在 c # 程式碼中手動建立元件。</span><span class="sxs-lookup"><span data-stu-id="21515-123"><xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> provides methods for manipulating components and elements, including building components manually in C# code.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b249f-119">使用來`RenderTreeBuilder`建立元件是一個先進的案例。</span><span class="sxs-lookup"><span data-stu-id="b249f-119">Use of `RenderTreeBuilder` to create components is an advanced scenario.</span></span> <span data-ttu-id="b249f-120">格式不正確的元件（例如，未封閉的標記標記）可能會導致未定義的行為。</span><span class="sxs-lookup"><span data-stu-id="b249f-120">A malformed component (for example, an unclosed markup tag) can result in undefined behavior.</span></span>
+> <span data-ttu-id="21515-124">使用 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 來建立元件是一個先進的案例。</span><span class="sxs-lookup"><span data-stu-id="21515-124">Use of <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> to create components is an advanced scenario.</span></span> <span data-ttu-id="21515-125">格式不正確的元件（例如，未封閉的標記標記）可能會導致未定義的行為。</span><span class="sxs-lookup"><span data-stu-id="21515-125">A malformed component (for example, an unclosed markup tag) can result in undefined behavior.</span></span>
 
-<span data-ttu-id="b249f-121">請考慮下列`PetDetails`元件，它可以手動內建在另一個元件中：</span><span class="sxs-lookup"><span data-stu-id="b249f-121">Consider the following `PetDetails` component, which can be manually built into another component:</span></span>
+<span data-ttu-id="21515-126">請考慮下列 `PetDetails` 元件，它可以手動內建在另一個元件中：</span><span class="sxs-lookup"><span data-stu-id="21515-126">Consider the following `PetDetails` component, which can be manually built into another component:</span></span>
 
 ```razor
 <h2>Pet Details Component</h2>
@@ -93,9 +81,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="b249f-122">在下列範例中， `CreateComponent`方法中的迴圈會產生三`PetDetails`個元件。</span><span class="sxs-lookup"><span data-stu-id="b249f-122">In the following example, the loop in the `CreateComponent` method generates three `PetDetails` components.</span></span> <span data-ttu-id="b249f-123">呼叫`RenderTreeBuilder`方法來建立元件（`OpenComponent`和`AddAttribute`）時，序號是源程式碼號。</span><span class="sxs-lookup"><span data-stu-id="b249f-123">When calling `RenderTreeBuilder` methods to create the components (`OpenComponent` and `AddAttribute`), sequence numbers are source code line numbers.</span></span> <span data-ttu-id="b249f-124">Blazor 差異演算法依賴對應于不同程式程式碼的序號，而不是相異的呼叫調用。</span><span class="sxs-lookup"><span data-stu-id="b249f-124">The Blazor difference algorithm relies on the sequence numbers corresponding to distinct lines of code, not distinct call invocations.</span></span> <span data-ttu-id="b249f-125">使用`RenderTreeBuilder`方法建立元件時，硬式編碼序號的引數。</span><span class="sxs-lookup"><span data-stu-id="b249f-125">When creating a component with `RenderTreeBuilder` methods, hardcode the arguments for sequence numbers.</span></span> <span data-ttu-id="b249f-126">**使用計算或計數器來產生序號可能會導致效能不佳。**</span><span class="sxs-lookup"><span data-stu-id="b249f-126">**Using a calculation or counter to generate the sequence number can lead to poor performance.**</span></span> <span data-ttu-id="b249f-127">如需詳細資訊，請參閱[序號與程式程式碼號，而不是執行順序](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order)一節。</span><span class="sxs-lookup"><span data-stu-id="b249f-127">For more information, see the [Sequence numbers relate to code line numbers and not execution order](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order) section.</span></span>
+<span data-ttu-id="21515-127">在下列範例中，方法中的迴圈會 `CreateComponent` 產生三個 `PetDetails` 元件。</span><span class="sxs-lookup"><span data-stu-id="21515-127">In the following example, the loop in the `CreateComponent` method generates three `PetDetails` components.</span></span> <span data-ttu-id="21515-128">呼叫 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 方法來建立元件（ `OpenComponent` 和）時 `AddAttribute` ，序號是源程式碼號。</span><span class="sxs-lookup"><span data-stu-id="21515-128">When calling <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> methods to create the components (`OpenComponent` and `AddAttribute`), sequence numbers are source code line numbers.</span></span> <span data-ttu-id="21515-129">Blazor差異演算法依賴對應于不同程式程式碼的序號，而不是相異的呼叫調用。</span><span class="sxs-lookup"><span data-stu-id="21515-129">The Blazor difference algorithm relies on the sequence numbers corresponding to distinct lines of code, not distinct call invocations.</span></span> <span data-ttu-id="21515-130">使用方法建立元件時 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> ，硬式編碼序號的引數。</span><span class="sxs-lookup"><span data-stu-id="21515-130">When creating a component with <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> methods, hardcode the arguments for sequence numbers.</span></span> <span data-ttu-id="21515-131">**使用計算或計數器來產生序號可能會導致效能不佳。**</span><span class="sxs-lookup"><span data-stu-id="21515-131">**Using a calculation or counter to generate the sequence number can lead to poor performance.**</span></span> <span data-ttu-id="21515-132">如需詳細資訊，請參閱[序號與程式程式碼號，而不是執行順序](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order)一節。</span><span class="sxs-lookup"><span data-stu-id="21515-132">For more information, see the [Sequence numbers relate to code line numbers and not execution order](#sequence-numbers-relate-to-code-line-numbers-and-not-execution-order) section.</span></span>
 
-<span data-ttu-id="b249f-128">`BuiltContent`成分</span><span class="sxs-lookup"><span data-stu-id="b249f-128">`BuiltContent` component:</span></span>
+<span data-ttu-id="21515-133">`BuiltContent`成分</span><span class="sxs-lookup"><span data-stu-id="21515-133">`BuiltContent` component:</span></span>
 
 ```razor
 @page "/BuiltContent"
@@ -129,15 +117,15 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!WARNING]
-> <span data-ttu-id="b249f-129">中`Microsoft.AspNetCore.Components.RenderTree`的類型允許處理轉譯作業的*結果*。</span><span class="sxs-lookup"><span data-stu-id="b249f-129">The types in `Microsoft.AspNetCore.Components.RenderTree` allow processing of the *results* of rendering operations.</span></span> <span data-ttu-id="b249f-130">這些是 Blazor framework 執行的內部詳細資料。</span><span class="sxs-lookup"><span data-stu-id="b249f-130">These are internal details of the Blazor framework implementation.</span></span> <span data-ttu-id="b249f-131">這些類型應該被視為不*穩定*，未來的版本可能會變更。</span><span class="sxs-lookup"><span data-stu-id="b249f-131">These types should be considered *unstable* and subject to change in future releases.</span></span>
+> <span data-ttu-id="21515-134">中的類型 <xref:Microsoft.AspNetCore.Components.RenderTree> 允許處理轉譯作業的*結果*。</span><span class="sxs-lookup"><span data-stu-id="21515-134">The types in <xref:Microsoft.AspNetCore.Components.RenderTree> allow processing of the *results* of rendering operations.</span></span> <span data-ttu-id="21515-135">這些是架構執行的內部詳細資料 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="21515-135">These are internal details of the Blazor framework implementation.</span></span> <span data-ttu-id="21515-136">這些類型應該被視為不*穩定*，未來的版本可能會變更。</span><span class="sxs-lookup"><span data-stu-id="21515-136">These types should be considered *unstable* and subject to change in future releases.</span></span>
 
-### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a><span data-ttu-id="b249f-132">序號與程式程式碼號相關，而不是執行順序</span><span class="sxs-lookup"><span data-stu-id="b249f-132">Sequence numbers relate to code line numbers and not execution order</span></span>
+### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a><span data-ttu-id="21515-137">序號與程式程式碼號相關，而不是執行順序</span><span class="sxs-lookup"><span data-stu-id="21515-137">Sequence numbers relate to code line numbers and not execution order</span></span>
 
-<span data-ttu-id="b249f-133">Razor 元件檔案（*razor*）一律會進行編譯。</span><span class="sxs-lookup"><span data-stu-id="b249f-133">Razor component files (*.razor*) are always compiled.</span></span> <span data-ttu-id="b249f-134">編譯是在解讀程式碼方面的潛在優勢，因為編譯步驟可以用來插入資訊，以在執行時間改善應用程式效能。</span><span class="sxs-lookup"><span data-stu-id="b249f-134">Compilation is a potential advantage over interpreting code because the compile step can be used to inject information that improves app performance at runtime.</span></span>
+Razor<span data-ttu-id="21515-138">元件檔案（*razor*）一律會進行編譯。</span><span class="sxs-lookup"><span data-stu-id="21515-138"> component files (*.razor*) are always compiled.</span></span> <span data-ttu-id="21515-139">編譯是在解讀程式碼方面的潛在優勢，因為編譯步驟可以用來插入資訊，以在執行時間改善應用程式效能。</span><span class="sxs-lookup"><span data-stu-id="21515-139">Compilation is a potential advantage over interpreting code because the compile step can be used to inject information that improves app performance at runtime.</span></span>
 
-<span data-ttu-id="b249f-135">這些改良功能的重要範例包括*序號*。</span><span class="sxs-lookup"><span data-stu-id="b249f-135">A key example of these improvements involves *sequence numbers*.</span></span> <span data-ttu-id="b249f-136">序號會向運行時程表示輸出來自哪些不同和已排序的程式程式碼。</span><span class="sxs-lookup"><span data-stu-id="b249f-136">Sequence numbers indicate to the runtime which outputs came from which distinct and ordered lines of code.</span></span> <span data-ttu-id="b249f-137">執行時間會使用這項資訊，以線性時間產生有效率的樹狀差異，這比一般樹狀結構的差異演算法通常還能快得多。</span><span class="sxs-lookup"><span data-stu-id="b249f-137">The runtime uses this information to generate efficient tree diffs in linear time, which is far faster than is normally possible for a general tree diff algorithm.</span></span>
+<span data-ttu-id="21515-140">這些改良功能的重要範例包括*序號*。</span><span class="sxs-lookup"><span data-stu-id="21515-140">A key example of these improvements involves *sequence numbers*.</span></span> <span data-ttu-id="21515-141">序號會向運行時程表示輸出來自哪些不同和已排序的程式程式碼。</span><span class="sxs-lookup"><span data-stu-id="21515-141">Sequence numbers indicate to the runtime which outputs came from which distinct and ordered lines of code.</span></span> <span data-ttu-id="21515-142">執行時間會使用這項資訊，以線性時間產生有效率的樹狀差異，這比一般樹狀結構的差異演算法通常還能快得多。</span><span class="sxs-lookup"><span data-stu-id="21515-142">The runtime uses this information to generate efficient tree diffs in linear time, which is far faster than is normally possible for a general tree diff algorithm.</span></span>
 
-<span data-ttu-id="b249f-138">請考慮下列 Razor 元件（*razor*）檔案：</span><span class="sxs-lookup"><span data-stu-id="b249f-138">Consider the following Razor component (*.razor*) file:</span></span>
+<span data-ttu-id="21515-143">請考慮下列 Razor 元件（*razor*）檔案：</span><span class="sxs-lookup"><span data-stu-id="21515-143">Consider the following Razor component (*.razor*) file:</span></span>
 
 ```razor
 @if (someFlag)
@@ -148,7 +136,7 @@ public void ConfigureServices(IServiceCollection services)
 Second
 ```
 
-<span data-ttu-id="b249f-139">上述程式碼會編譯成如下所示的內容：</span><span class="sxs-lookup"><span data-stu-id="b249f-139">The preceding code compiles to something like the following:</span></span>
+<span data-ttu-id="21515-144">上述程式碼會編譯成如下所示的內容：</span><span class="sxs-lookup"><span data-stu-id="21515-144">The preceding code compiles to something like the following:</span></span>
 
 ```csharp
 if (someFlag)
@@ -159,26 +147,84 @@ if (someFlag)
 builder.AddContent(1, "Second");
 ```
 
-<span data-ttu-id="b249f-140">當程式碼第一次執行時，如果`someFlag`是`true`，則產生器會接收：</span><span class="sxs-lookup"><span data-stu-id="b249f-140">When the code executes for the first time, if `someFlag` is `true`, the builder receives:</span></span>
+<span data-ttu-id="21515-145">當程式碼第一次執行時，如果 `someFlag` 是 `true` ，則產生器會接收：</span><span class="sxs-lookup"><span data-stu-id="21515-145">When the code executes for the first time, if `someFlag` is `true`, the builder receives:</span></span>
 
-| <span data-ttu-id="b249f-141">順序</span><span class="sxs-lookup"><span data-stu-id="b249f-141">Sequence</span></span> | <span data-ttu-id="b249f-142">類型</span><span class="sxs-lookup"><span data-stu-id="b249f-142">Type</span></span>      | <span data-ttu-id="b249f-143">資料</span><span class="sxs-lookup"><span data-stu-id="b249f-143">Data</span></span>   |
-| :------: | --------- | :----: |
-| <span data-ttu-id="b249f-144">0</span><span class="sxs-lookup"><span data-stu-id="b249f-144">0</span></span>        | <span data-ttu-id="b249f-145">Text node</span><span class="sxs-lookup"><span data-stu-id="b249f-145">Text node</span></span> | <span data-ttu-id="b249f-146">First</span><span class="sxs-lookup"><span data-stu-id="b249f-146">First</span></span>  |
-| <span data-ttu-id="b249f-147">1</span><span class="sxs-lookup"><span data-stu-id="b249f-147">1</span></span>        | <span data-ttu-id="b249f-148">Text node</span><span class="sxs-lookup"><span data-stu-id="b249f-148">Text node</span></span> | <span data-ttu-id="b249f-149">Second</span><span class="sxs-lookup"><span data-stu-id="b249f-149">Second</span></span> |
+| <span data-ttu-id="21515-146">順序</span><span class="sxs-lookup"><span data-stu-id="21515-146">Sequence</span></span> | <span data-ttu-id="21515-147">類型</span><span class="sxs-lookup"><span data-stu-id="21515-147">Type</span></span>      | <span data-ttu-id="21515-148">資料</span><span class="sxs-lookup"><span data-stu-id="21515-148">Data</span></span>   |
+| :---
+<span data-ttu-id="21515-149">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-149">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-150">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-150">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-151">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-151">'Blazor'</span></span>
+- <span data-ttu-id="21515-152">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-152">'Identity'</span></span>
+- <span data-ttu-id="21515-153">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-153">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-154">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-154">'Razor'</span></span>
+- <span data-ttu-id="21515-155">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-155">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="b249f-150">想像一下`someFlag` ， `false`會變成，然後再次呈現標記。</span><span class="sxs-lookup"><span data-stu-id="b249f-150">Imagine that `someFlag` becomes `false`, and the markup is rendered again.</span></span> <span data-ttu-id="b249f-151">這次，產生器會接收：</span><span class="sxs-lookup"><span data-stu-id="b249f-151">This time, the builder receives:</span></span>
+<span data-ttu-id="21515-156">---: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-156">---: | --- title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-157">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-157">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-158">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-158">'Blazor'</span></span>
+- <span data-ttu-id="21515-159">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-159">'Identity'</span></span>
+- <span data-ttu-id="21515-160">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-160">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-161">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-161">'Razor'</span></span>
+- <span data-ttu-id="21515-162">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-162">'SignalR' uid:</span></span> 
 
-| <span data-ttu-id="b249f-152">順序</span><span class="sxs-lookup"><span data-stu-id="b249f-152">Sequence</span></span> | <span data-ttu-id="b249f-153">類型</span><span class="sxs-lookup"><span data-stu-id="b249f-153">Type</span></span>       | <span data-ttu-id="b249f-154">資料</span><span class="sxs-lookup"><span data-stu-id="b249f-154">Data</span></span>   |
-| :------: | ---------- | :----: |
-| <span data-ttu-id="b249f-155">1</span><span class="sxs-lookup"><span data-stu-id="b249f-155">1</span></span>        | <span data-ttu-id="b249f-156">Text node</span><span class="sxs-lookup"><span data-stu-id="b249f-156">Text node</span></span>  | <span data-ttu-id="b249f-157">Second</span><span class="sxs-lookup"><span data-stu-id="b249f-157">Second</span></span> |
+-
+<span data-ttu-id="21515-163">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-163">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-164">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-164">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-165">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-165">'Blazor'</span></span>
+- <span data-ttu-id="21515-166">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-166">'Identity'</span></span>
+- <span data-ttu-id="21515-167">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-167">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-168">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-168">'Razor'</span></span>
+- <span data-ttu-id="21515-169">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-169">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="b249f-158">當執行時間執行 diff 時，會看到順序`0`中的專案已移除，因此它會產生下列簡單的*編輯腳本*：</span><span class="sxs-lookup"><span data-stu-id="b249f-158">When the runtime performs a diff, it sees that the item at sequence `0` was removed, so it generates the following trivial *edit script*:</span></span>
+<span data-ttu-id="21515-170">----- |:----: | |0 |文位元組點 |第一個 | |1 |文位元組點 |第二個 |</span><span class="sxs-lookup"><span data-stu-id="21515-170">----- | :----: | | 0        | Text node | First  | | 1        | Text node | Second |</span></span>
 
-* <span data-ttu-id="b249f-159">移除第一個文位元組點。</span><span class="sxs-lookup"><span data-stu-id="b249f-159">Remove the first text node.</span></span>
+<span data-ttu-id="21515-171">想像一下， `someFlag` 會變成 `false` ，然後再次呈現標記。</span><span class="sxs-lookup"><span data-stu-id="21515-171">Imagine that `someFlag` becomes `false`, and the markup is rendered again.</span></span> <span data-ttu-id="21515-172">這次，產生器會接收：</span><span class="sxs-lookup"><span data-stu-id="21515-172">This time, the builder receives:</span></span>
 
-### <a name="the-problem-with-generating-sequence-numbers-programmatically"></a><span data-ttu-id="b249f-160">以程式設計方式產生序號的問題</span><span class="sxs-lookup"><span data-stu-id="b249f-160">The problem with generating sequence numbers programmatically</span></span>
+| <span data-ttu-id="21515-173">順序</span><span class="sxs-lookup"><span data-stu-id="21515-173">Sequence</span></span> | <span data-ttu-id="21515-174">類型</span><span class="sxs-lookup"><span data-stu-id="21515-174">Type</span></span>       | <span data-ttu-id="21515-175">資料</span><span class="sxs-lookup"><span data-stu-id="21515-175">Data</span></span>   |
+| :---
+<span data-ttu-id="21515-176">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-176">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-177">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-177">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-178">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-178">'Blazor'</span></span>
+- <span data-ttu-id="21515-179">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-179">'Identity'</span></span>
+- <span data-ttu-id="21515-180">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-180">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-181">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-181">'Razor'</span></span>
+- <span data-ttu-id="21515-182">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-182">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="b249f-161">想像一下，您會改為撰寫下列轉譯樹產生器邏輯：</span><span class="sxs-lookup"><span data-stu-id="b249f-161">Imagine instead that you wrote the following render tree builder logic:</span></span>
+<span data-ttu-id="21515-183">---: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-183">---: | --- title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-184">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-184">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-185">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-185">'Blazor'</span></span>
+- <span data-ttu-id="21515-186">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-186">'Identity'</span></span>
+- <span data-ttu-id="21515-187">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-187">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-188">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-188">'Razor'</span></span>
+- <span data-ttu-id="21515-189">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-189">'SignalR' uid:</span></span> 
+
+-
+<span data-ttu-id="21515-190">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-190">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-191">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-191">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-192">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-192">'Blazor'</span></span>
+- <span data-ttu-id="21515-193">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-193">'Identity'</span></span>
+- <span data-ttu-id="21515-194">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-194">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-195">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-195">'Razor'</span></span>
+- <span data-ttu-id="21515-196">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-196">'SignalR' uid:</span></span> 
+
+-
+<span data-ttu-id="21515-197">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-197">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-198">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-198">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-199">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-199">'Blazor'</span></span>
+- <span data-ttu-id="21515-200">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-200">'Identity'</span></span>
+- <span data-ttu-id="21515-201">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-201">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-202">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-202">'Razor'</span></span>
+- <span data-ttu-id="21515-203">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-203">'SignalR' uid:</span></span> 
+
+<span data-ttu-id="21515-204">----- |:----: | |1 |文位元組點 |第二個 |</span><span class="sxs-lookup"><span data-stu-id="21515-204">----- | :----: | | 1        | Text node  | Second |</span></span>
+
+<span data-ttu-id="21515-205">當執行時間執行 diff 時，會看到順序中的專案 `0` 已移除，因此它會產生下列簡單的*編輯腳本*：</span><span class="sxs-lookup"><span data-stu-id="21515-205">When the runtime performs a diff, it sees that the item at sequence `0` was removed, so it generates the following trivial *edit script*:</span></span>
+
+* <span data-ttu-id="21515-206">移除第一個文位元組點。</span><span class="sxs-lookup"><span data-stu-id="21515-206">Remove the first text node.</span></span>
+
+### <a name="the-problem-with-generating-sequence-numbers-programmatically"></a><span data-ttu-id="21515-207">以程式設計方式產生序號的問題</span><span class="sxs-lookup"><span data-stu-id="21515-207">The problem with generating sequence numbers programmatically</span></span>
+
+<span data-ttu-id="21515-208">想像一下，您會改為撰寫下列轉譯樹產生器邏輯：</span><span class="sxs-lookup"><span data-stu-id="21515-208">Imagine instead that you wrote the following render tree builder logic:</span></span>
 
 ```csharp
 var seq = 0;
@@ -191,62 +237,119 @@ if (someFlag)
 builder.AddContent(seq++, "Second");
 ```
 
-<span data-ttu-id="b249f-162">現在，第一個輸出是：</span><span class="sxs-lookup"><span data-stu-id="b249f-162">Now, the first output is:</span></span>
+<span data-ttu-id="21515-209">現在，第一個輸出是：</span><span class="sxs-lookup"><span data-stu-id="21515-209">Now, the first output is:</span></span>
 
-| <span data-ttu-id="b249f-163">順序</span><span class="sxs-lookup"><span data-stu-id="b249f-163">Sequence</span></span> | <span data-ttu-id="b249f-164">類型</span><span class="sxs-lookup"><span data-stu-id="b249f-164">Type</span></span>      | <span data-ttu-id="b249f-165">資料</span><span class="sxs-lookup"><span data-stu-id="b249f-165">Data</span></span>   |
-| :------: | --------- | :----: |
-| <span data-ttu-id="b249f-166">0</span><span class="sxs-lookup"><span data-stu-id="b249f-166">0</span></span>        | <span data-ttu-id="b249f-167">Text node</span><span class="sxs-lookup"><span data-stu-id="b249f-167">Text node</span></span> | <span data-ttu-id="b249f-168">First</span><span class="sxs-lookup"><span data-stu-id="b249f-168">First</span></span>  |
-| <span data-ttu-id="b249f-169">1</span><span class="sxs-lookup"><span data-stu-id="b249f-169">1</span></span>        | <span data-ttu-id="b249f-170">Text node</span><span class="sxs-lookup"><span data-stu-id="b249f-170">Text node</span></span> | <span data-ttu-id="b249f-171">Second</span><span class="sxs-lookup"><span data-stu-id="b249f-171">Second</span></span> |
+| <span data-ttu-id="21515-210">順序</span><span class="sxs-lookup"><span data-stu-id="21515-210">Sequence</span></span> | <span data-ttu-id="21515-211">類型</span><span class="sxs-lookup"><span data-stu-id="21515-211">Type</span></span>      | <span data-ttu-id="21515-212">資料</span><span class="sxs-lookup"><span data-stu-id="21515-212">Data</span></span>   |
+| :---
+<span data-ttu-id="21515-213">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-213">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-214">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-214">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-215">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-215">'Blazor'</span></span>
+- <span data-ttu-id="21515-216">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-216">'Identity'</span></span>
+- <span data-ttu-id="21515-217">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-217">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-218">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-218">'Razor'</span></span>
+- <span data-ttu-id="21515-219">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-219">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="b249f-172">此結果與先前的案例相同，因此不會有負面問題存在。</span><span class="sxs-lookup"><span data-stu-id="b249f-172">This outcome is identical to the prior case, so no negative issues exist.</span></span> <span data-ttu-id="b249f-173">`someFlag``false`在第二個轉譯上，輸出為：</span><span class="sxs-lookup"><span data-stu-id="b249f-173">`someFlag` is `false` on the second rendering, and the output is:</span></span>
+<span data-ttu-id="21515-220">---: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-220">---: | --- title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-221">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-221">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-222">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-222">'Blazor'</span></span>
+- <span data-ttu-id="21515-223">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-223">'Identity'</span></span>
+- <span data-ttu-id="21515-224">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-224">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-225">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-225">'Razor'</span></span>
+- <span data-ttu-id="21515-226">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-226">'SignalR' uid:</span></span> 
 
-| <span data-ttu-id="b249f-174">順序</span><span class="sxs-lookup"><span data-stu-id="b249f-174">Sequence</span></span> | <span data-ttu-id="b249f-175">類型</span><span class="sxs-lookup"><span data-stu-id="b249f-175">Type</span></span>      | <span data-ttu-id="b249f-176">資料</span><span class="sxs-lookup"><span data-stu-id="b249f-176">Data</span></span>   |
-| :------: | --------- | ------ |
-| <span data-ttu-id="b249f-177">0</span><span class="sxs-lookup"><span data-stu-id="b249f-177">0</span></span>        | <span data-ttu-id="b249f-178">Text node</span><span class="sxs-lookup"><span data-stu-id="b249f-178">Text node</span></span> | <span data-ttu-id="b249f-179">Second</span><span class="sxs-lookup"><span data-stu-id="b249f-179">Second</span></span> |
+-
+<span data-ttu-id="21515-227">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-227">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-228">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-228">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-229">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-229">'Blazor'</span></span>
+- <span data-ttu-id="21515-230">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-230">'Identity'</span></span>
+- <span data-ttu-id="21515-231">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-231">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-232">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-232">'Razor'</span></span>
+- <span data-ttu-id="21515-233">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-233">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="b249f-180">這次，diff 演算法發現發生了*兩*項變更，而演算法會產生下列編輯腳本：</span><span class="sxs-lookup"><span data-stu-id="b249f-180">This time, the diff algorithm sees that *two* changes have occurred, and the algorithm generates the following edit script:</span></span>
+<span data-ttu-id="21515-234">----- |:----: | |0 |文位元組點 |第一個 | |1 |文位元組點 |第二個 |</span><span class="sxs-lookup"><span data-stu-id="21515-234">----- | :----: | | 0        | Text node | First  | | 1        | Text node | Second |</span></span>
 
-* <span data-ttu-id="b249f-181">將第一個文位元組點的值變更為`Second`。</span><span class="sxs-lookup"><span data-stu-id="b249f-181">Change the value of the first text node to `Second`.</span></span>
-* <span data-ttu-id="b249f-182">移除第二個文位元組點。</span><span class="sxs-lookup"><span data-stu-id="b249f-182">Remove the second text node.</span></span>
+<span data-ttu-id="21515-235">此結果與先前的案例相同，因此不會有負面問題存在。</span><span class="sxs-lookup"><span data-stu-id="21515-235">This outcome is identical to the prior case, so no negative issues exist.</span></span> <span data-ttu-id="21515-236">`someFlag``false`在第二個轉譯上，輸出為：</span><span class="sxs-lookup"><span data-stu-id="21515-236">`someFlag` is `false` on the second rendering, and the output is:</span></span>
 
-<span data-ttu-id="b249f-183">產生序號已遺失關於`if/else`分支和迴圈在原始程式碼中出現位置的所有實用資訊。</span><span class="sxs-lookup"><span data-stu-id="b249f-183">Generating the sequence numbers has lost all the useful information about where the `if/else` branches and loops were present in the original code.</span></span> <span data-ttu-id="b249f-184">這會導致差異**兩倍，但前提**是之前。</span><span class="sxs-lookup"><span data-stu-id="b249f-184">This results in a diff **twice as long** as before.</span></span>
+| <span data-ttu-id="21515-237">順序</span><span class="sxs-lookup"><span data-stu-id="21515-237">Sequence</span></span> | <span data-ttu-id="21515-238">類型</span><span class="sxs-lookup"><span data-stu-id="21515-238">Type</span></span>      | <span data-ttu-id="21515-239">資料</span><span class="sxs-lookup"><span data-stu-id="21515-239">Data</span></span>   |
+| :---
+<span data-ttu-id="21515-240">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-240">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-241">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-241">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-242">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-242">'Blazor'</span></span>
+- <span data-ttu-id="21515-243">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-243">'Identity'</span></span>
+- <span data-ttu-id="21515-244">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-244">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-245">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-245">'Razor'</span></span>
+- <span data-ttu-id="21515-246">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-246">'SignalR' uid:</span></span> 
 
-<span data-ttu-id="b249f-185">這是一個簡單的範例。</span><span class="sxs-lookup"><span data-stu-id="b249f-185">This is a trivial example.</span></span> <span data-ttu-id="b249f-186">在具有複雜和深層嵌套結構的更真實案例中，尤其是使用迴圈時，效能成本通常較高。</span><span class="sxs-lookup"><span data-stu-id="b249f-186">In more realistic cases with complex and deeply nested structures, and especially with loops, the performance cost is usually higher.</span></span> <span data-ttu-id="b249f-187">Diff 演算法不會立即識別已插入或移除的迴圈區塊或分支，而是必須將深度遞迴到轉譯樹狀結構中。</span><span class="sxs-lookup"><span data-stu-id="b249f-187">Instead of immediately identifying which loop blocks or branches have been inserted or removed, the diff algorithm has to recurse deeply into the render trees.</span></span> <span data-ttu-id="b249f-188">這通常需要建立更長的編輯腳本，因為差異演算法會 misinformed 舊的和新結構如何彼此相關。</span><span class="sxs-lookup"><span data-stu-id="b249f-188">This usually results in having to build longer edit scripts because the diff algorithm is misinformed about how the old and new structures relate to each other.</span></span>
+<span data-ttu-id="21515-247">---: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-247">---: | --- title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-248">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-248">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-249">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-249">'Blazor'</span></span>
+- <span data-ttu-id="21515-250">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-250">'Identity'</span></span>
+- <span data-ttu-id="21515-251">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-251">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-252">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-252">'Razor'</span></span>
+- <span data-ttu-id="21515-253">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-253">'SignalR' uid:</span></span> 
 
-### <a name="guidance-and-conclusions"></a><span data-ttu-id="b249f-189">指引和結論</span><span class="sxs-lookup"><span data-stu-id="b249f-189">Guidance and conclusions</span></span>
+-
+<span data-ttu-id="21515-254">標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-254">title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-255">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-255">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-256">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-256">'Blazor'</span></span>
+- <span data-ttu-id="21515-257">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-257">'Identity'</span></span>
+- <span data-ttu-id="21515-258">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-258">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-259">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-259">'Razor'</span></span>
+- <span data-ttu-id="21515-260">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-260">'SignalR' uid:</span></span> 
 
-* <span data-ttu-id="b249f-190">如果序號是動態產生的，應用程式效能會受到影響。</span><span class="sxs-lookup"><span data-stu-id="b249f-190">App performance suffers if sequence numbers are generated dynamically.</span></span>
-* <span data-ttu-id="b249f-191">架構無法在執行時間自動建立自己的序號，因為必要的資訊不存在，除非是在編譯時期加以捕捉。</span><span class="sxs-lookup"><span data-stu-id="b249f-191">The framework can't create its own sequence numbers automatically at runtime because the necessary information doesn't exist unless it's captured at compile time.</span></span>
-* <span data-ttu-id="b249f-192">請勿撰寫長時間區塊的手動執行`RenderTreeBuilder`邏輯。</span><span class="sxs-lookup"><span data-stu-id="b249f-192">Don't write long blocks of manually-implemented `RenderTreeBuilder` logic.</span></span> <span data-ttu-id="b249f-193">偏好*razor*檔案，並允許編譯器處理序號。</span><span class="sxs-lookup"><span data-stu-id="b249f-193">Prefer *.razor* files and allow the compiler to deal with the sequence numbers.</span></span> <span data-ttu-id="b249f-194">如果您無法`RenderTreeBuilder`避免手動邏輯，請將長塊的程式碼分割成較小的`OpenRegion` / `CloseRegion`片段，以呼叫。</span><span class="sxs-lookup"><span data-stu-id="b249f-194">If you're unable to avoid manual `RenderTreeBuilder` logic, split long blocks of code into smaller pieces wrapped in `OpenRegion`/`CloseRegion` calls.</span></span> <span data-ttu-id="b249f-195">每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。</span><span class="sxs-lookup"><span data-stu-id="b249f-195">Each region has its own separate space of sequence numbers, so you can restart from zero (or any other arbitrary number) inside each region.</span></span>
-* <span data-ttu-id="b249f-196">如果序號已硬式編碼，則 diff 演算法只會要求序號增加值。</span><span class="sxs-lookup"><span data-stu-id="b249f-196">If sequence numbers are hardcoded, the diff algorithm only requires that sequence numbers increase in value.</span></span> <span data-ttu-id="b249f-197">起始值和間距無關。</span><span class="sxs-lookup"><span data-stu-id="b249f-197">The initial value and gaps are irrelevant.</span></span> <span data-ttu-id="b249f-198">一個合法的選項是使用程式程式碼號做為序號，或從零開始，並以一個或數百個（或任何慣用的間隔）來增加。</span><span class="sxs-lookup"><span data-stu-id="b249f-198">One legitimate option is to use the code line number as the sequence number, or start from zero and increase by ones or hundreds (or any preferred interval).</span></span> 
-* Blazor<span data-ttu-id="b249f-199">會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。</span><span class="sxs-lookup"><span data-stu-id="b249f-199"> uses sequence numbers, while other tree-diffing UI frameworks don't use them.</span></span> <span data-ttu-id="b249f-200">當使用序號時，比較速度會更快， Blazor而且具有可自動處理序號的編譯步驟，讓開發人員撰寫*razor*檔案。</span><span class="sxs-lookup"><span data-stu-id="b249f-200">Diffing is far faster when sequence numbers are used, and Blazor has the advantage of a compile step that deals with sequence numbers automatically for developers authoring *.razor* files.</span></span>
+<span data-ttu-id="21515-261">----- |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。</span><span class="sxs-lookup"><span data-stu-id="21515-261">----- | --- title: 'ASP.NET Core Blazor advanced scenarios' author: description: 'Learn about advanced scenarios in Blazor, including how to incorporate manual RenderTreeBuilder logic into an app.'</span></span>
+<span data-ttu-id="21515-262">monikerRange： ms-chap： ms. custom： ms. date： no-loc：</span><span class="sxs-lookup"><span data-stu-id="21515-262">monikerRange: ms.author: ms.custom: ms.date: no-loc:</span></span>
+- <span data-ttu-id="21515-263">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="21515-263">'Blazor'</span></span>
+- <span data-ttu-id="21515-264">'Identity'</span><span class="sxs-lookup"><span data-stu-id="21515-264">'Identity'</span></span>
+- <span data-ttu-id="21515-265">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="21515-265">'Let's Encrypt'</span></span>
+- <span data-ttu-id="21515-266">'Razor'</span><span class="sxs-lookup"><span data-stu-id="21515-266">'Razor'</span></span>
+- <span data-ttu-id="21515-267">' SignalR ' uid：</span><span class="sxs-lookup"><span data-stu-id="21515-267">'SignalR' uid:</span></span> 
 
-## <a name="perform-large-data-transfers-in-blazor-server-apps"></a><span data-ttu-id="b249f-201">在伺服器應用程式中Blazor執行大型資料傳輸</span><span class="sxs-lookup"><span data-stu-id="b249f-201">Perform large data transfers in Blazor Server apps</span></span>
+<span data-ttu-id="21515-268">--- | |0 |文位元組點 |第二個 |</span><span class="sxs-lookup"><span data-stu-id="21515-268">--- | | 0        | Text node | Second |</span></span>
 
-<span data-ttu-id="b249f-202">在某些情況下，必須在 JavaScript 和Blazor之間傳輸大量資料。</span><span class="sxs-lookup"><span data-stu-id="b249f-202">In some scenarios, large amounts of data must be transferred between JavaScript and Blazor.</span></span> <span data-ttu-id="b249f-203">通常會在下列情況進行大型資料傳輸：</span><span class="sxs-lookup"><span data-stu-id="b249f-203">Typically, large data transfers occur when:</span></span>
+<span data-ttu-id="21515-269">這次，diff 演算法發現發生了*兩*項變更，而演算法會產生下列編輯腳本：</span><span class="sxs-lookup"><span data-stu-id="21515-269">This time, the diff algorithm sees that *two* changes have occurred, and the algorithm generates the following edit script:</span></span>
 
-* <span data-ttu-id="b249f-204">瀏覽器檔案系統 Api 可用來上傳或下載檔案。</span><span class="sxs-lookup"><span data-stu-id="b249f-204">Browser file system APIs are used to upload or download a file.</span></span>
-* <span data-ttu-id="b249f-205">需要具有協力廠商程式庫的互通性。</span><span class="sxs-lookup"><span data-stu-id="b249f-205">Interop with a third party library is required.</span></span>
+* <span data-ttu-id="21515-270">將第一個文位元組點的值變更為 `Second` 。</span><span class="sxs-lookup"><span data-stu-id="21515-270">Change the value of the first text node to `Second`.</span></span>
+* <span data-ttu-id="21515-271">移除第二個文位元組點。</span><span class="sxs-lookup"><span data-stu-id="21515-271">Remove the second text node.</span></span>
 
-<span data-ttu-id="b249f-206">在Blazor伺服器中，有一項限制是為了避免傳遞可能會導致效能問題的單一大型訊息。</span><span class="sxs-lookup"><span data-stu-id="b249f-206">In Blazor Server, a limitation is in place to prevent passing single large messages that may result in performance issues.</span></span>
+<span data-ttu-id="21515-272">產生序號已遺失關於 `if/else` 分支和迴圈在原始程式碼中出現位置的所有實用資訊。</span><span class="sxs-lookup"><span data-stu-id="21515-272">Generating the sequence numbers has lost all the useful information about where the `if/else` branches and loops were present in the original code.</span></span> <span data-ttu-id="21515-273">這會導致差異**兩倍，但前提**是之前。</span><span class="sxs-lookup"><span data-stu-id="21515-273">This results in a diff **twice as long** as before.</span></span>
 
-<span data-ttu-id="b249f-207">開發在 JavaScript 和Blazor之間傳輸資料的程式碼時，請考慮下列指導方針：</span><span class="sxs-lookup"><span data-stu-id="b249f-207">Consider the following guidance when developing code that transfers data between JavaScript and Blazor:</span></span>
+<span data-ttu-id="21515-274">這是一個簡單的範例。</span><span class="sxs-lookup"><span data-stu-id="21515-274">This is a trivial example.</span></span> <span data-ttu-id="21515-275">在具有複雜和深層嵌套結構的更真實案例中，尤其是使用迴圈時，效能成本通常較高。</span><span class="sxs-lookup"><span data-stu-id="21515-275">In more realistic cases with complex and deeply nested structures, and especially with loops, the performance cost is usually higher.</span></span> <span data-ttu-id="21515-276">Diff 演算法不會立即識別已插入或移除的迴圈區塊或分支，而是必須將深度遞迴到轉譯樹狀結構中。</span><span class="sxs-lookup"><span data-stu-id="21515-276">Instead of immediately identifying which loop blocks or branches have been inserted or removed, the diff algorithm has to recurse deeply into the render trees.</span></span> <span data-ttu-id="21515-277">這通常需要建立更長的編輯腳本，因為差異演算法會 misinformed 舊的和新結構如何彼此相關。</span><span class="sxs-lookup"><span data-stu-id="21515-277">This usually results in having to build longer edit scripts because the diff algorithm is misinformed about how the old and new structures relate to each other.</span></span>
 
-* <span data-ttu-id="b249f-208">將資料分割成較小的片段，並依序傳送資料區段，直到伺服器收到所有資料為止。</span><span class="sxs-lookup"><span data-stu-id="b249f-208">Slice the data into smaller pieces, and send the data segments sequentially until all of the data is received by the server.</span></span>
-* <span data-ttu-id="b249f-209">不要以 JavaScript 和 c # 程式碼配置大型物件。</span><span class="sxs-lookup"><span data-stu-id="b249f-209">Don't allocate large objects in JavaScript and C# code.</span></span>
-* <span data-ttu-id="b249f-210">傳送或接收資料時，不要長時間封鎖主要 UI 執行緒。</span><span class="sxs-lookup"><span data-stu-id="b249f-210">Don't block the main UI thread for long periods when sending or receiving data.</span></span>
-* <span data-ttu-id="b249f-211">釋放處理常式完成或取消時所耗用的任何記憶體。</span><span class="sxs-lookup"><span data-stu-id="b249f-211">Free any memory consumed when the process is completed or cancelled.</span></span>
-* <span data-ttu-id="b249f-212">基於安全性目的，強制執行下列額外的需求：</span><span class="sxs-lookup"><span data-stu-id="b249f-212">Enforce the following additional requirements for security purposes:</span></span>
-  * <span data-ttu-id="b249f-213">宣告可傳遞的檔案或資料大小上限。</span><span class="sxs-lookup"><span data-stu-id="b249f-213">Declare the maximum file or data size that can be passed.</span></span>
-  * <span data-ttu-id="b249f-214">宣告從用戶端到伺服器的最小上傳速率。</span><span class="sxs-lookup"><span data-stu-id="b249f-214">Declare the minimum upload rate from the client to the server.</span></span>
-* <span data-ttu-id="b249f-215">伺服器收到資料之後，資料可以是：</span><span class="sxs-lookup"><span data-stu-id="b249f-215">After the data is received by the server, the data can be:</span></span>
-  * <span data-ttu-id="b249f-216">暫時儲存在記憶體緩衝區中，直到收集所有區段為止。</span><span class="sxs-lookup"><span data-stu-id="b249f-216">Temporarily stored in a memory buffer until all of the segments are collected.</span></span>
-  * <span data-ttu-id="b249f-217">立即使用。</span><span class="sxs-lookup"><span data-stu-id="b249f-217">Consumed immediately.</span></span> <span data-ttu-id="b249f-218">例如，資料可以立即儲存在資料庫中，或在每個區段收到時寫入磁片。</span><span class="sxs-lookup"><span data-stu-id="b249f-218">For example, the data can be stored immediately in a database or written to disk as each segment is received.</span></span>
+### <a name="guidance-and-conclusions"></a><span data-ttu-id="21515-278">指引和結論</span><span class="sxs-lookup"><span data-stu-id="21515-278">Guidance and conclusions</span></span>
 
-<span data-ttu-id="b249f-219">下列檔案上傳者類別會處理用戶端的 JS interop。</span><span class="sxs-lookup"><span data-stu-id="b249f-219">The following file uploader class handles JS interop with the client.</span></span> <span data-ttu-id="b249f-220">上載者類別會使用 JS interop 來執行下列動作：</span><span class="sxs-lookup"><span data-stu-id="b249f-220">The uploader class uses JS interop to:</span></span>
+* <span data-ttu-id="21515-279">如果序號是動態產生的，應用程式效能會受到影響。</span><span class="sxs-lookup"><span data-stu-id="21515-279">App performance suffers if sequence numbers are generated dynamically.</span></span>
+* <span data-ttu-id="21515-280">架構無法在執行時間自動建立自己的序號，因為必要的資訊不存在，除非是在編譯時期加以捕捉。</span><span class="sxs-lookup"><span data-stu-id="21515-280">The framework can't create its own sequence numbers automatically at runtime because the necessary information doesn't exist unless it's captured at compile time.</span></span>
+* <span data-ttu-id="21515-281">請勿撰寫長時間區塊的手動執行 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 邏輯。</span><span class="sxs-lookup"><span data-stu-id="21515-281">Don't write long blocks of manually-implemented <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> logic.</span></span> <span data-ttu-id="21515-282">偏好*razor*檔案，並允許編譯器處理序號。</span><span class="sxs-lookup"><span data-stu-id="21515-282">Prefer *.razor* files and allow the compiler to deal with the sequence numbers.</span></span> <span data-ttu-id="21515-283">如果您無法避免手動 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 邏輯，請將長塊的程式碼分割成較小的片段，以 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.OpenRegion%2A> / <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.CloseRegion%2A> 呼叫。</span><span class="sxs-lookup"><span data-stu-id="21515-283">If you're unable to avoid manual <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> logic, split long blocks of code into smaller pieces wrapped in <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.OpenRegion%2A>/<xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.CloseRegion%2A> calls.</span></span> <span data-ttu-id="21515-284">每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。</span><span class="sxs-lookup"><span data-stu-id="21515-284">Each region has its own separate space of sequence numbers, so you can restart from zero (or any other arbitrary number) inside each region.</span></span>
+* <span data-ttu-id="21515-285">如果序號已硬式編碼，則 diff 演算法只會要求序號增加值。</span><span class="sxs-lookup"><span data-stu-id="21515-285">If sequence numbers are hardcoded, the diff algorithm only requires that sequence numbers increase in value.</span></span> <span data-ttu-id="21515-286">起始值和間距無關。</span><span class="sxs-lookup"><span data-stu-id="21515-286">The initial value and gaps are irrelevant.</span></span> <span data-ttu-id="21515-287">一個合法的選項是使用程式程式碼號做為序號，或從零開始，並以一個或數百個（或任何慣用的間隔）來增加。</span><span class="sxs-lookup"><span data-stu-id="21515-287">One legitimate option is to use the code line number as the sequence number, or start from zero and increase by ones or hundreds (or any preferred interval).</span></span> 
+* Blazor<span data-ttu-id="21515-288">會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。</span><span class="sxs-lookup"><span data-stu-id="21515-288"> uses sequence numbers, while other tree-diffing UI frameworks don't use them.</span></span> <span data-ttu-id="21515-289">當使用序號時，比較速度會更快，而且 Blazor 具有可自動處理序號的編譯步驟，讓開發人員撰寫*razor*檔案。</span><span class="sxs-lookup"><span data-stu-id="21515-289">Diffing is far faster when sequence numbers are used, and Blazor has the advantage of a compile step that deals with sequence numbers automatically for developers authoring *.razor* files.</span></span>
 
-* <span data-ttu-id="b249f-221">輪詢用戶端以傳送資料區段。</span><span class="sxs-lookup"><span data-stu-id="b249f-221">Poll the client to send a data segment.</span></span>
-* <span data-ttu-id="b249f-222">如果輪詢超時，則中止交易。</span><span class="sxs-lookup"><span data-stu-id="b249f-222">Abort the transaction if polling times out.</span></span>
+## <a name="perform-large-data-transfers-in-blazor-server-apps"></a><span data-ttu-id="21515-290">在伺服器應用程式中執行大型資料傳輸 Blazor</span><span class="sxs-lookup"><span data-stu-id="21515-290">Perform large data transfers in Blazor Server apps</span></span>
+
+<span data-ttu-id="21515-291">在某些情況下，必須在 JavaScript 和之間傳輸大量資料 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="21515-291">In some scenarios, large amounts of data must be transferred between JavaScript and Blazor.</span></span> <span data-ttu-id="21515-292">通常會在下列情況進行大型資料傳輸：</span><span class="sxs-lookup"><span data-stu-id="21515-292">Typically, large data transfers occur when:</span></span>
+
+* <span data-ttu-id="21515-293">瀏覽器檔案系統 Api 可用來上傳或下載檔案。</span><span class="sxs-lookup"><span data-stu-id="21515-293">Browser file system APIs are used to upload or download a file.</span></span>
+* <span data-ttu-id="21515-294">需要具有協力廠商程式庫的互通性。</span><span class="sxs-lookup"><span data-stu-id="21515-294">Interop with a third party library is required.</span></span>
+
+<span data-ttu-id="21515-295">在 Blazor 伺服器中，有一項限制是為了避免傳遞可能會導致效能問題的單一大型訊息。</span><span class="sxs-lookup"><span data-stu-id="21515-295">In Blazor Server, a limitation is in place to prevent passing single large messages that may result in performance issues.</span></span>
+
+<span data-ttu-id="21515-296">開發在 JavaScript 和之間傳輸資料的程式碼時，請考慮下列指導方針 Blazor ：</span><span class="sxs-lookup"><span data-stu-id="21515-296">Consider the following guidance when developing code that transfers data between JavaScript and Blazor:</span></span>
+
+* <span data-ttu-id="21515-297">將資料分割成較小的片段，並依序傳送資料區段，直到伺服器收到所有資料為止。</span><span class="sxs-lookup"><span data-stu-id="21515-297">Slice the data into smaller pieces, and send the data segments sequentially until all of the data is received by the server.</span></span>
+* <span data-ttu-id="21515-298">不要以 JavaScript 和 c # 程式碼配置大型物件。</span><span class="sxs-lookup"><span data-stu-id="21515-298">Don't allocate large objects in JavaScript and C# code.</span></span>
+* <span data-ttu-id="21515-299">傳送或接收資料時，不要長時間封鎖主要 UI 執行緒。</span><span class="sxs-lookup"><span data-stu-id="21515-299">Don't block the main UI thread for long periods when sending or receiving data.</span></span>
+* <span data-ttu-id="21515-300">釋放處理常式完成或取消時所耗用的任何記憶體。</span><span class="sxs-lookup"><span data-stu-id="21515-300">Free any memory consumed when the process is completed or cancelled.</span></span>
+* <span data-ttu-id="21515-301">基於安全性目的，強制執行下列額外的需求：</span><span class="sxs-lookup"><span data-stu-id="21515-301">Enforce the following additional requirements for security purposes:</span></span>
+  * <span data-ttu-id="21515-302">宣告可傳遞的檔案或資料大小上限。</span><span class="sxs-lookup"><span data-stu-id="21515-302">Declare the maximum file or data size that can be passed.</span></span>
+  * <span data-ttu-id="21515-303">宣告從用戶端到伺服器的最小上傳速率。</span><span class="sxs-lookup"><span data-stu-id="21515-303">Declare the minimum upload rate from the client to the server.</span></span>
+* <span data-ttu-id="21515-304">伺服器收到資料之後，資料可以是：</span><span class="sxs-lookup"><span data-stu-id="21515-304">After the data is received by the server, the data can be:</span></span>
+  * <span data-ttu-id="21515-305">暫時儲存在記憶體緩衝區中，直到收集所有區段為止。</span><span class="sxs-lookup"><span data-stu-id="21515-305">Temporarily stored in a memory buffer until all of the segments are collected.</span></span>
+  * <span data-ttu-id="21515-306">立即使用。</span><span class="sxs-lookup"><span data-stu-id="21515-306">Consumed immediately.</span></span> <span data-ttu-id="21515-307">例如，資料可以立即儲存在資料庫中，或在每個區段收到時寫入磁片。</span><span class="sxs-lookup"><span data-stu-id="21515-307">For example, the data can be stored immediately in a database or written to disk as each segment is received.</span></span>
+
+<span data-ttu-id="21515-308">下列檔案上傳者類別會處理用戶端的 JS interop。</span><span class="sxs-lookup"><span data-stu-id="21515-308">The following file uploader class handles JS interop with the client.</span></span> <span data-ttu-id="21515-309">上載者類別會使用 JS interop 來執行下列動作：</span><span class="sxs-lookup"><span data-stu-id="21515-309">The uploader class uses JS interop to:</span></span>
+
+* <span data-ttu-id="21515-310">輪詢用戶端以傳送資料區段。</span><span class="sxs-lookup"><span data-stu-id="21515-310">Poll the client to send a data segment.</span></span>
+* <span data-ttu-id="21515-311">如果輪詢超時，則中止交易。</span><span class="sxs-lookup"><span data-stu-id="21515-311">Abort the transaction if polling times out.</span></span>
 
 ```csharp
 using System;
@@ -333,18 +436,18 @@ public class FileUploader : IDisposable
 }
 ```
 
-<span data-ttu-id="b249f-223">在上述範例中：</span><span class="sxs-lookup"><span data-stu-id="b249f-223">In the preceding example:</span></span>
+<span data-ttu-id="21515-312">在上述範例中：</span><span class="sxs-lookup"><span data-stu-id="21515-312">In the preceding example:</span></span>
 
-* <span data-ttu-id="b249f-224">`maxBase64SegmentSize`會設定為`8192`，這是從`maxBase64SegmentSize = segmentSize * 4 / 3`計算。</span><span class="sxs-lookup"><span data-stu-id="b249f-224">The `maxBase64SegmentSize` is set to `8192`, which is calculated from `maxBase64SegmentSize = segmentSize * 4 / 3`.</span></span>
-* <span data-ttu-id="b249f-225">低層級的 .NET Core 記憶體管理 Api 是用來將伺服器上的記憶體區段儲存`uploadedSegments`在中。</span><span class="sxs-lookup"><span data-stu-id="b249f-225">Low-level .NET Core memory management APIs are used to store the memory segments on the server in `uploadedSegments`.</span></span>
-* <span data-ttu-id="b249f-226">`ReceiveFile`方法是用來處理透過 JS interop 的上傳：</span><span class="sxs-lookup"><span data-stu-id="b249f-226">A `ReceiveFile` method is used to handle the upload through JS interop:</span></span>
-  * <span data-ttu-id="b249f-227">檔案大小是以位元組為單位，透過 JS interop `jsRuntime.InvokeAsync<FileInfo>('getFileSize', selector)`與來決定。</span><span class="sxs-lookup"><span data-stu-id="b249f-227">The file size is determined in bytes through JS interop with `jsRuntime.InvokeAsync<FileInfo>('getFileSize', selector)`.</span></span>
-  * <span data-ttu-id="b249f-228">要接收的區段數目會計算並儲存在中`numberOfSegments`。</span><span class="sxs-lookup"><span data-stu-id="b249f-228">The number of segments to receive are calculated and stored in `numberOfSegments`.</span></span>
-  * <span data-ttu-id="b249f-229">這些區段會在透過 JS `for` interop 與`jsRuntime.InvokeAsync<string>('receiveSegment', i, selector)`的迴圈中要求。</span><span class="sxs-lookup"><span data-stu-id="b249f-229">The segments are requested in a `for` loop through JS interop with `jsRuntime.InvokeAsync<string>('receiveSegment', i, selector)`.</span></span> <span data-ttu-id="b249f-230">在解碼之前，所有區段（但最後一個）必須是8192個位元組。</span><span class="sxs-lookup"><span data-stu-id="b249f-230">All segments but the last must be 8,192 bytes before decoding.</span></span> <span data-ttu-id="b249f-231">系統會強制用戶端以有效率的方式傳送資料。</span><span class="sxs-lookup"><span data-stu-id="b249f-231">The client is forced to send the data in an efficient manner.</span></span>
-  * <span data-ttu-id="b249f-232">針對每個收到的區段，會先執行檢查<xref:System.Convert.TryFromBase64String%2A>，然後再使用進行解碼。</span><span class="sxs-lookup"><span data-stu-id="b249f-232">For each segment received, checks are performed before decoding with <xref:System.Convert.TryFromBase64String%2A>.</span></span>
-  * <span data-ttu-id="b249f-233">當上傳完成之後，會以新<xref:System.IO.Stream>的（`SegmentedStream`）傳回資料的資料流程。</span><span class="sxs-lookup"><span data-stu-id="b249f-233">A stream with the data is returned as a new <xref:System.IO.Stream> (`SegmentedStream`) after the upload is complete.</span></span>
+* <span data-ttu-id="21515-313">`maxBase64SegmentSize`會設定為 `8192` ，這是從計算 `maxBase64SegmentSize = segmentSize * 4 / 3` 。</span><span class="sxs-lookup"><span data-stu-id="21515-313">The `maxBase64SegmentSize` is set to `8192`, which is calculated from `maxBase64SegmentSize = segmentSize * 4 / 3`.</span></span>
+* <span data-ttu-id="21515-314">低層級的 .NET Core 記憶體管理 Api 是用來將伺服器上的記憶體區段儲存在中 `uploadedSegments` 。</span><span class="sxs-lookup"><span data-stu-id="21515-314">Low-level .NET Core memory management APIs are used to store the memory segments on the server in `uploadedSegments`.</span></span>
+* <span data-ttu-id="21515-315">`ReceiveFile`方法是用來處理透過 JS interop 的上傳：</span><span class="sxs-lookup"><span data-stu-id="21515-315">A `ReceiveFile` method is used to handle the upload through JS interop:</span></span>
+  * <span data-ttu-id="21515-316">檔案大小是以位元組為單位，透過 JS interop 與來決定 `jsRuntime.InvokeAsync<FileInfo>('getFileSize', selector)` 。</span><span class="sxs-lookup"><span data-stu-id="21515-316">The file size is determined in bytes through JS interop with `jsRuntime.InvokeAsync<FileInfo>('getFileSize', selector)`.</span></span>
+  * <span data-ttu-id="21515-317">要接收的區段數目會計算並儲存在中 `numberOfSegments` 。</span><span class="sxs-lookup"><span data-stu-id="21515-317">The number of segments to receive are calculated and stored in `numberOfSegments`.</span></span>
+  * <span data-ttu-id="21515-318">這些區段會在 `for` 透過 JS interop 與的迴圈中要求 `jsRuntime.InvokeAsync<string>('receiveSegment', i, selector)` 。</span><span class="sxs-lookup"><span data-stu-id="21515-318">The segments are requested in a `for` loop through JS interop with `jsRuntime.InvokeAsync<string>('receiveSegment', i, selector)`.</span></span> <span data-ttu-id="21515-319">在解碼之前，所有區段（但最後一個）必須是8192個位元組。</span><span class="sxs-lookup"><span data-stu-id="21515-319">All segments but the last must be 8,192 bytes before decoding.</span></span> <span data-ttu-id="21515-320">系統會強制用戶端以有效率的方式傳送資料。</span><span class="sxs-lookup"><span data-stu-id="21515-320">The client is forced to send the data in an efficient manner.</span></span>
+  * <span data-ttu-id="21515-321">針對每個收到的區段，會先執行檢查，然後再使用進行解碼 <xref:System.Convert.TryFromBase64String%2A> 。</span><span class="sxs-lookup"><span data-stu-id="21515-321">For each segment received, checks are performed before decoding with <xref:System.Convert.TryFromBase64String%2A>.</span></span>
+  * <span data-ttu-id="21515-322"><xref:System.IO.Stream> `SegmentedStream` 當上傳完成之後，會以新的（）傳回資料的資料流程。</span><span class="sxs-lookup"><span data-stu-id="21515-322">A stream with the data is returned as a new <xref:System.IO.Stream> (`SegmentedStream`) after the upload is complete.</span></span>
 
-<span data-ttu-id="b249f-234">分段資料流程類別會將區段清單公開為 readonly 不可搜尋<xref:System.IO.Stream>：</span><span class="sxs-lookup"><span data-stu-id="b249f-234">The segmented stream class exposes the list of segments as a readonly non-seekable <xref:System.IO.Stream>:</span></span>
+<span data-ttu-id="21515-323">分段資料流程類別會將區段清單公開為 readonly 不可搜尋 <xref:System.IO.Stream> ：</span><span class="sxs-lookup"><span data-stu-id="21515-323">The segmented stream class exposes the list of segments as a readonly non-seekable <xref:System.IO.Stream>:</span></span>
 
 ```csharp
 using System;
@@ -440,7 +543,7 @@ public class SegmentedStream : Stream
 }
 ```
 
-<span data-ttu-id="b249f-235">下列程式碼會實行 JavaScript 函式來接收資料：</span><span class="sxs-lookup"><span data-stu-id="b249f-235">The following code implements JavaScript functions to receive the data:</span></span>
+<span data-ttu-id="21515-324">下列程式碼會實行 JavaScript 函式來接收資料：</span><span class="sxs-lookup"><span data-stu-id="21515-324">The following code implements JavaScript functions to receive the data:</span></span>
 
 ```javascript
 function getFileSize(selector) {

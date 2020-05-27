@@ -16,7 +16,7 @@ BlazorWebAssembly apps 的保護方式與單一頁面應用程式（Spa）相同
 
 ## <a name="authentication-library"></a>驗證程式庫
 
-BlazorWebAssembly 支援透過程式庫使用 OIDC 來驗證和授權應用程式 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 。 程式庫提供一組基本類型，可針對 ASP.NET Core 後端順暢地進行驗證。 程式庫整合 Identity 了 ASP.NET Core，並在[ Identity 伺服器](https://identityserver.io/)之上建立 API 授權支援。 程式庫可以針對支援 OIDC 的任何協力廠商 Identity 提供者（IP）進行驗證，稱為 OpenID 提供者（OP）。
+BlazorWebAssembly 支援使用 OIDC 透過[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)來驗證和授權應用程式。 程式庫提供一組基本類型，可針對 ASP.NET Core 後端順暢地進行驗證。 程式庫整合 Identity 了 ASP.NET Core，並在[ Identity 伺服器](https://identityserver.io/)之上建立 API 授權支援。 程式庫可以針對支援 OIDC 的任何協力廠商 Identity 提供者（IP）進行驗證，稱為 OpenID 提供者（OP）。
 
 WebAssembly 中的驗證支援 Blazor 是建置於*oidc-client*程式庫之上，用來處理基礎驗證通訊協定的詳細資料。
 
@@ -32,7 +32,7 @@ WebAssembly 中的驗證支援 Blazor 是建置於*oidc-client*程式庫之上�
 
 ## <a name="authentication-process-with-oidc"></a>使用 OIDC 的驗證程式
 
-連結 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 庫提供數個基本專案，以使用 OIDC 來執行驗證和授權。 就廣義而言，驗證的運作方式如下：
+[AspNetCore. WebAssembly 驗證](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)程式庫提供數個基本專案，以使用 OIDC 來執行驗證和授權。 就廣義而言，驗證的運作方式如下：
 
 * 當匿名使用者選取 [登入] 按鈕或要求已套用屬性的頁面時 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) ，系統會將使用者重新導向至應用程式的登入頁面（ `/authentication/login` ）。
 * 在登入頁面中，驗證程式庫會準備重新導向至授權端點。 授權端點位於 Blazor WebAssembly 應用程式之外，而且可以在不同的來源託管。 端點負責判斷使用者是否已驗證，以及是否要在回應中發出一或多個權杖。 驗證程式庫會提供登入回呼，以接收驗證回應。

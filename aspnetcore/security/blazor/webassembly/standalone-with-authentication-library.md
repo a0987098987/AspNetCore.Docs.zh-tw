@@ -13,7 +13,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 *若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*
 
-若要建立 Blazor 使用程式庫的 WebAssembly 獨立應用程式 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` ，請在命令 shell 中執行下列命令：
+若要建立 Blazor 使用[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)的 WebAssembly 獨立應用程式，請在命令 shell 中執行下列命令：
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual
@@ -25,7 +25,7 @@ dotnet new blazorwasm -au Individual
 
 ## <a name="authentication-package"></a>驗證套件
 
-建立應用程式以使用個別使用者帳戶時，應用程式會 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 在應用程式的專案檔中自動接收套件的套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
+建立應用程式以使用個別使用者帳戶時，應用程式會自動在應用程式的專案檔中收到[WebAssembly 的 AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
 
 如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：
 
@@ -37,7 +37,7 @@ dotnet new blazorwasm -au Individual
 
 ## <a name="authentication-service-support"></a>驗證服務支援
 
-使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 `AddOidcAuthentication` `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 。 這個方法會設定應用程式與 Identity 提供者（IP）互動所需的服務。
+驗證使用者的支援是在服務容器中註冊，並使用 <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> [AspNetCore WebAssembly](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)所提供的擴充方法。 這個方法會設定應用程式與 Identity 提供者（IP）互動所需的服務。
 
 *Program.cs*：
 
@@ -59,11 +59,11 @@ Configuration 是由*wwwroot/appsettings*檔案所提供：
 }
 ```
 
-獨立應用程式的驗證支援是使用 Open ID Connect （OIDC）提供。 `AddOidcAuthentication`方法會接受回呼來設定使用 OIDC 驗證應用程式所需的參數。 設定應用程式所需的值可從符合 OIDC 規範的 IP 取得。 當您註冊應用程式時，請取得這些值，這通常會發生在其線上入口網站中。
+獨立應用程式的驗證支援是使用 Open ID Connect （OIDC）提供。 <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>方法會接受回呼來設定使用 OIDC 驗證應用程式所需的參數。 設定應用程式所需的值可從符合 OIDC 規範的 IP 取得。 當您註冊應用程式時，請取得這些值，這通常會發生在其線上入口網站中。
 
 ## <a name="access-token-scopes"></a>存取權杖範圍
 
-BlazorWebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍 `OidcProviderOptions` ：
+BlazorWebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions> ：
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>

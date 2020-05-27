@@ -147,7 +147,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 ### <a name="save-and-load-data-within-a-component"></a>儲存和載入元件中的資料
 
-在需要將資料載入或儲存至瀏覽器儲存體的任何元件中，使用 [`@inject`](xref:blazor/dependency-injection#request-a-service-in-a-component) 來插入下列任一項的實例：
+在需要將資料載入或儲存至瀏覽器儲存體的任何元件中，使用 [`@inject`](xref:mvc/views/razor#inject) 來插入下列任一項的實例：
 
 * `ProtectedLocalStorage`
 * `ProtectedSessionStorage`
@@ -184,7 +184,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在中指派結果 `OnParametersSetAsync` ，而不是 `OnInitializedAsync` 。 `OnInitializedAsync`只有在第一次具現化元件時，才會呼叫一次。 `OnInitializedAsync`如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱<xref:blazor/lifecycle>。
+如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在中指派結果 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> ，而不是 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>只有在第一次具現化元件時，才會呼叫一次。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱<xref:blazor/lifecycle>。
 
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：
@@ -314,7 +314,7 @@ else
 
 `CounterStateProvider`元件在載入完成之前，不會呈現其子內容來處理載入階段。
 
-若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取該狀態，請將 `CounterStateProvider` 元件包裝 `Router` 在元件中的周圍 `App` （*razor*）：
+若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取該狀態，請將 `CounterStateProvider` 元件包裝 <xref:Microsoft.AspNetCore.Components.Routing.Router> 在元件中的周圍 `App` （*razor*）：
 
 ```razor
 <CounterStateProvider>

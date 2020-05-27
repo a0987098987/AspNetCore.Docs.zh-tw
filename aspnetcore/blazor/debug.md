@@ -25,17 +25,12 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 目前，您*無法*：
 
-* 檢查陣列。
-* 將滑鼠暫留以檢查成員。
-* 逐步執行 managed 程式碼的偵錯工具。
-* 具有檢查實數值型別的完整支援。
 * 中斷未處理的例外狀況。
 * 在應用程式啟動期間叫用中斷點。
-* 使用服務工作者來對應用程式進行 Debug。
 
 我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 調試需要下列其中一個瀏覽器：
 
@@ -78,7 +73,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 在偵測 Blazor WebAssembly 應用程式時，您也可以對伺服器程式碼進行偵錯工具：
 
-1. 在的 [ *FetchData* ] 頁面中設定中斷點 `OnInitializedAsync` 。
+1. 在的 [ *FetchData* ] 頁面中設定中斷點 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。
 1. 在動作方法的中設定中斷點 `WeatherForecastController` `Get` 。
 1. 流覽至 [**提取資料**] 索引標籤，以叫用元件中的第一個中斷點， `FetchData` 然後再對伺服器發出 HTTP 要求：
 

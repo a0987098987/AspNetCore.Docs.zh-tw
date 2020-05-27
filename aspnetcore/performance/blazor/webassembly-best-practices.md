@@ -1,24 +1,12 @@
 ---
-title: ASP.NET Core Blazor WebAssembly 效能最佳做法
-author: pranavkm
-description: 增加 ASP.NET Core Blazor WebAssembly 應用程式的效能，並避免常見的效能問題的秘訣。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 05/13/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: performance/blazor/webassembly-best-practices
-ms.openlocfilehash: 9e9b166cb9ce9870a8ff275b72bb12f04b84751b
-ms.sourcegitcommit: e20653091c30e0768c4f960343e2c3dd658bba13
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/16/2020
-ms.locfileid: "83439434"
+標題： ' ASP.NET Core Blazor WebAssembly 效能最佳做法的作者：描述： ' ASP.NET Core WebAssembly 應用程式的效能提升的秘訣 Blazor ，並避免發生常見的效能問題。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 效能最佳做法
 
@@ -28,9 +16,9 @@ ms.locfileid: "83439434"
 
 ## <a name="avoid-unnecessary-component-renders"></a>避免不必要的元件呈現
 
-Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rerendering 元件。 覆寫[ComponentBase ShouldRender](xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A) ，以精細控制元件呈現。
+Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rerendering 元件。 覆寫 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A?displayProperty=nameWithType> 以精細控制元件轉譯。
 
-如果撰寫的 UI 專用元件永遠不會在初始轉譯之後變更，請將設定 `ShouldRender` 為傳回 `false` ：
+如果撰寫的 UI 專用元件永遠不會在初始轉譯之後變更，請將設定 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 為傳回 `false` ：
 
 ```razor
 @code {
@@ -42,9 +30,9 @@ Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rere
 
 在下例中︰
 
-* <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A>會覆寫並設定為欄位的值 `shouldRender` ，這是一開始 `false` 元件載入時。
-* 選取按鈕時， `shouldRender` 會設定為 `true` ，這會強制元件 rerender 已更新的 `currentCount` 。
-* 緊接在 rerendering 之後，會 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> 將的值設定為， `shouldRender` `false` 以防止進一步 rerendering，直到下一次選取按鈕為止。
+* <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A>會覆寫並設定為欄位的值 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> ，這是一開始 `false` 元件載入時。
+* 選取按鈕時， <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 會設定為 `true` ，這會強制元件 rerender 已更新的 `currentCount` 。
+* 緊接在 rerendering 之後，會 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> 將的值設定為， <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> `false` 以防止進一步 rerendering，直到下一次選取按鈕為止。
 
 ```razor
 <p>Current count: @currentCount</p>

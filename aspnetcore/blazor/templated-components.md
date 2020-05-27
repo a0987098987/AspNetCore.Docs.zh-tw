@@ -1,26 +1,13 @@
 ---
-title: ASP.NET Core Blazor樣板化元件
-author: guardrex
-description: 瞭解樣板化元件可以如何接受一或多個 UI 範本做為參數，然後用來做為元件轉譯邏輯的一部分。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 03/18/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: blazor/templated-components
-ms.openlocfilehash: de603d3520c124b278312e5167a2f8bad14cf6e9
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82771063"
+標題： ' ASP.NET Core 樣板 Blazor 化元件的作者：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
-# <a name="aspnet-core-blazor-templated-components"></a>ASP.NET Core Blazor樣板化元件
+# <a name="aspnet-core-blazor-templated-components"></a>ASP.NET Core 樣板 Blazor 化元件
 
 By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)
 
@@ -31,13 +18,13 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 ## <a name="template-parameters"></a>範本參數
 
-樣板化元件是藉由指定一或多個類型`RenderFragment`為或`RenderFragment<T>`的元件參數所定義。 呈現片段代表要呈現的 UI 區段。 `RenderFragment<T>`採用可在叫用轉譯片段時指定的類型參數。
+樣板化元件是藉由指定一或多個類型為或的元件參數所定義 <xref:Microsoft.AspNetCore.Components.RenderFragment> <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 。 呈現片段代表要呈現的 UI 區段。 <xref:Microsoft.AspNetCore.Components.RenderFragment%601>採用可在叫用轉譯片段時指定的類型參數。
 
 `TableTemplate`成分
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/TableTemplate.razor)]
 
-使用樣板化元件時，可以使用符合參數名稱的子項目來指定範本參數（`TableHeader` `RowTemplate`在下列範例中為）：
+使用樣板化元件時，可以使用符合參數名稱的子項目來指定範本參數（ `TableHeader` `RowTemplate` 在下列範例中為）：
 
 ```razor
 <TableTemplate Items="pets">
@@ -57,7 +44,7 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 ## <a name="template-context-parameters"></a>範本內容參數
 
-當做元素傳遞之`RenderFragment<T>`類型的元件引數具有名為`context`的隱含參數（例如， `@context.PetId`從上述程式碼範例中），但您可以使用子項目`Context`上的屬性來變更參數名稱。 在下列範例中， `RowTemplate`元素的`Context`屬性會指定`pet`參數：
+當做元素傳遞之類型的元件引數 <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 具有名為的隱含參數 `context` （例如，從上述程式碼範例中 `@context.PetId` ），但您可以使用 `Context` 子項目上的屬性來變更參數名稱。 在下列範例中， `RowTemplate` 元素的 `Context` 屬性會指定 `pet` 參數：
 
 ```razor
 <TableTemplate Items="pets">
@@ -72,7 +59,7 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 </TableTemplate>
 ```
 
-或者，您也可以在`Context` component 元素上指定屬性。 指定`Context`的屬性會套用至所有指定的範本參數。 當您想要指定隱含子內容的內容參數名稱時（不含任何換行的子項目），這會很有用。 在下列範例中， `Context`屬性會出現在`TableTemplate`元素上，並套用至所有範本參數：
+或者，您也可以在 `Context` component 元素上指定屬性。 指定的 `Context` 屬性會套用至所有指定的範本參數。 當您想要指定隱含子內容的內容參數名稱時（不含任何換行的子項目），這會很有用。 在下列範例中， `Context` 屬性會出現在元素上， `TableTemplate` 並套用至所有範本參數：
 
 ```razor
 <TableTemplate Items="pets" Context="pet">
@@ -89,7 +76,7 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 ## <a name="generic-typed-components"></a>泛型型別元件
 
-樣板化元件通常會以一般方式輸入。 例如，泛型`ListViewTemplate`元件可以用來呈現`IEnumerable<T>`值。 若要定義泛型元件，請使用[`@typeparam`](xref:mvc/views/razor#typeparam)指示詞來指定類型參數：
+樣板化元件通常會以一般方式輸入。 例如，泛型 `ListViewTemplate` 元件可以用來呈現 `IEnumerable<T>` 值。 若要定義泛型元件，請使用指示詞 [`@typeparam`](xref:mvc/views/razor#typeparam) 來指定類型參數：
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ListViewTemplate.razor)]
 
@@ -103,7 +90,7 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 </ListViewTemplate>
 ```
 
-否則，必須使用符合型別參數名稱的屬性來明確指定型別參數。 在下列範例中， `TItem="Pet"`會指定類型：
+否則，必須使用符合型別參數名稱的屬性來明確指定型別參數。 在下列範例中，會 `TItem="Pet"` 指定類型：
 
 ```razor
 <ListViewTemplate Items="pets" TItem="Pet">

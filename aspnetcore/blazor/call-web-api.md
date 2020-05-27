@@ -12,11 +12,11 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 
 By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.com/danroth27)和[Juan De la Cruz](https://github.com/juandelacruz23)
 
-[ Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) apps 會使用預先設定的服務來呼叫 web api `HttpClient` 。 撰寫要求，其中可以包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用 Blazor JSON helper 或搭配 <xref:System.Net.Http.HttpRequestMessage> 。 `HttpClient`WebAssembly apps 中的服務著重于向 Blazor 原始伺服器提出要求。 本主題中的指導方針僅適用于 Blazor WebAssembly apps。
+[ Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) apps 會使用預先設定的服務來呼叫 web api <xref:System.Net.Http.HttpClient> 。 撰寫要求，其中可以包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用 Blazor JSON helper 或搭配 <xref:System.Net.Http.HttpRequestMessage> 。 <xref:System.Net.Http.HttpClient>WebAssembly apps 中的服務著重于向 Blazor 原始伺服器提出要求。 本主題中的指導方針僅適用于 Blazor WebAssembly apps。
 
 [ Blazor 伺服器](xref:blazor/hosting-models#blazor-server)應用程式會使用實例呼叫 web api <xref:System.Net.Http.HttpClient> ，通常是使用來建立 <xref:System.Net.Http.IHttpClientFactory> 。 本主題中的指導方針與 Blazor 伺服器應用程式無關。 開發 Blazor 伺服器應用程式時，請遵循中的指導方針 <xref:fundamentals/http-requests> 。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)） &ndash; 選取*BlazorWebAssemblySample*應用程式。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)）：選取*BlazorWebAssemblySample*應用程式。
 
 請參閱*BlazorWebAssemblySample*範例應用程式中的下列元件：
 
@@ -29,7 +29,7 @@ By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.co
 
 ## <a name="add-the-httpclient-service"></a>新增 HttpClient 服務
 
-在中 `Program.Main` ，新增 `HttpClient` 服務（如果尚未存在）：
+在中 `Program.Main` ，新增 <xref:System.Net.Http.HttpClient> 服務（如果尚未存在）：
 
 ```csharp
 builder.Services.AddTransient(sp => 
@@ -43,11 +43,11 @@ builder.Services.AddTransient(sp =>
 
 在 Blazor WebAssembly 應用程式中[，HttpClient](xref:fundamentals/http-requests)會當做預先設定的服務提供，以便向源伺服器提出要求。
 
-Blazor伺服器應用程式預設不會包含 `HttpClient` 服務。 `HttpClient`使用[HttpClient factory 基礎結構](xref:fundamentals/http-requests)，將提供給應用程式。
+Blazor伺服器應用程式預設不會包含 <xref:System.Net.Http.HttpClient> 服務。 <xref:System.Net.Http.HttpClient>使用[HttpClient factory 基礎結構](xref:fundamentals/http-requests)，將提供給應用程式。
 
-`HttpClient`和 JSON 協助程式也用來呼叫協力廠商 Web API 端點。 `HttpClient`會使用瀏覽器[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
+<xref:System.Net.Http.HttpClient>和 JSON 協助程式也用來呼叫協力廠商 Web API 端點。 <xref:System.Net.Http.HttpClient>會使用瀏覽器[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
 
-用戶端的基底位址會設定為源伺服器的位址。 使用指示詞插入 `HttpClient` 實例 `@inject` ：
+用戶端的基底位址會設定為源伺服器的位址。 使用指示詞插入 <xref:System.Net.Http.HttpClient> 實例 [`@inject`](xref:mvc/views/razor#inject) ：
 
 ```razor
 @using System.Net.Http
@@ -71,7 +71,7 @@ private class TodoItem
 
 JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並處理回應：
 
-* `GetFromJsonAsync`傳送 &ndash; HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
+* <xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A>傳送 &ndash; HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
 
   在下列程式碼中， `todoItems` 元件會顯示。 `GetTodoItems`當元件完成呈現（[OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)）時，就會觸發方法。 如需完整範例，請參閱範例應用程式。
 
@@ -87,7 +87,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-* `PostAsJsonAsync`傳送 &ndash; HTTP POST 要求，包括 json 編碼的內容，並剖析 json 回應主體以建立物件。
+* <xref:System.Net.Http.Json.HttpClientJsonExtensions.PostAsJsonAsync%2A>傳送 &ndash; HTTP POST 要求，包括 json 編碼的內容，並剖析 json 回應主體以建立物件。
 
   在下列程式碼中， `newItemName` 是由元件的繫結項目所提供。 `AddItem`方法是藉由選取元素來觸發 `<button>` 。 如需完整範例，請參閱範例應用程式。
 
@@ -109,13 +109,13 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
   
-  呼叫會傳回 `PostAsJsonAsync` <xref:System.Net.Http.HttpResponseMessage> 。 若要從回應訊息還原序列化 JSON 內容，請使用 `ReadFromJsonAsync<T>` 擴充方法：
+  呼叫會傳回 <xref:System.Net.Http.Json.HttpClientJsonExtensions.PostAsJsonAsync%2A> <xref:System.Net.Http.HttpResponseMessage> 。 若要從回應訊息還原序列化 JSON 內容，請使用 `ReadFromJsonAsync<T>` 擴充方法：
   
   ```csharp
-  var content = response.content.ReadFromJsonAsync<WeatherForecast>();
+  var content = response.Content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
-* `PutAsJsonAsync`傳送 &ndash; HTTP PUT 要求，包括 JSON 編碼的內容。
+* <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A>傳送 &ndash; HTTP PUT 要求，包括 JSON 編碼的內容。
 
   在下列程式碼中， `editItem` 和的值 `Name` `IsCompleted` 是由元件的繫結項目所提供。 `Id`當專案在 UI 的另一個部分中選取並呼叫時，會設定專案的 `EditItem` 。 `SaveItem`方法是藉由選取 Save 元素來觸發 `<button>` 。 如需完整範例，請參閱範例應用程式。
 
@@ -132,9 +132,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
       private void EditItem(long id)
       {
-          var editItem = todoItems.Single(i => i.Id == id);
-          editItem = new TodoItem { Id = editItem.Id, Name = editItem.Name, 
-              IsComplete = editItem.IsComplete };
+          editItem = todoItems.Single(i => i.Id == id);
       }
 
       private async Task SaveItem() =>
@@ -142,13 +140,13 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
   
-  呼叫會傳回 `PutAsJsonAsync` <xref:System.Net.Http.HttpResponseMessage> 。 若要從回應訊息還原序列化 JSON 內容，請使用 `ReadFromJsonAsync<T>` 擴充方法：
+  呼叫會傳回 <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A> <xref:System.Net.Http.HttpResponseMessage> 。 若要從回應訊息還原序列化 JSON 內容，請使用 <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> 擴充方法：
   
   ```csharp
   var content = response.content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
-<xref:System.Net.Http>包含用來傳送 HTTP 要求和接收 HTTP 回應的其他擴充方法。 [HttpClient](xref:System.Net.Http.HttpClient.DeleteAsync*)是用來將 HTTP DELETE 要求傳送至 Web API。
+<xref:System.Net.Http>包含用來傳送 HTTP 要求和接收 HTTP 回應的其他擴充方法。 <xref:System.Net.Http.HttpClient.DeleteAsync%2A?displayProperty=nameWithType>是用來將 HTTP DELETE 要求傳送至 Web API。
 
 在下列程式碼中，Delete `<button>` 元素會呼叫 `DeleteItem` 方法。 綁定 `<input>` 項會提供 `id` 要刪除之專案的。 如需完整範例，請參閱範例應用程式。
 
@@ -244,7 +242,7 @@ builder.Services.AddHttpClient<WeatherForecastClient>(client =>
     client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 ```
 
-元件會插入具類型的 `HttpClient` 以呼叫 Web API。
+元件會插入具類型的 <xref:System.Net.Http.HttpClient> 以呼叫 Web API。
 
 `FetchData`元件（*Pages/FetchData. razor*）：
 
@@ -265,13 +263,13 @@ builder.Services.AddHttpClient<WeatherForecastClient>(client =>
 
 ## <a name="handle-errors"></a>處理錯誤
 
-與 Web API 互動時，如果發生錯誤，就可以由開發人員程式碼來處理。 例如， `GetFromJsonAsync` 預期來自伺服器 API 的 JSON 回應與 `Content-Type` 的 `application/json` 。 如果回應不是 JSON 格式，則內容驗證會擲回 <xref:System.NotSupportedException> 。
+與 Web API 互動時，如果發生錯誤，就可以由開發人員程式碼來處理。 例如， <xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A> 預期來自伺服器 API 的 JSON 回應與 `Content-Type` 的 `application/json` 。 如果回應不是 JSON 格式，則內容驗證會擲回 <xref:System.NotSupportedException> 。
 
 在下列範例中，氣象預報資料要求的 URI 端點拼錯。 URI 應該是， `WeatherForecast` 但在呼叫中會顯示為 `WeatherForcast` （遺漏 "e"）。
 
-`GetFromJsonAsync`呼叫預期會傳回 JSON，但是伺服器會針對具有之的伺服器上的未處理例外狀況傳回 HTML `Content-Type` `text/html` 。 未處理的例外狀況發生在伺服器上，因為找不到路徑，而且中介軟體無法提供要求的頁面或視圖。
+<xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A>呼叫預期會傳回 JSON，但是伺服器會針對具有之的伺服器上的未處理例外狀況傳回 HTML `Content-Type` `text/html` 。 未處理的例外狀況發生在伺服器上，因為找不到路徑，而且中介軟體無法提供要求的頁面或視圖。
 
-在 `OnInitializedAsync` 用戶端上， <xref:System.NotSupportedException> 當回應內容驗證為非 JSON 時，會擲回。 在區塊中攔截到例外狀況 `catch` ，其中自訂邏輯可以記錄錯誤，或向使用者呈現易記的錯誤訊息：
+在 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 用戶端上， <xref:System.NotSupportedException> 當回應內容驗證為非 JSON 時，會擲回。 在區塊中攔截到例外狀況 `catch` ，其中自訂邏輯可以記錄錯誤，或向使用者呈現易記的錯誤訊息：
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -303,7 +301,7 @@ protected override async Task OnInitializedAsync()
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:security/blazor/webassembly/additional-scenarios>&ndash;包含使用 `HttpClient` 來提出安全 Web API 要求的涵蓋範圍。
+* <xref:security/blazor/webassembly/additional-scenarios>&ndash;包含使用 <xref:System.Net.Http.HttpClient> 來提出安全 Web API 要求的涵蓋範圍。
 * <xref:fundamentals/http-requests>
 * <xref:security/enforcing-ssl>
 * [Kestrel HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)

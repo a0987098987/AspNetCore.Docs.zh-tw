@@ -69,11 +69,11 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 
 ## <a name="component-parameters"></a>元件參數
 
-元件也可以有參數。 元件參數是在元件類別上使用具有屬性的公用屬性來定義 `[Parameter]` 。 使用這些屬性來指定標記中元件的引數。
+元件也可以有參數。 元件參數是在元件類別上使用具有屬性的公用屬性來定義 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 。 使用這些屬性來指定標記中元件的引數。
 
 1. 更新元件的 `@code` c # 程式碼，如下所示：
 
-   * 新增 `IncrementAmount` 具有屬性的公用屬性 `[Parameter]` 。
+   * 新增 `IncrementAmount` 具有屬性的公用屬性 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 。
    * `IncrementCount` `IncrementAmount` 當增加的值時，請將方法變更為使用屬性 `currentCount` 。
 
    *Pages/Counter.razor*：
@@ -105,7 +105,7 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-指示詞 `@inject` 是用來將服務的實例插入 `WeatherForecastService` `FetchData` 元件中。
+指示詞 [`@inject`](xref:mvc/views/razor#inject) 是用來將服務的實例插入 `WeatherForecastService` `FetchData` 元件中。
 
 *Pages/FetchData.razor*：
 
@@ -117,7 +117,7 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 
 ### <a name="blazor-webassembly-experience"></a>BlazorWebAssembly 體驗
 
-如果使用 Blazor WebAssembly 應用程式， `HttpClient` 則會插入，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
+如果使用 Blazor WebAssembly 應用程式， <xref:System.Net.Http.HttpClient> 則會插入，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
 
 *Pages/FetchData.razor*：
 

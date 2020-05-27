@@ -110,7 +110,7 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
 
 中的路由 Blazor 會藉由提供路由範本給應用程式中每個可存取的元件來達成。
 
-當編譯具有指示詞的檔案時 Razor [`@page`][9] ，系統會指定路由範本給產生的類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 。 在執行時間，路由器會尋找具有的元件類別 `RouteAttribute` ，並轉譯哪個元件具有符合所要求 URL 的路由範本。
+當編譯具有指示詞的檔案時 Razor [`@page`][9] ，系統會指定路由範本給產生的類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 。 在執行時間，路由器會尋找具有的元件類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> ，並轉譯哪個元件具有符合所要求 URL 的路由範本。
 
 ```razor
 @page "/ParentComponent"
@@ -136,7 +136,7 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
 
 ### <a name="component-parameters"></a>元件參數
 
-元件可以具有*元件參數*，其定義方式是在元件類別上使用具有屬性的公用屬性 `[Parameter]` 。 使用這些屬性來指定標記中元件的引數。
+元件可以具有*元件參數*，其使用元件類別上的公用屬性來定義，其具有 [ [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) ] （x： AspNetCore. ParameterAttribute）屬性。 使用這些屬性來指定標記中元件的引數。
 
 *Components/ChildComponent. razor*：
 
@@ -155,14 +155,14 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
 
 元件可以設定另一個元件的內容。 指派元件會在指定接收元件的標記之間提供內容。
 
-在下列範例中， `ChildComponent` 有一個 `ChildContent` 代表的屬性 `RenderFragment` ，代表要呈現的 UI 區段。 的值位於 `ChildContent` 元件的標記中，應在其中呈現內容。 的值 `ChildContent` 會從父元件接收，並在啟動載入面板的內轉譯 `panel-body` 。
+在下列範例中， `ChildComponent` 有一個 `ChildContent` 代表的屬性 <xref:Microsoft.AspNetCore.Components.RenderFragment> ，代表要呈現的 UI 區段。 的值位於 `ChildContent` 元件的標記中，應在其中呈現內容。 的值 `ChildContent` 會從父元件接收，並在啟動載入面板的內轉譯 `panel-body` 。
 
 *Components/ChildComponent. razor*：
 
 [!code-razor[](common/samples/3.x/BlazorWebAssemblySample/Components/ChildComponent.razor?highlight=3,14-15)]
 
 > [!NOTE]
-> 接收內容的屬性 `RenderFragment` 必須依照慣例命名 `ChildContent` 。
+> 接收內容的屬性 <xref:Microsoft.AspNetCore.Components.RenderFragment> 必須依照慣例命名 `ChildContent` 。
 
 `ParentComponent`範例應用程式中的會將內容放在標籤內，藉以提供呈現的內容 `ChildComponent` `<ChildComponent>` 。
 
@@ -229,7 +229,7 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
        size="50">
 ```
 
-若要接受任意屬性，請使用屬性設定為的屬性來定義元件參數 `[Parameter]` `CaptureUnmatchedValues` `true` ：
+若要接受任意屬性，請使用屬性設定為的屬性來定義元件參數 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> `true` ：
 
 ```razor
 @code {
@@ -238,7 +238,7 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
 }
 ```
 
-`CaptureUnmatchedValues`上的屬性 `[Parameter]` 允許參數比對與任何其他參數不相符的所有屬性。 元件只能定義具有的單一參數 `CaptureUnmatchedValues` 。 搭配使用的屬性類型 `CaptureUnmatchedValues` 必須可從 `Dictionary<string, object>` 使用字串索引鍵來指派。 `IEnumerable<KeyValuePair<string, object>>`或 `IReadOnlyDictionary<string, object>` 也是此案例中的選項。
+<xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues>上的屬性 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 允許參數比對與任何其他參數不相符的所有屬性。 元件只能定義具有的單一參數 <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> 。 搭配使用的屬性類型 <xref:Microsoft.AspNetCore.Components.ParameterAttribute.CaptureUnmatchedValues> 必須可從 `Dictionary<string, object>` 使用字串索引鍵來指派。 `IEnumerable<KeyValuePair<string, object>>`或 `IReadOnlyDictionary<string, object>` 也是此案例中的選項。
 
 [`@attributes`][3]相對於元素屬性位置的位置很重要。 當在專案 [`@attributes`][3] 上 splatted 時，會從右至左（最後一個）處理屬性。 請考慮使用元件的下列元件範例 `Child` ：
 
@@ -320,11 +320,11 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 
 ## <a name="invoke-component-methods-externally-to-update-state"></a>在外部叫用元件方法來更新狀態
 
-Blazor會使用同步處理內容（ `SynchronizationContext` ）來強制執行單一邏輯執行緒。 元件的[生命週期方法](xref:blazor/lifecycle)和所引發的任何事件回呼 Blazor 都會在同步處理內容上執行。
+Blazor會使用同步處理內容（ <xref:System.Threading.SynchronizationContext> ）來強制執行單一邏輯執行緒。 元件的[生命週期方法](xref:blazor/lifecycle)和所引發的任何事件回呼 Blazor 都會在同步處理內容上執行。
 
 Blazor伺服器的同步處理內容會嘗試模擬單一執行緒環境，讓它與瀏覽器中的 WebAssembly 模型（單一執行緒）緊密相符。 在任何指定的時間點，只會在一個執行緒上執行工作，以提供單一邏輯執行緒的印象。 不會同時執行兩個作業。
 
-在事件中，必須根據外來事件（例如計時器或其他通知）更新元件，請使用 `InvokeAsync` 方法，這會分派到 Blazor 的同步處理內容。 例如，假設有一個通知程式*服務*可通知任何處于已更新狀態的「接聽」元件：
+在事件中，必須根據外來事件（例如計時器或其他通知）來更新元件，請使用 `InvokeAsync` 方法，這會分派至 Blazor 的同步處理內容。 例如，假設有一個通知程式*服務*可通知任何處于已更新狀態的「接聽」元件：
 
 ```csharp
 public class NotifierService
@@ -438,7 +438,7 @@ public class NotifierService
 
 ### <a name="when-to-use-key"></a>使用金鑰的時機 \@
 
-一般來說， [`@key`][5] 每當轉譯清單（例如，在 `@foreach` 區塊中），而且有適合的值來定義時，就有合理的使用方式 [`@key`][5] 。
+一般而言， [`@key`][5] 只要轉譯清單（例如，在[foreach](/dotnet/csharp/language-reference/keywords/foreach-in)區塊中），而且有適合的值來定義時，就有合理的使用方式 [`@key`][5] 。
 
 當物件變更時，您也可以使用 [`@key`][5] 來防止 Blazor 保留元素或元件子樹：
 
@@ -469,7 +469,7 @@ public class NotifierService
 
 在下列情況下，會覆寫參數：
 
-* 子元件的內容會以呈現 `RenderFragment` 。
+* 子元件的內容會以呈現 <xref:Microsoft.AspNetCore.Components.RenderFragment> 。
 * <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>在父元件中呼叫。
 
 參數會重設，因為呼叫時會 rerenders 父元件 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> ，並將新的參數值提供給子元件。
@@ -503,7 +503,7 @@ public class NotifierService
 }
 ```
 
-`Expander`元件會新增至可能呼叫的父元件 `StateHasChanged` ：
+`Expander`元件會新增至可能呼叫的父元件 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> ：
 
 ```razor
 <Expander Expanded="true">
@@ -517,7 +517,7 @@ public class NotifierService
 </button>
 ```
 
-一開始， `Expander` 元件會在其屬性切換時獨立行為 `Expanded` 。 子元件會如預期般維護其狀態。 `StateHasChanged`在父系中呼叫時， `Expanded` 第一個子元件的參數會重設回其初始值（ `true` ）。 第二個 `Expander` 元件的 `Expanded` 值不會重設，因為第二個元件中不會轉譯任何子內容。
+一開始， `Expander` 元件會在其屬性切換時獨立行為 `Expanded` 。 子元件會如預期般維護其狀態。 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>在父系中呼叫時， `Expanded` 第一個子元件的參數會重設回其初始值（ `true` ）。 第二個 `Expander` 元件的 `Expanded` 值不會重設，因為第二個元件中不會轉譯任何子內容。
 
 若要維護上述案例中的狀態，請使用元件中的*私用欄位* `Expander` 來維護其切換狀態。
 
@@ -632,7 +632,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 ## <a name="specify-a-base-class"></a>指定基類
 
-指示詞 [`@inherits`][6] 可以用來指定元件的基類。 下列範例會顯示元件如何繼承基類， `BlazorRocksBase` 以提供元件的屬性和方法。 基類應該衍生自 `ComponentBase` 。
+指示詞 [`@inherits`][6] 可以用來指定元件的基類。 下列範例會顯示元件如何繼承基類， `BlazorRocksBase` 以提供元件的屬性和方法。 基類應該衍生自 <xref:Microsoft.AspNetCore.Components.ComponentBase> 。
 
 *Pages/BlazorRocks. razor*：
 
@@ -660,7 +660,7 @@ namespace BlazorSample
 
 ## <a name="specify-an-attribute"></a>指定屬性
 
-屬性可以在具有指示詞的元件中指定 Razor [`@attribute`][7] 。 下列範例會將 `[Authorize]` 屬性套用至元件類別：
+屬性可以在具有指示詞的元件中指定 Razor [`@attribute`][7] 。 下列範例會將 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性套用至元件類別：
 
 ```razor
 @page "/"
@@ -700,9 +700,9 @@ This is the Index page.
 > [!NOTE]
 > `global::`不支援該限定性。
 >
-> 不支援使用具有別名的語句來匯入元件 `using` （例如 `@using Foo = Bar` ）。
+> 不支援匯入具有別名[using](/dotnet/csharp/language-reference/keywords/using-statement)語句的元件（例如 `@using Foo = Bar` ）。
 >
-> 不支援部分限定的名稱。 例如， `@using BlazorSample` 不支援新增和 `NavMenu.razor` 參考 `<Shared.NavMenu></Shared.NavMenu>` 。
+> 不支援部分限定的名稱。 例如， `@using BlazorSample` 不支援新增和參考 `NavMenu` 元件（ `NavMenu.razor` ） `<Shared.NavMenu></Shared.NavMenu>` 。
 
 ## <a name="conditional-html-element-attributes"></a>條件式 HTML 元素屬性
 
@@ -771,7 +771,7 @@ public class ThemeInfo
 }
 ```
 
-祖系元件可以使用串聯值元件來提供串聯值。 此 `CascadingValue` 元件會包裝元件階層的子樹，並提供單一值給該子樹內的所有元件。
+祖系元件可以使用串聯值元件來提供串聯值。 此 <xref:Microsoft.AspNetCore.Components.CascadingValue%601> 元件會包裝元件階層的子樹，並提供單一值給該子樹內的所有元件。
 
 例如，範例應用程式 `ThemeInfo` 會在其中一個應用程式的配置中，將主題資訊（）指定為構成屬性版面配置主體之所有元件的串聯參數 `@Body` 。 `ButtonClass`在版面配置元件中，會指派的值 `btn-success` 。 任何子代元件都可以透過串聯物件使用此屬性 `ThemeInfo` 。
 
@@ -801,7 +801,7 @@ public class ThemeInfo
 }
 ```
 
-為了利用串聯值，元件會使用屬性宣告串聯式參數 `[CascadingParameter]` 。 串聯式值會依類型系結至串聯式參數。
+為了利用串聯值，元件會使用屬性宣告串聯式參數 [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) 。 串聯式值會依類型系結至串聯式參數。
 
 在範例應用程式中，元件會將串聯值系結至串聯式 `CascadingValuesParametersTheme` `ThemeInfo` 參數。 參數是用來為元件所顯示的其中一個按鈕設定 CSS 類別。
 
@@ -841,7 +841,7 @@ public class ThemeInfo
 }
 ```
 
-若要在相同的子樹中串聯多個相同類型的值，請提供唯一的 `Name` 字串給每個 `CascadingValue` 元件及其對應的 `CascadingParameter` 。 在下列範例中，兩個 `CascadingValue` 元件依名稱串聯不同的實例 `MyCascadingType` ：
+若要在相同的子樹中串聯多個相同類型的值，請為 <xref:Microsoft.AspNetCore.Components.CascadingValue%601.Name%2A> 每個 <xref:Microsoft.AspNetCore.Components.CascadingValue%601> 元件和其對應的屬性提供唯一的字串 [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) 。 在下列範例中，兩個 <xref:Microsoft.AspNetCore.Components.CascadingValue%601> 元件依名稱串聯不同的實例 `MyCascadingType` ：
 
 ```razor
 <CascadingValue Value=@parentCascadeParameter1 Name="CascadeParam1">
@@ -928,7 +928,7 @@ public class ThemeInfo
 @<{HTML tag}>...</{HTML tag}>
 ```
 
-下列範例說明如何指定 `RenderFragment` 和 `RenderFragment<T>` 值，並直接在元件中呈現範本。 轉譯片段也可以當做引數傳遞至樣板[化元件](xref:blazor/templated-components)。
+下列範例說明如何指定 <xref:Microsoft.AspNetCore.Components.RenderFragment> 和 <xref:Microsoft.AspNetCore.Components.RenderFragment%601> 值，並直接在元件中呈現範本。 轉譯片段也可以當做引數傳遞至樣板[化元件](xref:blazor/templated-components)。
 
 ```razor
 @timeTemplate
@@ -970,7 +970,7 @@ public class ThemeInfo
 }
 ```
 
-不過，在所有案例中不支援內嵌 SVG 標記。 如果您將 `<svg>` 標記直接放入元件檔案（*razor*），則會支援基本映射轉譯，但尚不支援許多先進的案例。 例如， `<use>` 目前未遵守標記，而且 `@bind` 無法與某些 SVG 標記搭配使用。 如需詳細資訊，請參閱[中的 SVG 支援 Blazor （dotnet/aspnetcore #18271）](https://github.com/dotnet/aspnetcore/issues/18271)。
+不過，在所有案例中不支援內嵌 SVG 標記。 如果您將 `<svg>` 標記直接放入元件檔案（*razor*），則會支援基本映射轉譯，但尚不支援許多先進的案例。 例如， `<use>` 目前未遵守標記，而且 [`@bind`][10] 無法與某些 SVG 標記搭配使用。 如需詳細資訊，請參閱[中的 SVG 支援 Blazor （dotnet/aspnetcore #18271）](https://github.com/dotnet/aspnetcore/issues/18271)。
 
 ## <a name="additional-resources"></a>其他資源
 

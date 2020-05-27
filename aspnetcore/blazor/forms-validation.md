@@ -1,30 +1,18 @@
 ---
-title: ASP.NET Core Blazor 表單和驗證
-author: guardrex
-description: 瞭解如何在中使用表單和欄位驗證案例 Blazor 。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 03/17/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: blazor/forms-validation
-ms.openlocfilehash: d7182594fbc22d056caff0864a053a0a92fa4e84
-ms.sourcegitcommit: e20653091c30e0768c4f960343e2c3dd658bba13
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/16/2020
-ms.locfileid: "83438885"
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-使用[資料批註](xref:mvc/models/validation)的 Blazor 支援表單和驗證。
+Blazor使用[資料批註](xref:mvc/models/validation)可支援表單和驗證。
 
 下列型別會 `ExampleModel` 使用資料批註來定義驗證邏輯：
 
@@ -39,7 +27,7 @@ public class ExampleModel
 }
 ```
 
-表單是使用元件定義的 `EditForm` 。 下列表單會示範典型的元素、元件和 Razor 程式碼：
+表單是使用元件定義的 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 。 下列表單會示範典型的元素、元件和程式 Razor 代碼：
 
 ```razor
 <EditForm Model="@exampleModel" OnValidSubmit="HandleValidSubmit">
@@ -64,27 +52,128 @@ public class ExampleModel
 在上述範例中：
 
 * 表單會使用在型別中 `name` 定義的驗證來驗證欄位中的使用者輸入 `ExampleModel` 。 模型會建立在元件的區塊中 `@code` ，並保留在私用欄位（ `exampleModel` ）中。 欄位會指派給元素的 `Model` 屬性 `<EditForm>` 。
-* `InputText`元件的系結 `@bind-Value` ：
-  * 模型屬性（ `exampleModel.Name` ）至 `InputText` 元件的 `Value` 屬性。 如需屬性系結的詳細資訊，請參閱 <xref:blazor/data-binding#parent-to-child-binding-with-component-parameters> 。
-  * 元件的屬性的變更事件委派 `InputText` `ValueChanged` 。
-* `DataAnnotationsValidator`元件會使用資料批註附加驗證支援。
-* `ValidationSummary`元件會摘要驗證訊息。
+* <xref:Microsoft.AspNetCore.Components.Forms.InputText>元件的系結 `@bind-Value` ：
+  * 模型屬性（ `exampleModel.Name` ）至 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 元件的 `Value` 屬性。 如需屬性系結的詳細資訊，請參閱 <xref:blazor/data-binding#parent-to-child-binding-with-component-parameters> 。
+  * 元件的屬性的變更事件委派 <xref:Microsoft.AspNetCore.Components.Forms.InputText> `ValueChanged` 。
+* <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>元件會使用資料批註附加驗證支援。
+* <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>元件會摘要驗證訊息。
 * `HandleValidSubmit`當表單成功提交（通過驗證）時，就會觸發。
 
 有一組內建的輸入元件可用來接收和驗證使用者輸入。 當輸入變更時和送出表單時，會進行驗證。 下表顯示可用的輸入元件。
 
-| 輸入元件 | 轉譯為&hellip;       |
-| --------------- | ------------------------- |
-| `InputText`     | `<input>`                 |
-| `InputTextArea` | `<textarea>`              |
-| `InputSelect`   | `<select>`                |
-| `InputNumber`   | `<input type="number">`   |
-| `InputCheckbox` | `<input type="checkbox">` |
-| `InputDate`     | `<input type="date">`     |
+| 輸入元件 | 轉譯為&hellip; |
+| ---
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
 
-所有的輸入元件（包括 `EditForm` ）都支援任意屬性。 任何不符合元件參數的屬性都會加入至轉譯的 HTML 專案。
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
 
-輸入元件會提供預設行為，以便在編輯和變更其 CSS 類別時進行驗證，以反映欄位狀態。 某些元件包含有用的剖析邏輯。 例如，和會藉由將無法剖析 `InputDate` `InputNumber` 的值註冊為驗證錯誤來妥善處理。 可以接受 null 值的類型也支援目標欄位的 null 屬性（例如 `int?` ）。
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------- |---標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------- | | <xref:Microsoft.AspNetCore.Components.Forms.InputText> | `<input>` | | <xref:Microsoft.AspNetCore.Components.Forms.InputTextArea> | `<textarea>` | | <xref:Microsoft.AspNetCore.Components.Forms.InputSelect%601> | `<select>` | | <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> | `<input type="number">` | | <xref:Microsoft.AspNetCore.Components.Forms.InputCheckbox> | `<input type="checkbox">` | | <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> | `<input type="date">` |
+
+所有的輸入元件（包括 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> ）都支援任意屬性。 任何不符合元件參數的屬性都會加入至轉譯的 HTML 專案。
+
+輸入元件會提供預設行為，以便在編輯和變更其 CSS 類別時進行驗證，以反映欄位狀態。 某些元件包含有用的剖析邏輯。 例如，和會藉由將無法剖析 <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> 的值註冊為驗證錯誤來妥善處理。 可以接受 null 值的類型也支援目標欄位的 null 屬性（例如 `int?` ）。
 
 下列 `Starship` 型別使用較早的屬性集和資料注釋，來定義驗證邏輯 `ExampleModel` ：
 
@@ -192,13 +281,13 @@ public class Starship
 }
 ```
 
-會 `EditForm` 建立 `EditContext` 做為階層式[值](xref:blazor/components#cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 `EditForm`也提供有效和無效提交的便利事件（ `OnValidSubmit` 、 `OnInvalidSubmit` ）。 或者，使用 `OnSubmit` 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
+會 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 建立 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 做為階層式[值](xref:blazor/components#cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>也提供有效和無效提交的便利事件（ <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> 、 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit> ）。 或者，使用 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
 
 在下例中︰
 
 * `HandleSubmit`當選取 [**提交**] 按鈕時，就會執行方法。
-* 表單會使用表單的進行驗證 `EditContext` 。
-* 藉由將傳遞 `EditContext` 至在 `ServerValidate` 伺服器上呼叫 Web API 端點的方法（*未顯示*），進一步驗證表單。
+* 表單會使用表單的進行驗證 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 。
+* 藉由將傳遞 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 至在 `ServerValidate` 伺服器上呼叫 Web API 端點的方法（*未顯示*），進一步驗證表單。
 * 額外的程式碼會根據用戶端和伺服器端驗證的結果來執行（藉由檢查） `isValid` 。
 
 ```razor
@@ -244,9 +333,9 @@ public class Starship
 
 ## <a name="inputtext-based-on-the-input-event"></a>根據輸入事件的 InputText
 
-使用 `InputText` 元件來建立使用事件的自訂群組件， `input` 而不是 `change` 事件。
+使用 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 元件來建立使用事件的自訂群組件， `input` 而不是 `change` 事件。
 
-建立具有下列標記的元件，並使用如同使用的元件 `InputText` ：
+建立具有下列標記的元件，並使用如同使用的元件 <xref:Microsoft.AspNetCore.Components.Forms.InputText> ：
 
 ```razor
 @inherits InputText
@@ -306,7 +395,7 @@ public class Starship
 }
 ```
 
-下列 `EditForm` 使用上述 `InputRadio` 元件來取得並驗證使用者的評等：
+下列 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 使用上述 `InputRadio` 元件來取得並驗證使用者的評等：
 
 ```razor
 @page "/RadioButtonExample"
@@ -349,16 +438,16 @@ public class Starship
 
 ## <a name="validation-support"></a>驗證支援
 
-`DataAnnotationsValidator`元件會使用資料批註，將驗證支援附加至串聯的 `EditContext` 。 若要啟用使用資料批註進行驗證的支援，則需要這個明確的手勢。 若要使用不同于資料批註的驗證系統，請將取代為 `DataAnnotationsValidator` 自訂的執行。 ASP.NET Core 的執行可用於參考來源中的檢查： [DataAnnotationsValidator](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs) / [AddDataAnnotationsValidation](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs)。
+<xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>元件會使用資料批註，將驗證支援附加至串聯的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 。 若要啟用使用資料批註進行驗證的支援，則需要這個明確的手勢。 若要使用不同于資料批註的驗證系統，請將取代為 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 自訂的執行。 ASP.NET Core 的執行可用於參考來源中的檢查： [DataAnnotationsValidator](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs) / [AddDataAnnotationsValidation](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs)。
 
 Blazor會執行兩種類型的驗證：
 
-* *欄位驗證*是在使用者跳到欄位外時執行。 在欄位驗證期間， `DataAnnotationsValidator` 元件會將所有報告的驗證結果與欄位產生關聯。
-* 當使用者提交表單時，就會執行*模型驗證*。 在模型驗證期間， `DataAnnotationsValidator` 元件會嘗試根據驗證結果所報告的成員名稱來決定欄位。 未與個別成員相關聯的驗證結果會與模型相關聯，而不是欄位。
+* *欄位驗證*是在使用者跳到欄位外時執行。 在欄位驗證期間， <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 元件會將所有報告的驗證結果與欄位產生關聯。
+* 當使用者提交表單時，就會執行*模型驗證*。 在模型驗證期間， <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 元件會嘗試根據驗證結果所報告的成員名稱來決定欄位。 未與個別成員相關聯的驗證結果會與模型相關聯，而不是欄位。
 
 ### <a name="validation-summary-and-validation-message-components"></a>驗證摘要和驗證訊息元件
 
-此 `ValidationSummary` 元件會摘要所有驗證訊息，類似于[驗證摘要](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)標籤協助程式：
+此 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 元件會摘要所有驗證訊息，類似于[驗證摘要](xref:mvc/views/working-with-forms#the-validation-summary-tag-helper)標籤協助程式：
 
 ```razor
 <ValidationSummary />
@@ -370,13 +459,13 @@ Blazor會執行兩種類型的驗證：
 <ValidationSummary Model="@starship" />
 ```
 
-`ValidationMessage`元件會顯示特定欄位的驗證訊息，類似于[驗證訊息](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)標籤協助程式。 使用屬性指定驗證欄位 `For` ，並以 lambda 運算式命名模型屬性：
+<xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601>元件會顯示特定欄位的驗證訊息，類似于[驗證訊息](xref:mvc/views/working-with-forms#the-validation-message-tag-helper)標籤協助程式。 使用屬性指定驗證欄位 `For` ，並以 lambda 運算式命名模型屬性：
 
 ```razor
 <ValidationMessage For="@(() => starship.MaximumAccommodation)" />
 ```
 
-`ValidationMessage`和 `ValidationSummary` 元件支援任意屬性。 任何不符合元件參數的屬性都會加入至產生的 `<div>` 或 `<ul>` 元素。
+<xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601>和 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 元件支援任意屬性。 任何不符合元件參數的屬性都會加入至產生的 `<div>` 或 `<ul>` 元素。
 
 ### <a name="custom-validation-attributes"></a>自訂驗證屬性
 
@@ -401,15 +490,15 @@ private class MyCustomValidator : ValidationAttribute
 
 ### <a name="blazor-data-annotations-validation-package"></a>Blazor資料批註驗證封裝
 
-[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)是使用元件來填滿驗證體驗缺口的套件 `DataAnnotationsValidator` 。 封裝目前為*實驗*性。
+[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)是使用元件來填滿驗證體驗缺口的套件 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 。 封裝目前為*實驗*性。
 
 ### <a name="compareproperty-attribute"></a>[CompareProperty] 屬性
 
-<xref:System.ComponentModel.DataAnnotations.CompareAttribute>無法與元件搭配運作， `DataAnnotationsValidator` 因為它不會將驗證結果與特定成員產生關聯。 這可能會導致欄位層級驗證與整個模型在提交時進行驗證時的行為不一致。 [DataAnnotations](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) *實驗*性封裝引進了額外的驗證屬性，其 `ComparePropertyAttribute` 運作方式會因應這些限制。 在 Blazor 應用程式中， `[CompareProperty]` 是屬性的直接取代 `[Compare]` 。
+<xref:System.ComponentModel.DataAnnotations.CompareAttribute>無法與元件搭配運作， <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 因為它不會將驗證結果與特定成員產生關聯。 這可能會導致欄位層級驗證與整個模型在提交時進行驗證時的行為不一致。 [DataAnnotations](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation) *實驗*性封裝引進了額外的驗證屬性，其 `ComparePropertyAttribute` 運作方式會因應這些限制。 在 Blazor 應用程式中， `[CompareProperty]` 是屬性的直接取代 [`[Compare]`](xref:System.ComponentModel.DataAnnotations.CompareAttribute) 。
 
 ### <a name="nested-models-collection-types-and-complex-types"></a>嵌套模型、集合類型和複雜類型
 
-Blazor使用內建的資料批註，提供驗證表單輸入的支援 `DataAnnotationsValidator` 。 不過，只會驗證系結 `DataAnnotationsValidator` 至不是集合或複雜型別屬性之表單之模型的最上層屬性。
+Blazor使用內建的資料批註，提供驗證表單輸入的支援 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 。 不過，只會驗證系結 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 至不是集合或複雜型別屬性之表單之模型的最上層屬性。
 
 若要驗證系結模型的整個物件圖形（包括集合型和複雜型別屬性），請使用實驗性的 DataAnnotations 所提供的。 `ObjectGraphDataAnnotationsValidator` *experimental* [驗證](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.DataAnnotations.Validation)套件：
 
@@ -461,8 +550,8 @@ public class ShipDescription
 
 若要根據表單驗證啟用和停用 [提交] 按鈕：
 
-* 當元件初始化時，請使用表單的 `EditContext` 來指派模型。
-* 在內容的回呼中驗證表單 `OnFieldChanged` ，以啟用和停用 [提交] 按鈕。
+* 當元件初始化時，請使用表單的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 來指派模型。
+* 在內容的回呼中驗證表單 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> ，以啟用和停用 [提交] 按鈕。
 * 解除掛接方法中的事件處理常式 `Dispose` 。 如需詳細資訊，請參閱<xref:blazor/lifecycle#component-disposal-with-idisposable>。
 
 ```razor
@@ -506,10 +595,10 @@ public class ShipDescription
 * 表單會預先載入有效的預設值。
 * 當表單載入時，您會想要啟用 [提交] 按鈕。
 
-上述方法的副作用在於，在 `ValidationSummary` 使用者與任何一個欄位互動之後，元件會填入不正確欄位。 此案例可透過下列其中一種方式來解決：
+上述方法的副作用在於，在 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 使用者與任何一個欄位互動之後，元件會填入不正確欄位。 此案例可透過下列其中一種方式來解決：
 
-* 請勿使用 `ValidationSummary` 表單上的元件。
-* `ValidationSummary`選取 [提交] 按鈕時，讓元件顯示（例如，在方法中 `HandleValidSubmit` ）。
+* 請勿使用 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 表單上的元件。
+* <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>選取 [提交] 按鈕時，讓元件顯示（例如，在方法中 `HandleValidSubmit` ）。
 
 ```razor
 <EditForm EditContext="@editContext" OnValidSubmit="HandleValidSubmit">

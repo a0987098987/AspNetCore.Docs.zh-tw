@@ -1,24 +1,12 @@
 ---
-title: ASP.NET Core Blazor 生命週期
-author: guardrex
-description: 瞭解如何 Razor 在 ASP.NET Core 應用程式中使用元件生命週期方法 Blazor 。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 05/07/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: blazor/lifecycle
-ms.openlocfilehash: e4fcd86b6e6a84d9e34a83688f9fb80c6907e5f3
-ms.sourcegitcommit: e20653091c30e0768c4f960343e2c3dd658bba13
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/16/2020
-ms.locfileid: "83438911"
+標題： ' ASP.NET Core Blazor 生命週期 ' 作者：描述： ' 瞭解如何 Razor 在 ASP.NET Core 應用程式中使用元件生命週期方法 Blazor 。 '
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor 生命週期
 
@@ -30,9 +18,9 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 ### <a name="component-initialization-methods"></a>元件初始化方法
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>當元件從其父元件接收到其初始參數之後，就會叫用和。 `OnInitializedAsync`當元件執行非同步作業時使用，而且應該在作業完成時重新整理。
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>當元件從其父元件接收到其初始參數之後，就會叫用和。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>當元件執行非同步作業時使用，而且應該在作業完成時重新整理。
 
-針對同步作業，覆寫 `OnInitialized` ：
+針對同步作業，覆寫 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A> ：
 
 ```csharp
 protected override void OnInitialized()
@@ -41,7 +29,7 @@ protected override void OnInitialized()
 }
 ```
 
-若要執行非同步作業，請覆寫 `OnInitializedAsync` 並 `await` 在作業上使用關鍵字：
+若要執行非同步作業，請覆寫 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 並在作業上使用[await](/dotnet/csharp/language-reference/operators/await)運算子：
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -50,12 +38,12 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Blazor將[其內容呼叫呈現](xref:blazor/hosting-model-configuration#render-mode) `OnInitializedAsync` **_兩次_** 的伺服器應用程式：
+Blazor將[其內容呼叫呈現](xref:blazor/hosting-model-configuration#render-mode) <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> **_兩次_** 的伺服器應用程式：
 
 * 當元件一開始以靜態方式轉譯為頁面的一部分時。
 * 第二次當瀏覽器建立與伺服器的連接時。
 
-若要防止中的開發人員程式碼執行 `OnInitializedAsync` 兩次，請參閱在預做[後](#stateful-reconnection-after-prerendering)重新設定狀態一節。
+若要防止中的開發人員程式碼執行 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 兩次，請參閱在預做[後](#stateful-reconnection-after-prerendering)重新設定狀態一節。
 
 在預先 Blazor 處理伺服器應用程式時，因為尚未建立與瀏覽器的連接，所以無法執行某些動作（例如呼叫 JavaScript）。 元件可能需要在資源清單時以不同的方式呈現。 如需詳細資訊，請參閱偵測[應用程式何時進行預呈現](#detect-when-the-app-is-prerendering)一節。
 
@@ -74,11 +62,11 @@ public override async Task SetParametersAsync(ParameterView parameters)
 }
 ```
 
-<xref:Microsoft.AspNetCore.Components.ParameterView>每次呼叫時，包含一組完整的參數值 `SetParametersAsync` 。
+<xref:Microsoft.AspNetCore.Components.ParameterView>每次呼叫時，包含一組完整的參數值 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> 。
 
-的預設執行 `SetParametersAsync` `[Parameter]` `[CascadingParameter]` 會使用在中具有對應值的或屬性，來設定每個屬性的值 `ParameterView` 。 在中沒有對應值的參數 `ParameterView` 會保持不變。
+的預設執行 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) 會使用在中具有對應值的或屬性，來設定每個屬性的值 <xref:Microsoft.AspNetCore.Components.ParameterView> 。 在中沒有對應值的參數 <xref:Microsoft.AspNetCore.Components.ParameterView> 會保持不變。
 
-如果 `base.SetParametersAync` 未叫用，自訂程式碼就可以任何需要的方式解讀傳入的參數值。 例如，不需要將傳入的參數指派給類別的屬性。
+如果[基底。](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A)不會叫用 SetParametersAync，自訂程式碼可以用任何需要的方式解讀傳入的參數值。 例如，不需要將傳入的參數指派給類別的屬性。
 
 如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
 
@@ -99,7 +87,7 @@ protected override async Task OnParametersSetAsync()
 ```
 
 > [!NOTE]
-> 當套用參數和屬性值時，必須在生命週期事件期間進行非同步工作 `OnParametersSetAsync` 。
+> 當套用參數和屬性值時，必須在生命週期事件期間進行非同步工作 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> 。
 
 ```csharp
 protected override void OnParametersSet()
@@ -114,7 +102,7 @@ protected override void OnParametersSet()
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A>在 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> 元件完成呈現之後，會呼叫和。 此時會填入元素和元件參考。 使用此階段來執行使用轉譯內容的其他初始化步驟，例如啟用在轉譯的 DOM 元素上操作的協力廠商 JavaScript 程式庫。
 
-`firstRender`和的參數 `OnAfterRenderAsync` `OnAfterRender` ：
+`firstRender`和的參數 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A> ：
 
 * 會 `true` 在第一次呈現元件實例時設定為。
 * 可以用來確保初始化工作只會執行一次。
@@ -130,9 +118,9 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 ```
 
 > [!NOTE]
-> 在生命週期事件期間，必須立即執行非同步工作 `OnAfterRenderAsync` 。
+> 在生命週期事件期間，必須立即執行非同步工作 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> 。
 >
-> 即使您 <xref:System.Threading.Tasks.Task> 從傳回 `OnAfterRenderAsync` ，架構也不會在該工作完成後，為您的元件排程進一步的轉譯週期。 這是為了避免無限的呈現迴圈。 它與其他生命週期方法不同，後者會在傳回的工作完成後，排程進一步的轉譯週期。
+> 即使您 <xref:System.Threading.Tasks.Task> 從傳回 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> ，架構也不會在該工作完成後，為您的元件排程進一步的轉譯週期。 這是為了避免無限的呈現迴圈。 它與其他生命週期方法不同，後者會在傳回的工作完成後，排程進一步的轉譯週期。
 
 ```csharp
 protected override void OnAfterRender(bool firstRender)
@@ -144,7 +132,7 @@ protected override void OnAfterRender(bool firstRender)
 }
 ```
 
-`OnAfterRender`在 `OnAfterRenderAsync` *伺服器上進行預呈現時，不會呼叫和。*
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A>在 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> *伺服器上進行預呈現時，不會呼叫和。*
 
 如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
 
@@ -161,21 +149,21 @@ protected override bool ShouldRender()
 }
 ```
 
-`ShouldRender`每次呈現元件時，都會呼叫。
+<xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A>每次呈現元件時，都會呼叫。
 
-即使 `ShouldRender` 已覆寫，元件一律會一開始呈現。
+即使 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 已覆寫，元件一律會一開始呈現。
 
 如需詳細資訊，請參閱<xref:performance/blazor/webassembly-best-practices#avoid-unnecessary-component-renders>。
 
 ## <a name="state-changes"></a>狀態變更
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>通知元件其狀態已變更。 當適用時，呼叫 `StateHasChanged` 會導致元件重新顯示。
+<xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>通知元件其狀態已變更。 當適用時，呼叫 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> 會導致元件重新顯示。
 
 ## <a name="handle-incomplete-async-actions-at-render"></a>處理轉譯時的未完成非同步動作
 
 在呈現元件之前，在生命週期事件中執行的非同步動作可能尚未完成。 `null`當生命週期方法正在執行時，物件可能會或未完全填入資料。 提供轉譯邏輯，以確認物件已初始化。 當物件為時，呈現預留位置 UI 專案（例如，載入訊息） `null` 。
 
-在 `FetchData` 範本的元件中 Blazor ， `OnInitializedAsync` 會覆寫為 asychronously 接收預測資料（ `forecasts` ）。 當 `forecasts` 為時 `null` ，會向使用者顯示載入訊息。 在所 `Task` 傳回的 `OnInitializedAsync` 完成之後，元件會以更新的狀態重新顯示。
+在 `FetchData` 範本的元件中 Blazor ， <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 會覆寫為 asychronously 接收預測資料（ `forecasts` ）。 當 `forecasts` 為時 `null` ，會向使用者顯示載入訊息。 在所 `Task` 傳回的 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 完成之後，元件會以更新的狀態重新顯示。
 
 伺服器範本中的*Pages/FetchData* Blazor ：
 
@@ -200,7 +188,7 @@ protected override bool ShouldRender()
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>不支援在中呼叫 `Dispose` 。 `StateHasChanged`可能會在卸載轉譯器的過程中叫用，因此不支援在該時間點要求 UI 更新。
+> <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>不支援在中呼叫 `Dispose` 。 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>可能會在卸載轉譯器的過程中叫用，因此不支援在該時間點要求 UI 更新。
 
 取消訂閱來自 .NET 事件的事件處理常式。 下列[ Blazor 表單](xref:blazor/forms-validation)範例示範如何在方法中解除掛接事件處理常式 `Dispose` ：
 
@@ -218,7 +206,7 @@ protected override bool ShouldRender()
 
 ## <a name="stateful-reconnection-after-prerendering"></a>預呈現後的具狀態重新連接
 
-在 Blazor 伺服器應用程式中 `RenderMode` ，當為時 `ServerPrerendered` ，元件一開始會以靜態方式呈現為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果存在用於初始化元件的[OnInitialized {Async}](#component-initialization-methods)生命週期方法，則會執行*兩次*方法：
+在 Blazor 伺服器應用程式中 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> ，當為時 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> ，元件一開始會以靜態方式呈現為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果存在用於初始化元件的[OnInitialized {Async}](#component-initialization-methods)生命週期方法，則會執行*兩次*方法：
 
 * 當元件以靜態方式資源清單時。
 * 建立伺服器連接之後。
@@ -274,7 +262,7 @@ public class WeatherForecastService
 }
 ```
 
-如需的詳細資訊 `RenderMode` ，請參閱 <xref:blazor/hosting-model-configuration#render-mode> 。
+如需的詳細資訊 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> ，請參閱 <xref:blazor/hosting-model-configuration#render-mode> 。
 
 ## <a name="detect-when-the-app-is-prerendering"></a>偵測應用程式何時已進行預呈現
 
@@ -290,7 +278,7 @@ public class WeatherForecastService
 * 目前執行中的背景工作專案集必須以一組新的工作專案取代。
 * 必須變更目前正在執行之工作的優先順序。
 * 必須關閉應用程式，才能將它重新部署到伺服器。
-* 伺服器資源會受到限制，請強制 backgound 工作專案的重新排定。
+* 伺服器資源會受到限制，請強制背景工作專案的重新排定。
 
 若要在元件中執行可取消的背景工作模式：
 

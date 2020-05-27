@@ -14,9 +14,9 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)
 
 ## <a name="attach-tokens-to-outgoing-requests"></a>將權杖附加到連出要求
 
-此 `AuthorizationMessageHandler` 服務可與搭配使用 `HttpClient` ，將存取權杖附加至傳出要求。 您可以使用現有的服務來取得權杖 `IAccessTokenProvider` 。 如果無法取得權杖， `AccessTokenNotAvailableException` 就會擲回。 `AccessTokenNotAvailableException`具有 `Redirect` 方法，可以用來將使用者導覽至識別提供者，以取得新的權杖。 `AuthorizationMessageHandler`可以使用方法，透過授權的 url、範圍和傳回 URL 來設定 `ConfigureHandler` 。
+此 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> 服務可與搭配使用 <xref:System.Net.Http.HttpClient> ，將存取權杖附加至傳出要求。 您可以使用現有的服務來取得權杖 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.IAccessTokenProvider> 。 如果無法取得權杖， <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException> 就會擲回。 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException>具有 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenNotAvailableException.Redirect%2A> 方法，可以用來將使用者導覽至識別提供者，以取得新的權杖。 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler>可以使用方法，透過授權的 url、範圍和傳回 URL 來設定 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler.ConfigureHandler%2A> 。
 
-在下列範例中，會 `AuthorizationMessageHandler` `HttpClient` 在 `Program.Main` （*Program.cs*）中設定：
+在下列範例中，會 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AuthorizationMessageHandler> <xref:System.Net.Http.HttpClient> 在 `Program.Main` （*Program.cs*）中設定：
 
 ```csharp
 using System.Net.Http;
@@ -36,7 +36,7 @@ builder.Services.AddTransient(sp =>
 });
 ```
 
-為了方便起見， `BaseAddressAuthorizationMessageHandler` 會包含以應用程式基底位址預先設定為授權 URL 的。 已啟用驗證的 Blazor WebAssembly 範本現在會 <xref:System.Net.Http.IHttpClientFactory> 在伺服器 API 專案中使用，以設定 <xref:System.Net.Http.HttpClient> 具有下列專案的 `BaseAddressAuthorizationMessageHandler` ：
+為了方便起見， <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> 會包含以應用程式基底位址預先設定為授權 URL 的。 已啟用驗證的 Blazor WebAssembly 範本現在會 <xref:System.Net.Http.IHttpClientFactory> 在伺服器 API 專案中使用，以設定 <xref:System.Net.Http.HttpClient> 具有下列專案的 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.BaseAddressAuthorizationMessageHandler> ：
 
 ```csharp
 using System.Net.Http;
@@ -52,9 +52,9 @@ builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("BlazorWithIdentity.ServerAPI"));
 ```
 
-在上述範例中，會使用建立用戶端，而在對 `CreateClient` <xref:System.Net.Http.HttpClient> 伺服器專案提出要求時，會提供包含存取權杖的實例。
+在上述範例中，會使用建立用戶端，而在對 <xref:System.Net.Http.IHttpClientFactory.CreateClient%2A> <xref:System.Net.Http.HttpClient> 伺服器專案提出要求時，會提供包含存取權杖的實例。
 
-接著會使用設定的，透過 <xref:System.Net.Http.HttpClient> 簡單模式來提出授權的要求 `try-catch` 。
+接著會使用設定的，透過 <xref:System.Net.Http.HttpClient> 簡單的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)模式來提出授權的要求。
 
 `FetchData`元件（*Pages/FetchData. razor*）：
 
@@ -237,7 +237,7 @@ if (tokenResult.TryGetToken(out var token))
 }
 ```
 
-`TryGetToken`傳回
+<xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccessTokenResult.TryGetToken%2A?displayProperty=nameWithType>傳回
 
 * `true`包含 `token` 使用的。
 * `false`如果未抓取權杖，則為。
@@ -306,242 +306,22 @@ if (tokenResult.TryGetToken(out var token))
 }
 ```
 
-.NET WebAssembly 的執行會 `HttpClient` 使用[WindowOrWorkerGlobalScope。 fetch （）](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch)。 Fetch 可讓您設定數個[要求特有的選項](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。 
+.NET WebAssembly 的執行會 <xref:System.Net.Http.HttpClient> 使用[WindowOrWorkerGlobalScope。 fetch （）](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch)。 Fetch 可讓您設定數個[要求特有的選項](https://developer.mozilla.org/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。 
 
-您可以使用 `HttpRequestMessage` 下表所示的擴充方法來設定 HTTP 提取要求選項。
+您可以使用 <xref:System.Net.Http.HttpRequestMessage> 下表所示的擴充方法來設定 HTTP 提取要求選項。
 
-| `HttpRequestMessage`擴充方法 | Fetch 要求屬性 |
-| ---
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
+| 擴充方法 | Fetch 要求屬性 |
+| --- | --- |
+| <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A> | [憑證](https://developer.mozilla.org/docs/Web/API/Request/credentials) |
+| <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCache%2A> | [高速](https://developer.mozilla.org/docs/Web/API/Request/cache) |
+| <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestMode%2A> | [mode](https://developer.mozilla.org/docs/Web/API/Request/mode) |
+| <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestIntegrity%2A> | [完整性](https://developer.mozilla.org/docs/Web/API/Request/integrity) |
 
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
-------------------- |---標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------------ | |`SetBrowserRequestCredentials`         |  [認證](https://developer.mozilla.org/docs/Web/API/Request/credentials)| `SetBrowserRequestCache` |               | 快[取 | |](https://developer.mozilla.org/docs/Web/API/Request/cache)`SetBrowserRequestMode`                |  [模式](https://developer.mozilla.org/docs/Web/API/Request/mode)| `SetBrowserRequestIntegrity` |           | [完整性](https://developer.mozilla.org/docs/Web/API/Request/integrity) |
-
-您可以使用更泛型的擴充方法來設定其他選項 `SetBrowserRequestOption` 。
+您可以使用更泛型的擴充方法來設定其他選項 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestOption%2A> 。
  
-HTTP 回應通常會在 Blazor WebAssembly 應用程式中進行緩衝處理，以啟用回應內容的同步讀取支援。 若要啟用回應串流的支援，請 `SetBrowserResponseStreamingEnabled` 在要求上使用擴充方法。
+HTTP 回應通常會在 Blazor WebAssembly 應用程式中進行緩衝處理，以啟用回應內容的同步讀取支援。 若要啟用回應串流的支援，請 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserResponseStreamingEnabled%2A> 在要求上使用擴充方法。
 
-若要在跨原始來源要求中包含認證，請使用 `SetBrowserRequestCredentials` 擴充方法：
+若要在跨原始來源要求中包含認證，請使用 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A> 擴充方法：
 
 ```csharp
 requestMessage.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
@@ -590,7 +370,7 @@ IP 為使用者發出的權杖通常會在短時間內有效，大約一小時�
 
 當令牌要求失敗時，您必須決定是否要在執行重新導向之前，先儲存任何目前的狀態。 有數種方法存在，並增加複雜性層級：
 
-* 將目前的頁面狀態儲存在會話儲存體中。 在期間 `OnInitializeAsync` ，檢查是否可以還原狀態，再繼續進行。
+* 將目前的頁面狀態儲存在會話儲存體中。 在[OnInitializedAsync 生命週期事件](xref:blazor/lifecycle#component-initialization-methods)（ <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> ）期間，檢查是否可以還原狀態，再繼續進行。
 * 新增查詢字串參數，並使用它來通知應用程式它需要重新序列化先前儲存的狀態。
 * 新增具有唯一識別碼的查詢字串參數，以將資料儲存在會話儲存體中，而不會有風險與其他專案衝突。
 
@@ -708,7 +488,7 @@ IP 為使用者發出的權杖通常會在短時間內有效，大約一小時�
 
 ## <a name="customize-app-routes"></a>自訂應用程式路由
 
-根據預設，連結 `Microsoft.AspNetCore.Components.WebAssembly.Authentication` 庫會使用下表所示的路由來代表不同的驗證狀態。
+根據預設， [AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)會使用下表所示的路由來代表不同的驗證狀態。
 
 | 路由                            | 目的 |
 | ---
@@ -847,7 +627,7 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 
 ---- | |`authentication/login`           |觸發登入作業。 | |`authentication/login-callback`  |處理任何登入作業的結果。 | |`authentication/login-failed`    |當登入作業因某些原因而失敗時，會顯示錯誤訊息。 | |`authentication/logout`          |觸發登出作業。 | |`authentication/logout-callback` |處理登出作業的結果。 | |`authentication/logout-failed`   |當登出作業因某些原因而失敗時，會顯示錯誤訊息。 | |`authentication/logged-out`      |表示使用者已成功登出。 | |`authentication/profile`         |觸發操作以編輯使用者設定檔。 | |`authentication/register`        |觸發操作以註冊新的使用者。 |
 
-上表中顯示的路由可透過來設定 `RemoteAuthenticationOptions<TProviderOptions>.AuthenticationPaths` 。 設定選項以提供自訂路由時，請確認應用程式具有處理每個路徑的路由。
+上表中顯示的路由可透過來設定 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticationOptions%601.AuthenticationPaths%2A?displayProperty=nameWithType> 。 設定選項以提供自訂路由時，請確認應用程式具有處理每個路徑的路由。
 
 在下列範例中，所有路徑的前面都會加上 `/security` 。
 
@@ -881,7 +661,7 @@ builder.Services.AddApiAuthorization(options => {
 });
 ```
 
-如果需求會呼叫完全不同的路徑，請如先前所述設定路由，並 `RemoteAuthenticatorView` 使用明確的 action 參數來呈現：
+如果需求會呼叫完全不同的路徑，請如先前所述設定路由，並 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> 使用明確的 action 參數來呈現：
 
 ```razor
 @page "/register"
@@ -893,7 +673,7 @@ builder.Services.AddApiAuthorization(options => {
 
 ## <a name="customize-the-authentication-user-interface"></a>自訂驗證使用者介面
 
-`RemoteAuthenticatorView`針對每個驗證狀態包含一組預設的 UI 元件。 您可以藉由傳入自訂來自訂每個狀態 `RenderFragment` 。 若要在初始登入程式期間自訂顯示的文字，可以變更，如下所示 `RemoteAuthenticatorView` 。
+<xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView>針對每個驗證狀態包含一組預設的 UI 元件。 您可以藉由傳入自訂來自訂每個狀態 <xref:Microsoft.AspNetCore.Components.RenderFragment> 。 若要在初始登入程式期間自訂顯示的文字，可以變更，如下所示 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView> 。
 
 `Authentication`元件（*Pages/Authentication. razor*）：
 
@@ -913,7 +693,7 @@ builder.Services.AddApiAuthorization(options => {
 }
 ```
 
-`RemoteAuthenticatorView`有一個片段，可用於下表所示的每個驗證路由。
+<xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteAuthenticatorView>有一個片段，可用於下表所示的每個驗證路由。
 
 | 路由                            | 片段                |
 | ---
@@ -1128,7 +908,7 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 
 可以自訂系結至應用程式的使用者。 在下列範例中，所有已驗證的使用者都會收到 `amr` 每個使用者驗證方法的宣告。
 
-建立擴充類別的類別 `RemoteUserAccount` ：
+建立擴充類別的類別 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> ：
 
 ```csharp
 using System.Text.Json.Serialization;
@@ -1141,7 +921,7 @@ public class CustomUserAccount : RemoteUserAccount
 }
 ```
 
-建立可延伸的 factory `AccountClaimsPrincipalFactory<TAccount>` ：
+建立可延伸的 factory <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccountClaimsPrincipalFactory%601> ：
 
 ```csharp
 using System.Security.Claims;
@@ -1179,7 +959,7 @@ public class CustomAccountFactory
 
 `CustomAccountFactory`為使用中的驗證提供者註冊。 下列任何一項註冊都是有效的： 
 
-* `AddOidcAuthentication`:
+* <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>:
 
   ```csharp
   using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -1195,7 +975,7 @@ public class CustomAccountFactory
       CustomUserAccount, CustomAccountFactory>();
   ```
 
-* `AddMsalAuthentication`:
+* <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A>:
 
   ```csharp
   using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -1211,7 +991,7 @@ public class CustomAccountFactory
       CustomUserAccount, CustomAccountFactory>();
   ```
   
-* `AddApiAuthorization`:
+* <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddApiAuthorization%2A>:
 
   ```csharp
   using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -1283,7 +1063,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-在伺服器應用程式的 `Startup.Configure` 方法中，將取代 `endpoints.MapFallbackToFile("index.html")` 為 `endpoints.MapFallbackToPage("/_Host")` ：
+在伺服器應用程式的 `Startup.Configure` 方法中，取代[端點。具有端點的 MapFallbackToFile （"index. html"）](xref:Microsoft.AspNetCore.Builder.StaticFilesEndpointRouteBuilderExtensions.MapFallbackToFile%2A) [。MapFallbackToPage （"/_Host"）](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage%2A)：
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -1358,7 +1138,7 @@ Identity使用協力廠商登入提供者進行設定。 取得協力廠商 API 
 
 ## <a name="use-open-id-connect-oidc-v20-endpoints"></a>使用 Open ID Connect （OIDC） v2.0 端點
 
-驗證程式庫和 Blazor 範本會使用 OPEN ID Connect （OIDC） v1.0 端點。 若要使用 v2.0 端點，請設定 JWT 持有人 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> 選項。 在下列範例中，會將區段附加至屬性，以針對 v2.0 設定 AAD `v2.0` `Authority` ：
+驗證程式庫和 Blazor 範本會使用 OPEN ID Connect （OIDC） v1.0 端點。 若要使用 v2.0 端點，請設定 JWT 持有人 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority?displayProperty=nameWithType> 選項。 在下列範例中，會將區段附加至屬性，以針對 v2.0 設定 AAD `v2.0` <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions.Authority> ：
 
 ```csharp
 builder.Services.Configure<JwtBearerOptions>(
@@ -1380,6 +1160,6 @@ builder.Services.Configure<JwtBearerOptions>(
 }
 ```
 
-如果在區段上對授權單位的追蹤不適合應用程式的 OIDC 提供者（例如使用非 AAD 提供者），請 `Authority` 直接設定屬性。 請在 `JwtBearerOptions` 應用程式佈建檔中，以金鑰設定或的屬性 `Authority` 。
+如果在區段上對授權單位的追蹤不適合應用程式的 OIDC 提供者（例如使用非 AAD 提供者），請 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 直接設定屬性。 請在 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> 應用程式佈建檔案（*appsettings*）中，使用金鑰設定的屬性 `Authority` 。
 
 針對 v2.0 端點，識別碼權杖中的宣告清單會變更。 如需詳細資訊，請參閱[為何要更新至 Microsoft 身分識別平臺（v2.0）？](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)。

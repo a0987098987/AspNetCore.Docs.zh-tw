@@ -24,7 +24,7 @@
 }
 ```
 
-針對上述範例程式碼，請在`setElementText` Wwwroot/index.html （Blazor WebAssembly `<head>` ）或*wwwroot/index.html* *Pages/_Host. cshtml* （Blazor Server）的元素內提供 JavaScript 函式。 呼叫函式時`IJSRuntime.InvokeVoidAsync` ，不會傳回值：
+針對上述範例程式碼，請在 `setElementText` `<head>` *Wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）的元素內提供 JavaScript 函式。 呼叫函式時 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> ，不會傳回值：
 
 ```html
 <script>
@@ -35,11 +35,11 @@
 > [!WARNING]
 > 上述範例只會修改檔物件模型（DOM），僅供示範之用。 在大部分的情況下，不建議直接修改具有 JavaScript 的 DOM，因為 JavaScript 可能會干擾 Blazor 的變更追蹤。
 
-下列元件示範如何使用 JavaScript interop 做為元件初始化邏輯的一部分，使其與可處理性相容。 此元件顯示可以從內部`OnAfterRenderAsync`觸發轉譯更新。 開發人員必須避免在此案例中建立無限迴圈。
+下列元件示範如何使用 JavaScript interop 做為元件初始化邏輯的一部分，使其與可處理性相容。 此元件顯示可以從內部觸發轉譯更新 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> 。 開發人員必須避免在此案例中建立無限迴圈。
 
-在`JSRuntime.InvokeAsync`呼叫的位置`ElementRef`中，只會`OnAfterRenderAsync`用於，而不是在任何較早的生命週期方法中使用，因為在呈現元件之前，沒有 JavaScript 元素。
+在呼叫的位置中 <xref:Microsoft.JSInterop.JSRuntime.InvokeAsync%2A?displayProperty=nameWithType> ， `ElementRef` 只會用於 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> ，而不是在任何較早的生命週期方法中使用，因為在呈現元件之前，沒有 JavaScript 元素。
 
-呼叫[StateHasChanged](xref:blazor/lifecycle#state-changes)以 rerender 具有從 JavaScript interop 呼叫取得之新狀態的元件。 程式碼不會建立無限迴圈， `StateHasChanged`因為只有在是`infoFromJs` `null`時才會呼叫。
+呼叫[StateHasChanged](xref:blazor/lifecycle#state-changes)以 rerender 具有從 JavaScript interop 呼叫取得之新狀態的元件。 程式碼不會建立無限迴圈，因為 `StateHasChanged` 只有在是時才會呼叫 `infoFromJs` `null` 。
 
 ```cshtml
 @page "/prerendered-interop"
@@ -72,7 +72,7 @@ Set value via JS interop call:
 }
 ```
 
-針對上述範例程式碼，請在`setElementText` Wwwroot/index.html （Blazor WebAssembly `<head>` ）或*wwwroot/index.html* *Pages/_Host. cshtml* （Blazor Server）的元素內提供 JavaScript 函式。 使用`IJSRuntime.InvokeAsync`呼叫函式，並傳回值：
+針對上述範例程式碼，請在 `setElementText` `<head>` *Wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）的元素內提供 JavaScript 函式。 使用呼叫函式 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> ，並傳回值：
 
 ```html
 <script>

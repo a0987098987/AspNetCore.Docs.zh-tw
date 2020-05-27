@@ -20,9 +20,9 @@ Blazor應用程式可以從 javascript 函數的 .net 方法和 .net 方法叫�
 
 ## <a name="static-net-method-call"></a>靜態 .NET 方法呼叫
 
-若要從 JavaScript 叫用靜態 .NET 方法，請使用 `DotNet.invokeMethod` 或 `DotNet.invokeMethodAsync` 函數。 傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。 若要支援伺服器案例，最好先進行非同步版本 Blazor 。 .NET 方法必須是公用的、靜態的，而且具有 `[JSInvokable]` 屬性。 目前不支援呼叫開放式泛型方法。
+若要從 JavaScript 叫用靜態 .NET 方法，請使用 `DotNet.invokeMethod` 或 `DotNet.invokeMethodAsync` 函數。 傳入您想要呼叫之靜態方法的識別碼、包含函數的元件名稱，以及任何引數。 若要支援伺服器案例，最好先進行非同步版本 Blazor 。 .NET 方法必須是公用的、靜態的，而且具有 [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) 屬性。 目前不支援呼叫開放式泛型方法。
 
-範例應用程式包含可傳回陣列的 c # 方法 `int` 。 `JSInvokable`屬性會套用至方法。
+範例應用程式包含可傳回陣列的 c # 方法 `int` 。 [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute)屬性會套用至方法。
 
 *Pages/JsInterop. razor*：
 
@@ -57,7 +57,7 @@ Array(4) [ 1, 2, 3, 4 ]
 
 第四個數組值會推送至所傳回的陣列（ `data.push(4);` ） `ReturnArrayAsync` 。
 
-根據預設，方法識別碼是方法名稱，但您可以使用此函數來指定不同的識別碼 `JSInvokableAttribute` ：
+根據預設，方法識別碼是方法名稱，但您可以使用屬性（attribute）函式來指定不同的識別碼 [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) ：
 
 ```csharp
 @code {
@@ -86,8 +86,8 @@ returnArrayAsyncJs: function () {
 您也可以從 JavaScript 呼叫 .NET 實例方法。 若要從 JavaScript 叫用 .NET 實例方法：
 
 * 以傳址方式將 .NET 實例傳遞至 JavaScript：
-  * 對進行靜態呼叫 `DotNetObjectReference.Create` 。
-  * 將實例包裝在 `DotNetObjectReference` 實例中，並 `Create` 在實例上呼叫 `DotNetObjectReference` 。 處置 `DotNetObjectReference` 物件（本章節稍後會顯示一個範例）。
+  * 對進行靜態呼叫 <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A?displayProperty=nameWithType> 。
+  * 將實例包裝在 <xref:Microsoft.JSInterop.DotNetObjectReference> 實例中，並 <xref:Microsoft.JSInterop.DotNetObjectReference.Create%2A> 在實例上呼叫 <xref:Microsoft.JSInterop.DotNetObjectReference> 。 處置 <xref:Microsoft.JSInterop.DotNetObjectReference> 物件（本章節稍後會顯示一個範例）。
 * 使用或函數，在實例上叫用 .NET 實例方法 `invokeMethod` `invokeMethodAsync` 。 從 JavaScript 叫用其他 .NET 方法時，也可以將 .NET 實例當做引數傳遞。
 
 > [!NOTE]
@@ -133,9 +133,9 @@ returnArrayAsyncJs: function () {
 Hello, Blazor!
 ```
 
-若要避免記憶體流失，並允許在建立的元件上進行垃圾收集 `DotNetObjectReference` ，請採用下列其中一種方法：
+若要避免記憶體流失，並允許在建立的元件上進行垃圾收集 <xref:Microsoft.JSInterop.DotNetObjectReference> ，請採用下列其中一種方法：
 
-* 處置建立實例之類別中的物件 `DotNetObjectReference` ：
+* 處置建立實例之類別中的物件 <xref:Microsoft.JSInterop.DotNetObjectReference> ：
 
   ```csharp
   public class ExampleJsInterop : IDisposable
@@ -197,7 +197,7 @@ Hello, Blazor!
   }
   ```
 
-* 當元件或類別未處置時 `DotNetObjectReference` ，請呼叫來處置用戶端上的物件 `.dispose()` ：
+* 當元件或類別未處置時 <xref:Microsoft.JSInterop.DotNetObjectReference> ，請呼叫來處置用戶端上的物件 `.dispose()` ：
 
   ```javascript
   window.myFunction = (dotnetHelper) => {
@@ -211,7 +211,7 @@ Hello, Blazor!
 若要叫用元件的 .NET 方法：
 
 * 使用或函式 `invokeMethod` `invokeMethodAsync` ，對元件進行靜態方法呼叫。
-* 元件的靜態方法會將其實例方法的呼叫包裝為叫用的 `Action` 。
+* 元件的靜態方法會將其實例方法的呼叫包裝為叫用的 <xref:System.Action> 。
 
 在用戶端 JavaScript 中：
 
@@ -257,11 +257,11 @@ function updateMessageCallerJS() {
 }
 ```
 
-有數個元件時，每個都有實例方法來呼叫，請使用 helper 類別來叫用每個元件的實例方法（as `Action` ）。
+有數個元件時，每個都有實例方法來呼叫，請使用 helper 類別來叫用每個元件的實例方法（as <xref:System.Action> ）。
 
 在下例中︰
 
-* 此 `JSInterop` 元件包含多個 `ListItem` 元件。
+* 此 `JSInteropExample` 元件包含多個 `ListItem` 元件。
 * 每個 `ListItem` 元件都是由一個訊息和一個按鈕所組成。
 * 選取 [ `ListItem` 元件] 按鈕時，該 `ListItem` `UpdateMessage` 方法會變更清單專案文字，並隱藏按鈕。
 
@@ -332,10 +332,10 @@ window.updateMessageCallerJS = (dotnetHelper) => {
 }
 ```
 
-*Pages/JSInterop. razor*：
+*Pages/JSInteropExample. razor*：
 
 ```razor
-@page "/JSInterop"
+@page "/JSInteropExample"
 
 <h1>List of components</h1>
 

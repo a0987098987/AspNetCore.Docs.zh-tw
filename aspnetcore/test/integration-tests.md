@@ -143,7 +143,7 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
    SUT 的資料庫內容會在其方法中註冊 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureServices` 回呼會在*after*應用程式的程式 `Startup.ConfigureServices` 代碼執行之後執行。 執行順序是 ASP.NET Core 3.0 版本之[泛型主機](xref:fundamentals/host/generic-host)的重大變更。 若要針對測試使用不同于應用程式資料庫的資料庫，則必須在中取代應用程式的資料庫內容 `builder.ConfigureServices` 。
 
-   對於仍然使用 [Web 主機} （x：基礎/主機/Web 主機）的 SUTs，測試應用程式的 `builder.ConfigureServices` 回呼會在 SUT 的程式碼*之前*執行 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureTestServices` 回呼會*在之後*執行。
+   對於仍在使用[Web 主機](xref:fundamentals/host/web-host)的 SUTs，測試應用程式的 `builder.ConfigureServices` 回呼會在 SUT 的程式碼*之前*執行 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureTestServices` 回呼會*在之後*執行。
 
    範例應用程式會尋找資料庫內容的服務描述元，並使用描述項來移除服務註冊。 接下來，factory 會加入新 `ApplicationDbContext` 的，其會使用記憶體內部資料庫進行測試。
 
@@ -573,7 +573,7 @@ SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 SUT 的資料庫內容會在其方法中註冊 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureServices` 回呼會在*after*應用程式的程式 `Startup.ConfigureServices` 代碼執行之後執行。 若要針對測試使用不同的資料庫，則必須在中取代應用程式的資料庫內容 `builder.ConfigureServices` 。 如需詳細資訊，請參閱[自訂 WebApplicationFactory](#customize-webapplicationfactory)一節。
 
-對於仍然使用 [Web 主機} （x：基礎/主機/Web 主機）的 SUTs，測試應用程式的 `builder.ConfigureServices` 回呼會在 SUT 的程式碼*之前*執行 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureTestServices` 回呼會*在之後*執行。
+對於仍在使用[Web 主機](xref:fundamentals/host/web-host)的 SUTs，測試應用程式的 `builder.ConfigureServices` 回呼會在 SUT 的程式碼*之前*執行 `Startup.ConfigureServices` 。 測試應用程式的 `builder.ConfigureTestServices` 回呼會*在之後*執行。
 
 ::: moniker-end
 

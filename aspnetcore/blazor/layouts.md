@@ -1,24 +1,12 @@
 ---
-title: ASP.NET Core Blazor 版面配置
-author: guardrex
-description: 瞭解如何為應用程式建立可重複使用的版面配置元件 Blazor 。
-monikerRange: '>= aspnetcore-3.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 02/12/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: blazor/layouts
-ms.openlocfilehash: 09cca9c4af23c35fdbc2ee92169913c960b0a68d
-ms.sourcegitcommit: 69e1a79a572b0af17d08e81af12c594b7316f2e1
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83424326"
+標題： ' ASP.NET Core Blazor 版面配置 ' 作者：描述：「瞭解如何建立應用程式的可重複使用的配置元件」 Blazor 。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -30,10 +18,10 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 若要將*元件*轉換成*版面*配置，元件：
 
-* 繼承自 `LayoutComponentBase` ，其定義配置 `Body` 內呈現之內容的屬性。
+* 繼承自 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> ，其定義配置 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase.Body> 內呈現之內容的屬性。
 * 會使用 Razor 語法 `@Body` 來指定版面配置標記中轉譯內容的位置。
 
-下列程式碼範例顯示 Razor 版面配置元件*MainLayout*的範本。 版面配置會繼承 `LayoutComponentBase` 並設定 `@Body` 導覽列和頁尾之間的：
+下列程式碼範例顯示 Razor 版面配置元件*MainLayout*的範本。 版面配置會繼承 <xref:Microsoft.AspNetCore.Components.LayoutComponentBase> 並設定 `@Body` 導覽列和頁尾之間的：
 
 [!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
 
@@ -41,21 +29,21 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 ## <a name="default-layout"></a>預設版面配置
 
-在 `Router` 應用程式的*razor*檔案中，指定元件中的預設應用程式佈建。 下列 `Router` 元件（由預設 Blazor 範本提供）會將預設版面配置設定為 `MainLayout` 元件：
+在 <xref:Microsoft.AspNetCore.Components.Routing.Router> 應用程式的*razor*檔案中，指定元件中的預設應用程式佈建。 下列 <xref:Microsoft.AspNetCore.Components.Routing.Router> 元件（由預設 Blazor 範本提供）會將預設版面配置設定為 `MainLayout` 元件：
 
 [!code-razor[](layouts/sample_snapshot/3.x/App1.razor?highlight=3)]
 
-若要提供內容的預設版面配置 `NotFound` ，請 `LayoutView` 指定 `NotFound` 內容的：
+若要提供內容的預設版面配置 <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound> ，請 <xref:Microsoft.AspNetCore.Components.LayoutView> 指定 <xref:Microsoft.AspNetCore.Components.Routing.Router.NotFound> 內容的：
 
 [!code-razor[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
 
-如需元件的詳細資訊 `Router` ，請參閱 <xref:blazor/routing> 。
+如需元件的詳細資訊 <xref:Microsoft.AspNetCore.Components.Routing.Router> ，請參閱 <xref:blazor/routing> 。
 
 將配置指定為路由器中的預設版面配置是很有用的作法，因為它可以根據每個元件或每個資料夾來覆寫。 偏好使用路由器來設定應用程式的預設版面配置，因為這是最常見的技術。
 
 ## <a name="specify-a-layout-in-a-component"></a>在元件中指定版面配置
 
-使用指示詞將版面配置套用 Razor `@layout` 至元件。 編譯器會將轉換 `@layout` 成 `LayoutAttribute` ，並將其套用至元件類別。
+使用指示詞將版面配置套用 Razor `@layout` 至元件。 編譯器會將轉換 `@layout` 成 <xref:Microsoft.AspNetCore.Components.LayoutAttribute> ，並將其套用至元件類別。
 
 下列元件的內容 `MasterList` 會插入至的 `MasterLayout` 位置 `@Body` ：
 

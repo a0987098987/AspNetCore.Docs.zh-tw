@@ -54,7 +54,7 @@ dotnet new blazorserver --help
     * 下載 .NET 執行時間、應用程式和應用程式的相依性。
     * 初始化執行時間以執行應用程式。
 
-* *Razor*應用 &ndash; 程式的根元件，其會使用元件來設定用戶端路由 <xref:Microsoft.AspNetCore.Components.Routing.Router> 。 `Router`元件會攔截瀏覽器導覽，並呈現符合所要求位址的頁面。
+* *Razor*應用 &ndash; 程式的根元件，其會使用元件來設定用戶端路由 <xref:Microsoft.AspNetCore.Components.Routing.Router> 。 <xref:Microsoft.AspNetCore.Components.Routing.Router>元件會攔截瀏覽器導覽，並呈現符合所要求位址的頁面。
 
 * *Pages*資料夾 &ndash; 包含可路由傳送的元件/頁面（*razor*），其組成 Blazor 應用程式和 Razor Blazor 伺服器應用程式的根頁面。 每個頁面的路由都是使用指示詞來指定 [`@page`](xref:mvc/views/razor#page) 。 此範本包含下列各項：
   * *_Host. cshtml* （ Blazor 伺服器） &ndash; 應用程式的根頁面實作為 Razor 頁面：
@@ -68,7 +68,7 @@ dotnet new blazorserver --help
 
 * *共用*資料夾 &ndash; 包含應用程式所使用的其他 UI 元件（*razor*）：
   * `MainLayout`（*MainLayout razor*） &ndash; 應用程式的版面配置元件。
-  * `NavMenu`（*Navmenu.cshtml razor*）會執行 &ndash; 提要欄位導覽。 包含[NavLink 元件](xref:blazor/routing#navlink-component)（ <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ），它會呈現其他元件的導覽連結 Razor 。 元件會在 `NavLink` 載入元件時自動指出選取的狀態，協助使用者瞭解目前顯示的元件。
+  * `NavMenu`（*Navmenu.cshtml razor*）會執行 &ndash; 提要欄位導覽。 包含[NavLink 元件](xref:blazor/routing#navlink-component)（ <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ），它會呈現其他元件的導覽連結 Razor 。 元件會在 <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 載入元件時自動指出選取的狀態，協助使用者瞭解目前顯示的元件。
 
 * *_Imports razor* &ndash;包含 Razor 要包含在應用程式元件（*razor*）中的通用指示詞，例如 [`@using`](xref:mvc/views/razor#using) 命名空間的指示詞。
 

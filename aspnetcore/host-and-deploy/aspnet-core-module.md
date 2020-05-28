@@ -1,24 +1,11 @@
 ---
-title: ASP.NET Core 模組
-author: rick-anderson
-description: 了解如何設定 ASP.NET Core 模組以裝載 ASP.NET Core 應用程式。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 01/13/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: c9cc340c9a3d6ff1b3783686bd779dfe04b14275
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775267"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -87,7 +74,7 @@ ASP.NET Core 應用程式預設為同進程裝載模型。
 
 ### <a name="out-of-process-hosting-model"></a>跨處理序裝載模型
 
-若要設定跨進程裝載的應用程式，請將專案檔（*.csproj*） `<AspNetCoreHostingModel>`中的`OutOfProcess`屬性值設為：
+若要設定跨進程裝載的應用程式，請將 `<AspNetCoreHostingModel>` `OutOfProcess` 專案檔（*.csproj*）中的屬性值設為：
 
 ```xml
 <PropertyGroup>
@@ -95,9 +82,9 @@ ASP.NET Core 應用程式預設為同進程裝載模型。
 </PropertyGroup>
 ```
 
-同進程裝載是使用`InProcess`設定的，這是預設值。
+同進程裝載是使用設定的 `InProcess` ，這是預設值。
 
-的值`<AspNetCoreHostingModel>`不區分大小寫，因此`inprocess`和`outofprocess`都是有效的值。
+的值 `<AspNetCoreHostingModel>` 不區分大小寫，因此 `inprocess` 和 `outofprocess` 都是有效的值。
 
 使用 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器而不是 IIS HTTP 伺服器 (`IISHttpServer`)。
 
@@ -171,7 +158,7 @@ ASP.NET Core 模組也可以：
 </configuration>
 ```
 
-<xref:System.Configuration.SectionInformation.InheritInChildApplications*>屬性會設定為`false` ，表示在[ \<位置>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location)專案中指定的設定不會由位於應用程式子目錄中的應用程式繼承。
+<xref:System.Configuration.SectionInformation.InheritInChildApplications*>屬性會設定為 `false` ，表示在專案內指定的設定 [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) 不會由位於應用程式子目錄中的應用程式繼承。
 
 將應用程式部署至 [Azure App Service](https://azure.microsoft.com/services/app-service/) 時，`stdoutLogFile` 路徑會設定為 `\\?\%home%\LogFiles\stdout`。 此路徑會將 stdout 記錄檔儲存至 [LogFiles]** 資料夾，這是服務自動建立的位置。
 
@@ -180,25 +167,52 @@ ASP.NET Core 模組也可以：
 ### <a name="attributes-of-the-aspnetcore-element"></a>aspNetCore 元素的屬性
 
 | 屬性 | 描述 | 預設 |
-| --------- | ----------- | :-----: |
-| `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p> | |
-| `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗]**** 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
-| `forwardWindowsAuthToken` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會依據要求將權杖以標頭 'MS-ASPNETCORE-WINAUTHTOKEN' 形式轉送至在 %ASPNETCORE_PORT% 進行接聽的子處理序。 該處理序需負責依據要求呼叫此權杖上的 CloseHandle。</p> | `true` |
-| `hostingModel` | <p>選擇性字串屬性。</p><p>將`InProcess`/`inprocess`主控模型指定為同進程（）或跨進程（`OutOfProcess`/`outofprocess`）。</p> | `InProcess`<br>`inprocess` |
-| `processesPerApplication` | <p>選擇性的整數屬性。</p><p>指定 **processPath** 設定中所指定處理序執行個體每個應用程式可上調的數目。</p><p>&dagger;針對同處理序裝載，此值會限制為 `1`。</p><p>不建議使用 `processesPerApplication` 設定。 此屬性將在未來版本中移除。</p> | 預設：`1`<br>最小值：`1`<br>最大值：`100`&dagger; |
-| `processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求之處理序的可執行檔路徑。 支援相對路徑。 如果路徑的開頭為 `.`，該路徑即被視為網站根目錄的相對路徑。</p> | |
-| `rapidFailsPerMinute` | <p>選擇性的整數屬性。</p><p>指定允許 **processPath** 中所指定處理序每分鐘當機的次數。 如果超出此限制，模組就會在該分鐘的剩餘時間內停止啟動處理序。</p><p>不支援同處理序裝載。</p> | 預設：`10`<br>最小值：`0`<br>最大值︰`100` |
-| `requestTimeout` | <p>選擇性的時間範圍屬性。</p><p>針對在 %ASPNETCORE_PORT% 進行接聽的處理序，指定 ASP.NET Core 模組等候回應的持續時間。</p><p>在 ASP.NET Core 2.1 或更新版本隨附的 ASP.NET Core 模組版本中，是以小時、分鐘及秒為單位來指定 `requestTimeout`。</p><p>不適用於同處理序裝載。 針對同處理序裝載，該模組會等待應用程式處理要求。</p><p>字串之分鐘和秒數的有效值介於 0-59。 在分鐘或秒數的值中使用 **60** 將會導致「500 - 內部伺服器錯誤」**。</p> | 預設：`00:02:00`<br>最小值：`00:00:00`<br>最大值︰`360:00:00` |
-| `shutdownTimeLimit` | <p>選擇性的整數屬性。</p><p>當偵測到 *app_offline.htm* 檔案時，模組等候可執行檔正常關閉的持續時間 (以秒為單位)。</p> | 預設：`10`<br>最小值：`0`<br>最大值︰`600` |
-| `startupTimeLimit` | <p>選擇性的整數屬性。</p><p>針對可執行檔啟動在連接埠進行接聽的處理序，模組等候的持續時間 (以秒為單位)。 如果超出此時間限制，模組就會終止處理序。 模組會在收到新要求時，嘗試重新啟動處理序，然後在後續的連入要求上繼續嘗試重新啟動處理序，除非應用程式在上一次循環的分鐘內無法啟動的次數達到 **rapidFailsPerMinute** 所指定的次數。</p><p>0 (零) 值**不會**視為無限逾時。</p> | 預設：`120`<br>最小值：`0`<br>最大值︰`3600` |
-| `stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會將 **processPath** 中所指定處理序的 **stdout** 和 **stderr** 重新導向到 **stdoutLogFile** 中所指定的檔案。</p> | `false` |
-| `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定記錄來自 **processPath** 中所指定處理序之 **stdout** 和 **stderr** 的相對或絕對檔案路徑。 相對路徑是相對於網站的根目錄。 所有開頭為 `.` 的路徑都是網站根目錄的相對路徑，而所有其他路徑則視為絕對路徑。 建立記錄檔後，模組會建立路徑中提供的所有資料夾。 使用底線分隔符號，時間戳記、處理序識別碼及副檔名 (*.log*) 會新增至 **stdoutLogFile** 路徑的最後一個區段。 如果提供 `.\logs\stdout` 作為值，在 2018 年 2 月 5 日的 19:41:32 以處理序識別碼 1934 進行儲存時，範例 stdout 記錄檔就會以 *stdout_20180205194132_1934.log* 的形式儲存在 [logs]** 資料夾中。</p> | `aspnetcore-stdout` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | :-----: | | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p> | | | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗]**** 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` | | `forwardWindowsAuthToken` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會依據要求將權杖以標頭 'MS-ASPNETCORE-WINAUTHTOKEN' 形式轉送至在 %ASPNETCORE_PORT% 進行接聽的子處理序。 該處理序需負責依據要求呼叫此權杖上的 CloseHandle。</p> | `true` | | `hostingModel` | <p>選擇性字串屬性。</p><p>將主控模型指定為同進程（ `InProcess` / `inprocess` ）或跨進程（ `OutOfProcess` / `outofprocess` ）。</p> | `InProcess`<br>`inprocess` | | `processesPerApplication` | <p>選擇性的整數屬性。</p><p>指定 **processPath** 設定中所指定處理序執行個體每個應用程式可上調的數目。</p><p>&dagger;針對同處理序裝載，此值會限制為 `1`。</p><p>不建議使用 `processesPerApplication` 設定。 此屬性將在未來版本中移除。</p> |預設`1`<br>最小值：`1`<br>最大值： `100` &dagger; | |`processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求之處理序的可執行檔路徑。 支援相對路徑。 如果路徑的開頭為 `.`，該路徑即被視為網站根目錄的相對路徑。</p> | | | `rapidFailsPerMinute` | <p>選擇性的整數屬性。</p><p>指定允許 **processPath** 中所指定處理序每分鐘當機的次數。 如果超出此限制，模組就會在該分鐘的剩餘時間內停止啟動處理序。</p><p>不支援同處理序裝載。</p> |預設`10`<br>最小值：`0`<br>最大值： `100` | |`requestTimeout` | <p>選擇性的時間範圍屬性。</p><p>針對在 %ASPNETCORE_PORT% 進行接聽的處理序，指定 ASP.NET Core 模組等候回應的持續時間。</p><p>在 ASP.NET Core 2.1 或更新版本隨附的 ASP.NET Core 模組版本中，是以小時、分鐘及秒為單位來指定 `requestTimeout`。</p><p>不適用於同處理序裝載。 針對同處理序裝載，該模組會等待應用程式處理要求。</p><p>字串之分鐘和秒數的有效值介於 0-59。 在分鐘或秒數的值中使用 **60** 將會導致「500 - 內部伺服器錯誤」**。</p> |預設`00:02:00`<br>最小值：`00:00:00`<br>最大值： `360:00:00` | |`shutdownTimeLimit` | <p>選擇性的整數屬性。</p><p>當偵測到 *app_offline.htm* 檔案時，模組等候可執行檔正常關閉的持續時間 (以秒為單位)。</p> |預設`10`<br>最小值：`0`<br>最大值： `600` | |`startupTimeLimit` | <p>選擇性的整數屬性。</p><p>針對可執行檔啟動在連接埠進行接聽的處理序，模組等候的持續時間 (以秒為單位)。 如果超出此時間限制，模組就會終止處理序。 模組會在收到新要求時，嘗試重新啟動處理序，然後在後續的連入要求上繼續嘗試重新啟動處理序，除非應用程式在上一次循環的分鐘內無法啟動的次數達到 **rapidFailsPerMinute** 所指定的次數。</p><p>0 (零) 值**不會**視為無限逾時。</p> |預設`120`<br>最小值：`0`<br>最大值： `3600` | |`stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會將 **processPath** 中所指定處理序的 **stdout** 和 **stderr** 重新導向到 **stdoutLogFile** 中所指定的檔案。</p> | `false` | | `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定記錄來自 **processPath** 中所指定處理序之 **stdout** 和 **stderr** 的相對或絕對檔案路徑。 相對路徑是相對於網站的根目錄。 所有開頭為 `.` 的路徑都是網站根目錄的相對路徑，而所有其他路徑則視為絕對路徑。 建立記錄檔後，模組會建立路徑中提供的所有資料夾。 使用底線分隔符號，時間戳記、處理序識別碼及副檔名 (*.log*) 會新增至 **stdoutLogFile** 路徑的最後一個區段。 如果提供 `.\logs\stdout` 作為值，在 2018 年 2 月 5 日的 19:41:32 以處理序識別碼 1934 進行儲存時，範例 stdout 記錄檔就會以 *stdout_20180205194132_1934.log* 的形式儲存在 [logs]** 資料夾中。</p> | `aspnetcore-stdout` |
 
 ### <a name="set-environment-variables"></a>設定環境變數
 
 您可以在 `processPath` 屬性中為處理序指定環境變數。 請使用 `<environmentVariables>` 集合元素的 `<environmentVariable>` 子元素來指定環境變數。 本節中所設定環境變數的優先順序會高於系統環境變數。
 
-下列範例會在*web.config 中設定*兩個環境變數。`ASPNETCORE_ENVIRONMENT`將應用程式的環境設定`Development`為。 開發人員可以在 *web.config* 檔案中暫時設定這個值，以在進行應用程式例外狀況偵錯時，強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入。 `CONFIG_DIR` 是一個使用者定義的環境變數範例，其中開發人員已撰寫程式碼，會在啟動時讀取值來構成用以載入應用程式設定檔的路徑。
+下列範例會在*web.config 中設定*兩個環境變數。將 `ASPNETCORE_ENVIRONMENT` 應用程式的環境設定為 `Development` 。 開發人員可以在 *web.config* 檔案中暫時設定這個值，以在進行應用程式例外狀況偵錯時，強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入。 `CONFIG_DIR` 是一個使用者定義的環境變數範例，其中開發人員已撰寫程式碼，會在啟動時讀取值來構成用以載入應用程式設定檔的路徑。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -214,7 +228,7 @@ ASP.NET Core 模組也可以：
 ```
 
 > [!NOTE]
-> 直接在*web.config*中設定環境的替代方法是在`<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+> 直接在*web.config*中設定環境的替代方法是在 `<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
 >
 > ```xml
 > <PropertyGroup>
@@ -243,7 +257,7 @@ ASP.NET Core 模組也可以：
 
 對於跨處理序裝載，若 ASP.NET Core 模組無法啟動後端處理序，或後端處理序啟動但無法在所設定的連接埠上進行接聽，就會顯示 [502.5 - 處理序失敗]** 狀態碼頁面。
 
-若要避免此頁面產生並還原至預設的 IIS 5xx 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤 \<httpErrors>](/iis/configuration/system.webServer/httpErrors/)。
+若要避免此頁面產生並還原至預設的 IIS 5xx 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需有關設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤\<httpErrors>](/iis/configuration/system.webServer/httpErrors/)。
 
 ## <a name="log-creation-and-redirection"></a>記錄檔建立和重新導向
 
@@ -259,7 +273,7 @@ ASP.NET Core 模組也可以：
 
 若 `stdoutLogEnabled` 為 false，會擷取在應用程式啟動時發生的錯誤，並發出最大 30KB 的事件記錄檔。 啟動之後，就會捨棄其他的記錄檔。
 
-下列範例`aspNetCore`元素會在相對路徑`.\log\`上設定 stdout 記錄。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
+下列範例 `aspNetCore` 元素會在相對路徑上設定 stdout 記錄 `.\log\` 。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -270,7 +284,7 @@ ASP.NET Core 模組也可以：
 </aspNetCore>
 ```
 
-發行 Azure App Service 部署的應用程式時，Web SDK 會將`stdoutLogFile`值設定為`\\?\%home%\LogFiles\stdout`。 `%home`環境變數是針對 Azure App Service 所主控的應用程式預先定義的。
+發行 Azure App Service 部署的應用程式時，Web SDK 會將 `stdoutLogFile` 值設定為 `\\?\%home%\LogFiles\stdout` 。 `%home`環境變數是針對 Azure App Service 所主控的應用程式預先定義的。
 
 若要建立記錄篩選規則，請參閱 ASP.NET Core 記錄檔的[設定和](xref:fundamentals/logging/index#log-filtering)[記錄篩選](xref:fundamentals/logging/index#log-filtering)區段。
 
@@ -278,7 +292,7 @@ ASP.NET Core 模組也可以：
 
 ## <a name="enhanced-diagnostic-logs"></a>增強型診斷記錄
 
-ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將`<handlerSettings>`元素加入至 web.config `<aspNetCore>` *中的專案。* 將設定`debugLevel`為`TRACE`會公開更高的診斷資訊精確度：
+ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 元素加入至 web.config `<aspNetCore>` 中的*web.config*專案。將設定 `debugLevel` 為會 `TRACE` 公開更高的診斷資訊精確度：
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -312,8 +326,8 @@ ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將`<hand
 
 也可以透過環境變數提供處理常式設定：
 
-* `ASPNETCORE_MODULE_DEBUG_FILE`&ndash; Debug 記錄檔的路徑。 (預設：*aspnetcore-debug.log*)
-* `ASPNETCORE_MODULE_DEBUG`&ndash; [調試層級] 設定。
+* `ASPNETCORE_MODULE_DEBUG_FILE`： Debug 記錄檔的路徑。 (預設：*aspnetcore-debug.log*)
+* `ASPNETCORE_MODULE_DEBUG`： Debug level 設定。
 
 > [!WARNING]
 > 在部署中保持啟用偵錯記錄的時間，**不要**超過針對問題進行排解疑難所需的時間。 記錄的大小不受限制。 保持啟用偵錯記錄可能會耗盡可用磁碟空間，並讓伺服器或應用程式服務當機。
@@ -324,7 +338,7 @@ ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將`<hand
 
 *僅適用于使用同進程裝載模型時。*
 
-使用 web.config 中的`stackSize`設定（以位元組為單位）來設定受控堆疊*大小。* 預設大小為`1048576`位元組（1 MB）。
+使用 web.config 中的 `stackSize` 設定（以位元組為單位） *web.config*來設定受控堆疊大小。預設大小為 `1048576` 位元組（1 MB）。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -372,11 +386,11 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 1. 在該檔案上按一下滑鼠右鍵，然後從關聯式功能表中選取 [內容]****。
 1. 選取 [**詳細資料**] 索引標籤。檔案**版本**和**產品版本**代表已安裝的模組版本。
 
-模組的裝載套件組合安裝程式記錄檔位於*C\\： Users\\% UserName%\\AppData\\Local\\Temp*。此檔案的名稱*為\<dd_DotNetCoreWinSvrHosting__ 時間戳記>_000_AspNetCoreModule_x64 .log*。
+模組的裝載套件組合安裝程式記錄檔位於*C： \\ Users \\ % UserName% \\ AppData \\ Local \\ Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__ \<timestamp> _000_AspNetCoreModule_x64 .log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、結構描述及設定檔位置
 
-### <a name="module"></a>Module
+### <a name="module"></a>模組
 
 **IIS (x86/amd64)：**
 
@@ -412,7 +426,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -458,7 +472,7 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 
 以 .NET Framework 為目標的 ASP.NET Core 應用程式不支援處理序內裝載模型。
 
-的值`<AspNetCoreHostingModel>`不區分大小寫，因此`inprocess`和`outofprocess`都是有效的值。
+的值 `<AspNetCoreHostingModel>` 不區分大小寫，因此 `inprocess` 和 `outofprocess` 都是有效的值。
 
 如果檔案中沒有 `<AspNetCoreHostingModel>` 屬性，預設值為 `OutOfProcess`。
 
@@ -512,7 +526,7 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 </PropertyGroup>
 ```
 
-此值不區分大小寫， `inprocess`因此`outofprocess`和都是有效的值。
+此值不區分大小寫，因此 `inprocess` 和 `outofprocess` 都是有效的值。
 
 使用 [Kestrel](xref:fundamentals/servers/kestrel) 伺服器而不是 IIS HTTP 伺服器 (`IISHttpServer`)。
 
@@ -586,7 +600,7 @@ ASP.NET Core 模組也可以：
 </configuration>
 ```
 
-<xref:System.Configuration.SectionInformation.InheritInChildApplications*>屬性會設定為`false` ，表示在[ \<位置>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location)專案中指定的設定不會由位於應用程式子目錄中的應用程式繼承。
+<xref:System.Configuration.SectionInformation.InheritInChildApplications*>屬性會設定為 `false` ，表示在專案內指定的設定 [\<location>](/iis/manage/managing-your-configuration-settings/understanding-iis-configuration-delegation#the-concept-of-location) 不會由位於應用程式子目錄中的應用程式繼承。
 
 將應用程式部署至 [Azure App Service](https://azure.microsoft.com/services/app-service/) 時，`stdoutLogFile` 路徑會設定為 `\\?\%home%\LogFiles\stdout`。 此路徑會將 stdout 記錄檔儲存至 [LogFiles]** 資料夾，這是服務自動建立的位置。
 
@@ -595,19 +609,46 @@ ASP.NET Core 模組也可以：
 ### <a name="attributes-of-the-aspnetcore-element"></a>aspNetCore 元素的屬性
 
 | 屬性 | 描述 | 預設 |
-| --------- | ----------- | :-----: |
-| `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p> | |
-| `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗]**** 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
-| `forwardWindowsAuthToken` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會依據要求將權杖以標頭 'MS-ASPNETCORE-WINAUTHTOKEN' 形式轉送至在 %ASPNETCORE_PORT% 進行接聽的子處理序。 該處理序需負責依據要求呼叫此權杖上的 CloseHandle。</p> | `true` |
-| `hostingModel` | <p>選擇性字串屬性。</p><p>將`InProcess`/`inprocess`主控模型指定為同進程（）或跨進程（`OutOfProcess`/`outofprocess`）。</p> | `OutOfProcess`<br>`outofprocess` |
-| `processesPerApplication` | <p>選擇性的整數屬性。</p><p>指定 **processPath** 設定中所指定處理序執行個體每個應用程式可上調的數目。</p><p>&dagger;針對同處理序裝載，此值會限制為 `1`。</p><p>不建議使用 `processesPerApplication` 設定。 此屬性將在未來版本中移除。</p> | 預設：`1`<br>最小值：`1`<br>最大值：`100`&dagger; |
-| `processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求之處理序的可執行檔路徑。 支援相對路徑。 如果路徑的開頭為 `.`，該路徑即被視為網站根目錄的相對路徑。</p> | |
-| `rapidFailsPerMinute` | <p>選擇性的整數屬性。</p><p>指定允許 **processPath** 中所指定處理序每分鐘當機的次數。 如果超出此限制，模組就會在該分鐘的剩餘時間內停止啟動處理序。</p><p>不支援同處理序裝載。</p> | 預設：`10`<br>最小值：`0`<br>最大值︰`100` |
-| `requestTimeout` | <p>選擇性的時間範圍屬性。</p><p>針對在 %ASPNETCORE_PORT% 進行接聽的處理序，指定 ASP.NET Core 模組等候回應的持續時間。</p><p>在 ASP.NET Core 2.1 或更新版本隨附的 ASP.NET Core 模組版本中，是以小時、分鐘及秒為單位來指定 `requestTimeout`。</p><p>不適用於同處理序裝載。 針對同處理序裝載，該模組會等待應用程式處理要求。</p><p>字串之分鐘和秒數的有效值介於 0-59。 在分鐘或秒數的值中使用 **60** 將會導致「500 - 內部伺服器錯誤」**。</p> | 預設：`00:02:00`<br>最小值：`00:00:00`<br>最大值︰`360:00:00` |
-| `shutdownTimeLimit` | <p>選擇性的整數屬性。</p><p>當偵測到 *app_offline.htm* 檔案時，模組等候可執行檔正常關閉的持續時間 (以秒為單位)。</p> | 預設：`10`<br>最小值：`0`<br>最大值︰`600` |
-| `startupTimeLimit` | <p>選擇性的整數屬性。</p><p>針對可執行檔啟動在連接埠進行接聽的處理序，模組等候的持續時間 (以秒為單位)。 如果超出此時間限制，模組就會終止處理序。 模組會在收到新要求時，嘗試重新啟動處理序，然後在後續的連入要求上繼續嘗試重新啟動處理序，除非應用程式在上一次循環的分鐘內無法啟動的次數達到 **rapidFailsPerMinute** 所指定的次數。</p><p>0 (零) 值**不會**視為無限逾時。</p> | 預設：`120`<br>最小值：`0`<br>最大值︰`3600` |
-| `stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會將 **processPath** 中所指定處理序的 **stdout** 和 **stderr** 重新導向到 **stdoutLogFile** 中所指定的檔案。</p> | `false` |
-| `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定記錄來自 **processPath** 中所指定處理序之 **stdout** 和 **stderr** 的相對或絕對檔案路徑。 相對路徑是相對於網站的根目錄。 所有開頭為 `.` 的路徑都是網站根目錄的相對路徑，而所有其他路徑則視為絕對路徑。 建立記錄檔後，模組會建立路徑中提供的所有資料夾。 使用底線分隔符號，時間戳記、處理序識別碼及副檔名 (*.log*) 會新增至 **stdoutLogFile** 路徑的最後一個區段。 如果提供 `.\logs\stdout` 作為值，在 2018 年 2 月 5 日的 19:41:32 以處理序識別碼 1934 進行儲存時，範例 stdout 記錄檔就會以 *stdout_20180205194132_1934.log* 的形式儲存在 [logs]** 資料夾中。</p> | `aspnetcore-stdout` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | :-----: | | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p> | | | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗]**** 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` | | `forwardWindowsAuthToken` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會依據要求將權杖以標頭 'MS-ASPNETCORE-WINAUTHTOKEN' 形式轉送至在 %ASPNETCORE_PORT% 進行接聽的子處理序。 該處理序需負責依據要求呼叫此權杖上的 CloseHandle。</p> | `true` | | `hostingModel` | <p>選擇性字串屬性。</p><p>將主控模型指定為同進程（ `InProcess` / `inprocess` ）或跨進程（ `OutOfProcess` / `outofprocess` ）。</p> | `OutOfProcess`<br>`outofprocess` | | `processesPerApplication` | <p>選擇性的整數屬性。</p><p>指定 **processPath** 設定中所指定處理序執行個體每個應用程式可上調的數目。</p><p>&dagger;針對同處理序裝載，此值會限制為 `1`。</p><p>不建議使用 `processesPerApplication` 設定。 此屬性將在未來版本中移除。</p> |預設`1`<br>最小值：`1`<br>最大值： `100` &dagger; | |`processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求之處理序的可執行檔路徑。 支援相對路徑。 如果路徑的開頭為 `.`，該路徑即被視為網站根目錄的相對路徑。</p> | | | `rapidFailsPerMinute` | <p>選擇性的整數屬性。</p><p>指定允許 **processPath** 中所指定處理序每分鐘當機的次數。 如果超出此限制，模組就會在該分鐘的剩餘時間內停止啟動處理序。</p><p>不支援同處理序裝載。</p> |預設`10`<br>最小值：`0`<br>最大值： `100` | |`requestTimeout` | <p>選擇性的時間範圍屬性。</p><p>針對在 %ASPNETCORE_PORT% 進行接聽的處理序，指定 ASP.NET Core 模組等候回應的持續時間。</p><p>在 ASP.NET Core 2.1 或更新版本隨附的 ASP.NET Core 模組版本中，是以小時、分鐘及秒為單位來指定 `requestTimeout`。</p><p>不適用於同處理序裝載。 針對同處理序裝載，該模組會等待應用程式處理要求。</p><p>字串之分鐘和秒數的有效值介於 0-59。 在分鐘或秒數的值中使用 **60** 將會導致「500 - 內部伺服器錯誤」**。</p> |預設`00:02:00`<br>最小值：`00:00:00`<br>最大值： `360:00:00` | |`shutdownTimeLimit` | <p>選擇性的整數屬性。</p><p>當偵測到 *app_offline.htm* 檔案時，模組等候可執行檔正常關閉的持續時間 (以秒為單位)。</p> |預設`10`<br>最小值：`0`<br>最大值： `600` | |`startupTimeLimit` | <p>選擇性的整數屬性。</p><p>針對可執行檔啟動在連接埠進行接聽的處理序，模組等候的持續時間 (以秒為單位)。 如果超出此時間限制，模組就會終止處理序。 模組會在收到新要求時，嘗試重新啟動處理序，然後在後續的連入要求上繼續嘗試重新啟動處理序，除非應用程式在上一次循環的分鐘內無法啟動的次數達到 **rapidFailsPerMinute** 所指定的次數。</p><p>0 (零) 值**不會**視為無限逾時。</p> |預設`120`<br>最小值：`0`<br>最大值： `3600` | |`stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會將 **processPath** 中所指定處理序的 **stdout** 和 **stderr** 重新導向到 **stdoutLogFile** 中所指定的檔案。</p> | `false` | | `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定記錄來自 **processPath** 中所指定處理序之 **stdout** 和 **stderr** 的相對或絕對檔案路徑。 相對路徑是相對於網站的根目錄。 所有開頭為 `.` 的路徑都是網站根目錄的相對路徑，而所有其他路徑則視為絕對路徑。 建立記錄檔後，模組會建立路徑中提供的所有資料夾。 使用底線分隔符號，時間戳記、處理序識別碼及副檔名 (*.log*) 會新增至 **stdoutLogFile** 路徑的最後一個區段。 如果提供 `.\logs\stdout` 作為值，在 2018 年 2 月 5 日的 19:41:32 以處理序識別碼 1934 進行儲存時，範例 stdout 記錄檔就會以 *stdout_20180205194132_1934.log* 的形式儲存在 [logs]** 資料夾中。</p> | `aspnetcore-stdout` |
 
 ### <a name="setting-environment-variables"></a>設定環境變數
 
@@ -629,7 +670,7 @@ ASP.NET Core 模組也可以：
 ```
 
 > [!NOTE]
-> 直接在*web.config*中設定環境的替代方法是在`<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+> 直接在*web.config*中設定環境的替代方法是在 `<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
 >
 > ```xml
 > <PropertyGroup>
@@ -658,7 +699,7 @@ ASP.NET Core 模組也可以：
 
 對於跨處理序裝載，若 ASP.NET Core 模組無法啟動後端處理序，或後端處理序啟動但無法在所設定的連接埠上進行接聽，就會顯示 [502.5 - 處理序失敗]** 狀態碼頁面。
 
-若要避免此頁面產生並還原至預設的 IIS 5xx 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤 \<httpErrors>](/iis/configuration/system.webServer/httpErrors/)。
+若要避免此頁面產生並還原至預設的 IIS 5xx 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需有關設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤\<httpErrors>](/iis/configuration/system.webServer/httpErrors/)。
 
 ## <a name="log-creation-and-redirection"></a>記錄檔建立和重新導向
 
@@ -674,7 +715,7 @@ ASP.NET Core 模組也可以：
 
 若 `stdoutLogEnabled` 為 false，會擷取在應用程式啟動時發生的錯誤，並發出最大 30KB 的事件記錄檔。 啟動之後，就會捨棄其他的記錄檔。
 
-下列範例`aspNetCore`元素會在相對路徑`.\log\`上設定 stdout 記錄。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
+下列範例 `aspNetCore` 元素會在相對路徑上設定 stdout 記錄 `.\log\` 。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -685,13 +726,13 @@ ASP.NET Core 模組也可以：
 </aspNetCore>
 ```
 
-發行 Azure App Service 部署的應用程式時，Web SDK 會將`stdoutLogFile`值設定為`\\?\%home%\LogFiles\stdout`。 `%home`環境變數是針對 Azure App Service 所主控的應用程式預先定義的。
+發行 Azure App Service 部署的應用程式時，Web SDK 會將 `stdoutLogFile` 值設定為 `\\?\%home%\LogFiles\stdout` 。 `%home`環境變數是針對 Azure App Service 所主控的應用程式預先定義的。
 
 如需路徑格式的詳細資訊，請參閱[Windows 系統上的檔案路徑格式](/dotnet/standard/io/file-path-formats)。
 
 ## <a name="enhanced-diagnostic-logs"></a>增強型診斷記錄
 
-ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將`<handlerSettings>`元素加入至 web.config `<aspNetCore>` *中的專案。* 將設定`debugLevel`為`TRACE`會公開更高的診斷資訊精確度：
+ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 元素加入至 web.config `<aspNetCore>` 中的*web.config*專案。將設定 `debugLevel` 為會 `TRACE` 公開更高的診斷資訊精確度：
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -725,8 +766,8 @@ ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將`<hand
 
 也可以透過環境變數提供處理常式設定：
 
-* `ASPNETCORE_MODULE_DEBUG_FILE`&ndash; Debug 記錄檔的路徑。 (預設：*aspnetcore-debug.log*)
-* `ASPNETCORE_MODULE_DEBUG`&ndash; [調試層級] 設定。
+* `ASPNETCORE_MODULE_DEBUG_FILE`： Debug 記錄檔的路徑。 (預設：*aspnetcore-debug.log*)
+* `ASPNETCORE_MODULE_DEBUG`： Debug level 設定。
 
 > [!WARNING]
 > 在部署中保持啟用偵錯記錄的時間，**不要**超過針對問題進行排解疑難所需的時間。 記錄的大小不受限制。 保持啟用偵錯記錄可能會耗盡可用磁碟空間，並讓伺服器或應用程式服務當機。
@@ -767,11 +808,11 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 1. 在該檔案上按一下滑鼠右鍵，然後從關聯式功能表中選取 [內容]****。
 1. 選取 [**詳細資料**] 索引標籤。檔案**版本**和**產品版本**代表已安裝的模組版本。
 
-模組的裝載套件組合安裝程式記錄檔位於*C\\： Users\\% UserName%\\AppData\\Local\\Temp*。此檔案的名稱*為\<dd_DotNetCoreWinSvrHosting__ 時間戳記>_000_AspNetCoreModule_x64 .log*。
+模組的裝載套件組合安裝程式記錄檔位於*C： \\ Users \\ % UserName% \\ AppData \\ Local \\ Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__ \<timestamp> _000_AspNetCoreModule_x64 .log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、結構描述及設定檔位置
 
-### <a name="module"></a>Module
+### <a name="module"></a>模組
 
 **IIS (x86/amd64)：**
 
@@ -807,7 +848,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -842,7 +883,7 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線，將 We
 
 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的通訊埠上將要求路由至 IIS，此通訊埠通常是 80 (HTTP) 或 443 (HTTPS)。 此模組會在應用程式的隨機通訊埠上將要求轉送至 Kestrel，而且不會是通訊埠 80 或 443。
 
-此模組會在啟動時透過環境變數指定埠，而[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)會設定伺服器來接聽`http://localhost:{port}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
+此模組會在啟動時透過環境變數指定埠，而[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)會設定伺服器來接聽 `http://localhost:{port}` 。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
 
 Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的 HTTP 用戶端。
 
@@ -902,18 +943,46 @@ ASP.NET Core 模組也可以：
 ### <a name="attributes-of-the-aspnetcore-element"></a>aspNetCore 元素的屬性
 
 | 屬性 | 描述 | 預設 |
-| --------- | ----------- | :-----: |
-| `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p>| |
-| `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗]**** 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` |
-| `forwardWindowsAuthToken` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會依據要求將權杖以標頭 'MS-ASPNETCORE-WINAUTHTOKEN' 形式轉送至在 %ASPNETCORE_PORT% 進行接聽的子處理序。 該處理序需負責依據要求呼叫此權杖上的 CloseHandle。</p> | `true` |
-| `processesPerApplication` | <p>選擇性的整數屬性。</p><p>指定 **processPath** 設定中所指定處理序執行個體每個應用程式可上調的數目。</p><p>不建議使用 `processesPerApplication` 設定。 此屬性將在未來版本中移除。</p> | 預設：`1`<br>最小值：`1`<br>最大值︰`100` |
-| `processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求之處理序的可執行檔路徑。 支援相對路徑。 如果路徑的開頭為 `.`，該路徑即被視為網站根目錄的相對路徑。</p> | |
-| `rapidFailsPerMinute` | <p>選擇性的整數屬性。</p><p>指定允許 **processPath** 中所指定處理序每分鐘當機的次數。 如果超出此限制，模組就會在該分鐘的剩餘時間內停止啟動處理序。</p> | 預設：`10`<br>最小值：`0`<br>最大值︰`100` |
-| `requestTimeout` | <p>選擇性的時間範圍屬性。</p><p>針對在 %ASPNETCORE_PORT% 進行接聽的處理序，指定 ASP.NET Core 模組等候回應的持續時間。</p><p>在 ASP.NET Core 2.1 或更新版本隨附的 ASP.NET Core 模組版本中，是以小時、分鐘及秒為單位來指定 `requestTimeout`。</p> | 預設：`00:02:00`<br>最小值：`00:00:00`<br>最大值︰`360:00:00` |
-| `shutdownTimeLimit` | <p>選擇性的整數屬性。</p><p>當偵測到 *app_offline.htm* 檔案時，模組等候可執行檔正常關閉的持續時間 (以秒為單位)。</p> | 預設：`10`<br>最小值：`0`<br>最大值︰`600` |
-| `startupTimeLimit` | <p>選擇性的整數屬性。</p><p>針對可執行檔啟動在連接埠進行接聽的處理序，模組等候的持續時間 (以秒為單位)。 如果超出此時間限制，模組就會終止處理序。 模組會在收到新要求時，嘗試重新啟動處理序，然後在後續的連入要求上繼續嘗試重新啟動處理序，除非應用程式在上一次循環的分鐘內無法啟動的次數達到 **rapidFailsPerMinute** 所指定的次數。</p><p>0 (零) 值**不會**視為無限逾時。</p> | 預設：`120`<br>最小值：`0`<br>最大值︰`3600` |
-| `stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會將 **processPath** 中所指定處理序的 **stdout** 和 **stderr** 重新導向到 **stdoutLogFile** 中所指定的檔案。</p> | `false` |
-| `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定記錄來自 **processPath** 中所指定處理序之 **stdout** 和 **stderr** 的相對或絕對檔案路徑。 相對路徑是相對於網站的根目錄。 所有開頭為 `.` 的路徑都是網站根目錄的相對路徑，而所有其他路徑則視為絕對路徑。 路徑中提供的所有資料夾都必須存在，模組才能建立記錄檔。 使用底線分隔符號，時間戳記、處理序識別碼及副檔名 (*.log*) 會新增至 **stdoutLogFile** 路徑的最後一個區段。 如果提供 `.\logs\stdout` 作為值，在 2018 年 2 月 5 日的 19:41:32 以處理序識別碼 1934 進行儲存時，範例 stdout 記錄檔就會以 *stdout_20180205194132_1934.log* 的形式儲存在 [logs]** 資料夾中。</p> | `aspnetcore-stdout` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | :-----: | | `arguments` | <p>選擇性字串屬性。</p><p>**processPath** 中所指定可執行檔的引數。</p>| | | `disableStartUpErrorPage` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會抑制 [502.5 - 處理序失敗]**** 頁面，而優先顯示 *web.config* 中設定的 502 狀態碼頁面。</p> | `false` | | `forwardWindowsAuthToken` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會依據要求將權杖以標頭 'MS-ASPNETCORE-WINAUTHTOKEN' 形式轉送至在 %ASPNETCORE_PORT% 進行接聽的子處理序。 該處理序需負責依據要求呼叫此權杖上的 CloseHandle。</p> | `true` | | `processesPerApplication` | <p>選擇性的整數屬性。</p><p>指定 **processPath** 設定中所指定處理序執行個體每個應用程式可上調的數目。</p><p>不建議使用 `processesPerApplication` 設定。 此屬性將在未來版本中移除。</p> |預設`1`<br>最小值：`1`<br>最大值： `100` | |`processPath` | <p>必要的字串屬性。</p><p>啟動接聽 HTTP 要求之處理序的可執行檔路徑。 支援相對路徑。 如果路徑的開頭為 `.`，該路徑即被視為網站根目錄的相對路徑。</p> | | | `rapidFailsPerMinute` | <p>選擇性的整數屬性。</p><p>指定允許 **processPath** 中所指定處理序每分鐘當機的次數。 如果超出此限制，模組就會在該分鐘的剩餘時間內停止啟動處理序。</p> |預設`10`<br>最小值：`0`<br>最大值： `100` | |`requestTimeout` | <p>選擇性的時間範圍屬性。</p><p>針對在 %ASPNETCORE_PORT% 進行接聽的處理序，指定 ASP.NET Core 模組等候回應的持續時間。</p><p>在 ASP.NET Core 2.1 或更新版本隨附的 ASP.NET Core 模組版本中，是以小時、分鐘及秒為單位來指定 `requestTimeout`。</p> |預設`00:02:00`<br>最小值：`00:00:00`<br>最大值： `360:00:00` | |`shutdownTimeLimit` | <p>選擇性的整數屬性。</p><p>當偵測到 *app_offline.htm* 檔案時，模組等候可執行檔正常關閉的持續時間 (以秒為單位)。</p> |預設`10`<br>最小值：`0`<br>最大值： `600` | |`startupTimeLimit` | <p>選擇性的整數屬性。</p><p>針對可執行檔啟動在連接埠進行接聽的處理序，模組等候的持續時間 (以秒為單位)。 如果超出此時間限制，模組就會終止處理序。 模組會在收到新要求時，嘗試重新啟動處理序，然後在後續的連入要求上繼續嘗試重新啟動處理序，除非應用程式在上一次循環的分鐘內無法啟動的次數達到 **rapidFailsPerMinute** 所指定的次數。</p><p>0 (零) 值**不會**視為無限逾時。</p> |預設`120`<br>最小值：`0`<br>最大值： `3600` | |`stdoutLogEnabled` | <p>選擇性的 Boolean 屬性。</p><p>如果為 true，就會將 **processPath** 中所指定處理序的 **stdout** 和 **stderr** 重新導向到 **stdoutLogFile** 中所指定的檔案。</p> | `false` | | `stdoutLogFile` | <p>選擇性字串屬性。</p><p>指定記錄來自 **processPath** 中所指定處理序之 **stdout** 和 **stderr** 的相對或絕對檔案路徑。 相對路徑是相對於網站的根目錄。 所有開頭為 `.` 的路徑都是網站根目錄的相對路徑，而所有其他路徑則視為絕對路徑。 路徑中提供的所有資料夾都必須存在，模組才能建立記錄檔。 使用底線分隔符號，時間戳記、處理序識別碼及副檔名 (*.log*) 會新增至 **stdoutLogFile** 路徑的最後一個區段。 如果提供 `.\logs\stdout` 作為值，在 2018 年 2 月 5 日的 19:41:32 以處理序識別碼 1934 進行儲存時，範例 stdout 記錄檔就會以 *stdout_20180205194132_1934.log* 的形式儲存在 [logs]** 資料夾中。</p> | `aspnetcore-stdout` |
 
 ### <a name="setting-environment-variables"></a>設定環境變數
 
@@ -947,7 +1016,7 @@ ASP.NET Core 模組也可以：
 
 ## <a name="start-up-error-page"></a>啟動錯誤頁面
 
-如果 ASP.NET Core 模組無法啟動後端處理序，或後端處理序啟動但無法在所設定的連接埠上進行接聽，就會顯示 [502.5 - 處理序失敗]** 狀態碼頁面。 若要抑制此頁面並還原至預設的 IIS 502 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤 \<httpErrors>](/iis/configuration/system.webServer/httpErrors/)。
+如果 ASP.NET Core 模組無法啟動後端處理序，或後端處理序啟動但無法在所設定的連接埠上進行接聽，就會顯示 [502.5 - 處理序失敗]** 狀態碼頁面。 若要抑制此頁面並還原至預設的 IIS 502 狀態碼頁面，請使用 `disableStartUpErrorPage` 屬性。 如需有關設定自訂錯誤訊息的詳細資訊，請參閱 [HTTP 錯誤\<httpErrors>](/iis/configuration/system.webServer/httpErrors/)。
 
 ![502.5 處理序失敗狀態碼頁面](aspnet-core-module/_static/ANCM-502_5.png)
 
@@ -963,7 +1032,7 @@ ASP.NET Core 模組也可以：
 
 建立記錄檔時，系統會自動新增時間戳記和副檔名。 記錄檔名稱會藉由將時間戳記、處理序識別碼及副檔名 (*.log*) 以底線分隔並附加至 `stdoutLogFile` 路徑的最後一個區段 (通常是 *stdout*) 來組成。 如果 `stdoutLogFile` 路徑的結尾是 *stdout*，則在 2018 年 2 月 5 日 19:42:32 建立且 PID 為 1934 的應用程式記錄檔檔案名稱會是 *stdout_20180205194132_1934.log*。
 
-下列範例`aspNetCore`元素會在相對路徑`.\log\`上設定 stdout 記錄。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
+下列範例 `aspNetCore` 元素會在相對路徑上設定 stdout 記錄 `.\log\` 。 請確認 AppPool 使用者身分識別具備所提供路徑的寫入權限。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -973,7 +1042,7 @@ ASP.NET Core 模組也可以：
 </aspNetCore>
 ```
 
-發行 Azure App Service 部署的應用程式時，Web SDK 會將`stdoutLogFile`值設定為`\\?\%home%\LogFiles\stdout`。 `%home`環境變數是針對 Azure App Service 所主控的應用程式預先定義的。
+發行 Azure App Service 部署的應用程式時，Web SDK 會將 `stdoutLogFile` 值設定為 `\\?\%home%\LogFiles\stdout` 。 `%home`環境變數是針對 Azure App Service 所主控的應用程式預先定義的。
 
 若要建立記錄篩選規則，請參閱 ASP.NET Core 記錄檔的[設定和](xref:fundamentals/logging/index#log-filtering)[記錄篩選](xref:fundamentals/logging/index#log-filtering)區段。
 
@@ -1005,11 +1074,11 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 1. 在該檔案上按一下滑鼠右鍵，然後從關聯式功能表中選取 [內容]****。
 1. 選取 [**詳細資料**] 索引標籤。檔案**版本**和**產品版本**代表已安裝的模組版本。
 
-模組的裝載套件組合安裝程式記錄檔位於*C\\： Users\\% UserName%\\AppData\\Local\\Temp*。此檔案的名稱*為\<dd_DotNetCoreWinSvrHosting__ 時間戳記>_000_AspNetCoreModule_x64 .log*。
+模組的裝載套件組合安裝程式記錄檔位於*C： \\ Users \\ % UserName% \\ AppData \\ Local \\ Temp*。此檔案的名稱為*dd_DotNetCoreWinSvrHosting__ \<timestamp> _000_AspNetCoreModule_x64 .log*。
 
 ## <a name="module-schema-and-configuration-file-locations"></a>模組、結構描述及設定檔位置
 
-### <a name="module"></a>Module
+### <a name="module"></a>模組
 
 **IIS (x86/amd64)：**
 
@@ -1033,7 +1102,7 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema.xml
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 **IIS**
 
@@ -1053,5 +1122,5 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 
 * <xref:host-and-deploy/iis/index>
 * <xref:host-and-deploy/azure-apps/index>
-* [ASP.NET Core 模組參考來源（主要分支）](https://github.com/dotnet/aspnetcore/tree/master/src/Servers/IIS/AspNetCoreModuleV2) &ndash;使用 [**分支**] 下拉式清單來選取特定版本（例如， `release/3.1`）。
+* [ASP.NET Core 模組參考來源（主要分支）](https://github.com/dotnet/aspnetcore/tree/master/src/Servers/IIS/AspNetCoreModuleV2)：使用 [**分支**] 下拉式清單來選取特定版本（例如， `release/3.1` ）。
 * <xref:host-and-deploy/iis/modules>

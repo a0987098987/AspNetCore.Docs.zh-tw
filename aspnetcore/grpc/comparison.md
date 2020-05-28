@@ -1,23 +1,11 @@
 ---
-title: 比較 gRPC 服務與 HTTP API
-author: jamesnk
-description: 瞭解 gRPC 與 HTTP Api 的比較，以及它的建議案例。
-monikerRange: '>= aspnetcore-3.0'
-ms.author: jamesnk
-ms.date: 12/05/2019
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: grpc/comparison
-ms.openlocfilehash: ab103adc20c5332f71d5f6e3348d0b14c69fce34
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774700"
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP API
 
@@ -30,15 +18,333 @@ ms.locfileid: "82774700"
 下表提供 gRPC 和 HTTP Api 與 JSON 之間功能的高階比較。
 
 | 功能          | gRPC                                               | HTTP Api 與 JSON           |
-| ---------------- | -------------------------------------------------- | ----------------------------- |
-| 合約         | 必要（*proto*）                                | 選擇性（OpenAPI）            |
-| 通訊協定         | HTTP/2                                             | HTTP                          |
-| Payload          | [Protobuf （小型，二進位）](#performance)           | JSON （大型、人類可讀取）  |
-| Prescriptiveness | [嚴格規格](#strict-specification)      | 鬆動. 任何 HTTP 都是有效的。     |
-| 串流        | [用戶端，伺服器，雙向](#streaming)       | 用戶端，伺服器                |
-| 瀏覽器支援  | [否（需要 grpc-web）](#limited-browser-support) | 是                           |
-| 安全性         | 傳輸（TLS）                                    | 傳輸（TLS）               |
-| 用戶端程式代碼產生 | [是](#code-generation)                      | OpenAPI + 協力廠商工具 |
+| ---
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------- |---標題： author： description： monikerRange： ms-chap： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------------- |---標題： author： description： monikerRange： ms-chap： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- | |合約 |必要（*proto*） |選擇性（OpenAPI） | |通訊協定 |HTTP/2 |HTTP | |裝載 |[Protobuf （小型，二進位）](#performance) |JSON （大型、人類可讀取） | |Prescriptiveness |[嚴格規格](#strict-specification)|鬆動. 任何 HTTP 都是有效的。     | |串流 |[用戶端，伺服器，雙向](#streaming)|用戶端、伺服器 | |瀏覽器支援 |[否（需要 grpc-web）](#limited-browser-support) |是 | |安全性 |傳輸（TLS） |傳輸（TLS） | |用戶端程式代碼產生 |[是](#code-generation)|OpenAPI + 協力廠商工具 |
 
 ## <a name="grpc-strengths"></a>gRPC 的優點
 
@@ -86,10 +392,10 @@ gRPC 可讓用戶端指定他們願意等待 RPC 完成的時間長度。 [期�
 
 gRPC 適用于下列案例：
 
-* **微服務** &ndash; gRPC 是專為低延遲和高輸送量通訊所設計。 gRPC 非常適合用於效率非常重要的輕量微服務。
-* **點對點即時通訊** &ndash; gRPC 有絕佳的雙向串流支援。 gRPC 服務可以即時推送訊息，而不需要輪詢。
-* **多語言環境** &ndash; gRPC 工具支援所有熱門的開發語言，讓 gRPC 成為多語言環境的理想選擇。
-* **網路受限的環境** &ndash; gRPC 訊息會使用 Protobuf （輕量訊息格式）進行序列化。 GRPC 訊息一律會小於對等的 JSON 訊息。
+* **微服務**： gRPC 是針對低延遲和高輸送量通訊所設計。 gRPC 非常適合用於效率非常重要的輕量微服務。
+* **點對點即時通訊**： gRPC 有絕佳的雙向串流支援。 gRPC 服務可以即時推送訊息，而不需要輪詢。
+* **多語言環境**： gRPC 工具支援所有熱門的開發語言，讓 gRPC 成為多語言環境的理想選擇。
+* **網路限制環境**： gRPC 訊息會使用 Protobuf （輕量訊息格式）進行序列化。 GRPC 訊息一律會小於對等的 JSON 訊息。
 
 ## <a name="grpc-weaknesses"></a>gRPC 弱點
 
@@ -102,7 +408,7 @@ gRPC 適用于下列案例：
 GRPC-Web 不支援所有 gRPC 的功能。 用戶端和雙向串流不受支援，而且對伺服器串流的支援有限。
 
 > [!TIP]
-> .NET Core 具有 gRPC Web 的實驗性支援。 如<xref:grpc/browser>需詳細資訊，請造訪。
+> .NET Core 具有 gRPC Web 的實驗性支援。 如需詳細資訊，請造訪 <xref:grpc/browser> 。
 
 ### <a name="not-human-readable"></a>不是人類看得懂
 
@@ -116,9 +422,9 @@ HTTP API 要求會以文字傳送，並可供人類讀取和建立。
 
 在下列案例中，建議您透過 gRPC 使用其他架構：
 
-* 瀏覽器中的**瀏覽器可存取 api** &ndash; gRPC 不完全受到支援。 gRPC-Web 可以提供瀏覽器支援，但它有一些限制，而且引進了伺服器 proxy。
-* **廣播即時通訊** &ndash; gRPC 支援透過串流進行即時通訊，但將訊息廣播到已註冊連線的概念並不存在。 例如，在聊天室案例中，新的聊天訊息應傳送至聊天室中的所有用戶端時，每個 gRPC 呼叫都需要個別將新的聊天訊息串流至用戶端。 [SignalR](xref:signalr/introduction)在此案例中是有用的架構。 SignalR具有持續性連接的概念，以及廣播訊息的內建支援。
-* 進程**間通訊** &ndash;程式必須裝載 HTTP/2 伺服器，以接受傳入的 gRPC 呼叫。 對於 Windows 而言，處理序間通訊[管道](/dotnet/standard/io/pipe-operations)是快速、輕量的通訊方法。
+* **瀏覽器可存取的 api**：瀏覽器中未完全支援 gRPC。 gRPC-Web 可以提供瀏覽器支援，但它有一些限制，而且引進了伺服器 proxy。
+* **廣播即時通訊**： gRPC 支援透過串流進行即時通訊，但將訊息廣播到已註冊連線的概念並不存在。 例如，在聊天室案例中，新的聊天訊息應傳送至聊天室中的所有用戶端時，每個 gRPC 呼叫都需要個別將新的聊天訊息串流至用戶端。 [SignalR](xref:signalr/introduction)在此案例中是有用的架構。 SignalR具有持續性連接的概念，以及廣播訊息的內建支援。
+* **處理序間通訊**：處理常式必須裝載 HTTP/2 伺服器，以接受傳入的 gRPC 呼叫。 對於 Windows 而言，處理序間通訊[管道](/dotnet/standard/io/pipe-operations)是快速、輕量的通訊方法。
 
 ## <a name="additional-resources"></a>其他資源
 

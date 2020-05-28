@@ -1,24 +1,11 @@
 ---
-title: 在 Windows 服務上裝載 ASP.NET Core
-author: rick-anderson
-description: 了解如何在 Windows 服務上裝載 ASP.NET Core 應用程式。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 02/07/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: host-and-deploy/windows-service
-ms.openlocfilehash: 4ad9086c60e58f89bdde4962d7487036df251cc1
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776340"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -28,7 +15,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -52,11 +39,11 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 * 將[內容根目錄](xref:fundamentals/index#content-root)設定為[AppCoNtext. BaseDirectory](xref:System.AppContext.BaseDirectory)。 如需詳細資訊，請參閱[目前目錄與內容根目錄](#current-directory-and-content-root)一節。
 * 啟用記錄至事件記錄檔：
   * 應用程式名稱會用來做為預設的來源名稱。
-  * 根據呼叫`CreateDefaultBuilder`來建立主機的 ASP.NET Core 範本，應用程式的預設記錄層級為*警告*或更高。
-  * 使用*appsettings. json*/appsettings 中的`Logging:EventLog:LogLevel:Default`金鑰覆寫預設記錄層級 *。 {環境}. json*或其他設定提供者。
+  * 根據呼叫來建立主機的 ASP.NET Core 範本，應用程式的預設記錄層級為*警告*或更高 `CreateDefaultBuilder` 。
+  * 使用 `Logging:EventLog:LogLevel:Default` *appsettings. json*appsettings 中的金鑰覆寫預設記錄層級 / *。 {環境}. json*或其他設定提供者。
   * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」** 來源記錄警告，並停用事件記錄檔。
 
-在`CreateHostBuilder` *Program.cs*中：
+在 `CreateHostBuilder` *Program.cs*中：
 
 ```csharp
 Host.CreateDefaultBuilder(args)
@@ -66,10 +53,10 @@ Host.CreateDefaultBuilder(args)
 
 本主題隨附的下列範例應用程式：
 
-* 背景工作角色服務&ndash;會根據背景工作使用[託管服務](xref:fundamentals/host/hosted-services)的[工作者服務範本](#worker-service-template)來取樣非 web 應用程式範例。
-* Web App Service 範例&ndash; Razor頁面 web 應用程式範例，會以 Windows 服務的形式執行，並具有適用于背景工作的[託管服務](xref:fundamentals/host/hosted-services)。
+* 背景工作角色服務範例：非 web 應用程式範例，以使用[託管服務](xref:fundamentals/host/hosted-services)來執行背景[工作的工作者服務範本](#worker-service-template)為基礎。
+* Web App Service 範例： Razor 頁面 web 應用程式範例，會以 Windows 服務的形式執行，並具有適用于背景工作的[託管服務](xref:fundamentals/host/hosted-services)。
 
-如需 MVC 指引，請參閱<xref:mvc/overview>和<xref:migration/22-to-30>底下的文章。
+如需 MVC 指引，請參閱和底下的文章 <xref:mvc/overview> <xref:migration/22-to-30> 。
 
 ## <a name="deployment-type"></a>部署類型
 
@@ -77,7 +64,7 @@ Host.CreateDefaultBuilder(args)
 
 ### <a name="sdk"></a>SDK
 
-針對使用Razor頁面或 MVC 架構的 web 應用程式服務，請在專案檔中指定 web SDK：
+針對使用頁面或 MVC 架構的 web 應用程式服務 Razor ，請在專案檔中指定 WEB SDK：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -115,7 +102,7 @@ Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) 會納入包含�
 發行多個 RID：
 
 * 以分號分隔的清單提供 RID。
-* 使用屬性名稱[ \<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) （複數）。
+* 使用屬性名稱 [\<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) （複數）。
 
 如需詳細資訊，請參閱 [.NET Core RID 目錄](/dotnet/core/rid-catalog)。
 
@@ -153,7 +140,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]****。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定]**** 將使用者新增至原則。
-   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]  。 再次選取 [確定]**** 將使用者新增至原則。
+   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定]**** 將使用者新增至原則。
 1. 選取 [確定]**** 或 [套用]**** 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -172,12 +159,12 @@ $acl | Set-Acl "{EXE PATH}"
 New-Service -Name {SERVICE NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-* `{EXE PATH}`&ndash;應用程式在主機上的資料夾路徑（例如， `d:\myservice`）。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
-* `{DOMAIN OR COMPUTER NAME\USER}`&ndash;服務使用者帳戶（例如， `Contoso\ServiceUser`）。
-* `{SERVICE NAME}`&ndash;服務名稱（例如， `MyService`）。
-* `{EXE FILE PATH}`&ndash;應用程式的可執行檔路徑（例如`d:\myservice\myservice.exe`）。 包含可執行檔的檔案名稱 (包含副檔名)。
-* `{DESCRIPTION}`&ndash;服務描述（例如， `My sample service`）。
-* `{DISPLAY NAME}`&ndash;服務顯示名稱（例如， `My Service`）。
+* `{EXE PATH}`：主機上的應用程式資料夾路徑（例如， `d:\myservice` ）。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
+* `{DOMAIN OR COMPUTER NAME\USER}`：服務使用者帳戶（例如 `Contoso\ServiceUser` ）。
+* `{SERVICE NAME}`：服務名稱（例如， `MyService` ）。
+* `{EXE FILE PATH}`：應用程式的可執行檔路徑（例如， `d:\myservice\myservice.exe` ）。 包含可執行檔的檔案名稱 (包含副檔名)。
+* `{DESCRIPTION}`：服務描述（例如， `My sample service` ）。
+* `{DISPLAY NAME}`：服務顯示名稱（例如， `My Service` ）。
 
 ### <a name="start-a-service"></a>啟動服務
 
@@ -226,7 +213,7 @@ Remove-Service -Name {SERVICE NAME}
 
 ## <a name="configure-endpoints"></a>設定端點
 
-ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URLS`環境變數，以設定 URL 和埠。
+ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定環境變數，以設定 URL 和埠 `ASPNETCORE_URLS` 。
 
 如需其他 URL 和埠設定方法，請參閱相關的伺服器文章：
 
@@ -240,21 +227,21 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URL
 
 ## <a name="current-directory-and-content-root"></a>目前目錄和內容根目錄
 
-呼叫<xref:System.IO.Directory.GetCurrentDirectory*> windows 服務所傳回的目前工作目錄是*C\\： Windows\\system32*資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 使用下列其中一個方式來維護及存取服務的資產與設定檔。
+呼叫 Windows 服務所傳回的目前工作目錄 <xref:System.IO.Directory.GetCurrentDirectory*> 是*C： \\ Windows \\ system32*資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 使用下列其中一個方式來維護及存取服務的資產與設定檔。
 
 ### <a name="use-contentrootpath-or-contentrootfileprovider"></a>使用 ContentRootPath 或 ContentRootFileProvider
 
 使用 [IHostEnvironment.ContentRootPath](xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath) 或 <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootFileProvider> 來找出應用程式的資源。
 
-當應用程式以服務方式執行時<xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> ，會<xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath>將設定為[AppCoNtext. BaseDirectory](xref:System.AppContext.BaseDirectory)。
+當應用程式以服務方式執行時，會 <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> 將設定 <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> 為[AppCoNtext. BaseDirectory](xref:System.AppContext.BaseDirectory)。
 
 應用程式的預設設定檔案*appsettings. json*和*appsettings。 {環境}. json*會在[主機結構期間呼叫 CreateDefaultBuilder](xref:fundamentals/host/generic-host#set-up-a-host)，從應用程式的內容根目錄載入。
 
-若為開發人員程式碼在中<xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*>載入的其他設定檔案，則<xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*>不需要呼叫。 在下列範例中， *custom_settings 的 json*檔案存在於應用程式的內容根目錄中，並在未明確設定基底路徑的情況下載入：
+若為開發人員程式碼在中載入的其他設定檔案 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> ，則不需要呼叫 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 。 在下列範例中， *custom_settings 的 json*檔案存在於應用程式的內容根目錄中，並在未明確設定基底路徑的情況下載入：
 
 [!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
 
-請不要嘗試使用<xref:System.IO.Directory.GetCurrentDirectory*>來取得資源路徑，因為 windows 服務應用程式會傳回*C：\\windows\\system32*資料夾做為其目前目錄。
+請不要嘗試使用 <xref:System.IO.Directory.GetCurrentDirectory*> 來取得資源路徑，因為 Windows 服務應用程式會傳回*C： \\ windows \\ system32*資料夾做為其目前目錄。
 
 ### <a name="store-a-services-files-in-a-suitable-location-on-disk"></a>將服務的檔案儲存在磁碟上的適當位置
 
@@ -262,7 +249,7 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URL
 
 ## <a name="troubleshoot"></a>疑難排解
 
-若要疑難排解 Windows 服務應用程式， <xref:test/troubleshoot>請參閱。
+若要疑難排解 Windows 服務應用程式，請參閱 <xref:test/troubleshoot> 。
 
 ### <a name="common-errors"></a>常見錯誤
 
@@ -271,9 +258,9 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URL
   * *bin/Release/{TARGET FRAMEWORK}/publish* （FDD）
   * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* （SCD）
 * 服務不是處於執行中狀態。
-* 應用程式所使用資源的路徑（例如憑證）不正確。 Windows 服務的基底路徑是*c：\\windows\\System32*。
+* 應用程式所使用資源的路徑（例如憑證）不正確。 Windows 服務的基底路徑是*c： \\ windows \\ System32*。
 * 使用者不具有 [*以服務方式登*入] 許可權。
-* 執行`New-Service` PowerShell 命令時，使用者的密碼已過期或傳遞錯誤。
+* 執行 PowerShell 命令時，使用者的密碼已過期或傳遞錯誤 `New-Service` 。
 * 應用程式需要 ASP.NET Core 驗證，但未設定安全連線（HTTPS）。
 * 要求 URL 埠不正確，或未在應用程式中正確設定。
 
@@ -297,7 +284,7 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URL
 1. 刪除 [bin]** 和 [obj]** 資料夾。
 1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令 `nuget locals all -clear` 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
 1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
@@ -351,7 +338,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -379,7 +366,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 ### <a name="sdk"></a>SDK
 
-針對使用Razor頁面或 MVC 架構的 web 應用程式服務，請在專案檔中指定 web SDK：
+針對使用頁面或 MVC 架構的 web 應用程式服務 Razor ，請在專案檔中指定 WEB SDK：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -395,7 +382,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 架構相依部署 (FDD) 仰賴存在於目標系統上的全系統共用 .NET Core 版本。 依照此文章中的指導方針採用 FDD 案例時，SDK 會產生可執行檔 (*.exe*)，稱為「架構相依可執行檔」**。
 
-Windows[執行時間識別碼（RID）](/dotnet/core/rid-catalog) （[\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)）包含目標 framework。 在下列範例中，RID 已設定為 `win7-x64`。 `<SelfContained>` 屬性設定為 `false`。 這些屬性會指示 SDK，針對 Windows 和相依於共用 .NET Core framework 的應用程式產生可執行檔 (*.exe*)。
+Windows[執行時間識別碼（RID）](/dotnet/core/rid-catalog) （ [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ）包含目標 framework。 在下列範例中，RID 已設定為 `win7-x64`。 `<SelfContained>` 屬性設定為 `false`。 這些屬性會指示 SDK，針對 Windows 和相依於共用 .NET Core framework 的應用程式產生可執行檔 (*.exe*)。
 
 針對 Windows Services 應用程式，不需要 *web.config* 檔案 (發行 ASP.NET Core 應用程式時通常會產生此檔案)。 若要停用 *web.config* 檔案的建立，請新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`。
 
@@ -421,7 +408,7 @@ Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) 會納入包含�
 發行多個 RID：
 
 * 以分號分隔的清單提供 RID。
-* 使用屬性名稱[ \<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) （複數）。
+* 使用屬性名稱 [\<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) （複數）。
 
 如需詳細資訊，請參閱 [.NET Core RID 目錄](/dotnet/core/rid-catalog)。
 
@@ -465,7 +452,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]****。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定]**** 將使用者新增至原則。
-   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]  。 再次選取 [確定]**** 將使用者新增至原則。
+   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定]**** 將使用者新增至原則。
 1. 選取 [確定]**** 或 [套用]**** 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -484,12 +471,12 @@ $acl | Set-Acl "{EXE PATH}"
 New-Service -Name {SERVICE NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-* `{EXE PATH}`&ndash;應用程式在主機上的資料夾路徑（例如， `d:\myservice`）。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
-* `{DOMAIN OR COMPUTER NAME\USER}`&ndash;服務使用者帳戶（例如， `Contoso\ServiceUser`）。
-* `{SERVICE NAME}`&ndash;服務名稱（例如， `MyService`）。
-* `{EXE FILE PATH}`&ndash;應用程式的可執行檔路徑（例如`d:\myservice\myservice.exe`）。 包含可執行檔的檔案名稱 (包含副檔名)。
-* `{DESCRIPTION}`&ndash;服務描述（例如， `My sample service`）。
-* `{DISPLAY NAME}`&ndash;服務顯示名稱（例如， `My Service`）。
+* `{EXE PATH}`：主機上的應用程式資料夾路徑（例如， `d:\myservice` ）。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
+* `{DOMAIN OR COMPUTER NAME\USER}`：服務使用者帳戶（例如 `Contoso\ServiceUser` ）。
+* `{SERVICE NAME}`：服務名稱（例如， `MyService` ）。
+* `{EXE FILE PATH}`：應用程式的可執行檔路徑（例如， `d:\myservice\myservice.exe` ）。 包含可執行檔的檔案名稱 (包含副檔名)。
+* `{DESCRIPTION}`：服務描述（例如， `My sample service` ）。
+* `{DISPLAY NAME}`：服務顯示名稱（例如， `My Service` ）。
 
 ### <a name="start-a-service"></a>啟動服務
 
@@ -558,7 +545,7 @@ Remove-Service -Name {SERVICE NAME}
 
 ## <a name="configure-endpoints"></a>設定端點
 
-ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URLS`環境變數，以設定 URL 和埠。
+ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定環境變數，以設定 URL 和埠 `ASPNETCORE_URLS` 。
 
 如需其他 URL 和埠設定方法，請參閱相關的伺服器文章：
 
@@ -572,11 +559,11 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URL
 
 ## <a name="current-directory-and-content-root"></a>目前目錄和內容根目錄
 
-呼叫<xref:System.IO.Directory.GetCurrentDirectory*> windows 服務所傳回的目前工作目錄是*C\\： Windows\\system32*資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 使用下列其中一個方式來維護及存取服務的資產與設定檔。
+呼叫 Windows 服務所傳回的目前工作目錄 <xref:System.IO.Directory.GetCurrentDirectory*> 是*C： \\ Windows \\ system32*資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 使用下列其中一個方式來維護及存取服務的資產與設定檔。
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>將內容根目錄路徑設定到應用程式的資料夾
 
-<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 請使用應用`GetCurrentDirectory`程式<xref:System.IO.Directory.SetCurrentDirectory*> [內容根目錄](xref:fundamentals/index#content-root)的路徑呼叫，而不是呼叫來建立設定檔的路徑。
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 `GetCurrentDirectory`請 <xref:System.IO.Directory.SetCurrentDirectory*> 使用應用程式[內容根目錄](xref:fundamentals/index#content-root)的路徑呼叫，而不是呼叫來建立設定檔的路徑。
 
 在 `Program.Main` 中，判斷服務可執行檔資料夾的路徑，然後使用該路徑來建立應用程式的內容根目錄：
 
@@ -596,7 +583,7 @@ CreateWebHostBuilder(args)
 
 ## <a name="troubleshoot"></a>疑難排解
 
-若要疑難排解 Windows 服務應用程式， <xref:test/troubleshoot>請參閱。
+若要疑難排解 Windows 服務應用程式，請參閱 <xref:test/troubleshoot> 。
 
 ### <a name="common-errors"></a>常見錯誤
 
@@ -605,9 +592,9 @@ CreateWebHostBuilder(args)
   * *bin/Release/{TARGET FRAMEWORK}/publish* （FDD）
   * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* （SCD）
 * 服務不是處於執行中狀態。
-* 應用程式所使用資源的路徑（例如憑證）不正確。 Windows 服務的基底路徑是*c：\\windows\\System32*。
+* 應用程式所使用資源的路徑（例如憑證）不正確。 Windows 服務的基底路徑是*c： \\ windows \\ System32*。
 * 使用者不具有 [*以服務方式登*入] 許可權。
-* 執行`New-Service` PowerShell 命令時，使用者的密碼已過期或傳遞錯誤。
+* 執行 PowerShell 命令時，使用者的密碼已過期或傳遞錯誤 `New-Service` 。
 * 應用程式需要 ASP.NET Core 驗證，但未設定安全連線（HTTPS）。
 * 要求 URL 埠不正確，或未在應用程式中正確設定。
 
@@ -631,7 +618,7 @@ CreateWebHostBuilder(args)
 1. 刪除 [bin]** 和 [obj]** 資料夾。
 1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令 `nuget locals all -clear` 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
 1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
@@ -685,7 +672,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/host-and-deploy/windows-service/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
@@ -713,7 +700,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 ### <a name="sdk"></a>SDK
 
-針對使用Razor頁面或 MVC 架構的 web 應用程式服務，請在專案檔中指定 web SDK：
+針對使用頁面或 MVC 架構的 web 應用程式服務 Razor ，請在專案檔中指定 WEB SDK：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -729,7 +716,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 
 架構相依部署 (FDD) 仰賴存在於目標系統上的全系統共用 .NET Core 版本。 依照此文章中的指導方針採用 FDD 案例時，SDK 會產生可執行檔 (*.exe*)，稱為「架構相依可執行檔」**。
 
-Windows[執行時間識別碼（RID）](/dotnet/core/rid-catalog) （[\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier)）包含目標 framework。 在下列範例中，RID 已設定為 `win7-x64`。 `<SelfContained>` 屬性設定為 `false`。 這些屬性會指示 SDK，針對 Windows 和相依於共用 .NET Core framework 的應用程式產生可執行檔 (*.exe*)。
+Windows[執行時間識別碼（RID）](/dotnet/core/rid-catalog) （ [\<RuntimeIdentifier>](/dotnet/core/tools/csproj#runtimeidentifier) ）包含目標 framework。 在下列範例中，RID 已設定為 `win7-x64`。 `<SelfContained>` 屬性設定為 `false`。 這些屬性會指示 SDK，針對 Windows 和相依於共用 .NET Core framework 的應用程式產生可執行檔 (*.exe*)。
 
 `<UseAppHost>` 屬性設定為 `true`。 此屬性為服務提供 FDD 的啟用路徑 (可執行檔 *.exe*)。
 
@@ -758,7 +745,7 @@ Windows [執行階段識別碼 (RID)](/dotnet/core/rid-catalog) 會納入包含�
 發行多個 RID：
 
 * 以分號分隔的清單提供 RID。
-* 使用屬性名稱[ \<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) （複數）。
+* 使用屬性名稱 [\<RuntimeIdentifiers>](/dotnet/core/tools/csproj#runtimeidentifiers) （複數）。
 
 如需詳細資訊，請參閱 [.NET Core RID 目錄](/dotnet/core/rid-catalog)。
 
@@ -802,7 +789,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]****。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定]**** 將使用者新增至原則。
-   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]  。 再次選取 [確定]**** 將使用者新增至原則。
+   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定]**** 將使用者新增至原則。
 1. 選取 [確定]**** 或 [套用]**** 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -821,12 +808,12 @@ $acl | Set-Acl "{EXE PATH}"
 New-Service -Name {SERVICE NAME} -BinaryPathName {EXE FILE PATH} -Credential {DOMAIN OR COMPUTER NAME\USER} -Description "{DESCRIPTION}" -DisplayName "{DISPLAY NAME}" -StartupType Automatic
 ```
 
-* `{EXE PATH}`&ndash;應用程式在主機上的資料夾路徑（例如， `d:\myservice`）。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
-* `{DOMAIN OR COMPUTER NAME\USER}`&ndash;服務使用者帳戶（例如， `Contoso\ServiceUser`）。
-* `{SERVICE NAME}`&ndash;服務名稱（例如， `MyService`）。
-* `{EXE FILE PATH}`&ndash;應用程式的可執行檔路徑（例如`d:\myservice\myservice.exe`）。 包含可執行檔的檔案名稱 (包含副檔名)。
-* `{DESCRIPTION}`&ndash;服務描述（例如， `My sample service`）。
-* `{DISPLAY NAME}`&ndash;服務顯示名稱（例如， `My Service`）。
+* `{EXE PATH}`：主機上的應用程式資料夾路徑（例如， `d:\myservice` ）。 請勿包含路徑中應用程式的可執行檔。 不需要結尾的斜線。
+* `{DOMAIN OR COMPUTER NAME\USER}`：服務使用者帳戶（例如 `Contoso\ServiceUser` ）。
+* `{SERVICE NAME}`：服務名稱（例如， `MyService` ）。
+* `{EXE FILE PATH}`：應用程式的可執行檔路徑（例如， `d:\myservice\myservice.exe` ）。 包含可執行檔的檔案名稱 (包含副檔名)。
+* `{DESCRIPTION}`：服務描述（例如， `My sample service` ）。
+* `{DISPLAY NAME}`：服務顯示名稱（例如， `My Service` ）。
 
 ### <a name="start-a-service"></a>啟動服務
 
@@ -895,7 +882,7 @@ Remove-Service -Name {SERVICE NAME}
 
 ## <a name="configure-endpoints"></a>設定端點
 
-ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URLS`環境變數，以設定 URL 和埠。
+ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定環境變數，以設定 URL 和埠 `ASPNETCORE_URLS` 。
 
 如需其他 URL 和埠設定方法，請參閱相關的伺服器文章：
 
@@ -909,11 +896,11 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定`ASPNETCORE_URL
 
 ## <a name="current-directory-and-content-root"></a>目前目錄和內容根目錄
 
-呼叫<xref:System.IO.Directory.GetCurrentDirectory*> windows 服務所傳回的目前工作目錄是*C\\： Windows\\system32*資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 使用下列其中一個方式來維護及存取服務的資產與設定檔。
+呼叫 Windows 服務所傳回的目前工作目錄 <xref:System.IO.Directory.GetCurrentDirectory*> 是*C： \\ Windows \\ system32*資料夾。 *System32* 資料夾不是儲存服務檔案 (例如，設定檔) 的合適位置。 使用下列其中一個方式來維護及存取服務的資產與設定檔。
 
 ### <a name="set-the-content-root-path-to-the-apps-folder"></a>將內容根目錄路徑設定到應用程式的資料夾
 
-<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 請使用應用`GetCurrentDirectory`程式<xref:System.IO.Directory.SetCurrentDirectory*> [內容根目錄](xref:fundamentals/index#content-root)的路徑呼叫，而不是呼叫來建立設定檔的路徑。
+<xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath*> 與建立服務時提供給 `binPath` 引數的路徑相同。 `GetCurrentDirectory`請 <xref:System.IO.Directory.SetCurrentDirectory*> 使用應用程式[內容根目錄](xref:fundamentals/index#content-root)的路徑呼叫，而不是呼叫來建立設定檔的路徑。
 
 在 `Program.Main` 中，判斷服務可執行檔資料夾的路徑，然後使用該路徑來建立應用程式的內容根目錄：
 
@@ -933,7 +920,7 @@ CreateWebHostBuilder(args)
 
 ## <a name="troubleshoot"></a>疑難排解
 
-若要疑難排解 Windows 服務應用程式， <xref:test/troubleshoot>請參閱。
+若要疑難排解 Windows 服務應用程式，請參閱 <xref:test/troubleshoot> 。
 
 ### <a name="common-errors"></a>常見錯誤
 
@@ -942,9 +929,9 @@ CreateWebHostBuilder(args)
   * *bin/Release/{TARGET FRAMEWORK}/publish* （FDD）
   * *bin/Release/{TARGET FRAMEWORK}/{RUNTIME IDENTIFIER}/publish* （SCD）
 * 服務不是處於執行中狀態。
-* 應用程式所使用資源的路徑（例如憑證）不正確。 Windows 服務的基底路徑是*c：\\windows\\System32*。
+* 應用程式所使用資源的路徑（例如憑證）不正確。 Windows 服務的基底路徑是*c： \\ windows \\ System32*。
 * 使用者不具有 [*以服務方式登*入] 許可權。
-* 執行`New-Service` PowerShell 命令時，使用者的密碼已過期或傳遞錯誤。
+* 執行 PowerShell 命令時，使用者的密碼已過期或傳遞錯誤 `New-Service` 。
 * 應用程式需要 ASP.NET Core 驗證，但未設定安全連線（HTTPS）。
 * 要求 URL 埠不正確，或未在應用程式中正確設定。
 
@@ -968,7 +955,7 @@ CreateWebHostBuilder(args)
 1. 刪除 [bin]** 和 [obj]** 資料夾。
 1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令 `nuget locals all -clear` 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
 1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。

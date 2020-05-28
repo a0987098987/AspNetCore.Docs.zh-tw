@@ -1,31 +1,19 @@
 ---
-title: ASP.NET Core 負載/壓力測試
-author: Jeremy-Meng
-description: 瞭解 ASP.NET Core 應用程式的負載測試和壓力測試的幾項值得注意的工具和方法。
-ms.author: riande
-ms.custom: mvc
-ms.date: 4/05/2019
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: test/loadtests
-ms.openlocfilehash: cf99eaa71846ea705a312b0fb773605fc77b0d97
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775254"
+標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="aspnet-core-loadstress-testing"></a>ASP.NET Core 負載/壓力測試
 
 負載測試和壓力測試非常重要，可確保 web 應用程式的效能和可擴充性。 它們的目標會不同，即使它們經常共用類似的測試也一樣。
 
-**負載測試** &ndash;會測試應用程式是否可以在特定案例中處理指定的使用者負載，同時仍能滿足回應目標。 應用程式會在正常情況下執行。
+**負載測試**：測試應用程式是否可以在特定案例中處理指定的使用者負載，同時仍然滿足回應目標。 應用程式會在正常情況下執行。
 
-**壓力測試** &ndash;會在極端情況下執行時測試應用程式穩定性，通常會長時間進行。 測試會在應用程式上放置高使用者負載、尖峰或逐漸增加的負載，或限制應用程式的運算資源。
+**壓力測試**：在極端情況下執行時，測試應用程式穩定性通常長時間執行。 測試會在應用程式上放置高使用者負載、尖峰或逐漸增加的負載，或限制應用程式的運算資源。
 
 壓力測試會判斷壓力不足的應用程式是否可以從失敗中復原，並正常地回到預期的行為。 在壓力之下，應用程式不會在正常情況下執行。
 

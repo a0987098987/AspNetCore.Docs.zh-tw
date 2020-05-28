@@ -23,7 +23,7 @@ DI 是用來存取集中位置所設定之服務的技術。 這在應用程式�
 
 預設服務會自動新增至應用程式的服務集合。
 
-| 服務 | 存留期 | 說明 |
+| 服務 | 存留期 | 描述 |
 | ---
 標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
 monikerRange： ms-chap： ms. custom： ms. date： no-loc：
@@ -167,7 +167,7 @@ public void ConfigureServices(IServiceCollection services)
 
 您可以使用下表所示的存留期來設定服務。
 
-| 存留期 | 說明 |
+| 存留期 | 描述 |
 | ---
 標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
 monikerRange： ms-chap： ms. custom： ms. date： no-loc：
@@ -220,8 +220,8 @@ DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，�
 
 將服務新增至服務集合之後，請使用[ \@ 插入](xref:mvc/views/razor#inject)指示詞將服務插入元件中 Razor 。 [`@inject`](xref:mvc/views/razor#inject)有兩個參數：
 
-* 輸入 &ndash; 要插入之服務的類型。
-* 屬性 &ndash; 接收插入的應用程式服務之屬性的名稱。 屬性不需要手動建立。 編譯器會建立屬性。
+* 類型：要插入之服務的類型。
+* Property：接收插入之 app service 的屬性名稱。 屬性不需要手動建立。 編譯器會建立屬性。
 
 如需詳細資訊，請參閱<xref:mvc/views/dependency-injection>。
 

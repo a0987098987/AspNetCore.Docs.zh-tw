@@ -15,8 +15,8 @@ By [Kirk Larkin](https://twitter.com/serpent5)和[Rick Anderson](https://twitter
 
 選項模式會使用類別來提供相關設定群組的強型別存取。 當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
 
-* [介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
-* [關注](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; 點分離應用程式不同部分的設定不會彼此相依或彼此結合。
+* 依存于 configuration 設定的[介面隔離原則（ISP）或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation)：案例（類別），只取決於它們所使用的設定。
+* [關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (不同考量)：應用程式不同部分的設定不會彼此相依或結合。
 
 選項也提供驗證設定資料的機制。 如需詳細資訊，請參閱[選項驗證](#options-validation)一節。
 
@@ -131,7 +131,7 @@ By [Kirk Larkin](https://twitter.com/serpent5)和[Rick Anderson](https://twitter
 
 在以兩種方式設定選項時，可以從相依性插入存取服務：
 
-* 將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 `OptionsBuilder<TOptions>`提供[設定的多載，以](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)允許使用最多五個服務來設定選項：
+* 傳遞設定委派以在[OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1)上[設定](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 `OptionsBuilder<TOptions>`提供[設定的多載，以](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)允許使用最多五個服務來設定選項：
 
   ```csharp
   services.AddOptions<MyOptions>("optionalName")
@@ -158,7 +158,7 @@ By [Kirk Larkin](https://twitter.com/serpent5)和[Rick Anderson](https://twitter
 
 [!code-csharp[](options/samples/3.x/OptionsValidationSample/Configuration/MyConfigOptions.cs?name=snippet)]
 
-下列程式碼會呼叫， <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions%2A> 以取得系結至類別並啟用驗證的[OptionsBuilder \< TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) `MyConfigOptions` `DataAnnotations` ：
+下列程式碼 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions%2A> 會呼叫以取得系結至類別的[OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1) ， `MyConfigOptions` 並啟用 `DataAnnotations` 驗證：
 
 [!code-csharp[](options/samples/3.x/OptionsValidationSample/Startup.cs?name=snippet)]
 
@@ -261,14 +261,14 @@ ASP.NET Core 應用程式中會隱含地參考[microsoft.extensions.options.conf
 
 選項模式使用類別來代表一組相關的設定。 當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
 
-* [介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
-* [關注](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; 點分離應用程式不同部分的設定不會彼此相依或彼此結合。
+* 依存于 configuration 設定的[介面隔離原則（ISP）或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation)：案例（類別），只取決於它們所使用的設定。
+* [關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (不同考量)：應用程式不同部分的設定不會彼此相依或結合。
 
 選項也提供驗證設定資料的機制。 如需詳細資訊，請參閱[選項驗證](#options-validation)一節。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
 
@@ -461,7 +461,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure \< TOptions >。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
+「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure \<TOptions> 。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
@@ -522,7 +522,7 @@ services.AddOptions<MyOptions>("optionalName")
 
 在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：
 
-* 將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 提供 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 的多載，可讓您最多使用五個服務來設定選項：
+* 傳遞設定委派以在[OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1)上[設定](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 [OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1)提供[設定的多載，可](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)讓您使用最多五個服務來設定選項：
 
   ```csharp
   services.AddOptions<MyOptions>("optionalName")
@@ -683,14 +683,14 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 選項模式使用類別來代表一組相關的設定。 當[組態設定](xref:fundamentals/configuration/index)依案例隔離到不同的類別時，應用程式會遵守兩個重要的軟體工程準則：
 
-* [介面隔離準則 (ISP) 或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation) &ndash; 相依於組態設定的案例 (類別) 只會相依於它們使用的組態設定。
-* [關注](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) &ndash; 點分離應用程式不同部分的設定不會彼此相依或彼此結合。
+* 依存于 configuration 設定的[介面隔離原則（ISP）或封裝](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#encapsulation)：案例（類別），只取決於它們所使用的設定。
+* [關注點分離](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (不同考量)：應用程式不同部分的設定不會彼此相依或結合。
 
 選項也提供驗證設定資料的機制。 如需詳細資訊，請參閱[選項驗證](#options-validation)一節。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
 
@@ -875,7 +875,7 @@ snapshot option1 = value1_from_json UPDATED, snapshot option2 = 200
 
 <xref:Microsoft.Extensions.Options.IConfigureNamedOptions%601> 的具名選項支援是以範例應用程式中的範例 6 來示範。
 
-「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure. Configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure \< TOptions >。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
+「具名選項」支援可讓應用程式區別具名選項組態。 在範例應用程式中，名稱為 options 的宣告會使用[optionsservicecollectionextensions.configure](xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.Configure*)，它會呼叫[configurenamedoptions .configure \<TOptions> 。設定](xref:Microsoft.Extensions.Options.ConfigureNamedOptions`1.Configure*)擴充方法。 已命名的選項會區分大小寫。
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Startup.cs?name=snippet_Example6)]
 
@@ -936,7 +936,7 @@ services.AddOptions<MyOptions>("optionalName")
 
 在以下列兩種方式設定選項的同時，您可以從相依性插入中存取其他服務：
 
-* 將設定委派傳遞到 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 上的 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 [OptionsBuilder\<TOptions>](xref:Microsoft.Extensions.Options.OptionsBuilder`1) 提供 [Configure](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*) 的多載，可讓您最多使用五個服務來設定選項：
+* 傳遞設定委派以在[OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1)上[設定](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)。 [OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1)提供[設定的多載，可](xref:Microsoft.Extensions.Options.OptionsBuilder`1.Configure*)讓您使用最多五個服務來設定選項：
 
   ```csharp
   services.AddOptions<MyOptions>("optionalName")

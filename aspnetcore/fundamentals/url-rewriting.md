@@ -1,24 +1,11 @@
 ---
-title: ASP.NET Core 的 URL 重寫中介軟體
-author: rick-anderson
-description: 了解如何使用 ASP.NET Core 的 URL 重寫中介軟體，進行 URL 重寫與重新導向作業。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 08/16/2019
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/url-rewriting
-ms.openlocfilehash: 9e12831f57af02cd427d2a66d9d4c4d654905106
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774856"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
@@ -92,7 +79,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
   如果要確實得知哪種方法會降低最多效能，或是降低的效能可以忽略的話，進行效能評定是唯一方法。
 
-## <a name="package"></a>封裝
+## <a name="package"></a>套件
 
 URL 重寫中介軟體由 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite) 套件所提供，其會以隱含方式包含在 ASP.NET Core 應用程式中。
 
@@ -106,9 +93,9 @@ URL 重寫中介軟體由 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/p
 
 有三個選項可讓應用程式將非 `www` 要求重新導向 `www`：
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>&ndash;如果要求不是，請`www`將要求永久重新導向至子域`www`。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>：如果要求為非，則將要求永久重新導向至 `www` 子域 `www` 。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>&ndash;如果連入要求為`www`非，則將要求重新導向至`www`子域。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>： `www` 如果連入要求為非，則將要求重新導向至子域 `www` 。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
 
 ### <a name="url-redirect"></a>URL 重新導向
 
@@ -193,18 +180,244 @@ public void Configure(IApplicationBuilder app)
 在先前的重新導向規則範例 `redirect-rule/(.*)` 中，Regex 的開頭沒有插入號 (`^`)。 因此，就算 `redirect-rule/` 前有任何字元也能成功比對。
 
 | 路徑                               | 比對 |
-| ---------------------------------- | :---: |
-| `/redirect-rule/1234/5678`         | 是   |
-| `/my-cool-redirect-rule/1234/5678` | 是   |
-| `/anotherredirect-rule/1234/5678`  | 是   |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------- |:---: || `/redirect-rule/1234/5678`         |是 || `/my-cool-redirect-rule/1234/5678` |是 || `/anotherredirect-rule/1234/5678`  |是 |
 
 `^rewrite-rule/(\d+)/(\d+)` 重寫規則只會比對開頭為 `rewrite-rule/` 的路徑。 請注意下表中的比對差異。
 
 | 路徑                              | 比對 |
-| --------------------------------- | :---: |
-| `/rewrite-rule/1234/5678`         | 是   |
-| `/my-cool-rewrite-rule/1234/5678` | 否    |
-| `/anotherrewrite-rule/1234/5678`  | 否    |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------- |:---: || `/rewrite-rule/1234/5678`         |是 || `/my-cool-rewrite-rule/1234/5678` |否 || `/anotherrewrite-rule/1234/5678`  |否 |
 
 運算式的 `^rewrite-rule/` 部分之後，有 `(\d+)/(\d+)` 這兩個擷取群組。 `\d` 表示「比對數字」**。 加號 (`+`) 表示「比對一或多個前置字元」**。 因此，URL 必須包含某個數字，後接斜線與另一個數字。 這些擷取群組會以 `$1` 和 `$2` 形式插入重寫的 URL。 重寫規則的取代字串會將擷取的群組放入查詢字串中。 系統會重寫 `/rewrite-rule/1234/5678` 的要求路徑，以取得位於 `/rewritten?var1=1234&var2=5678` 的資源。 如果原始要求上有查詢字串，則會在重寫 URL 時予以保留。
 
@@ -324,10 +537,374 @@ public void Configure(IApplicationBuilder app)
 使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> 以在方法中實作您自己的規則邏輯。 `Add` 會公開 <xref:Microsoft.AspNetCore.Rewrite.RewriteContext>，使 <xref:Microsoft.AspNetCore.Http.HttpContext> 可用於您的方法中。 [RewriteContext.Result](xref:Microsoft.AspNetCore.Rewrite.RewriteContext.Result*)可判斷其他管線處理的執行方式。 請將值設定為下表中描述的其中一個 <xref:Microsoft.AspNetCore.Rewrite.RuleResult> 欄位。
 
 | `RewriteContext.Result`              | 動作                                                           |
-| ------------------------------------ | ---------------------------------------------------------------- |
-| `RuleResult.ContinueRules` (預設值) | 繼續套用規則。                                         |
-| `RuleResult.EndResponse`             | 停止套用規則，並傳送回應。                       |
-| `RuleResult.SkipRemainingRules`      | 停止套用規則，並將內容傳送至下一個中介軟體。 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------------------------------- | |`RuleResult.ContinueRules`（預設） |繼續套用規則。                                         | |`RuleResult.EndResponse`             |停止套用規則，並傳送回應。                       | |`RuleResult.SkipRemainingRules`      |停止套用規則，並將內容傳送至下一個中介軟體。 |
 
 [!code-csharp[](url-rewriting/samples/3.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
@@ -366,13 +943,246 @@ public void Configure(IApplicationBuilder app)
 ## <a name="regex-examples"></a>Regex 範例
 
 | 目標 | Regex 字串及<br>比對範例 | 取代字串及<br>輸出範例 |
-| ---- | ------------------------------- | -------------------------------------- |
-| 將路徑重寫成查詢字串 | `^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123` |
-| 移除斜線 | `(.*)/$`<br>`/path/` | `$1`<br>`/path` |
-| 強制使用斜線 | `(.*[^/])$`<br>`/path` | `$1/`<br>`/path/` |
-| 避免重寫特定的要求 | `^(.*)(?<!\.axd)$` 或 `^(?!.*\.axd$)(.*)$`<br>是：`/resource.htm`<br>否：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd` |
-| 重新排列 URL 區段 | `path/(.*)/(.*)/(.*)`<br>`path/1/2/3` | `path/$3/$2/$1`<br>`path/3/2/1` |
-| 取代 URL 區段 | `^(.*)/segment2/(.*)`<br>`/segment1/segment2/segment3` | `$1/replaced/$2`<br>`/segment1/replaced/segment3` |
+| ---- | ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------- | |將路徑重寫為 querystring |`^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123`| |去除尾端斜線 |`(.*)/$`<br>`/path/` | `$1`<br>`/path`| |強制使用尾端斜線 |`(.*[^/])$`<br>`/path` | `$1/`<br>`/path/`| |避免重寫特定要求 |`^(.*)(?<!\.axd)$`或`^(?!.*\.axd$)(.*)$`<br>是：`/resource.htm`<br>不：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd`| |重新排列 URL 區段 |`path/(.*)/(.*)/(.*)`<br>`path/1/2/3` | `path/$3/$2/$1`<br>`path/3/2/1`| |取代 URL 區段 |`^(.*)/segment2/(.*)`<br>`/segment1/segment2/segment3` | `$1/replaced/$2`<br>`/segment1/replaced/segment3` |
 
 ::: moniker-end
 
@@ -444,7 +1254,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
   如果要確實得知哪種方法會降低最多效能，或是降低的效能可以忽略的話，進行效能評定是唯一方法。
 
-## <a name="package"></a>封裝
+## <a name="package"></a>套件
 
 若要在您的專案中包含中介軟體，請在包含 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite) 套件的專案檔中，將套件參考新增至 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
@@ -460,9 +1270,9 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
 有三個選項可讓應用程式將非 `www` 要求重新導向 `www`：
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>&ndash;如果要求不是，請`www`將要求永久重新導向至子域`www`。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWwwPermanent*>：如果要求為非，則將要求永久重新導向至 `www` 子域 `www` 。 使用 [Status308PermanentRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status308PermanentRedirect) 狀態代碼重新導向。
 
-* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>&ndash;如果連入要求為`www`非，則將要求重新導向至`www`子域。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
+* <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.AddRedirectToWww*>： `www` 如果連入要求為非，則將要求重新導向至子域 `www` 。 使用 [Status307TemporaryRedirect](xref:Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect) 狀態代碼重新導向。 多載可讓您提供回應的狀態代碼。 請使用 <xref:Microsoft.AspNetCore.Http.StatusCodes> 類別的欄位來進行狀態碼指派。
 
 ### <a name="url-redirect"></a>URL 重新導向
 
@@ -547,18 +1357,244 @@ public void Configure(IApplicationBuilder app)
 在先前的重新導向規則範例 `redirect-rule/(.*)` 中，Regex 的開頭沒有插入號 (`^`)。 因此，就算 `redirect-rule/` 前有任何字元也能成功比對。
 
 | 路徑                               | 比對 |
-| ---------------------------------- | :---: |
-| `/redirect-rule/1234/5678`         | 是   |
-| `/my-cool-redirect-rule/1234/5678` | 是   |
-| `/anotherredirect-rule/1234/5678`  | 是   |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------- |:---: || `/redirect-rule/1234/5678`         |是 || `/my-cool-redirect-rule/1234/5678` |是 || `/anotherredirect-rule/1234/5678`  |是 |
 
 `^rewrite-rule/(\d+)/(\d+)` 重寫規則只會比對開頭為 `rewrite-rule/` 的路徑。 請注意下表中的比對差異。
 
 | 路徑                              | 比對 |
-| --------------------------------- | :---: |
-| `/rewrite-rule/1234/5678`         | 是   |
-| `/my-cool-rewrite-rule/1234/5678` | 否    |
-| `/anotherrewrite-rule/1234/5678`  | 否    |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------- |:---: || `/rewrite-rule/1234/5678`         |是 || `/my-cool-rewrite-rule/1234/5678` |否 || `/anotherrewrite-rule/1234/5678`  |否 |
 
 運算式的 `^rewrite-rule/` 部分之後，有 `(\d+)/(\d+)` 這兩個擷取群組。 `\d` 表示「比對數字」**。 加號 (`+`) 表示「比對一或多個前置字元」**。 因此，URL 必須包含某個數字，後接斜線與另一個數字。 這些擷取群組會以 `$1` 和 `$2` 形式插入重寫的 URL。 重寫規則的取代字串會將擷取的群組放入查詢字串中。 系統會重寫 `/rewrite-rule/1234/5678` 的要求路徑，以取得位於 `/rewritten?var1=1234&var2=5678` 的資源。 如果原始要求上有查詢字串，則會在重寫 URL 時予以保留。
 
@@ -678,10 +1714,374 @@ public void Configure(IApplicationBuilder app)
 使用 <xref:Microsoft.AspNetCore.Rewrite.RewriteOptionsExtensions.Add*> 以在方法中實作您自己的規則邏輯。 `Add` 會公開 <xref:Microsoft.AspNetCore.Rewrite.RewriteContext>，使 <xref:Microsoft.AspNetCore.Http.HttpContext> 可用於您的方法中。 [RewriteContext.Result](xref:Microsoft.AspNetCore.Rewrite.RewriteContext.Result*)可判斷其他管線處理的執行方式。 請將值設定為下表中描述的其中一個 <xref:Microsoft.AspNetCore.Rewrite.RuleResult> 欄位。
 
 | `RewriteContext.Result`              | 動作                                                           |
-| ------------------------------------ | ---------------------------------------------------------------- |
-| `RuleResult.ContinueRules` (預設值) | 繼續套用規則。                                         |
-| `RuleResult.EndResponse`             | 停止套用規則，並傳送回應。                       |
-| `RuleResult.SkipRemainingRules`      | 停止套用規則，並將內容傳送至下一個中介軟體。 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------------------------------- | |`RuleResult.ContinueRules`（預設） |繼續套用規則。                                         | |`RuleResult.EndResponse`             |停止套用規則，並傳送回應。                       | |`RuleResult.SkipRemainingRules`      |停止套用規則，並將內容傳送至下一個中介軟體。 |
 
 [!code-csharp[](url-rewriting/samples/2.x/SampleApp/Startup.cs?name=snippet1&highlight=14)]
 
@@ -720,13 +2120,246 @@ public void Configure(IApplicationBuilder app)
 ## <a name="regex-examples"></a>Regex 範例
 
 | 目標 | Regex 字串及<br>比對範例 | 取代字串及<br>輸出範例 |
-| ---- | ------------------------------- | -------------------------------------- |
-| 將路徑重寫成查詢字串 | `^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123` |
-| 移除斜線 | `(.*)/$`<br>`/path/` | `$1`<br>`/path` |
-| 強制使用斜線 | `(.*[^/])$`<br>`/path` | `$1/`<br>`/path/` |
-| 避免重寫特定的要求 | `^(.*)(?<!\.axd)$` 或 `^(?!.*\.axd$)(.*)$`<br>是：`/resource.htm`<br>否：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd` |
-| 重新排列 URL 區段 | `path/(.*)/(.*)/(.*)`<br>`path/1/2/3` | `path/$3/$2/$1`<br>`path/3/2/1` |
-| 取代 URL 區段 | `^(.*)/segment2/(.*)`<br>`/segment1/segment2/segment3` | `$1/replaced/$2`<br>`/segment1/replaced/segment3` |
+| ---- | ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------- | |將路徑重寫為 querystring |`^path/(.*)/(.*)`<br>`/path/abc/123` | `path?var1=$1&var2=$2`<br>`/path?var1=abc&var2=123`| |去除尾端斜線 |`(.*)/$`<br>`/path/` | `$1`<br>`/path`| |強制使用尾端斜線 |`(.*[^/])$`<br>`/path` | `$1/`<br>`/path/`| |避免重寫特定要求 |`^(.*)(?<!\.axd)$`或`^(?!.*\.axd$)(.*)$`<br>是：`/resource.htm`<br>不：`/resource.axd` | `rewritten/$1`<br>`/rewritten/resource.htm`<br>`/resource.axd`| |重新排列 URL 區段 |`path/(.*)/(.*)/(.*)`<br>`path/1/2/3` | `path/$3/$2/$1`<br>`path/3/2/1`| |取代 URL 區段 |`^(.*)/segment2/(.*)`<br>`/segment1/segment2/segment3` | `$1/replaced/$2`<br>`/segment1/replaced/segment3` |
 
 ::: moniker-end
 

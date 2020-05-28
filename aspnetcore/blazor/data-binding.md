@@ -72,7 +72,10 @@ Razor元件會透過 [`@bind`](xref:mvc/views/razor#bind) 以欄位、屬性或�
 }
 ```
 
-屬性系結會區分大小寫。 例如， [`@bind`](xref:mvc/views/razor#bind) 是有效的，而且 [`@bind`](xref:mvc/views/razor#bind) 無效。
+屬性系結會區分大小寫：
+
+* `@bind`有效。
+* `@Bind`和 `@BIND` 無效。
 
 ## <a name="unparsable-values"></a>無法剖析的值
 

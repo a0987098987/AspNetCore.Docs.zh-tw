@@ -92,7 +92,7 @@ endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}"
 > 路由是使用 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*> 和 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 中介軟體來設定。 若要使用控制器：
 >
 > * <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*>在內部呼叫 `UseEndpoints` 來對應[屬性路由](#ar)控制器。
-> * 呼叫 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> 或 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> ，以對應[傳統路由](#cr)控制器。
+> * 呼叫 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> 或 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapAreaControllerRoute*> ，以對應[傳統路由](#cr)控制器和[屬性路由](#ar)控制器。
 
 <a name="routing-conventional-ref-label"></a>
 <a name="crd"></a>
@@ -257,7 +257,7 @@ REST Api 應使用屬性路由，將應用程式的功能模型建立為一組�
 
 屬性路由使用一組屬性，將動作直接對應至路由範本。 下列 `StartUp.Configure` 程式碼通常適用于 REST API，並在下一個範例中使用：
 
-[!code-csharp[](routing/samples/3.x/main/StartupApi.cs?name=snippet)]
+[!code-csharp[](routing/samples/3.x/main/StartupAPI.cs?name=snippet)]
 
 在上述程式碼中， <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*> 會在內部呼叫 `UseEndpoints` 來對應屬性路由控制器。
 
@@ -272,10 +272,7 @@ REST Api 應使用屬性路由，將應用程式的功能模型建立為一組�
 
 此範例強調屬性路由和[傳統路由](#cr)之間的主要程式設計差異。 屬性路由需要更多輸入才能指定路由。 傳統的預設路由會更簡潔地處理路由。 不過，屬性路由允許和需要精確控制每個[動作](#action)適用的路由範本。
 
-在下列程式碼中：
-
-* 控制器名稱和動作名稱**不**會扮演符合動作的角色。
-* 符合與上一個範例相同的 Url：
+使用屬性路由，除非使用[權杖取代](#routing-token-replacement-templates-ref-label)，否則控制器和動作名稱不會播放任何符合動作的部分。 下列範例會比對與上一個範例相同的 Url：
 
 [!code-csharp[](routing/samples/3.x/main/Controllers/MyDemoController.cs?name=snippet)]
 
@@ -655,8 +652,6 @@ AmbiguousMatchException: The request matched multiple endpoints. Matches:
 [!code-csharp[](routing/samples/3.x/main/Controllers/ProductsController.cs?name=snippet8&highlight=3)]
 
 在上述程式碼中，會 `[HttpPost("product/{id:int}")]` 套用路由條件約束。 此 `ProductsController.ShowProduct` 動作只會與類似的 URL 路徑進行比對 `/product/3` 。 路由範本部分 `{id:int}` 會將該區段限制為只有整數。
-
-[!code-csharp[](routing/samples/3.x/main/Controllers/HomeController.cs?name=snippet24)]
 
 如需路由範本語法的詳細描述，請參閱[路由範本參考](xref:fundamentals/routing#route-template-reference)。
 

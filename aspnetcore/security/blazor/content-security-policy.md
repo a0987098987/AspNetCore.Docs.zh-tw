@@ -28,14 +28,14 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 請至少指定下列指示詞和 Blazor 應用程式的來源。 視需要新增其他指示詞和來源。 下列指示詞用於本文的套用[原則](#apply-the-policy)一節，其中 Blazor 提供 WebAssembly 和伺服器的範例安全性原則 Blazor ：
 
-* [基底-uri](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri) &ndash;限制頁面標記的 Url `<base>` 。 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
-* [全部封鎖-混合內容](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/block-all-mixed-content) &ndash;防止載入混合 HTTP 和 HTTPS 內容。
-* [預設值-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/default-src) &ndash;表示原則未明確指定之來源指示詞的回退。 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
-* [img-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/img-src) &ndash;表示影像的有效來源。
+* [base-uri](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri)：限制頁面標記的 url `<base>` 。 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
+* [全部封鎖-混合內容](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/block-all-mixed-content)：防止載入混合 HTTP 和 HTTPS 內容。
+* [預設值-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/default-src)：表示原則未明確指定之來源指示詞的 fallback。 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
+* [img-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/img-src)：表示影像的有效來源。
   * 指定 `data:` 允許從 url 載入影像 `data:` 。
   * 指定 `https:` 以允許從 HTTPS 端點載入影像。
-* [物件-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/object-src) &ndash;表示 `<object>` 、和標記的有效來源 `<embed>` `<applet>` 。 指定 `none` 以防止所有 URL 來源。
-* [腳本-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src) &ndash;表示腳本的有效來源。
+* [物件-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/object-src)：表示 `<object>` 、 `<embed>` 和標記的有效來源 `<applet>` 。 指定 `none` 以防止所有 URL 來源。
+* [腳本-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src)：表示腳本的有效來源。
   * 指定 `https://stackpath.bootstrapcdn.com/` 啟動程式腳本的主機來源。
   * 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
   * 在 Blazor WebAssembly 應用程式中：
@@ -45,11 +45,11 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
       * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
     * 指定 `unsafe-eval` 使用 `eval()` 和方法，從字串建立程式碼。
   * 在 Blazor 伺服器應用程式中，指定為 `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` 樣式表單執行回溯偵測的內嵌腳本雜湊。
-* [樣式-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src) &ndash;表示樣式表單的有效來源。
+* [樣式-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src)：表示樣式表單的有效來源。
   * 指定啟動載入器樣式表單的 `https://stackpath.bootstrapcdn.com/` 主機來源。
   * 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
   * 指定 `unsafe-inline` 允許使用內嵌樣式。 伺服器應用程式中的 UI 需要內嵌宣告，才能在 Blazor 初始要求之後重新連接用戶端和伺服器。 在未來的版本中，可能會移除內嵌樣式，因此不再 `unsafe-inline` 需要。
-* [升級-不安全-要求](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/upgrade-insecure-requests) &ndash;指出來自不安全（HTTP）來源的內容 Url 應透過 HTTPS 安全地取得。
+* [升級-不安全-要求](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/upgrade-insecure-requests)：表示來自不安全（HTTP）來源的內容 url 應透過 HTTPS 安全地取得。
 
 所有瀏覽器都支援上述指示詞，但 Microsoft Internet Explorer 除外。
 

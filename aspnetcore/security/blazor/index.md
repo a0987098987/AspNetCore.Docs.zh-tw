@@ -55,7 +55,7 @@ Blazor伺服器應用程式會透過使用建立的即時連線來運作 SignalR
 
 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 是 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 元件與 <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 元件用來取得驗證狀態的基礎服務。
 
-您通常不會直接使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>。 請使用本文稍後所述的[AuthorizeView 元件](#authorizeview-component)或工作[ \< AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter)方法。 使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 的主要缺點，在於系統不會在基礎驗證狀態資料變更時自動通知該元件。
+您通常不會直接使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>。 請使用此文章稍後所述的 [AuthorizeView 元件](#authorizeview-component)或 [Task\<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter) 方法。 使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 的主要缺點，在於系統不會在基礎驗證狀態資料變更時自動通知該元件。
 
 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 服務可以提供目前使用者的 <xref:System.Security.Claims.ClaimsPrincipal> 資料，如下列範例所示：
 
@@ -76,7 +76,7 @@ Blazor伺服器應用程式會透過使用建立的即時連線來運作 SignalR
     <ul>
         @foreach (var claim in _claims)
         {
-            <li>@claim.Type &ndash; @claim.Value</li>
+            <li>@claim.Type: @claim.Value</li>
         }
     </ul>
 }
@@ -467,7 +467,7 @@ Not authorized.
 
 常見錯誤：
 
-* **授權需要類型為 Task AuthenticationState> 的串聯參數 \< 。請考慮使用 CascadingAuthenticationState 來提供此。**
+* **授權需要類型為 Task 的串聯參數 \<AuthenticationState> 。請考慮使用 CascadingAuthenticationState 來提供此。**
 
 * **`null`接收的值`authenticationStateTask`**
 

@@ -1,24 +1,11 @@
 ---
-title: .NET Core 中的相依性插入
-author: rick-anderson
-description: 了解 ASP.NET Core 如何實作相依性插入以及如何使用它。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 03/26/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/dependency-injection
-ms.openlocfilehash: 3e31be02f21f8c28c1d98d47d9a744b3a8502253
-ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83003186"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -103,7 +90,7 @@ services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 [!code-csharp[](dependency-injection/samples/3.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
-> 每個 `services.Add{SERVICE_NAME}` 擴充方法都會新增 (並且可能會設定) 服務。 例如，`services.AddMvc()` 會新增 Razor Pages 與 MVC 要求的服務。 建議應用程式遵循此慣例。 在 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 命名空間中放置擴充方法，以封裝服務註冊群組。
+> 每個 `services.Add{SERVICE_NAME}` 擴充方法都會新增 (並且可能會設定) 服務。 例如，會 `services.AddMvc()` 加入服務 Razor 頁面，而 MVC 則需要。 建議應用程式遵循此慣例。 在 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 命名空間中放置擴充方法，以封裝服務註冊群組。
 
 如果服務的建構函式需要[內建類型](/dotnet/csharp/language-reference/keywords/built-in-types-table)，例如 `string`，可以使用[組態](xref:fundamentals/configuration/index)或[選項模式](xref:fundamentals/configuration/options)插入該類型：
 
@@ -129,13 +116,13 @@ public class MyDependency : IMyDependency
 
 ## <a name="services-injected-into-startup"></a>插入至啟動的服務
 
-使用泛型主機（ `Startup` <xref:Microsoft.Extensions.Hosting.IHostBuilder>）時，只有下列服務類型可以插入至此函式：
+`Startup`使用泛型主機（）時，只有下列服務類型可以插入至此函式 <xref:Microsoft.Extensions.Hosting.IHostBuilder> ：
 
 * `IWebHostEnvironment`
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
 * <xref:Microsoft.Extensions.Configuration.IConfiguration>
 
-服務可以插入`Startup.Configure`：
+服務可以插入 `Startup.Configure` ：
 
 ```csharp
 public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
@@ -148,28 +135,61 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
-`Startup.ConfigureServices`方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET Core MVC。 一開始， `IServiceCollection`提供的`ConfigureServices`會根據[主機的設定方式](xref:fundamentals/index#host)，來擁有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
+`Startup.ConfigureServices`方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET CORE MVC。 一開始， `IServiceCollection` 提供的會 `ConfigureServices` 根據主機的[設定方式](xref:fundamentals/index#host)，來擁有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
 
 | 服務類型 | 存留期 |
-| ------------ | -------- |
-| <xref:Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory?displayProperty=fullName> | 暫時性 |
-| `IHostApplicationLifetime` | 單一 |
-| `IWebHostEnvironment` | 單一 |
-| <xref:Microsoft.AspNetCore.Hosting.IStartup?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.AspNetCore.Hosting.IStartupFilter?displayProperty=fullName> | 暫時性 |
-| <xref:Microsoft.AspNetCore.Hosting.Server.IServer?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.AspNetCore.Http.IHttpContextFactory?displayProperty=fullName> | 暫時性 |
-| <xref:Microsoft.Extensions.Logging.ILogger`1?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.Extensions.Logging.ILoggerFactory?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.Extensions.Options.IConfigureOptions`1?displayProperty=fullName> | 暫時性 |
-| <xref:Microsoft.Extensions.Options.IOptions`1?displayProperty=fullName> | 單一 |
-| <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | 單一 |
-| <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | 單一 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- || <xref:Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory?displayProperty=fullName> |暫時性 || `IHostApplicationLifetime` |Singleton || `IWebHostEnvironment` |Singleton || <xref:Microsoft.AspNetCore.Hosting.IStartup?displayProperty=fullName> |Singleton || <xref:Microsoft.AspNetCore.Hosting.IStartupFilter?displayProperty=fullName> |暫時性 || <xref:Microsoft.AspNetCore.Hosting.Server.IServer?displayProperty=fullName> |Singleton || <xref:Microsoft.AspNetCore.Http.IHttpContextFactory?displayProperty=fullName> |暫時性 || <xref:Microsoft.Extensions.Logging.ILogger`1?displayProperty=fullName> |Singleton || <xref:Microsoft.Extensions.Logging.ILoggerFactory?displayProperty=fullName> |Singleton || <xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider?displayProperty=fullName> |Singleton || <xref:Microsoft.Extensions.Options.IConfigureOptions`1?displayProperty=fullName> |暫時性 || <xref:Microsoft.Extensions.Options.IOptions`1?displayProperty=fullName> |Singleton || <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> |Singleton || <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> |Singleton |
 
 ## <a name="register-additional-services-with-extension-methods"></a>以擴充方法註冊其他服務
 
-當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例說明如何使用擴充方法[\<AddDbCoNtext TCoNtext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)和， <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*>將其他服務新增至容器：
+當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例說明如何使用擴充方法[AddDbCoNtext \<TContext> ](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)和，將其他服務新增至容器 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -215,13 +235,197 @@ public void ConfigureServices(IServiceCollection services)
 
 服務註冊擴充方法提供在特定案例中很有用的多載。
 
-| 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
-| ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();` | 是 | 否 | 否 |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | 是 |
-| `AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 否 | 否 | 是 |
+| 方法 | 自動<br>物件<br>處置 | 多重<br>實作 | 傳遞引數 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--- |：---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------------: |：---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------------: |：---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----: | | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();`|是 |是 |否 | |`Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));`|是 |是 |是 | |`Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();`|是 |否 |否 | |`AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));`|否 |是 |是 | |`AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));`|否 |否 |是 |
 
 如需類型處置的詳細資訊，請參閱[＜服務處置＞](#disposal-of-services)一節。 多個實作的常見案例是[模擬測試類型](xref:test/integration-tests#inject-mock-services)。
 
@@ -263,17 +467,17 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 服務可以透過兩個機制來解析：
 
 * <xref:System.IServiceProvider>
-* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities>&ndash;允許在相依性插入容器中，不需要服務註冊即可建立物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
+* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities>：允許在相依性插入容器中不註冊服務時，建立物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
 
 建構函式可以接受不是由相依性插入提供的引數，但引數必須指派預設值。
 
-`IServiceProvider`當服務由或`ActivatorUtilities`解析時，程式的[插入](xref:mvc/controllers/dependency-injection#constructor-injection)需要*公用*的函式。
+當服務由或解析時，程式的 `IServiceProvider` `ActivatorUtilities` [插入](xref:mvc/controllers/dependency-injection#constructor-injection)需要*公用*的函式。
 
-當服務由`ActivatorUtilities`解析時，程式的[插入](xref:mvc/controllers/dependency-injection#constructor-injection)只需要有一個適用的函式。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
+當服務由解析時 `ActivatorUtilities` ，程式的[插入](xref:mvc/controllers/dependency-injection#constructor-injection)只需要有一個適用的函式。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
 
 ## <a name="entity-framework-contexts"></a>Entity Framework 內容
 
-因為一般會將 Web 應用程式資料庫作業範圍設定為用戶端要求，所以通常會使用[具範圍存留期](#service-lifetimes)將 Entity Framework 內容新增至服務容器。 註冊資料庫內容時，如果 [AddDbContext\<TContext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 多載未指定留存期，則會將範圍設定為預設存留期。 指定存留期的服務不應該使用存留期比服務還短的資料庫內容。
+因為一般會將 Web 應用程式資料庫作業範圍設定為用戶端要求，所以通常會使用[具範圍存留期](#service-lifetimes)將 Entity Framework 內容新增至服務容器。 如果在註冊資料庫內容時， [AddDbCoNtext \<TContext> ](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)多載未指定存留期，則會將預設存留期設定為範圍。 指定存留期的服務不應該使用存留期比服務還短的資料庫內容。
 
 ## <a name="lifetime-and-registration-options"></a>留期和註冊選項
 
@@ -341,7 +545,7 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 * 「暫時性」** 物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
 * 「具範圍」** 物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
-* *Singleton*不論是否在中`Operation` `Startup.ConfigureServices`提供實例，每個物件和每個要求的單一物件都是相同的。
+* *Singleton*不論是否 `Operation` 在中提供實例，每個物件和每個要求的單一物件都是相同的 `Startup.ConfigureServices` 。
 
 ## <a name="call-services-from-main"></a>從主要呼叫服務
 
@@ -421,7 +625,7 @@ public class Program
 * 避免直接在服務內具現化相依類別。 直接具現化會將程式碼耦合到特定實作。
 * 讓應用程式類別維持在小型、情況良好且可輕鬆測試的狀態。
 
-若類別有太多插入的相依性，這通常表示類別有太多責任而且正違反[單一責任原則 (SRP)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility) \(英文\)。 將類別負責的某些部分移到新的類別，以嘗試重構類別。 請記住，Razor Pages 頁面模型類別與 MVC 控制器類別應該專注於 UI 考量。 商務規則和資料存取實作詳細資料應該保存在適合這些[分開考量](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (Separation of Concerns) 類別中。
+若類別有太多插入的相依性，這通常表示類別有太多責任而且正違反[單一責任原則 (SRP)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility) \(英文\)。 將類別負責的某些部分移到新的類別，以嘗試重構類別。 請記住，頁面 Razor 頁面模型類別和 MVC 控制器類別應該專注于 UI 考慮。 商務規則和資料存取實作詳細資料應該保存在適合這些[分開考量](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (Separation of Concerns) 類別中。
 
 ### <a name="disposal-of-services"></a>處置服務
 
@@ -485,11 +689,11 @@ public void ConfigureServices(IServiceCollection services)
 * [Stashbox](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
 * [Unity](https://www.nuget.org/packages/Unity.Microsoft.DependencyInjection)
 
-### <a name="thread-safety"></a>執行緒安全
+### <a name="thread-safety"></a>執行緒安全性
 
 建立具備執行緒安全性的 singleton 服務。 如果 singleton 服務相依於暫時性服務，暫時性服務可能也需要具備執行緒安全性，取決於 singleton 如何使用它。
 
-單一服務的 Factory 方法 (例如 [AddSingleton\<TService>(IServiceCollection, Func\<IServiceProvider,TService>)](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*) 的第二個引數) 不需要是安全執行緒。 就像型別 (`static`) 建構函式一樣，它一定會被單一執行緒呼叫一次。
+單一服務的 factory 方法（例如[AddSingleton \<TService> （IServiceCollection，Func \<IServiceProvider,TService> ）](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*)的第二個引數）不需要是安全線程。 就像型別 (`static`) 建構函式一樣，它一定會被單一執行緒呼叫一次。
 
 ## <a name="recommendations"></a>建議
 
@@ -646,7 +850,7 @@ services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 [!code-csharp[](dependency-injection/samples/2.x/DependencyInjectionSample/Startup.cs?name=snippet1&highlight=5)]
 
 > [!NOTE]
-> 每個 `services.Add{SERVICE_NAME}` 擴充方法都會新增 (並且可能會設定) 服務。 例如，`services.AddMvc()` 會新增 Razor Pages 與 MVC 要求的服務。 建議應用程式遵循此慣例。 在 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 命名空間中放置擴充方法，以封裝服務註冊群組。
+> 每個 `services.Add{SERVICE_NAME}` 擴充方法都會新增 (並且可能會設定) 服務。 例如，會 `services.AddMvc()` 加入服務 Razor 頁面，而 MVC 則需要。 建議應用程式遵循此慣例。 在 [Microsoft.Extensions.DependencyInjection](/dotnet/api/microsoft.extensions.dependencyinjection) 命名空間中放置擴充方法，以封裝服務註冊群組。
 
 如果服務的建構函式需要[內建類型](/dotnet/csharp/language-reference/keywords/built-in-types-table)，例如 `string`，可以使用[組態](xref:fundamentals/configuration/index)或[選項模式](xref:fundamentals/configuration/options)插入該類型：
 
@@ -672,13 +876,13 @@ public class MyDependency : IMyDependency
 
 ## <a name="services-injected-into-startup"></a>插入至啟動的服務
 
-使用泛型主機（ `Startup` <xref:Microsoft.Extensions.Hosting.IHostBuilder>）時，只有下列服務類型可以插入至此函式：
+`Startup`使用泛型主機（）時，只有下列服務類型可以插入至此函式 <xref:Microsoft.Extensions.Hosting.IHostBuilder> ：
 
 * `IWebHostEnvironment`
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
 * <xref:Microsoft.Extensions.Configuration.IConfiguration>
 
-服務可以插入`Startup.Configure`：
+服務可以插入 `Startup.Configure` ：
 
 ```csharp
 public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
@@ -691,28 +895,61 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
-`Startup.ConfigureServices`方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET Core MVC。 一開始， `IServiceCollection`提供的`ConfigureServices`會根據[主機的設定方式](xref:fundamentals/index#host)，來擁有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
+`Startup.ConfigureServices`方法負責定義應用程式所使用的服務，包括平臺功能，例如 Entity Framework Core 和 ASP.NET CORE MVC。 一開始， `IServiceCollection` 提供的會 `ConfigureServices` 根據主機的[設定方式](xref:fundamentals/index#host)，來擁有架構所定義的服務。 以 ASP.NET Core 範本為基礎的應用程式，在架構中註冊數百項服務並不常見。 下表列出架構註冊服務的小型範例。
 
 | 服務類型 | 存留期 |
-| ------------ | -------- |
-| <xref:Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory?displayProperty=fullName> | 暫時性 |
-| <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.AspNetCore.Hosting.IStartup?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.AspNetCore.Hosting.IStartupFilter?displayProperty=fullName> | 暫時性 |
-| <xref:Microsoft.AspNetCore.Hosting.Server.IServer?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.AspNetCore.Http.IHttpContextFactory?displayProperty=fullName> | 暫時性 |
-| <xref:Microsoft.Extensions.Logging.ILogger`1?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.Extensions.Logging.ILoggerFactory?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider?displayProperty=fullName> | 單一 |
-| <xref:Microsoft.Extensions.Options.IConfigureOptions`1?displayProperty=fullName> | 暫時性 |
-| <xref:Microsoft.Extensions.Options.IOptions`1?displayProperty=fullName> | 單一 |
-| <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> | 單一 |
-| <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> | 單一 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- || <xref:Microsoft.AspNetCore.Hosting.Builder.IApplicationBuilderFactory?displayProperty=fullName> |暫時性 || <xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime?displayProperty=fullName> |Singleton || <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment?displayProperty=fullName> |Singleton || <xref:Microsoft.AspNetCore.Hosting.IStartup?displayProperty=fullName> |Singleton || <xref:Microsoft.AspNetCore.Hosting.IStartupFilter?displayProperty=fullName> |暫時性 || <xref:Microsoft.AspNetCore.Hosting.Server.IServer?displayProperty=fullName> |Singleton || <xref:Microsoft.AspNetCore.Http.IHttpContextFactory?displayProperty=fullName> |暫時性 || <xref:Microsoft.Extensions.Logging.ILogger`1?displayProperty=fullName> |Singleton || <xref:Microsoft.Extensions.Logging.ILoggerFactory?displayProperty=fullName> |Singleton || <xref:Microsoft.Extensions.ObjectPool.ObjectPoolProvider?displayProperty=fullName> |Singleton || <xref:Microsoft.Extensions.Options.IConfigureOptions`1?displayProperty=fullName> |暫時性 || <xref:Microsoft.Extensions.Options.IOptions`1?displayProperty=fullName> |Singleton || <xref:System.Diagnostics.DiagnosticSource?displayProperty=fullName> |Singleton || <xref:System.Diagnostics.DiagnosticListener?displayProperty=fullName> |Singleton |
 
 ## <a name="register-additional-services-with-extension-methods"></a>以擴充方法註冊其他服務
 
-當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例說明如何使用擴充方法[\<AddDbCoNtext TCoNtext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)和， <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*>將其他服務新增至容器：
+當可以使用服務集合擴充方法來註冊服務 (如果需要，也可以註冊其相依服務) 時，慣例是使用單一 `Add{SERVICE_NAME}` 擴充方法來註冊該服務要求的所有服務。 下列程式碼範例說明如何使用擴充方法[AddDbCoNtext \<TContext> ](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)和，將其他服務新增至容器 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionExtensions.AddIdentityCore*> ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -758,13 +995,197 @@ public void ConfigureServices(IServiceCollection services)
 
 服務註冊擴充方法提供在特定案例中很有用的多載。
 
-| 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
-| ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();` | 是 | 否 | 否 |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | 是 |
-| `AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 否 | 否 | 是 |
+| 方法 | 自動<br>物件<br>處置 | 多重<br>實作 | 傳遞引數 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--- |：---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------------: |：---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------------: |：---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----: | | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();`|是 |是 |否 | |`Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));`|是 |是 |是 | |`Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();`|是 |否 |否 | |`AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));`|否 |是 |是 | |`AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));`|否 |否 |是 |
 
 如需類型處置的詳細資訊，請參閱[＜服務處置＞](#disposal-of-services)一節。 多個實作的常見案例是[模擬測試類型](xref:test/integration-tests#inject-mock-services)。
 
@@ -806,17 +1227,17 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 服務可以透過兩個機制來解析：
 
 * <xref:System.IServiceProvider>
-* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities>&ndash;允許在相依性插入容器中，不需要服務註冊即可建立物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
+* <xref:Microsoft.Extensions.DependencyInjection.ActivatorUtilities>：允許在相依性插入容器中不註冊服務時，建立物件。 搭配使用者面向抽象 (例如標籤協助程式、MVC 控制器與模型繫結器) 使用 `ActivatorUtilities`。
 
 建構函式可以接受不是由相依性插入提供的引數，但引數必須指派預設值。
 
-`IServiceProvider`當服務由或`ActivatorUtilities`解析時，程式的[插入](xref:mvc/controllers/dependency-injection#constructor-injection)需要*公用*的函式。
+當服務由或解析時，程式的 `IServiceProvider` `ActivatorUtilities` [插入](xref:mvc/controllers/dependency-injection#constructor-injection)需要*公用*的函式。
 
-當服務由`ActivatorUtilities`解析時，程式的[插入](xref:mvc/controllers/dependency-injection#constructor-injection)只需要有一個適用的函式。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
+當服務由解析時 `ActivatorUtilities` ，程式的[插入](xref:mvc/controllers/dependency-injection#constructor-injection)只需要有一個適用的函式。 支援建構函式多載，但只能有一個多載存在，其引數可以藉由相依性插入而完成。
 
 ## <a name="entity-framework-contexts"></a>Entity Framework 內容
 
-因為一般會將 Web 應用程式資料庫作業範圍設定為用戶端要求，所以通常會使用[具範圍存留期](#service-lifetimes)將 Entity Framework 內容新增至服務容器。 註冊資料庫內容時，如果 [AddDbContext\<TContext>](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 多載未指定留存期，則會將範圍設定為預設存留期。 指定存留期的服務不應該使用存留期比服務還短的資料庫內容。
+因為一般會將 Web 應用程式資料庫作業範圍設定為用戶端要求，所以通常會使用[具範圍存留期](#service-lifetimes)將 Entity Framework 內容新增至服務容器。 如果在註冊資料庫內容時， [AddDbCoNtext \<TContext> ](/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext)多載未指定存留期，則會將預設存留期設定為範圍。 指定存留期的服務不應該使用存留期比服務還短的資料庫內容。
 
 ## <a name="lifetime-and-registration-options"></a>留期和註冊選項
 
@@ -884,7 +1305,7 @@ services.TryAddEnumerable(ServiceDescriptor.Singleton<IMyDep1, MyDep>());
 
 * 「暫時性」** 物件一律不同。 第一個與第二個用戶端要求的暫時性 `OperationId` 值在兩個 `OperationService` 作業之間與各用戶端要求之間都不同。 新執行個體會提供給每個服務要求以及用戶端要求。
 * 「具範圍」** 物件在同一個用戶端要求內皆相同，但在不同的用戶端要求之間則不同。
-* *Singleton*不論是否在中`Operation` `Startup.ConfigureServices`提供實例，每個物件和每個要求的單一物件都是相同的。
+* *Singleton*不論是否 `Operation` 在中提供實例，每個物件和每個要求的單一物件都是相同的 `Startup.ConfigureServices` 。
 
 ## <a name="call-services-from-main"></a>從主要呼叫服務
 
@@ -962,7 +1383,7 @@ public class Program
 * 避免直接在服務內具現化相依類別。 直接具現化會將程式碼耦合到特定實作。
 * 讓應用程式類別維持在小型、情況良好且可輕鬆測試的狀態。
 
-若類別有太多插入的相依性，這通常表示類別有太多責任而且正違反[單一責任原則 (SRP)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility) \(英文\)。 將類別負責的某些部分移到新的類別，以嘗試重構類別。 請記住， Razor頁面頁面模型類別和 MVC 控制器類別應該專注于 UI 考慮。 商務規則和資料存取實作詳細資料應該保存在適合這些[分開考量](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (Separation of Concerns) 類別中。
+若類別有太多插入的相依性，這通常表示類別有太多責任而且正違反[單一責任原則 (SRP)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#single-responsibility) \(英文\)。 將類別負責的某些部分移到新的類別，以嘗試重構類別。 請記住，頁面 Razor 頁面模型類別和 MVC 控制器類別應該專注于 UI 考慮。 商務規則和資料存取實作詳細資料應該保存在適合這些[分開考量](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (Separation of Concerns) 類別中。
 
 ### <a name="disposal-of-services"></a>處置服務
 
@@ -1024,11 +1445,11 @@ public void ConfigureServices(IServiceCollection services)
 * [Stashbox](https://github.com/z4kn4fein/stashbox-extensions-dependencyinjection)
 * [Unity](https://www.nuget.org/packages/Unity.Microsoft.DependencyInjection)
 
-### <a name="thread-safety"></a>執行緒安全
+### <a name="thread-safety"></a>執行緒安全性
 
 建立具備執行緒安全性的 singleton 服務。 如果 singleton 服務相依於暫時性服務，暫時性服務可能也需要具備執行緒安全性，取決於 singleton 如何使用它。
 
-單一服務的 Factory 方法 (例如 [AddSingleton\<TService>(IServiceCollection, Func\<IServiceProvider,TService>)](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*) 的第二個引數) 不需要是安全執行緒。 就像型別 (`static`) 建構函式一樣，它一定會被單一執行緒呼叫一次。
+單一服務的 factory 方法（例如[AddSingleton \<TService> （IServiceCollection，Func \<IServiceProvider,TService> ）](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton*)的第二個引數）不需要是安全線程。 就像型別 (`static`) 建構函式一樣，它一定會被單一執行緒呼叫一次。
 
 ## <a name="recommendations"></a>建議
 
@@ -1040,7 +1461,7 @@ public void ConfigureServices(IServiceCollection services)
 
 * 避免使用*服務定位器模式*，這會混用控制策略的[反轉](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion)。
 
-  * 當您<xref:System.IServiceProvider.GetService*>可以改用 DI 時，請勿叫用來取得服務實例：
+  * <xref:System.IServiceProvider.GetService*>當您可以改用 DI 時，請勿叫用來取得服務實例：
 
     **正確**
 
@@ -1079,7 +1500,7 @@ public void ConfigureServices(IServiceCollection services)
     }
     ```
 
-  * 避免在使用<xref:System.IServiceProvider.GetService*>時，插入用來解析相依性的 factory。
+  * 避免在使用時，插入用來解析相依性的 factory <xref:System.IServiceProvider.GetService*> 。
 
 * 避免以靜態方式存取 `HttpContext` (例如 [IHttpContextAccessor.HttpContext](xref:Microsoft.AspNetCore.Http.IHttpContextAccessor.HttpContext))。
 

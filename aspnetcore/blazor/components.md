@@ -69,8 +69,8 @@ Razor應用程式中的元件會 Blazor 廣泛使用 Razor 語法。 如果您�
 
 存取語法上的內容時 Razor ，請特別注意下列各節：
 
-* 指示詞[Directives](xref:mvc/views/razor#directives) &ndash;`@`-前面加上的保留關鍵字，通常會變更元件標記剖析或運作的方式。
-* 指示詞[屬性](xref:mvc/views/razor#directive-attributes) &ndash;`@`-前面加上的保留關鍵字，通常會變更元件元素的剖析或運作方式。
+* [Directives](xref:mvc/views/razor#directives)指示 `@` 詞：-前面加上的保留關鍵字，通常會變更元件標記的剖析或運作方式。
+* 指示詞[屬性](xref:mvc/views/razor#directive-attributes)： `@` -前面加上的保留關鍵字，通常會變更元件元素的剖析或運作方式。
 
 ## <a name="static-assets"></a>靜態資產
 
@@ -136,7 +136,7 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
 
 ### <a name="component-parameters"></a>元件參數
 
-元件可以具有*元件參數*，其使用元件類別上的公用屬性來定義，其具有 [ [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) ] （x： AspNetCore. ParameterAttribute）屬性。 使用這些屬性來指定標記中元件的引數。
+元件可以具有*元件參數*，其定義方式是在元件類別上使用具有屬性的公用屬性 [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 。 使用這些屬性來指定標記中元件的引數。
 
 *Components/ChildComponent. razor*：
 
@@ -974,7 +974,7 @@ public class ThemeInfo
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:security/blazor/server/threat-mitigation>&ndash;包含有關建立 Blazor 的指引必須爭用資源耗盡的伺服器應用程式。
+* <xref:security/blazor/server/threat-mitigation>：包含有關建立 Blazor 伺服器應用程式的指導方針，這些服務必須與資源耗盡有關。
 
 <!--Reference links in article-->
 [1]: <xref:mvc/views/razor#code>

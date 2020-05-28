@@ -1495,7 +1495,7 @@ using Microsoft.Extensions.Configuration;
 如需詳細資訊，請參閱下列主題：
 
 * <xref:fundamentals/environments>
-* <xref:security/app-secrets>&ndash;包含使用環境變數來儲存敏感性資料的建議。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
+* <xref:security/app-secrets>：包含有關使用環境變數來儲存敏感性資料的建議。 「祕密管理員」使用「檔案設定提供者」以 JSON 檔案在本機系統上存放使用者祕密。 此主題稍後將說明「檔案設定提供者」。
 
 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) 可安全地儲存 ASP.NET Core 應用程式的應用程式祕密。 如需詳細資訊，請參閱<xref:security/key-vault-configuration>。
 
@@ -2948,8 +2948,8 @@ var config = new ConfigurationBuilder()
 
 在伺服器上建立自訂連接字串環境變數：
 
-* 名稱 &ndash;`CUSTOMCONNSTR_ReleaseDB`
-* 值 &ndash;`Data Source=ReleaseSQLServer;Initial Catalog=MyReleaseDB;Integrated Security=True`
+* 名稱：`CUSTOMCONNSTR_ReleaseDB`
+* 值: `Data Source=ReleaseSQLServer;Initial Catalog=MyReleaseDB;Integrated Security=True`
 
 如果 `IConfiguration` 插入，並將其指派給名為的欄位 `_config` ，請閱讀值：
 
@@ -3028,8 +3028,8 @@ key=value
 
 `AddJsonFile`當使用初始化新的主機產生器時，會自動呼叫兩次 `CreateDefaultBuilder` 。 會呼叫此方法以從下列位置載入設定：
 
-* *appsettings.json* &ndash; 會先讀取此檔案。 檔案的環境版本可以覆寫由 *appsettings.json* 檔案提供的值。
-* *appsettings。{環境}. json* ：檔案的 &ndash; 環境版本是根據 IHostingEnvironment 所載入。 [EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)。
+* *appsettings*：先讀取此檔案。 檔案的環境版本可以覆寫由 *appsettings.json* 檔案提供的值。
+* *appsettings。{環境}. json*：檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。
 
 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
 

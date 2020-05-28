@@ -119,7 +119,7 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>使用預設 WebApplicationFactory 的基本測試
 
-[WebApplicationFactory \<TEntryPoint>](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)是用來建立整合測試的[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) 。 `TEntryPoint`是 SUT 的進入點類別，通常是 `Startup` 類別。
+[WebApplicationFactory \<TEntryPoint> ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)是用來建立整合測試的[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) 。 `TEntryPoint`是 SUT 的進入點類別，通常是 `Startup` 類別。
 
 測試類別會實作為類別*裝置*介面（[IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)），以指示類別包含測試，並在類別中的所有測試中提供共用物件實例。
 
@@ -178,7 +178,7 @@ Entity Framework Core 也會用於測試中。 應用程式參考：
 
 `SendAsync`範例應用程式中的協助程式擴充方法（helper */HttpClientExtensions*）和 `GetDocumentAsync` helper 方法（helper */HtmlHelpers*）會使用[sample app](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) [AngleSharp](https://anglesharp.github.io/)剖析器，利用下列方法來處理 antiforgery 檢查：
 
-* `GetDocumentAsync`&ndash;接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回 `IHtmlDocument` 。 `GetDocumentAsync`使用可根據原始的來準備*虛擬回應*的 factory `HttpResponseMessage` 。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
+* `GetDocumentAsync`：接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回 `IHtmlDocument` 。 `GetDocumentAsync`使用可根據原始的來準備*虛擬回應*的 factory `HttpResponseMessage` 。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync``HttpClient`撰寫[HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)和呼叫[SendAsync （HttpRequestMessage）](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)的擴充方法，以將要求提交至 SUT。 的多載會 `SendAsync` 接受 HTML 表單（ `IHtmlFormElement` ）和下列內容：
   * 表單的 [提交] 按鈕（ `IHtmlElement` ）
   * 表單值集合（ `IEnumerable<KeyValuePair<string, string>>` ）
@@ -380,7 +380,7 @@ protected override IWebHostBuilder CreateWebHostBuilder() =>
 
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| App | 專案目錄 | 說明 |
+| App | 專案目錄 | 描述 |
 | --- | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'
@@ -479,7 +479,7 @@ SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
 
-| 測試應用程式目錄 | 說明 |
+| 測試應用程式目錄 | 描述 |
 | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'
@@ -679,7 +679,7 @@ Razor頁面應用程式和 MVC 應用程式的測試設定之間幾乎沒有任�
 
 ## <a name="basic-tests-with-the-default-webapplicationfactory"></a>使用預設 WebApplicationFactory 的基本測試
 
-[WebApplicationFactory \<TEntryPoint>](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)是用來建立整合測試的[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) 。 `TEntryPoint`是 SUT 的進入點類別，通常是 `Startup` 類別。
+[WebApplicationFactory \<TEntryPoint> ](/dotnet/api/microsoft.aspnetcore.mvc.testing.webapplicationfactory-1)是用來建立整合測試的[TestServer](/dotnet/api/microsoft.aspnetcore.testhost.testserver) 。 `TEntryPoint`是 SUT 的進入點類別，通常是 `Startup` 類別。
 
 測試類別會實作為類別*裝置*介面（[IClassFixture](https://xunit.github.io/docs/shared-context#class-fixture)），以指示類別包含測試，並在類別中的所有測試中提供共用物件實例。
 
@@ -719,7 +719,7 @@ Razor頁面應用程式和 MVC 應用程式的測試設定之間幾乎沒有任�
 
 `SendAsync`範例應用程式中的協助程式擴充方法（helper */HttpClientExtensions*）和 `GetDocumentAsync` helper 方法（helper */HtmlHelpers*）會使用[sample app](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/) [AngleSharp](https://anglesharp.github.io/)剖析器，利用下列方法來處理 antiforgery 檢查：
 
-* `GetDocumentAsync`&ndash;接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回 `IHtmlDocument` 。 `GetDocumentAsync`使用可根據原始的來準備*虛擬回應*的 factory `HttpResponseMessage` 。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
+* `GetDocumentAsync`：接收[HttpResponseMessage](/dotnet/api/system.net.http.httpresponsemessage) ，並傳回 `IHtmlDocument` 。 `GetDocumentAsync`使用可根據原始的來準備*虛擬回應*的 factory `HttpResponseMessage` 。 如需詳細資訊，請參閱[AngleSharp 檔](https://github.com/AngleSharp/AngleSharp#documentation)。
 * `SendAsync``HttpClient`撰寫[HttpRequestMessage](/dotnet/api/system.net.http.httprequestmessage)和呼叫[SendAsync （HttpRequestMessage）](/dotnet/api/system.net.http.httpclient.sendasync#System_Net_Http_HttpClient_SendAsync_System_Net_Http_HttpRequestMessage_)的擴充方法，以將要求提交至 SUT。 的多載會 `SendAsync` 接受 HTML 表單（ `IHtmlFormElement` ）和下列內容：
   * 表單的 [提交] 按鈕（ `IHtmlElement` ）
   * 表單值集合（ `IEnumerable<KeyValuePair<string, string>>` ）
@@ -949,7 +949,7 @@ public class CustomWebApplicationFactory<TStartup>
 
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| App | 專案目錄 | 說明 |
+| App | 專案目錄 | 描述 |
 | --- | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'
@@ -1048,7 +1048,7 @@ SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
 
-| 測試應用程式目錄 | 說明 |
+| 測試應用程式目錄 | 描述 |
 | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'

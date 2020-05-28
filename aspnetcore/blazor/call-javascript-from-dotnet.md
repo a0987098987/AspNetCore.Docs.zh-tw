@@ -70,8 +70,8 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 在本主題隨附的用戶端範例應用程式中，有兩個 JavaScript 函式可供與 DOM 互動的應用程式使用，以接收使用者輸入並顯示歡迎訊息：
 
-* `showPrompt`&ndash;產生提示以接受使用者輸入（使用者的名稱），並將名稱傳回給呼叫者。
-* `displayWelcome`將 &ndash; 歡迎訊息從呼叫者指派給具有之的 DOM 物件 `id` `welcome` 。
+* `showPrompt`：產生可接受使用者輸入的提示（使用者的名稱），並將名稱傳回給呼叫者。
+* `displayWelcome`：將歡迎訊息從呼叫者指派給具有之的 DOM 物件 `id` `welcome` 。
 
 *wwwroot/exampleJsInterop*：
 

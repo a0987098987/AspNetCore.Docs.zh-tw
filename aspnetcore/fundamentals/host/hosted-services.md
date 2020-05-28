@@ -43,7 +43,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 <xref:Microsoft.Extensions.Hosting.IHostedService>介面會針對主機所管理的物件定義兩種方法：
 
-* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` 包含啟動背景工作的邏輯。 `StartAsync`會*在之前*呼叫：
+* [StartAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*)： `StartAsync` 包含啟動背景工作的邏輯。 `StartAsync`會*在之前*呼叫：
 
   * 應用程式的要求處理管線已設定（ `Startup.Configure` ）。
   * 伺服器已啟動並[IApplicationLifetime。 ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*)會觸發。
@@ -75,7 +75,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
   }
   ```
 
-* [StopAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*) &ndash; 當主機執行正常關機程序時觸發。 `StopAsync` 包含用來結束背景工作的邏輯。 實作 <xref:System.IDisposable> 和 [完成項 (解構函式)](/dotnet/csharp/programming-guide/classes-and-structs/destructors) 以處置任何非受控的資源。
+* [StopAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*)：當主機執行正常關機時觸發。 `StopAsync` 包含用來結束背景工作的邏輯。 實作 <xref:System.IDisposable> 和 [完成項 (解構函式)](/dotnet/csharp/programming-guide/classes-and-structs/destructors) 以處置任何非受控的資源。
 
   取消權杖有五秒的逾時預設值，以表示關機程序應該不再順利。 在權杖上要求取消時：
 
@@ -184,9 +184,9 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 託管服務會實作 <xref:Microsoft.Extensions.Hosting.IHostedService> 介面。 此介面針對主機所管理的物件定義兩種方法：
 
-* [StartAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*) &ndash; `StartAsync` 包含啟動背景工作的邏輯。 使用[Web 主機](xref:fundamentals/host/web-host)時， `StartAsync` 會在伺服器啟動且 IApplicationLifetime 之後呼叫[。 ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*)會觸發。 使用[泛型主機](xref:fundamentals/host/generic-host)時， `StartAsync` 會在觸發之前呼叫 `ApplicationStarted` 。
+* [StartAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync*)： `StartAsync` 包含啟動背景工作的邏輯。 使用[Web 主機](xref:fundamentals/host/web-host)時， `StartAsync` 會在伺服器啟動且 IApplicationLifetime 之後呼叫[。 ApplicationStarted](xref:Microsoft.AspNetCore.Hosting.IApplicationLifetime.ApplicationStarted*)會觸發。 使用[泛型主機](xref:fundamentals/host/generic-host)時， `StartAsync` 會在觸發之前呼叫 `ApplicationStarted` 。
 
-* [StopAsync(CancellationToken)](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*) &ndash; 當主機執行正常關機程序時觸發。 `StopAsync` 包含用來結束背景工作的邏輯。 實作 <xref:System.IDisposable> 和 [完成項 (解構函式)](/dotnet/csharp/programming-guide/classes-and-structs/destructors) 以處置任何非受控的資源。
+* [StopAsync （CancellationToken）](xref:Microsoft.Extensions.Hosting.IHostedService.StopAsync*)：當主機執行正常關機時觸發。 `StopAsync` 包含用來結束背景工作的邏輯。 實作 <xref:System.IDisposable> 和 [完成項 (解構函式)](/dotnet/csharp/programming-guide/classes-and-structs/destructors) 以處置任何非受控的資源。
 
   取消權杖有五秒的逾時預設值，以表示關機程序應該不再順利。 在權杖上要求取消時：
 

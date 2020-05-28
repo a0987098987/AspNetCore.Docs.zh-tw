@@ -8,12 +8,12 @@ products:
 - aspnet-core
 - vs
 urlFragment: aspnetcore-webapi-mongodb
-ms.openlocfilehash: 6f6022bee678af92066f45032b43b6b87e5f901e
-ms.sourcegitcommit: 7a42bc1e594de36c854fd4363c11821548a9efa7
+ms.openlocfilehash: 95a2a6fcda0a4f7148183981f7dbacd06388329d
+ms.sourcegitcommit: 58722eb309767e462bdbf3082bd38737a4ef168f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83608664"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84106516"
 ---
 # <a name="create-a-web-api-with-aspnet-core-and-mongodb"></a>使用 ASP.NET Core 與 MongoDB 建立 Web API
 
@@ -27,7 +27,7 @@ ms.locfileid: "83608664"
 * 從 Web API 執行 MongoDB CRUD 作業
 * 自訂 JSON 序列化
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * [.NET Core SDK 3.0 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
 * [Visual Studio 2019 預覽版](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=community&ch=pre&rel=16&utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019preview)以及 **ASP.NET 與 Web 開發**工作負載
@@ -35,7 +35,7 @@ ms.locfileid: "83608664"
 
 ## <a name="configure-mongodb"></a>設定 MongoDB
 
-若使用 Windows，MongoDB 預設會安裝在 *C:\\Program Files\\MongoDB*。 將*C： \\ Program Files \\ MongoDB \\ 伺服器 \\ \< version_number>\\ bin*新增至 `Path` 環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
+若使用 Windows，MongoDB 預設會安裝在 *C:\\Program Files\\MongoDB*。 將*C： \\ Program Files \\ MongoDB \\ 伺服器 \\ \<version_number> \\ bin*新增至 `Path` 環境變數。 此變更會啟用從您開發機器上的任意位置存取 MongoDB 的功能。
 
 在下列步驟中使用 mongo 殼層來建立資料庫、建立集合及存放文件。 如需有關 mongo 殼層命令的詳細資訊，請參閱[使用 mongo 殼層](https://docs.mongodb.com/manual/mongo/#working-with-the-mongo-shell)。
 
@@ -313,7 +313,7 @@ ms.locfileid: "83608664"
 
 `BookService` 類別使用下列 `MongoDB.Driver` 成員來對資料庫執行 CRUD 作業：
 
-* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm) &ndash; 讀取用於執行資料庫作業的伺服器執行個體。 此類別的建構函式是使用 MongoDB 連接字串提供：
+* [MongoClient](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoClient.htm)：讀取用來執行資料庫作業的伺服器實例。 此類別的建構函式是使用 MongoDB 連接字串提供：
 
     ```csharp
     public BookService(IBookstoreDatabaseSettings settings)
@@ -325,16 +325,16 @@ ms.locfileid: "83608664"
     }
     ```
 
-* [IMongoDatabase](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_IMongoDatabase.htm) &ndash; 代表用於執行作業的 Mongo 資料庫。 本教學課程在介面上使用一般的 [GetCollection\<TDocument>(collection)](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoDatabase_GetCollection__1.htm) 方法來存取特定集合中的資料。 呼叫此方法之後，針對集合執行 CRUD 作業。 在 `GetCollection<TDocument>(collection)` 方法呼叫中：
+* [IMongoDatabase](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_IMongoDatabase.htm)：代表用於執行作業的 Mongo 資料庫。 本教學課程在介面中使用一般的 [GetCollection\<TDocument>(collection)](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoDatabase_GetCollection__1.htm) 方法來存取特定集合中的資料。 呼叫此方法之後，針對集合執行 CRUD 作業。 在 `GetCollection<TDocument>(collection)` 方法呼叫中：
   * `collection` 代表集合名稱。
   * `TDocument` 代表儲存在集合中的 CLR 物件類型。
 
 `GetCollection<TDocument>(collection)` 傳回代表集合的 [MongoCollection](https://api.mongodb.com/csharp/current/html/T_MongoDB_Driver_MongoCollection.htm) 物件。 在此教學課程中，會在集合上叫用下列方法：
 
-* [DeleteOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm) &ndash; 會刪除符合所提供搜尋條件的單一文件。
-* [Find\<TDocument>](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm) &ndash; 傳回集合中符合所提供搜尋條件的所有文件。
-* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm) &ndash; 插入所提供物件作為集合中的新文件。
-* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm) &ndash; 使用所提供物件取代符合所提供搜尋條件的單一文件。
+* [Collection.deleteone](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_DeleteOne.htm)：刪除符合所提供搜尋條件的單一檔。
+* [尋找 \<TDocument> ](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollectionExtensions_Find__1_1.htm)：傳回集合中符合所提供搜尋條件的所有檔。
+* [InsertOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_InsertOne.htm)：將提供的物件插入為集合中的新檔。
+* [ReplaceOne](https://api.mongodb.com/csharp/current/html/M_MongoDB_Driver_IMongoCollection_1_ReplaceOne.htm)：使用提供的物件取代符合所提供搜尋條件的單一檔。
 
 ## <a name="add-a-controller"></a>新增控制器
 

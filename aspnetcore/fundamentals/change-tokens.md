@@ -1,23 +1,11 @@
 ---
-title: 在 ASP.NET Core 中使用變更權杖來偵測變更
-author: rick-anderson
-description: 了解如何使用變更權杖來追蹤變更。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.date: 10/07/2019
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/change-tokens
-ms.openlocfilehash: 40868c57507989e1d3040df2cbe2feb4871d4394
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774791"
+標題： author： description： monikerRange： ms. author： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="detect-changes-with-change-tokens-in-aspnet-core"></a>在 ASP.NET Core 中使用變更權杖來偵測變更
 
@@ -36,18 +24,18 @@ ms.locfileid: "82774791"
 * <xref:Microsoft.Extensions.Primitives.IChangeToken.ActiveChangeCallbacks> 指出權杖是否主動引發回呼。 如果 `ActiveChangedCallbacks` 設定為 `false`，則絕不會呼叫回呼，而且應用程式必須輪詢 `HasChanged` 是否有變更。 如果未發生任何變更，或基礎變更接聽程式已遭處置或停用，權杖也可能永遠不會被取消。
 * <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged> 會接收指出是否已發生變更的值。
 
-`IChangeToken` 介面包括 [RegisterChangeCallback(Action\<Object>, Object)](xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*) 方法，它會登錄在權杖變更時叫用的回呼。 `HasChanged` 必須在叫用回呼之前設定。
+`IChangeToken`介面包含[RegisterChangeCallback （Action \<Object> ，Object）](xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*)方法，它會註冊在權杖變更時所叫用的回呼。 `HasChanged` 必須在叫用回呼之前設定。
 
 ## <a name="changetoken-class"></a>ChangeToken 類別
 
 <xref:Microsoft.Extensions.Primitives.ChangeToken> 靜態類別用來傳播已發生變更的通知。 `ChangeToken` 位於 <xref:Microsoft.Extensions.Primitives?displayProperty=fullName> 命名空間內。 會以隱含方式為 ASP.NET Core 應用程式提供了[Microsoft Extensions 原型](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/)NuGet 套件。
 
-[ChangeToken.OnChange(Func\<IChangeToken>, Action)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 方法會登錄每當權杖變更時要呼叫的 `Action`：
+[ChangeToken （Func \<IChangeToken> ，Action）](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*)方法會在 `Action` 權杖變更時，註冊以進行呼叫：
 
 * `Func<IChangeToken>` 會產生權杖。
 * 在權杖變更時呼叫 `Action`。
 
-[ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>, TState)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 多載接受傳遞到權杖取用者 `Action` 的額外 `TState` 參數。
+[ChangeToken \<TState> （Func \<IChangeToken> ，Action \<TState> ，TState）](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*)多載會採用 `TState` 傳入權杖取用者的額外參數 `Action` 。
 
 `OnChange` 會傳回 <xref:System.IDisposable>。 呼叫 <xref:System.IDisposable.Dispose*> 將阻止權杖接聽其他變更和釋出權杖的資源。
 
@@ -119,8 +107,8 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 此執行個體中的 `state` 是用來存取監視狀態的 `IConfigurationMonitor` 執行個體參考。 會使用兩個屬性：
 
-* `MonitoringEnabled`&ndash;指出回呼是否應執行其自訂程式碼。
-* `CurrentState`&ndash;描述目前在 UI 中使用的監視狀態。
+* `MonitoringEnabled`：指出回呼是否應執行其自訂程式碼。
+* `CurrentState`：描述目前在 UI 中使用的監視狀態。
 
 `InvokeChanged` 方法類似於之前的方法，不同之處在於：
 
@@ -176,7 +164,7 @@ UI 啟用和停用監視中的按鈕。
 1. 使用 [IFileProviders.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 從檔案提供者取得變更權杖。 修改檔案時，就會觸發權杖的回呼。
 1. 使用[滑動期限](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryOptions.SlidingExpiration)快取檔案內容。 變更權杖附有 [MemoryCacheEntryExtensions.AddExpirationToke](xref:Microsoft.Extensions.Caching.Memory.MemoryCacheEntryExtensions.AddExpirationToken*)，可在快取的檔案變更時收回快取項目。
 
-在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 `IWebHostEnvironment.ContentRootFileProvider`是用來取得<xref:Microsoft.Extensions.FileProviders.IFileProvider>指向應用程式的。 `IWebHostEnvironment.ContentRootPath` `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
+在下列範例中，檔案會儲存在應用程式的[內容根目錄](xref:fundamentals/index#content-root)中。 `IWebHostEnvironment.ContentRootFileProvider`是用來取得 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 指向應用程式的 `IWebHostEnvironment.ContentRootPath` 。 `filePath` 是使用 [IFileInfo.PhysicalPath](xref:Microsoft.Extensions.FileProviders.IFileInfo.PhysicalPath) 取得的。
 
 [!code-csharp[](change-tokens/samples/3.x/SampleApp/Services/FileService.cs?name=snippet1)]
 
@@ -234,18 +222,18 @@ var compositeChangeToken =
 * <xref:Microsoft.Extensions.Primitives.IChangeToken.ActiveChangeCallbacks> 指出權杖是否主動引發回呼。 如果 `ActiveChangedCallbacks` 設定為 `false`，則絕不會呼叫回呼，而且應用程式必須輪詢 `HasChanged` 是否有變更。 如果未發生任何變更，或基礎變更接聽程式已遭處置或停用，權杖也可能永遠不會被取消。
 * <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged> 會接收指出是否已發生變更的值。
 
-`IChangeToken` 介面包括 [RegisterChangeCallback(Action\<Object>, Object)](xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*) 方法，它會登錄在權杖變更時叫用的回呼。 `HasChanged` 必須在叫用回呼之前設定。
+`IChangeToken`介面包含[RegisterChangeCallback （Action \<Object> ，Object）](xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*)方法，它會註冊在權杖變更時所叫用的回呼。 `HasChanged` 必須在叫用回呼之前設定。
 
 ## <a name="changetoken-class"></a>ChangeToken 類別
 
 <xref:Microsoft.Extensions.Primitives.ChangeToken> 靜態類別用來傳播已發生變更的通知。 `ChangeToken` 位於 <xref:Microsoft.Extensions.Primitives?displayProperty=fullName> 命名空間內。 如需不使用 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)的應用程式，請建立 [Microsoft.Extensions.Primitives](https://www.nuget.org/packages/Microsoft.Extensions.Primitives/) NuGet 套件的套件參考。
 
-[ChangeToken.OnChange(Func\<IChangeToken>, Action)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 方法會登錄每當權杖變更時要呼叫的 `Action`：
+[ChangeToken （Func \<IChangeToken> ，Action）](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*)方法會在 `Action` 權杖變更時，註冊以進行呼叫：
 
 * `Func<IChangeToken>` 會產生權杖。
 * 在權杖變更時呼叫 `Action`。
 
-[ChangeToken.OnChange\<TState>(Func\<IChangeToken>, Action\<TState>, TState)](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*) 多載接受傳遞到權杖取用者 `Action` 的額外 `TState` 參數。
+[ChangeToken \<TState> （Func \<IChangeToken> ，Action \<TState> ，TState）](xref:Microsoft.Extensions.Primitives.ChangeToken.OnChange*)多載會採用 `TState` 傳入權杖取用者的額外參數 `Action` 。
 
 `OnChange` 會傳回 <xref:System.IDisposable>。 呼叫 <xref:System.IDisposable.Dispose*> 將阻止權杖接聽其他變更和釋出權杖的資源。
 
@@ -317,8 +305,8 @@ config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
 
 `config.GetReloadToken()` 提供此權杖。 `InvokeChanged` 是回呼方法。 此執行個體中的 `state` 是用來存取監視狀態的 `IConfigurationMonitor` 執行個體參考。 會使用兩個屬性：
 
-* `MonitoringEnabled`&ndash;指出回呼是否應執行其自訂程式碼。
-* `CurrentState`&ndash;描述目前在 UI 中使用的監視狀態。
+* `MonitoringEnabled`：指出回呼是否應執行其自訂程式碼。
+* `CurrentState`：描述目前在 UI 中使用的監視狀態。
 
 `InvokeChanged` 方法類似於之前的方法，不同之處在於：
 

@@ -1,24 +1,11 @@
 ---
-title: 在使用 IIS 的 Windows 上裝載 ASP.NET Core
-author: rick-anderson
-description: 了解如何在 Windows Server Internet Information Services (IIS) 上裝載 ASP.NET Core 應用程式。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 5/7/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: host-and-deploy/iis/index
-ms.openlocfilehash: c3841babe213a9a3f303b8f9b83a947fd33ad647
-ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83003123"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="host-aspnet-core-on-windows-with-iis"></a>在使用 IIS 的 Windows 上裝載 ASP.NET Core
 
@@ -83,7 +70,7 @@ ms.locfileid: "83003123"
 
 1. 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。
 1. 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。
-1. ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP`IISHttpServer`伺服器（）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
+1. ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP 伺服器（ `IISHttpServer` ）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
 
 在 IIS HTTP 伺服器處理要求之後：
 
@@ -111,7 +98,7 @@ ms.locfileid: "83003123"
 1. 模組會在應用程式的隨機埠上將要求轉送至 Kestrel。 隨機埠不是80或443。
 
 <!-- make this a bullet list -->
-ASP.NET Core 模組會在啟動時透過環境變數指定埠。 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*>延伸模組會設定伺服器來接聽`http://localhost:{PORT}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 模組不支援 HTTPS 轉送。 即使 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
+ASP.NET Core 模組會在啟動時透過環境變數指定埠。 延伸模組會設定 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderIISExtensions.UseIISIntegration*> 伺服器來接聽 `http://localhost:{PORT}` 。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 模組不支援 HTTPS 轉送。 即使 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
 
 在 Kestrel 拾取來自模組的要求之後，會將要求轉送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，將它轉送回起始要求的 HTTP 用戶端。
 
@@ -123,7 +110,7 @@ ASP.NET Core 模組會在啟動時透過環境變數指定埠。 <xref:Microsoft
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-在（Program.cs）中`CreateHostBuilder`建立*Program.cs*主機時，請<xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*>呼叫以啟用 IIS 整合：
+在 `CreateHostBuilder` （*Program.cs*）中建立主機時，請呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 以啟用 IIS 整合：
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -146,12 +133,119 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-| 選項                         | 預設值 | 設定 |
-| ------------------------------ | :-----: | ------- |
-| `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
-| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
-| `AllowSynchronousIO`           | `false` | 是否允許`HttpContext.Request`和的同步 i/o `HttpContext.Response`。 |
-| `MaxRequestBodySize`           | `30000000`  | 取得或設定 `HttpRequest` 的要求本文大小上限。 請注意，IIS 本身具有限制 `maxAllowedContentLength`，此限制將在 `IISServerOptions` 中設定 `MaxRequestBodySize` 時處理。 變更 `MaxRequestBodySize` 將不會影響 `maxAllowedContentLength`。 若要增加 `maxAllowedContentLength`，請在 *web.config* 中新增項目，以將 `maxAllowedContentLength` 設定為較高的值。 如需更多詳細資料，請參閱[組態](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/#configuration)。 |
+| 選項                         | 預設 | 設定 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- |:-----: |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |`AutomaticAuthentication`      | `true` |若 `true` 為，IIS 伺服器會設定 `HttpContext.User` 由[Windows 驗證](xref:security/authentication/windowsauth)所驗證的。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 | |`AuthenticationDisplayName`    | `null` |設定使用者在登入頁面上顯示的顯示名稱。 | |`AllowSynchronousIO`           | `false`|是否允許和的同步 i/o `HttpContext.Request` `HttpContext.Response` 。 | |`MaxRequestBodySize`           | `30000000` |取得或設定的最大要求主體大小 `HttpRequest` 。 請注意，IIS 本身具有限制 `maxAllowedContentLength`，此限制將在 `IISServerOptions` 中設定 `MaxRequestBodySize` 時處理。 變更 `MaxRequestBodySize` 將不會影響 `maxAllowedContentLength`。 若要增加 `maxAllowedContentLength`，請在 *web.config* 中新增項目，以將 `maxAllowedContentLength` 設定為較高的值。 如需更多詳細資料，請參閱[組態](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/#configuration)。 |
 
 **跨處理序裝載模型**
 
@@ -164,11 +258,119 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | 預設值 | 設定 |
-| ------------------------------ | :-----: | ------- |
-| `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
-| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
-| `ForwardClientCertificate`     | `true`  | 如果為 `true` 且 `MS-ASPNETCORE-CLIENTCERT` 要求標頭已存在，則會填入 `HttpContext.Connection.ClientCertificate`。 |
+| 選項                         | 預設 | 設定 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- |:-----: |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |`AutomaticAuthentication`      | `true` |若 `true` 為， [IIS 整合中介軟體](#enable-the-iisintegration-components)會設定 `HttpContext.User` 由[Windows 驗證](xref:security/authentication/windowsauth)所驗證的。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 | |`AuthenticationDisplayName`    | `null` |設定使用者在登入頁面上顯示的顯示名稱。 | |`ForwardClientCertificate`     | `true` |如果 `true` 和 `MS-ASPNETCORE-CLIENTCERT` 要求標頭存在，則 `HttpContext.Connection.ClientCertificate` 會填入。 |
 
 ### <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
@@ -195,7 +397,7 @@ services.Configure<IISOptions>(options =>
 
 *web.config* 檔案可提供能控制作用中 IIS 模組的額外 IIS 組態設定。 如需能處理 ASP.NET Core 應用程式要求之 IIS 模組的相關資訊，請參閱 [IIS 模組](xref:host-and-deploy/iis/modules)主題。
 
-為防止 Web SDK 轉換 *web.config* 檔案，請使用專案檔中的 **\<IsTransformWebConfigDisabled>** 屬性：
+若要防止 Web SDK*轉換 web.config 檔案*，請使用專案檔中的 **\<IsTransformWebConfigDisabled>** 屬性：
 
 ```xml
 <PropertyGroup>
@@ -209,13 +411,13 @@ services.Configure<IISOptions>(options =>
 
 為了正確設定[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module) *，web.config 檔案*必須存在於已部署應用程式的[內容根](xref:fundamentals/index#content-root)路徑（通常是應用程式基底路徑）。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
-機密檔案存在於應用程式的實體路徑，例如* \<元件>. .runtimeconfig.json. json*、 * \<元件> .xml* （xml 檔批註）和* \<元件>. .deps.json。* 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
+機密檔案存在於應用程式的實體路徑，例如* \<assembly> .runtimeconfig.json. json*、 * \<assembly> .xml* （xml 檔批註）和* \<assembly> .deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
 ***Web.config*檔案必須隨時存在於部署中、正確命名，而且能夠將網站設定為正常啟動。絕對不要從生產環境部署*移除 web.config 檔案*。**
 
 ### <a name="transform-webconfig"></a>轉換 web.config
 
-如果您需要在發行時轉換*web.config* ，請參閱<xref:host-and-deploy/iis/transform-webconfig>。 您可能需要在 [發行] 上轉換*web.config* ，以根據設定、設定檔或環境設定環境變數。
+如果您需要在發行時轉換*web.config* ，請參閱 <xref:host-and-deploy/iis/transform-webconfig> 。 您可能需要在 [發行] 上轉換*web.config* ，以根據設定、設定檔或環境設定環境變數。
 
 ## <a name="iis-configuration"></a>IIS 組態
 
@@ -232,10 +434,10 @@ services.Configure<IISOptions>(options =>
    ![在選取角色服務步驟中，選取預設的角色服務。](index/_static/role-services-ws2016.png)
 
    **Windows 驗證 (選擇性)**  
-   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器** > **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器**  >  **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱[Windows 驗證 \<windowsAuthentication> ](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)和[設定 windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器** > **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器**  >  **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝**網頁伺服器（iis）** 角色之後，不需要重新開機伺服器/iis。
 
@@ -254,10 +456,10 @@ services.Configure<IISOptions>(options =>
 1. 接受**全球資訊網服務**的預設功能，或自訂 IIS 功能。
 
    **Windows 驗證 (選擇性)**  
-   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務**  >  **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱[Windows 驗證 \<windowsAuthentication> ](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)和[設定 windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務** > ] [**應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務**] [  >  **應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 若 IIS 安裝需要重新啟動，請重新啟動系統。
 
@@ -294,11 +496,11 @@ services.Configure<IISOptions>(options =>
 
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
-   * `OPT_NO_ANCM=1`&ndash;略過安裝 ASP.NET Core 模組。
-   * `OPT_NO_RUNTIME=1`&ndash;略過安裝 .net Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_SHAREDFX=1`&ndash;略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_X86=1`&ndash;略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+   * `OPT_NO_ANCM=1`：略過安裝 ASP.NET Core 模組。
+   * `OPT_NO_RUNTIME=1`：略過安裝 .NET Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1`：略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_X86=1`：略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1`：當共用設定（*applicationhost.config*）位於與 iis 安裝相同的電腦上時，請停用 [檢查使用 iis 共用設定]。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
 1. 重新開機系統，或在命令 shell 中執行下列命令：
 
    ```console
@@ -346,13 +548,13 @@ net start w3svc
 
 1. *ASP.NET Core 2.2 或更新版本*：
 
-   * 針對以使用同[進程裝載模型](#in-process-hosting-model)的32位 SDK 發行的32位（x86）獨立式[部署](/dotnet/core/deploying/#self-contained-deployments-scd)，請啟用32位的應用程式集區。 在 IIS 管理員中，流覽至 [**連接**] 提要欄位中的 [**應用程式**集區]。 選取應用程式的應用程式集區。 在 [**動作**] 提要欄位中，選取 [ **Advanced Settings**]。 將 [**啟用32位應用程式**] 設定為`True`。 
+   * 針對以使用同[進程裝載模型](#in-process-hosting-model)的32位 SDK 發行的32位（x86）獨立式[部署](/dotnet/core/deploying/#self-contained-deployments-scd)，請啟用32位的應用程式集區。 在 IIS 管理員中，流覽至 [**連接**] 提要欄位中的 [**應用程式**集區]。 選取應用程式的應用程式集區。 在 [**動作**] 提要欄位中，選取 [ **Advanced Settings**]。 將 [**啟用32位應用程式**] 設定為 `True` 。 
 
-   * 對於使用[同處理序主控模型](#in-process-hosting-model)的 64 位元 (x64) [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。 在 IIS 管理員中，流覽至 [**連接**] 提要欄位中的 [**應用程式**集區]。 選取應用程式的應用程式集區。 在 [**動作**] 提要欄位中，選取 [ **Advanced Settings**]。 將 [**啟用32位應用程式**] 設定為`False`。 
+   * 對於使用[同處理序主控模型](#in-process-hosting-model)的 64 位元 (x64) [自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)，會停用 32 位元 (x86) 處理序的應用程式集區。 在 IIS 管理員中，流覽至 [**連接**] 提要欄位中的 [**應用程式**集區]。 選取應用程式的應用程式集區。 在 [**動作**] 提要欄位中，選取 [ **Advanced Settings**]。 將 [**啟用32位應用程式**] 設定為 `False` 。 
 
 1. 確認處理序模型身分識別具有適當的權限。
 
-   如果應用程式集區的預設識別（**進程模型** > **識別**）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
+   如果應用程式集區的預設識別（**進程模型**  >  **Identity** ）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
 
 **Windows 驗證設定 (選擇性)**  
 如需詳細資訊，請參閱[設定 Windows 驗證](xref:security/authentication/windowsauth)主題。
@@ -470,11 +672,11 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 1. 以滑鼠右鍵按一下 IIS 管理員中的子應用程式資料夾，然後選取 [轉換成應用程式]****。
 
-1. 在 [新增應用程式]**** 對話方塊中，使用 [應用程式集區]**** 的[選取]**** 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]  。
+1. 在 [新增應用程式]**** 對話方塊中，使用 [應用程式集區]**** 的[選取]**** 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]。
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
+如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module> 。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -482,11 +684,11 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 如需詳細資訊，請參閱下列主題：
 
-* [System.webserver>的\<設定參考](/iis/configuration/system.webServer/)
+* [的設定參考\<system.webServer>](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 
-若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (支援 IIS 10.0 或更新版本)，請參閱 IIS 參考文件之[環境變數 \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
+若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數（支援 IIS 10.0 或更新版本），請參閱 IIS 參考檔中[環境變數 \<environmentVariables> ](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe)主題的*appcmd.exe 命令*一節。
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
@@ -503,14 +705,14 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 
 應用程式集區隔離取決於裝載模型：
 
-* 處理序內裝載 &ndash; 應用程式必須在分開的應用程式集區中執行。
-* 處理序外裝載 &ndash; 建議藉由在各自的應用程式集區中執行每個應用程式，以將應用程式互相隔離。
+* 同進程裝載：應用程式必須在不同的應用程式集區中執行。
+* 跨進程裝載：我們建議您在自己的應用程式集區中執行每個應用程式，以將應用程式彼此隔離。
 
 IIS [新增網站]**** 對話方塊預設每個應用程式皆為單一應用程式集區。 當提供**網站名稱**時，文字會自動轉移至 [應用程式集區]**** 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
 
-## <a name="application-pool-identity"></a>應用程式集區身分識別
+## <a name="application-pool-identity"></a>應用程式集區Identity
 
-應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，於應用程式集區的 [進階設定]**** 下，確定 [身分識別]**** 設定為使用 **ApplicationPoolIdentity**：
+應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，于應用程式集區的 [**高級設定**] 底下，確定 **Identity** 已設定為使用**ApplicationPoolIdentity**：
 
 ![應用程式集區進階設定對話方塊](index/_static/apppool-identity.png)
 
@@ -530,7 +732,7 @@ IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱�
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：在選取 [檢查名稱] 之前，"DefaultAppPool" 這個應用程式集區名稱在物件名稱區域中會附加至 "IIS AppPool\"。](index/_static/select-users-or-groups-1.png)
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：選取 [檢查名稱] 之後，物件名稱 "DefaultAppPool" 會顯示在物件名稱區域中。](index/_static/select-users-or-groups-2.png)
 
@@ -572,8 +774,8 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 在 IIS 中由 ASP.NET Core 模組版本 2 裝載時：
 
-* [應用程式初始化模組](#application-initialization-module) &ndash;應用程式的裝載同[進程](#in-process-hosting-model)或跨[進程](#out-of-process-hosting-model)，可以設定為在背景工作進程重新開機或伺服器重新開機時自動啟動。
-* [閒置逾時](#idle-timeout) &ndash; 應用程式的裝載 [同處理序](#in-process-hosting-model)可設定為在無活動期間不逾時。
+* [應用程式初始化模組](#application-initialization-module)：應用程式裝載的同[進程](#in-process-hosting-model)或跨[進程](#out-of-process-hosting-model)可以設定為在背景工作進程重新開機或伺服器重新開機時自動啟動。
+* [閒置超時](#idle-timeout)：應用程式的裝載同[進程](#in-process-hosting-model)可以設定為不在非活動期間的時間超時。
 
 ### <a name="application-initialization-module"></a>應用程式初始化模組
 
@@ -601,10 +803,10 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
   1. 選取 [連線]**** 面板中的 [應用程式集區]****。
   1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]****。
-  1. 預設的 [啟動模式]**** 是 [OnDemand]****。 將 [啟動模式]**** 設定為 [AlwaysRunning]****。 選取 [確定]  。
+  1. 預設的 [啟動模式]**** 是 [OnDemand]****。 將 [啟動模式]**** 設定為 [AlwaysRunning]****。 選取 [確定]。
   1. 開啟 [連線]**** 面板中的 [站台]**** 節點。
   1. 以滑鼠右鍵按一下應用程式，然後選取 [管理網站]** [進階設定]** > ****。
-  1. 預設 [預先載入已啟用]**** 設定是 [False]****。 將 [預先載入已啟用]**** 設定為 [True]****。 選取 [確定]  。
+  1. 預設 [預先載入已啟用]**** 設定是 [False]****。 將 [預先載入已啟用]**** 設定為 [True]****。 選取 [確定]。
 
 * 使用 *web.config*，新增 `<applicationInitialization>` 元素並將 `doAppInitAfterRestart` 設定為 `true` 至應用程式 *web.config* 檔案中的 `<system.webServer>` 元素：
 
@@ -627,7 +829,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 1. 選取 [連線]**** 面板中的 [應用程式集區]****。
 1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]****。
-1. 預設 [閒置逾時 (分鐘)]**** 是 **20** 分鐘。 將 [閒置逾時 (分鐘)]**** 設定為 **0** (零)。 選取 [確定]  。
+1. 預設 [閒置逾時 (分鐘)]**** 是 **20** 分鐘。 將 [閒置逾時 (分鐘)]**** 設定為 **0** (零)。 選取 [確定]。
 1. 回收背景工作處理序。
 
 若要防止應用程式裝載[非同處理序](#out-of-process-hosting-model)逾時，請使用下列任一方式：
@@ -638,8 +840,8 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 ### <a name="application-initialization-module-and-idle-timeout-additional-resources"></a>應用程式初始化模組與閒置逾時額外資源
 
 * [IIS 8.0 應用程式初始化](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)
-* [應用程式初始化 \<applicationInitialization>](/iis/configuration/system.webserver/applicationinitialization/)。
-* [應用程式集區的處理序模組設定 \<processModel>](/iis/configuration/system.applicationhost/applicationpools/add/processmodel)。
+* [應用程式 \<applicationInitialization> 初始化](/iis/configuration/system.webserver/applicationinitialization/)。
+* [應用程式集 \<processModel> 區的進程模型設定](/iis/configuration/system.applicationhost/applicationpools/add/processmodel)。
 
 ## <a name="deployment-resources-for-iis-administrators"></a>IIS 系統管理員的部署資源
 
@@ -715,7 +917,7 @@ IIS 透過 [Windows 處理序啟用服務 (WAS)](/iis/manage/provisioning-and-ma
 
 ![同處理序代管內的 ASP.NET Core 模組案例](index/_static/ancm-inprocess.png)
 
-要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP`IISHttpServer`伺服器（）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
+要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的連接埠上將原生要求路由至 IIS，此連接埠通常是 80 (HTTP) 或 443 (HTTPS)。 ASP.NET Core 模組會接收原生要求，並將它傳遞至 IIS HTTP 伺服器（ `IISHttpServer` ）。 IIS HTTP 伺服器是 IIS 的同處理序伺服程式實作，可將要求從原生轉換為受控。
 
 IIS HTTP 伺服器處理要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 應用程式的回應會透過 IIS HTTP 伺服器傳回 IIS。 IIS 會將回應傳送到起始該要求的用戶端。
 
@@ -745,7 +947,7 @@ Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core �
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-在（Program.cs）中`CreateWebHostBuilder`建立*Program.cs*主機時，請<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>呼叫以啟用 IIS 整合：
+在 `CreateWebHostBuilder` （*Program.cs*）中建立主機時，請呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以啟用 IIS 整合：
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -768,10 +970,119 @@ services.Configure<IISServerOptions>(options =>
 });
 ```
 
-| 選項                         | 預設值 | 設定 |
-| ------------------------------ | :-----: | ------- |
-| `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
-| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
+| 選項                         | 預設 | 設定 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- |:-----: |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |`AutomaticAuthentication`      | `true` |若 `true` 為，IIS 伺服器會設定 `HttpContext.User` 由[Windows 驗證](xref:security/authentication/windowsauth)所驗證的。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 | |`AuthenticationDisplayName`    | `null` |設定使用者在登入頁面上顯示的顯示名稱。 |
 
 **跨處理序裝載模型**
 
@@ -784,11 +1095,119 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | 預設值 | 設定 |
-| ------------------------------ | :-----: | ------- |
-| `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
-| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
-| `ForwardClientCertificate`     | `true`  | 如果為 `true` 且 `MS-ASPNETCORE-CLIENTCERT` 要求標頭已存在，則會填入 `HttpContext.Connection.ClientCertificate`。 |
+| 選項                         | 預設 | 設定 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- |:-----: |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |`AutomaticAuthentication`      | `true` |若 `true` 為， [IIS 整合中介軟體](#enable-the-iisintegration-components)會設定 `HttpContext.User` 由[Windows 驗證](xref:security/authentication/windowsauth)所驗證的。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 | |`AuthenticationDisplayName`    | `null` |設定使用者在登入頁面上顯示的顯示名稱。 | |`ForwardClientCertificate`     | `true` |如果 `true` 和 `MS-ASPNETCORE-CLIENTCERT` 要求標頭存在，則 `HttpContext.Connection.ClientCertificate` 會填入。 |
 
 ### <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
@@ -808,7 +1227,7 @@ services.Configure<IISOptions>(options =>
 
 *web.config* 檔案可提供能控制作用中 IIS 模組的額外 IIS 組態設定。 如需能處理 ASP.NET Core 應用程式要求之 IIS 模組的相關資訊，請參閱 [IIS 模組](xref:host-and-deploy/iis/modules)主題。
 
-為防止 Web SDK 轉換 *web.config* 檔案，請使用專案檔中的 **\<IsTransformWebConfigDisabled>** 屬性：
+若要防止 Web SDK*轉換 web.config 檔案*，請使用專案檔中的 **\<IsTransformWebConfigDisabled>** 屬性：
 
 ```xml
 <PropertyGroup>
@@ -822,7 +1241,7 @@ services.Configure<IISOptions>(options =>
 
 為了正確設定[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module) *，web.config 檔案*必須存在於已部署應用程式的[內容根](xref:fundamentals/index#content-root)路徑（通常是應用程式基底路徑）。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
-機密檔案存在於應用程式的實體路徑，例如* \<元件>. .runtimeconfig.json. json*、 * \<元件> .xml* （xml 檔批註）和* \<元件>. .deps.json。* 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
+機密檔案存在於應用程式的實體路徑，例如* \<assembly> .runtimeconfig.json. json*、 * \<assembly> .xml* （xml 檔批註）和* \<assembly> .deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
 ***Web.config*檔案必須隨時存在於部署中、正確命名，而且能夠將網站設定為正常啟動。絕對不要從生產環境部署*移除 web.config 檔案*。**
 
@@ -845,10 +1264,10 @@ services.Configure<IISOptions>(options =>
    ![在選取角色服務步驟中，選取預設的角色服務。](index/_static/role-services-ws2016.png)
 
    **Windows 驗證 (選擇性)**  
-   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器** > **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器**  >  **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱[Windows 驗證 \<windowsAuthentication> ](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)和[設定 windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器** > **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器**  >  **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝**網頁伺服器（iis）** 角色之後，不需要重新開機伺服器/iis。
 
@@ -867,10 +1286,10 @@ services.Configure<IISOptions>(options =>
 1. 接受**全球資訊網服務**的預設功能，或自訂 IIS 功能。
 
    **Windows 驗證 (選擇性)**  
-   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務**  >  **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱[Windows 驗證 \<windowsAuthentication> ](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)和[設定 windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務** > ] [**應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務**] [  >  **應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 若 IIS 安裝需要重新啟動，請重新啟動系統。
 
@@ -899,11 +1318,11 @@ services.Configure<IISOptions>(options =>
 
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
-   * `OPT_NO_ANCM=1`&ndash;略過安裝 ASP.NET Core 模組。
-   * `OPT_NO_RUNTIME=1`&ndash;略過安裝 .net Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_SHAREDFX=1`&ndash;略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_X86=1`&ndash;略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+   * `OPT_NO_ANCM=1`：略過安裝 ASP.NET Core 模組。
+   * `OPT_NO_RUNTIME=1`：略過安裝 .NET Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1`：略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_X86=1`：略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1`：當共用設定（*applicationhost.config*）位於與 iis 安裝相同的電腦上時，請停用 [檢查使用 iis 共用設定]。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
 1. 重新開機系統，或在命令 shell 中執行下列命令：
 
    ```console
@@ -952,7 +1371,7 @@ ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 
 
 1. 確認處理序模型身分識別具有適當的權限。
 
-   如果應用程式集區的預設識別（**進程模型** > **識別**）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
+   如果應用程式集區的預設識別（**進程模型**  >  **Identity** ）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
 
 **Windows 驗證設定 (選擇性)**  
 如需詳細資訊，請參閱[設定 Windows 驗證](xref:security/authentication/windowsauth)主題。
@@ -1070,11 +1489,11 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 1. 以滑鼠右鍵按一下 IIS 管理員中的子應用程式資料夾，然後選取 [轉換成應用程式]****。
 
-1. 在 [新增應用程式]**** 對話方塊中，使用 [應用程式集區]**** 的[選取]**** 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]  。
+1. 在 [新增應用程式]**** 對話方塊中，使用 [應用程式集區]**** 的[選取]**** 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]。
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
+如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module> 。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -1082,11 +1501,11 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 如需詳細資訊，請參閱下列主題：
 
-* [System.webserver>的\<設定參考](/iis/configuration/system.webServer/)
+* [的設定參考\<system.webServer>](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 
-若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (支援 IIS 10.0 或更新版本)，請參閱 IIS 參考文件之[環境變數 \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
+若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數（支援 IIS 10.0 或更新版本），請參閱 IIS 參考檔中[環境變數 \<environmentVariables> ](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe)主題的*appcmd.exe 命令*一節。
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
@@ -1103,14 +1522,14 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 
 應用程式集區隔離取決於裝載模型：
 
-* 處理序內裝載 &ndash; 應用程式必須在分開的應用程式集區中執行。
-* 處理序外裝載 &ndash; 建議藉由在各自的應用程式集區中執行每個應用程式，以將應用程式互相隔離。
+* 同進程裝載：應用程式必須在不同的應用程式集區中執行。
+* 跨進程裝載：我們建議您在自己的應用程式集區中執行每個應用程式，以將應用程式彼此隔離。
 
 IIS [新增網站]**** 對話方塊預設每個應用程式皆為單一應用程式集區。 當提供**網站名稱**時，文字會自動轉移至 [應用程式集區]**** 文字方塊。 新增網站時，會使用該網站名稱建立新的應用程式集區。
 
-## <a name="application-pool-identity"></a>應用程式集區身分識別
+## <a name="application-pool-identity"></a>應用程式集區Identity
 
-應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，於應用程式集區的 [進階設定]**** 下，確定 [身分識別]**** 設定為使用 **ApplicationPoolIdentity**：
+應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，于應用程式集區的 [**高級設定**] 底下，確定 **Identity** 已設定為使用**ApplicationPoolIdentity**：
 
 ![應用程式集區進階設定對話方塊](index/_static/apppool-identity.png)
 
@@ -1130,7 +1549,7 @@ IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱�
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：在選取 [檢查名稱] 之前，"DefaultAppPool" 這個應用程式集區名稱在物件名稱區域中會附加至 "IIS AppPool\"。](index/_static/select-users-or-groups-1.png)
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：選取 [檢查名稱] 之後，物件名稱 "DefaultAppPool" 會顯示在物件名稱區域中。](index/_static/select-users-or-groups-2.png)
 
@@ -1172,8 +1591,8 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 在 IIS 中由 ASP.NET Core 模組版本 2 裝載時：
 
-* [應用程式初始化模組](#application-initialization-module) &ndash;應用程式的裝載同[進程](#in-process-hosting-model)或跨[進程](#out-of-process-hosting-model)，可以設定為在背景工作進程重新開機或伺服器重新開機時自動啟動。
-* [閒置逾時](#idle-timeout) &ndash; 應用程式的裝載 [同處理序](#in-process-hosting-model)可設定為在無活動期間不逾時。
+* [應用程式初始化模組](#application-initialization-module)：應用程式裝載的同[進程](#in-process-hosting-model)或跨[進程](#out-of-process-hosting-model)可以設定為在背景工作進程重新開機或伺服器重新開機時自動啟動。
+* [閒置超時](#idle-timeout)：應用程式的裝載同[進程](#in-process-hosting-model)可以設定為不在非活動期間的時間超時。
 
 ### <a name="application-initialization-module"></a>應用程式初始化模組
 
@@ -1201,10 +1620,10 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
   1. 選取 [連線]**** 面板中的 [應用程式集區]****。
   1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]****。
-  1. 預設的 [啟動模式]**** 是 [OnDemand]****。 將 [啟動模式]**** 設定為 [AlwaysRunning]****。 選取 [確定]  。
+  1. 預設的 [啟動模式]**** 是 [OnDemand]****。 將 [啟動模式]**** 設定為 [AlwaysRunning]****。 選取 [確定]。
   1. 開啟 [連線]**** 面板中的 [站台]**** 節點。
   1. 以滑鼠右鍵按一下應用程式，然後選取 [管理網站]** [進階設定]** > ****。
-  1. 預設 [預先載入已啟用]**** 設定是 [False]****。 將 [預先載入已啟用]**** 設定為 [True]****。 選取 [確定]  。
+  1. 預設 [預先載入已啟用]**** 設定是 [False]****。 將 [預先載入已啟用]**** 設定為 [True]****。 選取 [確定]。
 
 * 使用 *web.config*，新增 `<applicationInitialization>` 元素並將 `doAppInitAfterRestart` 設定為 `true` 至應用程式 *web.config* 檔案中的 `<system.webServer>` 元素：
 
@@ -1227,7 +1646,7 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 
 1. 選取 [連線]**** 面板中的 [應用程式集區]****。
 1. 以滑鼠右鍵按一下清單中應用程式的應用程式集區，然後選取 [進階設定]****。
-1. 預設 [閒置逾時 (分鐘)]**** 是 **20** 分鐘。 將 [閒置逾時 (分鐘)]**** 設定為 **0** (零)。 選取 [確定]  。
+1. 預設 [閒置逾時 (分鐘)]**** 是 **20** 分鐘。 將 [閒置逾時 (分鐘)]**** 設定為 **0** (零)。 選取 [確定]。
 1. 回收背景工作處理序。
 
 若要防止應用程式裝載[非同處理序](#out-of-process-hosting-model)逾時，請使用下列任一方式：
@@ -1238,8 +1657,8 @@ HTTP/2 預設為啟用。 如果 HTTP/2 連線尚未建立，連線會退為 HTT
 ### <a name="application-initialization-module-and-idle-timeout-additional-resources"></a>應用程式初始化模組與閒置逾時額外資源
 
 * [IIS 8.0 應用程式初始化](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)
-* [應用程式初始化 \<applicationInitialization>](/iis/configuration/system.webserver/applicationinitialization/)。
-* [應用程式集區的處理序模組設定 \<processModel>](/iis/configuration/system.applicationhost/applicationpools/add/processmodel)。
+* [應用程式 \<applicationInitialization> 初始化](/iis/configuration/system.webserver/applicationinitialization/)。
+* [應用程式集 \<processModel> 區的進程模型設定](/iis/configuration/system.applicationhost/applicationpools/add/processmodel)。
 
 ## <a name="deployment-resources-for-iis-administrators"></a>IIS 系統管理員的部署資源
 
@@ -1304,7 +1723,7 @@ ASP.NET Core 隨附 [Kestrel 伺服器](xref:fundamentals/servers/kestrel)，其
 
 要求會從 Web 到達核心模式的 HTTP.sys 驅動程式。 驅動程式會在網站設定的通訊埠上將要求路由至 IIS，此通訊埠通常是 80 (HTTP) 或 443 (HTTPS)。 此模組會在應用程式的隨機通訊埠上將要求轉送至 Kestrel，而且不會是通訊埠 80 或 443。
 
-此模組會在啟動時透過環境變數指定埠，而[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)會設定伺服器來接聽`http://localhost:{port}`。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
+此模組會在啟動時透過環境變數指定埠，而[IIS 整合中介軟體](xref:host-and-deploy/iis/index#enable-the-iisintegration-components)會設定伺服器來接聽 `http://localhost:{port}` 。 將會執行額外檢查，不是源自模組的要求都會遭到拒絕。 此模組不支援 HTTPS 轉送，因此即使由 IIS 透過 HTTPS 接收，要求還是會透過 HTTP 轉送。
 
 Kestrel 收取來自模組的要求之後，要求會被推送至 ASP.NET Core 中介軟體管線。 中介軟體管線會處理要求，並將其作為 `HttpContext` 執行個體傳遞至應用程式的邏輯。 IIS Integration 新增的中介軟體會更新配置、遠端 IP 和帳戶路徑基底，以將要求轉送至 Kestrel。 應用程式的回應會傳回 IIS，而 IIS 會將其推送回起始要求的 HTTP 用戶端。
 
@@ -1326,7 +1745,7 @@ ASP.NET Core 模組會產生要指派給後端處理序的動態連接埠。 `Cr
 
 ### <a name="enable-the-iisintegration-components"></a>啟用 IISIntegration 元件
 
-在（Program.cs）中`CreateWebHostBuilder`建立*Program.cs*主機時，請<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>呼叫以啟用 IIS 整合：
+在 `CreateWebHostBuilder` （*Program.cs*）中建立主機時，請呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 以啟用 IIS 整合：
 
 ```csharp
 public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -1338,10 +1757,119 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 ### <a name="iis-options"></a>IIS 選項
 
-| 選項                         | 預設值 | 設定 |
-| ------------------------------ | :-----: | ------- |
-| `AutomaticAuthentication`      | `true`  | 若為 `true`，IIS 伺服器會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 |
-| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
+| 選項                         | 預設 | 設定 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- |:-----: |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |`AutomaticAuthentication`      | `true` |若 `true` 為，IIS 伺服器會設定 `HttpContext.User` 由[Windows 驗證](xref:security/authentication/windowsauth)所驗證的。 若為 `false`，則伺服器僅會對 `HttpContext.User` 提供身分識別，並在 `AuthenticationScheme` 明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)。 | |`AuthenticationDisplayName`    | `null` |設定使用者在登入頁面上顯示的顯示名稱。 |
 
 若要設定 IIS 選項，請在 <xref:Microsoft.AspNetCore.Hosting.IStartup.ConfigureServices*> 中加入 <xref:Microsoft.AspNetCore.Builder.IISOptions> 的服務設定。 下列範例會防止應用程式填入 `HttpContext.Connection.ClientCertificate`：
 
@@ -1352,11 +1880,119 @@ services.Configure<IISOptions>(options =>
 });
 ```
 
-| 選項                         | 預設值 | 設定 |
-| ------------------------------ | :-----: | ------- |
-| `AutomaticAuthentication`      | `true`  | 若為 `true`，[IIS 整合中介軟體](#enable-the-iisintegration-components)會設定由 [Windows 驗證](xref:security/authentication/windowsauth)所驗證的 `HttpContext.User`。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 |
-| `AuthenticationDisplayName`    | `null`  | 設定使用者在登入頁面上看到的顯示名稱。 |
-| `ForwardClientCertificate`     | `true`  | 如果為 `true` 且 `MS-ASPNETCORE-CLIENTCERT` 要求標頭已存在，則會填入 `HttpContext.Connection.ClientCertificate`。 |
+| 選項                         | 預設 | 設定 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- |:-----: |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- | |`AutomaticAuthentication`      | `true` |若 `true` 為， [IIS 整合中介軟體](#enable-the-iisintegration-components)會設定 `HttpContext.User` 由[Windows 驗證](xref:security/authentication/windowsauth)所驗證的。 如果為 `false`，則驗證中介軟體僅針對 `HttpContext.User` 提供身分識別，並在游 `AuthenticationScheme` 提出明確要求時回應挑戰。 必須在 IIS 中啟用 Windows 驗證以讓 `AutomaticAuthentication` 作用。 如需詳細資訊，請參閱 [Windows 驗證](xref:security/authentication/windowsauth)主題。 | |`AuthenticationDisplayName`    | `null` |設定使用者在登入頁面上顯示的顯示名稱。 | |`ForwardClientCertificate`     | `true` |如果 `true` 和 `MS-ASPNETCORE-CLIENTCERT` 要求標頭存在，則 `HttpContext.Connection.ClientCertificate` 會填入。 |
 
 ### <a name="proxy-server-and-load-balancer-scenarios"></a>Proxy 伺服器和負載平衡器案例
 
@@ -1376,7 +2012,7 @@ services.Configure<IISOptions>(options =>
 
 *web.config* 檔案可提供能控制作用中 IIS 模組的額外 IIS 組態設定。 如需能處理 ASP.NET Core 應用程式要求之 IIS 模組的相關資訊，請參閱 [IIS 模組](xref:host-and-deploy/iis/modules)主題。
 
-為防止 Web SDK 轉換 *web.config* 檔案，請使用專案檔中的 **\<IsTransformWebConfigDisabled>** 屬性：
+若要防止 Web SDK*轉換 web.config 檔案*，請使用專案檔中的 **\<IsTransformWebConfigDisabled>** 屬性：
 
 ```xml
 <PropertyGroup>
@@ -1390,7 +2026,7 @@ services.Configure<IISOptions>(options =>
 
 為了正確設定[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module) *，web.config 檔案*必須存在於已部署應用程式的[內容根](xref:fundamentals/index#content-root)路徑（通常是應用程式基底路徑）。 這是與提供給 IIS 的網站實體路徑相同的位置。 應用程式的根目錄需有 *web.config* 檔案，才能使用 Web Deploy 發行多個應用程式。
 
-機密檔案存在於應用程式的實體路徑，例如* \<元件>. .runtimeconfig.json. json*、 * \<元件> .xml* （xml 檔批註）和* \<元件>. .deps.json。* 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
+機密檔案存在於應用程式的實體路徑，例如* \<assembly> .runtimeconfig.json. json*、 * \<assembly> .xml* （xml 檔批註）和* \<assembly> .deps.json*。 當 *web.config* 檔案存在且網站正常啟動時，如果有人要求機密檔案，IIS 不會予以提供。 若 *web.config* 檔案遺失或沒有正確命名，或是無法設定網站以正常啟動，IIS 可能會公開提供機密檔案。
 
 ***Web.config*檔案必須隨時存在於部署中、正確命名，而且能夠將網站設定為正常啟動。絕對不要從生產環境部署*移除 web.config 檔案*。**
 
@@ -1413,10 +2049,10 @@ services.Configure<IISOptions>(options =>
    ![在選取角色服務步驟中，選取預設的角色服務。](index/_static/role-services-ws2016.png)
 
    **Windows 驗證 (選擇性)**  
-   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器** > **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： [**網頁伺服器**  >  **安全性**]。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱[Windows 驗證 \<windowsAuthentication> ](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)和[設定 windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器** > **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [**網頁伺服器**  >  **應用程式開發**]。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 透過**確認**步驟繼續作業，安裝網頁伺服器角色和服務。 安裝**網頁伺服器（iis）** 角色之後，不需要重新開機伺服器/iis。
 
@@ -1435,10 +2071,10 @@ services.Configure<IISOptions>(options =>
 1. 接受**全球資訊網服務**的預設功能，或自訂 IIS 功能。
 
    **Windows 驗證 (選擇性)**  
-   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務** > **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱 [Windows 驗證 \<windowsAuthentication>](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/) 和[設定 Windows 驗證](xref:security/authentication/windowsauth)。
+   若要啟用 Windows 驗證，請展開下列節點： **World Wide Web 服務**  >  **安全性**。 選取 [Windows 驗證]**** 功能。 如需詳細資訊，請參閱[Windows 驗證 \<windowsAuthentication> ](/iis/configuration/system.webServer/security/authentication/windowsAuthentication/)和[設定 windows 驗證](xref:security/authentication/windowsauth)。
 
    **WebSocket (選擇性)**  
-   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務** > ] [**應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
+   WebSocket 由 ASP.NET Core 1.1 或更新版本所支援。 若要啟用 websocket，請展開下列節點： [ **World Wide Web 服務**] [  >  **應用程式開發] 功能**。 選取 [WebSocket 通訊協定]**** 功能。 如需詳細資訊，請參閱 [WebSockets](xref:fundamentals/websockets)。
 
 1. 若 IIS 安裝需要重新啟動，請重新啟動系統。
 
@@ -1467,11 +2103,11 @@ services.Configure<IISOptions>(options =>
 
 1. 在伺服器上執行安裝程式。 從系統管理員命令殼層執行安裝程式時，有 下列參數可用：
 
-   * `OPT_NO_ANCM=1`&ndash;略過安裝 ASP.NET Core 模組。
-   * `OPT_NO_RUNTIME=1`&ndash;略過安裝 .net Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_SHAREDFX=1`&ndash;略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
-   * `OPT_NO_X86=1`&ndash;略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
-   * `OPT_NO_SHARED_CONFIG_CHECK=1` &ndash; 停用使用 IIS 共用設定 (當共用設定 (*applicationHost.config*) 位於與 IIS 安裝相同的機器上時) 進行檢查。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
+   * `OPT_NO_ANCM=1`：略過安裝 ASP.NET Core 模組。
+   * `OPT_NO_RUNTIME=1`：略過安裝 .NET Core 執行時間。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_SHAREDFX=1`：略過安裝 ASP.NET 共用架構（ASP.NET 執行時間）。 當伺服器只裝載[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)時使用。
+   * `OPT_NO_X86=1`：略過安裝 x86 執行時間。 當您確定不會裝載 32 位元應用程式時，請使用此參數。 如果將來有可能同時裝載 32 位元和 64 位元應用程式，請不要使用此參數並安裝這兩個執行階段。
+   * `OPT_NO_SHARED_CONFIG_CHECK=1`：當共用設定（*applicationhost.config*）位於與 iis 安裝相同的電腦上時，請停用 [檢查使用 iis 共用設定]。 *只在 ASP.NET Core 2.2 或更新版本的裝載套件組合安裝程式上可用。* 如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#aspnet-core-module-with-an-iis-shared-configuration>。
 1. 重新開機系統，或在命令 shell 中執行下列命令：
 
    ```console
@@ -1520,7 +2156,7 @@ ASP.NET Core 採用共用架構封裝修補程式版本的向前復原行為。 
 
 1. 確認處理序模型身分識別具有適當的權限。
 
-   如果應用程式集區的預設識別（**進程模型** > **Identity**）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
+   如果應用程式集區的預設識別（**進程模型**  >  **Identity** ）從**ApplicationPoolIdentity**變更為另一個身分識別，請確認新的身分識別具有存取應用程式資料夾、資料庫和其他必要資源的必要許可權。 例如，應用程式集區需要針對應用程式讀取和寫入檔案的資料夾取得讀取和寫入權限。
 
 **Windows 驗證設定 (選擇性)**  
 如需詳細資訊，請參閱[設定 Windows 驗證](xref:security/authentication/windowsauth)主題。
@@ -1671,11 +2307,11 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 1. 以滑鼠右鍵按一下 IIS 管理員中的子應用程式資料夾，然後選取 [轉換成應用程式]****。
 
-1. 在 [新增應用程式]**** 對話方塊中，使用 [應用程式集區]**** 的[選取]**** 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]  。
+1. 在 [新增應用程式]**** 對話方塊中，使用 [應用程式集區]**** 的[選取]**** 按鈕來指派您為子應用程式建立的應用程式集區。 選取 [確定]。
 
 將不同的應用程式集區指派給子應用程式是使用同處理序裝載模型。
 
-如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module>。
+如需有關同進程裝載模型和設定 ASP.NET Core 模組的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module> 。
 
 ## <a name="configuration-of-iis-with-webconfig"></a>使用 web.config 的 IIS 組態
 
@@ -1683,11 +2319,11 @@ ASP.NET Core 應用程式能以 [IIS 子應用程式](/iis/get-started/planning-
 
 如需詳細資訊，請參閱下列主題：
 
-* [System.webserver>的\<設定參考](/iis/configuration/system.webServer/)
+* [的設定參考\<system.webServer>](/iis/configuration/system.webServer/)
 * <xref:host-and-deploy/aspnet-core-module>
 * <xref:host-and-deploy/iis/modules>
 
-若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數 (支援 IIS 10.0 或更新版本)，請參閱 IIS 參考文件之[環境變數 \<environmentVariables>](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe) 主題的 *AppCmd.exe 命令*一節。
+若要設定在隔離的應用程式集區中執行之個別應用程式的環境變數（支援 IIS 10.0 或更新版本），請參閱 IIS 參考檔中[環境變數 \<environmentVariables> ](/iis/configuration/system.applicationHost/applicationPools/add/environmentVariables/#appcmdexe)主題的*appcmd.exe 命令*一節。
 
 ## <a name="configuration-sections-of-webconfig"></a>web.config 的組態區段
 
@@ -1706,7 +2342,7 @@ ASP.NET Core 應用程式的設定不使用 *web.config* 中 ASP.NET 4.x 應用�
 
 ## <a name="application-pool-identity"></a>應用程式集區Identity
 
-應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，于應用程式集區的 [**高級設定**] **Identity** 底下，確定已設定為使用**ApplicationPoolIdentity**：
+應用程式集區身分識別帳戶可讓應用程式在唯一的帳戶下執行，不必建立及管理網域或本機帳戶。 在 IIS 8.0 或更新版本中，IIS 管理背景工作處理序 (WAS) 會使用新的應用程式集區名稱建立虛擬帳戶，並預設在此帳戶下執行應用程式集區的背景工作處理序。 在 IIS 管理主控台中，于應用程式集區的 [**高級設定**] 底下，確定 **Identity** 已設定為使用**ApplicationPoolIdentity**：
 
 ![應用程式集區進階設定對話方塊](index/_static/apppool-identity.png)
 
@@ -1726,7 +2362,7 @@ IIS 管理程序會在 Windows 安全系統中，以應用程式集區的名稱�
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：在選取 [檢查名稱] 之前，"DefaultAppPool" 這個應用程式集區名稱在物件名稱區域中會附加至 "IIS AppPool\"。](index/_static/select-users-or-groups-1.png)
 
-1. 選取 [確定]  。
+1. 選取 [確定]。
 
    ![針對應用程式資料夾選取使用者或群組對話方塊：選取 [檢查名稱] 之後，物件名稱 "DefaultAppPool" 會顯示在物件名稱區域中。](index/_static/select-users-or-groups-2.png)
 

@@ -25,7 +25,7 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，以報告應用�
 
 範例應用程式包含本主題中所述的案例範例。 若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。 如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。 將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。 監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。
 
@@ -737,10 +737,10 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 
 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions> 可讓您設定：
 
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay>在 &ndash; 執行實例之前，應用程式啟動後所套用的初始延遲 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 在啟動後就會套用延遲，但不會套用至後續的反覆項目。 預設值是五秒鐘。
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period>&ndash;執行的期間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 預設值為 30 秒。
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate>&ndash;如果 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> 為 `null` （預設值），則健全狀況檢查發行者服務會執行所有已註冊的健全狀況檢查。 若要執行一部分的健康狀態檢查，請提供可篩選該組檢查的函式。 每個期間都會評估該述詞。
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout>針對 &ndash; 所有實例執行健康情況檢查的超時時間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 若要在沒有逾時的情況下執行，請使用 <xref:System.Threading.Timeout.InfiniteTimeSpan>。 預設值為 30 秒。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay>：在執行實例之前，應用程式啟動後所套用的初始延遲 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 在啟動後就會套用延遲，但不會套用至後續的反覆項目。 預設值是五秒鐘。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period>：執行的期間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 預設值為 30 秒。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate>：如果 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> 為 `null` （預設值），則健全狀況檢查發行者服務會執行所有已註冊的健全狀況檢查。 若要執行一部分的健康狀態檢查，請提供可篩選該組檢查的函式。 每個期間都會評估該述詞。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout>：執行所有實例之健全狀況檢查的時間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 若要在沒有逾時的情況下執行，請使用 <xref:System.Threading.Timeout.InfiniteTimeSpan>。 預設值為 30 秒。
 
 在範例應用程式中，`ReadinessPublisher` 是一個 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作。 會針對記錄層級的每個檢查記錄健全狀況檢查狀態：
 
@@ -794,7 +794,7 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，以報告應用�
 
 範例應用程式包含本主題中所述的案例範例。 若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。 如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。 將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。 監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。
 
@@ -1412,10 +1412,10 @@ Task PublishAsync(HealthReport report, CancellationToken cancellationToken);
 
 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions> 可讓您設定：
 
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay>在 &ndash; 執行實例之前，應用程式啟動後所套用的初始延遲 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 在啟動後就會套用延遲，但不會套用至後續的反覆項目。 預設值是五秒鐘。
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period>&ndash;執行的期間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 預設值為 30 秒。
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate>&ndash;如果 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> 為 `null` （預設值），則健全狀況檢查發行者服務會執行所有已註冊的健全狀況檢查。 若要執行一部分的健康狀態檢查，請提供可篩選該組檢查的函式。 每個期間都會評估該述詞。
-* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout>針對 &ndash; 所有實例執行健康情況檢查的超時時間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 若要在沒有逾時的情況下執行，請使用 <xref:System.Threading.Timeout.InfiniteTimeSpan>。 預設值為 30 秒。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay>：在執行實例之前，應用程式啟動後所套用的初始延遲 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 在啟動後就會套用延遲，但不會套用至後續的反覆項目。 預設值是五秒鐘。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period>：執行的期間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 預設值為 30 秒。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate>：如果 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Predicate> 為 `null` （預設值），則健全狀況檢查發行者服務會執行所有已註冊的健全狀況檢查。 若要執行一部分的健康狀態檢查，請提供可篩選該組檢查的函式。 每個期間都會評估該述詞。
+* <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Timeout>：執行所有實例之健全狀況檢查的時間 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 。 若要在沒有逾時的情況下執行，請使用 <xref:System.Threading.Timeout.InfiniteTimeSpan>。 預設值為 30 秒。
 
 > [!WARNING]
 > 在 ASP.NET Core 2.2 版中，設定 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Period>並不會獲得 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.IHealthCheckPublisher> 實作遵守；它會設定 <xref:Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckPublisherOptions.Delay> 的值。 ASP.NET Core 3.0 已解決此問題。

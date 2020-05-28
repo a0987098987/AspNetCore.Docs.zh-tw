@@ -141,10 +141,10 @@ SignalR藉由比對和中定義的方法名稱和引數，來判斷要呼叫的�
 
 設定用戶端記錄追蹤，方法是在建立連接時傳遞記錄器和事件種類來記錄。 訊息會記錄到指定的記錄層級和更新版本。 可用的記錄層級如下：
 
-* `signalR.LogLevel.Error`&ndash;錯誤訊息。 `Error`僅記錄訊息。
-* `signalR.LogLevel.Warning`&ndash;可能發生錯誤的警告訊息。 記錄檔 `Warning` 和 `Error` 訊息。
-* `signalR.LogLevel.Information`&ndash;沒有錯誤的狀態訊息。 記錄 `Information` 、 `Warning` 和 `Error` 訊息。
-* `signalR.LogLevel.Trace`&ndash;追蹤訊息。 記錄所有專案，包括中樞和用戶端之間傳輸的資料。
+* `signalR.LogLevel.Error`：錯誤訊息。 `Error`僅記錄訊息。
+* `signalR.LogLevel.Warning`：有關潛在錯誤的警告訊息。 記錄檔 `Warning` 和 `Error` 訊息。
+* `signalR.LogLevel.Information`：沒有錯誤的狀態訊息。 記錄 `Information` 、 `Warning` 和 `Error` 訊息。
+* `signalR.LogLevel.Trace`：追蹤訊息。 記錄所有專案，包括中樞和用戶端之間傳輸的資料。
 
 在[HubConnectionBuilder](/javascript/api/%40aspnet/signalr/hubconnectionbuilder)上使用[configureLogging](/javascript/api/%40aspnet/signalr/hubconnectionbuilder#configurelogging)方法來設定記錄層級。 訊息會記錄到瀏覽器主控台。
 

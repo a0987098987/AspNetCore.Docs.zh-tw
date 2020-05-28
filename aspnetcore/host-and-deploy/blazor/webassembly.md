@@ -32,8 +32,8 @@ Blazor發佈 WebAssembly 應用程式時，會使用最高層級的[Brotli 壓�
 
 WebAssembly 應用程式中頁面元件的路由要求 Blazor ，並不像伺服器上裝載的 Blazor 應用程式中的路由要求一樣簡單。 假設有 Blazor 兩個元件的 WebAssembly 應用程式：
 
-* *Main.razor* &ndash; 載入應用程式根目錄，同時包含 `About` 元件 (`href="About"`) 的連結。
-* *About.razor* &ndash; `About` 元件。
+* *Main razor*：在應用程式的根目錄載入，並包含 `About` 元件（）的連結 `href="About"` 。
+* *關於 razor*： `About` component。
 
 使用瀏覽器的網址列要求應用程式預設文件時 (例如 `https://www.contoso.com/`)：
 
@@ -83,11 +83,11 @@ IIS 是適用于應用程式的靜態檔案伺服器 Blazor 。 若要設定 IIS
 Blazor發行專案時，會使用下列 IIS 設定來建立*web.config*檔案：
 
 * 針對下列副檔名設定 MIME 類型：
-  * *.dll* &ndash;`application/octet-stream`
-  * *. json* &ndash;`application/json`
-  * *.wasm* &ndash; `application/wasm`
-  * *.woff* &ndash; `application/font-woff`
-  * *.woff2* &ndash; `application/font-woff`
+  * *.dll*：`application/octet-stream`
+  * *. json*：`application/json`
+  * *. wasm*：`application/wasm`
+  * *. woff*：`application/font-woff`
+  * *. woff2*：`application/font-woff`
 * 針對下列 MIME 類型會啟用 HTTP 壓縮：
   * `application/octet-stream`
   * `application/wasm`
@@ -339,7 +339,7 @@ BlazorWebAssembly 應用程式可以使用函式進行初始化， `loadBootReso
 
 `loadBootResource`參數會出現在下表中。
 
-| 參數    | 說明 |
+| 參數    | 描述 |
 | ---
 標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
 monikerRange： ms-chap： ms. custom： ms. date： no-loc：

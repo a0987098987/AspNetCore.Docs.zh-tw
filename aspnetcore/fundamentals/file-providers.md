@@ -1,24 +1,11 @@
 ---
-title: ASP.NET Core 中的檔案提供者
-author: rick-anderson
-description: 了解 ASP.NET Core 如何透過使用檔案提供者，將檔案系統存取抽象化。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 04/06/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/file-providers
-ms.openlocfilehash: 2f1151d7854aeeb3e315d0de2b0be5267fe2e8f0
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776281"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -28,9 +15,9 @@ ms.locfileid: "82776281"
 
 ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 檔案提供者會在整個 ASP.NET Core 架構中使用。 例如：
 
-* <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment>將應用程式的[內容根目錄](xref:fundamentals/index#content-root)和[web 根目錄](xref:fundamentals/index#web-root)公開`IFileProvider`為類型。
+* <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment>將應用程式的[內容根目錄](xref:fundamentals/index#content-root)和[web 根目錄](xref:fundamentals/index#web-root)公開為 `IFileProvider` 類型。
 * [靜態檔案中介軟體](xref:fundamentals/static-files)使用檔案提供者尋找靜態檔案。
-* [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
+* [Razor](xref:mvc/views/razor)會使用檔案提供者來尋找頁面和瀏覽器。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples)（[如何下載](xref:index#how-to-download-a-sample)）
@@ -51,19 +38,79 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 檔
 * <xref:Microsoft.Extensions.FileProviders.IFileInfo.Length> (以位元組為單位)
 * <xref:Microsoft.Extensions.FileProviders.IFileInfo.LastModified> 日期
 
-您可以使用<xref:Microsoft.Extensions.FileProviders.IFileInfo.CreateReadStream*?displayProperty=nameWithType>方法，從檔案讀取。
+您可以使用方法，從檔案讀取 <xref:Microsoft.Extensions.FileProviders.IFileInfo.CreateReadStream*?displayProperty=nameWithType> 。
 
-*FileProviderSample*範例應用程式示範如何在中設定檔案提供者`Startup.ConfigureServices` ，以透過相依性[插入](xref:fundamentals/dependency-injection)在整個應用程式中使用。
+*FileProviderSample*範例應用程式示範如何在中設定檔案提供者，以透過相依性 `Startup.ConfigureServices` [插入](xref:fundamentals/dependency-injection)在整個應用程式中使用。
 
 ## <a name="file-provider-implementations"></a>檔案提供者實作
 
-下表列出的`IFileProvider`執行。
+下表列出的執行 `IFileProvider` 。
 
-| 實作 | 說明 |
-| -------------- | ----------- |
-| [CompositeFileProvider](#compositefileprovider) | 用來提供來自一或多個其他提供者之檔案和目錄的合併存取。 |
-| [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | 用來存取內嵌于元件中的檔案。 |
-| [PhysicalFileProvider](#physicalfileprovider) | 用來存取系統的實體檔案。 |
+| 實作 | 描述 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |[CompositeFileProvider](#compositefileprovider) |用來提供來自一或多個其他提供者之檔案和目錄的合併存取。 | |[ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) |用來存取內嵌于元件中的檔案。 | |[PhysicalFileProvider](#physicalfileprovider) |用來存取系統的實體檔案。 |
 
 ### <a name="physicalfileprovider"></a>PhysicalFileProvider
 
@@ -71,7 +118,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 檔
 
 直接具現化此提供者時，需要絕對目錄路徑，並作為所有使用提供者所提出之要求的基底路徑。 目錄路徑中不支援 Glob 模式。
 
-下列程式碼顯示如何使用`PhysicalFileProvider`來取得目錄內容和檔案資訊：
+下列程式碼顯示如何使用 `PhysicalFileProvider` 來取得目錄內容和檔案資訊：
 
 ```csharp
 var provider = new PhysicalFileProvider(applicationRoot);
@@ -86,9 +133,9 @@ var fileInfo = provider.GetFileInfo(filePath);
 * `contents` 是 `IDirectoryContents`。
 * `fileInfo` 是 `IFileInfo`。
 
-「檔案提供者」可用來逐一查看由 `applicationRoot` o所指定的目錄或呼叫 `GetFileInfo` 以取得檔案的資訊。 Glob 模式無法傳遞至`GetFileInfo`方法。 「檔案提供者」沒有 `applicationRoot` 外部之項目的存取權。
+「檔案提供者」可用來逐一查看由 `applicationRoot` o所指定的目錄或呼叫 `GetFileInfo` 以取得檔案的資訊。 Glob 模式無法傳遞至 `GetFileInfo` 方法。 「檔案提供者」沒有 `applicationRoot` 外部之項目的存取權。
 
-*FileProviderSample*範例應用程式會使用`Startup.ConfigureServices` <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootFileProvider?displayProperty=nameWithType>，在方法中建立提供者：
+*FileProviderSample*範例應用程式會使用，在方法中建立提供者 `Startup.ConfigureServices` <xref:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootFileProvider?displayProperty=nameWithType> ：
 
 ```csharp
 var physicalProvider = _env.ContentRootFileProvider;
@@ -101,13 +148,13 @@ var physicalProvider = _env.ContentRootFileProvider;
 若要產生內嵌檔案的資訊清單：
 
 1. 將[FileProviders](https://www.nuget.org/packages/Microsoft.Extensions.FileProviders.Embedded) NuGet 套件新增至您的專案。
-1. 將 `<GenerateEmbeddedFilesManifest>` 屬性設為 `true`。 指定要與[ \<EmbeddedResource>](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects)內嵌的檔案：
+1. 將 `<GenerateEmbeddedFilesManifest>` 屬性設為 `true`。 指定要內嵌的檔案 [\<EmbeddedResource>](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects) ：
 
     [!code-xml[](file-providers/samples/3.x/FileProviderSample/FileProviderSample.csproj?highlight=5,13)]
 
 使用 [Glob 模式](#glob-patterns)來指定一或多個要內嵌到組件中的檔案。
 
-*FileProviderSample*範例應用程式會建立`ManifestEmbeddedFileProvider` ，並將目前執行的元件傳遞至其函式。
+*FileProviderSample*範例應用程式會建立 `ManifestEmbeddedFileProvider` ，並將目前執行的元件傳遞至其函式。
 
 *Startup.cs*：
 
@@ -122,17 +169,53 @@ var manifestEmbeddedProvider =
 * 將檔案限定為上次修改日期。
 * 為包內嵌檔案資訊清單的內嵌資源命名。
 
-| 多載 | 說明 |
-| -------- | ----------- |
-| `ManifestEmbeddedFileProvider(Assembly, String)` | 接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 |
-| `ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑參數與 `lastModified` 日期 (<xref:System.DateTimeOffset>) 參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 |
-| `ManifestEmbeddedFileProvider(Assembly, String, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑、`lastModified` 日期與 `manifestName` 參數。 `manifestName` 代表包含資訊清單之內嵌資源的名稱。 |
+| 多載 | 描述 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |`ManifestEmbeddedFileProvider(Assembly, String)` |接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 | |`ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` |接受選擇性的 `root` 相對路徑參數和 `lastModified` date （ <xref:System.DateTimeOffset> ）參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 | |`ManifestEmbeddedFileProvider(Assembly, String, String, DateTimeOffset)` |接受選擇性的 `root` 相對路徑、 `lastModified` 日期和 `manifestName` 參數。 `manifestName` 代表包含資訊清單之內嵌資源的名稱。 |
 
 ### <a name="compositefileprovider"></a>CompositeFileProvider
 
 <xref:Microsoft.Extensions.FileProviders.CompositeFileProvider> 結合了 `IFileProvider` 執行個體，並公開單一介面來處理來自多個提供者的檔案。 建立 `CompositeFileProvider` 時，您可以將一或多個 `IFileProvider` 執行個體傳遞至其建構函式。
 
-在*FileProviderSample*範例應用程式中， `PhysicalFileProvider`和會`ManifestEmbeddedFileProvider`提供檔案給在`CompositeFileProvider`應用程式的服務容器中註冊的。 您可在專案的`Startup.ConfigureServices`方法中找到下列程式碼：
+在*FileProviderSample*範例應用程式中， `PhysicalFileProvider` 和會 `ManifestEmbeddedFileProvider` 提供檔案給在 `CompositeFileProvider` 應用程式的服務容器中註冊的。 您可在專案的方法中找到下列程式碼 `Startup.ConfigureServices` ：
 
 [!code-csharp[](file-providers/samples/3.x/FileProviderSample/Startup.cs?name=snippet1)]
 
@@ -145,8 +228,8 @@ var manifestEmbeddedProvider =
 
 產生的變更權杖會公開：
 
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged>&ndash;可以檢查以判斷是否發生變更的屬性。
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*>&ndash;當偵測到指定的路徑字串變更時呼叫。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
+* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged>：可以檢查以判斷是否發生變更的屬性。
+* <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*>：偵測到指定的路徑字串發生變更時呼叫。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
 
 *WatchConsole*範例應用程式會在*TextFiles*目錄中的 *.txt*檔案修改時寫入訊息：
 
@@ -166,12 +249,41 @@ var manifestEmbeddedProvider =
 
 下表提供 glob 模式的常見範例。
 
-|模式  |說明  |
-|---------|---------|
-|`directory/file.txt`|符合特定目錄中的特定檔案。|
-|`directory/*.txt`|符合特定目錄中具有 *.txt* 副檔名的所有檔案。|
-|`directory/*/appsettings.json`|將目錄中的所有*appsettings*檔案，完全符合*目錄*資料夾底下的一個層級。|
-|`directory/**/*.txt`|符合*目錄*資料夾下任何位置的副檔名為 *.txt*的檔案。|
+|模式  |描述  |
+|---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-----|---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-----|
+|`directory/file.txt`|符合特定目錄中的特定檔案。 ||`directory/*.txt`|符合特定目錄中副檔名為 *.txt*的所有檔案。 ||`directory/*/appsettings.json`|比對目錄中的所有*appsettings*檔案與*目錄*資料夾底下的一個層級。 ||`directory/**/*.txt`|符合*目錄*資料夾下任何位置的副檔名為 *.txt*的檔案。 |
 
 ::: moniker-end
 
@@ -179,9 +291,9 @@ var manifestEmbeddedProvider =
 
 ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「檔案提供者」在整個 ASP.NET Core 架構中使用：
 
-* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>將應用程式的[內容根目錄](xref:fundamentals/index#content-root)和[web 根目錄](xref:fundamentals/index#web-root)公開`IFileProvider`為類型。
+* <xref:Microsoft.Extensions.Hosting.IHostingEnvironment>將應用程式的[內容根目錄](xref:fundamentals/index#content-root)和[web 根目錄](xref:fundamentals/index#web-root)公開為 `IFileProvider` 類型。
 * [靜態檔案中介軟體](xref:fundamentals/static-files)使用檔案提供者尋找靜態檔案。
-* [Razor](xref:mvc/views/razor) 使用「檔案提供者」來尋找頁面與檢視。
+* [Razor](xref:mvc/views/razor)會使用檔案提供者來尋找頁面和瀏覽器。
 * .NET Core 工具使用「檔案提供者」與 Glob 模式來指定應該要發佈哪些檔案。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/file-providers/samples)（[如何下載](xref:index#how-to-download-a-sample)）
@@ -210,11 +322,71 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 
 我們提供三個 `IFileProvider` 的實作。
 
-| 實作 | 說明 |
-| -------------- | ----------- |
-| [PhysicalFileProvider](#physicalfileprovider) | 實體提供者用來存取系統的實體檔案。 |
-| [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | 資訊清單內嵌提供者用來存取內嵌於組件的檔案。 |
-| [CompositeFileProvider](#compositefileprovider) | 複合提供者則用來提供對一或多個其他提供者之檔案和目錄的合併存取。 |
+| 實作 | 描述 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |[PhysicalFileProvider](#physicalfileprovider) |實體提供者用來存取系統的實體檔案。 | |[ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) |資訊清單內嵌提供者用來存取內嵌于元件中的檔案。 | |[CompositeFileProvider](#compositefileprovider) |複合提供者是用來提供來自一或多個其他提供者之檔案和目錄的合併存取。 |
 
 ### <a name="physicalfileprovider"></a>PhysicalFileProvider
 
@@ -248,7 +420,7 @@ var physicalProvider = _env.ContentRootFileProvider;
 
 <xref:Microsoft.Extensions.FileProviders.ManifestEmbeddedFileProvider> 用來存取內嵌於組件內的檔案。 `ManifestEmbeddedFileProvider` 使用已編譯到組件中的資訊清單來重新建構內嵌檔案的原始路徑。
 
-若要產生內嵌檔案的資訊清單，請將 `<GenerateEmbeddedFilesManifest>` 屬性設定為 `true`。 指定要與[ &lt;EmbeddedResource&gt;](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects)內嵌的檔案：
+若要產生內嵌檔案的資訊清單，請將 `<GenerateEmbeddedFilesManifest>` 屬性設定為 `true`。 指定要與[ &lt; EmbeddedResource &gt; ](/dotnet/core/tools/csproj#default-compilation-includes-in-net-core-projects)內嵌的檔案：
 
 [!code-csharp[](file-providers/samples/2.x/FileProviderSample/FileProviderSample.csproj?highlight=6,14)]
 
@@ -269,11 +441,47 @@ var manifestEmbeddedProvider =
 * 將檔案限定為上次修改日期。
 * 為包內嵌檔案資訊清單的內嵌資源命名。
 
-| 多載 | 說明 |
-| -------- | ----------- |
-| `ManifestEmbeddedFileProvider(Assembly, String)` | 接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 |
-| `ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑參數與 `lastModified` 日期 (<xref:System.DateTimeOffset>) 參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 |
-| `ManifestEmbeddedFileProvider(Assembly, String, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑、`lastModified` 日期與 `manifestName` 參數。 `manifestName` 代表包含資訊清單之內嵌資源的名稱。 |
+| 多載 | 描述 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |`ManifestEmbeddedFileProvider(Assembly, String)` |接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 | |`ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` |接受選擇性的 `root` 相對路徑參數和 `lastModified` date （ <xref:System.DateTimeOffset> ）參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 | |`ManifestEmbeddedFileProvider(Assembly, String, String, DateTimeOffset)` |接受選擇性的 `root` 相對路徑、 `lastModified` 日期和 `manifestName` 參數。 `manifestName` 代表包含資訊清單之內嵌資源的名稱。 |
 
 ### <a name="compositefileprovider"></a>CompositeFileProvider
 
@@ -287,8 +495,8 @@ var manifestEmbeddedProvider =
 
 [IFileProvider.Watch](xref:Microsoft.Extensions.FileProviders.IFileProvider.Watch*) 方法提供一種情節，用來監視一或多個檔案或目錄是否有變更。 `Watch` 接受路徑字串，該字串可以使用 [Glob 模式](#glob-patterns)來指定多個檔案。 `Watch` 會傳回 <xref:Microsoft.Extensions.Primitives.IChangeToken>。 變更權杖會公開：
 
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged>&ndash;可以檢查以判斷是否發生變更的屬性。
-* <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*>&ndash;當偵測到指定的路徑字串變更時呼叫。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
+* <xref:Microsoft.Extensions.Primitives.IChangeToken.HasChanged>：可以檢查以判斷是否發生變更的屬性。
+* <xref:Microsoft.Extensions.Primitives.IChangeToken.RegisterChangeCallback*>：偵測到指定的路徑字串發生變更時呼叫。 每個變更權杖都只會呼叫其相關聯的回呼，以回應單一變更。 若要啟用持續監視，請使用 <xref:System.Threading.Tasks.TaskCompletionSource`1> (如下所示) 或重新建立 `IChangeToken` 執行個體以回應變更。
 
 在範例應用程式中，*WatchConsole* 主控台應用程式是設定為在文字檔案被修改時顯示訊息：
 

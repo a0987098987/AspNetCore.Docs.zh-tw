@@ -1,24 +1,11 @@
 ---
-title: ASP.NET Core 中的 Kestrel 網頁伺服器實作
-author: rick-anderson
-description: 了解 Kestrel，這是 ASP.NET Core 的跨平台網頁伺服器。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 05/04/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/servers/kestrel
-ms.openlocfilehash: cd05aabb7b8ce5c7d30af881228ef2dab34f2592
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776444"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -89,11 +76,11 @@ Kestrel 用作不需要反向 Proxy 伺服器的 Edge Server 時，不支援在�
 
 ## <a name="kestrel-in-aspnet-core-apps"></a>ASP.NET Core 應用程式中的 Kestrel
 
-ASP.NET Core 專案範本預設會使用 Kestrel。 在*Program.cs*中， <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*>方法會<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*>呼叫：
+ASP.NET Core 專案範本預設會使用 Kestrel。 在*Program.cs*中， <xref:Microsoft.Extensions.Hosting.GenericHostBuilderExtensions.ConfigureWebHostDefaults*> 方法會呼叫 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderKestrelExtensions.UseKestrel*> ：
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=8)]
 
-如需建立主機的詳細資訊，請參閱的*設定主機*和預設產生器*設定*章節<xref:fundamentals/host/generic-host#set-up-a-host>。
+如需建立主機的詳細資訊，請參閱的*設定主機*和預設產生器*設定*章節 <xref:fundamentals/host/generic-host#set-up-a-host> 。
 
 若要在呼叫 `ConfigureWebHostDefaults` 之後提供額外的設定，請使用 `ConfigureKestrel`：
 
@@ -141,10 +128,10 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 請使用下列**其中一**種方法：
 
-* 在中`Startup.ConfigureServices`設定 Kestrel：
+* 在中設定 Kestrel `Startup.ConfigureServices` ：
 
-  1. 將`IConfiguration` `Startup`的實例插入至類別。 下列範例假設插入的設定已指派給`Configuration`屬性。
-  2. 在`Startup.ConfigureServices`中，將`Kestrel`設定的區段載入 Kestrel 的設定中：
+  1. 將的實例插入 `IConfiguration` 至 `Startup` 類別。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
+  2. 在中 `Startup.ConfigureServices` ，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
      ```csharp
      using Microsoft.Extensions.Configuration
@@ -173,7 +160,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 * 建立主機時設定 Kestrel：
 
-  在*Program.cs*中，將`Kestrel`設定的區段載入 Kestrel 的設定中：
+  在*Program.cs*中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -355,7 +342,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO>控制要求和回應是否允許同步的 i/o。 預設值是 `false`。
 
 > [!WARNING]
-> 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有在`AllowSynchronousIO`使用不支援非同步 i/o 的程式庫時才啟用。
+> 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有 `AllowSynchronousIO` 在使用不支援非同步 i/o 的程式庫時才啟用。
 
 下列範例會啟用同步 i/o：
 
@@ -400,7 +387,7 @@ ASP.NET Core 預設會繫結至：
 
 `KestrelServerOptions`配置
 
-### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action\<listenoptions 來>）
+### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （動作 \<ListenOptions> ）
 
 指定組態 `Action` 以針對每個指定端點執行。 呼叫 `ConfigureEndpointDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -415,9 +402,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **在**呼叫<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*>之前呼叫所建立的端點，將不會套用預設值。
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*>**在呼叫之前**呼叫所建立 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*> 的端點，將不會套用預設值。
 
-### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions>）
+### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （動作 \<HttpsConnectionAdapterOptions> ）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -433,7 +420,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **在**呼叫<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>之前呼叫所建立的端點，將不會套用預設值。
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*>**在呼叫之前**呼叫所建立 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*> 的端點，將不會套用預設值。
 
 ### <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
@@ -445,7 +432,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 `ListenOptions.UseHttps` 延伸模組：
 
-* `UseHttps`&ndash;將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
+* `UseHttps`：將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -535,7 +522,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 }
 ```
 
-除了針對任何憑證節點使用 [路徑]**** 和 [密碼]****，還可以使用憑證存放區欄位指定憑證。 例如，**憑證** > **預設**憑證可以指定為：
+除了針對任何憑證節點使用 [路徑]**** 和 [密碼]****，還可以使用憑證存放區欄位指定憑證。 例如，**憑證**  >  **預設**憑證可以指定為：
 
 ```json
 "Default": {
@@ -552,7 +539,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 * `Url` 參數對每個端點而言都是必要的。 此參數的格式等同於最上層 `Urls` 組態參數，但是它限制為單一值。
 * 這些端點會取代最上層 `Urls` 組態中定義的端點，而不是新增至其中。 透過 `Listen` 在程式碼中定義的端點，會與組態區段中定義的端點累計。
 * `Certificate` 區段是選擇性的。 如果未指定 `Certificate` 區段，則會使用先前案例中所定義的預設值。 如果沒有預設值可供使用，伺服器就會擲回例外狀況，且無法啟動。
-* `Certificate`一節同時支援**路徑**&ndash;**密碼**和**主體**&ndash;**存放區**憑證。
+* `Certificate`一節同時支援**路徑** &ndash; **密碼**和**主體** &ndash; **存放區**憑證。
 * 可以用這種方式定義任何數目的端點，只要它們不會導致連接埠衝突即可。
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` 會傳回 `KestrelConfigurationLoader` 與 `.Endpoint(string name, listenOptions => { })` 方法，此方法可用來補充已設定的端點設定：
 
@@ -567,9 +554,9 @@ webBuilder.UseKestrel((context, serverOptions) =>
 });
 ```
 
-`KestrelServerOptions.ConfigurationLoader`可以直接存取，以繼續逐一查看現有的載入器，例如所提供的載入<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>器。
+`KestrelServerOptions.ConfigurationLoader`可以直接存取，以繼續逐一查看現有的載入器，例如所提供的載入器 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 。
 
-* 您可以在`Endpoint`方法的選項中取得每個端點的設定區段，以便讀取自訂設定。
+* 您可以在方法的選項中取得每個端點的設定區段， `Endpoint` 以便讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
 * `KestrelConfigurationLoader` 會將來自 `KestrelServerOptions` 的 API 的 `Listen` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
 
@@ -600,7 +587,7 @@ Kestrel 透過 `ServerCertificateSelector` 回呼來支援 SNI。 回呼會針�
 
 SNI 支援需要：
 
-* 在目標 framework `netcoreapp2.1`或更新版本上執行。 在`net461`或更新版本上，會叫用回呼`name` ，但`null`一律為。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
+* 在目標 framework `netcoreapp2.1` 或更新版本上執行。 在 `net461` 或更新版本上，會叫用回呼，但 `name` 一律為 `null` 。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
 * 所有網站都在相同的 Kestrel 執行個體上執行。 在不使用反向 Proxy 的情況下，Kestrel 不支援跨多個執行個體共用 IP 位址和連接埠。
 
 ```csharp
@@ -641,7 +628,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="connection-logging"></a>連接記錄
 
-呼叫<xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*> ，以針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果`UseConnectionLogging`放在之前`UseHttps`，則會記錄加密的流量。 如果`UseConnectionLogging`放在之後`UseHttps`，則會記錄解密的流量。
+呼叫 <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*> ，以針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果 `UseConnectionLogging` 放在之前 `UseHttps` ，則會記錄加密的流量。 如果 `UseConnectionLogging` 放在之後 `UseHttps` ，則會記錄解密的流量。
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -669,8 +656,8 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 [!code-csharp[](kestrel/samples/3.x/KestrelSample/Program.cs?name=snippet_UnixSocket)]
 
-* 在`server`  >  `location`  >  `proxy_pass` Nginx 設定檔中，將專案設定為`http://unix:/tmp/{KESTREL SOCKET}:/;`。 `{KESTREL SOCKET}`這是提供給<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*>的通訊端名稱（例如， `kestrel-test.sock`在上述範例中為）。
-* 請確定通訊端可由 Nginx 寫入（例如， `chmod go+w /tmp/kestrel-test.sock`）。
+* 在 Nginx 設定檔中，將 `server`  >  `location`  >  `proxy_pass` 專案設定為 `http://unix:/tmp/{KESTREL SOCKET}:/;` 。 `{KESTREL SOCKET}`這是提供給的通訊端名稱 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> （例如， `kestrel-test.sock` 在上述範例中為）。
+* 請確定通訊端可由 Nginx 寫入（例如， `chmod go+w /tmp/kestrel-test.sock` ）。
 
 ### <a name="port-0"></a>連接埠 0
 
@@ -707,12 +694,192 @@ Listening on the following addresses: http://127.0.0.1:48508
 `Protocols` 屬性會建立在連線端點上或針對伺服器啟用的 HTTP 通訊協定 (`HttpProtocols`)。 從 `HttpProtocols` 列舉中指派一個值給 `Protocols` 屬性。
 
 | `HttpProtocols` 列舉值 | 允許的連線通訊協定 |
-| -------------------------- | ----------------------------- |
-| `Http1`                    | 僅限 HTTP/1.1。 可在具有或沒有 TLS 的情況下使用。 |
-| `Http2`                    | 僅限 HTTP/2。 只有在用戶端支援[先備知識模式](https://tools.ietf.org/html/rfc7540#section-3.4)時，才可以在沒有 TLS 的情況下使用。 |
-| `Http1AndHttp2`            | HTTP/1.1 和 HTTP/2。 HTTP/2 要求用戶端選取 TLS[應用層通訊協定協商（ALPN）](https://tools.ietf.org/html/rfc7301#section-3)交握中的 HTTP/2;否則，連接預設為 HTTP/1.1。 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
 
-任何端點`ListenOptions.Protocols`的預設值為`HttpProtocols.Http1AndHttp2`。
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- | |`Http1`                    |僅限 HTTP/1.1。 可在具有或沒有 TLS 的情況下使用。 | |`Http2`                    |僅限 HTTP/2。 只有在用戶端支援[先備知識模式](https://tools.ietf.org/html/rfc7540#section-3.4)時，才可以在沒有 TLS 的情況下使用。 | |`Http1AndHttp2`            |HTTP/1.1 和 HTTP/2。 HTTP/2 要求用戶端選取 TLS[應用層通訊協定協商（ALPN）](https://tools.ietf.org/html/rfc7301#section-3)交握中的 HTTP/2;否則，連接預設為 HTTP/1.1。 |
+
+`ListenOptions.Protocols`任何端點的預設值為 `HttpProtocols.Http1AndHttp2` 。
 
 HTTP/2 的 TLS 限制：
 
@@ -720,11 +887,11 @@ HTTP/2 的 TLS 限制：
 * 已停用重新交涉
 * 已停用壓縮
 * 暫時金鑰交換大小下限：
-  * 橢圓曲線 Diffie-Hellman (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 最小 224 個位元
-  * 有限的 field diffie-hellman （ &lbrack; `TLS12` &rbrack; &ndash; DHE）2048位最小值
+  * 橢圓曲線 Diffie-hellman （ECDHE） &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; ：224位最小值
+  * 有限欄位 diffie-hellman （DHE） &lbrack; `TLS12` &rbrack; ：2048位最小值
 * 加密套件未列於封鎖清單中
 
-`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack; `FIPS186` &rbrack;根據預設，支援 P-256 橢圓曲線&lbrack; `TLS-ECDHE` &rbrack;
+`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack;`TLS-ECDHE`&rbrack;根據預設，支援 P-256 橢圓曲線 &lbrack; `FIPS186` &rbrack; 。
 
 下列範例會允許連接埠 8000 上的 HTTP/1.1 和 HTTP/2 連線。 這些連線使用提供的憑證受到 TLS 保護：
 
@@ -740,7 +907,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 如有需要，請使用連線中介軟體，針對特定的加密依據每個連線來篩選 TLS 交握。
 
-下列範例會<xref:System.NotSupportedException>針對應用程式不支援的任何加密演算法擲回。 或者，定義 ITlsHandshakeFeature，並將[CipherAlgorithm](xref:Microsoft.AspNetCore.Connections.Features.ITlsHandshakeFeature.CipherAlgorithm)與可接受的加密套件清單進行比較。
+下列範例 <xref:System.NotSupportedException> 會針對應用程式不支援的任何加密演算法擲回。 或者，定義 ITlsHandshakeFeature，並將[CipherAlgorithm](xref:Microsoft.AspNetCore.Connections.Features.ITlsHandshakeFeature.CipherAlgorithm)與可接受的加密套件清單進行比較。
 
 不會使用加密來搭配[CipherAlgorithmType。 Null](xref:System.Security.Authentication.CipherAlgorithmType) cipher 演算法。
 
@@ -787,7 +954,7 @@ namespace Microsoft.AspNetCore.Connections
 }
 ```
 
-連接篩選也可以透過<xref:Microsoft.AspNetCore.Connections.IConnectionBuilder> lambda 設定：
+連接篩選也可以透過 <xref:Microsoft.AspNetCore.Connections.IConnectionBuilder> lambda 設定：
 
 ```csharp
 // using System;
@@ -817,7 +984,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 });
 ```
 
-在 Linux 上<xref:System.Net.Security.CipherSuitesPolicy> ，可以用來篩選每個連線的 TLS 交握：
+在 Linux 上， <xref:System.Net.Security.CipherSuitesPolicy> 可以用來篩選每個連線的 TLS 交握：
 
 ```csharp
 // using System.Net.Security;
@@ -879,7 +1046,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ## <a name="transport-configuration"></a>傳輸組態
 
-針對需要使用 Libuv （<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>）的專案：
+針對需要使用 Libuv （）的專案 <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*> ：
 
 * 將 [Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv/) 套件的相依性新增至應用程式的專案檔中：
 
@@ -888,7 +1055,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
                      Version="{VERSION}" />
    ```
 
-* 在<xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>上呼叫`IWebHostBuilder`：
+* <xref:Microsoft.AspNetCore.Hosting.WebHostBuilderLibuvExtensions.UseLibuv*>在上呼叫 `IWebHostBuilder` ：
 
    ```csharp
    public class Program
@@ -960,7 +1127,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啟用中介軟體，請`AllowedHosts`在*appsettings*/中定義金鑰*appsettings。\<EnvironmentName> json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在*appsettings*中定義金鑰 / *appsettings。 \<EnvironmentName>json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
 *appsettings. json*：
 
@@ -1048,7 +1215,7 @@ ASP.NET Core 專案範本預設會使用 Kestrel。 在 *Program.cs* 中，範�
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_DefaultBuilder&highlight=7)]
 
-如需有關`CreateDefaultBuilder`和建立主機的詳細資訊，請參閱的*設定主機*一節<xref:fundamentals/host/web-host#set-up-a-host>。
+如需有關 `CreateDefaultBuilder` 和建立主機的詳細資訊，請參閱的*設定主機*一節 <xref:fundamentals/host/web-host#set-up-a-host> 。
 
 若要在呼叫 `CreateDefaultBuilder` 之後提供額外的設定，請使用 `ConfigureKestrel`：
 
@@ -1109,10 +1276,10 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 請使用下列**其中一**種方法：
 
-* 在中`Startup.ConfigureServices`設定 Kestrel：
+* 在中設定 Kestrel `Startup.ConfigureServices` ：
 
-  1. 將`IConfiguration` `Startup`的實例插入至類別。 下列範例假設插入的設定已指派給`Configuration`屬性。
-  2. 在`Startup.ConfigureServices`中，將`Kestrel`設定的區段載入 Kestrel 的設定中：
+  1. 將的實例插入 `IConfiguration` 至 `Startup` 類別。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
+  2. 在中 `Startup.ConfigureServices` ，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
      ```csharp
      using Microsoft.Extensions.Configuration
@@ -1141,7 +1308,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 * 建立主機時設定 Kestrel：
 
-  在*Program.cs*中，將`Kestrel`設定的區段載入 Kestrel 的設定中：
+  在*Program.cs*中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -1336,7 +1503,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO>控制要求和回應是否允許同步的 i/o。 預設值為 `true`。
 
 > [!WARNING]
-> 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有在`AllowSynchronousIO`使用不支援非同步 i/o 的程式庫時才啟用。
+> 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有 `AllowSynchronousIO` 在使用不支援非同步 i/o 的程式庫時才啟用。
 
 下列範例會啟用同步 i/o：
 
@@ -1381,7 +1548,7 @@ ASP.NET Core 預設會繫結至：
 
 `KestrelServerOptions`配置
 
-### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action\<listenoptions 來>）
+### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （動作 \<ListenOptions> ）
 
 指定組態 `Action` 以針對每個指定端點執行。 呼叫 `ConfigureEndpointDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -1399,9 +1566,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **在**呼叫<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*>之前呼叫所建立的端點，將不會套用預設值。
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*>**在呼叫之前**呼叫所建立 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*> 的端點，將不會套用預設值。
 
-### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions>）
+### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （動作 \<HttpsConnectionAdapterOptions> ）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -1420,7 +1587,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **在**呼叫<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>之前呼叫所建立的端點，將不會套用預設值。
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*>**在呼叫之前**呼叫所建立 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*> 的端點，將不會套用預設值。
 
 
 ### <a name="configureiconfiguration"></a>Configure(IConfiguration)
@@ -1433,7 +1600,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 `ListenOptions.UseHttps` 延伸模組：
 
-* `UseHttps`&ndash;將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
+* `UseHttps`：將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -1527,7 +1694,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 }
 ```
 
-除了針對任何憑證節點使用 [路徑]**** 和 [密碼]****，還可以使用憑證存放區欄位指定憑證。 例如，**憑證** > **預設**憑證可以指定為：
+除了針對任何憑證節點使用 [路徑]**** 和 [密碼]****，還可以使用憑證存放區欄位指定憑證。 例如，**憑證**  >  **預設**憑證可以指定為：
 
 ```json
 "Default": {
@@ -1544,7 +1711,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 * `Url` 參數對每個端點而言都是必要的。 此參數的格式等同於最上層 `Urls` 組態參數，但是它限制為單一值。
 * 這些端點會取代最上層 `Urls` 組態中定義的端點，而不是新增至其中。 透過 `Listen` 在程式碼中定義的端點，會與組態區段中定義的端點累計。
 * `Certificate` 區段是選擇性的。 如果未指定 `Certificate` 區段，則會使用先前案例中所定義的預設值。 如果沒有預設值可供使用，伺服器就會擲回例外狀況，且無法啟動。
-* `Certificate`一節同時支援**路徑**&ndash;**密碼**和**主體**&ndash;**存放區**憑證。
+* `Certificate`一節同時支援**路徑** &ndash; **密碼**和**主體** &ndash; **存放區**憑證。
 * 可以用這種方式定義任何數目的端點，只要它們不會導致連接埠衝突即可。
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` 會傳回 `KestrelConfigurationLoader` 與 `.Endpoint(string name, listenOptions => { })` 方法，此方法可用來補充已設定的端點設定：
 
@@ -1562,9 +1729,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-`KestrelServerOptions.ConfigurationLoader`可以直接存取，以繼續逐一查看現有的載入器，例如所提供的載入<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>器。
+`KestrelServerOptions.ConfigurationLoader`可以直接存取，以繼續逐一查看現有的載入器，例如所提供的載入器 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 。
 
-* 您可以在`Endpoint`方法的選項中取得每個端點的設定區段，以便讀取自訂設定。
+* 您可以在方法的選項中取得每個端點的設定區段， `Endpoint` 以便讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
 * `KestrelConfigurationLoader` 會將來自 `KestrelServerOptions` 的 API 的 `Listen` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
 
@@ -1598,7 +1765,7 @@ Kestrel 透過 `ServerCertificateSelector` 回呼來支援 SNI。 回呼會針�
 
 SNI 支援需要：
 
-* 在目標 framework `netcoreapp2.1`或更新版本上執行。 在`net461`或更新版本上，會叫用回呼`name` ，但`null`一律為。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
+* 在目標 framework `netcoreapp2.1` 或更新版本上執行。 在 `net461` 或更新版本上，會叫用回呼，但 `name` 一律為 `null` 。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
 * 所有網站都在相同的 Kestrel 執行個體上執行。 在不使用反向 Proxy 的情況下，Kestrel 不支援跨多個執行個體共用 IP 位址和連接埠。
 
 ```csharp
@@ -1642,7 +1809,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 ### <a name="connection-logging"></a>連接記錄
 
-呼叫<xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*> ，以針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果`UseConnectionLogging`放在之前`UseHttps`，則會記錄加密的流量。 如果`UseConnectionLogging`放在之後`UseHttps`，則會記錄解密的流量。
+呼叫 <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*> ，以針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果 `UseConnectionLogging` 放在之前 `UseHttps` ，則會記錄加密的流量。 如果 `UseConnectionLogging` 放在之後 `UseHttps` ，則會記錄解密的流量。
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -1670,8 +1837,8 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 [!code-csharp[](kestrel/samples/2.x/KestrelSample/Program.cs?name=snippet_UnixSocket)]
 
-* 在`server`  >  `location`  >  `proxy_pass` Nginx confiuguration 檔中，將專案設定為`http://unix:/tmp/{KESTREL SOCKET}:/;`。 `{KESTREL SOCKET}`這是提供給<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*>的通訊端名稱（例如， `kestrel-test.sock`在上述範例中為）。
-* 請確定通訊端可由 Nginx 寫入（例如， `chmod go+w /tmp/kestrel-test.sock`）。 
+* 在 Nginx confiuguration 檔中，將 `server`  >  `location`  >  `proxy_pass` 專案設定為 `http://unix:/tmp/{KESTREL SOCKET}:/;` 。 `{KESTREL SOCKET}`這是提供給的通訊端名稱 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> （例如， `kestrel-test.sock` 在上述範例中為）。
+* 請確定通訊端可由 Nginx 寫入（例如， `chmod go+w /tmp/kestrel-test.sock` ）。 
 
 ### <a name="port-0"></a>連接埠 0
 
@@ -1708,10 +1875,190 @@ Listening on the following addresses: http://127.0.0.1:48508
 `Protocols` 屬性會建立在連線端點上或針對伺服器啟用的 HTTP 通訊協定 (`HttpProtocols`)。 從 `HttpProtocols` 列舉中指派一個值給 `Protocols` 屬性。
 
 | `HttpProtocols` 列舉值 | 允許的連線通訊協定 |
-| -------------------------- | ----------------------------- |
-| `Http1`                    | 僅限 HTTP/1.1。 可在具有或沒有 TLS 的情況下使用。 |
-| `Http2`                    | 僅限 HTTP/2。 只有在用戶端支援[先備知識模式](https://tools.ietf.org/html/rfc7540#section-3.4)時，才可以在沒有 TLS 的情況下使用。 |
-| `Http1AndHttp2`            | HTTP/1.1 和 HTTP/2。 HTTP/2 需要 TLS 和[應用層通訊協定協商（ALPN）](https://tools.ietf.org/html/rfc7301#section-3)連線;否則，連接預設為 HTTP/1.1。 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- | |`Http1`                    |僅限 HTTP/1.1。 可在具有或沒有 TLS 的情況下使用。 | |`Http2`                    |僅限 HTTP/2。 只有在用戶端支援[先備知識模式](https://tools.ietf.org/html/rfc7540#section-3.4)時，才可以在沒有 TLS 的情況下使用。 | |`Http1AndHttp2`            |HTTP/1.1 和 HTTP/2。 HTTP/2 需要 TLS 和[應用層通訊協定協商（ALPN）](https://tools.ietf.org/html/rfc7301#section-3)連線;否則，連接預設為 HTTP/1.1。 |
 
 預設通訊協定為 HTTP/1.1。
 
@@ -1721,11 +2068,11 @@ HTTP/2 的 TLS 限制：
 * 已停用重新交涉
 * 已停用壓縮
 * 暫時金鑰交換大小下限：
-  * 橢圓曲線 Diffie-Hellman (ECDHE) &lbrack;[RFC4492](https://www.ietf.org/rfc/rfc4492.txt)&rbrack; &ndash; 最小 224 個位元
-  * 有限的 field diffie-hellman （ &lbrack; `TLS12` &rbrack; &ndash; DHE）2048位最小值
+  * 橢圓曲線 Diffie-hellman （ECDHE） &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; ：224位最小值
+  * 有限欄位 diffie-hellman （DHE） &lbrack; `TLS12` &rbrack; ：2048位最小值
 * 加密套件未列於封鎖清單中
 
-`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack; `FIPS186` &rbrack;根據預設，支援 P-256 橢圓曲線&lbrack; `TLS-ECDHE` &rbrack;
+`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack;`TLS-ECDHE`&rbrack;根據預設，支援 P-256 橢圓曲線 &lbrack; `FIPS186` &rbrack; 。
 
 下列範例會允許連接埠 8000 上的 HTTP/1.1 和 HTTP/2 連線。 這些連線使用提供的憑證受到 TLS 保護：
 
@@ -1911,7 +2258,7 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啟用中介軟體，請`AllowedHosts`在*appsettings*/中定義金鑰*appsettings。\<EnvironmentName> json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在*appsettings*中定義金鑰 / *appsettings。 \<EnvironmentName>json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
 *appsettings. json*：
 
@@ -1988,7 +2335,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-如需有關`CreateDefaultBuilder`和建立主機的詳細資訊，請參閱的*設定主機*一節<xref:fundamentals/host/web-host#set-up-a-host>。
+如需有關 `CreateDefaultBuilder` 和建立主機的詳細資訊，請參閱的*設定主機*一節 <xref:fundamentals/host/web-host#set-up-a-host> 。
 
 ## <a name="kestrel-options"></a>Kestrel 選項
 
@@ -2017,10 +2364,10 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 請使用下列**其中一**種方法：
 
-* 在中`Startup.ConfigureServices`設定 Kestrel：
+* 在中設定 Kestrel `Startup.ConfigureServices` ：
 
-  1. 將`IConfiguration` `Startup`的實例插入至類別。 下列範例假設插入的設定已指派給`Configuration`屬性。
-  2. 在`Startup.ConfigureServices`中，將`Kestrel`設定的區段載入 Kestrel 的設定中：
+  1. 將的實例插入 `IConfiguration` 至 `Startup` 類別。 下列範例假設插入的設定已指派給 `Configuration` 屬性。
+  2. 在中 `Startup.ConfigureServices` ，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
      ```csharp
      using Microsoft.Extensions.Configuration
@@ -2049,7 +2396,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 * 建立主機時設定 Kestrel：
 
-  在*Program.cs*中，將`Kestrel`設定的區段載入 Kestrel 的設定中：
+  在*Program.cs*中，將設定的 `Kestrel` 區段載入 Kestrel 的設定中：
 
   ```csharp
   // using Microsoft.Extensions.DependencyInjection;
@@ -2193,7 +2540,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO>控制要求和回應是否允許同步的 i/o。 預設值為 `true`。
 
 > [!WARNING]
-> 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有在`AllowSynchronousIO`使用不支援非同步 i/o 的程式庫時才啟用。
+> 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有 `AllowSynchronousIO` 在使用不支援非同步 i/o 的程式庫時才啟用。
 
 下列範例會停用同步 i/o：
 
@@ -2246,7 +2593,7 @@ ASP.NET Core 預設會繫結至：
 
 `KestrelServerOptions`配置
 
-### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （Action\<listenoptions 來>）
+### <a name="configureendpointdefaultsactionlistenoptions"></a>ConfigureEndpointDefaults （動作 \<ListenOptions> ）
 
 指定組態 `Action` 以針對每個指定端點執行。 呼叫 `ConfigureEndpointDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -2264,9 +2611,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **在**呼叫<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*>之前呼叫所建立的端點，將不會套用預設值。
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*>**在呼叫之前**呼叫所建立 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureEndpointDefaults*> 的端點，將不會套用預設值。
 
-### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （Action\<HttpsConnectionAdapterOptions>）
+### <a name="configurehttpsdefaultsactionhttpsconnectionadapteroptions"></a>ConfigureHttpsDefaults （動作 \<HttpsConnectionAdapterOptions> ）
 
 指定組態 `Action` 以針對每個 HTTPS 端點執行。 呼叫 `ConfigureHttpsDefaults` 多次會以最後一個指定的 `Action` 取代之前的 `Action`。
 
@@ -2285,7 +2632,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 ```
 
 > [!NOTE]
-> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*> **在**呼叫<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*>之前呼叫所建立的端點，將不會套用預設值。
+> <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.Listen*>**在呼叫之前**呼叫所建立 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ConfigureHttpsDefaults*> 的端點，將不會套用預設值。
 
 ### <a name="configureiconfiguration"></a>Configure(IConfiguration)
 
@@ -2297,7 +2644,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 `ListenOptions.UseHttps` 延伸模組：
 
-* `UseHttps`&ndash;將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
+* `UseHttps`：將 Kestrel 設定為使用 HTTPS 搭配預設憑證。 如果未設定預設憑證，會擲回例外狀況。
 * `UseHttps(string fileName)`
 * `UseHttps(string fileName, string password)`
 * `UseHttps(string fileName, string password, Action<HttpsConnectionAdapterOptions> configureOptions)`
@@ -2391,7 +2738,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 }
 ```
 
-除了針對任何憑證節點使用 [路徑]**** 和 [密碼]****，還可以使用憑證存放區欄位指定憑證。 例如，**憑證** > **預設**憑證可以指定為：
+除了針對任何憑證節點使用 [路徑]**** 和 [密碼]****，還可以使用憑證存放區欄位指定憑證。 例如，**憑證**  >  **預設**憑證可以指定為：
 
 ```json
 "Default": {
@@ -2408,7 +2755,7 @@ Kestrel 會接聽 `http://localhost:5000` 和 `https://localhost:5001` (如果�
 * `Url` 參數對每個端點而言都是必要的。 此參數的格式等同於最上層 `Urls` 組態參數，但是它限制為單一值。
 * 這些端點會取代最上層 `Urls` 組態中定義的端點，而不是新增至其中。 透過 `Listen` 在程式碼中定義的端點，會與組態區段中定義的端點累計。
 * `Certificate` 區段是選擇性的。 如果未指定 `Certificate` 區段，則會使用先前案例中所定義的預設值。 如果沒有預設值可供使用，伺服器就會擲回例外狀況，且無法啟動。
-* `Certificate`一節同時支援**路徑**&ndash;**密碼**和**主體**&ndash;**存放區**憑證。
+* `Certificate`一節同時支援**路徑** &ndash; **密碼**和**主體** &ndash; **存放區**憑證。
 * 可以用這種方式定義任何數目的端點，只要它們不會導致連接埠衝突即可。
 * `options.Configure(context.Configuration.GetSection("{SECTION}"))` 會傳回 `KestrelConfigurationLoader` 與 `.Endpoint(string name, listenOptions => { })` 方法，此方法可用來補充已設定的端點設定：
 
@@ -2426,9 +2773,9 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-`KestrelServerOptions.ConfigurationLoader`可以直接存取，以繼續逐一查看現有的載入器，例如所提供的載入<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*>器。
+`KestrelServerOptions.ConfigurationLoader`可以直接存取，以繼續逐一查看現有的載入器，例如所提供的載入器 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 。
 
-* 您可以在`Endpoint`方法的選項中取得每個端點的設定區段，以便讀取自訂設定。
+* 您可以在方法的選項中取得每個端點的設定區段， `Endpoint` 以便讀取自訂設定。
 * 可以藉由使用另一個區段再次呼叫 `options.Configure(context.Configuration.GetSection("{SECTION}"))` 而載入多個組態。 只會使用最後一個組態，除非在先前的執行個體上已明確呼叫 `Load`。 中繼套件不會呼叫 `Load`，如此可能會取代其預設組態區段。
 * `KestrelConfigurationLoader` 會將來自 `KestrelServerOptions` 的 API 的 `Listen` 系列鏡像為 `Endpoint` 多載，所以可在相同的位置設定程式碼和設定端點。 這些多載不使用名稱，並且只使用來自組態的預設組態。
 
@@ -2462,7 +2809,7 @@ Kestrel 透過 `ServerCertificateSelector` 回呼來支援 SNI。 回呼會針�
 
 SNI 支援需要：
 
-* 在目標 framework `netcoreapp2.1`或更新版本上執行。 在`net461`或更新版本上，會叫用回呼`name` ，但`null`一律為。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
+* 在目標 framework `netcoreapp2.1` 或更新版本上執行。 在 `net461` 或更新版本上，會叫用回呼，但 `name` 一律為 `null` 。 如果用戶端不在 TLS 信號交換中提供主機名稱參數，則 `name` 也是 `null`。
 * 所有網站都在相同的 Kestrel 執行個體上執行。 在不使用反向 Proxy 的情況下，Kestrel 不支援跨多個執行個體共用 IP 位址和連接埠。
 
 ```csharp
@@ -2507,7 +2854,7 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
 
 ### <a name="connection-logging"></a>連接記錄
 
-呼叫<xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*> ，以針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果`UseConnectionLogging`放在之前`UseHttps`，則會記錄加密的流量。 如果`UseConnectionLogging`放在之後`UseHttps`，則會記錄解密的流量。
+呼叫 <xref:Microsoft.AspNetCore.Hosting.ListenOptionsConnectionLoggingExtensions.UseConnectionLogging*> ，以針對連接上的位元組層級通訊發出調試層級記錄。 連線記錄有助於疑難排解低層級通訊中的問題，例如在 TLS 加密期間和 proxy 後方。 如果 `UseConnectionLogging` 放在之前 `UseHttps` ，則會記錄加密的流量。 如果 `UseConnectionLogging` 放在之後 `UseHttps` ，則會記錄解密的流量。
 
 ```csharp
 webBuilder.ConfigureKestrel(serverOptions =>
@@ -2583,8 +2930,8 @@ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         });
 ```
 
-* 在`server`  >  `location`  >  `proxy_pass` Nginx confiuguration 檔中，將專案設定為`http://unix:/tmp/{KESTREL SOCKET}:/;`。 `{KESTREL SOCKET}`這是提供給<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*>的通訊端名稱（例如， `kestrel-test.sock`在上述範例中為）。
-* 請確定通訊端可由 Nginx 寫入（例如， `chmod go+w /tmp/kestrel-test.sock`）。 
+* 在 Nginx confiuguration 檔中，將 `server`  >  `location`  >  `proxy_pass` 專案設定為 `http://unix:/tmp/{KESTREL SOCKET}:/;` 。 `{KESTREL SOCKET}`這是提供給的通訊端名稱 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenUnixSocket*> （例如， `kestrel-test.sock` 在上述範例中為）。
+* 請確定通訊端可由 Nginx 寫入（例如， `chmod go+w /tmp/kestrel-test.sock` ）。 
 
 ### <a name="port-0"></a>連接埠 0
 
@@ -2701,7 +3048,7 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啟用中介軟體，請`AllowedHosts`在*appsettings*/中定義金鑰*appsettings。\<EnvironmentName> json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在*appsettings*中定義金鑰 / *appsettings。 \<EnvironmentName>json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
 *appsettings. json*：
 
@@ -2720,29 +3067,29 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 ## <a name="http11-request-draining"></a>HTTP/1.1 要求清空
 
-開啟 HTTP 連接非常耗時。 針對 HTTPS，這也是耗用大量資源。 因此，Kestrel 會嘗試每個 HTTP/1.1 通訊協定重複使用連接。 要求主體必須完全取用，才能重複使用連接。 應用程式不一定會使用要求主體，例如伺服器傳回`POST`重新導向或404回應的要求。 在`POST`-重新導向案例中：
+開啟 HTTP 連接非常耗時。 針對 HTTPS，這也是耗用大量資源。 因此，Kestrel 會嘗試每個 HTTP/1.1 通訊協定重複使用連接。 要求主體必須完全取用，才能重複使用連接。 應用程式不一定會使用要求主體，例如伺服器傳回重新 `POST` 導向或404回應的要求。 在 `POST` -重新導向案例中：
 
-* 用戶端可能已經傳送部分`POST`資料。
+* 用戶端可能已經傳送部分 `POST` 資料。
 * 伺服器會寫入301回應。
-* 連接無法用於新的要求，直到先前要求主體`POST`的資料完全讀取為止。
+* 連接無法用於新的要求，直到 `POST` 先前要求主體的資料完全讀取為止。
 * Kestrel 嘗試清空要求主體。 清空要求本文表示讀取和捨棄資料，而不進行處理。
 
 清空程式可讓您在允許重複使用連線時，以及釋放任何剩餘資料所需的時間之間進行 tradoff：
 
 * 清空的超時時間為5秒，無法設定。
-* 如果`Content-Length`或`Transfer-Encoding`標頭所指定的所有資料都未在超時之前讀取，連接就會關閉。
+* 如果或標頭所指定的所有資料都 `Content-Length` `Transfer-Encoding` 未在超時之前讀取，連接就會關閉。
 
-有時候，您可能會想要在寫入回應之前或之後立即終止要求。 例如，用戶端可能會有限制的資料上限，因此限制上傳的資料可能是優先順序。 在這種情況下，若要終止要求，請從控制器、 Razor頁面或中介軟體中呼叫[HttpCoNtext. Abort。](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A)
+有時候，您可能會想要在寫入回應之前或之後立即終止要求。 例如，用戶端可能會有限制的資料上限，因此限制上傳的資料可能是優先順序。 在這種情況下，若要終止要求，請從控制器、頁面或中介軟體中呼叫[HttpCoNtext. Abort。](xref:Microsoft.AspNetCore.Http.HttpContext.Abort%2A) Razor
 
-呼叫`Abort`有幾點注意事項：
+呼叫有幾點注意事項 `Abort` ：
 
 * 建立新的連接可能會變慢且昂貴。
 * 不保證用戶端在連接關閉之前已讀取回應。
-* 呼叫`Abort`應該很罕見，並保留給嚴重的錯誤案例，而不是常見的錯誤。
-  * 只有在`Abort`需要解決特定問題時，才呼叫。 例如，如果惡意`Abort`用戶端正在嘗試`POST`資料，或當用戶端程式代碼中發生錯誤而導致大型或多個要求時，請呼叫。
-  * 請勿呼叫`Abort`常見的錯誤狀況，例如 HTTP 404 （找不到）。
+* 呼叫 `Abort` 應該很罕見，並保留給嚴重的錯誤案例，而不是常見的錯誤。
+  * 只有 `Abort` 在需要解決特定問題時，才呼叫。 例如， `Abort` 如果惡意用戶端正在嘗試資料， `POST` 或當用戶端程式代碼中發生錯誤而導致大型或多個要求時，請呼叫。
+  * 請勿呼叫 `Abort` 常見的錯誤狀況，例如 HTTP 404 （找不到）。
 
-呼叫[HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.CompleteAsync%2A)之前，請先`Abort`呼叫 CompleteAsync，以確保伺服器已完成寫入回應。 不過，用戶端行為無法預測，而且在中斷連線之前，它們可能不會讀取回應。
+呼叫[HttpResponse](xref:Microsoft.AspNetCore.Http.HttpResponse.CompleteAsync%2A)之前，請先呼叫 CompleteAsync `Abort` ，以確保伺服器已完成寫入回應。 不過，用戶端行為無法預測，而且在中斷連線之前，它們可能不會讀取回應。
 
 此程式與 HTTP/2 不同，因為通訊協定支援在不關閉連線的情況下中止個別要求資料流程。 五秒的清空超時不適用。 如果在完成回應之後有任何未讀取的要求本文資料，伺服器就會傳送 HTTP/2 RST 框架。 系統會忽略其他要求主體資料框架。
 

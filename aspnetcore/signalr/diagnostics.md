@@ -1,44 +1,32 @@
 ---
-title: ASP.NET Core 中的記錄和診斷SignalR
-author: anurse
-description: 瞭解如何從您的 ASP.NET Core 應用程式收集診斷資訊 SignalR 。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: anurse
-ms.custom: signalr
-ms.date: 11/12/2019
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: signalr/diagnostics
-ms.openlocfilehash: 0dda4fb55b1e2275d9cdb2af0b55824b12121dee
-ms.sourcegitcommit: 16b3abec1ed70f9a206f0cfa7cf6404eebaf693d
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2020
-ms.locfileid: "83444213"
+標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
-# <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>ASP.NET Core SignalR 中的記錄和診斷
+# <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>ASP.NET Core 中的記錄和診斷SignalR
 
 [Andrew Stanton-護士](https://twitter.com/anurse)
 
-本文提供從您的 ASP.NET Core SignalR 應用程式收集診斷資訊，以協助疑難排解問題的指引。
+本文提供從您的 ASP.NET Core 應用程式收集診斷 SignalR 資訊，以協助疑難排解問題的指引。
 
 ## <a name="server-side-logging"></a>伺服器端記錄
 
 > [!WARNING]
 > 伺服器端記錄可能包含來自您應用程式的機密資訊。 **絕對不要**將未經處理的記錄從生產應用程式張貼到 GitHub 之類的公用論壇。
 
-由於 SignalR 是 ASP.NET Core 的一部分，因此它會使用 ASP.NET Core 記錄系統。 在預設設定中，SignalR 會記錄非常少的資訊，但這可加以設定。 如需設定 ASP.NET Core 記錄的詳細資訊，請參閱有關[ASP.NET Core 記錄](xref:fundamentals/logging/index#configuration)的檔。
+由於 SignalR 是 ASP.NET Core 的一部分，因此它會使用 ASP.NET Core 記錄系統。 在預設設定中， SignalR 會記錄非常少的資訊，但這可加以設定。 如需設定 ASP.NET Core 記錄的詳細資訊，請參閱有關[ASP.NET Core 記錄](xref:fundamentals/logging/index#configuration)的檔。
 
-SignalR 使用兩個記錄器類別：
+SignalR會使用兩個記錄器類別：
 
-* `Microsoft.AspNetCore.SignalR`&ndash;適用于與中樞通訊協定相關的記錄、啟用中樞、叫用方法，以及其他中樞相關的活動。
-* `Microsoft.AspNetCore.Http.Connections`&ndash;適用于傳輸的相關記錄，例如 websocket、長輪詢和伺服器傳送事件和低層級的 SignalR 基礎結構。
+* `Microsoft.AspNetCore.SignalR`：適用于與中樞通訊協定相關的記錄、啟用中樞、叫用方法，以及其他中樞相關的活動。
+* `Microsoft.AspNetCore.Http.Connections`：適用于傳輸的相關記錄，例如 Websocket、長時間輪詢、伺服器傳送的事件，以及低層級的 SignalR 基礎結構。
 
-若要從 SignalR 啟用詳細記錄，請將 `Debug` 下列專案加入至中的子區段，將上述前置詞設定為*appsettings*中的層級 `LogLevel` `Logging` ：
+若要從啟用詳細記錄 SignalR ，請將 `Debug` 下列專案加入至中的子區段，以在*appsettings json*檔案中設定這兩個前置詞的層級 `LogLevel` `Logging` ：
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -61,7 +49,7 @@ SignalR 使用兩個記錄器類別：
 
 ### <a name="as-a-console-app-outside-iis"></a>作為 IIS 外部的主控台應用程式
 
-如果您是在主控台應用程式中執行，預設應該啟用[主控台記錄器](xref:fundamentals/logging/index#console)。 SignalR 記錄將會出現在主控台中。
+如果您是在主控台應用程式中執行，預設應該啟用[主控台記錄器](xref:fundamentals/logging/index#console)。 SignalR記錄會出現在主控台中。
 
 ### <a name="within-iis-express-from-visual-studio"></a>從 Visual Studio 的 IIS Express 內
 
@@ -89,14 +77,34 @@ Visual Studio 會在 [**輸出**] 視窗中顯示記錄輸出。 選取 [ **ASP.
 下表顯示 JavaScript 用戶端可用的記錄層級。 將記錄層級設定為其中一個值，即可在該層級和資料表中其上方的所有層級進行記錄。
 
 | 層級 | 描述 |
-| ----- | ----------- |
-| `None` | 不會記錄任何訊息。 |
-| `Critical` | 指出整個應用程式失敗的訊息。 |
-| `Error` | 指出目前操作失敗的訊息。 |
-| `Warning` | 指出非嚴重問題的訊息。 |
-| `Information` | 參考用訊息。 |
-| `Debug` | 適用于偵錯工具的診斷訊息。 |
-| `Trace` | 專為診斷特定問題而設計的詳細診斷訊息。 |
+| ----- | ---
+標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
+monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |`None` |不會記錄任何訊息。 | |`Critical` |指出整個應用程式失敗的訊息。 | |`Error` |指出目前操作失敗的訊息。 | |`Warning` |指出非嚴重問題的訊息。 | |`Information` |參考用訊息。 | |`Debug` |適用于偵錯工具的診斷訊息。 | |`Trace` |專為診斷特定問題而設計的詳細診斷訊息。 |
 
 設定詳細資訊之後，記錄將會寫入至瀏覽器主控台（或 NodeJS 應用程式中的標準輸出）。
 

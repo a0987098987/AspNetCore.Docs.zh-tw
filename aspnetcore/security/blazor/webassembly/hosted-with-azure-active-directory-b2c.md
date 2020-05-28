@@ -39,7 +39,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 * *伺服器 API 應用程式*應用程式識別碼（用戶端識別碼）（例如， `11111111-1111-1111-1111-111111111111` ）
 * 目錄識別碼（租使用者識別碼）（例如， `222222222-2222-2222-2222-222222222222` ）
-* AAD 租使用者網域（例如）：在 `contoso.onmicrosoft.com` &ndash; 已註冊的應用程式之 Azure 入口網站的 [**商標**] 分頁中，網域會以**發行者網域**的形式提供。
+* AAD 租使用者網域（例如， `contoso.onmicrosoft.com` ）：在已註冊的應用程式之 Azure 入口網站的 [**商標**] 分頁中，網域會以**發行者網域**的形式提供。
 
 在中**公開 API**：
 

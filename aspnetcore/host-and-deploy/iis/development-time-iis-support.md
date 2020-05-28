@@ -1,24 +1,11 @@
 ---
-title: Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
-author: rick-anderson
-description: 了解在 Windows Server 上搭配 IIS 執行 ASP.NET Core 應用程式時，對該應用程式所提供的偵錯支援。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 02/07/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: a6719b4f84b1bc60c7c2aea2aa3a97ef79f43e2e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777016"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -38,7 +25,7 @@ ms.locfileid: "82777016"
 ## <a name="enable-iis"></a>啟用 IIS
 
 1. 在 Windows 中，瀏覽至 [控制台]**[程式]** > **[程式和功能]** > **[開啟或關閉 Windows 功能]** > **** (畫面左側)。
-1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]  。
+1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]。
 
 安裝 IIS 可能需要重新啟動系統。
 
@@ -46,7 +33,7 @@ ms.locfileid: "82777016"
 
 IIS 的網站必須含有下列設定：
 
-* **主機名稱** &ndash; 通常，[預設網站]**** 會搭配 [主機名稱]**** 或 `localhost` 使用。 不過，任何具有唯一主機名稱的有效 IIS 網站皆適用。
+* **主機名稱**：通常，**預設的網站**會與**主機名稱**搭配使用 `localhost` 。 不過，任何具有唯一主機名稱的有效 IIS 網站皆適用。
 * **網站繫結**
   * 針對需要 HTTPS 的應用程式，請搭配憑證針對連接埠 443 建立繫結。 通常會使用 [IIS Express 開發憑證]****，但可使用任何有效的憑證。
   * 針對使用 HTTP 的應用程式，請確認已存在針對連接埠 80 的繫結，或是為新網站建立針對連接埠 80 的繫結。
@@ -153,7 +140,7 @@ IIS 的網站必須含有下列設定：
 ## <a name="enable-iis"></a>啟用 IIS
 
 1. 在 Windows 中，瀏覽至 [控制台]**[程式]** > **[程式和功能]** > **[開啟或關閉 Windows 功能]** > **** (畫面左側)。
-1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]  。
+1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]。
 
 安裝 IIS 可能需要重新啟動系統。
 
@@ -161,7 +148,7 @@ IIS 的網站必須含有下列設定：
 
 IIS 的網站必須含有下列設定：
 
-* **主機名稱** &ndash; 通常，[預設網站]**** 會搭配 [主機名稱]**** 或 `localhost` 使用。 不過，任何具有唯一主機名稱的有效 IIS 網站皆適用。
+* **主機名稱**：通常，**預設的網站**會與**主機名稱**搭配使用 `localhost` 。 不過，任何具有唯一主機名稱的有效 IIS 網站皆適用。
 * **網站繫結**
   * 針對需要 HTTPS 的應用程式，請搭配憑證針對連接埠 443 建立繫結。 通常會使用 [IIS Express 開發憑證]****，但可使用任何有效的憑證。
   * 針對使用 HTTP 的應用程式，請確認已存在針對連接埠 80 的繫結，或是為新網站建立針對連接埠 80 的繫結。

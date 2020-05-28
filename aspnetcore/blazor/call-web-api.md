@@ -56,9 +56,9 @@ Blazor伺服器應用程式預設不會包含 <xref:System.Net.Http.HttpClient> 
 
 在下列範例中，Todo Web API 處理建立、讀取、更新和刪除（CRUD）作業。 這些範例是以 `TodoItem` 儲存的類別為基礎：
 
-* `Id`專案的識別碼（， `long` ） &ndash; 唯一識別碼。
-* `Name`專案的名稱（， `string` ） &ndash; 名稱。
-* Status （ `IsComplete` ， `bool` ） &ndash; 表示待辦事項是否已完成。
+* ID （ `Id` ， `long` ）：專案的唯一識別碼。
+* 名稱（ `Name` ， `string` ）：專案的名稱。
+* Status （ `IsComplete` ， `bool` ）：表示待辦事項是否已完成。
 
 ```csharp
 private class TodoItem
@@ -71,7 +71,7 @@ private class TodoItem
 
 JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並處理回應：
 
-* <xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A>傳送 &ndash; HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
+* <xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A>：傳送 HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
 
   在下列程式碼中， `todoItems` 元件會顯示。 `GetTodoItems`當元件完成呈現（[OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)）時，就會觸發方法。 如需完整範例，請參閱範例應用程式。
 
@@ -87,7 +87,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   }
   ```
 
-* <xref:System.Net.Http.Json.HttpClientJsonExtensions.PostAsJsonAsync%2A>傳送 &ndash; HTTP POST 要求，包括 json 編碼的內容，並剖析 json 回應主體以建立物件。
+* <xref:System.Net.Http.Json.HttpClientJsonExtensions.PostAsJsonAsync%2A>：傳送 HTTP POST 要求，包括 JSON 編碼的內容，並剖析 JSON 回應主體以建立物件。
 
   在下列程式碼中， `newItemName` 是由元件的繫結項目所提供。 `AddItem`方法是藉由選取元素來觸發 `<button>` 。 如需完整範例，請參閱範例應用程式。
 
@@ -115,7 +115,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   var content = response.Content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
-* <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A>傳送 &ndash; HTTP PUT 要求，包括 JSON 編碼的內容。
+* <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A>：傳送 HTTP PUT 要求，包括 JSON 編碼的內容。
 
   在下列程式碼中， `editItem` 和的值 `Name` `IsCompleted` 是由元件的繫結項目所提供。 `Id`當專案在 UI 的另一個部分中選取並呼叫時，會設定專案的 `EditItem` 。 `SaveItem`方法是藉由選取 Save 元素來觸發 `<button>` 。 如需完整範例，請參閱範例應用程式。
 
@@ -301,7 +301,7 @@ protected override async Task OnInitializedAsync()
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:security/blazor/webassembly/additional-scenarios>&ndash;包含使用 <xref:System.Net.Http.HttpClient> 來提出安全 Web API 要求的涵蓋範圍。
+* <xref:security/blazor/webassembly/additional-scenarios>：包含使用 <xref:System.Net.Http.HttpClient> 來提出安全 Web API 要求的涵蓋範圍。
 * <xref:fundamentals/http-requests>
 * <xref:security/enforcing-ssl>
 * [Kestrel HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)

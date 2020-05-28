@@ -1,24 +1,11 @@
 ---
-title: 針對 .NET Core 上的 gRPC 進行疑難排解
-author: jamesnk
-description: 針對在 .NET Core 上使用 gRPC 時的錯誤進行疑難排解。
-monikerRange: '>= aspnetcore-3.0'
-ms.author: jamesnk
-ms.custom: mvc
-ms.date: 10/16/2019
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: grpc/troubleshoot
-ms.openlocfilehash: 6f496b71c86762b35bdb3de33405a5aea6d8f8a5
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775371"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>針對 .NET Core 上的 gRPC 進行疑難排解
 
@@ -41,7 +28,7 @@ info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Development
 ```
 
-.NET Core 用戶端必須在`https`伺服器位址中使用，以透過安全的連線進行呼叫：
+.NET Core 用戶端必須 `https` 在伺服器位址中使用，以透過安全的連線進行呼叫：
 
 ```csharp
 static async Task Main(string[] args)
@@ -52,7 +39,7 @@ static async Task Main(string[] args)
 }
 ```
 
-所有 gRPC 用戶端都支援 TLS。 從其他語言 gRPC 用戶端時，通常需要使用`SslCredentials`設定的通道。 `SslCredentials`指定用戶端將使用的憑證，而且必須使用它來取代不安全的認證。 如需將不同的 gRPC 用戶端執行設定為使用 TLS 的範例，請參閱[GRPC Authentication](https://www.grpc.io/docs/guides/auth/)。
+所有 gRPC 用戶端都支援 TLS。 從其他語言 gRPC 用戶端時，通常需要使用設定的通道 `SslCredentials` 。 `SslCredentials`指定用戶端將使用的憑證，而且必須使用它來取代不安全的認證。 如需將不同的 gRPC 用戶端執行設定為使用 TLS 的範例，請參閱[GRPC Authentication](https://www.grpc.io/docs/guides/auth/)。
 
 ## <a name="call-a-grpc-service-with-an-untrustedinvalid-certificate"></a>使用不受信任/不正確憑證呼叫 gRPC 服務
 
@@ -66,14 +53,13 @@ static async Task Main(string[] args)
 如果您是在另一部電腦上呼叫 gRPC 服務，而無法信任憑證，則可以將 gRPC 用戶端設定為忽略不正確憑證。 下列程式碼會使用[HttpClientHandler](/dotnet/api/system.net.http.httpclienthandler.servercertificatecustomvalidationcallback)來允許沒有受信任憑證的呼叫：
 
 ```csharp
-var httpClientHandler = new HttpClientHandler();
+var httpHandler = new HttpClientHandler();
 // Return `true` to allow certificates that are untrusted/invalid
-httpClientHandler.ServerCertificateCustomValidationCallback = 
+httpHandler.ServerCertificateCustomValidationCallback = 
     HttpClientHandler.DangerousAcceptAnyServerCertificateValidator;
-var httpClient = new HttpClient(httpClientHandler);
 
 var channel = GrpcChannel.ForAddress("https://localhost:5001",
-    new GrpcChannelOptions { HttpClient = httpClient });
+    new GrpcChannelOptions { HttpHandler = httpHandler });
 var client = new Greet.GreeterClient(channel);
 ```
 
@@ -82,7 +68,7 @@ var client = new Greet.GreeterClient(channel);
 
 ## <a name="call-insecure-grpc-services-with-net-core-client"></a>使用 .NET Core 用戶端呼叫不安全的 gRPC 服務
 
-需要其他設定，才能使用 .NET Core 用戶端呼叫不安全的 gRPC 服務。 GRPC 用戶端必須將`System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport`參數設定為`true` ，並`http`在伺服器位址中使用：
+需要其他設定，才能使用 .NET Core 用戶端呼叫不安全的 gRPC 服務。 GRPC 用戶端必須將 `System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport` 參數設定為 `true` ，並 `http` 在伺服器位址中使用：
 
 ```csharp
 // This switch must be set before creating the GrpcChannel/HttpClient.
@@ -98,7 +84,7 @@ var client = new Greet.GreeterClient(channel);
 
 Kestrel 不支援 macOS 上的 TLS 和舊版 Windows （例如 Windows 7）上的 HTTP/2。 ASP.NET Core gRPC 範本和範例預設會使用 TLS。 當您嘗試啟動 gRPC 伺服器時，您會看到下列錯誤訊息：
 
-> 無法系結至https://localhost:5001 IPv4 回送介面上的：因為缺少 ALPN 支援，所以 macOS 上不支援 HTTP/2 over TLS。 '。
+> 無法系結至 https://localhost:5001 IPv4 回送介面上的：因為缺少 ALPN 支援，所以 macOS 上不支援 HTTP/2 OVER TLS。 '。
 
 若要解決此問題，請將 Kestrel 和 gRPC 用戶端設定為使用*沒有*TLS 的 HTTP/2。 您應該只在開發期間執行此動作。 不使用 TLS 會導致傳送未加密的 gRPC 訊息。
 
@@ -119,7 +105,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         });
 ```
 
-設定 HTTP/2 端點而不使用 TLS 時，端點的[listenoptions 來](xref:fundamentals/servers/kestrel#listenoptionsprotocols)必須設定為`HttpProtocols.Http2`。 `HttpProtocols.Http1AndHttp2`無法使用，因為需要 TLS 才能協調 HTTP/2。 如果沒有 TLS，端點的所有連接都會預設為 HTTP/1.1，而 gRPC 呼叫會失敗。
+設定 HTTP/2 端點而不使用 TLS 時，端點的[listenoptions 來](xref:fundamentals/servers/kestrel#listenoptionsprotocols)必須設定為 `HttpProtocols.Http2` 。 `HttpProtocols.Http1AndHttp2`無法使用，因為需要 TLS 才能協調 HTTP/2。 如果沒有 TLS，端點的所有連接都會預設為 HTTP/1.1，而 gRPC 呼叫會失敗。
 
 GRPC 用戶端也必須設定為不使用 TLS。 如需詳細資訊，請參閱[使用 .Net Core 用戶端呼叫不安全的 gRPC 服務](#call-insecure-grpc-services-with-net-core-client)。
 
@@ -130,12 +116,12 @@ GRPC 用戶端也必須設定為不使用 TLS。 如需詳細資訊，請參閱[
 
 gRPC 程式碼產生具體的用戶端和服務基類需要從專案參考 protobuf 檔案和工具。 您必須包括：
 
-* 您想要在`<Protobuf>`專案群組中使用的 *. proto*檔案。 專案必須參考已匯[入的*proto* ](https://developers.google.com/protocol-buffers/docs/proto3#importing-definitions)檔案。
+* 您想要在專案群組中使用的 *. proto*檔案 `<Protobuf>` 。 專案必須參考已匯[入的*proto* ](https://developers.google.com/protocol-buffers/docs/proto3#importing-definitions)檔案。
 * GRPC 工具套件[gRPC](https://www.nuget.org/packages/Grpc.Tools/)的套件參考。
 
-如需產生 gRPC c # 資產的詳細資訊<xref:grpc/basics>，請參閱。
+如需產生 gRPC c # 資產的詳細資訊，請參閱 <xref:grpc/basics> 。
 
-根據預設， `<Protobuf>`參考會產生具體的用戶端和服務基類。 參考專案的`GrpcServices`屬性可以用來限制 c # 資產產生。 有效`GrpcServices`的選項為：
+根據預設， `<Protobuf>` 參考會產生具體的用戶端和服務基類。 參考專案的 `GrpcServices` 屬性可以用來限制 c # 資產產生。 有效 `GrpcServices` 的選項為：
 
 * `Both`（不存在時的預設值）
 * `Server`
@@ -160,16 +146,16 @@ gRPC 程式碼產生具體的用戶端和服務基類需要從專案參考 proto
 
 ## <a name="wpf-projects-unable-to-generate-grpc-c-assets-from-proto-files"></a>WPF 專案無法從 proto 檔案產生 gRPC c # 資產
 
-WPF 專案有一個[已知的問題](https://github.com/dotnet/wpf/issues/810)，導致 gRPC 程式碼產生無法正常運作。 在 WPF 專案中，藉由參考`Grpc.Tools`和*proto*檔案產生的任何 gRPC 類型，會在使用時建立編譯錯誤：
+WPF 專案有一個[已知的問題](https://github.com/dotnet/wpf/issues/810)，導致 gRPC 程式碼產生無法正常運作。 在 WPF 專案中，藉由參考和 proto 檔案產生的任何 gRPC 類型 `Grpc.Tools` ，會在使用時建立編譯錯誤： *.proto*
 
 > 錯誤 CS0246：找不到類型或命名空間名稱 ' MyGrpcServices ' （您是否遺漏 using 指示詞或元件參考？）
 
 您可以藉由下列方式解決此問題：
 
 1. 建立新的 .NET Core 類別庫專案。
-2. 在新專案中加入參考，以[從* \*proto*檔案中啟用 c # 程式碼產生](xref:grpc/basics#generated-c-assets)：
+2. 在新專案中加入參考，以[從* \* proto*檔案中啟用 c # 程式碼產生](xref:grpc/basics#generated-c-assets)：
     * 將套件參考新增至[Grpc](https://www.nuget.org/packages/Grpc.Tools/)套件。
-    * 將* \*proto*檔案加入至`<Protobuf>`專案群組。
+    * 將* \* proto*檔案加入至 `<Protobuf>` 專案群組。
 3. 在 WPF 應用程式中，加入新專案的參考。
 
 WPF 應用程式可以從新的類別庫專案使用 gRPC 產生的類型。

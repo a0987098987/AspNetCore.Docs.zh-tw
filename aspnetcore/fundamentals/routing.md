@@ -1,24 +1,11 @@
 ---
-title: ASP.NET Core 中的路由
-author: rick-anderson
-description: 探索 ASP.NET Core 路由如何負責比對 HTTP 要求和分派至可執行檔端點。
-monikerRange: '>= aspnetcore-2.1'
-ms.author: riande
-ms.custom: mvc
-ms.date: 4/1/2020
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/routing
-ms.openlocfilehash: 2dd44a561debddac13250174a8e74dd912302d60
-ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82850509"
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -30,8 +17,8 @@ By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com
 
 應用程式可以使用下列內容來設定路由：
 
-- Controllers
-- Razor Pages
+- 控制器
+- Razor頁面
 - SignalR
 - gRPC 服務
 - 端點啟用的[中介軟體](xref:fundamentals/middleware/index)，例如[健康情況檢查](xref:host-and-deploy/health-checks)。
@@ -39,37 +26,37 @@ By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com
 
 本檔涵蓋 ASP.NET Core 路由的低層級詳細資料。 如需設定路由的詳細資訊：
 
-* 針對控制器，請<xref:mvc/controllers/routing>參閱。
-* 如 Razor Pages 慣例，請<xref:razor-pages/razor-pages-conventions>參閱。
+* 針對控制器，請參閱 <xref:mvc/controllers/routing> 。
+* 如需 Razor 頁面慣例，請參閱 <xref:razor-pages/razor-pages-conventions> 。
 
-本檔中所述的端點路由系統適用于 ASP.NET Core 3.0 和更新版本。 如需以為基礎的先前路由系統<xref:Microsoft.AspNetCore.Routing.IRouter>的詳細資訊，請使用下列其中一種方法來選取 ASP.NET Core 2.1 版本：
+本檔中所述的端點路由系統適用于 ASP.NET Core 3.0 和更新版本。 如需以為基礎的先前路由系統的詳細資訊 <xref:Microsoft.AspNetCore.Routing.IRouter> ，請使用下列其中一種方法來選取 ASP.NET Core 2.1 版本：
 
 * 先前版本的版本選取器。
 * 選取 [ [ASP.NET Core 2.1 路由](https://docs.microsoft.com/aspnet/core/fundamentals/routing?view=aspnetcore-2.1)]。
 
 [查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x)（[如何下載](xref:index#how-to-download-a-sample)）
 
-此檔的下載範例會由特定`Startup`類別啟用。 若要執行特定的範例，請修改*Program.cs*以呼叫`Startup`所需的類別。
+此檔的下載範例會由特定 `Startup` 類別啟用。 若要執行特定的範例，請修改*Program.cs*以呼叫所需的 `Startup` 類別。
 
 ## <a name="routing-basics"></a>路由的基本概念
 
-所有 ASP.NET Core 範本都會在產生的程式碼中包含路由。 路由是在的[中介軟體](xref:fundamentals/middleware/index)管線中`Startup.Configure`註冊。
+所有 ASP.NET Core 範本都會在產生的程式碼中包含路由。 路由是在的[中介軟體](xref:fundamentals/middleware/index)管線中註冊 `Startup.Configure` 。
 
 下列程式碼顯示路由的基本範例：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Startup.cs?name=snippet&highlight=8,10)]
 
-路由會使用一對由<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*>和<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>註冊的中介軟體：
+路由會使用一對由和註冊的中介軟體 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*> <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> ：
 
 * `UseRouting`將路由對應新增至中介軟體管線。 此中介軟體會查看應用程式中定義的端點集合，並根據要求選取[最符合的項](#urlm)。
 * `UseEndpoints`將端點執行新增至中介軟體管線。 它會執行與所選端點相關聯的委派。
 
 上述範例包含使用[MapGet](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*)方法*對程式碼*端點的單一路由：
 
-* 當 HTTP `GET`要求傳送至根 URL `/`時：
+* 當 HTTP `GET` 要求傳送至根 URL 時 `/` ：
   * 所顯示的要求委派會執行。
-  * `Hello World!`會寫入 HTTP 回應。 根據預設，根 URL `/`是。 `https://localhost:5001/`
-* 如果要求方法不`GET`是`/`，或根 URL 不是，則不會符合任何路由，且會傳回 HTTP 404。
+  * `Hello World!`會寫入 HTTP 回應。 根據預設，根 URL `/` 是 `https://localhost:5001/` 。
+* 如果要求方法不是 `GET` ，或根 URL 不是 `/` ，則不會符合任何路由，且會傳回 HTTP 404。
 
 ### <a name="endpoint"></a>端點
 
@@ -80,25 +67,25 @@ By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com
 * 已選取，藉由比對 URL 和 HTTP 方法。
 * 執行委派。
 
-應用程式可比對並執行的端點會在中`UseEndpoints`設定。 例如， <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*> <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*>、和類似的[方法](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions)會將要求委派連接至路由系統。
+應用程式可比對並執行的端點會在中設定 `UseEndpoints` 。 例如，、 <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*> <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*> 和類似的[方法](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions)會將要求委派連接至路由系統。
 您可以使用其他方法，將 ASP.NET Core framework 功能連接到路由系統：
-- [Razor Pages 的 MapRazorPages](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*)
+- [頁面的 MapRazorPages Razor](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*)
 - [適用于控制器的 MapControllers](xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*)
-- [SignalR\<的 MapHub THub>](xref:Microsoft.AspNetCore.SignalR.HubRouteBuilder.MapHub*) 
-- [GRPC\<的 MapGrpcService TService>](xref:grpc/aspnetcore)
+- [\<THub>適用于的 MapHubSignalR](xref:Microsoft.AspNetCore.SignalR.HubRouteBuilder.MapHub*) 
+- [\<TService>適用于 gRPC 的 MapGrpcService](xref:grpc/aspnetcore)
 
 下列範例顯示具有更複雜路由範本的路由：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/RouteTemplateStartup.cs?name=snippet)]
 
-此字串`/hello/{name:alpha}`為**路由範本**。 它是用來設定端點的相符方式。 在此情況下，範本會符合：
+此字串 `/hello/{name:alpha}` 為**路由範本**。 它是用來設定端點的相符方式。 在此情況下，範本會符合：
 
 * URL，例如`/hello/Ryan`
-* 開頭為`/hello/`的任何 URL 路徑，後面接著一連串的字母字元。  `:alpha`套用僅符合字母字元的路由條件約束。 本檔稍後會說明[路由條件約束](#route-constraint-reference)。
+* 開頭為的任何 URL 路徑， `/hello/` 後面接著一連串的字母字元。  `:alpha`套用僅符合字母字元的路由條件約束。 本檔稍後會說明[路由條件約束](#route-constraint-reference)。
 
-URL 路徑的第二個區段`{name:alpha}`：
+URL 路徑的第二個區段 `{name:alpha}` ：
 
-* 已系結至`name`參數。
+* 已系結至 `name` 參數。
 * 會被捕捉並儲存在[HttpRequest 中。 RouteValues](xref:Microsoft.AspNetCore.Http.HttpRequest.RouteValues*)。
 
 本檔中所述的端點路由系統是 ASP.NET Core 3.0 的新功能。 不過，ASP.NET Core 的所有版本都支援一組相同的路由範本功能和路由條件約束。
@@ -114,18 +101,18 @@ URL 路徑的第二個區段`{name:alpha}`：
 * 授權中介軟體可以與路由搭配使用。
 * 端點可以用來設定授權行為。
 
-<xref:Microsoft.AspNetCore.Builder.HealthCheckEndpointRouteBuilderExtensions.MapHealthChecks*>呼叫會新增健康情況檢查端點。 此<xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization*>呼叫的連結會將授權原則附加至端點。
+<xref:Microsoft.AspNetCore.Builder.HealthCheckEndpointRouteBuilderExtensions.MapHealthChecks*>呼叫會新增健康情況檢查端點。 此呼叫的連結會將 <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization*> 授權原則附加至端點。
 
-呼叫<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>並<xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization*>新增驗證和授權中介軟體。 這些中介軟體會放<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*>在`UseEndpoints`和之間，使其可以：
+呼叫 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 並 <xref:Microsoft.AspNetCore.Builder.AuthorizationAppBuilderExtensions.UseAuthorization*> 新增驗證和授權中介軟體。 這些中介軟體會放在 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting*> 和之間 `UseEndpoints` ，使其可以：
 
-* 查看所選取的端點`UseRouting`。
-* 將分派給端點之前<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> ，請先套用授權原則。
+* 查看所選取的端點 `UseRouting` 。
+* 將分派給端點之前，請先套用授權原則 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 。
 
 <a name="metadata"></a>
 
 ### <a name="endpoint-metadata"></a>端點中繼資料
 
-在上述範例中，有兩個端點，但只有健全狀況檢查端點已附加授權原則。 如果要求符合健康狀態檢查端點， `/healthz`則會執行授權檢查。 這會示範端點可以附加額外的資料。 這種額外的資料稱為端點**中繼資料**：
+在上述範例中，有兩個端點，但只有健全狀況檢查端點已附加授權原則。 如果要求符合健康狀態檢查端點， `/healthz` 則會執行授權檢查。 這會示範端點可以附加額外的資料。 這種額外的資料稱為端點**中繼資料**：
 
 * 可由路由感知中介軟體處理中繼資料。
 * 中繼資料可以是任何 .NET 型別。
@@ -140,28 +127,28 @@ URL 路徑的第二個區段`{name:alpha}`：
 
 ASP.NET Core 的端點為：
 
-* 可執行檔： <xref:Microsoft.AspNetCore.Http.Endpoint.RequestDelegate>具有。
+* 可執行檔：具有 <xref:Microsoft.AspNetCore.Http.Endpoint.RequestDelegate> 。
 * 可擴充：具有[中繼資料](xref:Microsoft.AspNetCore.Http.Endpoint.Metadata*)集合。
 * 可選取：選擇性地擁有[路由資訊](xref:Microsoft.AspNetCore.Routing.RouteEndpoint.RoutePattern*)。
-* 可列舉：藉由<xref:Microsoft.AspNetCore.Routing.EndpointDataSource>從[DI](xref:fundamentals/dependency-injection)抓取來列出端點的集合。
+* 可列舉：藉由從 DI 抓取來列出端點的 <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> 集合[DI](xref:fundamentals/dependency-injection)。
 
 下列程式碼示範如何抓取和檢查符合目前要求的端點：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/EndpointInspectorStartup.cs?name=snippet)]
 
-若已選取，則可以從抓取端點`HttpContext`。 可以檢查其屬性。 端點物件是不可變的，而且無法在建立之後修改。 最常見的端點類型是<xref:Microsoft.AspNetCore.Routing.RouteEndpoint>。 `RouteEndpoint`包含可讓路由系統選取的資訊。
+若已選取，則可以從抓取端點 `HttpContext` 。 可以檢查其屬性。 端點物件是不可變的，而且無法在建立之後修改。 最常見的端點類型是 <xref:Microsoft.AspNetCore.Routing.RouteEndpoint> 。 `RouteEndpoint`包含可讓路由系統選取的資訊。
 
 在上述程式碼中， [app。使用](xref:Microsoft.AspNetCore.Builder.UseExtensions.Use*)會設定內嵌[中介軟體](xref:fundamentals/middleware/index)。
 
 <a name="mt"></a>
 
-下列程式碼顯示，視管線中呼叫`app.Use`的位置而定，可能不會有端點：
+下列程式碼顯示，視管線中呼叫的位置而定， `app.Use` 可能不會有端點：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/MiddlewareFlowStartup.cs?name=snippet)]
 
-先前的範例會`Console.WriteLine`加入語句，以顯示是否已選取端點。 為了清楚起見，此範例會將顯示名稱指派給`/`提供的端點。
+先前 `Console.WriteLine` 的範例會加入語句，以顯示是否已選取端點。 為了清楚起見，此範例會將顯示名稱指派給提供的 `/` 端點。
 
-以`/`顯示的 URL 執行此程式碼：
+以顯示的 URL 執行此程式碼 `/` ：
 
 ```txt
 1. Endpoint: (null)
@@ -179,14 +166,14 @@ ASP.NET Core 的端點為：
 
 此輸出示範：
 
-* 在呼叫之前`UseRouting` ，端點一律為 null。
-* 如果找到相符的，則與`UseRouting` <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>之間的端點為非 null。
-* 當`UseEndpoints`找到相符的時，中介軟體就是**終端**機。 [終端機中介軟體](#tm)會在本檔稍後定義。
-* 只有當找`UseEndpoints`不到相符的時，才會在執行後中介軟體。
+* 在呼叫之前，端點一律為 null `UseRouting` 。
+* 如果找到相符的，則與之間的端點為非 null `UseRouting` <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 。
+* `UseEndpoints`當找到相符的時，中介軟體就是**終端**機。 [終端機中介軟體](#tm)會在本檔稍後定義。
+* `UseEndpoints`只有當找不到相符的時，才會在執行後中介軟體。
 
-`UseRouting`中介軟體會使用[task.setendpoint](xref:Microsoft.AspNetCore.Http.EndpointHttpContextExtensions.SetEndpoint*)方法，將端點附加至目前的內容。 您可以使用自訂邏輯`UseRouting`來取代中介軟體，但仍可獲得使用端點的優點。 端點是低層級的基本型別，例如中介軟體，而且不會與路由執行結合。 大部分的應用程式不需要`UseRouting`以自訂邏輯取代。
+`UseRouting`中介軟體會使用[task.setendpoint](xref:Microsoft.AspNetCore.Http.EndpointHttpContextExtensions.SetEndpoint*)方法，將端點附加至目前的內容。 您可以 `UseRouting` 使用自訂邏輯來取代中介軟體，但仍可獲得使用端點的優點。 端點是低層級的基本型別，例如中介軟體，而且不會與路由執行結合。 大部分的應用程式不需要以 `UseRouting` 自訂邏輯取代。
 
-`UseEndpoints`中介軟體是設計用來與`UseRouting`中介軟體一起使用。 執行端點的核心邏輯並不複雜。 使用<xref:Microsoft.AspNetCore.Http.EndpointHttpContextExtensions.GetEndpoint*>來取出端點，然後叫用其<xref:Microsoft.AspNetCore.Http.Endpoint.RequestDelegate>屬性。
+`UseEndpoints`中介軟體是設計用來與中介軟體一起使用 `UseRouting` 。 執行端點的核心邏輯並不複雜。 使用 <xref:Microsoft.AspNetCore.Http.EndpointHttpContextExtensions.GetEndpoint*> 來取出端點，然後叫用其 <xref:Microsoft.AspNetCore.Http.Endpoint.RequestDelegate> 屬性。
 
 下列程式碼示範中介軟體會如何影響或回應路由：
 
@@ -194,22 +181,22 @@ ASP.NET Core 的端點為：
 
 上述範例示範兩個重要概念：
 
-* 中介軟體可以在`UseRouting`前執行，以修改路由運作的資料。
-    * 通常在路由之前出現的中介軟體會修改要求的某些屬性， <xref:Microsoft.AspNetCore.Builder.RewriteBuilderExtensions.UseRewriter*>例如<xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions.UseHttpMethodOverride*>、或<xref:Microsoft.AspNetCore.Builder.UsePathBaseExtensions.UsePathBase*>。
-* 中介軟體可在`UseRouting`和<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>之間執行，以便在執行端點之前處理路由的結果。
-    * 在和`UseRouting` `UseEndpoints`之間執行的中介軟體：
+* 中介軟體可以在前執行， `UseRouting` 以修改路由運作的資料。
+    * 通常在路由之前出現的中介軟體會修改要求的某些屬性，例如 <xref:Microsoft.AspNetCore.Builder.RewriteBuilderExtensions.UseRewriter*> 、 <xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions.UseHttpMethodOverride*> 或 <xref:Microsoft.AspNetCore.Builder.UsePathBaseExtensions.UsePathBase*> 。
+* 中介軟體可在 `UseRouting` 和之間執行， <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 以便在執行端點之前處理路由的結果。
+    * 在和之間執行的中介軟體 `UseRouting` `UseEndpoints` ：
       * 通常會檢查中繼資料以瞭解端點。
-      * 通常會依照`UseAuthorization`和`UseCors`完成安全性決策。
+      * 通常會依照和完成安全性決策 `UseAuthorization` `UseCors` 。
     * 中介軟體和中繼資料的組合，可讓您設定每個端點的原則。
 
-上述程式碼顯示支援每個端點原則的自訂中介軟體範例。 中介軟體會將敏感性資料之存取權的*審核記錄*寫入主控台。 中介軟體可以設定為使用*audit* `AuditPolicyAttribute`中繼資料來審核端點。 這個範例會示範*加入宣告*模式，其中只會審核標示為機密的端點。 例如，您可以反向定義此邏輯，以審核未標示為安全的所有專案。 端點中繼資料系統很有彈性。 這個邏輯可以設計成符合使用案例的任何方式。
+上述程式碼顯示支援每個端點原則的自訂中介軟體範例。 中介軟體會將敏感性資料之存取權的*審核記錄*寫入主控台。 中介軟體可以設定為使用中繼資料來*審核*端點 `AuditPolicyAttribute` 。 這個範例會示範*加入宣告*模式，其中只會審核標示為機密的端點。 例如，您可以反向定義此邏輯，以審核未標示為安全的所有專案。 端點中繼資料系統很有彈性。 這個邏輯可以設計成符合使用案例的任何方式。
 
 先前的範例程式碼主要是用來示範端點的基本概念。 **此範例並非供生產環境使用**。 更完整的*audit 記錄*檔中介軟體版本如下：
 
 * 記錄到檔案或資料庫。
 * 包含詳細資料，例如使用者、IP 位址、機密端點的名稱等等。
 
-稽核原則中繼資料`AuditPolicyAttribute`會定義為`Attribute` ，以便更輕鬆地搭配以類別為基礎的架構（例如控制器和 SignalR）使用。 使用*路由至程式碼*時：
+稽核原則中繼資料 `AuditPolicyAttribute` 會定義為 `Attribute` ，以便更容易與以類別為基礎的架構（例如控制器和）搭配使用 SignalR 。 使用*路由至程式碼*時：
 
 * 中繼資料是使用產生器 API 所附加。
 * 以類別為基礎的架構在建立端點時，會在對應的方法和類別上包含所有屬性。
@@ -224,24 +211,24 @@ ASP.NET Core 的端點為：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/TerminalMiddlewareStartup.cs?name=snippet)]
 
-以`Approach 1:`顯示的中介軟體樣式是**終端中介軟體**。 這稱為「終端中介軟體」，因為它會執行比對作業：
+以顯示的中介軟體樣式 `Approach 1:` 是**終端中介軟體**。 這稱為「終端中介軟體」，因為它會執行比對作業：
 
-* 前述範例中的比`Path == "/"`對作業適用于中介軟體和`Path == "/Movie"`路由。
-* 當相符項成功時，它會執行一些功能並傳回，而不是`next`叫用中介軟體。
+* 前述範例中的比對作業 `Path == "/"` 適用于中介軟體和 `Path == "/Movie"` 路由。
+* 當相符項成功時，它會執行一些功能並傳回，而不是叫用 `next` 中介軟體。
 
 這稱為「終端中介軟體」，因為它會終止搜尋、執行一些功能，然後傳回。
 
 比較終端機中介軟體和路由：
 * 這兩種方法都允許終止處理管線：
-    * 中介軟體會藉由傳回而不是`next`叫用來終止管線。
+    * 中介軟體會藉由傳回而不是叫用來終止管線 `next` 。
     * 端點一律是 [終端機]。
 * 終端中介軟體允許將中介軟體放在管線中的任意位置：
-    * 端點會在的位置執行<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>。
+    * 端點會在的位置執行 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 。
 * 終端中介軟體可讓任意程式碼判斷中介軟體何時符合：
     * 自訂路由比對程式碼可能很詳細，而且很容易正確寫入。
     * 路由為一般應用程式提供直接的解決方案。 大部分的應用程式都不需要自訂路由比對程式碼。
-* 具有中介軟體的端點介面`UseAuthorization` ， `UseCors`例如和。
-    * 搭配或`UseCors`使用終端中間`UseAuthorization`件時，必須手動與授權系統互動。
+* 具有中介軟體的端點介面，例如 `UseAuthorization` 和 `UseCors` 。
+    * 搭配或使用終端中介軟體時， `UseAuthorization` `UseCors` 必須手動與授權系統互動。
 
 [端點](#endpoint)會定義兩者：
 
@@ -255,13 +242,13 @@ ASP.NET Core 的端點為：
 
 撰寫終端中介軟體之前，請考慮與路由整合。
 
-與[Map](xref:fundamentals/middleware/index#branch-the-middleware-pipeline)或<xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*>整合的現有終端機中介軟體，通常可以轉換成路由感知端點。 [MapHealthChecks](https://github.com/aspnet/AspNetCore/blob/master/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16)示範路由器的模式：
-* 在上<xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder>撰寫擴充方法。
-* 使用<xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder.CreateApplicationBuilder*>建立嵌套中介軟體管線。
+與[Map](xref:fundamentals/middleware/index#branch-the-middleware-pipeline)或整合的現有終端機中介軟體， <xref:Microsoft.AspNetCore.Builder.MapWhenExtensions.MapWhen*> 通常可以轉換成路由感知端點。 [MapHealthChecks](https://github.com/aspnet/AspNetCore/blob/master/src/Middleware/HealthChecks/src/Builder/HealthCheckEndpointRouteBuilderExtensions.cs#L16)示範路由器的模式：
+* 在上撰寫擴充方法 <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder> 。
+* 使用建立嵌套中介軟體管線 <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder.CreateApplicationBuilder*> 。
 * 將中介軟體附加至新管線。 在此案例中為 <xref:Microsoft.AspNetCore.Builder.HealthCheckApplicationBuilderExtensions.UseHealthChecks*>。
-* <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.Build*>中介軟體管線至<xref:Microsoft.AspNetCore.Http.RequestDelegate>。
-* 呼叫`Map`並提供新的中介軟體管線。
-* `Map`從擴充方法傳回提供的產生器物件。
+* <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.Build*>中介軟體管線至 <xref:Microsoft.AspNetCore.Http.RequestDelegate> 。
+* 呼叫 `Map` 並提供新的中介軟體管線。
+* 從擴充方法傳回提供的產生器物件 `Map` 。
 
 下列程式碼示範如何使用[MapHealthChecks](xref:host-and-deploy/health-checks)：
 
@@ -279,7 +266,7 @@ ASP.NET Core 的端點為：
 * 是以 URL 路徑和標頭中的資料為基礎。
 * 可以擴充以考慮要求中的任何資料。
 
-當路由中介軟體執行時，它會`Endpoint`從目前的要求將和路由值設定<xref:Microsoft.AspNetCore.Http.HttpContext>為上的[要求功能](xref:fundamentals/request-features)：
+當路由中介軟體執行時，它會 `Endpoint` 從目前的要求將和路由值設定為上的[要求功能](xref:fundamentals/request-features) <xref:Microsoft.AspNetCore.Http.HttpContext> ：
 
 * 呼叫[HttpCoNtext GetEndpoint](<xref:Microsoft.AspNetCore.Http.EndpointHttpContextExtensions.GetEndpoint*>)會取得端點。
 * `HttpRequest.RouteValues` 會取得路由值的集合。
@@ -291,12 +278,12 @@ ASP.NET Core 的端點為：
 * 任何可能影響分派或應用安全性原則的決策都是在路由系統內進行。
 
 > [!WARNING]
-> 針對回溯相容性，當執行控制器或 Razor Pages 端點委派時，會根據到目前為止執行的要求處理，將[routecoNtext.routedata](xref:Microsoft.AspNetCore.Routing.RouteContext.RouteData)的屬性設定為適當的值。
+> 針對回溯相容性，當執行控制器或 Razor 頁面端點委派時，會根據到目前為止執行的要求處理，將[routecoNtext.routedata](xref:Microsoft.AspNetCore.Routing.RouteContext.RouteData)的屬性設定為適當的值。
 >
-> 在`RouteContext`未來的版本中，此類型將會標示為已淘汰：
+> 在 `RouteContext` 未來的版本中，此類型將會標示為已淘汰：
 >
-> * 遷移`RouteData.Values`至`HttpRequest.RouteValues`。
-> * 遷移`RouteData.DataTokens`以從端點中繼資料取得[IDataTokensMetadata](xref:Microsoft.AspNetCore.Routing.IDataTokensMetadata) 。
+> * 遷移 `RouteData.Values` 至 `HttpRequest.RouteValues` 。
+> * 遷移 `RouteData.DataTokens` 以從端點中繼資料取得[IDataTokensMetadata](xref:Microsoft.AspNetCore.Routing.IDataTokensMetadata) 。
 
 URL 比對作業會以一組可設定的階段來運作。 在每個階段中，輸出是一組相符專案。 下一個階段可進一步縮小一組相符專案的範圍。 路由執行並不保證符合端點的處理順序。 **所有**可能的相符專案都會一次處理。 URL 符合的階段會依照下列順序發生。 ASP.NET Core：
 
@@ -310,16 +297,16 @@ URL 比對作業會以一組可設定的階段來運作。 在每個階段中，
 * [RouteEndpoint。](xref:Microsoft.AspNetCore.Routing.RouteEndpoint.Order*)
 * [路由範本優先順序](#rtp)
 
-所有相符的<xref:Microsoft.AspNetCore.Routing.Matching.EndpointSelector>端點都會在每個階段中處理，直到到達為止。 `EndpointSelector`是最後一個階段。 它會從相符專案中選擇最高優先順序的端點，以做為最符合專案。 如果有其他符合的優先權與最符合的專案相同，則會擲回不明確的相符例外狀況。
+所有相符的端點都會在每個階段中處理，直到 <xref:Microsoft.AspNetCore.Routing.Matching.EndpointSelector> 到達為止。 `EndpointSelector`是最後一個階段。 它會從相符專案中選擇最高優先順序的端點，以做為最符合專案。 如果有其他符合的優先權與最符合的專案相同，則會擲回不明確的相符例外狀況。
 
-路由優先順序是根據指定較高優先順序的較**特定**路由範本來計算。 例如，請考慮範本`/hello`和： `/{message}`
+路由優先順序是根據指定較高優先順序的較**特定**路由範本來計算。 例如，請考慮範本 `/hello` 和 `/{message}` ：
 
-* 兩者都符合 URL 路徑`/hello`。
+* 兩者都符合 URL 路徑 `/hello` 。
 * `/hello`更明確，因此優先順序較高。
 
-一般來說，路由優先順序會針對實務中使用的 URL 配置類型選擇最符合的工作。 只有<xref:Microsoft.AspNetCore.Routing.RouteEndpoint.Order>在必要時才使用，以避免發生不明確的情況。
+一般來說，路由優先順序會針對實務中使用的 URL 配置類型選擇最符合的工作。 <xref:Microsoft.AspNetCore.Routing.RouteEndpoint.Order>只有在必要時才使用，以避免發生不明確的情況。
 
-由於路由所提供的擴充性種類，路由系統無法在不明確的路由時間之前計算。 假設有一個範例，例如路由範本`/{message:alpha}`和`/{message:int}`：
+由於路由所提供的擴充性種類，路由系統無法在不明確的路由時間之前計算。 假設有一個範例，例如路由範本 `/{message:alpha}` 和 `/{message:int}` ：
 
 * `alpha`條件約束只符合字母字元。
 * `int`條件約束只符合數位。
@@ -328,7 +315,7 @@ URL 比對作業會以一組可設定的階段來運作。 在每個階段中，
 
 > [!WARNING]
 >
-> 內部<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>作業的順序不會影響路由的行為，但有一個例外狀況。 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*>和<xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute*>會根據叫用的順序，自動指派訂單值給其端點。 這會模擬控制器的長時間行為，而不會有路由系統提供與舊版路由執行相同的保證。
+> 內部作業的順序 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 不會影響路由的行為，但有一個例外狀況。 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*>和會根據叫用 <xref:Microsoft.AspNetCore.Builder.MvcAreaRouteBuilderExtensions.MapAreaRoute*> 的順序，自動指派訂單值給其端點。 這會模擬控制器的長時間行為，而不會有路由系統提供與舊版路由執行相同的保證。
 >
 > 在路由的舊版執行中，可以根據路由的處理順序來執行路由擴充性。 ASP.NET Core 3.0 和更新版本中的端點路由：
 > 
@@ -346,7 +333,7 @@ URL 比對作業會以一組可設定的階段來運作。 在每個階段中，
 * 避免在一般情況下調整端點順序的需求。
 * 嘗試符合常見的路由行為預期。
 
-例如，請考慮範本`/Products/List`和`/Products/{id}`。 假設`/Products/List`比起 URL 路徑`/Products/{id}` `/Products/List`的比對更相符，這是合理的做法。 的作用是因為常值`/List`區段被視為具有比參數區段`/{id}`更好的優先順序。
+例如，請考慮範本 `/Products/List` 和 `/Products/{id}` 。 假設 `/Products/List` 比起 URL 路徑的比對更相符，這是合理的做法 `/Products/{id}` `/Products/List` 。 的作用是因為常 `/List` 值區段被視為具有比參數區段更好的優先順序 `/{id}` 。
 
 優先順序運作方式的詳細資料會結合如何定義路由範本：
 
@@ -367,20 +354,20 @@ URL 產生：
 * 這是路由可以根據一組路由值建立 URL 路徑的進程。
 * 允許端點與存取它們的 Url 之間的邏輯分隔。
 
-端點路由包含<xref:Microsoft.AspNetCore.Routing.LinkGenerator> API。 `LinkGenerator`是[DI](xref:fundamentals/dependency-injection)提供的單一服務。 `LinkGenerator` API 可以在執行中要求的內容之外使用。 [IUrlHelper](xref:Microsoft.AspNetCore.Mvc.IUrlHelper)和依賴的案例<xref:Microsoft.AspNetCore.Mvc.IUrlHelper>，例如標籤協助程式[、HTML](xref:mvc/views/tag-helpers/intro)協助程式和[動作結果](xref:mvc/controllers/actions)，會在內部使用`LinkGenerator` API 來提供連結產生功能。
+端點路由包含 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API。 `LinkGenerator`是[DI](xref:fundamentals/dependency-injection)提供的單一服務。 `LinkGenerator`API 可以在執行中要求的內容之外使用。 [IUrlHelper](xref:Microsoft.AspNetCore.Mvc.IUrlHelper)和依賴的案例，例如標籤協助程式 <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> 、HTML 協助程式和[動作結果](xref:mvc/controllers/actions)，會在[Tag Helpers](xref:mvc/views/tag-helpers/intro)內部使用 `LinkGenerator` API 來提供連結產生功能。
 
-連結產生器背後支援的概念為「位址」**** 和「位址配置」****。 位址配置可讓您判斷應考慮用於連結產生的端點。 例如，許多使用者熟悉的路由名稱和路由值案例會將控制器和 Razor Pages 實作為位址配置。
+連結產生器背後支援的概念為「位址」**** 和「位址配置」****。 位址配置可讓您判斷應考慮用於連結產生的端點。 例如，許多使用者熟悉的路由名稱和路由值案例會將控制器和頁面實 Razor 作為位址配置。
 
-連結產生器可以透過下列擴充方法連結至控制器和 Razor Pages：
+連結產生器可以透過下列擴充方法連結至控制器和 Razor 頁面：
 
 * <xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetPathByAction*>
 * <xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetUriByAction*>
 * <xref:Microsoft.AspNetCore.Routing.PageLinkGeneratorExtensions.GetPathByPage*>
 * <xref:Microsoft.AspNetCore.Routing.PageLinkGeneratorExtensions.GetUriByPage*>
 
-這些方法的多載會接受包含的`HttpContext`引數。 這些方法在功能上相當於[url. 動作](xref:System.Web.Mvc.UrlHelper.Action*)和[url](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Page*)，但提供額外的彈性和選項。
+這些方法的多載會接受包含的引數 `HttpContext` 。 這些方法在功能上相當於[url. 動作](xref:System.Web.Mvc.UrlHelper.Action*)和[url](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Page*)，但提供額外的彈性和選項。
 
-這些`GetPath*`方法與`Url.Action`和`Url.Page`最相似，因為它們會產生包含絕對路徑的 URI。 `GetUri*` 方法一律會產生包含配置和主機的絕對 URI。 接受 `HttpContext` 的方法會在執行要求的內容中產生 URI。 除非覆寫，否則會使用執行中要求的[環境](#ambient)路由值、URL 基底路徑、配置和主機。
+這些 `GetPath*` 方法與和最相似 `Url.Action` `Url.Page` ，因為它們會產生包含絕對路徑的 URI。 `GetUri*` 方法一律會產生包含配置和主機的絕對 URI。 接受 `HttpContext` 的方法會在執行要求的內容中產生 URI。 除非覆寫，否則會使用執行中要求的[環境](#ambient)路由值、URL 基底路徑、配置和主機。
 
 呼叫 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 並指定一個位址。 執行下列兩個步驟來產生 URI：
 
@@ -389,21 +376,90 @@ URL 產生：
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器最方便的方式，就是透過擴充方法來執行特定網址類別型的作業：
 
-| 擴充方法 | 說明 |
-| ---------------- | ----------- |
-| <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
-| <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |
+| 擴充方法 | 描述 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ | |<xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> |根據提供的值，產生具有絕對路徑的 URI。 | |<xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> |根據提供的值產生絕對 URI。             |
 
 > [!WARNING]
 > 注意呼叫 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 方法的下列影響：
 >
-> * 使用 `GetUri*` 擴充方法，並注意應用程式組態不會驗證傳入要求的 `Host` 標頭。 如果未`Host`驗證傳入要求的標頭，則不受信任的要求輸入可以在視圖或頁面的 uri 中傳回給用戶端。 建議所有生產應用程式將其伺服器設定為驗證 `Host` 標頭是否為已知有效值。
+> * 使用 `GetUri*` 擴充方法，並注意應用程式組態不會驗證傳入要求的 `Host` 標頭。 如果 `Host` 未驗證傳入要求的標頭，則不受信任的要求輸入可以在視圖或頁面的 uri 中傳回給用戶端。 建議所有生產應用程式將其伺服器設定為驗證 `Host` 標頭是否為已知有效值。
 >
-> * 使用 <xref:Microsoft.AspNetCore.Routing.LinkGenerator>，並注意與 `Map` 或 `MapWhen` 搭配使用的中介軟體。 `Map*` 會變更執行要求的基底路徑，這會影響連結產生的輸出。 所有的 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API 都允許指定基底路徑。 指定空的基底路徑，以`Map*`復原連結產生的影響。
+> * 使用 <xref:Microsoft.AspNetCore.Routing.LinkGenerator>，並注意與 `Map` 或 `MapWhen` 搭配使用的中介軟體。 `Map*` 會變更執行要求的基底路徑，這會影響連結產生的輸出。 所有的 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API 都允許指定基底路徑。 指定空的基底路徑，以復原 `Map*` 連結產生的影響。
 
 ### <a name="middleware-example"></a>中介軟體範例
 
-在下列範例中，中介軟體會使用<xref:Microsoft.AspNetCore.Routing.LinkGenerator> API 來建立列出商店產品之動作方法的連結。 藉由將連結產生器插入類別並呼叫`GenerateLink` ，可供應用程式中的任何類別使用：
+在下列範例中，中介軟體會使用 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> API 來建立列出商店產品之動作方法的連結。 藉由將連結產生器插入類別並呼叫， `GenerateLink` 可供應用程式中的任何類別使用：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Middleware/ProductsLinkMiddleware.cs?name=snippet)]
 
@@ -411,74 +467,561 @@ URL 產生：
 
 ## <a name="route-template-reference"></a>路由範本參考
 
-內`{}`的 token 會定義路由符合時所系結的路由參數。 在路由區段中可以定義一個以上的路由參數，但路由參數必須以常值分隔。 例如，`{controller=Home}{action=Index}` 不是有效的路由，因為 `{controller}` 與 `{action}` 之間沒有任何常值。  路由參數必須有名稱，而且可能會指定其他屬性。
+內 `{}` 的 token 會定義路由符合時所系結的路由參數。 在路由區段中可以定義一個以上的路由參數，但路由參數必須以常值分隔。 例如，`{controller=Home}{action=Index}` 不是有效的路由，因為 `{controller}` 與 `{action}` 之間沒有任何常值。  路由參數必須有名稱，而且可能會指定其他屬性。
 
-路由參數之外的常值文字 (例如，`{id}`) 和路徑分隔符號 `/` 必須符合 URL 中的文字。 文字比對不區分大小寫，而且會根據 URL 路徑的解碼標記法。 若要比對常值路由`{`參數`}`分隔符號或，請重複字元來將分隔符號轉義。 例如， `{{`或`}}`。
+路由參數之外的常值文字 (例如，`{id}`) 和路徑分隔符號 `/` 必須符合 URL 中的文字。 文字比對不區分大小寫，而且會根據 URL 路徑的解碼標記法。 若要比對常值路由參數分隔符號 `{` 或 `}` ，請重複字元來將分隔符號轉義。 例如， `{{` 或 `}}` 。
 
-星號`*`或雙星號`**`：
+星號 `*` 或雙星號 `**` ：
 
 * 可以做為路由參數的前置詞，以系結至 URI 的其餘部分。
 * 稱為「**全部攔截**」參數。 例如，`blog/{**slug}`：
-  * 會比對開頭為的`/blog`任何 URI，並在其後面加上任何值。
-  * 下列`/blog`值會指派給 [[資訊](https://developer.mozilla.org/docs/Glossary/Slug)區路線] 路由值。
+  * 會比對開頭為的任何 URI `/blog` ，並在其後面加上任何值。
+  * 下列值 `/blog` 會指派給 [[資訊](https://developer.mozilla.org/docs/Glossary/Slug)區路線] 路由值。
 
 [!INCLUDE[](~/includes/catchall.md)]
 
 全部擷取參數也可以符合空字串。
 
-當使用路由來產生 URL （包括路徑分隔符號`/` ）時，catch-all 參數會將適當的字元進行轉義。 例如，路由值為 `{ path = "my/path" }` 的路由 `foo/{*path}` 會產生 `foo/my%2Fpath`。 請注意逸出的斜線。 若要反覆存取路徑分隔符號字元，請使用 `**` 路由參數前置詞。 具有 `{ path = "my/path" }` 的路由 `foo/{**path}` 會產生 `foo/my/path`。
+當使用路由來產生 URL （包括路徑分隔符號）時，catch-all 參數會將適當的字元進行轉義 `/` 。 例如，路由值為 `{ path = "my/path" }` 的路由 `foo/{*path}` 會產生 `foo/my%2Fpath`。 請注意逸出的斜線。 若要反覆存取路徑分隔符號字元，請使用 `**` 路由參數前置詞。 具有 `{ path = "my/path" }` 的路由 `foo/{**path}` 會產生 `foo/my/path`。
 
-URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他考量。 以範本 `files/{filename}.{ext?}` 為例。 當 `filename` 和 `ext` 都存在值時，就會填入這兩個值。 如果 URL 中只有`filename`存在的值，則路由會符合，因為尾端`.`是選擇性的。 下列 URL 符合此路由：
+URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他考量。 以範本 `files/{filename}.{ext?}` 為例。 當 `filename` 和 `ext` 都存在值時，就會填入這兩個值。 如果 `filename` URL 中只有存在的值，則路由會符合，因為尾端 `.` 是選擇性的。 下列 URL 符合此路由：
 
 * `/files/myFile.txt`
 * `/files/myFile`
 
-路由參數可能有「預設值」****，指定方法是在參數名稱之後指定預設值，並以等號 (`=`) 分隔。 例如，`{controller=Home}` 定義 `Home` 作為 `controller` 的預設值。 如果 URL 中沒有用於參數的任何值，則會使用預設值。 將問號（`?`）附加至參數名稱的結尾，可將路由參數設為選擇性。 例如： `id?` 。 選擇性值與預設路由參數之間的差異如下：
+路由參數可能有「預設值」****，指定方法是在參數名稱之後指定預設值，並以等號 (`=`) 分隔。 例如，`{controller=Home}` 定義 `Home` 作為 `controller` 的預設值。 如果 URL 中沒有用於參數的任何值，則會使用預設值。 將問號（ `?` ）附加至參數名稱的結尾，可將路由參數設為選擇性。 例如 `id?`。 選擇性值與預設路由參數之間的差異如下：
 
 * 具有預設值的路由參數一律會產生值。
 * 選擇性參數只有在要求 URL 提供值時才會有值。
 
-路由參數可能具有條件約束，這些條件約束必須符合與 URL 繫結的路由值。 在`:`路由參數名稱之後加入和條件約束名稱，會在路由參數上指定內嵌條件約束。 如果條件約束需要引數，這些引數會在條件約束名稱後面以括弧 `(...)` 括住。 藉由附加另一個`:`和條件約束名稱，可以指定多個*內嵌條件約束*。
+路由參數可能具有條件約束，這些條件約束必須符合與 URL 繫結的路由值。 在 `:` 路由參數名稱之後加入和條件約束名稱，會在路由參數上指定內嵌條件約束。 如果條件約束需要引數，這些引數會在條件約束名稱後面以括弧 `(...)` 括住。 藉由附加另一個和條件約束名稱，可以指定多個*內嵌條件約束* `:` 。
 
 條件約束名稱和引述會傳遞至 <xref:Microsoft.AspNetCore.Routing.IInlineConstraintResolver> 服務來建立 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 的執行個體，以用於 URL 處理。 例如，路由範本 `blog/{article:minlength(10)}` 指定具有引數 `10` 的 `minlength` 條件約束。 如需路由條件約束詳細資訊和架構所提供的條件約束清單，請參閱[路由條件約束參考](#route-constraint-reference)一節。
 
-路由參數也可以具有參數轉換器。 參數轉換器會在產生連結並比對動作和頁面到 Url 時，轉換參數的值。 如同條件約束，參數轉換器可以藉由在路由參數名稱之後新增`:`和轉換器名稱，以內嵌方式加入至路由參數。 例如，路由範本 `blog/{article:slugify}` 會指定 `slugify` 轉換器。 如需參數轉換器的詳細資訊，請參閱[參數轉器參考](#parameter-transformer-reference)一節。
+路由參數也可以具有參數轉換器。 參數轉換器會在產生連結並比對動作和頁面到 Url 時，轉換參數的值。 如同條件約束，參數轉換器可以藉由 `:` 在路由參數名稱之後新增和轉換器名稱，以內嵌方式加入至路由參數。 例如，路由範本 `blog/{article:slugify}` 會指定 `slugify` 轉換器。 如需參數轉換器的詳細資訊，請參閱[參數轉器參考](#parameter-transformer-reference)一節。
 
 下表示范範例路由範本及其行為：
 
 | 路由範本                           | 範例比對 URI    | 要求 URI&hellip;                                                    |
-| ---------------------------------------- | ----------------------- | -------------------------------------------------------------------------- |
-| `hello`                                  | `/hello`                | 只比對單一路徑 `/hello`。                                     |
-| `{Page=Home}`                            | `/`                     | 比對並將 `Page` 設定為 `Home`。                                         |
-| `{Page=Home}`                            | `/Contact`              | 比對並將 `Page` 設定為 `Contact`。                                      |
-| `{controller}/{action}/{id?}`            | `/Products/List`        | 對應至 `Products` 控制器和 `List` 動作。                       |
-| `{controller}/{action}/{id?}`            | `/Products/Details/123` | 對應至`Products`控制器和`Details`動作，`id`並將設定為123。 |
-| `{controller=Home}/{action=Index}/{id?}` | `/`                     | 對應至`Home`控制器和`Index`方法。 `id` 會被忽略。        |
-| `{controller=Home}/{action=Index}/{id?}` | `/Products`         | 對應至`Products`控制器和`Index`方法。 `id` 會被忽略。        |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------------------------- | |`hello`                                  | `/hello`               |僅符合單一路徑 `/hello` 。                                     | |`{Page=Home}`                            | `/`                    |符合並將設定 `Page` 為 `Home` 。                                         | |`{Page=Home}`                            | `/Contact`             |符合並將設定 `Page` 為 `Contact` 。                                      | |`{controller}/{action}/{id?}`            | `/Products/List`       |對應至 `Products` 控制器和 `List` 動作。                       | |`{controller}/{action}/{id?}`            | `/Products/Details/123`|對應至 `Products` 控制器和 `Details` 動作，並 `id` 將設定為123。 | |`{controller=Home}/{action=Index}/{id?}` | `/`                    |對應至 `Home` 控制器和 `Index` 方法。 `id` 會被忽略。        | |`{controller=Home}/{action=Index}/{id?}` | `/Products`        |對應至 `Products` 控制器和 `Index` 方法。 `id` 會被忽略。        |
 
 使用範本通常是最簡單的路由方式。 條件約束和預設值也可以在路由範本外部指定。
 
 ### <a name="complex-segments"></a>複雜區段
 
-複雜區段的處理方式是以[非貪婪](#greedy)的方式，將常值分隔符號從右至左比對。 例如， `[Route("/a{b}c{d}")]`是一個複雜的區段。
+複雜區段的處理方式是以[非貪婪](#greedy)的方式，將常值分隔符號從右至左比對。 例如， `[Route("/a{b}c{d}")]` 是一個複雜的區段。
 複雜的區段會以特定的方式工作，必須瞭解才能成功使用它們。 本章節中的範例將示範當分隔符號文字不會出現在參數值內時，複雜區段的效果為何。 在較複雜的情況下，需要使用[RegEx](/dotnet/standard/base-types/regular-expressions) ，然後手動將值解壓縮。
 
 [!INCLUDE[](~/includes/regex.md)]
 
-這是路由執行的步驟和範本`/a{b}c{d}`和 URL 路徑`/abcd`的摘要。 `|`是用來協助視覺化演算法的運作方式：
+這是路由執行的步驟 `/a{b}c{d}` 和範本和 URL 路徑的摘要 `/abcd` 。 `|`是用來協助視覺化演算法的運作方式：
 
-* 第一個常值（由右至左`c`）為。 因此`/abcd` ，會向右搜尋並`/ab|c|d`尋找。
-* 右邊的所有專案（`d`）現在都符合路由參數`{d}`。
-* 下一個常值（由右至左`a`）為。 因此`/ab|c|d` ，在從離開的地方開始搜尋， `a`然後找到`/|a|b|c|d`。
-* 右邊的值（`b`）現在符合路由參數。 `{b}`
+* 第一個常值（由右至左）為 `c` 。 因此， `/abcd` 會向右搜尋並尋找 `/ab|c|d` 。
+* 右邊的所有專案（ `d` ）現在都符合路由參數 `{d}` 。
+* 下一個常值（由右至左）為 `a` 。 因此， `/ab|c|d` 在從離開的地方開始搜尋，然後 `a` 找到 `/|a|b|c|d` 。
+* 右邊的值（ `b` ）現在符合路由參數 `{b}` 。
 * 沒有任何剩餘的文字，也沒有剩餘的路由範本，因此這是相符的。
 
-以下是使用相同範本`/a{b}c{d}`和 URL 路徑`/aabcd`的負面案例範例。 `|`是用來協助視覺化演算法的運作方式。 這種情況並不相符，這會透過相同的演算法來說明：
-* 第一個常值（由右至左`c`）為。 因此`/aabcd` ，會向右搜尋並`/aab|c|d`尋找。
-* 右邊的所有專案（`d`）現在都符合路由參數`{d}`。
-* 下一個常值（由右至左`a`）為。 因此`/aab|c|d` ，在從離開的地方開始搜尋， `a`然後找到`/a|a|b|c|d`。
-* 右邊的值（`b`）現在符合路由參數。 `{b}`
-* 此時會有剩餘的文字`a`，但演算法已用完路由範本進行剖析，因此這不是相符的。
+以下是使用相同範本和 URL 路徑的負面案例範例 `/a{b}c{d}` `/aabcd` 。 `|`是用來協助視覺化演算法的運作方式。 這種情況並不相符，這會透過相同的演算法來說明：
+* 第一個常值（由右至左）為 `c` 。 因此， `/aabcd` 會向右搜尋並尋找 `/aab|c|d` 。
+* 右邊的所有專案（ `d` ）現在都符合路由參數 `{d}` 。
+* 下一個常值（由右至左）為 `a` 。 因此， `/aab|c|d` 在從離開的地方開始搜尋，然後 `a` 找到 `/a|a|b|c|d` 。
+* 右邊的值（ `b` ）現在符合路由參數 `{b}` 。
+* 此時會有剩餘的文字 `a` ，但演算法已用完路由範本進行剖析，因此這不是相符的。
 
 因為比對演算法[是非貪婪](#greedy)的：
 
@@ -496,30 +1039,82 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 路由條件約束執行時機是出現符合傳入 URL 的項目，並將 URL 路徑語彙基元化成路由值時。 路由條件約束通常會檢查透過路由範本相關聯的路由值，並對值是否可接受進行 true 或 false 的決策。 某些路由條件約束會使用路由值以外的資料，以考慮是否可以路由要求。 例如，<xref:Microsoft.AspNetCore.Routing.Constraints.HttpMethodRouteConstraint> 可以依據其 HTTP 指令動詞接受或拒絕要求。 條件約束可用於路由要求和連結產生。
 
 > [!WARNING]
-> 請勿針對輸入驗證使用條件約束。 如果條件約束用於輸入驗證，則不正確輸入會導致`404`找不到的回應。 不正確輸入應該會`400`產生不正確的要求，並出現適當的錯誤訊息。 路由條件約束會用來釐清類似的路由，而不是用來驗證特定路由的輸入。
+> 請勿針對輸入驗證使用條件約束。 如果條件約束用於輸入驗證，則不正確輸入會導致找不到的 `404` 回應。 不正確輸入應該會產生不 `400` 正確的要求，並出現適當的錯誤訊息。 路由條件約束會用來釐清類似的路由，而不是用來驗證特定路由的輸入。
 
 下表示范範例路由條件約束及其預期行為：
 
 | constraint (條件約束) | 範例 | 範例相符項目 | 備忘錄 |
-| ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
-| `bool` | `{active:bool}` | `true`, `FALSE` | 符合`true`或`false`。 不區分大小寫 |
-| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | 符合不因`DateTime`文化特性而異的有效值。 請參閱先前的警告。 |
-| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | 符合不因`decimal`文化特性而異的有效值。 請參閱先前的警告。|
-| `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | 符合不因`double`文化特性而異的有效值。 請參閱先前的警告。|
-| `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | 符合不因`float`文化特性而異的有效值。 請參閱先前的警告。|
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638` | 符合有效的 `Guid` 值 |
-| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效的 `long` 值 |
-| `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有 4 個字元 |
-| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | 字串不能超過 8 個字元 |
-| `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好是 12 個字元 |
-| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | 字串長度必須至少有 8 個字元，但不能超過 16 個字元 |
-| `min(value)` | `{age:min(18)}` | `19` | 整數值必須至少為 18 |
-| `max(value)` | `{age:max(120)}` | `91` | 整數值不能超過 120 |
-| `range(min,max)` | `{age:range(18,120)}` | `91` | 整數值必須至少為 18，但不能超過 120 |
-| `alpha` | `{name:alpha}` | `Rick` | 字串必須包含一或多個字母字元， `a` - `z`並不區分大小寫。 |
-| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | 字串必須符合正則運算式。 請參閱定義正則運算式的秘訣。 |
-| `required` | `{name:required}` | `Rick` | 用來強制執行在 URL 產生期間呈現非參數值 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------- |----- | |`int` | `{id:int}` | `123456789`, `-123456789` |符合任何整數 | |`bool` | `{active:bool}` | `true`, `FALSE` |符合 `true` 或 `false` 。 不區分大小寫 | |`datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` |符合不因文化特性而異的有效 `DateTime` 值。 請參閱先前的警告。 | |`decimal` | `{price:decimal}` | `49.99`, `-1,000.01` |符合不因文化特性而異的有效 `decimal` 值。 請參閱先前的警告。 ||`double` | `{weight:double}` | `1.234`, `-1,001.01e8` |符合不因文化特性而異的有效 `double` 值。 請參閱先前的警告。 ||`float` | `{weight:float}` | `1.234`, `-1,001.01e8` |符合不因文化特性而異的有效 `float` 值。 請參閱先前的警告。 ||`guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`|符合有效的 `Guid` 值 | | `long`  |  `{ticks:long}`  |  `123456789` 、 `-123456789` |符合有效的 `long` 值 | | `minlength(value)`  |  `{username:minlength(4)}`  |  `Rick` |字串必須至少有4個字元 | |`maxlength(value)` | `{filename:maxlength(8)}` | `MyFile`|字串不能超過8個字元 | |`length(length)` | `{filename:length(12)}` | `somefile.txt`|字串的長度必須剛好是12個字元 | |`length(min,max)` | `{filename:length(8,16)}` | `somefile.txt`|字串必須至少為8，且長度不能超過16個字元 | |`min(value)` | `{age:min(18)}` | `19`|整數值必須至少為 18 | |`max(value)` | `{age:max(120)}` | `91`|整數值不能超過 120 | |`range(min,max)` | `{age:range(18,120)}` | `91`|整數值必須至少為18，但不能超過 120 | |`alpha` | `{name:alpha}` | `Rick`|字串必須包含一或多個字母字元， `a` - `z` 並不區分大小寫。 | |`regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789`|字串必須符合正則運算式。 請參閱定義正則運算式的秘訣。 | |`required` | `{name:required}` | `Rick`|用來強制在 URL 產生期間出現非參數值 |
 
 [!INCLUDE[](~/includes/regex.md)]
 
@@ -531,13 +1126,13 @@ public User GetUserById(int id) { }
 ```
 
 > [!WARNING]
-> 驗證 URL 並轉換成 CLR 類型的路由條件約束，一律會使用不因文化特性而異。 例如，轉換成 CLR 型`int`別或。 `DateTime` 這些條件約束假設 URL 無法當地語系化。 架構提供的路由條件約束不會修改路由值中儲存的值。 所有從 URL 剖析而來的路由值會儲存為字串。 例如，`float` 條件約束會嘗試將路由值轉換成浮點數，但轉換的值只能用來確認它可以轉換成浮點數。
+> 驗證 URL 並轉換成 CLR 類型的路由條件約束，一律會使用不因文化特性而異。 例如，轉換成 CLR 型別 `int` 或 `DateTime` 。 這些條件約束假設 URL 無法當地語系化。 架構提供的路由條件約束不會修改路由值中儲存的值。 所有從 URL 剖析而來的路由值會儲存為字串。 例如，`float` 條件約束會嘗試將路由值轉換成浮點數，但轉換的值只能用來確認它可以轉換成浮點數。
 
 ### <a name="regular-expressions-in-constraints"></a>條件約束中的正則運算式
 
 [!INCLUDE[](~/includes/regex.md)]
 
-正則運算式可以指定為使用路由條件約束`regex(...)`的內嵌條件約束。 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*>系列中的方法也會接受條件約束的物件常值。 如果使用該表單，字串值就會被視為正則運算式。
+正則運算式可以指定為使用路由條件約束的內嵌條件約束 `regex(...)` 。 系列中的方法 <xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllerRoute*> 也會接受條件約束的物件常值。 如果使用該表單，字串值就會被視為正則運算式。
 
 下列程式碼會使用內嵌 RegEx 條件約束：
 
@@ -549,28 +1144,298 @@ public User GetUserById(int id) { }
 
 ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` 新增至規則運算式建構函式。 如需這些成員的說明，請參閱 <xref:System.Text.RegularExpressions.RegexOptions>。
 
-正則運算式會使用類似路由和 c # 語言所使用的分隔符號和標記。 規則運算式的語彙基元必須逸出。 若要在內嵌條件`^\d{3}-\d{2}-\d{4}$`約束中使用正則運算式，請使用下列其中一項：
+正則運算式會使用類似路由和 c # 語言所使用的分隔符號和標記。 規則運算式的語彙基元必須逸出。 若要 `^\d{3}-\d{2}-\d{4}$` 在內嵌條件約束中使用正則運算式，請使用下列其中一項：
 
-* 將`\`字串中提供的字元取代`\\`為 c # 原始檔中的字元，以便將`\`字串 escape 字元轉義。
+* 將 `\` 字串中提供的字元取代為 c # 原始檔中的字元，以便 `\\` 將 `\` 字串 escape 字元轉義。
 * [逐字字串常](/dotnet/csharp/language-reference/keywords/string)值。
 
-若要轉義路由參數分隔符號`{`、 `}`、 `[`、 `]`，請將運算式中的`{{`字元加倍， `}}`例如、、 `[[`、。 `]]` 下表顯示正則運算式和其轉義版本：
+若要轉義路由參數分隔符號 `{` 、 `}` 、 `[` 、，請將 `]` 運算式中的字元加倍，例如、 `{{` 、 `}}` `[[` 、 `]]` 。 下表顯示正則運算式和其轉義版本：
 
 | 規則運算式    | 已轉義的正則運算式     |
-| --------------------- | ------------------------------ |
-| `^\d{3}-\d{2}-\d{4}$` | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- | | `^\d{3}-\d{2}-\d{4}$` | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` |
 | `^[a-z]{2}$`          | `^[[a-z]]{{2}}$`               |
 
-路由中使用的正則運算式通常以`^`字元開頭，並符合字串的開始位置。 運算式通常以`$`字元結尾，並符合字串的結尾。 `^`和`$`字元可確保正則運算式符合整個路由參數值。 如果沒有`^`和`$`字元，正則運算式會比對字串內的任何子字串，這通常是不需要的。 下表提供範例，並說明它們符合或無法符合的原因：
+路由中使用的正則運算式通常以 `^` 字元開頭，並符合字串的開始位置。 運算式通常以 `$` 字元結尾，並符合字串的結尾。 `^`和 `$` 字元可確保正則運算式符合整個路由參數值。 如果沒有 `^` 和 `$` 字元，正則運算式會比對字串內的任何子字串，這通常是不需要的。 下表提供範例，並說明它們符合或無法符合的原因：
 
-| 運算是   | String    | 比對 | 註解               |
-| ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
+| 運算式   | String    | 比對 | 註解               |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |:---: | ---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------- || `[a-z]{2}`   |您好 |是 |子字串符合 || `[a-z]{2}`   |123abc456 |是 |子字串符合 || `[a-z]{2}`   |mz |是 |符合運算式 || `[a-z]{2}`   |MZ |是 |不區分大小寫 || `^[a-z]{2}$` |您好 |否 |查看 `^` 和更新版本 `$` | | `^[a-z]{2}$` | 123abc456 |否 |請參閱和更新版本 `^` `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
@@ -578,13 +1443,13 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 ### <a name="custom-route-constraints"></a>自訂路由條件約束
 
-您可以藉由執行<xref:Microsoft.AspNetCore.Routing.IRouteConstraint>介面來建立自訂路由條件約束。 `IRouteConstraint`介面<xref:System.Web.Routing.IRouteConstraint.Match*>包含， `true`如果條件約束已滿足，則會傳回`false` ，否則會傳回。
+您可以藉由執行介面來建立自訂路由條件約束 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 。 `IRouteConstraint`介面包含 <xref:System.Web.Routing.IRouteConstraint.Match*> ， `true` 如果條件約束已滿足，則會傳回，否則會傳回 `false` 。
 
 很少需要自訂路由條件約束。 在執行自訂路由條件約束之前，請考慮使用替代專案，例如模型系結。
 
 [ASP.NET Core[條件約束](https://github.com/dotnet/aspnetcore/tree/master/src/Http/Routing/src/Constraints)] 資料夾會提供建立條件約束的良好範例。 例如， [GuidRouteConstraint](https://github.com/dotnet/aspnetcore/blob/master/src/Http/Routing/src/Constraints/GuidRouteConstraint.cs#L18)。
 
-若要使用自`IRouteConstraint`定義，則必須向服務容器<xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>中的應用程式註冊路由條件約束類型。 `ConstraintMap` 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 `IRouteConstraint` 實作。 更新應用程式的 `ConstraintMap` 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如：
+若要使用自訂 `IRouteConstraint` ，則必須向 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 服務容器中的應用程式註冊路由條件約束類型。 `ConstraintMap` 是一個目錄，它將路由限制式機碼對應到可驗證那些限制式的 `IRouteConstraint` 實作。 更新應用程式的 `ConstraintMap` 時，可在 `Startup.ConfigureServices` 中於進行 [services.AddRouting](xref:Microsoft.Extensions.DependencyInjection.RoutingServiceCollectionExtensions.AddRouting*) 呼叫時更新，或透過使用 `services.Configure<RouteOptions>` 直接設定 <xref:Microsoft.AspNetCore.Routing.RouteOptions> 來更新。 例如：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupConstraint.cs?name=snippet)]
 
@@ -594,7 +1459,7 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 [!INCLUDE[](~/includes/MyDisplayRouteInfo.md)]
 
-的執行`MyCustomConstraint`會防止`0`套用至路由參數：
+的執行 `MyCustomConstraint` 會防止套用 `0` 至路由參數：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupConstraint.cs?name=snippet2)]
 
@@ -602,23 +1467,23 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 上述程式碼：
 
-* 防止`0`在路由`{id}`的區段中。
+* 防止 `0` 在 `{id}` 路由的區段中。
 * 會顯示以提供執行自訂條件約束的基本範例。 不應在生產應用程式中使用。
 
-下列程式碼是避免處理`id`包含`0`之的較佳方法：
+下列程式碼是避免 `id` 處理包含之的較佳方法 `0` ：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Controllers/TestController.cs?name=snippet2)]
 
-上述程式碼在此`MyCustomConstraint`方法上具有下列優點：
+上述程式碼在此方法上具有下列優點 `MyCustomConstraint` ：
 
 * 不需要自訂條件約束。
-* 當路由參數包含`0`時，它會傳回更具描述性的錯誤。
+* 當路由參數包含時，它會傳回更具描述性的錯誤 `0` 。
 
 ## <a name="parameter-transformer-reference"></a>參數轉換器參考
 
 參數轉換程式：
 
-* 使用<xref:Microsoft.AspNetCore.Routing.LinkGenerator>產生連結時執行。
+* 使用產生連結時執行 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 。
 * 實作 <xref:Microsoft.AspNetCore.Routing.IOutboundParameterTransformer?displayProperty=fullName>。
 * 是使用 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> 進行設定的。
 * 採用參數的路由值，並將它轉換為新的字串值。
@@ -626,15 +1491,15 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 例如，具有 `Url.Action(new { article = "MyTestArticle" })` 之路由模式 `blog\{article:slugify}` 中的自訂 `slugify` 參數轉換器，會產生 `blog\my-test-article`。
 
-請考慮下列`IOutboundParameterTransformer`執行：
+請考慮下列執行 `IOutboundParameterTransformer` ：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupConstraint2.cs?name=snippet2)]
 
-若要在路由模式中使用參數轉換器，請使用<xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap>中的`Startup.ConfigureServices`來設定它：
+若要在路由模式中使用參數轉換器，請使用中的來設定它 <xref:Microsoft.AspNetCore.Routing.RouteOptions.ConstraintMap> `Startup.ConfigureServices` ：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupConstraint2.cs?name=snippet)]
 
-ASP.NET Core framework 會使用參數轉換器來轉換端點解析的 URI。 例如，參數轉換器會轉換用來比`area`對、 `controller`、 `action`和`page`的路由值。
+ASP.NET Core framework 會使用參數轉換器來轉換端點解析的 URI。 例如，參數轉換器會轉換用來比對 `area` 、、和的路由值 `controller` `action` `page` 。
 
 ```csharp
 routes.MapControllerRoute(
@@ -642,47 +1507,47 @@ routes.MapControllerRoute(
     template: "{controller:slugify=Home}/{action:slugify=Index}/{id?}");
 ```
 
-使用上述路由範本，動作`SubscriptionManagementController.GetAll`會與 URI `/subscription-management/get-all`相符。 參數轉換器不會變更用來產生連結的路由值。 例如，`Url.Action("GetAll", "SubscriptionManagement")` 會輸出 `/subscription-management/get-all`。
+使用上述路由範本，動作 `SubscriptionManagementController.GetAll` 會與 URI 相符 `/subscription-management/get-all` 。 參數轉換器不會變更用來產生連結的路由值。 例如，`Url.Action("GetAll", "SubscriptionManagement")` 會輸出 `/subscription-management/get-all`。
 
 ASP.NET Core 提供使用參數轉換器搭配產生的路由的 API 慣例：
 
-* <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention?displayProperty=fullName> MVC 慣例會將指定的參數轉換器套用至應用程式中的所有屬性路由。 參數轉換程式會在被取代時轉換屬性路由語彙基元。 如需詳細資訊，請參閱[使用參數轉換程式自訂語彙基元取代](xref:mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement)。
-* Razor Pages 使用<xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention> API 慣例。 此慣例會將所指定參數轉換器套用至所有自動探索到的 Razor Pages。 參數轉換器會轉換 Razor Pages 路由的資料夾與檔案名稱區段。 如需詳細資訊，請參閱[使用參數轉換程式自訂頁面路由](xref:razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes)。
+* <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention?displayProperty=fullName>MVC 慣例會將指定的參數轉換器套用至應用程式中的所有屬性路由。 參數轉換程式會在被取代時轉換屬性路由語彙基元。 如需詳細資訊，請參閱[使用參數轉換程式自訂語彙基元取代](xref:mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement)。
+* Razor頁面會使用 <xref:Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention> API 慣例。 此慣例會將指定的參數轉換器套用至所有自動探索的 Razor 頁面。 參數轉換器會轉換頁面路由的資料夾和檔案名區段 Razor 。 如需詳細資訊，請參閱[使用參數轉換程式自訂頁面路由](xref:razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes)。
 
 <a name="ugr"></a>
 
 ## <a name="url-generation-reference"></a>URL 產生參考
 
-此章節包含 URL 產生所實作為演算法的參考。 實際上，最複雜的 URL 產生範例會使用控制器或 Razor Pages。 如需其他資訊，請參閱[控制器中的路由](xref:mvc/controllers/routing)。
+此章節包含 URL 產生所實作為演算法的參考。 實際上，最複雜的 URL 產生範例會使用控制器或 Razor 頁面。 如需其他資訊，請參閱[控制器中的路由](xref:mvc/controllers/routing)。
 
-URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*)或類似的方法開始。 提供的方法包含位址、一組路由值，以及來自`HttpContext`的目前要求的選擇性資訊。
+URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*)或類似的方法開始。 提供的方法包含位址、一組路由值，以及來自的目前要求的選擇性資訊 `HttpContext` 。
 
-第一個步驟是使用位址來解析一組候選端點[`IEndpointAddressScheme<TAddress>`](xref:Microsoft.AspNetCore.Routing.IEndpointAddressScheme`1) ，並使用符合網址類別型的。
+第一個步驟是使用位址來解析一組候選端點，並使用 [`IEndpointAddressScheme<TAddress>`](xref:Microsoft.AspNetCore.Routing.IEndpointAddressScheme`1) 符合網址類別型的。
 
 位址配置找到一組候選項目之後，就會反復排序並處理端點，直到 URL 產生作業成功為止。 URL**產生不會檢查是否**有多義性，傳回的第一個結果是最終的結果。
 
 ### <a name="troubleshooting-url-generation-with-logging"></a>使用記錄進行 URL 產生的疑難排解
 
-針對 URL 產生進行疑難排解的第一個步驟是將的記錄`Microsoft.AspNetCore.Routing`層`TRACE`級設定為。 `LinkGenerator`記錄其處理的許多詳細資料，這有助於疑難排解問題。
+針對 URL 產生進行疑難排解的第一個步驟是將的記錄層級設定 `Microsoft.AspNetCore.Routing` 為 `TRACE` 。 `LinkGenerator`記錄其處理的許多詳細資料，這有助於疑難排解問題。
 
 如需 URL 產生的詳細資訊，請參閱[url 產生參考](#ugr)。
 
-### <a name="addresses"></a>位址
+### <a name="addresses"></a>地址
 
 位址是 URL 產生的概念，用來將連結產生器的呼叫系結至一組候選端點。
 
 位址是一種可延伸的概念，預設會隨附兩個執行：
 
-* 使用*端點名稱*（`string`）作為位址：
+* 使用*端點名稱*（ `string` ）作為位址：
     * 為 MVC 的路由名稱提供類似的功能。
-    * 使用<xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata>元資料類型。
+    * 使用 <xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata> 元資料類型。
     * 針對所有已註冊端點的中繼資料，解析提供的字串。
     * 如果多個端點使用相同的名稱，則會在啟動時擲回例外狀況。
-    * 建議在控制器和 Razor Pages 外部使用一般用途。
-* 使用*路由值*（<xref:Microsoft.AspNetCore.Routing.RouteValuesAddress>）做為位址：
-    * 提供與控制器類似的功能，並 Razor Pages 舊版的 URL 產生。
+    * 建議用於在控制器和頁面以外的一般用途 Razor 。
+* 使用*路由值*（ <xref:Microsoft.AspNetCore.Routing.RouteValuesAddress> ）做為位址：
+    * 提供類似的功能來進行控制器和 Razor 分頁的舊版 URL 產生。
     * 擴充和調試非常複雜。
-    * 提供所使用的實`IUrlHelper`作為、標記協助程式、HTML Helper、動作結果等。
+    * 提供所使用的實作為 `IUrlHelper` 、標記協助程式、HTML helper、動作結果等。
 
 位址配置的角色是讓位址和相符端點之間的關聯依照任意準則：
 
@@ -693,58 +1558,58 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 ### <a name="ambient-values-and-explicit-values"></a>環境值和明確的值
 
-根據目前的要求，路由會存取目前要求`HttpContext.Request.RouteValues`的路由值。 與目前要求相關聯的值稱為「**環境值**」。 為了清楚起見，檔是指傳遞至方法做為**明確值**的路由值。
+根據目前的要求，路由會存取目前要求的路由值 `HttpContext.Request.RouteValues` 。 與目前要求相關聯的值稱為「**環境值**」。 為了清楚起見，檔是指傳遞至方法做為**明確值**的路由值。
 
-下列範例會顯示環境值和明確的值。 它會從目前的要求和明確的值中提供`{ id = 17, }`環境值：
+下列範例會顯示環境值和明確的值。 它會從目前的要求和明確的值中提供環境 `{ id = 17, }` 值：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Controllers/WidgetController.cs?name=snippet)]
 
 上述程式碼：
 
 * 傳回 `/Widget/Index/17`。
-* 透過<xref:Microsoft.AspNetCore.Routing.LinkGenerator> [DI](xref:fundamentals/dependency-injection)取得。
+* 透過 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> [DI](xref:fundamentals/dependency-injection)取得。
 
-下列程式碼不會提供環境值和明確的`{ controller = "Home", action = "Subscribe", id = 17, }`值：
+下列程式碼不會提供環境值和明確的 `{ controller = "Home", action = "Subscribe", id = 17, }` 值：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Controllers/WidgetController.cs?name=snippet2)]
 
 上述方法會傳回`/Home/Subscribe/17`
 
-中`WidgetController`的下列程式碼會`/Widget/Subscribe/17`傳回：
+中的下列程式碼會傳回 `WidgetController` `/Widget/Subscribe/17` ：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Controllers/WidgetController.cs?name=snippet3)]
 
-下列程式碼會從目前要求中的環境值和明確值提供控制器： `{ action = "Edit", id = 17, }`
+下列程式碼會從目前要求中的環境值和明確值提供 `{ action = "Edit", id = 17, }` 控制器：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Controllers/GadgetController.cs?name=snippet)]
 
 在上述程式碼中：
 
 * `/Gadget/Edit/17`傳回。
-* <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Url>取得<xref:Microsoft.AspNetCore.Mvc.IUrlHelper>。
+* <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Url>取得 <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> 。
 * <xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Action*>   
-產生具有動作方法之絕對路徑的 URL。 URL 包含指定`action`的名稱和`route`值。
+產生具有動作方法之絕對路徑的 URL。 URL 包含指定的 `action` 名稱和 `route` 值。
 
-下列程式碼提供來自目前要求和明確值的環境值： `{ page = "./Edit, id = 17, }`
+下列程式碼提供來自目前要求和明確值的環境 `{ page = "./Edit, id = 17, }` 值：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Pages/Index.cshtml.cs?name=snippet)]
 
-當編輯 Razor 頁面`url`包含`/Edit/17`下列 Page 指示詞時，上述程式碼會將設為：
+上述程式碼會 `url` 在 `/Edit/17` [編輯] Razor 頁面包含下列頁面指示詞時，將設為：
 
  `@page "{id:int}"`
 
-如果 [編輯] 頁面不包含`"{id:int}"`路由範本， `url`則`/Edit?id=17`為。
+如果 [編輯] 頁面不包含 `"{id:int}"` 路由範本， `url` 則為 `/Edit?id=17` 。
 
-除了此處所述的<xref:Microsoft.AspNetCore.Mvc.IUrlHelper>規則之外，MVC 的行為也會增加一層複雜度：
+<xref:Microsoft.AspNetCore.Mvc.IUrlHelper>除了此處所述的規則之外，MVC 的行為也會增加一層複雜度：
 
 * `IUrlHelper`一律會提供來自目前要求的路由值做為環境值。
-* [IUrlHelper](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Action*)一律會將目前`action`的和`controller`路由值複製成明確的值，除非由開發人員覆寫。
-* [IUrlHelper](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Page*)一律會將目前`page`的路由值複製成明確的值，除非予以覆寫。 <!--by the user-->
-* `IUrlHelper.Page`除非覆寫， `handler`否則一律會`null`以明確的值覆寫目前的路由值。
+* [IUrlHelper](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Action*)一律會將目前的 `action` 和 `controller` 路由值複製成明確的值，除非由開發人員覆寫。
+* [IUrlHelper](xref:Microsoft.AspNetCore.Mvc.UrlHelperExtensions.Page*)一律會將目前的 `page` 路由值複製成明確的值，除非予以覆寫。 <!--by the user-->
+* `IUrlHelper.Page`除非覆寫，否則一律會以明確的值覆寫目前的 `handler` 路由值 `null` 。
 
-使用者通常會因為環境值的行為詳細資料而感到驚訝，因為 MVC 似乎不會遵循其本身的規則。 基於歷史和相容性的原因，某些路由值`action`（ `controller`例如`page`、、 `handler`和）有自己的特殊案例行為。
+使用者通常會因為環境值的行為詳細資料而感到驚訝，因為 MVC 似乎不會遵循其本身的規則。 基於歷史和相容性的原因，某些路由值（例如 `action` 、 `controller` 、 `page` 和） `handler` 有自己的特殊案例行為。
 
-所提供的對等`LinkGenerator.GetPathByAction`功能`LinkGenerator.GetPathByPage` ，會複製這些`IUrlHelper`異常的以實現相容性。
+所提供的對等功能 `LinkGenerator.GetPathByAction` ，會 `LinkGenerator.GetPathByPage` 複製這些異常的 `IUrlHelper` 以實現相容性。
 
 ### <a name="url-generation-process"></a>URL 產生進程
 
@@ -762,24 +1627,24 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 * 連結至相同的動作方法時，不需要指定路由值。
 * 當連結到應用程式的另一個部分時，您不會想要在應用程式的該部分中執行不具意義的路由值。
 
-呼叫`LinkGenerator`或`IUrlHelper`傳回的通常`null`是因為不了解路由值失效所造成。 明確指定更多的路由值，以查看是否能解決問題，以針對路由值失效進行疑難排解。
+呼叫 `LinkGenerator` 或傳回 `IUrlHelper` 的 `null` 通常是因為不了解路由值失效所造成。 明確指定更多的路由值，以查看是否能解決問題，以針對路由值失效進行疑難排解。
 
-路由值失效的假設是應用程式的 URL 配置是階層式的，並以從左至右形成的階層。 請考慮使用「基本控制器`{controller}/{action}/{id?}`路由」範本，以直覺的方式來瞭解這在實務上如何運作。 值的**變更**會使顯示在右側的所有路由值**失效**。 這反映了關於階層的假設。 如果應用程式具有的`id`環境值，且作業為指定了不同的`controller`值：
+路由值失效的假設是應用程式的 URL 配置是階層式的，並以從左至右形成的階層。 請考慮使用「基本控制器路由」範本 `{controller}/{action}/{id?}` ，以直覺的方式來瞭解這在實務上如何運作。 值的**變更**會使顯示在右側的所有路由值**失效**。 這反映了關於階層的假設。 如果應用程式具有的環境值 `id` ，且作業為指定了不同的值 `controller` ：
 
-* `id`不會重複使用`{controller}` ，因為位於的左邊`{id?}`。
+* `id`不會重複使用 `{controller}` ，因為位於的左邊 `{id?}` 。
 
 示範此原則的一些範例如下：
 
-* 如果明確的值包含的值`id`，則`id`會忽略的環境值。 您可以使用`controller`和`action`的環境值。
-* 如果明確的值包含的值`action`，則會忽略的`action`任何環境值。 `controller`可以使用的環境值。 如果的明確值`action`與的環境值不同`action`，則不會使用`id`此值。  如果的明確值`action`與的環境值相同`action`，則`id`可以使用值。
-* 如果明確的值包含的值`controller`，則會忽略的`controller`任何環境值。 如果的`controller`明確值與的環境值不同`controller`，則不會使用`action`和`id`值。 如果的`controller`明確值與的環境值相同`controller`，則`action`可以使用和`id`值。
+* 如果明確的值包含的值 `id` ，則會忽略的環境值 `id` 。 您 `controller` 可以使用和的環境值 `action` 。
+* 如果明確的值包含的值 `action` ，則會忽略的任何環境值 `action` 。 可以使用的環境值 `controller` 。 如果的明確值與 `action` 的環境值不同 `action` ，則 `id` 不會使用此值。  如果的明確值與 `action` 的環境值相同 `action` ，則 `id` 可以使用值。
+* 如果明確的值包含的值 `controller` ，則會忽略的任何環境值 `controller` 。 如果的明確值與 `controller` 的環境值不同 `controller` ，則 `action` `id` 不會使用和值。 如果的明確值與 `controller` 的環境值相同 `controller` ，則 `action` `id` 可以使用和值。
 
-這個程式會因為屬性路由的存在和專用的慣例路由而變得更複雜。 控制器慣例路由， `{controller}/{action}/{id?}`例如使用路由參數來指定階層。 針對[專用的傳統路由](xref:mvc/controllers/routing#dcr)和[屬性路由](xref:mvc/controllers/routing#ar)至控制器和 Razor Pages：
+這個程式會因為屬性路由的存在和專用的慣例路由而變得更複雜。 控制器慣例路由，例如 `{controller}/{action}/{id?}` 使用路由參數來指定階層。 針對[專用的傳統路由](xref:mvc/controllers/routing#dcr)，以及控制器和頁面的[屬性路由](xref:mvc/controllers/routing#ar) Razor ：
 
 * 有路由值的階層。
 * 它們不會出現在範本中。
 
-在這些情況下，URL 產生會定義**必要的值**概念。 控制器和 Razor Pages 所建立的端點具有指定的必要值，讓路由值失效。
+在這些情況下，URL 產生會定義**必要的值**概念。 控制器和頁面所建立的端點， Razor 所指定的必要值可讓路由值失效。
 
 路由值失效演算法詳細資料：
 
@@ -805,11 +1670,336 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 明確提供並不符合路由區段的值會新增至查詢字串。 下表顯示使用路由範本 `{controller}/{action}/{id?}` 時的結果。
 
 | 環境值                     | 明確值                        | 結果                  |
-| ---------------------------------- | -------------------------------------- | ----------------------- |
-| controller = "Home"                | action = "About"                       | `/Home/About`           |
-| controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
-| controller = "Home", color = "Red" | action = "About"                       | `/Home/About`           |
-| controller = "Home"                | action = "About", color = "Red"        | `/Home/About?color=Red` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------ | |控制器 = "Home" |action = "About" |`/Home/About`|
+|控制器 = "Home" |控制器 = "Order"，action = "About" |`/Order/About`|
+|控制器 = "Home"，color = "Red" |action = "About" |`/Home/About`|
+|控制器 = "Home" |action = "About"，color = "Red" |`/Home/About?color=Red`                                |
 
 ### <a name="problems-with-route-value-invalidation"></a>路由值失效的問題
 
@@ -819,17 +2009,17 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupUnsupported.cs?name=snippet)]
 
-在上述程式碼中， `culture` route 參數是用於當地語系化。 想要讓`culture`參數一律接受為環境值。 不過，因為`culture`必要值的使用方式，所以不接受參數作為環境值：
+在上述程式碼中， `culture` route 參數是用於當地語系化。 想要讓 `culture` 參數一律接受為環境值。 不過， `culture` 因為必要值的使用方式，所以不接受參數作為環境值：
 
-* 在`"default"` `culture`路由範本中，路由參數是在的左邊`controller`，因此變更`controller`不會使失效。 `culture`
-* 在`"blog"`路由範本中， `culture`路由參數會被視為位於的右邊`controller`，這會出現在必要的值中。
+* 在 `"default"` 路由範本中， `culture` 路由參數是在的左邊 `controller` ，因此變更 `controller` 不會使失效 `culture` 。
+* 在 `"blog"` 路由範本中， `culture` 路由參數會被視為位於的右邊 `controller` ，這會出現在必要的值中。
 
 ## <a name="configuring-endpoint-metadata"></a>設定端點中繼資料
 
 下列連結提供設定端點中繼資料的相關資訊：
 
 * [使用端點路由來啟用 Cors](xref:security/cors#enable-cors-with-endpoint-routing)
-* 使用自訂`[MinimumAgeAuthorize]`屬性的[IAuthorizationPolicyProvider 範例](https://github.com/dotnet/AspNetCore/tree/release/3.0/src/Security/samples/CustomPolicyProvider)
+* 使用自訂屬性的[IAuthorizationPolicyProvider 範例](https://github.com/dotnet/AspNetCore/tree/release/3.0/src/Security/samples/CustomPolicyProvider) `[MinimumAgeAuthorize]`
 * [使用 [授權] 屬性測試驗證](xref:security/authentication/identity#test-identity)
 * <xref:Microsoft.AspNetCore.Builder.AuthorizationEndpointConventionBuilderExtensions.RequireAuthorization*>
 * [選取具有 [授權] 屬性的配置](xref:security/authorization/limitingidentitybyscheme#selecting-the-scheme-with-the-authorize-attribute)
@@ -842,22 +2032,22 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 <xref:Microsoft.AspNetCore.Builder.RoutingEndpointConventionBuilderExtensions.RequireHost*>將條件約束套用至需要指定之主控制項的路由。 `RequireHost`或[[Host]](xref:Microsoft.AspNetCore.Routing.HostAttribute)參數可以是：
 
-* 主機： `www.domain.com`，符合`www.domain.com`任何埠。
-* 具有萬用字元的主機`*.domain.com`：、 `www.domain.com`符合`subdomain.domain.com`、或`www.subdomain.domain.com`任何埠上的。
-* 埠： `*:5000`，符合任何主機的通訊埠5000。
-* 主機和埠： `www.domain.com:5000`或`*.domain.com:5000`符合主機和埠。
+* 主機： `www.domain.com` ，符合 `www.domain.com` 任何埠。
+* 具有萬用字元的主機： `*.domain.com` 、符合 `www.domain.com` 、 `subdomain.domain.com` 或 `www.subdomain.domain.com` 任何埠上的。
+* 埠： `*:5000` ，符合任何主機的通訊埠5000。
+* 主機和埠： `www.domain.com:5000` 或 `*.domain.com:5000` 符合主機和埠。
 
-您可以使用`RequireHost`或`[Host]`來指定多個參數。 條件約束符合任何參數的有效主機。 例如， `[Host("domain.com", "*.domain.com")]`會比`domain.com`對`www.domain.com`、和`subdomain.domain.com`。
+您可以使用或來指定多個參數 `RequireHost` `[Host]` 。 條件約束符合任何參數的有效主機。 例如，會比對 `[Host("domain.com", "*.domain.com")]` `domain.com` 、 `www.domain.com` 和 `subdomain.domain.com` 。
 
-下列程式碼會`RequireHost`使用來要求路由上指定的主機：
+下列程式碼會使用 `RequireHost` 來要求路由上指定的主機：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/StartupRequireHost.cs?name=snippet)]
 
-下列程式碼會在`[Host]`控制器上使用屬性來要求任何指定的主機：
+下列程式碼會在 `[Host]` 控制器上使用屬性來要求任何指定的主機：
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/Controllers/ProductController.cs?name=snippet)]
 
-當`[Host]`屬性同時套用至控制器和動作方法時：
+當 `[Host]` 屬性同時套用至控制器和動作方法時：
 
 * 會使用動作上的屬性。
 * 已忽略控制器屬性。
@@ -866,7 +2056,7 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 大部分的路由都已在 ASP.NET Core 3.0 中更新，以提高效能。
 
-當應用程式發生效能問題時，通常會懷疑路由是問題。 路由的原因是，控制器和 Razor Pages 之類的架構，會報告其記錄訊息內所花費的時間量。 當控制器回報的時間與要求的總時間之間有顯著的差異時：
+當應用程式發生效能問題時，通常會懷疑路由是問題。 路由的原因是，控制器和頁面之類的架構，會 Razor 回報在其記錄訊息內所花費的時間量。 當控制器回報的時間與要求的總時間之間有顯著的差異時：
 
 * 開發人員會將其應用程式程式碼排除為問題的來源。
 * 通常會假設路由是原因。
@@ -882,7 +2072,7 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 * 使用上述程式碼中所示的計時中介軟體複本來交錯每個中介軟體。
 * 新增唯一識別碼，將計時資料與程式碼相互關聯。
 
-這是將延遲縮小到最大的基本方式，例如，超過`10ms`。  從`Time 2` `Time 1`報表減去`UseRouting`中介軟體內所花費的時間。
+這是將延遲縮小到最大的基本方式，例如，超過 `10ms` 。  `Time 2`從 `Time 1` 報表減去中介軟體內所花費的時間 `UseRouting` 。
 
 下列程式碼會針對上述計時程式碼使用更精簡的方法：
 
@@ -896,12 +2086,12 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 * 正則運算式：可以撰寫複雜的正則運算式，或具有少量輸入的長期執行時間。
 
-* 複雜區段（`{x}-{y}-{z}`）： 
+* 複雜區段（ `{x}-{y}-{z}` ）： 
   * 比剖析一般 URL 路徑區段高得多。
   * 導致已配置更多子字串。
   * 在 ASP.NET Core 3.0 路由效能更新中，未更新複雜的區段邏輯。
 
-* 同步資料存取：許多複雜的應用程式在其路由中都具有資料庫存取權。 ASP.NET Core 2.2 和較舊的路由可能不會提供支援資料庫存取路由的正確擴充點。 例如， <xref:Microsoft.AspNetCore.Routing.IRouteConstraint>、和<xref:Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint>都是同步的。 <xref:Microsoft.AspNetCore.Routing.MatcherPolicy>和<xref:Microsoft.AspNetCore.Routing.EndpointSelectorContext>等擴充點都是非同步。
+* 同步資料存取：許多複雜的應用程式在其路由中都具有資料庫存取權。 ASP.NET Core 2.2 和較舊的路由可能不會提供支援資料庫存取路由的正確擴充點。 例如，、 <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 和 <xref:Microsoft.AspNetCore.Mvc.ActionConstraints.IActionConstraint> 都是同步的。 和等擴充點 <xref:Microsoft.AspNetCore.Routing.MatcherPolicy> <xref:Microsoft.AspNetCore.Routing.EndpointSelectorContext> 都是非同步。
 
 ## <a name="guidance-for-library-authors"></a>程式庫作者指引
 
@@ -909,9 +2099,9 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 ### <a name="define-endpoints"></a>定義端點
 
-若要建立使用路由進行 URL 比對的架構，請先定義以為基礎的使用者體驗<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>。
+若要建立使用路由進行 URL 比對的架構，請先定義以為基礎的使用者體驗 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 。
 
-**請**在之上建立組建<xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder>。 這可讓使用者使用其他 ASP.NET Core 功能來撰寫您的架構，而不會造成混淆。 每個 ASP.NET Core 範本都包含路由。 假設路由存在且熟悉使用者。
+**請**在之上建立組建 <xref:Microsoft.AspNetCore.Routing.IEndpointRouteBuilder> 。 這可讓使用者使用其他 ASP.NET Core 功能來撰寫您的架構，而不會造成混淆。 每個 ASP.NET Core 範本都包含路由。 假設路由存在且熟悉使用者。
 
 ```csharp
 app.UseEndpoints(endpoints =>
@@ -923,7 +2113,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-**確實**從對`MapMyFramework(...)`所執行的呼叫傳回密封的實體型<xref:Microsoft.AspNetCore.Builder.IEndpointConventionBuilder>別。 大部分的`Map...`架構方法會遵循此模式。 `IEndpointConventionBuilder`介面：
+**確實**從對所執行的呼叫傳回密封的實體型別 `MapMyFramework(...)` <xref:Microsoft.AspNetCore.Builder.IEndpointConventionBuilder> 。 大部分 `Map...` 的架構方法會遵循此模式。 `IEndpointConventionBuilder`介面：
 
 * 允許複合性中繼資料。
 * 的目標是各種擴充方法。
@@ -941,11 +2131,11 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-**請考慮**撰寫自己<xref:Microsoft.AspNetCore.Routing.EndpointDataSource>的。 `EndpointDataSource`是用來宣告和更新端點集合的低層級基本類型。 `EndpointDataSource`是控制器和 Razor Pages 所使用的強大 API。
+**請考慮**撰寫自己 <xref:Microsoft.AspNetCore.Routing.EndpointDataSource> 的。 `EndpointDataSource`是用來宣告和更新端點集合的低層級基本類型。 `EndpointDataSource`是控制器和頁面所使用的強大 API Razor 。
 
 路由測試有一個不會更新資料來源的[基本範例](https://github.com/aspnet/AspNetCore/blob/master/src/Http/Routing/test/testassets/RoutingSandbox/Framework/FrameworkEndpointDataSource.cs#L17)。
 
-預設**不會**嘗試註冊`EndpointDataSource` 。 要求使用者在中註冊您的<xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*>架構。 路由的原理是預設不會包含任何內容，也`UseEndpoints`就是註冊端點的位置。
+預設**不會**嘗試註冊 `EndpointDataSource` 。 要求使用者在中註冊您的架構 <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseEndpoints*> 。 路由的原理是預設不會包含任何內容，也 `UseEndpoints` 就是註冊端點的位置。
 
 ### <a name="creating-routing-integrated-middleware"></a>建立路由整合中介軟體
 
@@ -955,7 +2145,7 @@ app.UseEndpoints(endpoints =>
 
 [!code-csharp[](routing/samples/3.x/RoutingSample/ICoolMetadata.cs?name=snippet2)]
 
-控制器和 Razor Pages 之類的架構支援將中繼資料屬性套用至類型和方法。 如果您宣告元資料類型：
+控制器和頁面之類 Razor 的架構支援將中繼資料屬性套用至類型和方法。 如果您宣告元資料類型：
 
 * 使其可做為[屬性](/dotnet/csharp/programming-guide/concepts/attributes/)存取。
 * 大部分的使用者都很熟悉套用屬性。
@@ -990,7 +2180,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-作為此指導方針的範例，請考慮`UseAuthorization`中介軟體。 授權中介軟體可讓您傳入回退原則。 <!-- shown where?  (shown here) --> 如果指定了回溯原則，則會套用至兩者：
+作為此指導方針的範例，請考慮 `UseAuthorization` 中介軟體。 授權中介軟體可讓您傳入回退原則。 <!-- shown where?  (shown here) --> 如果指定了回溯原則，則會套用至兩者：
 
 * 沒有指定之原則的端點。
 * 不符合端點的要求。
@@ -1023,7 +2213,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
 如需以 <xref:Microsoft.AspNetCore.Routing.IRouter> 為基礎之路由的詳細資訊，請參閱[本主題的 ASP.NET Core 2.1 版本](/aspnet/core/fundamentals/routing?view=aspnetcore-2.1)。
 
 > [!IMPORTANT]
-> 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需 Razor Pages 中路由慣例的資訊，請參閱 <xref:razor-pages/razor-pages-conventions>。
+> 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需頁面中路由慣例的詳細資訊 Razor ，請參閱 <xref:razor-pages/razor-pages-conventions> 。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
@@ -1038,11 +2228,11 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業（例如 GET 和 POST）都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 和 <xref:razor-pages/razor-pages-conventions>。
+Razor頁面應用程式會使用預設的傳統路由，在應用程式的*Pages*資料夾中提供已命名的資源。 還有其他慣例可讓您自訂 Razor 頁面路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 和 <xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
-路由會*endpoints*使用端點`Endpoint`（）來代表應用程式中的邏輯端點。
+路由會使用*端點*（ `Endpoint` ）來代表應用程式中的邏輯端點。
 
 端點會定義用來處理要求的一項委派及一個任意中繼資料集合。 中繼資料可根據附加至每個端點的原則和組態，來實作跨領域關注。
 
@@ -1051,7 +2241,7 @@ URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的�
 * 使用路由範本語法以 Token 化路由參數來定義路由。
 * 允許傳統式和屬性式端點組態。
 * <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 可用來判斷 URL 參數是否包含對指定端點條件約束有效的值。
-* 應用程式模型 (例如 MVC/Razor Pages) 會註冊其所有端點，這些端點的路由情節實作符合預期。
+* 應用程式模型（例如 MVC/ Razor Pages）會註冊其所有端點，其具有可預測的路由案例執行。
 * 路由實作會在中介軟體管線需要時制定路由決策。
 * 在路由中介軟體之後出現的中介軟體可以檢查指定要求 URI 的路由中介軟體端點決策。
 * 您可以針對中介軟體管線中任何位置的應用程式，列舉其中的所有端點。
@@ -1062,9 +2252,9 @@ URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的�
   * 如果無法透過 DI 使用連結產生器 API，<xref:Microsoft.AspNetCore.Mvc.IUrlHelper> 會提供方法來建立 URL。
 
 > [!NOTE]
-> 在 ASP.NET Core 2.2 中發行端點路由時，端點連結限制在 MVC/Razor Pages 動作和頁面。 未來版本將規劃擴充端點連結功能。
+> 隨著 ASP.NET Core 2.2 中的端點路由發行，端點連結僅限於 MVC/ Razor pages 動作和頁面。 未來版本將規劃擴充端點連結功能。
 
-路由會透過 <xref:Microsoft.AspNetCore.Builder.RouterMiddleware> 類別連線到[中介軟體](xref:fundamentals/middleware/index)管線。 [ASP.NET Core MVC](xref:mvc/overview) 會將路由新增至中介軟體管線，作為其組態的一部分，並處理 MVC 和 Razor Pages 應用程式中的路由。 若要了解如何使用路由作為獨立元件，請參閱[使用路由中介軟體](#use-routing-middleware)一節。
+路由會透過 <xref:Microsoft.AspNetCore.Builder.RouterMiddleware> 類別連線到[中介軟體](xref:fundamentals/middleware/index)管線。 [ASP.NET CORE mvc](xref:mvc/overview)會將路由新增至中介軟體管線，作為其設定的一部分，並處理 MVC 和 Razor 頁面應用程式中的路由。 若要了解如何使用路由作為獨立元件，請參閱[使用路由中介軟體](#use-routing-middleware)一節。
 
 ### <a name="url-matching"></a>URL 比對
 
@@ -1088,9 +2278,9 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 
 端點路由包含連結產生器 API (<xref:Microsoft.AspNetCore.Routing.LinkGenerator>)。 <xref:Microsoft.AspNetCore.Routing.LinkGenerator>是可從[DI](xref:fundamentals/dependency-injection)抓取的單一服務。 您可以在執行要求內容外部使用此 API。 MVC 的 <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> 及依賴 <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> 的情節 (例如[標籤協助程式](xref:mvc/views/tag-helpers/intro)、HTML 協助程式和[動作結果](xref:mvc/controllers/actions)) 均使用連結產生器來提供連結產生功能。
 
-連結產生器背後支援的概念為「位址」** 和「位址配置」**。 位址配置可讓您判斷應考慮用於連結產生的端點。 例如，MVC/Razor Pages 中許多使用者所熟悉的路由名稱和路由值情節，都會實作為位址配置。
+連結產生器背後支援的概念為「位址」** 和「位址配置」**。 位址配置可讓您判斷應考慮用於連結產生的端點。 例如，許多使用者熟悉的路由名稱和路由值案例， Razor 都是以位址配置的形式來執行。
 
-連結產生器可以透過下列擴充方法，連結至 MVC/Razor Pages 動作和頁面：
+連結產生器可以透過下列擴充方法連結至 MVC/ Razor pages 動作和頁面：
 
 * <xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetPathByAction*>
 * <xref:Microsoft.AspNetCore.Routing.ControllerLinkGeneratorExtensions.GetUriByAction*>
@@ -1108,10 +2298,311 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器的最便利方式是透過執行特定位址類型作業的擴充方法。
 
-| 擴充方法   | 說明                                                         |
-| ------------------ | ------------------------------------------------------------------- |
-| <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
-| <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |
+| 擴充方法   | 描述                                                         |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------------------------------- | |<xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> |根據提供的值，產生具有絕對路徑的 URI。 | |<xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> |根據提供的值產生絕對 URI。             |
 
 > [!WARNING]
 > 注意呼叫 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 方法的下列影響：
@@ -1126,7 +2617,7 @@ ASP.NET Core 2.2 或更新版本中的端點路由與 ASP.NET Core 中的舊版�
 
 * 端點路由系統不支援以 <xref:Microsoft.AspNetCore.Routing.IRouter> 為基礎的擴充性，包括從 <xref:Microsoft.AspNetCore.Routing.Route> 繼承。
 
-* 端點路由不支援 [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim)。 請使用 2.1[相容](xref:mvc/compatibility-version)性版本`.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)`（）繼續使用相容性填充碼。
+* 端點路由不支援 [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim)。 請使用 2.1[相容性版本](xref:mvc/compatibility-version)（ `.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)` ）繼續使用相容性填充碼。
 
 * 端點路由與使用傳統路由時所產生 URI 大小寫的行為不同。
 
@@ -1149,7 +2640,7 @@ ASP.NET Core 2.2 或更新版本中的端點路由與 ASP.NET Core 中的舊版�
 
   如需詳細資訊，請參閱[參數轉換器參考](#parameter-transformer-reference)一節。
 
-* 當嘗試連結至不存在的控制器/動作或頁面時，MVC/Razor Pages 所使用的連結產生與傳統路由的行為不同。
+* Razor當嘗試連結至不存在的控制器/動作或頁面時，MVC/Pages 搭配傳統路由使用的連結產生會有不同的行為。
 
   請考慮下列預設路由範本：
 
@@ -1198,9 +2689,318 @@ ASP.NET Core 2.2 或更新版本中的端點路由與 ASP.NET Core 中的舊版�
   舊版 ASP.NET Core 中的單一星號 catch-all (`{*myparametername}`) 參數語法仍會受到支援，而且斜線會經過編碼。
 
   | 路由              | 以下列項目產生的連結：<br>`Url.Action(new { category = "admin/products" })`&hellip; |
-  | ------------------ | --------------------------------------------------------------------- |
-  | `/search/{*page}`  | `/search/admin%2Fproducts` (斜線會經過編碼)             |
-  | `/search/{**page}` | `/search/admin/products`                                              |
+  | ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------------------------- |  | `/search/{*page}`|`/search/admin%2Fproducts`（正斜線已編碼） |  | `/search/{**page}` |  `/search/admin/products`                                              |
 
 ### <a name="middleware-example"></a>中介軟體範例
 
@@ -1342,7 +3142,7 @@ routes.MapRoute(
 路由必須設定在 `Startup.Configure` 方法中。 範例應用程式使用下列 API：
 
 * <xref:Microsoft.AspNetCore.Routing.RouteBuilder>
-* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*>&ndash;僅符合 HTTP GET 要求。
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*>：僅符合 HTTP GET 要求。
 * <xref:Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter*>
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_RouteHandler)]
@@ -1350,14 +3150,254 @@ routes.MapRoute(
 下表顯示使用指定 URL 的回應。
 
 | URI                    | 回應                                          |
-| ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Hello! Route values: [operation, create], [id, 3] |
-| `/package/track/-3`    | Hello! Route values: [operation, track], [id, -3] |
-| `/package/track/-3/`   | Hello! Route values: [operation, track], [id, -3] |
-| `/package/track/`      | 要求失敗，沒有相符項目。              |
-| `GET /hello/Joe`       | Hi, Joe!                                          |
-| `POST /hello/Joe`      | 要求失敗，僅符合 HTTP GET。 |
-| `GET /hello/Joe/Smith` | 要求失敗，沒有相符項目。              |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------------- | |`/package/create/3`    |各位! 路由值： [operation，create]，[id，3] | |`/package/track/-3`    |各位! 路由值： [operation，track]，[id，-3] | |`/package/track/-3/`   |各位! 路由值： [operation，track]，[id，-3] | |`/package/track/`      |要求已通過，沒有相符的。              | |`GET /hello/Joe`       |Joe！                                          | |`POST /hello/Joe`      |要求會通過，只符合 HTTP GET。 | |`GET /hello/Joe/Smith` |要求已通過，沒有相符的。              |
 
 架構會提供一組擴充方法來建立路由 (<xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions>)：
 
@@ -1402,13 +3442,501 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 下表示範範例路由範本及其行為。
 
 | 路由範本                           | 範例比對 URI    | 要求 URI&hellip;                                                    |
-| ---------------------------------------- | ----------------------- | -------------------------------------------------------------------------- |
-| `hello`                                  | `/hello`                | 只比對單一路徑 `/hello`。                                     |
-| `{Page=Home}`                            | `/`                     | 比對並將 `Page` 設定為 `Home`。                                         |
-| `{Page=Home}`                            | `/Contact`              | 比對並將 `Page` 設定為 `Contact`。                                      |
-| `{controller}/{action}/{id?}`            | `/Products/List`        | 對應至 `Products` 控制器和 `List` 動作。                       |
-| `{controller}/{action}/{id?}`            | `/Products/Details/123` | 對應至 `Products` 控制器和 `Details` 動作 (`id` 設定為 123)。 |
-| `{controller=Home}/{action=Index}/{id?}` | `/`                     | 對應至 `Home` 控制器和 `Index` 方法 (會忽略 `id`)。        |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------------------------- | |`hello`                                  | `/hello`               |僅符合單一路徑 `/hello` 。                                     | |`{Page=Home}`                            | `/`                    |符合並將設定 `Page` 為 `Home` 。                                         | |`{Page=Home}`                            | `/Contact`             |符合並將設定 `Page` 為 `Contact` 。                                      | |`{controller}/{action}/{id?}`            | `/Products/List`       |對應至 `Products` 控制器和 `List` 動作。                       | |`{controller}/{action}/{id?}`            | `/Products/Details/123`|對應至 `Products` 控制器和 `Details` 動作（ `id` 設定為123）。 | |`{controller=Home}/{action=Index}/{id?}` | `/`                    |對應至 `Home` 控制器和 `Index` 方法（ `id` 會被忽略）。        |
 
 使用範本通常是最簡單的路由方式。 條件約束和預設值也可以在路由範本外部指定。
 
@@ -1435,25 +3963,93 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 下表示範範例路由條件約束及其預期行為。
 
 | constraint (條件約束) | 範例 | 範例相符項目 | 備忘錄 |
-| ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數。 |
-| `bool` | `{active:bool}` | `true`, `FALSE` | 符合`true`或 ' false。 不區分大小寫。 |
-| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | 符合不因`DateTime`文化特性而異的有效值。 請參閱先前的警告。|
-| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | 符合不因`decimal`文化特性而異的有效值。 請參閱先前的警告。|
-| `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | 符合不因`double`文化特性而異的有效值。 請參閱先前的警告。|
-| `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | 符合不因`float`文化特性而異的有效值。 請參閱先前的警告。|
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效`Guid`的值。 |
-| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效`long`的值。 |
-| `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有4個字元。 |
-| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | 字串最多可以有8個字元。 |
-| `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好12個字元。 |
-| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | 字串必須至少為8個字元，且最多可以有16個字元。 |
-| `min(value)` | `{age:min(18)}` | `19` | 整數值必須至少為18。 |
-| `max(value)` | `{age:max(120)}` | `91` | 整數值上限為120。 |
-| `range(min,max)` | `{age:range(18,120)}` | `91` | 整數值必須至少為18，而最大值為120。 |
-| `alpha` | `{name:alpha}` | `Rick` | 字串必須包含一或多個字母字元`a` - `z`。  不區分大小寫。 |
-| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | 字串必須符合正則運算式。 請參閱定義正則運算式的秘訣。 |
-| `required` | `{name:required}` | `Rick` | 用來強制在 URL 產生期間出現非參數值。 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------- |----- | |`int` | `{id:int}` | `123456789`, `-123456789` |符合任何整數。 | |`bool` | `{active:bool}` | `true`, `FALSE` |符合 `true` 或 `false. Case-insensitive. |
+| ` datetime ` | ` {dob： datetime} ` | ` 2016-12-31 `, ` 2016-12-31 7： 32pm ` | Matches a valid ` datetime ` value in the invariant culture. See  preceding warning.|
+| ` decimal ` | ` {price： decimal} ` | ` 49.99 `, ` -1000.01 ` | Matches a valid ` decimal ` value in the invariant culture. See  preceding warning.|
+| ` double ` | ` {權數： double} ` | ` 1.234 `, ` -1，001.01 e8 ` | Matches a valid ` double ` value in the invariant culture. See  preceding warning.|
+| ` float ` | ` {權數： float} ` | ` 1.234 `, ` -1，001.01 e8 ` | Matches a valid ` float ` value in the invariant culture. See  preceding warning.|
+| ` guid ` | ` {id： guid} ` | ` CD2C1638-1638-72D5-1638-DEADBEEF1638 `, ` {CD2C1638-1638-72D5-1638-DEADBEEF1638} ` | Matches a valid ` guid ` value. |
+| ` long ` | ` {滴答： long} ` | ` 123456789 `, ` -123456789 ` | Matches a valid ` 長 ` value. |
+| ` minlength （值） ` | ` {username： minlength （4）} ` | ` Rick ` | String must be at least 4 characters. |
+| ` maxlength （值） { ` | ` filename： maxlength （8）} ` | ` myfile.txt ` | String has maximum of 8 characters. |
+| ` length （長度） ` | ` {filename： length （12）} ` | ` somefile.txt。 txt ` | String must be exactly 12 characters long. |
+| ` 長度（最小值，最大值） ` | ` {檔案名：長度（8，16）} ` | ` somefile.txt .txt ` | String must be at least 8 and has maximum of 16 characters. |
+| ` 分鐘（值） ` | ` {age： min （18）} ` | ` 19 ` | Integer value must be at least 18. |
+| ` max （值） ` | ` {age： max （120）} ` | ` 91 ` | Integer value maximum of 120. |
+| ` 範圍（min，max） ` | ` {年齡：範圍（18120）} ` | ` 91 ` | Integer value must be at least 18 and maximum of 120. |
+| ` Alpha ` | ` {name： Alpha} ` | ` Rick ` | String must consist of one or more alphabetical characters ` a `-` z `.  Case-insensitive. |
+| ` RegEx （expression） ` | ` {ssn： RegEx （^ \\ d { {3} }- \\ d { {2} }- \\ d { {4} } $）} ` | ` 123-45-6789 ` | String must match the regular expression. See tips about defining a regular expression. |
+| ` 必要 ` | ` {name： required} ` | ` Rick ' |用來強制在 URL 產生期間出現非參數值。 |
 
 以冒號分隔的多個條件約束，可以套用至單一參數。 例如，下列條件約束會將參數限制在 1 或更大的整數值：
 
@@ -1469,29 +4065,299 @@ public User GetUserById(int id) { }
 
 ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant` 新增至規則運算式建構函式。 如需這些成員的說明，請參閱 <xref:System.Text.RegularExpressions.RegexOptions>。
 
-正則運算式會使用類似路由和 c # 語言所使用的分隔符號和標記。 規則運算式的語彙基元必須逸出。 若要在路由中`^\d{3}-\d{2}-\d{4}$`使用正則運算式：
+正則運算式會使用類似路由和 c # 語言所使用的分隔符號和標記。 規則運算式的語彙基元必須逸出。 若要在路由中使用正則運算式 `^\d{3}-\d{2}-\d{4}$` ：
 
-* 運算式必須在字串中提供單一`\`反斜線字元，做為原始程式碼中`\\`的雙反斜線字元。
-* 正則運算式必須`\\`是，才能將`\`字串 escape 字元轉義。
-* 使用[逐字字串常](/dotnet/csharp/language-reference/keywords/string)值`\\`時，不需要正則運算式。
+* 運算式必須在字串中提供單一反斜線 `\` 字元，做為原始程式碼中的雙反斜線 `\\` 字元。
+* 正則運算式必須是， `\\` 才能將 `\` 字串 escape 字元轉義。
+* `\\`使用[逐字字串常](/dotnet/csharp/language-reference/keywords/string)值時，不需要正則運算式。
 
-若要 escape 路由參數分隔符號`{`、 `}`、 `[`、 `]`，請將`{{`運算式中的字元、 `}` `[[`、、 `]]`加倍。 下表顯示正則運算式和已轉義的版本：
+若要 escape 路由參數分隔符號 `{` 、 `}` 、 `[` 、，請將 `]` 運算式中的字元、、、加倍 `{{` `}` `[[` `]]` 。 下表顯示正則運算式和已轉義的版本：
 
 | 規則運算式    | 逸出的規則運算式     |
-| --------------------- | ------------------------------ |
-| `^\d{3}-\d{2}-\d{4}$` | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- | | `^\d{3}-\d{2}-\d{4}$` | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` |
 | `^[a-z]{2}$`          | `^[[a-z]]{{2}}$`               |
 
-路由中使用的正則運算式通常會以`^`插入號字元開頭，並比對字串的開始位置。 這些運算式通常會以貨幣符號`$`字元結尾，並比對字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
+路由中使用的正則運算式通常會以插入 `^` 號字元開頭，並比對字串的開始位置。 這些運算式通常會以貨幣符號 `$` 字元結尾，並比對字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算是   | String    | 比對 | 註解               |
-| ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
+| 運算式   | String    | 比對 | 註解               |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |:---: | ---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------- || `[a-z]{2}`   |您好 |是 |子字串符合 || `[a-z]{2}`   |123abc456 |是 |子字串符合 || `[a-z]{2}`   |mz |是 |符合運算式 || `[a-z]{2}`   |MZ |是 |不區分大小寫 || `^[a-z]{2}$` |您好 |否 |查看 `^` 和更新版本 `$` | | `^[a-z]{2}$` | 123abc456 |否 |請參閱和更新版本 `^` `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
@@ -1553,7 +4419,7 @@ routes.MapRoute(
 ASP.NET Core 針對搭配產生的路由使用參數轉換程式提供了 API 慣例：
 
 * ASP.NET Core MVC 有 `Microsoft.AspNetCore.Mvc.ApplicationModels.RouteTokenTransformerConvention` API 慣例。 此慣例會將所指定參數轉換程式套用到應用程式中的所有屬性路由。 參數轉換程式會在被取代時轉換屬性路由語彙基元。 如需詳細資訊，請參閱[使用參數轉換程式自訂語彙基元取代](/aspnet/core/mvc/controllers/routing#use-a-parameter-transformer-to-customize-token-replacement)。
-* Razor Pages 有 `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` API 慣例。 此慣例會將所指定參數轉換器套用至所有自動探索到的 Razor Pages。 參數轉換器會轉換 Razor Pages 路由的資料夾與檔案名稱區段。 如需詳細資訊，請參閱[使用參數轉換程式自訂頁面路由](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes)。
+* Razor頁面具有 `Microsoft.AspNetCore.Mvc.ApplicationModels.PageRouteTransformerConvention` API 慣例。 此慣例會將指定的參數轉換器套用至所有自動探索的 Razor 頁面。 參數轉換器會轉換頁面路由的資料夾和檔案名區段 Razor 。 如需詳細資訊，請參閱[使用參數轉換程式自訂頁面路由](/aspnet/core/razor-pages/razor-pages-conventions#use-a-parameter-transformer-to-customize-page-routes)。
 
 ## <a name="url-generation-reference"></a>URL 產生參考
 
@@ -1570,11 +4436,336 @@ ASP.NET Core 針對搭配產生的路由使用參數轉換程式提供了 API �
 明確提供但不符合路由區段的值會新增至查詢字串。 下表顯示使用路由範本 `{controller}/{action}/{id?}` 時的結果。
 
 | 環境值                     | 明確值                        | 結果                  |
-| ---------------------------------- | -------------------------------------- | ----------------------- |
-| controller = "Home"                | action = "About"                       | `/Home/About`           |
-| controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
-| controller = "Home", color = "Red" | action = "About"                       | `/Home/About`           |
-| controller = "Home"                | action = "About", color = "Red"        | `/Home/About?color=Red` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------ | |控制器 = "Home" |action = "About" |`/Home/About`|
+|控制器 = "Home" |控制器 = "Order"，action = "About" |`/Order/About`|
+|控制器 = "Home"，color = "Red" |action = "About" |`/Home/About`|
+|控制器 = "Home" |action = "About"，color = "Red" |`/Home/About?color=Red`                                |
 
 如果路由具有未對應至參數的預設值，且該值會明確提供，它必須符合預設值：
 
@@ -1605,7 +4796,7 @@ services.AddMvc()
 ```
 
 > [!IMPORTANT]
-> 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需 Razor Pages 中路由慣例的資訊，請參閱 <xref:razor-pages/razor-pages-conventions>。
+> 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需頁面中路由慣例的詳細資訊 Razor ，請參閱 <xref:razor-pages/razor-pages-conventions> 。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
@@ -1620,11 +4811,11 @@ services.AddMvc()
 
 Web API 應該使用屬性路由傳送來將應用程式功能模型建構為作業由 HTTP 指令動詞代表的資源集合。 這表示相同邏輯資源上的許多作業 (例如，GET、POST) 都會使用相同的 URL。 屬性路由提供仔細設計 API 公用端點配置所需的控制層級。
 
-Razor Pages 應用程式使用預設慣例路由，來提供應用程式 *Pages* 資料夾中的具名資源。 還有其他慣例可讓您自訂 Razor Pages 路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 和 <xref:razor-pages/razor-pages-conventions>。
+Razor頁面應用程式會使用預設的傳統路由，在應用程式的*Pages*資料夾中提供已命名的資源。 還有其他慣例可讓您自訂 Razor 頁面路由行為。 如需詳細資訊，請參閱 <xref:razor-pages/index> 和 <xref:razor-pages/razor-pages-conventions>。
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
-路由會使用的<xref:Microsoft.AspNetCore.Routing.IRouter>路由執行來：
+路由會使用的路由 <xref:Microsoft.AspNetCore.Routing.IRouter> 執行來：
 
 * 將傳入要求對應至「路由處理常式」**。
 * 產生用於回應的 URL。
@@ -1636,11 +4827,11 @@ URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的�
 * 使用路由範本語法以 Token 化路由參數來定義路由。
 * 允許傳統式和屬性式端點組態。
 * <xref:Microsoft.AspNetCore.Routing.IRouteConstraint> 可用來判斷 URL 參數是否包含對指定端點條件約束有效的值。
-* 應用程式模型 (例如 MVC/Razor Pages) 會註冊其所有路由，這些路由的路由情節實作符合預期。
+* 應用程式模型（例如 MVC/ Razor Pages）會註冊其所有的路由，其具有可預測的路由案例執行。
 * 回應可以根據路由資訊使用路由來產生 URL (例如，針對重新導向或連結)，因此避免硬式編碼的 URL，這有助於可維護性。
 * URL 是根據支援任意擴充性的路由所產生。 <xref:Microsoft.AspNetCore.Mvc.IUrlHelper> 提供方法來建立 URL。
 <!-- fix [middleware](xref:fundamentals/middleware/index) -->
-路由會透過 <xref:Microsoft.AspNetCore.Builder.RouterMiddleware> 類別連線到[中介軟體](xref:fundamentals/middleware/index)管線。 [ASP.NET Core MVC](xref:mvc/overview) 會將路由新增至中介軟體管線，作為其組態的一部分，並處理 MVC 和 Razor Pages 應用程式中的路由。 若要了解如何使用路由作為獨立元件，請參閱[使用路由中介軟體](#use-routing-middleware)一節。
+路由會透過 <xref:Microsoft.AspNetCore.Builder.RouterMiddleware> 類別連線到[中介軟體](xref:fundamentals/middleware/index)管線。 [ASP.NET CORE mvc](xref:mvc/overview)會將路由新增至中介軟體管線，作為其設定的一部分，並處理 MVC 和 Razor 頁面應用程式中的路由。 若要了解如何使用路由作為獨立元件，請參閱[使用路由中介軟體](#use-routing-middleware)一節。
 
 ### <a name="url-matching"></a>URL 比對
 
@@ -1800,7 +4991,7 @@ routes.MapRoute(
 路由必須設定在 `Startup.Configure` 方法中。 範例應用程式使用下列 API：
 
 * <xref:Microsoft.AspNetCore.Routing.RouteBuilder>
-* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*>&ndash;僅符合 HTTP GET 要求。
+* <xref:Microsoft.AspNetCore.Routing.RequestDelegateRouteBuilderExtensions.MapGet*>：僅符合 HTTP GET 要求。
 * <xref:Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter*>
 
 [!code-csharp[](routing/samples/2.x/RoutingSample/Startup.cs?name=snippet_RouteHandler)]
@@ -1808,14 +4999,254 @@ routes.MapRoute(
 下表顯示使用指定 URL 的回應。
 
 | URI                    | 回應                                          |
-| ---------------------- | ------------------------------------------------- |
-| `/package/create/3`    | Hello! Route values: [operation, create], [id, 3] |
-| `/package/track/-3`    | Hello! Route values: [operation, track], [id, -3] |
-| `/package/track/-3/`   | Hello! Route values: [operation, track], [id, -3] |
-| `/package/track/`      | 要求失敗，沒有相符項目。              |
-| `GET /hello/Joe`       | Hi, Joe!                                          |
-| `POST /hello/Joe`      | 要求失敗，僅符合 HTTP GET。 |
-| `GET /hello/Joe/Smith` | 要求失敗，沒有相符項目。              |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------------- | |`/package/create/3`    |各位! 路由值： [operation，create]，[id，3] | |`/package/track/-3`    |各位! 路由值： [operation，track]，[id，-3] | |`/package/track/-3/`   |各位! 路由值： [operation，track]，[id，-3] | |`/package/track/`      |要求已通過，沒有相符的。              | |`GET /hello/Joe`       |Joe！                                          | |`POST /hello/Joe`      |要求會通過，只符合 HTTP GET。 | |`GET /hello/Joe/Smith` |要求已通過，沒有相符的。              |
 
 如果您要設定單一路由，請呼叫傳入 `IRouter` 執行個體的 <xref:Microsoft.AspNetCore.Builder.RoutingBuilderExtensions.UseRouter*>。 您不需要使用 <xref:Microsoft.AspNetCore.Routing.RouteBuilder>。
 
@@ -1862,13 +5293,501 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 下表示範範例路由範本及其行為。
 
 | 路由範本                           | 範例比對 URI    | 要求 URI&hellip;                                                    |
-| ---------------------------------------- | ----------------------- | -------------------------------------------------------------------------- |
-| `hello`                                  | `/hello`                | 只比對單一路徑 `/hello`。                                     |
-| `{Page=Home}`                            | `/`                     | 比對並將 `Page` 設定為 `Home`。                                         |
-| `{Page=Home}`                            | `/Contact`              | 比對並將 `Page` 設定為 `Contact`。                                      |
-| `{controller}/{action}/{id?}`            | `/Products/List`        | 對應至 `Products` 控制器和 `List` 動作。                       |
-| `{controller}/{action}/{id?}`            | `/Products/Details/123` | 對應至 `Products` 控制器和 `Details` 動作 (`id` 設定為 123)。 |
-| `{controller=Home}/{action=Index}/{id?}` | `/`                     | 對應至 `Home` 控制器和 `Index` 方法 (會忽略 `id`)。        |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------------------------- | |`hello`                                  | `/hello`               |僅符合單一路徑 `/hello` 。                                     | |`{Page=Home}`                            | `/`                    |符合並將設定 `Page` 為 `Home` 。                                         | |`{Page=Home}`                            | `/Contact`             |符合並將設定 `Page` 為 `Contact` 。                                      | |`{controller}/{action}/{id?}`            | `/Products/List`       |對應至 `Products` 控制器和 `List` 動作。                       | |`{controller}/{action}/{id?}`            | `/Products/Details/123`|對應至 `Products` 控制器和 `Details` 動作（ `id` 設定為123）。 | |`{controller=Home}/{action=Index}/{id?}` | `/`                    |對應至 `Home` 控制器和 `Index` 方法（ `id` 會被忽略）。        |
 
 使用範本通常是最簡單的路由方式。 條件約束和預設值也可以在路由範本外部指定。
 
@@ -1885,25 +5804,77 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 下表示範範例路由條件約束及其預期行為。
 
 | constraint (條件約束) | 範例 | 範例相符項目 | 備忘錄 |
-| ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
-| `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
-| `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | 符合不因`DateTime`文化特性而異的有效值。 請參閱先前的警告。|
-| `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | 符合不因`decimal`文化特性而異的有效值。 請參閱先前的警告。|
-| `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | 符合不因`double`文化特性而異的有效值。 請參閱先前的警告。|
-| `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | 符合不因`float`文化特性而異的有效值。 請參閱先前的警告。|
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值 |
-| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效的 `long` 值 |
-| `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有 4 個字元 |
-| `maxlength(value)` | `{filename:maxlength(8)}` | `Richard` | 字串不能超過 8 個字元 |
-| `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好是 12 個字元 |
-| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | 字串長度必須至少有 8 個字元，但不能超過 16 個字元 |
-| `min(value)` | `{age:min(18)}` | `19` | 整數值必須至少為 18 |
-| `max(value)` | `{age:max(120)}` | `91` | 整數值不能超過 120 |
-| `range(min,max)` | `{age:range(18,120)}` | `91` | 整數值必須至少為 18，但不能超過 120 |
-| `alpha` | `{name:alpha}` | `Rick` | 字串必須包含一或多個字母字元 (`a`-`z`，不區分大小寫) |
-| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | 字串必須符合規則運算式 (請參閱有關定義規則運算式的提示) |
-| `required` | `{name:required}` | `Rick` | 用來強制執行在 URL 產生期間呈現非參數值 |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-------- |----- | |`int` | `{id:int}` | `123456789`, `-123456789` |符合任何整數 | |`bool` | `{active:bool}` | `true`, `FALSE` |符合 `true` 或 `false` （不區分大小寫） | | `datetime`  |  `{dob:datetime}`  |  `2016-12-31` 、 `2016-12-31 7:32pm` |符合不因文化特性而異的有效 `DateTime` 值。 請參閱先前的警告。 ||`decimal` | `{price:decimal}` | `49.99`, `-1,000.01` |符合不因文化特性而異的有效 `decimal` 值。 請參閱先前的警告。 ||`double` | `{weight:double}` | `1.234`, `-1,001.01e8` |符合不因文化特性而異的有效 `double` 值。 請參閱先前的警告。 ||`float` | `{weight:float}` | `1.234`, `-1,001.01e8` |符合不因文化特性而異的有效 `float` 值。 請參閱先前的警告。 ||`guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` |符合有效的 `Guid` 值 | | `long`  |  `{ticks:long}`  |  `123456789` 、 `-123456789` |符合有效的 `long` 值 | | `minlength(value)`  |  `{username:minlength(4)}`  |  `Rick` |字串必須至少有4個字元 | |`maxlength(value)` | `{filename:maxlength(8)}` | `Richard`|字串不能超過8個字元 | |`length(length)` | `{filename:length(12)}` | `somefile.txt`|字串的長度必須剛好是12個字元 | |`length(min,max)` | `{filename:length(8,16)}` | `somefile.txt`|字串必須至少為8，且長度不能超過16個字元 | |`min(value)` | `{age:min(18)}` | `19`|整數值必須至少為 18 | |`max(value)` | `{age:max(120)}` | `91`|整數值不能超過 120 | |`range(min,max)` | `{age:range(18,120)}` | `91`|整數值必須至少為18，但不能超過 120 | |`alpha` | `{name:alpha}` | `Rick`|字串必須包含一或多個字母字元（ `a` - `z` ，不區分大小寫） | | `regex(expression)`  |  `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}`  |  `123-45-6789` |字串必須符合正則運算式（請參閱定義正則運算式的秘訣） | |`required` | `{name:required}` | `Rick`|用來強制在 URL 產生期間出現非參數值 |
 
 以冒號分隔的多個條件約束，可以套用至單一參數。 例如，下列條件約束會將參數限制在 1 或更大的整數值：
 
@@ -1922,20 +5893,290 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 規則運算式使用的分隔符號和語彙基元，類似於路由和 C# 語言所使用的分隔符號和語彙基元。 規則運算式的語彙基元必須逸出。 若要在路由中使用規則運算式 `^\d{3}-\d{2}-\d{4}$`，運算式必須以字串中所提供的 `\` (單一反斜線) 字元作為 C# 原始程式檔中的 `\\` (雙反斜線) 字元，才能逸出 `\` 字串逸出字元 (除非使用[逐字字串常值](/dotnet/csharp/language-reference/keywords/string))。 若要逸出路由參數分隔符號字元 (`{`、`}`、`[`、`]`)，請在運算式中使用雙字元 (`{{`、`}`、`[[`、`]]`). 下表顯示規則運算式和逸出的版本。
 
 | 規則運算式    | 逸出的規則運算式     |
-| --------------------- | ------------------------------ |
-| `^\d{3}-\d{2}-\d{4}$` | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+--------------- | | `^\d{3}-\d{2}-\d{4}$` | `^\\d{{3}}-\\d{{2}}-\\d{{4}}$` |
 | `^[a-z]{2}$`          | `^[[a-z]]{{2}}$`               |
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算是   | String    | 比對 | 註解               |
-| ------------ | --------- | :---: |  -------------------- |
-| `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
-| `[a-z]{2}`   | mz        | 是   | 符合運算式    |
-| `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
+| 運算式   | String    | 比對 | 註解               |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------ |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----- |:---: | ---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+---------- || `[a-z]{2}`   |您好 |是 |子字串符合 || `[a-z]{2}`   |123abc456 |是 |子字串符合 || `[a-z]{2}`   |mz |是 |符合運算式 || `[a-z]{2}`   |MZ |是 |不區分大小寫 || `^[a-z]{2}$` |您好 |否 |查看 `^` 和更新版本 `$` | | `^[a-z]{2}$` | 123abc456 |否 |請參閱和更新版本 `^` `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
@@ -1976,11 +6217,336 @@ public ActionResult<string> Get(string id)
 明確提供但不符合路由區段的值會新增至查詢字串。 下表顯示使用路由範本 `{controller}/{action}/{id?}` 時的結果。
 
 | 環境值                     | 明確值                        | 結果                  |
-| ---------------------------------- | -------------------------------------- | ----------------------- |
-| controller = "Home"                | action = "About"                       | `/Home/About`           |
-| controller = "Home"                | controller = "Order", action = "About" | `/Order/About`          |
-| controller = "Home", color = "Red" | action = "About"                       | `/Home/About`           |
-| controller = "Home"                | action = "About", color = "Red"        | `/Home/About?color=Red` |
+| ---
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+----------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+-
+標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid： 
+
+------------ | |控制器 = "Home" |action = "About" |`/Home/About`|
+|控制器 = "Home" |控制器 = "Order"，action = "About" |`/Order/About`|
+|控制器 = "Home"，color = "Red" |action = "About" |`/Home/About`|
+|控制器 = "Home" |action = "About"，color = "Red" |`/Home/About?color=Red`                                |
 
 如果路由具有未對應至參數的預設值，且該值會明確提供，它必須符合預設值：
 

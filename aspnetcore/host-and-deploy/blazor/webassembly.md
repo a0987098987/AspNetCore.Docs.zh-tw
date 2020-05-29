@@ -164,6 +164,16 @@ Blazor發行專案時，會使用下列 IIS 設定來建立*web.config*檔案：
 * 將 [索引文件名稱]**** 設定為 `index.html`。
 * 將 [錯誤文件路徑]**** 設定為 `index.html`。 Razor元件和其他非檔案端點不會位於 blob 服務所儲存之靜態內容中的實體路徑。 收到路由器應處理的其中一個資源的要求時 Blazor ，由 blob 服務產生的*404-找不*到的錯誤會將要求路由傳送至**錯誤檔路徑**。 會傳回*索引 .html* blob，且 Blazor 路由器會載入並處理路徑。
 
+如果在執行時間因為檔案標頭中有不適當的 MIME 類型而未載入檔案 `Content-Type` ，請採取下列其中一個動作：
+
+* 設定您的工具，以在部署檔案時設定正確的 MIME 類型（ `Content-Type` 標頭）。
+* 在部署應用程式之後，變更檔案的 MIME 類型（ `Content-Type` 標頭）。
+
+  在每個檔案的儲存體總管（Azure 入口網站）中：
+  
+  1. 以滑鼠右鍵按一下檔案，然後選取 [**屬性**]。
+  1. 設定**ContentType** ，然後選取 [**儲存**] 按鈕。
+
 如需詳細資訊，請參閱 [Azure 儲存體中的靜態網站裝載](/azure/storage/blobs/storage-blob-static-website)。
 
 ### <a name="nginx"></a>Nginx

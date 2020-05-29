@@ -451,8 +451,8 @@ IP 為使用者發出的權杖通常會在短時間內有效，大約一小時�
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
 <RemoteAuthenticatorViewCore Action="@Action" 
-    AuthenticationState="AuthenticationState" OnLoginSucceded="RestoreState" 
-    OnLogoutSucceded="RestoreState" />
+    AuthenticationState="AuthenticationState" OnLogInSucceeded="RestoreState" 
+    OnLogOutSucceeded="RestoreState" />
 
 @code {
     [Parameter]
@@ -490,7 +490,7 @@ IP 為使用者發出的權杖通常會在短時間內有效，大約一小時�
 
 根據預設， [AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)會使用下表所示的路由來代表不同的驗證狀態。
 
-| 路由                            | 目的 |
+| 路由                            | 用途 |
 | ---
 標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者：描述：」瞭解如何設定 Blazor WebAssembly 以取得其他安全性案例。
 monikerRange： ms-chap： ms. custom： ms. date： no-loc：

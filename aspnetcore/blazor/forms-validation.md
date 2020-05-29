@@ -621,3 +621,15 @@ public class ShipDescription
     }
 }
 ```
+
+## <a name="troubleshoot"></a>疑難排解
+
+> InvalidOperationException： EditForm 需要模型參數或 EditCoNtext 參數，但不能同時使用兩者。
+
+確認 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 具有 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> 或 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 。
+
+將指派 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.Model> 給表單時，請確認模型類型已具現化，如下列範例所示：
+
+```csharp
+private ExampleModel exampleModel = new ExampleModel();
+```

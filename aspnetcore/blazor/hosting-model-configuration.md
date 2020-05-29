@@ -212,9 +212,9 @@ builder.Configuration.AddJsonStream(stream);
 
 ```json
 {
-  "AzureAD": {
-    "Authority": "https://login.microsoftonline.com/",
-    "ClientId": "aeaebf0f-d416-4d92-a08f-e1d5b51fc494"
+  "Local": {
+    "Authority": "{AUTHORITY}",
+    "ClientId": "{CLIENT ID}"
   }
 }
 ```
@@ -223,7 +223,7 @@ builder.Configuration.AddJsonStream(stream);
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
-    builder.Configuration.Bind("AzureAD", options);
+    builder.Configuration.Bind("Local", options.ProviderOptions);
 ```
 
 #### <a name="logging-configuration"></a>記錄設定
@@ -478,7 +478,7 @@ Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，�
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | 說明 |
+| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | 描述 |
 | --- | --- |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |

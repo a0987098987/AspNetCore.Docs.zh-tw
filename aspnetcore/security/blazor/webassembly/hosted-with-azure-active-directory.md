@@ -1,10 +1,10 @@
 ---
-標題： ' Blazor 使用 Azure Active Directory 的作者保護 ASP.NET Core WebAssembly 託管應用程式：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： ' Blazor 使用 Azure Active Directory ' author ' 保護 ASP.NET Core WebAssembly 託管應用程式： guardrex description： monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： security/blazor/webassembly/hosted-搭配-azure-active directory
 
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory"></a>Blazor使用 Azure Active Directory 保護 ASP.NET Core WebAssembly 託管應用程式
@@ -21,7 +21,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 ### <a name="register-a-server-api-app"></a>註冊伺服器 API 應用程式
 
-請遵循[快速入門：使用 Microsoft 身分識別平臺註冊應用程式](/azure/active-directory/develop/quickstart-register-app)和後續的 Azure AAD 主題中的指導方針，為*伺服器 API 應用*程式註冊 AAD 應用程式：
+請遵循[快速入門：使用 Microsoft 身分識別平臺註冊應用程式](/azure/active-directory/develop/quickstart-register-app)和後續的 Azure AAD 主題中的指引，為*伺服器 API 應用*程式註冊 AAD 應用程式，然後執行下列動作：
 
 1. 在**Azure Active Directory**  >  **應用程式註冊**中，選取 [**新增註冊**]。
 1. 提供應用程式的**名稱**（例如， ** Blazor 伺服器 AAD**）。
@@ -55,7 +55,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 ### <a name="register-a-client-app"></a>註冊用戶端應用程式
 
-請遵循[快速入門：使用 Microsoft 身分識別平臺註冊應用程式](/azure/active-directory/develop/quickstart-register-app)和後續的 Azure AAD 主題中的指導方針，為*用戶端應用程式*註冊 AAD 應用程式：
+請遵循[快速入門：使用 Microsoft 身分識別平臺註冊應用程式](/azure/active-directory/develop/quickstart-register-app)和後續的 Azure AAD 主題中的指導方針，為*用戶端應用程式*註冊 AAD 應用程式，然後執行下列動作：
 
 1. 在**Azure Active Directory**  >  **應用程式註冊**中，選取 [**新增註冊**]。
 1. 提供應用程式的**名稱**（例如** Blazor 用戶端 AAD**）。

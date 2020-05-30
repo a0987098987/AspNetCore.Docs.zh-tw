@@ -1,18 +1,18 @@
 ---
-標題： ' Debug ASP.NET Core Blazor WebAssembly ' 作者：描述：「瞭解如何調試 Blazor 程式」。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： ' Debug ASP.NET Core Blazor WebAssembly ' author： guardrex description： ' 瞭解如何調試 Blazor 程式。 '
+monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/29/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： blazor/debug
 
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET Core Blazor WebAssembly
 
 [Daniel Roth](https://github.com/danroth27)
 
-BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器開發工具（邊緣/Chrome）進行調試。  或者，您可以使用 Visual Studio 或 Visual Studio Code 來對應用程式進行 debug 錯。
+BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器開發工具（邊緣/Chrome）進行調試。 或者，您可以使用 Visual Studio 或 Visual Studio Code 來對應用程式進行 debug 錯。
 
 可用的案例包括：
 
@@ -30,7 +30,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 調試需要下列其中一個瀏覽器：
 
@@ -53,6 +53,8 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 * 可讓 IDE 偵測應用程式是否為 Blazor WebAssembly 應用程式。
 * 指示腳本的偵錯工具，透過的偵錯工具 proxy 連接到瀏覽器 Blazor 。
+
+在 `wsProtocol` 啟動的瀏覽器（）上，websocket 通訊協定（）、主機（ `url.hostname` ）、埠（ `url.port` ）和偵測器 URI 的預留位置值 `browserInspectUri` 是由架構所提供。
 
 ## <a name="visual-studio"></a>Visual Studio
 
@@ -137,4 +139,5 @@ Blazor提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https:
 
 如果您遇到錯誤，下列秘訣可能會有説明：
 
-在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。 在主控台中，執行 `localStorage.clear()` 以移除任何中斷點。
+* 在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。 在主控台中，執行 `localStorage.clear()` 以移除任何中斷點。
+* 確認您已安裝並信任 ASP.NET Core 的 HTTPS 開發憑證。 如需詳細資訊，請參閱<xref:security/enforcing-ssl#troubleshoot-certificate-problems>。

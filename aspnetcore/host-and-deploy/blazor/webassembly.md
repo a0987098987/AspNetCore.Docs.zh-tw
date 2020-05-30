@@ -1,11 +1,11 @@
 ---
-標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題：「裝載和部署 ASP.NET Core Blazor WebAssembly ' 作者： guardrex 描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/28/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： host 和 deploy/blazor/webassembly
 
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
@@ -22,9 +22,20 @@ By [Luke Latham](https://github.com/guardrex)、 [Rainer Stropek](https://www.ti
 * Blazor應用程式是由 ASP.NET Core 應用程式提供。 此策略已於[搭配 ASP.NET Core 的已裝載部署](#hosted-deployment-with-aspnet-core)一節中涵蓋。
 * Blazor應用程式會放在靜態裝載的 web 伺服器或服務上，其中 .net 不會用來服務 Blazor 應用程式。 此策略在[獨立部署](#standalone-deployment)一節中涵蓋，其中包括裝載 Blazor WebAssembly 應用程式作為 IIS 子應用程式的相關資訊。
 
-## <a name="brotli-precompression"></a>Brotli precompression
+## <a name="precompression"></a>Precompression
 
-Blazor發佈 WebAssembly 應用程式時，會使用最高層級的[Brotli 壓縮演算法](https://tools.ietf.org/html/rfc7932)precompressed 輸出，以減少應用程式大小，並移除執行時間壓縮的需求。
+Blazor發佈 WebAssembly 應用程式時，會 precompressed 輸出以減少應用程式的大小，並移除執行時間壓縮的需求。 使用下列壓縮演算法：
+
+* [Brotli](https://tools.ietf.org/html/rfc7932) （最高層級）
+* [Gzip](https://tools.ietf.org/html/rfc1952)）
+
+若要停用壓縮，請將 `BlazorEnableCompression` MSBuild 屬性新增至應用程式的專案檔，並將值設定為 `false` ：
+
+```xml
+<PropertyGroup>
+  <BlazorEnableCompression>false</BlazorEnableCompression>
+</PropertyGroup>
+```
 
 如需 IIS *web.config*壓縮設定，請參閱[iis： Brotli 和 Gzip 壓縮](#brotli-and-gzip-compression)一節。
 
@@ -349,70 +360,12 @@ BlazorWebAssembly 應用程式可以使用函式進行初始化， `loadBootReso
 
 `loadBootResource`參數會出現在下表中。
 
-| 參數    | 描述 |
-| ---
-標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- |---標題：「裝載和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「主機和部署 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |`type`       |資源的類型。 運算子類型： `assembly` 、 `pdb` 、 `dotnetjs` 、 `dotnetwasm` 、 `timezonedata` | | `name`      |資源的名稱。 | |`defaultUri` |資源的相對或絕對 URI。 | |`integrity`  |代表回應中預期內容的完整性字串。 |
+| 參數    | 說明 |
+| ------------ | ----------- |
+| `type`       | 資源類型。 運算子類型： `assembly` 、 `pdb` 、 `dotnetjs` 、 `dotnetwasm` 、`timezonedata` |
+| `name`       | 資源名稱。 |
+| `defaultUri` | 資源的相對或絕對 URI。 |
+| `integrity`  | 代表回應中預期內容的完整性字串。 |
 
 `loadBootResource`傳回下列任何一項，以覆寫載入進程：
 

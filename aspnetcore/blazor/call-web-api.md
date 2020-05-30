@@ -1,11 +1,11 @@
 ---
-標題： ' 從 ASP.NET Core WebAssembly 呼叫 Web API Blazor ' 作者：描述： ' 瞭解如何 Blazor 使用 JSON helper 從 WebAssembly 應用程式呼叫 Web API，包括建立跨原始來源資源分享（CORS）要求。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題：「從 ASP.NET Core WebAssembly 中呼叫 Web API」 Blazor 作者： guardrex 描述：「瞭解如何 Blazor 使用 JSON helper 從 WebAssembly 應用程式呼叫 Web API，包括建立跨原始來源資源分享（CORS）要求。」
+monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/28/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： blazor/call-web-api
 
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
@@ -168,6 +168,8 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 ## <a name="named-httpclient-with-ihttpclientfactory"></a>名為 HttpClient 與 IHttpClientFactory
 
 <xref:System.Net.Http.IHttpClientFactory>支援服務和名為的設定 <xref:System.Net.Http.HttpClient> 。
+
+參考專案檔中的 [ [HTTP.sys](https://www.nuget.org/packages/Microsoft.Extensions.Http/) ] NuGet 套件。
 
 `Program.Main`（*Program.cs*）：
 

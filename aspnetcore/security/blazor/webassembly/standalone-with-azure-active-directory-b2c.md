@@ -1,10 +1,10 @@
 ---
-標題：「 Blazor 使用 Azure Active Directory B2C 的作者來保護 ASP.NET Core WebAssembly 獨立應用程式：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： ' Blazor 使用 Azure Active Directory B2C 的作者保護 ASP.NET Core WebAssembly 獨立應用程式： guardrex 描述： monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： security/blazor/webassembly/獨立式-with-azure-active directory-b2c
 
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Blazor使用 Azure Active Directory B2C 保護 ASP.NET Core WebAssembly 獨立應用程式
@@ -22,7 +22,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 * AAD B2C 實例（例如， `https://contoso.b2clogin.com/` 包含尾端斜線的）。
 * AAD B2C 租使用者網域（例如 `contoso.onmicrosoft.com` ）。
 
-請依照教學課程[：在 Azure Active Directory B2C 中註冊應用程式中](/azure/active-directory-b2c/tutorial-register-applications)的指導方針，為*用戶端應用程式*註冊 AAD 應用程式：
+請遵循教學課程[：再次在 Azure Active Directory B2C 中註冊應用程式中](/azure/active-directory-b2c/tutorial-register-applications)的指導方針，為*用戶端應用程式*註冊 AAD 應用程式，然後執行下列動作：
 
 1. 在**Azure Active Directory**  >  **應用程式註冊**中，選取 [**新增註冊**]。
 1. 提供應用程式的**名稱**（例如， ** Blazor 獨立 AAD B2C**）。
@@ -66,7 +66,7 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 建立應用程式之後，您應該能夠：
 
 * 使用 AAD 使用者帳戶登入應用程式。
-* 要求 Microsoft Api 的存取權杖。 如需詳細資訊，請參閱
+* 要求 Microsoft Api 的存取權杖。 如需詳細資訊，請參閱：
   * [存取權杖範圍](#access-token-scopes)
   * [快速入門：設定應用程式以公開 Web api](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)。
 

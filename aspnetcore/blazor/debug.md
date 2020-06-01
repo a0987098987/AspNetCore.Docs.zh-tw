@@ -1,6 +1,6 @@
 ---
 標題： ' Debug ASP.NET Core Blazor WebAssembly ' author： guardrex description： ' 瞭解如何調試 Blazor 程式。 '
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/29/2020 no-loc：
+monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/31/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
@@ -30,7 +30,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 調試需要下列其中一個瀏覽器：
 
@@ -93,31 +93,114 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 若要 Blazor 在 Visual Studio Code 中進行 WebAssembly 應用程式的 debug：
  
-1. 安裝[c # 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸，並 `debug.javascript.usePreview` 將設定為 `true` 。
+安裝[c # 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸，並 `debug.javascript.usePreview` 將設定為 `true` 。
 
-   ![延伸模組](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-extensions.png)
+![延伸模組](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-extensions.png)
 
-   ![JS 預覽偵錯工具](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-js-use-preview.png)
+![JS 預覽偵錯工具](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-js-use-preview.png)
 
-1. 開啟 Blazor 已啟用偵測的現有 WebAssembly 應用程式。
+### <a name="debug-standalone-blazor-webassembly"></a>Debug 獨立 Blazor WebAssembly
 
-   * 如果您收到下列通知，表示需要額外的設定才能啟用偵錯工具，請確認您已安裝正確的延伸模組，並已啟用 JavaScript 預覽偵測，然後重載視窗：
+1. Blazor在 VS Code 中開啟獨立的 WebAssembly 應用程式。
 
-     ![需要額外的設定](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
+   如果您收到下列通知，表示需要額外的設定才能啟用偵錯工具：
+   
+   * 確認您已安裝正確的延伸模組。
+   * 確認 JavaScript preview 的偵錯工具已啟用。
+   * 重載視窗。
 
-   * 通知會提供將所需的資產新增至應用程式，以進行建立和調試。 選取 **[是]**：
+   ![需要額外的設定](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
 
-     ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
+1. 使用<kbd>F5</kbd>鍵盤快速鍵或功能表項目開始進行調試。
 
-1. 在偵錯工具中啟動應用程式是兩個步驟的進程：
+1. 出現提示時，選取 [ ** Blazor WebAssembly] Debug**選項以開始進行調試。
 
-   1 \。 **首先**，使用 **.net Core 啟動（ Blazor 獨立式）** 啟動設定來啟動應用程式。
+   ![可用的調試選項清單](index/_static/blazor-vscode-debugtypes.png)
 
-   2 \。 **應用程式啟動之後**，請使用 chrome 啟動設定（需要 chrome）**中的 .Net Core Debug Blazor Web 元件**來啟動瀏覽器。 若要使用 Edge 而不是 Chrome，請將 `type` *vscode/啟動*中啟動設定的從變更 `pwa-chrome` 為 `pwa-msedge` 。
+1. 隨即啟動獨立應用程式，並開啟偵錯工具瀏覽器。
 
 1. 在元件的方法中設定中斷點 `IncrementCount` `Counter` ，然後選取按鈕以叫用中斷點：
 
    ![VS Code 中的 Debug 計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
+
+### <a name="debug-hosted-blazor-webassembly"></a>Debug hosted Blazor WebAssembly
+
+1. Blazor在 VS Code 中開啟 hosted WebAssembly 應用程式。
+
+1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]  。
+
+   ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
+
+1. 在 [選取範圍] 視窗中，選取裝載解決方案內的*伺服器*專案。
+
+隨即會產生啟動的*json*檔案，並啟動偵錯工具。
+
+### <a name="attach-to-an-existing-debugging-session"></a>附加至現有的偵錯工具會話
+
+若要附加至執行 Blazor 中的應用程式，請使用下列設定建立一個*啟動 json*檔案：
+
+```json
+{
+  "type": "blazorwasm",
+  "request": "attach",
+  "name": "Attach to Existing Blazor WebAssembly Application"
+}
+```
+
+> [!NOTE]
+> 只有針對獨立應用程式才支援附加至「偵測會話」。 若要使用完整堆疊的偵錯工具，您必須從 VS Code 啟動應用程式。
+
+### <a name="launch-configuration-options"></a>啟動設定選項
+
+以下是支援的啟動設定選項： `blazorwasm` debug 類型。
+
+| 選項    | 說明 |
+| --------- | ----------- |
+| `request` | 使用 `launch` 來啟動 WebAssembly 應用程式，並將其連結至已在執行中的 Blazor `attach` 應用程式。 |
+| `url`     | 要在瀏覽器中開啟的 URL。 預設為 `https://localhost:5001`。 |
+| `browser` | 要為偵錯工具啟動的瀏覽器。 設為 `edge` 或 `chrome`。 預設為 `chrome`。 |
+| `trace`   | 用來從 JS 偵錯工具產生記錄。 將設定為 `true` 以產生記錄。 |
+| `hosted`  | `true`如果啟動和偵測託管的 WebAssembly 應用程式，則必須設定為 Blazor 。 |
+| `webRoot` | 指定 web 伺服器的絕對路徑。 如果從子路由提供應用程式，則應設定。 |
+| `timeout` | 等候偵錯工具附加的毫秒數。 預設為30000毫秒（30秒）。 |
+| `program` | 可執行檔的參考，可執行裝載應用程式的伺服器。 如果為，則必須設定 `hosted` `true` 。 |
+| `cwd`     | 要在其下啟動應用程式的工作目錄。 如果為，則必須設定 `hosted` `true` 。 |
+| `env`     | 要提供給已啟動進程的環境變數。 只有在設為時才適用 `hosted` `true` 。 |
+
+### <a name="example-launch-configurations"></a>啟動設定範例
+
+#### <a name="launch-and-debug-a-standalone-blazor-webassembly-app"></a>啟動和調試獨立 Blazor WebAssembly 應用程式
+
+```json
+{
+  "type": "blazorwasm",
+  "request": "launch",
+  "name": "Launch and Debug"
+}
+```
+
+#### <a name="attach-to-a-running-app-at-a-specified-url"></a>在指定的 URL 附加至執行中的應用程式
+
+```json
+{
+  "type": "blazorwasm",
+  "request": "attach",
+  "name": "Attach and Debug",
+  "url": "http://localhost:5000"
+}
+```
+
+#### <a name="launch-and-debug-a-hosted-blazor-webassembly-app"></a>啟動和偵測託管的 Blazor WebAssembly 應用程式
+
+```json
+{
+  "type": "blazorwasm",
+  "request": "launch",
+  "name": "Launch and Debug Hosted App",
+  "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/MyHostedApp.Server.dll",
+  "cwd": "${workspaceFolder}"
+}
+```
 
 ## <a name="debug-in-the-browser"></a>瀏覽器中的 Debug
 

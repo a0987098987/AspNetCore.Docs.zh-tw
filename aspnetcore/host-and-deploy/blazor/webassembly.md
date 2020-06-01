@@ -27,7 +27,7 @@ By [Luke Latham](https://github.com/guardrex)、 [Rainer Stropek](https://www.ti
 Blazor發佈 WebAssembly 應用程式時，會 precompressed 輸出以減少應用程式的大小，並移除執行時間壓縮的需求。 使用下列壓縮演算法：
 
 * [Brotli](https://tools.ietf.org/html/rfc7932) （最高層級）
-* [Gzip](https://tools.ietf.org/html/rfc1952)）
+* [Gzip](https://tools.ietf.org/html/rfc1952)
 
 若要停用壓縮，請將 `BlazorEnableCompression` MSBuild 屬性新增至應用程式的專案檔，並將值設定為 `false` ：
 

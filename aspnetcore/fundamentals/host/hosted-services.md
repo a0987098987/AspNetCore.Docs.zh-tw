@@ -1,10 +1,11 @@
 ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： ASP.NET Core 作者中具有託管服務的背景工作： rick-anderson 描述：瞭解如何在 ASP.NET Core 中使用託管服務來執行背景工作。
+monikerRange： ' >= aspnetcore-2.1 ' ms-chap： riande ms. custom： mvc ms. date： 02/10/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid：基本/主機/託管服務
 
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
@@ -134,7 +135,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 ## <a name="queued-background-tasks"></a>排入佇列背景工作
 
-背景工作佇列是以 .NET 4.x <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> （[暫時排程為 ASP.NET Core 的內建](https://github.com/aspnet/Hosting/issues/1280)）為基礎：
+背景工作佇列是以 .NET 4.x 為基礎 <xref:System.Web.Hosting.HostingEnvironment.QueueBackgroundWorkItem*> ：
 
 [!code-csharp[](hosted-services/samples/3.x/BackgroundTasksSample/Services/BackgroundTaskQueue.cs?name=snippet1)]
 

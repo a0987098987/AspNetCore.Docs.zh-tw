@@ -24,7 +24,7 @@
 
 依照慣例，Proxy 會以 HTTP 標頭轉送資訊。
 
-| Header | 描述 |
+| Header | 說明 |
 | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'
@@ -144,7 +144,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'
@@ -449,7 +449,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 
 依照慣例，Proxy 會以 HTTP 標頭轉送資訊。
 
-| Header | 描述 |
+| Header | 說明 |
 | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'
@@ -569,7 +569,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ---
 標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 - 'Blazor'

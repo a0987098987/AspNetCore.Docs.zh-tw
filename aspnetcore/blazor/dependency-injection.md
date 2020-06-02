@@ -1,11 +1,11 @@
 ---
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： ' ASP.NET Core 相依性 Blazor 插入 ' 作者： guardrex 描述：「請參閱 Blazor 應用程式如何將服務插入元件。」
+monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： blazor/dependency-插入
 
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core 相依性 Blazor 插入
@@ -23,60 +23,11 @@ DI 是用來存取集中位置所設定之服務的技術。 這在應用程式�
 
 預設服務會自動新增至應用程式的服務集合。
 
-| 服務 | 存留期 | 描述 |
-| ---
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----- |---標題： ' ASP.NET Core 相依性 Blazor 插入 ' 作者：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----- |---標題： ' ASP.NET Core 相依性 Blazor 插入 ' 作者：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |<xref:System.Net.Http.HttpClient> |暫時性 |提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br><xref:System.Net.Http.HttpClient>WebAssembly 應用程式中的實例會 Blazor 使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor伺服器應用程式預設不包含 <xref:System.Net.Http.HttpClient> 已設定為服務的。 將提供 <xref:System.Net.Http.HttpClient> 給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱<xref:blazor/call-web-api>。 | |<xref:Microsoft.JSInterop.IJSRuntime> |Singleton （ Blazor WebAssembly）<br>限定範圍（ Blazor 伺服器） |代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/call-javascript-from-dotnet>。 | |<xref:Microsoft.AspNetCore.Components.NavigationManager> |Singleton （ Blazor WebAssembly）<br>限定範圍（ Blazor 伺服器） |包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
+| 服務 | 存留期 | 說明 |
+| ------- | -------- | ----------- |
+| <xref:System.Net.Http.HttpClient> | 暫時性 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br><xref:System.Net.Http.HttpClient>WebAssembly 應用程式中的實例會 Blazor 使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor伺服器應用程式預設不包含 <xref:System.Net.Http.HttpClient> 已設定為服務的。 將提供 <xref:System.Net.Http.HttpClient> 給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱<xref:blazor/call-web-api>。 |
+| <xref:Microsoft.JSInterop.IJSRuntime> | Singleton （ Blazor WebAssembly）<br>限定範圍（ Blazor 伺服器） | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱<xref:blazor/call-javascript-from-dotnet>。 |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager> | Singleton （ Blazor WebAssembly）<br>限定範圍（ Blazor 伺服器） | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/routing#uri-and-navigation-state-helpers)協助程式。 |
 
 自訂服務提供者不會自動提供表格中所列的預設服務。 如果您使用自訂服務提供者，而且需要資料表中所顯示的任何服務，請將所需的服務新增至新的服務提供者。
 
@@ -167,52 +118,11 @@ public void ConfigureServices(IServiceCollection services)
 
 您可以使用下表所示的存留期來設定服務。
 
-| 存留期 | 描述 |
-| ---
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----- |---標題： ' ASP.NET Core 相依性 Blazor 插入 ' 作者：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core 相依性 Blazor 插入 ' author：描述： ' 瞭解 Blazor 應用程式如何將服務插入元件中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | BlazorWebAssembly apps 目前不具有 DI 範圍的概念。 `Scoped`註冊的服務的行為就像 `Singleton` 服務一樣。 不過， Blazor 伺服器裝載模型支援 `Scoped` 存留期。 在 Blazor 伺服器應用程式中，範圍服務註冊的範圍是*連接*。 因此，即使目前的意圖是在瀏覽器中執行用戶端，使用範圍服務也適用于應該範圍設定為目前使用者的服務。 | |<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> |DI 會建立服務的*單一實例*。 所有需要服務的元件 `Singleton` 都會收到相同服務的實例。 | |<xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> |每當元件 `Transient` 從服務容器取得服務的實例時，就會收到服務的*新實例*。 |
+| 存留期 | 說明 |
+| -------- | ----------- |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Scoped%2A> | BlazorWebAssembly apps 目前不具有 DI 範圍的概念。 `Scoped`註冊的服務的行為就像 `Singleton` 服務一樣。 不過， Blazor 伺服器裝載模型支援 `Scoped` 存留期。 在 Blazor 伺服器應用程式中，範圍服務註冊的範圍是*連接*。 因此，即使目前的意圖是在瀏覽器中執行用戶端，使用範圍服務也適用于應該範圍設定為目前使用者的服務。 |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI 會建立服務的*單一實例*。 所有需要服務的元件 `Singleton` 都會收到相同服務的實例。 |
+| <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | 每當元件 `Transient` 從服務容器取得服務的實例時，就會收到服務的*新實例*。 |
 
 DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，請參閱<xref:fundamentals/dependency-injection>。
 
@@ -424,4 +334,5 @@ public class DataAccess : IDataAccess
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/dependency-injection>
+* [暫時性和共用實例的 IDisposable 指引](xref:fundamentals/dependency-injection#idisposable-guidance-for-transient-and-shared-instances)
 * <xref:mvc/views/dependency-injection>

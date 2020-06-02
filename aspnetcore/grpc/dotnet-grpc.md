@@ -27,7 +27,7 @@ ms.locfileid: "82768831"
 
 ## <a name="installation"></a>安裝
 
-若要安裝`dotnet-grpc` [.net Core 通用工具](/dotnet/core/tools/global-tools)，請執行下列命令：
+若要安裝 `dotnet-grpc` [.Net Core 通用工具](/dotnet/core/tools/global-tools)，請執行下列命令：
 
 ```dotnetcli
 dotnet tool install -g dotnet-grpc
@@ -35,19 +35,19 @@ dotnet tool install -g dotnet-grpc
 
 ## <a name="add-references"></a>新增參考
 
-`dotnet-grpc`可以用來將 Protobuf 參考當做`<Protobuf />`專案新增至 *.csproj*檔案：
+`dotnet-grpc`可以用來將 Protobuf 參考當做 `<Protobuf />` 專案新增至 *.csproj*檔案：
 
 ```xml
 <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
 ```
 
-Protobuf 參考是用來產生 c # 用戶端和/或伺服器資產。 此`dotnet-grpc`工具可以：
+Protobuf 參考是用來產生 c # 用戶端和/或伺服器資產。 此 `dotnet-grpc` 工具可以：
 
 * 從磁片上的本機檔案建立 Protobuf 參考。
 * 從 URL 所指定的遠端檔案建立 Protobuf 參考。
 * 請確定已將正確的 gRPC 套件相依性新增至專案。
 
-例如， `Grpc.AspNetCore`封裝會新增至 web 應用程式。 `Grpc.AspNetCore`包含 gRPC 伺服器和用戶端程式庫和工具支援。 或者，只`Grpc.Net.Client`包含`Grpc.Tools` gRPC `Google.Protobuf`用戶端程式庫和工具支援的、和套件會新增至主控台應用程式。
+例如， `Grpc.AspNetCore` 封裝會新增至 web 應用程式。 `Grpc.AspNetCore`包含 gRPC 伺服器和用戶端程式庫和工具支援。 或者， `Grpc.Net.Client` `Grpc.Tools` `Google.Protobuf` 只包含 gRPC 用戶端程式庫和工具支援的、和套件會新增至主控台應用程式。
 
 ### <a name="add-file"></a>新增檔案
 
@@ -56,7 +56,7 @@ Protobuf 參考是用來產生 c # 用戶端和/或伺服器資產。 此`dotnet
 * 可以相對於目前的目錄或絕對路徑。
 * 可能包含以模式為基礎之檔案[通配](https://wikipedia.org/wiki/Glob_(programming))的萬用字元。
 
-如果有任何檔案位於專案目錄外，則`Link`會加入元素，以顯示 Visual Studio 資料夾`Protos`下的檔案。
+如果有任何檔案位於專案目錄外， `Link` 則會加入元素，以顯示 Visual Studio 資料夾下的檔案 `Protos` 。
 
 ### <a name="usage"></a>使用方式
 
@@ -66,22 +66,22 @@ dotnet grpc add-file [options] <files>...
 
 #### <a name="arguments"></a>引數
 
-| 引數 | 描述 |
+| 引數 | 說明 |
 |-|-|
 | files | Protobuf 檔案會參考。 這些可以是本機 protobuf 檔案的 glob 路徑。 |
 
-#### <a name="options"></a>選項。
+#### <a name="options"></a>選項
 
 | Short 選項 | Long 選項 | 說明 |
 |-|-|-|
 | -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
-| -S | --服務 | 應產生的 gRPC 服務類型。 如果`Default`指定， `Both`則會用於 Web 專案，並`Client`用於非 Web 專案。 接受的值`Both`為`Client`、 `Default`、 `None`、 `Server`、。
+| -S | --服務 | 應產生的 gRPC 服務類型。 如果 `Default` 指定， `Both` 則會用於 Web 專案，並 `Client` 用於非 Web 專案。 接受的值為 `Both` 、 `Client` 、 `Default` 、 `None` 、 `Server` 。
 | -i | --其他-匯入-目錄 | 解析 protobuf 檔案的匯入時，所要使用的其他目錄。 這是以分號分隔的路徑清單。
-| | --access | 要用於產生之 c # 類別的存取修飾詞。 預設值是 `Public`。 接受的值為 `Internal` 和 `Public`。
+| | --access | 要用於產生之 c # 類別的存取修飾詞。 預設值為 `Public`。 接受的值為 `Internal` 和 `Public`。
 
 ### <a name="add-url"></a>新增 URL
 
-`add-url`命令是用來將來源 URL 所指定的遠端檔案新增為 Protobuf 參考。 必須提供檔案路徑，以指定要下載遠端檔案的位置。 檔案路徑可以相對於目前的目錄或絕對路徑。 如果檔案路徑位於專案目錄外，則會加入`Link`元素，以在 Visual Studio 中的虛擬資料夾`Protos`底下顯示檔案。
+`add-url`命令是用來將來源 URL 所指定的遠端檔案新增為 Protobuf 參考。 必須提供檔案路徑，以指定要下載遠端檔案的位置。 檔案路徑可以相對於目前的目錄或絕對路徑。 如果檔案路徑位於專案目錄外， `Link` 則會加入元素，以在 Visual Studio 中的虛擬資料夾底下顯示檔案 `Protos` 。
 
 ### <a name="usage"></a>使用方式
 
@@ -91,17 +91,17 @@ dotnet-grpc add-url [options] <url>
 
 #### <a name="arguments"></a>引數
 
-| 引數 | 描述 |
+| 引數 | 說明 |
 |-|-|
-| url | 遠端 protobuf 檔的 URL。 |
+| URL | 遠端 protobuf 檔的 URL。 |
 
-#### <a name="options"></a>選項。
+#### <a name="options"></a>選項
 
 | Short 選項 | Long 選項 | 說明 |
 |-|-|-|
 | -o | --output | 指定遠端 protobuf 檔的下載路徑。 這是必要選項。
 | -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
-| -S | --服務 | 應產生的 gRPC 服務類型。 如果`Default`指定， `Both`則會用於 Web 專案，並`Client`用於非 Web 專案。 接受的值`Both`為`Client`、 `Default`、 `None`、 `Server`、。
+| -S | --服務 | 應產生的 gRPC 服務類型。 如果 `Default` 指定， `Both` 則會用於 Web 專案，並 `Client` 用於非 Web 專案。 接受的值為 `Both` 、 `Client` 、 `Default` 、 `None` 、 `Server` 。
 | -i | --其他-匯入-目錄 | 解析 protobuf 檔案的匯入時，所要使用的其他目錄。 這是以分號分隔的路徑清單。
 | | --access | 要用於產生之 c # 類別的存取修飾詞。 預設值為 `Public`。 接受的值為 `Internal` 和 `Public`。
 
@@ -120,11 +120,11 @@ dotnet-grpc remove [options] <references>...
 
 ### <a name="arguments"></a>引數
 
-| 引數 | 描述 |
+| 引數 | 說明 |
 |-|-|
 | 參考 | 要移除之 protobuf 參考的 Url 或檔案路徑。 |
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 | Short 選項 | Long 選項 | 說明 |
 |-|-|-|
@@ -147,11 +147,11 @@ dotnet-grpc refresh [options] [<references>...]
 
 ### <a name="arguments"></a>引數
 
-| 引數 | 描述 |
+| 引數 | 說明 |
 |-|-|
 | 參考 | 應更新之遠端 protobuf 參考的 Url 或檔案路徑。 將此引數保留空白以重新整理所有遠端參考。 |
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 | Short 選項 | Long 選項 | 說明 |
 |-|-|-|
@@ -168,7 +168,7 @@ dotnet-grpc refresh [options] [<references>...]
 dotnet-grpc list [options]
 ```
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 | Short 選項 | Long 選項 | 說明 |
 |-|-|-|

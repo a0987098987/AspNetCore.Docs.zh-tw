@@ -12,6 +12,6 @@
 >如需詳細資訊，請參閱下列資源：
 >
 > * [SQLite EF Core 資料庫提供者限制](/ef/core/providers/sqlite/limitations)
-> * [自訂移碼](/ef/core/managing-schemas/migrations/#customize-migration-code)
-> * [資料種子設定](/ef/core/modeling/data-seeding)
+> * [自訂移轉程式碼](/ef/core/managing-schemas/migrations/#customize-migration-code)
+> * [資料植入](/ef/core/modeling/data-seeding)
   * [SQLite ALTER TABLE 陳述式](https://sqlite.org/lang_altertable.html) \(英文\)

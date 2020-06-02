@@ -128,8 +128,8 @@ if (context.Movie.Any())
 ![在 Microsoft Edge 中開啟 MVC 電影應用程式顯示電影資料](working-with-sql/_static/m55.png)
 
 > [!div class="step-by-step"]
-> [上一頁](adding-model.md)
-> [下一頁](controller-methods-views.md)
+> [上一個](adding-model.md) 
+> [下一步](controller-methods-views.md)
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
@@ -240,7 +240,7 @@ if (context.Movie.Any())
 ![在 Microsoft Edge 中開啟 MVC 電影應用程式顯示電影資料](working-with-sql/_static/m55_mac.png)
 
 > [!div class="step-by-step"]
-> [上一頁](adding-model.md)
-> [下一頁](controller-methods-views.md)
+> [上一個](adding-model.md) 
+> [下一步](controller-methods-views.md)
 
 ::: moniker-end

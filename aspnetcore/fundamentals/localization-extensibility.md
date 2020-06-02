@@ -24,7 +24,7 @@ ms.locfileid: "82774336"
 
 作者為 [Hisham Bin Ateya](https://github.com/hishamco)
 
-本文：
+這篇文章：
 
 * 列出當地語系化 API 的擴充點。
 * 提供如何擴充 ASP.NET Core 應用程式當地語系化的指示。

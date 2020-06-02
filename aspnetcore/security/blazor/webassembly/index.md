@@ -1,11 +1,11 @@
 ---
-標題：「安全 ASP.NET Core Blazor WebAssembly ' 作者：描述：」瞭解如何將 Blazor WebAssemlby 應用程式保護為單一頁面應用程式（spa）。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： ' Secure ASP.NET Core Blazor WebAssembly ' author： guardrex description： ' 瞭解如何將 Blazor WebAssemlby 應用程式保護為單一頁面應用程式（spa）。
+monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 06/01/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： security/blazor/webassembly/index
 
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>保護 ASP.NET Core Blazor WebAssembly
@@ -41,7 +41,19 @@ WebAssembly 中的驗證支援 Blazor 是建置於*oidc-client*程式庫之上�
 * 當 Blazor WebAssembly 應用程式載入登入回呼端點（ `/authentication/login-callback` ）時，就會處理驗證回應。
   * 如果驗證程式成功完成，則會驗證使用者，並選擇性地將其傳送回給使用者要求的原始受保護 URL。
   * 如果驗證程式因任何原因而失敗，則會將使用者傳送至登入失敗頁面（ `/authentication/login-failed` ），並顯示錯誤。
-  
+
+## <a name="authorization"></a>授權
+
+在 Blazor WebAssembly apps 中，可以略過授權檢查，因為使用者可以修改所有的用戶端程式代碼。 這同樣也適用於所有的用戶端應用程式技術，包括 JavaScript SPA 架構或任何作業系統的原生應用程式。
+
+**請一律在由您用戶端應用程式所存取之任何 API 端點內的伺服器上執行授權檢查。**
+
+## <a name="refresh-tokens"></a>重新整理權杖
+
+重新整理權杖無法在 WebAssembly apps 的用戶端上受到保護 Blazor 。 因此，不應將重新整理權杖傳送至應用程式，以供直接使用。
+
+在託管的 WebAssembly 解決方案中，伺服器端應用程式可以維護及使用重新整理權杖 Blazor 來存取協力廠商 api。 如需詳細資訊，請參閱<xref:security/blazor/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party>。
+
 ## <a name="implementation-guidance"></a>實作指引
 
 此*總覽*底下的文章提供有關在 Blazor WebAssembly apps 中針對特定提供者驗證使用者的資訊。

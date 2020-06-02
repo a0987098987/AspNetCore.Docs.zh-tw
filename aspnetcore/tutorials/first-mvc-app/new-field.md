@@ -137,11 +137,11 @@ dotnet ef database update
 ---
 <!-- End of VS tabs -->
 
-執行應用程式，並確認您可以使用`Rating`欄位來建立、編輯和顯示電影。 更新應用程式：
+執行應用程式，並確認您可以使用欄位來建立、編輯和顯示電影 `Rating` 。 更新應用程式：
 
-* 將`Rating`欄位新增至`Edit`、 `Details`和`Delete`視圖範本。
-* 在的 [編輯動作] 方法中更新系`MoviesController`結。
+* 將 `Rating` 欄位新增至 `Edit` 、 `Details` 和 `Delete` 視圖範本。
+* 在的 [編輯動作] 方法中更新系結 `MoviesController` 。
 
 > [!div class="step-by-step"]
-> [上一頁](search.md)
-> [下一頁](validation.md)
+> [上一個](search.md) 
+> [下一步](validation.md)

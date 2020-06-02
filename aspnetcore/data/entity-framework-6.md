@@ -25,7 +25,7 @@ ms.locfileid: "82775475"
 
 本文示範如何在 ASP.NET Core 應用程式中使用 Entity Framework 6。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要使用 Entity Framework 6，您的專案必須針對 .NET Framework 進行編譯，因為 Entity Framework 6 不支援 .NET Core。 如果您需要跨平台功能，則必須升級至 [Entity Framework Core](/ef/)。
 
@@ -45,11 +45,11 @@ ms.locfileid: "82775475"
 
 ## <a name="handle-connection-strings"></a>處理連接字串
 
-您將在 EF6 類別庫專案中使用的 EF6 命令列工具需要預設建構函式，因此它們可以具現化內容。 但是，您可能想要指定連接字串以用於 ASP.NET Core 專案；在此情況下，內容建構函式必須要有可讓您以連接字串傳遞的參數。 範例如下。
+您將在 EF6 類別庫專案中使用的 EF6 命令列工具需要預設建構函式，因此它們可以具現化內容。 但是，您可能想要指定連接字串以用於 ASP.NET Core 專案；在此情況下，內容建構函式必須要有可讓您以連接字串傳遞的參數。 以下是範例。
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContext.cs?name=snippet_Constructor)]
 
-因為 EF6 內容沒有無參數建構函式，您的 EF6 專案必須提供 [IDbContextFactory](https://msdn.microsoft.com/library/hh506876) 的實作。 EF6 命令列工具將尋找並使用該實作，因此它們可以具現化內容。 範例如下。
+因為 EF6 內容沒有無參數建構函式，您的 EF6 專案必須提供 [IDbContextFactory](https://msdn.microsoft.com/library/hh506876) 的實作。 EF6 命令列工具將尋找並使用該實作，因此它們可以具現化內容。 以下是範例。
 
 [!code-csharp[](entity-framework-6/sample/EF6/SchoolContextFactory.cs?name=snippet_IDbContextFactory)]
 
@@ -73,10 +73,10 @@ ms.locfileid: "82775475"
 
 * 建立方案。
 
-* **加入** > **新的專案** > **web** > **ASP.NET Core web 應用程式**
+* **新增**  > **新增專案**  > **Web**  > **ASP.NET Core Web 應用程式**
   * 在專案範本選取項目對話方塊中，選取下拉式清單中的 API 和.NET Framework
 
-* **加入** > **新的專案** > **Windows 桌面** > **類別庫（.NET Framework）**
+* **新增**  > **新增專案**  > **Windows 桌面**  > **類別庫（.NET Framework）**
 
 * 在這兩個專案的 [套件管理員主控台]**** (PMC) 中，執行 `Install-Package Entityframework` 命令。
 

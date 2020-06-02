@@ -31,7 +31,7 @@ ms.locfileid: "82774570"
 > * 在 IIS 管理員中建立 IIS 網站。
 > * 部署 ASP.NET Core 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在部署電腦上安裝 [.NET Core SDK](/dotnet/core/sdk)。
 * 使用 **Web Server (IIS)** 伺服器角色設定的 Windows Server。 若您的伺服器並未設為使用 IIS 來裝載網站，請遵循 <xref:host-and-deploy/iis/index#iis-configuration> 一文中＜IIS 組態＞** 一節內的指導，然後返回本教學課程。

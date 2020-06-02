@@ -75,7 +75,7 @@ SpaServices 提供有用的基礎結構，例如：
     node -v && npm -v
     ```
 
-  * 如果部署至 Azure 網站，則不需要&mdash;執行任何動作，因為伺服器環境中不會安裝 node.js 並可供使用。
+  * 如果部署至 Azure 網站，則不需要執行任何動作，因為 &mdash; 伺服器環境中不會安裝 node.js 並可供使用。
 
 * [!INCLUDE [](~/includes/net-core-sdk-download-link.md)]
 
@@ -109,31 +109,31 @@ npm i -S aspnet-prerendering
 
 ### <a name="asp-prerender-module-tag-helper"></a>asp--模組標記協助程式
 
-上述`asp-prerender-module`程式碼範例中使用的標籤協助程式，會透過 node.js 在伺服器上執行*ClientApp/dist/main-server。* 為了清楚起見， *main-server*檔案是[Webpack](https://webpack.github.io/)組建程式中 TypeScript 到 JavaScript 轉譯工作的成品。 Webpack 會定義的`main-server`進入點別名;而且，此別名的相依性圖形的遍歷開始于*ClientApp/boot-server. ts*檔案：
+上述程式碼範例中使用的標籤協助程式，會透過 `asp-prerender-module` node.js 在伺服器上執行*ClientApp/dist/main-server。* 為了清楚起見， *main-server*檔案是[Webpack](https://webpack.github.io/)組建程式中 TypeScript 到 JavaScript 轉譯工作的成品。 Webpack 會定義的進入點別名 `main-server` ; 而且，此別名的相依性圖形的遍歷會從*ClientApp/boot-server. ts*檔案開始：
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=53)]
 
-在下列的角度範例中， *ClientApp/boot-server. ts*檔案會利用`createServerRenderer` `aspnet-prerendering` npm 套件`RenderResult`的函式和類型，透過 node.js 設定伺服器呈現。 以伺服器端轉譯為目標的 HTML 標籤會傳遞至解析函數呼叫，該函式會包裝在強型別 JavaScript `Promise`物件中。 `Promise`物件的重要性在於，它會以非同步方式將 HTML 標籤提供給分頁，以便在 DOM 的預留位置元素中進行插入。
+在下列的角度範例中， *ClientApp/boot-server. ts*檔案會利用 `createServerRenderer` npm 套件的函式和 `RenderResult` 類型 `aspnet-prerendering` ，透過 node.js 設定伺服器呈現。 以伺服器端轉譯為目標的 HTML 標籤會傳遞至解析函數呼叫，該函式會包裝在強型別 JavaScript `Promise` 物件中。 `Promise`物件的重要性在於，它會以非同步方式將 HTML 標籤提供給分頁，以便在 DOM 的預留位置元素中進行插入。
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-34,79-)]
 
 ### <a name="asp-prerender-data-tag-helper"></a>asp 預先呈現的資料標記協助程式
 
-與`asp-prerender-module`標記協助程式結合時， `asp-prerender-data`標籤協助程式可用來將 Razor 視圖的內容資訊傳遞至伺服器端 JavaScript。 例如，下列標記會將使用者資料傳遞至`main-server`模組：
+與標記協助程式結合時，標籤協助程式 `asp-prerender-module` `asp-prerender-data` 可用來將 Razor 視圖的內容資訊傳遞至伺服器端 JavaScript。 例如，下列標記會將使用者資料傳遞至 `main-server` 模組：
 
 [!code-cshtml[](../client-side/spa-services/sample/SpaServicesSampleApp/Views/Home/Index.cshtml?range=9-12)]
 
-接收`UserName`的引數會使用內建的 JSON 序列化程式進行序列化，並儲存`params.data`在物件中。 在下列角度範例中，資料是用來在`h1`元素內建立個人化的問候語：
+接收的 `UserName` 引數會使用內建的 JSON 序列化程式進行序列化，並儲存在 `params.data` 物件中。 在下列角度範例中，資料是用來在元素內建立個人化的問候語 `h1` ：
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,38-52,79-)]
 
 在標記協助程式中傳遞的屬性名稱會以**PascalCase**標記法表示。 相對於 JavaScript，其中相同的屬性名稱會以**camelCase**表示。 預設的 JSON 序列化設定會負責這種差異。
 
-若要在上述程式碼範例中展開，可以藉由 hydrating 提供給`globals` `resolve`函式的屬性，將資料從伺服器傳遞到 view：
+若要在上述程式碼範例中展開，可以藉由 hydrating 提供給函式的屬性，將資料從伺服器傳遞到 view `globals` `resolve` ：
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/boot-server.ts?range=6,10-21,57-77,79-)]
 
-在`postList` `globals`物件內定義的陣列會附加至瀏覽器的全域`window`物件。 這個 hoisting 到全域範圍的變數消除了重複的工作，特別是在伺服器上和用戶端再次載入相同的資料時。
+在 `postList` 物件內定義的陣列 `globals` 會附加至瀏覽器的全域 `window` 物件。 這個 hoisting 到全域範圍的變數消除了重複的工作，特別是在伺服器上和用戶端再次載入相同的資料時。
 
 ![附加至 window 物件的全域 postList 變數](spa-services/_static/global_variable.png)
 
@@ -155,13 +155,13 @@ npm i -D aspnet-webpack
 
 ### <a name="webpack-dev-middleware-configuration"></a>Webpack Dev 中介軟體設定
 
-Webpack Dev 中介軟體會透過*Startup.cs*檔案之`Configure`方法中的下列程式碼，註冊至 HTTP 要求管線：
+Webpack Dev 中介軟體會透過*Startup.cs*檔案之方法中的下列程式碼，註冊至 HTTP 要求管線 `Configure` ：
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_WebpackMiddlewareRegistration&highlight=4)]
 
-您`UseWebpackDevMiddleware`必須先呼叫擴充方法，才能透過`UseStaticFiles`擴充方法[註冊靜態檔案裝載](xref:fundamentals/static-files)。 基於安全性理由，請只在應用程式以開發模式執行時，才註冊中介軟體。
+您 `UseWebpackDevMiddleware` 必須先呼叫擴充方法，才能透過擴充方法[註冊靜態檔案裝載](xref:fundamentals/static-files) `UseStaticFiles` 。 基於安全性理由，請只在應用程式以開發模式執行時，才註冊中介軟體。
 
-*Webpack*檔的`output.publicPath`屬性會告訴中介軟體要監看`dist`資料夾是否有變更：
+*Webpack*檔的 `output.publicPath` 屬性會告訴中介軟體要監看 `dist` 資料夾是否有變更：
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=6,13-16)]
 
@@ -179,7 +179,7 @@ npm i -D webpack-hot-middleware
 
 ### <a name="hot-module-replacement-configuration"></a>熱模組更換設定
 
-HMR 元件必須在`Configure`方法中註冊到 MVC 的 HTTP 要求管線中：
+HMR 元件必須在方法中註冊到 MVC 的 HTTP 要求管線中 `Configure` ：
 
 ```csharp
 app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
@@ -187,9 +187,9 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 });
 ```
 
-與[Webpack Dev 中介軟體](#webpack-dev-middleware)一樣， `UseWebpackDevMiddleware`擴充方法必須在`UseStaticFiles`擴充方法之前呼叫。 基於安全性理由，請只在應用程式以開發模式執行時，才註冊中介軟體。
+與[Webpack Dev 中介軟體](#webpack-dev-middleware)一樣，擴充方法 `UseWebpackDevMiddleware` 必須在 `UseStaticFiles` 擴充方法之前呼叫。 基於安全性理由，請只在應用程式以開發模式執行時，才註冊中介軟體。
 
-*Webpack 的 .js*檔案必須定義`plugins`陣列，即使它是空的：
+*Webpack 的 .js*檔案必須定義 `plugins` 陣列，即使它是空的：
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/webpack.config.js?range=6,25)]
 
@@ -201,7 +201,7 @@ app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions {
 
 在大部分以 ASP.NET Core 為基礎的 Spa 中，通常還需要用戶端路由，而不是伺服器端路由。 SPA 和 MVC 路由系統可以獨立工作而不受干擾。 不過，有一個邊緣案例會面臨挑戰：識別 404 HTTP 回應。
 
-請考慮使用的無副檔名路由`/some/page`案例。 假設要求不符合伺服器端路由的模式，但其模式與用戶端路由相符。 現在請考慮的連入`/images/user-512.png`要求，這通常預期會在伺服器上尋找影像檔案。 如果要求的資源路徑不符合任何伺服器端路由或靜態檔案，用戶端應用程式不太可能處理它&mdash;，通常會傳回所需的 404 HTTP 狀態碼。
+請考慮使用的無副檔名路由案例 `/some/page` 。 假設要求不符合伺服器端路由的模式，但其模式與用戶端路由相符。 現在請考慮的連入要求 `/images/user-512.png` ，這通常預期會在伺服器上尋找影像檔案。 如果要求的資源路徑不符合任何伺服器端路由或靜態檔案，用戶端應用程式不太可能處理它，通常會傳回 &mdash; 所需的 404 HTTP 狀態碼。
 
 ### <a name="routing-helpers-prerequisites"></a>路由協助程式必要條件
 
@@ -213,11 +213,11 @@ npm i -S @angular/router
 
 ### <a name="routing-helpers-configuration"></a>路由協助程式設定
 
-方法中會使用`MapSpaFallbackRoute`名為的擴充方法： `Configure`
+`MapSpaFallbackRoute`方法中會使用名為的擴充方法 `Configure` ：
 
 [!code-csharp[](../client-side/spa-services/sample/SpaServicesSampleApp/Startup.cs?name=snippet_MvcRoutingTable&highlight=7-9)]
 
-路由會依其設定順序進行評估。 因此，上述`default`程式碼範例中的路由會先用於模式比對。
+路由會依其設定順序進行評估。 因此， `default` 上述程式碼範例中的路由會先用於模式比對。
 
 ## <a name="create-a-new-project"></a>建立新專案
 
@@ -254,7 +254,7 @@ dotnet new angular
   * 排除來源對應。
   * 透過配套和縮制來優化用戶端程式代碼。
 
-ASP.NET Core 使用名`ASPNETCORE_ENVIRONMENT`為的環境變數來儲存設定模式。 如需詳細資訊，請參閱[設定環境](xref:fundamentals/environments#set-the-environment)。
+ASP.NET Core 使用名為的環境變數 `ASPNETCORE_ENVIRONMENT` 來儲存設定模式。 如需詳細資訊，請參閱[設定環境](xref:fundamentals/environments#set-the-environment)。
 
 ### <a name="run-with-net-core-cli"></a>使用 .NET Core CLI 執行
 
@@ -270,17 +270,17 @@ dotnet restore && npm i
 dotnet run
 ```
 
-應用程式會根據執行時間設定[模式](#set-the-runtime-configuration-mode)在 localhost 上啟動。 在流覽`http://localhost:5000`器中流覽至會顯示登陸頁面。
+應用程式會根據執行時間設定[模式](#set-the-runtime-configuration-mode)在 localhost 上啟動。 `http://localhost:5000`在瀏覽器中流覽至會顯示登陸頁面。
 
 ### <a name="run-with-visual-studio-2017"></a>以 Visual Studio 2017 執行
 
-開啟[dotnet new](/dotnet/core/tools/dotnet-new)命令所產生的 *.csproj*檔案。 在專案開啟時，會自動還原必要的 NuGet 和 npm 套件。 此還原程式可能需要幾分鐘的時間，而且應用程式會在完成時準備好執行。 按一下綠色的 [執行] 按鈕`Ctrl + F5`或按下，瀏覽器會開啟至應用程式的登陸頁面。 應用程式會根據執行時間設定[模式](#set-the-runtime-configuration-mode)在 localhost 上執行。
+開啟[dotnet new](/dotnet/core/tools/dotnet-new)命令所產生的 *.csproj*檔案。 在專案開啟時，會自動還原必要的 NuGet 和 npm 套件。 此還原程式可能需要幾分鐘的時間，而且應用程式會在完成時準備好執行。 按一下綠色的 [執行] 按鈕或按下 `Ctrl + F5` ，瀏覽器會開啟至應用程式的登陸頁面。 應用程式會根據執行時間設定[模式](#set-the-runtime-configuration-mode)在 localhost 上執行。
 
 ## <a name="test-the-app"></a>測試應用程式
 
 SpaServices 範本已預先設定為使用[Karma](https://karma-runner.github.io/1.0/index.html)和[Jasmine](https://jasmine.github.io/)來執行用戶端測試。 Jasmine 是適用于 JavaScript 的熱門單元測試架構，而 Karma 則是適用于這些測試的測試執行器。 Karma 設定為使用[Webpack Dev 中介軟體](#webpack-dev-middleware)，讓開發人員不需要在每次進行變更時停止和執行測試。 不論是針對測試案例或測試案例本身執行的程式碼，測試都會自動執行。
 
-使用「角度」應用程式作為範例時，會針對*counter. spec*檔案中`CounterComponent`的提供兩個 Jasmine 測試案例：
+使用「角度」應用程式作為範例時，會針對 counter. spec 檔案中的提供兩個 Jasmine 測試案例 `CounterComponent` ： *counter.component.spec.ts*
 
 [!code-typescript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/app/components/counter/counter.component.spec.ts?range=15-28)]
 
@@ -290,7 +290,7 @@ SpaServices 範本已預先設定為使用[Karma](https://karma-runner.github.io
 npm test
 ```
 
-腳本會啟動 Karma 測試執行器，其會讀取*Karma*中定義的設定。 在其他設定中， *karma*會識別要透過其`files`陣列執行的測試檔案：
+腳本會啟動 Karma 測試執行器，其會讀取*Karma*中定義的設定。 在其他設定中， *karma*會識別要透過其陣列執行的測試檔案 `files` ：
 
 [!code-javascript[](../client-side/spa-services/sample/SpaServicesSampleApp/ClientApp/test/karma.conf.js?range=4-5,8-11)]
 
@@ -298,7 +298,7 @@ npm test
 
 如需發佈至 Azure 的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/12474)。
 
-將產生的用戶端資產和已發佈的 ASP.NET Core 成品結合成準備好部署的套件可能會很麻煩。 幸好，SpaServices 會使用名為`RunWebpack`的自訂 MSBuild 目標來協調整個發行流程：
+將產生的用戶端資產和已發佈的 ASP.NET Core 成品結合成準備好部署的套件可能會很麻煩。 幸好，SpaServices 會使用名為的自訂 MSBuild 目標來協調整個發行流程 `RunWebpack` ：
 
 [!code-xml[](../client-side/spa-services/sample/SpaServicesSampleApp/SpaServicesSampleApp.csproj?range=31-45)]
 

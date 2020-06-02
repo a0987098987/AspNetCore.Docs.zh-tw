@@ -15,7 +15,7 @@
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [適用于 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -61,7 +61,7 @@ IIS 的網站必須含有下列設定：
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援：
 
-1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性]  。 開啟 [**調試**] 索引標籤。
+1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性] 。 開啟 [**調試**] 索引標籤。
 1. 針對 [設定檔]****，選取 [新增]**** 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定]**** 以建立設定檔。
 1. 針對 [啟動]**** 設定，從清單中選取 [IIS]****。
 1. 選取 [啟動瀏覽器]**** 的核取方塊並提供端點 URL。
@@ -130,7 +130,7 @@ IIS 的網站必須含有下列設定：
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [適用于 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -176,7 +176,7 @@ IIS 的網站必須含有下列設定：
 
 建立新的啟動設定檔，以新增開發階段 IIS 支援：
 
-1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性]  。 開啟 [**調試**] 索引標籤。
+1. 以滑鼠右鍵按一下 [方案總管]**** 中的專案。 選取 [屬性] 。 開啟 [**調試**] 索引標籤。
 1. 針對 [設定檔]****，選取 [新增]**** 按鈕。 在快顯示窗中，將設定檔命名為 "IIS"。 選取 [確定]**** 以建立設定檔。
 1. 針對 [啟動]**** 設定，從清單中選取 [IIS]****。
 1. 選取 [啟動瀏覽器]**** 的核取方塊並提供端點 URL。

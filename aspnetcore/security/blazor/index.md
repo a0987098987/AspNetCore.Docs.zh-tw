@@ -1,11 +1,11 @@
 ---
-標題： ' ASP.NET Core Blazor 驗證和授權 ' 作者：描述：「瞭解 Blazor 驗證和授權案例」。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： ' ASP.NET Core Blazor 驗證和授權 ' 作者： guardrex 描述：「瞭解 Blazor 驗證和授權案例」。
+monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： security/blazor/index
 
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
@@ -454,14 +454,6 @@ Not authorized.
 > ```
 >
 > 這些命名空間可以藉由將它們新增至應用程式的 *_Imports razor*檔案來全域提供。
-
-## <a name="authorization-in-blazor-webassembly-apps"></a>WebAssembly apps 中的授權 Blazor
-
-在 Blazor WebAssembly apps 中，可以略過授權檢查，因為使用者可以修改所有的用戶端程式代碼。 這同樣也適用於所有的用戶端應用程式技術，包括 JavaScript SPA 架構或任何作業系統的原生應用程式。
-
-**請一律在由您用戶端應用程式所存取之任何 API 端點內的伺服器上執行授權檢查。**
-
-如需詳細資訊，請參閱底下的文章 <xref:security/blazor/webassembly/index> 。
 
 ## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
 

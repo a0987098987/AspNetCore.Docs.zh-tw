@@ -1,10 +1,11 @@
 ---
-標題： author： description： ms. author： ms. date： no-loc：
+標題： ASP.NET Core author 中的全球化和當地語系化： rick-anderson 描述：瞭解 ASP.NET Core 如何提供服務和中介軟體，將內容當地語系化成不同的語言和文化特性。
+riande ms. date：11/30/2019 否-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid：基本概念/當地語系化
 
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
@@ -29,7 +30,7 @@
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
-<xref:Microsoft.Extensions.Localization.IStringLocalizer>` and <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> were architected to improve productivity when developing localized apps. `IStringLocalizer ` uses the [ResourceManager](/dotnet/api/system.resources.resourcemanager) and [ResourceReader](/dotnet/api/system.resources.resourcereader) to provide culture-specific resources at run time. The interface has an indexer and an ` IEnumerable ` for returning localized strings. ` IStringLocalizer ' 不需要將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
+<xref:Microsoft.Extensions.Localization.IStringLocalizer>和 <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> 已架構，可在開發當地語系化應用程式時改善生產力。 `IStringLocalizer`會使用 <xref:System.Resources.ResourceManager> 和， <xref:System.Resources.ResourceReader> 在執行時間提供特定文化特性的資源。 介面具有索引子和， `IEnumerable` 用於傳回當地語系化的字串。 `IStringLocalizer`不需要將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
 
 [!code-csharp[](localization/sample/Localization/Controllers/AboutController.cs)]
 
@@ -70,15 +71,8 @@
 法文資源檔可能包含下列內容：
 
 | Key | 值 |
-| ----- | ---
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- | | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
+| ----- | ------ |
+| `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
@@ -151,70 +145,10 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 在範例專案中，`ConfigureServices` 方法會將 `ResourcesPath` 設為 "Resources"，因此首頁控制器的法文資源檔專案相對路徑即為 *Resources/Controllers.HomeController.fr.resx*。 或者，您可以使用資料夾來收集資源檔。 若是首頁控制器，路徑就是 *Resources/Controllers/HomeController.fr.resx*。 如果您不使用 `ResourcesPath` 選項，*.resx* 檔案即會放置在專案的基底目錄中。 `HomeController` 的資源檔會命名為 *Controllers.HomeController.fr.resx*。 您可依據自己的資源檔收集方式，來選擇要使用點或路徑的命名慣例。
 
 | 資源名稱 | 點或路徑命名 |
-| ---
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
-------   |---標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
-------- | |Resources/controller. HomeController. .resx |點 | |Resources/controller/HomeController. .resx |路徑 | |   |    |
+| ------------   | ------------- |
+| Resources/Controllers.HomeController.fr.resx | 點  |
+| Resources/Controllers/HomeController.fr.resx  | 路徑 |
+|    |     |
 
 在 views 中使用的資源檔會 `@inject IViewLocalizer` Razor 遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor查看資源檔模擬其相關聯之視圖檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
 
@@ -444,7 +378,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
-<xref:Microsoft.Extensions.Localization.IStringLocalizer>` and <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> were architected to improve productivity when developing localized apps. `IStringLocalizer ` uses the [ResourceManager](/dotnet/api/system.resources.resourcemanager) and [ResourceReader](/dotnet/api/system.resources.resourcereader) to provide culture-specific resources at run time. The interface has an indexer and an ` IEnumerable ` for returning localized strings. ` IStringLocalizer ' 不需要將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
+<xref:Microsoft.Extensions.Localization.IStringLocalizer>和 <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> 已架構，可在開發當地語系化應用程式時改善生產力。 `IStringLocalizer`會使用 <xref:System.Resources.ResourceManager> 和， <xref:System.Resources.ResourceReader> 在執行時間提供特定文化特性的資源。 介面具有索引子和， `IEnumerable` 用於傳回當地語系化的字串。 `IStringLocalizer`不需要將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
 
 [!code-csharp[](localization/sample/Localization/Controllers/AboutController.cs)]
 
@@ -485,15 +419,8 @@ services.Configure<RequestLocalizationOptions>(options =>
 法文資源檔可能包含下列內容：
 
 | Key | 值 |
-| ----- | ---
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- | | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
+| ----- | ------ |
+| `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
@@ -566,70 +493,10 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 在範例專案中，`ConfigureServices` 方法會將 `ResourcesPath` 設為 "Resources"，因此首頁控制器的法文資源檔專案相對路徑即為 *Resources/Controllers.HomeController.fr.resx*。 或者，您可以使用資料夾來收集資源檔。 若是首頁控制器，路徑就是 *Resources/Controllers/HomeController.fr.resx*。 如果您不使用 `ResourcesPath` 選項，*.resx* 檔案即會放置在專案的基底目錄中。 `HomeController` 的資源檔會命名為 *Controllers.HomeController.fr.resx*。 您可依據自己的資源檔收集方式，來選擇要使用點或路徑的命名慣例。
 
 | 資源名稱 | 點或路徑命名 |
-| ---
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
-------   |---標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
-------- | |Resources/controller. HomeController. .resx |點 | |Resources/controller/HomeController. .resx |路徑 | |   |    |
+| ------------   | ------------- |
+| Resources/Controllers.HomeController.fr.resx | 點  |
+| Resources/Controllers/HomeController.fr.resx  | 路徑 |
+|    |     |
 
 在 views 中使用的資源檔會 `@inject IViewLocalizer` Razor 遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor查看資源檔模擬其相關聯之視圖檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
 
@@ -858,7 +725,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
-<xref:Microsoft.Extensions.Localization.IStringLocalizer>` and <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> were architected to improve productivity when developing localized apps. `IStringLocalizer ` uses the [ResourceManager](/dotnet/api/system.resources.resourcemanager) and [ResourceReader](/dotnet/api/system.resources.resourcereader) to provide culture-specific resources at run time. The interface has an indexer and an ` IEnumerable ` for returning localized strings. ` IStringLocalizer ' 不需要將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
+<xref:Microsoft.Extensions.Localization.IStringLocalizer>和 <xref:Microsoft.Extensions.Localization.IStringLocalizer%601> 已架構，可在開發當地語系化應用程式時改善生產力。 `IStringLocalizer`會使用 <xref:System.Resources.ResourceManager> 和， <xref:System.Resources.ResourceReader> 在執行時間提供特定文化特性的資源。 介面具有索引子和， `IEnumerable` 用於傳回當地語系化的字串。 `IStringLocalizer`不需要將預設語言字串儲存在資源檔中。 您不必在開發初期建立資源檔，即可開發以當地語系化為目標的應用程式。 下列程式碼會示範如何包裝 "About Title" 字串以進行當地語系化。
 
 [!code-csharp[](localization/sample/Localization/Controllers/AboutController.cs)]
 
@@ -899,15 +766,8 @@ services.Configure<RequestLocalizationOptions>(options =>
 法文資源檔可能包含下列內容：
 
 | Key | 值 |
-| ----- | ---
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- | | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
+| ----- | ------ |
+| `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
@@ -980,70 +840,10 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 在範例專案中，`ConfigureServices` 方法會將 `ResourcesPath` 設為 "Resources"，因此首頁控制器的法文資源檔專案相對路徑即為 *Resources/Controllers.HomeController.fr.resx*。 或者，您可以使用資料夾來收集資源檔。 若是首頁控制器，路徑就是 *Resources/Controllers/HomeController.fr.resx*。 如果您不使用 `ResourcesPath` 選項，*.resx* 檔案即會放置在專案的基底目錄中。 `HomeController` 的資源檔會命名為 *Controllers.HomeController.fr.resx*。 您可依據自己的資源檔收集方式，來選擇要使用點或路徑的命名慣例。
 
 | 資源名稱 | 點或路徑命名 |
-| ---
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
-------   |---標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
-------- | |Resources/controller. HomeController. .resx |點 | |Resources/controller/HomeController. .resx |路徑 | |   |    |
+| ------------   | ------------- |
+| Resources/Controllers.HomeController.fr.resx | 點  |
+| Resources/Controllers/HomeController.fr.resx  | 路徑 |
+|    |     |
 
 在 views 中使用的資源檔會 `@inject IViewLocalizer` Razor 遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor查看資源檔模擬其相關聯之視圖檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
 

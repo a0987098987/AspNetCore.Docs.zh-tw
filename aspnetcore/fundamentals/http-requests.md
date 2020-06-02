@@ -29,13 +29,13 @@ ms.locfileid: "82766546"
 <xref:System.Net.Http.IHttpClientFactory> 可以註冊及用來在應用程式中設定和建立 <xref:System.Net.Http.HttpClient> 執行個體。 `IHttpClientFactory`提供下列優點：
 
 * 提供一個集中位置以便命名和設定邏輯 `HttpClient` 執行個體。 例如，名為*github*的用戶端可以註冊並設定為存取[github](https://github.com/)。 預設用戶端可以註冊以進行一般存取。
-* 透過委派中`HttpClient`的處理常式，制訂外寄中介軟體的概念。 提供 Polly 為基礎中介軟體的延伸模組，以利用中`HttpClient`的委派處理常式。
-* 管理基礎`HttpClientMessageHandler`實例的共用和存留期。 自動管理可避免在手動管理`HttpClient`存留期時所發生的常見 DNS （網域名稱系統）問題。
+* 透過委派中的處理常式，制訂外寄中介軟體的概念 `HttpClient` 。 提供 Polly 為基礎中介軟體的延伸模組，以利用中的委派處理常式 `HttpClient` 。
+* 管理基礎實例的共用和存留期 `HttpClientMessageHandler` 。 自動管理可避免在手動管理存留期時所發生的常見 DNS （網域名稱系統）問題 `HttpClient` 。
 * 針對透過處理站所建立之用戶端傳送的所有要求，新增可設定的記錄體驗 (透過 `ILogger`)。
 
 [檢視或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples) ([如何下載](xref:index#how-to-download-a-sample))。
 
-本主題中的範例程式碼會<xref:System.Text.Json>使用來還原序列化 HTTP 回應中所傳回的 JSON 內容。 如需使用`Json.NET`和`ReadAsAsync<T>`的範例，請使用版本選取器來選取此主題的2.x 版。
+本主題中的範例程式碼會使用 <xref:System.Text.Json> 來還原序列化 HTTP 回應中所傳回的 JSON 內容。 如需使用和的範例 `Json.NET` `ReadAsAsync<T>` ，請使用版本選取器來選取此主題的2.x 版。
 
 ## <a name="consumption-patterns"></a>耗用量模式
 
@@ -50,40 +50,40 @@ ms.locfileid: "82766546"
 
 ### <a name="basic-usage"></a>基本使用方式
 
-`IHttpClientFactory`可以藉由呼叫`AddHttpClient`來註冊：
+`IHttpClientFactory`可以藉由呼叫來註冊 `AddHttpClient` ：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-`IHttpClientFactory`可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)要求。 下列程式碼會`IHttpClientFactory`使用來建立`HttpClient`實例：
+`IHttpClientFactory`可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)要求。 下列程式碼會使用 `IHttpClientFactory` 來建立 `HttpClient` 實例：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
-在`IHttpClientFactory`上述範例中使用 like，是重構現有應用程式的好方法。 它不會影響使用方式`HttpClient` 。 在現有應用`HttpClient`程式中建立實例的位置，使用對的呼叫來<xref:System.Net.Http.IHttpClientFactory.CreateClient*>取代這些專案。
+在 `IHttpClientFactory` 上述範例中使用 like，是重構現有應用程式的好方法。 它不會影響使用方式 `HttpClient` 。 在 `HttpClient` 現有應用程式中建立實例的位置，使用對的呼叫來取代這些專案 <xref:System.Net.Http.IHttpClientFactory.CreateClient*> 。
 
 ### <a name="named-clients"></a>具名用戶端
 
 在下列情況中，命名的用戶端是不錯的選擇：
 
-* 應用程式需要有許多不同的`HttpClient`用途。
-* 許多`HttpClient`都有不同的設定。
+* 應用程式需要有許多不同的用途 `HttpClient` 。
+* 許多 `HttpClient` 都有不同的設定。
 
-在中`Startup.ConfigureServices`的註冊`HttpClient`期間，可以指定名為的設定：
+`HttpClient`在中的註冊期間，可以指定名為的設定 `Startup.ConfigureServices` ：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet2)]
 
 在上述程式碼中，用戶端是使用下列設定：
 
-* 基底位址`https://api.github.com/`。
+* 基底位址 `https://api.github.com/` 。
 * 使用 GitHub API 時需要兩個標頭。
 
 #### <a name="createclient"></a>CreateClient
 
-每次<xref:System.Net.Http.IHttpClientFactory.CreateClient*>呼叫時：
+每次 <xref:System.Net.Http.IHttpClientFactory.CreateClient*> 呼叫時：
 
-* 建立的`HttpClient`新實例。
+* 建立的新實例 `HttpClient` 。
 * 會呼叫設定動作。
 
-若要建立名為的用戶端，請`CreateClient`將其名稱傳遞至：
+若要建立名為的用戶端，請將其名稱傳遞至 `CreateClient` ：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Pages/NamedClient.cshtml.cs?name=snippet1&highlight=21)]
 
@@ -100,7 +100,7 @@ ms.locfileid: "82766546"
   * 封裝處理端點的所有邏輯。
 * 使用 DI，並可在應用程式中需要的位置插入。
 
-具型別用戶端`HttpClient`會接受其函式中的參數：
+具型別用戶端會接受其函式 `HttpClient` 中的參數：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
@@ -110,30 +110,30 @@ ms.locfileid: "82766546"
 * 設定會移到具型別用戶端。
 * `HttpClient` 物件會公開為公用屬性。
 
-可以建立可公開`HttpClient`功能的 API 特定方法。 例如， `GetAspNetDocsIssues`方法會封裝程式碼以取得未解決的問題。
+可以建立可公開功能的 API 特定方法 `HttpClient` 。 例如，方法會 `GetAspNetDocsIssues` 封裝程式碼以取得未解決的問題。
 
-下列程式碼會<xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient*>呼叫`Startup.ConfigureServices`中的來註冊具型別用戶端類別：
+下列程式碼會呼叫中的來註冊具型別 <xref:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient*> `Startup.ConfigureServices` 用戶端類別：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet3)]
 
-具型別用戶端會向 DI 註冊為暫時性。 在上述程式碼中`AddHttpClient` ， `GitHubService`會將註冊為暫時性服務。 此註冊會使用 factory 方法來執行下列動作：
+具型別用戶端會向 DI 註冊為暫時性。 在上述程式碼中，會將 `AddHttpClient` 註冊 `GitHubService` 為暫時性服務。 此註冊會使用 factory 方法來執行下列動作：
 
 1. 建立 `HttpClient` 執行個體。
-1. 建立的實例`GitHubService`，並`HttpClient`將的實例傳入其函式。
+1. 建立的實例 `GitHubService` ，並將的實例傳入其函式 `HttpClient` 。
 
 具型別用戶端可以直接插入並使用：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Pages/TypedClient.cshtml.cs?name=snippet1&highlight=11-14,20)]
 
-在中`Startup.ConfigureServices`的註冊期間，可以指定具型別用戶端的設定，而不是在具型別用戶端的函式中：
+在中的註冊期間，可以指定具型別用戶端的設定 `Startup.ConfigureServices` ，而不是在具型別用戶端的函式中：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet4)]
 
-`HttpClient`可以封裝在具型別用戶端中。 請定義在內部呼叫實例的`HttpClient`方法，而不是將它公開為屬性：
+可以封裝在具型別 `HttpClient` 用戶端中。 請定義在內部呼叫實例的方法，而不是將它公開為屬性 `HttpClient` ：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/GitHub/RepoService.cs?name=snippet1&highlight=4)]
 
-在上述`HttpClient`程式碼中，會儲存在私用欄位中。 的存取`HttpClient`是透過公用`GetRepos`方法。
+在上述程式碼中， `HttpClient` 會儲存在私用欄位中。 的存取 `HttpClient` 是透過公用 `GetRepos` 方法。
 
 ### <a name="generated-clients"></a>產生的用戶端
 
@@ -207,14 +207,14 @@ public class ValuesController : ControllerBase
 
 若要建立委派處理常式：
 
-* 衍生自<xref:System.Net.Http.DelegatingHandler>。
+* 衍生自 <xref:System.Net.Http.DelegatingHandler> 。
 * 覆寫 <xref:System.Net.Http.DelegatingHandler.SendAsync*>。 先執行程式碼，再將要求傳遞至管線中的下一個處理常式：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Handlers/ValidateHeaderHandler.cs?name=snippet1)]
 
-上述程式碼會檢查`X-API-KEY`標頭是否在要求中。 如果`X-API-KEY`遺失， <xref:System.Net.HttpStatusCode.BadRequest>則會傳回。
+上述 `X-API-KEY` 程式碼會檢查標頭是否在要求中。 如果 `X-API-KEY` 遺失， <xref:System.Net.HttpStatusCode.BadRequest> 則會傳回。
 
-`HttpClient`有<xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*?displayProperty=fullName>一個以上的處理常式可以加入至的設定：
+有一個以上的處理常式可以加入至的設定 `HttpClient` <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.AddHttpMessageHandler*?displayProperty=fullName> ：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup2.cs?name=snippet1)]
 
@@ -240,13 +240,13 @@ public class ValuesController : ControllerBase
 
 ### <a name="handle-transient-faults"></a>處理暫時性錯誤
 
-當外部 HTTP 呼叫是暫時性的時，通常會發生錯誤。 <xref:Microsoft.Extensions.DependencyInjection.PollyHttpClientBuilderExtensions.AddTransientHttpErrorPolicy*>允許定義原則來處理暫時性錯誤。 使用`AddTransientHttpErrorPolicy`設定的原則會處理下列回應：
+當外部 HTTP 呼叫是暫時性的時，通常會發生錯誤。 <xref:Microsoft.Extensions.DependencyInjection.PollyHttpClientBuilderExtensions.AddTransientHttpErrorPolicy*>允許定義原則來處理暫時性錯誤。 使用設定的原則會 `AddTransientHttpErrorPolicy` 處理下列回應：
 
 * <xref:System.Net.Http.HttpRequestException>
 * HTTP 5xx
 * HTTP 408
 
-`AddTransientHttpErrorPolicy`提供物件的存取`PolicyBuilder`權，其設定用來處理代表可能暫時性錯誤的錯誤：
+`AddTransientHttpErrorPolicy`提供物件的存取權，其 `PolicyBuilder` 設定用來處理代表可能暫時性錯誤的錯誤：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup3.cs?name=snippet1)]
 
@@ -254,7 +254,7 @@ public class ValuesController : ControllerBase
 
 ### <a name="dynamically-select-policies"></a>動態選取原則
 
-提供擴充方法來加入以 Polly 為基礎的處理常式，例如<xref:Microsoft.Extensions.DependencyInjection.PollyHttpClientBuilderExtensions.AddPolicyHandler*>。 下列`AddPolicyHandler`多載會檢查要求以決定要套用的原則：
+提供擴充方法來加入以 Polly 為基礎的處理常式，例如 <xref:Microsoft.Extensions.DependencyInjection.PollyHttpClientBuilderExtensions.AddPolicyHandler*> 。 下列多載會 `AddPolicyHandler` 檢查要求以決定要套用的原則：
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup.cs?name=snippet8)]
 
@@ -269,8 +269,8 @@ public class ValuesController : ControllerBase
 在上述範例中：
 
 * 新增了兩個處理常式。
-* 第一個處理常式<xref:Microsoft.Extensions.DependencyInjection.PollyHttpClientBuilderExtensions.AddTransientHttpErrorPolicy*>會使用來新增重試原則。 失敗的要求會重試最多三次。
-* 第二`AddTransientHttpErrorPolicy`個呼叫會加入斷路器原則。 如果連續5次嘗試失敗，則會封鎖進一步的外部要求30秒。 斷路器原則可設定狀態。 透過此用戶端的所有呼叫都會共用相同的線路狀態。
+* 第一個處理常式會使用 <xref:Microsoft.Extensions.DependencyInjection.PollyHttpClientBuilderExtensions.AddTransientHttpErrorPolicy*> 來新增重試原則。 失敗的要求會重試最多三次。
+* 第二個 `AddTransientHttpErrorPolicy` 呼叫會加入斷路器原則。 如果連續5次嘗試失敗，則會封鎖進一步的外部要求30秒。 斷路器原則可設定狀態。 透過此用戶端的所有呼叫都會共用相同的線路狀態。
 
 ### <a name="add-policies-from-the-polly-registry"></a>從 Polly 登錄新增原則
 
@@ -283,11 +283,11 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/3.x/HttpClientFactorySample/Startup4.cs?name=snippet1)]
 
-如需`IHttpClientFactory`與 Polly 整合的詳細資訊，請參閱[Polly wiki](https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory)。
+如需與 Polly 整合的詳細資訊 `IHttpClientFactory` ，請參閱[Polly wiki](https://github.com/App-vNext/Polly/wiki/Polly-and-HttpClientFactory)。
 
 ## <a name="httpclient-and-lifetime-management"></a>HttpClient 和存留期管理
 
-每次在 `IHttpClientFactory` 上呼叫 `CreateClient` 時，都會傳回新的 `HttpClient` 執行個體。 會<xref:System.Net.Http.HttpMessageHandler>針對每個命名的用戶端建立。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
+每次在 `IHttpClientFactory` 上呼叫 `CreateClient` 時，都會傳回新的 `HttpClient` 執行個體。 <xref:System.Net.Http.HttpMessageHandler>會針對每個命名的用戶端建立。 處理站會管理 `HttpMessageHandler` 執行個體的存留期。
 
 `IHttpClientFactory` 會將處理站所建立的 `HttpMessageHandler` 執行個體放入集區以減少資源耗用量。 建立新的 `HttpClient` 執行個體時，如果其存留期間尚未過期，`HttpMessageHandler` 執行個體可從集區重複使用。
 
@@ -303,30 +303,30 @@ public class ValuesController : ControllerBase
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>IHttpClientFactory 的替代方案
 
-在`IHttpClientFactory`啟用 DI 的應用程式中使用，可避免：
+`IHttpClientFactory`在啟用 DI 的應用程式中使用，可避免：
 
-* 共用`HttpMessageHandler`實例的資源耗盡問題。
-* 定期迴圈`HttpMessageHandler`實例以過時的 DNS 問題。
+* 共用實例的資源耗盡問題 `HttpMessageHandler` 。
+* 定期迴圈實例以過時的 DNS 問題 `HttpMessageHandler` 。
 
-有其他方法可以使用長時間的<xref:System.Net.Http.SocketsHttpHandler>實例來解決上述問題。
+有其他方法可以使用長時間的實例來解決上述問題 <xref:System.Net.Http.SocketsHttpHandler> 。
 
 - `SocketsHttpHandler`當應用程式啟動時，建立的實例，並在應用程式的生命週期中使用它。
-- 根據<xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> DNS 重新整理時間，設定為適當的值。
-- 視`HttpClient`需要使用`new HttpClient(handler, disposeHandler: false)`建立實例。
+- <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime>根據 DNS 重新整理時間，設定為適當的值。
+- `HttpClient`視需要使用建立實例 `new HttpClient(handler, disposeHandler: false)` 。
 
-上述方法可`IHttpClientFactory`解決以類似方式解決的資源管理問題。
+上述方法可解決 `IHttpClientFactory` 以類似方式解決的資源管理問題。
 
-- 會`SocketsHttpHandler`共用實例間`HttpClient`的連接。 此共用可防止通訊端耗盡。
-- 會`SocketsHttpHandler`根據`PooledConnectionLifetime`來迴圈連接，以避免過時的 DNS 問題。
+- 會 `SocketsHttpHandler` 共用實例間的連接 `HttpClient` 。 此共用可防止通訊端耗盡。
+- 會 `SocketsHttpHandler` 根據來迴圈連接 `PooledConnectionLifetime` ，以避免過時的 DNS 問題。
 
 ### <a name="cookies"></a>Cookie
 
-集區`HttpMessageHandler`實例會導致`CookieContainer`共用物件。 意外`CookieContainer`的物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
+集區 `HttpMessageHandler` 實例會導致 `CookieContainer` 共用物件。 意外 `CookieContainer` 的物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
 
  - 停用自動 cookie 處理
  - 以免`IHttpClientFactory`
 
-呼叫<xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>以停用自動 cookie 處理：
+呼叫 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> 以停用自動 cookie 處理：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
@@ -370,7 +370,7 @@ public class ValuesController : ControllerBase
 標頭傳播是一個 ASP.NET Core 中介軟體，可將 HTTP 標頭從傳入要求傳播到傳出的 HTTP 用戶端要求。 若要使用標頭傳播：
 
 * 參考[AspNetCore. HeaderPropagation](https://www.nuget.org/packages/Microsoft.AspNetCore.HeaderPropagation)套件。
-* 設定中介軟體和`HttpClient`中`Startup`的：
+* 設定中介軟體和 `HttpClient` 中的 `Startup` ：
 
   [!code-csharp[](http-requests/samples/3.x/Startup.cs?highlight=5-9,21&name=snippet)]
 
@@ -420,7 +420,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-註冊之後，程式碼可以接受`IHttpClientFactory`可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)插入的任何位置服務。 `IHttpClientFactory`可以用來建立`HttpClient`實例：
+註冊之後，程式碼可以接受 `IHttpClientFactory` 可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)插入的任何位置服務。 `IHttpClientFactory`可以用來建立 `HttpClient` 實例：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -432,7 +432,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet2)]
 
-在上述程式碼中`AddHttpClient` ，會呼叫，並提供名稱*github*。 此用戶端已套用一些預設組態&mdash;即使用 GitHub API 所需的基底位址和兩個標頭。
+在上述程式碼中， `AddHttpClient` 會呼叫，並提供名稱*github*。 此用戶端已套用一些預設組態&mdash;即使用 GitHub API 所需的基底位址和兩個標頭。
 
 每次呼叫 `CreateClient` 時，會建立 `HttpClient` 的新執行個體並呼叫組態動作。
 
@@ -451,7 +451,7 @@ public class ValuesController : ControllerBase
 * 提供單一位置來設定特定的 `HttpClient` 並與其互動。 例如，單一的具型別用戶端可能用於單一的後端端點，並封裝處理該端點的所有邏輯。
 * 使用 DI 且可在應用程式中需要之處插入。
 
-具型別用戶端`HttpClient`會接受其函式中的參數：
+具型別用戶端會接受其函式 `HttpClient` 中的參數：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -540,7 +540,7 @@ public class ValuesController : ControllerBase
 
 上述程式碼定義一個基本處理常式。 它會檢查以查看要求上是否已包含 `X-API-KEY` 標頭。 如果遺漏標頭，它可以避免 HTTP 呼叫，並傳回適當的回應。
 
-在註冊期間，可以將一或多個處理常式新增至的`HttpClient`設定。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
+在註冊期間，可以將一或多個處理常式新增至的設定 `HttpClient` 。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
@@ -621,30 +621,30 @@ public class ValuesController : ControllerBase
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>IHttpClientFactory 的替代方案
 
-在`IHttpClientFactory`啟用 DI 的應用程式中使用，可避免：
+`IHttpClientFactory`在啟用 DI 的應用程式中使用，可避免：
 
-* 共用`HttpMessageHandler`實例的資源耗盡問題。
-* 定期迴圈`HttpMessageHandler`實例以過時的 DNS 問題。
+* 共用實例的資源耗盡問題 `HttpMessageHandler` 。
+* 定期迴圈實例以過時的 DNS 問題 `HttpMessageHandler` 。
 
-有其他方法可以使用長時間的<xref:System.Net.Http.SocketsHttpHandler>實例來解決上述問題。
+有其他方法可以使用長時間的實例來解決上述問題 <xref:System.Net.Http.SocketsHttpHandler> 。
 
 - `SocketsHttpHandler`當應用程式啟動時，建立的實例，並在應用程式的生命週期中使用它。
-- 根據<xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> DNS 重新整理時間，設定為適當的值。
-- 視`HttpClient`需要使用`new HttpClient(handler, disposeHandler: false)`建立實例。
+- <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime>根據 DNS 重新整理時間，設定為適當的值。
+- `HttpClient`視需要使用建立實例 `new HttpClient(handler, disposeHandler: false)` 。
 
-上述方法可`IHttpClientFactory`解決以類似方式解決的資源管理問題。
+上述方法可解決 `IHttpClientFactory` 以類似方式解決的資源管理問題。
 
-- 會`SocketsHttpHandler`共用實例間`HttpClient`的連接。 此共用可防止通訊端耗盡。
-- 會`SocketsHttpHandler`根據`PooledConnectionLifetime`來迴圈連接，以避免過時的 DNS 問題。
+- 會 `SocketsHttpHandler` 共用實例間的連接 `HttpClient` 。 此共用可防止通訊端耗盡。
+- 會 `SocketsHttpHandler` 根據來迴圈連接 `PooledConnectionLifetime` ，以避免過時的 DNS 問題。
 
 ### <a name="cookies"></a>Cookie
 
-集區`HttpMessageHandler`實例會導致`CookieContainer`共用物件。 意外`CookieContainer`的物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
+集區 `HttpMessageHandler` 實例會導致 `CookieContainer` 共用物件。 意外 `CookieContainer` 的物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
 
  - 停用自動 cookie 處理
  - 以免`IHttpClientFactory`
 
-呼叫<xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>以停用自動 cookie 處理：
+呼叫 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> 以停用自動 cookie 處理：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
@@ -652,7 +652,7 @@ public class ValuesController : ControllerBase
 
 透過 `IHttpClientFactory` 建立的用戶端會記錄所有要求的記錄訊息。 在記錄設定中啟用適當的資訊層級，以查看預設記錄檔訊息。 額外的記錄功能，例如要求標頭的記錄，只會包含在追蹤層級。
 
-用於每個用戶端的記錄檔分類包含用戶端的名稱。 例如，名為*MyNamedClient*的用戶端會記錄分類為的`System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`訊息。 後面加上 *LogicalHandler* 的訊息發生在要求處理常式管線之外。 在要求中，訊息會在管線中任何其他處理常式處理它之前就記錄。 在回應中，訊息會在任何其他管線處理常式收到回應之後記錄。
+用於每個用戶端的記錄檔分類包含用戶端的名稱。 例如，名為*MyNamedClient*的用戶端會記錄分類為的訊息 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler` 。 後面加上 *LogicalHandler* 的訊息發生在要求處理常式管線之外。 在要求中，訊息會在管線中任何其他處理常式處理它之前就記錄。 在回應中，訊息會在任何其他管線處理常式收到回應之後記錄。
 
 記錄也會發生在要求處理常式管線之內。 在 *MyNamedClient* 範例中，那些訊息是針對記錄檔分類 `System.Net.Http.HttpClient.MyNamedClient.ClientHandler` 而記錄。 對於要求，這是發生在所有其他處理常式都已執行之後，並且緊接在網路上傳送要求之前。 在回應中，此記錄會包含回應傳回通過處理常式管線之前的狀態。
 
@@ -704,7 +704,7 @@ public class ValuesController : ControllerBase
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/http-requests/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 以 .NET Framework 為目標的專案，需要安裝 [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) NuGet 套件。 以 .NET Core 為目標且參考 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app) 的專案，已包含 `Microsoft.Extensions.Http` 套件。
 
@@ -725,7 +725,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet1)]
 
-註冊之後，程式碼可以接受`IHttpClientFactory`可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)插入的任何位置服務。 `IHttpClientFactory`可以用來建立`HttpClient`實例：
+註冊之後，程式碼可以接受 `IHttpClientFactory` 可以使用相依性[插入（DI）](xref:fundamentals/dependency-injection)插入的任何位置服務。 `IHttpClientFactory`可以用來建立 `HttpClient` 實例：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Pages/BasicUsage.cshtml.cs?name=snippet1&highlight=9-12,21)]
 
@@ -737,7 +737,7 @@ public class ValuesController : ControllerBase
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet2)]
 
-在上述程式碼中`AddHttpClient` ，會呼叫，並提供名稱*github*。 此用戶端已套用一些預設組態&mdash;即使用 GitHub API 所需的基底位址和兩個標頭。
+在上述程式碼中， `AddHttpClient` 會呼叫，並提供名稱*github*。 此用戶端已套用一些預設組態&mdash;即使用 GitHub API 所需的基底位址和兩個標頭。
 
 每次呼叫 `CreateClient` 時，會建立 `HttpClient` 的新執行個體並呼叫組態動作。
 
@@ -756,7 +756,7 @@ public class ValuesController : ControllerBase
 * 提供單一位置來設定特定的 `HttpClient` 並與其互動。 例如，單一的具型別用戶端可能用於單一的後端端點，並封裝處理該端點的所有邏輯。
 * 使用 DI 且可在應用程式中需要之處插入。
 
-具型別用戶端`HttpClient`會接受其函式中的參數：
+具型別用戶端會接受其函式 `HttpClient` 中的參數：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/GitHub/GitHubService.cs?name=snippet1&highlight=5)]
 
@@ -845,7 +845,7 @@ public class ValuesController : ControllerBase
 
 上述程式碼定義一個基本處理常式。 它會檢查以查看要求上是否已包含 `X-API-KEY` 標頭。 如果遺漏標頭，它可以避免 HTTP 呼叫，並傳回適當的回應。
 
-在註冊期間，可以將一或多個處理常式新增至的`HttpClient`設定。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
+在註冊期間，可以將一或多個處理常式新增至的設定 `HttpClient` 。 這項工作是透過 <xref:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder> 上的擴充方法完成。
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet5)]
 
@@ -929,30 +929,30 @@ public class ValuesController : ControllerBase
 
 ### <a name="alternatives-to-ihttpclientfactory"></a>IHttpClientFactory 的替代方案
 
-在`IHttpClientFactory`啟用 DI 的應用程式中使用，可避免：
+`IHttpClientFactory`在啟用 DI 的應用程式中使用，可避免：
 
-* 共用`HttpMessageHandler`實例的資源耗盡問題。
-* 定期迴圈`HttpMessageHandler`實例以過時的 DNS 問題。
+* 共用實例的資源耗盡問題 `HttpMessageHandler` 。
+* 定期迴圈實例以過時的 DNS 問題 `HttpMessageHandler` 。
 
-有其他方法可以使用長時間的<xref:System.Net.Http.SocketsHttpHandler>實例來解決上述問題。
+有其他方法可以使用長時間的實例來解決上述問題 <xref:System.Net.Http.SocketsHttpHandler> 。
 
 - `SocketsHttpHandler`當應用程式啟動時，建立的實例，並在應用程式的生命週期中使用它。
-- 根據<xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime> DNS 重新整理時間，設定為適當的值。
-- 視`HttpClient`需要使用`new HttpClient(handler, disposeHandler: false)`建立實例。
+- <xref:System.Net.Http.SocketsHttpHandler.PooledConnectionLifetime>根據 DNS 重新整理時間，設定為適當的值。
+- `HttpClient`視需要使用建立實例 `new HttpClient(handler, disposeHandler: false)` 。
 
-上述方法可`IHttpClientFactory`解決以類似方式解決的資源管理問題。
+上述方法可解決 `IHttpClientFactory` 以類似方式解決的資源管理問題。
 
-- 會`SocketsHttpHandler`共用實例間`HttpClient`的連接。 此共用可防止通訊端耗盡。
-- 會`SocketsHttpHandler`根據`PooledConnectionLifetime`來迴圈連接，以避免過時的 DNS 問題。
+- 會 `SocketsHttpHandler` 共用實例間的連接 `HttpClient` 。 此共用可防止通訊端耗盡。
+- 會 `SocketsHttpHandler` 根據來迴圈連接 `PooledConnectionLifetime` ，以避免過時的 DNS 問題。
 
 ### <a name="cookies"></a>Cookie
 
-集區`HttpMessageHandler`實例會導致`CookieContainer`共用物件。 意外`CookieContainer`的物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
+集區 `HttpMessageHandler` 實例會導致 `CookieContainer` 共用物件。 意外 `CookieContainer` 的物件共用通常會導致不正確的程式碼。 針對需要 cookie 的應用程式，請考慮下列其中一項：
 
  - 停用自動 cookie 處理
  - 以免`IHttpClientFactory`
 
-呼叫<xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*>以停用自動 cookie 處理：
+呼叫 <xref:Microsoft.Extensions.DependencyInjection.HttpClientBuilderExtensions.ConfigurePrimaryHttpMessageHandler*> 以停用自動 cookie 處理：
 
 [!code-csharp[](http-requests/samples/2.x/HttpClientFactorySample/Startup.cs?name=snippet13)]
 
@@ -960,7 +960,7 @@ public class ValuesController : ControllerBase
 
 透過 `IHttpClientFactory` 建立的用戶端會記錄所有要求的記錄訊息。 在記錄設定中啟用適當的資訊層級，以查看預設記錄檔訊息。 額外的記錄功能，例如要求標頭的記錄，只會包含在追蹤層級。
 
-用於每個用戶端的記錄檔分類包含用戶端的名稱。 例如，名為*MyNamedClient*的用戶端會記錄分類為的`System.Net.Http.HttpClient.MyNamedClient.LogicalHandler`訊息。 後面加上 *LogicalHandler* 的訊息發生在要求處理常式管線之外。 在要求中，訊息會在管線中任何其他處理常式處理它之前就記錄。 在回應中，訊息會在任何其他管線處理常式收到回應之後記錄。
+用於每個用戶端的記錄檔分類包含用戶端的名稱。 例如，名為*MyNamedClient*的用戶端會記錄分類為的訊息 `System.Net.Http.HttpClient.MyNamedClient.LogicalHandler` 。 後面加上 *LogicalHandler* 的訊息發生在要求處理常式管線之外。 在要求中，訊息會在管線中任何其他處理常式處理它之前就記錄。 在回應中，訊息會在任何其他管線處理常式收到回應之後記錄。
 
 記錄也會發生在要求處理常式管線之內。 在 *MyNamedClient* 範例中，那些訊息是針對記錄檔分類 `System.Net.Http.HttpClient.MyNamedClient.ClientHandler` 而記錄。 對於要求，這是發生在所有其他處理常式都已執行之後，並且緊接在網路上傳送要求之前。 在回應中，此記錄會包含回應傳回通過處理常式管線之前的狀態。
 
@@ -997,7 +997,7 @@ public class ValuesController : ControllerBase
 
 * 參考[HeaderPropagation](https://www.nuget.org/packages/HeaderPropagation)套件的社區支援埠。 ASP.NET Core 3.1 和更新版本支援[AspNetCore. HeaderPropagation](https://www.nuget.org/packages/Microsoft.AspNetCore.HeaderPropagation)。
 
-* 設定中介軟體和`HttpClient`中`Startup`的：
+* 設定中介軟體和 `HttpClient` 中的 `Startup` ：
 
   [!code-csharp[](http-requests/samples/2.x/Startup21.cs?highlight=5-9,25&name=snippet)]
 

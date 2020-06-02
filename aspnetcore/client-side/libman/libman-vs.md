@@ -28,11 +28,11 @@ Visual Studio 具有 ASP.NET Core 專案中[LibMan](xref:client-side/libman/inde
 * 支援在組建上設定和執行 LibMan 還原作業。
 * 用於觸發 LibMan 還原和清除作業的功能表項目。
 * 搜尋對話方塊，用來尋找程式庫並將檔案新增至專案。
-* 編輯*libman*&mdash;的支援 libman 資訊清單檔。
+* 編輯*libman* &mdash; 的支援 libman 資訊清單檔。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/client-side/libman/samples/) [（如何下載）](xref:index#how-to-download-a-sample)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **ASP.NET 和 網頁程式開發**工作負載的[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019)
 
@@ -47,13 +47,13 @@ Visual Studio 具有 ASP.NET Core 專案中[LibMan](xref:client-side/libman/inde
 
 請遵循下列步驟來安裝用戶端程式庫：
 
-* 在**方案總管**中，以滑鼠右鍵按一下要在其中新增檔案的專案資料夾。 選擇 [**新增** > **客戶**端程式庫]。 [**新增客戶**端程式庫] 對話方塊隨即出現：
+* 在**方案總管**中，以滑鼠右鍵按一下要在其中新增檔案的專案資料夾。 選擇 [**新增**  >  **客戶**端程式庫]。 [**新增客戶**端程式庫] 對話方塊隨即出現：
 
   ![[新增用戶端程式庫] 對話方塊](_static/add-library-dialog.png)
 
 * 從 [**提供者**] 下拉式選選取程式庫提供者。 CDNJS 是預設的提供者。
 * 在 [連結**庫**] 文字方塊中，輸入要提取的程式庫名稱。 IntelliSense 會提供以提供的文字開頭的程式庫清單。
-* 從 [IntelliSense] 清單中選取 [程式庫]。 請注意，程式庫名稱的後面`@`會加上符號和所選提供者已知的最新穩定版本。
+* 從 [IntelliSense] 清單中選取 [程式庫]。 請注意，程式庫名稱的後面會加上 `@` 符號和所選提供者已知的最新穩定版本。
 * 決定要包含哪些檔案：
   * 選取 [**包含所有文件庫**檔案] 選項按鈕，以包含程式庫的所有檔案。
   * 選取 [**選擇特定**檔案] 選項按鈕，以包含文件庫檔案的子集。 選取選項按鈕時，就會啟用檔案選取器樹狀目錄。 選取要下載的檔案名左邊的方塊。
@@ -98,15 +98,15 @@ Visual Studio 中的所有 LibMan 作業都是以專案根目錄的 LibMan 資�
 * 以滑鼠右鍵按一下**方案總管**中的專案，然後選取 [**管理客戶**端程式庫]。 **&#8224;**
 * 從 [Visual Studio**專案**] 功能表中，選取 [**管理客戶**端程式庫]。 **&#8224;**
 
-**&#8224;** 如果專案根目錄中還沒有*libman* ，則會使用預設的專案範本內容來建立該檔案。
+**& #8224;** 如果專案根目錄中還沒有*libman* ，則會使用預設的專案範本內容來建立該檔案。
 
-Visual Studio 提供豐富的 JSON 編輯支援，例如顏色標示、格式設定、IntelliSense 和架構驗證。 您可在[https://json.schemastore.org/libman](https://json.schemastore.org/libman)找到 LibMan 資訊清單的 JSON 架構。
+Visual Studio 提供豐富的 JSON 編輯支援，例如顏色標示、格式設定、IntelliSense 和架構驗證。 您可在找到 LibMan 資訊清單的 JSON 架構 [https://json.schemastore.org/libman](https://json.schemastore.org/libman) 。
 
-使用下列資訊清單檔案時，LibMan 會根據`libraries`屬性中所定義的設定來抓取檔案。 在中`libraries`定義的物件常值的說明如下：
+使用下列資訊清單檔案時，LibMan 會根據屬性中所定義的設定來抓取檔案 `libraries` 。 在中定義的物件常值的說明 `libraries` 如下：
 
-* [JQuery](https://jquery.com/)版本3.3.1 的子集會從 CDNJS 提供者抓取。 子集是`files`在屬性&mdash;*jquery. .js*、 *jquery*和 jquery. *min. map*中定義。 這些檔案會放在專案的*wwwroot/lib/jquery*資料夾中。
-* 完整的[啟動](https://getbootstrap.com/)程式版本4.1.3 會被取出並放在*wwwroot/lib/啟動*程式資料夾中。 物件常值的`provider`屬性會覆`defaultProvider`寫屬性值。 LibMan 會從 unpkg 提供者抓取啟動程式檔案。
-* 組織內的管理主體已核准[lodash 所](https://lodash.com/)的子集。 從本機檔案系統 *（位於 C：\\temp\\lodash 所\\*）取出*lodash 所*和*lodash 所*檔案。 這些檔案會複製到專案的*wwwroot/lib/lodash 所*資料夾中。
+* [JQuery](https://jquery.com/)版本3.3.1 的子集會從 CDNJS 提供者抓取。 子集是在 `files` 屬性 &mdash; *jquery. .js*、 *jquery*和*jquery. min. map*中定義。 這些檔案會放在專案的*wwwroot/lib/jquery*資料夾中。
+* 完整的[啟動](https://getbootstrap.com/)程式版本4.1.3 會被取出並放在*wwwroot/lib/啟動*程式資料夾中。 物件常值的 `provider` 屬性會覆寫 `defaultProvider` 屬性值。 LibMan 會從 unpkg 提供者抓取啟動程式檔案。
+* 組織內的管理主體已核准[lodash 所](https://lodash.com/)的子集。 從本機檔案系統 *（位於 C： \\ temp \\ lodash 所 \\ *）取出*lodash 所*和*lodash 所*檔案。 這些檔案會複製到專案的*wwwroot/lib/lodash 所*資料夾中。
 
 [!code-json[](samples/LibManSample/libman.json)]
 
@@ -148,7 +148,7 @@ LibMan 可以還原已定義的程式庫檔案，做為建立程式的一部分�
   ========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
   ```
 
-啟用「還原組建」行為時，[ *libman* ] 內容功能表會在 [組建] 選項**上顯示 [停用還原客戶**端程式庫]。 選取此選項會從`Microsoft.Web.LibraryManager.Build`專案檔中移除封裝參考。 因此，用戶端程式庫不會再在每個組建上還原。
+啟用「還原組建」行為時，[ *libman* ] 內容功能表會在 [組建] 選項**上顯示 [停用還原客戶**端程式庫]。 選取此選項會 `Microsoft.Web.LibraryManager.Build` 從專案檔中移除封裝參考。 因此，用戶端程式庫不會再在每個組建上還原。
 
 不論「還原時的組建」設定為何，您都可以隨時從 [ *libman* ] 內容功能表手動還原。 如需詳細資訊，請參閱[手動還原](#restore-files-manually)檔案。
 
@@ -206,8 +206,8 @@ Clean libraries operation completed
 若要卸載程式庫檔案：
 
 * 開啟*libman*。
-* 將插入號放在對應`libraries`的物件常值內。
-* 按一下左邊界中顯示的燈泡圖示，然後選取 [**卸載\<] library_name>\<@ library_version>**：
+* 將插入號放在對應的 `libraries` 物件常值內。
+* 按一下左邊界中顯示的燈泡圖示，然後選取 [卸載] ** \< library_name> @ \< library_version>**：
 
   ![卸載程式庫內容功能表選項](_static/uninstall-menu-option.png)
 
@@ -218,7 +218,7 @@ Clean libraries operation completed
 若要檢查更新的程式庫版本：
 
 * 開啟*libman*。
-* 將插入號放在對應`libraries`的物件常值內。
+* 將插入號放在對應的 `libraries` 物件常值內。
 * 按一下左邊界中顯示的燈泡圖示。 將滑鼠停留在 [**檢查更新**] 上方。
 
 LibMan 會檢查程式庫版本是否比安裝的版本還要新。 可能會發生下列結果：

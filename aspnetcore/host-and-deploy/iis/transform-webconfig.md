@@ -26,7 +26,7 @@ ms.locfileid: "82775930"
 
 對 *web.config* 檔案的轉換可在發佈應用程式時，根據下列條件進行套用：
 
-* [建置組態](#build-configuration)
+* [組建設定](#build-configuration)
 * [設定檔](#profile)
 * [環境](#environment)
 * [Custom](#custom)

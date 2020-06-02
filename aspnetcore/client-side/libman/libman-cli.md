@@ -25,7 +25,7 @@ ms.locfileid: "82770548"
 
 [LibMan](xref:client-side/libman/index) CLI 是一種跨平臺工具，支援 .net Core 的任何位置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * [!INCLUDE [2.1-SDK](../../includes/2.1-SDK.md)]
 
@@ -98,7 +98,7 @@ Use "libman [command] --help" for more information about a command.
 
 ## <a name="initialize-libman-in-the-project"></a>初始化專案中的 LibMan
 
-此`libman init`命令會建立*libman*檔案（如果不存在的話）。 使用預設專案範本內容建立檔案。
+此 `libman init` 命令會建立*libman*檔案（如果不存在的話）。 使用預設專案範本內容建立檔案。
 
 ### <a name="synopsis"></a>概要
 
@@ -107,17 +107,17 @@ libman init [-d|--default-destination] [-p|--default-provider] [--verbosity]
 libman init [-h|--help]
 ```
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `libman init` 命令時可用的選項：
 
 * `-d|--default-destination <PATH>`
 
-  相對於目前資料夾的路徑。 如果未針對*libman*中的程式庫定義`destination`任何屬性，則會在此位置安裝程式庫檔案。 此`<PATH>`值會寫入至`defaultDestination` *libman*的屬性。
+  相對於目前資料夾的路徑。 如果未 `destination` 針對*libman*中的程式庫定義任何屬性，則會在此位置安裝程式庫檔案。 此 `<PATH>` 值會寫入至 `defaultDestination` *libman*的屬性。
 
 * `-p|--default-provider <PROVIDER>`
 
-  未針對指定的程式庫定義提供者時，所要使用的提供者。 此`<PROVIDER>`值會寫入至`defaultProvider` *libman*的屬性。 取代`<PROVIDER>`為下列其中一個值：
+  未針對指定的程式庫定義提供者時，所要使用的提供者。 此 `<PROVIDER>` 值會寫入至 `defaultProvider` *libman*的屬性。 取代 `<PROVIDER>` 為下列其中一個值：
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -134,7 +134,7 @@ libman init [-h|--help]
   libman init
   ```
 
-* 輸入預設提供者的名稱，或按`Enter`以使用預設的 CDNJS 提供者。 有效值包括：
+* 輸入預設提供者的名稱，或按 `Enter` 以使用預設的 CDNJS 提供者。 有效值包括：
 
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
@@ -152,7 +152,7 @@ libman init [-h|--help]
 
 ## <a name="add-library-files"></a>新增程式庫檔案
 
-命令`libman install`會將程式庫檔案下載並安裝到專案中。 如果*libman*檔案不存在，則會新增它。 已修改*libman*檔案以儲存程式庫檔案的設定詳細資料。
+命令會將連結 `libman install` 庫檔案下載並安裝到專案中。 如果*libman*檔案不存在，則會新增它。 已修改*libman*檔案以儲存程式庫檔案的設定詳細資料。
 
 ### <a name="synopsis"></a>概要
 
@@ -165,27 +165,27 @@ libman install [-h|--help]
 
 `LIBRARY`
 
-要安裝之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如`@1.2.0`）。
+要安裝之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如 `@1.2.0` ）。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `libman install` 命令時可用的選項：
 
 * `-d|--destination <PATH>`
 
-  要安裝程式庫的位置。 如果未指定，則會使用預設位置。 如果在`defaultDestination` *libman*中未指定任何屬性，則此為必要選項。
+  要安裝程式庫的位置。 如果未指定，則會使用預設位置。 如果 `defaultDestination` 在*libman*中未指定任何屬性，則此為必要選項。
 
 * `--files <FILE>`
 
-  指定要從程式庫安裝的檔案名。 如果未指定，則會安裝媒體櫃中的所有檔案。 針對要`--files`安裝的每個檔案提供一個選項。 也支援相對路徑。 例如： `--files dist/browser/signalr.js` 。
+  指定要從程式庫安裝的檔案名。 如果未指定，則會安裝媒體櫃中的所有檔案。 `--files`針對要安裝的每個檔案提供一個選項。 也支援相對路徑。 例如： `--files dist/browser/signalr.js` 。
 
 * `-p|--provider <PROVIDER>`
 
-  要用於取得程式庫的提供者名稱。 取代`<PROVIDER>`為下列其中一個值：
+  要用於取得程式庫的提供者名稱。 取代 `<PROVIDER>` 為下列其中一個值：
   
   [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-  如果未指定，則`defaultProvider`會使用*libman*中的屬性。 如果在`defaultProvider` *libman*中未指定任何屬性，則此為必要選項。
+  如果未指定，則 `defaultProvider` 會使用*libman*中的屬性。 如果 `defaultProvider` 在*libman*中未指定任何屬性，則此為必要選項。
 
 [!INCLUDE [standard-cli-options](../../includes/libman-cli/standard-cli-options.md)]
 
@@ -225,7 +225,7 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 }
 ```
 
-若要使用檔案系統提供者，從*C：\\temp\\contosoCalendar\\ *安裝行事*曆*和*calendar*檔案：
+若要使用檔案系統提供者，從*C： \\ temp \\ contosoCalendar \\ *安裝行事*曆*和*calendar*檔案：
 
   ```console
   libman install C:\temp\contosoCalendar\ --provider filesystem --files calendar.js --files calendar.css
@@ -233,8 +233,8 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 
 有兩個原因會出現下列提示：
 
-* *Libman*不包含`defaultDestination`屬性。
-* 此`libman install`命令不包含`-d|--destination`選項。
+* *Libman*不包含 `defaultDestination` 屬性。
+* 此 `libman install` 命令不包含 `-d|--destination` 選項。
 
 ![libman install 命令-目的地](_static/libman-install-destination.png)
 
@@ -270,8 +270,8 @@ libman install jquery@3.2.1 --provider cdnjs --destination wwwroot/scripts/jquer
 `libman restore`命令會安裝*libman*中定義的程式庫檔案。 適用的規則如下：
 
 * 如果專案根目錄中沒有*libman*檔案存在，則會傳回錯誤。
-* 如果程式庫指定了提供者， `defaultProvider`則會忽略*libman*中的屬性。
-* 如果程式庫指定了目的地，則`defaultDestination`會忽略*libman*中的屬性。
+* 如果程式庫指定了提供者，則 `defaultProvider` 會忽略*libman*中的屬性。
+* 如果程式庫指定了目的地，則 `defaultDestination` 會忽略*libman*中的屬性。
 
 ### <a name="synopsis"></a>概要
 
@@ -280,7 +280,7 @@ libman restore [--verbosity]
 libman restore [-h|--help]
 ```
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `libman restore` 命令時可用的選項：
 
@@ -296,7 +296,7 @@ libman restore
 
 ## <a name="delete-library-files"></a>刪除程式庫檔案
 
-`libman clean`命令會刪除先前透過 LibMan 還原的程式庫檔案。 刪除此作業後變成空白的資料夾。 程式庫檔案在`libraries` *libman*的屬性中的關聯設定不會被移除。
+`libman clean`命令會刪除先前透過 LibMan 還原的程式庫檔案。 刪除此作業後變成空白的資料夾。 程式庫檔案在 libman 的屬性中的關聯設定 `libraries` 不會被移除。 *libman.json*
 
 ### <a name="synopsis"></a>概要
 
@@ -305,7 +305,7 @@ libman clean [--verbosity]
 libman clean [-h|--help]
 ```
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `libman clean` 命令時可用的選項：
 
@@ -344,9 +344,9 @@ libman uninstall [-h|--help]
 
 `LIBRARY`
 
-要卸載之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如`@1.2.0`）。
+要卸載之程式庫的名稱。 此名稱可能包含版本號碼標記法（例如 `@1.2.0` ）。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `libman uninstall` 命令時可用的選項：
 
@@ -368,7 +368,7 @@ libman uninstall [-h|--help]
   libman uninstall jquery@3.3.1
   ```
 
-* 若要卸載透過`filesystem`提供者安裝的 lodash 所檔案：
+* 若要卸載透過提供者安裝的 Lodash 所檔案 `filesystem` ：
 
   ```console
   libman uninstall C:\temp\lodash\
@@ -376,7 +376,7 @@ libman uninstall [-h|--help]
 
 ## <a name="update-library-version"></a>更新程式庫版本
 
-`libman update`命令會將透過 LibMan 安裝的程式庫更新為指定的版本。
+命令會將透過 `libman update` LibMan 安裝的程式庫更新為指定的版本。
 
 當下列情況發生錯誤：
 
@@ -398,7 +398,7 @@ libman update [-h|--help]
 
 要更新之程式庫的名稱。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `libman update` 命令時可用的選項：
 
@@ -448,11 +448,11 @@ libman cache [-h|--help]
 
 `PROVIDER`
 
-僅搭配`clean`命令使用。 指定要清除的提供者快取。 有效值包括：
+僅搭配命令使用 `clean` 。 指定要清除的提供者快取。 有效值包括：
 
 [!INCLUDE [LibMan provider names](../../includes/libman-cli/provider-names.md)]
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `libman cache` 命令時可用的選項：
 
@@ -552,7 +552,7 @@ libman cache [-h|--help]
   libman cache clean cdnjs
   ```
 
-  清空 CDNJS 提供者快取之後， `libman cache list`此命令會顯示下列內容：
+  清空 CDNJS 提供者快取之後，此 `libman cache list` 命令會顯示下列內容：
 
   ```console
   Cache contents:
@@ -571,7 +571,7 @@ libman cache [-h|--help]
   libman cache clean
   ```
 
-  清空所有提供者快取之後`libman cache list` ，此命令會顯示下列內容：
+  清空所有提供者快取之後，此 `libman cache list` 命令會顯示下列內容：
 
   ```console
   Cache contents:

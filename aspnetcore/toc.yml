@@ -161,7 +161,11 @@
           displayName: 'tutorial, razor, razor pages, ui'
           href: /learn/modules/create-razor-pages-aspnet-core/
         - name: Web API 應用程式 >>
+          displayName: tutorial
           href: /learn/modules/build-web-api-net-core/
+        - name: 雲端原生微服務 >>
+          displayName: 'tutorial, kubernetes, aks, acr, docker'
+          href: /learn/modules/microservices-aspnet-core/
         - name: 資料存取 >>
           displayName: 'tutorial, ef, entity framework'
           href: /learn/modules/persist-data-ef-core/

@@ -1,11 +1,11 @@
 ---
-標題： [建立您的第一個 Blazor 應用程式作者：描述：] [ Blazor 逐步建立應用程式]。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題：「組建您的第一個 Blazor 應用程式」作者： guardrex 描述：「 Blazor 逐步建立應用程式」。
+monikerRange： ' >= aspnetcore-3.0 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid：教學課程/第 blazor-應用程式
 
 ---
 # <a name="build-your-first-blazor-app"></a>建立您的第一個 Blazor 應用程式
@@ -131,7 +131,7 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 
 在實作簡單待辦事項清單的應用程式中新增元件。
 
-1. `Todo` Razor 在 [ *Pages* ] 資料夾中，將新的元件新增至應用程式。 在 Visual Studio 中，以滑鼠右鍵按一下 [**頁面**] 資料夾，然後選取 [**加入**  >  **新專案**  >  ** Razor 元件**]。 將元件的檔案命名為*Todo*。 在其他開發環境中，將空白檔案新增至名為 [ *Todo. razor*] 的 [ **Pages** ] 資料夾。
+1. `Todo` Razor 在 [ *Pages* ] 資料夾中，將新的元件新增至應用程式。 如果您使用 Visual Studio，請以滑鼠右鍵按一下 [**頁面**] 資料夾，**然後選取 [**  >  **新增專案**] [  >  ** Razor 元件**]。 將元件的檔案命名為*Todo*。 在其他開發環境中，將空白檔案新增至名為 [ *Todo. razor*] 的 [ **Pages** ] 資料夾。
 
 1. 提供元件的初始標記：
 

@@ -1,22 +1,12 @@
 ---
-title: 使用 ASP.NET Core 設定可攜式物件當地語系化
-author: sebastienros
-description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
-ms.author: scaddie
-ms.date: 09/26/2017
-no-loc:
-- Blazor
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
-uid: fundamentals/portable-object-localization
-ms.openlocfilehash: 1e544b0f504c2776c678c51bff598cf011b52610
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
-ms.translationtype: MT
-ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776047"
+標題：在 ASP.NET Core 作者中設定可移植物件當地語系化： sebastienros 描述：本文介紹可移植的物件檔案，並概述在具有 Orchard 核心架構的 ASP.NET Core 應用程式中使用它們的步驟。
+scaddie ms. date：09/26/2017 否-loc：
+- 'Blazor'
+- 'Identity'
+- 'Let's Encrypt'
+- 'Razor'
+- ' SignalR ' uid：基本概念/可攜性-物件-當地語系化
+
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 
@@ -77,29 +67,29 @@ msgstr[1] "Les adresses email sont \"{0}\""
 
 *.csproj* 檔案現在包含與下列內容類似的一行 (版本號碼可能不同)：
 
-[!code-xml[](localization/sample/POLocalization/POLocalization.csproj?range=9)]
+[!code-xml[](localization/sample/2.x/POLocalization/POLocalization.csproj?range=9)]
 
 ### <a name="registering-the-service"></a>註冊服務
 
 將所需的服務新增至 *Startup.cs* 的 `ConfigureServices` 方法：
 
-[!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
+[!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_ConfigureServices&highlight=4-21)]
 
 將必要的中介軟體新增至 *Startup.cs* 的 `Configure` 方法：
 
-[!code-csharp[](localization/sample/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
+[!code-csharp[](localization/sample/2.x/POLocalization/Startup.cs?name=snippet_Configure&highlight=15)]
 
-將下列程式碼新增至Razor您選擇的視圖。 此範例中使用 *About.cshtml*。
+將下列程式碼新增至您 Razor 選擇的視圖。 此範例中使用 *About.cshtml*。
 
-[!code-cshtml[](localization/sample/POLocalization/Views/Home/About.cshtml)]
+[!code-cshtml[](localization/sample/2.x/POLocalization/Views/Home/About.cshtml)]
 
 將會插入 `IViewLocalizer` 執行個體，用來翻譯文字 "Hello world!"。
 
 ### <a name="creating-a-po-file"></a>建立 PO 檔案
 
-在您的應用程式根資料夾中，建立名為* \<文化特性代碼>. po*的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
+在您的應用程式根資料夾中，建立名為* \<culture code> po*的檔案。 在此範例中，檔案名稱是 *fr.po*，因為使用法文語言：
 
-[!code-text[](localization/sample/POLocalization/fr.po)]
+[!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
 這個檔案會同時儲存要翻譯的字串和法文的翻譯字串。 如有必要，翻譯會還原為其父文化特性。 在此範例中，如果所要求的文化特性是 `fr-FR` 或 `fr-CA`，則會使用 *fr.po* 檔案。
 
@@ -136,7 +126,7 @@ msgstr[1] "Il y a {0} éléments."
 
 如下所示建立 `cs.po` 檔案，並記下複數表示需要三種不同翻譯的方式：
 
-[!code-text[](localization/sample/POLocalization/cs.po)]
+[!code-text[](localization/sample/2.x/POLocalization/cs.po)]
 
 若要接受捷克文的當地語系化，請將 `"cs"` 新增至 `ConfigureServices` 方法所支援的文化特性清單中：
 
@@ -193,11 +183,11 @@ Existuje 5 položek.
 
 ### <a name="contextualizing-strings"></a>內容化字串
 
-應用程式通常包含要在數個位置中翻譯的字串。 相同的字串在應用程式內的特定位置（Razor views 或類別檔案）可能會有不同的翻譯。 PO 檔案支援檔案內容的概念，可用來對所表示的字串進行分類。 使用檔案內容，字串可以根據檔案內容 (或缺乏檔案內容) 翻譯成不同的內容。
+應用程式通常包含要在數個位置中翻譯的字串。 相同的字串在應用程式內的特定位置（views 或類別檔案）可能會有不同的翻譯 Razor 。 PO 檔案支援檔案內容的概念，可用來對所表示的字串進行分類。 使用檔案內容，字串可以根據檔案內容 (或缺乏檔案內容) 翻譯成不同的內容。
 
 PO 當地語系化服務會使用翻譯字串時所使用的完整類別或檢視的名稱。 這是透過在 `msgctxt` 項目上設定值來完成的。
 
-考慮對先前的 *fr.po* 範例進行微幅新增。 您Razor可以藉由設定保留`msgctxt`專案的值，將位於*Views/Home/About. cshtml*的視圖定義為檔案內容：
+考慮對先前的 *fr.po* 範例進行微幅新增。 您 Razor 可以藉由設定保留專案的值，將位於*Views/Home/About. cshtml*的視圖定義為檔案內容 `msgctxt` ：
 
 ```text
 msgctxt "Views.Home.About"
@@ -209,7 +199,7 @@ msgstr "Bonjour le monde!"
 
 沒有特定項目與給定的檔案內容相符時，Orchard Core 的後援機制會在沒有內容的情況下尋找適當的 PO 檔案。 假設沒有針對 *Views/Home/Contact.cshtml* 所定義的特定檔案內容，請巡覽至 `/Home/Contact?culture=fr-FR` 以載入 PO 檔案，例如：
 
-[!code-text[](localization/sample/POLocalization/fr.po)]
+[!code-text[](localization/sample/2.x/POLocalization/fr.po)]
 
 ### <a name="changing-the-location-of-po-files"></a>變更 PO 檔案的位置
 

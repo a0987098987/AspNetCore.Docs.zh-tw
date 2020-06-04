@@ -1,11 +1,11 @@
 ---
-標題： [在作者中管理使用者和群組 SignalR ：描述：] ASP.NET Core SignalR 使用者和群組管理的總覽。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
+標題： [管理使用者和群組的 SignalR 作者： bradygaster 描述：] ASP.NET Core SignalR 使用者和群組管理的總覽。
+monikerRange： ' >= aspnetcore-2.1 ' ms-chap： bradyg ms. custom： mvc ms. date： 05/17/2020 no-loc：
 - 'Blazor'
 - 'Identity'
 - 'Let's Encrypt'
 - 'Razor'
-- ' SignalR ' uid： 
+- ' SignalR ' uid： signalr/groups
 
 ---
 

@@ -26,7 +26,7 @@ riande ms. date：11/30/2019 否-loc：
 1. 針對您支援的語言和文化特性提供當地語系化資源
 1. 實作可依據每項要求選取語言/文化特性的策略
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/3.x/Localization)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
@@ -70,7 +70,7 @@ riande ms. date：11/30/2019 否-loc：
 
 法文資源檔可能包含下列內容：
 
-| Key | 值 |
+| 機碼 | 值 |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -418,7 +418,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 法文資源檔可能包含下列內容：
 
-| Key | 值 |
+| 機碼 | 值 |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -721,7 +721,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 1. 針對您支援的語言和文化特性提供當地語系化資源
 1. 實作可依據每項要求選取語言/文化特性的策略
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/Localization)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/localization/sample/2.x/)（[如何下載](xref:index#how-to-download-a-sample)）
 
 ## <a name="make-the-apps-content-localizable"></a>讓應用程式的內容可當地語系化
 
@@ -765,7 +765,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 法文資源檔可能包含下列內容：
 
-| Key | 值 |
+| 機碼 | 值 |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 

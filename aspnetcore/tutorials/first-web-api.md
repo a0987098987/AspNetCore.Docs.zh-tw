@@ -12,80 +12,80 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: ddc14aba14e31c5530cda14b4792736da001246a
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 2fcfd46057935cadac76c558a78729a1c096ffc0
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767235"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84451812"
 ---
-# <a name="tutorial-create-a-web-api-with-aspnet-core"></a><span data-ttu-id="02315-103">教學課程：使用 ASP.NET Core 建立 Web API</span><span class="sxs-lookup"><span data-stu-id="02315-103">Tutorial: Create a web API with ASP.NET Core</span></span>
+# <a name="tutorial-create-a-web-api-with-aspnet-core"></a><span data-ttu-id="bb5f5-103">教學課程：使用 ASP.NET Core 建立 Web API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-103">Tutorial: Create a web API with ASP.NET Core</span></span>
 
-<span data-ttu-id="02315-104">由[Rick Anderson](https://twitter.com/RickAndMSFT)、 [Kirk Larkin](https://twitter.com/serpent5)和[Mike Wasson](https://github.com/mikewasson)</span><span class="sxs-lookup"><span data-stu-id="02315-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Kirk Larkin](https://twitter.com/serpent5), and [Mike Wasson](https://github.com/mikewasson)</span></span>
+<span data-ttu-id="bb5f5-104">由[Rick Anderson](https://twitter.com/RickAndMSFT)、 [Kirk Larkin](https://twitter.com/serpent5)和[Mike Wasson](https://github.com/mikewasson)</span><span class="sxs-lookup"><span data-stu-id="bb5f5-104">By [Rick Anderson](https://twitter.com/RickAndMSFT), [Kirk Larkin](https://twitter.com/serpent5), and [Mike Wasson](https://github.com/mikewasson)</span></span>
 
-<span data-ttu-id="02315-105">本教學課程將教導您使用 ASP.NET Core 建立 Web API 的基本概念。</span><span class="sxs-lookup"><span data-stu-id="02315-105">This tutorial teaches the basics of building a web API with ASP.NET Core.</span></span>
+<span data-ttu-id="bb5f5-105">本教學課程將教導您使用 ASP.NET Core 建立 Web API 的基本概念。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-105">This tutorial teaches the basics of building a web API with ASP.NET Core.</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="02315-106">在本教學課程中，您會了解如何：</span><span class="sxs-lookup"><span data-stu-id="02315-106">In this tutorial, you learn how to:</span></span>
+<span data-ttu-id="bb5f5-106">在本教學課程中，您會了解如何：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-106">In this tutorial, you learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="02315-107">建立 Web API 專案。</span><span class="sxs-lookup"><span data-stu-id="02315-107">Create a web API project.</span></span>
-> * <span data-ttu-id="02315-108">新增模型類別和資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="02315-108">Add a model class and a database context.</span></span>
-> * <span data-ttu-id="02315-109">使用 CRUD 方法 Scaffold 控制器。</span><span class="sxs-lookup"><span data-stu-id="02315-109">Scaffold a controller with CRUD methods.</span></span>
-> * <span data-ttu-id="02315-110">設定路由、URL 路徑和傳回值。</span><span class="sxs-lookup"><span data-stu-id="02315-110">Configure routing, URL paths, and return values.</span></span>
-> * <span data-ttu-id="02315-111">使用 Postman 呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="02315-111">Call the web API with Postman.</span></span>
+> * <span data-ttu-id="bb5f5-107">建立 Web API 專案。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-107">Create a web API project.</span></span>
+> * <span data-ttu-id="bb5f5-108">新增模型類別和資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-108">Add a model class and a database context.</span></span>
+> * <span data-ttu-id="bb5f5-109">使用 CRUD 方法 Scaffold 控制器。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-109">Scaffold a controller with CRUD methods.</span></span>
+> * <span data-ttu-id="bb5f5-110">設定路由、URL 路徑和傳回值。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-110">Configure routing, URL paths, and return values.</span></span>
+> * <span data-ttu-id="bb5f5-111">使用 Postman 呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-111">Call the web API with Postman.</span></span>
 
-<span data-ttu-id="02315-112">結束時，您會有一個 Web API，可以管理儲存在資料庫中的「待辦事項」。</span><span class="sxs-lookup"><span data-stu-id="02315-112">At the end, you have a web API that can manage "to-do" items stored in a database.</span></span>
+<span data-ttu-id="bb5f5-112">結束時，您會有一個 Web API，可以管理儲存在資料庫中的「待辦事項」。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-112">At the end, you have a web API that can manage "to-do" items stored in a database.</span></span>
 
-## <a name="overview"></a><span data-ttu-id="02315-113">概觀</span><span class="sxs-lookup"><span data-stu-id="02315-113">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="bb5f5-113">概觀</span><span class="sxs-lookup"><span data-stu-id="bb5f5-113">Overview</span></span>
 
-<span data-ttu-id="02315-114">本教學課程會建立以下 API：</span><span class="sxs-lookup"><span data-stu-id="02315-114">This tutorial creates the following API:</span></span>
+<span data-ttu-id="bb5f5-114">本教學課程會建立以下 API：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-114">This tutorial creates the following API:</span></span>
 
-|<span data-ttu-id="02315-115">API</span><span class="sxs-lookup"><span data-stu-id="02315-115">API</span></span> | <span data-ttu-id="02315-116">說明</span><span class="sxs-lookup"><span data-stu-id="02315-116">Description</span></span> | <span data-ttu-id="02315-117">Request body</span><span class="sxs-lookup"><span data-stu-id="02315-117">Request body</span></span> | <span data-ttu-id="02315-118">Response body</span><span class="sxs-lookup"><span data-stu-id="02315-118">Response body</span></span> |
+|<span data-ttu-id="bb5f5-115">API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-115">API</span></span> | <span data-ttu-id="bb5f5-116">說明</span><span class="sxs-lookup"><span data-stu-id="bb5f5-116">Description</span></span> | <span data-ttu-id="bb5f5-117">要求本文</span><span class="sxs-lookup"><span data-stu-id="bb5f5-117">Request body</span></span> | <span data-ttu-id="bb5f5-118">回應本文</span><span class="sxs-lookup"><span data-stu-id="bb5f5-118">Response body</span></span> |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | <span data-ttu-id="02315-119">取得所有待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-119">Get all to-do items</span></span> | <span data-ttu-id="02315-120">None</span><span class="sxs-lookup"><span data-stu-id="02315-120">None</span></span> | <span data-ttu-id="02315-121">待辦事項的陣列</span><span class="sxs-lookup"><span data-stu-id="02315-121">Array of to-do items</span></span>|
-|`GET /api/TodoItems/{id}` | <span data-ttu-id="02315-122">依識別碼取得項目</span><span class="sxs-lookup"><span data-stu-id="02315-122">Get an item by ID</span></span> | <span data-ttu-id="02315-123">None</span><span class="sxs-lookup"><span data-stu-id="02315-123">None</span></span> | <span data-ttu-id="02315-124">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-124">To-do item</span></span>|
-|`POST /api/TodoItems` | <span data-ttu-id="02315-125">新增記錄</span><span class="sxs-lookup"><span data-stu-id="02315-125">Add a new item</span></span> | <span data-ttu-id="02315-126">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-126">To-do item</span></span> | <span data-ttu-id="02315-127">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-127">To-do item</span></span> |
-|`PUT /api/TodoItems/{id}` | <span data-ttu-id="02315-128">更新現有的項目 &nbsp;</span><span class="sxs-lookup"><span data-stu-id="02315-128">Update an existing item &nbsp;</span></span> | <span data-ttu-id="02315-129">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-129">To-do item</span></span> | <span data-ttu-id="02315-130">None</span><span class="sxs-lookup"><span data-stu-id="02315-130">None</span></span> |
-|<span data-ttu-id="02315-131">`DELETE /api/TodoItems/{id}` &nbsp; &nbsp;</span><span class="sxs-lookup"><span data-stu-id="02315-131">`DELETE /api/TodoItems/{id}` &nbsp; &nbsp;</span></span> | <span data-ttu-id="02315-132">刪除專案&nbsp;&nbsp;</span><span class="sxs-lookup"><span data-stu-id="02315-132">Delete an item &nbsp; &nbsp;</span></span> | <span data-ttu-id="02315-133">None</span><span class="sxs-lookup"><span data-stu-id="02315-133">None</span></span> | <span data-ttu-id="02315-134">None</span><span class="sxs-lookup"><span data-stu-id="02315-134">None</span></span>|
+|`GET /api/TodoItems` | <span data-ttu-id="bb5f5-119">取得所有待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-119">Get all to-do items</span></span> | <span data-ttu-id="bb5f5-120">無</span><span class="sxs-lookup"><span data-stu-id="bb5f5-120">None</span></span> | <span data-ttu-id="bb5f5-121">待辦事項的陣列</span><span class="sxs-lookup"><span data-stu-id="bb5f5-121">Array of to-do items</span></span>|
+|`GET /api/TodoItems/{id}` | <span data-ttu-id="bb5f5-122">依識別碼取得項目</span><span class="sxs-lookup"><span data-stu-id="bb5f5-122">Get an item by ID</span></span> | <span data-ttu-id="bb5f5-123">無</span><span class="sxs-lookup"><span data-stu-id="bb5f5-123">None</span></span> | <span data-ttu-id="bb5f5-124">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-124">To-do item</span></span>|
+|`POST /api/TodoItems` | <span data-ttu-id="bb5f5-125">新增記錄</span><span class="sxs-lookup"><span data-stu-id="bb5f5-125">Add a new item</span></span> | <span data-ttu-id="bb5f5-126">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-126">To-do item</span></span> | <span data-ttu-id="bb5f5-127">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-127">To-do item</span></span> |
+|`PUT /api/TodoItems/{id}` | <span data-ttu-id="bb5f5-128">更新現有的項目 &nbsp;</span><span class="sxs-lookup"><span data-stu-id="bb5f5-128">Update an existing item &nbsp;</span></span> | <span data-ttu-id="bb5f5-129">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-129">To-do item</span></span> | <span data-ttu-id="bb5f5-130">無</span><span class="sxs-lookup"><span data-stu-id="bb5f5-130">None</span></span> |
+|<span data-ttu-id="bb5f5-131">`DELETE /api/TodoItems/{id}` &nbsp; &nbsp;</span><span class="sxs-lookup"><span data-stu-id="bb5f5-131">`DELETE /api/TodoItems/{id}` &nbsp; &nbsp;</span></span> | <span data-ttu-id="bb5f5-132">刪除專案 &nbsp;&nbsp;</span><span class="sxs-lookup"><span data-stu-id="bb5f5-132">Delete an item &nbsp; &nbsp;</span></span> | <span data-ttu-id="bb5f5-133">None</span><span class="sxs-lookup"><span data-stu-id="bb5f5-133">None</span></span> | <span data-ttu-id="bb5f5-134">None</span><span class="sxs-lookup"><span data-stu-id="bb5f5-134">None</span></span>|
 
-<span data-ttu-id="02315-135">下圖顯示應用程式的設計。</span><span class="sxs-lookup"><span data-stu-id="02315-135">The following diagram shows the design of the app.</span></span>
+<span data-ttu-id="bb5f5-135">下圖顯示應用程式的設計。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-135">The following diagram shows the design of the app.</span></span>
 
 ![左側方塊代表用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a><span data-ttu-id="02315-141">必要條件</span><span class="sxs-lookup"><span data-stu-id="02315-141">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bb5f5-141">必要條件</span><span class="sxs-lookup"><span data-stu-id="bb5f5-141">Prerequisites</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-142">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-142">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-142">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-142">Visual Studio</span></span>](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-143">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-143">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-143">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-143">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-144">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-144">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-144">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-144">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-3.1.md)]
 
 ---
 
-## <a name="create-a-web-project"></a><span data-ttu-id="02315-145">建立 Web 專案</span><span class="sxs-lookup"><span data-stu-id="02315-145">Create a web project</span></span>
+## <a name="create-a-web-project"></a><span data-ttu-id="bb5f5-145">建立 Web 專案</span><span class="sxs-lookup"><span data-stu-id="bb5f5-145">Create a web project</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-146">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-146">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-146">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-146">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-147">從 [檔案]\*\*\*\* 功能表選取 [新增]**[專案]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-147">From the **File** menu, select **New** > **Project**.</span></span>
-* <span data-ttu-id="02315-148">選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-148">Select the **ASP.NET Core Web Application** template and click **Next**.</span></span>
-* <span data-ttu-id="02315-149">將專案命名為 *TodoApi*，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-149">Name the project *TodoApi* and click **Create**.</span></span>
-* <span data-ttu-id="02315-150">在 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中，確認已選取 [ **.net Core** ] 和 [ **ASP.NET Core 3.1** ]。</span><span class="sxs-lookup"><span data-stu-id="02315-150">In the **Create a new ASP.NET Core Web Application** dialog, confirm that **.NET Core** and **ASP.NET Core 3.1** are selected.</span></span> <span data-ttu-id="02315-151">選取 **API** 範本，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-151">Select the **API** template and click **Create**.</span></span>
+* <span data-ttu-id="bb5f5-147">從 [檔案]\*\*\*\* 功能表選取 [新增]**[專案]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-147">From the **File** menu, select **New** > **Project**.</span></span>
+* <span data-ttu-id="bb5f5-148">選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-148">Select the **ASP.NET Core Web Application** template and click **Next**.</span></span>
+* <span data-ttu-id="bb5f5-149">將專案命名為 *TodoApi*，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-149">Name the project *TodoApi* and click **Create**.</span></span>
+* <span data-ttu-id="bb5f5-150">在 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中，確認已選取 [ **.net Core** ] 和 [ **ASP.NET Core 3.1** ]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-150">In the **Create a new ASP.NET Core Web Application** dialog, confirm that **.NET Core** and **ASP.NET Core 3.1** are selected.</span></span> <span data-ttu-id="bb5f5-151">選取 **API** 範本，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-151">Select the **API** template and click **Create**.</span></span>
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs3.png)
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-153">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-153">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-153">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-153">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="02315-154">開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。</span><span class="sxs-lookup"><span data-stu-id="02315-154">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
-* <span data-ttu-id="02315-155">將目錄 (`cd`) 變更為包含專案資料夾的資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-155">Change directories (`cd`) to the folder that will contain the project folder.</span></span>
-* <span data-ttu-id="02315-156">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="02315-156">Run the following commands:</span></span>
+* <span data-ttu-id="bb5f5-154">開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-154">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
+* <span data-ttu-id="bb5f5-155">將目錄 (`cd`) 變更為包含專案資料夾的資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-155">Change directories (`cd`) to the folder that will contain the project folder.</span></span>
+* <span data-ttu-id="bb5f5-156">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-156">Run the following commands:</span></span>
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
@@ -95,32 +95,34 @@ ms.locfileid: "82767235"
    code -r ../TodoApi
    ```
 
-* <span data-ttu-id="02315-157">當出現對話方塊詢問您是否要將所需的資產新增至專案時，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-157">When a dialog box asks if you want to add required assets to the project, select **Yes**.</span></span>
+* <span data-ttu-id="bb5f5-157">當出現對話方塊詢問您是否要將所需的資產新增至專案時，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-157">When a dialog box asks if you want to add required assets to the project, select **Yes**.</span></span>
 
-  <span data-ttu-id="02315-158">上述命令：</span><span class="sxs-lookup"><span data-stu-id="02315-158">The preceding commands:</span></span>
+  <span data-ttu-id="bb5f5-158">上述命令：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-158">The preceding commands:</span></span>
 
-  * <span data-ttu-id="02315-159">建立新的 Web API 專案，然後在 Visual Studio Code 中予以開啟。</span><span class="sxs-lookup"><span data-stu-id="02315-159">Creates a new web API project and opens it in Visual Studio Code.</span></span>
-  * <span data-ttu-id="02315-160">新增下一節需要的 NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="02315-160">Adds the NuGet packages which are required in the next section.</span></span>
+  * <span data-ttu-id="bb5f5-159">建立新的 Web API 專案，然後在 Visual Studio Code 中予以開啟。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-159">Creates a new web API project and opens it in Visual Studio Code.</span></span>
+  * <span data-ttu-id="bb5f5-160">新增下一節需要的 NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-160">Adds the NuGet packages which are required in the next section.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-161">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-161">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-161">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-161">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="02315-162">選取 [檔案]\*\* [新增解決方案]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-162">Select **File** > **New Solution**.</span></span>
+* <span data-ttu-id="bb5f5-162">選取 [檔案]\*\* [新增解決方案]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-162">Select **File** > **New Solution**.</span></span>
 
   ![macOS 新增方案](first-web-api-mac/_static/sln.png)
 
-* <span data-ttu-id="02315-164">選取[.Net Core]\*\* [應用程式]\*\* > \*\* [API]\*\* > \*\* [下一步]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-164">Select **.NET Core** > **App** > **API** > **Next**.</span></span>
+* <span data-ttu-id="bb5f5-164">在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用程式**  >  **API**  >  **] [下一步]**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-164">In Visual Studio for Mac earlier than version 8.6, select **.NET Core** > **App** > **API** > **Next**.</span></span> <span data-ttu-id="bb5f5-165">在8.6 或更新版本中，選取 [ **Web 和主控台**  >  **應用程式**  >  **API**  >  **] [下一步]** 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-165">In version 8.6 or later, select **Web and Console** > **App** > **API** > **Next** .</span></span>
 
-  ![macOS [新增專案] 對話方塊](first-web-api-mac/_static/1.png)
-  
-* <span data-ttu-id="02315-166">在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取 [**目標 Framework** ] \* [*.net Core 3.1*]。</span><span class="sxs-lookup"><span data-stu-id="02315-166">In the **Configure your new ASP.NET Core Web API** dialog, select **Target Framework** of \**.NET Core 3.1*.</span></span>
+  ![macOS API 範本選取專案](first-web-api-mac/_static/api_template.png)
 
-* <span data-ttu-id="02315-167">針對 [專案名稱]\*\*\*\* 輸入 *TodoApi*，然後選取 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-167">Enter *TodoApi* for the **Project Name** and then select **Create**.</span></span>
+* <span data-ttu-id="bb5f5-167">確認 [**目標 Framework** ] 已設定為 [ **.net Core 3.1**]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-167">Confirm the **Target Framework** is set to **.NET Core 3.1**.</span></span> <span data-ttu-id="bb5f5-168">選取 [下一步]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-168">Select **Next**.</span></span>
+
+  ![macOS .NET Core 3.1 選項](first-web-api-mac/_static/api_31_config.png)
+
+* <span data-ttu-id="bb5f5-170">針對 [專案名稱]\*\*\*\* 輸入 *TodoApi*，然後選取 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-170">Enter *TodoApi* for the **Project Name** and then select **Create**.</span></span>
 
   ![設定對話方塊](first-web-api-mac/_static/2.png)
 
 [!INCLUDE[](~/includes/mac-terminal-access.md)]
 
-<span data-ttu-id="02315-169">在專案資料夾中開啟命令終端機，然後執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="02315-169">Open a command terminal in the project folder and run the following commands:</span></span>
+<span data-ttu-id="bb5f5-172">在專案資料夾中開啟命令終端機，然後執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-172">Open a command terminal in the project folder and run the following commands:</span></span>
 
    ```dotnetcli
    dotnet add package Microsoft.EntityFrameworkCore.SqlServer
@@ -129,27 +131,27 @@ ms.locfileid: "82767235"
 
 ---
 
-### <a name="test-the-api"></a><span data-ttu-id="02315-170">測試 API</span><span class="sxs-lookup"><span data-stu-id="02315-170">Test the API</span></span>
+### <a name="test-the-api"></a><span data-ttu-id="bb5f5-173">測試 API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-173">Test the API</span></span>
 
-<span data-ttu-id="02315-171">專案範本會建立 `WeatherForecast` API。</span><span class="sxs-lookup"><span data-stu-id="02315-171">The project template creates a `WeatherForecast` API.</span></span> <span data-ttu-id="02315-172">從瀏覽器呼叫 `Get` 方法來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-172">Call the `Get` method from a browser to test the app.</span></span>
+<span data-ttu-id="bb5f5-174">專案範本會建立 `WeatherForecast` API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-174">The project template creates a `WeatherForecast` API.</span></span> <span data-ttu-id="bb5f5-175">從瀏覽器呼叫 `Get` 方法來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-175">Call the `Get` method from a browser to test the app.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-173">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-173">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-176">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-176">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="02315-174">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-174">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="02315-175">Visual Studio 會啟動瀏覽器並巡覽至 `https://localhost:<port>/WeatherForecast`，其中 `<port>` 是隨機選擇的通訊埠編號。</span><span class="sxs-lookup"><span data-stu-id="02315-175">Visual Studio launches a browser and navigates to `https://localhost:<port>/WeatherForecast`, where `<port>` is a randomly chosen port number.</span></span>
+<span data-ttu-id="bb5f5-177">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-177">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="bb5f5-178">Visual Studio 會啟動瀏覽器並巡覽至 `https://localhost:<port>/WeatherForecast`，其中 `<port>` 是隨機選擇的通訊埠編號。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-178">Visual Studio launches a browser and navigates to `https://localhost:<port>/WeatherForecast`, where `<port>` is a randomly chosen port number.</span></span>
 
-<span data-ttu-id="02315-176">如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-176">If you get a dialog box that asks if you should trust the IIS Express certificate, select **Yes**.</span></span> <span data-ttu-id="02315-177">在接著出現的 [安全性警告]\*\*\*\* 對話方塊中，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-177">In the **Security Warning** dialog that appears next, select **Yes**.</span></span>
+<span data-ttu-id="bb5f5-179">如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-179">If you get a dialog box that asks if you should trust the IIS Express certificate, select **Yes**.</span></span> <span data-ttu-id="bb5f5-180">在接著出現的 [安全性警告]\*\*\*\* 對話方塊中，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-180">In the **Security Warning** dialog that appears next, select **Yes**.</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-178">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-178">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-181">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-181">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="02315-179">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-179">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="02315-180">在瀏覽器中，前往下列 URL：`https://localhost:5001/WeatherForecast`。</span><span class="sxs-lookup"><span data-stu-id="02315-180">In a browser, go to following URL: `https://localhost:5001/WeatherForecast`.</span></span>
+<span data-ttu-id="bb5f5-182">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-182">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="bb5f5-183">在瀏覽器中，前往下列 URL：`https://localhost:5001/WeatherForecast`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-183">In a browser, go to following URL: `https://localhost:5001/WeatherForecast`.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-181">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-181">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-184">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-184">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<span data-ttu-id="02315-182">選取 [**執行** > ] [**開始調試**程式] 以啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-182">Select **Run** > **Start Debugging** to launch the app.</span></span> <span data-ttu-id="02315-183">Visual Studio for Mac 會啟動瀏覽器並巡覽至 `https://localhost:<port>`，其中 `<port>` 是隨機選擇的連接埠號碼。</span><span class="sxs-lookup"><span data-stu-id="02315-183">Visual Studio for Mac launches a browser and navigates to `https://localhost:<port>`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="02315-184">傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02315-184">An HTTP 404 (Not Found) error is returned.</span></span> <span data-ttu-id="02315-185">將 `/WeatherForecast` 附加至 URL (將 URL 變更為 `https://localhost:<port>/WeatherForecast`)。</span><span class="sxs-lookup"><span data-stu-id="02315-185">Append `/WeatherForecast` to the URL (change the URL to `https://localhost:<port>/WeatherForecast`).</span></span>
+<span data-ttu-id="bb5f5-185">選取 [**執行**]  >  [**開始調試**程式] 以啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-185">Select **Run** > **Start Debugging** to launch the app.</span></span> <span data-ttu-id="bb5f5-186">Visual Studio for Mac 會啟動瀏覽器並巡覽至 `https://localhost:<port>`，其中 `<port>` 是隨機選擇的連接埠號碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-186">Visual Studio for Mac launches a browser and navigates to `https://localhost:<port>`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="bb5f5-187">傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-187">An HTTP 404 (Not Found) error is returned.</span></span> <span data-ttu-id="bb5f5-188">將 `/WeatherForecast` 附加至 URL (將 URL 變更為 `https://localhost:<port>/WeatherForecast`)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-188">Append `/WeatherForecast` to the URL (change the URL to `https://localhost:<port>/WeatherForecast`).</span></span>
 
 ---
 
-<span data-ttu-id="02315-186">系統會傳回與下列類似的 JSON：</span><span class="sxs-lookup"><span data-stu-id="02315-186">JSON similar to the following is returned:</span></span>
+<span data-ttu-id="bb5f5-189">系統會傳回與下列類似的 JSON：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-189">JSON similar to the following is returned:</span></span>
 
 ```json
 [
@@ -186,104 +188,104 @@ ms.locfileid: "82767235"
 ]
 ```
 
-## <a name="add-a-model-class"></a><span data-ttu-id="02315-187">新增模型類別</span><span class="sxs-lookup"><span data-stu-id="02315-187">Add a model class</span></span>
+## <a name="add-a-model-class"></a><span data-ttu-id="bb5f5-190">新增模型類別</span><span class="sxs-lookup"><span data-stu-id="bb5f5-190">Add a model class</span></span>
 
-<span data-ttu-id="02315-188">「模型」\*\* 是代表應用程式所管理資料的一組類別。</span><span class="sxs-lookup"><span data-stu-id="02315-188">A *model* is a set of classes that represent the data that the app manages.</span></span> <span data-ttu-id="02315-189">此應用程式的模型是單一 `TodoItem` 類別。</span><span class="sxs-lookup"><span data-stu-id="02315-189">The model for this app is a single `TodoItem` class.</span></span>
+<span data-ttu-id="bb5f5-191">「模型」\*\* 是代表應用程式所管理資料的一組類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-191">A *model* is a set of classes that represent the data that the app manages.</span></span> <span data-ttu-id="bb5f5-192">此應用程式的模型是單一 `TodoItem` 類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-192">The model for this app is a single `TodoItem` class.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-190">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-190">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-193">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-193">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-191">在 [方案總管]\*\*\*\* 中，於專案上按一下滑鼠右鍵。</span><span class="sxs-lookup"><span data-stu-id="02315-191">In **Solution Explorer**, right-click the project.</span></span> <span data-ttu-id="02315-192"> > 選取 **\[\*\*\**新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="02315-192">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="02315-193">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="02315-193">Name the folder *Models*.</span></span>
+* <span data-ttu-id="bb5f5-194">在 [方案總管]\*\*\*\* 中，於專案上按一下滑鼠右鍵。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-194">In **Solution Explorer**, right-click the project.</span></span> <span data-ttu-id="bb5f5-195">選取 **[**  >  **新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-195">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="bb5f5-196">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-196">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="02315-194">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-194">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="02315-195">將類別命名為 *TodoItem*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-195">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="bb5f5-197">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-197">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="bb5f5-198">將類別命名為 *TodoItem*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-198">Name the class *TodoItem* and select **Add**.</span></span>
 
-* <span data-ttu-id="02315-196">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-196">Replace the template code with the following code:</span></span>
+* <span data-ttu-id="bb5f5-199">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-199">Replace the template code with the following code:</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-197">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-197">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-200">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-200">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="02315-198">新增名為 *Models* 的資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-198">Add a folder named *Models*.</span></span>
+* <span data-ttu-id="bb5f5-201">新增名為 *Models* 的資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-201">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="02315-199">將 `TodoItem` 類別新增至具有下列程式碼的 *Models* 資料夾：</span><span class="sxs-lookup"><span data-stu-id="02315-199">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
+* <span data-ttu-id="bb5f5-202">將 `TodoItem` 類別新增至具有下列程式碼的 *Models* 資料夾：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-202">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-200">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-200">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-203">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-203">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="02315-201">以滑鼠右鍵按一下專案。</span><span class="sxs-lookup"><span data-stu-id="02315-201">Right-click the project.</span></span> <span data-ttu-id="02315-202"> > 選取 **\[\*\*\**新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="02315-202">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="02315-203">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="02315-203">Name the folder *Models*.</span></span>
+* <span data-ttu-id="bb5f5-204">以滑鼠右鍵按一下專案。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-204">Right-click the project.</span></span> <span data-ttu-id="bb5f5-205">選取 **[**  >  **新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-205">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="bb5f5-206">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-206">Name the folder *Models*.</span></span>
 
   ![新增資料夾](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="02315-205">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]**[新增檔案]** > **[一般]** > **[空類別]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-205">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="bb5f5-208">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]**[新增檔案]** > **[一般]** > **[空類別]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-208">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
-* <span data-ttu-id="02315-206">將類別命名為 *TodoItem*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-206">Name the class *TodoItem*, and then click **New**.</span></span>
+* <span data-ttu-id="bb5f5-209">將類別命名為 *TodoItem*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-209">Name the class *TodoItem*, and then click **New**.</span></span>
 
-* <span data-ttu-id="02315-207">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-207">Replace the template code with the following code:</span></span>
+* <span data-ttu-id="bb5f5-210">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-210">Replace the template code with the following code:</span></span>
 
 ---
 
   [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoItem.cs?name=snippet)]
 
-<span data-ttu-id="02315-208">`Id` 屬性的功能相當於關聯式資料庫中的唯一索引鍵。</span><span class="sxs-lookup"><span data-stu-id="02315-208">The `Id` property functions as the unique key in a relational database.</span></span>
+<span data-ttu-id="bb5f5-211">`Id` 屬性的功能相當於關聯式資料庫中的唯一索引鍵。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-211">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="02315-209">模型類別可位於專案中的任何位置，但依照慣例會使用 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-209">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
+<span data-ttu-id="bb5f5-212">模型類別可位於專案中的任何位置，但依照慣例會使用 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-212">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
-## <a name="add-a-database-context"></a><span data-ttu-id="02315-210">新增資料庫內容</span><span class="sxs-lookup"><span data-stu-id="02315-210">Add a database context</span></span>
+## <a name="add-a-database-context"></a><span data-ttu-id="bb5f5-213">新增資料庫內容</span><span class="sxs-lookup"><span data-stu-id="bb5f5-213">Add a database context</span></span>
 
-<span data-ttu-id="02315-211">「資料庫內容」\*\* 是為資料模型協調 Entity Framework 功能的主要類別。</span><span class="sxs-lookup"><span data-stu-id="02315-211">The *database context* is the main class that coordinates Entity Framework functionality for a data model.</span></span> <span data-ttu-id="02315-212">此類別是透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立。</span><span class="sxs-lookup"><span data-stu-id="02315-212">This class is created by deriving from the `Microsoft.EntityFrameworkCore.DbContext` class.</span></span>
+<span data-ttu-id="bb5f5-214">「資料庫內容」\*\* 是為資料模型協調 Entity Framework 功能的主要類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-214">The *database context* is the main class that coordinates Entity Framework functionality for a data model.</span></span> <span data-ttu-id="bb5f5-215">此類別是透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-215">This class is created by deriving from the `Microsoft.EntityFrameworkCore.DbContext` class.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-213">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-213">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-216">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-216">Visual Studio</span></span>](#tab/visual-studio)
 
-### <a name="add-microsoftentityframeworkcoresqlserver"></a><span data-ttu-id="02315-214">新增 Microsoft.EntityFrameworkCore.SqlServer</span><span class="sxs-lookup"><span data-stu-id="02315-214">Add Microsoft.EntityFrameworkCore.SqlServer</span></span>
+### <a name="add-microsoftentityframeworkcoresqlserver"></a><span data-ttu-id="bb5f5-217">新增 Microsoft.EntityFrameworkCore.SqlServer</span><span class="sxs-lookup"><span data-stu-id="bb5f5-217">Add Microsoft.EntityFrameworkCore.SqlServer</span></span>
 
-* <span data-ttu-id="02315-215">在 [工具]\*\*\*\* 功能表上，選取 [NuGet 套件管理員] > [管理解決方案的 NuGet 套件]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-215">From the **Tools** menu, select **NuGet Package Manager > Manage NuGet Packages for Solution**.</span></span>
-* <span data-ttu-id="02315-216">選取 [瀏覽]\*\*\*\* 索引標籤，然後在搜尋方塊中輸入 **Microsoft.EntityFrameworkCore.SqlServer**。</span><span class="sxs-lookup"><span data-stu-id="02315-216">Select the **Browse** tab, and then enter **Microsoft.EntityFrameworkCore.SqlServer** in the search box.</span></span>
-* <span data-ttu-id="02315-217">在左窗格中選取 [ **microsoft.entityframeworkcore** ]。</span><span class="sxs-lookup"><span data-stu-id="02315-217">Select **Microsoft.EntityFrameworkCore.SqlServer** in the left pane.</span></span>
-* <span data-ttu-id="02315-218">選取右窗格中的 [專案]\*\*\*\* 核取方塊，然後選取 [安裝]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-218">Select the **Project** check box in the right pane and then select **Install**.</span></span>
-* <span data-ttu-id="02315-219">使用上述指示來新增 `Microsoft.EntityFrameworkCore.InMemory` NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="02315-219">Use the preceding instructions to add the `Microsoft.EntityFrameworkCore.InMemory` NuGet package.</span></span>
+* <span data-ttu-id="bb5f5-218">在 [工具]\*\*\*\* 功能表上，選取 [NuGet 套件管理員] > [管理解決方案的 NuGet 套件]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-218">From the **Tools** menu, select **NuGet Package Manager > Manage NuGet Packages for Solution**.</span></span>
+* <span data-ttu-id="bb5f5-219">選取 [瀏覽]\*\*\*\* 索引標籤，然後在搜尋方塊中輸入 **Microsoft.EntityFrameworkCore.SqlServer**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-219">Select the **Browse** tab, and then enter **Microsoft.EntityFrameworkCore.SqlServer** in the search box.</span></span>
+* <span data-ttu-id="bb5f5-220">在左窗格中選取 [ **microsoft.entityframeworkcore** ]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-220">Select **Microsoft.EntityFrameworkCore.SqlServer** in the left pane.</span></span>
+* <span data-ttu-id="bb5f5-221">選取右窗格中的 [專案]\*\*\*\* 核取方塊，然後選取 [安裝]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-221">Select the **Project** check box in the right pane and then select **Install**.</span></span>
+* <span data-ttu-id="bb5f5-222">使用上述指示來新增 `Microsoft.EntityFrameworkCore.InMemory` NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-222">Use the preceding instructions to add the `Microsoft.EntityFrameworkCore.InMemory` NuGet package.</span></span>
 
 ![NuGet 套件管理員](first-web-api/_static/vs3NuGet.png)
 
-## <a name="add-the-todocontext-database-context"></a><span data-ttu-id="02315-221">新增 TodoCoNtext 資料庫內容</span><span class="sxs-lookup"><span data-stu-id="02315-221">Add the TodoContext database context</span></span>
+## <a name="add-the-todocontext-database-context"></a><span data-ttu-id="bb5f5-224">新增 TodoCoNtext 資料庫內容</span><span class="sxs-lookup"><span data-stu-id="bb5f5-224">Add the TodoContext database context</span></span>
 
-* <span data-ttu-id="02315-222">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-222">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="02315-223">將類別命名為 *TodoContext*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-223">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="bb5f5-225">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-225">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="bb5f5-226">將類別命名為 *TodoContext*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-226">Name the class *TodoContext* and click **Add**.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="02315-224">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-224">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-227">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-227">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="02315-225">將 `TodoContext` 類別新增至 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-225">Add a `TodoContext` class to the *Models* folder.</span></span>
+* <span data-ttu-id="bb5f5-228">將 `TodoContext` 類別新增至 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-228">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
-* <span data-ttu-id="02315-226">輸入下列程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-226">Enter the following code:</span></span>
+* <span data-ttu-id="bb5f5-229">輸入下列程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-229">Enter the following code:</span></span>
 
   [!code-csharp[](first-web-api/samples/3.0/TodoApi/Models/TodoContext.cs)]
 
-## <a name="register-the-database-context"></a><span data-ttu-id="02315-227">登錄資料庫內容</span><span class="sxs-lookup"><span data-stu-id="02315-227">Register the database context</span></span>
+## <a name="register-the-database-context"></a><span data-ttu-id="bb5f5-230">登錄資料庫內容</span><span class="sxs-lookup"><span data-stu-id="bb5f5-230">Register the database context</span></span>
 
-<span data-ttu-id="02315-228">在 ASP.NET Core 中，資料庫內容等服務必須向[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器註冊。</span><span class="sxs-lookup"><span data-stu-id="02315-228">In ASP.NET Core, services such as the DB context must be registered with the [dependency injection (DI)](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="02315-229">此容器會將服務提供給控制器。</span><span class="sxs-lookup"><span data-stu-id="02315-229">The container provides the service to controllers.</span></span>
+<span data-ttu-id="bb5f5-231">在 ASP.NET Core 中，資料庫內容等服務必須向[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器註冊。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-231">In ASP.NET Core, services such as the DB context must be registered with the [dependency injection (DI)](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="bb5f5-232">此容器會將服務提供給控制器。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-232">The container provides the service to controllers.</span></span>
 
-<span data-ttu-id="02315-230">使用下列醒目提示的程式碼更新 *Startup.cs*：</span><span class="sxs-lookup"><span data-stu-id="02315-230">Update *Startup.cs* with the following highlighted code:</span></span>
+<span data-ttu-id="bb5f5-233">使用下列醒目提示的程式碼更新 *Startup.cs*：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-233">Update *Startup.cs* with the following highlighted code:</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Startup.cs?highlight=7-8,23-24&name=snippet_all)]
 
-<span data-ttu-id="02315-231">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-231">The preceding code:</span></span>
+<span data-ttu-id="bb5f5-234">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-234">The preceding code:</span></span>
 
-* <span data-ttu-id="02315-232">移除未使用的 `using` 宣告。</span><span class="sxs-lookup"><span data-stu-id="02315-232">Removes unused `using` declarations.</span></span>
-* <span data-ttu-id="02315-233">將資料庫內容新增至 DI 容器。</span><span class="sxs-lookup"><span data-stu-id="02315-233">Adds the database context to the DI container.</span></span>
-* <span data-ttu-id="02315-234">指定資料庫內容將會使用記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="02315-234">Specifies that the database context will use an in-memory database.</span></span>
+* <span data-ttu-id="bb5f5-235">移除未使用的 `using` 宣告。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-235">Removes unused `using` declarations.</span></span>
+* <span data-ttu-id="bb5f5-236">將資料庫內容新增至 DI 容器。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-236">Adds the database context to the DI container.</span></span>
+* <span data-ttu-id="bb5f5-237">指定資料庫內容將會使用記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-237">Specifies that the database context will use an in-memory database.</span></span>
 
-## <a name="scaffold-a-controller"></a><span data-ttu-id="02315-235">Scaffold 控制器</span><span class="sxs-lookup"><span data-stu-id="02315-235">Scaffold a controller</span></span>
+## <a name="scaffold-a-controller"></a><span data-ttu-id="bb5f5-238">Scaffold 控制器</span><span class="sxs-lookup"><span data-stu-id="bb5f5-238">Scaffold a controller</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-236">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-236">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-239">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-239">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-237">以滑鼠右鍵按一下 *Controllers* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-237">Right-click the *Controllers* folder.</span></span>
-* <span data-ttu-id="02315-238">選取 [新增]\*\* [新增 Scaffold 項目]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-238">Select **Add** > **New Scaffolded Item**.</span></span>
-* <span data-ttu-id="02315-239">選取 [使用 Entity Framework 執行動作的 API 控制器]\*\*\*\*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-239">Select **API Controller with actions, using Entity Framework**, and then select **Add**.</span></span>
-* <span data-ttu-id="02315-240">在 [使用 Entity Framework 執行動作的 API 控制器]\*\*\*\* 對話方塊中：</span><span class="sxs-lookup"><span data-stu-id="02315-240">In the **Add API Controller with actions, using Entity Framework** dialog:</span></span>
+* <span data-ttu-id="bb5f5-240">以滑鼠右鍵按一下 *Controllers* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-240">Right-click the *Controllers* folder.</span></span>
+* <span data-ttu-id="bb5f5-241">選取 [新增]\*\* [新增 Scaffold 項目]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-241">Select **Add** > **New Scaffolded Item**.</span></span>
+* <span data-ttu-id="bb5f5-242">選取 [使用 Entity Framework 執行動作的 API 控制器]\*\*\*\*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-242">Select **API Controller with actions, using Entity Framework**, and then select **Add**.</span></span>
+* <span data-ttu-id="bb5f5-243">在 [使用 Entity Framework 執行動作的 API 控制器]\*\*\*\* 對話方塊中：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-243">In the **Add API Controller with actions, using Entity Framework** dialog:</span></span>
 
-  * <span data-ttu-id="02315-241">在**模型類別**中選取 [ **TodoItem （TodoApi）** ]。</span><span class="sxs-lookup"><span data-stu-id="02315-241">Select **TodoItem (TodoApi.Models)** in the **Model class**.</span></span>
-  * <span data-ttu-id="02315-242">選取**資料內容類別**中的 [ **TodoCoNtext （TodoApi）** ]。</span><span class="sxs-lookup"><span data-stu-id="02315-242">Select **TodoContext (TodoApi.Models)** in the **Data context class**.</span></span>
-  * <span data-ttu-id="02315-243">選取 [新增]  。</span><span class="sxs-lookup"><span data-stu-id="02315-243">Select **Add**.</span></span>
+  * <span data-ttu-id="bb5f5-244">在**模型類別**中選取 [ **TodoItem （TodoApi）** ]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-244">Select **TodoItem (TodoApi.Models)** in the **Model class**.</span></span>
+  * <span data-ttu-id="bb5f5-245">選取**資料內容類別**中的 [ **TodoCoNtext （TodoApi）** ]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-245">Select **TodoContext (TodoApi.Models)** in the **Data context class**.</span></span>
+  * <span data-ttu-id="bb5f5-246">選取 [新增]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-246">Select **Add**.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="02315-244">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-244">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-247">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-247">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-<span data-ttu-id="02315-245">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="02315-245">Run the following commands:</span></span>
+<span data-ttu-id="bb5f5-248">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-248">Run the following commands:</span></span>
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
@@ -292,62 +294,62 @@ dotnet tool install --global dotnet-aspnet-codegenerator
 dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
 ```
 
-<span data-ttu-id="02315-246">上述命令：</span><span class="sxs-lookup"><span data-stu-id="02315-246">The preceding commands:</span></span>
+<span data-ttu-id="bb5f5-249">上述命令：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-249">The preceding commands:</span></span>
 
-* <span data-ttu-id="02315-247">新增 Scaffolding 所需的 NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="02315-247">Add NuGet packages required for scaffolding.</span></span>
-* <span data-ttu-id="02315-248">安裝 Scaffolding 引擎 (`dotnet-aspnet-codegenerator`)。</span><span class="sxs-lookup"><span data-stu-id="02315-248">Installs the scaffolding engine (`dotnet-aspnet-codegenerator`).</span></span>
-* <span data-ttu-id="02315-249">Scaffold `TodoItemsController`。</span><span class="sxs-lookup"><span data-stu-id="02315-249">Scaffolds the `TodoItemsController`.</span></span>
+* <span data-ttu-id="bb5f5-250">新增 Scaffolding 所需的 NuGet 套件。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-250">Add NuGet packages required for scaffolding.</span></span>
+* <span data-ttu-id="bb5f5-251">安裝 Scaffolding 引擎 (`dotnet-aspnet-codegenerator`)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-251">Installs the scaffolding engine (`dotnet-aspnet-codegenerator`).</span></span>
+* <span data-ttu-id="bb5f5-252">Scaffold `TodoItemsController`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-252">Scaffolds the `TodoItemsController`.</span></span>
 
 ---
 
-<span data-ttu-id="02315-250">產生的程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-250">The generated code:</span></span>
+<span data-ttu-id="bb5f5-253">產生的程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-253">The generated code:</span></span>
 
-* <span data-ttu-id="02315-251">使用[`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute)屬性來標示類別。</span><span class="sxs-lookup"><span data-stu-id="02315-251">Marks the class with the [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) attribute.</span></span> <span data-ttu-id="02315-252">這個屬性表示控制器會回應 Web API 要求。</span><span class="sxs-lookup"><span data-stu-id="02315-252">This attribute indicates that the controller responds to web API requests.</span></span> <span data-ttu-id="02315-253">如需屬性所啟用之特定行為的相關資訊，請參閱 <xref:web-api/index>。</span><span class="sxs-lookup"><span data-stu-id="02315-253">For information about specific behaviors that the attribute enables, see <xref:web-api/index>.</span></span>
-* <span data-ttu-id="02315-254">使用 DI 將資料庫內容 (`TodoContext`) 插入到控制器中。</span><span class="sxs-lookup"><span data-stu-id="02315-254">Uses DI to inject the database context (`TodoContext`) into the controller.</span></span> <span data-ttu-id="02315-255">控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="02315-255">The database context is used in each of the [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) methods in the controller.</span></span>
+* <span data-ttu-id="bb5f5-254">使用屬性來標示類別 [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-254">Marks the class with the [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) attribute.</span></span> <span data-ttu-id="bb5f5-255">這個屬性表示控制器會回應 Web API 要求。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-255">This attribute indicates that the controller responds to web API requests.</span></span> <span data-ttu-id="bb5f5-256">如需屬性所啟用之特定行為的相關資訊，請參閱 <xref:web-api/index>。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-256">For information about specific behaviors that the attribute enables, see <xref:web-api/index>.</span></span>
+* <span data-ttu-id="bb5f5-257">使用 DI 將資料庫內容 (`TodoContext`) 插入到控制器中。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-257">Uses DI to inject the database context (`TodoContext`) into the controller.</span></span> <span data-ttu-id="bb5f5-258">控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-258">The database context is used in each of the [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) methods in the controller.</span></span>
 
-<span data-ttu-id="02315-256">的 ASP.NET Core 範本：</span><span class="sxs-lookup"><span data-stu-id="02315-256">The ASP.NET Core templates for:</span></span>
+<span data-ttu-id="bb5f5-259">的 ASP.NET Core 範本：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-259">The ASP.NET Core templates for:</span></span>
 
-* <span data-ttu-id="02315-257">具有 views 的控制器`[action]`會包含在路由範本中。</span><span class="sxs-lookup"><span data-stu-id="02315-257">Controllers with views include `[action]` in the route template.</span></span>
-* <span data-ttu-id="02315-258">API 控制器不會`[action]`包含在路由範本中。</span><span class="sxs-lookup"><span data-stu-id="02315-258">API controllers don't include `[action]` in the route template.</span></span>
+* <span data-ttu-id="bb5f5-260">具有 views 的控制器會包含 `[action]` 在路由範本中。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-260">Controllers with views include `[action]` in the route template.</span></span>
+* <span data-ttu-id="bb5f5-261">API 控制器不會包含 `[action]` 在路由範本中。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-261">API controllers don't include `[action]` in the route template.</span></span>
 
-<span data-ttu-id="02315-259">當`[action]`權杖不在路由範本中時，[動作](xref:mvc/controllers/routing#action)名稱會從路由中排除。</span><span class="sxs-lookup"><span data-stu-id="02315-259">When the `[action]` token isn't in the route template, the [action](xref:mvc/controllers/routing#action) name is excluded from the route.</span></span> <span data-ttu-id="02315-260">也就是說，不會在相符的路由中使用動作的相關聯方法名稱。</span><span class="sxs-lookup"><span data-stu-id="02315-260">That is, the action's associated method name isn't used in the matching route.</span></span>
+<span data-ttu-id="bb5f5-262">當 `[action]` 權杖不在路由範本中時，[動作](xref:mvc/controllers/routing#action)名稱會從路由中排除。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-262">When the `[action]` token isn't in the route template, the [action](xref:mvc/controllers/routing#action) name is excluded from the route.</span></span> <span data-ttu-id="bb5f5-263">也就是說，不會在相符的路由中使用動作的相關聯方法名稱。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-263">That is, the action's associated method name isn't used in the matching route.</span></span>
 
-## <a name="examine-the-posttodoitem-create-method"></a><span data-ttu-id="02315-261">檢查 PostTodoItem 建立方法</span><span class="sxs-lookup"><span data-stu-id="02315-261">Examine the PostTodoItem create method</span></span>
+## <a name="examine-the-posttodoitem-create-method"></a><span data-ttu-id="bb5f5-264">檢查 PostTodoItem 建立方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-264">Examine the PostTodoItem create method</span></span>
 
-<span data-ttu-id="02315-262">取代 `PostTodoItem` 中的 return 陳述式，以使用 [nameof](/dotnet/csharp/language-reference/operators/nameof) 運算子：</span><span class="sxs-lookup"><span data-stu-id="02315-262">Replace the return statement in the `PostTodoItem` to use the [nameof](/dotnet/csharp/language-reference/operators/nameof) operator:</span></span>
+<span data-ttu-id="bb5f5-265">取代 `PostTodoItem` 中的 return 陳述式，以使用 [nameof](/dotnet/csharp/language-reference/operators/nameof) 運算子：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-265">Replace the return statement in the `PostTodoItem` to use the [nameof](/dotnet/csharp/language-reference/operators/nameof) operator:</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Create)]
 
-<span data-ttu-id="02315-263">上述程式碼是 HTTP POST 方法，如[`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute)屬性所示。</span><span class="sxs-lookup"><span data-stu-id="02315-263">The preceding code is an HTTP POST method, as indicated by the [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) attribute.</span></span> <span data-ttu-id="02315-264">該方法會從 HTTP 要求本文取得待辦事項的值。</span><span class="sxs-lookup"><span data-stu-id="02315-264">The method gets the value of the to-do item from the body of the HTTP request.</span></span>
+<span data-ttu-id="bb5f5-266">上述程式碼是 HTTP POST 方法，如屬性所示 [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-266">The preceding code is an HTTP POST method, as indicated by the [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) attribute.</span></span> <span data-ttu-id="bb5f5-267">該方法會從 HTTP 要求本文取得待辦事項的值。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-267">The method gets the value of the to-do item from the body of the HTTP request.</span></span>
 
-<span data-ttu-id="02315-265"><xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> 方法：</span><span class="sxs-lookup"><span data-stu-id="02315-265">The <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> method:</span></span>
+<span data-ttu-id="bb5f5-268"><xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> 方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-268">The <xref:Microsoft.AspNetCore.Mvc.ControllerBase.CreatedAtAction*> method:</span></span>
 
-* <span data-ttu-id="02315-266">成功時會傳回 HTTP 201 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="02315-266">Returns an HTTP 201 status code if successful.</span></span> <span data-ttu-id="02315-267">對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是 HTTP 201。</span><span class="sxs-lookup"><span data-stu-id="02315-267">HTTP 201 is the standard response for an HTTP POST method that creates a new resource on the server.</span></span>
-* <span data-ttu-id="02315-268">將[Location](https://developer.mozilla.org/docs/Web/HTTP/Headers/Location)標頭新增至回應。</span><span class="sxs-lookup"><span data-stu-id="02315-268">Adds a [Location](https://developer.mozilla.org/docs/Web/HTTP/Headers/Location) header to the response.</span></span> <span data-ttu-id="02315-269">`Location`標頭會指定新建立之待辦事項專案的[URI](https://developer.mozilla.org/docs/Glossary/URI) 。</span><span class="sxs-lookup"><span data-stu-id="02315-269">The `Location` header specifies the [URI](https://developer.mozilla.org/docs/Glossary/URI) of the newly created to-do item.</span></span> <span data-ttu-id="02315-270">如需詳細資訊，請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (已建立 10.2.2 201)。</span><span class="sxs-lookup"><span data-stu-id="02315-270">For more information, see [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</span></span>
-* <span data-ttu-id="02315-271">參考 `GetTodoItem` 動作以建立 `Location` 標頭的 URI。</span><span class="sxs-lookup"><span data-stu-id="02315-271">References the `GetTodoItem` action to create the `Location` header's URI.</span></span> <span data-ttu-id="02315-272">C# `nameof` 關鍵字是用來避免在 `CreatedAtAction` 呼叫中以硬式編碼方式寫入動作名稱。</span><span class="sxs-lookup"><span data-stu-id="02315-272">The C# `nameof` keyword is used to avoid hard-coding the action name in the `CreatedAtAction` call.</span></span>
+* <span data-ttu-id="bb5f5-269">成功時會傳回 HTTP 201 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-269">Returns an HTTP 201 status code if successful.</span></span> <span data-ttu-id="bb5f5-270">對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是 HTTP 201。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-270">HTTP 201 is the standard response for an HTTP POST method that creates a new resource on the server.</span></span>
+* <span data-ttu-id="bb5f5-271">將[Location](https://developer.mozilla.org/docs/Web/HTTP/Headers/Location)標頭新增至回應。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-271">Adds a [Location](https://developer.mozilla.org/docs/Web/HTTP/Headers/Location) header to the response.</span></span> <span data-ttu-id="bb5f5-272">`Location`標頭會指定新建立之待辦事項專案的[URI](https://developer.mozilla.org/docs/Glossary/URI) 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-272">The `Location` header specifies the [URI](https://developer.mozilla.org/docs/Glossary/URI) of the newly created to-do item.</span></span> <span data-ttu-id="bb5f5-273">如需詳細資訊，請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (已建立 10.2.2 201)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-273">For more information, see [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</span></span>
+* <span data-ttu-id="bb5f5-274">參考 `GetTodoItem` 動作以建立 `Location` 標頭的 URI。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-274">References the `GetTodoItem` action to create the `Location` header's URI.</span></span> <span data-ttu-id="bb5f5-275">C# `nameof` 關鍵字是用來避免在 `CreatedAtAction` 呼叫中以硬式編碼方式寫入動作名稱。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-275">The C# `nameof` keyword is used to avoid hard-coding the action name in the `CreatedAtAction` call.</span></span>
 
-### <a name="install-postman"></a><span data-ttu-id="02315-273">安裝 Postman</span><span class="sxs-lookup"><span data-stu-id="02315-273">Install Postman</span></span>
+### <a name="install-postman"></a><span data-ttu-id="bb5f5-276">安裝 Postman</span><span class="sxs-lookup"><span data-stu-id="bb5f5-276">Install Postman</span></span>
 
-<span data-ttu-id="02315-274">本教學課程使用 Postman 來測試 Web API。</span><span class="sxs-lookup"><span data-stu-id="02315-274">This tutorial uses Postman to test the web API.</span></span>
+<span data-ttu-id="bb5f5-277">本教學課程使用 Postman 來測試 Web API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-277">This tutorial uses Postman to test the web API.</span></span>
 
-* <span data-ttu-id="02315-275">安裝[Postman](https://www.getpostman.com/downloads/)</span><span class="sxs-lookup"><span data-stu-id="02315-275">Install [Postman](https://www.getpostman.com/downloads/)</span></span>
-* <span data-ttu-id="02315-276">啟動 Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-276">Start the web app.</span></span>
-* <span data-ttu-id="02315-277">啟動 Postman。</span><span class="sxs-lookup"><span data-stu-id="02315-277">Start Postman.</span></span>
-* <span data-ttu-id="02315-278">停用 [SSL certificate verification] \(SSL 憑證驗證\)\*\*\*\*</span><span class="sxs-lookup"><span data-stu-id="02315-278">Disable **SSL certificate verification**</span></span>
-  * <span data-ttu-id="02315-279">從 [檔案]\*\* [設定]\*\* > \*\*\*\* ([一般]\*\*\*\* 索引標籤)，停用 [SSL 憑證驗證]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-279">From **File** > **Settings** (**General** tab), disable **SSL certificate verification**.</span></span>
+* <span data-ttu-id="bb5f5-278">安裝[Postman](https://www.getpostman.com/downloads/)</span><span class="sxs-lookup"><span data-stu-id="bb5f5-278">Install [Postman](https://www.getpostman.com/downloads/)</span></span>
+* <span data-ttu-id="bb5f5-279">啟動 Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-279">Start the web app.</span></span>
+* <span data-ttu-id="bb5f5-280">啟動 Postman。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-280">Start Postman.</span></span>
+* <span data-ttu-id="bb5f5-281">停用 [SSL certificate verification] \(SSL 憑證驗證\)\*\*\*\*</span><span class="sxs-lookup"><span data-stu-id="bb5f5-281">Disable **SSL certificate verification**</span></span>
+  * <span data-ttu-id="bb5f5-282">從 [檔案]\*\* [設定]\*\* > \*\*\*\* ([一般]\*\*\*\* 索引標籤)，停用 [SSL 憑證驗證]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-282">From **File** > **Settings** (**General** tab), disable **SSL certificate verification**.</span></span>
     > [!WARNING]
-    > <span data-ttu-id="02315-280">在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。</span><span class="sxs-lookup"><span data-stu-id="02315-280">Re-enable SSL certificate verification after testing the controller.</span></span>
+    > <span data-ttu-id="bb5f5-283">在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-283">Re-enable SSL certificate verification after testing the controller.</span></span>
 
 <a name="post"></a>
 
-### <a name="test-posttodoitem-with-postman"></a><span data-ttu-id="02315-281">使用 Postman 測試 PostTodoItem</span><span class="sxs-lookup"><span data-stu-id="02315-281">Test PostTodoItem with Postman</span></span>
+### <a name="test-posttodoitem-with-postman"></a><span data-ttu-id="bb5f5-284">使用 Postman 測試 PostTodoItem</span><span class="sxs-lookup"><span data-stu-id="bb5f5-284">Test PostTodoItem with Postman</span></span>
 
-* <span data-ttu-id="02315-282">建立新的要求。</span><span class="sxs-lookup"><span data-stu-id="02315-282">Create a new request.</span></span>
-* <span data-ttu-id="02315-283">將 HTTP 方法設為 `POST`。</span><span class="sxs-lookup"><span data-stu-id="02315-283">Set the HTTP method to `POST`.</span></span>
-* <span data-ttu-id="02315-284">選取 [Body]\*\*\*\* \(本文\) 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="02315-284">Select the **Body** tab.</span></span>
-* <span data-ttu-id="02315-285">選取 [原始]\*\*\*\* 選項按鈕。</span><span class="sxs-lookup"><span data-stu-id="02315-285">Select the **raw** radio button.</span></span>
-* <span data-ttu-id="02315-286">將類型設定為 **JSON (application/json)**。</span><span class="sxs-lookup"><span data-stu-id="02315-286">Set the type to **JSON (application/json)**.</span></span>
-* <span data-ttu-id="02315-287">在要求本文中，針對待辦項目輸入 JSON：</span><span class="sxs-lookup"><span data-stu-id="02315-287">In the request body enter JSON for a to-do item:</span></span>
+* <span data-ttu-id="bb5f5-285">建立新的要求。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-285">Create a new request.</span></span>
+* <span data-ttu-id="bb5f5-286">將 HTTP 方法設為 `POST`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-286">Set the HTTP method to `POST`.</span></span>
+* <span data-ttu-id="bb5f5-287">選取 [Body]\*\*\*\* \(本文\) 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-287">Select the **Body** tab.</span></span>
+* <span data-ttu-id="bb5f5-288">選取 [原始]\*\*\*\* 選項按鈕。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-288">Select the **raw** radio button.</span></span>
+* <span data-ttu-id="bb5f5-289">將類型設定為 **JSON (application/json)**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-289">Set the type to **JSON (application/json)**.</span></span>
+* <span data-ttu-id="bb5f5-290">在要求本文中，針對待辦項目輸入 JSON：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-290">In the request body enter JSON for a to-do item:</span></span>
 
     ```json
     {
@@ -356,34 +358,34 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
     }
     ```
 
-* <span data-ttu-id="02315-288">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-288">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-291">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-291">Select **Send**.</span></span>
 
   ![Postman 與建立要求](first-web-api/_static/3/create.png)
 
-### <a name="test-the-location-header-uri"></a><span data-ttu-id="02315-290">測試位置標頭 URI</span><span class="sxs-lookup"><span data-stu-id="02315-290">Test the location header URI</span></span>
+### <a name="test-the-location-header-uri"></a><span data-ttu-id="bb5f5-293">測試位置標頭 URI</span><span class="sxs-lookup"><span data-stu-id="bb5f5-293">Test the location header URI</span></span>
 
-* <span data-ttu-id="02315-291">在 [回應]\*\*\*\* 窗格中選取 [標頭]\*\*\*\* 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="02315-291">Select the **Headers** tab in the **Response** pane.</span></span>
-* <span data-ttu-id="02315-292">複製 [位置]\*\*\*\* 標頭值：</span><span class="sxs-lookup"><span data-stu-id="02315-292">Copy the **Location** header value:</span></span>
+* <span data-ttu-id="bb5f5-294">在 [回應]\*\*\*\* 窗格中選取 [標頭]\*\*\*\* 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-294">Select the **Headers** tab in the **Response** pane.</span></span>
+* <span data-ttu-id="bb5f5-295">複製 [位置]\*\*\*\* 標頭值：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-295">Copy the **Location** header value:</span></span>
 
   ![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/3/create.png)
 
-* <span data-ttu-id="02315-294">將方法設定為 GET。</span><span class="sxs-lookup"><span data-stu-id="02315-294">Set the method to GET.</span></span>
-* <span data-ttu-id="02315-295">貼上`https://localhost:5001/api/TodoItems/1`URI （例如）。</span><span class="sxs-lookup"><span data-stu-id="02315-295">Paste the URI (for example, `https://localhost:5001/api/TodoItems/1`).</span></span>
-* <span data-ttu-id="02315-296">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-296">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-297">將方法設定為 GET。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-297">Set the method to GET.</span></span>
+* <span data-ttu-id="bb5f5-298">貼上 URI （例如 `https://localhost:5001/api/TodoItems/1` ）。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-298">Paste the URI (for example, `https://localhost:5001/api/TodoItems/1`).</span></span>
+* <span data-ttu-id="bb5f5-299">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-299">Select **Send**.</span></span>
 
-## <a name="examine-the-get-methods"></a><span data-ttu-id="02315-297">檢查 GET 方法</span><span class="sxs-lookup"><span data-stu-id="02315-297">Examine the GET methods</span></span>
+## <a name="examine-the-get-methods"></a><span data-ttu-id="bb5f5-300">檢查 GET 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-300">Examine the GET methods</span></span>
 
-<span data-ttu-id="02315-298">這些方法會實作兩個 GET 端點：</span><span class="sxs-lookup"><span data-stu-id="02315-298">These methods implement two GET endpoints:</span></span>
+<span data-ttu-id="bb5f5-301">這些方法會實作兩個 GET 端點：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-301">These methods implement two GET endpoints:</span></span>
 
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-<span data-ttu-id="02315-299">從瀏覽器或 Postman 呼叫這兩個端點來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-299">Test the app by calling the two endpoints from a browser or Postman.</span></span> <span data-ttu-id="02315-300">例如：</span><span class="sxs-lookup"><span data-stu-id="02315-300">For example:</span></span>
+<span data-ttu-id="bb5f5-302">從瀏覽器或 Postman 呼叫這兩個端點來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-302">Test the app by calling the two endpoints from a browser or Postman.</span></span> <span data-ttu-id="bb5f5-303">例如：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-303">For example:</span></span>
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
 
-<span data-ttu-id="02315-301">`GetTodoItems` 的呼叫會產生類似下列的回應：</span><span class="sxs-lookup"><span data-stu-id="02315-301">A response similar to the following is produced by the call to `GetTodoItems`:</span></span>
+<span data-ttu-id="bb5f5-304">`GetTodoItems` 的呼叫會產生類似下列的回應：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-304">A response similar to the following is produced by the call to `GetTodoItems`:</span></span>
 
 ```json
 [
@@ -395,55 +397,55 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 ]
 ```
 
-### <a name="test-get-with-postman"></a><span data-ttu-id="02315-302">使用 Postman 測試 Get</span><span class="sxs-lookup"><span data-stu-id="02315-302">Test Get with Postman</span></span>
+### <a name="test-get-with-postman"></a><span data-ttu-id="bb5f5-305">使用 Postman 測試 Get</span><span class="sxs-lookup"><span data-stu-id="bb5f5-305">Test Get with Postman</span></span>
 
-* <span data-ttu-id="02315-303">建立新的要求。</span><span class="sxs-lookup"><span data-stu-id="02315-303">Create a new request.</span></span>
-* <span data-ttu-id="02315-304">將 HTTP 方法設定為 **GET**。</span><span class="sxs-lookup"><span data-stu-id="02315-304">Set the HTTP method to **GET**.</span></span>
-* <span data-ttu-id="02315-305">將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。</span><span class="sxs-lookup"><span data-stu-id="02315-305">Set the request URL to `https://localhost:<port>/api/TodoItems`.</span></span> <span data-ttu-id="02315-306">例如： `https://localhost:5001/api/TodoItems` 。</span><span class="sxs-lookup"><span data-stu-id="02315-306">For example, `https://localhost:5001/api/TodoItems`.</span></span>
-* <span data-ttu-id="02315-307">在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-307">Set **Two pane view** in Postman.</span></span>
-* <span data-ttu-id="02315-308">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-308">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-306">建立新的要求。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-306">Create a new request.</span></span>
+* <span data-ttu-id="bb5f5-307">將 HTTP 方法設定為 **GET**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-307">Set the HTTP method to **GET**.</span></span>
+* <span data-ttu-id="bb5f5-308">將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-308">Set the request URL to `https://localhost:<port>/api/TodoItems`.</span></span> <span data-ttu-id="bb5f5-309">例如： `https://localhost:5001/api/TodoItems` 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-309">For example, `https://localhost:5001/api/TodoItems`.</span></span>
+* <span data-ttu-id="bb5f5-310">在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-310">Set **Two pane view** in Postman.</span></span>
+* <span data-ttu-id="bb5f5-311">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-311">Select **Send**.</span></span>
 
-<span data-ttu-id="02315-309">這個應用程式會使用記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="02315-309">This app uses an in-memory database.</span></span> <span data-ttu-id="02315-310">如果應用程式在停止後再啟動，上述 GET 要求將不會傳回任何資料。</span><span class="sxs-lookup"><span data-stu-id="02315-310">If the app is stopped and started, the preceding GET request will not return any data.</span></span> <span data-ttu-id="02315-311">如果沒有傳回任何資料，請將資料 [POST](#post) 到應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-311">If no data is returned, [POST](#post) data to the app.</span></span>
+<span data-ttu-id="bb5f5-312">這個應用程式會使用記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-312">This app uses an in-memory database.</span></span> <span data-ttu-id="bb5f5-313">如果應用程式在停止後再啟動，上述 GET 要求將不會傳回任何資料。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-313">If the app is stopped and started, the preceding GET request will not return any data.</span></span> <span data-ttu-id="bb5f5-314">如果沒有傳回任何資料，請將資料 [POST](#post) 到應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-314">If no data is returned, [POST](#post) data to the app.</span></span>
 
-## <a name="routing-and-url-paths"></a><span data-ttu-id="02315-312">傳送和 URL 路徑</span><span class="sxs-lookup"><span data-stu-id="02315-312">Routing and URL paths</span></span>
+## <a name="routing-and-url-paths"></a><span data-ttu-id="bb5f5-315">傳送和 URL 路徑</span><span class="sxs-lookup"><span data-stu-id="bb5f5-315">Routing and URL paths</span></span>
 
-<span data-ttu-id="02315-313">[`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute)屬性代表回應 HTTP GET 要求的方法。</span><span class="sxs-lookup"><span data-stu-id="02315-313">The [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute) attribute denotes a method that responds to an HTTP GET request.</span></span> <span data-ttu-id="02315-314">每個方法的 URL 路徑的建構方式如下：</span><span class="sxs-lookup"><span data-stu-id="02315-314">The URL path for each method is constructed as follows:</span></span>
+<span data-ttu-id="bb5f5-316">[`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute)屬性代表回應 HTTP GET 要求的方法。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-316">The [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute) attribute denotes a method that responds to an HTTP GET request.</span></span> <span data-ttu-id="bb5f5-317">每個方法的 URL 路徑的建構方式如下：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-317">The URL path for each method is constructed as follows:</span></span>
 
-* <span data-ttu-id="02315-315">一開始在控制器的 `Route` 屬性中使用範本字串：</span><span class="sxs-lookup"><span data-stu-id="02315-315">Start with the template string in the controller's `Route` attribute:</span></span>
+* <span data-ttu-id="bb5f5-318">一開始在控制器的 `Route` 屬性中使用範本字串：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-318">Start with the template string in the controller's `Route` attribute:</span></span>
 
   [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=TodoController&highlight=1)]
 
-* <span data-ttu-id="02315-316">以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。</span><span class="sxs-lookup"><span data-stu-id="02315-316">Replace `[controller]` with the name of the controller, which by convention is the controller class name minus the "Controller" suffix.</span></span> <span data-ttu-id="02315-317">在此範例中，控制器類別名稱是 **TodoItems**Controller，因此控制器名稱是 "TodoItems"。</span><span class="sxs-lookup"><span data-stu-id="02315-317">For this sample, the controller class name is **TodoItems**Controller, so the controller name is "TodoItems".</span></span> <span data-ttu-id="02315-318">ASP.NET Core [路由](xref:mvc/controllers/routing)不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="02315-318">ASP.NET Core [routing](xref:mvc/controllers/routing) is case insensitive.</span></span>
-* <span data-ttu-id="02315-319">如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("products")]`)，請將其附加到路徑。</span><span class="sxs-lookup"><span data-stu-id="02315-319">If the `[HttpGet]` attribute has a route template (for example, `[HttpGet("products")]`), append that to the path.</span></span> <span data-ttu-id="02315-320">此範例不使用範本。</span><span class="sxs-lookup"><span data-stu-id="02315-320">This sample doesn't use a template.</span></span> <span data-ttu-id="02315-321">如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性路由](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。</span><span class="sxs-lookup"><span data-stu-id="02315-321">For more information, see [Attribute routing with Http[Verb] attributes](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).</span></span>
+* <span data-ttu-id="bb5f5-319">以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-319">Replace `[controller]` with the name of the controller, which by convention is the controller class name minus the "Controller" suffix.</span></span> <span data-ttu-id="bb5f5-320">在此範例中，控制器類別名稱是 **TodoItems**Controller，因此控制器名稱是 "TodoItems"。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-320">For this sample, the controller class name is **TodoItems**Controller, so the controller name is "TodoItems".</span></span> <span data-ttu-id="bb5f5-321">ASP.NET Core [路由](xref:mvc/controllers/routing)不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-321">ASP.NET Core [routing](xref:mvc/controllers/routing) is case insensitive.</span></span>
+* <span data-ttu-id="bb5f5-322">如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("products")]`)，請將其附加到路徑。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-322">If the `[HttpGet]` attribute has a route template (for example, `[HttpGet("products")]`), append that to the path.</span></span> <span data-ttu-id="bb5f5-323">此範例不使用範本。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-323">This sample doesn't use a template.</span></span> <span data-ttu-id="bb5f5-324">如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性路由](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-324">For more information, see [Attribute routing with Http[Verb] attributes](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).</span></span>
 
-<span data-ttu-id="02315-322">在下列 `GetTodoItem` 方法中，`"{id}"` 是待辦事項唯一識別碼的預留位置變數。</span><span class="sxs-lookup"><span data-stu-id="02315-322">In the following `GetTodoItem` method, `"{id}"` is a placeholder variable for the unique identifier of the to-do item.</span></span> <span data-ttu-id="02315-323">叫`GetTodoItem` `"{id}"`用時，URL 中的值會在其`id`參數中提供給方法。</span><span class="sxs-lookup"><span data-stu-id="02315-323">When `GetTodoItem` is invoked, the value of `"{id}"` in the URL is provided to the method in its `id` parameter.</span></span>
+<span data-ttu-id="bb5f5-325">在下列 `GetTodoItem` 方法中，`"{id}"` 是待辦事項唯一識別碼的預留位置變數。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-325">In the following `GetTodoItem` method, `"{id}"` is a placeholder variable for the unique identifier of the to-do item.</span></span> <span data-ttu-id="bb5f5-326">叫 `GetTodoItem` 用時， `"{id}"` URL 中的值會在其參數中提供給方法 `id` 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-326">When `GetTodoItem` is invoked, the value of `"{id}"` in the URL is provided to the method in its `id` parameter.</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_GetByID&highlight=1-2)]
 
-## <a name="return-values"></a><span data-ttu-id="02315-324">傳回值</span><span class="sxs-lookup"><span data-stu-id="02315-324">Return values</span></span>
+## <a name="return-values"></a><span data-ttu-id="bb5f5-327">傳回值</span><span class="sxs-lookup"><span data-stu-id="bb5f5-327">Return values</span></span>
 
-<span data-ttu-id="02315-325">`GetTodoItems` 和 `GetTodoItem` 方法的傳回型別為 [ActionResult\<T> 類型](xref:web-api/action-return-types#actionresultt-type)。</span><span class="sxs-lookup"><span data-stu-id="02315-325">The return type of the `GetTodoItems` and `GetTodoItem` methods is [ActionResult\<T> type](xref:web-api/action-return-types#actionresultt-type).</span></span> <span data-ttu-id="02315-326">ASP.NET Core 會自動將物件序列化為 [JSON](https://www.json.org/)，並將 JSON 寫入至回應訊息的本文。</span><span class="sxs-lookup"><span data-stu-id="02315-326">ASP.NET Core automatically serializes the object to [JSON](https://www.json.org/) and writes the JSON into the body of the response message.</span></span> <span data-ttu-id="02315-327">此傳回型別的回應碼為 200，假設沒有任何未處理的例外狀況。</span><span class="sxs-lookup"><span data-stu-id="02315-327">The response code for this return type is 200, assuming there are no unhandled exceptions.</span></span> <span data-ttu-id="02315-328">未處理的例外狀況會轉譯成 5xx 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02315-328">Unhandled exceptions are translated into 5xx errors.</span></span>
+<span data-ttu-id="bb5f5-328">和方法的傳回型 `GetTodoItems` 別 `GetTodoItem` 是[ActionResult \<T> 型](xref:web-api/action-return-types#actionresultt-type)別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-328">The return type of the `GetTodoItems` and `GetTodoItem` methods is [ActionResult\<T> type](xref:web-api/action-return-types#actionresultt-type).</span></span> <span data-ttu-id="bb5f5-329">ASP.NET Core 會自動將物件序列化為 [JSON](https://www.json.org/)，並將 JSON 寫入至回應訊息的本文。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-329">ASP.NET Core automatically serializes the object to [JSON](https://www.json.org/) and writes the JSON into the body of the response message.</span></span> <span data-ttu-id="bb5f5-330">此傳回型別的回應碼為 200，假設沒有任何未處理的例外狀況。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-330">The response code for this return type is 200, assuming there are no unhandled exceptions.</span></span> <span data-ttu-id="bb5f5-331">未處理的例外狀況會轉譯成 5xx 錯誤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-331">Unhandled exceptions are translated into 5xx errors.</span></span>
 
-<span data-ttu-id="02315-329">`ActionResult` 傳回型別可代表各種 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="02315-329">`ActionResult` return types can represent a wide range of HTTP status codes.</span></span> <span data-ttu-id="02315-330">例如，`GetTodoItem` 可傳回兩個不同的狀態值：</span><span class="sxs-lookup"><span data-stu-id="02315-330">For example, `GetTodoItem` can return two different status values:</span></span>
+<span data-ttu-id="bb5f5-332">`ActionResult` 傳回型別可代表各種 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-332">`ActionResult` return types can represent a wide range of HTTP status codes.</span></span> <span data-ttu-id="bb5f5-333">例如，`GetTodoItem` 可傳回兩個不同的狀態值：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-333">For example, `GetTodoItem` can return two different status values:</span></span>
 
-* <span data-ttu-id="02315-331">如果沒有項目符合所要求的識別碼，方法會傳回 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) 錯誤碼。</span><span class="sxs-lookup"><span data-stu-id="02315-331">If no item matches the requested ID, the method returns a 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) error code.</span></span>
-* <span data-ttu-id="02315-332">否則，方法會傳回 200 與 JSON 回應本文。</span><span class="sxs-lookup"><span data-stu-id="02315-332">Otherwise, the method returns 200 with a JSON response body.</span></span> <span data-ttu-id="02315-333">傳回 `item` 會導致 HTTP 200 回應。</span><span class="sxs-lookup"><span data-stu-id="02315-333">Returning `item` results in an HTTP 200 response.</span></span>
+* <span data-ttu-id="bb5f5-334">如果沒有項目符合所要求的識別碼，方法會傳回 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) 錯誤碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-334">If no item matches the requested ID, the method returns a 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) error code.</span></span>
+* <span data-ttu-id="bb5f5-335">否則，方法會傳回 200 與 JSON 回應本文。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-335">Otherwise, the method returns 200 with a JSON response body.</span></span> <span data-ttu-id="bb5f5-336">傳回 `item` 會導致 HTTP 200 回應。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-336">Returning `item` results in an HTTP 200 response.</span></span>
 
-## <a name="the-puttodoitem-method"></a><span data-ttu-id="02315-334">PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-334">The PutTodoItem method</span></span>
+## <a name="the-puttodoitem-method"></a><span data-ttu-id="bb5f5-337">PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-337">The PutTodoItem method</span></span>
 
-<span data-ttu-id="02315-335">檢查 `PutTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="02315-335">Examine the `PutTodoItem` method:</span></span>
+<span data-ttu-id="bb5f5-338">檢查 `PutTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-338">Examine the `PutTodoItem` method:</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Update)]
 
-<span data-ttu-id="02315-336">`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。</span><span class="sxs-lookup"><span data-stu-id="02315-336">`PutTodoItem` is similar to `PostTodoItem`, except it uses HTTP PUT.</span></span> <span data-ttu-id="02315-337">回應為[204 （沒有內容）](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。</span><span class="sxs-lookup"><span data-stu-id="02315-337">The response is [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).</span></span> <span data-ttu-id="02315-338">根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。</span><span class="sxs-lookup"><span data-stu-id="02315-338">According to the HTTP specification, a PUT request requires the client to send the entire updated entity, not just the changes.</span></span> <span data-ttu-id="02315-339">若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。</span><span class="sxs-lookup"><span data-stu-id="02315-339">To support partial updates, use [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).</span></span>
+<span data-ttu-id="bb5f5-339">`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-339">`PutTodoItem` is similar to `PostTodoItem`, except it uses HTTP PUT.</span></span> <span data-ttu-id="bb5f5-340">回應為[204 （沒有內容）](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-340">The response is [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).</span></span> <span data-ttu-id="bb5f5-341">根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-341">According to the HTTP specification, a PUT request requires the client to send the entire updated entity, not just the changes.</span></span> <span data-ttu-id="bb5f5-342">若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-342">To support partial updates, use [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).</span></span>
 
-<span data-ttu-id="02315-340">如果在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="02315-340">If you get an error calling `PutTodoItem`, call `GET` to ensure there's an item in the database.</span></span>
+<span data-ttu-id="bb5f5-343">如果在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-343">If you get an error calling `PutTodoItem`, call `GET` to ensure there's an item in the database.</span></span>
 
-### <a name="test-the-puttodoitem-method"></a><span data-ttu-id="02315-341">測試 PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-341">Test the PutTodoItem method</span></span>
+### <a name="test-the-puttodoitem-method"></a><span data-ttu-id="bb5f5-344">測試 PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-344">Test the PutTodoItem method</span></span>
 
-<span data-ttu-id="02315-342">這個範例會使用必須在每次啟動應用程式時初始化的記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="02315-342">This sample uses an in-memory database that must be initialized each time the app is started.</span></span> <span data-ttu-id="02315-343">資料庫中必須有項目，您才能進行 PUT 呼叫。</span><span class="sxs-lookup"><span data-stu-id="02315-343">There must be an item in the database before you make a PUT call.</span></span> <span data-ttu-id="02315-344">在發出 PUT 呼叫之前，請先呼叫 GET 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="02315-344">Call GET to insure there's an item in the database before making a PUT call.</span></span>
+<span data-ttu-id="bb5f5-345">這個範例會使用必須在每次啟動應用程式時初始化的記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-345">This sample uses an in-memory database that must be initialized each time the app is started.</span></span> <span data-ttu-id="bb5f5-346">資料庫中必須有項目，您才能進行 PUT 呼叫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-346">There must be an item in the database before you make a PUT call.</span></span> <span data-ttu-id="bb5f5-347">在發出 PUT 呼叫之前，請先呼叫 GET 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-347">Call GET to insure there's an item in the database before making a PUT call.</span></span>
 
-<span data-ttu-id="02315-345">更新識別碼為 1 的待辦事項，並將其名稱設定為 "feed fish"：</span><span class="sxs-lookup"><span data-stu-id="02315-345">Update the to-do item that has ID = 1 and set its name to "feed fish":</span></span>
+<span data-ttu-id="bb5f5-348">更新識別碼為 1 的待辦事項，並將其名稱設定為 "feed fish"：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-348">Update the to-do item that has ID = 1 and set its name to "feed fish":</span></span>
 
 ```json
   {
@@ -453,296 +455,294 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
   }
 ```
 
-<span data-ttu-id="02315-346">下圖顯示 Postman 更新：</span><span class="sxs-lookup"><span data-stu-id="02315-346">The following image shows the Postman update:</span></span>
+<span data-ttu-id="bb5f5-349">下圖顯示 Postman 更新：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-349">The following image shows the Postman update:</span></span>
 
 ![顯示「204 (沒有內容) 回應」的 Postman 主控台](first-web-api/_static/3/pmcput.png)
 
-## <a name="the-deletetodoitem-method"></a><span data-ttu-id="02315-348">DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-348">The DeleteTodoItem method</span></span>
+## <a name="the-deletetodoitem-method"></a><span data-ttu-id="bb5f5-351">DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-351">The DeleteTodoItem method</span></span>
 
-<span data-ttu-id="02315-349">檢查 `DeleteTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="02315-349">Examine the `DeleteTodoItem` method:</span></span>
+<span data-ttu-id="bb5f5-352">檢查 `DeleteTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-352">Examine the `DeleteTodoItem` method:</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Delete)]
 
-### <a name="test-the-deletetodoitem-method"></a><span data-ttu-id="02315-350">測試 DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-350">Test the DeleteTodoItem method</span></span>
+### <a name="test-the-deletetodoitem-method"></a><span data-ttu-id="bb5f5-353">測試 DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-353">Test the DeleteTodoItem method</span></span>
 
-<span data-ttu-id="02315-351">使用 Postman 刪除待辦事項：</span><span class="sxs-lookup"><span data-stu-id="02315-351">Use Postman to delete a to-do item:</span></span>
+<span data-ttu-id="bb5f5-354">使用 Postman 刪除待辦事項：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-354">Use Postman to delete a to-do item:</span></span>
 
-* <span data-ttu-id="02315-352">將方法設定為 `DELETE`。</span><span class="sxs-lookup"><span data-stu-id="02315-352">Set the method to `DELETE`.</span></span>
-* <span data-ttu-id="02315-353">設定要刪除之物件的 URI （例如`https://localhost:5001/api/TodoItems/1`）。</span><span class="sxs-lookup"><span data-stu-id="02315-353">Set the URI of the object to delete (for example `https://localhost:5001/api/TodoItems/1`).</span></span>
-* <span data-ttu-id="02315-354">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-354">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-355">將方法設定為 `DELETE`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-355">Set the method to `DELETE`.</span></span>
+* <span data-ttu-id="bb5f5-356">設定要刪除之物件的 URI （例如 `https://localhost:5001/api/TodoItems/1` ）。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-356">Set the URI of the object to delete (for example `https://localhost:5001/api/TodoItems/1`).</span></span>
+* <span data-ttu-id="bb5f5-357">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-357">Select **Send**.</span></span>
 
 <a name="over-post"></a>
 
-## <a name="prevent-over-posting"></a><span data-ttu-id="02315-355">防止過度張貼</span><span class="sxs-lookup"><span data-stu-id="02315-355">Prevent over-posting</span></span>
+## <a name="prevent-over-posting"></a><span data-ttu-id="bb5f5-358">防止過度張貼</span><span class="sxs-lookup"><span data-stu-id="bb5f5-358">Prevent over-posting</span></span>
 
-<span data-ttu-id="02315-356">範例應用程式目前會公開整個`TodoItem`物件。</span><span class="sxs-lookup"><span data-stu-id="02315-356">Currently the sample app exposes the entire `TodoItem` object.</span></span> <span data-ttu-id="02315-357">生產應用程式通常會使用模型的子集來限制輸入和傳回的資料。</span><span class="sxs-lookup"><span data-stu-id="02315-357">Productions apps typically limit the data that's input and returned using a subset of the model.</span></span> <span data-ttu-id="02315-358">這種情況的原因有很多，而且安全性是主要的。</span><span class="sxs-lookup"><span data-stu-id="02315-358">There are multiple reasons behind this and security is a major one.</span></span> <span data-ttu-id="02315-359">模型的子集通常稱為「資料傳輸物件（DTO）」、「輸入模型」或「視圖模型」。</span><span class="sxs-lookup"><span data-stu-id="02315-359">The subset of a model is usually referred to as a Data Transfer Object (DTO), input model, or view model.</span></span> <span data-ttu-id="02315-360">這篇文章中使用了**DTO** 。</span><span class="sxs-lookup"><span data-stu-id="02315-360">**DTO** is used in this article.</span></span>
+<span data-ttu-id="bb5f5-359">範例應用程式目前會公開整個 `TodoItem` 物件。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-359">Currently the sample app exposes the entire `TodoItem` object.</span></span> <span data-ttu-id="bb5f5-360">生產應用程式通常會使用模型的子集來限制輸入和傳回的資料。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-360">Productions apps typically limit the data that's input and returned using a subset of the model.</span></span> <span data-ttu-id="bb5f5-361">這種情況的原因有很多，而且安全性是主要的。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-361">There are multiple reasons behind this and security is a major one.</span></span> <span data-ttu-id="bb5f5-362">模型的子集通常稱為「資料傳輸物件（DTO）」、「輸入模型」或「視圖模型」。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-362">The subset of a model is usually referred to as a Data Transfer Object (DTO), input model, or view model.</span></span> <span data-ttu-id="bb5f5-363">這篇文章中使用了**DTO** 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-363">**DTO** is used in this article.</span></span>
 
-<span data-ttu-id="02315-361">DTO 可用來：</span><span class="sxs-lookup"><span data-stu-id="02315-361">A DTO may be used to:</span></span>
+<span data-ttu-id="bb5f5-364">DTO 可用來：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-364">A DTO may be used to:</span></span>
 
-* <span data-ttu-id="02315-362">避免過度張貼。</span><span class="sxs-lookup"><span data-stu-id="02315-362">Prevent over-posting.</span></span>
-* <span data-ttu-id="02315-363">隱藏用戶端不應查看的屬性。</span><span class="sxs-lookup"><span data-stu-id="02315-363">Hide properties that clients are not supposed to view.</span></span>
-* <span data-ttu-id="02315-364">省略某些屬性，以減少承載大小。</span><span class="sxs-lookup"><span data-stu-id="02315-364">Omit some properties in order to reduce payload size.</span></span>
-* <span data-ttu-id="02315-365">壓平合併包含嵌套物件的物件圖形。</span><span class="sxs-lookup"><span data-stu-id="02315-365">Flatten object graphs that contain nested objects.</span></span> <span data-ttu-id="02315-366">針對用戶端，簡維物件圖形可能更方便。</span><span class="sxs-lookup"><span data-stu-id="02315-366">Flattened object graphs can be more convenient for clients.</span></span>
+* <span data-ttu-id="bb5f5-365">避免過度張貼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-365">Prevent over-posting.</span></span>
+* <span data-ttu-id="bb5f5-366">隱藏用戶端不應查看的屬性。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-366">Hide properties that clients are not supposed to view.</span></span>
+* <span data-ttu-id="bb5f5-367">省略某些屬性，以減少承載大小。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-367">Omit some properties in order to reduce payload size.</span></span>
+* <span data-ttu-id="bb5f5-368">壓平合併包含嵌套物件的物件圖形。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-368">Flatten object graphs that contain nested objects.</span></span> <span data-ttu-id="bb5f5-369">針對用戶端，簡維物件圖形可能更方便。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-369">Flattened object graphs can be more convenient for clients.</span></span>
 
-<span data-ttu-id="02315-367">若要示範 DTO 方法，請更新`TodoItem`類別以包含秘密欄位：</span><span class="sxs-lookup"><span data-stu-id="02315-367">To demonstrate the DTO approach, update the `TodoItem` class to include a secret field:</span></span>
+<span data-ttu-id="bb5f5-370">若要示範 DTO 方法，請更新 `TodoItem` 類別以包含秘密欄位：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-370">To demonstrate the DTO approach, update the `TodoItem` class to include a secret field:</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItem.cs?name=snippet&highlight=6)]
 
-<span data-ttu-id="02315-368">這個應用程式必須隱藏秘密欄位，但是系統管理應用程式可以選擇公開它。</span><span class="sxs-lookup"><span data-stu-id="02315-368">The secret field needs to be hidden from this app, but an administrative app could choose to expose it.</span></span>
+<span data-ttu-id="bb5f5-371">這個應用程式必須隱藏秘密欄位，但是系統管理應用程式可以選擇公開它。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-371">The secret field needs to be hidden from this app, but an administrative app could choose to expose it.</span></span>
 
-<span data-ttu-id="02315-369">確認您可以張貼並取得秘密欄位。</span><span class="sxs-lookup"><span data-stu-id="02315-369">Verify you can post and get the secret field.</span></span>
+<span data-ttu-id="bb5f5-372">確認您可以張貼並取得秘密欄位。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-372">Verify you can post and get the secret field.</span></span>
 
-<span data-ttu-id="02315-370">建立 DTO 模型：</span><span class="sxs-lookup"><span data-stu-id="02315-370">Create a DTO model:</span></span>
+<span data-ttu-id="bb5f5-373">建立 DTO 模型：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-373">Create a DTO model:</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Models/TodoItemDTO.cs?name=snippet)]
 
-<span data-ttu-id="02315-371">更新`TodoItemsController`以使用`TodoItemDTO`：</span><span class="sxs-lookup"><span data-stu-id="02315-371">Update the `TodoItemsController` to use `TodoItemDTO`:</span></span>
+<span data-ttu-id="bb5f5-374">更新 `TodoItemsController` 以使用 `TodoItemDTO` ：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-374">Update the `TodoItemsController` to use `TodoItemDTO`:</span></span>
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApiDTO/Controllers/TodoItemsController.cs?name=snippet)]
 
-<span data-ttu-id="02315-372">確認您無法張貼或取得秘密欄位。</span><span class="sxs-lookup"><span data-stu-id="02315-372">Verify you can't post or get the secret field.</span></span>
+<span data-ttu-id="bb5f5-375">確認您無法張貼或取得秘密欄位。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-375">Verify you can't post or get the secret field.</span></span>
 
-## <a name="call-the-web-api-with-javascript"></a><span data-ttu-id="02315-373">使用 JavaScript 呼叫 Web API</span><span class="sxs-lookup"><span data-stu-id="02315-373">Call the web API with JavaScript</span></span>
+## <a name="call-the-web-api-with-javascript"></a><span data-ttu-id="bb5f5-376">使用 JavaScript 呼叫 Web API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-376">Call the web API with JavaScript</span></span>
 
-<span data-ttu-id="02315-374">請參閱[教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API](xref:tutorials/web-api-javascript)。</span><span class="sxs-lookup"><span data-stu-id="02315-374">See [Tutorial: Call an ASP.NET Core web API with JavaScript](xref:tutorials/web-api-javascript).</span></span>
+<span data-ttu-id="bb5f5-377">請參閱[教學課程：使用 JavaScript 呼叫 ASP.NET Core Web API](xref:tutorials/web-api-javascript)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-377">See [Tutorial: Call an ASP.NET Core web API with JavaScript](xref:tutorials/web-api-javascript).</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="02315-375">在本教學課程中，您會了解如何：</span><span class="sxs-lookup"><span data-stu-id="02315-375">In this tutorial, you learn how to:</span></span>
+<span data-ttu-id="bb5f5-378">在本教學課程中，您會了解如何：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-378">In this tutorial, you learn how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="02315-376">建立 Web API 專案。</span><span class="sxs-lookup"><span data-stu-id="02315-376">Create a web API project.</span></span>
-> * <span data-ttu-id="02315-377">新增模型類別和資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="02315-377">Add a model class and a database context.</span></span>
-> * <span data-ttu-id="02315-378">新增控制器。</span><span class="sxs-lookup"><span data-stu-id="02315-378">Add a controller.</span></span>
-> * <span data-ttu-id="02315-379">新增 CRUD 方法。</span><span class="sxs-lookup"><span data-stu-id="02315-379">Add CRUD methods.</span></span>
-> * <span data-ttu-id="02315-380">設定路由和 URL 路徑。</span><span class="sxs-lookup"><span data-stu-id="02315-380">Configure routing and URL paths.</span></span>
-> * <span data-ttu-id="02315-381">指定傳回值。</span><span class="sxs-lookup"><span data-stu-id="02315-381">Specify return values.</span></span>
-> * <span data-ttu-id="02315-382">使用 Postman 呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="02315-382">Call the web API with Postman.</span></span>
-> * <span data-ttu-id="02315-383">使用 JavaScript 呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="02315-383">Call the web API with JavaScript.</span></span>
+> * <span data-ttu-id="bb5f5-379">建立 Web API 專案。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-379">Create a web API project.</span></span>
+> * <span data-ttu-id="bb5f5-380">新增模型類別和資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-380">Add a model class and a database context.</span></span>
+> * <span data-ttu-id="bb5f5-381">新增控制器。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-381">Add a controller.</span></span>
+> * <span data-ttu-id="bb5f5-382">新增 CRUD 方法。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-382">Add CRUD methods.</span></span>
+> * <span data-ttu-id="bb5f5-383">設定路由和 URL 路徑。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-383">Configure routing and URL paths.</span></span>
+> * <span data-ttu-id="bb5f5-384">指定傳回值。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-384">Specify return values.</span></span>
+> * <span data-ttu-id="bb5f5-385">使用 Postman 呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-385">Call the web API with Postman.</span></span>
+> * <span data-ttu-id="bb5f5-386">使用 JavaScript 呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-386">Call the web API with JavaScript.</span></span>
 
-<span data-ttu-id="02315-384">結束時，您將會有一個可管理關聯式資料庫中所儲存「待辦事項」的 Web API。</span><span class="sxs-lookup"><span data-stu-id="02315-384">At the end, you have a web API that can manage "to-do" items stored in a relational database.</span></span>
+<span data-ttu-id="bb5f5-387">結束時，您將會有一個可管理關聯式資料庫中所儲存「待辦事項」的 Web API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-387">At the end, you have a web API that can manage "to-do" items stored in a relational database.</span></span>
 
-## <a name="overview"></a><span data-ttu-id="02315-385">概觀</span><span class="sxs-lookup"><span data-stu-id="02315-385">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="bb5f5-388">概觀</span><span class="sxs-lookup"><span data-stu-id="bb5f5-388">Overview</span></span>
 
-<span data-ttu-id="02315-386">本教學課程會建立以下 API：</span><span class="sxs-lookup"><span data-stu-id="02315-386">This tutorial creates the following API:</span></span>
+<span data-ttu-id="bb5f5-389">本教學課程會建立以下 API：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-389">This tutorial creates the following API:</span></span>
 
-|<span data-ttu-id="02315-387">API</span><span class="sxs-lookup"><span data-stu-id="02315-387">API</span></span> | <span data-ttu-id="02315-388">說明</span><span class="sxs-lookup"><span data-stu-id="02315-388">Description</span></span> | <span data-ttu-id="02315-389">Request body</span><span class="sxs-lookup"><span data-stu-id="02315-389">Request body</span></span> | <span data-ttu-id="02315-390">Response body</span><span class="sxs-lookup"><span data-stu-id="02315-390">Response body</span></span> |
+|<span data-ttu-id="bb5f5-390">API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-390">API</span></span> | <span data-ttu-id="bb5f5-391">說明</span><span class="sxs-lookup"><span data-stu-id="bb5f5-391">Description</span></span> | <span data-ttu-id="bb5f5-392">要求本文</span><span class="sxs-lookup"><span data-stu-id="bb5f5-392">Request body</span></span> | <span data-ttu-id="bb5f5-393">回應本文</span><span class="sxs-lookup"><span data-stu-id="bb5f5-393">Response body</span></span> |
 |--- | ---- | ---- | ---- |
-|<span data-ttu-id="02315-391">GET /api/TodoItems</span><span class="sxs-lookup"><span data-stu-id="02315-391">GET /api/TodoItems</span></span> | <span data-ttu-id="02315-392">取得所有待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-392">Get all to-do items</span></span> | <span data-ttu-id="02315-393">None</span><span class="sxs-lookup"><span data-stu-id="02315-393">None</span></span> | <span data-ttu-id="02315-394">待辦事項的陣列</span><span class="sxs-lookup"><span data-stu-id="02315-394">Array of to-do items</span></span>|
-|<span data-ttu-id="02315-395">GET /api/TodoItems/{識別碼}</span><span class="sxs-lookup"><span data-stu-id="02315-395">GET /api/TodoItems/{id}</span></span> | <span data-ttu-id="02315-396">依識別碼取得項目</span><span class="sxs-lookup"><span data-stu-id="02315-396">Get an item by ID</span></span> | <span data-ttu-id="02315-397">None</span><span class="sxs-lookup"><span data-stu-id="02315-397">None</span></span> | <span data-ttu-id="02315-398">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-398">To-do item</span></span>|
-|<span data-ttu-id="02315-399">POST /api/TodoItems</span><span class="sxs-lookup"><span data-stu-id="02315-399">POST /api/TodoItems</span></span> | <span data-ttu-id="02315-400">新增記錄</span><span class="sxs-lookup"><span data-stu-id="02315-400">Add a new item</span></span> | <span data-ttu-id="02315-401">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-401">To-do item</span></span> | <span data-ttu-id="02315-402">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-402">To-do item</span></span> |
-|<span data-ttu-id="02315-403">PUT /api/TodoItems/{識別碼}</span><span class="sxs-lookup"><span data-stu-id="02315-403">PUT /api/TodoItems/{id}</span></span> | <span data-ttu-id="02315-404">更新現有的項目 &nbsp;</span><span class="sxs-lookup"><span data-stu-id="02315-404">Update an existing item &nbsp;</span></span> | <span data-ttu-id="02315-405">待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-405">To-do item</span></span> | <span data-ttu-id="02315-406">None</span><span class="sxs-lookup"><span data-stu-id="02315-406">None</span></span> |
-|<span data-ttu-id="02315-407">刪除/api/TodoItems/{id} &nbsp;&nbsp;</span><span class="sxs-lookup"><span data-stu-id="02315-407">DELETE /api/TodoItems/{id} &nbsp; &nbsp;</span></span> | <span data-ttu-id="02315-408">刪除專案&nbsp;&nbsp;</span><span class="sxs-lookup"><span data-stu-id="02315-408">Delete an item &nbsp; &nbsp;</span></span> | <span data-ttu-id="02315-409">None</span><span class="sxs-lookup"><span data-stu-id="02315-409">None</span></span> | <span data-ttu-id="02315-410">None</span><span class="sxs-lookup"><span data-stu-id="02315-410">None</span></span>|
+|<span data-ttu-id="bb5f5-394">GET /api/TodoItems</span><span class="sxs-lookup"><span data-stu-id="bb5f5-394">GET /api/TodoItems</span></span> | <span data-ttu-id="bb5f5-395">取得所有待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-395">Get all to-do items</span></span> | <span data-ttu-id="bb5f5-396">無</span><span class="sxs-lookup"><span data-stu-id="bb5f5-396">None</span></span> | <span data-ttu-id="bb5f5-397">待辦事項的陣列</span><span class="sxs-lookup"><span data-stu-id="bb5f5-397">Array of to-do items</span></span>|
+|<span data-ttu-id="bb5f5-398">GET /api/TodoItems/{識別碼}</span><span class="sxs-lookup"><span data-stu-id="bb5f5-398">GET /api/TodoItems/{id}</span></span> | <span data-ttu-id="bb5f5-399">依識別碼取得項目</span><span class="sxs-lookup"><span data-stu-id="bb5f5-399">Get an item by ID</span></span> | <span data-ttu-id="bb5f5-400">無</span><span class="sxs-lookup"><span data-stu-id="bb5f5-400">None</span></span> | <span data-ttu-id="bb5f5-401">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-401">To-do item</span></span>|
+|<span data-ttu-id="bb5f5-402">POST /api/TodoItems</span><span class="sxs-lookup"><span data-stu-id="bb5f5-402">POST /api/TodoItems</span></span> | <span data-ttu-id="bb5f5-403">新增記錄</span><span class="sxs-lookup"><span data-stu-id="bb5f5-403">Add a new item</span></span> | <span data-ttu-id="bb5f5-404">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-404">To-do item</span></span> | <span data-ttu-id="bb5f5-405">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-405">To-do item</span></span> |
+|<span data-ttu-id="bb5f5-406">PUT /api/TodoItems/{識別碼}</span><span class="sxs-lookup"><span data-stu-id="bb5f5-406">PUT /api/TodoItems/{id}</span></span> | <span data-ttu-id="bb5f5-407">更新現有的項目 &nbsp;</span><span class="sxs-lookup"><span data-stu-id="bb5f5-407">Update an existing item &nbsp;</span></span> | <span data-ttu-id="bb5f5-408">待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-408">To-do item</span></span> | <span data-ttu-id="bb5f5-409">無</span><span class="sxs-lookup"><span data-stu-id="bb5f5-409">None</span></span> |
+|<span data-ttu-id="bb5f5-410">刪除/api/TodoItems/{id} &nbsp;&nbsp;</span><span class="sxs-lookup"><span data-stu-id="bb5f5-410">DELETE /api/TodoItems/{id} &nbsp; &nbsp;</span></span> | <span data-ttu-id="bb5f5-411">刪除專案 &nbsp;&nbsp;</span><span class="sxs-lookup"><span data-stu-id="bb5f5-411">Delete an item &nbsp; &nbsp;</span></span> | <span data-ttu-id="bb5f5-412">None</span><span class="sxs-lookup"><span data-stu-id="bb5f5-412">None</span></span> | <span data-ttu-id="bb5f5-413">None</span><span class="sxs-lookup"><span data-stu-id="bb5f5-413">None</span></span>|
 
-<span data-ttu-id="02315-411">下圖顯示應用程式的設計。</span><span class="sxs-lookup"><span data-stu-id="02315-411">The following diagram shows the design of the app.</span></span>
+<span data-ttu-id="bb5f5-414">下圖顯示應用程式的設計。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-414">The following diagram shows the design of the app.</span></span>
 
 ![左側方塊代表用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a><span data-ttu-id="02315-417">必要條件</span><span class="sxs-lookup"><span data-stu-id="02315-417">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bb5f5-420">必要條件</span><span class="sxs-lookup"><span data-stu-id="bb5f5-420">Prerequisites</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-418">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-418">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-421">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-421">Visual Studio</span></span>](#tab/visual-studio)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-419">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-419">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-422">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-422">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-420">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-420">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-423">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-423">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
 [!INCLUDE[](~/includes/net-core-prereqs-mac-2.2.md)]
 
 ---
 
-## <a name="create-a-web-project"></a><span data-ttu-id="02315-421">建立 Web 專案</span><span class="sxs-lookup"><span data-stu-id="02315-421">Create a web project</span></span>
+## <a name="create-a-web-project"></a><span data-ttu-id="bb5f5-424">建立 Web 專案</span><span class="sxs-lookup"><span data-stu-id="bb5f5-424">Create a web project</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-422">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-422">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-425">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-425">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-423">從 [檔案]\*\*\*\* 功能表選取 [新增]**[專案]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-423">From the **File** menu, select **New** > **Project**.</span></span>
-* <span data-ttu-id="02315-424">選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-424">Select the **ASP.NET Core Web Application** template and click **Next**.</span></span>
-* <span data-ttu-id="02315-425">將專案命名為 *TodoApi*，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-425">Name the project *TodoApi* and click **Create**.</span></span>
-* <span data-ttu-id="02315-426">在 [建立新的 ASP.NET Core Web 應用程式]\*\*\*\* 對話方塊中，確認選取 [.NET Core]\*\*\*\* 和 [ASP.NET Core 2.2]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-426">In the **Create a new ASP.NET Core Web Application** dialog, confirm that **.NET Core** and **ASP.NET Core 2.2** are selected.</span></span> <span data-ttu-id="02315-427">選取 **API** 範本，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-427">Select the **API** template and click **Create**.</span></span> <span data-ttu-id="02315-428">請**勿**選取 [Enable Docker Support] \(啟用 Docker 支援\)\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-428">**Don't** select **Enable Docker Support**.</span></span>
+* <span data-ttu-id="bb5f5-426">從 [檔案]\*\*\*\* 功能表選取 [新增]**[專案]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-426">From the **File** menu, select **New** > **Project**.</span></span>
+* <span data-ttu-id="bb5f5-427">選取 **ASP.NET Core Web 應用程式**範本，然後按一下 [下一步]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-427">Select the **ASP.NET Core Web Application** template and click **Next**.</span></span>
+* <span data-ttu-id="bb5f5-428">將專案命名為 *TodoApi*，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-428">Name the project *TodoApi* and click **Create**.</span></span>
+* <span data-ttu-id="bb5f5-429">在 [建立新的 ASP.NET Core Web 應用程式]\*\*\*\* 對話方塊中，確認選取 [.NET Core]\*\*\*\* 和 [ASP.NET Core 2.2]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-429">In the **Create a new ASP.NET Core Web Application** dialog, confirm that **.NET Core** and **ASP.NET Core 2.2** are selected.</span></span> <span data-ttu-id="bb5f5-430">選取 **API** 範本，然後按一下 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-430">Select the **API** template and click **Create**.</span></span> <span data-ttu-id="bb5f5-431">請**勿**選取 [Enable Docker Support] \(啟用 Docker 支援\)\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-431">**Don't** select **Enable Docker Support**.</span></span>
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs.png)
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-430">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-430">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-433">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-433">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="02315-431">開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。</span><span class="sxs-lookup"><span data-stu-id="02315-431">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
-* <span data-ttu-id="02315-432">將目錄 (`cd`) 變更為包含專案資料夾的資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-432">Change directories (`cd`) to the folder that will contain the project folder.</span></span>
-* <span data-ttu-id="02315-433">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="02315-433">Run the following commands:</span></span>
+* <span data-ttu-id="bb5f5-434">開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-434">Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal).</span></span>
+* <span data-ttu-id="bb5f5-435">將目錄 (`cd`) 變更為包含專案資料夾的資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-435">Change directories (`cd`) to the folder that will contain the project folder.</span></span>
+* <span data-ttu-id="bb5f5-436">執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-436">Run the following commands:</span></span>
 
    ```dotnetcli
    dotnet new webapi -o TodoApi
    code -r TodoApi
    ```
 
-  <span data-ttu-id="02315-434">這些命令會建立新的 Web API 專案，並開啟新專案資料夾中的新 Visual Studio Code 執行個體。</span><span class="sxs-lookup"><span data-stu-id="02315-434">These commands create a new web API project and open a new instance of Visual Studio Code in the new project folder.</span></span>
+  <span data-ttu-id="bb5f5-437">這些命令會建立新的 Web API 專案，並開啟新專案資料夾中的新 Visual Studio Code 執行個體。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-437">These commands create a new web API project and open a new instance of Visual Studio Code in the new project folder.</span></span>
 
-* <span data-ttu-id="02315-435">當出現對話方塊詢問您是否要將所需的資產新增至專案時，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-435">When a dialog box asks if you want to add required assets to the project, select **Yes**.</span></span>
+* <span data-ttu-id="bb5f5-438">當出現對話方塊詢問您是否要將所需的資產新增至專案時，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-438">When a dialog box asks if you want to add required assets to the project, select **Yes**.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-436">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-436">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-439">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-439">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="02315-437">選取 [檔案]\*\* [新增解決方案]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-437">Select **File** > **New Solution**.</span></span>
+* <span data-ttu-id="bb5f5-440">選取 [檔案]\*\* [新增解決方案]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-440">Select **File** > **New Solution**.</span></span>
 
   ![macOS 新增方案](first-web-api-mac/_static/sln.png)
 
-* <span data-ttu-id="02315-439">選取[.Net Core]\*\* [應用程式]\*\* > \*\* [API]\*\* > \*\* [下一步]\*\* > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-439">Select **.NET Core** > **App** > **API** > **Next**.</span></span>
-
-  ![macOS [新增專案] 對話方塊](first-web-api-mac/_static/1.png)
+* <span data-ttu-id="bb5f5-442">在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用程式**  >  **API**  >  **] [下一步]**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-442">In Visual Studio for Mac earlier than version 8.6, select **.NET Core** > **App** > **API** > **Next**.</span></span> <span data-ttu-id="bb5f5-443">在8.6 或更新版本中，選取 [ **Web 和主控台**  >  **應用程式**  >  **API**  >  **] [下一步]**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-443">In version 8.6 or later, select **Web and Console** > **App** > **API** > **Next**.</span></span>
   
-* <span data-ttu-id="02315-441">在 [設定您的新 ASP.NET Core Web API]\*\*\*\* 對話方塊中，接受 [目標 Framework]\*\*\*\* 的預設 \**.NET Core 2.2*。</span><span class="sxs-lookup"><span data-stu-id="02315-441">In the **Configure your new ASP.NET Core Web API** dialog, accept the default **Target Framework** of \**.NET Core 2.2*.</span></span>
+* <span data-ttu-id="bb5f5-444">在 [設定您的新 ASP.NET Core Web API]\*\*\*\* 對話方塊中，接受 [目標 Framework]\*\*\*\* 的預設 \**.NET Core 2.2*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-444">In the **Configure your new ASP.NET Core Web API** dialog, accept the default **Target Framework** of \**.NET Core 2.2*.</span></span>
 
-* <span data-ttu-id="02315-442">針對 [專案名稱]\*\*\*\* 輸入 *TodoApi*，然後選取 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-442">Enter *TodoApi* for the **Project Name** and then select **Create**.</span></span>
+* <span data-ttu-id="bb5f5-445">針對 [專案名稱]\*\*\*\* 輸入 *TodoApi*，然後選取 [建立]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-445">Enter *TodoApi* for the **Project Name** and then select **Create**.</span></span>
 
   ![設定對話方塊](first-web-api-mac/_static/2.png)
 
 ---
 
-### <a name="test-the-api"></a><span data-ttu-id="02315-444">測試 API</span><span class="sxs-lookup"><span data-stu-id="02315-444">Test the API</span></span>
+### <a name="test-the-api"></a><span data-ttu-id="bb5f5-447">測試 API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-447">Test the API</span></span>
 
-<span data-ttu-id="02315-445">專案範本會建立 `values` API。</span><span class="sxs-lookup"><span data-stu-id="02315-445">The project template creates a `values` API.</span></span> <span data-ttu-id="02315-446">從瀏覽器呼叫 `Get` 方法來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-446">Call the `Get` method from a browser to test the app.</span></span>
+<span data-ttu-id="bb5f5-448">專案範本會建立 `values` API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-448">The project template creates a `values` API.</span></span> <span data-ttu-id="bb5f5-449">從瀏覽器呼叫 `Get` 方法來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-449">Call the `Get` method from a browser to test the app.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-447">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-447">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-450">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-450">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="02315-448">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-448">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="02315-449">Visual Studio 會啟動瀏覽器並巡覽至 `https://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的通訊埠編號。</span><span class="sxs-lookup"><span data-stu-id="02315-449">Visual Studio launches a browser and navigates to `https://localhost:<port>/api/values`, where `<port>` is a randomly chosen port number.</span></span>
+<span data-ttu-id="bb5f5-451">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-451">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="bb5f5-452">Visual Studio 會啟動瀏覽器並巡覽至 `https://localhost:<port>/api/values`，其中 `<port>` 是隨機選擇的通訊埠編號。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-452">Visual Studio launches a browser and navigates to `https://localhost:<port>/api/values`, where `<port>` is a randomly chosen port number.</span></span>
 
-<span data-ttu-id="02315-450">如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-450">If you get a dialog box that asks if you should trust the IIS Express certificate, select **Yes**.</span></span> <span data-ttu-id="02315-451">在接著出現的 [安全性警告]\*\*\*\* 對話方塊中，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-451">In the **Security Warning** dialog that appears next, select **Yes**.</span></span>
+<span data-ttu-id="bb5f5-453">如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-453">If you get a dialog box that asks if you should trust the IIS Express certificate, select **Yes**.</span></span> <span data-ttu-id="bb5f5-454">在接著出現的 [安全性警告]\*\*\*\* 對話方塊中，選取 [是]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-454">In the **Security Warning** dialog that appears next, select **Yes**.</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-452">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-452">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-455">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-455">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-<span data-ttu-id="02315-453">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-453">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="02315-454">在瀏覽器中，前往下列 URL：`https://localhost:5001/api/values`。</span><span class="sxs-lookup"><span data-stu-id="02315-454">In a browser, go to following URL: `https://localhost:5001/api/values`.</span></span>
+<span data-ttu-id="bb5f5-456">按 Ctrl+F5 執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-456">Press Ctrl+F5 to run the app.</span></span> <span data-ttu-id="bb5f5-457">在瀏覽器中，前往下列 URL：`https://localhost:5001/api/values`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-457">In a browser, go to following URL: `https://localhost:5001/api/values`.</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-455">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-455">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-458">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-458">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-<span data-ttu-id="02315-456">選取 [**執行** > ] [**開始調試**程式] 以啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-456">Select **Run** > **Start Debugging** to launch the app.</span></span> <span data-ttu-id="02315-457">Visual Studio for Mac 會啟動瀏覽器並巡覽至 `https://localhost:<port>`，其中 `<port>` 是隨機選擇的連接埠號碼。</span><span class="sxs-lookup"><span data-stu-id="02315-457">Visual Studio for Mac launches a browser and navigates to `https://localhost:<port>`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="02315-458">傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02315-458">An HTTP 404 (Not Found) error is returned.</span></span> <span data-ttu-id="02315-459">將 `/api/values` 附加至 URL (將 URL 變更為 `https://localhost:<port>/api/values`)。</span><span class="sxs-lookup"><span data-stu-id="02315-459">Append `/api/values` to the URL (change the URL to `https://localhost:<port>/api/values`).</span></span>
+<span data-ttu-id="bb5f5-459">選取 [**執行**]  >  [**開始調試**程式] 以啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-459">Select **Run** > **Start Debugging** to launch the app.</span></span> <span data-ttu-id="bb5f5-460">Visual Studio for Mac 會啟動瀏覽器並巡覽至 `https://localhost:<port>`，其中 `<port>` 是隨機選擇的連接埠號碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-460">Visual Studio for Mac launches a browser and navigates to `https://localhost:<port>`, where `<port>` is a randomly chosen port number.</span></span> <span data-ttu-id="bb5f5-461">傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-461">An HTTP 404 (Not Found) error is returned.</span></span> <span data-ttu-id="bb5f5-462">將 `/api/values` 附加至 URL (將 URL 變更為 `https://localhost:<port>/api/values`)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-462">Append `/api/values` to the URL (change the URL to `https://localhost:<port>/api/values`).</span></span>
 
 ---
 
-<span data-ttu-id="02315-460">即會傳回下列 JSON：</span><span class="sxs-lookup"><span data-stu-id="02315-460">The following JSON is returned:</span></span>
+<span data-ttu-id="bb5f5-463">即會傳回下列 JSON：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-463">The following JSON is returned:</span></span>
 
 ```json
 ["value1","value2"]
 ```
 
-## <a name="add-a-model-class"></a><span data-ttu-id="02315-461">新增模型類別</span><span class="sxs-lookup"><span data-stu-id="02315-461">Add a model class</span></span>
+## <a name="add-a-model-class"></a><span data-ttu-id="bb5f5-464">新增模型類別</span><span class="sxs-lookup"><span data-stu-id="bb5f5-464">Add a model class</span></span>
 
-<span data-ttu-id="02315-462">「模型」\*\* 是代表應用程式所管理資料的一組類別。</span><span class="sxs-lookup"><span data-stu-id="02315-462">A *model* is a set of classes that represent the data that the app manages.</span></span> <span data-ttu-id="02315-463">此應用程式的模型是單一 `TodoItem` 類別。</span><span class="sxs-lookup"><span data-stu-id="02315-463">The model for this app is a single `TodoItem` class.</span></span>
+<span data-ttu-id="bb5f5-465">「模型」\*\* 是代表應用程式所管理資料的一組類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-465">A *model* is a set of classes that represent the data that the app manages.</span></span> <span data-ttu-id="bb5f5-466">此應用程式的模型是單一 `TodoItem` 類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-466">The model for this app is a single `TodoItem` class.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-464">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-464">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-467">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-467">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-465">在 [方案總管]\*\*\*\* 中，於專案上按一下滑鼠右鍵。</span><span class="sxs-lookup"><span data-stu-id="02315-465">In **Solution Explorer**, right-click the project.</span></span> <span data-ttu-id="02315-466"> > 選取 **\[\*\*\**新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="02315-466">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="02315-467">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="02315-467">Name the folder *Models*.</span></span>
+* <span data-ttu-id="bb5f5-468">在 [方案總管]\*\*\*\* 中，於專案上按一下滑鼠右鍵。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-468">In **Solution Explorer**, right-click the project.</span></span> <span data-ttu-id="bb5f5-469">選取 **[**  >  **新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-469">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="bb5f5-470">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-470">Name the folder *Models*.</span></span>
 
-* <span data-ttu-id="02315-468">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-468">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="02315-469">將類別命名為 *TodoItem*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-469">Name the class *TodoItem* and select **Add**.</span></span>
+* <span data-ttu-id="bb5f5-471">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-471">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="bb5f5-472">將類別命名為 *TodoItem*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-472">Name the class *TodoItem* and select **Add**.</span></span>
 
-* <span data-ttu-id="02315-470">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-470">Replace the template code with the following code:</span></span>
+* <span data-ttu-id="bb5f5-473">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-473">Replace the template code with the following code:</span></span>
 
-# <a name="visual-studio-code"></a>[<span data-ttu-id="02315-471">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="02315-471">Visual Studio Code</span></span>](#tab/visual-studio-code)
+# <a name="visual-studio-code"></a>[<span data-ttu-id="bb5f5-474">Visual Studio Code</span><span class="sxs-lookup"><span data-stu-id="bb5f5-474">Visual Studio Code</span></span>](#tab/visual-studio-code)
 
-* <span data-ttu-id="02315-472">新增名為 *Models* 的資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-472">Add a folder named *Models*.</span></span>
+* <span data-ttu-id="bb5f5-475">新增名為 *Models* 的資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-475">Add a folder named *Models*.</span></span>
 
-* <span data-ttu-id="02315-473">將 `TodoItem` 類別新增至具有下列程式碼的 *Models* 資料夾：</span><span class="sxs-lookup"><span data-stu-id="02315-473">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
+* <span data-ttu-id="bb5f5-476">將 `TodoItem` 類別新增至具有下列程式碼的 *Models* 資料夾：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-476">Add a `TodoItem` class to the *Models* folder with the following code:</span></span>
 
-# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="02315-474">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-474">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-477">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-477">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
 
-* <span data-ttu-id="02315-475">以滑鼠右鍵按一下專案。</span><span class="sxs-lookup"><span data-stu-id="02315-475">Right-click the project.</span></span> <span data-ttu-id="02315-476"> > 選取 **\[\*\*\**新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="02315-476">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="02315-477">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="02315-477">Name the folder *Models*.</span></span>
+* <span data-ttu-id="bb5f5-478">以滑鼠右鍵按一下專案。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-478">Right-click the project.</span></span> <span data-ttu-id="bb5f5-479">選取 **[**  >  **新增資料夾**]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-479">Select **Add** > **New Folder**.</span></span> <span data-ttu-id="bb5f5-480">將資料夾命名為 *Models*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-480">Name the folder *Models*.</span></span>
 
   ![新增資料夾](first-web-api-mac/_static/folder.png)
 
-* <span data-ttu-id="02315-479">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]**[新增檔案]** > **[一般]** > **[空類別]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-479">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
+* <span data-ttu-id="bb5f5-482">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]**[新增檔案]** > **[一般]** > **[空類別]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-482">Right-click the *Models* folder, and select **Add** > **New File** > **General** > **Empty Class**.</span></span>
 
-* <span data-ttu-id="02315-480">將類別命名為 *TodoItem*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-480">Name the class *TodoItem*, and then click **New**.</span></span>
+* <span data-ttu-id="bb5f5-483">將類別命名為 *TodoItem*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-483">Name the class *TodoItem*, and then click **New**.</span></span>
 
-* <span data-ttu-id="02315-481">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-481">Replace the template code with the following code:</span></span>
+* <span data-ttu-id="bb5f5-484">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-484">Replace the template code with the following code:</span></span>
 
 ---
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Models/TodoItem.cs)]
 
-<span data-ttu-id="02315-482">`Id` 屬性的功能相當於關聯式資料庫中的唯一索引鍵。</span><span class="sxs-lookup"><span data-stu-id="02315-482">The `Id` property functions as the unique key in a relational database.</span></span>
+<span data-ttu-id="bb5f5-485">`Id` 屬性的功能相當於關聯式資料庫中的唯一索引鍵。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-485">The `Id` property functions as the unique key in a relational database.</span></span>
 
-<span data-ttu-id="02315-483">模型類別可位於專案中的任何位置，但依照慣例會使用 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-483">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
+<span data-ttu-id="bb5f5-486">模型類別可位於專案中的任何位置，但依照慣例會使用 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-486">Model classes can go anywhere in the project, but the *Models* folder is used by convention.</span></span>
 
-## <a name="add-a-database-context"></a><span data-ttu-id="02315-484">新增資料庫內容</span><span class="sxs-lookup"><span data-stu-id="02315-484">Add a database context</span></span>
+## <a name="add-a-database-context"></a><span data-ttu-id="bb5f5-487">新增資料庫內容</span><span class="sxs-lookup"><span data-stu-id="bb5f5-487">Add a database context</span></span>
 
-<span data-ttu-id="02315-485">「資料庫內容」\*\* 是為資料模型協調 Entity Framework 功能的主要類別。</span><span class="sxs-lookup"><span data-stu-id="02315-485">The *database context* is the main class that coordinates Entity Framework functionality for a data model.</span></span> <span data-ttu-id="02315-486">此類別是透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立。</span><span class="sxs-lookup"><span data-stu-id="02315-486">This class is created by deriving from the `Microsoft.EntityFrameworkCore.DbContext` class.</span></span>
+<span data-ttu-id="bb5f5-488">「資料庫內容」\*\* 是為資料模型協調 Entity Framework 功能的主要類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-488">The *database context* is the main class that coordinates Entity Framework functionality for a data model.</span></span> <span data-ttu-id="bb5f5-489">此類別是透過衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別來建立。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-489">This class is created by deriving from the `Microsoft.EntityFrameworkCore.DbContext` class.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-487">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-487">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-490">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-490">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-488">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-488">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="02315-489">將類別命名為 *TodoContext*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-489">Name the class *TodoContext* and click **Add**.</span></span>
+* <span data-ttu-id="bb5f5-491">以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]\*\*\*\* > [類別]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-491">Right-click the *Models* folder and select **Add** > **Class**.</span></span> <span data-ttu-id="bb5f5-492">將類別命名為 *TodoContext*，然後按一下 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-492">Name the class *TodoContext* and click **Add**.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="02315-490">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-490">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-493">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-493">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="02315-491">將 `TodoContext` 類別新增至 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-491">Add a `TodoContext` class to the *Models* folder.</span></span>
+* <span data-ttu-id="bb5f5-494">將 `TodoContext` 類別新增至 *Models* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-494">Add a `TodoContext` class to the *Models* folder.</span></span>
 
 ---
 
-* <span data-ttu-id="02315-492">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-492">Replace the template code with the following code:</span></span>
+* <span data-ttu-id="bb5f5-495">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-495">Replace the template code with the following code:</span></span>
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Models/TodoContext.cs)]
 
-## <a name="register-the-database-context"></a><span data-ttu-id="02315-493">登錄資料庫內容</span><span class="sxs-lookup"><span data-stu-id="02315-493">Register the database context</span></span>
+## <a name="register-the-database-context"></a><span data-ttu-id="bb5f5-496">登錄資料庫內容</span><span class="sxs-lookup"><span data-stu-id="bb5f5-496">Register the database context</span></span>
 
-<span data-ttu-id="02315-494">在 ASP.NET Core 中，資料庫內容等服務必須向[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器註冊。</span><span class="sxs-lookup"><span data-stu-id="02315-494">In ASP.NET Core, services such as the DB context must be registered with the [dependency injection (DI)](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="02315-495">此容器會將服務提供給控制器。</span><span class="sxs-lookup"><span data-stu-id="02315-495">The container provides the service to controllers.</span></span>
+<span data-ttu-id="bb5f5-497">在 ASP.NET Core 中，資料庫內容等服務必須向[相依性插入 (DI)](xref:fundamentals/dependency-injection) 容器註冊。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-497">In ASP.NET Core, services such as the DB context must be registered with the [dependency injection (DI)](xref:fundamentals/dependency-injection) container.</span></span> <span data-ttu-id="bb5f5-498">此容器會將服務提供給控制器。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-498">The container provides the service to controllers.</span></span>
 
-<span data-ttu-id="02315-496">使用下列醒目提示的程式碼更新 *Startup.cs*：</span><span class="sxs-lookup"><span data-stu-id="02315-496">Update *Startup.cs* with the following highlighted code:</span></span>
+<span data-ttu-id="bb5f5-499">使用下列醒目提示的程式碼更新 *Startup.cs*：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-499">Update *Startup.cs* with the following highlighted code:</span></span>
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup1.cs?highlight=5,8,25-26&name=snippet_all)]
 
-<span data-ttu-id="02315-497">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-497">The preceding code:</span></span>
+<span data-ttu-id="bb5f5-500">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-500">The preceding code:</span></span>
 
-* <span data-ttu-id="02315-498">移除未使用的 `using` 宣告。</span><span class="sxs-lookup"><span data-stu-id="02315-498">Removes unused `using` declarations.</span></span>
-* <span data-ttu-id="02315-499">將資料庫內容新增至 DI 容器。</span><span class="sxs-lookup"><span data-stu-id="02315-499">Adds the database context to the DI container.</span></span>
-* <span data-ttu-id="02315-500">指定資料庫內容將會使用記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="02315-500">Specifies that the database context will use an in-memory database.</span></span>
+* <span data-ttu-id="bb5f5-501">移除未使用的 `using` 宣告。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-501">Removes unused `using` declarations.</span></span>
+* <span data-ttu-id="bb5f5-502">將資料庫內容新增至 DI 容器。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-502">Adds the database context to the DI container.</span></span>
+* <span data-ttu-id="bb5f5-503">指定資料庫內容將會使用記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-503">Specifies that the database context will use an in-memory database.</span></span>
 
-## <a name="add-a-controller"></a><span data-ttu-id="02315-501">新增控制器</span><span class="sxs-lookup"><span data-stu-id="02315-501">Add a controller</span></span>
+## <a name="add-a-controller"></a><span data-ttu-id="bb5f5-504">新增控制器</span><span class="sxs-lookup"><span data-stu-id="bb5f5-504">Add a controller</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-502">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-502">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-505">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-505">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-503">以滑鼠右鍵按一下 *Controllers* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-503">Right-click the *Controllers* folder.</span></span>
-* <span data-ttu-id="02315-504">選取 [新增]**[新項目]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-504">Select **Add** > **New Item**.</span></span>
-* <span data-ttu-id="02315-505">在 [新增項目]\*\*\*\* 對話方塊中，選取 [API 控制器類別]\*\*\*\* 範本。</span><span class="sxs-lookup"><span data-stu-id="02315-505">In the **Add New Item** dialog, select the **API Controller Class** template.</span></span>
-* <span data-ttu-id="02315-506">將類別命名為 *TodoController*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-506">Name the class *TodoController*, and select **Add**.</span></span>
+* <span data-ttu-id="bb5f5-506">以滑鼠右鍵按一下 *Controllers* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-506">Right-click the *Controllers* folder.</span></span>
+* <span data-ttu-id="bb5f5-507">選取 [新增]**[新項目]** > \*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-507">Select **Add** > **New Item**.</span></span>
+* <span data-ttu-id="bb5f5-508">在 [新增項目]\*\*\*\* 對話方塊中，選取 [API 控制器類別]\*\*\*\* 範本。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-508">In the **Add New Item** dialog, select the **API Controller Class** template.</span></span>
+* <span data-ttu-id="bb5f5-509">將類別命名為 *TodoController*，然後選取 [新增]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-509">Name the class *TodoController*, and select **Add**.</span></span>
 
   ![在搜尋方塊中輸入 controller 且已選取 Web API 控制器的 [新增項目] 對話方塊](first-web-api/_static/new_controller.png)
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="02315-508">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-508">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-511">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-511">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="02315-509">在 *Controllers* 資料夾中，建立名為 `TodoController` 的類別。</span><span class="sxs-lookup"><span data-stu-id="02315-509">In the *Controllers* folder, create a class named `TodoController`.</span></span>
+* <span data-ttu-id="bb5f5-512">在 *Controllers* 資料夾中，建立名為 `TodoController` 的類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-512">In the *Controllers* folder, create a class named `TodoController`.</span></span>
 
 ---
 
-* <span data-ttu-id="02315-510">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-510">Replace the template code with the following code:</span></span>
+* <span data-ttu-id="bb5f5-513">使用下列程式碼取代範本程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-513">Replace the template code with the following code:</span></span>
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController2.cs?name=snippet_todo1)]
 
-<span data-ttu-id="02315-511">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="02315-511">The preceding code:</span></span>
+<span data-ttu-id="bb5f5-514">上述程式碼：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-514">The preceding code:</span></span>
 
-* <span data-ttu-id="02315-512">定義不含方法的 API 控制器類別。</span><span class="sxs-lookup"><span data-stu-id="02315-512">Defines an API controller class without methods.</span></span>
-* <span data-ttu-id="02315-513">使用[`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute)屬性來標示類別。</span><span class="sxs-lookup"><span data-stu-id="02315-513">Marks the class with the [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) attribute.</span></span> <span data-ttu-id="02315-514">這個屬性表示控制器會回應 Web API 要求。</span><span class="sxs-lookup"><span data-stu-id="02315-514">This attribute indicates that the controller responds to web API requests.</span></span> <span data-ttu-id="02315-515">如需屬性所啟用之特定行為的相關資訊，請參閱 <xref:web-api/index>。</span><span class="sxs-lookup"><span data-stu-id="02315-515">For information about specific behaviors that the attribute enables, see <xref:web-api/index>.</span></span>
-* <span data-ttu-id="02315-516">使用 DI 將資料庫內容 (`TodoContext`) 插入到控制器中。</span><span class="sxs-lookup"><span data-stu-id="02315-516">Uses DI to inject the database context (`TodoContext`) into the controller.</span></span> <span data-ttu-id="02315-517">控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="02315-517">The database context is used in each of the [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) methods in the controller.</span></span>
-* <span data-ttu-id="02315-518">如果資料庫是空的，請將名為 `Item1` 的項目新增至資料庫。</span><span class="sxs-lookup"><span data-stu-id="02315-518">Adds an item named `Item1` to the database if the database is empty.</span></span> <span data-ttu-id="02315-519">此程式碼是在建構函式中，因此每次執行都會有新的 HTTP 要求。</span><span class="sxs-lookup"><span data-stu-id="02315-519">This code is in the constructor, so it runs every time there's a new HTTP request.</span></span> <span data-ttu-id="02315-520">如果您刪除所有項目，則建構函式會在下次呼叫 API 方法時重新建立 `Item1`。</span><span class="sxs-lookup"><span data-stu-id="02315-520">If you delete all items, the constructor creates `Item1` again the next time an API method is called.</span></span> <span data-ttu-id="02315-521">因此看起來雖然像是刪除失敗，但實際為成功。</span><span class="sxs-lookup"><span data-stu-id="02315-521">So it may look like the deletion didn't work when it actually did work.</span></span>
+* <span data-ttu-id="bb5f5-515">定義不含方法的 API 控制器類別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-515">Defines an API controller class without methods.</span></span>
+* <span data-ttu-id="bb5f5-516">使用屬性來標示類別 [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-516">Marks the class with the [`[ApiController]`](/dotnet/api/microsoft.aspnetcore.mvc.apicontrollerattribute) attribute.</span></span> <span data-ttu-id="bb5f5-517">這個屬性表示控制器會回應 Web API 要求。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-517">This attribute indicates that the controller responds to web API requests.</span></span> <span data-ttu-id="bb5f5-518">如需屬性所啟用之特定行為的相關資訊，請參閱 <xref:web-api/index>。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-518">For information about specific behaviors that the attribute enables, see <xref:web-api/index>.</span></span>
+* <span data-ttu-id="bb5f5-519">使用 DI 將資料庫內容 (`TodoContext`) 插入到控制器中。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-519">Uses DI to inject the database context (`TodoContext`) into the controller.</span></span> <span data-ttu-id="bb5f5-520">控制器中的每一個 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) 方法都會使用資料庫內容。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-520">The database context is used in each of the [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) methods in the controller.</span></span>
+* <span data-ttu-id="bb5f5-521">如果資料庫是空的，請將名為 `Item1` 的項目新增至資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-521">Adds an item named `Item1` to the database if the database is empty.</span></span> <span data-ttu-id="bb5f5-522">此程式碼是在建構函式中，因此每次執行都會有新的 HTTP 要求。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-522">This code is in the constructor, so it runs every time there's a new HTTP request.</span></span> <span data-ttu-id="bb5f5-523">如果您刪除所有項目，則建構函式會在下次呼叫 API 方法時重新建立 `Item1`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-523">If you delete all items, the constructor creates `Item1` again the next time an API method is called.</span></span> <span data-ttu-id="bb5f5-524">因此看起來雖然像是刪除失敗，但實際為成功。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-524">So it may look like the deletion didn't work when it actually did work.</span></span>
 
-## <a name="add-get-methods"></a><span data-ttu-id="02315-522">新增 Get 方法</span><span class="sxs-lookup"><span data-stu-id="02315-522">Add Get methods</span></span>
+## <a name="add-get-methods"></a><span data-ttu-id="bb5f5-525">新增 Get 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-525">Add Get methods</span></span>
 
-<span data-ttu-id="02315-523">若要提供擷取待辦事項的 API，請在 `TodoController` 類別中新增下列方法：</span><span class="sxs-lookup"><span data-stu-id="02315-523">To provide an API that retrieves to-do items, add the following methods to the `TodoController` class:</span></span>
+<span data-ttu-id="bb5f5-526">若要提供擷取待辦事項的 API，請在 `TodoController` 類別中新增下列方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-526">To provide an API that retrieves to-do items, add the following methods to the `TodoController` class:</span></span>
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetAll)]
 
-<span data-ttu-id="02315-524">這些方法會實作兩個 GET 端點：</span><span class="sxs-lookup"><span data-stu-id="02315-524">These methods implement two GET endpoints:</span></span>
+<span data-ttu-id="bb5f5-527">這些方法會實作兩個 GET 端點：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-527">These methods implement two GET endpoints:</span></span>
 
 * `GET /api/todo`
 * `GET /api/todo/{id}`
 
-<span data-ttu-id="02315-525">如果應用程式仍在執行，請將其停止。</span><span class="sxs-lookup"><span data-stu-id="02315-525">Stop the app if it's still running.</span></span> <span data-ttu-id="02315-526">然後重新予以執行以包含最新的變更。</span><span class="sxs-lookup"><span data-stu-id="02315-526">Then run it again to include the latest changes.</span></span>
+<span data-ttu-id="bb5f5-528">如果應用程式仍在執行，請將其停止。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-528">Stop the app if it's still running.</span></span> <span data-ttu-id="bb5f5-529">然後重新予以執行以包含最新的變更。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-529">Then run it again to include the latest changes.</span></span>
 
-<span data-ttu-id="02315-527">從瀏覽器呼叫這兩個端點來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-527">Test the app by calling the two endpoints from a browser.</span></span> <span data-ttu-id="02315-528">例如：</span><span class="sxs-lookup"><span data-stu-id="02315-528">For example:</span></span>
+<span data-ttu-id="bb5f5-530">從瀏覽器呼叫這兩個端點來測試應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-530">Test the app by calling the two endpoints from a browser.</span></span> <span data-ttu-id="bb5f5-531">例如：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-531">For example:</span></span>
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
 
-<span data-ttu-id="02315-529">以下是呼叫 `GetTodoItems` 所產生的 HTTP 回應：</span><span class="sxs-lookup"><span data-stu-id="02315-529">The following HTTP response is produced by the call to `GetTodoItems`:</span></span>
+<span data-ttu-id="bb5f5-532">以下是呼叫 `GetTodoItems` 所產生的 HTTP 回應：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-532">The following HTTP response is produced by the call to `GetTodoItems`:</span></span>
 
 ```json
 [
@@ -754,84 +754,84 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 ]
 ```
 
-## <a name="routing-and-url-paths"></a><span data-ttu-id="02315-530">傳送和 URL 路徑</span><span class="sxs-lookup"><span data-stu-id="02315-530">Routing and URL paths</span></span>
+## <a name="routing-and-url-paths"></a><span data-ttu-id="bb5f5-533">傳送和 URL 路徑</span><span class="sxs-lookup"><span data-stu-id="bb5f5-533">Routing and URL paths</span></span>
 
-<span data-ttu-id="02315-531">[`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute)屬性代表回應 HTTP GET 要求的方法。</span><span class="sxs-lookup"><span data-stu-id="02315-531">The [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute) attribute denotes a method that responds to an HTTP GET request.</span></span> <span data-ttu-id="02315-532">每個方法的 URL 路徑的建構方式如下：</span><span class="sxs-lookup"><span data-stu-id="02315-532">The URL path for each method is constructed as follows:</span></span>
+<span data-ttu-id="bb5f5-534">[`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute)屬性代表回應 HTTP GET 要求的方法。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-534">The [`[HttpGet]`](/dotnet/api/microsoft.aspnetcore.mvc.httpgetattribute) attribute denotes a method that responds to an HTTP GET request.</span></span> <span data-ttu-id="bb5f5-535">每個方法的 URL 路徑的建構方式如下：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-535">The URL path for each method is constructed as follows:</span></span>
 
-* <span data-ttu-id="02315-533">一開始在控制器的 `Route` 屬性中使用範本字串：</span><span class="sxs-lookup"><span data-stu-id="02315-533">Start with the template string in the controller's `Route` attribute:</span></span>
+* <span data-ttu-id="bb5f5-536">一開始在控制器的 `Route` 屬性中使用範本字串：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-536">Start with the template string in the controller's `Route` attribute:</span></span>
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=TodoController&highlight=3)]
 
-* <span data-ttu-id="02315-534">以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。</span><span class="sxs-lookup"><span data-stu-id="02315-534">Replace `[controller]` with the name of the controller, which by convention is the controller class name minus the "Controller" suffix.</span></span> <span data-ttu-id="02315-535">在此範例中，控制器類別名稱是 **Todo**Controller，因此容器名稱是 "todo"。</span><span class="sxs-lookup"><span data-stu-id="02315-535">For this sample, the controller class name is **Todo**Controller, so the controller name is "todo".</span></span> <span data-ttu-id="02315-536">ASP.NET Core [路由](xref:mvc/controllers/routing)不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="02315-536">ASP.NET Core [routing](xref:mvc/controllers/routing) is case insensitive.</span></span>
-* <span data-ttu-id="02315-537">如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("products")]`)，請將其附加到路徑。</span><span class="sxs-lookup"><span data-stu-id="02315-537">If the `[HttpGet]` attribute has a route template (for example, `[HttpGet("products")]`), append that to the path.</span></span> <span data-ttu-id="02315-538">此範例不使用範本。</span><span class="sxs-lookup"><span data-stu-id="02315-538">This sample doesn't use a template.</span></span> <span data-ttu-id="02315-539">如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性路由](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。</span><span class="sxs-lookup"><span data-stu-id="02315-539">For more information, see [Attribute routing with Http[Verb] attributes](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).</span></span>
+* <span data-ttu-id="bb5f5-537">以控制器的名稱取代 `[controller]`，也就是將控制器類別名稱減去 "Controller" 字尾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-537">Replace `[controller]` with the name of the controller, which by convention is the controller class name minus the "Controller" suffix.</span></span> <span data-ttu-id="bb5f5-538">在此範例中，控制器類別名稱是 **Todo**Controller，因此容器名稱是 "todo"。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-538">For this sample, the controller class name is **Todo**Controller, so the controller name is "todo".</span></span> <span data-ttu-id="bb5f5-539">ASP.NET Core [路由](xref:mvc/controllers/routing)不區分大小寫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-539">ASP.NET Core [routing](xref:mvc/controllers/routing) is case insensitive.</span></span>
+* <span data-ttu-id="bb5f5-540">如果 `[HttpGet]` 屬性具有路由範本 (例如 `[HttpGet("products")]`)，請將其附加到路徑。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-540">If the `[HttpGet]` attribute has a route template (for example, `[HttpGet("products")]`), append that to the path.</span></span> <span data-ttu-id="bb5f5-541">此範例不使用範本。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-541">This sample doesn't use a template.</span></span> <span data-ttu-id="bb5f5-542">如需詳細資訊，請參閱[使用 Http[Verb] 屬性的屬性路由](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-542">For more information, see [Attribute routing with Http[Verb] attributes](xref:mvc/controllers/routing#attribute-routing-with-httpverb-attributes).</span></span>
 
-<span data-ttu-id="02315-540">在下列 `GetTodoItem` 方法中，`"{id}"` 是待辦事項唯一識別碼的預留位置變數。</span><span class="sxs-lookup"><span data-stu-id="02315-540">In the following `GetTodoItem` method, `"{id}"` is a placeholder variable for the unique identifier of the to-do item.</span></span> <span data-ttu-id="02315-541">在叫用 `GetTodoItem` 時，會將 URL 中的 `"{id}"` 值提供給方法的 `id` 參數。</span><span class="sxs-lookup"><span data-stu-id="02315-541">When `GetTodoItem` is invoked, the value of `"{id}"` in the URL is provided to the method in its`id` parameter.</span></span>
+<span data-ttu-id="bb5f5-543">在下列 `GetTodoItem` 方法中，`"{id}"` 是待辦事項唯一識別碼的預留位置變數。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-543">In the following `GetTodoItem` method, `"{id}"` is a placeholder variable for the unique identifier of the to-do item.</span></span> <span data-ttu-id="bb5f5-544">在叫用 `GetTodoItem` 時，會將 URL 中的 `"{id}"` 值提供給方法的 `id` 參數。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-544">When `GetTodoItem` is invoked, the value of `"{id}"` in the URL is provided to the method in its`id` parameter.</span></span>
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 
-## <a name="return-values"></a><span data-ttu-id="02315-542">傳回值</span><span class="sxs-lookup"><span data-stu-id="02315-542">Return values</span></span>
+## <a name="return-values"></a><span data-ttu-id="bb5f5-545">傳回值</span><span class="sxs-lookup"><span data-stu-id="bb5f5-545">Return values</span></span>
 
-<span data-ttu-id="02315-543">`GetTodoItems` 和 `GetTodoItem` 方法的傳回型別為 [ActionResult\<T> 類型](xref:web-api/action-return-types#actionresultt-type)。</span><span class="sxs-lookup"><span data-stu-id="02315-543">The return type of the `GetTodoItems` and `GetTodoItem` methods is [ActionResult\<T> type](xref:web-api/action-return-types#actionresultt-type).</span></span> <span data-ttu-id="02315-544">ASP.NET Core 會自動將物件序列化為 [JSON](https://www.json.org/)，並將 JSON 寫入至回應訊息的本文。</span><span class="sxs-lookup"><span data-stu-id="02315-544">ASP.NET Core automatically serializes the object to [JSON](https://www.json.org/) and writes the JSON into the body of the response message.</span></span> <span data-ttu-id="02315-545">此傳回型別的回應碼為 200，假設沒有任何未處理的例外狀況。</span><span class="sxs-lookup"><span data-stu-id="02315-545">The response code for this return type is 200, assuming there are no unhandled exceptions.</span></span> <span data-ttu-id="02315-546">未處理的例外狀況會轉譯成 5xx 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02315-546">Unhandled exceptions are translated into 5xx errors.</span></span>
+<span data-ttu-id="bb5f5-546">和方法的傳回型 `GetTodoItems` 別 `GetTodoItem` 是[ActionResult \<T> 型](xref:web-api/action-return-types#actionresultt-type)別。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-546">The return type of the `GetTodoItems` and `GetTodoItem` methods is [ActionResult\<T> type](xref:web-api/action-return-types#actionresultt-type).</span></span> <span data-ttu-id="bb5f5-547">ASP.NET Core 會自動將物件序列化為 [JSON](https://www.json.org/)，並將 JSON 寫入至回應訊息的本文。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-547">ASP.NET Core automatically serializes the object to [JSON](https://www.json.org/) and writes the JSON into the body of the response message.</span></span> <span data-ttu-id="bb5f5-548">此傳回型別的回應碼為 200，假設沒有任何未處理的例外狀況。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-548">The response code for this return type is 200, assuming there are no unhandled exceptions.</span></span> <span data-ttu-id="bb5f5-549">未處理的例外狀況會轉譯成 5xx 錯誤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-549">Unhandled exceptions are translated into 5xx errors.</span></span>
 
-<span data-ttu-id="02315-547">`ActionResult` 傳回型別可代表各種 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="02315-547">`ActionResult` return types can represent a wide range of HTTP status codes.</span></span> <span data-ttu-id="02315-548">例如，`GetTodoItem` 可傳回兩個不同的狀態值：</span><span class="sxs-lookup"><span data-stu-id="02315-548">For example, `GetTodoItem` can return two different status values:</span></span>
+<span data-ttu-id="bb5f5-550">`ActionResult` 傳回型別可代表各種 HTTP 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-550">`ActionResult` return types can represent a wide range of HTTP status codes.</span></span> <span data-ttu-id="bb5f5-551">例如，`GetTodoItem` 可傳回兩個不同的狀態值：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-551">For example, `GetTodoItem` can return two different status values:</span></span>
 
-* <span data-ttu-id="02315-549">如果沒有項目符合所要求的識別碼，方法會傳回 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) 錯誤碼。</span><span class="sxs-lookup"><span data-stu-id="02315-549">If no item matches the requested ID, the method returns a 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) error code.</span></span>
-* <span data-ttu-id="02315-550">否則，方法會傳回 200 與 JSON 回應本文。</span><span class="sxs-lookup"><span data-stu-id="02315-550">Otherwise, the method returns 200 with a JSON response body.</span></span> <span data-ttu-id="02315-551">傳回 `item` 會導致 HTTP 200 回應。</span><span class="sxs-lookup"><span data-stu-id="02315-551">Returning `item` results in an HTTP 200 response.</span></span>
+* <span data-ttu-id="bb5f5-552">如果沒有項目符合所要求的識別碼，方法會傳回 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) 錯誤碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-552">If no item matches the requested ID, the method returns a 404 [NotFound](/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound) error code.</span></span>
+* <span data-ttu-id="bb5f5-553">否則，方法會傳回 200 與 JSON 回應本文。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-553">Otherwise, the method returns 200 with a JSON response body.</span></span> <span data-ttu-id="bb5f5-554">傳回 `item` 會導致 HTTP 200 回應。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-554">Returning `item` results in an HTTP 200 response.</span></span>
 
-## <a name="test-the-gettodoitems-method"></a><span data-ttu-id="02315-552">測試 GetTodoItems 方法</span><span class="sxs-lookup"><span data-stu-id="02315-552">Test the GetTodoItems method</span></span>
+## <a name="test-the-gettodoitems-method"></a><span data-ttu-id="bb5f5-555">測試 GetTodoItems 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-555">Test the GetTodoItems method</span></span>
 
-<span data-ttu-id="02315-553">本教學課程使用 Postman 來測試 Web API。</span><span class="sxs-lookup"><span data-stu-id="02315-553">This tutorial uses Postman to test the web API.</span></span>
+<span data-ttu-id="bb5f5-556">本教學課程使用 Postman 來測試 Web API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-556">This tutorial uses Postman to test the web API.</span></span>
 
-* <span data-ttu-id="02315-554">安裝[Postman](https://www.getpostman.com/downloads/)。</span><span class="sxs-lookup"><span data-stu-id="02315-554">Install [Postman](https://www.getpostman.com/downloads/).</span></span>
-* <span data-ttu-id="02315-555">啟動 Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="02315-555">Start the web app.</span></span>
-* <span data-ttu-id="02315-556">啟動 Postman。</span><span class="sxs-lookup"><span data-stu-id="02315-556">Start Postman.</span></span>
-* <span data-ttu-id="02315-557">停用**SSL 憑證驗證**。</span><span class="sxs-lookup"><span data-stu-id="02315-557">Disable **SSL certificate verification**.</span></span>
+* <span data-ttu-id="bb5f5-557">安裝[Postman](https://www.getpostman.com/downloads/)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-557">Install [Postman](https://www.getpostman.com/downloads/).</span></span>
+* <span data-ttu-id="bb5f5-558">啟動 Web 應用程式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-558">Start the web app.</span></span>
+* <span data-ttu-id="bb5f5-559">啟動 Postman。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-559">Start Postman.</span></span>
+* <span data-ttu-id="bb5f5-560">停用**SSL 憑證驗證**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-560">Disable **SSL certificate verification**.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="02315-558">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="02315-558">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="bb5f5-561">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="bb5f5-561">Visual Studio</span></span>](#tab/visual-studio)
 
-* <span data-ttu-id="02315-559">從 [檔案]\*\* [設定]\*\* > \*\*\*\* ([一般]\*\*\*\* 索引標籤)，停用 [SSL 憑證驗證]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-559">From **File** > **Settings** (**General** tab), disable **SSL certificate verification**.</span></span>
+* <span data-ttu-id="bb5f5-562">從 [檔案]\*\* [設定]\*\* > \*\*\*\* ([一般]\*\*\*\* 索引標籤)，停用 [SSL 憑證驗證]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-562">From **File** > **Settings** (**General** tab), disable **SSL certificate verification**.</span></span>
 
-# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="02315-560">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="02315-560">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
+# <a name="visual-studio-code--visual-studio-for-mac"></a>[<span data-ttu-id="bb5f5-563">Visual Studio Code / Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="bb5f5-563">Visual Studio Code / Visual Studio for Mac</span></span>](#tab/visual-studio-code+visual-studio-mac)
 
-* <span data-ttu-id="02315-561">從 [ **Postman** > **喜好**設定] （**[一般**] 索引標籤），停用**SSL 憑證驗證**。</span><span class="sxs-lookup"><span data-stu-id="02315-561">From **Postman** > **Preferences** (**General** tab), disable **SSL certificate verification**.</span></span> <span data-ttu-id="02315-562">或者，選取扳手並選取 [設定]\*\*\*\*，然後停用 [SSL 憑證驗證]。</span><span class="sxs-lookup"><span data-stu-id="02315-562">Alternatively, select the wrench and select **Settings**, then disable the SSL certificate verification.</span></span>
+* <span data-ttu-id="bb5f5-564">從 [ **Postman**  >  **喜好**設定] （**[一般**] 索引標籤），停用**SSL 憑證驗證**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-564">From **Postman** > **Preferences** (**General** tab), disable **SSL certificate verification**.</span></span> <span data-ttu-id="bb5f5-565">或者，選取扳手並選取 [設定]\*\*\*\*，然後停用 [SSL 憑證驗證]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-565">Alternatively, select the wrench and select **Settings**, then disable the SSL certificate verification.</span></span>
 
 ---
   
 > [!WARNING]
-> <span data-ttu-id="02315-563">在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。</span><span class="sxs-lookup"><span data-stu-id="02315-563">Re-enable SSL certificate verification after testing the controller.</span></span>
+> <span data-ttu-id="bb5f5-566">在測試控制器之後，請重新啟用 [SSL certificate verification] \(SSL 憑證驗證\)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-566">Re-enable SSL certificate verification after testing the controller.</span></span>
 
-* <span data-ttu-id="02315-564">建立新的要求。</span><span class="sxs-lookup"><span data-stu-id="02315-564">Create a new request.</span></span>
-  * <span data-ttu-id="02315-565">將 HTTP 方法設定為 **GET**。</span><span class="sxs-lookup"><span data-stu-id="02315-565">Set the HTTP method to **GET**.</span></span>
-  * <span data-ttu-id="02315-566">將要求 URL 設定為 `https://localhost:<port>/api/todo`。</span><span class="sxs-lookup"><span data-stu-id="02315-566">Set the request URL to `https://localhost:<port>/api/todo`.</span></span> <span data-ttu-id="02315-567">例如： `https://localhost:5001/api/todo` 。</span><span class="sxs-lookup"><span data-stu-id="02315-567">For example, `https://localhost:5001/api/todo`.</span></span>
-* <span data-ttu-id="02315-568">在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02315-568">Set **Two pane view** in Postman.</span></span>
-* <span data-ttu-id="02315-569">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-569">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-567">建立新的要求。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-567">Create a new request.</span></span>
+  * <span data-ttu-id="bb5f5-568">將 HTTP 方法設定為 **GET**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-568">Set the HTTP method to **GET**.</span></span>
+  * <span data-ttu-id="bb5f5-569">將要求 URL 設定為 `https://localhost:<port>/api/todo`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-569">Set the request URL to `https://localhost:<port>/api/todo`.</span></span> <span data-ttu-id="bb5f5-570">例如： `https://localhost:5001/api/todo` 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-570">For example, `https://localhost:5001/api/todo`.</span></span>
+* <span data-ttu-id="bb5f5-571">在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-571">Set **Two pane view** in Postman.</span></span>
+* <span data-ttu-id="bb5f5-572">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-572">Select **Send**.</span></span>
 
 ![Postman 與 GET 要求](first-web-api/_static/2pv.png)
 
-## <a name="add-a-create-method"></a><span data-ttu-id="02315-571">新增 Create 方法</span><span class="sxs-lookup"><span data-stu-id="02315-571">Add a Create method</span></span>
+## <a name="add-a-create-method"></a><span data-ttu-id="bb5f5-574">新增 Create 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-574">Add a Create method</span></span>
 
-<span data-ttu-id="02315-572">在 *Controllers/TodoController.cs* 內部新增下列 `PostTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="02315-572">Add the following `PostTodoItem` method inside of *Controllers/TodoController.cs*:</span></span> 
+<span data-ttu-id="bb5f5-575">在 *Controllers/TodoController.cs* 內部新增下列 `PostTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-575">Add the following `PostTodoItem` method inside of *Controllers/TodoController.cs*:</span></span> 
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Create)]
 
-<span data-ttu-id="02315-573">上述程式碼是 HTTP POST 方法，如[`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute)屬性所示。</span><span class="sxs-lookup"><span data-stu-id="02315-573">The preceding code is an HTTP POST method, as indicated by the [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) attribute.</span></span> <span data-ttu-id="02315-574">該方法會從 HTTP 要求本文取得待辦事項的值。</span><span class="sxs-lookup"><span data-stu-id="02315-574">The method gets the value of the to-do item from the body of the HTTP request.</span></span>
+<span data-ttu-id="bb5f5-576">上述程式碼是 HTTP POST 方法，如屬性所示 [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) 。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-576">The preceding code is an HTTP POST method, as indicated by the [`[HttpPost]`](/dotnet/api/microsoft.aspnetcore.mvc.httppostattribute) attribute.</span></span> <span data-ttu-id="bb5f5-577">該方法會從 HTTP 要求本文取得待辦事項的值。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-577">The method gets the value of the to-do item from the body of the HTTP request.</span></span>
 
-<span data-ttu-id="02315-575">`CreatedAtAction` 方法：</span><span class="sxs-lookup"><span data-stu-id="02315-575">The `CreatedAtAction` method:</span></span>
+<span data-ttu-id="bb5f5-578">`CreatedAtAction` 方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-578">The `CreatedAtAction` method:</span></span>
 
-* <span data-ttu-id="02315-576">成功時會傳回 HTTP 201 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="02315-576">Returns an HTTP 201 status code, if successful.</span></span> <span data-ttu-id="02315-577">對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是 HTTP 201。</span><span class="sxs-lookup"><span data-stu-id="02315-577">HTTP 201 is the standard response for an HTTP POST method that creates a new resource on the server.</span></span>
-* <span data-ttu-id="02315-578">將 `Location` 標頭加到回應中。</span><span class="sxs-lookup"><span data-stu-id="02315-578">Adds a `Location` header to the response.</span></span> <span data-ttu-id="02315-579">`Location` 標頭指定新建立之待辦事項的 URI。</span><span class="sxs-lookup"><span data-stu-id="02315-579">The `Location` header specifies the URI of the newly created to-do item.</span></span> <span data-ttu-id="02315-580">如需詳細資訊，請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (已建立 10.2.2 201)。</span><span class="sxs-lookup"><span data-stu-id="02315-580">For more information, see [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</span></span>
-* <span data-ttu-id="02315-581">參考 `GetTodoItem` 動作以建立 `Location` 標頭的 URI。</span><span class="sxs-lookup"><span data-stu-id="02315-581">References the `GetTodoItem` action to create the `Location` header's URI.</span></span> <span data-ttu-id="02315-582">C# `nameof` 關鍵字是用來避免在 `CreatedAtAction` 呼叫中以硬式編碼方式寫入動作名稱。</span><span class="sxs-lookup"><span data-stu-id="02315-582">The C# `nameof` keyword is used to avoid hard-coding the action name in the `CreatedAtAction` call.</span></span>
+* <span data-ttu-id="bb5f5-579">成功時會傳回 HTTP 201 狀態碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-579">Returns an HTTP 201 status code, if successful.</span></span> <span data-ttu-id="bb5f5-580">對於可在伺服器上建立新資源的 HTTP POST 方法，其標準回應是 HTTP 201。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-580">HTTP 201 is the standard response for an HTTP POST method that creates a new resource on the server.</span></span>
+* <span data-ttu-id="bb5f5-581">將 `Location` 標頭加到回應中。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-581">Adds a `Location` header to the response.</span></span> <span data-ttu-id="bb5f5-582">`Location` 標頭指定新建立之待辦事項的 URI。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-582">The `Location` header specifies the URI of the newly created to-do item.</span></span> <span data-ttu-id="bb5f5-583">如需詳細資訊，請參閱 [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (已建立 10.2.2 201)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-583">For more information, see [10.2.2 201 Created](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</span></span>
+* <span data-ttu-id="bb5f5-584">參考 `GetTodoItem` 動作以建立 `Location` 標頭的 URI。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-584">References the `GetTodoItem` action to create the `Location` header's URI.</span></span> <span data-ttu-id="bb5f5-585">C# `nameof` 關鍵字是用來避免在 `CreatedAtAction` 呼叫中以硬式編碼方式寫入動作名稱。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-585">The C# `nameof` keyword is used to avoid hard-coding the action name in the `CreatedAtAction` call.</span></span>
 
   [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_GetByID&highlight=1-2)]
 
-### <a name="test-the-posttodoitem-method"></a><span data-ttu-id="02315-583">測試 PostTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-583">Test the PostTodoItem method</span></span>
+### <a name="test-the-posttodoitem-method"></a><span data-ttu-id="bb5f5-586">測試 PostTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-586">Test the PostTodoItem method</span></span>
 
-* <span data-ttu-id="02315-584">建置專案。</span><span class="sxs-lookup"><span data-stu-id="02315-584">Build the project.</span></span>
-* <span data-ttu-id="02315-585">在 Postman 中，將 HTTP 方法設定為 `POST`。</span><span class="sxs-lookup"><span data-stu-id="02315-585">In Postman, set the HTTP method to `POST`.</span></span>
-* <span data-ttu-id="02315-586">選取 [Body]\*\*\*\* \(本文\) 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="02315-586">Select the **Body** tab.</span></span>
-* <span data-ttu-id="02315-587">選取 [原始]\*\*\*\* 選項按鈕。</span><span class="sxs-lookup"><span data-stu-id="02315-587">Select the **raw** radio button.</span></span>
-* <span data-ttu-id="02315-588">將類型設定為 **JSON (application/json)**。</span><span class="sxs-lookup"><span data-stu-id="02315-588">Set the type to **JSON (application/json)**.</span></span>
-* <span data-ttu-id="02315-589">在要求本文中，針對待辦項目輸入 JSON：</span><span class="sxs-lookup"><span data-stu-id="02315-589">In the request body enter JSON for a to-do item:</span></span>
+* <span data-ttu-id="bb5f5-587">建置專案。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-587">Build the project.</span></span>
+* <span data-ttu-id="bb5f5-588">在 Postman 中，將 HTTP 方法設定為 `POST`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-588">In Postman, set the HTTP method to `POST`.</span></span>
+* <span data-ttu-id="bb5f5-589">選取 [Body]\*\*\*\* \(本文\) 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-589">Select the **Body** tab.</span></span>
+* <span data-ttu-id="bb5f5-590">選取 [原始]\*\*\*\* 選項按鈕。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-590">Select the **raw** radio button.</span></span>
+* <span data-ttu-id="bb5f5-591">將類型設定為 **JSON (application/json)**。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-591">Set the type to **JSON (application/json)**.</span></span>
+* <span data-ttu-id="bb5f5-592">在要求本文中，針對待辦項目輸入 JSON：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-592">In the request body enter JSON for a to-do item:</span></span>
 
     ```json
     {
@@ -840,38 +840,38 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
     }
     ```
 
-* <span data-ttu-id="02315-590">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-590">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-593">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-593">Select **Send**.</span></span>
 
   ![Postman 與建立要求](first-web-api/_static/create.png)
 
-  <span data-ttu-id="02315-592">如果您收到 405「不允許的方法」錯誤，可能是由於新增 `PostTodoItem` 方法之後未編譯專案所導致。</span><span class="sxs-lookup"><span data-stu-id="02315-592">If you get a 405 Method Not Allowed error, it's probably the result of not compiling the project after adding the `PostTodoItem` method.</span></span>
+  <span data-ttu-id="bb5f5-595">如果您收到 405「不允許的方法」錯誤，可能是由於新增 `PostTodoItem` 方法之後未編譯專案所導致。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-595">If you get a 405 Method Not Allowed error, it's probably the result of not compiling the project after adding the `PostTodoItem` method.</span></span>
 
-### <a name="test-the-location-header-uri"></a><span data-ttu-id="02315-593">測試位置標頭 URI</span><span class="sxs-lookup"><span data-stu-id="02315-593">Test the location header URI</span></span>
+### <a name="test-the-location-header-uri"></a><span data-ttu-id="bb5f5-596">測試位置標頭 URI</span><span class="sxs-lookup"><span data-stu-id="bb5f5-596">Test the location header URI</span></span>
 
-* <span data-ttu-id="02315-594">在 [回應]\*\*\*\* 窗格中選取 [標頭]\*\*\*\* 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="02315-594">Select the **Headers** tab in the **Response** pane.</span></span>
-* <span data-ttu-id="02315-595">複製 [位置]\*\*\*\* 標頭值：</span><span class="sxs-lookup"><span data-stu-id="02315-595">Copy the **Location** header value:</span></span>
+* <span data-ttu-id="bb5f5-597">在 [回應]\*\*\*\* 窗格中選取 [標頭]\*\*\*\* 索引標籤。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-597">Select the **Headers** tab in the **Response** pane.</span></span>
+* <span data-ttu-id="bb5f5-598">複製 [位置]\*\*\*\* 標頭值：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-598">Copy the **Location** header value:</span></span>
 
   ![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/pmc2.png)
 
-* <span data-ttu-id="02315-597">將方法設定為 GET。</span><span class="sxs-lookup"><span data-stu-id="02315-597">Set the method to GET.</span></span>
-* <span data-ttu-id="02315-598">貼上`https://localhost:5001/api/Todo/2`URI （例如）。</span><span class="sxs-lookup"><span data-stu-id="02315-598">Paste the URI (for example, `https://localhost:5001/api/Todo/2`).</span></span>
-* <span data-ttu-id="02315-599">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-599">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-600">將方法設定為 GET。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-600">Set the method to GET.</span></span>
+* <span data-ttu-id="bb5f5-601">貼上 URI （例如 `https://localhost:5001/api/Todo/2` ）。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-601">Paste the URI (for example, `https://localhost:5001/api/Todo/2`).</span></span>
+* <span data-ttu-id="bb5f5-602">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-602">Select **Send**.</span></span>
 
-## <a name="add-a-puttodoitem-method"></a><span data-ttu-id="02315-600">新增 PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-600">Add a PutTodoItem method</span></span>
+## <a name="add-a-puttodoitem-method"></a><span data-ttu-id="bb5f5-603">新增 PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-603">Add a PutTodoItem method</span></span>
 
-<span data-ttu-id="02315-601">請新增下列 `PutTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="02315-601">Add the following `PutTodoItem` method:</span></span>
+<span data-ttu-id="bb5f5-604">請新增下列 `PutTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-604">Add the following `PutTodoItem` method:</span></span>
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
-<span data-ttu-id="02315-602">`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。</span><span class="sxs-lookup"><span data-stu-id="02315-602">`PutTodoItem` is similar to `PostTodoItem`, except it uses HTTP PUT.</span></span> <span data-ttu-id="02315-603">回應為[204 （沒有內容）](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。</span><span class="sxs-lookup"><span data-stu-id="02315-603">The response is [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).</span></span> <span data-ttu-id="02315-604">根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。</span><span class="sxs-lookup"><span data-stu-id="02315-604">According to the HTTP specification, a PUT request requires the client to send the entire updated entity, not just the changes.</span></span> <span data-ttu-id="02315-605">若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。</span><span class="sxs-lookup"><span data-stu-id="02315-605">To support partial updates, use [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).</span></span>
+<span data-ttu-id="bb5f5-605">`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-605">`PutTodoItem` is similar to `PostTodoItem`, except it uses HTTP PUT.</span></span> <span data-ttu-id="bb5f5-606">回應為[204 （沒有內容）](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-606">The response is [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).</span></span> <span data-ttu-id="bb5f5-607">根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-607">According to the HTTP specification, a PUT request requires the client to send the entire updated entity, not just the changes.</span></span> <span data-ttu-id="bb5f5-608">若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-608">To support partial updates, use [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute).</span></span>
 
-<span data-ttu-id="02315-606">如果在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="02315-606">If you get an error calling `PutTodoItem`, call `GET` to ensure there's an item in the database.</span></span>
+<span data-ttu-id="bb5f5-609">如果在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-609">If you get an error calling `PutTodoItem`, call `GET` to ensure there's an item in the database.</span></span>
 
-### <a name="test-the-puttodoitem-method"></a><span data-ttu-id="02315-607">測試 PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-607">Test the PutTodoItem method</span></span>
+### <a name="test-the-puttodoitem-method"></a><span data-ttu-id="bb5f5-610">測試 PutTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-610">Test the PutTodoItem method</span></span>
 
-<span data-ttu-id="02315-608">這個範例會使用必須在每次啟動應用程式時初始化的記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="02315-608">This sample uses an in-memory database that must be initialized each time the app is started.</span></span> <span data-ttu-id="02315-609">資料庫中必須有項目，您才能進行 PUT 呼叫。</span><span class="sxs-lookup"><span data-stu-id="02315-609">There must be an item in the database before you make a PUT call.</span></span> <span data-ttu-id="02315-610">在發出 PUT 呼叫之前，請先呼叫 GET 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="02315-610">Call GET to insure there's an item in the database before making a PUT call.</span></span>
+<span data-ttu-id="bb5f5-611">這個範例會使用必須在每次啟動應用程式時初始化的記憶體內部資料庫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-611">This sample uses an in-memory database that must be initialized each time the app is started.</span></span> <span data-ttu-id="bb5f5-612">資料庫中必須有項目，您才能進行 PUT 呼叫。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-612">There must be an item in the database before you make a PUT call.</span></span> <span data-ttu-id="bb5f5-613">在發出 PUT 呼叫之前，請先呼叫 GET 以確保資料庫中有項目。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-613">Call GET to insure there's an item in the database before making a PUT call.</span></span>
 
-<span data-ttu-id="02315-611">更新識別碼為 1 的待辦事項，並將其名稱設定為 "feed fish"：</span><span class="sxs-lookup"><span data-stu-id="02315-611">Update the to-do item that has id = 1 and set its name to "feed fish":</span></span>
+<span data-ttu-id="bb5f5-614">更新識別碼為 1 的待辦事項，並將其名稱設定為 "feed fish"：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-614">Update the to-do item that has id = 1 and set its name to "feed fish":</span></span>
 
 ```json
   {
@@ -881,74 +881,74 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
   }
 ```
 
-<span data-ttu-id="02315-612">下圖顯示 Postman 更新：</span><span class="sxs-lookup"><span data-stu-id="02315-612">The following image shows the Postman update:</span></span>
+<span data-ttu-id="bb5f5-615">下圖顯示 Postman 更新：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-615">The following image shows the Postman update:</span></span>
 
 ![顯示「204 (沒有內容) 回應」的 Postman 主控台](first-web-api/_static/pmcput.png)
 
-## <a name="add-a-deletetodoitem-method"></a><span data-ttu-id="02315-614">新增 DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-614">Add a DeleteTodoItem method</span></span>
+## <a name="add-a-deletetodoitem-method"></a><span data-ttu-id="bb5f5-617">新增 DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-617">Add a DeleteTodoItem method</span></span>
 
-<span data-ttu-id="02315-615">請新增下列 `DeleteTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="02315-615">Add the following `DeleteTodoItem` method:</span></span>
+<span data-ttu-id="bb5f5-618">請新增下列 `DeleteTodoItem` 方法：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-618">Add the following `DeleteTodoItem` method:</span></span>
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Delete)]
 
-<span data-ttu-id="02315-616">`DeleteTodoItem` 回應是 [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) \(204 (沒有內容)\)。</span><span class="sxs-lookup"><span data-stu-id="02315-616">The `DeleteTodoItem` response is [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).</span></span>
+<span data-ttu-id="bb5f5-619">`DeleteTodoItem` 回應是 [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) \(204 (沒有內容)\)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-619">The `DeleteTodoItem` response is [204 (No Content)](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html).</span></span>
 
-### <a name="test-the-deletetodoitem-method"></a><span data-ttu-id="02315-617">測試 DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="02315-617">Test the DeleteTodoItem method</span></span>
+### <a name="test-the-deletetodoitem-method"></a><span data-ttu-id="bb5f5-620">測試 DeleteTodoItem 方法</span><span class="sxs-lookup"><span data-stu-id="bb5f5-620">Test the DeleteTodoItem method</span></span>
 
-<span data-ttu-id="02315-618">使用 Postman 刪除待辦事項：</span><span class="sxs-lookup"><span data-stu-id="02315-618">Use Postman to delete a to-do item:</span></span>
+<span data-ttu-id="bb5f5-621">使用 Postman 刪除待辦事項：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-621">Use Postman to delete a to-do item:</span></span>
 
-* <span data-ttu-id="02315-619">將方法設定為 `DELETE`。</span><span class="sxs-lookup"><span data-stu-id="02315-619">Set the method to `DELETE`.</span></span>
-* <span data-ttu-id="02315-620">設定要刪除之物件的 URI （例如， `https://localhost:5001/api/todo/1`）。</span><span class="sxs-lookup"><span data-stu-id="02315-620">Set the URI of the object to delete (for example, `https://localhost:5001/api/todo/1`).</span></span>
-* <span data-ttu-id="02315-621">選取 [**傳送**]。</span><span class="sxs-lookup"><span data-stu-id="02315-621">Select **Send**.</span></span>
+* <span data-ttu-id="bb5f5-622">將方法設定為 `DELETE`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-622">Set the method to `DELETE`.</span></span>
+* <span data-ttu-id="bb5f5-623">設定要刪除之物件的 URI （例如， `https://localhost:5001/api/todo/1` ）。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-623">Set the URI of the object to delete (for example, `https://localhost:5001/api/todo/1`).</span></span>
+* <span data-ttu-id="bb5f5-624">選取 [傳送]。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-624">Select **Send**.</span></span>
 
-<span data-ttu-id="02315-622">範例應用程式可讓您刪除所有項目。</span><span class="sxs-lookup"><span data-stu-id="02315-622">The sample app allows you to delete all the items.</span></span> <span data-ttu-id="02315-623">但刪除最後一個項目之後，模型類別建構函式會在下次呼叫 API 時建立新的項目。</span><span class="sxs-lookup"><span data-stu-id="02315-623">However, when the last item is deleted, a new one is created by the model class constructor the next time the API is called.</span></span>
+<span data-ttu-id="bb5f5-625">範例應用程式可讓您刪除所有項目。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-625">The sample app allows you to delete all the items.</span></span> <span data-ttu-id="bb5f5-626">但刪除最後一個項目之後，模型類別建構函式會在下次呼叫 API 時建立新的項目。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-626">However, when the last item is deleted, a new one is created by the model class constructor the next time the API is called.</span></span>
 
-## <a name="call-the-web-api-with-javascript"></a><span data-ttu-id="02315-624">使用 JavaScript 呼叫 Web API</span><span class="sxs-lookup"><span data-stu-id="02315-624">Call the web API with JavaScript</span></span>
+## <a name="call-the-web-api-with-javascript"></a><span data-ttu-id="bb5f5-627">使用 JavaScript 呼叫 Web API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-627">Call the web API with JavaScript</span></span>
 
-<span data-ttu-id="02315-625">在此節中，將會新增 HTML 網頁，以使用 JavaScript 來呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="02315-625">In this section, an HTML page is added that uses JavaScript to call the web API.</span></span> <span data-ttu-id="02315-626">jQuery 會起始要求。</span><span class="sxs-lookup"><span data-stu-id="02315-626">jQuery initiates the request.</span></span> <span data-ttu-id="02315-627">JavaScript 會使用來自 Web API 回應的詳細資料來更新頁面。</span><span class="sxs-lookup"><span data-stu-id="02315-627">JavaScript updates the page with the details from the web API's response.</span></span>
+<span data-ttu-id="bb5f5-628">在此節中，將會新增 HTML 網頁，以使用 JavaScript 來呼叫 Web API。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-628">In this section, an HTML page is added that uses JavaScript to call the web API.</span></span> <span data-ttu-id="bb5f5-629">jQuery 會起始要求。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-629">jQuery initiates the request.</span></span> <span data-ttu-id="bb5f5-630">JavaScript 會使用來自 Web API 回應的詳細資料來更新頁面。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-630">JavaScript updates the page with the details from the web API's response.</span></span>
 
-<span data-ttu-id="02315-628">藉由使用下列反白顯示的程式碼更新 *Startup.cs*，來設定應用程式[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：</span><span class="sxs-lookup"><span data-stu-id="02315-628">Configure the app to [serve static files](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) and [enable default file mapping](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) by updating *Startup.cs* with the following highlighted code:</span></span>
+<span data-ttu-id="bb5f5-631">藉由使用下列反白顯示的程式碼更新 *Startup.cs*，來設定應用程式[提供靜態檔案](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)並[啟用預設檔案對應](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_)：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-631">Configure the app to [serve static files](/dotnet/api/microsoft.aspnetcore.builder.staticfileextensions.usestaticfiles#Microsoft_AspNetCore_Builder_StaticFileExtensions_UseStaticFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) and [enable default file mapping](/dotnet/api/microsoft.aspnetcore.builder.defaultfilesextensions.usedefaultfiles#Microsoft_AspNetCore_Builder_DefaultFilesExtensions_UseDefaultFiles_Microsoft_AspNetCore_Builder_IApplicationBuilder_) by updating *Startup.cs* with the following highlighted code:</span></span>
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Startup.cs?highlight=14-15&name=snippet_configure)]
 
-<span data-ttu-id="02315-629">在專案目錄中建立 *wwwroot* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="02315-629">Create a *wwwroot* folder in the project directory.</span></span>
+<span data-ttu-id="bb5f5-632">在專案目錄中建立 *wwwroot* 資料夾。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-632">Create a *wwwroot* folder in the project directory.</span></span>
 
-<span data-ttu-id="02315-630">將名為 *index.html* 的 HTML 檔案新增至 *wwwroot* 目錄。</span><span class="sxs-lookup"><span data-stu-id="02315-630">Add an HTML file named *index.html* to the *wwwroot* directory.</span></span> <span data-ttu-id="02315-631">將其內容取代為下列標記：</span><span class="sxs-lookup"><span data-stu-id="02315-631">Replace its contents with the following markup:</span></span>
+<span data-ttu-id="bb5f5-633">將名為 *index.html* 的 HTML 檔案新增至 *wwwroot* 目錄。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-633">Add an HTML file named *index.html* to the *wwwroot* directory.</span></span> <span data-ttu-id="bb5f5-634">將其內容取代為下列標記：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-634">Replace its contents with the following markup:</span></span>
 
 [!code-html[](first-web-api/samples/2.2/TodoApi/wwwroot/index.html)]
 
-<span data-ttu-id="02315-632">將名為 *site.js* 的 JavaScript 檔案新增至 *wwwroot* 目錄。</span><span class="sxs-lookup"><span data-stu-id="02315-632">Add a JavaScript file named *site.js* to the *wwwroot* directory.</span></span> <span data-ttu-id="02315-633">以下列程式碼取代其內容：</span><span class="sxs-lookup"><span data-stu-id="02315-633">Replace its contents with the following code:</span></span>
+<span data-ttu-id="bb5f5-635">將名為 *site.js* 的 JavaScript 檔案新增至 *wwwroot* 目錄。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-635">Add a JavaScript file named *site.js* to the *wwwroot* directory.</span></span> <span data-ttu-id="bb5f5-636">以下列程式碼取代其內容：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-636">Replace its contents with the following code:</span></span>
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_SiteJs)]
 
-<span data-ttu-id="02315-634">若要在本機測試 HTML 網頁，可能需要變更 ASP.NET Core 專案的啟動設定：</span><span class="sxs-lookup"><span data-stu-id="02315-634">A change to the ASP.NET Core project's launch settings may be required to test the HTML page locally:</span></span>
+<span data-ttu-id="bb5f5-637">若要在本機測試 HTML 網頁，可能需要變更 ASP.NET Core 專案的啟動設定：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-637">A change to the ASP.NET Core project's launch settings may be required to test the HTML page locally:</span></span>
 
-* <span data-ttu-id="02315-635">開啟 *Properties\launchSettings.json*。</span><span class="sxs-lookup"><span data-stu-id="02315-635">Open *Properties\launchSettings.json*.</span></span>
-* <span data-ttu-id="02315-636">請移除`launchUrl`屬性，以強制應用程式在*index. html*&mdash;開啟專案的預設檔案。</span><span class="sxs-lookup"><span data-stu-id="02315-636">Remove the `launchUrl` property to force the app to open at *index.html*&mdash;the project's default file.</span></span>
+* <span data-ttu-id="bb5f5-638">開啟 *Properties\launchSettings.json*。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-638">Open *Properties\launchSettings.json*.</span></span>
+* <span data-ttu-id="bb5f5-639">請移除 `launchUrl` 屬性，以強制應用程式在*index. html*開啟 &mdash; 專案的預設檔案。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-639">Remove the `launchUrl` property to force the app to open at *index.html*&mdash;the project's default file.</span></span>
 
-<span data-ttu-id="02315-637">此範例會呼叫 Web API 的所有 CRUD 方法。</span><span class="sxs-lookup"><span data-stu-id="02315-637">This sample calls all of the CRUD methods of the web API.</span></span> <span data-ttu-id="02315-638">以下是關於呼叫 API 的說明。</span><span class="sxs-lookup"><span data-stu-id="02315-638">Following are explanations of the calls to the API.</span></span>
+<span data-ttu-id="bb5f5-640">此範例會呼叫 Web API 的所有 CRUD 方法。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-640">This sample calls all of the CRUD methods of the web API.</span></span> <span data-ttu-id="bb5f5-641">以下是關於呼叫 API 的說明。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-641">Following are explanations of the calls to the API.</span></span>
 
-### <a name="get-a-list-of-to-do-items"></a><span data-ttu-id="02315-639">取得待辦事項的清單</span><span class="sxs-lookup"><span data-stu-id="02315-639">Get a list of to-do items</span></span>
+### <a name="get-a-list-of-to-do-items"></a><span data-ttu-id="bb5f5-642">取得待辦事項的清單</span><span class="sxs-lookup"><span data-stu-id="bb5f5-642">Get a list of to-do items</span></span>
 
-<span data-ttu-id="02315-640">jQuery 會將 HTTP GET 要求傳送至 Web API，這會傳回代表待辦事項陣列的 JSON。</span><span class="sxs-lookup"><span data-stu-id="02315-640">jQuery sends an HTTP GET request to the web API, which returns JSON representing an array of to-do items.</span></span> <span data-ttu-id="02315-641">如果要求成功，則會叫用 `success` 回呼函式。</span><span class="sxs-lookup"><span data-stu-id="02315-641">The `success` callback function is invoked if the request succeeds.</span></span> <span data-ttu-id="02315-642">在回呼中，DOM 已使用待辦事項資訊進行更新。</span><span class="sxs-lookup"><span data-stu-id="02315-642">In the callback, the DOM is updated with the to-do information.</span></span>
+<span data-ttu-id="bb5f5-643">jQuery 會將 HTTP GET 要求傳送至 Web API，這會傳回代表待辦事項陣列的 JSON。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-643">jQuery sends an HTTP GET request to the web API, which returns JSON representing an array of to-do items.</span></span> <span data-ttu-id="bb5f5-644">如果要求成功，則會叫用 `success` 回呼函式。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-644">The `success` callback function is invoked if the request succeeds.</span></span> <span data-ttu-id="bb5f5-645">在回呼中，DOM 已使用待辦事項資訊進行更新。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-645">In the callback, the DOM is updated with the to-do information.</span></span>
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_GetData)]
 
-### <a name="add-a-to-do-item"></a><span data-ttu-id="02315-643">新增待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-643">Add a to-do item</span></span>
+### <a name="add-a-to-do-item"></a><span data-ttu-id="bb5f5-646">新增待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-646">Add a to-do item</span></span>
 
-<span data-ttu-id="02315-644">jQuery 會傳送 HTTP POST 要求和要求主體中的待辦事項。</span><span class="sxs-lookup"><span data-stu-id="02315-644">jQuery sends an HTTP POST request with the to-do item in the request body.</span></span> <span data-ttu-id="02315-645">`accepts` 和 `contentType` 選項都設定為 `application/json`，以指定接收和傳送的媒體類型。</span><span class="sxs-lookup"><span data-stu-id="02315-645">The `accepts` and `contentType` options are set to `application/json` to specify the media type being received and sent.</span></span> <span data-ttu-id="02315-646">待辦事項會使用 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 轉換成 JSON。</span><span class="sxs-lookup"><span data-stu-id="02315-646">The to-do item is converted to JSON by using [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).</span></span> <span data-ttu-id="02315-647">當 API 傳回成功狀態碼時，會叫用 `getData` 函式來更新 HTML 資料表。</span><span class="sxs-lookup"><span data-stu-id="02315-647">When the API returns a successful status code, the `getData` function is invoked to update the HTML table.</span></span>
+<span data-ttu-id="bb5f5-647">jQuery 會傳送 HTTP POST 要求和要求主體中的待辦事項。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-647">jQuery sends an HTTP POST request with the to-do item in the request body.</span></span> <span data-ttu-id="bb5f5-648">`accepts` 和 `contentType` 選項都設定為 `application/json`，以指定接收和傳送的媒體類型。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-648">The `accepts` and `contentType` options are set to `application/json` to specify the media type being received and sent.</span></span> <span data-ttu-id="bb5f5-649">待辦事項會使用 [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify) 轉換成 JSON。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-649">The to-do item is converted to JSON by using [JSON.stringify](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify).</span></span> <span data-ttu-id="bb5f5-650">當 API 傳回成功狀態碼時，會叫用 `getData` 函式來更新 HTML 資料表。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-650">When the API returns a successful status code, the `getData` function is invoked to update the HTML table.</span></span>
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AddItem)]
 
-### <a name="update-a-to-do-item"></a><span data-ttu-id="02315-648">更新待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-648">Update a to-do item</span></span>
+### <a name="update-a-to-do-item"></a><span data-ttu-id="bb5f5-651">更新待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-651">Update a to-do item</span></span>
 
-<span data-ttu-id="02315-649">更新待辦事項類似於新增待辦事項。</span><span class="sxs-lookup"><span data-stu-id="02315-649">Updating a to-do item is similar to adding one.</span></span> <span data-ttu-id="02315-650">`url` 會變更為新增項目的唯一識別碼，而 `type` 是 `PUT`。</span><span class="sxs-lookup"><span data-stu-id="02315-650">The `url` changes to add the unique identifier of the item, and the `type` is `PUT`.</span></span>
+<span data-ttu-id="bb5f5-652">更新待辦事項類似於新增待辦事項。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-652">Updating a to-do item is similar to adding one.</span></span> <span data-ttu-id="bb5f5-653">`url` 會變更為新增項目的唯一識別碼，而 `type` 是 `PUT`。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-653">The `url` changes to add the unique identifier of the item, and the `type` is `PUT`.</span></span>
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AjaxPut)]
 
-### <a name="delete-a-to-do-item"></a><span data-ttu-id="02315-651">刪除待辦事項</span><span class="sxs-lookup"><span data-stu-id="02315-651">Delete a to-do item</span></span>
+### <a name="delete-a-to-do-item"></a><span data-ttu-id="bb5f5-654">刪除待辦事項</span><span class="sxs-lookup"><span data-stu-id="bb5f5-654">Delete a to-do item</span></span>
 
-<span data-ttu-id="02315-652">刪除待辦事項的達成方法是將 AJAX 呼叫的 `type` 設定為 `DELETE`，並在 URL 中指定項目的唯一識別碼。</span><span class="sxs-lookup"><span data-stu-id="02315-652">Deleting a to-do item is accomplished by setting the `type` on the AJAX call to `DELETE` and specifying the item's unique identifier in the URL.</span></span>
+<span data-ttu-id="bb5f5-655">刪除待辦事項的達成方法是將 AJAX 呼叫的 `type` 設定為 `DELETE`，並在 URL 中指定項目的唯一識別碼。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-655">Deleting a to-do item is accomplished by setting the `type` on the AJAX call to `DELETE` and specifying the item's unique identifier in the URL.</span></span>
 
 [!code-javascript[](first-web-api/samples/2.2/TodoApi/wwwroot/site.js?name=snippet_AjaxDelete)]
 
@@ -956,15 +956,15 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 <a name="auth"></a>
 
-## <a name="add-authentication-support-to-a-web-api"></a><span data-ttu-id="02315-653">將驗證支援新增至 Web API</span><span class="sxs-lookup"><span data-stu-id="02315-653">Add authentication support to a web API</span></span>
+## <a name="add-authentication-support-to-a-web-api"></a><span data-ttu-id="bb5f5-656">將驗證支援新增至 Web API</span><span class="sxs-lookup"><span data-stu-id="bb5f5-656">Add authentication support to a web API</span></span>
 
 [!INCLUDE[](~/includes/IdentityServer4.md)]
 
-## <a name="additional-resources"></a><span data-ttu-id="02315-654">其他資源</span><span class="sxs-lookup"><span data-stu-id="02315-654">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="bb5f5-657">其他資源</span><span class="sxs-lookup"><span data-stu-id="bb5f5-657">Additional resources</span></span>
 
-<span data-ttu-id="02315-655">[檢視或下載本教學課程的範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples)。</span><span class="sxs-lookup"><span data-stu-id="02315-655">[View or download sample code for this tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples).</span></span> <span data-ttu-id="02315-656">請參閱[如何下載](xref:index#how-to-download-a-sample)。</span><span class="sxs-lookup"><span data-stu-id="02315-656">See [how to download](xref:index#how-to-download-a-sample).</span></span>
+<span data-ttu-id="bb5f5-658">[檢視或下載本教學課程的範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-658">[View or download sample code for this tutorial](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/first-web-api/samples).</span></span> <span data-ttu-id="bb5f5-659">請參閱[如何下載](xref:index#how-to-download-a-sample)。</span><span class="sxs-lookup"><span data-stu-id="bb5f5-659">See [how to download](xref:index#how-to-download-a-sample).</span></span>
 
-<span data-ttu-id="02315-657">如需詳細資訊，請參閱下列資源：</span><span class="sxs-lookup"><span data-stu-id="02315-657">For more information, see the following resources:</span></span>
+<span data-ttu-id="bb5f5-660">如需詳細資訊，請參閱下列資源：</span><span class="sxs-lookup"><span data-stu-id="bb5f5-660">For more information, see the following resources:</span></span>
 
 * <xref:web-api/index>
 * <xref:tutorials/web-api-help-pages-using-swagger>
@@ -973,4 +973,4 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * <xref:web-api/action-return-types>
 * <xref:host-and-deploy/azure-apps/index>
 * <xref:host-and-deploy/index>
-* [<span data-ttu-id="02315-658">本教學課程的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="02315-658">YouTube version of this tutorial</span></span>](https://www.youtube.com/watch?v=TTkhEyGBfAk)
+* [<span data-ttu-id="bb5f5-661">本教學課程的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="bb5f5-661">YouTube version of this tutorial</span></span>](https://www.youtube.com/watch?v=TTkhEyGBfAk)

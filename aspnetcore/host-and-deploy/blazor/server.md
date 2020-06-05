@@ -1,58 +1,70 @@
 ---
-<span data-ttu-id="e776d-101">標題： ' 裝載和部署 ASP.NET Core Blazor 伺服器 ' 作者： guardrex 描述： ' 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應用程式。</span><span class="sxs-lookup"><span data-stu-id="e776d-101">title: 'Host and deploy ASP.NET Core Blazor Server' author: guardrex description: 'Learn how to host and deploy a Blazor Server app using ASP.NET Core.'</span></span>
-<span data-ttu-id="e776d-102">monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 06/04/2020 no-loc：</span><span class="sxs-lookup"><span data-stu-id="e776d-102">monikerRange: '>= aspnetcore-3.1' ms.author: riande ms.custom: mvc ms.date: 06/04/2020 no-loc:</span></span>
-- <span data-ttu-id="e776d-103">'Blazor'</span><span class="sxs-lookup"><span data-stu-id="e776d-103">'Blazor'</span></span>
-- <span data-ttu-id="e776d-104">'Identity'</span><span class="sxs-lookup"><span data-stu-id="e776d-104">'Identity'</span></span>
-- <span data-ttu-id="e776d-105">'Let's Encrypt'</span><span class="sxs-lookup"><span data-stu-id="e776d-105">'Let's Encrypt'</span></span>
-- <span data-ttu-id="e776d-106">'Razor'</span><span class="sxs-lookup"><span data-stu-id="e776d-106">'Razor'</span></span>
-- <span data-ttu-id="e776d-107">' SignalR ' uid：主機和部署/blazor/伺服器</span><span class="sxs-lookup"><span data-stu-id="e776d-107">'SignalR' uid: host-and-deploy/blazor/server</span></span>
-
+title: 裝載和部署 ASP.NET Core Blazor 伺服器
+author: guardrex
+description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應用程式。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 06/04/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: host-and-deploy/blazor/server
+ms.openlocfilehash: 8c06d3a4d0d75a3e2fd9f699af38a23833fa8bce
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84419940"
 ---
-# <a name="host-and-deploy-blazor-server"></a><span data-ttu-id="e776d-108">裝載和部署 Blazor 伺服器</span><span class="sxs-lookup"><span data-stu-id="e776d-108">Host and deploy Blazor Server</span></span>
+# <a name="host-and-deploy-blazor-server"></a><span data-ttu-id="579ea-103">裝載和部署 Blazor 伺服器</span><span class="sxs-lookup"><span data-stu-id="579ea-103">Host and deploy Blazor Server</span></span>
 
-<span data-ttu-id="e776d-109">作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="e776d-109">By [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), and [Daniel Roth](https://github.com/danroth27)</span></span>
+<span data-ttu-id="579ea-104">作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)</span><span class="sxs-lookup"><span data-stu-id="579ea-104">By [Luke Latham](https://github.com/guardrex), [Rainer Stropek](https://www.timecockpit.com), and [Daniel Roth](https://github.com/danroth27)</span></span>
 
-## <a name="host-configuration-values"></a><span data-ttu-id="e776d-110">主機組態值</span><span class="sxs-lookup"><span data-stu-id="e776d-110">Host configuration values</span></span>
+## <a name="host-configuration-values"></a><span data-ttu-id="579ea-105">主機組態值</span><span class="sxs-lookup"><span data-stu-id="579ea-105">Host configuration values</span></span>
 
-<span data-ttu-id="e776d-111">[ Blazor 伺服器應用程式](xref:blazor/hosting-models#blazor-server)可以接受[一般主機設定值](xref:fundamentals/host/generic-host#host-configuration)。</span><span class="sxs-lookup"><span data-stu-id="e776d-111">[Blazor Server apps](xref:blazor/hosting-models#blazor-server) can accept [Generic Host configuration values](xref:fundamentals/host/generic-host#host-configuration).</span></span>
+<span data-ttu-id="579ea-106">[ Blazor 伺服器應用程式](xref:blazor/hosting-models#blazor-server)可以接受[一般主機設定值](xref:fundamentals/host/generic-host#host-configuration)。</span><span class="sxs-lookup"><span data-stu-id="579ea-106">[Blazor Server apps](xref:blazor/hosting-models#blazor-server) can accept [Generic Host configuration values](xref:fundamentals/host/generic-host#host-configuration).</span></span>
 
-## <a name="deployment"></a><span data-ttu-id="e776d-112">部署</span><span class="sxs-lookup"><span data-stu-id="e776d-112">Deployment</span></span>
+## <a name="deployment"></a><span data-ttu-id="579ea-107">部署</span><span class="sxs-lookup"><span data-stu-id="579ea-107">Deployment</span></span>
 
-<span data-ttu-id="e776d-113">使用[ Blazor 伺服器裝載模型](xref:blazor/hosting-models#blazor-server)， Blazor 會在伺服器上從 ASP.NET Core 應用程式中執行。</span><span class="sxs-lookup"><span data-stu-id="e776d-113">Using the [Blazor Server hosting model](xref:blazor/hosting-models#blazor-server), Blazor is executed on the server from within an ASP.NET Core app.</span></span> <span data-ttu-id="e776d-114">UI 更新、事件處理及 JavaScript 呼叫會透過連接來處理 [SignalR](xref:signalr/introduction) 。</span><span class="sxs-lookup"><span data-stu-id="e776d-114">UI updates, event handling, and JavaScript calls are handled over a [SignalR](xref:signalr/introduction) connection.</span></span>
+<span data-ttu-id="579ea-108">使用[ Blazor 伺服器裝載模型](xref:blazor/hosting-models#blazor-server)， Blazor 會在伺服器上從 ASP.NET Core 應用程式中執行。</span><span class="sxs-lookup"><span data-stu-id="579ea-108">Using the [Blazor Server hosting model](xref:blazor/hosting-models#blazor-server), Blazor is executed on the server from within an ASP.NET Core app.</span></span> <span data-ttu-id="579ea-109">UI 更新、事件處理及 JavaScript 呼叫會透過連接來處理 [SignalR](xref:signalr/introduction) 。</span><span class="sxs-lookup"><span data-stu-id="579ea-109">UI updates, event handling, and JavaScript calls are handled over a [SignalR](xref:signalr/introduction) connection.</span></span>
 
-<span data-ttu-id="e776d-115">需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。</span><span class="sxs-lookup"><span data-stu-id="e776d-115">A web server capable of hosting an ASP.NET Core app is required.</span></span> <span data-ttu-id="e776d-116">Visual Studio 包括\*\* Blazor 伺服器應用程式\*\*專案範本（ `blazorserverside` 使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的範本）。</span><span class="sxs-lookup"><span data-stu-id="e776d-116">Visual Studio includes the **Blazor Server App** project template (`blazorserverside` template when using the [dotnet new](/dotnet/core/tools/dotnet-new) command).</span></span>
+<span data-ttu-id="579ea-110">需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。</span><span class="sxs-lookup"><span data-stu-id="579ea-110">A web server capable of hosting an ASP.NET Core app is required.</span></span> <span data-ttu-id="579ea-111">Visual Studio 包括\*\* Blazor 伺服器應用程式\*\*專案範本（ `blazorserverside` 使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的範本）。</span><span class="sxs-lookup"><span data-stu-id="579ea-111">Visual Studio includes the **Blazor Server App** project template (`blazorserverside` template when using the [dotnet new](/dotnet/core/tools/dotnet-new) command).</span></span>
 
-## <a name="scalability"></a><span data-ttu-id="e776d-117">延展性</span><span class="sxs-lookup"><span data-stu-id="e776d-117">Scalability</span></span>
+## <a name="scalability"></a><span data-ttu-id="579ea-112">延展性</span><span class="sxs-lookup"><span data-stu-id="579ea-112">Scalability</span></span>
 
-<span data-ttu-id="e776d-118">規劃部署，以充分利用伺服器應用程式可用的基礎結構 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="e776d-118">Plan a deployment to make the best use of the available infrastructure for a Blazor Server app.</span></span> <span data-ttu-id="e776d-119">請參閱下列資源，以解決 Blazor 伺服器應用程式的擴充性：</span><span class="sxs-lookup"><span data-stu-id="e776d-119">See the following resources to address Blazor Server app scalability:</span></span>
+<span data-ttu-id="579ea-113">規劃部署，以充分利用伺服器應用程式可用的基礎結構 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="579ea-113">Plan a deployment to make the best use of the available infrastructure for a Blazor Server app.</span></span> <span data-ttu-id="579ea-114">請參閱下列資源，以解決 Blazor 伺服器應用程式的擴充性：</span><span class="sxs-lookup"><span data-stu-id="579ea-114">See the following resources to address Blazor Server app scalability:</span></span>
 
-* <span data-ttu-id="e776d-120">[Blazor伺服器應用程式的基本概念](xref:blazor/hosting-models#blazor-server)</span><span class="sxs-lookup"><span data-stu-id="e776d-120">[Fundamentals of Blazor Server apps](xref:blazor/hosting-models#blazor-server)</span></span>
+* <span data-ttu-id="579ea-115">[Blazor伺服器應用程式的基本概念](xref:blazor/hosting-models#blazor-server)</span><span class="sxs-lookup"><span data-stu-id="579ea-115">[Fundamentals of Blazor Server apps](xref:blazor/hosting-models#blazor-server)</span></span>
 * <xref:security/blazor/server/threat-mitigation>
 
-### <a name="deployment-server"></a><span data-ttu-id="e776d-121">部署伺服器</span><span class="sxs-lookup"><span data-stu-id="e776d-121">Deployment server</span></span>
+### <a name="deployment-server"></a><span data-ttu-id="579ea-116">部署伺服器</span><span class="sxs-lookup"><span data-stu-id="579ea-116">Deployment server</span></span>
 
-<span data-ttu-id="e776d-122">在考慮單一伺服器的擴充性（相應增加）時，應用程式可用的記憶體可能是應用程式在使用者需求增加時將耗盡的第一個資源。</span><span class="sxs-lookup"><span data-stu-id="e776d-122">When considering the scalability of a single server (scale up), the memory available to an app is likely the first resource that the app will exhaust as user demands increase.</span></span> <span data-ttu-id="e776d-123">伺服器上的可用記憶體會影響：</span><span class="sxs-lookup"><span data-stu-id="e776d-123">The available memory on the server affects the:</span></span>
+<span data-ttu-id="579ea-117">在考慮單一伺服器的擴充性（相應增加）時，應用程式可用的記憶體可能是應用程式在使用者需求增加時將耗盡的第一個資源。</span><span class="sxs-lookup"><span data-stu-id="579ea-117">When considering the scalability of a single server (scale up), the memory available to an app is likely the first resource that the app will exhaust as user demands increase.</span></span> <span data-ttu-id="579ea-118">伺服器上的可用記憶體會影響：</span><span class="sxs-lookup"><span data-stu-id="579ea-118">The available memory on the server affects the:</span></span>
 
-* <span data-ttu-id="e776d-124">伺服器可支援的現用線路數目。</span><span class="sxs-lookup"><span data-stu-id="e776d-124">Number of active circuits that a server can support.</span></span>
-* <span data-ttu-id="e776d-125">用戶端上的 UI 延遲。</span><span class="sxs-lookup"><span data-stu-id="e776d-125">UI latency on the client.</span></span>
+* <span data-ttu-id="579ea-119">伺服器可支援的現用線路數目。</span><span class="sxs-lookup"><span data-stu-id="579ea-119">Number of active circuits that a server can support.</span></span>
+* <span data-ttu-id="579ea-120">用戶端上的 UI 延遲。</span><span class="sxs-lookup"><span data-stu-id="579ea-120">UI latency on the client.</span></span>
 
-<span data-ttu-id="e776d-126">如需建立安全且可擴充之 Blazor 伺服器應用程式的指引，請參閱 <xref:security/blazor/server/threat-mitigation> 。</span><span class="sxs-lookup"><span data-stu-id="e776d-126">For guidance on building secure and scalable Blazor server apps, see <xref:security/blazor/server/threat-mitigation>.</span></span>
+<span data-ttu-id="579ea-121">如需建立安全且可擴充之 Blazor 伺服器應用程式的指引，請參閱 <xref:security/blazor/server/threat-mitigation> 。</span><span class="sxs-lookup"><span data-stu-id="579ea-121">For guidance on building secure and scalable Blazor server apps, see <xref:security/blazor/server/threat-mitigation>.</span></span>
 
-<span data-ttu-id="e776d-127">每個線路都使用大約 250 KB 的記憶體來進行最小的*Hello World*樣式應用程式。</span><span class="sxs-lookup"><span data-stu-id="e776d-127">Each circuit uses approximately 250 KB of memory for a minimal *Hello World*-style app.</span></span> <span data-ttu-id="e776d-128">線路的大小取決於應用程式的程式碼，以及與每個元件相關聯的狀態維護需求。</span><span class="sxs-lookup"><span data-stu-id="e776d-128">The size of a circuit depends on the app's code and the state maintenance requirements associated with each component.</span></span> <span data-ttu-id="e776d-129">我們建議您在開發應用程式和基礎結構期間測量資源需求，但下列基準可以是規劃部署目標的起點：如果您預期應用程式支援5000並行使用者，請考慮將至少 1.3 GB 的伺服器記憶體預算給應用程式（或每位使用者約 273 KB）。</span><span class="sxs-lookup"><span data-stu-id="e776d-129">We recommend that you measure resource demands during development for your app and infrastructure, but the following baseline can be a starting point in planning your deployment target: If you expect your app to support 5,000 concurrent users, consider budgeting at least 1.3 GB of server memory to the app (or ~273 KB per user).</span></span>
+<span data-ttu-id="579ea-122">每個線路都使用大約 250 KB 的記憶體來進行最小的*Hello World*樣式應用程式。</span><span class="sxs-lookup"><span data-stu-id="579ea-122">Each circuit uses approximately 250 KB of memory for a minimal *Hello World*-style app.</span></span> <span data-ttu-id="579ea-123">線路的大小取決於應用程式的程式碼，以及與每個元件相關聯的狀態維護需求。</span><span class="sxs-lookup"><span data-stu-id="579ea-123">The size of a circuit depends on the app's code and the state maintenance requirements associated with each component.</span></span> <span data-ttu-id="579ea-124">我們建議您在開發應用程式和基礎結構期間測量資源需求，但下列基準可以是規劃部署目標的起點：如果您預期應用程式支援5000並行使用者，請考慮將至少 1.3 GB 的伺服器記憶體預算給應用程式（或每位使用者約 273 KB）。</span><span class="sxs-lookup"><span data-stu-id="579ea-124">We recommend that you measure resource demands during development for your app and infrastructure, but the following baseline can be a starting point in planning your deployment target: If you expect your app to support 5,000 concurrent users, consider budgeting at least 1.3 GB of server memory to the app (or ~273 KB per user).</span></span>
 
-### <a name="signalr-configuration"></a>SignalR<span data-ttu-id="e776d-130">配置</span><span class="sxs-lookup"><span data-stu-id="e776d-130"> configuration</span></span>
+### <a name="signalr-configuration"></a>SignalR<span data-ttu-id="579ea-125">配置</span><span class="sxs-lookup"><span data-stu-id="579ea-125"> configuration</span></span>
 
-Blazor<span data-ttu-id="e776d-131">伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊。</span><span class="sxs-lookup"><span data-stu-id="e776d-131"> Server apps use ASP.NET Core SignalR to communicate with the browser.</span></span> <span data-ttu-id="e776d-132">[ SignalR 的裝載和調整規模條件](xref:signalr/publish-to-azure-web-app)適用 Blazor 于伺服器應用程式。</span><span class="sxs-lookup"><span data-stu-id="e776d-132">[SignalR's hosting and scaling conditions](xref:signalr/publish-to-azure-web-app) apply to Blazor Server apps.</span></span>
+Blazor<span data-ttu-id="579ea-126">伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊。</span><span class="sxs-lookup"><span data-stu-id="579ea-126"> Server apps use ASP.NET Core SignalR to communicate with the browser.</span></span> <span data-ttu-id="579ea-127">[ SignalR 的裝載和調整規模條件](xref:signalr/publish-to-azure-web-app)適用 Blazor 于伺服器應用程式。</span><span class="sxs-lookup"><span data-stu-id="579ea-127">[SignalR's hosting and scaling conditions](xref:signalr/publish-to-azure-web-app) apply to Blazor Server apps.</span></span>
 
-Blazor<span data-ttu-id="e776d-133">SignalR因為延遲、可靠性和[安全性](xref:signalr/security)較低，所以使用 websocket 做為傳輸時，效果最佳。</span><span class="sxs-lookup"><span data-stu-id="e776d-133"> works best when using WebSockets as the SignalR transport due to lower latency, reliability, and [security](xref:signalr/security).</span></span> <span data-ttu-id="e776d-134">SignalR當 websocket 無法使用時，或當應用程式明確設定為使用長輪詢時，會使用長輪詢。</span><span class="sxs-lookup"><span data-stu-id="e776d-134">Long Polling is used by SignalR when WebSockets isn't available or when the app is explicitly configured to use Long Polling.</span></span> <span data-ttu-id="e776d-135">部署到 Azure App Service 時，請將應用程式設定為在服務的 Azure 入口網站設定中使用 Websocket。</span><span class="sxs-lookup"><span data-stu-id="e776d-135">When deploying to Azure App Service, configure the app to use WebSockets in the Azure portal settings for the service.</span></span> <span data-ttu-id="e776d-136">如需設定應用程式以進行 Azure App Service 的詳細資訊，請參閱[ SignalR 發佈指導方針](xref:signalr/publish-to-azure-web-app)。</span><span class="sxs-lookup"><span data-stu-id="e776d-136">For details on configuring the app for Azure App Service, see the [SignalR publishing guidelines](xref:signalr/publish-to-azure-web-app).</span></span>
+Blazor<span data-ttu-id="579ea-128">SignalR因為延遲、可靠性和[安全性](xref:signalr/security)較低，所以使用 websocket 做為傳輸時，效果最佳。</span><span class="sxs-lookup"><span data-stu-id="579ea-128"> works best when using WebSockets as the SignalR transport due to lower latency, reliability, and [security](xref:signalr/security).</span></span> <span data-ttu-id="579ea-129">SignalR當 websocket 無法使用時，或當應用程式明確設定為使用長輪詢時，會使用長輪詢。</span><span class="sxs-lookup"><span data-stu-id="579ea-129">Long Polling is used by SignalR when WebSockets isn't available or when the app is explicitly configured to use Long Polling.</span></span> <span data-ttu-id="579ea-130">部署到 Azure App Service 時，請將應用程式設定為在服務的 Azure 入口網站設定中使用 Websocket。</span><span class="sxs-lookup"><span data-stu-id="579ea-130">When deploying to Azure App Service, configure the app to use WebSockets in the Azure portal settings for the service.</span></span> <span data-ttu-id="579ea-131">如需設定應用程式以進行 Azure App Service 的詳細資訊，請參閱[ SignalR 發佈指導方針](xref:signalr/publish-to-azure-web-app)。</span><span class="sxs-lookup"><span data-stu-id="579ea-131">For details on configuring the app for Azure App Service, see the [SignalR publishing guidelines](xref:signalr/publish-to-azure-web-app).</span></span>
 
-#### <a name="azure-signalr-service"></a><span data-ttu-id="e776d-137">Azure SignalR 服務</span><span class="sxs-lookup"><span data-stu-id="e776d-137">Azure SignalR Service</span></span>
+#### <a name="azure-signalr-service"></a><span data-ttu-id="579ea-132">Azure SignalR 服務</span><span class="sxs-lookup"><span data-stu-id="579ea-132">Azure SignalR Service</span></span>
 
-<span data-ttu-id="e776d-138">我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。</span><span class="sxs-lookup"><span data-stu-id="e776d-138">We recommend using the [Azure SignalR Service](/azure/azure-signalr) for Blazor Server apps.</span></span> <span data-ttu-id="e776d-139">此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。</span><span class="sxs-lookup"><span data-stu-id="e776d-139">The service allows for scaling up a Blazor Server app to a large number of concurrent SignalR connections.</span></span> <span data-ttu-id="e776d-140">此外， SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。</span><span class="sxs-lookup"><span data-stu-id="e776d-140">In addition, the SignalR service's global reach and high-performance data centers significantly aid in reducing latency due to geography.</span></span> <span data-ttu-id="e776d-141">若要設定應用程式（並選擇性地布建） Azure SignalR 服務：</span><span class="sxs-lookup"><span data-stu-id="e776d-141">To configure an app (and optionally provision) the Azure SignalR Service:</span></span>
+<span data-ttu-id="579ea-133">我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。</span><span class="sxs-lookup"><span data-stu-id="579ea-133">We recommend using the [Azure SignalR Service](/azure/azure-signalr) for Blazor Server apps.</span></span> <span data-ttu-id="579ea-134">此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。</span><span class="sxs-lookup"><span data-stu-id="579ea-134">The service allows for scaling up a Blazor Server app to a large number of concurrent SignalR connections.</span></span> <span data-ttu-id="579ea-135">此外， SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。</span><span class="sxs-lookup"><span data-stu-id="579ea-135">In addition, the SignalR service's global reach and high-performance data centers significantly aid in reducing latency due to geography.</span></span> <span data-ttu-id="579ea-136">若要設定應用程式（並選擇性地布建） Azure SignalR 服務：</span><span class="sxs-lookup"><span data-stu-id="579ea-136">To configure an app (and optionally provision) the Azure SignalR Service:</span></span>
 
-1. <span data-ttu-id="e776d-142">啟用服務以支援「固定*會話*」，在此情況下，用戶端會在進行[回溯時重新導向至相同的伺服器](xref:blazor/hosting-models#connection-to-the-server)。</span><span class="sxs-lookup"><span data-stu-id="e776d-142">Enable the service to support *sticky sessions*, where clients are [redirected back to the same server when prerendering](xref:blazor/hosting-models#connection-to-the-server).</span></span> <span data-ttu-id="e776d-143">將 `ServerStickyMode` 選項或設定值設為 `Required` 。</span><span class="sxs-lookup"><span data-stu-id="e776d-143">Set the `ServerStickyMode` option or configuration value to `Required`.</span></span> <span data-ttu-id="e776d-144">一般而言，應用程式會使用下列**其中一**種方法來建立設定：</span><span class="sxs-lookup"><span data-stu-id="e776d-144">Typically, an app creates the configuration using **one** of the following approaches:</span></span>
+1. <span data-ttu-id="579ea-137">啟用服務以支援「固定*會話*」，在此情況下，用戶端會在進行[回溯時重新導向至相同的伺服器](xref:blazor/hosting-models#connection-to-the-server)。</span><span class="sxs-lookup"><span data-stu-id="579ea-137">Enable the service to support *sticky sessions*, where clients are [redirected back to the same server when prerendering](xref:blazor/hosting-models#connection-to-the-server).</span></span> <span data-ttu-id="579ea-138">將 `ServerStickyMode` 選項或設定值設為 `Required` 。</span><span class="sxs-lookup"><span data-stu-id="579ea-138">Set the `ServerStickyMode` option or configuration value to `Required`.</span></span> <span data-ttu-id="579ea-139">一般而言，應用程式會使用下列**其中一**種方法來建立設定：</span><span class="sxs-lookup"><span data-stu-id="579ea-139">Typically, an app creates the configuration using **one** of the following approaches:</span></span>
 
-   * <span data-ttu-id="e776d-145">`Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="e776d-145">`Startup.ConfigureServices`:</span></span>
+   * <span data-ttu-id="579ea-140">`Startup.ConfigureServices`:</span><span class="sxs-lookup"><span data-stu-id="579ea-140">`Startup.ConfigureServices`:</span></span>
   
      ```csharp
      services.AddSignalR().AddAzureSignalR(options =>
@@ -62,30 +74,30 @@ Blazor<span data-ttu-id="e776d-133">SignalR因為延遲、可靠性和[安全性
      });
      ```
 
-   * <span data-ttu-id="e776d-146">設定（使用下列**其中一**種方法）：</span><span class="sxs-lookup"><span data-stu-id="e776d-146">Configuration (use **one** of the following approaches):</span></span>
+   * <span data-ttu-id="579ea-141">設定（使用下列**其中一**種方法）：</span><span class="sxs-lookup"><span data-stu-id="579ea-141">Configuration (use **one** of the following approaches):</span></span>
   
-     * <span data-ttu-id="e776d-147">*appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="e776d-147">*appsettings.json*:</span></span>
+     * <span data-ttu-id="579ea-142">*appsettings. json*：</span><span class="sxs-lookup"><span data-stu-id="579ea-142">*appsettings.json*:</span></span>
 
        ```json
        "Azure:SignalR:ServerStickyMode": "Required"
        ```
 
-     * <span data-ttu-id="e776d-148">**Configuration**  >  Azure 入口網站（**名稱**：，值：）中的 app service**設定應用程式設定** `Azure:SignalR:ServerStickyMode` **Value** `Required` 。</span><span class="sxs-lookup"><span data-stu-id="e776d-148">The app service's **Configuration** > **Application settings** in the Azure portal (**Name**: `Azure:SignalR:ServerStickyMode`, **Value**: `Required`).</span></span>
+     * <span data-ttu-id="579ea-143">**Configuration**  >  Azure 入口網站（**名稱**：，值：）中的 app service**設定應用程式設定** `Azure:SignalR:ServerStickyMode` **Value** `Required` 。</span><span class="sxs-lookup"><span data-stu-id="579ea-143">The app service's **Configuration** > **Application settings** in the Azure portal (**Name**: `Azure:SignalR:ServerStickyMode`, **Value**: `Required`).</span></span>
 
-1. <span data-ttu-id="e776d-149">在伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="e776d-149">Create an Azure Apps publish profile in Visual Studio for the Blazor Server app.</span></span>
-1. <span data-ttu-id="e776d-150">將**Azure SignalR 服務**相依性新增至設定檔。</span><span class="sxs-lookup"><span data-stu-id="e776d-150">Add the **Azure SignalR Service** dependency to the profile.</span></span> <span data-ttu-id="e776d-151">如果 Azure 訂用帳戶沒有 SignalR 要指派給應用程式的既有 azure 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。</span><span class="sxs-lookup"><span data-stu-id="e776d-151">If the Azure subscription doesn't have a pre-existing Azure SignalR Service instance to assign to the app, select **Create a new Azure SignalR Service instance** to provision a new service instance.</span></span>
-1. <span data-ttu-id="e776d-152">將應用程式發佈至 Azure。</span><span class="sxs-lookup"><span data-stu-id="e776d-152">Publish the app to Azure.</span></span>
+1. <span data-ttu-id="579ea-144">在伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔 Blazor 。</span><span class="sxs-lookup"><span data-stu-id="579ea-144">Create an Azure Apps publish profile in Visual Studio for the Blazor Server app.</span></span>
+1. <span data-ttu-id="579ea-145">將**Azure SignalR 服務**相依性新增至設定檔。</span><span class="sxs-lookup"><span data-stu-id="579ea-145">Add the **Azure SignalR Service** dependency to the profile.</span></span> <span data-ttu-id="579ea-146">如果 Azure 訂用帳戶沒有 SignalR 要指派給應用程式的既有 azure 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。</span><span class="sxs-lookup"><span data-stu-id="579ea-146">If the Azure subscription doesn't have a pre-existing Azure SignalR Service instance to assign to the app, select **Create a new Azure SignalR Service instance** to provision a new service instance.</span></span>
+1. <span data-ttu-id="579ea-147">將應用程式發佈至 Azure。</span><span class="sxs-lookup"><span data-stu-id="579ea-147">Publish the app to Azure.</span></span>
 
-#### <a name="iis"></a><span data-ttu-id="e776d-153">IIS</span><span class="sxs-lookup"><span data-stu-id="e776d-153">IIS</span></span>
+#### <a name="iis"></a><span data-ttu-id="579ea-148">IIS</span><span class="sxs-lookup"><span data-stu-id="579ea-148">IIS</span></span>
 
-<span data-ttu-id="e776d-154">使用 IIS 時，請啟用：</span><span class="sxs-lookup"><span data-stu-id="e776d-154">When using IIS, enable:</span></span>
+<span data-ttu-id="579ea-149">使用 IIS 時，請啟用：</span><span class="sxs-lookup"><span data-stu-id="579ea-149">When using IIS, enable:</span></span>
 
-* <span data-ttu-id="e776d-155">[在 IIS 上的 websocket](xref:fundamentals/websockets#enabling-websockets-on-iis)。</span><span class="sxs-lookup"><span data-stu-id="e776d-155">[WebSockets on IIS](xref:fundamentals/websockets#enabling-websockets-on-iis).</span></span>
-* <span data-ttu-id="e776d-156">[具有應用程式要求路由的粘滯話](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。</span><span class="sxs-lookup"><span data-stu-id="e776d-156">[Sticky sessions with Application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).</span></span>
+* <span data-ttu-id="579ea-150">[在 IIS 上的 websocket](xref:fundamentals/websockets#enabling-websockets-on-iis)。</span><span class="sxs-lookup"><span data-stu-id="579ea-150">[WebSockets on IIS](xref:fundamentals/websockets#enabling-websockets-on-iis).</span></span>
+* <span data-ttu-id="579ea-151">[具有應用程式要求路由的粘滯話](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。</span><span class="sxs-lookup"><span data-stu-id="579ea-151">[Sticky sessions with Application Request Routing](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing).</span></span>
 
-#### <a name="kubernetes"></a><span data-ttu-id="e776d-157">Kubernetes</span><span class="sxs-lookup"><span data-stu-id="e776d-157">Kubernetes</span></span>
+#### <a name="kubernetes"></a><span data-ttu-id="579ea-152">Kubernetes</span><span class="sxs-lookup"><span data-stu-id="579ea-152">Kubernetes</span></span>
 
-<span data-ttu-id="e776d-158">使用下列[Kubernetes 注釋來建立輸入定義：適用于粘滯會話](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/)。。</span><span class="sxs-lookup"><span data-stu-id="e776d-158">Create an ingress definition with the following [Kubernetes annotations for sticky sessions](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/):</span></span>
+<span data-ttu-id="579ea-153">使用下列[Kubernetes 注釋來建立輸入定義：適用于粘滯會話](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/)。。</span><span class="sxs-lookup"><span data-stu-id="579ea-153">Create an ingress definition with the following [Kubernetes annotations for sticky sessions](https://kubernetes.github.io/ingress-nginx/examples/affinity/cookie/):</span></span>
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -99,12 +111,12 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-max-age: "14400"
 ```
 
-#### <a name="linux-with-nginx"></a><span data-ttu-id="e776d-159">使用 Nginx 的 Linux</span><span class="sxs-lookup"><span data-stu-id="e776d-159">Linux with Nginx</span></span>
+#### <a name="linux-with-nginx"></a><span data-ttu-id="579ea-154">使用 Nginx 的 Linux</span><span class="sxs-lookup"><span data-stu-id="579ea-154">Linux with Nginx</span></span>
 
-<span data-ttu-id="e776d-160">SignalR若要讓 websocket 正常運作，請確認 proxy 的 `Upgrade` 和 `Connection` 標頭已設定為下列值，且 `$connection_upgrade` 對應至其中一個：</span><span class="sxs-lookup"><span data-stu-id="e776d-160">For SignalR WebSockets to function properly, confirm that the proxy's `Upgrade` and `Connection` headers are set to the following values and that `$connection_upgrade` is mapped to either:</span></span>
+<span data-ttu-id="579ea-155">SignalR若要讓 websocket 正常運作，請確認 proxy 的 `Upgrade` 和 `Connection` 標頭已設定為下列值，且 `$connection_upgrade` 對應至其中一個：</span><span class="sxs-lookup"><span data-stu-id="579ea-155">For SignalR WebSockets to function properly, confirm that the proxy's `Upgrade` and `Connection` headers are set to the following values and that `$connection_upgrade` is mapped to either:</span></span>
 
-* <span data-ttu-id="e776d-161">升級標頭值預設為。</span><span class="sxs-lookup"><span data-stu-id="e776d-161">The Upgrade header value by default.</span></span>
-* <span data-ttu-id="e776d-162">`close`當升級標頭遺失或空白時。</span><span class="sxs-lookup"><span data-stu-id="e776d-162">`close` when the Upgrade header is missing or empty.</span></span>
+* <span data-ttu-id="579ea-156">升級標頭值預設為。</span><span class="sxs-lookup"><span data-stu-id="579ea-156">The Upgrade header value by default.</span></span>
+* <span data-ttu-id="579ea-157">`close`當升級標頭遺失或空白時。</span><span class="sxs-lookup"><span data-stu-id="579ea-157">`close` when the Upgrade header is missing or empty.</span></span>
 
 ```
 http {
@@ -130,20 +142,20 @@ http {
 }
 ```
 
-<span data-ttu-id="e776d-163">如需詳細資訊，請參閱下列文章：</span><span class="sxs-lookup"><span data-stu-id="e776d-163">For more information, see the following articles:</span></span>
+<span data-ttu-id="579ea-158">如需詳細資訊，請參閱下列文章：</span><span class="sxs-lookup"><span data-stu-id="579ea-158">For more information, see the following articles:</span></span>
 
-* [<span data-ttu-id="e776d-164">NGINX 做為 WebSocket Proxy</span><span class="sxs-lookup"><span data-stu-id="e776d-164">NGINX as a WebSocket Proxy</span></span>](https://www.nginx.com/blog/websocket-nginx/)
-* [<span data-ttu-id="e776d-165">WebSocket 代理</span><span class="sxs-lookup"><span data-stu-id="e776d-165">WebSocket proxying</span></span>](http://nginx.org/docs/http/websocket.html)
+* [<span data-ttu-id="579ea-159">NGINX 做為 WebSocket Proxy</span><span class="sxs-lookup"><span data-stu-id="579ea-159">NGINX as a WebSocket Proxy</span></span>](https://www.nginx.com/blog/websocket-nginx/)
+* [<span data-ttu-id="579ea-160">WebSocket 代理</span><span class="sxs-lookup"><span data-stu-id="579ea-160">WebSocket proxying</span></span>](http://nginx.org/docs/http/websocket.html)
 * <xref:host-and-deploy/linux-nginx>
 
-## <a name="linux-with-apache"></a><span data-ttu-id="e776d-166">使用 Apache 的 Linux</span><span class="sxs-lookup"><span data-stu-id="e776d-166">Linux with Apache</span></span>
+## <a name="linux-with-apache"></a><span data-ttu-id="579ea-161">使用 Apache 的 Linux</span><span class="sxs-lookup"><span data-stu-id="579ea-161">Linux with Apache</span></span>
 
-<span data-ttu-id="e776d-167">若要將 Blazor 應用程式裝載在 Linux 上的 Apache 後方，請設定 `ProxyPass` HTTP 和 websocket 流量。</span><span class="sxs-lookup"><span data-stu-id="e776d-167">To host a Blazor app behind Apache on Linux, configure `ProxyPass` for HTTP and WebSockets traffic.</span></span>
+<span data-ttu-id="579ea-162">若要將 Blazor 應用程式裝載在 Linux 上的 Apache 後方，請設定 `ProxyPass` HTTP 和 websocket 流量。</span><span class="sxs-lookup"><span data-stu-id="579ea-162">To host a Blazor app behind Apache on Linux, configure `ProxyPass` for HTTP and WebSockets traffic.</span></span>
 
-<span data-ttu-id="e776d-168">在下例中︰</span><span class="sxs-lookup"><span data-stu-id="e776d-168">In the following example:</span></span>
+<span data-ttu-id="579ea-163">在下例中︰</span><span class="sxs-lookup"><span data-stu-id="579ea-163">In the following example:</span></span>
 
-* <span data-ttu-id="e776d-169">Kestrel 伺服器正在主機電腦上執行。</span><span class="sxs-lookup"><span data-stu-id="e776d-169">Kestrel server is running on the host machine.</span></span>
-* <span data-ttu-id="e776d-170">應用程式會接聽埠5000上的流量。</span><span class="sxs-lookup"><span data-stu-id="e776d-170">The app listens for traffic on port 5000.</span></span>
+* <span data-ttu-id="579ea-164">Kestrel 伺服器正在主機電腦上執行。</span><span class="sxs-lookup"><span data-stu-id="579ea-164">Kestrel server is running on the host machine.</span></span>
+* <span data-ttu-id="579ea-165">應用程式會接聽埠5000上的流量。</span><span class="sxs-lookup"><span data-stu-id="579ea-165">The app listens for traffic on port 5000.</span></span>
 
 ```
 ProxyRequests       On
@@ -154,26 +166,26 @@ ProxyPass           / http://localhost:5000/
 ProxyPassReverse    / http://localhost:5000/
 ```
 
-<span data-ttu-id="e776d-171">啟用下列模組：</span><span class="sxs-lookup"><span data-stu-id="e776d-171">Enable the following modules:</span></span>
+<span data-ttu-id="579ea-166">啟用下列模組：</span><span class="sxs-lookup"><span data-stu-id="579ea-166">Enable the following modules:</span></span>
 
 ```
 a2enmod   proxy
 a2enmod   proxy_wstunnel
 ```
 
-<span data-ttu-id="e776d-172">檢查瀏覽器主控台中的 Websocket 錯誤。</span><span class="sxs-lookup"><span data-stu-id="e776d-172">Check the browser console for WebSockets errors.</span></span> <span data-ttu-id="e776d-173">範例錯誤：</span><span class="sxs-lookup"><span data-stu-id="e776d-173">Example errors:</span></span>
+<span data-ttu-id="579ea-167">檢查瀏覽器主控台中的 Websocket 錯誤。</span><span class="sxs-lookup"><span data-stu-id="579ea-167">Check the browser console for WebSockets errors.</span></span> <span data-ttu-id="579ea-168">範例錯誤：</span><span class="sxs-lookup"><span data-stu-id="579ea-168">Example errors:</span></span>
 
-* <span data-ttu-id="e776d-174">Firefox 無法在 ws://the-domain-name.tld/_blazor?id=XXX 建立與伺服器的連接。</span><span class="sxs-lookup"><span data-stu-id="e776d-174">Firefox can't establish a connection to the server at ws://the-domain-name.tld/_blazor?id=XXX.</span></span>
-* <span data-ttu-id="e776d-175">錯誤：無法啟動傳輸 ' Websocket '：錯誤：傳輸發生錯誤。</span><span class="sxs-lookup"><span data-stu-id="e776d-175">Error: Failed to start the transport 'WebSockets': Error: There was an error with the transport.</span></span>
-* <span data-ttu-id="e776d-176">錯誤：無法啟動傳輸 ' LongPolling '： TypeError：此。傳輸未定義</span><span class="sxs-lookup"><span data-stu-id="e776d-176">Error: Failed to start the transport 'LongPolling': TypeError: this.transport is undefined</span></span>
-* <span data-ttu-id="e776d-177">錯誤：無法使用任何可用的傳輸來連接到伺服器。</span><span class="sxs-lookup"><span data-stu-id="e776d-177">Error: Unable to connect to the server with any of the available transports.</span></span> <span data-ttu-id="e776d-178">Websocket 失敗</span><span class="sxs-lookup"><span data-stu-id="e776d-178">WebSockets failed</span></span>
-* <span data-ttu-id="e776d-179">錯誤：如果連接不是處於「已連線」狀態，就無法傳送資料。</span><span class="sxs-lookup"><span data-stu-id="e776d-179">Error: Cannot send data if the connection is not in the 'Connected' State.</span></span>
+* <span data-ttu-id="579ea-169">Firefox 無法在 ws://the-domain-name.tld/_blazor?id=XXX 建立與伺服器的連接。</span><span class="sxs-lookup"><span data-stu-id="579ea-169">Firefox can't establish a connection to the server at ws://the-domain-name.tld/_blazor?id=XXX.</span></span>
+* <span data-ttu-id="579ea-170">錯誤：無法啟動傳輸 ' Websocket '：錯誤：傳輸發生錯誤。</span><span class="sxs-lookup"><span data-stu-id="579ea-170">Error: Failed to start the transport 'WebSockets': Error: There was an error with the transport.</span></span>
+* <span data-ttu-id="579ea-171">錯誤：無法啟動傳輸 ' LongPolling '： TypeError：此。傳輸未定義</span><span class="sxs-lookup"><span data-stu-id="579ea-171">Error: Failed to start the transport 'LongPolling': TypeError: this.transport is undefined</span></span>
+* <span data-ttu-id="579ea-172">錯誤：無法使用任何可用的傳輸來連接到伺服器。</span><span class="sxs-lookup"><span data-stu-id="579ea-172">Error: Unable to connect to the server with any of the available transports.</span></span> <span data-ttu-id="579ea-173">Websocket 失敗</span><span class="sxs-lookup"><span data-stu-id="579ea-173">WebSockets failed</span></span>
+* <span data-ttu-id="579ea-174">錯誤：如果連接不是處於「已連線」狀態，就無法傳送資料。</span><span class="sxs-lookup"><span data-stu-id="579ea-174">Error: Cannot send data if the connection is not in the 'Connected' State.</span></span>
 
-<span data-ttu-id="e776d-180">如需詳細資訊，請參閱[Apache 檔](https://httpd.apache.org/docs/current/mod/mod_proxy.html)。</span><span class="sxs-lookup"><span data-stu-id="e776d-180">For more information, see the [Apache documentation](https://httpd.apache.org/docs/current/mod/mod_proxy.html).</span></span>
+<span data-ttu-id="579ea-175">如需詳細資訊，請參閱[Apache 檔](https://httpd.apache.org/docs/current/mod/mod_proxy.html)。</span><span class="sxs-lookup"><span data-stu-id="579ea-175">For more information, see the [Apache documentation](https://httpd.apache.org/docs/current/mod/mod_proxy.html).</span></span>
 
-### <a name="measure-network-latency"></a><span data-ttu-id="e776d-181">測量網路延遲</span><span class="sxs-lookup"><span data-stu-id="e776d-181">Measure network latency</span></span>
+### <a name="measure-network-latency"></a><span data-ttu-id="579ea-176">測量網路延遲</span><span class="sxs-lookup"><span data-stu-id="579ea-176">Measure network latency</span></span>
 
-<span data-ttu-id="e776d-182">您可以使用[JS interop](xref:blazor/call-javascript-from-dotnet)來測量網路延遲，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="e776d-182">[JS interop](xref:blazor/call-javascript-from-dotnet) can be used to measure network latency, as the following example demonstrates:</span></span>
+<span data-ttu-id="579ea-177">您可以使用[JS interop](xref:blazor/call-javascript-from-dotnet)來測量網路延遲，如下列範例所示：</span><span class="sxs-lookup"><span data-stu-id="579ea-177">[JS interop](xref:blazor/call-javascript-from-dotnet) can be used to measure network latency, as the following example demonstrates:</span></span>
 
 ```razor
 @inject IJSRuntime JS
@@ -201,4 +213,4 @@ else
 }
 ```
 
-<span data-ttu-id="e776d-183">如需合理的 UI 體驗，我們建議使用250毫秒或更少的持續性 UI 延遲。</span><span class="sxs-lookup"><span data-stu-id="e776d-183">For a reasonable UI experience, we recommend a sustained UI latency of 250ms or less.</span></span>
+<span data-ttu-id="579ea-178">如需合理的 UI 體驗，我們建議使用250毫秒或更少的持續性 UI 延遲。</span><span class="sxs-lookup"><span data-stu-id="579ea-178">For a reasonable UI experience, we recommend a sustained UI latency of 250ms or less.</span></span>

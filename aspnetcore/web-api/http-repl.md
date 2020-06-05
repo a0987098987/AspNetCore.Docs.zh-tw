@@ -5,7 +5,7 @@ description: 了解如何使用 HTTP REPL .NET Core 全域工具來瀏覽和測�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 12/11/2019
+ms.date: 05/20/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 4d0200cd412cce6eda473a64d132d74d8641db34
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 4c42ad56bbdb7b66824b290cd118903cbe4311e8
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777094"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84452209"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -396,7 +396,7 @@ get <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:body
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 以下是使用 `get` 命令時可用的選項：
 
@@ -480,7 +480,7 @@ post <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-f
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -550,7 +550,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -560,7 +560,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
 
 若要發出 HTTP PUT 要求：
 
-1. *選擇性*：執行`get`命令以在修改資料之前先加以流覽：
+1. *選擇性*：執行 `get` 命令以在修改資料之前先加以流覽：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -622,7 +622,7 @@ put <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-fo
     Server: Kestrel
     ```
 
-1. *選擇性*：發出`get`命令以查看修改。 舉例來說，如果您在文字編輯器中鍵入 "Cherry"，`get` 會傳回以下內容：
+1. *選擇性*：發出 `get` 命令以查看修改。 舉例來說，如果您在文字編輯器中鍵入 "Cherry"，`get` 會傳回以下內容：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -665,7 +665,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -673,7 +673,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
 
 若要發出 HTTP DELETE 要求：
 
-1. *選擇性*：執行`get`命令以在修改資料之前先加以流覽：
+1. *選擇性*：執行 `get` 命令以在修改資料之前先加以流覽：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -713,7 +713,7 @@ delete <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:b
     Server: Kestrel
     ```
 
-1. *選擇性*：發出`get`命令以查看修改。 在本範例中，`get` 會傳回以下內容：
+1. *選擇性*：發出 `get` 命令以查看修改。 在本範例中，`get` 會傳回以下內容：
 
     ```console
     https://localhost:5001/fruits~ get
@@ -752,7 +752,7 @@ patch <PARAMETER> [-c|--content] [-f|--file] [-h|--header] [--no-body] [-F|--no-
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -772,7 +772,7 @@ head <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:bod
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -790,7 +790,7 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 相關控制器動作方法預期的路由參數 (如果有的話)。
 
-### <a name="options"></a>選項。
+### <a name="options"></a>選項
 
 [!INCLUDE [standard CLI options](~/includes/http-repl/standard-options.md)]
 
@@ -820,7 +820,23 @@ options <PARAMETER> [-F|--no-formatting] [-h|--header] [--response] [--response:
 
 ## <a name="test-secured-endpoints"></a>測試受保護的端點
 
-HTTP 複寫支援透過使用 HTTP 要求標頭來測試受保護的端點。 支援的驗證和授權配置範例包括基本驗證、JWT 持有人權杖和摘要式驗證。 例如，您可以使用下列命令將持有人權杖傳送至端點：
+HTTP 複寫支援以兩種方式測試受保護的端點：透過已登入使用者的預設認證，或使用 HTTP 要求標頭。 
+
+### <a name="default-credentials"></a>預設認證
+
+假設您要測試的 Web API 裝載于 IIS 中，並使用 Windows 驗證進行保護。 您想要讓執行此工具之使用者的認證流經已測試的 HTTP 端點。 若要傳遞已登入使用者的預設認證：
+
+1. 將喜好設定設 `httpClient.useDefaultCredentials` 為 `true` ：
+
+    ```console
+    pref set httpClient.useDefaultCredentials true
+    ```
+
+1. 結束並重新啟動工具，再將另一個要求傳送至 Web API。
+
+### <a name="http-request-headers"></a>HTTP 要求標頭
+
+支援的驗證和授權配置範例包括基本驗證、JWT 持有人權杖和摘要式驗證。 例如，您可以使用下列命令將持有人權杖傳送至端點：
 
 ```console
 set header Authorization "bearer <TOKEN VALUE>"
@@ -830,25 +846,25 @@ set header Authorization "bearer <TOKEN VALUE>"
 
 1. 登入 Azure：
 
-    ```azcli
+    ```azurecli
     az login
     ```
 
 1. 使用下列命令取得您的訂用帳戶識別碼：
 
-    ```azcli
+    ```azurecli
     az account show --query id
     ```
 
 1. 複製您的訂用帳戶識別碼，然後執行下列命令：
 
-    ```azcli
+    ```azurecli
     az account set --subscription "<SUBSCRIPTION ID>"
     ```
 
 1. 使用下列命令取得您的持有人權杖：
 
-    ```azcli
+    ```azurecli
     az account get-access-token --query accessToken
     ```
 
@@ -858,7 +874,7 @@ set header Authorization "bearer <TOKEN VALUE>"
     httprepl https://management.azure.com
     ```
 
-1. 設定`Authorization` HTTP 要求標頭：
+1. 設定 `Authorization` HTTP 要求標頭：
 
     ```console
     https://management.azure.com/> set header Authorization "bearer <ACCESS TOKEN>"

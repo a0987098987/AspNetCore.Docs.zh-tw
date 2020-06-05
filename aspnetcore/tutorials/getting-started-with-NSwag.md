@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-nswag
-ms.openlocfilehash: 50096ae6a77d5f8b07e6be795d9401fcbfd421e3
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: cd4cc6778de7d2156243dc91fba64b2bdb79cf08
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776704"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84452118"
 ---
 # <a name="get-started-with-nswag-and-aspnet-core"></a>NSwag 與 ASP.NET Core 使用者入門
 
@@ -56,7 +56,7 @@ NSwag 提供下列功能：
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從 [套件管理員主控台]**** 視窗中：
-  * 移至 [**查看** > **其他 Windows** > **套件管理員主控台**]
+  * 移至 [**查看**  >  **其他 Windows**  >  **套件管理員主控台**]
   * 巡覽至 *TodoApi.csproj* 檔案所在目錄
   * 執行下列命令：
 
@@ -65,7 +65,7 @@ NSwag 提供下列功能：
     ```
 
 * 從 [管理 NuGet 套件]**** 對話方塊中：
-  * 以滑鼠右鍵按一下**方案總管** > **管理 NuGet 套件**] 中的專案
+  * 以滑鼠右鍵按一下**方案總管**  >  **管理 NuGet 套件**] 中的專案
   * 將 [套件來源]**** 設定為 "nuget.org"
   * 在搜尋方塊中輸入 "NSwag.AspNetCore"
   * 從 [瀏覽]**** 索引標籤中選取 "NSwag.AspNetCore" 套件，並按一下 [安裝]****
@@ -107,11 +107,11 @@ dotnet add TodoApi.csproj package NSwag.AspNetCore
 
 您可以選擇下列其中一個選項來利用 NSwag 的程式碼產生功能：
 
-* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) &ndash; 一個能夠以 C# 或 TypeScript 產生 API 用戶端程式碼的 Windows 傳統型應用程式。
+* [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio)：用來以 c # 或 TYPESCRIPT 產生 API 用戶端程式代碼的 Windows 桌面應用程式。
 * 可在您專案內產生程式碼的 [NSwag.CodeGeneration.CSharp](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) 或 [NSwag.CodeGeneration.TypeScript](https://www.nuget.org/packages/NSwag.CodeGeneration.TypeScript/) NuGet 套件。
 * 從[命令列](https://github.com/RicoSuter/NSwag/wiki/CommandLine)使用 NSwag。
 * [NSwag.MSBuild](https://github.com/RicoSuter/NSwag/wiki/NSwag.MSBuild) NuGet 套件。
-* [Unchase OpenAPI (Swagger) Connected Service](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice) &ndash; 以 C# 或 TypeScript 產生 API 用戶端程式碼的 Visual Studio 已連線服務。 也會使用 NSwag 產生用於 OpenAPI 服務的 C# 控制器。
+* [Unchase OpenAPI （Swagger）聯機服務](https://marketplace.visualstudio.com/items?itemName=Unchase.unchaseopenapiconnectedservice)： Visual Studio 聯機服務，以 c # 或 TYPESCRIPT 產生 API 用戶端程式代碼。 也會使用 NSwag 產生用於 OpenAPI 服務的 C# 控制器。
 
 ### <a name="generate-code-with-nswagstudio"></a>使用 NSwagStudio 來產生程式碼
 
@@ -221,7 +221,7 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* 從 [Solution Pad]** 中，按下 [控制項]****，然後按一下專案名稱。 流覽至 [**工具** > ] [**編輯**檔案]。
+* 從 [Solution Pad]** 中，按下 [控制項]****，然後按一下專案名稱。 流覽至 [**工具**] [  >  **編輯**檔案]。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/TodoApi.csproj?name=snippet_DocumentationFileElement&highlight=1-2,4)]
@@ -271,17 +271,17 @@ Swagger UI 會顯示版本資訊：
 
 ::: moniker range=">= aspnetcore-2.1"
 
-由於 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而針對 Web API 動作建議使用的傳回型別是 [ActionResult\<T>](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，因此它只能推斷 `T` 所定義的傳回型別。 您無法自動推斷其他可能的傳回型別。
+因為 NSwag 會使用[反映](/dotnet/csharp/programming-guide/concepts/reflection)，而且 Web API 動作的建議傳回型別[是 \<T> ActionResult](xref:Microsoft.AspNetCore.Mvc.ActionResult%601)，所以它只能推斷所定義的傳回型別 `T` 。 您無法自動推斷其他可能的傳回型別。
 
 請考慮下列範例：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateAction)]
 
-上述動作會傳回 `ActionResult<T>`。 在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。 由於控制器具有[`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute)屬性，因此也可能會有[BadRequest](xref:System.Web.Http.ApiController.BadRequest*)回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性來標記動作：
+上述動作會傳回 `ActionResult<T>`。 在動作內部則會傳回 [CreatedAtRoute](xref:System.Web.Http.ApiController.CreatedAtRoute*)。 由於控制器具有 [`[ApiController]`](xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute) 屬性，因此也可能會有[BadRequest](xref:System.Web.Http.ApiController.BadRequest*)回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。 請使用資料註解來告知用戶端已知此動作要傳回哪些 HTTP 狀態碼。 使用下列屬性來標記動作：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.NSwag/Controllers/TodoController.cs?name=snippet_CreateActionAttributes)]
 
-在 ASP.NET Core 2.2 或更新版本中，您可以使用慣例，而不使用 `[ProducesResponseType]` 來明確地裝飾個別動作。 如需詳細資訊，請參閱<xref:web-api/advanced/conventions>。
+在 ASP.NET Core 2.2 或更新版本中，您可以使用慣例，而不使用 `[ProducesResponseType]` 來明確地裝飾個別動作。 如需詳細資訊，請參閱 <xref:web-api/advanced/conventions> 。
 
 ::: moniker-end
 

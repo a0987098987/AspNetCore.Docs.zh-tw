@@ -1,17 +1,29 @@
 ---
-標題： author： description： monikerRange： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 在 ASP.NET Core 中設定憑證驗證
+author: blowdart
+description: 瞭解如何在 IIS 和 HTTP.sys 的 ASP.NET Core 中設定憑證驗證。
+monikerRange: '>= aspnetcore-3.0'
+ms.author: bdorrans
+ms.date: 01/02/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/authentication/certauth
+ms.openlocfilehash: 4511e253ea9487c5739162b9b0180e39eb3a1b9c
+ms.sourcegitcommit: 67eadd7bf28eae0b8786d85e90a7df811ffe5904
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84454606"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
 `Microsoft.AspNetCore.Authentication.Certificate`包含類似于 ASP.NET Core 的[憑證驗證](https://tools.ietf.org/html/rfc5246#section-7.4.4)的執行。 憑證驗證會在 TLS 層級進行，長時間才會到達 ASP.NET Core。 更準確地說，這是驗證憑證的驗證處理常式，並提供您可將該憑證解析成的事件 `ClaimsPrincipal` 。 
 
-[設定您的主機](#configure-your-host-to-require-certificates)以進行憑證驗證，其為 IIS、Kestrel、Azure Web Apps 或您所使用的任何其他。
+[設定您的伺服器](#configure-your-server-to-require-certificates)以進行憑證驗證，不論是 IIS、Kestrel、Azure Web Apps 或您所使用的任何其他方式。
 
 ## <a name="proxy-and-load-balancer-scenarios"></a>Proxy 和負載平衡器案例
 
@@ -24,7 +36,7 @@
 
 ## <a name="get-started"></a>開始使用
 
-取得 HTTPS 憑證並加以套用，並[將您的主機設定](#configure-your-host-to-require-certificates)為需要憑證。
+取得 HTTPS 憑證並加以套用，並[將您的伺服器設定](#configure-your-server-to-require-certificates)為需要憑證。
 
 在您的 web 應用程式中，新增對 `Microsoft.AspNetCore.Authentication.Certificate` 封裝的參考。 然後在 `Startup.ConfigureServices` 方法中， `services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate(...);` 使用您的選項呼叫，提供的委派， `OnCertificateValidated` 以在隨要求傳送的用戶端憑證上執行任何補充驗證。 將該資訊轉換成 `ClaimsPrincipal` ，並在屬性上設定它 `context.Principal` 。
 
@@ -183,7 +195,7 @@ services.AddAuthentication(
 
 就概念而言，驗證憑證是一項授權考慮。 在授權原則中新增核取簽發者或指紋，而不是在內部 `OnCertificateValidated` ，是完全可接受的。
 
-## <a name="configure-your-host-to-require-certificates"></a>將您的主機設定為需要憑證
+## <a name="configure-your-server-to-require-certificates"></a>將您的伺服器設定為需要憑證
 
 ### <a name="kestrel"></a>Kestrel
 

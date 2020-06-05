@@ -1,7 +1,7 @@
 ---
-title: 教學課程：開始使用Razor ASP.NET Core 中的頁面
+title: 「教學課程：開始使用 Razor ASP.NET Core 中的頁面」
 author: rick-anderson
-description: 這一系列的教學課程會示範Razor如何使用 ASP.NET Core 中的頁面。 瞭解如何建立模型、產生Razor頁面的程式碼、使用 Entity Framework Core 和 SQL Server 進行資料存取、新增搜尋功能、新增輸入驗證，以及使用遷移來更新模型。
+description: 這一系列的教學課程會示範如何使用 Razor ASP.NET Core 中的頁面。 瞭解如何建立模型、產生頁面的程式碼 Razor 、使用 Entity Framework Core 和 SQL Server 進行資料存取、新增搜尋功能、新增輸入驗證，以及使用遷移來更新模型。
 ms.author: riande
 ms.date: 11/12/2019
 no-loc:
@@ -11,19 +11,19 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 8ed12b1778673962fe0b174e005bd6d8a7f54168
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 3b8ccf639bb91234f81c67750fffa170e52d636f
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774869"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84452332"
 ---
-# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 ASP.NET Core 中的 Razor Pages
+# <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 Razor ASP.NET Core 中的頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.0"
-此教學課程是系列中的第一個課程，教導您建置 ASP.NET Core Razor Pages Web 應用程式的基本概念。
+這是一系列的第一個教學課程，會教您建立 ASP.NET Core Razor 頁面 web 應用程式的基本概念。
 
 [!INCLUDE[](~/includes/advancedRP.md)]
 
@@ -34,11 +34,11 @@ ms.locfileid: "82774869"
 在本教學課程中，您：
 
 > [!div class="checklist"]
-> * 建立 Razor Pages Web 應用程式。
+> * 建立 Razor 頁面 web 應用程式。
 > * 執行應用程式。
 > * 檢查專案檔。
 
-在本教學課程結束時，您將會有一個能夠運作的 Razor Pages Web 應用程式，並將在稍後的教學課程中以此為建置基礎。
+在本教學課程結束時，您將會有一個 Razor 可在稍後的教學課程中建立的工作頁面 web 應用程式。
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "82774869"
 
 ---
 
-## <a name="create-a-razor-pages-web-app"></a>建立 Razor 頁面 Web 應用程式
+## <a name="create-a-razor-pages-web-app"></a>建立 Razor 頁面 web 應用程式
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -89,10 +89,10 @@ ms.locfileid: "82774869"
   code -r RazorPagesMovie
   ```
 
-  * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
+  * `dotnet new`命令會 Razor 在*RazorPagesMovie*資料夾中建立新的頁面專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]  。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
@@ -100,19 +100,24 @@ ms.locfileid: "82774869"
 
 * 選取 [檔案]** [新增解決方案]** > ****。
 
-![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
+  ![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* 選取 [.NET Core]** [應用程式]** > ** [Web 應用程式] ** > ** [下一步]** > ****。
+* 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用**  >  **程式**  >  **] [下一步]**。 在8.6 版或更新版本中，選取 [ **web 和主控台**  >  **應用**  >  **程式**  >  **] [下一步]**。
 
-  ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
+  ![macOS web 應用程式範本選取專案](razor-pages-start/_static/web_app_template_vsmac.png)
 
-* 在 [設定**新的 Web 應用程式**] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
+* 確認下列設定：
+
+  * 設定為 **.Net Core 3.1**的**目標 Framework** 。
+  * **驗證**設為 [**無驗證**]。
+   
+  選取 [下一步]。
 
   ![macOS .NET Core 3.1 選項](razor-pages-start/_static/targetframework3.png)
 
 * 將專案命名為 **RazorPagesMovie**，然後選取 [建立]****。
 
-  ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
+  ![macOS 將專案命名為](razor-pages-start/_static/RazorPagesMovie.png)
 
 <!-- End of VS tabs -->
 
@@ -128,28 +133,28 @@ ms.locfileid: "82774869"
 
 ### <a name="pages-folder"></a>Pages 資料夾
 
-包含 Razor 頁面和支援檔案。 每個 Razor 頁面都是一組檔案：
+包含 Razor 頁面和支援檔案。 每個 Razor 頁面都是一對檔案：
 
-* *.cshtml* 檔案，其中包含 C# 程式碼的 HTML 標記 (使用 Razor 語法)。
+* 包含 HTML 標籤的*cshtml*檔案，其 c # 程式碼使用 Razor 語法。
 * *.cshtml.cs* 檔案，其中包含處理頁面事件的 C# 程式碼。
 
-支援檔案的名稱以底線開頭。 例如，_Layout 的 *. cshtml*檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱<xref:mvc/views/layout>。
+支援檔案的名稱以底線開頭。 例如，_Layout 的 *. cshtml*檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout> 。
 
 ### <a name="wwwroot-folder"></a>wwwroot 資料夾
 
-包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱<xref:fundamentals/static-files>。
+包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱 <xref:fundamentals/static-files> 。
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-包含組態資料，例如連接字串。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+包含組態資料，例如連接字串。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
 
 ### <a name="programcs"></a>Program.cs
 
-包含程式的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
+包含程式的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 。
 
 ### <a name="startupcs"></a>Startup.cs
 
-包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱<xref:fundamentals/startup>。
+包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -164,7 +169,7 @@ ms.locfileid: "82774869"
 
 ::: moniker range="< aspnetcore-3.0"
 
-這是本系列的第一個教學課程。 [本系列](xref:tutorials/razor-pages/index)將教導您建置 ASP.NET Core Razor Pages Web 應用程式的基本概念。
+這是本系列的第一個教學課程。 [本系列將](xref:tutorials/razor-pages/index)教您建立 ASP.NET Core Razor Pages web 應用程式的基本概念。
 
 [!INCLUDE[](~/includes/advancedRP.md)]
 
@@ -175,11 +180,11 @@ ms.locfileid: "82774869"
 在本教學課程中，您：
 
 > [!div class="checklist"]
-> * 建立 Razor Pages Web 應用程式。
+> * 建立 Razor 頁面 web 應用程式。
 > * 執行應用程式。
 > * 檢查專案檔。
 
-在本教學課程結束時，您將會有一個能夠運作的 Razor Pages Web 應用程式，並將在稍後的教學課程中以此為建置基礎。
+在本教學課程結束時，您將會有一個 Razor 可在稍後的教學課程中建立的工作頁面 web 應用程式。
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
@@ -199,7 +204,7 @@ ms.locfileid: "82774869"
 
 ---
 
-## <a name="create-a-razor-pages-web-app"></a>建立 Razor 頁面 Web 應用程式
+## <a name="create-a-razor-pages-web-app"></a>建立 Razor 頁面 web 應用程式
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -234,10 +239,10 @@ ms.locfileid: "82774869"
   code -r RazorPagesMovie
   ```
 
-  * `dotnet new` 命令會在 *RazorPagesMovie* 資料夾中建立新的 Razor Pages 專案。
+  * `dotnet new`命令會 Razor 在*RazorPagesMovie*資料夾中建立新的頁面專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]  。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
@@ -247,9 +252,7 @@ ms.locfileid: "82774869"
 
 ![macOS 新增方案](../first-mvc-app/start-mvc/_static/new_project_vsmac.png)
 
-* 選取 [.NET Core]** [應用程式]** > ** [Web 應用程式] ** > ** [下一步]** > ****。
-
-  ![macOS [新增專案] 對話方塊](razor-pages-start/_static/webapp.png)
+* 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用**  >  **程式**  >  **] [下一步]**。 在8.6 版或更新版本中，選取 [ **web 和主控台**  >  **應用**  >  **程式**  >  **] [下一步]**。
 
 * 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
 
@@ -329,28 +332,28 @@ ms.locfileid: "82774869"
 
 ### <a name="pages-folder"></a>Pages 資料夾
 
-包含Razor頁面和支援檔案。 每Razor個頁面都是一對檔案：
+包含 Razor 頁面和支援檔案。 每個 Razor 頁面都是一對檔案：
 
-* 包含 HTML 標籤的*cshtml*檔案，其 c # 程式碼Razor使用語法。
+* 包含 HTML 標籤的*cshtml*檔案，其 c # 程式碼使用 Razor 語法。
 * *.cshtml.cs* 檔案，其中包含處理頁面事件的 C# 程式碼。
 
-支援檔案的名稱以底線開頭。 例如，_Layout 的 *. cshtml*檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱<xref:mvc/views/layout>。
+支援檔案的名稱以底線開頭。 例如，_Layout 的 *. cshtml*檔案會設定所有頁面通用的 UI 元素。 此檔案會設定頁面頂端的導覽功能表和頁面底部的著作權標示。 如需詳細資訊，請參閱 <xref:mvc/views/layout> 。
 
 ### <a name="wwwroot-folder"></a>wwwroot 資料夾
 
-包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱<xref:fundamentals/static-files>。
+包含靜態檔案，例如 HTML 檔案、JavaScript 檔案和 CSS 檔案。 如需詳細資訊，請參閱 <xref:fundamentals/static-files> 。
 
 ### <a name="appsettingsjson"></a>appSettings.json
 
-包含組態資料，例如連接字串。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+包含組態資料，例如連接字串。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
 
 ### <a name="programcs"></a>Program.cs
 
-包含程式的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
+包含程式的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 。
 
 ### <a name="startupcs"></a>Startup.cs
 
-包含設定應用程式行為的程式碼，例如是否需要同意使用 Cookie。 如需詳細資訊，請參閱<xref:fundamentals/startup>。
+包含設定應用程式行為的程式碼，例如是否需要同意使用 Cookie。 如需詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
 ## <a name="additional-resources"></a>其他資源
 

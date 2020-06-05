@@ -1,12 +1,24 @@
 ---
-標題： ' Debug ASP.NET Core Blazor WebAssembly ' author： guardrex description： ' 瞭解如何調試 Blazor 程式。 '
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/31/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： blazor/debug
-
+title: Debug ASP.NET Core Blazor WebAssembly
+author: guardrex
+description: 瞭解如何調試 Blazor 程式。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/31/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/debug
+ms.openlocfilehash: 193dc656c2ee0154f0ae534bc00f8dc29bab3258
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84239218"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET Core Blazor WebAssembly
 
@@ -30,7 +42,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 調試需要下列其中一個瀏覽器：
 
@@ -127,7 +139,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 1. Blazor在 VS Code 中開啟 hosted WebAssembly 應用程式。
 
-1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]  。
+1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]。
 
    ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
 
@@ -154,7 +166,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 以下是支援的啟動設定選項： `blazorwasm` debug 類型。
 
-| 選項    | 說明 |
+| 選項    | 描述 |
 | --------- | ----------- |
 | `request` | 使用 `launch` 來啟動 WebAssembly 應用程式，並將其連結至已在執行中的 Blazor `attach` 應用程式。 |
 | `url`     | 要在瀏覽器中開啟的 URL。 預設為 `https://localhost:5001`。 |

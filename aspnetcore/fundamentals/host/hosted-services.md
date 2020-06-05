@@ -1,12 +1,24 @@
 ---
-標題： ASP.NET Core 作者中具有託管服務的背景工作： rick-anderson 描述：瞭解如何在 ASP.NET Core 中使用託管服務來執行背景工作。
-monikerRange： ' >= aspnetcore-2.1 ' ms-chap： riande ms. custom： mvc ms. date： 02/10/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid：基本/主機/託管服務
-
+title: 在 ASP.NET Core 中使用託管服務的背景工作
+author: rick-anderson
+description: 了解如何在 ASP.NET Core 中使用託管服務實作背景工作。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 02/10/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: fundamentals/host/hosted-services
+ms.openlocfilehash: 47d0bdda7249232af22ec1c97e7baa710310caed
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84253678"
 ---
 # <a name="background-tasks-with-hosted-services-in-aspnet-core"></a>在 ASP.NET Core 中使用託管服務的背景工作
 
@@ -89,8 +101,8 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
   若要延長預設的五秒鐘關機逾時，請設定：
 
-  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#shutdown-timeout>。
-  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host#shutdown-timeout>。
+  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host#shutdown-timeout> 。
+  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#shutdown-timeout> 。
 
 託管服務會在應用程式啟動時隨即啟動，然後在應用程式關閉時正常關閉。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `StopAsync`，也應該呼叫 `Dispose`。
 
@@ -200,8 +212,8 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
   若要延長預設的五秒鐘關機逾時，請設定：
 
-  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host#shutdown-timeout>。
-  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱<xref:fundamentals/host/web-host#shutdown-timeout>。
+  * <xref:Microsoft.Extensions.Hosting.HostOptions.ShutdownTimeout*> (使用泛型主機時)。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host#shutdown-timeout> 。
+  * 使用 Web 主機時，關機逾時會裝載組態設定。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#shutdown-timeout> 。
 
 託管服務會在應用程式啟動時隨即啟動，然後在應用程式關閉時正常關閉。 如果在背景工作執行期間擲回錯誤，即使未呼叫 `StopAsync`，也應該呼叫 `Dispose`。
 

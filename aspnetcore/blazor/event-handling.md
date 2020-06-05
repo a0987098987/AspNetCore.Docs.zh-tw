@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 事件處理 ' 作者： guardrex 描述： ' 瞭解 Blazor 的事件處理功能，包括事件引數類型、事件回呼和管理預設瀏覽器事件。 '
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 06/04/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： blazor/事件處理
-
+title: ASP.NET Core Blazor 事件處理
+author: guardrex
+description: 瞭解 Blazor 的事件處理功能，包括事件引數類型、事件回呼和管理預設瀏覽器事件。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 06/04/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/event-handling
+ms.openlocfilehash: 2d806413eb66d4c1301df4a0db950e8b919c09a4
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84419745"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 事件處理
 

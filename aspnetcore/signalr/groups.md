@@ -1,14 +1,25 @@
 ---
-標題： [管理使用者和群組的 SignalR 作者： bradygaster 描述：] ASP.NET Core SignalR 使用者和群組管理的總覽。
-monikerRange： ' >= aspnetcore-2.1 ' ms-chap： bradyg ms. custom： mvc ms. date： 05/17/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： signalr/groups
-
+title: 管理中的使用者和群組SignalR
+author: bradygaster
+description: ASP.NET Core SignalR 使用者和群組管理的總覽。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: bradyg
+ms.custom: mvc
+ms.date: 05/17/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: signalr/groups
+ms.openlocfilehash: dfa989654069bc85f0a936751dbabe384c63e917
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "83549994"
 ---
-
 # <a name="manage-users-and-groups-in-signalr"></a>管理中的使用者和群組SignalR
 
 依[Brennan Conroy](https://github.com/BrennanConroy)

@@ -1,11 +1,24 @@
 ---
-標題： ' Blazor 使用 Azure Active Directory B2C 的作者保護 ASP.NET Core WebAssembly 獨立應用程式： guardrex 描述： monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： security/blazor/webassembly/獨立式-with-azure-active directory-b2c
-
+title: Blazor使用 Azure Active Directory B2C 保護 ASP.NET Core WebAssembly 獨立應用程式
+author: guardrex
+description: ''
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/blazor/webassembly/standalone-with-azure-active-directory-b2c
+ms.openlocfilehash: 911eeffbe632d8f285d54ae78b62f17851205e83
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84214957"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-azure-active-directory-b2c"></a>Blazor使用 Azure Active Directory B2C 保護 ASP.NET Core WebAssembly 獨立應用程式
 
@@ -29,7 +42,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 針對**支援的帳戶類型**，請選取 [多租使用者] 選項： [**任何組織目錄中的帳戶] 或 [任何身分識別提供者]。用於驗證 Azure AD B2C 的使用者。**
 1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，應用程式的隨機產生埠可以在 [**調試**程式] 面板的 [屬性] 中找到。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 本主題稍後會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
 1. 確認**許可權**  >  **授與系統管理員收到給 openid，並已啟用 offline_access 許可權**。
-1. 選取 [註冊]  。
+1. 選取 [註冊]。
 
 記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。
 

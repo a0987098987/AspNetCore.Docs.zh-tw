@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor 表單和驗證
+author: guardrex
+description: 瞭解如何在中使用表單和欄位驗證案例 Blazor 。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/27/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/forms-validation
+ms.openlocfilehash: 557ccf45fb88a743158d18046789ed6776efb28c
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84145352"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -62,114 +74,13 @@ public class ExampleModel
 有一組內建的輸入元件可用來接收和驗證使用者輸入。 當輸入變更時和送出表單時，會進行驗證。 下表顯示可用的輸入元件。
 
 | 輸入元件 | 轉譯為&hellip; |
-| ---
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--------- |---標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 表單和驗證 ' 作者：描述： ' 瞭解如何在中使用表單和欄位驗證案例 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----------- | | <xref:Microsoft.AspNetCore.Components.Forms.InputText> | `<input>` | | <xref:Microsoft.AspNetCore.Components.Forms.InputTextArea> | `<textarea>` | | <xref:Microsoft.AspNetCore.Components.Forms.InputSelect%601> | `<select>` | | <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> | `<input type="number">` | | <xref:Microsoft.AspNetCore.Components.Forms.InputCheckbox> | `<input type="checkbox">` | | <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> | `<input type="date">` |
+| --------------- | ------------------- |
+| <xref:Microsoft.AspNetCore.Components.Forms.InputText> | `<input>` |
+| <xref:Microsoft.AspNetCore.Components.Forms.InputTextArea> | `<textarea>` |
+| <xref:Microsoft.AspNetCore.Components.Forms.InputSelect%601> | `<select>` |
+| <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> | `<input type="number">` |
+| <xref:Microsoft.AspNetCore.Components.Forms.InputCheckbox> | `<input type="checkbox">` |
+| <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> | `<input type="date">` |
 
 所有的輸入元件（包括 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> ）都支援任意屬性。 任何不符合元件參數的屬性都會加入至轉譯的 HTML 專案。
 
@@ -552,7 +463,7 @@ public class ShipDescription
 
 * 當元件初始化時，請使用表單的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 來指派模型。
 * 在內容的回呼中驗證表單 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> ，以啟用和停用 [提交] 按鈕。
-* 解除掛接方法中的事件處理常式 `Dispose` 。 如需詳細資訊，請參閱<xref:blazor/lifecycle#component-disposal-with-idisposable>。
+* 解除掛接方法中的事件處理常式 `Dispose` 。 如需詳細資訊，請參閱 <xref:blazor/lifecycle#component-disposal-with-idisposable> 。
 
 ```razor
 @implements IDisposable

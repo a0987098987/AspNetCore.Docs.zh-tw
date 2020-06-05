@@ -11,12 +11,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: 0541a85756e0084f4a420a0742ad923d732a9365
-ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
+ms.openlocfilehash: a4676803361d71a3199b2cd1232d0ced8c93db5f
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82850548"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84451936"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端和伺服器
 
@@ -35,7 +35,7 @@ ms.locfileid: "82850548"
 > * 建立 gRPC 用戶端。
 > * 利用 gRPC Greeter 服務來測試 gRPC 用戶端。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -61,10 +61,10 @@ ms.locfileid: "82850548"
   ![[建立新專案] 對話方塊](~/tutorials/grpc/grpc-start/static/cnp.png)
 
 * 將專案命名為 **GrpcGreeter**。 請務必將專案命名為 *GrpcGreeter*，如此當您複製並貼上程式碼時，命名空間才會相符。
-* 選取 [建立]  。
+* 選取 [建立]。
 * 在 [建立新的 gRPC 服務]**** 對話方塊中：
   * 已選取 [gRPC 服務]**** 範本。
-  * 選取 [建立]  。
+  * 選取 [建立]。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -81,7 +81,7 @@ ms.locfileid: "82850548"
   * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [GrpcGreeter]** 資料夾。
 
   此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' GrpcGreeter ' 中遺漏了 debug。要新增它們嗎？**
-* 選取 [是]  。
+* 選取 [是]。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -96,7 +96,7 @@ cd GrpcGreeter
 
 ### <a name="open-the-project"></a>開啟專案
 
-從**Visual Studio 選取** > [檔案] [**開啟**]，然後選取*GrpcGreeter .csproj*檔案。
+從**Visual Studio 選取**[檔案]  >  [**開啟**]，然後選取*GrpcGreeter .csproj*檔案。
 
 ---
 
@@ -124,11 +124,11 @@ info: Microsoft.Hosting.Lifetime[0]
 
 *GrpcGreeter* 專案檔：
 
-* *greet.proto* &ndash;*Protos/greet.proto* 檔案會定義 `Greeter` gRPC，並會用來產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
-* *Services*資料夾：包含`Greeter`服務的執行。
-* *appSettings.json* &ndash; 包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
-* *Program.cs* &ndash; 包含 gRPC 服務的進入點。 如需詳細資訊，請參閱<xref:fundamentals/host/generic-host>。
-* *Startup.cs* &ndash; 包含設定應用程式行為的程式碼。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
+* *歡迎. proto*： *Protos/歡迎*檔案 `Greeter` 會定義 gRPC，並用於產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
+* *Services*資料夾：包含服務的執行 `Greeter` 。
+* *appSettings*：包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
+* *Program.cs*：包含 gRPC 服務的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 。
+* *Startup.cs*：包含可設定應用程式行為的程式碼。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 
 ## <a name="create-the-grpc-client-in-a-net-console-app"></a>在 .NET 主控台應用程式中建立 gRPC 用戶端
 
@@ -169,7 +169,7 @@ gRPC 用戶端專案需要下列套件：
 
 #### <a name="pmc-option-to-install-packages"></a>安裝套件的 PMC 選項
 
-* 從 Visual Studio 選取 [**工具** > ] [**NuGet 套件管理員** > ] [**套件管理員主控台**]
+* 從 Visual Studio 選取 [**工具**] [  >  **NuGet 套件管理員**] [  >  **套件管理員主控台**]
 * 從 [套件管理員主控台]**** 視窗，執行 `cd GrpcGreeterClient` 以變更包含 *GrpcGreeterClient.csproj* 檔案之資料夾的目錄。
 * 執行下列命令：
 
@@ -181,7 +181,7 @@ gRPC 用戶端專案需要下列套件：
 
 #### <a name="manage-nuget-packages-option-to-install-packages"></a>管理 NuGet 套件選項來安裝套件
 
-* 以滑鼠右鍵按一下**方案總管** > **管理 NuGet 套件**] 中的專案
+* 以滑鼠右鍵按一下**方案總管**  >  **管理 NuGet 套件**] 中的專案
 * 選取 [瀏覽]**** 索引標籤。
 * 在搜尋方塊中輸入 **Grpc.Net.Client**。
 * 從 [瀏覽]**** 索引標籤選取 [Grpc.Net.Client]**** 套件，然後選取 [安裝]****。
@@ -199,7 +199,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 以滑鼠右鍵按一下**Solution Pad** > **新增套件**] 中的 [**套件**] 資料夾
+* 以滑鼠右鍵按一下**Packages** **Solution Pad**  >  **新增套件**] 中的 [套件] 資料夾
 * 在搜尋方塊中輸入 **Grpc.Net.Client**。
 * 從結果窗格中選取 [Grpc.Net.Client]**** 套件，然後選取 [新增套件]****
 * 對 `Google.Protobuf` 與 `Grpc.Tools` 重複進行。
@@ -222,7 +222,7 @@ dotnet add GrpcGreeterClient.csproj package Grpc.Tools
 
   # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-  以滑鼠右鍵按一下專案，然後選取 [**工具** > ] [**編輯**檔案]。
+  以滑鼠右鍵按一下專案，然後選取 [**工具**] [  >  **編輯**檔案]。
 
   ---
 
@@ -304,7 +304,7 @@ info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
 ```
 
 > [!NOTE]
-> 此文章中的程式碼需要 ASP.NET Core HTTPS 開發憑證來保護 gRPC 服務。 如果 .NET gRPC 用戶端因訊息`The remote certificate is invalid according to the validation procedure.`或`The SSL connection could not be established.`而失敗，則開發憑證不受信任。 若要修正此問題，請參閱[使用不受信任/不正確憑證呼叫 gRPC 服務](xref:grpc/troubleshoot#call-a-grpc-service-with-an-untrustedinvalid-certificate)。
+> 此文章中的程式碼需要 ASP.NET Core HTTPS 開發憑證來保護 gRPC 服務。 如果 .NET gRPC 用戶端因訊息 `The remote certificate is invalid according to the validation procedure.` 或而失敗 `The SSL connection could not be established.` ，則開發憑證不受信任。 若要修正此問題，請參閱[使用不受信任/不正確憑證呼叫 gRPC 服務](xref:grpc/troubleshoot#call-a-grpc-service-with-an-untrustedinvalid-certificate)。
 
 [!INCLUDE[](~/includes/gRPCazure.md)]
 

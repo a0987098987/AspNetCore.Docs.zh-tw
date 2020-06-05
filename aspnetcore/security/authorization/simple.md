@@ -1,12 +1,22 @@
 ---
-標題： ASP.NET Core author 中的簡單授權： rick-anderson 描述：瞭解如何使用 authorization 屬性來限制對 ASP.NET Core 控制器和動作的存取。
-riande ms. date：10/14/2016 否-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid：安全性/授權/簡單
-
+title: ASP.NET Core 中的簡單授權
+author: rick-anderson
+description: 瞭解如何使用授權屬性來限制 ASP.NET Core 控制器和動作的存取。
+ms.author: riande
+ms.date: 10/14/2016
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/authorization/simple
+ms.openlocfilehash: 4ec31354d7fe11af75fd3a0045b4045f83721cb5
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84272121"
 ---
 # <a name="simple-authorization-in-aspnet-core"></a>ASP.NET Core 中的簡單授權
 

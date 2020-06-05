@@ -1,11 +1,11 @@
 ---
-title: 使用 ASP.NET Core Blazor WebAssembly 建立漸進式 Web 應用程式
+title: 使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
 author: guardrex
-description: 瞭解如何建立Blazor以新的瀏覽器功能為基礎的漸進式 Web 應用程式（PWA），其行為類似于桌面應用程式。
+description: 瞭解如何建立以新的 Blazor 瀏覽器功能為基礎的漸進式 Web 應用程式（PWA），其行為類似于桌面應用程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 03/23/2020
+ms.date: 05/19/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,22 +13,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: cf31c91ddc073498d882b111b597c546e788cc98
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 274516014c027972166402abc70d22fa801898de
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82771555"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84451845"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core Blazor WebAssembly 建立漸進式 Web 應用程式
+# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
-[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
-
-[!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
-
-漸進式 Web 應用程式（PWA）是單一頁面應用程式（SPA），其使用現代化瀏覽器 Api 和功能的行為，就像桌面應用程式一樣。 Blazor WebAssembly 是以標準為基礎的用戶端 web 應用程式平臺，因此可以使用任何瀏覽器 API，包括下列功能所需的 PWA Api：
+漸進式 Web 應用程式（PWA）是單一頁面應用程式（SPA），其使用現代化瀏覽器 Api 和功能的行為，就像桌面應用程式一樣。 BlazorWebAssembly 是以標準為基礎的用戶端 web 應用程式平臺，因此可以使用任何瀏覽器 API，包括下列功能所需的 PWA Api：
 
 * 離線工作並立即載入，獨立于網路速度。
 * 在自己的應用程式視窗中執行，而不只是瀏覽器視窗。
@@ -45,7 +41,7 @@ ms.locfileid: "82771555"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [**建立新專案**] 對話方塊中建立新的**Blazor WebAssembly 應用程式**時，請選取 [**進度 Web 應用程式**] 核取方塊：
+在 [**建立新專案**] 對話方塊中建立新的** Blazor WebAssembly 應用程式**時，選取 [**漸進式 Web 應用程式**] 核取方塊：
 
 ![[Visual Studio 新增專案] 對話方塊中已選取 [漸進式 Web 應用程式] 核取方塊。](progressive-web-app/_static/image1.png)
 
@@ -57,7 +53,7 @@ ms.locfileid: "82771555"
 
 # <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
 
-使用`--pwa`參數在命令 shell 中建立 PWA 專案：
+使用參數在命令 shell 中建立 PWA 專案 `--pwa` ：
 
 ```dotnetcli
 dotnet new blazorwasm -o MyNewProject --pwa
@@ -89,11 +85,11 @@ dotnet new blazorwasm -o MyNewProject --pwa
 > 開發支援會干擾進行變更和測試的一般開發週期。 因此，只會針對*已發佈*的應用程式啟用離線支援。 
 
 > [!WARNING]
-> 如果您想要散發已啟用離線的 PWA，有[幾個重要的警告和注意事項](#caveats-for-offline-pwas)。 這些案例都是離線 Pwa 的固有，而不Blazor是特定的。 請務必閱讀並瞭解這些注意事項，然後才對啟用離線的應用程式的運作方式進行假設。
+> 如果您想要散發已啟用離線的 PWA，有[幾個重要的警告和注意事項](#caveats-for-offline-pwas)。 這些案例都是離線 Pwa 的固有，而不是特定的 Blazor 。 請務必閱讀並瞭解這些注意事項，然後才對啟用離線的應用程式的運作方式進行假設。
 
 若要查看離線支援的運作方式：
 
-1. 發行應用程式。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#publish-the-app>。
+1. 發行應用程式。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#publish-the-app> 。
 1. 將應用程式部署至支援 HTTPS 的伺服器，並在瀏覽器中以安全的 HTTPS 位址存取應用程式。
 1. 開啟瀏覽器的 [開發工具]，並確認已在 [**應用程式**] 索引標籤上註冊主機的*服務背景工作*：
 
@@ -110,7 +106,7 @@ dotnet new blazorwasm -o MyNewProject --pwa
 
    ![Google Chrome 開發人員工具 [網路] 索引標籤，其中 [瀏覽器模式] 下拉狀態從 [線上] 變更為 [離線]。](progressive-web-app/_static/image6.png)
 
-使用服務工作者的離線支援是 web 標準，而不是特有Blazor的。 如需服務工作者的詳細資訊，請參閱[MDN web 檔：服務工作者 API](https://developer.mozilla.org/docs/Web/API/Service_Worker_API)。 若要深入瞭解服務工作者的常見使用模式，請參閱[Google Web：服務工作者生命週期](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)。
+使用服務工作者的離線支援是 web 標準，而不是特有的 Blazor 。 如需服務工作者的詳細資訊，請參閱[MDN web 檔：服務工作者 API](https://developer.mozilla.org/docs/Web/API/Service_Worker_API)。 若要深入瞭解服務工作者的常見使用模式，請參閱[Google Web：服務工作者生命週期](https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle)。
 
 Blazor的 PWA 範本會產生兩個服務工作者檔案：
 
@@ -128,45 +124,45 @@ Blazor的 PWA 範本會產生兩個服務工作者檔案：
 
 快取優先策略非常重要，因為：
 
-* **它可確保可靠性。** &ndash;網路存取不是布林值狀態。 使用者不只是線上或離線：
+* **它可確保可靠性。** 網路存取不是布林值狀態。 使用者不只是線上或離線：
 
   * 使用者的裝置可能會假設它已上線，但網路可能會很慢，而無法等待。
   * 網路可能會針對特定的 Url 傳回不正確結果，例如，當有一個目前正在封鎖或重新導向特定要求的驗證 WIFI 入口網站時。
   
-  這就是為什麼瀏覽器`navigator.onLine`的 API 不可靠，且不應依賴的原因。
+  這就是為什麼瀏覽器的 `navigator.onLine` API 不可靠，且不應依賴的原因。
 
-* **它可確保正確性。** &ndash;建立離線資源的快取時，服務工作者會使用內容雜湊來確保它已在單一時刻取得完整且自我一致的資源快照集。 然後，此快取會當做不可部分完成的單位來使用。 由於只需要已快取的版本，因此不會要求網路提供較新的資源。 其他任何風險不一致和不相容（例如，嘗試使用未一起編譯的 .NET 元件版本）。
+* **它可確保正確性。** 建立離線資源的快取時，服務工作者會使用內容雜湊來確保它已在單一時刻取得完整且自我一致的資源快照集。 然後，此快取會當做不可部分完成的單位來使用。 由於只需要已快取的版本，因此不會要求網路提供較新的資源。 其他任何風險不一致和不相容（例如，嘗試使用未一起編譯的 .NET 元件版本）。
 
 ### <a name="background-updates"></a>背景更新
 
 作為心理模型，您可以將離線優先的 PWA 視為行為，就像可以安裝的行動應用程式。 無論網路連線為何，應用程式都會立即啟動，但已安裝的應用程式邏輯來自可能不是最新版本的時間點快照集。
 
-Blazor PWA 範本會產生應用程式，以便在使用者造訪並具有正常運作的網路連線時，自動嘗試在背景中自行更新。 其運作方式如下：
+BlazorPWA 範本會產生應用程式，以便在使用者造訪並具有正常運作的網路連線時，自動嘗試在背景中自行更新。 其運作方式如下：
 
 * 在編譯期間，專案會產生*服務工作者資產資訊清單*。 根據預設，這稱為*service-worker-assets*。 資訊清單會列出應用程式離線運作所需的所有靜態資源，例如 .NET 元件、JavaScript 檔案和 CSS，包括其內容雜湊。 資源清單是由服務工作者載入，讓它知道要快取的資源。
 * 每次使用者造訪應用程式時，瀏覽器會在背景重新要求*service-worker*和*service-worker-assets* 。 這些檔案會與現有已安裝的服務背景工作角色進行逐位元組比較。 如果伺服器傳回上述任一檔案的變更內容，服務工作者會嘗試安裝新版的本身。
-* 安裝新版本的本身時，服務背景工作會為離線資源建立新的個別快取，並使用*service-worker-assets*中列出的資源開始擴展快取。 這個邏輯會在 service-worker 內`onInstall`的函式中實作為*已發行的 .js*。
+* 安裝新版本的本身時，服務背景工作會為離線資源建立新的個別快取，並使用*service-worker-assets*中列出的資源開始擴展快取。 這個邏輯會在 service-worker 內的函式中實作為 `onInstall` *已發行的 .js*。
 * 載入所有資源時，如果沒有發生錯誤，且所有內容雜湊都相符，此程式就會順利完成。 如果成功，新的服務工作者會進入*等待啟用*狀態。 一旦使用者關閉應用程式（沒有剩餘的應用程式索引標籤或 windows），新的服務背景工作角色就*會變成作用中，並*用於後續的應用程式造訪。 系統會刪除舊的服務背景工作角色及其快取。
 * 如果進程未順利完成，則會捨棄新的服務背景工作實例。 使用者下次造訪時，會再次嘗試更新程式，希望用戶端有更好的網路連線可以完成要求。
 
-編輯服務背景工作邏輯以自訂此程式。 上述行為都不是特有的， Blazor但只是 PWA 範本選項所提供的預設體驗。 如需詳細資訊，請參閱[MDN web 檔：服務工作者 API](https://developer.mozilla.org/docs/Web/API/Service_Worker_API)。
+編輯服務背景工作邏輯以自訂此程式。 上述行為都不是特有的， Blazor 但只是 PWA 範本選項所提供的預設體驗。 如需詳細資訊，請參閱[MDN web 檔：服務工作者 API](https://developer.mozilla.org/docs/Web/API/Service_Worker_API)。
 
 ### <a name="how-requests-are-resolved"></a>如何解決要求
 
-如快[取優先提取策略](#cache-first-fetch-strategy)一節中所述，預設服務工作者會使用快取優先策略，這表示它會嘗試提供快取*的*內容（如果有的話）。 如果沒有針對特定 URL 快取任何內容（例如，從後端 API 要求資料時），服務工作者會回復一般網路要求。 如果可以連線到伺服器，網路要求就會成功。 這個邏輯會在 service-worker `onFetch`內的函式中實作為*已發行的 .js*。
+如快[取優先提取策略](#cache-first-fetch-strategy)一節中所述，預設服務工作者會使用快取優先策略，這表示它會嘗試提供快取*的*內容（如果有的話）。 如果沒有針對特定 URL 快取任何內容（例如，從後端 API 要求資料時），服務工作者會回復一般網路要求。 如果可以連線到伺服器，網路要求就會成功。 這個邏輯會在 service-worker 內的函式中實作為 `onFetch` *已發行的 .js*。
 
-如果應用程式的Razor元件依賴來自後端 api 的要求資料，而您想要為失敗的要求提供易記的使用者體驗，因為網路無法使用，請在應用程式的元件內執行邏輯。 例如，使用`try/catch` [圍繞`HttpClient`要求]。
+如果應用程式的 Razor 元件依賴來自後端 api 的要求資料，而您想要為失敗的要求提供易記的使用者體驗，因為網路無法使用，請在應用程式的元件內執行邏輯。 例如，使用 [ `try/catch` 圍繞 <xref:System.Net.Http.HttpClient> 要求]。
 
 ### <a name="support-server-rendered-pages"></a>支援伺服器呈現的頁面
 
-請考慮當使用者第一次流覽至 URL （例如） `/counter`或應用程式中的任何其他深層連結時，會發生什麼情況。 在這些情況下，您不想要傳回快取`/counter`的內容，而是需要瀏覽器載入快取的`/index.html`內容，以啟動Blazor您的 WebAssembly 應用程式。 這些初始要求稱為「*導覽*要求」，而不是：
+請考慮當使用者第一次流覽至 URL （例如） `/counter` 或應用程式中的任何其他深層連結時，會發生什麼情況。 在這些情況下，您不想要傳回快取 `/counter` 的內容，而是需要瀏覽器載入快取的內容， `/index.html` 以啟動您的 Blazor WebAssembly 應用程式。 這些初始要求稱為「*導覽*要求」，而不是：
 
 * *subresource*影像、樣式表單或其他檔案的要求。
 * *提取/XHR* API 資料的要求。
 
-預設的服務背景工作包含導覽要求的特殊案例邏輯。 無論要求的 URL 為何`/index.html`，服務工作者都會藉由傳回的快取內容來解析要求。 這個邏輯會在 service-worker 內`onFetch`的函式中實作為*已發行的 .js*。
+預設的服務背景工作包含導覽要求的特殊案例邏輯。 無論要求的 URL 為何，服務工作者都會藉由傳回的快取內容來解析要求 `/index.html` 。 這個邏輯會在 service-worker 內的函式中實作為 `onFetch` *已發行的 .js*。
 
-如果您的應用程式有特定 Url 必須傳回伺服器轉譯的 HTML，而不`/index.html`是從快取中提供，則您需要編輯服務背景工作中的邏輯。 如果包含`/Identity/`的所有 url 都必須處理為一般僅線上的伺服器要求，則請修改*service-worker。已發行的 .js* `onFetch`邏輯。 找出下列程式碼：
+如果您的應用程式有特定 Url 必須傳回伺服器轉譯的 HTML，而不是從快取中提供 `/index.html` ，則您需要編輯服務背景工作中的邏輯。 如果包含的所有 Url 都必須 `/Identity/` 處理為一般僅線上的伺服器要求，則請修改*service-worker。已發行的 .js* `onFetch` 邏輯。 找出下列程式碼：
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate';
@@ -179,26 +175,26 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
     && !event.request.url.includes('/Identity/');
 ```
 
-如果您不這麼做，則不論網路連線為何，服務工作者都會攔截這類 Url 的要求，並使用`/index.html`加以解析。
+如果您不這麼做，則不論網路連線為何，服務工作者都會攔截這類 Url 的要求，並使用加以解析 `/index.html` 。
 
 ### <a name="control-asset-caching"></a>控制資產快取
 
-如果您的專案定義`ServiceWorkerAssetsManifest` MSBuild 屬性， Blazor的組建工具會使用指定的名稱來產生服務背景工作資產資訊清單。 預設 PWA 範本會產生包含下列屬性的專案檔：
+如果您的專案定義 `ServiceWorkerAssetsManifest` MSBuild 屬性， Blazor 的組建工具會使用指定的名稱來產生服務背景工作資產資訊清單。 預設 PWA 範本會產生包含下列屬性的專案檔：
 
 ```xml
 <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 ```
 
-檔案會放在*wwwroot*輸出目錄中，因此瀏覽器可以藉由要求`/service-worker-assets.js`來抓取此檔案。 若要查看此檔案的內容，請在文字編輯器中開啟 */BIN/DEBUG/{TARGET FRAMEWORK}/wwwroot/service-worker-assets.js* 。 不過，請不要編輯檔案，因為它會在每個組建上重新產生。
+檔案會放在*wwwroot*輸出目錄中，因此瀏覽器可以藉由要求來抓取此檔案 `/service-worker-assets.js` 。 若要查看此檔案的內容，請在文字編輯器中開啟 */BIN/DEBUG/{TARGET FRAMEWORK}/wwwroot/service-worker-assets.js* 。 不過，請不要編輯檔案，因為它會在每個組建上重新產生。
 
 根據預設，此資訊清單會列出：
 
-* 任何Blazor管理的資源（例如 .net 元件和 .net WebAssembly 執行時間檔案）都必須離線運作。
+* 任何 Blazor 管理的資源（例如 .net 元件和 .Net WebAssembly 執行時間檔案）都必須離線運作。
 * 所有用來發行至應用程式*wwwroot*目錄的資源，例如影像、樣式表單和 JavaScript 檔案，包括外部專案和 NuGet 套件所提供的靜態 web 資產。
 
-您可以藉由編輯`onInstall` *service-worker*中的邏輯，來控制服務工作者要提取和快取哪些資源。 根據預設，服務工作者會提取並快取符合一般 web 副檔名的檔案，例如 *.html*、 *.css*、 *.js*和*wasm*，再加上Blazor WebAssembly （*.dll*， *.pdb*）特有的檔案類型。
+您可以藉由編輯 service-worker 中的邏輯，來控制服務工作者要提取和快取哪些 `onInstall` 資源*service-worker.published.js*。 根據預設，服務工作者會提取並快取符合一般 web 副檔名的檔案，例如 *.html*、 *.css*、 *.js*和*wasm*，再加上 Blazor WebAssembly （*.dll*， *.pdb*）特有的檔案類型。
 
-若要加入不存在於應用程式*wwwroot*目錄中的其他資源，請定義`ItemGroup`額外的 MSBuild 專案，如下列範例所示：
+若要加入不存在於應用程式*wwwroot*目錄中的其他資源，請定義額外 `ItemGroup` 的 MSBuild 專案，如下列範例所示：
 
 ```xml
 <ItemGroup>
@@ -210,15 +206,15 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 `AssetUrl`中繼資料會指定在提取要快取的資源時，瀏覽器應該使用的基底相對 URL。 這可以獨立于其在磁片上的原始來原始檔案名。
 
 > [!IMPORTANT]
-> 新增`ServiceWorkerAssetsManifestItem`不會導致檔案在應用程式的*wwwroot*目錄中發行。 發行輸出必須分開控制。 `ServiceWorkerAssetsManifestItem`只會導致服務工作者資產資訊清單中出現額外的專案。
+> 新增 `ServiceWorkerAssetsManifestItem` 不會導致檔案在應用程式的*wwwroot*目錄中發行。 發行輸出必須分開控制。 `ServiceWorkerAssetsManifestItem`只會導致服務工作者資產資訊清單中出現額外的專案。
 
 ## <a name="push-notifications"></a>推送通知
 
-就像任何其他 PWA 一樣Blazor ，WEBASSEMBLY 的 pwa 也可以從後端伺服器接收推播通知。 伺服器可以隨時傳送推播通知，即使使用者未主動使用應用程式也一樣。 例如，當其他使用者執行相關動作時，可以傳送推播通知。
+就像任何其他 PWA 一樣， Blazor WebAssembly 的 pwa 也可以從後端伺服器接收推播通知。 伺服器可以隨時傳送推播通知，即使使用者未主動使用應用程式也一樣。 例如，當其他使用者執行相關動作時，可以傳送推播通知。
 
-傳送推播通知的機制完全獨立于Blazor WebAssembly，因為它是由可使用任何技術的後端伺服器所執行。 如果您想要從 ASP.NET Core 伺服器傳送推播通知，請考慮[使用類似于技術比薩研討會所採用之方法的技巧](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications)。
+傳送推播通知的機制完全獨立于 Blazor WebAssembly，因為它是由可使用任何技術的後端伺服器所執行。 如果您想要從 ASP.NET Core 伺服器傳送推播通知，請考慮[使用類似于技術比薩研討會所採用之方法的技巧](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications)。
 
-在用戶端上接收和顯示推播通知的機制也獨立于Blazor WebAssembly，因為它是在服務背景工作 JavaScript 檔案中執行。 如需範例，請參閱在[進行中的比薩研討會中使用的方法](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications)。
+在用戶端上接收和顯示推播通知的機制也獨立于 Blazor WebAssembly，因為它是在服務背景工作 JavaScript 檔案中執行。 如需範例，請參閱在[進行中的比薩研討會中使用的方法](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications)。
 
 ## <a name="caveats-for-offline-pwas"></a>離線 Pwa 的注意事項
 
@@ -226,7 +222,7 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 
 離線支援通常僅與相關：
 
-* 如果主要資料存放區是瀏覽器的本機。 例如，此方法與應用程式相關，其適用于[IoT](https://en.wikipedia.org/wiki/Internet_of_things)裝置的 UI，可將資料儲存`localStorage`在或[IndexedDB](https://developer.mozilla.org/docs/Web/API/IndexedDB_API)中。
+* 如果主要資料存放區是瀏覽器的本機。 例如，此方法與應用程式相關，其適用于[IoT](https://en.wikipedia.org/wiki/Internet_of_things)裝置的 UI，可將資料儲存在 `localStorage` 或[IndexedDB](https://developer.mozilla.org/docs/Web/API/IndexedDB_API)中。
 * 如果應用程式執行大量的工作來提取和快取與每個使用者相關的後端 API 資料，使其可以離線流覽資料。 如果應用程式必須支援編輯，則必須建立追蹤變更的系統，並將資料與後端同步處理。
 * 如果目標是要保證應用程式會立即載入，而不考慮網路狀況。 針對後端 API 要求執行適當的使用者體驗，以顯示要求的進度，並在要求因網路無法使用而失敗時，正常運作。
 
@@ -234,7 +230,7 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 
 ### <a name="offline-support-only-when-published"></a>只有在發行時才支援離線
 
-在開發期間，您通常會想要查看在瀏覽器中立即反映的每項變更，而不需要進行背景更新程式。 因此， Blazor的 PWA 範本只有在發佈時才會啟用離線支援。
+在開發期間，您通常會想要查看在瀏覽器中立即反映的每項變更，而不需要進行背景更新程式。 因此， Blazor 的 PWA 範本只有在發佈時才會啟用離線支援。
 
 建立具備離線功能的應用程式時，在開發環境中測試應用程式並不夠。 您必須在其 [已發佈] 狀態中測試應用程式，以瞭解它如何回應不同的網路狀況。
 
@@ -242,7 +238,7 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 
 直到使用者在所有索引標籤中流覽完應用程式之後，更新才會完成。 如 [[背景更新](#background-updates)] 區段中所述，在您將更新部署至應用程式之後，瀏覽器會提取已更新的服務背景工作檔案，以開始進行更新程式。
 
-許多開發人員很驚訝，即使這項更新完成，在使用者離開所有索引標籤之前，都**不**會生效。 重新整理顯示應用程式的索引標籤並**不**足夠，即使它是顯示應用程式的唯一索引標籤也一樣。 在您的應用程式完全關閉之前，新的服務背景工作會維持在*等候啟動*狀態。 **這不是特有的Blazor，而是標準的 web 平臺行為。**
+許多開發人員很驚訝，即使這項更新完成，在使用者離開所有索引標籤之前，都**不**會生效。 重新整理顯示應用程式的索引標籤並**不**足夠，即使它是顯示應用程式的唯一索引標籤也一樣。 在您的應用程式完全關閉之前，新的服務背景工作會維持在*等候啟動*狀態。 **這不是特有的 Blazor ，而是標準的 web 平臺行為。**
 
 這通常是麻煩嘗試測試其服務工作者或離線快取資源更新的開發人員。 如果您簽入瀏覽器的開發人員工具，您可能會看到類似下列的內容：
 
@@ -264,7 +260,7 @@ Web 開發人員 habitually 預期使用者只會執行其 web 應用程式的�
 
 ### <a name="interference-with-server-rendered-pages"></a>伺服器呈現頁面的干擾
 
-如[支援伺服器呈現的頁面](#support-server-rendered-pages)一節中所述，如果您想要略過服務工作者針對所有導覽`/index.html`要求傳回內容的行為，請編輯服務背景工作中的邏輯。
+如[支援伺服器呈現的頁面](#support-server-rendered-pages)一節中所述，如果您想要略過服務工作者 `/index.html` 針對所有導覽要求傳回內容的行為，請編輯服務背景工作中的邏輯。
 
 ### <a name="all-service-worker-asset-manifest-contents-are-cached-by-default"></a>預設會快取所有服務工作者資產資訊清單內容
 
@@ -272,7 +268,7 @@ Web 開發人員 habitually 預期使用者只會執行其 web 應用程式的�
 
 因為此清單預設包含所有發出至*wwwroot*的專案，包括外部封裝和專案所提供的內容，所以您必須小心不要在該處放入太多內容。 如果*wwwroot*目錄包含數百萬個映射，服務工作者會嘗試提取並快取全部，耗用過多的頻寬，而且很可能無法順利完成。
 
-藉由編輯`onInstall` *service-worker*中的函式，來執行任意邏輯以控制應提取和快取的資訊清單內容子集。
+藉由編輯 service-worker 中的函式，來執行任意邏輯以控制應提取和快取的資訊清單內容子集 `onInstall` 。 *service-worker.published.js*
 
 ### <a name="interaction-with-authentication"></a>與驗證互動
 

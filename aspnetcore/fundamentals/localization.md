@@ -1,12 +1,22 @@
 ---
-標題： ASP.NET Core author 中的全球化和當地語系化： rick-anderson 描述：瞭解 ASP.NET Core 如何提供服務和中介軟體，將內容當地語系化成不同的語言和文化特性。
-riande ms. date：11/30/2019 否-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid：基本概念/當地語系化
-
+title: ASP.NET Core 全球化和當地語系化
+author: rick-anderson
+description: 了解 ASP.NET Core 如何提供服務與中介軟體，以將內容當地語系化成不同的語言與文化特性。
+ms.author: riande
+ms.date: 11/30/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: fundamentals/localization
+ms.openlocfilehash: e3b73a7a559d2f4a0803dc26dd42257c60fab884
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84356956"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -70,7 +80,7 @@ riande ms. date：11/30/2019 否-loc：
 
 法文資源檔可能包含下列內容：
 
-| 機碼 | 值 |
+| Key | 值 |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -418,7 +428,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 法文資源檔可能包含下列內容：
 
-| 機碼 | 值 |
+| Key | 值 |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
@@ -765,7 +775,7 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 法文資源檔可能包含下列內容：
 
-| 機碼 | 值 |
+| Key | 值 |
 | ----- | ------ |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 

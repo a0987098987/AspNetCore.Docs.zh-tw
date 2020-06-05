@@ -1,12 +1,24 @@
 ---
-標題： ' 裝載和部署 ASP.NET Core Blazor 伺服器 ' 作者： guardrex 描述： ' 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應用程式。
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 06/04/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid：主機和部署/blazor/伺服器
-
+title: 裝載和部署 ASP.NET Core Blazor 伺服器
+author: guardrex
+description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應用程式。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 06/04/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: host-and-deploy/blazor/server
+ms.openlocfilehash: 8c06d3a4d0d75a3e2fd9f699af38a23833fa8bce
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84419940"
 ---
 # <a name="host-and-deploy-blazor-server"></a>裝載和部署 Blazor 伺服器
 

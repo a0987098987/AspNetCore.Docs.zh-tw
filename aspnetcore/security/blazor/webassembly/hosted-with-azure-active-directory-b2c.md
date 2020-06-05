@@ -1,11 +1,24 @@
 ---
-標題： ' Blazor 使用 Azure Active Directory B2C ' author ' 保護 ASP.NET Core WebAssembly 託管應用程式： guardrex description： monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： security/blazor/webassembly/hosted---azure-active directory-b2c
-
+title: Blazor使用 Azure Active Directory B2C 保護 ASP.NET Core WebAssembly 託管應用程式
+author: guardrex
+description: ''
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/blazor/webassembly/hosted-with-azure-active-directory-b2c
+ms.openlocfilehash: b369bf0e9b20bcb87345e3e10c314ae6227464d1
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84215092"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Blazor使用 Azure Active Directory B2C 保護 ASP.NET Core WebAssembly 託管應用程式
 
@@ -33,7 +46,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 針對**支援的帳戶類型**，請選取 [多租使用者] 選項： [**任何組織目錄中的帳戶] 或 [任何身分識別提供者]。用於驗證 Azure AD B2C 的使用者。**
 1. 在此案例中，*伺服器 API 應用程式*不需要重新**導向 uri** ，因此，請將下拉式關閉設定為 [ **Web** ]，而不要輸入 [重新導向 uri]。
 1. 確認**許可權**  >  **授與系統管理員收到給 openid，並已啟用 offline_access 許可權**。
-1. 選取 [註冊]  。
+1. 選取 [註冊]。
 
 記錄下列資訊：
 
@@ -65,7 +78,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 針對**支援的帳戶類型**，請選取 [多租使用者] 選項： [**任何組織目錄中的帳戶] 或 [任何身分識別提供者]。用於驗證 Azure AD B2C 的使用者。**
 1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，在 [**調試**程式] 面板的伺服器應用程式屬性中，可以找到應用程式的隨機產生埠。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 [[建立應用程式](#create-the-app)] 區段中會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
 1. 確認**許可權**  >  **授與系統管理員收到給 openid，並已啟用 offline_access 許可權**。
-1. 選取 [註冊]  。
+1. 選取 [註冊]。
 
 記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。
 
@@ -82,7 +95,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 從 [**名稱**] 資料行中選取*伺服器 API 應用程式*（例如，[ ** Blazor 伺服器 AAD B2C**]）。
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access` ）。
-1. 選取 [新增權限]  。
+1. 選取 [新增權限]。
 1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是]  確認。
 
 在**Home**  >  **Azure AD B2C**  >  **使用者流程**：

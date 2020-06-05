@@ -1,12 +1,23 @@
 ---
-標題：控制器動作傳回類型 ASP.NET Core Web API 作者： scottaddie 描述：瞭解如何在 ASP.NET Core Web API 中使用各種控制器動作方法傳回類型。
-scaddie ms. custom： mvc ms. date： 02/03/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： web-api/動作-傳回類型
-
+title: ASP.NET Core Web API 中的控制器動作傳回類型
+author: scottaddie
+description: 瞭解如何在 ASP.NET Core Web API 中使用各種控制器動作方法傳回類型。
+ms.author: scaddie
+ms.custom: mvc
+ms.date: 02/03/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: web-api/action-return-types
+ms.openlocfilehash: 57bc91feb9c4242dbea120ee00db1cba46784c61
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84253782"
 ---
 # <a name="controller-action-return-types-in-aspnet-core-web-api"></a>ASP.NET Core Web API 中的控制器動作傳回類型
 

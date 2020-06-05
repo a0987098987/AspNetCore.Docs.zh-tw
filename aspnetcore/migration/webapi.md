@@ -1,11 +1,23 @@
 ---
-標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 從 ASP.NET Web API 遷移至 ASP.NET Core
+author: ardalis
+description: 瞭解如何將 Web API 的執行，從 ASP.NET 4.x Web API 遷移至 ASP.NET Core MVC。
+ms.author: scaddie
+ms.custom: mvc
+ms.date: 05/26/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: migration/webapi
+ms.openlocfilehash: 3c8bf27a97de92a42817d4af625976a4920001aa
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84145547"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 遷移至 ASP.NET Core
 
@@ -68,7 +80,7 @@ ASP.NET Core 不會使用*App_Start*資料夾或*global.asax*檔案。 此外，
 * 取代*global.asax*。
 * 處理所有應用程式啟動工作。
 
-如需詳細資訊，請參閱<xref:fundamentals/startup>。
+如需詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
 ## <a name="migrate-models-and-controllers"></a>遷移模型和控制器
 
@@ -181,7 +193,7 @@ ASP.NET Core 不會使用：
 * 取代*global.asax*。
 * 處理所有應用程式啟動工作。
 
-如需詳細資訊，請參閱<xref:fundamentals/startup>。
+如需詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
 在 ASP.NET Core MVC 中，在中呼叫時，預設會包含屬性路由 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvc*> `Startup.Configure` 。 下列 `UseMvc` 呼叫會取代*ProductsApp*專案的*App_Start/webapiconfig.cs*檔：
 

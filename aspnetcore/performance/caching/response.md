@@ -1,12 +1,23 @@
 ---
-標題： ASP.NET Core 作者的回應快取： rick-anderson 描述：瞭解如何使用回應快取來降低頻寬需求，以及提高 ASP.NET Core 應用程式的效能。
-monikerRange： ' >= aspnetcore-2.1 ' ms-chap： riande ms. date：11/04/2019 否-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid：效能/快取/回應
-
+title: ASP.NET Core 中的回應快取
+author: rick-anderson
+description: 了解如何使用回應快取來降低頻寬需求，並提升 ASP.NET Core 應用程式的效能。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.date: 11/04/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: performance/caching/response
+ms.openlocfilehash: 87ff2633ded612eba2c996583b4a6cf997fe8e18
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84105762"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -57,25 +68,25 @@ monikerRange： ' >= aspnetcore-2.1 ' ms-chap： riande ms. date：11/04/2019 �
 
 記憶體內部快取會使用伺服器記憶體來儲存快取的資料。 這種類型的快取適用于單一伺服器，或使用*粘滯會話*的多部伺服器。 「粘滯話」表示用戶端的要求一律會路由傳送至相同的伺服器進行處理。
 
-如需詳細資訊，請參閱<xref:performance/caching/memory>。
+如需詳細資訊，請參閱 <xref:performance/caching/memory> 。
 
 ### <a name="distributed-cache"></a>分散式快取
 
 當應用程式裝載于雲端或伺服器陣列時，使用分散式快取將資料儲存在記憶體中。 快取會在處理要求的伺服器之間共用。 如果用戶端的快取資料可供使用，則用戶端可以提交由群組中的任何伺服器所處理的要求。 ASP.NET Core 適用于 SQL Server、 [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)和[NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)分散式快取。
 
-如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
 
 ### <a name="cache-tag-helper"></a>快取標籤協助程式
 
 使用快取標籤協助程式從 MVC 視圖或頁面快取內容 Razor 。 快取標記協助程式會使用記憶體內部快取來儲存資料。
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper> 。
 
 ### <a name="distributed-cache-tag-helper"></a>分散式快取標籤協助程式
 
 使用分散式快取標記協助程式 Razor ，從分散式雲端或 web 伺服陣列案例中的 MVC 視圖或頁面快取內容。 分散式快取標記協助程式會使用 SQL Server、 [Redis](https://www.nuget.org/packages/Microsoft.Extensions.Caching.StackExchangeRedis)或[NCache](https://www.nuget.org/packages/Alachisoft.NCache.OpenSource.SDK/)來儲存資料。
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper> 。
 
 ## <a name="responsecache-attribute"></a>ResponseCache 屬性
 

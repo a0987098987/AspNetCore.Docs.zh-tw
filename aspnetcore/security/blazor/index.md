@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 驗證和授權 ' 作者： guardrex 描述：「瞭解 Blazor 驗證和授權案例」。
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： security/blazor/index
-
+title: ASP.NET Core Blazor 驗證和授權
+author: guardrex
+description: 瞭解 Blazor 驗證和授權案例。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/blazor/index
+ms.openlocfilehash: fb842fe799731a1d7692b24a543ba05e53d04637
+ms.sourcegitcommit: 67eadd7bf28eae0b8786d85e90a7df811ffe5904
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84454567"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
 
@@ -198,18 +210,19 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 `Task<` <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState> `>` 使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 元件中的和元件 `App` （*app.config*）來設定串聯參數：
 
 ```razor
-<Router AppAssembly="@typeof(Program).Assembly">
-    <Found Context="routeData">
-        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-    </Found>
-    <NotFound>
-        <CascadingAuthenticationState>
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" 
+                DefaultLayout="@typeof(MainLayout)" />
+        </Found>
+        <NotFound>
             <LayoutView Layout="@typeof(MainLayout)">
                 <p>Sorry, there's nothing at this address.</p>
             </LayoutView>
-        </CascadingAuthenticationState>
-    </NotFound>
-</Router>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
 ```
 
 在 Blazor WebAssembly 應用程式中，將選項和授權的服務新增至 `Program.Main` ：
@@ -285,7 +298,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-如需詳細資訊，請參閱<xref:security/authorization/roles>。
+如需詳細資訊，請參閱 <xref:security/authorization/roles> 。
 
 針對原則型授權，請使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> 參數：
 
@@ -295,7 +308,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱<xref:security/authorization/policies>。
+宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies> 。
 
 這些 Api 可以在 Blazor 伺服器或 Blazor WebAssembly 應用程式中使用。
 
@@ -370,29 +383,30 @@ You can only see this if you're signed in.
 在預設的 Blazor 伺服器專案範本中， `App` 元件（*razor*）會示範如何設定自訂內容：
 
 ```razor
-<Router AppAssembly="@typeof(Program).Assembly">
-    <Found Context="routeData">
-        <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
-            <NotAuthorized>
-                <h1>Sorry</h1>
-                <p>You're not authorized to reach this page.</p>
-                <p>You may need to log in as a different user.</p>
-            </NotAuthorized>
-            <Authorizing>
-                <h1>Authentication in progress</h1>
-                <p>Only visible while authentication is in progress.</p>
-            </Authorizing>
-        </AuthorizeRouteView>
-    </Found>
-    <NotFound>
-        <CascadingAuthenticationState>
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView RouteData="@routeData" 
+                DefaultLayout="@typeof(MainLayout)">
+                <NotAuthorized>
+                    <h1>Sorry</h1>
+                    <p>You're not authorized to reach this page.</p>
+                    <p>You may need to log in as a different user.</p>
+                </NotAuthorized>
+                <Authorizing>
+                    <h1>Authentication in progress</h1>
+                    <p>Only visible while authentication is in progress.</p>
+                </Authorizing>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
             <LayoutView Layout="@typeof(MainLayout)">
                 <h1>Sorry</h1>
                 <p>Sorry, there's nothing at this address.</p>
             </LayoutView>
-        </CascadingAuthenticationState>
-    </NotFound>
-</Router>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
 ```
 
 `<NotFound>`、 `<NotAuthorized>` 和標記的內容 `<Authorizing>` 可以包含任意專案，例如其他互動式元件。

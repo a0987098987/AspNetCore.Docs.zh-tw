@@ -1,12 +1,24 @@
 ---
-標題： ' Secure ASP.NET Core Blazor WebAssembly ' author： guardrex description： ' 瞭解如何將 Blazor WebAssemlby 應用程式保護為單一頁面應用程式（spa）。
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 06/01/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： security/blazor/webassembly/index
-
+title: 保護 ASP.NET Core Blazor WebAssembly
+author: guardrex
+description: 瞭解如何以 Blazor 單一頁面應用程式（spa）保護 WebAssemlby 應用程式。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 06/01/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/blazor/webassembly/index
+ms.openlocfilehash: ce780afe3e69d2526698cf3694fe70394fc17847
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84253470"
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>保護 ASP.NET Core Blazor WebAssembly
 
@@ -52,7 +64,7 @@ WebAssembly 中的驗證支援 Blazor 是建置於*oidc-client*程式庫之上�
 
 重新整理權杖無法在 WebAssembly apps 的用戶端上受到保護 Blazor 。 因此，不應將重新整理權杖傳送至應用程式，以供直接使用。
 
-在託管的 WebAssembly 解決方案中，伺服器端應用程式可以維護及使用重新整理權杖 Blazor 來存取協力廠商 api。 如需詳細資訊，請參閱<xref:security/blazor/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party>。
+在託管的 WebAssembly 解決方案中，伺服器端應用程式可以維護及使用重新整理權杖 Blazor 來存取協力廠商 api。 如需詳細資訊，請參閱 <xref:security/blazor/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party> 。
 
 ## <a name="implementation-guidance"></a>實作指引
 

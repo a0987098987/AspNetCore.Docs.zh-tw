@@ -1,12 +1,24 @@
 ---
-標題：「組建您的第一個 Blazor 應用程式」作者： guardrex 描述：「 Blazor 逐步建立應用程式」。
-monikerRange： ' >= aspnetcore-3.0 ' ms-chap： riande ms. custom： mvc ms. date： 05/19/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid：教學課程/第 blazor-應用程式
-
+title: 建立您的第一個 Blazor 應用程式
+author: guardrex
+description: 逐步建立 Blazor 應用程式。
+monikerRange: '>= aspnetcore-3.0'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: tutorials/first-blazor-app
+ms.openlocfilehash: 8cf356b5c9876a4114942af27a22df6bd324d0e2
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84355210"
 ---
 # <a name="build-your-first-blazor-app"></a>建立您的第一個 Blazor 應用程式
 

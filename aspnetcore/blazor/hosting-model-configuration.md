@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 主控模型設定 ' 作者： guardrex 描述： ' 瞭解 Blazor 裝載模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/28/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： blazor/裝載-模型-設定
-
+title: ASP.NET Core Blazor 裝載模型設定
+author: guardrex
+description: 瞭解 Blazor 主控模型設定，包括如何將元件整合 Razor 至 Razor 頁面和 MVC 應用程式。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/28/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/hosting-model-configuration
+ms.openlocfilehash: e3b8b91a570210e77f307c49f7be21eeab714daa
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84355106"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -322,7 +334,7 @@ Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，�
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | 說明 |
+| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | 描述 |
 | --- | --- |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |

@@ -1,12 +1,24 @@
 ---
-標題：「裝載和部署 ASP.NET Core Blazor WebAssembly ' 作者： guardrex 描述：」瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/28/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： host 和 deploy/blazor/webassembly
-
+title: 裝載和部署 ASP.NET Core Blazor WebAssembly
+author: guardrex
+description: 瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN）、檔案伺服器和 GitHub 頁面來裝載和部署應用程式。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/28/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: host-and-deploy/blazor/webassembly
+ms.openlocfilehash: 09f74edaa3d1cb0d51e0ce8d0209383885b81f5f
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84239386"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -348,7 +360,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor在每個發行組建上執行中繼語言（IL）連結，以從輸出元件移除不必要的 IL。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/configure-linker>。
+Blazor在每個發行組建上執行中繼語言（IL）連結，以從輸出元件移除不必要的 IL。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/configure-linker> 。
 
 ## <a name="custom-boot-resource-loading"></a>自訂開機資源載入
 
@@ -360,7 +372,7 @@ BlazorWebAssembly 應用程式可以使用函式進行初始化， `loadBootReso
 
 `loadBootResource`參數會出現在下表中。
 
-| 參數    | 說明 |
+| 參數    | 描述 |
 | ------------ | ----------- |
 | `type`       | 資源類型。 運算子類型： `assembly` 、 `pdb` 、 `dotnetjs` 、 `dotnetwasm` 、`timezonedata` |
 | `name`       | 資源名稱。 |

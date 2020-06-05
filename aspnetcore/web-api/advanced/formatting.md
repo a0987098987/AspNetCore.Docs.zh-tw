@@ -1,12 +1,23 @@
 ---
-標題： ASP.NET Core Web API 作者中的格式回應資料： ardalis 描述：瞭解如何在 ASP.NET Core Web API 中格式化回應資料。
-riande ms. custom： H1Hack27Feb2017 ms. date： 04/17/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： web-api/advanced/格式化
-
+title: 在 ASP.NET Core Web API 中格式化回應資料
+author: ardalis
+description: 了解如何在 ASP.NET Core Web API 中格式化回應資料。
+ms.author: riande
+ms.custom: H1Hack27Feb2017
+ms.date: 04/17/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: web-api/advanced/formatting
+ms.openlocfilehash: 865b2e58b38c16a54815ce0923a78ac98f2247f1
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84355366"
 ---
 # <a name="format-response-data-in-aspnet-core-web-api"></a>在 ASP.NET Core Web API 中格式化回應資料
 

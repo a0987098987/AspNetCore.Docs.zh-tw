@@ -1,12 +1,24 @@
 ---
-標題：「ASP.NET Core Blazor WebAssembly 其他安全性案例的作者： guardrex 描述：」瞭解如何設定 Blazor WebAssembly 以進行其他安全性案例。
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 06/01/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： security/blazor/webassembly/其他案例
-
+title: ASP.NET Core Blazor WebAssembly 其他安全性案例
+author: guardrex
+description: 瞭解如何設定 Blazor WebAssembly 以進行其他安全性案例。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 06/01/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/blazor/webassembly/additional-scenarios
+ms.openlocfilehash: de752eb180767bbb269107ebc478a4422448f968
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84272030"
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 其他安全性案例
 
@@ -844,7 +856,7 @@ app.UseEndpoints(endpoints =>
 
 Blazor使用協力廠商提供者驗證和授權託管 WebAssembly 應用程式時，有數個選項可用來驗證使用者。 您選擇哪一個取決於您的案例。
 
-如需詳細資訊，請參閱<xref:security/authentication/social/additional-claims>。
+如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims> 。
 
 ### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>驗證使用者只呼叫受保護的協力廠商 Api
 

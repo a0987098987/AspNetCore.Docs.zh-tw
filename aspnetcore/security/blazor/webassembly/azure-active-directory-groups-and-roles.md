@@ -1,11 +1,11 @@
 ---
-title: ASP.NET Core Blazor具有 Azure Active Directory 群組和角色的 WebAssembly
+title: ASP.NET Core Blazor 具有 Azure Active Directory 群組和角色的 WebAssembly
 author: guardrex
-description: 瞭解如何將 WebAssembly Blazor設定為使用 Azure Active Directory 群組和角色。
+description: 瞭解如何將 Blazor WebAssembly 設定為使用 Azure Active Directory 群組和角色。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,22 +13,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/aad-groups-roles
-ms.openlocfilehash: afdb5ddc4d4ed08d0f1ecaf7158af283dda6b302
-ms.sourcegitcommit: 363e3a2a035f4082cb92e7b75ed150ba304258b3
+ms.openlocfilehash: 3ed06cca7e20da381b870e642a6c616b2578cd0a
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82976894"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84451871"
 ---
 # <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a>Azure AD 群組、系統管理角色和使用者定義的角色
 
 By [Luke Latham](https://github.com/guardrex)和[Javier Calvarro Nelson](https://github.com/javiercn)
 
-[!INCLUDE[](~/includes/blazorwasm-preview-notice.md)]
-
-[!INCLUDE[](~/includes/blazorwasm-3.2-template-article-notice.md)]
-
-Azure Active Directory （AAD）提供數個可與 ASP.NET Core 身分識別結合的授權方法：
+Azure Active Directory （AAD）提供數個可與 ASP.NET Core 結合的授權方法 Identity ：
 
 * 使用者定義的群組
   * 安全性
@@ -38,7 +34,7 @@ Azure Active Directory （AAD）提供數個可與 ASP.NET Core 身分識別結�
   * 內建的系統管理角色
   * 使用者定義角色
 
-本文中的指導方針適用于下列主題中所述的 Blazor WebAssembly AAD 部署案例：
+本文中的指導方針適用于 Blazor 下列主題中所述的 WEBASSEMBLY AAD 部署案例：
 
 * [獨立的 Microsoft 帳戶](xref:security/blazor/webassembly/standalone-with-microsoft-accounts)
 * [獨立的 AAD](xref:security/blazor/webassembly/standalone-with-azure-active-directory)
@@ -46,16 +42,16 @@ Azure Active Directory （AAD）提供數個可與 ASP.NET Core 身分識別結�
 
 ### <a name="user-defined-groups-and-built-in-administrative-roles"></a>使用者定義的群組和內建的系統管理角色
 
-若要在 Azure 入口網站中設定應用程式以提供`groups`成員資格宣告，請參閱下列 Azure 文章。 將使用者指派給使用者定義的 AAD 群組和內建的系統管理角色。
+若要在 Azure 入口網站中設定應用程式以提供 `groups` 成員資格宣告，請參閱下列 Azure 文章。 將使用者指派給使用者定義的 AAD 群組和內建的系統管理角色。
 
 * [使用 Azure AD 安全性群組的角色](/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-security-groups)
 * [groupMembershipClaims 屬性](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
 
 下列範例假設已將使用者指派給 AAD 內建*計費管理員*角色。
 
-AAD 所`groups`傳送的單一宣告會將使用者的群組和角色顯示為 JSON 陣列中的物件識別碼（guid）。 應用程式必須將群組和角色的 JSON 陣列轉換成應用`group`程式可針對其建立[原則](xref:security/authorization/policies)的個別宣告。
+AAD 所傳送的單一宣告會將 `groups` 使用者的群組和角色顯示為 JSON 陣列中的物件識別碼（guid）。 應用程式必須將群組和角色的 JSON 陣列轉換成 `group` 應用程式可針對其建立[原則](xref:security/authorization/policies)的個別宣告。
 
-擴充`RemoteUserAccount`以包含群組和角色的陣列屬性。
+擴充 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> 以包含群組和角色的陣列屬性。
 
 *CustomUserAccount.cs*：
 
@@ -73,7 +69,7 @@ public class CustomUserAccount : RemoteUserAccount
 }
 ```
 
-在託管解決方案的獨立應用程式或用戶端應用程式中，建立自訂的使用者 factory。 下列 factory 也設定為處理`roles`宣告陣列，其涵蓋于[使用者定義的角色](#user-defined-roles)一節中：
+在託管解決方案的獨立應用程式或用戶端應用程式中，建立自訂的使用者 factory。 下列 factory 也設定為處理宣告 `roles` 陣列，其涵蓋于[使用者定義的角色](#user-defined-roles)一節中：
 
 ```csharp
 using System.Security.Claims;
@@ -117,9 +113,9 @@ public class CustomUserFactory
 }
 ```
 
-不需要提供程式碼來移除原始`groups`宣告，因為架構會自動移除該宣告。
+不需要提供程式碼來移除原始宣告， `groups` 因為架構會自動移除該宣告。
 
-在託管解決方案的`Program.Main`獨立應用程式或用戶端應用程式的（*Program.cs*）中註冊 factory：
+在 `Program.Main` 託管解決方案的獨立應用程式或用戶端應用程式的（*Program.cs*）中註冊 factory：
 
 ```csharp
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
@@ -135,7 +131,7 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState,
     CustomUserFactory>();
 ```
 
-為中[policy](xref:security/authorization/policies) `Program.Main`的每個群組或角色建立原則。 下列範例會建立 AAD 內建*計費管理員*角色的原則：
+為中的每個群組或角色建立[原則](xref:security/authorization/policies) `Program.Main` 。 下列範例會建立 AAD 內建*計費管理員*角色的原則：
 
 ```csharp
 builder.Services.AddAuthorizationCore(options =>
@@ -168,7 +164,7 @@ builder.Services.AddAuthorizationCore(options =>
 </AuthorizeView>
 ```
 
-使用[ `[Authorize]` attribute](xref:security/blazor/index#authorize-attribute)指示詞指示詞，可以根據原則來存取整個元件：
+您可以使用 [ `[Authorize]` ] 屬性指示詞] （x： security/blazor/index # 授權-attribute）（），根據原則來存取整個元件 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ：
 
 ```razor
 @page "/"
@@ -220,7 +216,7 @@ builder.Services.AddAuthorizationCore(options =>
 
 AAD 註冊的應用程式也可以設定為使用使用者定義的角色。
 
-若要在 Azure 入口網站中設定應用程式以提供`roles`成員資格宣告，請參閱[如何：在您的應用程式中新增應用程式角色，並在](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)Azure 檔的權杖中加以接收。
+若要在 Azure 入口網站中設定應用程式以提供 `roles` 成員資格宣告，請參閱[如何：在您的應用程式中新增應用程式角色，並在](/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)Azure 檔的權杖中加以接收。
 
 下列範例假設應用程式已設定兩個角色：
 
@@ -228,15 +224,15 @@ AAD 註冊的應用程式也可以設定為使用使用者定義的角色。
 * `developer`
 
 > [!NOTE]
-> 雖然您無法將角色指派給沒有 Azure AD Premium 帳戶的安全性群組，您可以將使用者指派給角色， `roles`並接收具有標準 Azure 帳戶之使用者的宣告。 本節中的指引不需要 Azure AD Premium 帳戶。
+> 雖然您無法將角色指派給沒有 Azure AD Premium 帳戶的安全性群組，您可以將使用者指派給角色，並接收 `roles` 具有標準 Azure 帳戶之使用者的宣告。 本節中的指引不需要 Azure AD Premium 帳戶。
 >
 > 在 Azure 入口網站中指派多個角色，方法是為每個額外的角色指派**_重新加入使用者_**。
 
-AAD 所`roles`傳送的單一宣告會將使用者定義的角色顯示為`appRoles`JSON `value`陣列中的 s。 應用程式必須將角色的 JSON 陣列轉換成個別`role`宣告。
+AAD 所傳送的單一宣告會將 `roles` 使用者定義的角色顯示為 `appRoles` `value` JSON 陣列中的 s。 應用程式必須將角色的 JSON 陣列轉換成個別 `role` 宣告。
 
-[ `CustomUserFactory` [使用者定義群組] 和 [AAD 內建系統管理角色](#user-defined-groups-and-built-in-administrative-roles)] 區段中所顯示的，會設定為`roles`在具有 JSON 陣列值的宣告上採取動作。 `CustomUserFactory`在裝載解決方案的獨立應用程式或用戶端應用程式中，新增並註冊，如[使用者定義群組和 AAD 內建系統管理角色](#user-defined-groups-and-built-in-administrative-roles)一節中所示。 不需要提供程式碼來移除原始`roles`宣告，因為架構會自動移除該宣告。
+`CustomUserFactory`[[使用者定義群組] 和 [AAD 內建系統管理角色](#user-defined-groups-and-built-in-administrative-roles)] 區段中所顯示的，會設定為在 `roles` 具有 JSON 陣列值的宣告上採取動作。 `CustomUserFactory`在裝載解決方案的獨立應用程式或用戶端應用程式中，新增並註冊，如[使用者定義群組和 AAD 內建系統管理角色](#user-defined-groups-and-built-in-administrative-roles)一節中所示。 不需要提供程式碼來移除原始宣告， `roles` 因為架構會自動移除該宣告。
 
-在`Program.Main`託管解決方案的獨立應用程式或用戶端應用程式中，將名為 "`role`" 的宣告指定為角色宣告：
+在 `Program.Main` 託管解決方案的獨立應用程式或用戶端應用程式中，將名為 "" 的宣告指定 `role` 為角色宣告：
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>
@@ -247,11 +243,11 @@ builder.Services.AddMsalAuthentication(options =>
 });
 ```
 
-此時，元件授權方法會正常運作。 元件中的任何授權機制都可以使用`admin`角色來授權使用者：
+此時，元件授權方法會正常運作。 元件中的任何授權機制都可以使用 `admin` 角色來授權使用者：
 
-* [AuthorizeView 元件](xref:security/blazor/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">`）
-* attribute 指示詞（範例`@attribute [Authorize(Roles = "admin")]`：） [ `[Authorize]` ](xref:security/blazor/index#authorize-attribute)
-* 程式[邏輯](xref:security/blazor/index#procedural-logic)（範例： `if (user.IsInRole("admin")) { ... }`）
+* [AuthorizeView 元件](xref:security/blazor/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）
+* [ `[Authorize]` ] attribute 指示詞]（x： security/blazor/index # 授權-attribute）（ <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ）（範例： `@attribute [Authorize(Roles = "admin")]` ）
+* 程式[邏輯](xref:security/blazor/index#procedural-logic)（範例： `if (user.IsInRole("admin")) { ... }` ）
 
   支援多個角色測試：
 
@@ -264,7 +260,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 ## <a name="aad-adminstrative-role-group-ids"></a>AAD 系統管理角色群組識別碼
 
-下表中顯示的物件識別碼是用來建立宣告[policies](xref:security/authorization/policies)的`group`原則。 原則允許應用程式授權使用者使用應用程式中的各種活動。 如需詳細資訊，請參閱[使用者定義群組和 AAD 內建系統管理角色](#user-defined-groups-and-built-in-administrative-roles)一節。
+下表中顯示的物件識別碼是用來建立宣告[policies](xref:security/authorization/policies)的原則 `group` 。 原則允許應用程式授權使用者使用應用程式中的各種活動。 如需詳細資訊，請參閱[使用者定義群組和 AAD 內建系統管理角色](#user-defined-groups-and-built-in-administrative-roles)一節。
 
 AAD 系統管理角色 | 物件識別碼
 --- | ---
@@ -288,7 +284,7 @@ B2C 使用者流程屬性管理員 | dd0baca0-a535-48c1-b871-8431abe16452
 目錄讀取器 | e1fc84a6-7762-4b9b-8e29-518b4adbc23b
 Dynamics 365 管理員 | f20a9cfa-9fdf-49a8-a977-1afe446a1d6e
 Exchange 系統管理員 | b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652
-外部Identity提供者系統管理員 | febfaeb4-e478-407a-b4b3-f4d9716618a2
+外部 Identity 提供者系統管理員 | febfaeb4-e478-407a-b4b3-f4d9716618a2
 全域管理員 | a45ba61b-44db-462c-924b-3b2719152588
 全域讀者 | f6903b21-6aba-4124-b44c-76671796b9d5
 群組管理員 | 158b3e5a-d89d-460b-92b5-3b34985f0197
@@ -309,7 +305,7 @@ Power 平臺系統管理員 | 76d6f95e-9a15-4d7d-8d21-00de00faf9fd
 搜尋系統管理員 | c770a2f1-c9ba-4e60-9176-9f52b1eb1a31
 搜尋編輯器 | 6a6858c6-5f0d-44ac-87c7-0190fbedd271
 安全性系統管理員 | 20fa50e3-6531-44d8-bd39-b251420568ad
-安全性運算子 | 43aae017-8e51-4188-91ab-e6debd572800
+安全性操作員 | 43aae017-8e51-4188-91ab-e6debd572800
 安全性讀取者 | 45035cd3-fd97-4250-8197-3a53d3562d9b
 服務支援管理員 | 2c92cf45-c914-48f8-9bf9-fc14b28818ab
 SharePoint 管理員 | e1c32229-875e-461d-ae24-3cb99116e86c

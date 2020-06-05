@@ -1,12 +1,22 @@
 ---
-標題：在 ASP.NET Core 作者中設定可移植物件當地語系化： sebastienros 描述：本文介紹可移植的物件檔案，並概述在具有 Orchard 核心架構的 ASP.NET Core 應用程式中使用它們的步驟。
-scaddie ms. date：09/26/2017 否-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid：基本概念/可攜性-物件-當地語系化
-
+title: 使用 ASP.NET Core 設定可攜式物件當地語系化
+author: sebastienros
+description: 本文介紹可攜式物件檔案，並概述在具有 Orchard Core 架構的 ASP.NET Core 應用程式中使用它們的步驟。
+ms.author: scaddie
+ms.date: 09/26/2017
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: fundamentals/portable-object-localization
+ms.openlocfilehash: 57498cc2a773e5147b6eda653cc89d303f238b78
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84355080"
 ---
 # <a name="configure-portable-object-localization-in-aspnet-core"></a>使用 ASP.NET Core 設定可攜式物件當地語系化
 

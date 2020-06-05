@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 全球化和當地語系化的作者： guardrex 描述： ' 瞭解如何讓 Razor 使用者以多種文化特性和語言存取元件。 '
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 06/04/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： blazor/全球化-當地語系化
-
+title: ASP.NET Core Blazor 全球化和當地語系化
+author: guardrex
+description: 瞭解如何讓 Razor 具有多種文化特性和語言的使用者能夠存取元件。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 06/04/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/globalization-localization
+ms.openlocfilehash: 94faaa57cc6dd3df9e4a7c3c090fe01527399658
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84419732"
 ---
 # <a name="aspnet-core-blazor-globalization-and-localization"></a>ASP.NET Core Blazor 全球化和當地語系化
 

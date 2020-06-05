@@ -1,12 +1,24 @@
 ---
-標題：「從 ASP.NET Core WebAssembly 中呼叫 Web API」 Blazor 作者： guardrex 描述：「瞭解如何 Blazor 使用 JSON helper 從 WebAssembly 應用程式呼叫 Web API，包括建立跨原始來源資源分享（CORS）要求。」
-monikerRange： ' >= aspnetcore-3.1 ' ms-chap： riande ms. custom： mvc ms. date： 05/28/2020 no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： blazor/call-web-api
-
+title: 從 ASP.NET Core WebAssembly 呼叫 Web API Blazor
+author: guardrex
+description: 瞭解如何 Blazor 使用 JSON helper 從 WebAssembly 應用程式呼叫 Web API，包括建立跨原始來源資源分享（CORS）要求。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/28/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/call-web-api
+ms.openlocfilehash: 4f3fd1fca075098a94756757474b2cad3cc99775
+ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84214768"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
 
@@ -291,7 +303,7 @@ protected override async Task OnInitializedAsync()
 > [!NOTE]
 > 上述範例是為了示範之用。 即使端點不存在，或伺服器上發生未處理的例外，您也可以將 Web API 伺服器應用程式設定為傳回 JSON。
 
-如需詳細資訊，請參閱<xref:blazor/handle-errors>。
+如需詳細資訊，請參閱 <xref:blazor/handle-errors> 。
 
 ## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享（CORS）
 

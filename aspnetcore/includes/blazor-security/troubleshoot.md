@@ -16,11 +16,15 @@ Cookie 和網站資料可以跨應用程式更新保存，並干擾測試和疑�
 * 使用自訂命令，以 Visual Studio 中的 incognito 或私用模式開啟瀏覽器：
   * 從 Visual Studio 的 [**執行**] 按鈕開啟 **[流覽方式**] 對話方塊。
   * 選取 [新增] 按鈕。
-  * 在 [**程式**] 欄位中提供瀏覽器的路徑。
-  * 在 [**引數**] 欄位中，提供瀏覽器用來以 incognito 或私用模式開啟的命令列選項，以及應用程式的 URL。 例如：
+  * 在 [**程式**] 欄位中提供瀏覽器的路徑。 下列可執行檔路徑是 Windows 10 的一般安裝位置。 如果您的瀏覽器安裝在不同的位置，或您未使用 Windows 10，請提供瀏覽器可執行檔的路徑。
+    * Microsoft Edge：`C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe`
+    * Google Chrome：`C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
+    * Mozilla Firefox：`C:\Program Files\Mozilla Firefox\firefox.exe`
+  * 在 [**引數**] 欄位中，提供瀏覽器用來以 incognito 或私用模式開啟的命令列選項。 有些瀏覽器需要應用程式的 URL。
+    * Microsoft Edge：`-inprivate`
     * Google Chrome：`--incognito --new-window https://localhost:5001`
     * Mozilla Firefox：`-private -url https://localhost:5001`
-  * 在 [**易記名稱**] 欄位中提供名稱。 例如 `Firefox Auth Testing`。
+  * 在 [**易記名稱**] 欄位中提供名稱。 例如： `Firefox Auth Testing` 。
   * 選取 [**確定]** 按鈕。
   * 若要避免針對使用應用程式測試的每個反復專案選取瀏覽器設定檔，請將設定檔設定為預設值，並將**設定為預設**按鈕。
   * 請確定在應用程式、測試使用者或提供者設定的任何變更之間，IDE 已關閉瀏覽器。

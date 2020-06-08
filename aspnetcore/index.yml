@@ -1,21 +1,21 @@
 ### YamlMime:Hub
-title: ASP.NET 文件
+title: ASP.NET Core 文件
 summary: 了解如何使用 ASP.NET Core 來建立快速、安全、跨平台和雲端式的 Web 應用程式和服務。 瀏覽教學課程、範例程式碼、基本概念、API 參考等資源。
 brand: aspnet
 metadata:
-  title: ASP.NET 文件
+  title: ASP.NET Core 文件
   description: 了解如何使用 ASP.NET Core 來建立快速、安全、跨平台和雲端式的 Web 應用程式和服務。 瀏覽教學課程、範例程式碼、基本概念、API 參考等資源。
   ms.product: aspnet
   ms.topic: hub-page
   author: WadePickett
   ms.author: wpickett
-  ms.date: 05/01/2020
-  ms.openlocfilehash: 2d653ab5ca78fb856098fb5f250a235e3f2635d0
-  ms.sourcegitcommit: c19e388c83c981232e6f128d97440262adfe06e2
+  ms.date: 06/03/2020
+  ms.openlocfilehash: fb4b31258683c5928708e7a2a479f353972c010b
+  ms.sourcegitcommit: 829dca1d5a7dcccbfe90644101c6be1d1c94ac62
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 05/02/2020
-  ms.locfileid: "82727659"
+  ms.lasthandoff: 06/04/2020
+  ms.locfileid: "84355404"
 highlightedContent:
   items:
   - title: 5 分鐘內完成在任何平台上建立 ASP.NET Core 應用程式
@@ -39,12 +39,12 @@ highlightedContent:
   - title: 建立您的第一個即時 Web 應用程式
     itemType: get-started
     url: tutorials/signalr.md
-  - title: 建立您的第一個資料驅動 MVC Web 應用程式
-    itemType: get-started
-    url: tutorials/first-mvc-app//start-mvc.md
+  - title: ASP.NET 4.x 文件
+    itemType: overview
+    url: https://docs.microsoft.com/aspnet/overview
 conceptualContent:
   title: 開發 ASP.NET Core 應用程式
-  summary: 有互動式 Web 應用程式、Web API、MVC 模式應用程式、即時應用程式等類型可供選擇
+  summary: 有互動式 Web 應用程式、Web API、MVC 模式應用程式、即時應用程式等類型可供選擇。 如需 ASP.NET 4.x 文件，請參閱 [ASP.NET](https://docs.microsoft.com/aspnet/overview)。
   items:
   - title: 互動式用戶端 Blazor 應用程式
     summary: 利用可重複使用的 UI 元件進行開發，這些元件運用 WebAssembly 來達到近乎原生的效能
@@ -306,7 +306,7 @@ additionalContent:
     - title: Azure.和 ASP.NET Core
       links:
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet
-        text: 部署 ASP.NET Web 應用程式
+        text: 部署 ASP.NET Core Web 應用程式
       - url: https://docs.microsoft.com/visualstudio/containers/container-tools?view=vs-2019.md
         text: ASP.NET Core 和 Docker
       - url: https://docs.microsoft.com/learn/modules/host-a-web-app-with-azure-app-service/
@@ -314,7 +314,7 @@ additionalContent:
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase
         text: App Service 和 Azure SQL Database
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-connect-msi
-        text: 用於 ASP.NET 和 Azure SQL Database 的受控識別
+        text: 用於 ASP.NET Core 與 Azure SQL Database 的受控識別
       - url: https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-rest-api
         text: Azure App Service 中具有 CORS 支援的 Web API
       - url: https://docs.microsoft.com/learn/modules/capture-application-logs-app-service/
@@ -373,4 +373,4 @@ additionalContent:
         text: 通用用戶端 Web 技術
       - url: https://docs.microsoft.com/dotnet/architecture/modern-web-apps-azure/development-process-for-azure
         text: Azure 開發程序
-  footer: 參與 ASP.NET 文件。請參閱 [參與者指南](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md)(英文)。
+  footer: 參與 ASP.NET Core 文件。請參閱 [參與者指南](https://github.com/aspnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md)(英文)。

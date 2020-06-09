@@ -5,7 +5,7 @@ description: 瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2020
+ms.date: 06/07/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/blazor/webassembly
-ms.openlocfilehash: 09f74edaa3d1cb0d51e0ce8d0209383885b81f5f
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 005ec9af9a93bfc4be06d06588fd61a6367b1e47
+ms.sourcegitcommit: 74d80a36103fdbd54baba0118535a4647f511913
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84239386"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84529541"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -34,13 +34,47 @@ By [Luke Latham](https://github.com/guardrex)、 [Rainer Stropek](https://www.ti
 * Blazor應用程式是由 ASP.NET Core 應用程式提供。 此策略已於[搭配 ASP.NET Core 的已裝載部署](#hosted-deployment-with-aspnet-core)一節中涵蓋。
 * Blazor應用程式會放在靜態裝載的 web 伺服器或服務上，其中 .net 不會用來服務 Blazor 應用程式。 此策略在[獨立部署](#standalone-deployment)一節中涵蓋，其中包括裝載 Blazor WebAssembly 應用程式作為 IIS 子應用程式的相關資訊。
 
-## <a name="precompression"></a>Precompression
+## <a name="compression"></a>壓縮
 
-Blazor發佈 WebAssembly 應用程式時，會 precompressed 輸出以減少應用程式的大小，並移除執行時間壓縮的需求。 使用下列壓縮演算法：
+Blazor發佈 WebAssembly 應用程式時，會在發佈期間以靜態方式壓縮輸出，以減少應用程式的大小，並移除執行時間壓縮的額外負荷。 使用下列壓縮演算法：
 
 * [Brotli](https://tools.ietf.org/html/rfc7932) （最高層級）
 * [Gzip](https://tools.ietf.org/html/rfc1952)
 
+Blazor依賴主機來提供適當的壓縮檔案。 當使用 ASP.NET Core 裝載的專案時，主專案可以執行內容協調並提供靜態壓縮檔案。 裝載 Blazor WebAssembly 獨立應用程式時，可能需要額外的工作，以確保提供靜態壓縮檔案：
+
+* 如需 IIS *web.config*壓縮設定，請參閱[iis： Brotli 和 Gzip 壓縮](#brotli-and-gzip-compression)一節。 
+* 在不支援靜態壓縮檔案內容協商（例如 GitHub 頁面）的靜態裝載解決方案上裝載時，請考慮將應用程式設定為提取和解碼 Brotli 壓縮檔案：
+
+  * 從應用程式中的[google/Brotli GitHub 存放庫](https://github.com/google/brotli/)參考 Brotli 解碼器。
+  * 更新應用程式以使用此解碼器。 將 wwwroot/index.html 中結束記號內的標記變更 `<body>` 為下列內容： *wwwroot/index.html*
+  
+    ```html
+    <script src="brotli.decode.min.js"></script>
+    <script src="_framework/blazor.webassembly.js" autostart="false"></script>
+    <script>
+    Blazor.start({
+      loadBootResource: function (type, name, defaultUri, integrity) {
+        if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
+          return (async function () {
+            const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
+            if (!response.ok) {
+              throw new Error(response.statusText);
+            }
+            const originalResponseBuffer = await response.arrayBuffer();
+            const originalResponseArray = new Int8Array(originalResponseBuffer);
+            const decompressedResponseArray = BrotliDecode(originalResponseArray);
+            const contentType = type === 
+          'dotnetwasm' ? 'application/wasm' : 'application/octet-stream';
+            return new Response(decompressedResponseArray, 
+          { headers: { 'content-type': contentType } });
+          })();
+        }
+      }
+    });
+  </script>
+  ```
+   
 若要停用壓縮，請將 `BlazorEnableCompression` MSBuild 屬性新增至應用程式的專案檔，並將值設定為 `false` ：
 
 ```xml
@@ -48,8 +82,6 @@ Blazor發佈 WebAssembly 應用程式時，會 precompressed 輸出以減少應�
   <BlazorEnableCompression>false</BlazorEnableCompression>
 </PropertyGroup>
 ```
-
-如需 IIS *web.config*壓縮設定，請參閱[iis： Brotli 和 Gzip 壓縮](#brotli-and-gzip-compression)一節。
 
 ## <a name="rewrite-urls-for-correct-routing"></a>重寫 URL 以便正確地路由
 

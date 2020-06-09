@@ -1,12 +1,25 @@
 ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- 
+title: ASP.NET Core 中的選項模式
+author: rick-anderson
+description: 了解如何使用選項模式來代表 ASP.NET Core 應用程式中的一組相關設定。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/20/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: fundamentals/configuration/options
+ms.openlocfilehash: 9a9febba060cca591f2cbcdc03cb4c35edcfdda7
+ms.sourcegitcommit: 74d80a36103fdbd54baba0118535a4647f511913
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84529659"
+---
 # <a name="options-pattern-in-aspnet-core"></a>ASP.NET Core 中的選項模式
 
 ::: moniker range=">= aspnetcore-3.0"
@@ -158,9 +171,14 @@ By [Kirk Larkin](https://twitter.com/serpent5)和[Rick Anderson](https://twitter
 
 [!code-csharp[](options/samples/3.x/OptionsValidationSample/Configuration/MyConfigOptions.cs?name=snippet)]
 
-下列程式碼 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions%2A> 會呼叫以取得系結至類別的[OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1) ， `MyConfigOptions` 並啟用 `DataAnnotations` 驗證：
+下列程式碼：
+
+* 呼叫 <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions%2A> 以取得系結至類別的[OptionsBuilder \<TOptions> ](xref:Microsoft.Extensions.Options.OptionsBuilder`1) `MyConfigOptions` 。
+* <xref:Microsoft.Extensions.DependencyInjection.OptionsBuilderDataAnnotationsExtensions.ValidateDataAnnotations%2A>使用來呼叫，以啟用驗證 `DataAnnotations` 。
 
 [!code-csharp[](options/samples/3.x/OptionsValidationSample/Startup.cs?name=snippet)]
+
+`ValidateDataAnnotations`擴充方法定義于[DataAnnotations](https://www.nuget.org/packages/Microsoft.Extensions.Options.DataAnnotations) NuGet 套件中。 針對使用 SDK 的 web 應用程式 `Microsoft.NET.Sdk.Web` ，會從共用架構隱含參考此套件。
 
 下列程式碼會顯示設定值或驗證錯誤：
 
@@ -268,7 +286,7 @@ ASP.NET Core 應用程式中會隱含地參考[microsoft.extensions.options.conf
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
 
@@ -355,7 +373,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
 
 每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。 在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。
 
@@ -690,7 +708,7 @@ public void Configure(IApplicationBuilder app, IOptionsMonitor<MyOptions> option
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/options/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 參考 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)，或新增 [Microsoft.Extensions.Options.ConfigurationExtensions](https://www.nuget.org/packages/Microsoft.Extensions.Options.ConfigurationExtensions/) 套件的套件參考。
 
@@ -777,7 +795,7 @@ option1 = value1_from_json, option2 = -1
 
 [!code-csharp[](options/samples/2.x/OptionsSample/Pages/Index.cshtml.cs?name=snippet_Example2)]
 
-您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱<xref:fundamentals/configuration/index>。
+您可以新增多個設定提供者。 設定提供者可在 NuGet 套件中找到，而且會依註冊順序套用。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
 
 每次呼叫 <xref:Microsoft.Extensions.Options.IConfigureOptions%601.Configure*> 時都會新增 <xref:Microsoft.Extensions.Options.IConfigureOptions%601> 服務到服務容器。 在上述範例中，`Option1` 和 `Option2` 的值都指定在 *appsettings.json* 中，但 `Option1` 和 `Option2` 的值會被設定的委派所覆寫。
 

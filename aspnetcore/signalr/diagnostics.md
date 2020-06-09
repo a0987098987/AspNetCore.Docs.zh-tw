@@ -1,12 +1,24 @@
 ---
-標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 中的記錄和診斷SignalR
+author: anurse
+description: 瞭解如何從您的 ASP.NET Core 應用程式收集診斷資訊 SignalR 。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: anurse
+ms.custom: signalr
+ms.date: 06/08/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: signalr/diagnostics
+ms.openlocfilehash: 22e1d24bc9fed5fd8588c852e07f5ca935946596
+ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84507312"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>ASP.NET Core 中的記錄和診斷SignalR
 
@@ -77,34 +89,14 @@ Visual Studio 會在 [**輸出**] 視窗中顯示記錄輸出。 選取 [ **ASP.
 下表顯示 JavaScript 用戶端可用的記錄層級。 將記錄層級設定為其中一個值，即可在該層級和資料表中其上方的所有層級進行記錄。
 
 | 層級 | 描述 |
-| ----- | ---
-標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：「ASP.NET Core ' 作者：」中的記錄和診斷 .. SignalR 描述：「瞭解如何從您的 ASP.NET Core 應用程式收集診斷」 SignalR 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |`None` |不會記錄任何訊息。 | |`Critical` |指出整個應用程式失敗的訊息。 | |`Error` |指出目前操作失敗的訊息。 | |`Warning` |指出非嚴重問題的訊息。 | |`Information` |參考用訊息。 | |`Debug` |適用于偵錯工具的診斷訊息。 | |`Trace` |專為診斷特定問題而設計的詳細診斷訊息。 |
+| ----- | ----------- |
+| `None` | 不會記錄任何訊息。 |
+| `Critical` | 指出整個應用程式失敗的訊息。 |
+| `Error` | 指出目前操作失敗的訊息。 |
+| `Warning` | 指出非嚴重問題的訊息。 |
+| `Information` | 參考用訊息。 |
+| `Debug` | 適用于偵錯工具的診斷訊息。 |
+| `Trace` | 專為診斷特定問題而設計的詳細診斷訊息。 |
 
 設定詳細資訊之後，記錄將會寫入至瀏覽器主控台（或 NodeJS 應用程式中的標準輸出）。
 
@@ -217,6 +209,39 @@ tcpdump -i [interface] -w trace.pcap
 > 請不要將記錄檔或網路追蹤的內容貼到 GitHub 問題中。 這些記錄和追蹤可能很大，而且 GitHub 通常會截斷它們。
 
 ![將記錄檔拖曳至 GitHub 問題](diagnostics/attaching-diagnostics-files.png)
+
+## <a name="metrics"></a>計量
+
+計量是一種時間間隔的資料量值標記法。 例如，每秒的要求數。 計量資料允許在高層級觀察應用程式的狀態。 .NET gRPC 計量是使用發出的 <xref:System.Diagnostics.Tracing.EventCounter> 。
+
+### <a name="signalr-server-metrics"></a>SignalR伺服器計量
+
+SignalR事件來源上會報表服務器計量 <xref:Microsoft.AspNetCore.Http.Connections> 。
+
+| 名稱                    | 描述                 |
+|-------------------------|-----------------------------|
+| `connections-started`   | 總連線數已啟動   |
+| `connections-stopped`   | 總連線數已停止   |
+| `connections-timed-out` | 總連接逾時 |
+| `current-connections`   | 目前的連線數         |
+| `connections-duration`  | 平均連接持續時間 |
+
+### <a name="observe-metrics"></a>觀察計量
+
+[dotnet-計數器](/dotnet/core/diagnostics/dotnet-counters)是一種效能監視工具，可用於臨機操作健全狀況監視和第一層效能調查。 以 `Microsoft.AspNetCore.Http.Connections` 作為提供者名稱監視 .net 應用程式。 例如：
+
+```console
+> dotnet-counters monitor --process-id 37016 Microsoft.AspNetCore.Http.Connections
+
+Press p to pause, r to resume, q to quit.
+    Status: Running
+[Microsoft.AspNetCore.Http.Connections]
+    Average Connection Duration (ms)       16,040.56
+    Current Connections                         1
+    Total Connections Started                   8
+    Total Connections Stopped                   7
+    Total Connections Timed Out                 0
+```
 
 ## <a name="additional-resources"></a>其他資源
 

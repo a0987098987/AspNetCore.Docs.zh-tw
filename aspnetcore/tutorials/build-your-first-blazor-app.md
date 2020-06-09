@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 8cf356b5c9876a4114942af27a22df6bd324d0e2
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: ce3f20f7ee4ccfa73afc5f80a4429d9f4fe05591
+ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84355210"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84507253"
 ---
 # <a name="build-your-first-blazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "84355210"
 > * 在元件中使用事件處理和資料系結
 > * 在應用程式中使用相依性插入（DI）和路由 Blazor
 
-在本教學課程結尾，您將會有一個可運作的聊天應用程式。
+在本教學課程結尾，您將會有一個可運作的待辦事項清單應用程式。
 
 ## <a name="build-components"></a>組建元件
 

@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor WebAssembly 效能最佳做法的作者：描述： ' ASP.NET Core WebAssembly 應用程式的效能提升的秘訣 Blazor ，並避免發生常見的效能問題。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor WebAssembly 效能最佳做法
+author: pranavkm
+description: 增加 ASP.NET Core Blazor WebAssembly 應用程式的效能，並避免常見的效能問題的秘訣。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 06/08/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: performance/blazor/webassembly-best-practices
+ms.openlocfilehash: 950d87a6f09e998e47e96c93c5d68bb3f19ddafb
+ms.sourcegitcommit: 74d80a36103fdbd54baba0118535a4647f511913
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84529628"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 效能最佳做法
 
@@ -58,7 +70,7 @@ Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rere
 }
 ```
 
-如需詳細資訊，請參閱<xref:blazor/lifecycle#after-component-render>。
+如需詳細資訊，請參閱 <xref:blazor/lifecycle#after-component-render> 。
 
 ## <a name="virtualize-re-usable-fragments"></a>虛擬化重複使用的片段
 
@@ -131,6 +143,12 @@ BlazorWebAssembly <xref:Microsoft.JSInterop.IJSRuntime> 在 Blazor 伺服器應�
 ```dotnetcli
 dotnet publish -c Release
 ```
+
+### <a name="compression"></a>壓縮
+
+Blazor發佈 WebAssembly 應用程式時，會在發佈期間以靜態方式壓縮輸出，以減少應用程式的大小，並移除執行時間壓縮的額外負荷。 Blazor依賴伺服器來執行 content negotation，並提供靜態壓縮檔案。
+
+部署應用程式之後，請確認應用程式會提供壓縮檔案。 檢查瀏覽器開發人員工具中的 [網路] 索引標籤，並確認已使用或提供檔案 `Content-Encoding: br` `Content-Encoding: gz` 。 如果主機未提供壓縮檔案，請遵循中的指示 <xref:host-and-deploy/blazor/webassembly#compression> 。
 
 ### <a name="disable-unused-features"></a>停用未使用的功能
 

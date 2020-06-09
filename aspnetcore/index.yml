@@ -1,21 +1,21 @@
 ### YamlMime:Hub
-title: ASP.NET Core 文件
+title: ASP.NET 文件
 summary: 了解如何使用 ASP.NET Core 來建立快速、安全、跨平台和雲端式的 Web 應用程式和服務。 瀏覽教學課程、範例程式碼、基本概念、API 參考等資源。
 brand: aspnet
 metadata:
-  title: ASP.NET Core 文件
+  title: ASP.NET 文件
   description: 了解如何使用 ASP.NET Core 來建立快速、安全、跨平台和雲端式的 Web 應用程式和服務。 瀏覽教學課程、範例程式碼、基本概念、API 參考等資源。
   ms.product: aspnet
   ms.topic: hub-page
   author: WadePickett
   ms.author: wpickett
-  ms.date: 06/03/2020
-  ms.openlocfilehash: fb4b31258683c5928708e7a2a479f353972c010b
-  ms.sourcegitcommit: 829dca1d5a7dcccbfe90644101c6be1d1c94ac62
+  ms.date: 06/05/2020
+  ms.openlocfilehash: 25b5387c8956ea7931751525ea954f6f702c0cde
+  ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/04/2020
-  ms.locfileid: "84355404"
+  ms.lasthandoff: 06/08/2020
+  ms.locfileid: "84507278"
 highlightedContent:
   items:
   - title: 5 分鐘內完成在任何平台上建立 ASP.NET Core 應用程式
@@ -44,7 +44,7 @@ highlightedContent:
     url: https://docs.microsoft.com/aspnet/overview
 conceptualContent:
   title: 開發 ASP.NET Core 應用程式
-  summary: 有互動式 Web 應用程式、Web API、MVC 模式應用程式、即時應用程式等類型可供選擇。 如需 ASP.NET 4.x 文件，請參閱 [ASP.NET](https://docs.microsoft.com/aspnet/overview)。
+  summary: 有互動式 Web 應用程式、Web API、MVC 模式應用程式、即時應用程式等類型可供選擇
   items:
   - title: 互動式用戶端 Blazor 應用程式
     summary: 利用可重複使用的 UI 元件進行開發，這些元件運用 WebAssembly 來達到近乎原生的效能

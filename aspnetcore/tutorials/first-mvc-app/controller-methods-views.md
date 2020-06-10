@@ -1,7 +1,7 @@
 ---
-title: ASP.NET Core 中的控制器方法和檢視
+title: ASP.NET Core 中的第6部分、控制器方法和觀點
 author: rick-anderson
-description: 了解如何在 ASP.NET Core 中使用控制器方法、檢視和 DataAnnotations。
+description: 第6部分，將模型新增至 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/controller-methods-views
-ms.openlocfilehash: 444c870fcf9e866f0c382e32af174442d11d3af5
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 50b527cee19f19316fd9034759c05817010fefbb
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777575"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84653013"
 ---
-# <a name="controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的控制器方法和檢視
+# <a name="part-6-controller-methods-and-views-in-aspnet-core"></a>ASP.NET Core 中的第6部分、控制器方法和觀點
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -42,7 +42,7 @@ ms.locfileid: "82777575"
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/Movies/IndexOriginal.cshtml?highlight=1-3&range=46-50)]
 
-[標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中Razor的 HTML 元素。 在上述程式碼中， `AnchorTagHelper`會從控制器動作`href`方法和路由識別碼動態產生 HTML 屬性值。您可以從您慣用的瀏覽器使用**View Source** ，或使用開發人員工具來檢查產生的標記。 產生的 HTML 部分如下所示：
+[標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中的 HTML 元素 Razor 。 在上述程式碼中，會 `AnchorTagHelper` `href` 從控制器動作方法和路由識別碼動態產生 HTML 屬性值。您可以從您慣用的瀏覽器使用**View Source** ，或使用開發人員工具來檢查產生的標記。 產生的 HTML 部分如下所示：
 
 ```html
  <td>
@@ -62,7 +62,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 <a name="get-post"></a>
 
-開啟 `Movies` 控制器，並檢查兩個 `Edit` 動作方法。 下列程式碼顯示`HTTP GET Edit`方法，它會提取電影，並填入編輯的 *. cshtml* Razor檔案所產生的編輯表單。
+開啟 `Movies` 控制器，並檢查兩個 `Edit` 動作方法。 下列程式碼顯示 `HTTP GET Edit` 方法，它會提取電影，並填入*編輯的. cshtml*檔案所產生的編輯表單 Razor 。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -118,7 +118,7 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 
 請注意檢視範本在檔案最上方指定 `@model MvcMovie.Models.Movie` 陳述式的方式。 `@model MvcMovie.Models.Movie` 指定檢視預期檢視範本的模型必須是 `Movie` 型別。
 
-包含 Scaffold 的程式碼會使用數個標記協助程式方法來簡化 HTML 標記。 [標籤標記協助程式](xref:mvc/views/working-with-forms)顯示欄位的名稱 ("Title"、"ReleaseDate"、"Genre" 或 "Price")。 [輸入標記協助程式](xref:mvc/views/working-with-forms)轉譯 HTML `<input>` 元素。 [驗證標記協助程式](xref:mvc/views/working-with-forms)則顯示與該屬性相關聯的任何驗證訊息。
+包含 Scaffold 的程式碼會使用數個標記協助程式方法來簡化 HTML 標記。 [標籤標記](xref:mvc/views/working-with-forms)協助程式會顯示欄位的名稱（「標題」、「ReleaseDate」、「內容類型」或「價格」）。 [輸入標記協助程式](xref:mvc/views/working-with-forms)轉譯 HTML `<input>` 元素。 [驗證標記協助程式](xref:mvc/views/working-with-forms)則顯示與該屬性相關聯的任何驗證訊息。
 
 執行應用程式，並巡覽至 `/Movies` URL。 按一下 [**編輯**] 連結。 在瀏覽器中，檢視頁面的原始檔。 `<form>` 元素產生的 HTML 如下所示。
 
@@ -167,5 +167,5 @@ ASP.NET Core 會將 `https://localhost:5001/Movies/Edit/4` 轉譯成對 `Movies`
 * [驗證標記協助程式](xref:mvc/views/working-with-forms)
 
 > [!div class="step-by-step"]
-> [上一頁](working-with-sql.md)
-> [下一頁](search.md)  
+> [上一個](working-with-sql.md) 
+> [下一步](search.md)  

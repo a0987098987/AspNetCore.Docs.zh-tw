@@ -1,7 +1,7 @@
 ---
-title: 將搜尋新增至 ASP.NET Core MVC 應用程式
+title: 第7部分，將搜尋新增至 ASP.NET Core MVC 應用程式
 author: rick-anderson
-description: 示範如何將搜尋新增至基本 ASP.NET Core MVC 應用程式
+description: ASP.NET Core MVC 之教學課程系列的第7部分。
 ms.author: riande
 ms.date: 12/13/2018
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 00213f9ffab13f23099e60240fa236bd1b41427f
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 83bd904f90190456d42453653d3420c4c572fe8c
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775332"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652754"
 ---
-# <a name="add-search-to-an-aspnet-core-mvc-app"></a>將搜尋新增至 ASP.NET Core MVC 應用程式
+# <a name="part-7-add-search-to-an-aspnet-core-mvc-app"></a>第7部分，將搜尋新增至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -45,7 +45,7 @@ var movies = from m in _context.Movie
 
 注意：[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在上方顯示的 C# 程式碼中執行。 查詢是否區分大小寫取決於資料庫和定序。 在 SQL Server 上，[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
 
-瀏覽至 `/Movies/Index`。 將查詢字串 (例如 `?searchString=Ghost`) 附加至 URL。 隨即顯示篩選過的電影。
+瀏覽到 `/Movies/Index` 。 將查詢字串 (例如 `?searchString=Ghost`) 附加至 URL。 隨即顯示篩選過的電影。
 
 ![索引檢視](~/tutorials/first-mvc-app/search/_static/ghost.png)
 
@@ -153,5 +153,5 @@ HTML `<form>` 標記使用[表單標記協助程式](xref:mvc/views/working-with
 ![顯示 https://localhost:5001/Movies?MovieGenre=Comedy&SearchString=2 結果的瀏覽器視窗](~/tutorials/first-mvc-app/search/_static/s2.png)
 
 > [!div class="step-by-step"]
-> [上一頁](controller-methods-views.md)
-> [下一頁](new-field.md)
+> [上一個](controller-methods-views.md) 
+> [下一步](new-field.md)

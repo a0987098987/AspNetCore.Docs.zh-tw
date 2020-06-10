@@ -1,7 +1,7 @@
 ---
-title: 將搜尋新增至Razor ASP.NET Core 頁面
+title: 第6部分，將搜尋新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
-description: 說明如何將搜尋新增至 ASP.NET Core Razor頁面
+description: 頁面上教學課程系列的第6部分 Razor 。
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/search
-ms.openlocfilehash: baa5e1cb2098a60155a4196f0e602feeff04f102
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 8c5fba8596f401f1232e8dcb4659041c2a413151
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774994"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652567"
 ---
-# <a name="add-search-to-aspnet-core-razor-pages"></a>將搜尋新增至Razor ASP.NET Core 頁面
+# <a name="part-6-add-search-to-aspnet-core-razor-pages"></a>第6部分，將搜尋新增至 ASP.NET Core Razor 頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -32,7 +32,7 @@ ms.locfileid: "82774994"
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
-* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString`具有[`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute)屬性。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
+* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString`具有 [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute) 屬性。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
 * `Genres`：包含內容類型清單。 `Genres` 可讓使用者從清單中選取內容類型。 `SelectList` 需要 `using Microsoft.AspNetCore.Mvc.Rendering;`
 * `MovieGenre`：包含使用者所選取的特定內容類型 (例如「西部片」)。
 * 稍後在本教學課程中將會使用 `Genres` 和 `MovieGenre`。
@@ -107,7 +107,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增Razor至頁面
+### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增至 Razor 頁面
 
 更新 *Index.cshtml*，如下所示：
 
@@ -120,7 +120,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 * [本教學課程的 YouTube 版本](https://youtu.be/4B6pHtdyo08)
 
 > [!div class="step-by-step"]
-> [上一步：更新頁面](xref:tutorials/razor-pages/da1)
+> [上一步：更新頁面](xref:tutorials/razor-pages/da1) 
 > [下一步：新增欄位](xref:tutorials/razor-pages/new-field)
 
 ::: moniker-end
@@ -135,7 +135,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_newProps&highlight=11-999)]
 
-* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString`具有[`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute)屬性。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
+* `SearchString`：包含使用者在搜尋文字方塊中輸入的文字。 `SearchString`具有 [`[BindProperty]`](/dotnet/api/microsoft.aspnetcore.mvc.bindpropertyattribute) 屬性。 `[BindProperty]` 使用與屬性相同的名稱來繫結表單值和查詢字串。 需要 `(SupportsGet = true)` 才能在 GET 要求上進行繫結。
 * `Genres`：包含內容類型清單。 `Genres` 可讓使用者從清單中選取內容類型。 `SelectList` 需要 `using Microsoft.AspNetCore.Mvc.Rendering;`
 * `MovieGenre`：包含使用者所選取的特定內容類型 (例如「西部片」)。
 * 稍後在本教學課程中將會使用 `Genres` 和 `MovieGenre`。
@@ -209,7 +209,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Index.cshtml.cs?name=snippet_SelectList)]
 
-### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增Razor至頁面
+### <a name="add-search-by-genre-to-the-razor-page"></a>將依內容類型搜尋新增至 Razor 頁面
 
 更新 *Index.cshtml*，如下所示：
 
@@ -223,7 +223,7 @@ HTML `<form>` 標籤會使用下列[標籤協助程式](xref:mvc/views/tag-helpe
 * [本教學課程的 YouTube 版本](https://youtu.be/4B6pHtdyo08)
 
 > [!div class="step-by-step"]
-> [上一步：更新頁面](xref:tutorials/razor-pages/da1)
+> [上一步：更新頁面](xref:tutorials/razor-pages/da1) 
 > [下一步：新增欄位](xref:tutorials/razor-pages/new-field)
 
 ::: moniker-end

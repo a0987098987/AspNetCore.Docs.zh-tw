@@ -5,7 +5,7 @@ description: 瞭解如何建立以新的 Blazor 瀏覽器功能為基礎的漸�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 06/09/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: 274516014c027972166402abc70d22fa801898de
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: ef73cbb928fb442c73acce6f5facac33236abd67
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451845"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652410"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
 
@@ -208,7 +208,7 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 > [!IMPORTANT]
 > 新增 `ServiceWorkerAssetsManifestItem` 不會導致檔案在應用程式的*wwwroot*目錄中發行。 發行輸出必須分開控制。 `ServiceWorkerAssetsManifestItem`只會導致服務工作者資產資訊清單中出現額外的專案。
 
-## <a name="push-notifications"></a>推送通知
+## <a name="push-notifications"></a>推播通知
 
 就像任何其他 PWA 一樣， Blazor WebAssembly 的 pwa 也可以從後端伺服器接收推播通知。 伺服器可以隨時傳送推播通知，即使使用者未主動使用應用程式也一樣。 例如，當其他使用者執行相關動作時，可以傳送推播通知。
 
@@ -272,8 +272,23 @@ Web 開發人員 habitually 預期使用者只會執行其 web 應用程式的�
 
 ### <a name="interaction-with-authentication"></a>與驗證互動
 
-您可以使用 [PWA 範本] 選項搭配驗證選項。 具有離線功能的 PWA 也可以在使用者具有網路連線能力時支援驗證。
+PWA 範本可以與驗證搭配使用。 具有離線功能的 PWA 也可以在使用者具有初始網路連線時支援驗證。
 
-當使用者沒有網路連線時，他們無法驗證或取得存取權杖。 根據預設，嘗試在沒有網路存取的情況下流覽登入頁面會產生「網路錯誤」訊息。
+當使用者沒有網路連線時，他們無法驗證或取得存取權杖。 根據預設，嘗試在沒有網路存取的情況下流覽登入頁面會產生「網路錯誤」訊息。 您必須設計一個 UI 流程，讓使用者在離線時執行有用的工作，而不會嘗試驗證使用者或取得存取權杖。 或者，您可以設計應用程式，以便在網路無法使用時，正常地失敗。 如果應用程式無法設計來處理這些案例，您可能不想啟用離線支援。
 
-您必須設計一個 UI 流程，讓使用者在離線時執行有用的工作，而不會嘗試驗證或取得存取權杖。 或者，您可以設計應用程式在網路無法使用時，以正常方式失敗。 如果您的應用程式中無法這麼做，您可能不會想要啟用離線支援。
+當設計用於線上和離線使用的應用程式再次上線時：
+
+* 應用程式可能需要布建新的存取權杖。
+* 應用程式必須偵測是否有不同的使用者登入服務，使其可以將作業套用至使用者在離線時所建立的帳戶。
+
+若要建立與驗證互動的離線 PWA 應用程式：
+
+* <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.AccountClaimsPrincipalFactory%601>以儲存最後登入使用者的 factory 取代，並在應用程式離線時使用預存使用者。
+* 在應用程式離線時佇列作業，並在應用程式恢復上線時加以套用。
+* 在登出期間，清除已儲存的使用者。
+
+[CarChecker](https://github.com/SteveSandersonMS/CarChecker)範例應用程式會示範上述方法。 請參閱應用程式的下列部分：
+
+* `OfflineAccountClaimsPrincipalFactory`（*Client/Data/OfflineAccountClaimsPrincipalFactory .cs*）
+* `LocalVehiclesStore`（*Client/Data/LocalVehiclesStore .cs*）
+* `LoginStatus`component （*Client/Shared/LoginStatus razor*）

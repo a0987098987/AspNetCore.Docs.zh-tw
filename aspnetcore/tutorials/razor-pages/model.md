@@ -1,7 +1,7 @@
 ---
-title: 在 ASP.NET Core 中將模型Razor新增至頁面應用程式
+title: 第2部分，將模型新增至 Razor 頁面應用程式中的 ASP.NET Core
 author: rick-anderson
-description: 了解如何使用 Entity Framework Core (EF Core)，新增用來管理資料庫中電影的類別。
+description: 頁面上教學課程系列的第2部分 Razor 。
 ms.author: riande
 ms.date: 12/05/2019
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: d093d7c4dc1b355c0042f300f70a830653b168c0
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: d3f7d355625ce20a0cb45c785fbab259a5655c63
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82769828"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652929"
 ---
-# <a name="add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>將模型新增至 ASP.NET Core 中的 Razor 頁面應用程式
+# <a name="part-2-add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>第2部分，將模型新增至 Razor 頁面應用程式中的 ASP.NET Core
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -38,7 +38,7 @@ ms.locfileid: "82769828"
 
 以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]**** > [新增資料夾]****。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [**新增** > **類別**]。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [**新增**  >  **類別**]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -54,7 +54,7 @@ ms.locfileid: "82769828"
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
 * 在 Solution Pad 中，以滑鼠右鍵按一下**RazorPagesMovie**專案，然後選取 [**加入** > **新資料夾**]。將資料夾命名為*模型*。
-* 以滑鼠右鍵按一下 [*模型*] 資料夾，然後**選取** > [**新增檔案 ...**]。
+* 以滑鼠右鍵按一下 [*模型*] 資料夾，然後**選取 [** > **新增檔案 ...**]。
 * 在 [新增檔案]**** 對話方塊中：
 
   * 在左窗格中選取 [一般]****。
@@ -82,15 +82,15 @@ ms.locfileid: "82769828"
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold]**** 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]** [新增]** > ****。
+在 [**新增 Scaffold** ] 對話方塊中，選取 [ ** Razor 使用 Entity Framework （CRUD）** > **新增**] 頁面。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)**** 對話方塊：
+完成 [ ** Razor 使用 ENTITY FRAMEWORK （CRUD）新增頁面**] 對話方塊：
 
 * 在 [模型類別]**** 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)****。
 * 在 [資料內容類別]**** 列中選取 [+]**** \(加號\)，並將產生的名稱 RazorPagesMovie.**Models**.RazorPagesMovieContext 變更為 RazorPagesMovie.**Data**.RazorPagesMovieContext。 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
-* 選取 [新增]  。
+* 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/3/arp.png)
 
@@ -136,15 +136,15 @@ ms.locfileid: "82769828"
 
 ![前述指示中的圖片。](model/_static/scaMac.png)
 
-在 [**新增**架構] 對話方塊中，選取 [ **Razor Pages 使用 Entity Framework （CRUD）** > **] [下一步]**。
+在 [**新**的架構] 對話方塊中，選取 [ ** Razor 使用 Entity Framework （CRUD）** > **] 下**的頁面。
 
 ![前述指示中的圖片。](model/_static/add_scaffoldMac.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)**** 對話方塊：
+完成 [ ** Razor 使用 ENTITY FRAMEWORK （CRUD）新增頁面**] 對話方塊：
 
 * 在 [**模型類別**] 下拉式選，選取或輸入**Movie （RazorPagesMovie）**。
 * 在 [**資料內容類別**] 列中，輸入新類別的名稱 RazorPagesMovie。**資料**。RazorpagesmoviecoNtext-21. 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
-* 選取 [新增]  。
+* 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/arpMac.png)
 
@@ -236,15 +236,15 @@ Update-Database
 
 您可以忽略該警告，稍後的教學課程中將修正此問題。
 
-[遷移] 命令會產生程式碼來建立初始資料庫架構。 架構是以中`DbContext`指定的模型為基礎。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
+[遷移] 命令會產生程式碼來建立初始資料庫架構。 架構是以中指定的模型為基礎 `DbContext` 。 `InitialCreate` 引數用來命名移轉。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。
 
-`update`命令會在尚未`Up`套用的遷移中執行方法。 在此情況下`update` ，會`Up`在建立資料庫的「*遷移/\<時間戳記>_InitialCreate .cs*檔案中執行方法。
+命令會在尚未套用的 `update` `Up` 遷移中執行方法。 在此情況下，會 `update` `Up` 在建立資料庫的「*遷移/ \<time-stamp> _InitialCreate .cs*檔案」中執行方法。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 ### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 需要這些服務的元件（例如頁面）會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
@@ -256,7 +256,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
-上述程式碼會建立實體集的 [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
+上述程式碼會建立實體集的[DbSet \<Movie> ](/dotnet/api/microsoft.entityframeworkcore.dbset-1)屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
 連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
@@ -299,8 +299,8 @@ Login failed for user 'User-name'.
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一步：開始](xref:tutorials/razor-pages/razor-pages-start)
-> 使用[下一步： scaffold Razor Pages](xref:tutorials/razor-pages/page)
+> [上一步：開始](xref:tutorials/razor-pages/razor-pages-start) 
+>  使用[下一步： scaffold Razor頁面](xref:tutorials/razor-pages/page)
 
 ::: moniker-end
 
@@ -319,7 +319,7 @@ Login failed for user 'User-name'.
 
 以滑鼠右鍵按一下 **RazorPagesMovie** 專案 > [新增]**** > [新增資料夾]****。 將資料夾命名為 *Models*。
 
-以滑鼠右鍵按一下 *Models* 資料夾。 選取 [**新增** > **類別**]。 將類別命名為 **Movie**。
+以滑鼠右鍵按一下 *Models* 資料夾。 選取 [**新增**  >  **類別**]。 將類別命名為 **Movie**。
 
 [!INCLUDE [model 1b](~/includes/RP/model1b.md)]
 
@@ -363,11 +363,11 @@ Login failed for user 'User-name'.
 
 ![前述指示中的圖片。](model/_static/sca.png)
 
-在 [新增 Scaffold]**** 對話方塊中，選取 [使用 Entity Framework 的 Razor Pages (CRUD)]** [新增]** > ****。
+在 [**新增 Scaffold** ] 對話方塊中，選取 [ ** Razor 使用 Entity Framework （CRUD）** > **新增**] 頁面。
 
 ![前述指示中的圖片。](model/_static/add_scaffold.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)**** 對話方塊：
+完成 [ ** Razor 使用 ENTITY FRAMEWORK （CRUD）新增頁面**] 對話方塊：
 <!-- In the next section, change 
 (plus) sign and accept the generated name 
 to use Data, it should not use models. That will make the namespace the same for the VS version and the CLI version
@@ -375,7 +375,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 * 在 [模型類別]**** 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)****。
 * 在 [資料內容類別]**** 列中選取 [+]**** (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
-* 選取 [新增]  。
+* 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/arp.png)
 
@@ -413,15 +413,15 @@ to use Data, it should not use models. That will make the namespace the same for
 
 ![前述指示中的圖片。](model/_static/scaMac.png)
 
-在 [**加入新**的架構] 對話方塊中，選取 [ **Razor Pages 使用 Entity Framework （CRUD）** > ] [**新增**]。
+在 [**加入新**的架構] 對話方塊中，選取 [ ** Razor 使用 Entity Framework （CRUD）** > **新增**] 頁面。
 
 ![前述指示中的圖片。](model/_static/add_scaffoldMac.png)
 
-完成 [Add Razor Pages using Entity Framework (CRUD)] \(新增使用 Entity Framework 的 Razor Pages (CRUD)\)**** 對話方塊：
+完成 [ ** Razor 使用 ENTITY FRAMEWORK （CRUD）新增頁面**] 對話方塊：
 
 * 在 [**模型類別**] 下拉式選，選取或輸入**Movie**。
 * 在 [**資料內容類別**] 列中，輸入選取**razorpagesmoviecoNtext-21** ，這會使用正確的命名空間建立新的 db 內容類別。 在此情況下，它會是**RazorPagesMovie。 razorpagesmoviecoNtext-21**。
-* 選取 [新增]  。
+* 選取 [新增]。
 
 ![前述指示中的圖片。](model/_static/arpMac.png)
 
@@ -464,9 +464,9 @@ Add-Migration Initial
 Update-Database
 ```
 
-`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate`引數是用來命名遷移。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱<xref:data/ef-mvc/migrations>。
+`Add-Migration` 命令會產生程式碼來建立初始資料庫結構描述。 結構描述是以 `DbContext` (在 *RazorPagesMovieContext.cs* 檔案中) 中指定的模型為基礎。 `InitialCreate`引數是用來命名遷移。 您可以使用任何名稱，但依照慣例，會使用描述移轉的名稱。 如需詳細資訊，請參閱 <xref:data/ef-mvc/migrations> 。
 
-`Update-Database` 命令會執行 *Migrations/\<時間戳記>_InitialCreate.cs* 檔案中的 `Up` 方法。 `Up` 方法會建立資料庫。
+`Update-Database`命令會 `Up` 在*遷移/ \<time-stamp> _InitialCreate .cs*檔案中執行方法。 `Up` 方法會建立資料庫。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -484,7 +484,7 @@ Update-Database
 
 ### <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 接著，會透過建構函式參數，針對需要這些服務的元件 (例如 Razor 頁面) 來提供服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 需要這些服務的元件（例如頁面）會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
@@ -496,7 +496,7 @@ Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器�
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Data/RazorPagesMovieContext.cs)]
 
-上述程式碼會建立實體集的 [DbSet\<Movie>](/dotnet/api/microsoft.entityframeworkcore.dbset-1) 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
+上述程式碼會建立實體集的[DbSet \<Movie> ](/dotnet/api/microsoft.entityframeworkcore.dbset-1)屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表。 實體會對應至資料表中的資料列。
 
 連接字串的名稱，會透過對 [DbContextOptions](/dotnet/api/microsoft.entityframeworkcore.dbcontextoptions) 物件呼叫方法來傳遞至內容。 作為本機開發之用，[ASP.NET Core configuration system](xref:fundamentals/configuration/index) 會從 *appsettings.json* 檔案讀取連接字串。
 
@@ -539,7 +539,7 @@ Login failed for user 'User-name'.
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一步：開始](xref:tutorials/razor-pages/razor-pages-start)
-> 使用[下Razor一步： scaffold 頁面](xref:tutorials/razor-pages/page)
+> [上一步：開始](xref:tutorials/razor-pages/razor-pages-start) 
+>  使用[下一步： scaffold Razor頁面](xref:tutorials/razor-pages/page)
 
 ::: moniker-end

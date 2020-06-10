@@ -1,18 +1,24 @@
 ---
-title: ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
+title: 第4部分， Razor ASP.NET Core-遷移中包含 EF Core 的頁面
 author: rick-anderson
-description: 在本教學課程中，您將開始使用 EF Core 移轉功能來管理 ASP.NET Core MVC 應用程式中的資料模型變更。
+description: 頁面的第4部分 Razor 和 Entity Framework 教學課程系列。
 ms.author: riande
 ms.date: 07/22/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-rp/migrations
-ms.openlocfilehash: 86fd83c898fce8e121e4d259aaca12c59591e606
-ms.sourcegitcommit: f7886fd2e219db9d7ce27b16c0dc5901e658d64e
+ms.openlocfilehash: 74fe8771718647c3adf8288a72b11c30fb097a63
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "78656531"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652626"
 ---
-# <a name="razor-pages-with-ef-core-in-aspnet-core---migrations---4-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 移轉 - 4/8
+# <a name="part-4-razor-pages-with-ef-core-migrations-in-aspnet-core"></a>第4部分， Razor ASP.NET Core 中 EF Core 遷移的頁面
 
 作者：[Tom Dykstra](https://github.com/tdykstra)、[Jon P Smith](https://twitter.com/thereformedprog)、[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -42,7 +48,7 @@ Drop-Database
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-* 在指令提示符上執行以下指令以安裝 EF CLI:
+* 在命令提示字元中執行下列命令，以安裝 EF CLI：
 
   ```dotnetcli
   dotnet tool install --global dotnet-ef
@@ -82,7 +88,7 @@ dotnet ef database update
 
 ## <a name="up-and-down-methods"></a>Up 和 Down 方法
 
-EF Core `migrations add` 命令已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs** 檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
+EF Core `migrations add` 命令已產生用來建立資料庫的程式碼。 此遷移程式碼位於*遷移 \<timestamp> _InitialCreate .cs*檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
 
 [!code-csharp[](intro/samples/cu30/Migrations/20190731193522_InitialCreate.cs)]
 
@@ -104,7 +110,7 @@ EF Core `migrations add` 命令已產生用來建立資料庫的程式碼。 此
 
 移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料模型的「快照集」**。 當您新增移轉時，EF 會比較目前資料模型與快照集檔案，以判斷變更的內容。
 
-由於快照集檔案會追蹤資料模型的狀態，您無法藉由刪除 `<timestamp>_<migrationname>.cs` 檔案來刪除移轉。 若要退出最新的移轉，您必須使用 `migrations remove` 命令。 該命令會刪除移轉，並確保能正確地重設快照集。 有關詳細資訊,請參閱[刪除點網 ef 移轉](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
+由於快照集檔案會追蹤資料模型的狀態，您無法藉由刪除 `<timestamp>_<migrationname>.cs` 檔案來刪除移轉。 若要退出最新的移轉，您必須使用 `migrations remove` 命令。 該命令會刪除移轉，並確保能正確地重設快照集。 如需詳細資訊，請參閱[dotnet ef 遷移移除](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
 
 ## <a name="remove-ensurecreated"></a>移除 EnsureCreated
 
@@ -150,8 +156,8 @@ Login failed for user 'user name'.
 下一個教學課程會建立資料模型，並新增實體屬性和新實體。
 
 > [!div class="step-by-step"]
-> [前面的教學](xref:data/ef-rp/sort-filter-page)
-> [下一個教學](xref:data/ef-rp/complex-data-model)
+> [上一個教學](xref:data/ef-rp/sort-filter-page) 
+>  課程[下一個教學](xref:data/ef-rp/complex-data-model)課程
 
 ::: moniker-end
 
@@ -220,7 +226,7 @@ dotnet ef database update
 
 ### <a name="examine-the-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
-EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 此移轉程式碼位於 Migrations\<時間戳記>_InitialCreate.cs** 檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
+EF Core 命令 `migrations add` 已產生用來建立資料庫的程式碼。 此遷移程式碼位於*遷移 \<timestamp> _InitialCreate .cs*檔案中。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表。 `Down` 方法則會刪除它們，如下列範例所示：
 
 [!code-csharp[](intro/samples/cu21/Migrations/20180626224812_InitialCreate.cs?range=7-24,77-88)]
 
@@ -253,7 +259,7 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 dotnet ef migrations remove
 ```
 
-有關詳細資訊,請參閱[刪除點網 ef 移轉](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
+如需詳細資訊，請參閱[dotnet ef 遷移移除](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)。
 
 ---
 
@@ -310,15 +316,15 @@ Login failed for user 'user name'.
 
 ### <a name="additional-resources"></a>其他資源
 
-* [本教學的 YouTube 版本](https://www.youtube.com/watch?v=OWSUuMLKTJo)
-* [.NET 核心 CLI](/ef/core/miscellaneous/cli/dotnet).
+* [本教學課程的 YouTube 版本](https://www.youtube.com/watch?v=OWSUuMLKTJo)
+* [.NET Core CLI](/ef/core/miscellaneous/cli/dotnet)。
 * [套件管理員主控台 (Visual Studio)](/ef/core/miscellaneous/cli/powershell)
 
 
 
 > [!div class="step-by-step"]
-> [前一個](xref:data/ef-rp/sort-filter-page)
-> [下一個](xref:data/ef-rp/complex-data-model)
+> [上一個](xref:data/ef-rp/sort-filter-page) 
+> [下一步](xref:data/ef-rp/complex-data-model)
 
 ::: moniker-end
 

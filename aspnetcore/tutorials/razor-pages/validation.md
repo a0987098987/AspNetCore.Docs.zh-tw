@@ -1,7 +1,7 @@
 ---
-title: 將驗證新增至 ASP.NET Core Razor 頁面
+title: 第8部分，將驗證新增至 ASP.NET Core Razor 頁面
 author: rick-anderson
-description: 探索如何將驗證新增至 Razor ASP.NET Core 中的頁面。
+description: 頁面上的第8部分教學課程系列 Razor 。
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
@@ -12,14 +12,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: 7aeb77e836ce0546766d88f2c52f37aaf75c12c4
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: f72edda54d4201915e2494b75b4d49ec6c9c6d75
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452040"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652843"
 ---
-# <a name="add-validation-to-an-aspnet-core-razor-page"></a>將驗證新增至 ASP.NET Core Razor 頁面
+# <a name="part-8-add-validation-to-an-aspnet-core-razor-page"></a>第8部分，將驗證新增至 ASP.NET Core Razor 頁面
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 

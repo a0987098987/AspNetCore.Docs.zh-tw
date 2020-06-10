@@ -1,7 +1,7 @@
 ---
-title: 將驗證新增至 ASP.NET Core MVC 應用程式
+title: 第9部分，將驗證新增至 ASP.NET Core MVC 應用程式
 author: rick-anderson
-description: 如何將驗證新增至 ASP.NET Core 應用程式。
+description: ASP.NET Core MVC 的教學課程系列第9部分。
 ms.author: riande
 ms.date: 04/13/2017
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/validation
-ms.openlocfilehash: 6e46a4ace7c99096f1a7d47946a21fd7a5c657e7
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 70cc66955fdaee6ff93648523c2977587e6b05d6
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776190"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652453"
 ---
-# <a name="add-validation-to-an-aspnet-core-mvc-app"></a>將驗證新增至 ASP.NET Core MVC 應用程式
+# <a name="part-9-add-validation-to-an-aspnet-core-mvc-app"></a>第9部分，將驗證新增至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -55,7 +55,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 您可能奇怪如何在不更新控制器或檢視程式碼的狀況下產生驗證 UI。 下列程式碼示範兩種 `Create` 方法。
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Controllers/MoviesController.cs?name=snippetCreate)]
 
 第一個 (HTTP GET)`Create` 動作方法會顯示初始建立表單。 第二個 (`[HttpPost]`) 版本處理表單張貼。 第二個 `Create` 方法 (`[HttpPost]` 版本) 會呼叫`ModelState.IsValid` 檢查電影是否有任何驗證錯誤。 呼叫此方法會評估已套用至物件的所有驗證屬性。 如果物件有驗證錯誤，則 `Create` 方法會重新顯示表單。 如果沒有任何錯誤，方法即會將新的電影儲存到資料庫。 在影片範例中，在用戶端上偵測到驗證錯誤時，表單不會發佈至伺服器；出現用戶端驗證錯誤時，一定不會呼叫第二個 `Create` 方法。 如果您停用瀏覽器的 JavaScript，用戶端驗證也會停用，而且您可以測試 HTTP POST `Create` 方法 `ModelState.IsValid` 偵測任何驗證錯誤。
 
@@ -89,7 +89,7 @@ MVC 和 Entity Framework Core Code First 所提供的驗證支援就是執行 DR
 
 開啟 *Movie.cs* 檔案並檢查 `Movie` 類別。 除了一組內建的驗證屬性之外，`System.ComponentModel.DataAnnotations` 命名空間還提供了格式屬性。 發行日期和價格欄位已經套用 `DataType` 列舉值。 下列程式碼會示範具有適當 `DataType` 屬性 (attribute) 的 `ReleaseDate` 和 `Price` 屬性 (property)。
 
-[!code-csharp[](~/tutorials/first-mvc-app/start-mvc//sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
+[!code-csharp[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Models/MovieDateRatingDA.cs?highlight=2,6&name=snippet2)]
 
 `DataType` 屬性只會提供檢視引擎格式化資料的提示 (同時會提供一些項目/屬性，例如 URL 的 `<a>` 以及用於電子郵件的 `<a href="mailto:EmailAddress.com">`)。 您可使用 `RegularExpression` 屬性来驗證資料的格式。 `DataType`屬性用於指定比資料庫內建類型更特定的資料類型，這些並非驗證屬性。 本例中，我們只想要追蹤日期，不追蹤時間。 `DataType` 列舉提供許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可建立 `DataType.EmailAddress` 的 `mailto:` 連結，而且可以在支援 HTML5 的瀏覽器中提供 `DataType.Date` 的日期選擇器。 `DataType` 屬性會發出 HTML 5 瀏覽器了解的 HTML 5 `data-` (讀音 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
 
@@ -133,5 +133,5 @@ public DateTime ReleaseDate { get; set; }
 * [編寫標籤協助程式](xref:mvc/views/tag-helpers/authoring)
 
 > [!div class="step-by-step"]
-> [上一頁](new-field.md)
-> [下一頁](details.md)  
+> [上一個](new-field.md) 
+> [下一步](details.md)  

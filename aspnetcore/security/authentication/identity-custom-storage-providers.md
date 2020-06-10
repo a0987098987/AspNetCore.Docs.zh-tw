@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-custom-storage-providers
-ms.openlocfilehash: 792a9e5f776e345fbee5726b676fe148ecaf1657
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 567529adc520c3fb152afae7284d31b87ec1df0a
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106581"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652988"
 ---
 # <a name="custom-storage-providers-for-aspnet-core-identity"></a>ASP.NET Core 的自訂儲存體提供者Identity
 
@@ -25,7 +25,7 @@ ms.locfileid: "84106581"
 
 ASP.NET Core 是可延伸的系統，可 Identity 讓您建立自訂的儲存提供者，並將它連接到您的應用程式。 本主題說明如何建立 ASP.NET Core 的自訂存放裝置提供者 Identity 。 其中涵蓋建立您自己的儲存提供者所需的重要概念，但不是逐步解說。
 
-[從 GitHub 查看或下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)。
+[從 GitHub 查看或下載範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity-custom-storage-providers/sample/CustomIdentityProviderSample)。
 
 ## <a name="introduction"></a>簡介
 

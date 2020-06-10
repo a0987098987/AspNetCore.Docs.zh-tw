@@ -1,19 +1,25 @@
 ---
-title: ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
+title: 第6部分， Razor ASP.NET Core 讀取相關資料中有 EF Core 的頁面
 author: rick-anderson
-description: 在此教學課程中，您可以讀取並顯示相關資料-- 也就是 Entity Framework 載入到導覽屬性的資料。
+description: 頁面的第6部分 Razor 和 Entity Framework 教學課程系列。
 ms.author: riande
 ms.custom: mvc
 ms.date: 09/28/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 0835dbf6b5434e4224d9f56ea3335df4b5d9e119
-ms.sourcegitcommit: 5af16166977da598953f82da3ed3b7712d38f6cb
+ms.openlocfilehash: e67738015f64ca7077c2f87a8f7eabe722aac9d8
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81277323"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652610"
 ---
-# <a name="razor-pages-with-ef-core-in-aspnet-core---read-related-data---6-of-8"></a>ASP.NET Core 中的 Razor 頁面與 EF Core - 讀取相關資料 - 6/8
+# <a name="part-6-razor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>第6部分， Razor ASP.NET Core 讀取相關資料中有 EF Core 的頁面
 
 作者：[Tom Dykstra](https://github.com/tdykstra)、[Jon P Smith](https://twitter.com/thereformedprog)、[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -33,7 +39,7 @@ ms.locfileid: "81277323"
 
 EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
-* [渴望載入](/ef/core/querying/related-data#eager-loading)。 積極式載入是指某一類型實體的查詢同時也會載入相關實體。 讀取實體時，將會擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 EF Core 將針對某些類型的積極式載入發出多個查詢。 發出多個查詢可能比大型單一查詢更有效率。 積極式載入是使用 `Include` 和 `ThenInclude` 方法加以指定。
+* [積極式載入](/ef/core/querying/related-data#eager-loading)。 積極式載入是指某一類型實體的查詢同時也會載入相關實體。 讀取實體時，將會擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 EF Core 將針對某些類型的積極式載入發出多個查詢。 發出多個查詢可能比大型單一查詢更有效率。 積極式載入是使用 `Include` 和 `ThenInclude` 方法加以指定。
 
   ![積極式載入範例](read-related-data/_static/eager-loading.png)
  
@@ -52,7 +58,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
-* [延遲載入](/ef/core/querying/related-data#lazy-loading)。 [EF Core 已在 2.1 版中新增消極式載入](/ef/core/querying/related-data#lazy-loading)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
+* 消極式[載入](/ef/core/querying/related-data#lazy-loading)。 [EF Core 已在 2.1 版中新增消極式載入](/ef/core/querying/related-data#lazy-loading)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
 
 ## <a name="create-course-pages"></a>建立 Course 頁面
 
@@ -83,13 +89,13 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 * 執行下列命令來 scaffold Course 頁面。
 
-  **在 Windows 上:**
+  **在 Windows 上：**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages\Courses --referenceScriptLibraries
   ```
 
-  **Linux 或 macOS 上:**
+  **在 Linux 或 macOS 上：**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Course -dc SchoolContext -udl -outDir Pages/Courses --referenceScriptLibraries
@@ -137,7 +143,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Courses/IndexSelect.cshtml.cs?name=snippet_RevisedIndexMethod&highlight=6)]
 
-前面的代碼不返回任何實體類型,因此不會執行跟蹤。 有關 EF 追蹤的詳細資訊,請參閱[追蹤與無追蹤查詢](/ef/core/querying/tracking)。
+上述程式碼不會傳回任何實體類型，因此不會進行任何追蹤。 如需 EF 追蹤的詳細資訊，請參閱[追蹤與不追蹤查詢](/ef/core/querying/tracking)。
 
 `CourseViewModel`：
 
@@ -150,7 +156,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 本節會 scaffold Instructor 頁面，並將相關的課程和註冊新增至 Instructors 索引頁面。
 
 <a name="IP"></a>
-![教師索引頁面](read-related-data/_static/instructors-index30.png)
+![講師索引頁面](read-related-data/_static/instructors-index30.png)
 
 此頁面將以下列方式讀取和顯示相關資料：
 
@@ -182,13 +188,13 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 * 執行下列命令來 Scaffold Instructor 頁面。
 
-  **在 Windows 上:**
+  **在 Windows 上：**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages\Instructors --referenceScriptLibraries
   ```
 
-  **Linux 或 macOS 上:**
+  **在 Linux 或 macOS 上：**
 
   ```dotnetcli
   dotnet aspnet-codegenerator razorpage -m Instructor -dc SchoolContext -udl -outDir Pages/Instructors --referenceScriptLibraries
@@ -198,7 +204,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 若要在更新之前查看 Scaffold 頁面的外觀，請執行應用程式並巡覽至 Instructors 頁面。
 
-使用以下代碼更新*頁面/教師/Index.cshtml.cs:*
+使用下列程式碼更新*Pages/講師/Index. cshtml. .cs* ：
 
 [!code-csharp[](intro/samples/cu30snapshots/6-related/Pages/Instructors/Index1.cshtml.cs?name=snippet_all&highlight=2,19-53)]
 
@@ -260,7 +266,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
   }
   ```
 
-* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 有關此剃刀語法的更多內容,請參閱[顯式行轉換](xref:mvc/views/razor#explicit-line-transition)。
+* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 如需此 razor 語法的詳細資訊，請參閱[明確行轉換](xref:mvc/views/razor#explicit-line-transition)。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選講師和課程的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 
@@ -283,7 +289,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 * 新增所選課程的學生註冊資料表。
 
-執行應用並選擇「**講師」** 選項卡。該頁顯示相關`Location``OfficeAssignment`實體的(辦公室)。 如果 `OfficeAssignment` 為 Null，則會顯示空的資料表資料格。
+執行應用程式，然後選取 [**講師**] 索引標籤。此頁面會顯示 `Location` 來自相關實體的（office） `OfficeAssignment` 。 如果 `OfficeAssignment` 為 Null，則會顯示空的資料表資料格。
 
 按一下講師的 [選取]**** 連結。 資料列樣式會變更，並會顯示指派給該講師的課程。
 
@@ -325,8 +331,8 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 下一個教學課程會示範如何更新相關資料。
 
 >[!div class="step-by-step"]
->[前面的教學](xref:data/ef-rp/complex-data-model)
->[下一個教學](xref:data/ef-rp/update-related-data)
+>[上一個教學](xref:data/ef-rp/complex-data-model) 
+> 課程[下一個教學](xref:data/ef-rp/update-related-data)課程
 
 ::: moniker-end
 
@@ -334,7 +340,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 在本教學課程中，將會讀取和顯示相關資料。 相關資料是 EF Core 載入到導覽屬性的資料。
 
-若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載標題](xref:index#how-to-download-a-sample)。
+若您遇到無法解決的問題，請[下載或檢視完整應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
 下圖顯示本教學課程的已完成頁面：
 
@@ -346,7 +352,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
-* [渴望載入](/ef/core/querying/related-data#eager-loading)。 積極式載入是指某一類型實體的查詢同時也會載入相關實體。 讀取實體時，將會擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 EF Core 將針對某些類型的積極式載入發出多個查詢。 相較於 EF6 中的某些查詢只有單一查詢的情況，發出多個查詢可能更有效率。 積極式載入是使用 `Include` 和 `ThenInclude` 方法加以指定。
+* [積極式載入](/ef/core/querying/related-data#eager-loading)。 積極式載入是指某一類型實體的查詢同時也會載入相關實體。 讀取實體時，將會擷取其相關資料。 這通常會導致單一聯結查詢，其可擷取所有需要的資料。 EF Core 將針對某些類型的積極式載入發出多個查詢。 相較於 EF6 中的某些查詢只有單一查詢的情況，發出多個查詢可能更有效率。 積極式載入是使用 `Include` 和 `ThenInclude` 方法加以指定。
 
   ![積極式載入範例](read-related-data/_static/eager-loading.png)
  
@@ -365,7 +371,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![明確式載入範例](read-related-data/_static/explicit-loading.png)
 
-* [延遲載入](/ef/core/querying/related-data#lazy-loading)。 [EF Core 已在 2.1 版中新增消極式載入](/ef/core/querying/related-data#lazy-loading)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
+* 消極式[載入](/ef/core/querying/related-data#lazy-loading)。 [EF Core 已在 2.1 版中新增消極式載入](/ef/core/querying/related-data#lazy-loading)。 第一次讀取實體時，不會擷取相關資料。 第一次存取導覽屬性時，將會自動擷取該導覽屬性所需的資料。 每當第一次存取導覽屬性時，查詢會傳送至資料庫。
 
 * `Select` 運算子只會載入所需的相關資料。
 
@@ -453,7 +459,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 在本節中，將會建立 Instructors 頁面。
 
 <a name="IP"></a>
-![教師索引頁面](read-related-data/_static/instructors-index.png)
+![講師索引頁面](read-related-data/_static/instructors-index.png)
 
 此頁面將以下列方式讀取和顯示相關資料：
 
@@ -529,7 +535,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   }
   ```
 
-* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 有關此剃刀語法的更多內容,請參閱[顯式行轉換](xref:mvc/views/razor#explicit-line-transition)。
+* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 如需此 razor 語法的詳細資訊，請參閱[明確行轉換](xref:mvc/views/razor#explicit-line-transition)。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選取講師的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 
@@ -548,7 +554,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-執行應用並選擇「**講師」** 選項卡。該頁顯示相關`Location``OfficeAssignment`實體的(辦公室)。 如果 OfficeAssignment 是 Null，就會顯示空的資料表資料格。
+執行應用程式，然後選取 [**講師**] 索引標籤。此頁面會顯示 `Location` 來自相關實體的（office） `OfficeAssignment` 。 如果 OfficeAssignment 是 Null，就會顯示空的資料表資料格。
 
 按一下**選取**連結。 資料列樣式變更。
 
@@ -585,7 +591,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 [!code-csharp[](intro/samples/cu/Pages/Instructors/Index2.cshtml.cs?name=snippet_courseID)]
 
-將下列標記新增至 *Pages/Instructors/Index.cshtml* Razor 頁面的結尾：
+將下列標記新增至*Pages/講師/Index. cshtml* Razor 頁面的結尾：
 
 [!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 
@@ -648,7 +654,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 * [這個教學課程的 YouTube 版本 (第 2 部分)](https://www.youtube.com/watch?v=xvDDrIHv5ko)
 
 >[!div class="step-by-step"]
->[前一個](xref:data/ef-rp/complex-data-model)
->[下一個](xref:data/ef-rp/update-related-data)
+>[上一個](xref:data/ef-rp/complex-data-model) 
+>[下一步](xref:data/ef-rp/update-related-data)
 
 ::: moniker-end

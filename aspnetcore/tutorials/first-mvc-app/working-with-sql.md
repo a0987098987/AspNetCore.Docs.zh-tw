@@ -1,7 +1,7 @@
 ---
-title: 在 ASP.NET Core MVC 應用程式中使用 SQL
+title: 第5部分，使用 ASP.NET Core MVC 應用程式中的資料庫
 author: rick-anderson
-description: 了解如何在 ASP.NET Core MVC 應用程式中使用 SQL Server LocalDB 或 SQLite。
+description: 第5部分，將模型新增至 ASP.NET Core MVC 應用程式
 ms.author: riande
 ms.date: 8/16/2019
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/working-with-sql
-ms.openlocfilehash: 54b10f10fb048819fced223f77f06a32102512d0
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 7fdd147f4de00a593a77977d2b53e5369667fe78
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776203"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652516"
 ---
-# <a name="work-with-sql-in-aspnet-core"></a>在 ASP.NET Core 中使用 SQL
+# <a name="part-5-work-with-a-database-in-an-aspnet-core-mvc-app"></a>第5部分，使用 ASP.NET Core MVC 應用程式中的資料庫
 
 ::: moniker range=">= aspnetcore-3.0"
 

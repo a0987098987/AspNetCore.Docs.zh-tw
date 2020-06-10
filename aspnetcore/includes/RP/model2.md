@@ -1,12 +1,16 @@
 <a name="dc"></a>
 
+### <a name="add-nuget-packages-and-ef-tools"></a>新增 NuGet 套件和 EF 工具
+
+[!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI.md)]
+
 ### <a name="add-a-database-context-class"></a>新增資料庫內容類別
 
 在 RazorPagesMovie 專案中，建立名為 *Data* 的新資料夾。 將下列 `RazorPagesMovieContext` 類別新增至 *ata* 資料夾：
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Data/RazorPagesMovieContext.cs)]
 
-上述程式碼會建立實體集的 `DbSet` 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。 在以後的步驟中添加依賴項之前,代碼不會編譯。
+上述程式碼會建立實體集的 `DbSet` 屬性。 在 Entity Framework 詞彙中，實體集通常會對應至資料庫資料表，而實體則對應至資料表中的資料列。 在後續步驟中新增相依性之前，程式碼不會進行編譯。
 
 <a name="cs"></a>
 
@@ -17,10 +21,6 @@
 ::: moniker range=">= aspnetcore-3.0"
 
 [!code-json[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/appsettings_SQLite.json?highlight=10-12)]
-
-### <a name="add-nuget-packages-and-ef-tools"></a>新增 NuGet 套件和 EF 工具
-
-[!INCLUDE[](~/includes/add-EF-NuGet-SQLite-CLI.md)]
 
 <a name="reg"></a>
 
@@ -45,7 +45,7 @@ using Microsoft.EntityFrameworkCore;
 
 ### <a name="add-required-nuget-packages"></a>新增必要的 NuGet 封裝
 
-執行以下 .NET 核心 CLI 指令,向專案新增 SQLite 和代碼產生.設計:
+執行下列 .NET Core CLI 命令，將 SQLite 和 Nswag.codegeneration.csharp 新增至專案：
 
 ```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.SQLite

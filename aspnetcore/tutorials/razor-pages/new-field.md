@@ -1,7 +1,7 @@
 ---
-title: 在 ASP.NET Core 中將新欄位Razor新增至頁面
+title: 第7部分，將新欄位新增至 Razor 頁面中的 ASP.NET Core
 author: rick-anderson
-description: 示範如何使用 Entity Framework Core 將新欄位新增至Razor頁面
+description: 頁面上的教學課程系列第7部分 Razor 。
 ms.author: riande
 ms.custom: mvc
 ms.date: 7/23/2019
@@ -12,14 +12,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/new-field
-ms.openlocfilehash: 683d6718f4dcdb73c45cbcf94f6ac4f477b71bcd
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 15d4ccbe88c2147210918a3db1416983fb30132b
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82769730"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652803"
 ---
-# <a name="add-a-new-field-to-a-razor-page-in-aspnet-core"></a>將欄位新增至 ASP.NET Core 中的 Razor 頁面
+# <a name="part-7-add-a-new-field-to-a-razor-page-in-aspnet-core"></a>第7部分，將新欄位新增至 Razor 頁面中的 ASP.NET Core
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -34,7 +34,7 @@ ms.locfileid: "82769730"
 
 使用 EF Code First 自動建立資料庫時，Code First 會：
 
-* 將`__EFMigrationsHistory`資料表新增至資料庫，以追蹤資料庫的架構是否與其產生的模型類別同步。
+* 將 `__EFMigrationsHistory` 資料表新增至資料庫，以追蹤資料庫的架構是否與其產生的模型類別同步。
 * 如果模型類別與資料庫不同步，EF 會擲回例外狀況。
 
 自動驗證結構描述/模型是否同步，讓您更容易發現不一致的資料庫/程式碼問題。
@@ -59,11 +59,11 @@ ms.locfileid: "82769730"
 * 使用 `Rating` 欄位更新 [Create.cshtml](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Create.cshtml)。
 * 將 `Rating` 欄位新增至 Edit 頁面。
 
-在更新資料庫以包含新欄位之前，應用程式無法運作。 在不更新資料庫的情況下`SqlException`執行應用程式會擲回：
+在更新資料庫以包含新欄位之前，應用程式無法運作。 在不更新資料庫的情況下執行應用程式會擲回 `SqlException` ：
 
 `SqlException: Invalid column name 'Rating'.`
 
-此`SqlException`例外狀況是因為更新的電影模型類別與資料庫之電影資料表的架構不同。 (資料庫資料表中沒有任何 `Rating` 資料行)。
+此 `SqlException` 例外狀況是因為更新的電影模型類別與資料庫之電影資料表的架構不同。 (資料庫資料表中沒有任何 `Rating` 資料行)。
 
 有幾個方法可以解決這個錯誤：
 
@@ -115,7 +115,7 @@ Update-Database
 * 在 SSOX 中選取資料庫。
 * 以滑鼠右鍵按一下資料庫，然後選取 [刪除]**。
 * 勾選 [**關閉現有的連接**]。
-* 選取 [確定]  。
+* 選取 [確定]。
 * 在[PMC](xref:tutorials/razor-pages/new-field#pmc)中，更新資料庫：
 
   ```powershell
@@ -145,7 +145,7 @@ dotnet ef database update
 * [本教學課程的 YouTube 版本](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [上一步：新增搜尋](xref:tutorials/razor-pages/search)
+> [上一步：新增搜尋](xref:tutorials/razor-pages/search) 
 > [下一步：新增驗證](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end
@@ -240,7 +240,7 @@ Update-Database
 * 在 SSOX 中選取資料庫。
 * 以滑鼠右鍵按一下資料庫，然後選取 [刪除]**。
 * 勾選 [**關閉現有的連接**]。
-* 選取 [確定]  。
+* 選取 [確定]。
 * 在[PMC](xref:tutorials/razor-pages/new-field#pmc)中，更新資料庫：
 
   ```powershell
@@ -268,7 +268,7 @@ dotnet ef database update
 * [本教學課程的 YouTube 版本](https://youtu.be/3i7uMxiGGR8)
 
 > [!div class="step-by-step"]
-> [上一步：新增搜尋](xref:tutorials/razor-pages/search)
+> [上一步：新增搜尋](xref:tutorials/razor-pages/search) 
 > [下一步：新增驗證](xref:tutorials/razor-pages/validation)
 
 ::: moniker-end

@@ -1,7 +1,7 @@
 ---
-title: 使用資料庫和 ASP.NET Core
+title: 第4部分，含有資料庫和 ASP.NET Core
 author: rick-anderson
-description: 說明如何使用資料庫和 ASP.NET Core。
+description: 頁面上教學課程系列的第4部分 Razor 。
 ms.author: riande
 ms.date: 7/22/2019
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 159588ec750f0ede534522aa9397fc2aefb58cd6
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 21ae2ed4e91a0b3e52b1cdad1f4f4686c50614ba
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775605"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652981"
 ---
-# <a name="work-with-a-database-and-aspnet-core"></a>使用資料庫和 ASP.NET Core
+# <a name="part-4-with-a-database-and-aspnet-core"></a>第4部分，含有資料庫和 ASP.NET Core
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT) 與 [Joe Audette](https://twitter.com/joeaudette)
 
@@ -113,7 +113,7 @@ if (context.Movie.Any())
 
 [!code-csharp[](razor-pages-start/sample/RazorPagesMovie30/Program.cs)]
 
-當尚未執行時`Update-Database` ，會發生下列例外狀況：
+當尚未執行時，會發生下列例外狀況 `Update-Database` ：
 
 > `SqlException: Cannot open database "RazorPagesMovieContext-" requested by the login. The login failed.`
 > `Login failed for user 'user name'.`
@@ -147,8 +147,8 @@ if (context.Movie.Any())
 ## <a name="additional-resources"></a>其他資源
 
 > [!div class="step-by-step"]
-> [上一個： scaffold Razor Pages](xref:tutorials/razor-pages/page)
-> [下一步：更新頁面](xref:tutorials/razor-pages/da1)
+> [上一步： scaffold Razor頁面](xref:tutorials/razor-pages/page) 
+>  [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end
 
@@ -303,7 +303,7 @@ SqlException：無法開啟登入要求的 "RazorPagesMovieContext-21" 資料庫
 * [本教學課程的 YouTube 版本](https://youtu.be/A_5ff11sDHY)
 
 > [!div class="step-by-step"]
-> [上一步Razor ： scaffold 頁面](xref:tutorials/razor-pages/page)
-> [下一步：更新頁面](xref:tutorials/razor-pages/da1)
+> [上一步： scaffold Razor頁面](xref:tutorials/razor-pages/page) 
+>  [下一步：更新頁面](xref:tutorials/razor-pages/da1)
 
 ::: moniker-end

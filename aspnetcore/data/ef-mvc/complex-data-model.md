@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/complex-data-model
-ms.openlocfilehash: 5e617a201cbd133e695bdadc08dc6c797f97b6be
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 10d6f0bd6f6b95efbe868e4bc21513460e1f0b67
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773623"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652471"
 ---
 # <a name="tutorial-create-a-complex-data-model---aspnet-mvc-with-ef-core"></a>教學課程：建立複雜的資料模型-使用 EF Core ASP.NET MVC
 
@@ -44,7 +44,7 @@ ms.locfileid: "82773623"
 > * 變更連接字串
 > * 更新資料庫
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [使用 EF Core 移轉](migrations.md)
 
@@ -78,7 +78,7 @@ ms.locfileid: "82773623"
 
 * 根據預設，瀏覽器將根據您的地區設定，使用正確的格式呈現資料。
 
-如需詳細資訊，請參閱[ \<輸入> 標記](../../mvc/views/working-with-forms.md#the-input-tag-helper)協助程式檔。
+如需詳細資訊，請參閱標記協助程式[ \<input> 檔](../../mvc/views/working-with-forms.md#the-input-tag-helper)集。
 
 執行應用程式，移至 Students [索引] 頁面，您會注意到註冊日期欄位中不再顯示時間。 任何使用 Student 模型的檢視都會有相同的結果。
 
@@ -95,7 +95,7 @@ ms.locfileid: "82773623"
 `StringLength` 屬性不會防止使用者在名稱中輸入空白字元。 您可以使用 `RegularExpression` 屬性來將限制套用至輸入。 例如，下列程式碼會要求第一個字元必須是大寫，其餘字元則必須是英文字母：
 
 ```csharp
-[RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
+[RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
 ```
 
 `MaxLength` 屬性提供了與 `StringLength` 屬性類似的功能，但不會提供用戶端驗證。
@@ -112,7 +112,7 @@ dotnet ef migrations add MaxLengthOnNames
 dotnet ef database update
 ```
 
-`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  遷移會建立名為* \<timeStamp 的檔案>_MaxLengthOnNames .cs*。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
+`migrations add` 命令會警告可能發生資料遺失，因為該項變更縮短了兩個資料行的最大長度。  遷移會建立名為* \<timeStamp> _MaxLengthOnNames .cs*的檔案。 此檔案包含了 `Up` 方法中的程式碼，可更新資料庫，使其符合目前的資料模型。 `database update` 命令執行了該程式碼。
 
 Entity Framework 會使用移轉檔案名稱前置的時間戳記來排序移轉。 您可以在執行 update-database 命令前建立多個移轉，然後所有的移轉便會依照其建立的先後順序套用。
 

@@ -1,7 +1,7 @@
 ---
-title: 將檢視新增至 ASP.NET Core MVC 應用程式
+title: 第3部分，將視圖加入至 ASP.NET Core MVC 應用程式
 author: rick-anderson
-description: 將檢視新增至簡易的 ASP.NET Core MVC 應用程式
+description: ASP.NET Core MVC 之教學課程系列的第3部分。
 ms.author: riande
 ms.date: 8/04/2019
 no-loc:
@@ -11,14 +11,14 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 233d6cc060481c7b2efc9a1babc12f60f457a075
-ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
+ms.openlocfilehash: 3976ecba1a6bbf30c3147bf1cef78c5ced5bec62
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84507331"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652820"
 ---
-# <a name="add-a-view-to-an-aspnet-core-mvc-app"></a>將檢視新增至 ASP.NET Core MVC 應用程式
+# <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>第3部分，將視圖加入至 ASP.NET Core MVC 應用程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
@@ -80,7 +80,7 @@ ms.locfileid: "84507331"
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-瀏覽至 `https://localhost:{PORT}/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設的視圖檔案與方法（）具有相同的名稱 `Index` ，因此會使用 */Views/HelloWorld/Index.cshtml*中的 view 範本。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
+瀏覽到 `https://localhost:{PORT}/HelloWorld` 。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設的視圖檔案與方法（）具有相同的名稱 `Index` ，因此會使用 */Views/HelloWorld/Index.cshtml*中的 view 範本。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
 ![瀏覽器視窗](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
@@ -237,7 +237,7 @@ ms.locfileid: "84507331"
 
 [!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-瀏覽至 `https://localhost:{PORT}/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設檢視檔案與方法 (`Index`) 擁有相同的名稱，因此會在 */Views/HelloWorld/Index.cshtml* 中使用。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
+瀏覽到 `https://localhost:{PORT}/HelloWorld` 。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設檢視檔案與方法 (`Index`) 擁有相同的名稱，因此會在 */Views/HelloWorld/Index.cshtml* 中使用。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
 ![瀏覽器視窗](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 

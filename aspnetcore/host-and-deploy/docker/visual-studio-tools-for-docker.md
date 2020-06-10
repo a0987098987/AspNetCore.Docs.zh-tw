@@ -1,11 +1,23 @@
 ---
-標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: Visual Studio 容器工具搭配 ASP.NET Core
+author: spboyer
+description: 了解如何使用適用於 Windows 的 Visual Studio 工具和 Docker 對 ASP.NET Core 應用程式進行容器化。
+ms.author: scaddie
+ms.custom: mvc
+ms.date: 09/12/2018
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: host-and-deploy/docker/visual-studio-tools-for-docker
+ms.openlocfilehash: 391cc18e499cdfaa67beeced382fd53b16a668a2
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105216"
 ---
 # <a name="visual-studio-container-tools-with-aspnet-core"></a>Visual Studio 容器工具搭配 ASP.NET Core
 
@@ -22,7 +34,7 @@ Visual Studio 2017 及更新版本支援建置、偵錯和執行以 .NET Core �
 
 若要進行 Docker 安裝，請先檢閱 [Docker for Windows: What to know before you install](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) 中的資訊。 接下來，安裝 [適用於 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)。
 
-Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-windows/#shared-drives)** (共用磁碟機) 必須設定為支援磁碟區對應和偵錯。 以滑鼠右鍵按一下系統匣的 Docker 圖示，選取 [**設定**]，然後選取 [**共用磁片磁碟機**]。 選取 Docker 儲存檔案的磁碟機。 按一下 [套用]  。
+Docker for Windows 中的 **[Shared Drives](https://docs.docker.com/docker-for-windows/#shared-drives)** (共用磁碟機) 必須設定為支援磁碟區對應和偵錯。 以滑鼠右鍵按一下系統匣的 Docker 圖示，選取 [**設定**]，然後選取 [**共用磁片磁碟機**]。 選取 Docker 儲存檔案的磁碟機。 按一下 [套用] 。
 
 ![為容器選取共用本機 C 磁碟機的對話方塊](visual-studio-tools-for-docker/_static/settings-shared-drives-win.png)
 

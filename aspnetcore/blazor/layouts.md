@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 版面配置 ' 作者：描述：「瞭解如何建立應用程式的可重複使用的配置元件」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor 版面配置
+author: guardrex
+description: 瞭解如何為應用程式建立可重複使用的版面配置元件 Blazor 。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 02/12/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/layouts
+ms.openlocfilehash: ba172282d0cd6371ebc94b4fda1c13aee14d6fbd
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83851988"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -85,7 +97,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Razor與整合式元件共用頁面配置
 
-當可路由的元件整合至 Razor 頁面應用程式時，應用程式的共用版面配置可以與元件搭配使用。 如需詳細資訊，請參閱<xref:blazor/integrate-components>。
+當可路由的元件整合至 Razor 頁面應用程式時，應用程式的共用版面配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/integrate-components> 。
 
 ## <a name="additional-resources"></a>其他資源
 

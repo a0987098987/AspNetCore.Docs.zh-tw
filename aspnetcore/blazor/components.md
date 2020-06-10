@@ -1,12 +1,24 @@
 ---
-標題：「建立和使用 ASP.NET Core Razor 元件的作者：描述：」瞭解如何建立和使用 Razor 元件，包括如何系結至資料、處理事件，以及管理元件生命週期。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 建立和使用 ASP.NET Core Razor 元件
+author: guardrex
+description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資料、處理事件，以及管理元件生命週期。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/14/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/components
+ms.openlocfilehash: 59b0c51e0006db0eb748b14b82a114a8bad986e8
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105141"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -118,7 +130,7 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
 ...
 ```
 
-如需詳細資訊，請參閱<xref:blazor/routing>。
+如需詳細資訊，請參閱 <xref:blazor/routing> 。
 
 ## <a name="parameters"></a>參數
 
@@ -731,7 +743,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為 `false` �
 <input type="checkbox" />
 ```
 
-如需詳細資訊，請參閱<xref:mvc/views/razor>。
+如需詳細資訊，請參閱 <xref:mvc/views/razor> 。
 
 > [!WARNING]
 > 當 .NET 類型為時，某些 HTML 屬性（例如，[按下的 aria](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons)）無法正常運作 `bool` 。 在這些情況下，請使用型別， `string` 而不是 `bool` 。

@@ -1,12 +1,24 @@
 ---
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式
+author: guardrex
+description: 瞭解應用程式中元件和 DOM 元素的資料系結案例 Blazor 。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 04/25/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/integrate-components
+ms.openlocfilehash: 97515ec519c4bedb0478f510ec9ed739b5d76e4f
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105242"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式
 
@@ -117,60 +129,10 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
    | 轉譯模式 | 描述 |
-   | ---
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- |---標題：「將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：」瞭解應用程式中元件和 DOM 元素的資料系結案例 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> |將 `App` 元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 | |<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> |呈現 Blazor 伺服器應用程式的標記。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 | |<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> |將 `App` 元件轉譯為靜態 HTML。 |
+   | ----------- | ----------- |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將 `App` 元件轉譯為靜態 HTML。 |
 
    如需元件標記協助程式的詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
 
@@ -241,60 +203,10 @@ Razor在 MVC 應用程式中支援可路由的元件：
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
    | 轉譯模式 | 描述 |
-   | ---
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- |---標題：「將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：」瞭解應用程式中元件和 DOM 元素的資料系結案例 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題：將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式的作者：描述：「瞭解應用程式中元件和 DOM 元素的資料系結案例」 Blazor 。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> |將 `App` 元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 | |<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> |呈現 Blazor 伺服器應用程式的標記。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 | |<xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> |將 `App` 元件轉譯為靜態 HTML。 |
+   | ----------- | ----------- |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將 `App` 元件轉譯為靜態 HTML。 |
 
    如需元件標記協助程式的詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
 
@@ -360,7 +272,7 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 }
 ```
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
 
 ### <a name="render-noninteractive-components"></a>呈現非互動式元件
 
@@ -383,7 +295,7 @@ monikerRange： ms-chap： ms. custom： ms. date： no-loc：
 }
 ```
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
 
 ## <a name="component-namespaces"></a>元件命名空間
 

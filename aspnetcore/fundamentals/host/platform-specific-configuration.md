@@ -1,11 +1,24 @@
 ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 在 ASP.NET Core 中使用裝載啟動組件
+author: rick-anderson
+description: 了解如何使用 IHostingStartup 實作，從外部組件增強 ASP.NET Core 應用程式。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc, seodec18
+ms.date: 09/26/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: fundamentals/configuration/platform-specific-configuration
+ms.openlocfilehash: 8cf6a4467f041fa71b75ee8d1e7a08d8f572acf3
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84106347"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
 
@@ -76,7 +89,7 @@
 
 使用主機設定或環境變數停用裝載啟動組件會停用全域的組件，並且可能會停用數項應用程式特性。
 
-## <a name="project"></a>Project
+## <a name="project"></a>專案
 
 以下列兩種專案類型的任一類型建立裝載啟動：
 
@@ -474,7 +487,7 @@ dotnet nuget locals all --clear
 
 使用主機設定或環境變數停用裝載啟動組件會停用全域的組件，並且可能會停用數項應用程式特性。
 
-## <a name="project"></a>Project
+## <a name="project"></a>專案
 
 以下列兩種專案類型的任一類型建立裝載啟動：
 

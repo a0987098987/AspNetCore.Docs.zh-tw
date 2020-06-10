@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 資料系結 ' 作者：描述： ' 瞭解應用程式中元件和 DOM 元素的資料系結功能 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor 資料系結
+author: guardrex
+description: 瞭解應用程式中元件和 DOM 元素的資料系結功能 Blazor 。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 03/26/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/data-binding
+ms.openlocfilehash: 3b419b4738bd3f434cf4a9d8ccdf3b3af86ba1d5
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83998493"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>ASP.NET Core Blazor 資料系結
 
@@ -158,7 +170,7 @@ Binding 可辨識元件參數，其中 `@bind-{PROPERTY}` 可以將屬性值從�
 下列父元件會使用：
 
 * `ChildComponent`和會將 `ParentYear` 參數從父系系結至 `Year` 子元件上的參數。
-* `onclick`事件是用來觸發 `ChangeTheYear` 方法。 如需詳細資訊，請參閱<xref:blazor/event-handling>。
+* `onclick`事件是用來觸發 `ChangeTheYear` 方法。 如需詳細資訊，請參閱 <xref:blazor/event-handling> 。
 
 ```razor
 @page "/ParentComponent"
@@ -232,7 +244,7 @@ Binding 可辨識元件參數，其中 `@bind-{PROPERTY}` 可以將屬性值從�
 
 * 將 `<input>` 元素的值設定為 `Password` 屬性。
 * 將屬性的變更公開 `Password` 至具有[app eventcallback](xref:blazor/event-handling#eventcallback)的父元件。
-* 使用 `onclick` 事件來觸發 `ToggleShowPassword` 方法。 如需詳細資訊，請參閱<xref:blazor/event-handling>。
+* 使用 `onclick` 事件來觸發 `ToggleShowPassword` 方法。 如需詳細資訊，請參閱 <xref:blazor/event-handling> 。
 
 ```razor
 <h1>Child Component</h1>

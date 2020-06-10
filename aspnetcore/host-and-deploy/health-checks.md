@@ -1,11 +1,24 @@
 ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 中的健康狀態檢查
+author: rick-anderson
+description: 了解如何為 ASP.NET Core 基礎結構 (例如應用程式和資料庫) 設定健康狀態檢查。
+monikerRange: '>= aspnetcore-2.2'
+ms.author: riande
+ms.custom: mvc
+ms.date: 12/15/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: host-and-deploy/health-checks
+ms.openlocfilehash: cb3ee4f3bf9061d212c1fee85f3f4a22946be097
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105775"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -25,7 +38,7 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，以報告應用�
 
 範例應用程式包含本主題中所述的案例範例。 若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。 如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。 將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。 監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。
 
@@ -214,7 +227,7 @@ app.UseEndpoints(endpoints =>
 
 ### <a name="enable-cross-origin-requests-cors"></a>啟用跨原始來源要求 (CORS)
 
-雖然從瀏覽器手動執行健康情況檢查並不是常見的使用案例，但您可以呼叫 `RequireCors` 健全狀況檢查端點來啟用 CORS 中介軟體。 多載會 `RequireCors` 接受 CORS 原則產生器委派（ `CorsPolicyBuilder` ）或原則名稱。 如果未提供原則，則會使用預設的 CORS 原則。 如需詳細資訊，請參閱<xref:security/cors>。
+雖然從瀏覽器手動執行健康情況檢查並不是常見的使用案例，但您可以呼叫 `RequireCors` 健全狀況檢查端點來啟用 CORS 中介軟體。 多載會 `RequireCors` 接受 CORS 原則產生器委派（ `CorsPolicyBuilder` ）或原則名稱。 如果未提供原則，則會使用預設的 CORS 原則。 如需詳細資訊，請參閱 <xref:security/cors> 。
 
 ## <a name="health-check-options"></a>健康狀態檢查選項
 
@@ -776,7 +789,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-如需詳細資訊，請參閱<xref:fundamentals/middleware/index#use-run-and-map>。
+如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#use-run-and-map> 。
 
 ::: moniker-end
 
@@ -794,7 +807,7 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，以報告應用�
 
 範例應用程式包含本主題中所述的案例範例。 若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。 如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。 將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。 監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。
 

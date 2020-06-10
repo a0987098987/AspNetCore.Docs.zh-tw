@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core ' author： ' 中的 JavaScript 函式呼叫 .NET 方法的 Blazor 詳細說明： ' 瞭解如何從應用程式中的 javascript 函式叫用 .net 方法 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 從 ASP.NET Core 中的 JavaScript 函數呼叫 .NET 方法Blazor
+author: guardrex
+description: 瞭解如何從應用程式中的 JavaScript 函式叫用 .NET 方法 Blazor 。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/call-dotnet-from-javascript
+ms.openlocfilehash: ec55c5834093cc8c2095f25e91374d97902dd964
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83851142"
 ---
 # <a name="call-net-methods-from-javascript-functions-in-aspnet-core-blazor"></a>從 ASP.NET Core 中的 JavaScript 函數呼叫 .NET 方法Blazor
 

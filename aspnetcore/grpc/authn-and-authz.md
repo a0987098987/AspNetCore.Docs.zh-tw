@@ -1,13 +1,24 @@
 ---
-標題： author： description： monikerRange： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 的 gRPC 中的驗證和授權
+author: jamesnk
+description: 瞭解如何在 gRPC 中使用驗證和授權來 ASP.NET Core。
+monikerRange: '>= aspnetcore-3.0'
+ms.author: jamesnk
+ms.date: 05/26/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: grpc/authn-and-authz
+ms.openlocfilehash: f9d2e73f57d69e1eb5039019dc9e64193cf67820
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105788"
 ---
-
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的驗證和授權
 
 依[James 牛頓-王](https://twitter.com/jamesnk)

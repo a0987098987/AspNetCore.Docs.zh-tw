@@ -1,12 +1,24 @@
 ---
-標題：「ASP.NET Core 伺服器作者的威脅緩和方針 Blazor ：描述：」瞭解如何降低 Blazor 伺服器應用程式的安全性威脅。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 伺服器的威脅緩和方針 Blazor
+author: guardrex
+description: 瞭解如何減輕 Blazor 伺服器應用程式的安全性威脅。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/05/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/blazor/server/threat-mitigation
+ms.openlocfilehash: 06f9cc2d70367ea90a519ddd508a156e88adcb61
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83864627"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>ASP.NET Core 伺服器的威脅緩和方針 Blazor
 
@@ -37,7 +49,7 @@ Blazor伺服器應用程式會採用具*狀態*的資料處理模型，其中伺
 
 阻絕服務（DoS）攻擊通常會設法耗盡應用程式或伺服器的資源。 不過，資源耗盡不一定是系統遭受攻擊的結果。 例如，有限的資源可能會因為高使用者需求而耗盡。 [拒絕服務（dos）攻擊](#denial-of-service-dos-attacks)一節會進一步涵蓋 DoS。
 
-架構外部的資源 Blazor ，例如資料庫和檔案控制代碼（用來讀取和寫入檔案），也可能會遇到資源耗盡的情況。 如需詳細資訊，請參閱<xref:performance/performance-best-practices>。
+架構外部的資源 Blazor ，例如資料庫和檔案控制代碼（用來讀取和寫入檔案），也可能會遇到資源耗盡的情況。 如需詳細資訊，請參閱 <xref:performance/performance-best-practices> 。
 
 ### <a name="cpu"></a>CPU
 
@@ -47,7 +59,7 @@ Blazor伺服器應用程式會採用具*狀態*的資料處理模型，其中伺
 
 CPU 耗盡是所有公開應用程式的考慮。 在一般 web 應用程式中，要求和連線會以保護的形式 Blazor 提供，但伺服器應用程式不會提供相同的保護措施。 Blazor伺服器應用程式必須先包含適當的檢查和限制，才能執行可能耗用大量 CPU 的工作。
 
-### <a name="memory"></a>Memory
+### <a name="memory"></a>記憶體
 
 當一或多個用戶端強制服務器耗用大量的記憶體時，可能會發生記憶體耗盡。
 
@@ -122,7 +134,7 @@ Blazor用戶端會建立每個會話的單一連線，只要開啟瀏覽器視�
 
 請採取下列預防措施來防範前述案例：
 
-* 在[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中包裝 JS interop 呼叫，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱<xref:blazor/handle-errors#javascript-interop>。
+* 在[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中包裝 JS interop 呼叫，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱 <xref:blazor/handle-errors#javascript-interop> 。
 * 在採取任何動作之前，請先驗證從 JS interop 調用傳回的資料，包括錯誤訊息。
 
 ### <a name="net-methods-invoked-from-the-browser"></a>從瀏覽器叫用的 .NET 方法
@@ -344,7 +356,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 
 在保護 XSS 攻擊的過程中，請考慮執行 XSS 緩和措施，例如[內容安全性原則（CSP）](https://developer.mozilla.org/docs/Web/HTTP/CSP)。
 
-如需詳細資訊，請參閱<xref:security/cross-site-scripting>。
+如需詳細資訊，請參閱 <xref:security/cross-site-scripting> 。
 
 ### <a name="cross-origin-protection"></a>跨原始來源保護
 
@@ -353,7 +365,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 * Blazor除非採取額外的措施來防止伺服器應用程式，否則可以跨原始位置存取。 若要停用跨原始來源存取，請在端點中停用 CORS，方法是將 CORS 中介軟體新增至管線，並將新增 <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute> 至 Blazor 端點中繼資料，或藉由設定[ SignalR 跨原始來源資源分享](xref:signalr/security#cross-origin-resource-sharing)來限制允許的來源集合。
 * 如果已啟用 CORS，則可能需要額外的步驟來保護應用程式，視 CORS 設定而定。 如果已全域啟用 CORS，則可以停用伺服器中樞的 CORS，方法是在 Blazor <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute> 端點路由產生器上呼叫之後，將中繼資料新增至端點中繼資料 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> 。
 
-如需詳細資訊，請參閱<xref:security/anti-request-forgery>。
+如需詳細資訊，請參閱 <xref:security/anti-request-forgery> 。
 
 ### <a name="click-jacking"></a>按一下-劫持
 
@@ -381,7 +393,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 * 可能的話，請使用相對連結。
 * 先驗證絕對連結目的地是否有效，再將它們包含在頁面中。
 
-如需詳細資訊，請參閱<xref:security/preventing-open-redirects>。
+如需詳細資訊，請參閱 <xref:security/preventing-open-redirects> 。
 
 ## <a name="security-checklist"></a>安全性檢查清單
 

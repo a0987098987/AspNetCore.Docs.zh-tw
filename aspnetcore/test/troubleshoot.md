@@ -1,11 +1,23 @@
 ---
-標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 疑難排解和調試 ASP.NET Core 專案
+author: Rick-Anderson
+description: 了解 ASP.NET Core 專案的相關警告和錯誤，並為其進行疑難排解。
+ms.author: riande
+ms.custom: mvc
+ms.date: 07/10/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: test/troubleshoot
+ms.openlocfilehash: bd5e74569717db26496760eaaa2760122d4b49e7
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84106490"
 ---
 # <a name="troubleshoot-and-debug-aspnet-core-projects"></a>疑難排解和調試 ASP.NET Core 專案
 

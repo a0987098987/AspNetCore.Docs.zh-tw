@@ -1,11 +1,24 @@
 ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 中的 Azure Key Vault 設定提供者
+author: rick-anderson
+description: 瞭解如何使用 Azure Key Vault 設定提供者，使用在執行時間載入的名稱/值配對來設定應用程式。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: security/key-vault-configuration
+ms.openlocfilehash: 4a5689af9ffea175838a869e92752de889cbb227
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84106672"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 Azure Key Vault 設定提供者
 
@@ -68,7 +81,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. 使用下列其中一種方法，在[Azure 入口網站](https://portal.azure.com/)中開啟 Azure Cloud shell：
 
-   * 選取程式碼區塊右上角的 [試試看]  。 在文字方塊中使用搜尋字串 "Azure CLI"。
+   * 選取程式碼區塊右上角的 [試試看]。 在文字方塊中使用搜尋字串 "Azure CLI"。
    * 使用 [**啟動 Cloud Shell** ] 按鈕，在瀏覽器中開啟 Cloud Shell。
    * 選取 Azure 入口網站右上角功能表上的 **[Cloud Shell]** 按鈕。
 
@@ -207,78 +220,11 @@ config.AddAzureKeyVault(
 ```
 
 | 屬性         | 描述 |
-| ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--------- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |`Client`         | <xref:Microsoft.Azure.KeyVault.KeyVaultClient>用來抓取值。 | |`Manager`        | <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager>用來控制密碼載入的實例。 | |`ReloadInterval` | `Timespan`在輪詢金鑰保存庫以進行變更的嘗試之間等待。 預設值為 `null` （不重載設定）。 | |`Vault`          |金鑰保存庫 URI。 |
+| ---------------- | ----------- |
+| `Client`         | <xref:Microsoft.Azure.KeyVault.KeyVaultClient>用來抓取值。 |
+| `Manager`        | <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager>用來控制密碼載入的實例。 |
+| `ReloadInterval` | `Timespan`在輪詢金鑰保存庫以進行變更的嘗試之間等待。 預設值為 `null` （不重載設定）。 |
+| `Vault`          | 金鑰保存庫 URI。 |
 
 ## <a name="use-a-key-name-prefix"></a>使用索引鍵名稱前置詞
 
@@ -481,7 +427,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
 
 1. 使用下列其中一種方法，在[Azure 入口網站](https://portal.azure.com/)中開啟 Azure Cloud shell：
 
-   * 選取程式碼區塊右上角的 [試試看]  。 在文字方塊中使用搜尋字串 "Azure CLI"。
+   * 選取程式碼區塊右上角的 [試試看]。 在文字方塊中使用搜尋字串 "Azure CLI"。
    * 使用 [**啟動 Cloud Shell** ] 按鈕，在瀏覽器中開啟 Cloud Shell。
    * 選取 Azure 入口網站右上角功能表上的 **[Cloud Shell]** 按鈕。
 

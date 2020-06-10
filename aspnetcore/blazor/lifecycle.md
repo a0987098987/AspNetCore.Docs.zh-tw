@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 生命週期 ' 作者：描述： ' 瞭解如何 Razor 在 ASP.NET Core 應用程式中使用元件生命週期方法 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor 生命週期
+author: guardrex
+description: 瞭解如何 Razor 在 ASP.NET Core 應用程式中使用元件生命週期方法 Blazor 。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/lifecycle
+ms.openlocfilehash: 9dcbb2ca21cc689063198e1ccc90583db4229183
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83864578"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor 生命週期
 
@@ -153,7 +165,7 @@ protected override bool ShouldRender()
 
 即使 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 已覆寫，元件一律會一開始呈現。
 
-如需詳細資訊，請參閱<xref:performance/blazor/webassembly-best-practices#avoid-unnecessary-component-renders>。
+如需詳細資訊，請參閱 <xref:performance/blazor/webassembly-best-practices#avoid-unnecessary-component-renders> 。
 
 ## <a name="state-changes"></a>狀態變更
 

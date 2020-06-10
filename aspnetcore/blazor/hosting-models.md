@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 裝載模型 ' 作者：描述： ' 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型 '。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor 裝載模型
+author: guardrex
+description: 瞭解 Blazor WebAssembly 和 Blazor 伺服器裝載模型。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/hosting-models
+ms.openlocfilehash: 9556fea5319956ce4ae4f4faf90cb405784c733c
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105489"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -114,7 +126,7 @@ Blazor伺服器應用程式是以[ASP.NET Core SignalR ](xref:signalr/introducti
 
 Blazor考慮關閉瀏覽器索引標籤或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor伺服器會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。
 
-Blazor伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱<xref:blazor/advanced-scenarios#blazor-server-circuit-handler>。
+Blazor伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#blazor-server-circuit-handler> 。
 
 ### <a name="ui-latency"></a>UI 延遲
 
@@ -135,7 +147,7 @@ Blazor伺服器應用程式需要伺服器的使用中 SignalR 連接。 如果�
 
 Blazor伺服器應用程式會 prerenders，以回應第一個用戶端要求，這會在伺服器上設定 UI 狀態。 當用戶端嘗試建立連接時 SignalR ，用戶端必須重新連線到相同的伺服器。 Blazor使用一部以上後端伺服器的伺服器應用程式應該執行連線的*粘滯會話* SignalR 。
 
-我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。 此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。 將 SignalR 服務的選項或設定值設為，即可為 Azure 服務啟用「粘滯會話」 `ServerStickyMode` `Required` 。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/server#signalr-configuration>。
+我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。 此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。 將 SignalR 服務的選項或設定值設為，即可為 Azure 服務啟用「粘滯會話」 `ServerStickyMode` `Required` 。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/server#signalr-configuration> 。
 
 使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 

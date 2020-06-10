@@ -1,11 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor 路由
+author: guardrex
+description: 瞭解如何在應用程式中路由傳送要求，以及關於 NavLink 元件。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/routing
+ms.openlocfilehash: 85614acb9e76ac642e3ed2162aee3909349dd946
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105697"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -55,7 +68,7 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 ```
 
 > [!IMPORTANT]
-> 若要讓 Url 正確解析，應用程式必須 `<base>` 在其*wwwroot/index.html*檔（WebAssembly）中包含標記， Blazor 或在屬性（）中指定應用程式基底路徑的*Pages/_Host. cshtml*檔案（ Blazor 伺服器） `href` `<base href="/">` 。 如需詳細資訊，請參閱<xref:host-and-deploy/blazor/index#app-base-path>。
+> 若要讓 Url 正確解析，應用程式必須 `<base>` 在其*wwwroot/index.html*檔（WebAssembly）中包含標記， Blazor 或在屬性（）中指定應用程式基底路徑的*Pages/_Host. cshtml*檔案（ Blazor 伺服器） `href` `<base href="/">` 。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#app-base-path> 。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
@@ -126,484 +139,15 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 下表所示的路由條件約束可供使用。 若為符合不因文化特性而異的路由條件約束，請參閱表格下方的警告以取得詳細資訊。
 
 | 條件約束 | 範例           | 範例相符項目                                                                  | 非變異值<br>culture<br>比對 |
-| ---
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------ |---標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---------- |---標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----------------------------------------- |：---標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者：毫秒。自訂： ms。日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----------------: | |`bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  |否 | |`datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                |是 | |`decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             |是 | |`double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           |是 | |`float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           |是 | |`guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` |否 | |`int`      | `{id:int}`        | `123456789`, `-123456789`                                                        |是 | |`long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        |是 |
+| ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | 否                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | 是                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | 是                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | 是                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | 是                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 否                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | 是                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | 是                              |
 
 > [!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 <xref:System.DateTime>) 一律使用不因國別而異的文化特性。 這些條件約束假設 URL 不可當地語系化。
@@ -624,7 +168,7 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 > [!NOTE]
 > *Catch-all*參數語法（ `*` / `**` ）在**not** Razor 元件（*razor*）中不受支援。
 
-如需詳細資訊，請參閱<xref:fundamentals/routing>。
+如需詳細資訊，請參閱 <xref:fundamentals/routing> 。
 
 ## <a name="navlink-component"></a>NavLink 元件
 
@@ -658,38 +202,13 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 用於 <xref:Microsoft.AspNetCore.Components.NavigationManager> 在 c # 程式碼中處理 uri 和導覽。 <xref:Microsoft.AspNetCore.Components.NavigationManager>提供下表所示的事件和方法。
 
 | 成員 | 描述 |
-| ---
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- |---標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor 路由 ' 作者：描述： monikerRange： ms。作者： ms. 自訂： ms. 日期：無-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |<xref:Microsoft.AspNetCore.Components.NavigationManager.Uri> |取得目前的絕對 URI。 | |<xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> |取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 通常會 <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> 對應至 `href` `<base>` *wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host. cshtml* （Server）中檔元素的屬性 Blazor 。 | |<xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A> |導覽至指定的 URI。 如果 `forceLoad` 為 `true` ：<ul><li>已略過用戶端路由。</li><li>瀏覽器會強制從伺服器載入新頁面，無論 URI 是否通常由用戶端路由器處理。</li></ul> | |<xref:Microsoft.AspNetCore.Components.NavigationManager.LocationChanged> |導覽位置變更時引發的事件。 | |<xref:Microsoft.AspNetCore.Components.NavigationManager.ToAbsoluteUri%2A> |將相對 URI 轉換為絕對 URI。 | |<span style="word-break:normal;word-wrap:normal"><xref:Microsoft.AspNetCore.Components.NavigationManager.ToBaseRelativePath%2A></span> |假設基底 URI （例如先前傳回的 URI <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> ），會將絕對 uri 轉換成相對於基底 uri 前置詞的 uri。 |
+| ------ | ----------- |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri> | 取得目前的絕對 URI。 |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 通常會 <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> 對應至 `href` `<base>` *wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host. cshtml* （Server）中檔元素的屬性 Blazor 。 |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A> | 導覽至指定的 URI。 如果 `forceLoad` 為 `true` ：<ul><li>已略過用戶端路由。</li><li>瀏覽器會強制從伺服器載入新頁面，無論 URI 是否通常由用戶端路由器處理。</li></ul> |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager.LocationChanged> | 導覽位置變更時引發的事件。 |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager.ToAbsoluteUri%2A> | 將相對 URI 轉換為絕對 URI。 |
+| <span style="word-break:normal;word-wrap:normal"><xref:Microsoft.AspNetCore.Components.NavigationManager.ToBaseRelativePath%2A></span> | 假設基底 URI （例如先前傳回的 URI <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> ），會將絕對 uri 轉換成相對於基底 uri 前置詞的 uri。 |
 
 下列元件 `Counter` 會在選取按鈕時，流覽至應用程式的元件：
 

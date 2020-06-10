@@ -1,11 +1,24 @@
 ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 上傳 ASP.NET Core 中的檔案
+author: rick-anderson
+description: 如何使用模型繫結和資料流在 ASP.NET Core MVC 上傳檔案。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/03/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: mvc/models/file-uploads
+ms.openlocfilehash: 632cc9fafc5daf2923997f0113adee52491acdcc
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83838314"
 ---
 # <a name="upload-files-in-aspnet-core"></a>上傳 ASP.NET Core 中的檔案
 
@@ -82,7 +95,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 上傳檔案的兩個一般方法是緩衝和串流處理。
 
-**緩衝**
+**緩衝處理**
 
 整個檔案會讀入 <xref:Microsoft.AspNetCore.Http.IFormFile> ，這是用來處理或儲存檔案之檔案的 c # 標記法。
 
@@ -707,7 +720,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 </system.webServer>
 ```
 
-這個設定只適用於 IIS。 在 Kestrel 上裝載時，預設不會發生此行為。 如需詳細資訊，請參閱[要求限制 \< requestLimits>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。
+這個設定只適用於 IIS。 在 Kestrel 上裝載時，預設不會發生此行為。 如需詳細資訊，請參閱[要求限制 \<requestLimits> ](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。
 
 ASP.NET Core 模組的限制或 IIS 要求篩選模組的存在，可能會將上傳限制為2或 4 GB。 如需詳細資訊，請參閱[無法上傳大小大於 2 gb 的檔案（dotnet/AspNetCore #2711）](https://github.com/dotnet/AspNetCore/issues/2711)。
 
@@ -811,7 +824,7 @@ ASP.NET Core 支援針對較小的檔案上傳一個或多個檔案，並針對�
 
 上傳檔案的兩個一般方法是緩衝和串流處理。
 
-**緩衝**
+**緩衝處理**
 
 整個檔案會讀入 <xref:Microsoft.AspNetCore.Http.IFormFile> ，這是用來處理或儲存檔案之檔案的 c # 標記法。
 
@@ -1429,7 +1442,7 @@ public class BufferedSingleFileUploadPhysicalModel : PageModel
 </system.webServer>
 ```
 
-這個設定只適用於 IIS。 在 Kestrel 上裝載時，預設不會發生此行為。 如需詳細資訊，請參閱[要求限制 \< requestLimits>](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。
+這個設定只適用於 IIS。 在 Kestrel 上裝載時，預設不會發生此行為。 如需詳細資訊，請參閱[要求限制 \<requestLimits> ](/iis/configuration/system.webServer/security/requestFiltering/requestLimits/)。
 
 ASP.NET Core 模組的限制或 IIS 要求篩選模組的存在，可能會將上傳限制為2或 4 GB。 如需詳細資訊，請參閱[無法上傳大小大於 2 gb 的檔案（dotnet/AspNetCore #2711）](https://github.com/dotnet/AspNetCore/issues/2711)。
 

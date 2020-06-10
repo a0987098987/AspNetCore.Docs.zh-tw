@@ -1,11 +1,23 @@
 ---
-標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 3.0 ASP.NET Core 的新功能
+author: rick-anderson
+description: 深入瞭解 ASP.NET Core 3.0 中的新功能。
+ms.author: riande
+ms.custom: mvc
+ms.date: 12/05/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: aspnetcore-3.0
+ms.openlocfilehash: 38a75e9577bab6bbdb5accf161659e8e301947b1
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84105931"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3.0 ASP.NET Core 的新功能
 
@@ -29,7 +41,7 @@ Blazor架構支援的案例：
 * 使用類別庫建立元件程式庫 Razor
 * JavaScript Interop
 
-如需詳細資訊，請參閱<xref:blazor/index>。
+如需詳細資訊，請參閱 <xref:blazor/index> 。
 
 ### <a name="blazor-server"></a>Blazor伺服器
 
@@ -68,7 +80,7 @@ ASP.NET Core 3.0 中的 gRPC 功能包括：
 * [Grpc .net. 用戶端](https://www.nuget.org/packages/Grpc.Net.Client)： .net Core 的 Grpc 用戶端，建基於熟悉的 `HttpClient` 。
 * [Grpc .net. ClientFactory](https://www.nuget.org/packages/Grpc.Net.ClientFactory)： Grpc 用戶端與整合 `HttpClientFactory` 。
 
-如需詳細資訊，請參閱<xref:grpc/index>。
+如需詳細資訊，請參閱 <xref:grpc/index> 。
 
 ## SignalR
 
@@ -310,8 +322,8 @@ ASP.NET Core 3.0 現在會使用 <xref:System.Text.Json> JSON 序列化的預設
 
 下列清單包含新的指示詞 Razor ：
 
-* [`@attribute`](xref:mvc/views/razor#attribute)：指示詞會 `@attribute` 將指定的屬性套用至所產生頁面或視圖的類別。 例如 `@attribute [Authorize]`。
-* [`@implements`](xref:mvc/views/razor#implements)：指示詞會 `@implements` 為所產生的類別實作為介面。 例如 `@implements IDisposable`。
+* [`@attribute`](xref:mvc/views/razor#attribute)：指示詞會 `@attribute` 將指定的屬性套用至所產生頁面或視圖的類別。 例如： `@attribute [Authorize]` 。
+* [`@implements`](xref:mvc/views/razor#implements)：指示詞會 `@implements` 為所產生的類別實作為介面。 例如： `@implements IDisposable` 。
 
 ## <a name="identityserver4-supports-authentication-and-authorization-for-web-apis-and-spas"></a>IdentityServer4 支援 web Api 和 Spa 的驗證和授權
 
@@ -356,7 +368,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 * 檢查憑證是否已撤銷。
 * 檢查好處憑證中是否有正確的使用方式旗標。
 
-預設的使用者主體會從憑證屬性來建立。 使用者主體包含的事件可讓您補充或取代主體。 如需詳細資訊，請參閱<xref:security/authentication/certauth>。
+預設的使用者主體會從憑證屬性來建立。 使用者主體包含的事件可讓您補充或取代主體。 如需詳細資訊，請參閱 <xref:security/authentication/certauth> 。
 
 [Windows 驗證](/windows-server/security/windows-authentication/windows-authentication-overview)已擴充到 Linux 和 macOS。 在先前的版本中，Windows 驗證僅限於[IIS](xref:host-and-deploy/iis/index)和[HttpSys](xref:fundamentals/servers/httpsys)。 在 ASP.NET Core 3.0 中， [Kestrel](xref:fundamentals/servers/kestrel)可以在 windows、Linux 和 macOS 上針對已加入網域的 windows 主機使用 Negotiate、 [Kerberos](/windows-server/security/kerberos/kerberos-authentication-overview)和[NTLM](/windows-server/security/kerberos/ntlm-overview)。 這些驗證配置的 Kestrel 支援是由 AspNetCore 所提供。 [Negotiate NuGet](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Negotiate)套件。 如同其他驗證服務，請將驗證應用程式設定為 [寬]，然後設定服務：
 
@@ -382,7 +394,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   * 必須為 web 進程建立 Spn。
   * 必須在主機電腦上產生和設定[Keytab](https://blogs.technet.microsoft.com/pie/2018/01/03/all-you-need-to-know-about-keytab-files/)檔案。
 
-如需詳細資訊，請參閱<xref:security/authentication/windowsauth>。
+如需詳細資訊，請參閱 <xref:security/authentication/windowsauth> 。
 
 ## <a name="template-changes"></a>範本變更
 
@@ -421,7 +433,7 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host> 。 先�
 * 標頭和尾端之間的多義性已藉由將尾端標頭移至新集合來解決。
 * 同步 i/o Api （例如 `HttpRequest.Body.Read` ）是導致應用程式損毀的常見執行緒資源來源。 在3.0 中， `AllowSynchronousIO` 預設為停用。
 
-如需詳細資訊，請參閱<xref:migration/22-to-30#kestrel>。
+如需詳細資訊，請參閱 <xref:migration/22-to-30#kestrel> 。
 
 ## <a name="http2-enabled-by-default"></a>預設啟用 HTTP/2
 
@@ -445,7 +457,7 @@ ASP.NET Core 3.0 範本會使用 <xref:fundamentals/host/generic-host> 。 先�
 * 端點可以在中介軟體和 MVC 中執行原則，例如 CORS 或授權。
 * 篩選器和屬性可以放在控制器中的方法上。
 
-如需詳細資訊，請參閱<xref:fundamentals/routing#routing-basics>。
+如需詳細資訊，請參閱 <xref:fundamentals/routing#routing-basics> 。
 
 ## <a name="health-checks"></a>健康情況檢查
 
@@ -471,7 +483,7 @@ app.UseEndpoints(endpoints =>
 
 ## <a name="pipes-on-httpcontext"></a>HttpCoNtext 上的管道
 
-現在可以讀取要求本文，並使用 API 寫入回應主體 <xref:System.IO.Pipelines> 。 此 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader`屬性會提供 <xref:System.IO.Pipelines.PipeReader> ，可用於讀取要求本文。 此 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter`屬性提供 <xref:System.IO.Pipelines.PipeWriter> 可用於寫入回應主體的。 `HttpRequest.BodyReader`是資料流程的類比 `HttpRequest.Body` 。 `HttpResponse.BodyWriter`是資料流程的類比 `HttpResponse.Body` 。
+現在可以讀取要求本文，並使用 API 寫入回應主體 <xref:System.IO.Pipelines> 。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.HttpRequest.BodyReader> --> `HttpRequest.BodyReader`屬性會提供 <xref:System.IO.Pipelines.PipeReader> ，可用於讀取要求本文。 必須提供 <!-- <xref:Microsoft.AspNetCore.Http.> --> `HttpResponse.BodyWriter`屬性提供 <xref:System.IO.Pipelines.PipeWriter> 可用於寫入回應主體的。 `HttpRequest.BodyReader`是資料流程的類比 `HttpRequest.Body` 。 `HttpResponse.BodyWriter`是資料流程的類比 `HttpResponse.Body` 。
 
 <!-- indirectly related, https://github.com/dotnet/docs/pull/14414 won't be published by 9/23  -->
 
@@ -483,7 +495,7 @@ app.UseEndpoints(endpoints =>
 
 .NET Core 3.0 引進了新的背景工作服務應用程式範本。 此範本提供在 .NET Core 中撰寫長時間執行服務的起點。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [.NET Core 背景工作角色做為 Windows 服務](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>
@@ -495,7 +507,7 @@ app.UseEndpoints(endpoints =>
 
 此案例已在 ASP.NET Core 3.0 中修正。 當環境變數設定為時，主機會啟用[轉送的標頭中介軟體](xref:host-and-deploy/proxy-load-balancer#forwarded-headers-middleware-options) `ASPNETCORE_FORWARDEDHEADERS_ENABLED` `true` 。 `ASPNETCORE_FORWARDEDHEADERS_ENABLED``true`在我們的容器映射中設定為。
 
-## <a name="performance-improvements"></a>效能改進
+## <a name="performance-improvements"></a>效能改善
 
 ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善輸送量：
 

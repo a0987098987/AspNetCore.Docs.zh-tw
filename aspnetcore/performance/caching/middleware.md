@@ -1,11 +1,24 @@
 ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 中的回應快取中介軟體
+author: rick-anderson
+description: 了解如何設定和使用 ASP.NET Core 中的回應快取中介軟體。
+monikerRange: '>= aspnetcore-2.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 02/07/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: performance/caching/middleware
+ms.openlocfilehash: 2ee75b1af9ffc23ff9ae1763059364de3ec8f426
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84106503"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core 中的回應快取中介軟體
 
@@ -50,38 +63,10 @@
 回應快取選項如下表所示。
 
 | 選項 | 描述 |
-| ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |<xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> |回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 | |<xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> |回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 | |<xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> |決定是否在區分大小寫的路徑上快取回應。 預設值是 `false`。 |
+| ------ | ----------- |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> | 決定是否在區分大小寫的路徑上快取回應。 預設值為 `false`。 |
 
 下列範例會將中介軟體設定為：
 
@@ -98,7 +83,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>VaryByQueryKeys
 
-使用 MVC/Web API 控制器或 Razor 頁面模型時，屬性會 [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) 指定為回應快取設定適當標頭所需的參數。 `[ResponseCache]`嚴格需要中介軟體的屬性唯一參數是 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> ，這並不會對應至實際的 HTTP 標頭。 如需詳細資訊，請參閱<xref:performance/caching/response#responsecache-attribute>。
+使用 MVC/Web API 控制器或 Razor 頁面模型時，屬性會 [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) 指定為回應快取設定適當標頭所需的參數。 `[ResponseCache]`嚴格需要中介軟體的屬性唯一參數是 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> ，這並不會對應至實際的 HTTP 標頭。 如需詳細資訊，請參閱 <xref:performance/caching/response#responsecache-attribute> 。
 
 當不使用 `[ResponseCache]` 屬性時，回應快取可以與不同 `VaryByQueryKeys` 。 直接使用 <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature> [HttpCoNtext 功能](xref:Microsoft.AspNetCore.Http.HttpContext.Features)：
 
@@ -118,22 +103,18 @@ if (responseCachingFeature != null)
 下表提供會影響回應快取的 HTTP 標頭資訊。
 
 | Header | 詳細資料 |
-| ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----- | |`Authorization` |如果標頭存在，則不會快取回應。 | |`Cache-Control` |中介軟體只會考慮以 cache 指示詞標示的快取回應 `public` 。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>must-revalidate</li><li>no-cache</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果沒有指定任何限制 `max-stale` ，中介軟體就不會採取任何動作。<br>&#8225;與 `proxy-revalidate` 具有相同的效果 `must-revalidate` 。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 | |`Pragma` |`Pragma: no-cache`要求中的標頭會產生與相同的效果 `Cache-Control: no-cache` 。 此標頭會由標頭中的相關指示詞覆寫 `Cache-Control` （如果有的話）。 視為與 HTTP/1.0 的回溯相容性。 | |`Set-Cookie` |如果標頭存在，則不會快取回應。 要求處理管線中設定一或多個 cookie 的任何中介軟體，可防止回應快取中介軟體快取回應（例如，以[cookie 為基礎的 TempData 提供者](xref:fundamentals/app-state#tempdata)）。  | |`Vary` |`Vary`標頭是用來依另一個標頭來改變快取的回應。 例如，藉由包含標頭的編碼方式來快取回應，這會快取 `Vary: Accept-Encoding` 標頭和個別要求的回應 `Accept-Encoding: gzip` `Accept-Encoding: text/plain` 。 永遠不會儲存標頭值為的回應 `*` 。 | |`Expires` |除非其他標頭覆寫，否則不會儲存或抓取此標頭所視為過時的回應 `Cache-Control` 。 | |`If-None-Match` |如果值不是 `*` ，而且 `ETag` 回應的不符合任何提供的值，則會從快取中提供完整回應。 否則，會提供304（未修改）的回應。 | |`If-Modified-Since` |如果 `If-None-Match` 標頭不存在，當快取的回應日期比提供的值還新時，就會從快取中提供完整回應。 否則，會提供*304-未修改*的回應。 | |`Date` |從快取提供服務時， `Date` 如果原始回應未提供標頭，則會由中介軟體設定。 | |`Content-Length` |從快取提供服務時， `Content-Length` 如果原始回應未提供標頭，則會由中介軟體設定。 | |`Age` |`Age`會忽略原始回應中所傳送的標頭。 中介軟體會在服務快取回應時計算新的值。 |
+| ------ | ------- |
+| `Authorization` | 如果標頭存在，則不會快取回應。 |
+| `Cache-Control` | 中介軟體只會考慮以 cache 指示詞標示的快取回應 `public` 。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>must-revalidate</li><li>no-cache</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果沒有指定任何限制 `max-stale` ，中介軟體就不會採取任何動作。<br>&#8225;與 `proxy-revalidate` 具有相同的效果 `must-revalidate` 。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 |
+| `Pragma` | `Pragma: no-cache`要求中的標頭會產生與相同的效果 `Cache-Control: no-cache` 。 此標頭會由標頭中的相關指示詞覆寫 `Cache-Control` （如果有的話）。 視為與 HTTP/1.0 的回溯相容性。 |
+| `Set-Cookie` | 如果標頭存在，則不會快取回應。 要求處理管線中設定一或多個 cookie 的任何中介軟體，可防止回應快取中介軟體快取回應（例如，以[cookie 為基礎的 TempData 提供者](xref:fundamentals/app-state#tempdata)）。  |
+| `Vary` | `Vary`標頭是用來依另一個標頭來改變快取的回應。 例如，藉由包含標頭的編碼方式來快取回應，這會快取 `Vary: Accept-Encoding` 標頭和個別要求的回應 `Accept-Encoding: gzip` `Accept-Encoding: text/plain` 。 永遠不會儲存標頭值為的回應 `*` 。 |
+| `Expires` | 除非其他標頭覆寫，否則不會儲存或抓取此標頭所視為過時的回應 `Cache-Control` 。 |
+| `If-None-Match` | 如果值不是 `*` ，而且 `ETag` 回應的不符合任何提供的值，則會從快取中提供完整回應。 否則，會提供304（未修改）的回應。 |
+| `If-Modified-Since` | 如果 `If-None-Match` 標頭不存在，當快取的回應日期比提供的值還新時，就會從快取中提供完整回應。 否則，會提供*304-未修改*的回應。 |
+| `Date` | 從快取提供服務時， `Date` 如果原始回應未提供標頭，則會由中介軟體設定。 |
+| `Content-Length` | 從快取提供服務時， `Content-Length` 如果原始回應未提供標頭，則會由中介軟體設定。 |
+| `Age` | `Age`會忽略原始回應中所傳送的標頭。 中介軟體會在服務快取回應時計算新的值。 |
 
 ## <a name="caching-respects-request-cache-control-directives"></a>快取遵循要求快取控制指示詞
 
@@ -159,7 +140,7 @@ if (responseCachingFeature != null)
 
 * 要求必須產生具有200（確定）狀態碼的伺服器回應。
 * 要求方法必須是 GET 或 HEAD。
-* 在中 `Startup.Configure` ，回應快取中介軟體必須放在需要快取的中介軟體前面。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index>。
+* 在中 `Startup.Configure` ，回應快取中介軟體必須放在需要快取的中介軟體前面。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/index> 。
 * `Authorization`標頭不得存在。
 * `Cache-Control`標頭參數必須是有效的，而且回應必須標記為 `public` 且未標記 `private` 。
 * `Pragma: no-cache`如果標頭不存在，標頭不能出現 `Cache-Control` ，因為標頭會 `Cache-Control` `Pragma` 在出現時覆寫標頭。
@@ -226,38 +207,10 @@ if (responseCachingFeature != null)
 回應快取選項如下表所示。
 
 | 選項 | 描述 |
-| ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------- | |<xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> |回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 | |<xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> |回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 | |<xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> |決定是否在區分大小寫的路徑上快取回應。 預設值是 `false`。 |
+| ------ | ----------- |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> | 決定是否在區分大小寫的路徑上快取回應。 預設值為 `false`。 |
 
 下列範例會將中介軟體設定為：
 
@@ -274,7 +227,7 @@ services.AddResponseCaching(options =>
 
 ## <a name="varybyquerykeys"></a>VaryByQueryKeys
 
-使用 MVC/Web API 控制器或 Razor 頁面模型時，屬性會 [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) 指定為回應快取設定適當標頭所需的參數。 `[ResponseCache]`嚴格需要中介軟體的屬性唯一參數是 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> ，這並不會對應至實際的 HTTP 標頭。 如需詳細資訊，請參閱<xref:performance/caching/response#responsecache-attribute>。
+使用 MVC/Web API 控制器或 Razor 頁面模型時，屬性會 [`[ResponseCache]`](xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute) 指定為回應快取設定適當標頭所需的參數。 `[ResponseCache]`嚴格需要中介軟體的屬性唯一參數是 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute.VaryByQueryKeys> ，這並不會對應至實際的 HTTP 標頭。 如需詳細資訊，請參閱 <xref:performance/caching/response#responsecache-attribute> 。
 
 當不使用 `[ResponseCache]` 屬性時，回應快取可以與不同 `VaryByQueryKeys` 。 直接使用 <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingFeature> [HttpCoNtext 功能](xref:Microsoft.AspNetCore.Http.HttpContext.Features)：
 
@@ -294,22 +247,18 @@ if (responseCachingFeature != null)
 下表提供會影響回應快取的 HTTP 標頭資訊。
 
 | Header | 詳細資料 |
-| ---
-標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- |---標題： author： description： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----- | |`Authorization` |如果標頭存在，則不會快取回應。 | |`Cache-Control` |中介軟體只會考慮以 cache 指示詞標示的快取回應 `public` 。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>must-revalidate</li><li>no-cache</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果沒有指定任何限制 `max-stale` ，中介軟體就不會採取任何動作。<br>&#8225;與 `proxy-revalidate` 具有相同的效果 `must-revalidate` 。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 | |`Pragma` |`Pragma: no-cache`要求中的標頭會產生與相同的效果 `Cache-Control: no-cache` 。 此標頭會由標頭中的相關指示詞覆寫 `Cache-Control` （如果有的話）。 視為與 HTTP/1.0 的回溯相容性。 | |`Set-Cookie` |如果標頭存在，則不會快取回應。 要求處理管線中設定一或多個 cookie 的任何中介軟體，可防止回應快取中介軟體快取回應（例如，以[cookie 為基礎的 TempData 提供者](xref:fundamentals/app-state#tempdata)）。  | |`Vary` |`Vary`標頭是用來依另一個標頭來改變快取的回應。 例如，藉由包含標頭的編碼方式來快取回應，這會快取 `Vary: Accept-Encoding` 標頭和個別要求的回應 `Accept-Encoding: gzip` `Accept-Encoding: text/plain` 。 永遠不會儲存標頭值為的回應 `*` 。 | |`Expires` |除非其他標頭覆寫，否則不會儲存或抓取此標頭所視為過時的回應 `Cache-Control` 。 | |`If-None-Match` |如果值不是 `*` ，而且 `ETag` 回應的不符合任何提供的值，則會從快取中提供完整回應。 否則，會提供304（未修改）的回應。 | |`If-Modified-Since` |如果 `If-None-Match` 標頭不存在，當快取的回應日期比提供的值還新時，就會從快取中提供完整回應。 否則，會提供*304-未修改*的回應。 | |`Date` |從快取提供服務時， `Date` 如果原始回應未提供標頭，則會由中介軟體設定。 | |`Content-Length` |從快取提供服務時， `Content-Length` 如果原始回應未提供標頭，則會由中介軟體設定。 | |`Age` |`Age`會忽略原始回應中所傳送的標頭。 中介軟體會在服務快取回應時計算新的值。 |
+| ------ | ------- |
+| `Authorization` | 如果標頭存在，則不會快取回應。 |
+| `Cache-Control` | 中介軟體只會考慮以 cache 指示詞標示的快取回應 `public` 。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>must-revalidate</li><li>no-cache</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果沒有指定任何限制 `max-stale` ，中介軟體就不會採取任何動作。<br>&#8225;與 `proxy-revalidate` 具有相同的效果 `must-revalidate` 。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 |
+| `Pragma` | `Pragma: no-cache`要求中的標頭會產生與相同的效果 `Cache-Control: no-cache` 。 此標頭會由標頭中的相關指示詞覆寫 `Cache-Control` （如果有的話）。 視為與 HTTP/1.0 的回溯相容性。 |
+| `Set-Cookie` | 如果標頭存在，則不會快取回應。 要求處理管線中設定一或多個 cookie 的任何中介軟體，可防止回應快取中介軟體快取回應（例如，以[cookie 為基礎的 TempData 提供者](xref:fundamentals/app-state#tempdata)）。  |
+| `Vary` | `Vary`標頭是用來依另一個標頭來改變快取的回應。 例如，藉由包含標頭的編碼方式來快取回應，這會快取 `Vary: Accept-Encoding` 標頭和個別要求的回應 `Accept-Encoding: gzip` `Accept-Encoding: text/plain` 。 永遠不會儲存標頭值為的回應 `*` 。 |
+| `Expires` | 除非其他標頭覆寫，否則不會儲存或抓取此標頭所視為過時的回應 `Cache-Control` 。 |
+| `If-None-Match` | 如果值不是 `*` ，而且 `ETag` 回應的不符合任何提供的值，則會從快取中提供完整回應。 否則，會提供304（未修改）的回應。 |
+| `If-Modified-Since` | 如果 `If-None-Match` 標頭不存在，當快取的回應日期比提供的值還新時，就會從快取中提供完整回應。 否則，會提供*304-未修改*的回應。 |
+| `Date` | 從快取提供服務時， `Date` 如果原始回應未提供標頭，則會由中介軟體設定。 |
+| `Content-Length` | 從快取提供服務時， `Content-Length` 如果原始回應未提供標頭，則會由中介軟體設定。 |
+| `Age` | `Age`會忽略原始回應中所傳送的標頭。 中介軟體會在服務快取回應時計算新的值。 |
 
 ## <a name="caching-respects-request-cache-control-directives"></a>快取遵循要求快取控制指示詞
 
@@ -335,7 +284,7 @@ if (responseCachingFeature != null)
 
 * 要求必須產生具有200（確定）狀態碼的伺服器回應。
 * 要求方法必須是 GET 或 HEAD。
-* 在中 `Startup.Configure` ，回應快取中介軟體必須放在需要快取的中介軟體前面。 如需詳細資訊，請參閱<xref:fundamentals/middleware/index>。
+* 在中 `Startup.Configure` ，回應快取中介軟體必須放在需要快取的中介軟體前面。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/index> 。
 * `Authorization`標頭不得存在。
 * `Cache-Control`標頭參數必須是有效的，而且回應必須標記為 `public` 且未標記 `private` 。
 * `Pragma: no-cache`如果標頭不存在，標頭不能出現 `Cache-Control` ，因為標頭會 `Cache-Control` `Pragma` 在出現時覆寫標頭。

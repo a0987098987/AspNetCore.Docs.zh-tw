@@ -1,11 +1,24 @@
 ---
-標題： ' ASP.NET Core 樣板 Blazor 化元件的作者：描述： monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 樣板 Blazor 化元件
+author: guardrex
+description: 瞭解樣板化元件可以如何接受一或多個 UI 範本做為參數，然後用來做為元件轉譯邏輯的一部分。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 03/18/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/templated-components
+ms.openlocfilehash: 8c970387fa79b02127c8a2375195373148749679
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83851885"
 ---
 # <a name="aspnet-core-blazor-templated-components"></a>ASP.NET Core 樣板 Blazor 化元件
 

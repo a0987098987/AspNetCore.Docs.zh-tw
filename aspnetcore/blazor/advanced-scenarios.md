@@ -1,12 +1,24 @@
 ---
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core Blazor advanced 案例
+author: guardrex
+description: 深入瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 02/18/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/advanced-scenarios
+ms.openlocfilehash: 3345f545e230ada78e6c66fc9eb049060d5794d6
+ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "83851155"
 ---
 # <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Blazor advanced 案例
 
@@ -150,73 +162,15 @@ builder.AddContent(1, "Second");
 當程式碼第一次執行時，如果 `someFlag` 是 `true` ，則產生器會接收：
 
 | 順序 | 類型      | 資料   |
-| :---
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------ |:----: | |0 |文位元組點 |第一個 | |1 |文位元組點 |第二個 |
+| :------: | --------- | :----: |
+| 0        | Text node | First  |
+| 1        | Text node | Second |
 
 想像一下， `someFlag` 會變成 `false` ，然後再次呈現標記。 這次，產生器會接收：
 
 | 順序 | 類型       | 資料   |
-| :---
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------ |:----: | |1 |文位元組點 |第二個 |
+| :------: | ---------- | :----: |
+| 1        | Text node  | Second |
 
 當執行時間執行 diff 時，會看到順序中的專案 `0` 已移除，因此它會產生下列簡單的*編輯腳本*：
 
@@ -240,72 +194,15 @@ builder.AddContent(seq++, "Second");
 現在，第一個輸出是：
 
 | 順序 | 類型      | 資料   |
-| :---
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------ |:----: | |0 |文位元組點 |第一個 | |1 |文位元組點 |第二個 |
+| :------: | --------- | :----: |
+| 0        | Text node | First  |
+| 1        | Text node | Second |
 
 此結果與先前的案例相同，因此不會有負面問題存在。 `someFlag``false`在第二個轉譯上，輸出為：
 
 | 順序 | 類型      | 資料   |
-| :---
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
----: |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' ASP.NET Core Blazor advanced 案例的作者：描述： ' 瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------ |---標題：「ASP.NET Core Blazor advanced 案例的作者：描述：」瞭解中的 advanced 案例 Blazor ，包括如何將手動 RenderTreeBuilder 邏輯併入應用程式中。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
---- | |0 |文位元組點 |第二個 |
+| :------: | --------- | ------ |
+| 0        | Text node | Second |
 
 這次，diff 演算法發現發生了*兩*項變更，而演算法會產生下列編輯腳本：
 

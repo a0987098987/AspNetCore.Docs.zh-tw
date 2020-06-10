@@ -1,7 +1,7 @@
 ---
-title: 更新 ASP.NET Core 應用程式中產生的頁面
+title: 第5部分，更新 ASP.NET Core 應用程式中產生的頁面
 author: rick-anderson
-description: 了解如何更新 ASP.NET Core 應用程式中產生的頁面。
+description: 頁面上教學課程系列的第5部分 Razor 。
 ms.author: riande
 ms.date: 12/20/2018
 no-loc:
@@ -11,44 +11,44 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: d9ab20b7ed4b394c154141efe3a94481efaf063c
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 144c4e7f07986c0a10089d74991fe3b44c013894
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774544"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652869"
 ---
-# <a name="update-the-generated-pages-in-an-aspnet-core-app"></a><span data-ttu-id="02114-103">更新 ASP.NET Core 應用程式中產生的頁面</span><span class="sxs-lookup"><span data-stu-id="02114-103">Update the generated pages in an ASP.NET Core app</span></span>
+# <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a><span data-ttu-id="45512-103">第5部分，更新 ASP.NET Core 應用程式中產生的頁面</span><span class="sxs-lookup"><span data-stu-id="45512-103">Part 5, update the generated pages in an ASP.NET Core app</span></span>
 
-<span data-ttu-id="02114-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="02114-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
+<span data-ttu-id="45512-104">作者：[Rick Anderson](https://twitter.com/RickAndMSFT)</span><span class="sxs-lookup"><span data-stu-id="45512-104">By [Rick Anderson](https://twitter.com/RickAndMSFT)</span></span>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-<span data-ttu-id="02114-105">Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不理想。</span><span class="sxs-lookup"><span data-stu-id="02114-105">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="02114-106">**ReleaseDate** 應該是 **Release Date** (兩個字)。</span><span class="sxs-lookup"><span data-stu-id="02114-106">**ReleaseDate** should be **Release Date** (two words).</span></span>
+<span data-ttu-id="45512-105">Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不理想。</span><span class="sxs-lookup"><span data-stu-id="45512-105">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="45512-106">**ReleaseDate** 應該是 **Release Date** (兩個字)。</span><span class="sxs-lookup"><span data-stu-id="45512-106">**ReleaseDate** should be **Release Date** (two words).</span></span>
 
 ![在 Chrome 中開啟的電影應用程式](sql/_static/m55.png)
 
-## <a name="update-the-generated-code"></a><span data-ttu-id="02114-108">更新產生的程式碼</span><span class="sxs-lookup"><span data-stu-id="02114-108">Update the generated code</span></span>
+## <a name="update-the-generated-code"></a><span data-ttu-id="45512-108">更新產生的程式碼</span><span class="sxs-lookup"><span data-stu-id="45512-108">Update the generated code</span></span>
 
-<span data-ttu-id="02114-109">開啟 *Models/Movie.cs* 檔案，然後新增下列程式碼中顯示的醒目提示行：</span><span class="sxs-lookup"><span data-stu-id="02114-109">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
+<span data-ttu-id="45512-109">開啟 *Models/Movie.cs* 檔案，然後新增下列程式碼中顯示的醒目提示行：</span><span class="sxs-lookup"><span data-stu-id="45512-109">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
-<span data-ttu-id="02114-110">`[Column(TypeName = "decimal(18, 2)")]` 資料註解可讓 Entity Framework Core 將 `Price` 正確對應到資料庫中的貨幣。</span><span class="sxs-lookup"><span data-stu-id="02114-110">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="02114-111">如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。</span><span class="sxs-lookup"><span data-stu-id="02114-111">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+<span data-ttu-id="45512-110">`[Column(TypeName = "decimal(18, 2)")]` 資料註解可讓 Entity Framework Core 將 `Price` 正確對應到資料庫中的貨幣。</span><span class="sxs-lookup"><span data-stu-id="45512-110">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="45512-111">如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。</span><span class="sxs-lookup"><span data-stu-id="45512-111">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
 
-<span data-ttu-id="02114-112">接下來的教學課程會涵蓋 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。</span><span class="sxs-lookup"><span data-stu-id="02114-112">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="02114-113">[Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。</span><span class="sxs-lookup"><span data-stu-id="02114-113">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="02114-114">[DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的類型 (Date)，因此不會顯示儲存在欄位中的時間資訊。</span><span class="sxs-lookup"><span data-stu-id="02114-114">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
+<span data-ttu-id="45512-112">接下來的教學課程會涵蓋 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。</span><span class="sxs-lookup"><span data-stu-id="45512-112">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="45512-113">[Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。</span><span class="sxs-lookup"><span data-stu-id="45512-113">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="45512-114">[DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的類型 (Date)，因此不會顯示儲存在欄位中的時間資訊。</span><span class="sxs-lookup"><span data-stu-id="45512-114">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
 
-<span data-ttu-id="02114-115">瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。</span><span class="sxs-lookup"><span data-stu-id="02114-115">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
+<span data-ttu-id="45512-115">瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。</span><span class="sxs-lookup"><span data-stu-id="45512-115">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
 
 ![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
 
-<span data-ttu-id="02114-117">在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、\*\*Details \*\* 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。</span><span class="sxs-lookup"><span data-stu-id="02114-117">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
+<span data-ttu-id="45512-117">在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、\*\*Details \*\* 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。</span><span class="sxs-lookup"><span data-stu-id="45512-117">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-<span data-ttu-id="02114-118">[標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中Razor的 HTML 元素。</span><span class="sxs-lookup"><span data-stu-id="02114-118">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="02114-119">在上述程式碼中， `AnchorTagHelper`會從`href` Razor頁面動態產生 HTML 屬性值（路由是相對的）、 `asp-page`和路由識別碼（`asp-route-id`）。</span><span class="sxs-lookup"><span data-stu-id="02114-119">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="02114-120">如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。</span><span class="sxs-lookup"><span data-stu-id="02114-120">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
+<span data-ttu-id="45512-118">[標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中的 HTML 元素 Razor 。</span><span class="sxs-lookup"><span data-stu-id="45512-118">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="45512-119">在上述程式碼中，會 `AnchorTagHelper` 從頁面動態產生 HTML `href` 屬性值 Razor （路由是相對的）、 `asp-page` 和路由識別碼（ `asp-route-id` ）。</span><span class="sxs-lookup"><span data-stu-id="45512-119">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="45512-120">如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。</span><span class="sxs-lookup"><span data-stu-id="45512-120">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
 
-<span data-ttu-id="02114-121">從您最愛的瀏覽器中使用 [檢視原始檔]\*\*\*\* 來檢查產生的標記。</span><span class="sxs-lookup"><span data-stu-id="02114-121">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="02114-122">產生的 HTML 部分如下所示：</span><span class="sxs-lookup"><span data-stu-id="02114-122">A portion of the generated HTML is shown below:</span></span>
+<span data-ttu-id="45512-121">從您最愛的瀏覽器中使用 [檢視原始檔]\*\*\*\* 來檢查產生的標記。</span><span class="sxs-lookup"><span data-stu-id="45512-121">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="45512-122">產生的 HTML 部分如下所示：</span><span class="sxs-lookup"><span data-stu-id="45512-122">A portion of the generated HTML is shown below:</span></span>
 
 ```html
 <td>
@@ -58,11 +58,11 @@ ms.locfileid: "82774544"
 </td>
 ```
 
-<span data-ttu-id="02114-123">動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `https://localhost:5001/Movies/Details?id=1` 中的 `?id=1`)。</span><span class="sxs-lookup"><span data-stu-id="02114-123">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
+<span data-ttu-id="45512-123">動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `https://localhost:5001/Movies/Details?id=1` 中的 `?id=1`)。</span><span class="sxs-lookup"><span data-stu-id="45512-123">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
 
-### <a name="add-route-template"></a><span data-ttu-id="02114-124">新增路由範本</span><span class="sxs-lookup"><span data-stu-id="02114-124">Add route template</span></span>
+### <a name="add-route-template"></a><span data-ttu-id="45512-124">新增路由範本</span><span class="sxs-lookup"><span data-stu-id="45512-124">Add route template</span></span>
 
-<span data-ttu-id="02114-125">更新 [編輯]、[詳細資料Razor ] 和 [刪除] 頁面，以使用 "{id： int}" 路由範本。</span><span class="sxs-lookup"><span data-stu-id="02114-125">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="02114-126">將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。</span><span class="sxs-lookup"><span data-stu-id="02114-126">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="02114-127">執行應用程式，然後檢視原始檔。</span><span class="sxs-lookup"><span data-stu-id="02114-127">Run the app and then view source.</span></span> <span data-ttu-id="02114-128">產生的 HTML 將識別碼新增至 URL 的路徑部分：</span><span class="sxs-lookup"><span data-stu-id="02114-128">The generated HTML adds the ID to the path portion of the URL:</span></span>
+<span data-ttu-id="45512-125">更新 [編輯]、[詳細資料] 和 [刪除 Razor ] 頁面，以使用 "{id： int}" 路由範本。</span><span class="sxs-lookup"><span data-stu-id="45512-125">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="45512-126">將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。</span><span class="sxs-lookup"><span data-stu-id="45512-126">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="45512-127">執行應用程式，然後檢視原始檔。</span><span class="sxs-lookup"><span data-stu-id="45512-127">Run the app and then view source.</span></span> <span data-ttu-id="45512-128">產生的 HTML 將識別碼新增至 URL 的路徑部分：</span><span class="sxs-lookup"><span data-stu-id="45512-128">The generated HTML adds the ID to the path portion of the URL:</span></span>
 
 ```html
 <td>
@@ -72,99 +72,99 @@ ms.locfileid: "82774544"
 </td>
 ```
 
-<span data-ttu-id="02114-129">對使用 "{id:int}" 路由範本的頁面提出的要求若**未**包含整數，將傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02114-129">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="02114-130">例如，`http://localhost:5000/Movies/Details` 會傳回 404 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02114-130">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="02114-131">若要使識別碼成為選擇性，請將 `?` 附加至路由條件約束：</span><span class="sxs-lookup"><span data-stu-id="02114-131">To make the ID optional, append `?` to the route constraint:</span></span>
+<span data-ttu-id="45512-129">對使用 "{id:int}" 路由範本的頁面提出的要求若**未**包含整數，將傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="45512-129">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="45512-130">例如，`http://localhost:5000/Movies/Details` 會傳回 404 錯誤。</span><span class="sxs-lookup"><span data-stu-id="45512-130">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="45512-131">若要使識別碼成為選擇性，請將 `?` 附加至路由條件約束：</span><span class="sxs-lookup"><span data-stu-id="45512-131">To make the ID optional, append `?` to the route constraint:</span></span>
 
  ```cshtml
 @page "{id:int?}"
 ```
 
-<span data-ttu-id="02114-132">若要測試 `@page "{id:int?}"` 的行為：</span><span class="sxs-lookup"><span data-stu-id="02114-132">To test the behavior of `@page "{id:int?}"`:</span></span>
+<span data-ttu-id="45512-132">若要測試 `@page "{id:int?}"` 的行為：</span><span class="sxs-lookup"><span data-stu-id="45512-132">To test the behavior of `@page "{id:int?}"`:</span></span>
 
-* <span data-ttu-id="02114-133">將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`。</span><span class="sxs-lookup"><span data-stu-id="02114-133">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
-* <span data-ttu-id="02114-134">設定 `public async Task<IActionResult> OnGetAsync(int? id)` (位於 *Pages/Movies/Details.cshtml.cs*) 中的中斷點。</span><span class="sxs-lookup"><span data-stu-id="02114-134">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs*).</span></span>
-* <span data-ttu-id="02114-135">瀏覽至 `https://localhost:5001/Movies/Details/`。</span><span class="sxs-lookup"><span data-stu-id="02114-135">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
+* <span data-ttu-id="45512-133">將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`。</span><span class="sxs-lookup"><span data-stu-id="45512-133">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
+* <span data-ttu-id="45512-134">設定 `public async Task<IActionResult> OnGetAsync(int? id)` (位於 *Pages/Movies/Details.cshtml.cs*) 中的中斷點。</span><span class="sxs-lookup"><span data-stu-id="45512-134">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs*).</span></span>
+* <span data-ttu-id="45512-135">瀏覽到 `https://localhost:5001/Movies/Details/` 。</span><span class="sxs-lookup"><span data-stu-id="45512-135">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
 
-<span data-ttu-id="02114-136">使用 `@page "{id:int}"` 指示詞，永遠不會叫用中斷點。</span><span class="sxs-lookup"><span data-stu-id="02114-136">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="02114-137">路由引擎會傳回 HTTP 404。</span><span class="sxs-lookup"><span data-stu-id="02114-137">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="02114-138">使用 `@page "{id:int?}"`，`OnGetAsync` 方法會傳回 `NotFound` (HTTP 404)。</span><span class="sxs-lookup"><span data-stu-id="02114-138">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
+<span data-ttu-id="45512-136">使用 `@page "{id:int}"` 指示詞，永遠不會叫用中斷點。</span><span class="sxs-lookup"><span data-stu-id="45512-136">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="45512-137">路由引擎會傳回 HTTP 404。</span><span class="sxs-lookup"><span data-stu-id="45512-137">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="45512-138">使用 `@page "{id:int?}"`，`OnGetAsync` 方法會傳回 `NotFound` (HTTP 404)。</span><span class="sxs-lookup"><span data-stu-id="45512-138">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
 
-### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="02114-139">檢閱並行存取例外狀況處理</span><span class="sxs-lookup"><span data-stu-id="02114-139">Review concurrency exception handling</span></span>
+### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="45512-139">檢閱並行存取例外狀況處理</span><span class="sxs-lookup"><span data-stu-id="45512-139">Review concurrency exception handling</span></span>
 
-<span data-ttu-id="02114-140">在 *Pages/Movies/Edit.cshtml.cs* 檔案中檢閱 `OnPostAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="02114-140">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="45512-140">在 *Pages/Movies/Edit.cshtml.cs* 檔案中檢閱 `OnPostAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="45512-140">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="02114-141">當一個用戶端刪除電影，而另一個用戶端發佈對電影的變更時，先前的程式碼會偵測並行存取例外狀況。</span><span class="sxs-lookup"><span data-stu-id="02114-141">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
+<span data-ttu-id="45512-141">當一個用戶端刪除電影，而另一個用戶端發佈對電影的變更時，先前的程式碼會偵測並行存取例外狀況。</span><span class="sxs-lookup"><span data-stu-id="45512-141">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
 
-<span data-ttu-id="02114-142">若要測試 `catch` 區段：</span><span class="sxs-lookup"><span data-stu-id="02114-142">To test the `catch` block:</span></span>
+<span data-ttu-id="45512-142">若要測試 `catch` 區段：</span><span class="sxs-lookup"><span data-stu-id="45512-142">To test the `catch` block:</span></span>
 
-* <span data-ttu-id="02114-143">在 `catch (DbUpdateConcurrencyException)`上設定中斷點</span><span class="sxs-lookup"><span data-stu-id="02114-143">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
-* <span data-ttu-id="02114-144">針對電影選取 [編輯]\*\*\*\*，進行變更，但不要輸入 [儲存]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02114-144">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
-* <span data-ttu-id="02114-145">在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。</span><span class="sxs-lookup"><span data-stu-id="02114-145">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
-* <span data-ttu-id="02114-146">在先前的瀏覽器視窗中，發佈對電影的變更。</span><span class="sxs-lookup"><span data-stu-id="02114-146">In the previous browser window, post changes to the movie.</span></span>
+* <span data-ttu-id="45512-143">在 `catch (DbUpdateConcurrencyException)`上設定中斷點</span><span class="sxs-lookup"><span data-stu-id="45512-143">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
+* <span data-ttu-id="45512-144">針對電影選取 [編輯]\*\*\*\*，進行變更，但不要輸入 [儲存]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="45512-144">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
+* <span data-ttu-id="45512-145">在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。</span><span class="sxs-lookup"><span data-stu-id="45512-145">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
+* <span data-ttu-id="45512-146">在先前的瀏覽器視窗中，發佈對電影的變更。</span><span class="sxs-lookup"><span data-stu-id="45512-146">In the previous browser window, post changes to the movie.</span></span>
 
-<span data-ttu-id="02114-147">實際執行程式碼可能需要偵測並行存取衝突。</span><span class="sxs-lookup"><span data-stu-id="02114-147">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="02114-148">如需詳細資訊，請參閱[處理並行存取衝突](xref:data/ef-rp/concurrency)。</span><span class="sxs-lookup"><span data-stu-id="02114-148">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
+<span data-ttu-id="45512-147">實際執行程式碼可能需要偵測並行存取衝突。</span><span class="sxs-lookup"><span data-stu-id="45512-147">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="45512-148">如需詳細資訊，請參閱[處理並行存取衝突](xref:data/ef-rp/concurrency)。</span><span class="sxs-lookup"><span data-stu-id="45512-148">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
 
-### <a name="posting-and-binding-review"></a><span data-ttu-id="02114-149">發佈和繫結檢閱內容</span><span class="sxs-lookup"><span data-stu-id="02114-149">Posting and binding review</span></span>
+### <a name="posting-and-binding-review"></a><span data-ttu-id="45512-149">發佈和繫結檢閱內容</span><span class="sxs-lookup"><span data-stu-id="45512-149">Posting and binding review</span></span>
 
-<span data-ttu-id="02114-150">檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="02114-150">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="45512-150">檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="45512-150">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie30/SnapShots/Edit.cshtml.cs?name=snippet2)]
 
-<span data-ttu-id="02114-151">對 Movies/Edit 頁面提出 HTTP GET 要求時 (例如，`http://localhost:5000/Movies/Edit/2`)：</span><span class="sxs-lookup"><span data-stu-id="02114-151">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
+<span data-ttu-id="45512-151">對 Movies/Edit 頁面提出 HTTP GET 要求時 (例如，`http://localhost:5000/Movies/Edit/2`)：</span><span class="sxs-lookup"><span data-stu-id="45512-151">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
 
-* <span data-ttu-id="02114-152">`OnGetAsync` 方法會從資料庫擷取電影，並傳回 `Page` 方法。</span><span class="sxs-lookup"><span data-stu-id="02114-152">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span>
-* <span data-ttu-id="02114-153">`Page`方法會呈現*Pages/電影/編輯. cshtml* Razor頁面。</span><span class="sxs-lookup"><span data-stu-id="02114-153">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="02114-154">*Pages/Movies/Edit.cshtml* 檔案包含模型指示詞 (`@model RazorPagesMovie.Pages.Movies.EditModel`)，這會讓電影模型可以在頁面上使用。</span><span class="sxs-lookup"><span data-stu-id="02114-154">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
-* <span data-ttu-id="02114-155">Edit 表單會顯示來自電影的值。</span><span class="sxs-lookup"><span data-stu-id="02114-155">The Edit form is displayed with the values from the movie.</span></span>
+* <span data-ttu-id="45512-152">`OnGetAsync` 方法會從資料庫擷取電影，並傳回 `Page` 方法。</span><span class="sxs-lookup"><span data-stu-id="45512-152">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span>
+* <span data-ttu-id="45512-153">`Page`方法會呈現*Pages/電影/編輯. cshtml* Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="45512-153">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="45512-154">*Pages/Movies/Edit.cshtml* 檔案包含模型指示詞 (`@model RazorPagesMovie.Pages.Movies.EditModel`)，這會讓電影模型可以在頁面上使用。</span><span class="sxs-lookup"><span data-stu-id="45512-154">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
+* <span data-ttu-id="45512-155">Edit 表單會顯示來自電影的值。</span><span class="sxs-lookup"><span data-stu-id="45512-155">The Edit form is displayed with the values from the movie.</span></span>
 
-<span data-ttu-id="02114-156">發佈 Movies/Edit 頁面時：</span><span class="sxs-lookup"><span data-stu-id="02114-156">When the Movies/Edit page is posted:</span></span>
+<span data-ttu-id="45512-156">發佈 Movies/Edit 頁面時：</span><span class="sxs-lookup"><span data-stu-id="45512-156">When the Movies/Edit page is posted:</span></span>
 
-* <span data-ttu-id="02114-157">頁面上的表單值會繫結至 `Movie` 屬性。</span><span class="sxs-lookup"><span data-stu-id="02114-157">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="02114-158">`[BindProperty]` 屬性可讓[模型繫結](xref:mvc/models/model-binding)。</span><span class="sxs-lookup"><span data-stu-id="02114-158">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
+* <span data-ttu-id="45512-157">頁面上的表單值會繫結至 `Movie` 屬性。</span><span class="sxs-lookup"><span data-stu-id="45512-157">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="45512-158">`[BindProperty]` 屬性可讓[模型繫結](xref:mvc/models/model-binding)。</span><span class="sxs-lookup"><span data-stu-id="45512-158">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
 
   ```csharp
   [BindProperty]
   public Movie Movie { get; set; }
   ```
 
-* <span data-ttu-id="02114-159">如果模型狀態中有錯誤 (例如 `ReleaseDate` 無法轉換為日期)，則會以提交的值重新顯示表單。</span><span class="sxs-lookup"><span data-stu-id="02114-159">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is redisplayed with the submitted values.</span></span>
-* <span data-ttu-id="02114-160">如果沒有任何模型錯誤，則會儲存電影。</span><span class="sxs-lookup"><span data-stu-id="02114-160">If there are no model errors, the movie is saved.</span></span>
+* <span data-ttu-id="45512-159">如果模型狀態中有錯誤 (例如 `ReleaseDate` 無法轉換為日期)，則會以提交的值重新顯示表單。</span><span class="sxs-lookup"><span data-stu-id="45512-159">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is redisplayed with the submitted values.</span></span>
+* <span data-ttu-id="45512-160">如果沒有任何模型錯誤，則會儲存電影。</span><span class="sxs-lookup"><span data-stu-id="45512-160">If there are no model errors, the movie is saved.</span></span>
 
-<span data-ttu-id="02114-161">[索引]、[建立] 和 [刪除Razor ] 頁面中的 HTTP GET 方法會遵循類似的模式。</span><span class="sxs-lookup"><span data-stu-id="02114-161">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="02114-162">`OnPostAsync` [建立Razor ] 頁面中的 HTTP POST 方法，會遵循 [編輯`OnPostAsync` Razor ] 頁面中方法的類似模式。</span><span class="sxs-lookup"><span data-stu-id="02114-162">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
+<span data-ttu-id="45512-161">[索引]、[建立] 和 [刪除] 頁面中的 HTTP GET 方法會 Razor 遵循類似的模式。</span><span class="sxs-lookup"><span data-stu-id="45512-161">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="45512-162">[建立] 頁面中的 HTTP POST 方法，會 `OnPostAsync` Razor 遵循 `OnPostAsync` [編輯] 頁面中方法的類似模式 Razor 。</span><span class="sxs-lookup"><span data-stu-id="45512-162">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="02114-163">其他資源</span><span class="sxs-lookup"><span data-stu-id="02114-163">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="45512-163">其他資源</span><span class="sxs-lookup"><span data-stu-id="45512-163">Additional resources</span></span>
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="02114-164">[上一個：使用資料庫](xref:tutorials/razor-pages/sql)
-> [下一步：新增搜尋](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="02114-164">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
+> <span data-ttu-id="45512-164">[上一步：使用資料庫](xref:tutorials/razor-pages/sql) 
+> [下一步：新增搜尋](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="45512-164">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
 [Next: Add search](xref:tutorials/razor-pages/search)</span></span>
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-<span data-ttu-id="02114-165">Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不理想。</span><span class="sxs-lookup"><span data-stu-id="02114-165">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="02114-166">**ReleaseDate** 應該是 **Release Date** (兩個字)。</span><span class="sxs-lookup"><span data-stu-id="02114-166">**ReleaseDate** should be **Release Date** (two words).</span></span>
+<span data-ttu-id="45512-165">Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不理想。</span><span class="sxs-lookup"><span data-stu-id="45512-165">The scaffolded movie app has a good start, but the presentation isn't ideal.</span></span> <span data-ttu-id="45512-166">**ReleaseDate** 應該是 **Release Date** (兩個字)。</span><span class="sxs-lookup"><span data-stu-id="45512-166">**ReleaseDate** should be **Release Date** (two words).</span></span>
 
 ![在 Chrome 中開啟的電影應用程式](sql/_static/m55.png)
 
-## <a name="update-the-generated-code"></a><span data-ttu-id="02114-168">更新產生的程式碼</span><span class="sxs-lookup"><span data-stu-id="02114-168">Update the generated code</span></span>
+## <a name="update-the-generated-code"></a><span data-ttu-id="45512-168">更新產生的程式碼</span><span class="sxs-lookup"><span data-stu-id="45512-168">Update the generated code</span></span>
 
-<span data-ttu-id="02114-169">開啟 *Models/Movie.cs* 檔案，然後新增下列程式碼中顯示的醒目提示行：</span><span class="sxs-lookup"><span data-stu-id="02114-169">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
+<span data-ttu-id="45512-169">開啟 *Models/Movie.cs* 檔案，然後新增下列程式碼中顯示的醒目提示行：</span><span class="sxs-lookup"><span data-stu-id="45512-169">Open the *Models/Movie.cs* file and add the highlighted lines shown in the following code:</span></span>
 
 [!code-csharp[Main](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Models/MovieDateFixed.cs?name=snippet_1&highlight=3,12,17)]
 
-<span data-ttu-id="02114-170">`[Column(TypeName = "decimal(18, 2)")]` 資料註解可讓 Entity Framework Core 將 `Price` 正確對應到資料庫中的貨幣。</span><span class="sxs-lookup"><span data-stu-id="02114-170">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="02114-171">如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。</span><span class="sxs-lookup"><span data-stu-id="02114-171">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
+<span data-ttu-id="45512-170">`[Column(TypeName = "decimal(18, 2)")]` 資料註解可讓 Entity Framework Core 將 `Price` 正確對應到資料庫中的貨幣。</span><span class="sxs-lookup"><span data-stu-id="45512-170">The `[Column(TypeName = "decimal(18, 2)")]` data annotation enables Entity Framework Core to correctly map `Price` to currency in the database.</span></span> <span data-ttu-id="45512-171">如需詳細資訊，請參閱[資料類型](/ef/core/modeling/relational/data-types)。</span><span class="sxs-lookup"><span data-stu-id="45512-171">For more information, see [Data Types](/ef/core/modeling/relational/data-types).</span></span>
 
-<span data-ttu-id="02114-172">接下來的教學課程會涵蓋 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。</span><span class="sxs-lookup"><span data-stu-id="02114-172">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="02114-173">[Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。</span><span class="sxs-lookup"><span data-stu-id="02114-173">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="02114-174">[DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的類型 (Date)，因此不會顯示儲存在欄位中的時間資訊。</span><span class="sxs-lookup"><span data-stu-id="02114-174">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
+<span data-ttu-id="45512-172">接下來的教學課程會涵蓋 [DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6)。</span><span class="sxs-lookup"><span data-stu-id="45512-172">[DataAnnotations](/aspnet/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-6) is covered in the next tutorial.</span></span> <span data-ttu-id="45512-173">[Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) 屬性指定要顯示的欄位名稱 (在本例中為 "Release Date"，而不是 "ReleaseDate")。</span><span class="sxs-lookup"><span data-stu-id="45512-173">The [Display](/dotnet/api/microsoft.aspnetcore.mvc.modelbinding.metadata.displaymetadata) attribute specifies what to display for the name of a field (in this case "Release Date" instead of "ReleaseDate").</span></span> <span data-ttu-id="45512-174">[DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) 屬性指定資料的類型 (Date)，因此不會顯示儲存在欄位中的時間資訊。</span><span class="sxs-lookup"><span data-stu-id="45512-174">The [DataType](/dotnet/api/microsoft.aspnetcore.mvc.dataannotations.internal.datatypeattributeadapter) attribute specifies the type of the data (Date), so the time information stored in the field isn't displayed.</span></span>
 
-<span data-ttu-id="02114-175">瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。</span><span class="sxs-lookup"><span data-stu-id="02114-175">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
+<span data-ttu-id="45512-175">瀏覽至 Pages/Movies，然後將滑鼠停留在 **Edit** 連結，以查看目標 URL。</span><span class="sxs-lookup"><span data-stu-id="45512-175">Browse to Pages/Movies and  hover over an **Edit** link to see the target URL.</span></span>
 
 ![滑鼠停留在 Edit 連結並顯示 http://localhost:1234/Movies/Edit/5 的 Url 的瀏覽器視窗](~/tutorials/razor-pages/da1/edit7.png)
 
-<span data-ttu-id="02114-177">在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、\*\*Details \*\* 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。</span><span class="sxs-lookup"><span data-stu-id="02114-177">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
+<span data-ttu-id="45512-177">在 *Pages/Movies/Index.cshtml* 檔案中，**Edit**、\*\*Details \*\* 和 **Delete** 連結是由[錨點標記協助程式](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)所產生。</span><span class="sxs-lookup"><span data-stu-id="45512-177">The **Edit**, **Details**, and **Delete** links are generated by the [Anchor Tag Helper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) in the *Pages/Movies/Index.cshtml* file.</span></span>
 
 [!code-cshtml[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Index.cshtml?highlight=16-18&range=32-)]
 
-<span data-ttu-id="02114-178">[標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中Razor的 HTML 元素。</span><span class="sxs-lookup"><span data-stu-id="02114-178">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="02114-179">在上述程式碼中， `AnchorTagHelper`會從`href` Razor頁面動態產生 HTML 屬性值（路由是相對的）、 `asp-page`和路由識別碼（`asp-route-id`）。</span><span class="sxs-lookup"><span data-stu-id="02114-179">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="02114-180">如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。</span><span class="sxs-lookup"><span data-stu-id="02114-180">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
+<span data-ttu-id="45512-178">[標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中的 HTML 元素 Razor 。</span><span class="sxs-lookup"><span data-stu-id="45512-178">[Tag Helpers](xref:mvc/views/tag-helpers/intro) enable server-side code to participate in creating and rendering HTML elements in Razor files.</span></span> <span data-ttu-id="45512-179">在上述程式碼中，會 `AnchorTagHelper` 從頁面動態產生 HTML `href` 屬性值 Razor （路由是相對的）、 `asp-page` 和路由識別碼（ `asp-route-id` ）。</span><span class="sxs-lookup"><span data-stu-id="45512-179">In the preceding code, the `AnchorTagHelper` dynamically generates the HTML `href` attribute value from the Razor Page (the route is relative), the `asp-page`,  and the route id (`asp-route-id`).</span></span> <span data-ttu-id="45512-180">如需詳細資訊，請參閱[頁面的 URL 產生](xref:razor-pages/index#url-generation-for-pages)。</span><span class="sxs-lookup"><span data-stu-id="45512-180">See [URL generation for Pages](xref:razor-pages/index#url-generation-for-pages) for more information.</span></span>
 
-<span data-ttu-id="02114-181">從您最愛的瀏覽器中使用 [檢視原始檔]\*\*\*\* 來檢查產生的標記。</span><span class="sxs-lookup"><span data-stu-id="02114-181">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="02114-182">產生的 HTML 部分如下所示：</span><span class="sxs-lookup"><span data-stu-id="02114-182">A portion of the generated HTML is shown below:</span></span>
+<span data-ttu-id="45512-181">從您最愛的瀏覽器中使用 [檢視原始檔]\*\*\*\* 來檢查產生的標記。</span><span class="sxs-lookup"><span data-stu-id="45512-181">Use **View Source** from your favorite browser to examine the generated markup.</span></span> <span data-ttu-id="45512-182">產生的 HTML 部分如下所示：</span><span class="sxs-lookup"><span data-stu-id="45512-182">A portion of the generated HTML is shown below:</span></span>
 
 ```html
 <td>
@@ -174,9 +174,9 @@ ms.locfileid: "82774544"
 </td>
 ```
 
-<span data-ttu-id="02114-183">動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `https://localhost:5001/Movies/Details?id=1` 中的 `?id=1`)。</span><span class="sxs-lookup"><span data-stu-id="02114-183">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
+<span data-ttu-id="45512-183">動態產生的連結會傳遞含有查詢字串的電影識別碼 (例如 `https://localhost:5001/Movies/Details?id=1` 中的 `?id=1`)。</span><span class="sxs-lookup"><span data-stu-id="45512-183">The dynamically-generated links pass the movie ID with a query string (for example, the `?id=1` in  `https://localhost:5001/Movies/Details?id=1`).</span></span>
 
-<span data-ttu-id="02114-184">更新 [編輯]、[詳細資料Razor ] 和 [刪除] 頁面，以使用 "{id： int}" 路由範本。</span><span class="sxs-lookup"><span data-stu-id="02114-184">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="02114-185">將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。</span><span class="sxs-lookup"><span data-stu-id="02114-185">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="02114-186">執行應用程式，然後檢視原始檔。</span><span class="sxs-lookup"><span data-stu-id="02114-186">Run the app and then view source.</span></span> <span data-ttu-id="02114-187">產生的 HTML 將識別碼新增至 URL 的路徑部分：</span><span class="sxs-lookup"><span data-stu-id="02114-187">The generated HTML adds the ID to the path portion of the URL:</span></span>
+<span data-ttu-id="45512-184">更新 [編輯]、[詳細資料] 和 [刪除 Razor ] 頁面，以使用 "{id： int}" 路由範本。</span><span class="sxs-lookup"><span data-stu-id="45512-184">Update the Edit, Details, and Delete Razor Pages to use the "{id:int}" route template.</span></span> <span data-ttu-id="45512-185">將這些頁面每一頁的頁面指示詞從 `@page` 變更為 `@page "{id:int}"`。</span><span class="sxs-lookup"><span data-stu-id="45512-185">Change the page directive for each of these pages from `@page` to `@page "{id:int}"`.</span></span> <span data-ttu-id="45512-186">執行應用程式，然後檢視原始檔。</span><span class="sxs-lookup"><span data-stu-id="45512-186">Run the app and then view source.</span></span> <span data-ttu-id="45512-187">產生的 HTML 將識別碼新增至 URL 的路徑部分：</span><span class="sxs-lookup"><span data-stu-id="45512-187">The generated HTML adds the ID to the path portion of the URL:</span></span>
 
 ```html
 <td>
@@ -186,72 +186,72 @@ ms.locfileid: "82774544"
 </td>
 ```
 
-<span data-ttu-id="02114-188">對使用 "{id:int}" 路由範本的頁面提出的要求若**未**包含整數，將傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02114-188">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="02114-189">例如，`http://localhost:5000/Movies/Details` 會傳回 404 錯誤。</span><span class="sxs-lookup"><span data-stu-id="02114-189">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="02114-190">若要使識別碼成為選擇性，請將 `?` 附加至路由條件約束：</span><span class="sxs-lookup"><span data-stu-id="02114-190">To make the ID optional, append `?` to the route constraint:</span></span>
+<span data-ttu-id="45512-188">對使用 "{id:int}" 路由範本的頁面提出的要求若**未**包含整數，將傳回 HTTP 404 (找不到) 錯誤。</span><span class="sxs-lookup"><span data-stu-id="45512-188">A request to the page with the "{id:int}" route template that does **not** include the integer will return an HTTP 404 (not found) error.</span></span> <span data-ttu-id="45512-189">例如，`http://localhost:5000/Movies/Details` 會傳回 404 錯誤。</span><span class="sxs-lookup"><span data-stu-id="45512-189">For example, `http://localhost:5000/Movies/Details` will return a 404 error.</span></span> <span data-ttu-id="45512-190">若要使識別碼成為選擇性，請將 `?` 附加至路由條件約束：</span><span class="sxs-lookup"><span data-stu-id="45512-190">To make the ID optional, append `?` to the route constraint:</span></span>
 
  ```cshtml
 @page "{id:int?}"
 ```
 
-<span data-ttu-id="02114-191">若要測試 `@page "{id:int?}"` 的行為：</span><span class="sxs-lookup"><span data-stu-id="02114-191">To test the behavior of `@page "{id:int?}"`:</span></span>
+<span data-ttu-id="45512-191">若要測試 `@page "{id:int?}"` 的行為：</span><span class="sxs-lookup"><span data-stu-id="45512-191">To test the behavior of `@page "{id:int?}"`:</span></span>
 
-* <span data-ttu-id="02114-192">將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`。</span><span class="sxs-lookup"><span data-stu-id="02114-192">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
-* <span data-ttu-id="02114-193">設定 `public async Task<IActionResult> OnGetAsync(int? id)` (位於 *Pages/Movies/Details.cshtml.cs*) 中的中斷點。</span><span class="sxs-lookup"><span data-stu-id="02114-193">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs*).</span></span>
-* <span data-ttu-id="02114-194">瀏覽至 `https://localhost:5001/Movies/Details/`。</span><span class="sxs-lookup"><span data-stu-id="02114-194">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
+* <span data-ttu-id="45512-192">將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`。</span><span class="sxs-lookup"><span data-stu-id="45512-192">Set the page directive in *Pages/Movies/Details.cshtml* to `@page "{id:int?}"`.</span></span>
+* <span data-ttu-id="45512-193">設定 `public async Task<IActionResult> OnGetAsync(int? id)` (位於 *Pages/Movies/Details.cshtml.cs*) 中的中斷點。</span><span class="sxs-lookup"><span data-stu-id="45512-193">Set a break point in `public async Task<IActionResult> OnGetAsync(int? id)` (in *Pages/Movies/Details.cshtml.cs*).</span></span>
+* <span data-ttu-id="45512-194">瀏覽到 `https://localhost:5001/Movies/Details/` 。</span><span class="sxs-lookup"><span data-stu-id="45512-194">Navigate to `https://localhost:5001/Movies/Details/`.</span></span>
 
-<span data-ttu-id="02114-195">使用 `@page "{id:int}"` 指示詞，永遠不會叫用中斷點。</span><span class="sxs-lookup"><span data-stu-id="02114-195">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="02114-196">路由引擎會傳回 HTTP 404。</span><span class="sxs-lookup"><span data-stu-id="02114-196">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="02114-197">使用 `@page "{id:int?}"`，`OnGetAsync` 方法會傳回 `NotFound` (HTTP 404)。</span><span class="sxs-lookup"><span data-stu-id="02114-197">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
+<span data-ttu-id="45512-195">使用 `@page "{id:int}"` 指示詞，永遠不會叫用中斷點。</span><span class="sxs-lookup"><span data-stu-id="45512-195">With the `@page "{id:int}"` directive, the break point is never hit.</span></span> <span data-ttu-id="45512-196">路由引擎會傳回 HTTP 404。</span><span class="sxs-lookup"><span data-stu-id="45512-196">The routing engine returns HTTP 404.</span></span> <span data-ttu-id="45512-197">使用 `@page "{id:int?}"`，`OnGetAsync` 方法會傳回 `NotFound` (HTTP 404)。</span><span class="sxs-lookup"><span data-stu-id="45512-197">Using `@page "{id:int?}"`, the `OnGetAsync` method returns `NotFound` (HTTP 404).</span></span>
 
-### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="02114-198">檢閱並行存取例外狀況處理</span><span class="sxs-lookup"><span data-stu-id="02114-198">Review concurrency exception handling</span></span>
+### <a name="review-concurrency-exception-handling"></a><span data-ttu-id="45512-198">檢閱並行存取例外狀況處理</span><span class="sxs-lookup"><span data-stu-id="45512-198">Review concurrency exception handling</span></span>
 
-<span data-ttu-id="02114-199">在 *Pages/Movies/Edit.cshtml.cs* 檔案中檢閱 `OnPostAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="02114-199">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="45512-199">在 *Pages/Movies/Edit.cshtml.cs* 檔案中檢閱 `OnPostAsync` 方法：</span><span class="sxs-lookup"><span data-stu-id="45512-199">Review the `OnPostAsync` method in the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/sample/RazorPagesMovie22/Pages/Movies/Edit.cshtml.cs?name=snippet)]
 
-<span data-ttu-id="02114-200">當一個用戶端刪除電影，而另一個用戶端發佈對電影的變更時，先前的程式碼會偵測並行存取例外狀況。</span><span class="sxs-lookup"><span data-stu-id="02114-200">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
+<span data-ttu-id="45512-200">當一個用戶端刪除電影，而另一個用戶端發佈對電影的變更時，先前的程式碼會偵測並行存取例外狀況。</span><span class="sxs-lookup"><span data-stu-id="45512-200">The previous code detects concurrency exceptions when the one client deletes the movie and the other client posts changes to the movie.</span></span>
 
-<span data-ttu-id="02114-201">若要測試 `catch` 區段：</span><span class="sxs-lookup"><span data-stu-id="02114-201">To test the `catch` block:</span></span>
+<span data-ttu-id="45512-201">若要測試 `catch` 區段：</span><span class="sxs-lookup"><span data-stu-id="45512-201">To test the `catch` block:</span></span>
 
-* <span data-ttu-id="02114-202">在 `catch (DbUpdateConcurrencyException)`上設定中斷點</span><span class="sxs-lookup"><span data-stu-id="02114-202">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
-* <span data-ttu-id="02114-203">針對電影選取 [編輯]\*\*\*\*，進行變更，但不要輸入 [儲存]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="02114-203">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
-* <span data-ttu-id="02114-204">在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。</span><span class="sxs-lookup"><span data-stu-id="02114-204">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
-* <span data-ttu-id="02114-205">在先前的瀏覽器視窗中，發佈對電影的變更。</span><span class="sxs-lookup"><span data-stu-id="02114-205">In the previous browser window, post changes to the movie.</span></span>
+* <span data-ttu-id="45512-202">在 `catch (DbUpdateConcurrencyException)`上設定中斷點</span><span class="sxs-lookup"><span data-stu-id="45512-202">Set a breakpoint on `catch (DbUpdateConcurrencyException)`</span></span>
+* <span data-ttu-id="45512-203">針對電影選取 [編輯]\*\*\*\*，進行變更，但不要輸入 [儲存]\*\*\*\*。</span><span class="sxs-lookup"><span data-stu-id="45512-203">Select **Edit** for a movie, make changes, but don't enter **Save**.</span></span>
+* <span data-ttu-id="45512-204">在另一個瀏覽器視窗中，選取相同電影的 **Delete** 連結，然後刪除電影。</span><span class="sxs-lookup"><span data-stu-id="45512-204">In another browser window, select the **Delete** link for the same movie, and then delete the movie.</span></span>
+* <span data-ttu-id="45512-205">在先前的瀏覽器視窗中，發佈對電影的變更。</span><span class="sxs-lookup"><span data-stu-id="45512-205">In the previous browser window, post changes to the movie.</span></span>
 
-<span data-ttu-id="02114-206">實際執行程式碼可能需要偵測並行存取衝突。</span><span class="sxs-lookup"><span data-stu-id="02114-206">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="02114-207">如需詳細資訊，請參閱[處理並行存取衝突](xref:data/ef-rp/concurrency)。</span><span class="sxs-lookup"><span data-stu-id="02114-207">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
+<span data-ttu-id="45512-206">實際執行程式碼可能需要偵測並行存取衝突。</span><span class="sxs-lookup"><span data-stu-id="45512-206">Production code may want to detect concurrency conflicts.</span></span> <span data-ttu-id="45512-207">如需詳細資訊，請參閱[處理並行存取衝突](xref:data/ef-rp/concurrency)。</span><span class="sxs-lookup"><span data-stu-id="45512-207">See [Handle concurrency conflicts](xref:data/ef-rp/concurrency) for more information.</span></span>
 
-### <a name="posting-and-binding-review"></a><span data-ttu-id="02114-208">發佈和繫結檢閱內容</span><span class="sxs-lookup"><span data-stu-id="02114-208">Posting and binding review</span></span>
+### <a name="posting-and-binding-review"></a><span data-ttu-id="45512-208">發佈和繫結檢閱內容</span><span class="sxs-lookup"><span data-stu-id="45512-208">Posting and binding review</span></span>
 
-<span data-ttu-id="02114-209">檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="02114-209">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
+<span data-ttu-id="45512-209">檢查 *Pages/Movies/Edit.cshtml.cs* 檔案：</span><span class="sxs-lookup"><span data-stu-id="45512-209">Examine the *Pages/Movies/Edit.cshtml.cs* file:</span></span>
 
 [!code-csharp[](~/tutorials/razor-pages/razor-pages-start/snapshot_sample/RazorPagesMovie/Pages/Movies/Edit21.cshtml.cs?name=snippet2)]
 
-<span data-ttu-id="02114-210">對 Movies/Edit 頁面提出 HTTP GET 要求時 (例如，`http://localhost:5000/Movies/Edit/2`)：</span><span class="sxs-lookup"><span data-stu-id="02114-210">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
+<span data-ttu-id="45512-210">對 Movies/Edit 頁面提出 HTTP GET 要求時 (例如，`http://localhost:5000/Movies/Edit/2`)：</span><span class="sxs-lookup"><span data-stu-id="45512-210">When an HTTP GET request is made to the Movies/Edit page (for example, `http://localhost:5000/Movies/Edit/2`):</span></span>
 
-* <span data-ttu-id="02114-211">`OnGetAsync` 方法會從資料庫擷取電影，並傳回 `Page` 方法。</span><span class="sxs-lookup"><span data-stu-id="02114-211">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span> 
-* <span data-ttu-id="02114-212">`Page`方法會呈現*Pages/電影/編輯. cshtml* Razor頁面。</span><span class="sxs-lookup"><span data-stu-id="02114-212">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="02114-213">*Pages/Movies/Edit.cshtml* 檔案包含模型指示詞 (`@model RazorPagesMovie.Pages.Movies.EditModel`)，這會讓電影模型可以在頁面上使用。</span><span class="sxs-lookup"><span data-stu-id="02114-213">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
-* <span data-ttu-id="02114-214">Edit 表單會顯示來自電影的值。</span><span class="sxs-lookup"><span data-stu-id="02114-214">The Edit form is displayed with the values from the movie.</span></span>
+* <span data-ttu-id="45512-211">`OnGetAsync` 方法會從資料庫擷取電影，並傳回 `Page` 方法。</span><span class="sxs-lookup"><span data-stu-id="45512-211">The `OnGetAsync` method fetches the movie from the database and returns the `Page` method.</span></span> 
+* <span data-ttu-id="45512-212">`Page`方法會呈現*Pages/電影/編輯. cshtml* Razor 頁面。</span><span class="sxs-lookup"><span data-stu-id="45512-212">The `Page` method renders the *Pages/Movies/Edit.cshtml* Razor Page.</span></span> <span data-ttu-id="45512-213">*Pages/Movies/Edit.cshtml* 檔案包含模型指示詞 (`@model RazorPagesMovie.Pages.Movies.EditModel`)，這會讓電影模型可以在頁面上使用。</span><span class="sxs-lookup"><span data-stu-id="45512-213">The *Pages/Movies/Edit.cshtml* file contains the model directive (`@model RazorPagesMovie.Pages.Movies.EditModel`), which makes the movie model available on the page.</span></span>
+* <span data-ttu-id="45512-214">Edit 表單會顯示來自電影的值。</span><span class="sxs-lookup"><span data-stu-id="45512-214">The Edit form is displayed with the values from the movie.</span></span>
 
-<span data-ttu-id="02114-215">發佈 Movies/Edit 頁面時：</span><span class="sxs-lookup"><span data-stu-id="02114-215">When the Movies/Edit page is posted:</span></span>
+<span data-ttu-id="45512-215">發佈 Movies/Edit 頁面時：</span><span class="sxs-lookup"><span data-stu-id="45512-215">When the Movies/Edit page is posted:</span></span>
 
-* <span data-ttu-id="02114-216">頁面上的表單值會繫結至 `Movie` 屬性。</span><span class="sxs-lookup"><span data-stu-id="02114-216">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="02114-217">`[BindProperty]` 屬性可讓[模型繫結](xref:mvc/models/model-binding)。</span><span class="sxs-lookup"><span data-stu-id="02114-217">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
+* <span data-ttu-id="45512-216">頁面上的表單值會繫結至 `Movie` 屬性。</span><span class="sxs-lookup"><span data-stu-id="45512-216">The form values on the page are bound to the `Movie` property.</span></span> <span data-ttu-id="45512-217">`[BindProperty]` 屬性可讓[模型繫結](xref:mvc/models/model-binding)。</span><span class="sxs-lookup"><span data-stu-id="45512-217">The `[BindProperty]` attribute enables [Model binding](xref:mvc/models/model-binding).</span></span>
 
   ```csharp
   [BindProperty]
   public Movie Movie { get; set; }
   ```
 
-* <span data-ttu-id="02114-218">如果模型狀態中有錯誤 (例如 `ReleaseDate` 無法轉換為日期)，則會以提交的值顯示表單。</span><span class="sxs-lookup"><span data-stu-id="02114-218">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is displayed with the submitted values.</span></span>
-* <span data-ttu-id="02114-219">如果沒有任何模型錯誤，則會儲存電影。</span><span class="sxs-lookup"><span data-stu-id="02114-219">If there are no model errors, the movie is saved.</span></span>
+* <span data-ttu-id="45512-218">如果模型狀態中有錯誤 (例如 `ReleaseDate` 無法轉換為日期)，則會以提交的值顯示表單。</span><span class="sxs-lookup"><span data-stu-id="45512-218">If there are errors in the model state (for example, `ReleaseDate` cannot be converted to a date), the form is displayed with the submitted values.</span></span>
+* <span data-ttu-id="45512-219">如果沒有任何模型錯誤，則會儲存電影。</span><span class="sxs-lookup"><span data-stu-id="45512-219">If there are no model errors, the movie is saved.</span></span>
 
-<span data-ttu-id="02114-220">[索引]、[建立] 和 [刪除Razor ] 頁面中的 HTTP GET 方法會遵循類似的模式。</span><span class="sxs-lookup"><span data-stu-id="02114-220">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="02114-221">`OnPostAsync` [建立Razor ] 頁面中的 HTTP POST 方法，會遵循 [編輯`OnPostAsync` Razor ] 頁面中方法的類似模式。</span><span class="sxs-lookup"><span data-stu-id="02114-221">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
+<span data-ttu-id="45512-220">[索引]、[建立] 和 [刪除] 頁面中的 HTTP GET 方法會 Razor 遵循類似的模式。</span><span class="sxs-lookup"><span data-stu-id="45512-220">The HTTP GET methods in the Index, Create, and Delete Razor pages follow a similar pattern.</span></span> <span data-ttu-id="45512-221">[建立] 頁面中的 HTTP POST 方法，會 `OnPostAsync` Razor 遵循 `OnPostAsync` [編輯] 頁面中方法的類似模式 Razor 。</span><span class="sxs-lookup"><span data-stu-id="45512-221">The HTTP POST `OnPostAsync` method in the Create Razor Page follows a similar pattern to the `OnPostAsync` method in the Edit Razor Page.</span></span>
 
-<span data-ttu-id="02114-222">搜尋會在接下來的教學課程中新增。</span><span class="sxs-lookup"><span data-stu-id="02114-222">Search is added in the next tutorial.</span></span>
+<span data-ttu-id="45512-222">搜尋會在接下來的教學課程中新增。</span><span class="sxs-lookup"><span data-stu-id="45512-222">Search is added in the next tutorial.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="02114-223">其他資源</span><span class="sxs-lookup"><span data-stu-id="02114-223">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="45512-223">其他資源</span><span class="sxs-lookup"><span data-stu-id="45512-223">Additional resources</span></span>
 
-* [<span data-ttu-id="02114-224">本教學課程的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="02114-224">YouTube version of this tutorial</span></span>](https://youtu.be/yLnnleREMtQ)
+* [<span data-ttu-id="45512-224">本教學課程的 YouTube 版本</span><span class="sxs-lookup"><span data-stu-id="45512-224">YouTube version of this tutorial</span></span>](https://youtu.be/yLnnleREMtQ)
 
 > [!div class="step-by-step"]
-> <span data-ttu-id="02114-225">[上一個：使用資料庫](xref:tutorials/razor-pages/sql)
-> [下一步：新增搜尋](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="02114-225">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
+> <span data-ttu-id="45512-225">[上一步：使用資料庫](xref:tutorials/razor-pages/sql) 
+> [下一步：新增搜尋](xref:tutorials/razor-pages/search)</span><span class="sxs-lookup"><span data-stu-id="45512-225">[Previous: Working with a database](xref:tutorials/razor-pages/sql)
 [Next: Add search](xref:tutorials/razor-pages/search)</span></span>
 
 ::: moniker-end

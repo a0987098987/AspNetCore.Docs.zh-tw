@@ -11,20 +11,20 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/simple
-ms.openlocfilehash: 4ec31354d7fe11af75fd3a0045b4045f83721cb5
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: b5f97038145ed479c315af50a35d6c64d85425a7
+ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84272121"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84652960"
 ---
-# <a name="simple-authorization-in-aspnet-core"></a><span data-ttu-id="045ce-103">ASP.NET Core 中的簡單授權</span><span class="sxs-lookup"><span data-stu-id="045ce-103">Simple authorization in ASP.NET Core</span></span>
+# <a name="simple-authorization-in-aspnet-core"></a><span data-ttu-id="55074-103">ASP.NET Core 中的簡單授權</span><span class="sxs-lookup"><span data-stu-id="55074-103">Simple authorization in ASP.NET Core</span></span>
 
 <a name="security-authorization-simple"></a>
 
-<span data-ttu-id="045ce-104">ASP.NET Core 中的授權是使用 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> 和其各種參數來控制。</span><span class="sxs-lookup"><span data-stu-id="045ce-104">Authorization in ASP.NET Core is controlled with <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> and its various parameters.</span></span> <span data-ttu-id="045ce-105">以最簡單的形式，將 `[Authorize]` 屬性套用至控制器、動作或 Razor 頁面，將對該元件的存取限制為任何已驗證的使用者。</span><span class="sxs-lookup"><span data-stu-id="045ce-105">In its simplest form, applying the `[Authorize]` attribute to a controller, action, or Razor Page, limits access to that component to any authenticated user.</span></span>
+<span data-ttu-id="55074-104">ASP.NET Core 中的授權是使用 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> 和其各種參數來控制。</span><span class="sxs-lookup"><span data-stu-id="55074-104">Authorization in ASP.NET Core is controlled with <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> and its various parameters.</span></span> <span data-ttu-id="55074-105">以最簡單的形式，將 `[Authorize]` 屬性套用至控制器、動作或 Razor 頁面，將對該元件的存取限制為任何已驗證的使用者。</span><span class="sxs-lookup"><span data-stu-id="55074-105">In its simplest form, applying the `[Authorize]` attribute to a controller, action, or Razor Page, limits access to that component to any authenticated user.</span></span>
 
-<span data-ttu-id="045ce-106">例如，下列程式碼會將的存取許可權制 `AccountController` 為任何已驗證的使用者。</span><span class="sxs-lookup"><span data-stu-id="045ce-106">For example, the following code limits access to the `AccountController` to any authenticated user.</span></span>
+<span data-ttu-id="55074-106">例如，下列程式碼會將的存取許可權制 `AccountController` 為任何已驗證的使用者。</span><span class="sxs-lookup"><span data-stu-id="55074-106">For example, the following code limits access to the `AccountController` to any authenticated user.</span></span>
 
 ```csharp
 [Authorize]
@@ -40,7 +40,7 @@ public class AccountController : Controller
 }
 ```
 
-<span data-ttu-id="045ce-107">如果您想要將授權套用至某個動作，而不是控制器，請將 `AuthorizeAttribute` 屬性套用至動作本身：</span><span class="sxs-lookup"><span data-stu-id="045ce-107">If you want to apply authorization to an action rather than the controller, apply the `AuthorizeAttribute` attribute to the action itself:</span></span>
+<span data-ttu-id="55074-107">如果您想要將授權套用至某個動作，而不是控制器，請將 `AuthorizeAttribute` 屬性套用至動作本身：</span><span class="sxs-lookup"><span data-stu-id="55074-107">If you want to apply authorization to an action rather than the controller, apply the `AuthorizeAttribute` attribute to the action itself:</span></span>
 
 ```csharp
 public class AccountController : Controller
@@ -56,9 +56,9 @@ public class AccountController : Controller
 }
 ```
 
-<span data-ttu-id="045ce-108">現在只有經過驗證的使用者可以存取函式 `Logout` 。</span><span class="sxs-lookup"><span data-stu-id="045ce-108">Now only authenticated users can access the `Logout` function.</span></span>
+<span data-ttu-id="55074-108">現在只有經過驗證的使用者可以存取函式 `Logout` 。</span><span class="sxs-lookup"><span data-stu-id="55074-108">Now only authenticated users can access the `Logout` function.</span></span>
 
-<span data-ttu-id="045ce-109">您也可以使用 `AllowAnonymous` 屬性，允許未經驗證的使用者存取個別動作。</span><span class="sxs-lookup"><span data-stu-id="045ce-109">You can also use the `AllowAnonymous` attribute to allow access by non-authenticated users to individual actions.</span></span> <span data-ttu-id="045ce-110">例如：</span><span class="sxs-lookup"><span data-stu-id="045ce-110">For example:</span></span>
+<span data-ttu-id="55074-109">您也可以使用 `AllowAnonymous` 屬性，允許未經驗證的使用者存取個別動作。</span><span class="sxs-lookup"><span data-stu-id="55074-109">You can also use the `AllowAnonymous` attribute to allow access by non-authenticated users to individual actions.</span></span> <span data-ttu-id="55074-110">例如：</span><span class="sxs-lookup"><span data-stu-id="55074-110">For example:</span></span>
 
 ```csharp
 [Authorize]
@@ -75,7 +75,28 @@ public class AccountController : Controller
 }
 ```
 
-<span data-ttu-id="045ce-111">這只允許已驗證的使用者 `AccountController` 存取，除了可 `Login` 供所有人使用的動作（不論其已驗證或未驗證/匿名狀態為何）。</span><span class="sxs-lookup"><span data-stu-id="045ce-111">This would allow only authenticated users to the `AccountController`, except for the `Login` action, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.</span></span>
+<span data-ttu-id="55074-111">這只允許已驗證的使用者 `AccountController` 存取，除了可 `Login` 供所有人使用的動作（不論其已驗證或未驗證/匿名狀態為何）。</span><span class="sxs-lookup"><span data-stu-id="55074-111">This would allow only authenticated users to the `AccountController`, except for the `Login` action, which is accessible by everyone, regardless of their authenticated or unauthenticated / anonymous status.</span></span>
 
 > [!WARNING]
-> <span data-ttu-id="045ce-112">`[AllowAnonymous]`略過所有授權語句。</span><span class="sxs-lookup"><span data-stu-id="045ce-112">`[AllowAnonymous]` bypasses all authorization statements.</span></span> <span data-ttu-id="045ce-113">如果您結合 `[AllowAnonymous]` 和 any `[Authorize]` 屬性，則 `[Authorize]` 會忽略屬性。</span><span class="sxs-lookup"><span data-stu-id="045ce-113">If you combine `[AllowAnonymous]` and any `[Authorize]` attribute, the `[Authorize]` attributes are ignored.</span></span> <span data-ttu-id="045ce-114">例如，如果您在 `[AllowAnonymous]` 控制器層級套用，則 `[Authorize]` 會忽略相同控制器（或其中任何動作）上的任何屬性。</span><span class="sxs-lookup"><span data-stu-id="045ce-114">For example if you apply `[AllowAnonymous]` at the controller level, any `[Authorize]` attributes on the same controller (or on any action within it) is ignored.</span></span>
+> <span data-ttu-id="55074-112">`[AllowAnonymous]`略過所有授權語句。</span><span class="sxs-lookup"><span data-stu-id="55074-112">`[AllowAnonymous]` bypasses all authorization statements.</span></span> <span data-ttu-id="55074-113">如果您結合 `[AllowAnonymous]` 和 any `[Authorize]` 屬性，則 `[Authorize]` 會忽略屬性。</span><span class="sxs-lookup"><span data-stu-id="55074-113">If you combine `[AllowAnonymous]` and any `[Authorize]` attribute, the `[Authorize]` attributes are ignored.</span></span> <span data-ttu-id="55074-114">例如，如果您在 `[AllowAnonymous]` 控制器層級套用，則 `[Authorize]` 會忽略相同控制器（或其中任何動作）上的任何屬性。</span><span class="sxs-lookup"><span data-stu-id="55074-114">For example if you apply `[AllowAnonymous]` at the controller level, any `[Authorize]` attributes on the same controller (or on any action within it) is ignored.</span></span>
+
+<a name="aarp"></a>
+
+## <a name="authorize-attribute-and-razor-pages"></a><span data-ttu-id="55074-115">授權屬性和 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="55074-115">Authorize attribute and Razor Pages</span></span>
+
+<span data-ttu-id="55074-116"><xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>***無法***套用至 Razor 頁面處理常式。</span><span class="sxs-lookup"><span data-stu-id="55074-116">The <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> can ***not*** be applied to Razor Page handlers.</span></span> <span data-ttu-id="55074-117">例如， `[Authorize]` 無法套用至 `OnGet` 、 `OnPost` 或任何其他頁面處理常式。</span><span class="sxs-lookup"><span data-stu-id="55074-117">For example, `[Authorize]` can't be applied to `OnGet`, `OnPost`, or any other page handler.</span></span>
+
+<span data-ttu-id="55074-118">您可以使用下列兩種方法，將授權套用至 Razor 頁面處理常式方法：</span><span class="sxs-lookup"><span data-stu-id="55074-118">The following two approaches can be used to apply authorization to Razor Page handler methods:</span></span>
+
+* <span data-ttu-id="55074-119">針對需要不同授權的頁面處理常式，請使用個別頁面。</span><span class="sxs-lookup"><span data-stu-id="55074-119">Use separate pages for page handlers requiring different authorization.</span></span> <span data-ttu-id="55074-120">已將共用的內容移至一或多個[部分視圖](xref:mvc/views/partial)中。</span><span class="sxs-lookup"><span data-stu-id="55074-120">Moved shared content into one or more [partial views](xref:mvc/views/partial).</span></span> <span data-ttu-id="55074-121">可能的話，這是建議的方法。</span><span class="sxs-lookup"><span data-stu-id="55074-121">When possible, this is the recommended approach.</span></span>
+* <span data-ttu-id="55074-122">針對必須共用通用頁面的內容，撰寫會在 IAsyncPageFilter 中執行授權的篩選。 [OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A)。</span><span class="sxs-lookup"><span data-stu-id="55074-122">For content that must share a common page, write a filter that performs authorization as part of [IAsyncPageFilter.OnPageHandlerSelectionAsync](xref:Microsoft.AspNetCore.Mvc.Filters.IAsyncPageFilter.OnPageHandlerSelectionAsync%2A).</span></span> <span data-ttu-id="55074-123">[PageHandlerAuth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) GitHub 專案會示範這種方法：</span><span class="sxs-lookup"><span data-stu-id="55074-123">The [PageHandlerAuth](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth) GitHub project demonstrates this approach:</span></span>
+  * <span data-ttu-id="55074-124">[AuthorizePageHandlerFilter](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizePageHandlerFilter.cs)會實作為授權篩選準則：[!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs?name=snippet)]</span><span class="sxs-lookup"><span data-stu-id="55074-124">The [AuthorizePageHandlerFilter](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizePageHandlerFilter.cs) implements the authorization filter: [!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs?name=snippet)]</span></span>
+
+  * <span data-ttu-id="55074-125">[[AuthorizePageHandler]](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs#L16)屬性會套用至 `OnGet` 頁面處理常式：[!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs?name=snippet)]</span><span class="sxs-lookup"><span data-stu-id="55074-125">The [[AuthorizePageHandler]](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authorization/simple/samples/3.1/PageHandlerAuth/Pages/Index.cshtml.cs#L16) attribute is applied to the `OnGet` page handler: [!code-csharp[](~/security/authorization/simple/samples/3.1/PageHandlerAuth/AuthorizeIndexPageHandlerFilter.cs?name=snippet)]</span></span>
+
+> [!WARNING]
+> <span data-ttu-id="55074-126">[PageHandlerAuth](https://github.com/pranavkm/PageHandlerAuth)範例***方法不會：***</span><span class="sxs-lookup"><span data-stu-id="55074-126">The [PageHandlerAuth](https://github.com/pranavkm/PageHandlerAuth) sample approach does ***not***:</span></span>
+> * <span data-ttu-id="55074-127">以套用至頁面、頁面模型或全域的授權屬性進行撰寫。</span><span class="sxs-lookup"><span data-stu-id="55074-127">Compose with authorization attributes applied to the page, page model, or globally.</span></span> <span data-ttu-id="55074-128">當您有一或多個 `AuthorizeAttribute` `AuthorizeFilter` 實例同時套用至該頁面時，撰寫授權屬性會導致驗證和授權執行多次。</span><span class="sxs-lookup"><span data-stu-id="55074-128">Composing authorization attributes results in authentication and authorization executing multiple times when you have one more `AuthorizeAttribute` or `AuthorizeFilter` instances also applied to the page.</span></span>
+> * <span data-ttu-id="55074-129">與 ASP.NET Core 驗證和授權系統的其餘部分搭配使用。</span><span class="sxs-lookup"><span data-stu-id="55074-129">Work in conjunction with the rest of ASP.NET Core authentication and authorization system.</span></span> <span data-ttu-id="55074-130">您必須使用此方法來確認您的應用程式能夠正確運作。</span><span class="sxs-lookup"><span data-stu-id="55074-130">You must verify using this approach works correctly for your application.</span></span>
+
+<span data-ttu-id="55074-131">沒有計劃可支援 `AuthorizeAttribute` Razor 頁面處理常式。</span><span class="sxs-lookup"><span data-stu-id="55074-131">There are no plans to support the `AuthorizeAttribute` on Razor Page handlers.</span></span> 

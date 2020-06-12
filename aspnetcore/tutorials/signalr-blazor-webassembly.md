@@ -5,7 +5,7 @@ description: 建立使用 ASP.NET Core 搭配 WebAssembly 的聊天應用程式 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 06/10/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: d3ce11606b4193d5c2938b5996d8dcd1cb99a731
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 720f534426cc0e2b32778e49050c7f7d75ecd60d
+ms.sourcegitcommit: 6371114344a5f4fbc5d4a119b0be1ad3762e0216
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451884"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84679588"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>搭配 WebAssembly 使用 ASP.NET Core SignalR Blazor
 
@@ -93,7 +93,7 @@ ms.locfileid: "84451884"
 
 1. 在 Visual Studio Code 中，開啟應用程式的專案資料夾。
 
-1. 當對話方塊出現以新增資產以建立和偵錯工具時，請選取 **[是**]。 Visual Studio Code 會自動新增*vscode*資料夾，其中包含產生的*啟動 json*和工作 *. json*檔案。
+1. 當對話方塊出現以新增資產以建立和偵錯工具時，請選取 **[是**]。 Visual Studio Code 會自動新增*vscode*資料夾，其中包含*在*檔案上產生的launch.js和*tasks.js* 。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -103,7 +103,7 @@ ms.locfileid: "84451884"
 
 1. 在提要欄位中，選取 [ **Web 和主控台**  >  **應用程式**]。
 
-1. 選擇 [ ** Blazor WebAssembly 應用程式**] 範本。 選取 [下一步]。
+1. 選擇 [ ** Blazor WebAssembly 應用程式**] 範本。 選取 [下一步] 。
 
    確認下列設定：
 
@@ -112,7 +112,7 @@ ms.locfileid: "84451884"
 
    選取 [**主控 ASP.NET Core** ] 核取方塊。
 
-   選取 [下一步]。
+   選取 [下一步] 。
 
 1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `BlazorSignalRApp` 。 選取 [建立]。
 
@@ -230,7 +230,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-1. 當 VS Code 提供來建立伺服器應用程式的啟動設定檔（*. vscode/啟動 json*）時， `program` 專案會顯示如下，以指向應用程式的元件（ `{APPLICATION NAME}.Server.dll` ）：
+1. 當 VS Code 提供來建立伺服器應用程式的啟動設定檔（*vscode/launch.js*）時， `program` 專案會顯示如下，以指向應用程式的元件（ `{APPLICATION NAME}.Server.dll` ）：
 
    ```json
    "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/{APPLICATION NAME}.Server.dll"
@@ -296,3 +296,4 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:signalr/introduction>
+* [SignalR用於驗證的跨原始來源協調](xref:blazor/hosting-model-configuration#signalr-cross-origin-negotiation-for-authentication)

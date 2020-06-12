@@ -5,7 +5,7 @@ description: 瞭解 Blazor 主控模型設定，包括如何將元件整合 Razo
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2020
+ms.date: 06/10/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-model-configuration
-ms.openlocfilehash: e3b8b91a570210e77f307c49f7be21eeab714daa
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 3cef67806ce0e2e045122bdc962e93795be68572
+ms.sourcegitcommit: 6371114344a5f4fbc5d4a119b0be1ad3762e0216
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84355106"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84679575"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -36,7 +36,7 @@ ms.locfileid: "84355106"
 
 針對在本機執行的獨立應用程式，開發伺服器會新增 `blazor-environment` 標頭以指定開發環境。 若要指定其他裝載環境的環境，請新增 `blazor-environment` 標頭。
 
-在 IIS 的下列範例中，將自訂標頭加入至*已發佈的 web.config 檔案*。 Web.config*檔案*位於*bin/RELEASE/{TARGET FRAMEWORK}/publish*資料夾中：
+在 IIS 的下列範例中，將自訂標頭加入至已發佈的*web.config*檔案。 *web.config*檔案位於*bin/RELEASE/{TARGET FRAMEWORK}/publish*資料夾中：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -55,7 +55,7 @@ ms.locfileid: "84355106"
 ```
 
 > [!NOTE]
-> 若要使用 IIS 的自訂*web.config*檔案，而該檔案不會在應用程式發行至*發行*資料夾時遭到覆寫，請參閱 <xref:host-and-deploy/blazor/webassembly#use-a-custom-webconfig> 。
+> 若要使用 IIS 的自訂*web.config*檔案，而該檔案不會在應用程式發佈至*發行*資料夾時遭到覆寫，請參閱 <xref:host-and-deploy/blazor/webassembly#use-a-custom-webconfig> 。
 
 藉由插入和讀取屬性，在元件中取得應用程式的環境 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment> ：
 
@@ -104,9 +104,9 @@ if (builder.HostEnvironment.IsEnvironment("Custom"))
 BlazorWebAssembly 會從載入設定：
 
 * 應用程式佈建檔案（預設為）：
-  * *wwwroot/appsettings. json*
+  * *wwwroot/appsettings.js開啟*
   * *wwwroot/appsettings。{環境}. json*
-* 應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。 並非所有提供者都適用于 Blazor WebAssembly apps。 澄清 Blazor [ Blazor WASM （dotnet/AspNetCore #18134）的設定提供者](https://github.com/dotnet/AspNetCore.Docs/issues/18134)，即可追蹤支援 WebAssembly 的提供者。
+* 應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。 並非所有提供者都適用于 Blazor WebAssembly apps。 澄清 Blazor [ Blazor WASM （dotnet/AspNetCore.Doc#18134）的設定提供者](https://github.com/dotnet/AspNetCore.Docs/issues/18134)，即可追蹤支援 WebAssembly 的提供者。
 
 > [!WARNING]
 > Blazor使用者可以看到 WebAssembly 應用程式中的設定。 **請勿在設定中儲存應用程式秘密或認證。**
@@ -115,7 +115,7 @@ BlazorWebAssembly 會從載入設定：
 
 #### <a name="app-settings-configuration"></a>應用程式設定
 
-*wwwroot/appsettings. json*：
+*wwwroot/appsettings.js開啟*：
 
 ```json
 {
@@ -190,7 +190,7 @@ builder.Configuration.Add(memoryConfig);
 
 若要將*wwwroot*資料夾中的其他設定檔讀取到設定中，請使用 <xref:System.Net.Http.HttpClient> 來取得檔案的內容。 使用此方法時，現有的 <xref:System.Net.Http.HttpClient> 服務註冊可以使用已建立的本機用戶端來讀取檔案，如下列範例所示：
 
-*wwwroot/cars*：
+*wwwroot/cars.js開啟*：
 
 ```json
 {
@@ -220,7 +220,7 @@ builder.Configuration.AddJsonStream(stream);
 
 #### <a name="authentication-configuration"></a>驗證設定
 
-*wwwroot/appsettings. json*：
+*wwwroot/appsettings.js開啟*：
 
 ```json
 {
@@ -240,13 +240,13 @@ builder.Services.AddOidcAuthentication(options =>
 
 #### <a name="logging-configuration"></a>記錄設定
 
-新增適用于[Microsoft Extensions](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Configuration/)的套件參考。設定：
+新增[Microsoft.Extensions.Logging.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Configuration/)的套件參考：
 
 ```xml
 <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="{VERSION}" />
 ```
 
-*wwwroot/appsettings. json*：
+*wwwroot/appsettings.js開啟*：
 
 ```json
 {
@@ -284,13 +284,44 @@ var hostname = builder.Configuration["HostName"];
 系統會快取設定檔以供離線使用。 使用[漸進式 Web 應用程式（pwa）](xref:blazor/progressive-web-app)，您只能在建立新的部署時更新設定檔。 在部署之間編輯設定檔沒有任何作用，因為：
 
 * 使用者有檔案的快取版本，這些檔案會繼續使用。
-* PWA 的*service-worker*和*service-worker-assets*檔案必須在編譯時重建，在使用者下一次線上流覽應用程式時，該應用程式會發出通知。
+* PWA 的*service-worker.js*和*service-worker-assets.js*檔案必須在編譯時重建，這會在使用者下一次線上流覽應用程式，以重新部署應用程式。
 
 如需 Pwa 如何處理背景更新的詳細資訊，請參閱 <xref:blazor/progressive-web-app#background-updates> 。
 
 ### <a name="logging"></a>記錄
 
 如需 Blazor WebAssembly 記錄支援的詳細資訊，請參閱 <xref:fundamentals/logging/index#create-logs-in-blazor> 。
+
+### <a name="signalr-cross-origin-negotiation-for-authentication"></a>SignalR用於驗證的跨原始來源協調
+
+若要設定 SignalR 的基礎用戶端來傳送認證，例如 cookie 或 HTTP 驗證標頭：
+
+* 用 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A> 來設定 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.BrowserRequestCredentials.Include> 跨原始來源[提取](https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch)要求：
+
+  ```csharp
+  public class IncludeRequestCredentialsMessagHandler : DelegatingHandler
+  {
+      protected override Task<HttpResponseMessage> SendAsync(
+          HttpRequestMessage request, CancellationToken cancellationToken)
+      {
+          request.SetBrowserRequestCredentials(BrowserRequestCredentials.Include);
+          return base.SendAsync(request, cancellationToken);
+      }
+  }
+  ```
+
+* 將指派給 <xref:System.Net.Http.HttpMessageHandler> <xref:Microsoft.AspNetCore.Http.Connections.Client.HttpConnectionOptions.HttpMessageHandlerFactory> 選項：
+
+  ```csharp
+  var client = new HubConnectionBuilder()
+      .WithUrl(new Uri("http://signalr.example.com"), options =>
+      {
+          options.HttpMessageHandlerFactory = innerHandler => 
+              new IncludeRequestCredentialsMessagHandler { InnerHandler = innerHandler };
+      }).Build();
+  ```
+
+如需詳細資訊，請參閱 <xref:signalr/configuration#configure-additional-options> 。
 
 ## <a name="blazor-server"></a>Blazor伺服器
 
@@ -334,7 +365,7 @@ Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，�
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | 描述 |
+| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | Description |
 | --- | --- |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |

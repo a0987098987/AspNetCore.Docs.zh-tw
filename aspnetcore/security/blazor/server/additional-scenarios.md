@@ -5,7 +5,7 @@ description: 瞭解如何設定 Blazor 伺服器以進行其他安全性案例�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 06/04/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,22 +13,22 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/server/additional-scenarios
-ms.openlocfilehash: f172df7f2333fd79ba175ec8a3a6925ec07f1113
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 159d418a78caa3954294ad0a1067654d895147f7
+ms.sourcegitcommit: 6371114344a5f4fbc5d4a119b0be1ad3762e0216
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "83851521"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84679666"
 ---
-# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a><span data-ttu-id="dfdce-103">ASP.NET Core Blazor Server 其他安全性案例</span><span class="sxs-lookup"><span data-stu-id="dfdce-103">ASP.NET Core Blazor Server additional security scenarios</span></span>
+# <a name="aspnet-core-blazor-server-additional-security-scenarios"></a><span data-ttu-id="351f8-103">ASP.NET Core Blazor Server 其他安全性案例</span><span class="sxs-lookup"><span data-stu-id="351f8-103">ASP.NET Core Blazor Server additional security scenarios</span></span>
 
-<span data-ttu-id="dfdce-104">By [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="dfdce-104">By [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
+<span data-ttu-id="351f8-104">By [Javier Calvarro Nelson](https://github.com/javiercn)</span><span class="sxs-lookup"><span data-stu-id="351f8-104">By [Javier Calvarro Nelson](https://github.com/javiercn)</span></span>
 
-## <a name="pass-tokens-to-a-blazor-server-app"></a><span data-ttu-id="dfdce-105">將權杖傳遞至 Blazor 伺服器應用程式</span><span class="sxs-lookup"><span data-stu-id="dfdce-105">Pass tokens to a Blazor Server app</span></span>
+## <a name="pass-tokens-to-a-blazor-server-app"></a><span data-ttu-id="351f8-105">將權杖傳遞至 Blazor 伺服器應用程式</span><span class="sxs-lookup"><span data-stu-id="351f8-105">Pass tokens to a Blazor Server app</span></span>
 
-<span data-ttu-id="dfdce-106">您 Razor Blazor 可以使用本節所述的方法，將伺服器應用程式中元件外部可用的權杖傳遞給元件。</span><span class="sxs-lookup"><span data-stu-id="dfdce-106">Tokens available outside of the Razor components in a Blazor Server app can be passed to components with the approach described in this section.</span></span> <span data-ttu-id="dfdce-107">如需範例程式碼，包括完整的 `Startup.ConfigureServices` 範例，請參閱將[權杖傳遞給伺服器端 Blazor 應用程式](https://github.com/javiercn/blazor-server-aad-sample)。</span><span class="sxs-lookup"><span data-stu-id="dfdce-107">For sample code, including a complete `Startup.ConfigureServices` example, see the [Passing tokens to a server-side Blazor application](https://github.com/javiercn/blazor-server-aad-sample).</span></span>
+<span data-ttu-id="351f8-106">您 Razor Blazor 可以使用本節所述的方法，將伺服器應用程式中元件外部可用的權杖傳遞給元件。</span><span class="sxs-lookup"><span data-stu-id="351f8-106">Tokens available outside of the Razor components in a Blazor Server app can be passed to components with the approach described in this section.</span></span> <span data-ttu-id="351f8-107">如需範例程式碼，包括完整的 `Startup.ConfigureServices` 範例，請參閱將[權杖傳遞給伺服器端 Blazor 應用程式](https://github.com/javiercn/blazor-server-aad-sample)。</span><span class="sxs-lookup"><span data-stu-id="351f8-107">For sample code, including a complete `Startup.ConfigureServices` example, see the [Passing tokens to a server-side Blazor application](https://github.com/javiercn/blazor-server-aad-sample).</span></span>
 
-<span data-ttu-id="dfdce-108">驗證 Blazor 伺服器應用程式的方式與一般 Razor 頁面或 MVC 應用程式一樣。</span><span class="sxs-lookup"><span data-stu-id="dfdce-108">Authenticate the Blazor Server app as you would with a regular Razor Pages or MVC app.</span></span> <span data-ttu-id="dfdce-109">布建權杖並將其儲存至驗證 cookie。</span><span class="sxs-lookup"><span data-stu-id="dfdce-109">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="dfdce-110">例如：</span><span class="sxs-lookup"><span data-stu-id="dfdce-110">For example:</span></span>
+<span data-ttu-id="351f8-108">驗證 Blazor 伺服器應用程式的方式與一般 Razor 頁面或 MVC 應用程式一樣。</span><span class="sxs-lookup"><span data-stu-id="351f8-108">Authenticate the Blazor Server app as you would with a regular Razor Pages or MVC app.</span></span> <span data-ttu-id="351f8-109">布建權杖並將其儲存至驗證 cookie。</span><span class="sxs-lookup"><span data-stu-id="351f8-109">Provision and save the tokens to the authentication cookie.</span></span> <span data-ttu-id="351f8-110">例如：</span><span class="sxs-lookup"><span data-stu-id="351f8-110">For example:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -46,7 +46,7 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options =
 });
 ```
 
-<span data-ttu-id="dfdce-111">定義一個類別，以使用存取和重新整理權杖來傳入初始應用程式狀態：</span><span class="sxs-lookup"><span data-stu-id="dfdce-111">Define a class to pass in the initial app state with the access and refresh tokens:</span></span>
+<span data-ttu-id="351f8-111">定義一個類別，以使用存取和重新整理權杖來傳入初始應用程式狀態：</span><span class="sxs-lookup"><span data-stu-id="351f8-111">Define a class to pass in the initial app state with the access and refresh tokens:</span></span>
 
 ```csharp
 public class InitialApplicationState
@@ -56,7 +56,7 @@ public class InitialApplicationState
 }
 ```
 
-<span data-ttu-id="dfdce-112">定義可在應用程式內使用的**範圍**權杖提供者服務， Blazor 以從相依性[插入（DI）](xref:blazor/dependency-injection)解析權杖：</span><span class="sxs-lookup"><span data-stu-id="dfdce-112">Define a **scoped** token provider service that can be used within the Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/dependency-injection):</span></span>
+<span data-ttu-id="351f8-112">定義可在應用程式內使用的**範圍**權杖提供者服務， Blazor 以從相依性[插入（DI）](xref:blazor/dependency-injection)解析權杖：</span><span class="sxs-lookup"><span data-stu-id="351f8-112">Define a **scoped** token provider service that can be used within the Blazor app to resolve the tokens from [dependency injection (DI)](xref:blazor/dependency-injection):</span></span>
 
 ```csharp
 public class TokenProvider
@@ -66,7 +66,7 @@ public class TokenProvider
 }
 ```
 
-<span data-ttu-id="dfdce-113">在中 `Startup.ConfigureServices` ，為新增服務：</span><span class="sxs-lookup"><span data-stu-id="dfdce-113">In `Startup.ConfigureServices`, add services for:</span></span>
+<span data-ttu-id="351f8-113">在中 `Startup.ConfigureServices` ，為新增服務：</span><span class="sxs-lookup"><span data-stu-id="351f8-113">In `Startup.ConfigureServices`, add services for:</span></span>
 
 * `IHttpClientFactory`
 * `TokenProvider`
@@ -76,7 +76,7 @@ services.AddHttpClient();
 services.AddScoped<TokenProvider>();
 ```
 
-<span data-ttu-id="dfdce-114">在 *_Host 的 cshtml*檔案中，建立和實例， `InitialApplicationState` 並將它當做參數傳遞給應用程式：</span><span class="sxs-lookup"><span data-stu-id="dfdce-114">In the *_Host.cshtml* file, create and instance of `InitialApplicationState` and pass it as a parameter to the app:</span></span>
+<span data-ttu-id="351f8-114">在 *_Host 的 cshtml*檔案中，建立和實例， `InitialApplicationState` 並將它當做參數傳遞給應用程式：</span><span class="sxs-lookup"><span data-stu-id="351f8-114">In the *_Host.cshtml* file, create and instance of `InitialApplicationState` and pass it as a parameter to the app:</span></span>
 
 ```cshtml
 @using Microsoft.AspNetCore.Authentication
@@ -97,7 +97,7 @@ services.AddScoped<TokenProvider>();
 </app>
 ```
 
-<span data-ttu-id="dfdce-115">在 `App` 元件（*razor*）中，解析服務，並使用參數中的資料進行初始化：</span><span class="sxs-lookup"><span data-stu-id="dfdce-115">In the `App` component (*App.razor*), resolve the service and initialize it with the data from the parameter:</span></span>
+<span data-ttu-id="351f8-115">在 `App` 元件（*razor*）中，解析服務，並使用參數中的資料進行初始化：</span><span class="sxs-lookup"><span data-stu-id="351f8-115">In the `App` component (*App.razor*), resolve the service and initialize it with the data from the parameter:</span></span>
 
 ```razor
 @inject TokenProvider TokenProvider
@@ -118,7 +118,7 @@ services.AddScoped<TokenProvider>();
 }
 ```
 
-<span data-ttu-id="dfdce-116">在提出安全 API 要求的服務中，插入權杖提供者，並取出權杖以呼叫 API：</span><span class="sxs-lookup"><span data-stu-id="dfdce-116">In the service that makes a secure API request, inject the token provider and retrieve the token to call the API:</span></span>
+<span data-ttu-id="351f8-116">在提出安全 API 要求的服務中，插入權杖提供者，並取出權杖以呼叫 API：</span><span class="sxs-lookup"><span data-stu-id="351f8-116">In the service that makes a secure API request, inject the token provider and retrieve the token to call the API:</span></span>
 
 ```csharp
 public class WeatherForecastService
@@ -148,9 +148,21 @@ public class WeatherForecastService
 }
 ```
 
-## <a name="use-open-id-connect-oidc-v20-endpoints"></a><span data-ttu-id="dfdce-117">使用 Open ID Connect （OIDC） v2.0 端點</span><span class="sxs-lookup"><span data-stu-id="dfdce-117">Use Open ID Connect (OIDC) v2.0 endpoints</span></span>
+## <a name="set-the-authentication-scheme"></a><span data-ttu-id="351f8-117">設定驗證配置</span><span class="sxs-lookup"><span data-stu-id="351f8-117">Set the authentication scheme</span></span>
 
-<span data-ttu-id="dfdce-118">驗證程式庫和 Blazor 範本會使用 OPEN ID Connect （OIDC） v1.0 端點。</span><span class="sxs-lookup"><span data-stu-id="dfdce-118">The authentication library and Blazor templates use Open ID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="dfdce-119">若要使用 v2.0 端點，請 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> 在中設定選項 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> ：</span><span class="sxs-lookup"><span data-stu-id="dfdce-119">To use a v2.0 endpoint, configure the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> option in the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
+<span data-ttu-id="351f8-118">對於使用多個驗證中介軟體，因而有多個驗證配置的應用程式，使用的配置 Blazor 可以在的端點設定中明確設定 `Startup.Configure` 。</span><span class="sxs-lookup"><span data-stu-id="351f8-118">For an app that uses more than one Authentication Middleware and thus has more than one authentication scheme, the scheme that Blazor uses can be explicitly set in the endpoint configuration of `Startup.Configure`.</span></span> <span data-ttu-id="351f8-119">下列範例會設定 Azure Active Directory 配置：</span><span class="sxs-lookup"><span data-stu-id="351f8-119">The following example sets the Azure Active Directory scheme:</span></span>
+
+```csharp
+endpoints.MapBlazorHub().RequireAuthorization(
+    new AuthorizeAttribute 
+    {
+        AuthenticationSchemes = AzureADDefaults.AuthenticationScheme
+    });
+```
+
+## <a name="use-open-id-connect-oidc-v20-endpoints"></a><span data-ttu-id="351f8-120">使用 Open ID Connect （OIDC） v2.0 端點</span><span class="sxs-lookup"><span data-stu-id="351f8-120">Use Open ID Connect (OIDC) v2.0 endpoints</span></span>
+
+<span data-ttu-id="351f8-121">驗證程式庫和 Blazor 範本會使用 OPEN ID Connect （OIDC） v1.0 端點。</span><span class="sxs-lookup"><span data-stu-id="351f8-121">The authentication library and Blazor templates use Open ID Connect (OIDC) v1.0 endpoints.</span></span> <span data-ttu-id="351f8-122">若要使用 v2.0 端點，請 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> 在中設定選項 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> ：</span><span class="sxs-lookup"><span data-stu-id="351f8-122">To use a v2.0 endpoint, configure the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority?displayProperty=nameWithType> option in the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
 
 ```csharp
 services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, 
@@ -160,7 +172,7 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
     }
 ```
 
-<span data-ttu-id="dfdce-120">或者，您也可以在應用程式設定（*appsettings*）檔案中進行設定：</span><span class="sxs-lookup"><span data-stu-id="dfdce-120">Alternatively, the setting can be made in the app settings (*appsettings.json*) file:</span></span>
+<span data-ttu-id="351f8-123">或者，您也可以在應用程式設定（*appsettings.js開啟*）檔案中進行設定：</span><span class="sxs-lookup"><span data-stu-id="351f8-123">Alternatively, the setting can be made in the app settings (*appsettings.json*) file:</span></span>
 
 ```json
 {
@@ -171,12 +183,12 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
 }
 ```
 
-<span data-ttu-id="dfdce-121">如果在區段上對授權單位的追蹤不適合應用程式的 OIDC 提供者（例如使用非 AAD 提供者），請 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 直接設定屬性。</span><span class="sxs-lookup"><span data-stu-id="dfdce-121">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="dfdce-122">請在 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> 應用程式佈建檔中，以金鑰設定或的屬性 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 。</span><span class="sxs-lookup"><span data-stu-id="dfdce-122">Either set the property in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> or in the app settings file with the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> key.</span></span>
+<span data-ttu-id="351f8-124">如果在區段上對授權單位的追蹤不適合應用程式的 OIDC 提供者（例如使用非 AAD 提供者），請 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 直接設定屬性。</span><span class="sxs-lookup"><span data-stu-id="351f8-124">If tacking on a segment to the authority isn't appropriate for the app's OIDC provider, such as with non-AAD providers, set the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> property directly.</span></span> <span data-ttu-id="351f8-125">請在 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> 應用程式佈建檔中，以金鑰設定或的屬性 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 。</span><span class="sxs-lookup"><span data-stu-id="351f8-125">Either set the property in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> or in the app settings file with the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> key.</span></span>
 
-### <a name="code-changes"></a><span data-ttu-id="dfdce-123">程式碼變更</span><span class="sxs-lookup"><span data-stu-id="dfdce-123">Code changes</span></span>
+### <a name="code-changes"></a><span data-ttu-id="351f8-126">程式碼變更</span><span class="sxs-lookup"><span data-stu-id="351f8-126">Code changes</span></span>
 
-* <span data-ttu-id="dfdce-124">針對 v2.0 端點，識別碼權杖中的宣告清單會變更。</span><span class="sxs-lookup"><span data-stu-id="dfdce-124">The list of claims in the ID token changes for v2.0 endpoints.</span></span> <span data-ttu-id="dfdce-125">如需詳細資訊，請參閱[為何要更新至 Microsoft 身分識別平臺（v2.0）？](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)</span><span class="sxs-lookup"><span data-stu-id="dfdce-125">For more information, see [Why update to Microsoft identity platform (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)</span></span> <span data-ttu-id="dfdce-126">在 Azure 檔中。</span><span class="sxs-lookup"><span data-stu-id="dfdce-126">in the Azure documentation.</span></span>
-* <span data-ttu-id="dfdce-127">因為在 v2.0 端點的範圍 Uri 中指定了資源，所以請移除 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> 中的屬性設定 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> ：</span><span class="sxs-lookup"><span data-stu-id="dfdce-127">Since resources are specified in scope URIs for v2.0 endpoints, remove the the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> property setting in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
+* <span data-ttu-id="351f8-127">針對 v2.0 端點，識別碼權杖中的宣告清單會變更。</span><span class="sxs-lookup"><span data-stu-id="351f8-127">The list of claims in the ID token changes for v2.0 endpoints.</span></span> <span data-ttu-id="351f8-128">如需詳細資訊，請參閱[為何要更新至 Microsoft 身分識別平臺（v2.0）？](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)</span><span class="sxs-lookup"><span data-stu-id="351f8-128">For more information, see [Why update to Microsoft identity platform (v2.0)?](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)</span></span> <span data-ttu-id="351f8-129">在 Azure 檔中。</span><span class="sxs-lookup"><span data-stu-id="351f8-129">in the Azure documentation.</span></span>
+* <span data-ttu-id="351f8-130">因為在 v2.0 端點的範圍 Uri 中指定了資源，所以請移除 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> 中的屬性設定 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions> ：</span><span class="sxs-lookup"><span data-stu-id="351f8-130">Since resources are specified in scope URIs for v2.0 endpoints, remove the the <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Resource?displayProperty=nameWithType> property setting in <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions>:</span></span>
 
   ```csharp
   services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme, options => 
@@ -207,4 +219,4 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
 }
 ```
 
-<span data-ttu-id="dfdce-128">您可以在 OIDC 提供者應用程式註冊描述中找到要使用的應用程式識別碼 URI。</span><span class="sxs-lookup"><span data-stu-id="dfdce-128">You can find the App ID URI to use in the OIDC provider app registration description.</span></span>
+<span data-ttu-id="351f8-131">您可以在 OIDC 提供者應用程式註冊描述中找到要使用的應用程式識別碼 URI。</span><span class="sxs-lookup"><span data-stu-id="351f8-131">You can find the App ID URI to use in the OIDC provider app registration description.</span></span>

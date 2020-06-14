@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/javascript-client
-ms.openlocfilehash: 4b3a4b2323b7f221d9cd1aab1c56d1d9828eb916
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: cb2b3ddc3eba2d6e1ea91c1e7f6715ffa9ad1b08
+ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106451"
+ms.lasthandoff: 06/13/2020
+ms.locfileid: "84756011"
 ---
 # <a name="aspnet-core-signalr-javascript-client"></a>ASP.NET Core SignalR JavaScript 用戶端
 
@@ -43,7 +43,7 @@ npm init -y
 npm install @microsoft/signalr
 ```
 
-npm 會在*node_modules \\ @microsoft\signalr\dist\browser *資料夾中安裝封裝內容。 在*wwwroot \\ lib*資料夾底下，建立名為*signalr*的新資料夾。 將*signalr*複製到*wwwroot\lib\signalr*資料夾。
+npm 會在*node_modules \\ @microsoft\signalr\dist\browser *資料夾中安裝封裝內容。 在*wwwroot \\ lib*資料夾底下，建立名為*signalr*的新資料夾。 將*signalr.js*檔案複製到*wwwroot\lib\signalr*資料夾。
 
 ::: moniker-end
 
@@ -54,7 +54,7 @@ npm init -y
 npm install @aspnet/signalr
 ```
 
-npm 會在*node_modules \\ @aspnet\signalr\dist\browser *資料夾中安裝封裝內容。 在*wwwroot \\ lib*資料夾底下，建立名為*signalr*的新資料夾。 將*signalr*複製到*wwwroot\lib\signalr*資料夾。
+npm 會在*node_modules \\ @aspnet\signalr\dist\browser *資料夾中安裝封裝內容。 在*wwwroot \\ lib*資料夾底下，建立名為*signalr*的新資料夾。 將*signalr.js*檔案複製到*wwwroot\lib\signalr*資料夾。
 
 ::: moniker-end
 
@@ -172,7 +172,7 @@ SignalR藉由比對和中定義的方法名稱和引數，來判斷要呼叫的�
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/chatHub")
+    .withUrl("/chathub")
     .withAutomaticReconnect()
     .build();
 ```
@@ -246,7 +246,7 @@ connection.onclose(error => {
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/chatHub")
+    .withUrl("/chathub")
     .withAutomaticReconnect([0, 0, 10000])
     .build();
 
@@ -269,7 +269,7 @@ const connection = new signalR.HubConnectionBuilder()
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/chatHub")
+    .withUrl("/chathub")
     .withAutomaticReconnect({
         nextRetryDelayInMilliseconds: retryContext => {
             if (retryContext.elapsedMilliseconds < 60000) {

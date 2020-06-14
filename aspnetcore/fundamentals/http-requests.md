@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/http-requests
-ms.openlocfilehash: ae33218d6944c62a08e677592ac0c66f9026b15f
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a54861945d97728336149d5ffb39952c3d61b7bd
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766546"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724259"
 ---
 # <a name="make-http-requests-using-ihttpclientfactory-in-aspnet-core"></a>在 ASP.NET Core 中使用 IHttpClientFactory 發出 HTTP 要求
 
@@ -189,6 +189,44 @@ public class ValuesController : ControllerBase
     }
 }
 ```
+
+## <a name="make-post-put-and-delete-requests"></a>進行 POST、PUT 和 DELETE 要求
+
+在上述範例中，所有 HTTP 要求都會使用 GET HTTP 指令動詞。 `HttpClient`也支援其他 HTTP 動詞命令，包括：
+
+* POST
+* PUT
+* 刪除
+* PATCH
+
+如需支援的 HTTP 動詞命令的完整清單，請參閱 <xref:System.Net.Http.HttpMethod> 。
+
+下列範例顯示如何提出 HTTP POST 要求：
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/TodoClient.cs?name=snippet_POST)]
+
+在上述程式碼中， `CreateItemAsync` 方法：
+
+* 使用將 `TodoItem` 參數序列化為 JSON `System.Text.Json` 。 這會使用的實例 <xref:System.Text.Json.JsonSerializerOptions> 來設定序列化進程。
+* 建立的實例 <xref:System.Net.Http.StringContent> ，以封裝序列化的 JSON，以便在 HTTP 要求的主體中傳送。
+* 呼叫 <xref:System.Net.Http.HttpClient.PostAsync%2A> ，將 JSON 內容傳送至指定的 URL。 這是新增至 HttpClient 的相對 URL [。 BaseAddress](xref:System.Net.Http.HttpClient.BaseAddress)。
+* <xref:System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode%2A>如果回應狀態碼未指出成功，呼叫會擲回例外狀況。
+
+`HttpClient`也支援其他類型的內容。 例如 <xref:System.Net.Http.MultipartContent> 和 <xref:System.Net.Http.StreamContent>。 如需支援內容的完整清單，請參閱 <xref:System.Net.Http.HttpContent> 。
+
+下列範例顯示 HTTP PUT 要求：
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/TodoClient.cs?name=snippet_PUT)]
+
+上述程式碼與 POST 範例非常類似。 `SaveItemAsync`方法會呼叫， <xref:System.Net.Http.HttpClient.PutAsync%2A> 而不是 `PostAsync` 。
+
+下列範例顯示 HTTP DELETE 要求：
+
+[!code-csharp[](http-requests/samples/3.x/HttpRequestsSample/Models/TodoClient.cs?name=snippet_DELETE)]
+
+在上述程式碼中， `DeleteItemAsync` 方法會呼叫 <xref:System.Net.Http.HttpClient.DeleteAsync%2A> 。 因為 HTTP DELETE 要求通常不會包含任何主體，所以 `DeleteAsync` 方法不會提供接受實例的多載 `HttpContent` 。
+
+若要深入瞭解如何搭配使用不同的 HTTP 動詞命令 `HttpClient` ，請參閱 <xref:System.Net.Http.HttpClient> 。
 
 ## <a name="outgoing-request-middleware"></a>外寄要求中介軟體
 

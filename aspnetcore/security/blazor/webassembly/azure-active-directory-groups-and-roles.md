@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/aad-groups-roles
-ms.openlocfilehash: 3ed06cca7e20da381b870e642a6c616b2578cd0a
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 87cdf02a6f6babc869d90658e6a7cd54db73bb68
+ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451871"
+ms.lasthandoff: 06/13/2020
+ms.locfileid: "84756024"
 ---
 # <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a>Azure AD 群組、系統管理角色和使用者定義的角色
 
@@ -164,7 +164,7 @@ builder.Services.AddAuthorizationCore(options =>
 </AuthorizeView>
 ```
 
-您可以使用 [ `[Authorize]` ] 屬性指示詞] （x： security/blazor/index # 授權-attribute）（），根據原則來存取整個元件 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ：
+您可以使用[ `[Authorize]` attribute](xref:security/blazor/index#authorize-attribute)指示詞（），根據原則來存取整個元件 <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ：
 
 ```razor
 @page "/"
@@ -246,7 +246,7 @@ builder.Services.AddMsalAuthentication(options =>
 此時，元件授權方法會正常運作。 元件中的任何授權機制都可以使用 `admin` 角色來授權使用者：
 
 * [AuthorizeView 元件](xref:security/blazor/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）
-* [ `[Authorize]` ] attribute 指示詞]（x： security/blazor/index # 授權-attribute）（ <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ）（範例： `@attribute [Authorize(Roles = "admin")]` ）
+* [ `[Authorize]` attribute](xref:security/blazor/index#authorize-attribute)指示詞（ <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ）（範例： `@attribute [Authorize(Roles = "admin")]` ）
 * 程式[邏輯](xref:security/blazor/index#procedural-logic)（範例： `if (user.IsInRole("admin")) { ... }` ）
 
   支援多個角色測試：
@@ -267,8 +267,8 @@ AAD 系統管理角色 | 物件識別碼
 應用程式管理員 | fa11557b-4f15-4ddd-85d5-313c7cd74047
 應用程式開發人員 | 68adcbb8-9504-44f6-89f2-5cd48dc74a2c
 驗證管理員 | 02d110a1-96b1-419e-af87-746461b60ed7
-Azure DevOps 系統管理員 | a5311ace-ca41-44cd-b833-8d22caa0b34f
-Azure 資訊保護系統管理員 | 18632dce-f9b5-4f01-abb5-37051f06860e
+Azure DevOps 管理員 | a5311ace-ca41-44cd-b833-8d22caa0b34f
+Azure 資訊保護管理員 | 18632dce-f9b5-4f01-abb5-37051f06860e
 B2C IEF 索引鍵集管理員 | 0c2e87e5-94f9-4adb-ae8c-bcafe11bd368
 B2C IEF 原則管理員 | bfcab36c-10c6-4b13-b63c-4d8b62c0c44e
 B2C 使用者流程管理員 | baa531b7-8cf0-44ad-8f98-eded88dae827
@@ -286,24 +286,24 @@ Dynamics 365 管理員 | f20a9cfa-9fdf-49a8-a977-1afe446a1d6e
 Exchange 系統管理員 | b2ec2cc0-d5c9-4864-ad9b-38dd9dba2652
 外部 Identity 提供者系統管理員 | febfaeb4-e478-407a-b4b3-f4d9716618a2
 全域管理員 | a45ba61b-44db-462c-924b-3b2719152588
-全域讀者 | f6903b21-6aba-4124-b44c-76671796b9d5
+全域讀取者 | f6903b21-6aba-4124-b44c-76671796b9d5
 群組管理員 | 158b3e5a-d89d-460b-92b5-3b34985f0197
 來賓邀請者 | 4c730a1d-cc22-44af-8f9f-4eec635c7502
 服務台管理員 | 108678c8-6628-44e1-8d01-caf598a6a5f5
-Intune 系統管理員 | 79950741-23fa-4189-b2cb-46640601c497
-Kaizala 系統管理員 | d6322af2-48e7-42e0-8c68-0bbe31af3412
+Intune 管理員 | 79950741-23fa-4189-b2cb-46640601c497
+Kaizala 管理員 | d6322af2-48e7-42e0-8c68-0bbe31af3412
 授權管理員 | 3355458a-e423-44bf-8b98-4ac5e572cea5
-訊息中心隱私權讀者 | 6395db95-9fb8-42b9-b1ed-30a2405eee6f
-訊息中心讀者 | fd5d37b8-4e24-434b-9e63-70ed3b759a16
-Office 應用程式系統管理員 | 5f3870cd-b042-4f93-86d7-c9d77c664dc7
+訊息中心隱私權讀取者 | 6395db95-9fb8-42b9-b1ed-30a2405eee6f
+訊息中心讀取者 | fd5d37b8-4e24-434b-9e63-70ed3b759a16
+Office 應用程式管理員 | 5f3870cd-b042-4f93-86d7-c9d77c664dc7
 密碼管理員 | 466e48b7-5d66-4ae5-8911-1a118de74941
-Power BI 系統管理員 | 984e83b8-8337-4255-91a1-acb663175ab4
-Power 平臺系統管理員 | 76d6f95e-9a15-4d7d-8d21-00de00faf9fd
-特殊許可權驗證管理員 | 0829f731-b46d-419f-9742-aeb122367d11
+Power BI 管理員 | 984e83b8-8337-4255-91a1-acb663175ab4
+Power Platform 管理員 | 76d6f95e-9a15-4d7d-8d21-00de00faf9fd
+特殊權限驗證管理員 | 0829f731-b46d-419f-9742-aeb122367d11
 特殊權限角色管理員 | f20a725a-d1c8-4107-83ea-1171c97d00c7
 報表讀者 | 54635450-e8ed-4f2d-9632-07db2517b4de
-搜尋系統管理員 | c770a2f1-c9ba-4e60-9176-9f52b1eb1a31
-搜尋編輯器 | 6a6858c6-5f0d-44ac-87c7-0190fbedd271
+搜尋管理員 | c770a2f1-c9ba-4e60-9176-9f52b1eb1a31
+搜尋編輯者 | 6a6858c6-5f0d-44ac-87c7-0190fbedd271
 安全性系統管理員 | 20fa50e3-6531-44d8-bd39-b251420568ad
 安全性操作員 | 43aae017-8e51-4188-91ab-e6debd572800
 安全性讀取者 | 45035cd3-fd97-4250-8197-3a53d3562d9b

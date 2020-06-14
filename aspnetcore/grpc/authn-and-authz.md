@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/authn-and-authz
-ms.openlocfilehash: f9d2e73f57d69e1eb5039019dc9e64193cf67820
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 61ddcdc75a627fe777fab88b41bdbc4c7f9be9f3
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105788"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723986"
 ---
 # <a name="authentication-and-authorization-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的驗證和授權
 
@@ -117,7 +117,7 @@ private static GrpcChannel CreateAuthenticatedChannel(string address)
 用戶端也可以提供用於驗證的用戶端憑證。 [憑證驗證](https://tools.ietf.org/html/rfc5246#section-7.4.4)會在 TLS 層級進行，長時間才會到達 ASP.NET Core。 當要求進入 ASP.NET Core 時，[用戶端憑證驗證封裝](xref:security/authentication/certauth)可讓您將憑證解析成 `ClaimsPrincipal` 。
 
 > [!NOTE]
-> 主機必須設定為接受用戶端憑證。 如需在 Kestrel、IIS 和 Azure 中接受用戶端憑證的資訊，請參閱[設定您的主機以要求憑證](xref:security/authentication/certauth#configure-your-host-to-require-certificates)。
+> 將伺服器設定為接受用戶端憑證。 如需在 Kestrel、IIS 和 Azure 中接受用戶端憑證的詳細資訊，請參閱 <xref:security/authentication/certauth#configure-your-server-to-require-certificates> 。
 
 在 .NET gRPC 用戶端中，會將用戶端憑證新增至 `HttpClientHandler` ，然後用來建立 gRPC 用戶端：
 

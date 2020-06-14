@@ -5,7 +5,7 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/14/2020
+ms.date: 06/11/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components
-ms.openlocfilehash: 59b0c51e0006db0eb748b14b82a114a8bad986e8
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 2a6de1a39737f98cb151a0556f36c223d86f9752
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105141"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84723947"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -88,7 +88,7 @@ Razor應用程式中的元件會 Blazor 廣泛使用 Razor 語法。 如果您�
 
 Blazor遵循 ASP.NET Core 應用程式在專案的[web 根目錄（wwwroot）資料夾](xref:fundamentals/index#web-root)下放置靜態資產的慣例。
 
-使用基底相對路徑（ `/` ）來參考靜態資產的 web 根目錄。 在下列範例中，*標誌 .png*實際上位於 *{PROJECT ROOT}/wwwroot/images*資料夾中：
+使用基底相對路徑（ `/` ）來參考靜態資產的 web 根目錄。 在下列範例中， *logo.png*實際上位於 *{PROJECT ROOT}/wwwroot/images*資料夾中：
 
 ```razor
 <img alt="Company logo" src="/images/logo.png" />
@@ -365,7 +365,7 @@ public class NotifierService
 * 在 [伺服器] 中 Blazor ，于註冊服務 `Startup.ConfigureServices` ：
 
   ```csharp
-  services.AddSingleton<NotifierService>();
+  services.AddScoped<NotifierService>();
   ```
 
 使用 `NotifierService` 來更新元件：

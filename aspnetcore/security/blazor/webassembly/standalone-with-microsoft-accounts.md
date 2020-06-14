@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: e4c49f899d5988dc42b16c16eb5114613c7204ba
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 113a0aaba89b90922a9ccd58da13aabeecec0081
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "83852334"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724311"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>Blazor使用 Microsoft 帳戶保護 ASP.NET Core WebAssembly 獨立應用程式
 
@@ -33,7 +33,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 提供應用程式的**名稱**（例如， ** Blazor 獨立 AAD Microsoft 帳戶**）。
 1. 在 [**支援的帳戶類型**] 中，選取 [**任何組織目錄中的帳戶**]。
 1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，應用程式的隨機產生埠可以在 [**調試**程式] 面板的 [屬性] 中找到。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 本主題稍後會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
-1. 停用**Permissions**[授與系統  >  **管理員收到給 openid 和 offline_access 許可權**] 核取方塊的許可權。
+1. 停用 **[授與系統**  >  **管理員同意 openid 和 offline_access 許可權**] 核取方塊。
 1. 選取 [註冊]。
 
 記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。
@@ -63,7 +63,7 @@ dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "commo
 建立應用程式之後，您應該能夠：
 
 * 使用 Microsoft 帳戶登入應用程式。
-* 要求 Microsoft Api 的存取權杖。 如需詳細資訊，請參閱：
+* 要求 Microsoft Api 的存取權杖。 如需詳細資訊，請參閱
   * [存取權杖範圍](#access-token-scopes)
   * [快速入門：設定應用程式以公開 Web api](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)。
 
@@ -95,7 +95,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 <xref:Microsoft.Extensions.DependencyInjection.MsalWebAssemblyServiceCollectionExtensions.AddMsalAuthentication%2A>方法會接受回呼來設定驗證應用程式所需的參數。 當您註冊應用程式時，可以從 AAD 設定取得設定應用程式所需的值。
 
-Configuration 是由*wwwroot/appsettings*檔案所提供：
+Configuration 是由*wwwroot/appsettings.json*檔案提供：
 
 ```json
 {

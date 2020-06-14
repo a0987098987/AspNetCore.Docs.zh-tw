@@ -11,12 +11,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: d5e0e3865702fe4e5cbe49e7f452f367a8a53de9
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 8d4488b3953a8c87033d3a092b656409a0c6a52d
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451741"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724363"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>ASP.NET Core 中的帳戶確認和密碼復原
 
@@ -38,7 +38,7 @@ ms.locfileid: "84451741"
 
 ::: moniker range="> aspnetcore-2.2"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [.NET Core 3.0 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -63,7 +63,7 @@ dotnet run
 
 在本教學課程中， [SendGrid](https://sendgrid.com)是用來傳送電子郵件。 您需要 SendGrid 帳戶和金鑰，才能傳送電子郵件。 您可以使用其他電子郵件提供者。 建議您使用 SendGrid 或其他電子郵件服務來傳送電子郵件。 SMTP 很容易保護和設定正確。
 
-SendGrid 帳戶我需要[新增寄件者](https://sendgrid.com/docs/ui/sending-email/senders/)。
+SendGrid 帳戶可能需要[新增寄件者](https://sendgrid.com/docs/ui/sending-email/senders/)。
 
 建立類別來提取安全的電子郵件金鑰。 針對此範例，請建立*Services/AuthMessageSenderOptions .cs*：
 
@@ -80,9 +80,9 @@ dotnet user-secrets set SendGridKey <key>
 Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-在 Windows 中，秘密管理員會將金鑰/值組儲存在目錄中的*秘密 json*檔案中 `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 。
+在 Windows 中，秘密管理員會將索引鍵/值組儲存在目錄中的檔案*secrets.js* `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 。
 
-不會加密*秘密 json*檔案的內容。 下列標記顯示秘密的*json*檔案。 已 `SendGridKey` 移除此值。
+檔案*上secrets.js*的內容不會加密。 下列標記顯示檔案*上的secrets.js* 。 已 `SendGridKey` 移除此值。
 
 ```json
 {
@@ -225,7 +225,7 @@ dotnet add package SendGrid
 
 ::: moniker range="> aspnetcore-2.0 < aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [.NET Core 2.2 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
 
@@ -286,9 +286,9 @@ C:/WebAppl>dotnet user-secrets set SendGridUser RickAndMSFT
 info: Successfully saved SendGridUser = RickAndMSFT to the secret store.
 ```
 
-在 Windows 中，秘密管理員會將金鑰/值組儲存在目錄中的*秘密 json*檔案中 `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 。
+在 Windows 中，秘密管理員會將索引鍵/值組儲存在目錄中的檔案*secrets.js* `%APPDATA%/Microsoft/UserSecrets/<WebAppName-userSecretsId>` 。
 
-不會加密*秘密 json*檔案的內容。 下列標記顯示秘密的*json*檔案。 已 `SendGridKey` 移除此值。
+檔案*上secrets.js*的內容不會加密。 下列標記顯示檔案*上的secrets.js* 。 已 `SendGridKey` 移除此值。
 
 ```json
 {

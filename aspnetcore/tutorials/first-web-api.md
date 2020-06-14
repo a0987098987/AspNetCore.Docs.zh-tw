@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: 2fcfd46057935cadac76c558a78729a1c096ffc0
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 71ab0fc0a679acf540fa53fa2a9c8ba893b34edf
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451812"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724350"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -44,17 +44,17 @@ ms.locfileid: "84451812"
 
 |API | 說明 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | 取得所有待辦事項 | 無 | 待辦事項的陣列|
-|`GET /api/TodoItems/{id}` | 依識別碼取得項目 | 無 | 待辦事項|
+|`GET /api/TodoItems` | 取得所有待辦事項 | None | 待辦事項的陣列|
+|`GET /api/TodoItems/{id}` | 依識別碼取得項目 | None | 待辦事項|
 |`POST /api/TodoItems` | 新增記錄 | 待辦事項 | 待辦事項 |
-|`PUT /api/TodoItems/{id}` | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
+|`PUT /api/TodoItems/{id}` | 更新現有的項目 &nbsp; | 待辦事項 | None |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | 刪除專案 &nbsp;&nbsp; | None | None|
 
 下圖顯示應用程式的設計。
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -112,7 +112,7 @@ ms.locfileid: "84451812"
 
   ![macOS API 範本選取專案](first-web-api-mac/_static/api_template.png)
 
-* 確認 [**目標 Framework** ] 已設定為 [ **.net Core 3.1**]。 選取 [下一步]。
+* 確認 [**目標 Framework** ] 已設定為 [ **.net Core 3.1**]。 選取 [下一步] 。
 
   ![macOS .NET Core 3.1 選項](first-web-api-mac/_static/api_31_config.png)
 
@@ -532,17 +532,17 @@ DTO 可用來：
 
 |API | 說明 | 要求本文 | 回應本文 |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | 取得所有待辦事項 | 無 | 待辦事項的陣列|
-|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | 無 | 待辦事項|
+|GET /api/TodoItems | 取得所有待辦事項 | None | 待辦事項的陣列|
+|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
 |POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
-|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
+|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | None |
 |刪除/api/TodoItems/{id} &nbsp;&nbsp; | 刪除專案 &nbsp;&nbsp; | None | None|
 
 下圖顯示應用程式的設計。
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -924,7 +924,7 @@ DTO 可用來：
 若要在本機測試 HTML 網頁，可能需要變更 ASP.NET Core 專案的啟動設定：
 
 * 開啟 *Properties\launchSettings.json*。
-* 請移除 `launchUrl` 屬性，以強制應用程式在*index. html*開啟 &mdash; 專案的預設檔案。
+* 移除 `launchUrl` 屬性，以強制應用程式在專案的預設檔案*index.html*開啟 &mdash; 。
 
 此範例會呼叫 Web API 的所有 CRUD 方法。 以下是關於呼叫 API 的說明。
 

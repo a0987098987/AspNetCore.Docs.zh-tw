@@ -1,12 +1,24 @@
 ---
-標題：「ASP.NET Core Blazor 的作者簡介：描述：」探索 ASP.NET Core Blazor ，這是在 ASP.NET Core 應用程式中使用 .net 建立互動式用戶端 web UI 的方式。
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: ASP.NET Core 簡介Blazor
+author: guardrex
+description: 探索 ASP.NET Core Blazor ，這是一種在 ASP.NET Core 應用程式中使用 .net 建立互動式用戶端 WEB UI 的方式。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc, seoapril2019
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: blazor/index
+ms.openlocfilehash: eb8a6d2ddbd3e8f61626566878a7af5f5a2525d8
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "83608183"
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>ASP.NET Core 簡介Blazor
 
@@ -30,7 +42,7 @@ Blazor是使用 .NET 建立互動式用戶端 web UI 的架構：
 * 使用 Windows、Linux 和 macOS 版的 Visual Studio 保持生產力。
 * 以常用的語言、架構和工具建置，不僅穩定、功能豐富，而且容易使用。
 
-## <a name="components"></a>單元
+## <a name="components"></a>元件
 
 Blazor應用程式是以*元件*為基礎。 中的元件 Blazor 是 UI 的元素，例如頁面、對話方塊或資料輸入表單。
 

@@ -1,63 +1,96 @@
 ---
-title: SignalR HubContext
+title: SignalRHubCoNtext
 author: bradygaster
-description: 了解如何使用 ASP.NET Core SignalR HubContext 服務來傳送通知給從中樞以外的用戶端。
+description: 瞭解如何使用 ASP.NET Core SignalR HubCoNtext 服務，將通知從中樞外部傳送到用戶端。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
-ms.date: 11/01/2018
+ms.date: 11/12/2019
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: signalr/hubcontext
-ms.openlocfilehash: 7ec52d4711fc191dcb83120cf54b1dc28c41f947
-ms.sourcegitcommit: 5b0eca8c21550f95de3bb21096bd4fd4d9098026
+ms.openlocfilehash: 336173866e9346d836bb31955644d07403fc238d
+ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2019
-ms.locfileid: "64894475"
+ms.lasthandoff: 06/13/2020
+ms.locfileid: "84756050"
 ---
-# <a name="send-messages-from-outside-a-hub"></a>傳送來自外部中樞訊息
+# <a name="send-messages-from-outside-a-hub"></a>從中樞外部傳送訊息
 
-藉由[Mikael 馬力](https://twitter.com/MikaelM_12)
+依[Mikael Mengistu](https://twitter.com/MikaelM_12)
 
-SignalR 中樞會將訊息傳送至用戶端連線到 SignalR 伺服器的核心概念。 您也可從您的應用程式使用中的其他地方將訊息傳送`IHubContext`服務。 這篇文章說明如何存取 SignalR`IHubContext`來傳送通知給從中樞以外的用戶端。
+SignalR中樞是核心的抽象概念，可將訊息傳送給連接到伺服器的用戶端 SignalR 。 也可以使用服務，從應用程式中的其他位置傳送訊息 `IHubContext` 。 本文說明如何存取 SignalR `IHubContext` ，以從中樞外部傳送通知給用戶端。
 
-[檢視或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/signalr/hubcontext/sample/) [（如何下載）](xref:index#how-to-download-a-sample)
 
-## <a name="get-an-instance-of-ihubcontext"></a>取得 IHubContext 的執行個體
+## <a name="get-an-instance-of-ihubcontext"></a>取得 IHubCoNtext 的實例
 
-在 ASP.NET Core SignalR 中，您可以存取的執行個體`IHubContext`透過相依性插入。 您可以插入的執行個體`IHubContext`至控制器、 中介軟體或其他的 DI 服務。 若要將訊息傳送至用戶端使用的執行個體。
+在 ASP.NET Core 中 SignalR ，您可以透過相依性插入來存取的實例 `IHubContext` 。 您可以將的實例插入 `IHubContext` 控制器、中介軟體或其他 DI 服務中。 使用實例可將訊息傳送至用戶端。
 
 > [!NOTE]
-> 這不同於 ASP.NET 4.x SignalR 用來提供存取權的 GlobalHost `IHubContext`。 ASP.NET Core 已不再需要這個全域的單一相依性插入架構。
+> 這與 ASP.NET 4.x 不同 SignalR ，後者使用 GlobalHost 來提供的存取權 `IHubContext` 。 ASP.NET Core 具有相依性插入架構，因此不需要此全域 singleton。
 
-### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>插入 IHubContext 控制器中的執行的個體
+### <a name="inject-an-instance-of-ihubcontext-in-a-controller"></a>在控制器中插入 IHubCoNtext 的實例
 
-您可以插入的執行個體`IHubContext`到控制器，以將它加入您的建構函式：
+您可以藉由將實例加入至您的函式，將其插入至 `IHubContext` 控制器：
 
 [!code-csharp[IHubContext](hubcontext/sample/Controllers/HomeController.cs?range=12-19,57)]
 
-現在，具有存取權的執行個體`IHubContext`，如同您之前參與中樞本身，您可以呼叫中樞方法。
+現在，有了實例的存取權 `IHubContext` ，您就可以呼叫中樞方法，就像您是在中樞本身一樣。
 
 [!code-csharp[IHubContext](hubcontext/sample/Controllers/HomeController.cs?range=21-25)]
 
-### <a name="get-an-instance-of-ihubcontext-in-middleware"></a>取得 IHubContext 的執行個體，在中介軟體
+### <a name="get-an-instance-of-ihubcontext-in-middleware"></a>取得中介軟體中的 IHubCoNtext 實例
 
-存取`IHubContext`內中介軟體管線就像這樣：
+存取 `IHubContext` 中介軟體管線內的，如下所示：
 
 ```csharp
 app.Use(async (context, next) =>
 {
     var hubContext = context.RequestServices
-                            .GetRequiredService<IHubContext<MyHub>>();
+                            .GetRequiredService<IHubContext<ChatHub>>();
     //...
+    
+    if (next != null)
+    {
+        await next.Invoke();
+    }
 });
 ```
 
 > [!NOTE]
-> 從呼叫中樞方法的時機，外部`Hub`類別，所以會沒有相關聯的引動過程的呼叫端。 因此，就沒有存取權`ConnectionId`， `Caller`，和`Others`屬性。
+> 從類別外部呼叫中樞方法時 `Hub` ，沒有與調用相關聯的呼叫端。 因此，沒有 `ConnectionId` 、和屬性的存取權 `Caller` `Others` 。
 
-### <a name="inject-a-strongly-typed-hubcontext"></a>插入的強型別 HubContext
+### <a name="get-an-instance-of-ihubcontext-from-ihost"></a>從 IHost 取得 IHubCoNtext 的實例
 
-若要插入的強型別 HubContext，請確定您的中樞繼承自`Hub<T>`。 將使用其插入`IHubContext<THub, T>`介面而非`IHubContext<THub>`。
+`IHubContext`從 web 主機存取，適用于整合 ASP.NET Core 以外的區域，例如，使用協力廠商相依性插入架構：
+
+```csharp
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var host = CreateHostBuilder(args).Build();
+            var hubContext = host.Services.GetService(typeof(IHubContext<ChatHub>));
+            host.Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder => {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
+```
+
+### <a name="inject-a-strongly-typed-hubcontext"></a>插入強型別 HubCoNtext
+
+若要插入強型別 HubCoNtext，請確定您的中樞繼承自 `Hub<T>` 。 使用 `IHubContext<THub, T>` 介面（而非）插入它 `IHubContext<THub>` 。
 
 ```csharp
 public class ChatController : Controller

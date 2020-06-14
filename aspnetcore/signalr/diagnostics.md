@@ -5,7 +5,7 @@ description: 瞭解如何從您的 ASP.NET Core 應用程式收集診斷資訊 S
 monikerRange: '>= aspnetcore-2.1'
 ms.author: anurse
 ms.custom: signalr
-ms.date: 06/08/2020
+ms.date: 06/12/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: 22e1d24bc9fed5fd8588c852e07f5ca935946596
-ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
+ms.openlocfilehash: d26bb71a8ae06764b58a094b28d5e6f9eb581ecd
+ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84507312"
+ms.lasthandoff: 06/13/2020
+ms.locfileid: "84755959"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>ASP.NET Core 中的記錄和診斷SignalR
 
@@ -38,7 +38,7 @@ SignalR會使用兩個記錄器類別：
 * `Microsoft.AspNetCore.SignalR`：適用于與中樞通訊協定相關的記錄、啟用中樞、叫用方法，以及其他中樞相關的活動。
 * `Microsoft.AspNetCore.Http.Connections`：適用于傳輸的相關記錄，例如 Websocket、長時間輪詢、伺服器傳送的事件，以及低層級的 SignalR 基礎結構。
 
-若要從啟用詳細記錄 SignalR ，請將 `Debug` 下列專案加入至中的子區段，以在*appsettings json*檔案中設定這兩個前置詞的層級 `LogLevel` `Logging` ：
+若要從啟用詳細記錄 SignalR ，請將 `Debug` 下列專案加入至中的子區段，以在檔案的*appsettings.js*中設定這兩個前置詞的層級 `LogLevel` `Logging` ：
 
 [!code-json[](diagnostics/logging-config.json?highlight=7-8)]
 
@@ -110,6 +110,8 @@ Visual Studio 會在 [**輸出**] 視窗中顯示記錄輸出。 選取 [ **ASP.
 > 用戶端記錄可能包含來自您應用程式的機密資訊。 **絕對不要**將未經處理的記錄從生產應用程式張貼到 GitHub 之類的公用論壇。
 
 若要從 .NET 用戶端取得記錄，您可以 `ConfigureLogging` 在上使用方法 `HubConnectionBuilder` 。 其運作方式與 `ConfigureLogging` 和上的方法相同 `WebHostBuilder` `HostBuilder` 。 您可以設定您在 ASP.NET Core 中使用的相同記錄提供者。 不過，您必須手動安裝並啟用個別記錄提供者的 NuGet 套件。
+
+若要將 .NET 用戶端記錄新增至 Blazor WebAssembly 應用程式，請參閱 <xref:fundamentals/logging/index#blazor-webassembly-signalr-net-client-logging> 。
 
 ### <a name="console-logging"></a>主控台記錄
 

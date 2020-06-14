@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 4511e253ea9487c5739162b9b0180e39eb3a1b9c
-ms.sourcegitcommit: 67eadd7bf28eae0b8786d85e90a7df811ffe5904
+ms.openlocfilehash: cf80f7009334f49d877d2bd296b512e23f7fded8
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84454606"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724246"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -557,3 +557,36 @@ namespace AspNetCoreCertificateAuthApi
     }
 }
 ```
+
+<a name="occ"></a>
+
+## <a name="optional-client-certificates"></a>選擇性用戶端憑證
+
+本節提供的資訊適用于必須使用憑證保護應用程式子集的應用程式。 例如， Razor 應用程式中的頁面或控制器可能需要用戶端憑證。 這會以用戶端憑證的形式呈現挑戰：
+  
+* 是 TLS 功能，不是 HTTP 功能。
+* 會針對每個連接進行協商，而且必須在連接開始時進行協商，才能使用任何 HTTP 資料。 在連接開始時，只會知道伺服器名稱指示（SNI） &dagger; 。 用戶端和伺服器憑證會在第一次要求連線之前進行協商，而要求通常無法重新協商。 HTTP/2 禁止重新協商。
+
+ASP.NET Core 5 preview 4 和更新版本為選用的用戶端憑證增加了更方便的支援。 如需詳細資訊，請參閱[選用憑證範例](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample)。
+
+下列方法支援選用的用戶端憑證：
+
+* 設定網域和子域的系結：
+  * 例如，在和上設定系 `contoso.com` 結 `myClient.contoso.com` 。 `contoso.com`主機不需要用戶端憑證，而是 `myClient.contoso.com` 。
+  * 如需詳細資訊，請參閱
+    * [Kestrel](/fundamentals/servers/kestrel)：
+      * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
+      * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>
+      * 注意 Kestrel 目前不支援一個系結上的多個 TLS 設定，您需要兩個具有唯一 Ip 或埠的系結。 請參閱https://github.com/dotnet/runtime/issues/31097
+    * IIS
+      * [裝載 IIS](xref:host-and-deploy/iis/index#create-the-iis-site)
+      * [在 IIS 上設定安全性](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#configure-ssl-settings-2)
+    * Http.Sys：[設定 Windows Server](xref:fundamentals/servers/httpsys#configure-windows-server)
+* 對於需要用戶端憑證且沒有此 web 應用程式的要求：
+  * 使用受用戶端憑證保護的子域重新導向至相同的頁面。
+  * 例如，將重新導向至 `myClient.contoso.com/requestedPage` 。 因為對的要求 `myClient.contoso.com/requestedPage` 是與不同的主機名稱 `contoso.com/requestedPage` ，用戶端會建立不同的連線，並提供用戶端憑證。
+  * 如需詳細資訊，請參閱 <xref:security/authorization/introduction> 。
+
+針對[此 GitHub 討論](https://github.com/dotnet/AspNetCore.Docs/issues/18720)問題中的選擇性用戶端憑證，留下問題、意見和其他意見反應。
+
+&dagger;伺服器名稱指示（SNI）是 TLS 延伸模組，可在 SSL 協調中包含虛擬網域。 這實際上表示虛擬功能變數名稱或主機名稱，可以用來識別網路端點。

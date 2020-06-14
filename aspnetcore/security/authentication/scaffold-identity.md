@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 116e5d27e7585e9168db433480c3a5e9d08379f3
-ms.sourcegitcommit: 67eadd7bf28eae0b8786d85e90a7df811ffe5904
+ms.openlocfilehash: 36afa8ece58843b434ebfba6305bffdb9eb9bca0
+ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84454654"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724285"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>IdentityASP.NET Core 專案中的 Scaffold
 
@@ -195,7 +195,7 @@ Identity會在*區域/ Identity /IdentityHostingStartup.cs*中設定。 如需�
 * 當驗證權杖已布建並儲存至驗證 cookie 時，可以將它們傳遞給元件。
 * Razor元件無法 `HttpContext` 直接使用，因此無法取得[反要求偽造（XSRF）權杖](xref:security/anti-request-forgery)，以在張貼到 Identity 的登出端點 `/Identity/Account/Logout` 。 XSRF token 可以傳遞給元件。
 
-如需詳細資訊，請參閱 <xref:security/blazor/server/index#pass-tokens-to-a-blazor-server-app> 。
+如需詳細資訊，請參閱 <xref:security/blazor/server/additional-scenarios#pass-tokens-to-a-blazor-server-app> 。
 
 在*Pages/_Host. cshtml*檔案中，在將它加入和類別之後，建立權杖 `InitialApplicationState` `TokenProvider` ：
 
@@ -229,7 +229,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 在 `Startup` 類別中：
 
 * 確認 Razor 已在中新增頁面服務 `Startup.ConfigureServices` 。
-* 如果使用[TokenProvider](xref:security/blazor/server/index#pass-tokens-to-a-blazor-server-app)，請註冊服務。
+* 如果使用[TokenProvider](xref:security/blazor/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)，請註冊服務。
 * `UseDatabaseErrorPage`針對開發環境，在的應用程式產生器上呼叫 `Startup.Configure` 。
 * `UseAuthentication` `UseAuthorization` 在之後呼叫和 `UseRouting` 。
 * 新增頁面的端點 Razor 。
@@ -253,7 +253,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 }
 ```
 
-將 `LoginDisplay` 元件（*LoginDisplay*）新增至應用程式的*共用*資料夾。 [TokenProvider 服務](xref:security/blazor/server/index#pass-tokens-to-a-blazor-server-app)會針對張貼至的登出端點的 HTML 表單，提供 XSRF token Identity ：
+將 `LoginDisplay` 元件（*LoginDisplay*）新增至應用程式的*共用*資料夾。 [TokenProvider 服務](xref:security/blazor/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)會針對張貼至的登出端點的 HTML 表單，提供 XSRF token Identity ：
 
 ```razor
 @using Microsoft.AspNetCore.Components.Authorization
@@ -398,7 +398,9 @@ cd RPauth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
 -->
-## <a name="disable-register-page"></a>停用註冊頁面
+## <a name="disable-a-page"></a>停用頁面
+
+本章節說明如何停用 [註冊] 頁面，但此方法可用來停用任何頁面。
 
 若要停用使用者註冊：
 
@@ -418,13 +420,13 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 * 批註外或移除*區域/ Identity /Pages/Account/Login.cshtml*的註冊連結
 
-```cshtml
-@*
-<p>
-    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-</p>
-*@
-```
+  ```cshtml
+  @*
+  <p>
+      <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+  </p>
+  *@
+  ```
 
 * 更新 [*區域/ Identity /Pages/Account/RegisterConfirmation* ] 頁面。
 
@@ -482,7 +484,7 @@ ASP.NET Core 2.1 和更新版本[提供 Identity ASP.NET Core](xref:security/aut
 
 雖然 scaffolder 會產生大部分必要的程式碼，但您必須更新您的專案，才能完成此流程。 本檔說明完成「基架構更新」所需的步驟 Identity 。
 
-Identity執行 scaffolder 時，會在專案目錄中建立*ScaffoldingReadme。* *ScaffoldingReadme .txt*檔案包含完成樣板更新所需的一般指示 Identity 。 本檔包含比*ScaffoldingReadme*更完整的指示。
+Identity執行 scaffolder 時，會在專案目錄中建立*ScaffoldingReadme.txt*檔案。 *ScaffoldingReadme.txt*檔案包含完成樣板更新所需需求的一般指示 Identity 。 本檔包含比*ScaffoldingReadme.txt*檔案更完整的指示。
 
 我們建議使用會顯示檔案差異的原始檔控制系統，並可讓您備份變更。 執行 scaffolder 後檢查變更 Identity 。
 

@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: 38a75e9577bab6bbdb5accf161659e8e301947b1
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: f2588665c26887a6e3864866425b887e97e656d5
+ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105931"
+ms.lasthandoff: 06/13/2020
+ms.locfileid: "84755868"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3.0 ASP.NET Core 的新功能
 
@@ -84,13 +84,13 @@ ASP.NET Core 3.0 中的 gRPC 功能包括：
 
 ## SignalR
 
-如需遷移指示，請參閱[更新程式 SignalR 代碼](xref:migration/22-to-30#signalr)。 SignalR現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft。](xref:migration/22-to-30#switch-to-newtonsoftjson) `Newtonsoft.Json`
+如需遷移指示，請參閱[更新程式 SignalR 代碼](xref:migration/22-to-30#signalr)。 SignalR現在會使用 `System.Text.Json` 來序列化/還原序列化 JSON 訊息。 如需還原為基礎之序列化程式的指示，請參閱[切換至 Newtonsoft.Js](xref:migration/22-to-30#switch-to-newtonsoftjson) `Newtonsoft.Json` 。
 
 在的 JavaScript 和 .NET 用戶端中 SignalR ，已新增支援以進行自動重新連接。 根據預設，用戶端會嘗試立即重新連線，並在2、10和30秒後重試（如有必要）。 如果用戶端成功重新連接，則會收到新的連線識別碼。 自動重新連線是加入宣告的：
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl("/chatHub")
+    .withUrl("/chathub")
     .withAutomaticReconnect()
     .build();
 ```
@@ -316,7 +316,7 @@ ASP.NET Core 3.0 現在會使用 <xref:System.Text.Json> JSON 序列化的預設
 * 已針對 UTF-8 文字進行優化。
 * 通常比更高 `Newtonsoft.Json` 的效能。
 
-若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft 以 json 為基礎的 json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。
+若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft.Js為基礎的 Json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。
 
 ## <a name="new-razor-directives"></a>新 Razor 指示詞
 
@@ -401,7 +401,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 Web UI 範本（[ Razor 頁面]、[具有控制器的 MVC] 和 [views]）已移除下列各項：
 
 * Cookie 同意 UI 已不再包含在內。 若要在 ASP.NET Core 3.0 範本產生的應用程式中啟用 cookie 同意功能，請參閱 <xref:security/gdpr> 。
-* 腳本和相關的靜態資產現在會當做本機檔案來參考，而不是使用 Cdn。 如需詳細資訊，請參閱[腳本和相關靜態資產現在會當做本機檔案參考，而不是根據目前的環境使用 cdn （aspnet/AspNetCore #14350）](https://github.com/dotnet/AspNetCore.Docs/issues/14350)。
+* 腳本和相關的靜態資產現在會當做本機檔案來參考，而不是使用 Cdn。 如需詳細資訊，請參閱[腳本和相關靜態資產現在會當做本機檔案參考，而不是根據目前的環境使用 cdn （aspnet/AspNetCore.Docs #14350）](https://github.com/dotnet/AspNetCore.Docs/issues/14350)。
 
 「角度」範本已更新為使用「角度8」。
 
@@ -495,7 +495,7 @@ app.UseEndpoints(endpoints =>
 
 .NET Core 3.0 引進了新的背景工作服務應用程式範本。 此範本提供在 .NET Core 中撰寫長時間執行服務的起點。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [.NET Core 背景工作角色做為 Windows 服務](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>
@@ -536,7 +536,7 @@ ASP.NET Core 3.0 包含許多增強功能，可減少記憶體使用量並改善
 
 從 ASP.NET Core 3.0 共用架構中移除的最顯著元件如下：
 
-* [Newtonsoft. Json](https://www.nuget.org/packages/Newtonsoft.Json/) （Json.NET）。 若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft 以 json 為基礎的 json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。 ASP.NET Core 3.0 引進 `System.Text.Json` 讀取和寫入 JSON。 如需詳細資訊，請參閱本檔中的[新 JSON 序列化](#new-json-serialization)。
+* [Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) （Json.NET）。 若要將 Json.NET 新增至 ASP.NET Core 3.0，請參閱[新增 Newtonsoft.Js為基礎的 Json 格式支援](xref:web-api/advanced/formatting#add-newtonsoftjson-based-json-format-support)。 ASP.NET Core 3.0 引進 `System.Text.Json` 讀取和寫入 JSON。 如需詳細資訊，請參閱本檔中的[新 JSON 序列化](#new-json-serialization)。
 * [Entity Framework Core](/ef/core/)
 
 如需從共用架構中移除之元件的完整清單，請參閱[從 3.0 AspNetCore 中移除的元件](https://github.com/dotnet/AspNetCore/issues/3755)。 如需這項變更動機的詳細資訊，請參閱[3.0 中 AspNetCore 應用程式的重大變更](https://github.com/aspnet/Announcements/issues/325)，以及[第一次介紹 ASP.NET Core 3.0](https://devblogs.microsoft.com/aspnet/a-first-look-at-changes-coming-in-asp-net-core-3-0/)中的變更。

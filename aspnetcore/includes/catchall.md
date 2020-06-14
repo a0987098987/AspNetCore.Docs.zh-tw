@@ -7,12 +7,13 @@
 >
 > 如需遇到此 bug 的範例案例，請參閱 GitHub bug [18677](https://github.com/dotnet/aspnetcore/issues/18677)和[16579](https://github.com/dotnet/aspnetcore/issues/16579) 。
 >
-> 已規劃此 bug 的加入宣告修正。 發行修補程式時，將會更新此檔。 發行修補程式後，下列程式碼會設定內部交換器來修正此 bug：
+> [.Net Core 3.1.301 SDK 和更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)中包含這個 bug 的加入宣告修正程式。 下列程式碼會設定可修正此 bug 的內部交換器：
 >
 >```
 >public static void Main(string[] args)
 >{
->    AppContext.SetSwitch("Microsoft.AspNetCore.Routing.UseCorrectCatchAllBehavior", true);
+>    AppContext.SetSwitch("Microsoft.AspNetCore.Routing.UseCorrectCatchAllBehavior", 
+>                          true);
 >    CreateHostBuilder(args).Build().Run();
 >}
 >// Remaining code removed for brevity.

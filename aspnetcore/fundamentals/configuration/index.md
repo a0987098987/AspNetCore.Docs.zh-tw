@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: ead9cb8c852ac768c8fe1f9066eb73ac1203c4ce
-ms.sourcegitcommit: 67eadd7bf28eae0b8786d85e90a7df811ffe5904
+ms.openlocfilehash: 9b34125fdf6c6d451a11a53874944f5d8b44aa29
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84454697"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84776536"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -28,7 +28,7 @@ ms.locfileid: "84454697"
 
 ASP.NET Core 中的設定是使用一或多個設定[提供者](#cp)來執行。 設定提供者會使用各種不同的設定來源，從機碼值組讀取設定資料：
 
-* 設定檔案，例如*appsettings. json*
+* 設定檔案，例如*appsettings.js*
 * 環境變數
 * Azure 金鑰保存庫
 * Azure 應用程式組態
@@ -50,13 +50,13 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
  <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 會以下列順序提供應用程式的預設組態：
 
 1. [ChainedConfigurationProvider](xref:Microsoft.Extensions.Configuration.ChainedConfigurationSource) ：加入現有的 `IConfiguration` 做為來源。 在預設設定案例中，會新增[主機](#hvac)配置，並將其設為_應用程式_設定的第一個來源。
-1. 使用[json 設定提供者](#file-configuration-provider)的[appsettings。](#appsettingsjson)
+1. [appsettings.js](#appsettingsjson)使用 JSON 設定[提供者](#file-configuration-provider)。
 1. *appsettings。* `Environment`使用[json 設定提供者](#file-configuration-provider)的*json* 。 例如， *appsettings*。***生產***。*json*和*appsettings*。***開發***。*json*。
 1. 應用程式在環境中執行時的[密碼](xref:security/app-secrets) `Development` 。
 1. 使用[環境變數設定提供者](#evcp)的環境變數。
 1. 使用[命令列設定提供者](#command-line)的命令列引數。
 
-稍後新增的設定提供者會覆寫先前的金鑰設定。 例如，如果 `MyKey` 同時在*appsettings*和環境中設定，則會使用環境值。 使用預設的設定提供者時，[命令列設定提供者](#command-line-configuration-provider)會覆寫所有其他提供者。
+稍後新增的設定提供者會覆寫先前的金鑰設定。 例如，如果 `MyKey` 同時在和環境的*appsettings.js*中設定，則會使用環境值。 使用預設的設定提供者時，[命令列設定提供者](#clcp)會覆寫所有其他提供者。
 
 如需的詳細資訊 `CreateDefaultBuilder` ，請參閱預設產生器[設定](xref:fundamentals/host/generic-host#default-builder-settings)。
 
@@ -66,7 +66,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 
 ### <a name="appsettingsjson"></a>appsettings.json
 
-請考慮下列*appsettings json*檔案：
+請考慮下列*appsettings.js*檔案：
 
 [!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
@@ -79,10 +79,10 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 1. *appsettings.json*
 1. *appsettings。* `Environment`*. json* ：例如， *appsettings*。***生產***。*json*和*appsettings*。***開發***。*json*檔案。 檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。 如需詳細資訊，請參閱 <xref:fundamentals/environments> 。
 
-*appsettings*。 `Environment`*json*值會覆寫*appsettings*中的索引鍵。 例如，根據預設：
+*appsettings*。 `Environment`*json*值會覆寫中*appsettings.js的*索引鍵。 例如，根據預設：
 
-* 在開發中， *appsettings*。***開發***。*json*設定會覆寫在*appsettings*中找到的值。
-* 在生產環境中， *appsettings*。***生產***。*json*設定會覆寫在*appsettings*中找到的值。 例如，將應用程式部署至 Azure 時。
+* 在開發中， *appsettings*。***開發***。*json*設定會覆寫在*appsettings.js*中找到的值。
+* 在生產環境中， *appsettings*。***生產***。*json*設定會覆寫在*appsettings.js*中找到的值。 例如，將應用程式部署至 Azure 時。
 
 <a name="optpat"></a>
 
@@ -90,7 +90,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 
 [!INCLUDE[](~/includes/bind.md)]
 
-使用[預設](#default)設定，即*appsettings*和*appsettings。* `Environment`已啟用[reloadOnChange： true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75)的*json*檔案。 對*appsettings*和 appsettings 所做的變更 *。* `Environment`應用程式啟動***後***的*json*檔案會由 json 設定[提供者](#jcp)讀取。
+使用[預設](#default)設定， *appsettings.json*和*appsettings。* `Environment`已啟用[reloadOnChange： true](https://github.com/dotnet/extensions/blob/release/3.1/src/Hosting/Hosting/src/Host.cs#L74-L75)的*json*檔案。 和 appsettings 上對*appsettings.js*所做的變更 *。* `Environment`應用程式啟動***後***的*json*檔案會由 json 設定[提供者](#jcp)讀取。
 
 如需新增其他 JSON 設定檔的相關資訊，請參閱本檔中的[JSON 設定提供者](#jcp)。
 
@@ -104,7 +104,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 * 不要在開發或測試環境中使用生產環境祕密。
 * 請在專案外部指定祕密，以防止其意外認可至開放原始碼存放庫。
 
-根據[預設](#default)，[秘密管理員](xref:security/app-secrets)會在*appsettings*之後讀取設定和*appsettings。* `Environment`*. json*。
+根據[預設](#default)，[秘密管理員](xref:security/app-secrets)會*在appsettings.js*和 appsettings 之後讀取設定 *。* `Environment`*. json*。
 
 如需儲存密碼或其他機密資料的詳細資訊：
 
@@ -117,7 +117,7 @@ ASP.NET Core 以[dotnet new](/dotnet/core/tools/dotnet-new)或 Visual Studio 建
 
 ## <a name="environment-variables"></a>環境變數
 
-使用[預設](#default)設定時，會在 <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> 讀取*appsettings*、appsettings 之後，從環境變數的機碼值組載入設定 *。* `Environment`*. json*和[密碼管理員](xref:security/app-secrets)。 因此，從環境中讀取的索引鍵值會覆寫從*appsettings*讀取的值，也就是*appsettings。* `Environment`*. json*和密碼管理員。
+使用[預設](#default)設定時，會在 <xref:Microsoft.Extensions.Configuration.EnvironmentVariables.EnvironmentVariablesConfigurationProvider> *appsettings.js*讀取 appsettings 之後，從環境變數的機碼值組載入設定 *。* `Environment`*. json*和[密碼管理員](xref:security/app-secrets)。 因此，從環境中讀取的索引鍵值會覆寫從*appsettings.js*讀取的值，也就是*appsettings。* `Environment`*. json*和密碼管理員。
 
 [!INCLUDE[](~/includes/environmentVarableColon.md)]
 
@@ -146,7 +146,7 @@ setx Position__Title Setx_Environment_Editor /M
 setx Position__Name Environment_Rick /M
 ```
 
-若要測試前面的命令會覆寫*appsettings*和*appsettings。* `Environment`*. json*：
+若要測試先前的命令是否會覆寫和 appsettings*上的appsettings.js* *。* `Environment`*. json*：
 
 * 使用 Visual Studio： [結束] 和 [重新開機] Visual Studio。
 * 使用 CLI：啟動新的命令視窗，然後輸入 `dotnet run` 。
@@ -188,7 +188,7 @@ dotnet run
 
 使用[預設](#default)設定時，會在 <xref:Microsoft.Extensions.Configuration.CommandLine.CommandLineConfigurationProvider> 下列設定來源之後，從命令列引數的機碼值組載入設定：
 
-* *appsettings. json*和*appsettings*。 `Environment`*json*檔案。
+* *appsettings.json*和*appsettings*. `Environment` 。*json*檔案。
 * 開發環境中的[應用程式秘密（秘密管理員）](xref:security/app-secrets) 。
 * 環境變數。
 
@@ -260,7 +260,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 設定 API 會藉由使用設定機碼中的分隔符號來簡維階層式資料，以讀取階層式設定資料。
 
-[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含下列*appsettings*檔案：
+[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含檔案上的下列*appsettings.js* ：
 
 [!code-json[](index/samples/3.x/ConfigSample/appsettings.json)]
 
@@ -367,10 +367,10 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 上述程式碼：
 
-* 設定 JSON 設定提供者以使用下列選項載入*myconfig.xml* ：
+* 設定 JSON 設定提供者，以使用下列選項載入檔案*上的MyConfig.js* ：
   * `optional: true`：檔案是選擇性的。
   * `reloadOnChange: true`：儲存變更時，會重載檔案。
-* 在*myconfig.xml json*檔案之前讀取預設的設定[提供者](#default)。 預設設定提供者（包括[環境變數設定提供者](#evcp)和[命令列設定提供者](#clcp)）中的*myconfig.xml*檔案覆寫設定。
+* 在檔案*MyConfig.js*之前，讀取預設的設定[提供者](#default)。 預設設定提供者（包括[環境變數設定提供者](#evcp)和[命令列設定提供者](#clcp)）中，[檔案覆寫] 設定中的*MyConfig.js*設定。
 
 您通常***不***會想要覆寫[環境變數設定提供者](#evcp)和[命令列設定提供者](#clcp)中所設定之值的自訂 JSON 檔案。
 
@@ -378,12 +378,12 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSON2.cs?name=snippet)]
 
-在上述程式碼中， *myconfig.xml*中的設定和*myconfig.xml* `Environment` 。*json*檔案：
+在上述程式碼中， *MyConfig.js上*的設定和*myconfig.xml*。 `Environment`*json*檔案：
 
-* 覆寫*appsettings*中的設定和*appsettings* `Environment` 。*json*檔案。
+* 覆寫和 appsettings*上appsettings.js*中*appsettings*的設定 `Environment` 。*json*檔案。
 * 會由[環境變數設定提供者](#evcp)和[命令列設定提供者](#clcp)中的設定覆寫。
 
-[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含下列*myconfig.xml*檔案：
+[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含檔案上的下列*MyConfig.js* ：
 
 [!code-json[](index/samples/3.x/ConfigSample/MyConfig.json)]
 
@@ -409,12 +409,12 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramINI.cs?name=snippet&highlight=10-30)]
 
-在上述程式碼中， *MyIniConfig*和*MyIniConfig*中的 `Environment` 設定。*ini*檔案會由中的設定覆寫：
+在上述程式碼中， *MyIniConfig.ini*和*MyIniConfig*中的設定 `Environment` 。*ini*檔案會由中的設定覆寫：
 
 * [環境變數設定提供者](#evcp)
 * [命令列設定提供者](#clcp)。
 
-[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含下列*MyIniConfig .ini*檔案：
+[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含下列*MyIniConfig.ini*檔案：
 
 [!code-ini[](index/samples/3.x/ConfigSample/MyIniConfig.ini)]
 
@@ -430,12 +430,12 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramXML.cs?name=snippet)]
 
-在上述程式碼中， *MyXMLFile*和*MyXMLFile*中的 `Environment` 設定。中的設定會覆寫*xml*檔案：
+在上述程式碼中， *MyXMLFile.xml*和*MyXMLFile*中的設定 `Environment` 。中的設定會覆寫*xml*檔案：
 
 * [環境變數設定提供者](#evcp)
 * [命令列設定提供者](#clcp)。
 
-[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含下列*MyXMLFile*檔案：
+[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)包含下列*MyXMLFile.xml*檔案：
 
 [!code-xml[](index/samples/3.x/ConfigSample/MyXMLFile.xml)]
 
@@ -520,11 +520,11 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 ## <a name="getsection-getchildren-and-exists"></a>GetSection、GetChildren 與 Exists
 
-針對接下來的範例，請考慮下列*MySubsection*檔：
+針對接下來的範例，請考慮下列*MySubsection.js*檔案：
 
 [!code-json[](index/samples/3.x/ConfigSample/MySubsection.json)]
 
-下列程式碼會將*MySubsection*新增至設定提供者：
+下列程式碼會將*MySubsection.js*新增至設定提供者：
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSONsection.cs?name=snippet)]
 
@@ -558,11 +558,11 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 [ConfigurationBinder](xref:Microsoft.Extensions.Configuration.ConfigurationBinder.Bind*)支援在設定機碼中使用陣列索引將陣列系結至物件。 任何會公開數值索引鍵的陣列格式，都可以系結至[POCO](https://wikipedia.org/wiki/Plain_Old_CLR_Object)類別陣列。
 
-請考慮[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)中的*MyArray* ：
+請考慮從[範例下載](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/configuration/index/samples/3.x/ConfigSample)中的*MyArray.js* ：
 
 [!code-json[](index/samples/3.x/ConfigSample/MyArray.json)]
 
-下列程式碼會將*MyArray*新增至設定提供者：
+下列程式碼會將*MyArray.js*新增至設定提供者：
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramJSONarray.cs?name=snippet)]
 
@@ -580,7 +580,7 @@ Index: 3  Value: value40
 Index: 4  Value: value50
 ```
 
-在上述輸出中，索引3具有值 `value40` ，對應于 `"4": "value40",` *MyArray*中的。 系結的陣列索引是連續的，而且不會系結至設定金鑰索引。 設定系結器無法系結 null 值，或在系結物件中建立 null 專案
+在上述輸出中，索引3具有值 `value40` ，對應于 `"4": "value40",` 中的*MyArray.js*。 系結的陣列索引是連續的，而且不會系結至設定金鑰索引。 設定系結器無法系結 null 值，或在系結物件中建立 null 專案
 
 下列程式碼會 `array:entries` 使用擴充方法來載入設定 <xref:Microsoft.Extensions.Configuration.MemoryConfigurationBuilderExtensions.AddInMemoryCollection*> ：
 
@@ -602,11 +602,11 @@ Index: 4  Value: value5
 
 繫結物件中的索引 &num;3 存放 `array:4` 設定機碼與其 `value4` 的設定資料。 當系結包含陣列的設定資料時，在建立物件時，會使用設定機碼中的陣列索引來反復查看設定資料。 設定資料中不能保留 Null 值，當設定機碼中的陣列略過一或多個索引時，不會在繫結物件中建立 Null 值項目。
 
-在系 &num; 結至實例之前，您可以先提供索引3的遺漏設定專案 `ArrayExample` ，以讀取索引 &num; 3 鍵/值組的任何設定提供者。 請考慮下列來自範例下載的*Value3 json*檔案：
+在系 &num; 結至實例之前，您可以先提供索引3的遺漏設定專案 `ArrayExample` ，以讀取索引 &num; 3 鍵/值組的任何設定提供者。 請考慮下列來自範例下載的檔案*Value3.js* ：
 
 [!code-json[](index/samples/3.x/ConfigSample/Value3.json)]
 
-下列程式碼包含*Value3*的設定和 `arrayDict` `Dictionary` ：
+下列程式碼包含在和*上Value3.js*的設定 `arrayDict` `Dictionary` ：
 
 [!code-csharp[](index/samples/3.x/ConfigSample/ProgramArray.cs?name=snippet2)]
 
@@ -715,7 +715,7 @@ Index: 5  Value: value5
 
 [!code-csharp[](options/samples/3.x/OptionsSample/Pages/Test2.cshtml.cs?name=snippet)]
 
-在上述範例中，和的值 `Option1` `Option2` 是在*appsettings*中指定，然後由設定的委派覆寫。
+在上述範例中，和的值 `Option1` `Option2` 是在*appsettings.js*中指定，然後由設定的委派覆寫。
 
 <a name="hvac"></a>
 
@@ -742,7 +742,7 @@ Index: 5  Value: value5
 
 本主題僅適用于*應用程式*設定。 執行和裝載 ASP.NET Core 應用程式的其他層面，是使用本主題未涵蓋的設定檔來設定：
 
-* *啟動 json* /*launchsettings.json*是開發環境的工具設定檔，如下所述：
+* *launch.js于* /*上的launchSettings.js*是開發環境的工具設定檔，如下所述：
   * 在中 <xref:fundamentals/environments#development> 。
   * 在檔集內，用來為開發案例設定 ASP.NET Core 應用程式的檔案。
 * *web.config*是伺服器設定檔，如下列主題所述：
@@ -795,7 +795,7 @@ using Microsoft.Extensions.Configuration;
 
 本主題僅適用于*應用程式*設定。 執行和裝載 ASP.NET Core 應用程式的其他層面，是使用本主題未涵蓋的設定檔來設定：
 
-* *啟動 json* /*launchsettings.json*是開發環境的工具設定檔，如下所述：
+* *launch.js于* /*上的launchSettings.js*是開發環境的工具設定檔，如下所述：
   * 在中 <xref:fundamentals/environments#development> 。
   * 在檔集內，用來為開發案例設定 ASP.NET Core 應用程式的檔案。
 * *web.config*是伺服器設定檔，如下列主題所述：
@@ -940,7 +940,7 @@ public class HomeController : Controller
 
 典型的設定提供者順序是：
 
-1. Files （*appsettings. json*， *appsettings. {環境}. json*，其中 `{Environment}` 是應用程式的目前裝載環境）
+1. Files （*appsettings.json*、 *appsettings. {環境}. json*，其中 `{Environment}` 是應用程式的目前裝載環境）
 1. [Azure 金鑰保存庫](xref:security/key-vault-configuration)
 1. [使用者祕密 (祕密管理員)](xref:security/app-secrets) (僅限開發環境)
 1. 環境變數
@@ -1285,7 +1285,7 @@ key=value
 
 `AddJsonFile`當使用初始化新的主機產生器時，會自動呼叫兩次 `CreateDefaultBuilder` 。 會呼叫此方法以從下列位置載入設定：
 
-* *appsettings*：先讀取此檔案。 檔案的環境版本可以覆寫由 *appsettings.json* 檔案提供的值。
+* *appsettings.js開啟*：先讀取此檔案。 檔案的環境版本可以覆寫由 *appsettings.json* 檔案提供的值。
 * *appsettings。{環境}. json*：檔案的環境版本是根據[IHostingEnvironment. EnvironmentName](xref:Microsoft.Extensions.Hosting.IHostingEnvironment.EnvironmentName*)載入。
 
 如需詳細資訊，請參閱[＜預設組態＞](#default-configuration)一節。
@@ -1312,21 +1312,21 @@ key=value
 
 範例應用程式會利用靜態便利方法 `CreateDefaultBuilder` 來建立主機，其中包含兩個對的呼叫 `AddJsonFile` ：
 
-* 第一次呼叫時，會 `AddJsonFile` 從*appsettings*載入設定：
+* 第一次呼叫會 `AddJsonFile` 從*appsettings.js*載入設定：
 
   [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.json)]
 
-* 第二個呼叫會 `AddJsonFile` 從 appsettings 載入設定 *。 {環境}. json*。 適用于*appsettings。* 範例應用程式中的開發 json 會載入下列檔案：
+* 第二個呼叫會 `AddJsonFile` 從 appsettings 載入設定 *。 {環境}. json*。 針對範例應用程式中的*appsettings.Development.js* ，會載入下列檔案：
 
   [!code-json[](index/samples/2.x/ConfigurationSample/appsettings.Development.json)]
 
 1. 執行範例應用程式。 開啟瀏覽器以瀏覽位於 `http://localhost:5000` 的應用程式。
 1. 輸出包含以應用程式環境為基礎之設定的索引鍵/值組。 金鑰的記錄層級 `Logging:LogLevel:Default` 是在 `Debug` 開發環境中執行應用程式時。
 1. 在生產環境中再次執行範例應用程式：
-   1. 開啟*Properties/launchsettings.json*檔案。
+   1. 開啟 [*屬性]/[launchSettings.js*檔案]。
    1. 在 `ConfigurationSample` 設定檔中，將環境變數的值變更 `ASPNETCORE_ENVIRONMENT` 為 `Production` 。
    1. 儲存檔案，並 `dotnet run` 在命令 shell 中使用來執行應用程式。
-1. Appsettings 中的設定 *。* 在*appsettings*中，不會再覆寫 json 中的設定。 索引鍵的記錄層級 `Logging:LogLevel:Default` 是 `Warning` 。
+1. *appsettings.Development.js*中的設定不會再覆寫中*appsettings.js*的設定。 索引鍵的記錄層級 `Logging:LogLevel:Default` 是 `Warning` 。
 
 ### <a name="xml-configuration-provider"></a>XML 設定提供者
 
@@ -1792,7 +1792,7 @@ public class Startup
 
 ## <a name="access-configuration-in-a-razor-pages-page-or-mvc-view"></a>Razor頁面頁面或 MVC 視圖中的存取設定
 
-若要存取 Razor [頁面] 頁面或 MVC 視圖中的設定，請在 [設定[命名空間](xref:Microsoft.Extensions.Configuration)] 中新增[using](xref:mvc/views/razor#using)指示詞（[c # 參考： using](/dotnet/csharp/language-reference/keywords/using-directive)指示詞），並將其插入 <xref:Microsoft.Extensions.Configuration.IConfiguration> 頁面或視圖中。
+若要存取 Razor [頁面] 頁面或 MVC 視圖中的設定，請為[Microsoft.Extensions.Configuration 命名空間](xref:Microsoft.Extensions.Configuration)新增[using](xref:mvc/views/razor#using)指示詞（[c # 參考： using](/dotnet/csharp/language-reference/keywords/using-directive)指示詞），並將其插入 <xref:Microsoft.Extensions.Configuration.IConfiguration> 頁面或視圖中。
 
 在 [ Razor 頁面] 頁面中：
 

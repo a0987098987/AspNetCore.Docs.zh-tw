@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/hosted-with-identity-server
-ms.openlocfilehash: ade2d88c6a2d59e169c9019e871982a74ae46b33
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: c85843c04688beefe7ea87d9e8b281d14ab85bc5
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452313"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84776510"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Blazor使用伺服器保護 ASP.NET Core WebAssembly 託管應用程式 Identity
 
@@ -132,7 +132,7 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="app-settings-files"></a>應用程式佈建檔案
 
-在專案根目錄的應用程式佈建檔案（*appsettings*）中，區段會 `IdentityServer` 描述已設定的用戶端清單。 在下列範例中，有一個用戶端。 用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId` 參數。 此設定檔會指出正在設定的應用程式類型。 此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。 <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
+在專案根目錄的應用程式佈建檔案（*appsettings.js*）中， `IdentityServer` 一節會描述已設定的用戶端清單。 在下列範例中，有一個用戶端。 用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId` 參數。 此設定檔會指出正在設定的應用程式類型。 此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。 <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 
 ```json
 "IdentityServer": {
@@ -143,6 +143,8 @@ dotnet new blazorwasm -au Individual -ho
   }
 }
 ```
+
+預留位置 `{APP ASSEMBLY}` 是應用程式的元件名稱（例如， `BlazorSample.Client` ）。
 
 ## <a name="client-app-configuration"></a>用戶端應用程式設定
 

@@ -13,18 +13,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: c935f326afb77de5e083829c0bc2494efb20fec3
-ms.sourcegitcommit: 6371114344a5f4fbc5d4a119b0be1ad3762e0216
+ms.openlocfilehash: ffdc329d813dcbfffe2216dc58bbc4150f7cf786
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84679604"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84776419"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
-漸進式 Web 應用程式（PWA）是單一頁面應用程式（SPA），其使用現代化瀏覽器 Api 和功能的行為，就像桌面應用程式一樣。 BlazorWebAssembly 是以標準為基礎的用戶端 web 應用程式平臺，因此可以使用任何瀏覽器 API，包括下列功能所需的 PWA Api：
+漸進式 Web 應用程式（PWA）通常是單一頁面應用程式（SPA），其使用新式瀏覽器 Api 和功能，其行為就像桌面應用程式。 BlazorWebAssembly 是以標準為基礎的用戶端 web 應用程式平臺，因此可以使用任何瀏覽器 API，包括下列功能所需的 PWA Api：
 
 * 離線工作並立即載入，獨立于網路速度。
 * 在自己的應用程式視窗中執行，而不只是瀏覽器視窗。
@@ -208,7 +208,7 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 > [!IMPORTANT]
 > 新增 `ServiceWorkerAssetsManifestItem` 不會導致檔案在應用程式的*wwwroot*目錄中發行。 發行輸出必須分開控制。 `ServiceWorkerAssetsManifestItem`只會導致服務工作者資產資訊清單中出現額外的專案。
 
-## <a name="push-notifications"></a>推播通知
+## <a name="push-notifications"></a>推送通知
 
 就像任何其他 PWA 一樣， Blazor WebAssembly 的 pwa 也可以從後端伺服器接收推播通知。 伺服器可以隨時傳送推播通知，即使使用者未主動使用應用程式也一樣。 例如，當其他使用者執行相關動作時，可以傳送推播通知。
 

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/event-handling
-ms.openlocfilehash: 2d806413eb66d4c1301df4a0db950e8b919c09a4
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 66430fe45d74fadf46dff3798215ae3ac6e10a40
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84419745"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84776393"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 事件處理
 
@@ -184,7 +184,7 @@ Razor元件提供事件處理功能。 對於名為的 HTML 專案屬性 [`@on{E
 使用叫 <xref:Microsoft.AspNetCore.Components.EventCallback> <xref:Microsoft.AspNetCore.Components.EventCallback%601> 用或 <xref:Microsoft.AspNetCore.Components.EventCallback.InvokeAsync%2A> ，並等待 <xref:System.Threading.Tasks.Task> ：
 
 ```csharp
-await callback.InvokeAsync(arg);
+await OnClickCallback.InvokeAsync(arg);
 ```
 
 <xref:Microsoft.AspNetCore.Components.EventCallback> <xref:Microsoft.AspNetCore.Components.EventCallback%601> 針對事件處理和系結元件參數使用和。

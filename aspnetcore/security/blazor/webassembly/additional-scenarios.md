@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/blazor/webassembly/additional-scenarios
-ms.openlocfilehash: 35038cb7b96afd7c009f1210251e38273aa4aad8
-ms.sourcegitcommit: 6371114344a5f4fbc5d4a119b0be1ad3762e0216
+ms.openlocfilehash: 52ca2cc3187eceb318f6eb38189ed7f408d5a61b
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84679653"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84776406"
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 其他安全性案例
 
@@ -200,6 +200,8 @@ public class WeatherForecastClient
     }
 }
 ```
+
+預留位置 `{APP ASSEMBLY}` 是應用程式的元件名稱（例如， `using static BlazorSample.Data;` ）。
 
 `Program.Main`（*Program.cs*）：
 

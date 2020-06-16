@@ -5,7 +5,7 @@ description: 瞭解如何 Razor 在 ASP.NET Core 應用程式中使用元件生�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 no-loc:
 - Blazor
 - Identity
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/lifecycle
-ms.openlocfilehash: 9dcbb2ca21cc689063198e1ccc90583db4229183
-ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
+ms.openlocfilehash: 3f9feef205e0d28d3160d5e5f6f49390ce5cd0b1
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "83864578"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84776367"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor 生命週期
 
@@ -28,9 +28,32 @@ By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com
 
 ## <a name="lifecycle-methods"></a>生命週期方法
 
+### <a name="before-parameters-are-set"></a>設定參數之前
+
+<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>在轉譯樹狀結構中設定元件的父系所提供的參數：
+
+```csharp
+public override async Task SetParametersAsync(ParameterView parameters)
+{
+    await ...
+
+    await base.SetParametersAsync(parameters);
+}
+```
+
+<xref:Microsoft.AspNetCore.Components.ParameterView>每次呼叫時，包含一組完整的參數值 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> 。
+
+的預設執行 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) 會使用在中具有對應值的或屬性，來設定每個屬性的值 <xref:Microsoft.AspNetCore.Components.ParameterView> 。 在中沒有對應值的參數 <xref:Microsoft.AspNetCore.Components.ParameterView> 會保持不變。
+
+如果[基底。](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A)不會叫用 SetParametersAync，自訂程式碼可以用任何需要的方式解讀傳入的參數值。 例如，不需要將傳入的參數指派給類別的屬性。
+
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
+
 ### <a name="component-initialization-methods"></a>元件初始化方法
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>當元件從其父元件接收到其初始參數之後，就會叫用和。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>當元件執行非同步作業時使用，而且應該在作業完成時重新整理。
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A><xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A>當元件在中從其父元件收到其初始參數之後，就會叫用和 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> 。 
+
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>當元件執行非同步作業時使用，而且應該在作業完成時重新整理。
 
 針對同步作業，覆寫 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A> ：
 
@@ -61,32 +84,11 @@ Blazor將[其內容呼叫呈現](xref:blazor/hosting-model-configuration#render-
 
 如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
 
-### <a name="before-parameters-are-set"></a>設定參數之前
-
-<xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A>在轉譯樹狀結構中設定元件的父系所提供的參數：
-
-```csharp
-public override async Task SetParametersAsync(ParameterView parameters)
-{
-    await ...
-
-    await base.SetParametersAsync(parameters);
-}
-```
-
-<xref:Microsoft.AspNetCore.Components.ParameterView>每次呼叫時，包含一組完整的參數值 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> 。
-
-的預設執行 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) 會使用在中具有對應值的或屬性，來設定每個屬性的值 <xref:Microsoft.AspNetCore.Components.ParameterView> 。 在中沒有對應值的參數 <xref:Microsoft.AspNetCore.Components.ParameterView> 會保持不變。
-
-如果[基底。](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A)不會叫用 SetParametersAync，自訂程式碼可以用任何需要的方式解讀傳入的參數值。 例如，不需要將傳入的參數指派給類別的屬性。
-
-如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
-
 ### <a name="after-parameters-are-set"></a>設定參數之後
 
-<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A><xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet%2A>系統會呼叫和：
+<xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A>或 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSet%2A> 會呼叫：
 
-* 當元件初始化並從其父元件收到第一組參數時。
+* 在或中初始化元件之後 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitialized%2A> 。
 * 當父元件重新呈現和提供時：
   * 只有已知的基本不可變類型，其中至少有一個參數已變更。
   * 任何複雜類型的參數。 架構無法得知複雜型別參數的值是否在內部變動，因此它會將參數集視為已變更。

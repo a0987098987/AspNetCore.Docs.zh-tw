@@ -1,12 +1,24 @@
 ---
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 設定 ASP.NET Core 的連結器Blazor
+author: guardrex
+description: 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。
+monikerRange: '>= aspnetcore-3.1'
+ms.author: riande
+ms.custom: mvc
+ms.date: 05/19/2020
+no-loc:
+- Blazor
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: host-and-deploy/blazor/configure-linker
+ms.openlocfilehash: fd8dc118b8ed9c9e7c0d43e67b14ef4affa09d48
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "83608625"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>設定 ASP.NET Core 的連結器Blazor
 
@@ -43,7 +55,7 @@ BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standar
 </ItemGroup>
 ```
 
-*LinkerConfig .xml*：
+*LinkerConfig.xml*：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -81,7 +93,7 @@ BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standar
 
 若要設定特定程式庫的連結器，請將 XML 連結器設定檔新增至程式庫做為內嵌資源。 內嵌資源的名稱必須與元件相同。
 
-在下列範例中，會將*LinkerConfig*指定為與程式庫的元件同名的內嵌資源：
+在下列範例中，會將*LinkerConfig.xml*檔案指定為與程式庫的元件同名的內嵌資源：
 
 ```xml
 <ItemGroup>
@@ -104,141 +116,14 @@ BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standar
 ```
 
 | 區域值     | Mono 區域元件    |
-| ---
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--------- |---標題： ' 設定 ASP.NET Core ' 作者的連結器 Blazor ：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
--
-標題： ' 設定連結器以 ASP.NET Core Blazor ' 作者：描述： ' 瞭解如何在建立應用程式時控制中繼語言（IL）連結器 Blazor 。 '
-monikerRange： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
------------- | |`all`            |包含的所有元件 | |`cjk`             |  *I18N。CJK .dll* | |`mideast`         |  *I18N。務必 .dll* | |`none`（預設） |無 | |`other`           |  *I18N。其他 .dll* | |`rare`            |  *I18N。罕見 .dll* | |`west`            |  *I18N。West .dll*         |
+| ---------------- | ----------------------- |
+| `all`            | 包含的所有元件 |
+| `cjk`            | *I18N.CJK.dll*          |
+| `mideast`        | *I18N.MidEast.dll*      |
+| `none` (預設) | None                    |
+| `other`          | *I18N.Other.dll*        |
+| `rare`           | *I18N.Rare.dll*         |
+| `west`           | *I18N.West.dll*         |
 
 使用逗號來分隔多個值（例如 `mideast,west` ）。
 

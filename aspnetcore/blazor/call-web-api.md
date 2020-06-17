@@ -14,10 +14,10 @@ no-loc:
 - SignalR
 uid: blazor/call-web-api
 ms.openlocfilehash: 4f3fd1fca075098a94756757474b2cad3cc99775
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 06/16/2020
 ms.locfileid: "84214768"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
@@ -37,7 +37,7 @@ By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.co
 
 ## <a name="packages"></a>套件
 
-在專案檔中參考[系統 .net. Http. Json](https://www.nuget.org/packages/System.Net.Http.Json/) NuGet 套件。
+在專案檔中參考 NuGet 套件[上的System.Net.Http.Js](https://www.nuget.org/packages/System.Net.Http.Json/) 。
 
 ## <a name="add-the-httpclient-service"></a>新增 HttpClient 服務
 

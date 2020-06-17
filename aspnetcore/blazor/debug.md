@@ -14,10 +14,10 @@ no-loc:
 - SignalR
 uid: blazor/debug
 ms.openlocfilehash: 193dc656c2ee0154f0ae534bc00f8dc29bab3258
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
+ms.lasthandoff: 06/16/2020
 ms.locfileid: "84239218"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET Core Blazor WebAssembly
@@ -42,7 +42,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 調試需要下列其中一個瀏覽器：
 
@@ -51,13 +51,13 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 ## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>啟用 Visual Studio 和 Visual Studio Code 的偵錯工具
 
-若要啟用現有 Blazor WebAssembly 應用程式的偵測，請更新啟始專案中的*launchsettings.json* ，以 `inspectUri` 在每個啟動設定檔中包含下列屬性：
+若要啟用現有 Blazor WebAssembly 應用程式的偵測，請更新啟始專案中檔案的*launchSettings.js* ，以 `inspectUri` 在每個啟動設定檔中包含下列屬性：
 
 ```json
 "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
 ```
 
-更新之後， *launchsettings.json*看起來應該類似下列範例：
+更新之後，檔案*上的launchSettings.js*看起來應該類似下列範例：
 
 [!code-json[](debug/launchSettings.json?highlight=14,22)]
 
@@ -145,11 +145,11 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 1. 在 [選取範圍] 視窗中，選取裝載解決方案內的*伺服器*專案。
 
-隨即會產生啟動的*json*檔案，並啟動偵錯工具。
+隨即會使用啟動偵錯工具的啟動設定來產生檔案*上的launch.js* 。
 
 ### <a name="attach-to-an-existing-debugging-session"></a>附加至現有的偵錯工具會話
 
-若要附加至執行 Blazor 中的應用程式，請使用下列設定建立一個*啟動 json*檔案：
+若要附加至執行 Blazor 中的應用程式，請使用下列設定*在檔案上建立launch.js* ：
 
 ```json
 {

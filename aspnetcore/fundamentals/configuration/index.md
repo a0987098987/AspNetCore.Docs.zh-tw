@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 9b34125fdf6c6d451a11a53874944f5d8b44aa29
-ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
+ms.openlocfilehash: 91200a7a4396d91bec3cfe6ce4b787839f30c72f
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84776536"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102674"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -730,7 +730,7 @@ Index: 5  Value: value5
 如需使用 [Web 主機](xref:fundamentals/host/web-host)時預設組態的詳細資料，請參閱[本主題的 ASP.NET Core 2.2 版本](/aspnet/core/fundamentals/configuration/?view=aspnetcore-2.2)。
 
 * 主機組態的提供來源：
-  * 前面加上的環境變數 `DOTNET_` （例如 `DOTNET_ENVIRONMENT` ），並使用[環境變數設定提供者](#environment-variables-configuration-provider)。 載入設定機碼值組時，會移除前置詞 (`DOTNET_`)。
+  * 前面加上的環境變數 `DOTNET_` （例如 `DOTNET_ENVIRONMENT` ），並使用[環境變數設定提供者](#environment-variables)。 載入設定機碼值組時，會移除前置詞 (`DOTNET_`)。
   * 使用[命令列設定提供者](#command-line-configuration-provider)的命令列引數。
 * 已建立 Web 主機預設組態 (`ConfigureWebHostDefaults`)：
   * Kestrel 會用作為網頁伺服器，並使用應用程式的組態提供者來設定。
@@ -759,6 +759,7 @@ Index: 5  Value: value5
 
 * [設定原始程式碼](https://github.com/dotnet/extensions/tree/master/src/Configuration)
 * <xref:fundamentals/configuration/options>
+* <xref:blazor/fundamentals/configuration>
 
 ::: moniker-end
 

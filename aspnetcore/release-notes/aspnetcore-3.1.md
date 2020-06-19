@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 5b6ae8173ca3d968e220faa4a060e1b42b14f8bb
-ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
+ms.openlocfilehash: 6a03e35495e2ae545dc0a3cdd38578b433d8df6b
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84507240"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102582"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>3.1 ASP.NET Core 的新功能
 
@@ -25,7 +25,7 @@ ms.locfileid: "84507240"
 
 ## <a name="partial-class-support-for-razor-components"></a>元件的部分類別支援 Razor
 
-Razor元件現在會以部分類別的形式產生。 元件的程式碼 Razor 可以使用定義為部分類別的程式碼後置檔案來撰寫，而不是在單一檔案中定義元件的所有程式碼。 如需詳細資訊，請參閱[部分類別支援](xref:blazor/components#partial-class-support)。
+Razor元件現在會以部分類別的形式產生。 元件的程式碼 Razor 可以使用定義為部分類別的程式碼後置檔案來撰寫，而不是在單一檔案中定義元件的所有程式碼。 如需詳細資訊，請參閱[部分類別支援](xref:blazor/components/index#partial-class-support)。
 
 ## <a name="blazor-component-tag-helper-and-pass-parameters-to-top-level-components"></a>Blazor元件標記協助程式，並將參數傳遞至最上層元件
 
@@ -46,11 +46,11 @@ Blazor伺服器應用程式現在可以在初始轉譯期間，將參數傳遞�
     param-IncrementAmount="10" />
 ```
 
-如需詳細資訊，請參閱將[元件整合至 Razor 頁面和 MVC 應用程式](xref:blazor/integrate-components)。
+如需詳細資訊，請參閱將[元件整合至 Razor 頁面和 MVC 應用程式](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps)。
 
 ## <a name="support-for-shared-queues-in-httpsys"></a>支援 HTTP.sys 中的共用佇列
 
-[Http.sys 支援建立](xref:fundamentals/servers/httpsys)匿名要求佇列。 在 ASP.NET Core 3.1 中，我們新增了建立或附加至現有已命名 HTTP.SYS 要求佇列的功能。 建立或附加至現有的已命名 HTTP.SYS 要求佇列，可讓擁有佇列的 HTTP.SYS 控制器進程與接聽程式進程無關的情況。 這種獨立性讓您能夠在接聽程式進程重新開機之間保留現有的連接和排入佇列的要求：
+[HTTP.sys](xref:fundamentals/servers/httpsys)支援建立匿名要求佇列。 在 ASP.NET Core 3.1 中，我們新增了建立或附加至現有已命名 HTTP.sys 要求佇列的功能。 建立或附加至現有的已命名 HTTP.sys 要求佇列，可啟用擁有佇列的 HTTP.sys 控制器進程與接聽程式進程無關的案例。 這種獨立性讓您能夠在接聽程式進程重新開機之間保留現有的連接和排入佇列的要求：
 
 [!code-csharp[](sample/Program.cs?name=snippet)]
 
@@ -66,7 +66,7 @@ SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 
 <input value="@_count" @onkeypress="KeyHandler" @onkeypress:preventDefault />
 ```
 
-如需詳細資訊，請參閱[防止預設動作](xref:blazor/event-handling#prevent-default-actions)。
+如需詳細資訊，請參閱[防止預設動作](xref:blazor/components/event-handling#prevent-default-actions)。
 
 ## <a name="stop-event-propagation-in-blazor-apps"></a>停止應用程式中的事件傳播 Blazor
 
@@ -86,7 +86,7 @@ SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 
 }
 ```
 
-如需詳細資訊，請參閱[停止事件傳播](xref:blazor/event-handling#stop-event-propagation)。
+如需詳細資訊，請參閱[停止事件傳播](xref:blazor/components/event-handling#stop-event-propagation)。
 
 ## <a name="detailed-errors-during-blazor-app-development"></a>應用程式開發期間的詳細錯誤 Blazor
 
@@ -95,4 +95,4 @@ SameSite cookie 的行為已變更，以反映即將進行的瀏覽器變更。 
 * 在開發期間，「金級」列會將您導向至瀏覽器主控台，您可以在其中看到例外狀況。
 * 在生產環境中，「金級」列會通知使用者發生錯誤，並建議重新整理瀏覽器。
 
-如需詳細資訊，請參閱[開發期間的詳細錯誤](xref:blazor/handle-errors#detailed-errors-during-development)。
+如需詳細資訊，請參閱[開發期間的詳細錯誤](xref:blazor/fundamentals/handle-errors#detailed-errors-during-development)。

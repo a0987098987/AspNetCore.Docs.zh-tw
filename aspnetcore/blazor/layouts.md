@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: ba172282d0cd6371ebc94b4fda1c13aee14d6fbd
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: fe35645aafe29838818dcaaf7c2b42ed428ac6cc
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "83851988"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102251"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -26,7 +26,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 某些應用程式專案（例如功能表、著作權訊息和公司標誌）通常是應用程式整體版面配置的一部分，並由應用程式中的每個元件所使用。 將這些專案的程式碼複製到應用程式的所有元件，並不是有效的方法。 每當其中一個元素需要更新時，就必須更新每個元件。 這種複製很容易維護，而且可能會在一段時間後導致不一致的內容。 *版面*配置會解決此問題。
 
-就技術上而言，版面配置只是另一個元件。 版面配置是在 Razor 範本或 c # 程式碼中定義，而且可以使用[資料](xref:blazor/data-binding)系結、相依性[插入](xref:blazor/dependency-injection)和其他元件案例。
+就技術上而言，版面配置只是另一個元件。 版面配置是在 Razor 範本或 c # 程式碼中定義，而且可以使用[資料](xref:blazor/components/data-binding)系結、相依性[插入](xref:blazor/fundamentals/dependency-injection)和其他元件案例。
 
 若要將*元件*轉換成*版面*配置，元件：
 
@@ -49,7 +49,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 [!code-razor[](layouts/sample_snapshot/3.x/App2.razor?highlight=6-9)]
 
-如需元件的詳細資訊 <xref:Microsoft.AspNetCore.Components.Routing.Router> ，請參閱 <xref:blazor/routing> 。
+如需元件的詳細資訊 <xref:Microsoft.AspNetCore.Components.Routing.Router> ，請參閱 <xref:blazor/fundamentals/routing> 。
 
 將配置指定為路由器中的預設版面配置是很有用的作法，因為它可以根據每個元件或每個資料夾來覆寫。 偏好使用路由器來設定應用程式的預設版面配置，因為這是最常見的技術。
 
@@ -97,7 +97,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Razor與整合式元件共用頁面配置
 
-當可路由的元件整合至 Razor 頁面應用程式時，應用程式的共用版面配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/integrate-components> 。
+當可路由的元件整合至 Razor 頁面應用程式時，應用程式的共用版面配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps> 。
 
 ## <a name="additional-resources"></a>其他資源
 

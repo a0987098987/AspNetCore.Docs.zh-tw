@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authorization/policies
-ms.openlocfilehash: 3b6fcef91355bf22e5aa185652d9489a44998db0
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 533bddc9c4499dad99cfdb3089045ea10aed4548
+ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777497"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85074153"
 ---
 # <a name="policy-based-authorization-in-aspnet-core"></a>ASP.NET Core 中以原則為基礎的授權
 
@@ -25,15 +25,15 @@ ms.locfileid: "82777497"
 
 在幕後，以[角色為基礎的授權](xref:security/authorization/roles)和[宣告式授權](xref:security/authorization/claims)會使用需求、需求處理常式和預先設定的原則。 這些組建區塊支援程式碼中的授權評估運算式。 結果是更豐富、可重複使用、可測試的授權結構。
 
-授權原則是由一個或多個需求所組成。 在`Startup.ConfigureServices`方法中，它會註冊為授權服務設定的一部分：
+授權原則是由一個或多個需求所組成。 在方法中，它會註冊為授權服務設定的一部分 `Startup.ConfigureServices` ：
 
 [!code-csharp[](policies/samples/3.0PoliciesAuthApp1/Startup.cs?range=31-32,39-40,42-45, 53, 58)]
 
-在上述範例中，會建立 "AtLeast21" 原則。 它具有最短使用&mdash;期限的單一需求，這是以參數的形式提供給需求。
+在上述範例中，會建立 "AtLeast21" 原則。 它具有 &mdash; 最短使用期限的單一需求，這是以參數的形式提供給需求。
 
 ## <a name="iauthorizationservice"></a>IAuthorizationService 
 
-判斷授權是否成功的主要服務為<xref:Microsoft.AspNetCore.Authorization.IAuthorizationService>：
+判斷授權是否成功的主要服務為 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService> ：
 
 [!code-csharp[](policies/samples/stubs/copy_of_IAuthorizationService.cs?highlight=24-25,48-49&name=snippet)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "82777497"
 
 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement>是不含任何方法的標記服務，以及用來追蹤授權是否成功的機制。
 
-每<xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler>個都會負責檢查是否符合需求：
+每個 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler> 都會負責檢查是否符合需求：
 <!--The following code is a copy/paste from 
 https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
 
@@ -60,7 +60,7 @@ public interface IAuthorizationHandler
 }
 ```
 
-此<xref:Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext>類別是處理常式用來標示是否符合需求的內容：
+此 <xref:Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext> 類別是處理常式用來標示是否符合需求的內容：
 
 ```csharp
  context.Succeed(requirement)
@@ -89,7 +89,7 @@ public async Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
 }
 ```
 
-下列程式碼顯示一般`ConfigureServices`：
+下列程式碼顯示一般 `ConfigureServices` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -111,27 +111,27 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-使用<xref:Microsoft.AspNetCore.Authorization.IAuthorizationService>或`[Authorize(Policy = "Something")]`進行授權。
+使用 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService> 或 `[Authorize(Policy = "Something")]` 進行授權。
 
-## <a name="applying-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
+## <a name="apply-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
 
-如果您使用Razor的是頁面，請參閱本檔中的[將原則套用至Razor頁面](#applying-policies-to-razor-pages)。
+如果您使用 Razor 的是頁面，請參閱本檔中的[將原則套用至 Razor 頁面](#apply-policies-to-razor-pages)。
 
-原則會套用至控制器，方法是`[Authorize]`使用具有原則名稱的屬性。 例如：
+原則會套用至控制器，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="applying-policies-to-razor-pages"></a>將原則套用Razor至頁面
+## <a name="apply-policies-to-razor-pages"></a>將原則套用至 Razor 頁面
 
-原則會套用至Razor頁面，方法是`[Authorize]`使用具有原則名稱的屬性。 例如：
+原則會套用至 Razor 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-您也可以使用Razor [授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
+您也可以 Razor 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
 
 ## <a name="requirements"></a>需求
 
-授權需求是一種資料參數集合，原則可以用來評估目前的使用者主體。 在我們的「AtLeast21」原則中，需求是最短&mdash;存留期的單一參數。 需求會執行[IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement)，這是空的標記介面。 參數化最短存留期需求的執行方式如下：
+授權需求是一種資料參數集合，原則可以用來評估目前的使用者主體。 在我們的「AtLeast21」原則中，需求是 &mdash; 最短存留期的單一參數。 需求會執行[IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement)，這是空的標記介面。 參數化最短存留期需求的執行方式如下：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
 
@@ -146,7 +146,7 @@ public void ConfigureServices(IServiceCollection services)
 
 授權處理常式負責評估需求的屬性。 授權處理常式會針對提供的[AuthorizationHandlerCoNtext](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext)評估需求，以判斷是否允許存取。
 
-需求可以有[多個處理常式](#security-authorization-policies-based-multiple-handlers)。 處理常式可能會[繼承\<AuthorizationHandler TRequirement>](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1)， `TRequirement`其中是要處理的需求。 或者，處理常式可能會執行[IAuthorizationHandler](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationhandler)來處理多種類型的需求。
+需求可以有[多個處理常式](#security-authorization-policies-based-multiple-handlers)。 處理常式可能會[繼承 \<TRequirement> AuthorizationHandler](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1)，其中 `TRequirement` 是要處理的需求。 或者，處理常式可能會執行[IAuthorizationHandler](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationhandler)來處理多種類型的需求。
 
 ### <a name="use-a-handler-for-one-requirement"></a>針對一個需求使用處理程式
 
@@ -156,7 +156,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/MinimumAgeHandler.cs?name=snippet_MinimumAgeHandlerClass)]
 
-上述程式碼會判斷目前的使用者主體是否具有由已知且受信任簽發者所發行的「出生日期」。 當宣告遺失時，就無法進行授權，在這種情況下會傳回已完成的工作。 當宣告存在時，就會計算使用者的年齡。 如果使用者符合需求所定義的最短存留期，則會將授權視為成功。 當授權成功時， `context.Succeed`會叫用滿足需求做為其唯一參數的。
+上述程式碼會判斷目前的使用者主體是否具有由已知且受信任簽發者所發行的「出生日期」。 當宣告遺失時，就無法進行授權，在這種情況下會傳回已完成的工作。 當宣告存在時，就會計算使用者的年齡。 如果使用者符合需求所定義的最短存留期，則會將授權視為成功。 當授權成功時， `context.Succeed` 會叫用滿足需求做為其唯一參數的。
 
 ### <a name="use-a-handler-for-multiple-requirements"></a>針對多項需求使用處理程式
 
@@ -164,7 +164,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/PermissionHandler.cs?name=snippet_PermissionHandlerClass)]
 
-上述程式碼會[PendingRequirements](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.pendingrequirements#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_PendingRequirements)&mdash;包含未標示為成功之需求的屬性。 針對`ReadPermission`需求，使用者必須是「擁有者」或「贊助者」，才能存取要求的資源。 如果是`EditPermission`或`DeletePermission`需求，他或她必須是擁有者，才能存取要求的資源。
+上述程式碼會[PendingRequirements](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.pendingrequirements#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_PendingRequirements) &mdash; 包含未標示為成功之需求的屬性。 針對 `ReadPermission` 需求，使用者必須是「擁有者」或「贊助者」，才能存取要求的資源。 如果是 `EditPermission` 或 `DeletePermission` 需求，他或她必須是擁有者，才能存取要求的資源。
 
 <a name="security-authorization-policies-based-handler-registration"></a>
 
@@ -174,19 +174,19 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/3.0PoliciesAuthApp1/Startup.cs?range=31-32,39-40,42-45, 53-55, 58)]
 
-上述程式碼會`MinimumAgeHandler`藉由叫用將`services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();`註冊為 singleton。 您可以使用任何內建[服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)來註冊處理常式。
+上述程式碼會藉由叫用將註冊 `MinimumAgeHandler` 為 singleton `services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();` 。 您可以使用任何內建[服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)來註冊處理常式。
 
 ## <a name="what-should-a-handler-return"></a>處理常式會傳回什麼？
 
 請注意， `Handle` [處理常式範例](#security-authorization-handler-example)中的方法不會傳回任何值。 如何指出成功或失敗的狀態？
 
-* 處理常式會藉由呼叫`context.Succeed(IAuthorizationRequirement requirement)`來表示成功，傳遞已成功驗證的需求。
+* 處理常式會藉由呼叫來表示成功 `context.Succeed(IAuthorizationRequirement requirement)` ，傳遞已成功驗證的需求。
 
 * 處理常式不需要處理失敗的一般情況，因為相同需求的其他處理常式可能會成功。
 
-* 若要保證失敗，即使其他需求處理常式成功， `context.Fail`也請呼叫。
+* 若要保證失敗，即使其他需求處理常式成功，也請呼叫 `context.Fail` 。
 
-如果處理常式呼叫`context.Succeed`或`context.Fail`，仍然會呼叫所有其他處理常式。 這可讓需求產生副作用，例如記錄，即使另一個處理常式已成功驗證或失敗，也會發生這種情況。 當設定為`false`時， [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure)屬性（可在 ASP.NET Core 1.1 和更新版本中使用）會在呼叫時， `context.Fail`縮短執行處理常式的時間。 `InvokeHandlersAfterFailure`預設為`true`，在此情況下會呼叫所有處理常式。
+如果處理常式呼叫 `context.Succeed` 或 `context.Fail` ，仍然會呼叫所有其他處理常式。 這可讓需求產生副作用，例如記錄，即使另一個處理常式已成功驗證或失敗，也會發生這種情況。 當設定為時 `false` ， [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure)屬性（可在 ASP.NET Core 1.1 和更新版本中使用）會在呼叫時，縮短執行處理常式的時間 `context.Fail` 。 `InvokeHandlersAfterFailure`預設為 `true` ，在此情況下會呼叫所有處理常式。
 
 > [!NOTE]
 > 即使驗證失敗，也會呼叫授權處理常式。
@@ -209,23 +209,35 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/TemporaryStickerHandler.cs?name=snippet_TemporaryStickerHandlerClass)]
 
-請確定這兩個處理常式都已[註冊](xref:security/authorization/policies#security-authorization-policies-based-handler-registration)。 當原則評估時`BuildingEntryRequirement`，如果任一處理程式成功，原則評估就會成功。
+請確定這兩個處理常式都已[註冊](xref:security/authorization/policies#security-authorization-policies-based-handler-registration)。 當原則評估時，如果任一處理程式成功 `BuildingEntryRequirement` ，原則評估就會成功。
 
-## <a name="using-a-func-to-fulfill-a-policy"></a>使用 func 來完成原則
+## <a name="use-a-func-to-fulfill-a-policy"></a>使用 func 來完成原則
 
-在某些情況下，在程式碼中可以簡單地表達原則。 `Func<AuthorizationHandlerContext, bool>`當您使用`RequireAssertion`原則產生器來設定原則時，可以提供。
+在某些情況下，在程式碼中可以簡單地表達原則。 當您使用原則產生器來設定原則時，可以提供 `Func<AuthorizationHandlerContext, bool>` `RequireAssertion` 。
 
-例如，先前`BadgeEntryHandler`的改寫方式如下所示：
+例如，先前的改寫方式如下所示 `BadgeEntryHandler` ：
 
 [!code-csharp[](policies/samples/3.0PoliciesAuthApp1/Startup.cs?range=42-43,47-53)]
 
-## <a name="accessing-mvc-request-context-in-handlers"></a>存取處理常式中的 MVC 要求內容
+## <a name="access-mvc-request-context-in-handlers"></a>存取處理常式中的 MVC 要求內容
 
-您`HandleRequirementAsync`在授權處理常式中執行的方法有兩個參數`AuthorizationHandlerContext` ：和`TRequirement`您正在處理的。 MVC 或 Jabbr 這類架構可自由地將任何物件加入至`Resource`上的屬性`AuthorizationHandlerContext` ，以傳遞額外的資訊。
+`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。 MVC 或等架構可 SignalR 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。
 
-例如，MVC 會在`Resource`屬性中傳遞[AuthorizationFilterCoNtext](/dotnet/api/?term=AuthorizationFilterContext)的實例。 這個屬性可讓您`HttpContext`存取`RouteData`MVC 和Razor頁面所提供的、和其他所有專案。
+使用端點路由時，授權通常會由授權中介軟體處理。 在此情況下， `Resource` 屬性是的實例 <xref:Microsoft.AspNetCore.Http.Endpoint> 。 端點可用來探查您要路由的基礎資源。 例如：
 
-`Resource`屬性的使用是架構特有的。 使用屬性中的`Resource`資訊會將您的授權原則限制為特定架構。 您應該使用`Resource` `is`關鍵字來轉換屬性，然後確認轉換已成功，以確保您的程式`InvalidCastException`代碼在其他架構上執行時不會損毀：
+```csharp
+if (context.Resource is Endpoint endpoint)
+{
+   var actionDescriptor = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>();
+   ...
+}
+```
+
+端點不會提供對目前的存取權 `HttpContext` 。 使用端點路由時，請使用 `IHttpContextAcessor` 來存取 `HttpContext` 授權處理常式內的。 如需詳細資訊，請參閱[從自訂群組件使用 HttpCoNtext](xref:fundamentals/httpcontext#use-httpcontext-from-custom-components)。
+
+使用傳統路由，或在 MVC 的授權篩選準則中發生授權時，的值 `Resource` 就是 <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> 實例。 這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 Razor 。
+
+屬性的使用 `Resource` 是架構特有的。 使用屬性中的資訊會將 `Resource` 您的授權原則限制為特定架構。 您應該 `Resource` 使用關鍵字來轉換屬性 `is` ，然後確認轉換已成功，以確保您的程式碼在 `InvalidCastException` 其他架構上執行時不會損毀：
 
 ```csharp
 // Requires the following import:
@@ -243,23 +255,25 @@ if (context.Resource is AuthorizationFilterContext mvcContext)
 
 在幕後，以[角色為基礎的授權](xref:security/authorization/roles)和[宣告式授權](xref:security/authorization/claims)會使用需求、需求處理常式和預先設定的原則。 這些組建區塊支援程式碼中的授權評估運算式。 結果是更豐富、可重複使用、可測試的授權結構。
 
-授權原則是由一個或多個需求所組成。 在`Startup.ConfigureServices`方法中，它會註冊為授權服務設定的一部分：
+授權原則是由一個或多個需求所組成。 在方法中，它會註冊為授權服務設定的一部分 `Startup.ConfigureServices` ：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,66)]
 
-在上述範例中，會建立 "AtLeast21" 原則。 它具有最短使用&mdash;期限的單一需求，這是以參數的形式提供給需求。
+在上述範例中，會建立 "AtLeast21" 原則。 它具有 &mdash; 最短使用期限的單一需求，這是以參數的形式提供給需求。
 
 ## <a name="iauthorizationservice"></a>IAuthorizationService 
 
-判斷授權是否成功的主要服務為<xref:Microsoft.AspNetCore.Authorization.IAuthorizationService>：
+判斷授權是否成功的主要服務為 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService> ：
 
 [!code-csharp[](policies/samples/stubs/copy_of_IAuthorizationService.cs?highlight=24-25,48-49&name=snippet)]
+
+[!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]
 
 上述程式碼會反白顯示[IAuthorizationService](https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationService.cs)的兩個方法。
 
 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationRequirement>是不含任何方法的標記服務，以及用來追蹤授權是否成功的機制。
 
-每<xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler>個都會負責檢查是否符合需求：
+每個 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationHandler> 都會負責檢查是否符合需求：
 <!--The following code is a copy/paste from 
 https://github.com/dotnet/AspNetCore/blob/v2.2.4/src/Security/Authorization/Core/src/IAuthorizationHandler.cs -->
 
@@ -278,7 +292,7 @@ public interface IAuthorizationHandler
 }
 ```
 
-此<xref:Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext>類別是處理常式用來標示是否符合需求的內容：
+此 <xref:Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext> 類別是處理常式用來標示是否符合需求的內容：
 
 ```csharp
  context.Succeed(requirement)
@@ -307,7 +321,7 @@ public async Task<AuthorizationResult> AuthorizeAsync(ClaimsPrincipal user,
 }
 ```
 
-下列程式碼顯示一般`ConfigureServices`：
+下列程式碼顯示一般 `ConfigureServices` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -328,27 +342,27 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-使用<xref:Microsoft.AspNetCore.Authorization.IAuthorizationService>或`[Authorize(Policy = "Something")]`進行授權。
+使用 <xref:Microsoft.AspNetCore.Authorization.IAuthorizationService> 或 `[Authorize(Policy = "Something")]` 進行授權。
 
-## <a name="applying-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
+## <a name="apply-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
 
-如果您使用Razor的是頁面，請參閱本檔中的[將原則套用至Razor頁面](#applying-policies-to-razor-pages)。
+如果您使用 Razor 的是頁面，請參閱本檔中的[將原則套用至 Razor 頁面](#apply-policies-to-razor-pages)。
 
-原則會套用至控制器，方法是`[Authorize]`使用具有原則名稱的屬性。 例如：
+原則會套用至控制器，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="applying-policies-to-razor-pages"></a>將原則套用Razor至頁面
+## <a name="apply-policies-to-razor-pages"></a>將原則套用至 Razor 頁面
 
-原則會套用至Razor頁面，方法是`[Authorize]`使用具有原則名稱的屬性。 例如：
+原則會套用至 Razor 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-您也可以使用Razor [授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
+您也可以 Razor 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
 
 ## <a name="requirements"></a>需求
 
-授權需求是一種資料參數集合，原則可以用來評估目前的使用者主體。 在我們的「AtLeast21」原則中，需求是最短&mdash;存留期的單一參數。 需求會執行[IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement)，這是空的標記介面。 參數化最短存留期需求的執行方式如下：
+授權需求是一種資料參數集合，原則可以用來評估目前的使用者主體。 在我們的「AtLeast21」原則中，需求是 &mdash; 最短存留期的單一參數。 需求會執行[IAuthorizationRequirement](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationrequirement)，這是空的標記介面。 參數化最短存留期需求的執行方式如下：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Requirements/MinimumAgeRequirement.cs?name=snippet_MinimumAgeRequirementClass)]
 
@@ -363,7 +377,7 @@ public void ConfigureServices(IServiceCollection services)
 
 授權處理常式負責評估需求的屬性。 授權處理常式會針對提供的[AuthorizationHandlerCoNtext](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext)評估需求，以判斷是否允許存取。
 
-需求可以有[多個處理常式](#security-authorization-policies-based-multiple-handlers)。 處理常式可能會[繼承\<AuthorizationHandler TRequirement>](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1)， `TRequirement`其中是要處理的需求。 或者，處理常式可能會執行[IAuthorizationHandler](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationhandler)來處理多種類型的需求。
+需求可以有[多個處理常式](#security-authorization-policies-based-multiple-handlers)。 處理常式可能會[繼承 \<TRequirement> AuthorizationHandler](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandler-1)，其中 `TRequirement` 是要處理的需求。 或者，處理常式可能會執行[IAuthorizationHandler](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizationhandler)來處理多種類型的需求。
 
 ### <a name="use-a-handler-for-one-requirement"></a>針對一個需求使用處理程式
 
@@ -373,7 +387,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/MinimumAgeHandler.cs?name=snippet_MinimumAgeHandlerClass)]
 
-上述程式碼會判斷目前的使用者主體是否具有由已知且受信任簽發者所發行的「出生日期」。 當宣告遺失時，就無法進行授權，在這種情況下會傳回已完成的工作。 當宣告存在時，就會計算使用者的年齡。 如果使用者符合需求所定義的最短存留期，則會將授權視為成功。 當授權成功時， `context.Succeed`會叫用滿足需求做為其唯一參數的。
+上述程式碼會判斷目前的使用者主體是否具有由已知且受信任簽發者所發行的「出生日期」。 當宣告遺失時，就無法進行授權，在這種情況下會傳回已完成的工作。 當宣告存在時，就會計算使用者的年齡。 如果使用者符合需求所定義的最短存留期，則會將授權視為成功。 當授權成功時， `context.Succeed` 會叫用滿足需求做為其唯一參數的。
 
 ### <a name="use-a-handler-for-multiple-requirements"></a>針對多項需求使用處理程式
 
@@ -381,7 +395,7 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/PermissionHandler.cs?name=snippet_PermissionHandlerClass)]
 
-上述程式碼會[PendingRequirements](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.pendingrequirements#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_PendingRequirements)&mdash;包含未標示為成功之需求的屬性。 針對`ReadPermission`需求，使用者必須是「擁有者」或「贊助者」，才能存取要求的資源。 如果是`EditPermission`或`DeletePermission`需求，他或她必須是擁有者，才能存取要求的資源。
+上述程式碼會[PendingRequirements](/dotnet/api/microsoft.aspnetcore.authorization.authorizationhandlercontext.pendingrequirements#Microsoft_AspNetCore_Authorization_AuthorizationHandlerContext_PendingRequirements) &mdash; 包含未標示為成功之需求的屬性。 針對 `ReadPermission` 需求，使用者必須是「擁有者」或「贊助者」，才能存取要求的資源。 如果是 `EditPermission` 或 `DeletePermission` 需求，他或她必須是擁有者，才能存取要求的資源。
 
 <a name="security-authorization-policies-based-handler-registration"></a>
 
@@ -391,19 +405,19 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=32-33,48-53,61,62-63,66)]
 
-上述程式碼會`MinimumAgeHandler`藉由叫用將`services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();`註冊為 singleton。 您可以使用任何內建[服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)來註冊處理常式。
+上述程式碼會藉由叫用將註冊 `MinimumAgeHandler` 為 singleton `services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();` 。 您可以使用任何內建[服務存留期](xref:fundamentals/dependency-injection#service-lifetimes)來註冊處理常式。
 
 ## <a name="what-should-a-handler-return"></a>處理常式會傳回什麼？
 
 請注意， `Handle` [處理常式範例](#security-authorization-handler-example)中的方法不會傳回任何值。 如何指出成功或失敗的狀態？
 
-* 處理常式會藉由呼叫`context.Succeed(IAuthorizationRequirement requirement)`來表示成功，傳遞已成功驗證的需求。
+* 處理常式會藉由呼叫來表示成功 `context.Succeed(IAuthorizationRequirement requirement)` ，傳遞已成功驗證的需求。
 
 * 處理常式不需要處理失敗的一般情況，因為相同需求的其他處理常式可能會成功。
 
-* 若要保證失敗，即使其他需求處理常式成功， `context.Fail`也請呼叫。
+* 若要保證失敗，即使其他需求處理常式成功，也請呼叫 `context.Fail` 。
 
-如果處理常式呼叫`context.Succeed`或`context.Fail`，仍然會呼叫所有其他處理常式。 這可讓需求產生副作用，例如記錄，即使另一個處理常式已成功驗證或失敗，也會發生這種情況。 當設定為`false`時， [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure)屬性（可在 ASP.NET Core 1.1 和更新版本中使用）會在呼叫時， `context.Fail`縮短執行處理常式的時間。 `InvokeHandlersAfterFailure`預設為`true`，在此情況下會呼叫所有處理常式。
+如果處理常式呼叫 `context.Succeed` 或 `context.Fail` ，仍然會呼叫所有其他處理常式。 這可讓需求產生副作用，例如記錄，即使另一個處理常式已成功驗證或失敗，也會發生這種情況。 當設定為時 `false` ， [InvokeHandlersAfterFailure](/dotnet/api/microsoft.aspnetcore.authorization.authorizationoptions.invokehandlersafterfailure#Microsoft_AspNetCore_Authorization_AuthorizationOptions_InvokeHandlersAfterFailure)屬性（可在 ASP.NET Core 1.1 和更新版本中使用）會在呼叫時，縮短執行處理常式的時間 `context.Fail` 。 `InvokeHandlersAfterFailure`預設為 `true` ，在此情況下會呼叫所有處理常式。
 
 > [!NOTE]
 > 即使驗證失敗，也會呼叫授權處理常式。
@@ -426,33 +440,23 @@ public void ConfigureServices(IServiceCollection services)
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Services/Handlers/TemporaryStickerHandler.cs?name=snippet_TemporaryStickerHandlerClass)]
 
-請確定這兩個處理常式都已[註冊](xref:security/authorization/policies#security-authorization-policies-based-handler-registration)。 當原則評估時`BuildingEntryRequirement`，如果任一處理程式成功，原則評估就會成功。
+請確定這兩個處理常式都已[註冊](xref:security/authorization/policies#security-authorization-policies-based-handler-registration)。 當原則評估時，如果任一處理程式成功 `BuildingEntryRequirement` ，原則評估就會成功。
 
-## <a name="using-a-func-to-fulfill-a-policy"></a>使用 func 來完成原則
+## <a name="use-a-func-to-fulfill-a-policy"></a>使用 func 來完成原則
 
-在某些情況下，在程式碼中可以簡單地表達原則。 `Func<AuthorizationHandlerContext, bool>`當您使用`RequireAssertion`原則產生器來設定原則時，可以提供。
+在某些情況下，在程式碼中可以簡單地表達原則。 當您使用原則產生器來設定原則時，可以提供 `Func<AuthorizationHandlerContext, bool>` `RequireAssertion` 。
 
-例如，先前`BadgeEntryHandler`的改寫方式如下所示：
+例如，先前的改寫方式如下所示 `BadgeEntryHandler` ：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Startup.cs?range=50-51,55-61)]
 
-## <a name="accessing-mvc-request-context-in-handlers"></a>存取處理常式中的 MVC 要求內容
+## <a name="access-mvc-request-context-in-handlers"></a>存取處理常式中的 MVC 要求內容
 
-您`HandleRequirementAsync`在授權處理常式中執行的方法有兩個參數`AuthorizationHandlerContext` ：和`TRequirement`您正在處理的。 MVC 或SignalR等架構可自由地將任何物件加入至的`Resource`屬性， `AuthorizationHandlerContext`以傳遞額外的資訊。
+`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。 MVC 或等架構可 SignalR 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。
 
-使用端點路由時，授權通常會由授權中介軟體處理。 在此情況下， `Resource`屬性是的實例<xref:Microsoft.AspNetCore.Http.Endpoint>。 端點可用來探查您要路由的基礎資源。 例如：
+例如，MVC 會在屬性中傳遞[AuthorizationFilterCoNtext](/dotnet/api/?term=AuthorizationFilterContext)的實例 `Resource` 。 這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 Razor 。
 
-```csharp
-if (context.Resource is Endpoint endpoint)
-{
-   var actionDescriptor = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>();
-   ...
-}
-```
-
-使用傳統路由，或在 MVC 的授權篩選準則中發生授權時，的值`Resource`就是<xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext>實例。 這個屬性可讓您`HttpContext`存取`RouteData`MVC 和Razor頁面所提供的、和其他所有專案。
-
-`Resource`屬性的使用是架構特有的。 使用屬性中的`Resource`資訊會將您的授權原則限制為特定架構。 您應該使用`Resource` `is`關鍵字來轉換屬性，然後確認轉換已成功，以確保您的程式`InvalidCastException`代碼在其他架構上執行時不會損毀：
+屬性的使用 `Resource` 是架構特有的。 使用屬性中的資訊會將 `Resource` 您的授權原則限制為特定架構。 您應該 `Resource` 使用關鍵字來轉換屬性 `is` ，然後確認轉換已成功，以確保您的程式碼在 `InvalidCastException` 其他架構上執行時不會損毀：
 
 ```csharp
 // Requires the following import:

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 707686cdc4ceb6605d6214eeeee0f6dd2e121c90
-ms.sourcegitcommit: 6371114344a5f4fbc5d4a119b0be1ad3762e0216
+ms.openlocfilehash: 8244dfa4dfed8e44e9e149891d2071c48bebd5ab
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84679523"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102370"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -65,7 +65,7 @@ public class ExampleModel
 
 * 表單會使用在型別中 `name` 定義的驗證來驗證欄位中的使用者輸入 `ExampleModel` 。 模型會建立在元件的區塊中 `@code` ，並保留在私用欄位（ `exampleModel` ）中。 欄位會指派給元素的 `Model` 屬性 `<EditForm>` 。
 * <xref:Microsoft.AspNetCore.Components.Forms.InputText>元件的系結 `@bind-Value` ：
-  * 模型屬性（ `exampleModel.Name` ）至 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 元件的 `Value` 屬性。 如需屬性系結的詳細資訊，請參閱 <xref:blazor/data-binding#parent-to-child-binding-with-component-parameters> 。
+  * 模型屬性（ `exampleModel.Name` ）至 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 元件的 `Value` 屬性。 如需屬性系結的詳細資訊，請參閱 <xref:blazor/components/data-binding#parent-to-child-binding-with-component-parameters> 。
   * 元件的屬性的變更事件委派 <xref:Microsoft.AspNetCore.Components.Forms.InputText> `ValueChanged` 。
 * <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>元件會使用資料批註附加驗證支援。
 * <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>元件會摘要驗證訊息。
@@ -192,7 +192,7 @@ public class Starship
 }
 ```
 
-會 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 建立 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 做為階層式[值](xref:blazor/components#cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>也提供有效和無效提交的便利事件（ <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> 、 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit> ）。 或者，使用 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
+會 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 建立 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 做為階層式[值](xref:blazor/components/cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>也提供有效和無效提交的便利事件（ <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> 、 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit> ）。 或者，使用 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
 
 在下例中︰
 
@@ -504,7 +504,7 @@ public class ShipDescription
 
 * 當元件初始化時，請使用表單的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 來指派模型。
 * 在內容的回呼中驗證表單 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> ，以啟用和停用 [提交] 按鈕。
-* 解除掛接方法中的事件處理常式 `Dispose` 。 如需詳細資訊，請參閱 <xref:blazor/lifecycle#component-disposal-with-idisposable> 。
+* 解除掛接方法中的事件處理常式 `Dispose` 。 如需詳細資訊，請參閱 <xref:blazor/components/lifecycle#component-disposal-with-idisposable> 。
 
 ```razor
 @implements IDisposable

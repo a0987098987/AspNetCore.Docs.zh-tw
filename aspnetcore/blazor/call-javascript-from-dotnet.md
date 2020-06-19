@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 26202c45e49e64117d35fe6f1e9a65c4acc170fb
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: de04992c3e3c7ce2dc73eee801484d5e3930fa3a
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105086"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102468"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>在 ASP.NET Core 中從 .NET 方法呼叫 JavaScript 函式Blazor
 
@@ -36,7 +36,7 @@ Blazor應用程式可以從 javascript 函數的 .net 方法和 .net 方法叫�
 
 下列範例是以 JavaScript 為基礎的解碼器為基礎[TextDecoder](https://developer.mozilla.org/docs/Web/API/TextDecoder)。 此範例示範如何從 c # 方法叫用 JavaScript 函式，將開發人員程式碼的需求卸載至現有的 JavaScript API。 JavaScript 函式會接受 c # 方法的位元組陣列、解碼陣列，然後將文字傳回給元件以供顯示。
 
-在 `<head>` *Wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host*的元素中 Blazor ，提供 JavaScript 函式來使用 `TextDecoder` 來解碼傳遞的陣列，並傳回解碼的值：
+在 `<head>` *wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host. cshtml* （Server）的元素中 Blazor ，提供 JavaScript 函式，用 `TextDecoder` 來解碼傳遞的陣列，並傳回解碼的值：
 
 [!code-html[](call-javascript-from-dotnet/samples_snapshot/index-script-convertarray.html)]
 
@@ -61,7 +61,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
   [!code-razor[](call-javascript-from-dotnet/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
-  在 `<head>` *Wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host. cshtml* （Server）的元素內 Blazor ，提供 `handleTickerChanged` JavaScript 函數。 呼叫函式時 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> ，不會傳回值：
+  在 `<head>` *wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host. cshtml* （Server）的元素內 Blazor ，提供 `handleTickerChanged` JavaScript 函數。 呼叫函式時 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> ，不會傳回值：
 
   [!code-html[](call-javascript-from-dotnet/samples_snapshot/index-script-handleTickerChanged1.html)]
 
@@ -69,7 +69,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
   [!code-csharp[](call-javascript-from-dotnet/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
 
-  在 `<head>` *Wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host. cshtml* （Server）的元素內 Blazor ，提供 `handleTickerChanged` JavaScript 函數。 使用呼叫函式 `JSRuntime.InvokeAsync` ，並傳回值：
+  在 `<head>` *wwwroot/index.html* （ Blazor WebAssembly）或*Pages/_Host. cshtml* （Server）的元素內 Blazor ，提供 `handleTickerChanged` JavaScript 函數。 使用呼叫函式 `JSRuntime.InvokeAsync` ，並傳回值：
 
   [!code-html[](call-javascript-from-dotnet/samples_snapshot/index-script-handleTickerChanged2.html)]
 
@@ -85,7 +85,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 * `showPrompt`：產生可接受使用者輸入的提示（使用者的名稱），並將名稱傳回給呼叫者。
 * `displayWelcome`：將歡迎訊息從呼叫者指派給具有之的 DOM 物件 `id` `welcome` 。
 
-*wwwroot/exampleJsInterop*：
+*wwwroot/exampleJsInterop.js*：
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
@@ -101,7 +101,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 請勿將 `<script>` 標記放在元件檔中，因為 `<script>` 無法動態更新標記。
 
-.NET 方法會藉由呼叫，與*exampleJsInterop*中的 JavaScript 函式進行 interop <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> 。
+.NET 方法會藉由呼叫，與*exampleJsInterop.js*檔案中的 JavaScript 函式進行 interop <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> 。
 
 <xref:Microsoft.JSInterop.IJSRuntime>抽象概念是非同步，允許 Blazor 伺服器案例。 如果應用程式是 Blazor WebAssembly 應用程式，而且您想要以同步方式叫用 JavaScript 函式，請改為向下轉換 <xref:Microsoft.JSInterop.IJSInProcessRuntime> 並呼叫 <xref:Microsoft.JSInterop.IJSInProcessRuntime.Invoke%2A> 。 我們建議大部分的 JS interop 程式庫都使用非同步 Api，以確保所有案例中都有可用的程式庫。
 
@@ -142,7 +142,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 }
 ```
 
-1. 當您 `TriggerJsPrompt` 選取元件的 [觸發程式**JavaScript 提示**] 按鈕來執行時， `showPrompt` 會呼叫*wwwroot/ExampleJsInterop*檔案中提供的 JavaScript 函數。
+1. 當您 `TriggerJsPrompt` 選取元件的 [觸發程式**JavaScript 提示**] 按鈕來執行時， `showPrompt` 會呼叫*wwwroot/exampleJsInterop.js*檔案中提供的 JavaScript 函數。
 1. 函式 `showPrompt` 會接受使用者輸入（使用者的名稱），這是 HTML 編碼並傳回給元件。 元件會將使用者的名稱儲存在本機變數中 `name` 。
 1. 儲存在中的字串 `name` 會併入歡迎使用的訊息中，其會傳遞至 JavaScript 函式，以將 `displayWelcome` 歡迎訊息轉譯為標題標記。
 
@@ -193,7 +193,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 例如，下列程式碼會定義 .NET 擴充方法，讓您能夠將焦點設定在元素上：
 
-*exampleJsInterop .js*：
+*exampleJsInterop.js*：
 
 ```javascript
 window.exampleJsFunctions = {
@@ -222,7 +222,7 @@ public static async Task Focus(this ElementReference elementRef, IJSRuntime jsRu
 [!code-razor[](call-javascript-from-dotnet/samples_snapshot/component2.razor?highlight=1-4,12)]
 
 > [!IMPORTANT]
-> `username`只有在呈現元件之後，才會填入變數。 如果將擴展 <xref:Microsoft.AspNetCore.Components.ElementReference> 傳遞至 javascript 程式碼，javascript 程式碼就會收到的值 `null` 。 若要在元件完成轉譯之後操作元素參考（以設定元素的初始焦點），請使用[OnAfterRenderAsync 或 OnAfterRender 元件生命週期方法](xref:blazor/lifecycle#after-component-render)。
+> `username`只有在呈現元件之後，才會填入變數。 如果將擴展 <xref:Microsoft.AspNetCore.Components.ElementReference> 傳遞至 javascript 程式碼，javascript 程式碼就會收到的值 `null` 。 若要在元件完成轉譯之後操作元素參考（以設定元素的初始焦點），請使用[OnAfterRenderAsync 或 OnAfterRender 元件生命週期方法](xref:blazor/components/lifecycle#after-component-render)。
 
 當使用泛型型別並傳回值時，請使用 <xref:System.Threading.Tasks.ValueTask%601> ：
 
@@ -459,7 +459,7 @@ JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。
       TimeSpan.FromSeconds({SECONDS}), new[] { "Arg1" });
   ```
 
-如需資源耗盡的詳細資訊，請參閱 <xref:security/blazor/server/threat-mitigation> 。
+如需資源耗盡的詳細資訊，請參閱 <xref:blazor/security/server/threat-mitigation> 。
 
 [!INCLUDE[](~/includes/blazor-share-interop-code.md)]
 

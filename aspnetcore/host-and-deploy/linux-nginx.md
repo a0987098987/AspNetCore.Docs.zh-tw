@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: af2bea1b3a149ef8d80970031e939dc083d94a03
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: e1367fe284c4d51a341da01c6415284f6f3e7a9c
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775891"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102888"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -38,7 +38,7 @@ ms.locfileid: "82775891"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
@@ -89,9 +89,10 @@ Kestrel 非常適用於從 ASP.NET Core 提供動態內容。 不過，Web 服�
 
 因為反向 proxy 會轉送要求，所以請使用[AspNetCore. 來自 microsoft.aspnetcore.HTTPoverrides](https://www.nuget.org/packages/Microsoft.AspNetCore.HttpOverrides/)套件中的[轉送標頭中介軟體](xref:host-and-deploy/proxy-load-balancer)。 此中介軟體會使用 `X-Forwarded-Proto` 標頭來更新 `Request.Scheme`，以便讓重新導向 URI 及其他安全性原則正確運作。
 
-任何依賴配置的元件，例如驗證、連結產生、重新導向和地理位置，都必須在叫用轉送的標頭中介軟體後放置。 轉送的標頭中介軟體是一般規則，應該先於診斷和錯誤處理中介軟體以外的其他中介軟體執行。 這種排序可確保依賴轉送標頭資訊的中介軟體可以耗用用於處理的標頭值。
 
-呼叫其他<xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*>中介軟體`Startup.Configure`之前，先叫用頂端的方法。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
+[!INCLUDE[](~/includes/ForwardedHeaders.md)]
+
+<xref:Microsoft.AspNetCore.Builder.ForwardedHeadersExtensions.UseForwardedHeaders*> `Startup.Configure` 呼叫其他中介軟體之前，先叫用頂端的方法。 請設定中介軟體來轉送 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭：
 
 ```csharp
 // using Microsoft.AspNetCore.HttpOverrides;
@@ -117,7 +118,7 @@ services.Configure<ForwardedHeadersOptions>(options =>
 });
 ```
 
-如需詳細資訊，請參閱<xref:host-and-deploy/proxy-load-balancer>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/proxy-load-balancer> 。
 
 ### <a name="install-nginx"></a>安裝 Nginx
 
@@ -155,7 +156,7 @@ server {
 }
 ```
 
-如果應用程式是依賴Blazor SignalR websocket 的伺服器應用程式，請參閱<xref:host-and-deploy/blazor/server#linux-with-nginx> ，以取得如何設定`Connection`標頭的相關資訊。
+如果應用程式是 Blazor 依賴 websocket 的伺服器應用程式 SignalR ，請參閱，以 <xref:blazor/host-and-deploy/server#linux-with-nginx> 取得如何設定標頭的相關資訊 `Connection` 。
 
 當沒有任何與 `server_name` 相符的項目時，Nginx 會使用預設伺服器。 如果未定義任何預設伺服器，則設定檔中的第一個伺服器就是預設伺服器。 最佳做法是，在您的設定檔中新增一個會傳回狀態碼 444 的特定預設伺服器。 預設伺服器設定範例如下：
 
@@ -217,7 +218,7 @@ Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
 WantedBy=multi-user.target
 ```
 
-在上述範例中，管理服務的使用者是由`User`選項指定。 使用者（`www-data`）必須存在，且具有應用程式檔案的適當擁有權。
+在上述範例中，管理服務的使用者是由 `User` 選項指定。 使用者（ `www-data` ）必須存在，且具有應用程式檔案的適當擁有權。
 
 使用 `TimeoutStopSec` 可設定應用程式收到初始中斷訊號之後等待關閉的時間。 如果應用程式在此期間後未關閉，則會發出 SIGKILL 來終止應用程式。 提供不具單位的秒值 (例如 `150`)、時間範圍值 (例如 `2min 30s`) 或 `infinity` (表示停用逾時)。 `TimeoutStopSec` 在管理員設定檔 (*systemd-system.conf*、*system.conf.d*、*systemd-user.conf*、*user.conf.d*) 的預設值為 `DefaultTimeoutStopSec`。 大多數發行版本的預設逾時為 90 秒。
 
@@ -234,7 +235,16 @@ Linux 的檔案系統會區分大小寫。 將 ASPNETCORE_ENVIRONMENT 設定為 
 systemd-escape "<value-to-escape>"
 ```
 
+::: moniker range=">= aspnetcore-3.0"
+
+環境變數名稱不支援冒號 (`:`) 分隔符號。 請使用雙底線 (`__`) 來取代冒號。 [環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables)會在將環境變數讀入組態時，將雙底線轉換為冒號。 在下列範例中，連接字串索引鍵 `ConnectionStrings:DefaultConnection` 會設定為服務定義檔中的 `ConnectionStrings__DefaultConnection`：
+
+::: moniker-end
+::: moniker range="< aspnetcore-3.0"
+
 環境變數名稱不支援冒號 (`:`) 分隔符號。 請使用雙底線 (`__`) 來取代冒號。 [環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)會在將環境變數讀入組態時，將雙底線轉換為冒號。 在下列範例中，連接字串索引鍵 `ConnectionStrings:DefaultConnection` 會設定為服務定義檔中的 `ConnectionStrings__DefaultConnection`：
+
+::: moniker-end
 
 ```
 Environment=ConnectionStrings__DefaultConnection={Connection String}
@@ -320,7 +330,7 @@ Linux 安全性模組 (LSM) 是 Linux 2.6 之後 Linux 核心所包含的一個�
 
 ### <a name="configure-the-firewall"></a>設定防火牆
 
-關閉所有不在使用中的外部連接埠。 簡單的防火牆（ufw）提供用來設定`iptables`防火牆的 CLI，藉以提供的前端。
+關閉所有不在使用中的外部連接埠。 簡單的防火牆（ufw）提供用來設定防火牆的 CLI，藉以提供的前端 `iptables` 。
 
 > [!WARNING]
 > 如未正確設定，防火牆會禁止存取整個系統。 未指定正確的 SSH 連接埠，將會導致您無法存取系統 (若您使用 SSH 連線至該連接埠)。 預設連接埠為 22。 如需詳細資訊，請參閱 [ufw 簡介](https://help.ubuntu.com/community/UFW)與[手冊](https://manpages.ubuntu.com/manpages/bionic/man8/ufw.8.html)。
@@ -371,7 +381,10 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 
 * 新增 `HTTP Strict-Transport-Security` (HSTS) 標頭可確保用戶端提出的所有後續要求都會透過 HTTPS。
 
-* 如果未來將會停用 HTTPS，請不要新增 HSTS 標頭，或是選擇適當的 `max-age`。
+* 如果未來將會停用 HTTPS，請使用下列其中一種方法：
+
+  * 不要新增 HSTS 標頭。
+  * 選擇 short `max-age` 值。
 
 新增 */etc/nginx/Proxy.conf* 組態檔：
 

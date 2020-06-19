@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: ffdc329d813dcbfffe2216dc58bbc4150f7cf786
-ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
+ms.openlocfilehash: b55619889c294a0cd6ab98ffdf228d86ee60cd7c
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84776419"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102314"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
 
@@ -89,7 +89,7 @@ dotnet new blazorwasm -o MyNewProject --pwa
 
 若要查看離線支援的運作方式：
 
-1. 發行應用程式。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/index#publish-the-app> 。
+1. 發行應用程式。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/index#publish-the-app> 。
 1. 將應用程式部署至支援 HTTPS 的伺服器，並在瀏覽器中以安全的 HTTPS 位址存取應用程式。
 1. 開啟瀏覽器的 [開發工具]，並確認已在 [**應用程式**] 索引標籤上註冊主機的*服務背景工作*：
 
@@ -295,4 +295,4 @@ PWA 範本可以與驗證搭配使用。 具有離線功能的 PWA 也可以在�
 
 ## <a name="additional-resources"></a>其他資源
 
-* [SignalR用於驗證的跨原始來源協調](xref:blazor/hosting-model-configuration#signalr-cross-origin-negotiation-for-authentication)
+* [SignalR用於驗證的跨原始來源協調](xref:blazor/fundamentals/additional-scenarios#signalr-cross-origin-negotiation-for-authentication)

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: 36afa8ece58843b434ebfba6305bffdb9eb9bca0
-ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
+ms.openlocfilehash: f3314458a504af7f44dcdc276de890fa9485a2b3
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84724285"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85103039"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>IdentityASP.NET Core 專案中的 Scaffold
 
@@ -195,7 +195,7 @@ Identity會在*區域/ Identity /IdentityHostingStartup.cs*中設定。 如需�
 * 當驗證權杖已布建並儲存至驗證 cookie 時，可以將它們傳遞給元件。
 * Razor元件無法 `HttpContext` 直接使用，因此無法取得[反要求偽造（XSRF）權杖](xref:security/anti-request-forgery)，以在張貼到 Identity 的登出端點 `/Identity/Account/Logout` 。 XSRF token 可以傳遞給元件。
 
-如需詳細資訊，請參閱 <xref:security/blazor/server/additional-scenarios#pass-tokens-to-a-blazor-server-app> 。
+如需詳細資訊，請參閱 <xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app> 。
 
 在*Pages/_Host. cshtml*檔案中，在將它加入和類別之後，建立權杖 `InitialApplicationState` `TokenProvider` ：
 
@@ -229,7 +229,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 在 `Startup` 類別中：
 
 * 確認 Razor 已在中新增頁面服務 `Startup.ConfigureServices` 。
-* 如果使用[TokenProvider](xref:security/blazor/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)，請註冊服務。
+* 如果使用[TokenProvider](xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)，請註冊服務。
 * `UseDatabaseErrorPage`針對開發環境，在的應用程式產生器上呼叫 `Startup.Configure` 。
 * `UseAuthentication` `UseAuthorization` 在之後呼叫和 `UseRouting` 。
 * 新增頁面的端點 Razor 。
@@ -253,7 +253,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 }
 ```
 
-將 `LoginDisplay` 元件（*LoginDisplay*）新增至應用程式的*共用*資料夾。 [TokenProvider 服務](xref:security/blazor/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)會針對張貼至的登出端點的 HTML 表單，提供 XSRF token Identity ：
+將 `LoginDisplay` 元件（*LoginDisplay*）新增至應用程式的*共用*資料夾。 [TokenProvider 服務](xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)會針對張貼至的登出端點的 HTML 表單，提供 XSRF token Identity ：
 
 ```razor
 @using Microsoft.AspNetCore.Components.Authorization

@@ -11,12 +11,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: ae382feb152f490e46df969887401060965d8c4e
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: fcd81544385702ce72ff5fc8ae2de34d0f7afb37
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106529"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85103000"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -61,11 +61,11 @@ ASP.NET Core MVC 架構是輕量型、開放原始碼且可高度測試的展示
 
 ASP.NET Core MVC 可讓您透過模式建立動態網站，以清楚關注點分離。 它可讓您完全掌控標記，支援適合 TDD 的開發，並使用最新的網站標準。
 
-## <a name="features"></a>特性
+## <a name="features"></a>功能
 
 ASP.NET Core MVC 包括下列各項：
 
-* [路由](#routing)
+* [傳入](#routing)
 * [模型繫結](#model-binding)
 * [模型驗證](#model-validation)
 * [相依性插入](../fundamentals/dependency-injection.md)
@@ -264,4 +264,4 @@ RazorMVC 中的 views 可以根據您的模型來進行強型別。 控制器可
 ## <a name="additional-resources"></a>其他資源
 
 * 適用于 ASP.NET Core MVC：強型別單元測試連結[庫的 MyTested AspNetCore](https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc)，提供流暢的介面來測試 mvc 和 Web API 應用程式。 （*不是由 Microsoft 維護或支援）。*
-* <xref:blazor/integrate-components>
+* <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>

@@ -11,18 +11,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: 53ca2a650eb6a3be0ff137953df5a546e9f0b282
-ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
+ms.openlocfilehash: e85c9d384361f9169035e6a3ab8770e1a96b8650
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2020
-ms.locfileid: "84756128"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102727"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>RazorASP.NET Core 的語法參考
 
 由[Rick Anderson](https://twitter.com/RickAndMSFT)、 [Taylor Mullen](https://twitter.com/ntaylormullen)和[Dan Vicarel](https://github.com/Rabadash8820)
 
-Razor是將伺服器程式碼內嵌到網頁中的標記語法。 Razor語法包含 Razor 標記、c # 和 HTML。 通常包含 Razor 的檔案副檔名為 *.* #。 Razor也可以在[ Razor 元件](xref:blazor/components)檔案（*razor*）中找到。
+Razor是將伺服器程式碼內嵌到網頁中的標記語法。 Razor語法包含 Razor 標記、c # 和 HTML。 通常包含 Razor 的檔案副檔名為 *.* #。 Razor也可以在[ Razor 元件](xref:blazor/components/index)檔案（*razor*）中找到。
 
 ## <a name="rendering-html"></a>轉譯 HTML
 
@@ -465,7 +465,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 *此案例僅適用于 Razor 元件（razor）。*
 
-`@code`區塊可讓[ Razor 元件](xref:blazor/components)將 c # 成員（欄位、屬性和方法）新增至元件：
+`@code`區塊可讓[ Razor 元件](xref:blazor/components/index)將 c # 成員（欄位、屬性和方法）新增至元件：
 
 ```razor
 @code {
@@ -489,7 +489,7 @@ public class _Views_Something_cshtml : RazorPage<dynamic>
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在[ Razor 元件](xref:blazor/components)中，請使用 `@code` Over `@functions` 來新增 c # 成員。
+在[ Razor 元件](xref:blazor/components/index)中，請使用 `@code` Over `@functions` 來新增 c # 成員。
 
 ::: moniker-end
 
@@ -683,7 +683,7 @@ Razor公開 `Model` 屬性，以存取傳遞至視圖的模型：
 `@page` 指示詞會根據其出現的檔案類型而有不同的效果。 指示詞：
 
 * 在中， *cshtml*檔案表示檔案是 Razor 頁面。 如需詳細資訊，請參閱[自訂路由](xref:razor-pages/index#custom-routes)和 <xref:razor-pages/index> 。
-* 指定 Razor 元件應直接處理要求。 如需詳細資訊，請參閱 <xref:blazor/routing> 。
+* 指定 Razor 元件應直接處理要求。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/routing> 。
 
 ::: moniker-end
 
@@ -707,7 +707,7 @@ Razor公開 `Model` 屬性，以存取傳遞至視圖的模型：
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在[ Razor 元件](xref:blazor/components)中， `@using` 也會控制哪些元件在範圍內。
+在[ Razor 元件](xref:blazor/components/index)中， `@using` 也會控制哪些元件在範圍內。
 
 ::: moniker-end
 
@@ -721,19 +721,19 @@ Razor指示詞屬性會以隱含運算式表示，並在符號後面加上保留
 
 *此案例僅適用于 Razor 元件（razor）。*
 
-`@attributes` 允許元件轉譯非宣告的屬性。 如需詳細資訊，請參閱 <xref:blazor/components#attribute-splatting-and-arbitrary-parameters> 。
+`@attributes` 允許元件轉譯非宣告的屬性。 如需詳細資訊，請參閱 <xref:blazor/components/index#attribute-splatting-and-arbitrary-parameters> 。
 
 ### `@bind`
 
 *此案例僅適用于 Razor 元件（razor）。*
 
-元件中的資料繫結會使用 `@bind` 屬性來完成。 如需詳細資訊，請參閱 <xref:blazor/data-binding> 。
+元件中的資料繫結會使用 `@bind` 屬性來完成。 如需詳細資訊，請參閱 <xref:blazor/components/data-binding> 。
 
 ### `@on{EVENT}`
 
 *此案例僅適用于 Razor 元件（razor）。*
 
-Razor提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:blazor/event-handling> 。
+Razor提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:blazor/components/event-handling> 。
 
 ::: moniker-end
 
@@ -759,19 +759,19 @@ Razor提供元件的事件處理功能。 如需詳細資訊，請參閱 <xref:b
 
 *此案例僅適用于 Razor 元件（razor）。*
 
-`@key` 指示詞屬性導致元件差異比較演算法會根據索引鍵的值來保證元素或元件的保留。 如需詳細資訊，請參閱 <xref:blazor/components#use-key-to-control-the-preservation-of-elements-and-components> 。
+`@key` 指示詞屬性導致元件差異比較演算法會根據索引鍵的值來保證元素或元件的保留。 如需詳細資訊，請參閱 <xref:blazor/components/index#use-key-to-control-the-preservation-of-elements-and-components> 。
 
 ### `@ref`
 
 *此案例僅適用于 Razor 元件（razor）。*
 
-元件參考 (`@ref`) 提供一種方式來參考元件執行個體，讓您可以對該執行個體發出命令。 如需詳細資訊，請參閱 <xref:blazor/components#capture-references-to-components> 。
+元件參考 (`@ref`) 提供一種方式來參考元件執行個體，讓您可以對該執行個體發出命令。 如需詳細資訊，請參閱 <xref:blazor/components/index#capture-references-to-components> 。
 
 ### `@typeparam`
 
 *此案例僅適用于 Razor 元件（razor）。*
 
-指示詞會 `@typeparam` 為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱 <xref:blazor/templated-components#generic-typed-components> 。
+指示詞會 `@typeparam` 為所產生的元件類別宣告泛型型別參數。 如需詳細資訊，請參閱 <xref:blazor/components/templated-components#generic-typed-components> 。
 
 ::: moniker-end
 

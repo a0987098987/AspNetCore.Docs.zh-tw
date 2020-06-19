@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/component-tag-helper
-ms.openlocfilehash: b6e3890e13ef5ad20098d3907b6895046087aeca
-ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
+ms.openlocfilehash: df978d49201ba1010ddf13b1b9a63ae27116616e
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84776497"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85103083"
 ---
 # <a name="component-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的元件標記協助程式
 
@@ -25,9 +25,9 @@ ms.locfileid: "84776497"
 
 若要從頁面或視圖呈現元件，請使用[元件標記](xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper)協助程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-請遵循文章的*準備應用程式以使用頁面和 views 中的元件*一節中的指導方針 <xref:blazor/integrate-components#prepare-the-app> 。
+請遵循文章的*準備應用程式以使用頁面和 views 中的元件*一節中的指導方針 <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps#prepare-the-app> 。
 
 ## <a name="component-tag-helper"></a>元件標記協助程式
 
@@ -72,7 +72,7 @@ ms.locfileid: "84776497"
 }
 ```
 
-`Size` `int` `Color` `string` 元件標記協助程式可以設定（）和（）[元件參數](xref:blazor/components#component-parameters)：
+`Size` `int` `Color` `string` 元件標記協助程式可以設定（）和（）[元件參數](xref:blazor/components/index#component-parameters)：
 
 ```cshtml
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
@@ -172,4 +172,4 @@ public class MyClass
 
 * <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper>
 * <xref:mvc/views/tag-helpers/intro>
-* <xref:blazor/components>
+* <xref:blazor/components/index>

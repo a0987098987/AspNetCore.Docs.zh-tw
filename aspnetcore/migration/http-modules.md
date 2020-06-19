@@ -11,12 +11,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/http-modules
-ms.openlocfilehash: c2b49976d2063679eab2403aae432660e8c8932d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 214e3fa86a1418f04a5e292cdc1b4baac8c75643
+ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775410"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85074178"
 ---
 # <a name="migrate-http-handlers-and-modules-to-aspnet-core-middleware"></a>將 HTTP 處理常式和模組遷移至 ASP.NET Core 中介軟體
 
@@ -34,7 +34,7 @@ ms.locfileid: "82775410"
 
 * 用來處理指定的檔案名或副檔名的要求，例如 *. report*
 
-* *在 web.config*中[設定](/iis/configuration/system.webserver/handlers/)
+* 在*Web.config*中[設定](/iis/configuration/system.webserver/handlers/)
 
 **模組包括：**
 
@@ -46,13 +46,13 @@ ms.locfileid: "82775410"
 
 * 能夠新增至 HTTP 回應，或自行建立
 
-* *在 web.config*中[設定](/iis/configuration/system.webserver/modules/)
+* 在*Web.config*中[設定](/iis/configuration/system.webserver/modules/)
 
 **模組處理傳入要求的順序取決於：**
 
 1. [應用程式生命週期](https://msdn.microsoft.com/library/ms227673.aspx)，這是由 ASP.NET 所引發的數列事件： [BeginRequest](/dotnet/api/system.web.httpapplication.beginrequest)、 [AuthenticateRequest](/dotnet/api/system.web.httpapplication.authenticaterequest)等等。每個模組都可以建立一個或多個事件的處理常式。
 
-2. 針對相同的事件，這是在*web.config*中設定的順序。
+2. 針對相同的事件，在*Web.config*中設定的順序。
 
 除了模組之外，您還可以將生命週期事件的處理常式新增至*Global.asax.cs*檔案。 這些處理常式會在已設定之模組中的處理常式之後執行。
 
@@ -60,13 +60,22 @@ ms.locfileid: "82775410"
 
 **中介軟體比 HTTP 模組和處理常式簡單：**
 
-* 模組、處理常式、 *Global.asax.cs*、 *web.config （IIS*設定除外）和應用程式生命週期都已消失
+* 模組、處理常式、 *Global.asax.cs*、 *Web.config* （IIS 設定除外）和應用程式生命週期都已消失
 
 * 中介軟體已接管模組和處理常式的角色
 
-* 中介軟體是使用程式碼（而不*是 web.config）* 來設定
+* 中介軟體是使用程式碼來設定，而不是在*Web.config*
+
+::: moniker range=">= aspnetcore-3.0"
+
+* [管線分支](xref:fundamentals/middleware/index#branch-the-middleware-pipeline)可讓您將要求傳送至特定中介軟體，而不只是 URL，也會根據要求標頭、查詢字串等。
+
+::: moniker-end
+::: moniker range="< aspnetcore-3.0"
 
 * [管線分支](xref:fundamentals/middleware/index#use-run-and-map)可讓您將要求傳送至特定中介軟體，而不只是 URL，也會根據要求標頭、查詢字串等。
+
+::: moniker-end
 
 **中介軟體非常類似模組：**
 
@@ -94,7 +103,7 @@ ms.locfileid: "82775410"
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyModule.cs?highlight=6,8,24,31)]
 
-如[中介軟體](xref:fundamentals/middleware/index)頁面所示，ASP.NET Core 中介軟體是一個類別，它會`Invoke`公開採用`HttpContext`並傳回的`Task`方法。 您的新中介軟體看起來會像這樣：
+如[中介軟體](xref:fundamentals/middleware/index)頁面所示，ASP.NET Core 中介軟體是一個類別，它會公開 `Invoke` 採用 `HttpContext` 並傳回的方法 `Task` 。 您的新中介軟體看起來會像這樣：
 
 <a name="http-modules-usemiddleware"></a>
 
@@ -102,7 +111,7 @@ ms.locfileid: "82775410"
 
 先前的中介軟體範本取自[撰寫中介軟體](xref:fundamentals/middleware/write)的一節。
 
-*MyMiddlewareExtensions* helper 類別可讓您更輕鬆地在`Startup`類別中設定中介軟體。 `UseMyMiddleware`方法會將中介軟體類別新增至要求管線。 中介軟體所需的服務會插入中介軟體的函式中。
+*MyMiddlewareExtensions* helper 類別可讓您更輕鬆地在類別中設定中介軟體 `Startup` 。 `UseMyMiddleware`方法會將中介軟體類別新增至要求管線。 中介軟體所需的服務會插入中介軟體的函式中。
 
 <a name="http-modules-shortcircuiting-middleware"></a>
 
@@ -110,23 +119,23 @@ ms.locfileid: "82775410"
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Modules/MyTerminatingModule.cs?highlight=9,10,11,12,13&name=snippet_Terminate)]
 
-中介軟體會藉由不在`Invoke`管線中的下一個中介軟體上呼叫來處理這種情況。 請記住，這並不會完全終止要求，因為當回應透過管線回傳時，仍然會叫用先前的中介軟體。
+中介軟體會藉由不在 `Invoke` 管線中的下一個中介軟體上呼叫來處理這種情況。 請記住，這並不會完全終止要求，因為當回應透過管線回傳時，仍然會叫用先前的中介軟體。
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyTerminatingMiddleware.cs?highlight=7,8&name=snippet_Terminate)]
 
-當您將模組的功能遷移至新的中介軟體時，您可能會發現程式碼不會`HttpContext`編譯，因為在 ASP.NET Core 中，類別已大幅變更。 [稍後](#migrating-to-the-new-httpcontext)，您將瞭解如何遷移至新的 ASP.NET Core HttpCoNtext。
+當您將模組的功能遷移至新的中介軟體時，您可能會發現程式碼不會編譯，因為在 `HttpContext` ASP.NET Core 中，類別已大幅變更。 [稍後](#migrating-to-the-new-httpcontext)，您將瞭解如何遷移至新的 ASP.NET Core HttpCoNtext。
 
 ## <a name="migrating-module-insertion-into-the-request-pipeline"></a>將模組插入遷移至要求管線
 
-HTTP 模組通常*會使用 web.config*新增至要求管線：
+HTTP 模組通常會使用*Web.config*新增至要求管線：
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32-33,36,43,50,101)]
 
-將您的[新中介軟體新增](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)至`Startup`類別中的要求管線，以轉換此項：
+將您的[新中介軟體新增](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)至類別中的要求管線，以轉換此項 `Startup` ：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=16)]
 
-管線中您插入新中介軟體的確切位置，取決於它*在 web.config 中*處理為模組的事件（`BeginRequest`、 `EndRequest`等）及其順序。
+管線中您插入新中介軟體的確切位置，取決於它在Web.config的模組清單中處理為模組的事件（ `BeginRequest` 、 `EndRequest` 等）及其順序。 *Web.config*
 
 如先前所述，ASP.NET Core 中沒有應用程式生命週期，中介軟體處理回應的順序與模組使用的順序不同。 這可能會讓您的訂購決策更具挑戰性。
 
@@ -142,31 +151,31 @@ HTTP 處理常式看起來像這樣：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/ReportHandlerMiddleware.cs?highlight=7,9,13,20,21,22,23,40,42,44)]
 
-這個中介軟體非常類似于模組的對應中介軟體。 唯一的真正差異在於，這裡沒有對`_next.Invoke(context)`的呼叫。 這是合理的，因為處理常式是在要求管線的結尾，因此不會叫用下一個中介軟體。
+這個中介軟體非常類似于模組的對應中介軟體。 唯一的真正差異在於，這裡沒有對的呼叫 `_next.Invoke(context)` 。 這是合理的，因為處理常式是在要求管線的結尾，因此不會叫用下一個中介軟體。
 
 ## <a name="migrating-handler-insertion-into-the-request-pipeline"></a>將處理常式插入遷移至要求管線
 
-設定 HTTP 處理常式*是在 web.config*中完成，看起來像這樣：
+設定 HTTP 處理常式是在*Web.config*中完成，看起來像這樣：
 
 [!code-xml[](../migration/http-modules/sample/Asp.Net4/Asp.Net4/Web.config?highlight=6&range=1-3,32,46-48,50,101)]
 
-您可以將新的處理常式中介軟體新增至`Startup`類別中的要求管線，以進行轉換，類似于從模組轉換的中介軟體。 該方法的問題在於，它會將所有要求傳送至新的處理常式中介軟體。 不過，您只想要要求具有指定的延伸模組，才能到達您的中介軟體。 這會提供您與 HTTP 處理常式相同的功能。
+您可以將新的處理常式中介軟體新增至類別中的要求管線，以進行轉換 `Startup` ，類似于從模組轉換的中介軟體。 該方法的問題在於，它會將所有要求傳送至新的處理常式中介軟體。 不過，您只想要要求具有指定的延伸模組，才能到達您的中介軟體。 這會提供您與 HTTP 處理常式相同的功能。
 
-其中一個解決方法是使用`MapWhen`擴充方法，將管線分支給具有給定延伸的要求。 您可以在新增其他中間`Configure`件的相同方法中執行此動作：
+其中一個解決方法是使用擴充方法，將管線分支給具有給定延伸的要求 `MapWhen` 。 您可以在 `Configure` 新增其他中介軟體的相同方法中執行此動作：
 
 [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=27-34)]
 
 `MapWhen`會採用下列參數：
 
-1. 使用的`HttpContext` lambda， `true`如果要求應該在分支中，則會傳回。 這表示您不僅可以根據要求的延伸模組，也會根據要求標頭、查詢字串參數等來分支要求。
+1. 使用的 lambda， `HttpContext` 如果要求應該在分支中，則會傳回 `true` 。 這表示您不僅可以根據要求的延伸模組，也會根據要求標頭、查詢字串參數等來分支要求。
 
-2. 採用`IApplicationBuilder`並新增分支之所有中介軟體的 lambda。 這表示您可以將其他中介軟體新增至處理常式中介軟體前方的分支。
+2. 採用 `IApplicationBuilder` 並新增分支之所有中介軟體的 lambda。 這表示您可以將其他中介軟體新增至處理常式中介軟體前方的分支。
 
 在所有要求上叫用分支之前，已將中介軟體新增至管線;分支不會對它們產生任何影響。
 
 ## <a name="loading-middleware-options-using-the-options-pattern"></a>使用選項模式載入中介軟體選項
 
-有些模組和處理常式都有*儲存在 web.config*中的設定選項。不過，在 ASP.NET Core 會使用新的設定模型來取代*web.config*。
+某些模組和處理常式都有儲存在*Web.config*中的設定選項。不過，在 ASP.NET Core 會使用新的設定模型來取代*Web.config*。
 
 新的設定[系統](xref:fundamentals/configuration/index)會提供您下列選項來解決此問題：
 
@@ -180,7 +189,7 @@ HTTP 處理常式看起來像這樣：
 
 2. 儲存選項值
 
-   設定系統可讓您將選項值儲存在您想要的任何位置。 不過，大部分的網站都使用*appsettings*，所以我們會採用這種方法：
+   設定系統可讓您將選項值儲存在您想要的任何位置。 不過，大部分的網站都使用*appsettings.js*，因此我們將採用該方法：
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,14-18)]
 
@@ -188,11 +197,11 @@ HTTP 處理常式看起來像這樣：
 
 3. 將選項值與選項類別產生關聯
 
-    選項模式會使用 ASP.NET Core 的相依性插入架構，將選項類型（例如`MyMiddlewareOptions`）與具有實際`MyMiddlewareOptions`選項的物件產生關聯。
+    選項模式會使用 ASP.NET Core 的相依性插入架構，將選項類型（例如 `MyMiddlewareOptions` ）與 `MyMiddlewareOptions` 具有實際選項的物件產生關聯。
 
-    更新您`Startup`的類別：
+    更新您的 `Startup` 類別：
 
-   1. 如果您使用的*appsettings.json* `Startup`是 appsettings，請將它新增至函式中的設定產生器：
+   1. 如果您使用*上的appsettings.js*，請將它新增至函式中的設定產生器 `Startup` ：
 
       [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Ctor&highlight=5-6)]
 
@@ -208,9 +217,9 @@ HTTP 處理常式看起來像這樣：
 
    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_MiddlewareWithParams&highlight=4,7,10,15-16)]
 
-   將[UseMiddleware](#http-modules-usemiddleware)中介軟體新增至的`IApplicationBuilder` UseMiddleware 擴充方法會負責相依性插入。
+   將中介軟體新增至的[UseMiddleware](#http-modules-usemiddleware)擴充方法 `IApplicationBuilder` 會負責相依性插入。
 
-   這不限於`IOptions`物件。 中介軟體所需的任何其他物件都可以用這種方式插入。
+   這不限於 `IOptions` 物件。 中介軟體所需的任何其他物件都可以用這種方式插入。
 
 ## <a name="loading-middleware-options-through-direct-injection"></a>透過直接插入來載入中介軟體選項
 
@@ -218,11 +227,11 @@ HTTP 處理常式看起來像這樣：
 
 不過，如果您想要使用相同的中介軟體兩次，但有不同的選項，則會中斷。 例如，在允許不同角色的不同分支中使用的授權中介軟體。 您無法將兩個不同的選項物件與一個選項類別產生關聯。
 
-解決方法是使用`Startup`類別中的實際選項值來取得 options 物件，並將它們直接傳遞至中介軟體的每個實例。
+解決方法是使用類別中的實際選項值來取得 options 物件 `Startup` ，並將它們直接傳遞至中介軟體的每個實例。
 
-1. 將第二個金鑰新增至*appsettings*
+1. *在appsettings.js上*新增第二個金鑰
 
-   若要將第二組選項新增至*appsettings* ，請使用新的金鑰來唯一識別它：
+   若要將第二組選項新增至*appsettings.json*檔案，請使用新的金鑰來唯一識別它：
 
    [!code-json[](http-modules/sample/Asp.Net.Core/appsettings.json?range=1,10-18&highlight=2-5)]
 
@@ -230,21 +239,21 @@ HTTP 處理常式看起來像這樣：
 
    [!code-csharp[](http-modules/sample/Asp.Net.Core/Startup.cs?name=snippet_Configure&highlight=20-23)]
 
-3. 啟用中介軟體以接受選項參數。 提供`Use...`擴充方法的多載（會採用 options 參數並將它傳遞給`UseMiddleware`）。 當`UseMiddleware`以參數呼叫時，它會在具現化中介軟體物件時，將參數傳遞至中介軟體的函式。
+3. 啟用中介軟體以接受選項參數。 提供擴充方法的多載 `Use...` （會採用 options 參數並將它傳遞給 `UseMiddleware` ）。 當 `UseMiddleware` 以參數呼叫時，它會在具現化中介軟體物件時，將參數傳遞至中介軟體的函式。
 
    [!code-csharp[](../migration/http-modules/sample/Asp.Net.Core/Middleware/MyMiddlewareWithParams.cs?name=snippet_Extensions&highlight=9-14)]
 
-   請注意，這會將選項物件包裝`OptionsWrapper`在物件中。 `IOptions`這會依照中介軟體函式的預期來執行。
+   請注意，這會將選項物件包裝在 `OptionsWrapper` 物件中。 這會依照 `IOptions` 中介軟體函式的預期來執行。
 
 ## <a name="migrating-to-the-new-httpcontext"></a>遷移至新的 HttpCoNtext
 
-您稍早看到中間`Invoke`件中的方法採用類型`HttpContext`的參數：
+您稍早看到 `Invoke` 中介軟體中的方法採用類型的參數 `HttpContext` ：
 
 ```csharp
 public async Task Invoke(HttpContext context)
 ```
 
-`HttpContext`在 ASP.NET Core 中已大幅變更。 本節說明如何將[system.web](/dotnet/api/system.web.httpcontext)的最常使用屬性轉譯為新`Microsoft.AspNetCore.Http.HttpContext`的。
+`HttpContext`在 ASP.NET Core 中已大幅變更。 本節說明如何將[system.web](/dotnet/api/system.web.httpcontext)的最常使用屬性轉譯為新的 `Microsoft.AspNetCore.Http.HttpContext` 。
 
 ### <a name="httpcontext"></a>HttpCoNtext
 
@@ -348,9 +357,9 @@ public async Task Invoke(HttpContext context)
 
 傳送回應標頭很複雜，因為如果您在任何專案都已寫入回應主體之後設定它們，則不會將它們送出。
 
-解決方案是設定回呼方法，在寫入回應開始之前，會先呼叫它。 這是在中介軟體的`Invoke`方法開頭進行的最佳做法。 這是設定回應標頭的回呼方法。
+解決方案是設定回呼方法，在寫入回應開始之前，會先呼叫它。 這是在中介軟體的方法開頭進行的最佳做法 `Invoke` 。 這是設定回應標頭的回呼方法。
 
-下列程式碼會設定名`SetHeaders`為的回呼方法：
+下列程式碼會設定名為的回呼方法 `SetHeaders` ：
 
 ```csharp
 public async Task Invoke(HttpContext httpContext)

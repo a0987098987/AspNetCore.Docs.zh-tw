@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 09866f1fd56a4d0747ef3814c85ab5070cfb8d59
-ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
+ms.openlocfilehash: 809bdc777b6307314a7bcde82ab5e0c6888db99b
+ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2020
-ms.locfileid: "84756115"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85074469"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 設定
 
@@ -352,6 +352,8 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | JavaScript 選項 | 預設值 | 描述 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
+| `headers` | `null` | 每個 HTTP 要求所傳送之標頭的字典。 在瀏覽器中傳送標頭不適用於 Websocket 或 <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents> 資料流程。 |
+| `logMessageContent` | `null` | 將設定為 `true` ，以記錄用戶端所傳送和接收之訊息的位元組/字元。 |
 | `skipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
 | `withCredentials` | `true` | 指定是否要使用 CORS 要求來傳送認證。 Azure App Service 使用適用于粘滯會話的 cookie，而且需要啟用此選項才能正常運作。 如需有關 CORS 與的詳細資訊 SignalR ，請參閱 <xref:signalr/security#cross-origin-resource-sharing> 。 |
 
@@ -512,7 +514,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 下表描述設定 ASP.NET Core SignalR 的 ADVANCED HTTP 選項的選項：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 在套用背壓之前，伺服器會緩衝的用戶端接收的最大位元組數目。 增加此值可讓伺服器更快速地接收較大的訊息，而不需套用背壓，但可能會增加記憶體耗用量。 |
 | `AuthorizationData` | 從套用至中樞類別的屬性自動收集的資料 `Authorize` 。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
@@ -738,6 +740,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | JavaScript 選項 | 預設值 | 說明 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
+| `logMessageContent` | `null` | 將設定為 `true` ，以記錄用戶端所傳送和接收之訊息的位元組/字元。 |
 | `skipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -1122,6 +1125,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 | JavaScript 選項 | 預設值 | 描述 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
+| `logMessageContent` | `null` | 將設定為 `true` ，以記錄用戶端所傳送和接收之訊息的位元組/字元。 |
 | `skipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
 
 # <a name="java"></a>[Java](#tab/java)
@@ -1294,7 +1298,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 WebSocket 傳輸具有可使用屬性來設定的其他選項 `WebSockets` ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `CloseTimeout` | 5 秒 | 伺服器關閉之後，如果用戶端無法在此時間間隔內關閉，連接就會終止。 |
 | `SubProtocolSelector` | `null` | 可以用來將 `Sec-WebSocket-Protocol` 標頭設定為自訂值的委派。 委派會接收用戶端要求的值做為輸入，而且預期會傳回所需的值。 |
@@ -1467,14 +1471,15 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-| JavaScript 選項 | 預設值 | 描述 |
+| JavaScript 選項 | 預設值 | 說明 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
+| `logMessageContent` | `null` | 將設定為 `true` ，以記錄用戶端所傳送和接收之訊息的位元組/字元。 |
 | `skipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
 
 # <a name="java"></a>[Java](#tab/java)
 
-| JAVA 選項 | 預設值 | 描述 |
+| JAVA 選項 | 預設值 | 說明 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `shouldSkipNegotiate` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
@@ -1572,7 +1577,7 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 下表說明設定中樞的選項 SignalR ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
 | `KeepAliveInterval` | 15 秒 | 如果伺服器未在此間隔內傳送訊息，則會自動傳送 ping 訊息，讓連接保持開啟。 在變更時 `KeepAliveInterval` ，請變更 `ServerTimeout` / `serverTimeoutInMilliseconds` 用戶端上的設定。 建議的 `ServerTimeout` / `serverTimeoutInMilliseconds` 值為值的雙精度浮點數 `KeepAliveInterval` 。  |
@@ -1624,7 +1629,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 下表描述設定 ASP.NET Core SignalR 的 ADVANCED HTTP 選項的選項：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 從用戶端接收伺服器緩衝區的最大位元組數目。 增加這個值可讓伺服器接收較大的訊息，但可能會對記憶體耗用量造成負面影響。 |
 | `AuthorizationData` | 從套用至中樞類別的屬性自動收集的資料 `Authorize` 。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
@@ -1809,14 +1814,15 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-| JavaScript 選項 | 預設值 | 描述 |
+| JavaScript 選項 | 預設值 | 說明 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
+| `logMessageContent` | `null` | 將設定為 `true` ，以記錄用戶端所傳送和接收之訊息的位元組/字元。 |
 | `skipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
 
 # <a name="java"></a>[Java](#tab/java)
 
-| JAVA 選項 | 預設值 | 描述 |
+| JAVA 選項 | 預設值 | 說明 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `shouldSkipNegotiate` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |

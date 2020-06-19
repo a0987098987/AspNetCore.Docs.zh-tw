@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: 32aa1cdab0e552a1255c01b5135e9a82a0e37c77
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: adfcc281f285892583ab8a21c014d6fcb120af9c
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451897"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102838"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>使用 Razor 中的類別庫專案建立可重複使用的 UI ASP.NET Core
 
@@ -25,7 +25,7 @@ ms.locfileid: "84451897"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-Razor視圖、頁面、控制器、頁面模型、 [ Razor 元件](xref:blazor/class-libraries)、[視圖元件](xref:mvc/views/view-components)和資料模型可以內建于 Razor 類別庫（RCL）中。 RCL 可以封裝和重複使用。 應用程式可以包括 RCL，以及覆寫它所包含的檢視和頁面。 當 Razor web 應用程式和 RCL 中都找到 view、partial view 或 Page 時， Razor web 應用程式中的標記（*cshtml*檔案）會優先使用。
+Razor視圖、頁面、控制器、頁面模型、 [ Razor 元件](xref:blazor/components/class-libraries)、[視圖元件](xref:mvc/views/view-components)和資料模型可以內建于 Razor 類別庫（RCL）中。 RCL 可以封裝和重複使用。 應用程式可以包括 RCL，以及覆寫它所包含的檢視和頁面。 當 Razor web 應用程式和 RCL 中都找到 view、partial view 或 Page 時， Razor web 應用程式中的標記（*cshtml*檔案）會優先使用。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
@@ -98,7 +98,7 @@ RCL 可能需要隨附的靜態資產，由 RCL 或 RCL 的取用應用程式來
 
 封裝 RCL 時， *wwwroot*資料夾中的所有附屬資產都會自動包含在套件中。
 
-請使用 `dotnet pack` 命令，而不是 nuget.exe 版本 `nuget pack` 。
+請使用 `dotnet pack` 命令，而不是 NuGet.exe 版本 `nuget pack` 。
 
 ### <a name="exclude-static-assets"></a>排除靜態資產
 
@@ -192,7 +192,7 @@ public class Program
 
 ::: moniker range="< aspnetcore-3.0"
 
-Razor視圖、頁面、控制器、頁面模型、 [ Razor 元件](xref:blazor/class-libraries)、[視圖元件](xref:mvc/views/view-components)和資料模型可以內建于 Razor 類別庫（RCL）中。 RCL 可以封裝和重複使用。 應用程式可以包括 RCL，以及覆寫它所包含的檢視和頁面。 當 Razor web 應用程式和 RCL 中都找到 view、partial view 或 Page 時， Razor web 應用程式中的標記（*cshtml*檔案）會優先使用。
+Razor視圖、頁面、控制器、頁面模型、 [ Razor 元件](xref:blazor/components/class-libraries)、[視圖元件](xref:mvc/views/view-components)和資料模型可以內建于 Razor 類別庫（RCL）中。 RCL 可以封裝和重複使用。 應用程式可以包括 RCL，以及覆寫它所包含的檢視和頁面。 當 Razor web 應用程式和 RCL 中都找到 view、partial view 或 Page 時， Razor web 應用程式中的標記（*cshtml*檔案）會優先使用。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/ui-class/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
@@ -322,7 +322,7 @@ dotnet new viewstart -o RazorUIClassLib/Areas/MyFeature/Pages
   dotnet build RazorUIClassLib
   ```
 
-建置輸出包含 *RazorUIClassLib.dll* 和 *RazorUIClassLib.Views.dll*。 *RazorUIClassLib*包含已編譯的 Razor 內容。
+建置輸出包含 *RazorUIClassLib.dll* 和 *RazorUIClassLib.Views.dll*。 *RazorUIClassLib.Views.dll*包含已編譯的 Razor 內容。
 
 ### <a name="use-the-razor-ui-library-from-a-razor-pages-project"></a>使用 Razor 頁面專案中的 UI 程式庫 Razor
 
@@ -398,4 +398,4 @@ dotnet run
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:blazor/class-libraries>
+* <xref:blazor/components/class-libraries>

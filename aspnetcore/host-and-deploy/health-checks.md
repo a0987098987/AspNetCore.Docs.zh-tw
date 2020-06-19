@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/health-checks
-ms.openlocfilehash: cb3ee4f3bf9061d212c1fee85f3f4a22946be097
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 00b2697a6b916718d9d0e01d1ea9f922eb2b5706
+ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105775"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85074434"
 ---
 # <a name="health-checks-in-aspnet-core"></a>ASP.NET Core 中的健康狀態檢查
 
@@ -38,7 +38,7 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，以報告應用�
 
 範例應用程式包含本主題中所述的案例範例。 若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。 如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。 將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。 監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。
 
@@ -324,7 +324,7 @@ app.UseEndpoints(endpoints =>
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_WriteResponse_SystemTextJson)]
 
-第二個範例示範如何使用[Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json/)：
+第二個範例示範如何[在上使用Newtonsoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/)：
 
 [!code-csharp[](health-checks/samples/3.x/HealthChecksSample/CustomWriterStartup.cs?name=snippet_WriteResponse_NewtonSoftJson)]
 
@@ -560,11 +560,11 @@ dotnet run --scenario writer
 
 `RequireHost` `MapHealthChecks` 使用指定埠的 URL 模式來呼叫，以限制對指定埠的健康狀態檢查要求。 這通常會用於容器環境，以公開監視服務的連接埠。
 
-範例應用程式使用[環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)來設定連接埠。 連接埠是在 *launchSettings.json* 檔案中設定，並透過環境變數傳遞至組態提供者。 您也必須將伺服器設定為在管理連接埠上接聽要求。
+範例應用程式使用[環境變數組態提供者](xref:fundamentals/configuration/index#environment-variables)來設定連接埠。 連接埠是在 *launchSettings.json* 檔案中設定，並透過環境變數傳遞至組態提供者。 您也必須將伺服器設定為在管理連接埠上接聽要求。
 
 若要使用範例應用程式示範管理連接埠組態，請在 *Properties* 資料夾中建立 *launchSettings.json* 檔案。
 
-範例應用程式中的下列*Properties/launchsettings.json*檔案不包含在範例應用程式的專案檔中，必須手動建立：
+範例應用程式的檔案中的下列*屬性/launchSettings.js*不包含在範例應用程式的專案檔中，必須手動建立：
 
 ```json
 {
@@ -614,7 +614,7 @@ app.UseEndpoints(endpoints =>
 ```
 
 > [!NOTE]
-> 您可以在程式碼中明確設定管理埠，以避免在範例應用程式中建立*launchsettings.json。* 在建立的*Program.cs*中 <xref:Microsoft.Extensions.Hosting.HostBuilder> ，新增對的呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> ，並提供應用程式的管理埠端點。 在 `Configure` *ManagementPortStartup.cs*的中，使用指定管理埠 `RequireHost` ：
+> 您可以在程式碼中明確設定管理埠，以避免在範例應用程式中的檔案*上建立launchSettings.js* 。 在建立的*Program.cs*中 <xref:Microsoft.Extensions.Hosting.HostBuilder> ，新增對的呼叫 <xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.ListenAnyIP*> ，並提供應用程式的管理埠端點。 在 `Configure` *ManagementPortStartup.cs*的中，使用指定管理埠 `RequireHost` ：
 >
 > *Program.cs*：
 >
@@ -789,7 +789,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#use-run-and-map> 。
+如需詳細資訊，請參閱 <xref:fundamentals/middleware/index#branch-the-middleware-pipeline> 。
 
 ::: moniker-end
 
@@ -807,7 +807,7 @@ ASP.NET Core 提供健康狀態檢查中介軟體和程式庫，以報告應用�
 
 範例應用程式包含本主題中所述的案例範例。 若要在指定的案例中執行範例應用程式，請在命令殼層中使用來自專案資料夾的 [dotnet run](/dotnet/core/tools/dotnet-run) 命令。 如需如何使用範例應用程式的詳細資訊，請參閱範例應用程式的 *README.md* 檔案和本主題中的案例描述。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 健康狀態檢查通常會搭配使用外部監視服務或容器協調器，來檢查應用程式的狀態。 將健康狀態檢查新增至應用程式之前，請決定要使用的監控系統。 監控系統會指定要建立哪些健康狀態檢查類型，以及如何設定其端點。
 
@@ -1269,7 +1269,7 @@ dotnet run --scenario writer
 
 若要使用範例應用程式示範管理連接埠組態，請在 *Properties* 資料夾中建立 *launchSettings.json* 檔案。
 
-範例應用程式中的下列*Properties/launchsettings.json*檔案不包含在範例應用程式的專案檔中，必須手動建立：
+範例應用程式的檔案中的下列*屬性/launchSettings.js*不包含在範例應用程式的專案檔中，必須手動建立：
 
 ```json
 {

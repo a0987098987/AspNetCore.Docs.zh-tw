@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 08229283882928c4cc733de19840d25872846c97
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: c90c3bf7ccef420101c66fe04d579920209b066c
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452027"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102331"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET CoreBlazor
 
@@ -32,7 +32,7 @@ ms.locfileid: "84452027"
 
 1. 建立新專案。
 
-1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步]。
+1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步] 。
 
 1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
@@ -54,7 +54,7 @@ ms.locfileid: "84452027"
 
 1. 安裝適用于[Visual Studio Code 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能的最新 c # 和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸模組，並 `debug.javascript.usePreview` 將設定為 `true` 。
 
-  若要將設定 `debug.javascript.usePreview` 為 `true` 使用 VS Code UI， **File**請開啟 [檔案  >  **喜好**  >  **設定**]，然後搜尋 `debug javascript use preview` 。 選取 [**使用適用于 node.js 的新預覽版 JavaScript 偵錯工具] 和 [Chrome**] 的核取方塊。
+  若要將設定 `debug.javascript.usePreview` 為 `true` 使用 VS Code UI， **File**請開啟 [檔案  >  **喜好**  >  **設定**]，然後搜尋 `debug javascript use preview` 。 選取 [**使用適用于 Node.js 和 Chrome 的新的預覽 JavaScript 偵錯工具**] 核取方塊。
 
 1. 如需 Blazor WebAssembly 體驗，請在命令 shell 中執行下列命令：
 
@@ -84,7 +84,7 @@ ms.locfileid: "84452027"
 
 1. 在提要欄位中，選取 [ **Web 和主控台**  >  **應用程式**]。
 
-   如需 Blazor WebAssembly 體驗，請選擇 [ ** Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ ** Blazor 伺服器應用程式**] 範本。 選取 [下一步]。
+   如需 Blazor WebAssembly 體驗，請選擇 [ ** Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ ** Blazor 伺服器應用程式**] 範本。 選取 [下一步] 。
 
    如需這兩個 Blazor 裝載模型（ * Blazor WebAssembly*和* Blazor 伺服器*）的詳細資訊，請參閱 <xref:blazor/hosting-models> 。
 
@@ -93,7 +93,7 @@ ms.locfileid: "84452027"
    * 設定為 **.Net Core 3.1**的**目標 Framework** 。
    * **驗證**設為 [**無驗證**]。
    
-   選取 [下一步]。
+   選取 [下一步] 。
 
 1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1` 。 選取 [建立]。
 
@@ -133,7 +133,7 @@ ms.locfileid: "84452027"
 
 提要欄位中的索引標籤可使用多個頁面：
 
-* 家庭
+* 首頁
 * 計數器
 * 提取資料
 
@@ -162,7 +162,7 @@ ms.locfileid: "84452027"
 
 執行應用程式。 首頁有自己的計數器，由元件提供 `Counter` 。
 
-元件參數是使用屬性或[子內容](xref:blazor/components#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至 `Counter` 元件，請更新元件的 `@code` 區塊：
+元件參數是使用屬性或[子內容](xref:blazor/components/index#child-content)所指定，可讓您設定子元件上的屬性。 若要將參數新增至 `Counter` 元件，請更新元件的 `@code` 區塊：
 
 * 使用屬性加入的公用屬性 `IncrementAmount` [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 。
 * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。

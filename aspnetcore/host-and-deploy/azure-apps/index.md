@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: 8195702a3de93bafc76dff61939dfc70d4e896b6
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: cc12dc2bc6720652866227dc2bbcbcf4e8af793d
+ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775241"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85074239"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -87,19 +87,22 @@ Azure App Service 具有 64 位元 (x64) 及 32 位元 (x86) 應用程式的執�
 
 ## <a name="override-app-configuration-using-the-azure-portal"></a>使用 Azure 入口網站覆寫應用程式設定
 
+::: moniker range=">= aspnetcore-3.0"
+
+Azure 入口網站中的應用程式設定允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables)取用。
+
+在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存]**** 按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
+
+當應用程式使用[泛型主機](xref:fundamentals/host/generic-host)時， <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> 會在呼叫以建立主機時，將環境變數載入應用程式的設定中。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables)。
+
+::: moniker-end
+::: moniker range="< aspnetcore-3.0"
+
 Azure 入口網站中的應用程式設定允許您為應用程式設定環境變數。 環境變數可由[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)取用。
 
 在 Azure 入口網站中建立或修改應用程式設定並選取 [儲存]**** 按鈕後，即會重新啟動 Azure 應用程式。 當服務重新啟動之後，環境變數便可供應用程式使用。
 
-::: moniker range=">= aspnetcore-3.0"
-
-當應用程式使用[泛型主機](xref:fundamentals/host/generic-host)時，會在呼叫以建立主機時<xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder*> ，將環境變數載入應用程式的設定中。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
-
-::: moniker-end
-
-::: moniker range="< aspnetcore-3.0"
-
-當應用程式使用[Web 主機](xref:fundamentals/host/web-host)時，會在呼叫以建立主機時<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> ，將環境變數載入應用程式的設定中。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
+當應用程式使用[Web 主機](xref:fundamentals/host/web-host)時， <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder*> 會在呼叫以建立主機時，將環境變數載入應用程式的設定中。 如需詳細資訊，請參閱 <xref:fundamentals/host/web-host> 與[環境變數設定提供者](xref:fundamentals/configuration/index#environment-variables-configuration-provider)。
 
 ::: moniker-end
 
@@ -149,7 +152,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 * SQL 存放區
 * Redis 快取
 
-如需詳細資訊，請參閱<xref:security/data-protection/implementation/key-storage-providers>。
+如需詳細資訊，請參閱 <xref:security/data-protection/implementation/key-storage-providers> 。
 <a name="deploy-aspnet-core-preview-release-to-azure-app-service"></a>
 
 ## <a name="deploy-an-aspnet-core-app-that-uses-a-net-core-preview"></a>部署使用 .NET Core 預覽的 ASP.NET Core 應用程式
@@ -169,15 +172,15 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 #### <a name="specify-the-net-core-sdk-version"></a>指定 .NET Core SDK 版本
 
-使用 App Service 部署中心建立 Azure DevOps 組建時，預設的組建管線`Restore`會包含、 `Build`、 `Test`和`Publish`的步驟。 若要指定 SDK 版本，請選取 [代理程式作業] 清單中的 [新增] **（+）** 按鈕，以新增新的步驟。 在搜尋列中搜尋 **.NET Core SDK** 。 
+使用 App Service 部署中心建立 Azure DevOps 組建時，預設的組建管線會包含 `Restore` 、、和的步驟 `Build` `Test` `Publish` 。 若要指定 SDK 版本，請選取 [代理程式作業] 清單中的 [新增] **（+）** 按鈕，以新增新的步驟。 在搜尋列中搜尋 **.NET Core SDK** 。 
 
 ![新增 .NET Core SDK 步驟](index/add-sdk-step.png)
 
-將步驟移至組建中的第一個位置，使其後面的步驟使用指定的 .NET Core SDK 版本。 指定 .NET Core SDK 的版本。 在此範例中，SDK 設定為`3.0.100`。
+將步驟移至組建中的第一個位置，使其後面的步驟使用指定的 .NET Core SDK 版本。 指定 .NET Core SDK 的版本。 在此範例中，SDK 設定為 `3.0.100` 。
 
 ![完成的 SDK 步驟](index/sdk-step-first-place.png)
 
-若要發佈[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)，請在`Publish`步驟中設定 SCD，並提供[執行時間識別碼（RID）](/dotnet/core/rid-catalog)。
+若要發佈[獨立部署（SCD）](/dotnet/core/deploying/#self-contained-deployments-scd)，請在步驟中設定 SCD `Publish` ，並提供[執行時間識別碼（RID）](/dotnet/core/rid-catalog)。
 
 ![獨立發行](index/self-contained.png)
 
@@ -204,7 +207,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 1. 選取 Web 應用程式。
 1. 在搜尋方塊中鍵入 "ex" 來篩選 "Extensions"，也可往下捲動管理工具的清單。
 1. 選取 [**延伸**模組]。
-1. 選取 [新增]  。
+1. 選取 [新增]。
 1. 從清單選取 [ASP.NET Core {X.Y} ({x64|x86}) 執行階段]**** 延伸模組，其中 `{X.Y}` 是 ASP.NET Core 預覽版本，而 `{x64|x86}` 則指定平台。
 1. 選取 [確定]**** 以接受法律條款。
 1. 選取 [確定]**** 安裝延伸模組。
@@ -213,7 +216,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 1. 選取 [進階工具]****。
 1. 在 [進階工具]**** 中選取 [移至]****。
-1. 選取 [**調試主控台** > ] [**PowerShell** ] 功能表項目。
+1. 選取 [**調試主控台**] [  >  **PowerShell** ] 功能表項目。
 1. 在 PowerShell 提示執行下列命令。 在命令中使用 ASP.NET Core 執行階段版本取代 `{X.Y}`，並以平台取代 `{PLATFORM}`：
 
    ```powershell
@@ -227,7 +230,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 >
 > 如果在同處理序模式中執行應用程式，且平台架構設定為適用於 64 位元 (x64)，ASP.NET Core 模組會使用 64 位元預覽執行階段 (如果有)。 使用 Azure 入口網站安裝**ASP.NET Core {X. Y} （x64）運行**時間擴充功能。
 >
-> 安裝 x64 preview 執行時間之後，請在 Azure Kudu PowerShell 命令視窗中執行下列命令，以確認安裝。 `{X.Y}`在下列命令中，以的 ASP.NET Core 執行階段版本取代：
+> 安裝 x64 preview 執行時間之後，請在 Azure Kudu PowerShell 命令視窗中執行下列命令，以確認安裝。 在下列命令中，以的 ASP.NET Core 執行階段版本取代 `{X.Y}` ：
 >
 > ```powershell
 > Test-Path D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64\
@@ -259,7 +262,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 從 [Visual Studio] 工具列選取 [**組建** > ] [**發佈 {應用程式名稱}** ]，或在**方案總管**中以滑鼠右鍵按一下專案，然後選取 [**發佈**]
+1. 從 [Visual Studio] 工具列選取 [**組建**] [  >  **發佈 {應用程式名稱}** ]，或在**方案總管**中以滑鼠右鍵按一下專案，然後選取 [**發佈**]
 1. 在 [挑選發佈目標]**** 對話方塊中，確認已選取 [App Service]****。
 1. 選取 [進階]  。 [發佈]**** 對話方塊隨即開啟。
 1. 在 [發行]**** 對話方塊中：
@@ -267,7 +270,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    * 開啟 [部署模式]**** 下拉式清單，然後選取 [依架構不同]****。
    * 將 [目標執行階段]**** 選取為 [可攜式]****。
    * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]**** 並選取核取方塊，以移除目的地的其他檔案。
-   * 選取 [儲存]  。
+   * 選取 [儲存]。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
@@ -290,7 +293,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 從 [Visual Studio] 工具列選取 [**組建** > ] [**發佈 {應用程式名稱}** ]，或在**方案總管**中以滑鼠右鍵按一下專案，然後選取 [**發佈**]
+1. 從 [Visual Studio] 工具列選取 [**組建**] [  >  **發佈 {應用程式名稱}** ]，或在**方案總管**中以滑鼠右鍵按一下專案，然後選取 [**發佈**]
 1. 在 [挑選發佈目標]**** 對話方塊中，確認已選取 [App Service]****。
 1. 選取 [進階]  。 [發佈]**** 對話方塊隨即開啟。
 1. 在 [發行]**** 對話方塊中：
@@ -298,7 +301,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    * 開啟 [部署模式]**** 下拉式清單，然後選取 [獨立式]****。
    * 從 [目標執行階段]**** 下拉式清單中選取目標執行階段。 預設值為 `win-x86`。
    * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]**** 並選取核取方塊，以移除目的地的其他檔案。
-   * 選取 [儲存]  。
+   * 選取 [儲存]。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)

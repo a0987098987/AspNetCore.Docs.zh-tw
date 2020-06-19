@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: ce3f20f7ee4ccfa73afc5f80a4429d9f4fe05591
-ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
+ms.openlocfilehash: 0b9854b3848a204b28d0427bef08364be0139069
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84507253"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102836"
 ---
 # <a name="build-your-first-blazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -129,7 +129,7 @@ ms.locfileid: "84507253"
 
 ### <a name="blazor-webassembly-experience"></a>BlazorWebAssembly 體驗
 
-如果使用 Blazor WebAssembly 應用程式， <xref:System.Net.Http.HttpClient> 則會插入，以從*wwwroot/sample-data*資料夾中的*氣象*檔案取得氣象預報資料。
+如果使用 Blazor WebAssembly 應用程式， <xref:System.Net.Http.HttpClient> 則會插入，以從*wwwroot/sample-data*資料夾中的檔案*weather.js*取得氣象預測資料。
 
 *Pages/FetchData.razor*：
 
@@ -233,4 +233,4 @@ ms.locfileid: "84507253"
 瞭解如何建立和使用元件：
 
 > [!div class="nextstepaction"]
-> <xref:blazor/components>
+> <xref:blazor/components/index>

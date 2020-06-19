@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/middleware/index
-ms.openlocfilehash: 745eca9788d95c9a123e51a737b34dccdc65d8d4
-ms.sourcegitcommit: 30fcf69556b6b6ec54a3879e280d5f61f018b48f
+ms.openlocfilehash: b2468220d0c059a94a085357f2be7bbb3b89adc4
+ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82876227"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85074206"
 ---
 # <a name="aspnet-core-middleware"></a>ASP.NET Core 中介軟體
 
@@ -63,35 +63,35 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 >
 > <xref:Microsoft.AspNetCore.Http.HttpResponse.HasStarted*> 是實用的提示，可表示是否已傳送標頭 (或) 是否已寫入本文。
 
-<xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*>委派不會收到`next`參數。 第一個`Run`委派一律是 terminal，並終止管線。 `Run`是慣例。 某些中介軟體元件可能`Run[Middleware]`會公開在管線結束時執行的方法：
+<xref:Microsoft.AspNetCore.Builder.RunExtensions.Run*>委派不會收到 `next` 參數。 第一個 `Run` 委派一律是 terminal，並終止管線。 `Run`是慣例。 某些中介軟體元件可能會公開在 `Run[Middleware]` 管線結束時執行的方法：
 
 [!code-csharp[](index/snapshot/Chain/Startup.cs?highlight=12-15)]
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
-在上述範例中， `Run`委派會寫入`"Hello from 2nd delegate."`至回應，然後終止管線。 如果在`Use` `Run`委派`Run`之後加入另一個或委派，則不會呼叫它。
+在上述範例中， `Run` 委派會寫入 `"Hello from 2nd delegate."` 至回應，然後終止管線。 如果 `Use` `Run` 在委派之後加入另一個或委派 `Run` ，則不會呼叫它。
 
 <a name="order"></a>
 
 ## <a name="middleware-order"></a>中介軟體順序
 
-下圖顯示 ASP.NET Core MVC 和 Razor Pages 應用程式的完整要求處理管線。 您可以查看在一般應用程式中，如何排序現有的中介軟體，以及新增自訂中介軟體的位置。 您可以完整控制如何重新排序現有的中介軟體，或在您的案例中插入新的自訂中介軟體。
+下圖顯示 ASP.NET Core MVC 和頁面應用程式的完整要求處理管線 Razor 。 您可以查看在一般應用程式中，如何排序現有的中介軟體，以及新增自訂中介軟體的位置。 您可以完整控制如何重新排序現有的中介軟體，或在您的案例中插入新的自訂中介軟體。
 
 ![ASP.NET Core 中介軟體管線](index/_static/middleware-pipeline.svg)
 
-上圖中的**端點**中介軟體會執行對應應用程式類型&mdash;MVC 或 Razor Pages 的篩選準則管線。
+上圖中的**端點**中介軟體會執行對應應用程式類型 &mdash; MVC 或頁面的篩選準則管線 Razor 。
 
 ![ASP.NET Core 篩選器管線](index/_static/mvc-endpoint.svg)
 
 `Startup.Configure` 方法內中介軟體元件的新增順序可定義在要求時叫用中介軟體元件的順序及回應的反向順序。 順序對於安全性、效能和功能非常**重要**。
 
-下列`Startup.Configure`方法會以建議的順序新增安全性相關中介軟體元件：
+下列 `Startup.Configure` 方法會以建議的順序新增安全性相關中介軟體元件：
 
 [!code-csharp[](index/snapshot/StartupAll3.cs?name=snippet)]
 
 在上述程式碼中：
 
 * 使用[個別使用者帳戶](xref:security/authentication/identity)建立新的 web 應用程式時，未新增的中介軟體會加上批註。
-* 並非每個中介軟體都必須以這種完全相同的循序執行，但也有許多。 例如， `UseCors` `UseAuthentication`、和`UseAuthorization`必須以顯示的循序執行。
+* 並非每個中介軟體都必須以這種完全相同的循序執行，但也有許多。 例如，、 `UseCors` `UseAuthentication` 和 `UseAuthorization` 必須以顯示的循序執行。
 
 下列 `Startup.Configure` 方法會新增適用於一般應用程式案例的中介軟體元件：
 
@@ -105,11 +105,11 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 1. HTTPS 重新導向中介軟體 (<xref:Microsoft.AspNetCore.Builder.HttpsPolicyBuilderExtensions.UseHttpsRedirection*>) 會將 HTTP 要求重新導向到 HTTPS。
 1. 靜態檔案中介軟體 (<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*>) 會傳回靜態檔案並縮短進一步的要求處理時間。
 1. Cookie 原則中介軟體 (<xref:Microsoft.AspNetCore.Builder.CookiePolicyAppBuilderExtensions.UseCookiePolicy*>) 會使應用程式符合歐盟一般資料保護歸調 (GDPR) 法規。
-1. 路由中介軟體`UseRouting`（）以路由傳送要求。
+1. 路由中介軟體（ `UseRouting` ）以路由傳送要求。
 1. 驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>) 會嘗試在允許使用者存取安全資源之前先驗證使用者。
-1. 授權中介軟體`UseAuthorization`（）會授權使用者存取安全的資源。
+1. 授權中介軟體（ `UseAuthorization` ）會授權使用者存取安全的資源。
 1. 工作階段中介軟體 (<xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession*>) 會建立並維護工作階段狀態。 若應用程式使用工作階段狀態，請在 Cookie 原則中介軟體之後、MVC 中介軟體之前呼叫工作階段中介軟體。
-1. 端點路由中介軟體`UseEndpoints` （ `MapRazorPages`含），以將 Razor Pages 端點新增至要求管線。
+1. 端點路由中介軟體（ `UseEndpoints` 含 `MapRazorPages` ），以將 Razor 頁面端點新增至要求管線。
 
 <!--
 
@@ -158,9 +158,9 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不**提供授權檢查。 靜態檔案中介軟體所提供的任何檔案（包括*wwwroot*底下的檔案）皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
 
-若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
+若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器和動作之後，才會進行授權（和拒絕）。
 
-下列範例示範靜態檔案中介軟體在回應壓縮中介軟體之前處理靜態檔案要求之前的靜態檔案順序。 靜態檔案並不會以此中介軟體順序壓縮。 Razor Pages 回應可以進行壓縮。
+下列範例示範靜態檔案中介軟體在回應壓縮中介軟體之前處理靜態檔案要求之前的靜態檔案順序。 靜態檔案並不會以此中介軟體順序壓縮。 Razor頁面回應可以壓縮。
 
 ```csharp
 public void Configure(IApplicationBuilder app)
@@ -177,12 +177,16 @@ public void Configure(IApplicationBuilder app)
 }
 ```
 
-對於單一頁面應用程式（Spa），SPA 中間<xref:Microsoft.Extensions.DependencyInjection.SpaStaticFilesExtensions.UseSpaStaticFiles*>件通常是在中介軟體管線中的最後一個。 SPA 中介軟體最後一步：
+對於單一頁面應用程式（Spa），SPA 中介軟體 <xref:Microsoft.Extensions.DependencyInjection.SpaStaticFilesExtensions.UseSpaStaticFiles*> 通常是在中介軟體管線中的最後一個。 SPA 中介軟體最後一步：
 
 * 以允許所有其他中介軟體先回應相符的要求。
 * 允許 Spa 與用戶端路由針對伺服器應用程式無法辨識的所有路由執行。
 
 如需 Spa 的詳細資訊，請參閱[回應](xref:spa/react)和[角度](xref:spa/angular)專案範本的指南。
+
+### <a name="forwarded-headers-middleware-order"></a>轉送的標頭中介軟體順序
+
+[!INCLUDE[](~/includes/ForwardedHeaders.md)]
 
 ## <a name="branch-the-middleware-pipeline"></a>分支中介軟體管線
 
@@ -229,11 +233,11 @@ app.Map("/level1", level1App => {
 | localhost:1234                | Hello from non-Map delegate. |
 | localhost:1234/?branch=master | Branch used = master         |
 
-<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*>也會根據給定述詞的結果來分支要求管線。 與不同`MapWhen`的是，這個分支會重新加入主要管線（如果它不是短路或包含終端機中介軟體）：
+<xref:Microsoft.AspNetCore.Builder.UseWhenExtensions.UseWhen*>也會根據給定述詞的結果來分支要求管線。 與不同的 `MapWhen` 是，這個分支會重新加入主要管線（如果它不是短路或包含終端機中介軟體）：
 
 [!code-csharp[](index/snapshot/Chain/StartupUseWhen.cs?highlight=25-26)]
 
-在上述範例中，回應為「來自主要管線的 Hello」。 會針對所有要求寫入。 如果要求包含查詢字串變數`branch`，則會在重新加入主要管線之前記錄其值。
+在上述範例中，回應為「來自主要管線的 Hello」。 會針對所有要求寫入。 如果要求包含查詢字串變數，則 `branch` 會在重新加入主要管線之前記錄其值。
 
 ## <a name="built-in-middleware"></a>內建的中介軟體
 
@@ -252,14 +256,14 @@ ASP.NET Core 隨附下列中介軟體元件。 「順序」** 欄說明 中介�
 | [HTTP 方法覆寫](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | 允許傳入的 POST 要求覆寫方法。 | 在使用更新方法的元件之前。 |
 | [HTTPS 重新導向](xref:security/enforcing-ssl#require-https) | 將所有 HTTP 要求都重新導向至 HTTPS。 | 在使用 URL 的元件之前。 |
 | [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | 增強安全性的中介軟體，可新增特殊的回應標頭。 | 在傳送回應前和修改要求的元件後。 範例：轉送的標頭、URL 重寫。 |
-| [MVC](xref:mvc/overview) | 使用 MVC/Razor 頁面處理要求。 | 若要求符合路由則終止。 |
+| [MVC](xref:mvc/overview) | 處理 MVC/Pages 的要求 Razor 。 | 若要求符合路由則終止。 |
 | [OWIN](xref:fundamentals/owin) | 以 OWIN 為基礎之應用程式、伺服器和中介軟體的 Interop。 | 若 OWIN 中介軟體完全處理要求則終止。 |
 | [回應快取](xref:performance/caching/middleware) | 提供快取回應的支援。 | 在需要快取的元件之前。 |
 | [回應壓縮](xref:performance/response-compression) | 提供壓縮回應的支援。 | 在需要壓縮的元件之前。 |
 | [要求當地語系化](xref:fundamentals/localization) | 提供當地語系化支援。 | 在偵測當地語系化的元件之前。 |
 | [端點路由](xref:fundamentals/routing) | 定義並限制要求路由。 | 比對路由的終端機。 |
 | [SPA](xref:Microsoft.AspNetCore.Builder.SpaApplicationBuilderExtensions.UseSpa*) | 藉由傳回單一頁面應用程式（SPA）的預設頁面，處理來自中介軟體鏈中此點的所有要求 | 在鏈晚期，讓提供靜態檔案、MVC 動作等的其他中介軟體優先。|
-| [課程](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 在需要工作階段的元件之前。 | 
+| [本次](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 在需要工作階段的元件之前。 | 
 | [靜態檔案](xref:fundamentals/static-files) | 支援靜態檔案的提供和目錄瀏覽。 | 若要求符合檔案則終止。 |
 | [URL 重寫](xref:fundamentals/url-rewriting) | 提供重寫 URL 及重新導向要求的支援。 | 在使用 URL 的元件之前。 |
 | [WebSocket](xref:fundamentals/websockets) | 啟用 WebSockets 通訊協定。 | 在接受 WebSocket 要求的必要元件之前。 |
@@ -325,14 +329,14 @@ ASP.NET Core 要求管線由要求委派序列組成，並會一個接著一個�
 
 `Startup.Configure` 方法內中介軟體元件的新增順序可定義在要求時叫用中介軟體元件的順序及回應的反向順序。 順序對於安全性、效能和功能非常**重要**。
 
-下列`Startup.Configure`方法會以建議的順序新增安全性相關中介軟體元件：
+下列 `Startup.Configure` 方法會以建議的順序新增安全性相關中介軟體元件：
 
 [!code-csharp[](index/snapshot/Startup22.cs?name=snippet)]
 
 在上述程式碼中：
 
 * 使用[個別使用者帳戶](xref:security/authentication/identity)建立新的 web 應用程式時，未新增的中介軟體會加上批註。
-* 並非每個中介軟體都必須以這種完全相同的循序執行，但也有許多。 例如， `UseCors`和`UseAuthentication`必須以顯示的循序執行。
+* 並非每個中介軟體都必須以這種完全相同的循序執行，但也有許多。 例如， `UseCors` 和 `UseAuthentication` 必須以顯示的循序執行。
 
 下列 `Startup.Configure` 方法會新增適用於一般應用程式案例的中介軟體元件：
 
@@ -379,7 +383,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 靜態檔案中介軟體會提前在管線中呼叫，以便其無須逐一處理剩餘的元件，就能處理要求及執行最少運算。 靜態檔案中介軟體**不**提供授權檢查。 靜態檔案中介軟體所提供的任何檔案（包括*wwwroot*底下的檔案）皆可公開使用。 如需保護靜態檔案的方法，請參閱 <xref:fundamentals/static-files>。
 
-若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器及動作後，才會進行驗證 (與拒絕)。
+若靜態檔案中介軟體未處理要求，該要求會繼續傳遞給執行驗證的驗證中介軟體 (<xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*>)。 驗證不會對未經驗證的要求執行最少運算。 雖然驗證中介軟體會驗證要求，但只有在 MVC 選取特定 Razor 頁面或 MVC 控制器和動作之後，才會進行授權（和拒絕）。
 
 下列範例示範靜態檔案中介軟體在回應壓縮中介軟體之前處理靜態檔案要求之前的靜態檔案順序。 靜態檔案並不會以此中介軟體順序壓縮。 來自 <xref:Microsoft.AspNetCore.Builder.MvcApplicationBuilderExtensions.UseMvcWithDefaultRoute*> 的 MVC 回應可壓縮。
 
@@ -457,13 +461,13 @@ ASP.NET Core 隨附下列中介軟體元件。 「順序」** 欄說明 中介�
 | [HTTP 方法覆寫](xref:Microsoft.AspNetCore.Builder.HttpMethodOverrideExtensions) | 允許傳入的 POST 要求覆寫方法。 | 在使用更新方法的元件之前。 |
 | [HTTPS 重新導向](xref:security/enforcing-ssl#require-https) | 將所有 HTTP 要求都重新導向至 HTTPS。 | 在使用 URL 的元件之前。 |
 | [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts) | 增強安全性的中介軟體，可新增特殊的回應標頭。 | 在傳送回應前和修改要求的元件後。 範例：轉送的標頭、URL 重寫。 |
-| [MVC](xref:mvc/overview) | 處理 MVC/Razor Pages 的要求。 | 若要求符合路由則終止。 |
+| [MVC](xref:mvc/overview) | 處理 MVC/Pages 的要求 Razor 。 | 若要求符合路由則終止。 |
 | [OWIN](xref:fundamentals/owin) | 以 OWIN 為基礎之應用程式、伺服器和中介軟體的 Interop。 | 若 OWIN 中介軟體完全處理要求則終止。 |
 | [回應快取](xref:performance/caching/middleware) | 提供快取回應的支援。 | 在需要快取的元件之前。 |
 | [回應壓縮](xref:performance/response-compression) | 提供壓縮回應的支援。 | 在需要壓縮的元件之前。 |
 | [要求當地語系化](xref:fundamentals/localization) | 提供當地語系化支援。 | 在偵測當地語系化的元件之前。 |
 | [端點路由](xref:fundamentals/routing) | 定義並限制要求路由。 | 比對路由的終端機。 |
-| [課程](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 在需要工作階段的元件之前。 |
+| [本次](xref:fundamentals/app-state) | 提供管理使用者工作階段的支援。 | 在需要工作階段的元件之前。 |
 | [靜態檔案](xref:fundamentals/static-files) | 支援靜態檔案的提供和目錄瀏覽。 | 若要求符合檔案則終止。 |
 | [URL 重寫](xref:fundamentals/url-rewriting) | 提供重寫 URL 及重新導向要求的支援。 | 在使用 URL 的元件之前。 |
 | [WebSocket](xref:fundamentals/websockets) | 啟用 WebSockets 通訊協定。 | 在接受 WebSocket 要求的必要元件之前。 |

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: signalr/diagnostics
-ms.openlocfilehash: d26bb71a8ae06764b58a094b28d5e6f9eb581ecd
-ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
+ms.openlocfilehash: 7d7ea0fe69f258c01177c7755eaee61ab42400ce
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2020
-ms.locfileid: "84755959"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102945"
 ---
 # <a name="logging-and-diagnostics-in-aspnet-core-signalr"></a>ASP.NET Core 中的記錄和診斷SignalR
 
@@ -111,7 +111,7 @@ Visual Studio 會在 [**輸出**] 視窗中顯示記錄輸出。 選取 [ **ASP.
 
 若要從 .NET 用戶端取得記錄，您可以 `ConfigureLogging` 在上使用方法 `HubConnectionBuilder` 。 其運作方式與 `ConfigureLogging` 和上的方法相同 `WebHostBuilder` `HostBuilder` 。 您可以設定您在 ASP.NET Core 中使用的相同記錄提供者。 不過，您必須手動安裝並啟用個別記錄提供者的 NuGet 套件。
 
-若要將 .NET 用戶端記錄新增至 Blazor WebAssembly 應用程式，請參閱 <xref:fundamentals/logging/index#blazor-webassembly-signalr-net-client-logging> 。
+若要將 .NET 用戶端記錄新增至 Blazor WebAssembly 應用程式，請參閱 <xref:blazor/fundamentals/logging#blazor-webassembly-signalr-net-client-logging> 。
 
 ### <a name="console-logging"></a>主控台記錄
 

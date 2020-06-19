@@ -6,4 +6,4 @@ JS interop 程式碼可以包含在類別庫中，這可讓您在 NuGet 套件�
 
 在應用程式的專案檔中參考的組建 NuGet 套件，與參考任何 NuGet 套件的方式相同。 還原套件之後，應用程式程式碼可以呼叫 JavaScript，就好像它是 c # 一樣。
 
-如需詳細資訊，請參閱<xref:blazor/class-libraries>。
+如需詳細資訊，請參閱<xref:blazor/components/class-libraries>。

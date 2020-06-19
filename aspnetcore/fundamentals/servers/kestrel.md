@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 4da32b14ca640bda4df5d6c9d685f4702c6eb266
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: fd0db90e897a813e0127ce1c751569158efa8fdf
+ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106763"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85074172"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -122,7 +122,7 @@ Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-在本文稍後所示的範例中，Kestrel 選項是在 c # 程式碼中設定。 您也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定 Kestrel 選項。 例如，檔案設定[提供者](xref:fundamentals/configuration/index#file-configuration-provider)可以從*appsettings*或 appsettings 載入 Kestrel 設定 *。 {環境}. json*檔案：
+在本文稍後所示的範例中，Kestrel 選項是在 c # 程式碼中設定。 您也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定 Kestrel 選項。 例如，檔案設定[提供者](xref:fundamentals/configuration/index#file-configuration-provider)可以從或 appsettings 的*appsettings.js*載入 Kestrel 設定 *。 {環境}. json*檔案：
 
 ```json
 {
@@ -352,7 +352,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="synchronous-io"></a>同步 I/O
 
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO>控制要求和回應是否允許同步的 i/o。 預設值為 `false`。
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO>控制要求和回應是否允許同步的 i/o。 預設值是 `false`。
 
 > [!WARNING]
 > 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有 `AllowSynchronousIO` 在使用不支援非同步 i/o 的程式庫時才啟用。
@@ -722,7 +722,7 @@ HTTP/2 的 TLS 限制：
 * 暫時金鑰交換大小下限：
   * 橢圓曲線 Diffie-hellman （ECDHE） &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; ：224位最小值
   * 有限欄位 diffie-hellman （DHE） &lbrack; `TLS12` &rbrack; ：2048位最小值
-* 加密套件未列於封鎖清單中
+* 不禁止加密套件。 
 
 `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack;`TLS-ECDHE`&rbrack;根據預設，支援 P-256 橢圓曲線 &lbrack; `FIPS186` &rbrack; 。
 
@@ -848,7 +848,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 `CreateDefaultBuilder` 預設會呼叫 `serverOptions.Configure(context.Configuration.GetSection("Kestrel"))` 以載入 Kestrel 設定。
 
-下列*appsettings*範例會建立 HTTP/1.1 作為所有端點的預設連接通訊協定：
+下列*appsettings.js*範例會將 HTTP/1.1 建立為所有端點的預設連接通訊協定：
 
 ```json
 {
@@ -860,7 +860,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 }
 ```
 
-下列*appsettings*範例會建立特定端點的 HTTP/1.1 連接通訊協定：
+下列*appsettings.js*範例會建立特定端點的 HTTP/1.1 連接通訊協定：
 
 ```json
 {
@@ -960,9 +960,9 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在*appsettings*中定義金鑰 / *appsettings。 \<EnvironmentName>json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在 appsettings*上的appsettings.js*中定義索引鍵 / * \<EnvironmentName> 。json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
-*appsettings. json*：
+*appsettings.js*：
 
 ```json
 {
@@ -1094,7 +1094,7 @@ Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-在下列範例中，以 c # 程式碼設定的 Kestrel 選項也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定。 例如，檔案設定提供者可以從*appsettings*或 Appsettings 載入 Kestrel 設定 *。 {環境}. json*檔案：
+在下列範例中，以 c # 程式碼設定的 Kestrel 選項也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定。 例如，檔案設定提供者可以從或 appsettings 的*appsettings.js*載入 Kestrel 設定 *。 {環境}. json*檔案：
 
 ```json
 {
@@ -1911,9 +1911,9 @@ private class TlsFilterAdapter : IConnectionAdapter
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在*appsettings*中定義金鑰 / *appsettings。 \<EnvironmentName>json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在 appsettings*上的appsettings.js*中定義索引鍵 / * \<EnvironmentName> 。json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
-*appsettings. json*：
+*appsettings.js*：
 
 ```json
 {
@@ -2002,7 +2002,7 @@ Kestrel 網頁伺服器所含的條件約束組態選項，在網際網路對應
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 ```
 
-在下列範例中，以 c # 程式碼設定的 Kestrel 選項也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定。 例如，檔案設定提供者可以從*appsettings*或 Appsettings 載入 Kestrel 設定 *。 {環境}. json*檔案：
+在下列範例中，以 c # 程式碼設定的 Kestrel 選項也可以使用設定[提供者](xref:fundamentals/configuration/index)來設定。 例如，檔案設定提供者可以從或 appsettings 的*appsettings.js*載入 Kestrel 設定 *。 {環境}. json*檔案：
 
 ```json
 {
@@ -2701,9 +2701,9 @@ Listening on the following addresses: http://127.0.0.1:48508
 
 [!code-csharp[](kestrel/samples-snapshot/2.x/KestrelSample/Program.cs?name=snippet_Program&highlight=9)]
 
-預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在*appsettings*中定義金鑰 / *appsettings。 \<EnvironmentName>json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
+預設停用主機篩選中介軟體。 若要啟用中介軟體，請 `AllowedHosts` 在 appsettings*上的appsettings.js*中定義索引鍵 / * \<EnvironmentName> 。json*。 此值是以分號分隔的主機名稱清單，不含連接埠號碼：
 
-*appsettings. json*：
+*appsettings.js*：
 
 ```json
 {

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: f582e8201a3393b848cf3f2c21ce3a7df5554100
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 3a491e43aec8291fcf03696b53240bd33e0deda1
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105528"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102495"
 ---
 # <a name="aspnet-core-blazor-templates"></a>ASP.NET Core Blazor 範本
 
@@ -59,7 +59,7 @@ dotnet new blazorserver --help
     * <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A>呼叫來設定端點，以與瀏覽器進行即時連接。 連接是使用建立的 [SignalR](xref:signalr/introduction) ，這是將即時 web 功能新增至應用程式的架構。
     * 呼叫[MapFallbackToPage （"/_Host"）](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapFallbackToPage*)來設定應用程式的根頁面（*Pages/_Host. cshtml*）並啟用導覽。
 
-* *wwwroot/index.html* （ Blazor WebAssembly）：實作為 html 網頁之應用程式的根頁面：
+* *wwwroot/index.html* （ Blazor WebAssembly）：實作為 HTML 網頁之應用程式的根頁面：
   * 一開始要求應用程式的任何頁面時，會轉譯此頁面並在回應中傳回。
   * 頁面會指定呈現根元件的位置 `App` 。 `App`元件（*razor*）會指定為 `app` 中方法的 DOM 元素 `AddComponent` `Startup.Configure` 。
   * `_framework/blazor.webassembly.js`已載入 JavaScript 檔案，其：
@@ -80,7 +80,7 @@ dotnet new blazorserver --help
 
 * *共用*資料夾：包含應用程式所使用的其他 UI 元件（*razor*）：
   * `MainLayout`（*MainLayout razor*）：應用程式的版面配置元件。
-  * `NavMenu`（*Navmenu.cshtml razor*）： [執行] 提要欄位導覽。 包含[NavLink 元件](xref:blazor/routing#navlink-component)（ <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ），它會呈現其他元件的導覽連結 Razor 。 元件會在 <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 載入元件時自動指出選取的狀態，協助使用者瞭解目前顯示的元件。
+  * `NavMenu`（*Navmenu.cshtml razor*）： [執行] 提要欄位導覽。 包含[NavLink 元件](xref:blazor/fundamentals/routing#navlink-component)（ <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ），它會呈現其他元件的導覽連結 Razor 。 元件會在 <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 載入元件時自動指出選取的狀態，協助使用者瞭解目前顯示的元件。
 
 * *_Imports razor*：包含 Razor 要包含在應用程式元件（*razor*）中的通用指示詞，例如命名空間的指示詞 [`@using`](xref:mvc/views/razor#using) 。
 
@@ -88,4 +88,4 @@ dotnet new blazorserver --help
 
 * *wwwroot*：應用程式的[Web 根](xref:fundamentals/index#web-root)資料夾，其中包含應用程式的公用靜態資產。
 
-* *appsettings. json* （ Blazor 伺服器）：應用程式的設定。
+* *appsettings.js* （ Blazor 伺服器）：應用程式的設定。

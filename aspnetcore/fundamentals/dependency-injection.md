@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: db0a23e2db34de60308ea9be021a190278dee4aa
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: ddb583f69758055500ff63960f469c1cea44c77e
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84271899"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102599"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -189,7 +189,7 @@ public void ConfigureServices(IServiceCollection services)
 
 如需詳細資訊，請參閱 API 文件中的 <xref:Microsoft.Extensions.DependencyInjection.ServiceCollection> 類別。
 
-## <a name="service-lifetimes"></a>執行個體存留期
+## <a name="service-lifetimes"></a>服務存留期
 
 為每個已註冊的服務選擇適當的存留期。 ASP.NET Core 服務可以使用下列存留期進行設定：
 
@@ -215,7 +215,7 @@ public void ConfigureServices(IServiceCollection services)
 
 服務註冊擴充方法提供在特定案例中很有用的多載。
 
-| 方法 | 自動<br>物件 (object)<br>處置 | 多重<br>實作 | 傳遞引數 |
+| 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
@@ -235,7 +235,7 @@ services.AddSingleton<IMyDependency, MyDependency>();
 services.TryAddSingleton<IMyDependency, DifferentDependency>();
 ```
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAdd*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddTransient*>
@@ -473,7 +473,7 @@ public void ConfigureServices(IServiceCollection services)
 * 實例會在根範圍中解析。
 * 應該在範圍結束之前處置實例。
 
-**解決方法**
+**方案**
 
 使用 factory 模式，在父範圍外建立實例。 在這種情況下，應用程式通常會有 `Create` 方法，直接呼叫最終型別的函式。 如果最終類型具有其他相依性，則 factory 可以：
 
@@ -486,7 +486,7 @@ public void ConfigureServices(IServiceCollection services)
 
 應用程式需要 <xref:System.IDisposable> 多個服務之間的共用實例，但 <xref:System.IDisposable> 應具有有限的存留期。
 
-**解決方法**
+**方案**
 
 註冊具有限定範圍存留期的實例。 使用 <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope%2A?displayProperty=nameWithType> 來啟動並建立新的 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope> 。 使用範圍的 <xref:System.IServiceProvider> 來取得所需的服務。 在存留期結束時處置範圍。
 
@@ -590,7 +590,7 @@ https://github.com/OrchardCMS/OrchardCore.Samples如需如何使用 Orchard Core
 * <xref:mvc/views/dependency-injection>
 * <xref:mvc/controllers/dependency-injection>
 * <xref:security/authorization/dependencyinjection>
-* <xref:blazor/dependency-injection>
+* <xref:blazor/fundamentals/dependency-injection>
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [在 ASP.NET Core 中處置 IDisposables 的四種方式](https://andrewlock.net/four-ways-to-dispose-idisposables-in-asp-net-core/)
@@ -766,7 +766,7 @@ public void ConfigureServices(IServiceCollection services)
 
 如需詳細資訊，請參閱 API 文件中的 <xref:Microsoft.Extensions.DependencyInjection.ServiceCollection> 類別。
 
-## <a name="service-lifetimes"></a>執行個體存留期
+## <a name="service-lifetimes"></a>服務存留期
 
 為每個已註冊的服務選擇適當的存留期。 ASP.NET Core 服務可以使用下列存留期進行設定：
 
@@ -792,7 +792,7 @@ public void ConfigureServices(IServiceCollection services)
 
 服務註冊擴充方法提供在特定案例中很有用的多載。
 
-| 方法 | 自動<br>物件 (object)<br>處置 | 多重<br>實作 | 傳遞引數 |
+| 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
 | `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
 | `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
@@ -812,7 +812,7 @@ services.AddSingleton<IMyDependency, MyDependency>();
 services.TryAddSingleton<IMyDependency, DifferentDependency>();
 ```
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAdd*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddTransient*>
@@ -1048,7 +1048,7 @@ public void ConfigureServices(IServiceCollection services)
 * 實例會在根範圍中解析。
 * 應該在範圍結束之前處置實例。
 
-**解決方法**
+**方案**
 
 使用 factory 模式，在父範圍外建立實例。 在這種情況下，應用程式通常會有 `Create` 方法，直接呼叫最終型別的函式。 如果最終類型具有其他相依性，則 factory 可以：
 
@@ -1061,7 +1061,7 @@ public void ConfigureServices(IServiceCollection services)
 
 應用程式需要 <xref:System.IDisposable> 多個服務之間的共用實例，但 <xref:System.IDisposable> 應具有有限的存留期。
 
-**解決方法**
+**方案**
 
 註冊具有限定範圍存留期的實例。 使用 <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope%2A?displayProperty=nameWithType> 來啟動並建立新的 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope> 。 使用範圍的 <xref:System.IServiceProvider> 來取得所需的服務。 在存留期結束時處置範圍。
 
@@ -1161,7 +1161,7 @@ DI 是靜態/全域物件存取模式的「替代」** 選項。 如果您將 DI
 * <xref:mvc/views/dependency-injection>
 * <xref:mvc/controllers/dependency-injection>
 * <xref:security/authorization/dependencyinjection>
-* <xref:blazor/dependency-injection>
+* <xref:blazor/fundamentals/dependency-injection>
 * <xref:fundamentals/startup>
 * <xref:fundamentals/middleware/extensibility>
 * [在 ASP.NET Core 中處置 IDisposables 的四種方式](https://andrewlock.net/four-ways-to-dispose-idisposables-in-asp-net-core/)

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 4f3fd1fca075098a94756757474b2cad3cc99775
-ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
+ms.openlocfilehash: 19e10c4eced47676c633a7d30a26726913373162
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84214768"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102426"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
 
@@ -85,7 +85,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 * <xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A>：傳送 HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
 
-  在下列程式碼中， `todoItems` 元件會顯示。 `GetTodoItems`當元件完成呈現（[OnInitializedAsync](xref:blazor/lifecycle#component-initialization-methods)）時，就會觸發方法。 如需完整範例，請參閱範例應用程式。
+  在下列程式碼中， `todoItems` 元件會顯示。 `GetTodoItems`當元件完成呈現（[OnInitializedAsync](xref:blazor/components/lifecycle#component-initialization-methods)）時，就會觸發方法。 如需完整範例，請參閱範例應用程式。
 
   ```razor
   @using System.Net.Http
@@ -303,7 +303,7 @@ protected override async Task OnInitializedAsync()
 > [!NOTE]
 > 上述範例是為了示範之用。 即使端點不存在，或伺服器上發生未處理的例外，您也可以將 Web API 伺服器應用程式設定為傳回 JSON。
 
-如需詳細資訊，請參閱 <xref:blazor/handle-errors> 。
+如需詳細資訊，請參閱 <xref:blazor/fundamentals/handle-errors> 。
 
 ## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享（CORS）
 
@@ -315,7 +315,7 @@ protected override async Task OnInitializedAsync()
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:security/blazor/webassembly/additional-scenarios>：包含使用 <xref:System.Net.Http.HttpClient> 來提出安全 Web API 要求的涵蓋範圍。
+* <xref:blazor/security/webassembly/additional-scenarios>：包含使用 <xref:System.Net.Http.HttpClient> 來提出安全 Web API 要求的涵蓋範圍。
 * <xref:fundamentals/http-requests>
 * <xref:security/enforcing-ssl>
 * [Kestrel HTTPS 端點設定](xref:fundamentals/servers/kestrel#endpoint-configuration)

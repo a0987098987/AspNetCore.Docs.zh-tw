@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: 9556fea5319956ce4ae4f4faf90cb405784c733c
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: a5323534cd76cfb60008636066ca5dcb7308d134
+ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105489"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85102264"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -28,7 +28,7 @@ Blazor是一種 web 架構，設計用來在[WebAssembly](https://webassembly.or
 
 若要為本文所述的主控模型建立專案，請參閱 <xref:blazor/get-started> 。
 
-如需 advanced configuration，請參閱 <xref:blazor/hosting-model-configuration> 。
+如需 advanced configuration，請參閱 <xref:blazor/fundamentals/configuration> 。
 
 ## <a name="blazor-webassembly"></a>BlazorWebAssembly
 
@@ -116,7 +116,7 @@ Blazor應用程式是由可重複使用的 UI 元素（稱為「*元件*」）�
 
 圖形為重新顯示，且會計算 UI*差異*（差異）。 這項差異是更新用戶端上的 UI 所需的最小一組 DOM 編輯。 差異會以二進位格式傳送至用戶端，並由瀏覽器套用。
 
-元件會在使用者從用戶端導覽出去之後處置。 當使用者與元件互動時，元件的狀態（服務、資源）必須保留在伺服器的記憶體中。 因為許多元件的狀態可能會由伺服器同時維護，所以記憶體耗盡是必須解決的問題。 如需有關如何撰寫 Blazor 伺服器應用程式以確保最佳使用伺服器記憶體的指引，請參閱 <xref:security/blazor/server/threat-mitigation> 。
+元件會在使用者從用戶端導覽出去之後處置。 當使用者與元件互動時，元件的狀態（服務、資源）必須保留在伺服器的記憶體中。 因為許多元件的狀態可能會由伺服器同時維護，所以記憶體耗盡是必須解決的問題。 如需有關如何撰寫 Blazor 伺服器應用程式以確保最佳使用伺服器記憶體的指引，請參閱 <xref:blazor/security/server/threat-mitigation> 。
 
 ### <a name="circuits"></a>獲得
 
@@ -136,10 +136,10 @@ UI 延遲是從起始的動作到 UI 更新時間所花費的時間。 較小的
 
 記憶體使用量也會導致應用程式延遲。 增加記憶體使用量會導致頻繁的垃圾收集或將記憶體分頁到磁片，這兩者都會降低應用程式效能，因而增加 UI 延遲。
 
-Blazor伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法，請參閱 <xref:host-and-deploy/blazor/server#measure-network-latency> 。 如需和的詳細資訊 SignalR Blazor ，請參閱：
+Blazor伺服器應用程式應該經過優化，藉由減少網路延遲和記憶體使用量，將 UI 延遲降到最低。 如需測量網路延遲的方法，請參閱 <xref:blazor/host-and-deploy/server#measure-network-latency> 。 如需和的詳細資訊 SignalR Blazor ，請參閱：
 
-* <xref:host-and-deploy/blazor/server>
-* <xref:security/blazor/server/threat-mitigation>
+* <xref:blazor/host-and-deploy/server>
+* <xref:blazor/security/server/threat-mitigation>
 
 ### <a name="connection-to-the-server"></a>連接到伺服器
 
@@ -147,7 +147,7 @@ Blazor伺服器應用程式需要伺服器的使用中 SignalR 連接。 如果�
 
 Blazor伺服器應用程式會 prerenders，以回應第一個用戶端要求，這會在伺服器上設定 UI 狀態。 當用戶端嘗試建立連接時 SignalR ，用戶端必須重新連線到相同的伺服器。 Blazor使用一部以上後端伺服器的伺服器應用程式應該執行連線的*粘滯會話* SignalR 。
 
-我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。 此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。 將 SignalR 服務的選項或設定值設為，即可為 Azure 服務啟用「粘滯會話」 `ServerStickyMode` `Required` 。 如需詳細資訊，請參閱 <xref:host-and-deploy/blazor/server#signalr-configuration> 。
+我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。 此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。 將 SignalR 服務的選項或設定值設為，即可為 Azure 服務啟用「粘滯會話」 `ServerStickyMode` `Required` 。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/server#signalr-configuration> 。
 
 使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 
@@ -155,5 +155,5 @@ Blazor伺服器應用程式會 prerenders，以回應第一個用戶端要求，
 
 * <xref:blazor/get-started>
 * <xref:signalr/introduction>
-* <xref:blazor/hosting-model-configuration>
+* <xref:blazor/fundamentals/additional-scenarios>
 * <xref:tutorials/signalr-blazor-webassembly>

@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/controllers/filters
-ms.openlocfilehash: 407583533939ec1077af8e1a1511ed187ef9de69
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 068b471c1f5fa5f0ca87dd7b028badf70f8c1b67
+ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103010"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85122161"
 ---
 # <a name="filters-in-aspnet-core"></a>ASP.NET Core 中的篩選條件
 
@@ -445,6 +445,9 @@ FiltersSample.Filters.LogConstantFilter:Information: Method 'Hi' called
 * 如果狀態無效，則傳回錯誤。
 
 [!code-csharp[](./filters/3.1sample/FiltersSample/Filters/ValidateModelAttribute.cs?name=snippet)]
+
+> [!NOTE]
+> 以屬性標注的控制器 `[ApiController]` 會自動驗證模型狀態，並傳回400回應。 如需詳細資訊，請參閱[自動 HTTP 400 回應](xref:web-api/index#automatic-http-400-responses)。
 
 `OnActionExecuted` 方法會在動作方法之後執行：
 

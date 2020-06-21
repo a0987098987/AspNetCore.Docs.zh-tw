@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 8ef029af10f767ae505fddc636bb15f7e7c5e538
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 3f8aeec1e0471bab5034d1dcc8a42023f6b13c0d
+ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102695"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85122096"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>搭配 WebAssembly 使用 ASP.NET Core SignalR Blazor
 
@@ -37,7 +37,7 @@ ms.locfileid: "85102695"
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -72,16 +72,13 @@ ms.locfileid: "85102695"
 
 1. 選取** Blazor 應用程式**，然後選取 **[下一步]**。
 
-1. 在 [**專案名稱**] 欄位中輸入 "BlazorSignalRApp"。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
+1. `BlazorSignalRApp`在 [**專案名稱**] 欄位中輸入。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
 1. 選擇 [ ** Blazor WebAssembly 應用程式**] 範本。
 
 1. 在 [ **Advanced**] 底下，選取 [ **ASP.NET Core**裝載] 核取方塊。
 
 1. 選取 [建立]。
-
-> [!NOTE]
-> 如果您已升級或安裝新版本的 Visual Studio，而 Blazor WebAssembly 範本未出現在 VS UI 中，請使用 `dotnet new` 先前所示的命令重新安裝範本。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -93,7 +90,7 @@ ms.locfileid: "85102695"
 
 1. 在 Visual Studio Code 中，開啟應用程式的專案資料夾。
 
-1. 當對話方塊出現以新增資產以建立和偵錯工具時，請選取 **[是**]。 Visual Studio Code 會自動新增*vscode*資料夾，其中包含*在*檔案上產生的launch.js和*tasks.js* 。
+1. 當對話方塊出現以新增資產以建立和偵錯工具時，請選取 **[是**]。 Visual Studio Code 會自動新增 `.vscode` 具有所產生檔案和檔案的資料夾 `launch.json` `tasks.json` 。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -118,7 +115,7 @@ ms.locfileid: "85102695"
 
    如果出現會信任開發憑證的提示，請信任憑證並繼續。 需要使用者和 keychain 密碼，才能信任憑證。
 
-1. 流覽至專案資料夾，然後開啟專案的方案檔（*.sln*），以開啟專案。
+1. 流覽至專案資料夾，然後開啟專案的方案檔（），以開啟專案 `.sln` 。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
@@ -134,13 +131,13 @@ dotnet new blazorwasm --hosted --output BlazorSignalRApp
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio/)
 
-1. 在**方案總管**中，以滑鼠右鍵按一下 [ **BlazorSignalRApp** ] 專案，然後選取 [**管理 NuGet 套件**]。
+1. 在**方案總管**中，以滑鼠右鍵按一下 `BlazorSignalRApp.Client` 專案，然後選取 [**管理 NuGet 套件**]。
 
-1. 在 [**管理 NuGet 封裝**] 對話方塊中，確認 [**套件來源**] 已設定為 [ *nuget.org*]。
+1. 在 [**管理 NuGet 封裝**] 對話方塊中，確認 [**套件來源**] 設定為 `nuget.org` 。
 
-1. 在選取 **[流覽]** 的情況下，輸入 "AspNetCore. SignalR .。用戶端：在搜尋方塊中。
+1. 在選取 **[流覽]** 的情況下，于 `Microsoft.AspNetCore.SignalR.Client` 搜尋方塊中輸入。
 
-1. 在搜尋結果中，選取 [ [AspNetCore SignalR ]。用戶端](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/)套件，然後選取 [**安裝**]。
+1. 在搜尋結果中選取套件， [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) 然後選取 [**安裝**]。
 
 1. 如果出現 [**預覽變更**] 對話方塊，請選取 **[確定]**。
 
@@ -156,13 +153,13 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 在 [**解決方案**] 提要欄位中，以滑鼠右鍵按一下 [ **BlazorSignalRApp** ] 專案，然後選取 [**管理 NuGet 套件**]。
+1. 在 [**解決方案**] 提要欄位中，以滑鼠右鍵按一下 `BlazorSignalRApp.Client` 專案，然後選取 [**管理 NuGet 套件**]。
 
-1. 在 [**管理 NuGet 封裝**] 對話方塊中，確認 [來源] 下拉式設定為 [ *nuget.org*]。
+1. 在 [**管理 NuGet 封裝**] 對話方塊中，確認 [來源] 下拉式設定為 `nuget.org` 。
 
-1. 在選取 **[流覽]** 的情況下，輸入 "AspNetCore. SignalR .。用戶端：在搜尋方塊中。
+1. 在選取 **[流覽]** 的情況下，于 `Microsoft.AspNetCore.SignalR.Client` 搜尋方塊中輸入。
 
-1. 在搜尋結果中，選取 [AspNetCore] 旁的複選[ SignalR 框。用戶端](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client/)套件，然後選取 [**新增封裝**]。
+1. 在搜尋結果中，選取封裝旁的核取方塊 [`Microsoft.AspNetCore.SignalR.Client`](https://www.nuget.org/packages/Microsoft.AspNetCore.SignalR.Client) ，然後選取 [**新增套件**]。
 
 1. 如果 [**接受授權**] 對話方塊出現，請選取 [**接受**] （如果您同意授權條款）。
 
@@ -179,13 +176,13 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ## <a name="add-a-signalr-hub"></a>新增 SignalR 中樞
 
-在**BlazorSignalRApp**專案中，建立*中樞*（複數）資料夾，並新增下列 `ChatHub` 類別（*hub/ChatHub .cs*）：
+在 `BlazorSignalRApp.Server` 專案中，建立 `Hubs` （複數）資料夾，並新增下列 `ChatHub` 類別（ `Hubs/ChatHub.cs` ）：
 
 [!code-csharp[](signalr-blazor-webassembly/samples/3.x/BlazorSignalRApp/Server/Hubs/ChatHub.cs)]
 
 ## <a name="add-services-and-an-endpoint-for-the-signalr-hub"></a>新增服務和中樞的端點 SignalR
 
-1. 在**BlazorSignalRApp**專案中，開啟*Startup.cs*檔案。
+1. 在 `BlazorSignalRApp.Server` 專案中，開啟 `Startup.cs` 檔案。
 
 1. 將類別的命名空間新增 `ChatHub` 至檔案頂端：
 
@@ -206,7 +203,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 ## <a name="add-razor-component-code-for-chat"></a>新增 Razor 聊天的元件程式碼
 
-1. 在 [ **BlazorSignalRApp** ] 專案中，開啟*Pages/Index. razor*檔案。
+1. 在 `BlazorSignalRApp.Client` 專案中，開啟 `Pages/Index.razor` 檔案。
 
 1. 將標記取代為下列程式碼：
 
@@ -218,11 +215,11 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 在 [**方案總管**中，選取 [ **BlazorSignalRApp** ] 專案。 按<kbd>f5</kbd>鍵以執行應用程式的偵測或<kbd>Ctrl</kbd> + <kbd>F5</kbd> ，以執行應用程式而不進行偵測。
+1. 在 [**方案總管**中，選取 `BlazorSignalRApp.Server` 專案。 按<kbd>f5</kbd>鍵以執行應用程式的偵測或<kbd>Ctrl</kbd> + <kbd>F5</kbd> ，以執行應用程式而不進行偵測。
 
 1. 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-1. 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送]**** 按鈕。 名稱和訊息會立即顯示在兩個頁面上：
+1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
    ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
@@ -230,7 +227,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-1. 當 VS Code 提供來建立伺服器應用程式的啟動設定檔（*vscode/launch.js*）時， `program` 專案會顯示如下，以指向應用程式的元件（ `{APPLICATION NAME}.Server.dll` ）：
+1. 當 VS Code 提供來建立伺服器應用程式（）的啟動設定檔時 `.vscode/launch.json` ， `program` 專案會顯示如下，以指向應用程式的元件（ `{APPLICATION NAME}.Server.dll` ）：
 
    ```json
    "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/{APPLICATION NAME}.Server.dll"
@@ -240,7 +237,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-1. 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送]**** 按鈕。 名稱和訊息會立即顯示在兩個頁面上：
+1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
    ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
@@ -248,11 +245,11 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 在 [**方案**] 提要欄位中，選取 [ **BlazorSignalRApp** ] 專案。 按<kbd>則是⌘</kbd> + <kbd>↩</kbd>以執行應用程式的偵錯工具，或<kbd>⌥</kbd> + <kbd>則是⌘</kbd> + <kbd>↩</kbd>以執行應用程式而不進行偵測。
+1. 在 [**方案**] 提要欄位中，選取 `BlazorSignalRApp.Server` 專案。 按<kbd>則是⌘</kbd> + <kbd>↩</kbd>以執行應用程式的偵錯工具，或<kbd>⌥</kbd> + <kbd>則是⌘</kbd> + <kbd>↩</kbd>以執行應用程式而不進行偵測。
 
 1. 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-1. 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送]**** 按鈕。 名稱和訊息會立即顯示在兩個頁面上：
+1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
    ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
@@ -269,7 +266,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 從網址列複製 URL，開啟另一個瀏覽器執行個體或索引標籤，然後將 URL 貼入網址列。
 
-1. 選擇任一個瀏覽器，輸入名稱和訊息，然後選取 [傳送]**** 按鈕。 名稱和訊息會立即顯示在兩個頁面上：
+1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
    ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 

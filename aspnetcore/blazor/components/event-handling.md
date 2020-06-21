@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 32f7595cffc2c31116c8d876c9f9526b84c52f14
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: d15d8355b321c2938d68a109c5115db78280f6b6
+ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103626"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85122083"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 事件處理
 
@@ -73,7 +73,14 @@ Razor元件提供事件處理功能。 對於名為的 HTML 專案屬性 [`@on{E
 
 ## <a name="event-argument-types"></a>事件引數類型
 
-對於某些事件，則允許事件引數類型。 只有在方法中使用事件種類時，才需要在方法呼叫中指定事件種類。
+對於某些事件，則允許事件引數類型。 在事件方法定義中指定事件參數是選擇性的，只有在方法中使用事件種類時才需要。 在下列範例中， `MouseEventArgs` 會在方法中使用事件引數 `ShowMessage` 來設定郵件內文：
+
+```csharp
+private void ShowMessage(MouseEventArgs e)
+{
+    messageText = $"The mouse is at coordinates: {e.ScreenX}:{e.ScreenY}";
+}
+```
 
 <xref:System.EventArgs>下表顯示支援的。
 

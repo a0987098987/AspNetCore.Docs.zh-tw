@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/validation
-ms.openlocfilehash: f72edda54d4201915e2494b75b4d49ec6c9c6d75
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: ff44b4b80385ffbd1a6659b2684ef2a8055ee2d0
+ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652843"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85122109"
 ---
 # <a name="part-8-add-validation-to-an-aspnet-core-razor-page"></a>第8部分，將驗證新增至 ASP.NET Core Razor 頁面
 
@@ -119,7 +119,7 @@ Create 和 Edit 頁面中沒有任何驗證規則。 只有在 `Movie` 類別中
 
 `DataType` 屬性只提供檢視引擎將資料格式化的提示 (以及提供一些屬性，例如用於 URL 的 `<a>` 和用於電子郵件的 `<a href="mailto:EmailAddress.com">`)。 使用 `RegularExpression` 屬性來驗證資料的格式。 `DataType` 屬性可用於指定比資料庫內建類型更特定的資料類型。 `DataType` 屬性不是驗證屬性。 在範例應用程式中，只會顯示日期，而不含時間。
 
-`DataType` 列舉可提供給許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可針對 `DataType.EmailAddress` 建立 `mailto:` 連結。 在支援 HTML5 的瀏覽器中，可以為 `DataType.Date` 提供日期選取器。 `DataType` 屬性會發出 HTML 5 瀏覽器使用的 HTML 5 `data-` (唸成的 data dash) 屬性。 `DataType` 屬性**不**會提供任何驗證。
+`DataType` 列舉可提供給許多資料類型，例如 Date、Time、PhoneNumber、Currency、EmailAddress 等等。 `DataType` 屬性也可讓應用程式自動提供類型的特定功能。 例如，可針對 `DataType.EmailAddress` 建立 `mailto:` 連結。 在支援 HTML5 的瀏覽器中，可以為 `DataType.Date` 提供日期選取器。 `DataType`屬性會發出 html 5 `data-` 瀏覽器所使用的 html 5 （發音為數據虛線）屬性。 `DataType` 屬性**不**會提供任何驗證。
 
 `DataType.Date` 未指定顯示日期的格式。 根據預設，將依據以伺服器 `CultureInfo` 為基礎的預設格式顯示資料欄位。
 
@@ -138,9 +138,9 @@ public DateTime ReleaseDate { get; set; }
 
 * 瀏覽器可以啟用 HTML5 功能 (例如顯示日曆控制項、適合地區設定的貨幣符號、電子郵件連結等等)。
 * 根據預設，瀏覽器將根據您的地區設定，使用正確的格式呈現資料。
-* `DataType` 屬性可以啟用 ASP.NET Core 架構，來選擇用於呈現資料的正確欄位範本。 `DisplayFormat` 若是單獨使用，則會使用字串範本。
+* `DataType` 屬性可以啟用 ASP.NET Core 架構，來選擇用於呈現資料的正確欄位範本。 `DisplayFormat`如果單獨使用，則會使用字串範本。
 
-請注意：jQuery 驗證不適用於 `Range` 屬性與 `DateTime`。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
+**注意：** jQuery 驗證不適用於 `Range` 屬性和 `DateTime` 。 例如，下列程式碼一律會顯示用戶端驗證錯誤，即使當日期位在指定範圍中也一樣：
 
 ```csharp
 [Range(typeof(DateTime), "1/1/1966", "1/1/2020")]

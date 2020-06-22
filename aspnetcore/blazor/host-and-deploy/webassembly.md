@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 4f672c5117beeb09914e802012f0970389fea47f
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 4755674a4e73b245923c2c0f1f3d8ed114be8c81
+ms.sourcegitcommit: 726b8c5cf92e6f6a4d0205787b19307e889d6240
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103601"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85127756"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET Core Blazor WebAssembly
 
@@ -202,7 +202,7 @@ Blazor發行專案時，會使用下列 IIS 設定來建立*web.config*檔案：
 
 #### <a name="brotli-and-gzip-compression"></a>Brotli 和 Gzip 壓縮
 
-您可以透過*web.config*來設定 IIS，以提供 Brotli 或 Gzip 壓縮 Blazor 的資產。 如需範例設定，請參閱[web.config](webassembly/_samples/web.config?raw=true)。
+您可以透過*web.config*來設定 IIS，以提供 Brotli 或 Gzip 壓縮 Blazor 的資產。 如需範例設定，請參閱[web.config](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/blazor/host-and-deploy/webassembly/_samples/web.config?raw=true)。
 
 #### <a name="troubleshooting"></a>疑難排解
 
@@ -392,7 +392,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 ## <a name="configure-the-linker"></a>設定連結器
 
-Blazor在每個發行組建上執行中繼語言（IL）連結，以從輸出元件移除不必要的 IL。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/configure-linker> 。
+Blazor在每個發行組建上執行中繼語言（IL）連結，以從輸出元件移除不必要的 IL。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/configure-linker>。
 
 ## <a name="custom-boot-resource-loading"></a>自訂開機資源載入
 

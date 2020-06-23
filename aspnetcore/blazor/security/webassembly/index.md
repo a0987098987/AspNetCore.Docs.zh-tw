@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/index
-ms.openlocfilehash: 5b20ab96f5419a86ab162fdcf7a57020f6aa7227
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 877b2bb4b055cca25d64258383cdb39d812e2d6a
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103757"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243235"
 ---
 # <a name="secure-aspnet-core-blazor-webassembly"></a>保護 ASP.NET Core Blazor WebAssembly
 
@@ -28,9 +28,9 @@ BlazorWebAssembly apps 的保護方式與單一頁面應用程式（Spa）相同
 
 ## <a name="authentication-library"></a>驗證程式庫
 
-BlazorWebAssembly 支援使用 OIDC 透過[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)來驗證和授權應用程式。 程式庫提供一組基本類型，可針對 ASP.NET Core 後端順暢地進行驗證。 程式庫整合 Identity 了 ASP.NET Core，並在[ Identity 伺服器](https://identityserver.io/)之上建立 API 授權支援。 程式庫可以針對支援 OIDC 的任何協力廠商 Identity 提供者（IP）進行驗證，稱為 OpenID 提供者（OP）。
+BlazorWebAssembly 支援透過程式庫使用 OIDC 來驗證和授權應用程式 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 。 程式庫提供一組基本類型，可針對 ASP.NET Core 後端順暢地進行驗證。 程式庫整合 Identity 了 ASP.NET Core，並在[ Identity 伺服器](https://identityserver.io/)之上建立 API 授權支援。 程式庫可以針對支援 OIDC 的任何協力廠商 Identity 提供者（IP）進行驗證，稱為 OpenID 提供者（OP）。
 
-WebAssembly 中的驗證支援 Blazor 是建置於*oidc-client.js*程式庫之上，用來處理基礎驗證通訊協定的詳細資料。
+WebAssembly 中的驗證支援 Blazor 是建置於程式庫之上 `oidc-client.js` ，用來處理基礎驗證通訊協定的詳細資料。
 
 驗證 Spa 的其他選項是否存在，例如使用 SameSite cookie。 不過，WebAssembly 的工程設計 Blazor 是以 OAuth 和 OIDC 作為 WebAssembly 應用程式中驗證的最佳選項來進行 Blazor 。 以[JSON Web 權杖（jwt）](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)為基礎的[權杖型驗證](xref:security/anti-request-forgery#token-based-authentication)是針對功能和安全性原因而選擇，而不是以[cookie 為基礎的驗證](xref:security/anti-request-forgery#cookie-based-authentication)：
 
@@ -44,7 +44,7 @@ WebAssembly 中的驗證支援 Blazor 是建置於*oidc-client.js*程式庫之�
 
 ## <a name="authentication-process-with-oidc"></a>使用 OIDC 的驗證程式
 
-[AspNetCore. WebAssembly 驗證](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)程式庫提供數個基本專案，以使用 OIDC 來執行驗證和授權。 就廣義而言，驗證的運作方式如下：
+連結 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 庫提供數個基本專案，以使用 OIDC 來執行驗證和授權。 就廣義而言，驗證的運作方式如下：
 
 * 當匿名使用者選取 [登入] 按鈕或要求已套用屬性的頁面時 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) ，系統會將使用者重新導向至應用程式的登入頁面（ `/authentication/login` ）。
 * 在登入頁面中，驗證程式庫會準備重新導向至授權端點。 授權端點位於 Blazor WebAssembly 應用程式之外，而且可以在不同的來源託管。 端點負責判斷使用者是否已驗證，以及是否要在回應中發出一或多個權杖。 驗證程式庫會提供登入回呼，以接收驗證回應。
@@ -64,7 +64,7 @@ WebAssembly 中的驗證支援 Blazor 是建置於*oidc-client.js*程式庫之�
 
 重新整理權杖無法在 WebAssembly apps 的用戶端上受到保護 Blazor 。 因此，不應將重新整理權杖傳送至應用程式，以供直接使用。
 
-在託管的 WebAssembly 解決方案中，伺服器端應用程式可以維護及使用重新整理權杖 Blazor 來存取協力廠商 api。 如需詳細資訊，請參閱 <xref:blazor/security/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party> 。
+在託管的 WebAssembly 解決方案中，伺服器端應用程式可以維護及使用重新整理權杖 Blazor 來存取協力廠商 api。 如需詳細資訊，請參閱 <xref:blazor/security/webassembly/additional-scenarios#authenticate-users-with-a-third-party-provider-and-call-protected-apis-on-the-host-server-and-the-third-party>。
 
 ## <a name="implementation-guidance"></a>實作指引
 

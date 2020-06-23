@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: 203f29ce606a313463e416b068177ce02acd6231
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: a527e04cf97dd2d2b88dcc6e866475835498545d
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103611"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243612"
 ---
 # <a name="aspnet-core-blazor-environments"></a>ASP.NET Core Blazor 環境
 
@@ -31,7 +31,7 @@ ms.locfileid: "85103611"
 
 針對在本機執行的獨立應用程式，開發伺服器會新增 `blazor-environment` 標頭以指定開發環境。 若要指定其他裝載環境的環境，請新增 `blazor-environment` 標頭。
 
-在 IIS 的下列範例中，將自訂標頭加入至已發佈的*web.config*檔案。 *web.config*檔案位於*bin/RELEASE/{TARGET FRAMEWORK}/publish*資料夾中：
+在 IIS 的下列範例中，將自訂標頭加入至已發行的檔案 `web.config` 。 檔案 `web.config` 位於 `bin/Release/{TARGET FRAMEWORK}/publish` 下列資料夾中：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -50,7 +50,7 @@ ms.locfileid: "85103611"
 ```
 
 > [!NOTE]
-> 若要使用 IIS 的自訂*web.config*檔案，而該檔案不會在應用程式發佈至*發行*資料夾時遭到覆寫，請參閱 <xref:blazor/host-and-deploy/webassembly#use-a-custom-webconfig> 。
+> 若要使用在 `web.config` 應用程式發行至資料夾時不會覆寫之 IIS 的自訂檔案 `publish` ，請參閱 <xref:blazor/host-and-deploy/webassembly#use-a-custom-webconfig> 。
 
 藉由插入和讀取屬性，在元件中取得應用程式的環境 <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment> <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.Environment> ：
 

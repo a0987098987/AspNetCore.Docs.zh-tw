@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: c90c3bf7ccef420101c66fe04d579920209b066c
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 63fee0b6a3152640a5483c2a682eec7d04742145
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102331"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243599"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET CoreBlazor
 
@@ -70,7 +70,7 @@ ms.locfileid: "85102331"
 
    如需這兩個 Blazor 裝載模型（ * Blazor WebAssembly*和* Blazor 伺服器*）的詳細資訊，請參閱 <xref:blazor/hosting-models> 。
 
-1. 在 Visual Studio Code 中開啟 [ *WebApplication1* ] 資料夾。
+1. 在 Visual Studio Code 中開啟 `WebApplication1` 資料夾。
 
 1. IDE 會要求您新增資產，以建立和對專案進行偵錯工具。 選取 [是]。
 
@@ -137,15 +137,15 @@ ms.locfileid: "85102331"
 * 計數器
 * 提取資料
 
-在 [計數器] 頁面上，選取 [按我]**** 按鈕以在不重新整理頁面的情況下讓計數器遞增。 將網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 您可以使用 c #。
+在 [計數器] 頁面上，選取要在不重新整理頁面的情況下遞增計數器的按鈕。 將網頁中的計數器遞增通常需要撰寫 JavaScript，但 Blazor 您可以使用 c #。
 
-*Pages/Counter.razor*：
+`Pages/Counter.razor`:
 
 [!code-razor[](get-started/samples_snapshot/3.x/Counter1.razor?highlight=7,12-15)]
 
 `/counter`在瀏覽器中的要求（如頂端的指示詞所指定） `@page` 會導致 `Counter` 元件轉譯其內容。 元件會轉譯成轉譯樹狀結構的記憶體中標記法，然後用來以彈性且有效率的方式更新 UI。
 
-每次選取 [**按我**] 按鈕時：
+每次選取按鈕時：
 
 * `onclick`引發事件。
 * 已呼叫 `IncrementCount` 方法。
@@ -156,7 +156,7 @@ ms.locfileid: "85102331"
 
 使用 HTML 語法將元件新增至另一個元件。 例如，藉 `Counter` 由將元素新增至元件，將元件新增至應用程式的首頁 `<Counter />` `Index` 。
 
-*Pages/Index.razor*：
+`Pages/Index.razor`:
 
 [!code-razor[](get-started/samples_snapshot/3.x/Index1.razor?highlight=7)]
 
@@ -167,19 +167,19 @@ ms.locfileid: "85102331"
 * 使用屬性加入的公用屬性 `IncrementAmount` [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) 。
 * 將 `IncrementCount` 方法變更為在增加 `currentCount`的值時使用 `IncrementAmount`。
 
-*Pages/Counter.razor*：
+`Pages/Counter.razor`:
 
 [!code-razor[](get-started/samples_snapshot/3.x/Counter2.razor?highlight=12-13,17)]
 
 `IncrementAmount`使用屬性，在 `Index` 元件的 `<Counter>` 元素中指定。
 
-*Pages/Index.razor*：
+`Pages/Index.razor`:
 
 [!code-razor[](get-started/samples_snapshot/3.x/Index2.razor?highlight=7)]
 
-執行應用程式。 `Index`元件有自己的計數器，每次選取 [按**我**] 按鈕時，就會遞增10。 `Counter`中的元件（*razor*）會 `/counter` 繼續遞增一。
+執行應用程式。 `Index`元件有自己的計數器，每次選取按鈕時都會遞增10。 `Counter`中的元件（ `Pages/Counter.razor` ）會 `/counter` 繼續遞增一。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 逐步建立 Blazor 應用程式：
 

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: efac62c325b03b5ee19cae58abb5227f3d300b69
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 76af450df70fe666ea1b951cb4b41696057c5e67
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103604"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243573"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>設定 ASP.NET Core 的連結器Blazor
 
@@ -55,7 +55,7 @@ BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standar
 </ItemGroup>
 ```
 
-*LinkerConfig.xml*：
+`LinkerConfig.xml`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -93,7 +93,7 @@ BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standar
 
 若要設定特定程式庫的連結器，請將 XML 連結器設定檔新增至程式庫做為內嵌資源。 內嵌資源的名稱必須與元件相同。
 
-在下列範例中，會將*LinkerConfig.xml*檔案指定為與程式庫的元件同名的內嵌資源：
+在下列範例中，會將檔案 `LinkerConfig.xml` 指定為與程式庫的元件同名的內嵌資源：
 
 ```xml
 <ItemGroup>
@@ -118,12 +118,12 @@ BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standar
 | 區域值     | Mono 區域元件    |
 | ---------------- | ----------------------- |
 | `all`            | 包含的所有元件 |
-| `cjk`            | *I18N.CJK.dll*          |
-| `mideast`        | *I18N.MidEast.dll*      |
+| `cjk`            | `I18N.CJK.dll`          |
+| `mideast`        | `I18N.MidEast.dll`      |
 | `none` (預設) | None                    |
-| `other`          | *I18N.Other.dll*        |
-| `rare`           | *I18N.Rare.dll*         |
-| `west`           | *I18N.West.dll*         |
+| `other`          | `I18N.Other.dll`        |
+| `rare`           | `I18N.Rare.dll`         |
+| `west`           | `I18N.West.dll`         |
 
 使用逗號來分隔多個值（例如 `mideast,west` ）。
 

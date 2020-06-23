@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: b8701687d97f5fe940e2f39fca9c3f98052660be
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 20a6cbbdd1f10c06f454f230363951059bdd3a7b
+ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773519"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240922"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學課程：使用遷移功能-ASP.NET MVC 搭配 EF Core
 
@@ -78,10 +78,13 @@ ms.locfileid: "82773519"
 在命令視窗中輸入下列命令：
 
 ```dotnetcli
+dotnet tool install --global dotnet-ef
 dotnet ef migrations add InitialCreate
 ```
 
-在命令視窗中，您會看到類似如下的輸出：
+`dotnet tool install --global dotnet-ef`安裝 `dotnet ef` 為[通用工具](/ef/core/miscellaneous/cli/dotnet)。
+
+在上述命令中，會顯示類似下列的輸出：
 
 ```console
 info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
@@ -89,14 +92,11 @@ info: Microsoft.EntityFrameworkCore.Infrastructure[10403]
 Done. To undo this action, use 'ef migrations remove'
 ```
 
-> [!NOTE]
-> 如果您看到錯誤訊息：「找不到符合命令 "dotnet-ef" 的可執行檔」**，請參閱[這篇部落格文章](https://thedatafarm.com/data-access/no-executable-found-matching-command-dotnet-ef/)以取得疑難排解說明。
-
-如果您看到錯誤訊息「*無法存取檔案 .。。ContosoUniversity，因為另一個進程正在使用此檔案。*」，請在 Windows 系統匣中尋找 IIS Express 圖示，並在其上按一下滑鼠右鍵，然後按一下 [ **ContosoUniversity > 停止網站**]。
+如果您看到錯誤訊息「*無法存取檔案 ... ContosoUniversity.dll，因為另一個進程正在使用它*。」，請在 Windows 系統匣中尋找 IIS Express 圖示，並在其上按一下滑鼠右鍵，然後按一下 [ **ContosoUniversity] > [停止網站**]。
 
 ## <a name="examine-up-and-down-methods"></a>檢查 Up 和 Down 方法
 
-當您執行 `migrations add` 命令時，EF 產生的程式碼會從頭開始建立資料庫。 您可以在 *Migrations* 資料夾，名為 \<時間戳記>_InitialCreate.cs** 的檔案中，找到這個程式碼。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表，而 `Down` 方法則會刪除它們，如下列範例所示。
+當您執行 `migrations add` 命令時，EF 產生的程式碼會從頭開始建立資料庫。 此程式碼位於 [*遷移*] 資料夾的檔案中，名稱為* \<timestamp> _InitialCreate .cs*。 `InitialCreate` 類別的 `Up` 方法會建立對應至資料模型實體集的資料庫資料表，而 `Down` 方法則會刪除它們，如下列範例所示。
 
 [!code-csharp[](intro/samples/cu/Migrations/20170215220724_InitialCreate.cs?range=92-118)]
 
@@ -110,7 +110,7 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 
 移轉會在 *Migrations/SchoolContextModelSnapshot.cs* 中建立目前資料庫結構描述的「快照集」**。 當您新增移轉時，EF 會比較資料模型與快照集檔案，以判斷變更的內容。
 
-使用 [ [dotnet ef 遷移](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)] [移除] 命令來移除遷移。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。 如果`dotnet ef migrations remove`失敗，請`dotnet ef migrations remove -v`使用來取得失敗的詳細資訊。
+使用 [ [dotnet ef 遷移](/ef/core/miscellaneous/cli/dotnet#dotnet-ef-migrations-remove)] [移除] 命令來移除遷移。 `dotnet ef migrations remove` 會刪除移轉，並確保正確地重設快照集。 如果 `dotnet ef migrations remove` 失敗，請使用 `dotnet ef migrations remove -v` 來取得失敗的詳細資訊。
 
 如需如何使用快照集檔案的詳細資訊，請參閱[小組環境中的 EF Core 移轉](/ef/core/managing-schemas/migrations/teams)。
 
@@ -122,7 +122,7 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 dotnet ef database update
 ```
 
-此命令的輸出類似於 `migrations add` 命令，不同之處在於其會顯示設定資料庫之 SQL 命令的記錄。 下列範例輸出中省略了大部分的記錄。 如果您不想看到這麼詳細的記錄訊息，可以變更 *appsettings.Development.json* 檔案中的記錄層級。 如需詳細資訊，請參閱<xref:fundamentals/logging/index>。
+此命令的輸出類似於 `migrations add` 命令，不同之處在於其會顯示設定資料庫之 SQL 命令的記錄。 下列範例輸出中省略了大部分的記錄。 如果您不想看到這麼詳細的記錄訊息，可以變更 *appsettings.Development.json* 檔案中的記錄層級。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
 
 ```text
 info: Microsoft.EntityFrameworkCore.Infrastructure[10403]

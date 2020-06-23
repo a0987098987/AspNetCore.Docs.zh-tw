@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/data-binding
-ms.openlocfilehash: c901ba0cbcd79bb14cb32a6a56a2595d159f8678
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 1654c0ce40d44ad4cc679c151ef99f155e31b514
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103627"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242494"
 ---
 # <a name="aspnet-core-blazor-data-binding"></a>ASP.NET Core Blazor 資料系結
 
@@ -170,7 +170,7 @@ Binding 可辨識元件參數，其中 `@bind-{PROPERTY}` 可以將屬性值從�
 下列父元件會使用：
 
 * `ChildComponent`和會將 `ParentYear` 參數從父系系結至 `Year` 子元件上的參數。
-* `onclick`事件是用來觸發 `ChangeTheYear` 方法。 如需詳細資訊，請參閱 <xref:blazor/components/event-handling> 。
+* `onclick`事件是用來觸發 `ChangeTheYear` 方法。 如需詳細資訊，請參閱 <xref:blazor/components/event-handling>。
 
 ```razor
 @page "/ParentComponent"
@@ -240,11 +240,11 @@ Binding 可辨識元件參數，其中 `@bind-{PROPERTY}` 可以將屬性值從�
 
 無法 [`@bind`](xref:mvc/views/razor#bind) 在頁面的元素中使用語法來執行連鎖系結。 事件處理常式和值必須分別指定。 不過，父系元件可以使用語法搭配 [`@bind`](xref:mvc/views/razor#bind) 元件的參數。
 
-下列 `PasswordField` 元件（*self.passwordfield.text*）：
+下列 `PasswordField` 元件（ `PasswordField.razor` ）：
 
 * 將 `<input>` 元素的值設定為 `Password` 屬性。
-* 將屬性的變更公開 `Password` 至具有[app eventcallback](xref:blazor/components/event-handling#eventcallback)的父元件。
-* 使用 `onclick` 事件來觸發 `ToggleShowPassword` 方法。 如需詳細資訊，請參閱 <xref:blazor/components/event-handling> 。
+* 將屬性的變更公開 `Password` 至具有的父元件 [`EventCallback`](xref:blazor/components/event-handling#eventcallback) 。
+* 使用 `onclick` 事件來觸發 `ToggleShowPassword` 方法。 如需詳細資訊，請參閱 <xref:blazor/components/event-handling>。
 
 ```razor
 <h1>Child Component</h1>

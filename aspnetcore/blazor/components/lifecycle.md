@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: c67903809de60b4b0ce7a98455b6917192512b5d
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 61c1dc383728f42c5dac6742fd19d1d22c988913
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103625"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242689"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor 生命週期
 
@@ -45,9 +45,9 @@ public override async Task SetParametersAsync(ParameterView parameters)
 
 的預設執行 <xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A> [`[Parameter]`](xref:Microsoft.AspNetCore.Components.ParameterAttribute) [`[CascadingParameter]`](xref:Microsoft.AspNetCore.Components.CascadingParameterAttribute) 會使用在中具有對應值的或屬性，來設定每個屬性的值 <xref:Microsoft.AspNetCore.Components.ParameterView> 。 在中沒有對應值的參數 <xref:Microsoft.AspNetCore.Components.ParameterView> 會保持不變。
 
-如果[基底。](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A)不會叫用 SetParametersAync，自訂程式碼可以用任何需要的方式解讀傳入的參數值。 例如，不需要將傳入的參數指派給類別的屬性。
+如果 [`base.SetParametersAync`](xref:Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync%2A) 未叫用，自訂程式碼就可以任何需要的方式解讀傳入的參數值。 例如，不需要將傳入的參數指派給類別的屬性。
 
-如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[ `IDisposable` 使用元件處置](#component-disposal-with-idisposable)一節。
 
 ### <a name="component-initialization-methods"></a>元件初始化方法
 
@@ -64,7 +64,7 @@ protected override void OnInitialized()
 }
 ```
 
-若要執行非同步作業，請覆寫 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 並在作業上使用[await](/dotnet/csharp/language-reference/operators/await)運算子：
+若要執行非同步作業，請覆寫 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 並 [`await`](/dotnet/csharp/language-reference/operators/await) 在作業上使用運算子：
 
 ```csharp
 protected override async Task OnInitializedAsync()
@@ -82,7 +82,7 @@ Blazor將[其內容呼叫呈現](xref:blazor/fundamentals/additional-scenarios#r
 
 在預先 Blazor 處理伺服器應用程式時，因為尚未建立與瀏覽器的連接，所以無法執行某些動作（例如呼叫 JavaScript）。 元件可能需要在資源清單時以不同的方式呈現。 如需詳細資訊，請參閱偵測[應用程式何時進行預呈現](#detect-when-the-app-is-prerendering)一節。
 
-如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[ `IDisposable` 使用元件處置](#component-disposal-with-idisposable)一節。
 
 ### <a name="after-parameters-are-set"></a>設定參數之後
 
@@ -110,7 +110,7 @@ protected override void OnParametersSet()
 }
 ```
 
-如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[ `IDisposable` 使用元件處置](#component-disposal-with-idisposable)一節。
 
 ### <a name="after-component-render"></a>元件呈現之後
 
@@ -148,7 +148,7 @@ protected override void OnAfterRender(bool firstRender)
 
 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRender%2A>在 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnAfterRenderAsync%2A> *伺服器上進行預呈現時，不會呼叫和。*
 
-如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[使用 IDisposable 的元件處置](#component-disposal-with-idisposable)一節。
+如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[ `IDisposable` 使用元件處置](#component-disposal-with-idisposable)一節。
 
 ### <a name="suppress-ui-refreshing"></a>隱藏 UI 重新整理
 
@@ -167,7 +167,7 @@ protected override bool ShouldRender()
 
 即使 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 已覆寫，元件一律會一開始呈現。
 
-如需詳細資訊，請參閱 <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-component-renders> 。
+如需詳細資訊，請參閱 <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-component-renders>。
 
 ## <a name="state-changes"></a>狀態變更
 
@@ -179,13 +179,13 @@ protected override bool ShouldRender()
 
 在 `FetchData` 範本的元件中 Blazor ， <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 會覆寫為 asychronously 接收預測資料（ `forecasts` ）。 當 `forecasts` 為時 `null` ，會向使用者顯示載入訊息。 在所 `Task` 傳回的 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 完成之後，元件會以更新的狀態重新顯示。
 
-伺服器範本中的*Pages/FetchData* Blazor ：
+`Pages/FetchData.razor`在 Blazor 伺服器範本中：
 
 [!code-razor[](lifecycle/samples_snapshot/3.x/FetchData.razor?highlight=9,21,25)]
 
 ## <a name="component-disposal-with-idisposable"></a>使用 IDisposable 的元件處置
 
-如果元件會執行 <xref:System.IDisposable> ，則會在從 UI 中移除元件時呼叫[Dispose 方法](/dotnet/standard/garbage-collection/implementing-dispose)。 下列元件會使用 `@implements IDisposable` 和 `Dispose` 方法：
+如果元件會執行 <xref:System.IDisposable> ，則會在從 UI 中移除元件時呼叫[ `Dispose` 方法](/dotnet/standard/garbage-collection/implementing-dispose)。 下列元件會使用 `@implements IDisposable` 和 `Dispose` 方法：
 
 ```razor
 @using System
@@ -220,7 +220,7 @@ protected override bool ShouldRender()
 
 ## <a name="stateful-reconnection-after-prerendering"></a>預呈現後的具狀態重新連接
 
-在 Blazor 伺服器應用程式中 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> ，當為時 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> ，元件一開始會以靜態方式呈現為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果存在用於初始化元件的[OnInitialized {Async}](#component-initialization-methods)生命週期方法，則會執行*兩次*方法：
+在 Blazor 伺服器應用程式中 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> ，當為時 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> ，元件一開始會以靜態方式呈現為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果 [`OnInitialized{Async}`](#component-initialization-methods) 有用來初始化元件的生命週期方法，則會執行*兩次*方法：
 
 * 當元件以靜態方式資源清單時。
 * 建立伺服器連接之後。
@@ -297,7 +297,7 @@ public class WeatherForecastService
 若要在元件中執行可取消的背景工作模式：
 
 * 使用 <xref:System.Threading.CancellationTokenSource> 和 <xref:System.Threading.CancellationToken> 。
-* 在[元件的處置](#component-disposal-with-idisposable)和任何點上，手動解除標記時，請呼叫[CancellationTokenSource](xref:System.Threading.CancellationTokenSource.Cancel%2A) ，以表示應該取消背景工作。
+* 在處理[元件](#component-disposal-with-idisposable)時，以及在任何點取消作業需要手動取消權杖時，請呼叫 [`CancellationTokenSource.Cancel`](xref:System.Threading.CancellationTokenSource.Cancel%2A) 以指示應該取消背景工作。
 * 在非同步呼叫傳回之後，呼叫 <xref:System.Threading.CancellationToken.ThrowIfCancellationRequested%2A> 權杖上的。
 
 在下例中︰

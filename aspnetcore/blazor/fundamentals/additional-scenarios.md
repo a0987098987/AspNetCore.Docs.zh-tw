@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 726aafd2bf5d3469c30ebce1e4eea8ed8ec8d58e
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 2efc13d5d4ab91ffdf6c4c7021072a2b3f83153f
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103623"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242650"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -32,7 +32,7 @@ ms.locfileid: "85103623"
 
 若要設定 SignalR 的基礎用戶端來傳送認證，例如 cookie 或 HTTP 驗證標頭：
 
-* 用 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A> 來設定 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.BrowserRequestCredentials.Include> 跨原始來源[提取](https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch)要求：
+* 用 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.WebAssemblyHttpRequestMessageExtensions.SetBrowserRequestCredentials%2A> 來設定 <xref:Microsoft.AspNetCore.Components.WebAssembly.Http.BrowserRequestCredentials.Include> 跨原始來源 [`fetch`](https://developer.mozilla.org/docs/Web/API/Fetch_API/Using_Fetch) 要求：
 
   ```csharp
   public class IncludeRequestCredentialsMessagHandler : DelegatingHandler
@@ -57,7 +57,7 @@ ms.locfileid: "85103623"
       }).Build();
   ```
 
-如需詳細資訊，請參閱 <xref:signalr/configuration#configure-additional-options> 。
+如需詳細資訊，請參閱 <xref:signalr/configuration#configure-additional-options>。
 
 ## <a name="reflect-the-connection-state-in-the-ui"></a>反映 UI 中的連接狀態
 
@@ -65,7 +65,7 @@ ms.locfileid: "85103623"
 
 當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。
 
-若要自訂 UI，請 `id` `components-reconnect-modal` 在 [ `<body>` *_Host. cshtml* ] 頁面的中，定義具有之的元素 Razor ：
+若要自訂 UI，請 `id` 在頁面的中定義具有之的元素 `components-reconnect-modal` `<body>` `_Host.cshtml` Razor ：
 
 ```cshtml
 <div id="components-reconnect-modal">
@@ -86,7 +86,7 @@ ms.locfileid: "85103623"
 
 *本節適用于 Blazor 伺服器。*
 
-Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，然後才會建立與伺服器的用戶端連接。 這會在 [ *_Host. cshtml* ] 頁面中設定 Razor ：
+Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，然後才會建立與伺服器的用戶端連接。 這會在頁面中設定 `_Host.cshtml` Razor ：
 
 ```cshtml
 <body>
@@ -117,7 +117,7 @@ Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，�
 
 有時候，您需要設定 SignalR 伺服器應用程式所使用的用戶端 Blazor 。 例如，您可能會想要在用戶端上設定記錄 SignalR 來診斷連線問題。
 
-若要 SignalR 在*Pages/_Host. cshtml*檔案中設定用戶端：
+若要 SignalR 在檔案中設定用戶端 `Pages/_Host.cshtml` ：
 
 * 將 `autostart="false"` 屬性加入至 `<script>` 腳本的標記 `blazor.server.js` 。
 * 呼叫 `Blazor.start` 並傳入指定產生器的設定物件 SignalR 。

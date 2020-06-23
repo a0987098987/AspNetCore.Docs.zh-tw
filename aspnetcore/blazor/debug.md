@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 193dc656c2ee0154f0ae534bc00f8dc29bab3258
-ms.sourcegitcommit: b0062f29cba2e5c21b95cf89eaf435ba830d11a3
+ms.openlocfilehash: 75db5d5e69cb200ebf3bd1dc1e0afed0300214cc
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84239218"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242767"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET Core Blazor WebAssembly
 
@@ -42,7 +42,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 調試需要下列其中一個瀏覽器：
 
@@ -51,13 +51,13 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 ## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>啟用 Visual Studio 和 Visual Studio Code 的偵錯工具
 
-若要啟用現有 Blazor WebAssembly 應用程式的偵測，請更新啟始專案中檔案的*launchSettings.js* ，以 `inspectUri` 在每個啟動設定檔中包含下列屬性：
+若要啟用現有 Blazor WebAssembly 應用程式的偵測功能，請更新 `launchSettings.json` 啟始專案中的檔案，以 `inspectUri` 在每個啟動設定檔中包含下列屬性：
 
 ```json
 "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
 ```
 
-更新之後，檔案*上的launchSettings.js*看起來應該類似下列範例：
+更新之後，檔案 `launchSettings.json` 看起來應該類似下列範例：
 
 [!code-json[](debug/launchSettings.json?highlight=14,22)]
 
@@ -74,8 +74,8 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 1. 建立新的 ASP.NET Core 託管 Blazor WebAssembly 應用程式。
 1. 按<kbd>F5</kbd>以在偵錯工具中執行應用程式。
-1. 在方法的 [ *razor* ] 中設定中斷點 `IncrementCount` 。
-1. 流覽至 [**計數器**] 索引標籤，然後選取按鈕以點擊中斷點：
+1. 在 `Pages/Counter.razor` 方法的中設定中斷點 `IncrementCount` 。
+1. 流覽至 [] 索引標籤 **`Counter`** ，然後選取按鈕以叫用中斷點：
 
    ![Debug 計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-counter.png)
 
@@ -87,9 +87,9 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 在偵測 Blazor WebAssembly 應用程式時，您也可以對伺服器程式碼進行偵錯工具：
 
-1. 在的 [ *FetchData* ] 頁面中設定中斷點 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。
+1. 在的頁面中設定中斷點 `Pages/FetchData.razor` <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。
 1. 在動作方法的中設定中斷點 `WeatherForecastController` `Get` 。
-1. 流覽至 [**提取資料**] 索引標籤，以叫用元件中的第一個中斷點， `FetchData` 然後再對伺服器發出 HTTP 要求：
+1. 流覽至索引 **`Fetch Data`** 標籤，以叫用元件中的第一個中斷點， `FetchData` 然後再對伺服器發出 HTTP 要求：
 
    ![Debug Fetch 資料](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vs-debug-fetch-data.png)
 
@@ -145,11 +145,11 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 1. 在 [選取範圍] 視窗中，選取裝載解決方案內的*伺服器*專案。
 
-隨即會使用啟動偵錯工具的啟動設定來產生檔案*上的launch.js* 。
+`launch.json`會使用啟動偵錯工具來產生檔案。
 
 ### <a name="attach-to-an-existing-debugging-session"></a>附加至現有的偵錯工具會話
 
-若要附加至執行 Blazor 中的應用程式，請使用下列設定*在檔案上建立launch.js* ：
+若要附加至執行 Blazor 中的應用程式，請使用下列設定來建立檔案 `launch.json` ：
 
 ```json
 {
@@ -222,7 +222,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 1. 瀏覽器必須在啟用遠端偵錯功能的情況下執行。 如果已停用遠端偵錯程式，就會產生 [找**不到可調試的瀏覽器]** 索引標籤錯誤頁面。 錯誤頁面包含在開啟偵錯工具的情況之下執行瀏覽器的指示，讓 Blazor 偵錯工具 proxy 可以連接到應用程式。 *關閉所有瀏覽器實例*，然後依照指示重新開機瀏覽器。
 
-當瀏覽器在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。 展開每個元件，並 *.cs*尋找 / *.razor*可用來進行偵錯工具的 .cs 原始檔案。 設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。 叫用中斷點之後，以單一步驟（<kbd>F10</kbd>），透過程式碼或繼續（<kbd>F8</kbd>）程式碼執行正常。
+當瀏覽器在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。 展開每個元件，並尋找 `.cs` / `.razor` 可供進行偵錯工具的來源檔案。 設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。 叫用中斷點之後，以單一步驟（<kbd>F10</kbd>），透過程式碼或繼續（<kbd>F8</kbd>）程式碼執行正常。
 
 Blazor提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https://chromedevtools.github.io/devtools-protocol/)，並使用來擴充通訊協定。NET 特定資訊。 當您按下 [調試鍵盤快速鍵] 時，會將 Blazor Chrome DevTools 指向 proxy。 Proxy 會連線到您想要進行調試的瀏覽器視窗（因此需要啟用遠端偵錯）。
 

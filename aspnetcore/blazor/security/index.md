@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 8c5e6c6ba741cae2634e2852e9ca141a0a7c33ce
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 14cf614bf5d4f2ad6a34c49cb08277a2deae8d00
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103595"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242946"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
 
@@ -48,8 +48,8 @@ Blazor會使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識
 
 新增下列內容：
 
-* AspNetCore 的套件參考。應用程式的專案檔的[授權](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/)。
-* `Microsoft.AspNetCore.Components.Authorization`應用程式的 *_Imports razor*檔案的命名空間。
+* 應用程式專案檔的套件參考 [`Microsoft.AspNetCore.Components.Authorization`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.Authorization/) 。
+* `Microsoft.AspNetCore.Components.Authorization`應用程式檔案的命名空間 `_Imports.razor` 。
 
 若要處理驗證，內建或自訂服務的執行 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 將在下列各節中討論。
 
@@ -67,7 +67,7 @@ Blazor伺服器應用程式會透過使用建立的即時連線來運作 SignalR
 
 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 是 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 元件與 <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 元件用來取得驗證狀態的基礎服務。
 
-您通常不會直接使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>。 請使用此文章稍後所述的 [AuthorizeView 元件](#authorizeview-component)或 [Task\<AuthenticationState>](#expose-the-authentication-state-as-a-cascading-parameter) 方法。 使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 的主要缺點，在於系統不會在基礎驗證狀態資料變更時自動通知該元件。
+您通常不會直接使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>。 請使用本文稍後所述的[ `AuthorizeView` 元件](#authorizeview-component)或 [`Task<AuthenticationState>`](#expose-the-authentication-state-as-a-cascading-parameter) 方法。 使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 的主要缺點，在於系統不會在基礎驗證狀態資料變更時自動通知該元件。
 
 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 服務可以提供目前使用者的 <xref:System.Security.Claims.ClaimsPrincipal> 資料，如下列範例所示：
 
@@ -149,7 +149,7 @@ public class CustomAuthStateProvider : AuthenticationStateProvider
 }
 ```
 
-在 Blazor WebAssembly 應用程式中， `CustomAuthStateProvider` 服務會在 `Main` *Program.cs*中註冊：
+在 Blazor WebAssembly 應用程式中， `CustomAuthStateProvider` 服務會在中 `Main` 註冊 `Program.cs` ：
 
 ```csharp
 using Microsoft.AspNetCore.Components.Authorization;
@@ -207,7 +207,7 @@ services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 
 如果 `user.Identity.IsAuthenticated` 為 `true`，系統便可以列舉宣告，並評估角色中的成員資格。
 
-`Task<` <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState> `>` 使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 元件中的和元件 `App` （*app.config*）來設定串聯參數：
+`Task<` <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationState> `>` 使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> <xref:Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState> 元件中的和元件 `App` （），設定串聯參數 `App.razor` ：
 
 ```razor
 <CascadingAuthenticationState>
@@ -275,7 +275,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>元件可以在 `NavMenu` 元件（*Shared/navmenu.cshtml*）中使用，以顯示 `<li>...</li>` [NavLink 元件](xref:blazor/fundamentals/routing#navlink-component)（）的清單專案（） <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ，但請注意，此方法只會從轉譯的輸出中移除清單專案。 它不會防止使用者流覽至元件。
+元件 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 可用於 `NavMenu` 元件（） `Shared/NavMenu.razor` ，以顯示 `<li>...</li>` [ `NavLink` 元件](xref:blazor/fundamentals/routing#navlink-component)（）的清單專案（） <xref:Microsoft.AspNetCore.Components.Routing.NavLink> ，但請注意，此方法只會從轉譯的輸出中移除清單專案。 它不會防止使用者流覽至元件。
 
 `<Authorized>`和標記的內容 `<NotAuthorized>` 可以包含任意專案，例如其他互動式元件。
 
@@ -298,7 +298,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-如需詳細資訊，請參閱 <xref:security/authorization/roles> 。
+如需詳細資訊，請參閱 <xref:security/authorization/roles>。
 
 針對原則型授權，請使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> 參數：
 
@@ -308,7 +308,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies> 。
+宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies>。
 
 這些 Api 可以在 Blazor 伺服器或 Blazor WebAssembly 應用程式中使用。
 
@@ -380,7 +380,7 @@ You can only see this if you're signed in.
 * 使用者無法通過套用 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 至元件的條件。 屬性 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 一節中會涵蓋[ `[Authorize]` ](#authorize-attribute)屬性。
 * 正在進行非同步驗證。
 
-在預設的 Blazor 伺服器專案範本中， `App` 元件（*razor*）會示範如何設定自訂內容：
+在預設的 Blazor 伺服器專案範本中， `App` 元件（ `App.razor` ）會示範如何設定自訂內容：
 
 ```razor
 <CascadingAuthenticationState>
@@ -419,7 +419,7 @@ Not authorized.
 
 ## <a name="notification-about-authentication-state-changes"></a>關於驗證狀態變更的通知
 
-如果應用程式判斷基礎驗證狀態資料已變更（例如，使用者登出或其他使用者已變更其角色），[自訂 AuthenticationStateProvider](#implement-a-custom-authenticationstateprovider)可以選擇性地叫用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider.NotifyAuthenticationStateChanged%2A> 基類上的方法 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 。 這會通知驗證狀態資料的取用者 (例如 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>) 使用新資料來重新轉譯。
+如果應用程式判斷基礎驗證狀態資料已變更（例如，使用者登出或其他使用者已變更其角色），則[自訂 `AuthenticationStateProvider` ](#implement-a-custom-authenticationstateprovider)可以選擇性地叫用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider.NotifyAuthenticationStateChanged%2A> 基類上的方法 <xref:Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider> 。 這會通知驗證狀態資料的取用者 (例如 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView>) 使用新資料來重新轉譯。
 
 ## <a name="procedural-logic"></a>程序性邏輯
 
@@ -467,17 +467,17 @@ Not authorized.
 > @using Microsoft.AspNetCore.Components.Authorization
 > ```
 >
-> 這些命名空間可以藉由將它們新增至應用程式的 *_Imports razor*檔案來全域提供。
+> 這些命名空間可以藉由將它們新增至應用程式的檔案來全域提供 `_Imports.razor` 。
 
 ## <a name="troubleshoot-errors"></a>針對錯誤進行疑難排解
 
 常見錯誤：
 
-* **授權需要類型為 Task 的串聯參數 \<AuthenticationState> 。請考慮使用 CascadingAuthenticationState 來提供此。**
+* **授權需要類型的串聯參數 `Task\<AuthenticationState>` 。請考慮使用 `CascadingAuthenticationState` 來提供此。**
 
 * **`null`接收的值`authenticationStateTask`**
 
-專案可能不是使用 Blazor 已啟用驗證的伺服器範本所建立。 將 `<CascadingAuthenticationState>` UI 樹狀結構的某些部分（例如，在 `App` 元件（*razor*）中）包裝起來，如下所示：
+專案可能不是使用 Blazor 已啟用驗證的伺服器範本所建立。 將 `<CascadingAuthenticationState>` UI 樹狀結構的某些部分（例如在 `App` 元件（）中）包裝起來，如下所示 `App.razor` ：
 
 ```razor
 <CascadingAuthenticationState>

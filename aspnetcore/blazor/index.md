@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/index
-ms.openlocfilehash: 086629f88ad04faed812bd16683e7d073f3e8ede
-ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
+ms.openlocfilehash: 694be6317aaac211f5099dfca749ff8a69d146d1
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85122070"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243508"
 ---
 # <a name="introduction-to-aspnet-core-blazor"></a>ASP.NET Core 簡介Blazor
 
@@ -53,9 +53,9 @@ Blazor應用程式是以*元件*為基礎。 中的元件 Blazor 是 UI 的元�
 * 可以為巢狀結構，且可重複使用。
 * 可以共用並散佈為[ Razor 類別庫](xref:razor-pages/ui-class)或[NuGet 套件](/nuget/what-is-nuget)。
 
-元件類別通常是以 [Razor](xref:mvc/views/razor) 副檔名為*razor*的標記頁面形式撰寫。 中的元件 Blazor 正式地稱為「 * Razor 元件*」。 Razor是結合 HTML 標籤與為開發人員生產力而設計之 c # 程式碼的語法。 Razor可讓您在具有[IntelliSense](/visualstudio/ide/using-intellisense)支援的同一個檔案中，于 HTML 標籤和 c # 之間切換。 Razor頁面和 MVC 也會使用 Razor 。 不同 Razor 于以要求/回應模型為基礎的頁面和 MVC，元件專門用於用戶端 UI 邏輯和組合。
+元件類別通常是以 [Razor](xref:mvc/views/razor) 具有副檔名的標記頁面形式撰寫 `.razor` 。 中的元件 Blazor 正式地稱為「 * Razor 元件*」。 Razor是結合 HTML 標籤與為開發人員生產力而設計之 c # 程式碼的語法。 Razor可讓您在具有[IntelliSense](/visualstudio/ide/using-intellisense)支援的同一個檔案中，于 HTML 標籤和 c # 之間切換。 Razor頁面和 MVC 也會使用 Razor 。 不同 Razor 于以要求/回應模型為基礎的頁面和 MVC，元件專門用於用戶端 UI 邏輯和組合。
 
-下列 Razor 標記示範元件（*Dialog*），可以嵌套在另一個元件中：
+下列 Razor 標記示範元件（ `Dialog.razor` ），它可以嵌套在另一個元件中：
 
 ```razor
 <div>
@@ -86,7 +86,7 @@ Blazor針對 UI 組合使用自然 HTML 標籤。 HTML 元素會指定元件，�
 
 在下列範例中， `Index` 元件使用 `Dialog` 元件。 `ChildContent` 與 `Title` 是由 `<Dialog>` 元素的屬性與內容設定的。
 
-*Index.razor*：
+`Pages/Index.razor`:
 
 ```razor
 @page "/"
@@ -100,7 +100,7 @@ Welcome to your new app.
 </Dialog>
 ```
 
-當您於瀏覽器中存取父代 (*Index.razor*) 時，即會轉譯此對話方塊：
+在瀏覽器中存取父系（）時，會轉譯對話方塊 `Pages/Index.razor` ：
 
 ![瀏覽器中轉譯的對話方塊元件](index/_static/dialog.png)
 
@@ -112,7 +112,7 @@ Welcome to your new app.
 
 BlazorWebAssembly 是使用 .NET 建立互動式用戶端 web 應用程式的單一頁面應用程式架構。 BlazorWebAssembly 會使用開放式 web 標準，而不需要外掛程式或程式碼轉譯，並可在所有新式網頁瀏覽器中運作，包括行動瀏覽器。
 
-在網頁瀏覽器內執行 .NET 程式碼已可藉由 [WebAssembly](https://webassembly.org) (縮寫為 *wasm*) 達成。 WebAssembly 是一種精簡的位元組程式碼格式，針對快速下載和最快執行速度而最佳化。 WebAssembly 是開放式的 Web 標準，在不含外掛程式的網頁瀏覽器中支援。
+在網頁瀏覽器中執行 .NET 程式碼是由[WebAssembly](https://webassembly.org) （縮寫）所組成 `wasm` 。 WebAssembly 是一種精簡的位元組程式碼格式，針對快速下載和最快執行速度而最佳化。 WebAssembly 是開放式的 Web 標準，在不含外掛程式的網頁瀏覽器中支援。
 
 WebAssembly 程式碼可以透過 JavaScript 存取瀏覽器的完整功能，稱為 「JavaScript 互通性」**(或 *JavaScript Interop*)。 在瀏覽器中透過 WebAssembly 執行的 .NET 程式碼會在瀏覽器的 JavaScript 沙箱執行，且受沙箱所提供對用戶端電腦之惡意動作的保護。
 

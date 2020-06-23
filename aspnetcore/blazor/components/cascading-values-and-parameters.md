@@ -13,16 +13,16 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/cascading-values-and-parameters
-ms.openlocfilehash: 70f379b3b0e48dbb340f319f3346bbbf44588740
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 43fbaa6284fa45dee46a693ed858ed06130600b6
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103632"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242377"
 ---
 # <a name="aspnet-core-blazor-cascading-values-and-parameters"></a>ASP.NET Core Blazor 級聯的值和參數
 
-## <a name="cascading-values-and-parameters"></a>級聯的值和參數
+## <a name="cascading-values-and-parameters"></a>串聯的值及參數
 
 在某些情況下，使用[元件參數](xref:blazor/components/index#component-parameters)將資料從上階元件傳送到子元件是不方便的，特別是在有數個元件層時。 串聯的值和參數可讓上階元件提供一個值給其所有子系元件，藉此解決這個問題。 級聯的值和參數也會提供一種方法來協調元件。
 
@@ -30,7 +30,7 @@ ms.locfileid: "85103632"
 
 在範例應用程式的下列範例中， `ThemeInfo` 類別會指定主題資訊以向下流動元件階層，讓應用程式中指定部分內的所有按鈕共用相同的樣式。
 
-*UIThemeClasses/ThemeInfo .cs*：
+`UIThemeClasses/ThemeInfo.cs`:
 
 ```csharp
 public class ThemeInfo
@@ -144,7 +144,7 @@ public class ThemeInfo
 
 ### <a name="tabset-example"></a>TabSet 範例
 
-串聯式參數也可以讓元件在元件階層之間共同作業。 例如，請考慮範例應用程式中的下列*TabSet*範例。
+串聯式參數也可以讓元件在元件階層之間共同作業。 例如，請考慮 `TabSet` 範例應用程式中的下列範例。
 
 範例應用程式具有可 `ITab` 執行 tab 鍵的介面：
 

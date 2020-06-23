@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 63359260766846ccf14ececfae82bf02cc598cf9
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 360fff9383e25a6b5b9308cfebd397f7f4ee31a6
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103592"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242975"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>針對 ASP.NET Core 強制執行內容安全性原則Blazor
 
@@ -85,7 +85,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 ### <a name="blazor-webassembly"></a>BlazorWebAssembly
 
-在 [ `<head>` *wwwroot/index.html*主機的內容] 頁面上，套用[原則](#policy-directives)指示詞一節中所述的指示詞：
+在 [ `<head>` 主機的內容] `wwwroot/index.html` 頁面上，套用[原則](#policy-directives)指示詞一節中所述的指示詞：
 
 ```html
 <meta http-equiv="Content-Security-Policy" 
@@ -108,7 +108,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 ### <a name="blazor-server"></a>Blazor伺服器
 
-在 `<head>` *Pages/_Host*的 [內容] 頁面中，套用[原則](#policy-directives)指示詞一節中所述的指示詞：
+在 [ `<head>` 主機的內容] `Pages/_Host.cshtml` 頁面上，套用[原則](#policy-directives)指示詞一節中所述的指示詞：
 
 ```cshtml
 <meta http-equiv="Content-Security-Policy" 

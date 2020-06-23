@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/threat-mitigation
-ms.openlocfilehash: 073a2a85369a100352a163693c5cba907203059e
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: a94dcd818c3f4e19ace57fad6390a84e704192bd
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103596"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242962"
 ---
 # <a name="threat-mitigation-guidance-for-aspnet-core-blazor-server"></a>ASP.NET Core 伺服器的威脅緩和方針 Blazor
 
@@ -49,7 +49,7 @@ Blazor伺服器應用程式會採用具*狀態*的資料處理模型，其中伺
 
 阻絕服務（DoS）攻擊通常會設法耗盡應用程式或伺服器的資源。 不過，資源耗盡不一定是系統遭受攻擊的結果。 例如，有限的資源可能會因為高使用者需求而耗盡。 [拒絕服務（dos）攻擊](#denial-of-service-dos-attacks)一節會進一步涵蓋 DoS。
 
-架構外部的資源 Blazor ，例如資料庫和檔案控制代碼（用來讀取和寫入檔案），也可能會遇到資源耗盡的情況。 如需詳細資訊，請參閱 <xref:performance/performance-best-practices> 。
+架構外部的資源 Blazor ，例如資料庫和檔案控制代碼（用來讀取和寫入檔案），也可能會遇到資源耗盡的情況。 如需詳細資訊，請參閱 <xref:performance/performance-best-practices>。
 
 ### <a name="cpu"></a>CPU
 
@@ -134,7 +134,7 @@ Blazor用戶端會建立每個會話的單一連線，只要開啟瀏覽器視�
 
 請採取下列預防措施來防範前述案例：
 
-* 在[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中包裝 JS interop 呼叫，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/handle-errors#javascript-interop> 。
+* 將 JS interop 呼叫包裝在 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 語句內，以考慮調用期間可能發生的錯誤。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/handle-errors#javascript-interop>。
 * 在採取任何動作之前，請先驗證從 JS interop 調用傳回的資料，包括錯誤訊息。
 
 ### <a name="net-methods-invoked-from-the-browser"></a>從瀏覽器叫用的 .NET 方法
@@ -302,7 +302,7 @@ Blazor伺服器事件是非同步，因此，您可以將多個事件分派至�
 使用下列內容啟用 JavaScript 中的詳細錯誤：
 
 * <xref:Microsoft.AspNetCore.Components.Server.CircuitOptions.DetailedErrors?displayProperty=nameWithType>.
-* `DetailedErrors`設定金鑰設為 `true` ，可以在應用程式佈建檔案中設定（*appsettings.js開啟*）。 也可以使用 `ASPNETCORE_DETAILEDERRORS` 值為的環境變數來設定索引鍵 `true` 。
+* `DetailedErrors`設定金鑰設為 `true` ，可以在應用程式佈建檔案（）中設定 `appsettings.json` 。 也可以使用 `ASPNETCORE_DETAILEDERRORS` 值為的環境變數來設定索引鍵 `true` 。
 
 > [!WARNING]
 > 將錯誤資訊公開給網際網路上的用戶端，是應一律避免的安全性風險。
@@ -348,7 +348,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 * 請勿信任 JavaScript 和 .NET 方法之間任一方向的 JS interop 呼叫上的輸入。
 * 應用程式會負責驗證引數和結果的內容是否有效，即使引數或結果已正確還原序列化也一樣。
 
-若要讓 XSS 弱點存在，應用程式必須在呈現的頁面中納入使用者輸入。 Blazor伺服器元件會執行編譯時期步驟，其中*razor*檔案中的標記會轉換成程式 c # 邏輯。 在執行時間，c # 邏輯會建立描述元素、文字和子元件的轉譯*樹狀結構*。 這會透過一系列的 JavaScript 指示套用至瀏覽器的 DOM （或在進行預建的情況下序列化為 HTML）：
+若要讓 XSS 弱點存在，應用程式必須在呈現的頁面中納入使用者輸入。 Blazor伺服器元件會執行編譯時期步驟，其中檔案中的標記 `.razor` 會轉換成程式 c # 邏輯。 在執行時間，c # 邏輯會建立描述元素、文字和子元件的轉譯*樹狀結構*。 這會透過一系列的 JavaScript 指示套用至瀏覽器的 DOM （或在進行預建的情況下序列化為 HTML）：
 
 * 透過一般語法轉譯的使用者輸入 Razor （例如 `@someStringValue` ）不會公開 XSS 弱點，因為 Razor 語法是透過只能寫入文字的命令加入至 DOM。 即使值包含 HTML 標籤，值也會顯示為靜態文字。 預先呈現時，輸出會以 HTML 編碼，這也會將內容顯示為靜態文字。
 * 不允許腳本標記，且不應包含在應用程式的元件轉譯樹狀結構中。 如果腳本標記包含在元件的標記中，就會產生編譯時期錯誤。
@@ -356,7 +356,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 
 在保護 XSS 攻擊的過程中，請考慮執行 XSS 緩和措施，例如[內容安全性原則（CSP）](https://developer.mozilla.org/docs/Web/HTTP/CSP)。
 
-如需詳細資訊，請參閱 <xref:security/cross-site-scripting> 。
+如需詳細資訊，請參閱 <xref:security/cross-site-scripting>。
 
 ### <a name="cross-origin-protection"></a>跨原始來源保護
 
@@ -365,7 +365,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 * Blazor除非採取額外的措施來防止伺服器應用程式，否則可以跨原始位置存取。 若要停用跨原始來源存取，請在端點中停用 CORS，方法是將 CORS 中介軟體新增至管線，並將新增 <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute> 至 Blazor 端點中繼資料，或藉由設定[ SignalR 跨原始來源資源分享](xref:signalr/security#cross-origin-resource-sharing)來限制允許的來源集合。
 * 如果已啟用 CORS，則可能需要額外的步驟來保護應用程式，視 CORS 設定而定。 如果已全域啟用 CORS，則可以停用伺服器中樞的 CORS，方法是在 Blazor <xref:Microsoft.AspNetCore.Cors.DisableCorsAttribute> 端點路由產生器上呼叫之後，將中繼資料新增至端點中繼資料 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> 。
 
-如需詳細資訊，請參閱 <xref:security/anti-request-forgery> 。
+如需詳細資訊，請參閱 <xref:security/anti-request-forgery>。
 
 ### <a name="click-jacking"></a>按一下-劫持
 
@@ -393,7 +393,7 @@ Blazor伺服器架構會採取下列步驟來防範先前的威脅：
 * 可能的話，請使用相對連結。
 * 先驗證絕對連結目的地是否有效，再將它們包含在頁面中。
 
-如需詳細資訊，請參閱 <xref:security/preventing-open-redirects> 。
+如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
 
 ## <a name="security-checklist"></a>安全性檢查清單
 

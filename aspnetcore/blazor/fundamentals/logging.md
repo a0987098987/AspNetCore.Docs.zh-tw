@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/logging
-ms.openlocfilehash: b0448d5f6e5e16a726eb2274dcacb4dfa8314b5d
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 841c4021d9217312b2601b0e775542c6455cca82
+ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103610"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240870"
 ---
 # <a name="aspnet-core-blazor-logging"></a>ASP.NET Core Blazor 記錄
 
@@ -39,7 +39,7 @@ builder.Logging.AddProvider(new CustomLoggingProvider());
 
 `Logging`屬性的類型為 <xref:Microsoft.Extensions.Logging.ILoggingBuilder> ，因此中提供的所有擴充方法 <xref:Microsoft.Extensions.Logging.ILoggingBuilder> 也可在上取得 `Logging` 。
 
-記錄設定可以從應用程式佈建檔載入。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/logging> 。
+記錄設定可以從應用程式佈建檔載入。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/configuration#logging-configuration>。
 
 ## <a name="blazor-server"></a>Blazor伺服器
 

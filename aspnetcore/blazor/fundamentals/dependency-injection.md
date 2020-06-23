@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/dependency-injection
-ms.openlocfilehash: b4ac0dbc6dabdeff4689544f2e11278b8302c553
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 24cd5ae837eeb4c89a15bab2948dde2eface0c0d
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103615"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242793"
 ---
 # <a name="aspnet-core-blazor-dependency-injection"></a>ASP.NET Core 相依性 Blazor 插入
 
@@ -37,8 +37,8 @@ DI 是用來存取集中位置所設定之服務的技術。 這在應用程式�
 
 | 服務 | 存留期 | 描述 |
 | ------- | -------- | ----------- |
-| <xref:System.Net.Http.HttpClient> | 暫時性 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br><xref:System.Net.Http.HttpClient>WebAssembly 應用程式中的實例會 Blazor 使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor伺服器應用程式預設不包含 <xref:System.Net.Http.HttpClient> 已設定為服務的。 將提供 <xref:System.Net.Http.HttpClient> 給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱 <xref:blazor/call-web-api> 。 |
-| <xref:Microsoft.JSInterop.IJSRuntime> | Singleton （ Blazor WebAssembly）<br>限定範圍（ Blazor 伺服器） | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱 <xref:blazor/call-javascript-from-dotnet> 。 |
+| <xref:System.Net.Http.HttpClient> | 暫時性 | 提供方法來傳送 HTTP 要求，以及從 URI 所識別的資源接收 HTTP 回應。<br><br><xref:System.Net.Http.HttpClient>WebAssembly 應用程式中的實例會 Blazor 使用瀏覽器來處理背景中的 HTTP 流量。<br><br>Blazor伺服器應用程式預設不包含 <xref:System.Net.Http.HttpClient> 已設定為服務的。 將提供 <xref:System.Net.Http.HttpClient> 給 Blazor 伺服器應用程式。<br><br>如需詳細資訊，請參閱 <xref:blazor/call-web-api>。 |
+| <xref:Microsoft.JSInterop.IJSRuntime> | Singleton （ Blazor WebAssembly）<br>限定範圍（ Blazor 伺服器） | 代表在其中分派 JavaScript 呼叫的 JavaScript 執行時間實例。 如需詳細資訊，請參閱 <xref:blazor/call-javascript-from-dotnet>。 |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager> | Singleton （ Blazor WebAssembly）<br>限定範圍（ Blazor 伺服器） | 包含使用 Uri 和導覽狀態的協助程式。 如需詳細資訊，請參閱[URI 和流覽狀態](xref:blazor/fundamentals/routing#uri-and-navigation-state-helpers)協助程式。 |
 
 自訂服務提供者不會自動提供表格中所列的預設服務。 如果您使用自訂服務提供者，而且需要資料表中所顯示的任何服務，請將所需的服務新增至新的服務提供者。
@@ -47,7 +47,7 @@ DI 是用來存取集中位置所設定之服務的技術。 這在應用程式�
 
 ### <a name="blazor-webassembly"></a>BlazorWebAssembly
 
-在 Program.cs 的方法中，為應用程式的服務集合設定服務 `Main` 。 *Program.cs* 在下列範例中， `MyDependency` 會為 `IMyDependency` 執行註冊：
+在的方法中，為應用程式的服務集合設定服務 `Main` `Program.cs` 。 在下列範例中， `MyDependency` 會為 `IMyDependency` 執行註冊：
 
 ```csharp
 public class Program
@@ -84,7 +84,7 @@ public class Program
 }
 ```
 
-主機也會提供應用程式的中央設定實例。 以先前的範例為基礎，氣象服務的 URL 會從預設設定來源（例如*appsettings.js開啟*）傳遞至 `InitializeWeatherAsync` ：
+主機也會提供應用程式的中央設定實例。 以先前的範例為基礎，氣象服務的 URL 會從預設設定來源（例如 `appsettings.json` ）傳遞到 `InitializeWeatherAsync` ：
 
 ```csharp
 public class Program
@@ -136,7 +136,7 @@ public void ConfigureServices(IServiceCollection services)
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton%2A> | DI 會建立服務的*單一實例*。 所有需要服務的元件 `Singleton` 都會收到相同服務的實例。 |
 | <xref:Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Transient%2A> | 每當元件 `Transient` 從服務容器取得服務的實例時，就會收到服務的*新實例*。 |
 
-DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection> 。
+DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，請參閱 <xref:fundamentals/dependency-injection>。
 
 ## <a name="request-a-service-in-a-component"></a>要求元件中的服務
 
@@ -145,7 +145,7 @@ DI 系統是以 ASP.NET Core 中的 DI 系統為基礎。 如需詳細資訊，�
 * 類型：要插入之服務的類型。
 * Property：接收插入之 app service 的屬性名稱。 屬性不需要手動建立。 編譯器會建立屬性。
 
-如需詳細資訊，請參閱 <xref:mvc/views/dependency-injection> 。
+如需詳細資訊，請參閱 <xref:mvc/views/dependency-injection>。
 
 使用多個 [`@inject`](xref:mvc/views/razor#inject) 語句來插入不同的服務。
 
@@ -193,7 +193,7 @@ public class DataAccess : IDataAccess
 函式插入的必要條件：
 
 * 其中一個函式必須存在，且其引數可由 DI 完成。 如果指定預設值，則允許 DI 未涵蓋的其他參數。
-* 適用的函式必須是*公用*的。
+* 適用的函數必須是 `public` 。
 * 其中一個適用的函數必須存在。 如果發生不明確的情況，DI 會擲回例外狀況。
 
 ## <a name="utility-base-component-classes-to-manage-a-di-scope"></a>用來管理 DI 範圍的公用程式基底元件類別
@@ -346,5 +346,5 @@ public class DataAccess : IDataAccess
 ## <a name="additional-resources"></a>其他資源
 
 * <xref:fundamentals/dependency-injection>
-* [暫時性和共用實例的 IDisposable 指引](xref:fundamentals/dependency-injection#idisposable-guidance-for-transient-and-shared-instances)
+* [`IDisposable`暫時性和共用實例的指引](xref:fundamentals/dependency-injection#idisposable-guidance-for-transient-and-shared-instances)
 * <xref:mvc/views/dependency-injection>

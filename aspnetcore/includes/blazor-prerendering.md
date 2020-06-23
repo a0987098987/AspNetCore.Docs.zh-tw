@@ -24,7 +24,7 @@
 }
 ```
 
-針對上述範例程式碼，請在 `setElementText` `<head>` *wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）的元素內提供 JavaScript 函式。 呼叫函式時 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> ，不會傳回值：
+針對上述範例程式碼，請在 `setElementText` `<head>` `wwwroot/index.html` （Blazor WebAssembly）或 `Pages/_Host.cshtml` （Blazor Server）的元素內提供 JavaScript 函式。 呼叫函式時 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> ，不會傳回值：
 
 ```html
 <script>
@@ -72,7 +72,7 @@ Set value via JS interop call:
 }
 ```
 
-針對上述範例程式碼，請在 `setElementText` `<head>` *wwwroot/index.html* （Blazor WebAssembly）或*Pages/_Host. cshtml* （Blazor Server）的元素內提供 JavaScript 函式。 使用呼叫函式 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> ，並傳回值：
+針對上述範例程式碼，請在 `setElementText` `<head>` `wwwroot/index.html` （Blazor WebAssembly）或 `Pages/_Host.cshtml` （Blazor Server）的元素內提供 JavaScript 函式。 使用呼叫函式 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> ，並傳回值：
 
 ```html
 <script>

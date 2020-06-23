@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: b55619889c294a0cd6ab98ffdf228d86ee60cd7c
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: f56fb0f09845ded6ef6907221a27f71621a155d1
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102314"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242806"
 ---
 # <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
 
@@ -75,7 +75,7 @@ dotnet new blazorwasm -o MyNewProject --pwa
 
 ![' MyBlazorPwa ' 應用程式會在沒有網址列的 Google Chrome 中執行。](progressive-web-app/_static/image3.png)
 
-若要自訂視窗的標題、色彩配置、圖示或其他詳細資料，請參閱專案的*wwwroot*目錄中的*manifest.js*檔案。 此檔案的架構是由 web 標準所定義。 如需詳細資訊，請參閱[MDN web 檔： Web 應用程式資訊清單](https://developer.mozilla.org/docs/Web/Manifest)。
+若要自訂視窗的標題、色彩配置、圖示或其他詳細資料，請參閱 `manifest.json` 專案目錄中的檔案 `wwwroot` 。 此檔案的架構是由 web 標準所定義。 如需詳細資訊，請參閱[MDN web 檔： Web 應用程式資訊清單](https://developer.mozilla.org/docs/Web/Manifest)。
 
 ## <a name="offline-support"></a>離線支援
 
@@ -89,7 +89,7 @@ dotnet new blazorwasm -o MyNewProject --pwa
 
 若要查看離線支援的運作方式：
 
-1. 發行應用程式。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/index#publish-the-app> 。
+1. 發行應用程式。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/index#publish-the-app>。
 1. 將應用程式部署至支援 HTTPS 的伺服器，並在瀏覽器中以安全的 HTTPS 位址存取應用程式。
 1. 開啟瀏覽器的 [開發工具]，並確認已在 [**應用程式**] 索引標籤上註冊主機的*服務背景工作*：
 
@@ -110,17 +110,17 @@ dotnet new blazorwasm -o MyNewProject --pwa
 
 Blazor的 PWA 範本會產生兩個服務工作者檔案：
 
-* *wwwroot/service-worker.js*，會在開發期間使用。
-* *wwwroot/service-worker.published.js*，會在發佈應用程式之後使用。
+* `wwwroot/service-worker.js`，在開發期間使用。
+* `wwwroot/service-worker.published.js`，在發佈應用程式之後使用。
 
 若要在兩個服務工作者檔案之間共用邏輯，請考慮下列方法：
 
 * 新增第三個 JavaScript 檔案來保存通用邏輯。
-* 使用[importScripts](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts)將通用邏輯載入兩個服務工作者檔案中。
+* 使用 [`self.importScripts`](https://developer.mozilla.org/docs/Web/API/WorkerGlobalScope/importScripts) 將通用邏輯載入兩個服務工作者檔案。
 
 ### <a name="cache-first-fetch-strategy"></a>快取優先提取策略
 
-內建的*service-worker.published.js*服務工作者會使用快取*優先*策略來解析要求。 這表示服務工作者偏好傳回快取的內容，不論使用者是否有網路存取權，或伺服器上是否提供較新的內容。
+內建的 `service-worker.published.js` 服務工作者會使用快取*優先*策略來解析要求。 這表示服務工作者偏好傳回快取的內容，不論使用者是否有網路存取權，或伺服器上是否提供較新的內容。
 
 快取優先策略非常重要，因為：
 
@@ -139,9 +139,9 @@ Blazor的 PWA 範本會產生兩個服務工作者檔案：
 
 BlazorPWA 範本會產生應用程式，以便在使用者造訪並具有正常運作的網路連線時，自動嘗試在背景中自行更新。 其運作方式如下：
 
-* 在編譯期間，專案會產生*服務工作者資產資訊清單*。 根據預設，這稱為*service-worker-assets.js*。 資訊清單會列出應用程式離線運作所需的所有靜態資源，例如 .NET 元件、JavaScript 檔案和 CSS，包括其內容雜湊。 資源清單是由服務工作者載入，讓它知道要快取的資源。
-* 每次使用者造訪應用程式時，瀏覽器會重新要求*service-worker.js*並在背景中*service-worker-assets.js* 。 這些檔案會與現有已安裝的服務背景工作角色進行逐位元組比較。 如果伺服器傳回上述任一檔案的變更內容，服務工作者會嘗試安裝新版的本身。
-* 安裝新版本的本身時，服務背景工作會為離線資源建立新的個別快取，並使用*service-worker-assets.js*中列出的資源開始擴展快取。 這個邏輯會在service-worker.published.js內的函式中實作為 `onInstall` 。 *service-worker.published.js*
+* 在編譯期間，專案會產生*服務工作者資產資訊清單*。 根據預設，這會被呼叫 `service-worker-assets.js` 。 資訊清單會列出應用程式離線運作所需的所有靜態資源，例如 .NET 元件、JavaScript 檔案和 CSS，包括其內容雜湊。 資源清單是由服務工作者載入，讓它知道要快取的資源。
+* 每次使用者造訪應用程式時，瀏覽器會 `service-worker.js` 在背景重新要求和 `service-worker-assets.js` 。 這些檔案會與現有已安裝的服務背景工作角色進行逐位元組比較。 如果伺服器傳回上述任一檔案的變更內容，服務工作者會嘗試安裝新版的本身。
+* 安裝新版本的本身時，服務背景工作會為離線資源建立新的個別快取，並使用中列出的資源開始擴展快取 `service-worker-assets.js` 。 這個邏輯會在內的函式中實 `onInstall` 作用 `service-worker.published.js` 。
 * 載入所有資源時，如果沒有發生錯誤，且所有內容雜湊都相符，此程式就會順利完成。 如果成功，新的服務工作者會進入*等待啟用*狀態。 一旦使用者關閉應用程式（沒有剩餘的應用程式索引標籤或 windows），新的服務背景工作角色就*會變成作用中，並*用於後續的應用程式造訪。 系統會刪除舊的服務背景工作角色及其快取。
 * 如果進程未順利完成，則會捨棄新的服務背景工作實例。 使用者下次造訪時，會再次嘗試更新程式，希望用戶端有更好的網路連線可以完成要求。
 
@@ -149,7 +149,7 @@ BlazorPWA 範本會產生應用程式，以便在使用者造訪並具有正常�
 
 ### <a name="how-requests-are-resolved"></a>如何解決要求
 
-如快[取優先提取策略](#cache-first-fetch-strategy)一節中所述，預設服務工作者會使用快取優先策略，這表示它會嘗試提供快取*的*內容（如果有的話）。 如果沒有針對特定 URL 快取任何內容（例如，從後端 API 要求資料時），服務工作者會回復一般網路要求。 如果可以連線到伺服器，網路要求就會成功。 這個邏輯會在service-worker.published.js內的函式內實作為 `onFetch` 。 *service-worker.published.js*
+如快[取優先提取策略](#cache-first-fetch-strategy)一節中所述，預設服務工作者會使用快取優先策略，這表示它會嘗試提供快取*的*內容（如果有的話）。 如果沒有針對特定 URL 快取任何內容（例如，從後端 API 要求資料時），服務工作者會回復一般網路要求。 如果可以連線到伺服器，網路要求就會成功。 這個邏輯會在內的函式中實作為內部 `onFetch` 函數 `service-worker.published.js` 。
 
 如果應用程式的 Razor 元件依賴來自後端 api 的要求資料，而您想要為失敗的要求提供易記的使用者體驗，因為網路無法使用，請在應用程式的元件內執行邏輯。 例如，使用 [ `try/catch` 圍繞 <xref:System.Net.Http.HttpClient> 要求]。
 
@@ -157,12 +157,12 @@ BlazorPWA 範本會產生應用程式，以便在使用者造訪並具有正常�
 
 請考慮當使用者第一次流覽至 URL （例如） `/counter` 或應用程式中的任何其他深層連結時，會發生什麼情況。 在這些情況下，您不想要傳回快取 `/counter` 的內容，而是需要瀏覽器載入快取的內容， `/index.html` 以啟動您的 Blazor WebAssembly 應用程式。 這些初始要求稱為「*導覽*要求」，而不是：
 
-* *subresource*影像、樣式表單或其他檔案的要求。
-* *提取/XHR* API 資料的要求。
+* `subresource`要求影像、樣式表單或其他檔案。
+* `fetch/XHR`API 資料的要求。
 
-預設的服務背景工作包含導覽要求的特殊案例邏輯。 無論要求的 URL 為何，服務工作者都會藉由傳回的快取內容來解析要求 `/index.html` 。 這個邏輯會在service-worker.published.js內的函式中實作為 `onFetch` 。 *service-worker.published.js*
+預設的服務背景工作包含導覽要求的特殊案例邏輯。 無論要求的 URL 為何，服務工作者都會藉由傳回的快取內容來解析要求 `/index.html` 。 這個邏輯會在內的函式中實 `onFetch` 作用 `service-worker.published.js` 。
 
-如果您的應用程式有特定 Url 必須傳回伺服器轉譯的 HTML，而不是從快取中提供 `/index.html` ，則您需要編輯服務背景工作中的邏輯。 如果包含的所有 Url 都必須 `/Identity/` 處理為一般僅線上的伺服器要求，則請修改*service-worker.published.js* `onFetch` 邏輯。 找出下列程式碼：
+如果您的應用程式有特定 Url 必須傳回伺服器轉譯的 HTML，而不是從快取中提供 `/index.html` ，則您需要編輯服務背景工作中的邏輯。 如果包含的所有 Url 都必須 `/Identity/` 處理為一般僅線上的伺服器要求，則請修改 `service-worker.published.js` `onFetch` 邏輯。 找出下列程式碼：
 
 ```javascript
 const shouldServeIndexHtml = event.request.mode === 'navigate';
@@ -185,16 +185,16 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 ```
 
-檔案會放在*wwwroot*輸出目錄中，因此瀏覽器可以藉由要求來抓取此檔案 `/service-worker-assets.js` 。 若要查看此檔案的內容，請在文字編輯器中開啟 */BIN/DEBUG/{TARGET FRAMEWORK}/wwwroot/service-worker-assets.js* 。 不過，請不要編輯檔案，因為它會在每個組建上重新產生。
+檔案會放在 `wwwroot` 輸出目錄中，因此瀏覽器可以藉由要求來抓取此檔案 `/service-worker-assets.js` 。 若要查看此檔案的內容，請 `/bin/Debug/{TARGET FRAMEWORK}/wwwroot/service-worker-assets.js` 在文字編輯器中開啟。 不過，請不要編輯檔案，因為它會在每個組建上重新產生。
 
 根據預設，此資訊清單會列出：
 
 * 任何 Blazor 管理的資源（例如 .net 元件和 .Net WebAssembly 執行時間檔案）都必須離線運作。
-* 所有用來發行至應用程式*wwwroot*目錄的資源，例如影像、樣式表單和 JavaScript 檔案，包括外部專案和 NuGet 套件所提供的靜態 web 資產。
+* 所有用來發佈至應用程式目錄的資源 `wwwroot` ，例如影像、樣式表單和 JavaScript 檔案，包括外部專案和 NuGet 套件所提供的靜態 web 資產。
 
-您可以藉由編輯service-worker.published.js中的邏輯，來控制服務工作者要提取和快取哪些 `onInstall` 資源* *。 根據預設，服務工作者會提取並快取符合一般 web 副檔名的檔案，例如 *.html*、 *.css*、 *.js*和*wasm*，再加上 Blazor WebAssembly （*.dll*， *.pdb*）特有的檔案類型。
+您可以藉由編輯中的邏輯，來控制服務工作者要提取和快取哪些資源 `onInstall` `service-worker.published.js` 。 根據預設，服務工作者會提取並快取符合一般 web 副檔名的檔案 `.html` ，例如、 `.css` 、 `.js` 和 `.wasm` ，再加上 Blazor WebAssembly （ `.dll` ，）特有 `.pdb` 的檔案類型。
 
-若要加入不存在於應用程式*wwwroot*目錄中的其他資源，請定義額外 `ItemGroup` 的 MSBuild 專案，如下列範例所示：
+若要包含不存在於應用程式目錄中的其他資源 `wwwroot` ，請定義額外 `ItemGroup` 的 MSBuild 專案，如下列範例所示：
 
 ```xml
 <ItemGroup>
@@ -206,7 +206,7 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 `AssetUrl`中繼資料會指定在提取要快取的資源時，瀏覽器應該使用的基底相對 URL。 這可以獨立于其在磁片上的原始來原始檔案名。
 
 > [!IMPORTANT]
-> 新增 `ServiceWorkerAssetsManifestItem` 不會導致檔案在應用程式的*wwwroot*目錄中發行。 發行輸出必須分開控制。 `ServiceWorkerAssetsManifestItem`只會導致服務工作者資產資訊清單中出現額外的專案。
+> 新增 `ServiceWorkerAssetsManifestItem` 不會導致檔案在應用程式的目錄中發行 `wwwroot` 。 發行輸出必須分開控制。 `ServiceWorkerAssetsManifestItem`只會導致服務工作者資產資訊清單中出現額外的專案。
 
 ## <a name="push-notifications"></a>推送通知
 
@@ -264,11 +264,11 @@ Web 開發人員 habitually 預期使用者只會執行其 web 應用程式的�
 
 ### <a name="all-service-worker-asset-manifest-contents-are-cached-by-default"></a>預設會快取所有服務工作者資產資訊清單內容
 
-如 [[控制資產](#control-asset-caching)快取] 區段中所述，檔案*service-worker-assets.js*會在組建期間產生，並列出服務工作者應提取和快取的所有資產。
+如[控制資產](#control-asset-caching)快取一節中所述，檔案 `service-worker-assets.js` 會在組建期間產生，並列出服務工作者應提取和快取的所有資產。
 
-因為此清單預設包含所有發出至*wwwroot*的專案，包括外部封裝和專案所提供的內容，所以您必須小心不要在該處放入太多內容。 如果*wwwroot*目錄包含數百萬個映射，服務工作者會嘗試提取並快取全部，耗用過多的頻寬，而且很可能無法順利完成。
+因為此清單預設包含發出的所有專案 `wwwroot` （包括外部封裝和專案所提供的內容），所以您必須小心不要在該處放入太多內容。 如果 `wwwroot` 目錄包含數百萬個映射，服務工作者會嘗試提取並快取全部，耗用過多的頻寬，而且很可能無法順利完成。
 
-藉由編輯service-worker.published.js中的函式，來執行任意邏輯來控制要提取和快取的資訊清單內容子集 `onInstall` 。 *service-worker.published.js*
+藉由編輯中的函式來執行任意邏輯，以控制應提取和快取的資訊清單內容子集 `onInstall` `service-worker.published.js` 。
 
 ### <a name="interaction-with-authentication"></a>與驗證互動
 
@@ -287,11 +287,11 @@ PWA 範本可以與驗證搭配使用。 具有離線功能的 PWA 也可以在�
 * 在應用程式離線時佇列作業，並在應用程式恢復上線時加以套用。
 * 在登出期間，清除已儲存的使用者。
 
-[CarChecker](https://github.com/SteveSandersonMS/CarChecker)範例應用程式會示範上述方法。 請參閱應用程式的下列部分：
+[`CarChecker`](https://github.com/SteveSandersonMS/CarChecker)範例應用程式會示範上述方法。 請參閱應用程式的下列部分：
 
-* `OfflineAccountClaimsPrincipalFactory`（*Client/Data/OfflineAccountClaimsPrincipalFactory .cs*）
-* `LocalVehiclesStore`（*Client/Data/LocalVehiclesStore .cs*）
-* `LoginStatus`component （*Client/Shared/LoginStatus razor*）
+* `OfflineAccountClaimsPrincipalFactory` (`Client/Data/OfflineAccountClaimsPrincipalFactory.cs`)
+* `LocalVehiclesStore` (`Client/Data/LocalVehiclesStore.cs`)
+* `LoginStatus`component （ `Client/Shared/LoginStatus.razor` ）
 
 ## <a name="additional-resources"></a>其他資源
 

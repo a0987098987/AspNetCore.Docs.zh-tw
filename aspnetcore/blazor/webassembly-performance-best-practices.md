@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: c5169231eec67a43830f761bff7585deff774613
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 2b6d4e706856cb28f26c2502feca4f959ca4abac
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103640"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243027"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 效能最佳做法
 
@@ -70,16 +70,16 @@ Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rere
 }
 ```
 
-如需詳細資訊，請參閱 <xref:blazor/components/lifecycle#after-component-render> 。
+如需詳細資訊，請參閱 <xref:blazor/components/lifecycle#after-component-render>。
 
 ## <a name="virtualize-re-usable-fragments"></a>虛擬化重複使用的片段
 
 元件提供便利的方法來產生可重複使用的程式碼和標記片段。 一般來說，我們建議您撰寫最符合應用程式需求的個別元件。 有一點要注意的是，每個額外的子元件都會產生呈現父元件所需的總時間。 對於大部分的應用程式而言，額外的負荷是可忽略的。 產生大量元件的應用程式應該考慮使用策略來減少處理額外負荷，例如限制轉譯的元件數目。
 
-例如，呈現數百個包含元件之資料列的方格或清單會耗用大量處理器來呈現。 請考慮將方格或清單配置虛擬化，如此一來，就只會在任何指定的時間轉譯元件的子集。 如需元件子集轉譯的範例，請參閱[虛擬化範例應用程式中的下列元件（aspnet/Samples GitHub 存放庫）](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor/Virtualization)：
+例如，呈現數百個包含元件之資料列的方格或清單會耗用大量處理器來呈現。 請考慮將方格或清單配置虛擬化，如此一來，就只會在任何指定的時間轉譯元件的子集。 如需元件子集轉譯的範例，請參閱範例應用程式中的下列元件[ `Virtualization` （aspnet/samples GitHub 存放庫）](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/blazor/Virtualization)：
 
-* `Virtualize`元件（[共用/虛擬化 razor](https://github.com/aspnet/samples/blob/master/samples/aspnetcore/blazor/Virtualization/Shared/Virtualize.cs)）：以 c # 撰寫的元件，它會 <xref:Microsoft.AspNetCore.Components.ComponentBase> 根據使用者的滾動來進行轉譯，以呈現一組天氣資料列。
-* `FetchData`元件（[Pages/FetchData](https://github.com/aspnet/samples/blob/master/samples/aspnetcore/blazor/Virtualization/Pages/FetchData.razor)）：使用 `Virtualize` 元件一次顯示25列的天氣資料。
+* `Virtualize`component （ [`Shared/Virtualize.razor`](https://github.com/aspnet/samples/blob/master/samples/aspnetcore/blazor/Virtualization/Shared/Virtualize.cs) ）：以 c # 撰寫的元件，它會 <xref:Microsoft.AspNetCore.Components.ComponentBase> 根據使用者的滾動來進行轉譯，以呈現一組氣象資料列。
+* `FetchData`component （ [`Pages/FetchData.razor`](https://github.com/aspnet/samples/blob/master/samples/aspnetcore/blazor/Virtualization/Pages/FetchData.razor) ）：使用 `Virtualize` 元件一次顯示25列的天氣資料。
 
 ## <a name="avoid-javascript-interop-to-marshal-data"></a>避免 JavaScript interop 來封送處理資料
 
@@ -89,7 +89,7 @@ Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rere
 
 Blazor的 JS interop 實現依賴 <xref:System.Text.Json> ，這是具有低記憶體配置的高效能 JSON 序列化程式庫。 使用 <xref:System.Text.Json> 不會導致額外的應用程式裝載大小超過新增一或多個替代 JSON 程式庫。
 
-如需遷移指引，請參閱[如何從上的 Newtonsoft.Js遷移至](/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to)上的 System.Text.Js。
+如需遷移指引，請參閱[如何從 `Newtonsoft.Json` 遷移 `System.Text.Json` 至](/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to)。
 
 ## <a name="use-synchronous-and-unmarshalled-js-interop-apis-where-appropriate"></a>適當時使用同步和 unmarshalled JS interop Api
 
@@ -138,7 +138,7 @@ BlazorWebAssembly <xref:Microsoft.JSInterop.IJSRuntime> 在 Blazor 伺服器應�
 
 ### <a name="intermediate-language-il-linking"></a>中繼語言（IL）連結
 
-[連結 BlazorWebAssembly 應用程式](xref:blazor/host-and-deploy/configure-linker)藉由在應用程式的二進位檔中修剪未使用的程式碼，來減少應用程式的大小。 根據預設，只有在設定中建立時，才會啟用連結器 `Release` 。 若要受益于此，請使用[dotnet publish](/dotnet/core/tools/dotnet-publish)命令發行應用程式，並將[-c |--configuration](/dotnet/core/tools/dotnet-publish#options)選項設為 `Release` ：
+[連結 BlazorWebAssembly 應用程式](xref:blazor/host-and-deploy/configure-linker)藉由在應用程式的二進位檔中修剪未使用的程式碼，來減少應用程式的大小。 根據預設，只有在設定中建立時，才會啟用連結器 `Release` 。 若要受益于此，請使用命令發佈應用程式以進行部署， [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 並將[-c |--configuration](/dotnet/core/tools/dotnet-publish#options)選項設為 `Release` ：
 
 ```dotnetcli
 dotnet publish -c Release

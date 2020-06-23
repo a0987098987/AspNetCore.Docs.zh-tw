@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
-ms.openlocfilehash: 78d524bc0271fd2640302bb0de78571ab688bef5
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 1c71067528fb34ab141bb1ee846716834204ee40
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103633"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242455"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式
 
@@ -37,7 +37,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
 
 現有的 Razor 頁面或 MVC 應用程式可以將 Razor 元件整合至頁面和視圖：
 
-1. 在應用程式的版面配置檔案（*_Layout. cshtml*）中：
+1. 在應用程式的版面配置檔案（ `_Layout.cshtml` ）中：
 
    * 將下列 `<base>` 標記新增至 `<head>` 元素：
 
@@ -47,7 +47,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
 
      `href`上述範例中的值（*應用程式基底路徑*）假設應用程式位於根 URL 路徑（ `/` ）。 如果應用程式是子應用程式，請遵循文章的*應用程式基底路徑*一節中的指導方針 <xref:blazor/host-and-deploy/index#app-base-path> 。
 
-     *_Layout 的 cshtml*檔案位於 MVC 應用程式中頁面應用程式或 Views/shared 資料夾的*pages/shared*資料夾中。 Razor *Views/Shared*
+     此檔案 `_Layout.cshtml` 位於 MVC 應用程式中頁面應用程式或 Views/shared 資料夾的*Pages/shared*資料夾中 Razor 。 *Views/Shared*
 
    * 在結尾 `<script>` 標記的正後方新增*blazor.server.js*腳本的標記 `</body>` ：
 
@@ -57,7 +57,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
 
      架構會將*blazor.server.js*腳本新增至應用程式。 不需要手動將腳本新增至應用程式。
 
-1. 使用下列內容，將 *_Imports razor*檔案加入至專案的根資料夾（將最後一個命名空間變更 `MyAppNamespace` 為應用程式的命名空間）：
+1. `_Imports.razor`使用下列內容將檔案新增至專案的根資料夾（將最後一個命名空間變更 `MyAppNamespace` 為應用程式的命名空間）：
 
    ```razor
    @using System.Net.Http
@@ -92,7 +92,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
 
 1. 請遵循[準備應用程式](#prepare-the-app)一節中的指導方針。
 
-1. 使用下列內容將*應用程式 razor*檔案新增至專案根目錄：
+1. 將 `App.razor` 具有下列內容的檔案新增至專案根目錄：
 
    ```razor
    @using Microsoft.AspNetCore.Components.Routing
@@ -108,7 +108,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
    </Router>
    ```
 
-1. 將 *_Host. cshtml*檔案新增至*Pages*資料夾，其中包含下列內容：
+1. 將 `_Host.cshtml` 具有下列內容的檔案新增至 `Pages` 資料夾：
 
    ```cshtml
    @page "/blazor"
@@ -121,7 +121,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
    </app>
    ```
 
-   元件會使用共用的 *_Layout. cshtml*檔案作為其版面配置。
+   元件會使用共用檔案 `_Layout.cshtml` 作為其版面配置。
 
    <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>設定元件是否 `App` ：
 
@@ -136,7 +136,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
 
    如需元件標記協助程式的詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
 
-1. 在中，將 *_Host. cshtml*頁面的低優先順序路由新增至端點設定 `Startup.Configure` ：
+1. 將頁面的低優先順序路由新增 `_Host.cshtml` 至中的端點設定 `Startup.Configure` ：
 
    ```csharp
    app.UseEndpoints(endpoints =>
@@ -167,7 +167,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
 
 1. 請遵循[準備應用程式](#prepare-the-app)一節中的指導方針。
 
-1. 使用下列內容，將*應用程式 razor*檔案新增至專案的根目錄：
+1. `App.razor`使用下列內容將檔案新增至專案的根目錄：
 
    ```razor
    @using Microsoft.AspNetCore.Components.Routing
@@ -183,7 +183,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
    </Router>
    ```
 
-1. 使用下列內容，將 *_Host. cshtml*檔案新增至*Views/Home*資料夾：
+1. 將 `_Host.cshtml` 具有下列內容的檔案新增至 `Views/Home` 資料夾：
 
    ```cshtml
    @{
@@ -195,7 +195,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
    </app>
    ```
 
-   元件會使用共用的 *_Layout. cshtml*檔案作為其版面配置。
+   元件會使用共用檔案 `_Layout.cshtml` 作為其版面配置。
    
    <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode>設定元件是否 `App` ：
 
@@ -219,7 +219,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
    }
    ```
 
-1. 為控制器動作新增低優先順序的路由，以將 *_Host. cshtml*視圖傳回至中的端點設定 `Startup.Configure` ：
+1. 為控制器動作新增低優先順序的路由，以將此 `_Host.cshtml` 視圖傳回至中的端點設定 `Startup.Configure` ：
 
    ```csharp
    app.UseEndpoints(endpoints =>
@@ -230,7 +230,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
    });
    ```
 
-1. 建立*Pages*資料夾，並將可路由的元件新增至應用程式。 例如：
+1. 建立 `Pages` 資料夾，並將可路由的元件新增至應用程式。 例如：
 
    ```razor
    @page "/counter"
@@ -272,7 +272,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
 }
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
 
 ### <a name="render-noninteractive-components"></a>呈現非互動式元件
 
@@ -295,11 +295,11 @@ Razor在 MVC 應用程式中支援可路由的元件：
 }
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
 
 ## <a name="component-namespaces"></a>元件命名空間
 
-使用自訂資料夾來存放應用程式的元件時，請將代表資料夾的命名空間新增至頁面/視圖，或加入至 *_ViewImports. cshtml*檔案。 在下例中︰
+使用自訂資料夾來保存應用程式的元件時，請將代表資料夾的命名空間新增至頁面/視圖或檔案 `_ViewImports.cshtml` 。 在下例中︰
 
 * 變更 `MyAppNamespace` 為應用程式的命名空間。
 * 如果未使用名為「*元件*」的資料夾來存放元件，請變更 `Components` 為元件所在的資料夾。
@@ -308,6 +308,6 @@ Razor在 MVC 應用程式中支援可路由的元件：
 @using MyAppNamespace.Components
 ```
 
-*_ViewImports. cshtml*檔案位於*Pages* Razor MVC 應用程式的 pages 應用程式或*Views*資料夾的 pages 資料夾中。
+檔案 `_ViewImports.cshtml` 位於 `Pages` Razor 頁面應用程式的資料夾或 `Views` MVC 應用程式的資料夾中。
 
 如需詳細資訊，請參閱<xref:blazor/components/index#namespaces>。

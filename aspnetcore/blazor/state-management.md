@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: 3cc75406a1680dff4727527153a62856a594c8c7
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 59adcce972b503a6aa6e596bc9bff63225961f84
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102505"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243196"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
@@ -135,7 +135,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 ## <a name="protected-browser-storage-experimental-package"></a>受保護的瀏覽器儲存體實驗性封裝
 
-提供和[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例 `localStorage` `sessionStorage` 是[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
+提供和[資料保護](xref:security/data-protection/introduction)的 NuGet 套件範例 `localStorage` `sessionStorage` 是 [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) 。
 
 > [!WARNING]
 > `Microsoft.AspNetCore.ProtectedBrowserStorage`是不支援的實驗性封裝，目前不適用於生產環境使用。
@@ -144,8 +144,8 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 若要安裝 `Microsoft.AspNetCore.ProtectedBrowserStorage` 套件：
 
-1. 在 Blazor 伺服器應用程式專案中，將套件參考新增至[AspNetCore. ProtectedBrowserStorage](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage)。
-1. 在最上層 HTML 中（例如，在預設專案範本的*Pages/_Host. cshtml*檔案中），加入下列 `<script>` 標記：
+1. 在 Blazor 伺服器應用程式專案中，將套件參考新增至 [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) 。
+1. 在最上層 HTML 中（例如，在 `Pages/_Host.cshtml` [預設專案] 範本的檔案中），加入下列 `<script>` 標記：
 
    ```html
    <script src="_content/Microsoft.AspNetCore.ProtectedBrowserStorage/protectedBrowserStorage.js"></script>
@@ -171,7 +171,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 @inject ProtectedSessionStorage ProtectedSessionStore
 ```
 
-`@using`語句可以放入 *_Imports 的 razor*檔案中，而不是在元件中。 使用 *_Imports razor*檔案可讓應用程式或整個應用程式的較大區段使用命名空間。
+`@using`語句可以放在檔案中， `_Imports.razor` 而不是放置在元件中。 使用檔案 `_Imports.razor` 會讓應用程式或整個應用程式的較大區段可以使用命名空間。
 
 若要將 `currentCount` 值保存在 `Counter` 專案範本的元件中，請修改 `IncrementCount` 要使用的方法 `ProtectedSessionStore.SetAsync` ：
 
@@ -196,7 +196,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在中指派結果 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> ，而不是 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>只有在第一次具現化元件時，才會呼叫一次。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱 <xref:blazor/components/lifecycle> 。
+如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在中指派結果 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> ，而不是 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>只有在第一次具現化元件時，才會呼叫一次。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱 <xref:blazor/components/lifecycle>。
 
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：
@@ -215,7 +215,7 @@ protected override async Task OnInitializedAsync()
 private int? currentCount;
 ```
 
-不是無條件地顯示 [計數] 和 [**遞增**] 按鈕，而是只有在載入資料時，才選擇顯示這些元素：
+不是無條件顯示計數和 **`Increment`** 按鈕，而是只在載入資料時，選擇顯示這些元素：
 
 ```razor
 @if (currentCount.HasValue)
@@ -243,7 +243,7 @@ else
 
 解決錯誤的其中一種方法是停用已處理的。 如果應用程式大量使用以瀏覽器為基礎的存放裝置，這通常是最佳的選擇。 因為應用程式無法提供任何有用的內容，直到 `localStorage` 或可供使用，因此會增加複雜性並不會讓應用程式受益 `sessionStorage` 。
 
-若要停用預呈現，請開啟*Pages/_Host. cshtml*檔案，並將 `render-mode` [元件標記](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)協助程式的變更為 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> 。
+若要停用預呈現，請開啟檔案， `Pages/_Host.cshtml` 然後將 `render-mode` [元件標記](xref:mvc/views/tag-helpers/builtin-th/component-tag-helper)協助程式的變更為 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> 。
 
 如果是其他未使用或的頁面，則會進行預呈現 `localStorage` `sessionStorage` 。 若要保持已啟用的已啟用狀態，請延遲載入作業，直到瀏覽器連線到線路為止。 以下是儲存計數器值的範例：
 
@@ -326,7 +326,7 @@ else
 
 `CounterStateProvider`元件在載入完成之前，不會呈現其子內容來處理載入階段。
 
-若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取該狀態，請將 `CounterStateProvider` 元件包裝 <xref:Microsoft.AspNetCore.Components.Routing.Router> 在元件中的周圍 `App` （*razor*）：
+若要使用 `CounterStateProvider` 元件，請將元件的實例包裝在需要存取計數器狀態的任何其他元件周圍。 若要讓應用程式中的所有元件都能存取該狀態，請將 `CounterStateProvider` 元件包裝 <xref:Microsoft.AspNetCore.Components.Routing.Router> 在元件中的周圍 `App` （ `App.razor` ）：
 
 ```razor
 <CounterStateProvider>

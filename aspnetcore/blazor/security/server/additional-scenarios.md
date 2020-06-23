@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/additional-scenarios
-ms.openlocfilehash: 01ee18bf9b55b197c5ec03967d898f37bff43151
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 7f92f82d6e78771494b9f2358ee19153502f8dcb
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103593"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243040"
 ---
 # <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server 其他安全性案例
 
@@ -76,7 +76,7 @@ services.AddHttpClient();
 services.AddScoped<TokenProvider>();
 ```
 
-在 *_Host 的 cshtml*檔案中，建立和實例， `InitialApplicationState` 並將它當做參數傳遞給應用程式：
+在檔案中 `_Host.cshtml` ，建立和實例， `InitialApplicationState` 並將它當做參數傳遞給應用程式：
 
 ```cshtml
 @using Microsoft.AspNetCore.Authentication
@@ -97,7 +97,7 @@ services.AddScoped<TokenProvider>();
 </app>
 ```
 
-在 `App` 元件（*razor*）中，解析服務，並使用參數中的資料進行初始化：
+在 `App` 元件（ `App.razor` ）中，解析服務，並使用參數中的資料進行初始化：
 
 ```razor
 @inject TokenProvider TokenProvider
@@ -172,7 +172,7 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
     }
 ```
 
-或者，您也可以在應用程式設定（*appsettings.js開啟*）檔案中進行設定：
+或者，您也可以在應用程式設定（）檔案中進行設定 `appsettings.json` ：
 
 ```json
 {
@@ -203,11 +203,11 @@ services.Configure<OpenIdConnectOptions>(AzureADDefaults.OpenIdScheme,
 
 ### App ID URI
 
-* When using v2.0 endpoints, APIs define an *App ID URI*, which is meant to represent a unique identifier for the API.
+* When using v2.0 endpoints, APIs define an *`App ID URI`*, which is meant to represent a unique identifier for the API.
 * All scopes include the App ID URI as a prefix, and v2.0 endpoints emit access tokens with the App ID URI as the audience.
 * When using V2.0 endpoints, the client ID configured in the Server API changes from the API Application ID (Client ID) to the App ID URI.
 
-*appsettings.json*:
+`appsettings.json`:
 
 ```json
 {

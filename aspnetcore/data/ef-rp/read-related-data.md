@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: e67738015f64ca7077c2f87a8f7eabe722aac9d8
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 5ffb57f21c89e21fcbb14b933cb0d0cb29d9c71b
+ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652610"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85240947"
 ---
 # <a name="part-6-razor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>第6部分， Razor ASP.NET Core 讀取相關資料中有 EF Core 的頁面
 
@@ -52,7 +52,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
   ![個別查詢範例](read-related-data/_static/separate-queries.png)
 
-  注意：EF Core 會將導覽屬性自動修正為先前已載入至內容執行個體的任何其他實體。 即使「未」** 明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
+  **注意：** EF Core 會將導覽屬性自動修正為先前已載入至內容實例的任何其他實體。 即使「未」** 明確包含導覽屬性的資料，如果先前已載入某些或所有相關實體，仍然可能會填入該屬性。
 
 * [明確載入](/ef/core/querying/related-data#explicit-loading)。 第一次讀取實體時，不會擷取相關資料。 必須撰寫程式碼，才能在需要時擷取相關資料。 使用個別查詢的明確式載入會導致多個查詢傳送至資料庫。 透過明確式載入，程式碼會指定要載入的導覽屬性。 請使用 `Load` 方法來執行明確式載入。 例如：
 
@@ -231,7 +231,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 選取的講師會從檢視模型的講師清單中擷取。 檢視模型的 `Courses` 屬性則使用 `Course` 實體從該講師的 `CourseAssignments` 導覽屬性載入。
 
-`Where` 方法會傳回集合。 但是，在此案例中，篩選會選取單一實體。 因此會呼叫 `Single` 方法將集合轉換成單一 `Instructor` 實體。 `Instructor` 實體提供對 `CourseAssignments` 屬性的存取。 `CourseAssignments` 提供對相關 `Course` 實體的存取。
+`Where` 方法會傳回集合。 但是在此情況下，篩選會選取單一實體，因此 `Single` 會呼叫方法，將集合轉換成單一 `Instructor` 實體。 `Instructor` 實體提供對 `CourseAssignments` 屬性的存取。 `CourseAssignments` 提供對相關 `Course` 實體的存取。
 
 ![講師-課程 m:M](complex-data-model/_static/courseassignment.png)
 
@@ -326,7 +326,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 測試應用程式。 就使用者的觀點而言，應用程式行為與先前版本相同。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 下一個教學課程會示範如何更新相關資料。
 

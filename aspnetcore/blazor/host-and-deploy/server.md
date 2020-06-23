@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: 891714250bc4e8b0b241e589efb268b8f8e9f0d5
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: c02d005aa5e37bc359e1c104a19c387f1c16fa34
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103602"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243547"
 ---
 # <a name="host-and-deploy-blazor-server"></a>裝載和部署 Blazor 伺服器
 
@@ -32,7 +32,7 @@ ms.locfileid: "85103602"
 
 使用[ Blazor 伺服器裝載模型](xref:blazor/hosting-models#blazor-server)， Blazor 會在伺服器上從 ASP.NET Core 應用程式中執行。 UI 更新、事件處理及 JavaScript 呼叫會透過連接來處理 [SignalR](xref:signalr/introduction) 。
 
-需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 包括** Blazor 伺服器應用程式**專案範本（ `blazorserverside` 使用[dotnet new](/dotnet/core/tools/dotnet-new)命令時的範本）。
+需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 包括** Blazor 伺服器應用程式**專案範本（ `blazorserverside` 使用命令時的範本 [`dotnet new`](/dotnet/core/tools/dotnet-new) ）。
 
 ## <a name="scalability"></a>延展性
 
@@ -76,7 +76,7 @@ BlazorSignalR因為延遲、可靠性和[安全性](xref:signalr/security)較低
 
    * 設定（使用下列**其中一**種方法）：
   
-     * *appsettings.js*：
+     * `appsettings.json`:
 
        ```json
        "Azure:SignalR:ServerStickyMode": "Required"

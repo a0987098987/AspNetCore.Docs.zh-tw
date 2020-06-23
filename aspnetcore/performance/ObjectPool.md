@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/ObjectPool
-ms.openlocfilehash: f29d15fc1e2d2ad84526598be14638110f08614e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 004ca5724517bf3fbf6512c0b9653793f4e0f702
+ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774778"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85241002"
 ---
 # <a name="object-reuse-with-objectpool-in-aspnet-core"></a>在 ASP.NET Core 中使用 ObjectPool 的物件重複使用
 
@@ -31,7 +31,7 @@ ms.locfileid: "82774778"
 - 代表一些有限的資源。
 - 可預測且經常使用。
 
-例如，ASP.NET Core 架構會在某些地方使用物件集區，以重複<xref:System.Text.StringBuilder>使用實例。 `StringBuilder`配置及管理自己的緩衝區以保存字元資料。 ASP.NET Core 定期使用`StringBuilder`來執行功能，並重複使用它們來提供效能優勢。
+例如，ASP.NET Core 架構會在某些地方使用物件集區，以重複使用 <xref:System.Text.StringBuilder> 實例。 `StringBuilder`配置及管理自己的緩衝區以保存字元資料。 ASP.NET Core 定期使用 `StringBuilder` 來執行功能，並重複使用它們來提供效能優勢。
 
 物件共用不一定會改善效能：
 
@@ -40,7 +40,7 @@ ms.locfileid: "82774778"
 
 只有在使用應用程式或程式庫的實際案例收集效能資料之後，才使用物件共用。
 
-**警告： `ObjectPool`不會執行`IDisposable`。我們不建議您將它與需要處置的類型搭配使用。**
+**警告： `ObjectPool` 不會執行 `IDisposable` 。我們不建議您將它與需要處置的類型搭配使用。**
 
 **注意： ObjectPool 不會限制它所配置的物件數目，而會限制它將保留的物件數目。**
 
@@ -61,18 +61,20 @@ ObjectPool 可在應用程式中以多種方式使用：
 
 ## <a name="how-to-use-objectpool"></a>如何使用 ObjectPool
 
-呼叫<xref:Microsoft.Extensions.ObjectPool.ObjectPool`1>以取得物件，並<xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Return*>傳回物件。  您不需要傳回每個物件。 如果您未傳回物件，則會進行垃圾收集。
+呼叫 <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> 以取得物件，並傳回 <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Return*> 物件。  您不需要傳回每個物件。 如果您未傳回物件，則會進行垃圾收集。
 
 ## <a name="objectpool-sample"></a>ObjectPool 範例
 
 下列程式碼：
 
-* 將`ObjectPoolProvider`加入至相依性[插入](xref:fundamentals/dependency-injection)（DI）容器。
-* 將和設定`ObjectPool<StringBuilder>`為 DI 容器。
-* 加入`BirthdayMiddleware`。
+* 將加入至相依性 `ObjectPoolProvider` [插入](xref:fundamentals/dependency-injection)（DI）容器。
+* 將和設定 `ObjectPool<StringBuilder>` 為 DI 容器。
+* 加入 `BirthdayMiddleware` 。
 
 [!code-csharp[](ObjectPool/ObjectPoolSample/Startup.cs?name=snippet)]
 
 下列程式碼會實行`BirthdayMiddleware`
 
 [!code-csharp[](ObjectPool/ObjectPoolSample/BirthdayMiddleware.cs?name=snippet)]
+
+[!INCLUDE[request localized comments](~/includes/code-comments-loc.md)]

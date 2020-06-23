@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: a5323534cd76cfb60008636066ca5dcb7308d134
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: a54f92d1c951792e599992b82e6b6d5c85549292
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102264"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243495"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
@@ -36,9 +36,9 @@ Blazor是一種 web 架構，設計用來在[WebAssembly](https://webassembly.or
 
 ![BlazorWebAssembly： Blazor 應用程式會在瀏覽器內的 UI 執行緒上執行。](hosting-models/_static/blazor-webassembly.png)
 
-若要 Blazor 使用用戶端裝載模型來建立應用程式，請使用** Blazor WebAssembly 應用程式**範本（[dotnet new blazorwasm](/dotnet/core/tools/dotnet-new)）。
+若要 Blazor 使用用戶端裝載模型來建立應用程式，請使用** Blazor WebAssembly 應用程式**範本（ [`dotnet new blazorwasm`](/dotnet/core/tools/dotnet-new) ）。
 
-選取 [ ** Blazor WebAssembly] 應用程式**範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [ **ASP.NET Core**裝載] 核取方塊（[dotnet] [新增] [blazorwasm] [[託管](/dotnet/core/tools/dotnet-new)]）。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 BlazorWebAssembly 應用程式可以使用 Web API 呼叫或（），透過網路與伺服器 [SignalR](xref:signalr/introduction) 互動 <xref:tutorials/signalr-blazor-webassembly> 。
+選取** Blazor WebAssembly 應用程式**範本之後，您可以選擇將應用程式設定為使用 ASP.NET Core 後端，方法是選取 [ **ASP.NET Core**裝載] 核取方塊（ [`dotnet new blazorwasm --hosted`](/dotnet/core/tools/dotnet-new) ）。 ASP.NET Core 應用程式會將 Blazor 應用程式提供給用戶端。 BlazorWebAssembly 應用程式可以使用 Web API 呼叫或（），透過網路與伺服器 [SignalR](xref:signalr/introduction) 互動 <xref:tutorials/signalr-blazor-webassembly> 。
 
 這些範本包含 `blazor.webassembly.js` 處理的腳本：
 
@@ -67,7 +67,7 @@ Blazor託管應用程式模型支援[Docker 容器](/dotnet/standard/microservic
 
 ![瀏覽器會透過連接，與伺服器上的應用程式互動（裝載于 ASP.NET Core 應用程式內） SignalR 。](hosting-models/_static/blazor-server.png)
 
-若要 Blazor 使用伺服器裝載模型來建立應用程式 Blazor ，請使用 ASP.NET Core ** Blazor 伺服器應用程式**範本（[dotnet new blazorserver](/dotnet/core/tools/dotnet-new)）。 ASP.NET Core 應用程式會裝載 Blazor 伺服器應用程式，並建立 SignalR 用戶端連接的端點。
+若要 Blazor 使用伺服器裝載模型來建立應用程式 Blazor ，請使用 ASP.NET Core ** Blazor 伺服器應用程式**範本（ [`dotnet new blazorserver`](/dotnet/core/tools/dotnet-new) ）。 ASP.NET Core 應用程式會裝載 Blazor 伺服器應用程式，並建立 SignalR 用戶端連接的端點。
 
 ASP.NET Core 應用程式會參考要新增的應用程式 `Startup` 類別：
 
@@ -126,7 +126,7 @@ Blazor伺服器應用程式是以[ASP.NET Core SignalR ](xref:signalr/introducti
 
 Blazor考慮關閉瀏覽器索引標籤或流覽至外部 URL 的*正常*終止。 在正常終止的事件中，會立即釋放線路和相關聯的資源。 用戶端也可能會因為網路中斷而無法正常地中斷連線。 Blazor伺服器會儲存已中斷連線的線路，以取得可設定的間隔，以允許用戶端重新連線。
 
-Blazor伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#blazor-server-circuit-handler> 。
+Blazor伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#blazor-server-circuit-handler>。
 
 ### <a name="ui-latency"></a>UI 延遲
 
@@ -147,7 +147,7 @@ Blazor伺服器應用程式需要伺服器的使用中 SignalR 連接。 如果�
 
 Blazor伺服器應用程式會 prerenders，以回應第一個用戶端要求，這會在伺服器上設定 UI 狀態。 當用戶端嘗試建立連接時 SignalR ，用戶端必須重新連線到相同的伺服器。 Blazor使用一部以上後端伺服器的伺服器應用程式應該執行連線的*粘滯會話* SignalR 。
 
-我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。 此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。 將 SignalR 服務的選項或設定值設為，即可為 Azure 服務啟用「粘滯會話」 `ServerStickyMode` `Required` 。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/server#signalr-configuration> 。
+我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。 此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。 將 SignalR 服務的選項或設定值設為，即可為 Azure 服務啟用「粘滯會話」 `ServerStickyMode` `Required` 。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/server#signalr-configuration>。
 
 使用 IIS 時，會使用應用程式要求路由來啟用「粘滯會話」。 如需詳細資訊，請參閱[使用應用程式要求路由的 HTTP 負載平衡](/iis/extensions/configuring-application-request-routing-arr/http-load-balancing-using-application-request-routing)。
 

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: 3345f545e230ada78e6c66fc9eb049060d5794d6
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: d4ebab0d8fc2ee48fa4d9c8b1f1b8e5cbf43cab9
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "83851155"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242439"
 ---
 # <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Blazor advanced 案例
 
@@ -68,7 +68,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對伺服器線路而言是嚴重的 Blazor 。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請使用錯誤處理和記錄，將程式碼包裝在一個或多個[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。
+如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對伺服器線路而言是嚴重的 Blazor 。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 使用錯誤處理和記錄，將程式碼包裝在一或多個語句中。
 
 當線路因使用者已中斷連線而結束，而架構正在清除線路狀態時，架構會處置線路的 DI 範圍。 處置範圍會處置任何執行的線路範圍 DI 服務 <xref:System.IDisposable?displayProperty=fullName> 。 如果任何 DI 服務在處置期間擲回未處理的例外狀況，則架構會記錄例外狀況。
 
@@ -133,11 +133,11 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="sequence-numbers-relate-to-code-line-numbers-and-not-execution-order"></a>序號與程式程式碼號相關，而不是執行順序
 
-Razor元件檔案（*razor*）一律會進行編譯。 編譯是在解讀程式碼方面的潛在優勢，因為編譯步驟可以用來插入資訊，以在執行時間改善應用程式效能。
+Razor元件檔案（ `.razor` ）一律會進行編譯。 編譯是在解讀程式碼方面的潛在優勢，因為編譯步驟可以用來插入資訊，以在執行時間改善應用程式效能。
 
 這些改良功能的重要範例包括*序號*。 序號會向運行時程表示輸出來自哪些不同和已排序的程式程式碼。 執行時間會使用這項資訊，以線性時間產生有效率的樹狀差異，這比一般樹狀結構的差異演算法通常還能快得多。
 
-請考慮下列 Razor 元件（*razor*）檔案：
+請考慮下列 Razor 元件（ `.razor` ）檔案：
 
 ```razor
 @if (someFlag)
@@ -217,9 +217,9 @@ builder.AddContent(seq++, "Second");
 
 * 如果序號是動態產生的，應用程式效能會受到影響。
 * 架構無法在執行時間自動建立自己的序號，因為必要的資訊不存在，除非是在編譯時期加以捕捉。
-* 請勿撰寫長時間區塊的手動執行 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 邏輯。 偏好*razor*檔案，並允許編譯器處理序號。 如果您無法避免手動 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 邏輯，請將長塊的程式碼分割成較小的片段，以 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.OpenRegion%2A> / <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.CloseRegion%2A> 呼叫。 每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。
+* 請勿撰寫長時間區塊的手動執行 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 邏輯。 偏好使用檔案 `.razor` ，並允許編譯器處理序號。 如果您無法避免手動 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 邏輯，請將長塊的程式碼分割成較小的片段，以 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.OpenRegion%2A> / <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.CloseRegion%2A> 呼叫。 每個區域都有自己的序號個別空間，因此您可以在每個區域內從零（或任何其他任一數字）重新開機。
 * 如果序號已硬式編碼，則 diff 演算法只會要求序號增加值。 起始值和間距無關。 一個合法的選項是使用程式程式碼號做為序號，或從零開始，並以一個或數百個（或任何慣用的間隔）來增加。 
-* Blazor會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。 當使用序號時，比較速度會更快，而且 Blazor 具有可自動處理序號的編譯步驟，讓開發人員撰寫*razor*檔案。
+* Blazor會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。 使用序號時，比較速度會更快，而且 Blazor 具有可自動處理序號以開發人員撰寫檔案之編譯步驟的優點 `.razor` 。
 
 ## <a name="perform-large-data-transfers-in-blazor-server-apps"></a>在伺服器應用程式中執行大型資料傳輸 Blazor
 

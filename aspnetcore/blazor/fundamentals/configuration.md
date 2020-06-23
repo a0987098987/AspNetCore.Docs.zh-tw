@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/configuration
-ms.openlocfilehash: b43eae03c71cabbaafa2bc0d704765e89f743279
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 0e36b81d771b07e85158724c02210ee50a3ab118
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103614"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242676"
 ---
 # <a name="aspnet-core-blazor-configuration"></a>ASP.NET Core Blazor 設定
 
@@ -28,8 +28,8 @@ ms.locfileid: "85103614"
 BlazorWebAssembly 會從載入設定：
 
 * 應用程式佈建檔案（預設為）：
-  * *wwwroot/appsettings.js開啟*
-  * *wwwroot/appsettings。{環境}. json*
+  * `wwwroot/appsettings.json`
+  * `wwwroot/appsettings.{ENVIRONMENT}.json`
 * 應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。 並非所有提供者都適用于 Blazor WebAssembly apps。 澄清 Blazor [ Blazor WASM （dotnet/AspNetCore.Doc#18134）的設定提供者](https://github.com/dotnet/AspNetCore.Docs/issues/18134)，即可追蹤支援 WebAssembly 的提供者。
 
 > [!WARNING]
@@ -39,7 +39,7 @@ BlazorWebAssembly 會從載入設定：
 
 ## <a name="app-settings-configuration"></a>應用程式設定
 
-*wwwroot/appsettings.js開啟*：
+`wwwroot/appsettings.json`:
 
 ```json
 {
@@ -112,9 +112,9 @@ builder.Configuration.Add(memoryConfig);
 }
 ```
 
-若要將*wwwroot*資料夾中的其他設定檔讀取到設定中，請使用 <xref:System.Net.Http.HttpClient> 來取得檔案的內容。 使用此方法時，現有的 <xref:System.Net.Http.HttpClient> 服務註冊可以使用已建立的本機用戶端來讀取檔案，如下列範例所示：
+若要將資料夾中的其他設定檔讀取到設定中 `wwwroot` ，請使用 <xref:System.Net.Http.HttpClient> 來取得檔案的內容。 使用此方法時，現有的 <xref:System.Net.Http.HttpClient> 服務註冊可以使用已建立的本機用戶端來讀取檔案，如下列範例所示：
 
-*wwwroot/cars.js開啟*：
+`wwwroot/cars.json`:
 
 ```json
 {
@@ -144,7 +144,7 @@ builder.Configuration.AddJsonStream(stream);
 
 ## <a name="authentication-configuration"></a>驗證設定
 
-*wwwroot/appsettings.js開啟*：
+`wwwroot/appsettings.json`:
 
 ```json
 {
@@ -164,13 +164,13 @@ builder.Services.AddOidcAuthentication(options =>
 
 ## <a name="logging-configuration"></a>記錄設定
 
-新增[Microsoft.Extensions.Logging.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Configuration/)的套件參考：
+新增的套件參考 [`Microsoft.Extensions.Logging.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Configuration/) ：
 
 ```xml
 <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="{VERSION}" />
 ```
 
-*wwwroot/appsettings.js開啟*：
+`wwwroot/appsettings.json`:
 
 ```json
 {
@@ -208,6 +208,6 @@ var hostname = builder.Configuration["HostName"];
 系統會快取設定檔以供離線使用。 使用[漸進式 Web 應用程式（pwa）](xref:blazor/progressive-web-app)，您只能在建立新的部署時更新設定檔。 在部署之間編輯設定檔沒有任何作用，因為：
 
 * 使用者有檔案的快取版本，這些檔案會繼續使用。
-* PWA 的*service-worker.js*和*service-worker-assets.js*檔案必須在編譯時重建，這會在使用者下一次線上流覽應用程式，以重新部署應用程式。
+* 在 `service-worker.js` 編譯時，PWA 的和檔案 `service-worker-assets.js` 必須重建，在使用者下一次線上流覽應用程式時，請造訪應用程式已重新部署。
 
 如需 Pwa 如何處理背景更新的詳細資訊，請參閱 <xref:blazor/progressive-web-app#background-updates> 。

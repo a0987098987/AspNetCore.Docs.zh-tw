@@ -13,31 +13,32 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 19e10c4eced47676c633a7d30a26726913373162
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: db1f6a357f63b405bf2f3b98e51c9aeffda97d66
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102426"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242520"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
 
 By [Luke Latham](https://github.com/guardrex)、 [Daniel Roth](https://github.com/danroth27)和[Juan De la Cruz](https://github.com/juandelacruz23)
 
+> [!NOTE]
+> 本主題適用于 Blazor WebAssembly。 [ Blazor 伺服器](xref:blazor/hosting-models#blazor-server)應用程式會使用實例呼叫 web api <xref:System.Net.Http.HttpClient> ，通常是使用來建立 <xref:System.Net.Http.IHttpClientFactory> 。 如需適用于伺服器的指引 Blazor ，請參閱 <xref:fundamentals/http-requests> 。
+
 [ Blazor WebAssembly](xref:blazor/hosting-models#blazor-webassembly) apps 會使用預先設定的服務來呼叫 web api <xref:System.Net.Http.HttpClient> 。 撰寫要求，其中可以包含 JavaScript[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)選項、使用 Blazor JSON helper 或搭配 <xref:System.Net.Http.HttpRequestMessage> 。 <xref:System.Net.Http.HttpClient>WebAssembly apps 中的服務著重于向 Blazor 原始伺服器提出要求。 本主題中的指導方針僅適用于 Blazor WebAssembly apps。
 
-[ Blazor 伺服器](xref:blazor/hosting-models#blazor-server)應用程式會使用實例呼叫 web api <xref:System.Net.Http.HttpClient> ，通常是使用來建立 <xref:System.Net.Http.IHttpClientFactory> 。 本主題中的指導方針與 Blazor 伺服器應用程式無關。 開發 Blazor 伺服器應用程式時，請遵循中的指導方針 <xref:fundamentals/http-requests> 。
+[View or 下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)）：選取 `BlazorWebAssemblySample` 應用程式。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)（[如何下載](xref:index#how-to-download-a-sample)）：選取*BlazorWebAssemblySample*應用程式。
+請參閱範例應用程式中的下列元件 `BlazorWebAssemblySample` ：
 
-請參閱*BlazorWebAssemblySample*範例應用程式中的下列元件：
-
-* 呼叫 Web API （*Pages/CallWebAPI. razor*）
-* HTTP 要求測試器（*元件/HTTPRequestTester razor*）
+* 呼叫 Web API （ `Pages/CallWebAPI.razor` ）
+* HTTP 要求測試器（ `Components/HTTPRequestTester.razor` ）
 
 ## <a name="packages"></a>套件
 
-在專案檔中參考 NuGet 套件[上的System.Net.Http.Js](https://www.nuget.org/packages/System.Net.Http.Json/) 。
+參考 [`System.Net.Http.Json`](https://www.nuget.org/packages/System.Net.Http.Json/) 專案檔中的 NuGet 套件。
 
 ## <a name="add-the-httpclient-service"></a>新增 HttpClient 服務
 
@@ -53,9 +54,9 @@ builder.Services.AddTransient(sp =>
 
 ## <a name="httpclient-and-json-helpers"></a>HttpClient 和 JSON 協助程式
 
-在 Blazor WebAssembly 應用程式中[，HttpClient](xref:fundamentals/http-requests)會當做預先設定的服務提供，以便向源伺服器提出要求。
+在 Blazor WebAssembly 應用程式中，會以預先設定的 [`HttpClient`](xref:fundamentals/http-requests) 服務形式提供，讓要求回到源伺服器。
 
-Blazor伺服器應用程式預設不會包含 <xref:System.Net.Http.HttpClient> 服務。 <xref:System.Net.Http.HttpClient>使用[HttpClient factory 基礎結構](xref:fundamentals/http-requests)，將提供給應用程式。
+Blazor伺服器應用程式預設不會包含 <xref:System.Net.Http.HttpClient> 服務。 <xref:System.Net.Http.HttpClient>使用[ `HttpClient` factory 基礎結構](xref:fundamentals/http-requests)，將提供給應用程式。
 
 <xref:System.Net.Http.HttpClient>和 JSON 協助程式也用來呼叫協力廠商 Web API 端點。 <xref:System.Net.Http.HttpClient>會使用瀏覽器[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)來執行，並受限於其限制，包括強制執行相同的來源原則。
 
@@ -85,7 +86,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 * <xref:System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsync%2A>：傳送 HTTP GET 要求，並剖析 JSON 回應主體以建立物件。
 
-  在下列程式碼中， `todoItems` 元件會顯示。 `GetTodoItems`當元件完成呈現（[OnInitializedAsync](xref:blazor/components/lifecycle#component-initialization-methods)）時，就會觸發方法。 如需完整範例，請參閱範例應用程式。
+  在下列程式碼中， `todoItems` 元件會顯示。 `GetTodoItems`當元件完成呈現（）時，就會觸發方法 [`OnInitializedAsync`](xref:blazor/components/lifecycle#component-initialization-methods) 。 如需完整範例，請參閱範例應用程式。
 
   ```razor
   @using System.Net.Http
@@ -181,16 +182,16 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
 
 <xref:System.Net.Http.IHttpClientFactory>支援服務和名為的設定 <xref:System.Net.Http.HttpClient> 。
 
-參考專案檔中的 [ [HTTP.sys](https://www.nuget.org/packages/Microsoft.Extensions.Http/) ] NuGet 套件。
+參考 [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http/) 專案檔中的 NuGet 套件。
 
-`Program.Main`（*Program.cs*）：
+`Program.Main` (`Program.cs`):
 
 ```csharp
 builder.Services.AddHttpClient("ServerAPI", client => 
     client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
 ```
 
-`FetchData`元件（*Pages/FetchData. razor*）：
+`FetchData`component （ `Pages/FetchData.razor` ）：
 
 ```razor
 @inject IHttpClientFactory ClientFactory
@@ -214,7 +215,7 @@ builder.Services.AddHttpClient("ServerAPI", client =>
 
 型別會 <xref:System.Net.Http.HttpClient> 使用一個或多個應用程式的 <xref:System.Net.Http.HttpClient> 實例（預設或名為），從一或多個 Web API 端點傳回資料。
 
-*WeatherForecastClient.cs*：
+`WeatherForecastClient.cs`:
 
 ```csharp
 using System.Net.Http;
@@ -249,7 +250,7 @@ public class WeatherForecastClient
 }
 ```
 
-`Program.Main`（*Program.cs*）：
+`Program.Main` (`Program.cs`):
 
 ```csharp
 builder.Services.AddHttpClient<WeatherForecastClient>(client => 
@@ -258,7 +259,7 @@ builder.Services.AddHttpClient<WeatherForecastClient>(client =>
 
 元件會插入具類型的 <xref:System.Net.Http.HttpClient> 以呼叫 Web API。
 
-`FetchData`元件（*Pages/FetchData. razor*）：
+`FetchData`component （ `Pages/FetchData.razor` ）：
 
 ```razor
 @inject WeatherForecastClient Client
@@ -303,13 +304,13 @@ protected override async Task OnInitializedAsync()
 > [!NOTE]
 > 上述範例是為了示範之用。 即使端點不存在，或伺服器上發生未處理的例外，您也可以將 Web API 伺服器應用程式設定為傳回 JSON。
 
-如需詳細資訊，請參閱 <xref:blazor/fundamentals/handle-errors> 。
+如需詳細資訊，請參閱 <xref:blazor/fundamentals/handle-errors>。
 
 ## <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享（CORS）
 
 瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制稱為「*相同來源原則*」。 相同來源的原則可防止惡意網站從另一個網站讀取敏感性資料。 若要將來自瀏覽器的要求傳送至具有不同來源的端點，*端點*必須啟用[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)。
 
-[ Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（*Pages/CallWebAPI RAZOR*）中使用 CORS。
+[ Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（）中使用 CORS `Pages/CallWebAPI.razor` 。
 
 若要允許其他網站對您的應用程式進行跨原始來源資源分享（CORS）要求，請參閱 <xref:security/cors> 。
 

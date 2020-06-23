@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: 99ebe43da191153aa98cce6bae8fe98035bc7d6f
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: ed49ba13842f2b5805250d8c12535397c542cfd4
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103766"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242871"
 ---
 # <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a>Azure AD 群組、系統管理角色和使用者定義的角色
 
@@ -45,7 +45,7 @@ Azure Active Directory （AAD）提供數個可與 ASP.NET Core 結合的授權�
 若要在 Azure 入口網站中設定應用程式以提供 `groups` 成員資格宣告，請參閱下列 Azure 文章。 將使用者指派給使用者定義的 AAD 群組和內建的系統管理角色。
 
 * [使用 Azure AD 安全性群組的角色](/azure/architecture/multitenant-identity/app-roles#roles-using-azure-ad-security-groups)
-* [groupMembershipClaims 屬性](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
+* [`groupMembershipClaims`特性](/azure/active-directory/develop/reference-app-manifest#groupmembershipclaims-attribute)
 
 下列範例假設已將使用者指派給 AAD 內建*計費管理員*角色。
 
@@ -53,7 +53,7 @@ AAD 所傳送的單一宣告會將 `groups` 使用者的群組和角色顯示為
 
 擴充 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.RemoteUserAccount> 以包含群組和角色的陣列屬性。
 
-*CustomUserAccount.cs*：
+`CustomUserAccount.cs`:
 
 ```csharp
 using System.Text.Json.Serialization;
@@ -115,7 +115,7 @@ public class CustomUserFactory
 
 不需要提供程式碼來移除原始宣告， `groups` 因為架構會自動移除該宣告。
 
-在 `Program.Main` 託管解決方案的獨立應用程式或用戶端應用程式的（*Program.cs*）中註冊 factory：
+在裝載解決方案的 `Program.Main` `Program.cs` 獨立應用程式或用戶端應用程式的（）中註冊 factory：
 
 ```csharp
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, 
@@ -145,7 +145,7 @@ builder.Services.AddAuthorizationCore(options =>
 
 在下列範例中，應用程式會使用上述原則來授權使用者。
 
-[AuthorizeView 元件](xref:blazor/security/index#authorizeview-component)適用于下列原則：
+此[ `AuthorizeView` 元件](xref:blazor/security/index#authorizeview-component)可與原則搭配運作：
 
 ```razor
 <AuthorizeView Policy="BillingAdministrator">
@@ -245,7 +245,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 此時，元件授權方法會正常運作。 元件中的任何授權機制都可以使用 `admin` 角色來授權使用者：
 
-* [AuthorizeView 元件](xref:blazor/security/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）
+* [ `AuthorizeView` 元件](xref:blazor/security/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）
 * [ `[Authorize]` attribute](xref:blazor/security/index#authorize-attribute)指示詞（ <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ）（範例： `@attribute [Authorize(Roles = "admin")]` ）
 * 程式[邏輯](xref:blazor/security/index#procedural-logic)（範例： `if (user.IsInRole("admin")) { ... }` ）
 

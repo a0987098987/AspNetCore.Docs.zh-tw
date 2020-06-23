@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 0fdc88e8e50856fcc4da0beb74f03925ae24401e
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 8251658a2bb99ec17424ec26b8a44171082fab05
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103758"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85243462"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Blazor使用伺服器保護 ASP.NET Core WebAssembly 託管應用程式 Identity
 
@@ -30,7 +30,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 在 Visual Studio 中：
 
-1. 建立新的** Blazor WebAssembly**應用程式。 如需詳細資訊，請參閱 <xref:blazor/get-started> 。
+1. 建立新的** Blazor WebAssembly**應用程式。 如需詳細資訊，請參閱 <xref:blazor/get-started>。
 1. 在 [**建立新的 Blazor 應用程式**] 對話方塊中，選取 [**驗證**] 區段中的 [**變更**]。
 1. 選取 [**個別使用者帳戶**]，後面接著 **[確定]**。
 1. 選取 [ **Advanced** ] 區段中的 [ **ASP.NET Core 託管**] 核取方塊。
@@ -118,21 +118,21 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="weatherforecastcontroller"></a>WeatherForecastController
 
-在 `WeatherForecastController` （*控制器/WeatherForecastController*）中， [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性會套用至類別。 屬性會指出使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置，這是由所設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 。 Helper 方法會將設定 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 為應用程式要求的預設處理常式。
+在 `WeatherForecastController` （ `Controllers/WeatherForecastController.cs` ）中， [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性會套用至類別。 屬性會指出使用者必須根據預設原則來存取資源。 預設的授權原則會設定為使用預設的驗證配置，這是由所設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 。 Helper 方法會將設定 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 為應用程式要求的預設處理常式。
 
 ### <a name="applicationdbcontext"></a>[ApplicationdbcoNtext]
 
-在 `ApplicationDbContext` （*Data/[applicationdbcoNtext] .cs*）中，會 <xref:Microsoft.EntityFrameworkCore.DbContext> 延伸 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 以包含 IdentityServer 的架構。 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。
+在 `ApplicationDbContext` （ `Data/ApplicationDbContext.cs` ）中，會 <xref:Microsoft.EntityFrameworkCore.DbContext> 擴充 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 以包含 IdentityServer 的架構。 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。
 
 若要取得資料庫架構的完整控制權，請從其中一個可用的類別繼承， Identity <xref:Microsoft.EntityFrameworkCore.DbContext> 並透過 Identity `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` 在方法中呼叫來設定內容以包含架構 <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A> 。
 
 ### <a name="oidcconfigurationcontroller"></a>OidcConfigurationController
 
-在 `OidcConfigurationController` （*控制器/OidcConfigurationController*）中，會布建用戶端端點來提供 OIDC 參數。
+在 `OidcConfigurationController` （ `Controllers/OidcConfigurationController.cs` ）中，會布建用戶端端點來提供 OIDC 參數。
 
 ### <a name="app-settings-files"></a>應用程式佈建檔案
 
-在專案根目錄的應用程式佈建檔案（*appsettings.js*）中， `IdentityServer` 一節會描述已設定的用戶端清單。 在下列範例中，有一個用戶端。 用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId` 參數。 此設定檔會指出正在設定的應用程式類型。 此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。 <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
+在專案根目錄的應用程式佈建檔案（ `appsettings.json` ）中， `IdentityServer` 區段會描述已設定的用戶端清單。 在下列範例中，有一個用戶端。 用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId` 參數。 此設定檔會指出正在設定的應用程式類型。 此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。 <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 
 ```json
 "IdentityServer": {
@@ -150,7 +150,7 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="authentication-package"></a>驗證套件
 
-建立應用程式以使用個別使用者帳戶（）時 `Individual` ，應用程式會在應用程式的專案檔中自動接收[WebAssembly 的 AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
+建立應用程式以使用個別使用者帳戶（）時 `Individual` ，應用程式會 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 在應用程式的專案檔中自動接收套件的套件參考。 封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。
 
 如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：
 
@@ -162,7 +162,7 @@ dotnet new blazorwasm -au Individual -ho
 
 ### <a name="api-authorization-support"></a>API 授權支援
 
-驗證使用者的支援是透過[WebAssembly 在 AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/)中提供的擴充方法插入服務容器中。 這個方法會設定應用程式所需的服務，以與現有的授權系統互動。
+驗證使用者的支援是由套件內提供的擴充方法插入服務容器中 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 。 這個方法會設定應用程式所需的服務，以與現有的授權系統互動。
 
 ```csharp
 builder.Services.AddApiAuthorization();
@@ -188,7 +188,7 @@ builder.Services.AddApiAuthorization();
 
 ### <a name="logindisplay-component"></a>LoginDisplay 元件
 
-`LoginDisplay`元件（*Shared/LoginDisplay*）會在 `MainLayout` 元件（*shared/MainLayout*）中轉譯，並管理下列行為：
+`LoginDisplay`元件（ `Shared/LoginDisplay.razor` ）會在 `MainLayout` 元件（）中轉譯 `Shared/MainLayout.razor` ，並管理下列行為：
 
 * 針對已驗證的使用者：
   * 顯示目前的使用者名稱。
@@ -247,7 +247,7 @@ builder.Services.AddApiAuthorization();
 
 在用戶端應用程式中，建立自訂的使用者 factory。 Identity伺服器會在單一宣告中以 JSON 陣列的形式傳送多個角色 `role` 。 單一角色會當做宣告中的字串值來傳送。 Factory 會 `role` 針對每個使用者角色建立個別的宣告。
 
-*CustomUserFactory.cs*：
+`CustomUserFactory.cs`:
 
 ```csharp
 using System.Linq;
@@ -307,7 +307,7 @@ public class CustomUserFactory
 }
 ```
 
-在用戶端應用程式中，于 `Program.Main` （*Program.cs*）中註冊 factory：
+在用戶端應用程式中，于（）中註冊 factory `Program.Main` `Program.cs` ：
 
 ```csharp
 builder.Services.AddApiAuthorization()
@@ -362,7 +362,7 @@ JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 
 在伺服器應用程式中，建立一個 `ProfileService` 執行。
 
-*ProfileService.cs*：
+`ProfileService.cs`:
 
 ```csharp
 using IdentityModel;
@@ -408,7 +408,7 @@ services.AddTransient<IProfileService, ProfileService>();
 
 在用戶端應用程式中，元件授權方法會在此時運作。 元件中的任何授權機制都可以使用角色來授權使用者：
 
-* [AuthorizeView 元件](xref:blazor/security/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）
+* [ `AuthorizeView` 元件](xref:blazor/security/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）
 * [ `[Authorize]` attribute](xref:blazor/security/index#authorize-attribute)指示詞（ <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ）（範例： `@attribute [Authorize(Roles = "admin")]` ）
 * 程式[邏輯](xref:blazor/security/index#procedural-logic)（範例： `if (user.IsInRole("admin")) { ... }` ）
 

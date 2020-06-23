@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/handle-errors
-ms.openlocfilehash: f0362fbce7f1fafb413d526809ec9191c603e494
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: e777991f4cbfd22b441fb198144bbdf023b4df6b
+ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103612"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85242780"
 ---
 # <a name="handle-errors-in-aspnet-core-blazor-apps"></a>處理 ASP.NET Core 應用程式中的錯誤 Blazor
 
@@ -35,7 +35,7 @@ ms.locfileid: "85103612"
 
 此錯誤處理體驗的 UI 是專案範本的一部分 Blazor 。
 
-在 Blazor WebAssembly 應用程式中，自訂*wwwroot/index.html*檔案中的體驗：
+在 Blazor WebAssembly 應用程式中，自訂檔案中的體驗 `wwwroot/index.html` ：
 
 ```html
 <div id="blazor-error-ui">
@@ -45,7 +45,7 @@ ms.locfileid: "85103612"
 </div>
 ```
 
-在 Blazor 伺服器應用程式中，自訂*Pages/_Host. cshtml*檔案中的體驗：
+在 Blazor 伺服器應用程式中，自訂檔案中的體驗 `Pages/_Host.cshtml` ：
 
 ```cshtml
 <div id="blazor-error-ui">
@@ -60,7 +60,7 @@ ms.locfileid: "85103612"
 </div>
 ```
 
-專案 `blazor-error-ui` 是由範本中包含的樣式 Blazor （*wwwroot/css/.css*）所隱藏，然後在發生錯誤時顯示：
+`blazor-error-ui`元素是由範本中包含的樣式 Blazor （）所隱藏 `wwwroot/css/site.css` ，然後在發生錯誤時顯示：
 
 ```css
 #blazor-error-ui {
@@ -111,13 +111,13 @@ Blazor將大部分未處理的例外狀況視為發生的嚴重錯誤。 如果�
 
 ## <a name="log-errors-with-a-persistent-provider"></a>使用持續性提供者記錄錯誤
 
-如果發生未處理的例外狀況，則會將例外狀況記錄到 <xref:Microsoft.Extensions.Logging.ILogger> 服務容器中設定的實例。 根據預設， Blazor 應用程式會使用主控台記錄提供者來記錄主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index> 。
+如果發生未處理的例外狀況，則會將例外狀況記錄到 <xref:Microsoft.Extensions.Logging.ILogger> 服務容器中設定的實例。 根據預設， Blazor 應用程式會使用主控台記錄提供者來記錄主控台輸出。 請考慮使用可記錄管理大小和記錄輪替的提供者，記錄到更永久的位置。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
 
-在開發期間， Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱 <xref:fundamentals/error-handling> 。
+在開發期間， Blazor 通常會將例外狀況的完整詳細資料傳送至瀏覽器的主控台，以協助進行偵錯工具。 在生產環境中，瀏覽器主控台中的詳細錯誤預設為停用，這表示錯誤不會傳送至用戶端，但例外狀況的完整詳細資料仍會記錄在伺服器端。 如需詳細資訊，請參閱 <xref:fundamentals/error-handling>。
 
 您必須決定要記錄哪些事件，以及記錄事件的嚴重性層級。 惡意的使用者可能可以故意觸發錯誤。 例如，請勿從 `ProductId` 顯示產品詳細資料之元件的 URL 中提供不明的錯誤中記錄事件。 並非所有錯誤都應該視為高嚴重性事件以進行記錄。
 
-如需詳細資訊，請參閱 <xref:blazor/fundamentals/logging> 。
+如需詳細資訊，請參閱 <xref:blazor/fundamentals/logging>。
 
 ## <a name="places-where-errors-may-occur"></a>可能發生錯誤的位置
 
@@ -140,7 +140,7 @@ Blazor將大部分未處理的例外狀況視為發生的嚴重錯誤。 如果�
 * 會叫用元件的函式。
 * 系統會叫用透過指示詞或屬性提供給元件之函式的任何非 singleton DI 服務的函式 [`@inject`](xref:mvc/views/razor#inject) [`[Inject]`](xref:blazor/fundamentals/dependency-injection#request-a-service-in-a-component) 。
 
-Blazor當任何執行的函式或任何屬性的 setter 擲回 `[Inject]` 未處理的例外狀況時，伺服器線路就會失敗。 例外狀況是嚴重的，因為架構無法具現化元件。 如果函式邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄功能的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
+Blazor當任何執行的函式或任何屬性的 setter 擲回 `[Inject]` 未處理的例外狀況時，伺服器線路就會失敗。 例外狀況是嚴重的，因為架構無法具現化元件。 如果函式邏輯可能會擲回例外狀況，則應用程式應該使用 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 具有錯誤處理和記錄的語句來捕捉例外狀況。
 
 ### <a name="lifecycle-methods"></a>生命週期方法
 
@@ -155,7 +155,7 @@ Blazor當任何執行的函式或任何屬性的 setter 擲回 `[Inject]` 未處
 
 在下列範例中，會 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> 呼叫方法來取得產品：
 
-* 方法中擲回的例外狀況 `ProductRepository.GetProductByIdAsync` 是由[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句處理。
+* 方法中擲回的例外狀況 `ProductRepository.GetProductByIdAsync` 是由 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 語句處理。
 * `catch`執行區塊時：
   * `loadFailed`設定為 `true` ，用來向使用者顯示錯誤訊息。
   * 會記錄錯誤。
@@ -185,7 +185,7 @@ Blazor當任何執行的函式或任何屬性的 setter 擲回 `[Inject]` 未處
 
 在這些情況下，事件處理常式程式碼可能會擲回未處理的例外狀況。
 
-如果事件處理常式擲回未處理的例外狀況（例如，資料庫查詢失敗），則例外狀況對伺服器線路而言是嚴重的 Blazor 。 如果應用程式呼叫可能因外部原因而失敗的程式碼，請使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來設陷例外狀況。
+如果事件處理常式擲回未處理的例外狀況（例如，資料庫查詢失敗），則例外狀況對伺服器線路而言是嚴重的 Blazor 。 如果應用程式呼叫可能因外部原因而失敗的程式碼，請使用 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 具有錯誤處理和記錄的語句來設陷例外狀況。
 
 如果使用者程式碼不會陷印並處理例外狀況，則架構會記錄例外狀況並終止線路。
 
@@ -193,7 +193,7 @@ Blazor當任何執行的函式或任何屬性的 setter 擲回 `[Inject]` 未處
 
 例如，元件可能會從 UI 移除，因為使用者已流覽至另一個頁面。 當執行的元件 <xref:System.IDisposable?displayProperty=fullName> 從 UI 中移除時，架構會呼叫元件的 <xref:System.IDisposable.Dispose%2A> 方法。
 
-如果元件的方法擲回 `Dispose` 未處理的例外狀況，則例外狀況對伺服器線路而言是嚴重的 Blazor 。 如果處置邏輯可能會擲回例外狀況，則應用程式應該使用具有錯誤處理和記錄的[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句來捕捉例外狀況。
+如果元件的方法擲回 `Dispose` 未處理的例外狀況，則例外狀況對伺服器線路而言是嚴重的 Blazor 。 如果處置邏輯可能會擲回例外狀況，則應用程式應該使用 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 具有錯誤處理和記錄的語句來捕捉例外狀況。
 
 如需有關元件處置的詳細資訊，請參閱 <xref:blazor/components/lifecycle#component-disposal-with-idisposable> 。
 
@@ -204,10 +204,10 @@ Blazor當任何執行的函式或任何屬性的 setter 擲回 `[Inject]` 未處
 下列條件適用于使用的錯誤處理 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> ：
 
 * 如果對的呼叫 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> 同步失敗，就會發生 .net 例外狀況。 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>例如，對的呼叫可能會失敗，因為無法序列化提供的引數。 開發人員程式碼必須攔截例外狀況。 如果事件處理常式或元件生命週期方法中的應用程式程式碼不會處理例外狀況，則產生的例外狀況對伺服器線路而言是嚴重的 Blazor 。
-* 如果的呼叫 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> 非同步失敗，.net 就 <xref:System.Threading.Tasks.Task> 會失敗。 例如，對的呼叫 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> 可能會失敗，因為 JavaScript 端程式碼會擲回例外狀況，或傳回以 `Promise` 形式完成的 `rejected` 。 開發人員程式碼必須攔截例外狀況。 如果使用[await](/dotnet/csharp/language-reference/keywords/await)運算子，請考慮將方法呼叫包裝在含有錯誤處理和記錄的[try catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中。 否則，失敗的程式碼會導致伺服器線路嚴重的未處理例外狀況 Blazor 。
+* 如果的呼叫 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> 非同步失敗，.net 就 <xref:System.Threading.Tasks.Task> 會失敗。 例如，對的呼叫 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> 可能會失敗，因為 JavaScript 端程式碼會擲回例外狀況，或傳回以 `Promise` 形式完成的 `rejected` 。 開發人員程式碼必須攔截例外狀況。 如果使用 [`await`](/dotnet/csharp/language-reference/keywords/await) 運算子，請考慮將方法呼叫包裝在 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 具有錯誤處理和記錄的語句中。 否則，失敗的程式碼會導致伺服器線路嚴重的未處理例外狀況 Blazor 。
 * 根據預設，的呼叫 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A> 必須在特定期間內完成，否則呼叫會超時。預設的超時時間為一分鐘。 Timeout 會保護程式碼不會遺失網路連線，或永遠不會傳回完成訊息的 JavaScript 程式碼。 如果呼叫超時，則產生的 <xref:System.Threading.Tasks> 會失敗並出現 <xref:System.OperationCanceledException> 。 使用記錄來設陷並處理例外狀況。
 
-同樣地，JavaScript 程式碼可能會起始對 [ [`[JSInvokable]`](xref:Microsoft.JSInterop.JSInvokableAttribute) ] （x： blazor/call-dotnet）屬性所指示的 .net 方法的呼叫。 如果這些 .NET 方法擲回未處理的例外狀況：
+同樣地，JavaScript 程式碼可能會起始對屬性所指示之 .NET 方法的呼叫 [`[JSInvokable]`](xref:blazor/call-dotnet-from-javascript) 。 如果這些 .NET 方法擲回未處理的例外狀況：
 
 * 此例外狀況不會被視為伺服器迴圈的嚴重錯誤 Blazor 。
 * JavaScript 端 `Promise` 遭到拒絕。
@@ -234,7 +234,7 @@ Blazor元件可以使用[元件標記](xref:mvc/views/tag-helpers/builtin-th/com
 
 在一般情況下，如果無法轉譯，則繼續建立並轉譯元件並沒有意義，因為無法轉譯運作中的元件。
 
-若要容忍在自動處理期間可能發生的錯誤，錯誤處理邏輯必須放在可能會擲回例外狀況的元件內部。 使用[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句搭配錯誤處理和記錄。 不要將標記協助 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper> 套裝程式裝在[try-catch](/dotnet/csharp/language-reference/keywords/try-catch)語句中，而是將錯誤處理邏輯放在標記協助程式所呈現的元件中 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper> 。
+若要容忍在自動處理期間可能發生的錯誤，錯誤處理邏輯必須放在可能會擲回例外狀況的元件內部。 使用 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 語句搭配錯誤處理和記錄。 不要將標記協助套裝程式裝 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper> 在語句中，而是 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 將錯誤處理邏輯放在標記協助程式所轉譯的元件中 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper> 。
 
 ## <a name="advanced-scenarios"></a>進階案例
 
@@ -262,7 +262,7 @@ Blazor元件可以使用[元件標記](xref:mvc/views/tag-helpers/builtin-th/com
 
 ### <a name="custom-render-tree-logic"></a>自訂呈現樹狀結構邏輯
 
-大部分 Blazor 的元件會實作為*razor*檔案，並且會進行編譯，以產生在上操作 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 以轉譯其輸出的邏輯。 開發人員可以使用程式 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> c # 程式碼手動執行邏輯。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#manual-rendertreebuilder-logic> 。
+大部分 Blazor 的元件會實作為檔案 `.razor` ，並且會進行編譯，以產生在上操作 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> 以轉譯其輸出的邏輯。 開發人員可以使用程式 <xref:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder> c # 程式碼手動執行邏輯。 如需詳細資訊，請參閱 <xref:blazor/advanced-scenarios#manual-rendertreebuilder-logic>。
 
 > [!WARNING]
 > 手動轉譯樹狀結構產生器邏輯的使用會被視為先進且不安全的案例，不建議用於一般元件開發。

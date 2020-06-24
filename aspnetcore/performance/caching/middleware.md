@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 2ee75b1af9ffc23ff9ae1763059364de3ec8f426
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 93ac4e7e159f2b1f031e48a44c2297a741ba7b1c
+ms.sourcegitcommit: 5e462c3328c70f95969d02adce9c71592049f54c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106503"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85292642"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core 中的回應快取中介軟體
 
@@ -30,7 +30,7 @@ ms.locfileid: "84106503"
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 回應快取中介軟體可透過共用架構隱含地用於 ASP.NET Core 應用程式。
 
@@ -40,7 +40,10 @@ ms.locfileid: "84106503"
 
 將應用程式設定為使用中介軟體搭配 <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching*> 擴充方法，這會將中介軟體新增至中的要求處理管線 `Startup.Configure` ：
 
-[!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=16)]
+[!code-csharp[](middleware/samples/3.x/ResponseCachingMiddleware/Startup.cs?name=snippet2&highlight=17)]
+
+> [!WARNING]
+> <xref:Owin.CorsExtensions.UseCors%2A><xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A>使用[CORS 中介軟體](xref:security/cors)之前，必須先呼叫。
 
 範例應用程式會新增標頭，以在後續要求中控制快取：
 
@@ -66,7 +69,7 @@ ms.locfileid: "84106503"
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 |
-| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> | 決定是否在區分大小寫的路徑上快取回應。 預設值為 `false`。 |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> | 決定是否在區分大小寫的路徑上快取回應。 預設值是 `false`。 |
 
 下列範例會將中介軟體設定為：
 
@@ -102,7 +105,7 @@ if (responseCachingFeature != null)
 
 下表提供會影響回應快取的 HTTP 標頭資訊。
 
-| Header | 詳細資料 |
+| 頁首 | 詳細資料 |
 | ------ | ------- |
 | `Authorization` | 如果標頭存在，則不會快取回應。 |
 | `Cache-Control` | 中介軟體只會考慮以 cache 指示詞標示的快取回應 `public` 。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>must-revalidate</li><li>no-cache</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果沒有指定任何限制 `max-stale` ，中介軟體就不會採取任何動作。<br>&#8225;與 `proxy-revalidate` 具有相同的效果 `must-revalidate` 。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 |
@@ -174,7 +177,7 @@ if (responseCachingFeature != null)
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/performance/caching/middleware/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 使用[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)，或將套件參考新增至[AspNetCore. ResponseCaching](https://www.nuget.org/packages/Microsoft.AspNetCore.ResponseCaching/)套件。
 
@@ -210,7 +213,7 @@ if (responseCachingFeature != null)
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 |
-| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> | 決定是否在區分大小寫的路徑上快取回應。 預設值為 `false`。 |
+| <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.UseCaseSensitivePaths> | 決定是否在區分大小寫的路徑上快取回應。 預設值是 `false`。 |
 
 下列範例會將中介軟體設定為：
 
@@ -246,7 +249,7 @@ if (responseCachingFeature != null)
 
 下表提供會影響回應快取的 HTTP 標頭資訊。
 
-| Header | 詳細資料 |
+| 頁首 | 詳細資料 |
 | ------ | ------- |
 | `Authorization` | 如果標頭存在，則不會快取回應。 |
 | `Cache-Control` | 中介軟體只會考慮以 cache 指示詞標示的快取回應 `public` 。 使用下列參數來控制快取：<ul><li>最大壽命</li><li>最大-過時&#8224;</li><li>最小-全新</li><li>must-revalidate</li><li>no-cache</li><li>否-存放區</li><li>僅限-快取</li><li>private</li><li>public</li><li>s-maxage</li><li>proxy-重新驗證&#8225;</li></ul>&#8224;如果沒有指定任何限制 `max-stale` ，中介軟體就不會採取任何動作。<br>&#8225;與 `proxy-revalidate` 具有相同的效果 `must-revalidate` 。<br><br>如需詳細資訊，請參閱[RFC 7231：要求](https://tools.ietf.org/html/rfc7234#section-5.2.1)快取控制指示詞。 |

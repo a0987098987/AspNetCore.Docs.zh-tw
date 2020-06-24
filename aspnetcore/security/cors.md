@@ -12,12 +12,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: a78aff2d2e16f36ed034e6af110d7ed763271583
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 1a52a2425eeba2bc62253e96fe6d2465562c154e
+ms.sourcegitcommit: 5e462c3328c70f95969d02adce9c71592049f54c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105749"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85292759"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨原始來源要求（CORS）
 
@@ -64,6 +64,9 @@ ms.locfileid: "84105749"
 
 將[[EnableCors]](#attr)屬性與已命名的原則搭配使用，可在限制支援 CORS 的端點時提供最精細的控制。
 
+> [!WARNING]
+> <xref:Owin.CorsExtensions.UseCors%2A>在使用之前，必須先呼叫 <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> `UseResponseCaching` 。
+
 下列各節將詳細說明每一種方法。
 
 <a name="np"></a>
@@ -72,7 +75,7 @@ ms.locfileid: "84105749"
 
 CORS 中介軟體會處理跨原始來源要求。 下列程式碼會將 CORS 原則套用至具有指定來源的所有應用程式端點：
 
-[!code-csharp[](cors/3.1sample/Cors/WebAPI/Startup.cs?name=snippet&highlight=3,9,31)]
+[!code-csharp[](cors/3.1sample/Cors/WebAPI/Startup.cs?name=snippet&highlight=3,9,32)]
 
 上述程式碼：
 
@@ -80,6 +83,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會將 CORS �
 * 呼叫 <xref:Microsoft.AspNetCore.Builder.CorsMiddlewareExtensions.UseCors*> 擴充方法，並指定 `_myAllowSpecificOrigins` CORS 原則。 `UseCors`新增 CORS 中介軟體。 對的呼叫 `UseCors` 必須放在之後 `UseRouting` （但之前） `UseAuthorization` 。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#middleware-order)。
 * <xref:Microsoft.Extensions.DependencyInjection.CorsServiceCollectionExtensions.AddCors*>使用[lambda 運算式](/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)的呼叫。 Lambda 會接受 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder> 物件。 [Configuration options](#cors-policy-options) `WithOrigins` 這篇文章稍後會說明設定選項，例如。
 * 啟用 `_myAllowSpecificOrigins` 所有控制器端點的 CORS 原則。 請參閱[端點路由](#ecors)以將 CORS 原則套用至特定端點。
+* 使用回應快取[中介軟體](xref:performance/caching/middleware)時，請 <xref:Owin.CorsExtensions.UseCors%2A> 在之前呼叫 <xref:Microsoft.AspNetCore.Builder.ResponseCachingExtensions.UseResponseCaching%2A> 。
 
 使用端點路由，**必須**將 CORS 中介軟體設定為在呼叫和之間執行 `UseRouting` `UseEndpoints` 。
 
@@ -551,7 +555,7 @@ Firefox 預設會顯示選項要求。
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Controllers/ValuesController.cs?name=snippet)]
 
-[MyDisplayRouteInfo](https://github.com/Rick-Anderson/RouteInfo/blob/master/Microsoft.Docs.Samples.RouteInfo/ControllerContextExtensions.cs)是由[RouteInfo](https://www.nuget.org/packages/Rick.Docs.Samples.RouteInfo) NuGet 套件提供，並顯示路由資訊。
+[MyDisplayRouteInfo](https://github.com/Rick-Anderson/RouteInfo/blob/master/Microsoft.Docs.Samples.RouteInfo/ControllerContextExtensions.cs)是由Rick.Doc的[RouteInfo](https://www.nuget.org/packages/Rick.Docs.Samples.RouteInfo) NuGet 封裝所提供，並顯示路由資訊。
 
 使用下列其中一種方法來測試前面的範例程式碼：
 

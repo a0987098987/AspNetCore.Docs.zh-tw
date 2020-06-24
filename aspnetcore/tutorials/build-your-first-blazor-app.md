@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 2de33deccbb86bd810c4337f5aa105118de4d9b4
-ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
+ms.openlocfilehash: 892663a533a207df84b0fce9af259a7dc212bc9b
+ms.sourcegitcommit: 5e462c3328c70f95969d02adce9c71592049f54c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85122148"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85292772"
 ---
 # <a name="build-your-first-blazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -143,7 +143,7 @@ ms.locfileid: "85122148"
 
 在實作簡單待辦事項清單的應用程式中新增元件。
 
-1. 將新的 `Todo` Razor 元件新增至資料夾中的應用程式 `Pages` 。 如果您使用 Visual Studio，請在資料夾上按一下滑鼠右鍵 `Pages` ， **Add**然後選取 [  >  **新增專案**] [  >  ** Razor 元件**]。 為元件的檔案命名 `Todo.razor` 。 在其他開發環境中，將空白檔案新增至 `Pages` 名為的資料夾 `Todo.razor` 。
+1. 將新的 `Todo` Razor 元件新增至資料夾中的應用程式 `Pages` 。 如果您使用 Visual Studio，請在資料夾上按一下滑鼠右鍵 `Pages` ， **Add**然後選取 [  >  **新增專案**] [  >  ** Razor 元件**]。 為元件的檔案命名 `Todo.razor` 。 在其他開發環境中，將空白檔案新增至 `Pages` 名為的資料夾 `Todo.razor` 。 Razor元件檔名稱需要大寫的第一個字母，因此請確認 `Todo` 元件檔案名的開頭為大寫字母 `T` 。
 
 1. 提供元件的初始標記：
 

@@ -13,16 +13,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: 2bdd2f256f456cbf474181021fafc6830bfd68f4
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 2811e08fd2f6c66112ffa0bb40f474158f4c7a59
+ms.sourcegitcommit: 5e462c3328c70f95969d02adce9c71592049f54c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242923"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85292681"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>保護 ASP.NET Core Blazor 伺服器應用程式
 
 作者：[Luke Latham](https://github.com/guardrex)
+
+Blazor伺服器應用程式的安全性設定方式與 ASP.NET Core 應用程式相同。 如需詳細資訊，請參閱底下的文章 <xref:security/index> 。 本總覽底下的主題特別適用于 Blazor 伺服器。 
 
 ## <a name="blazor-server-project-template"></a>Blazor伺服器專案範本
 
@@ -53,7 +55,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 下表顯示允許的驗證值 (`{AUTHENTICATION}`)。
 
-| 驗證機制 | 描述 |
+| 驗證機制 | Description |
 | ------------------------ | ----------- |
 | `None` (預設)         | 不需要驗證 |
 | `Individual`             | 使用 ASP.NET Core 儲存在應用程式中的使用者Identity |
@@ -87,7 +89,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 下表顯示允許的驗證值 (`{AUTHENTICATION}`)。
 
-| 驗證機制 | 描述 |
+| 驗證機制 | Description |
 | ------------------------ | ----------- |
 | `None` (預設)         | 不需要驗證 |
 | `Individual`             | 使用 ASP.NET Core 儲存在應用程式中的使用者Identity |
@@ -104,10 +106,6 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 如需詳細資訊，請參閱 [`dotnet new`](/dotnet/core/tools/dotnet-new) .Net Core 指南中的命令。
 
 ---
-
-## <a name="secure-an-existing-app"></a>保護現有的應用程式
-
-Blazor伺服器應用程式的安全性設定方式與 ASP.NET Core 應用程式相同。 如需詳細資訊，請參閱底下的文章 <xref:security/index> 。
 
 ## <a name="scaffold-identity"></a>ScaffoldIdentity
 

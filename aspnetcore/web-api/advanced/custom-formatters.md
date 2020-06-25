@@ -11,121 +11,143 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/advanced/custom-formatters
-ms.openlocfilehash: 0836fc288a015adb9a6223c5a2b681b1b03bded4
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 89fbb9d52d99d0eff6656eb6a5a9b4e1c01bc65c
+ms.sourcegitcommit: 1833870ad0845326fb764fef1b530a07b9b5b099
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777315"
+ms.lasthandoff: 06/25/2020
+ms.locfileid: "85347082"
 ---
-# <a name="custom-formatters-in-aspnet-core-web-api"></a><span data-ttu-id="1a3f1-103">ASP.NET Core Web API 中的自訂格式器</span><span class="sxs-lookup"><span data-stu-id="1a3f1-103">Custom formatters in ASP.NET Core Web API</span></span>
+# <a name="custom-formatters-in-aspnet-core-web-api"></a><span data-ttu-id="6ef0a-103">ASP.NET Core Web API 中的自訂格式器</span><span class="sxs-lookup"><span data-stu-id="6ef0a-103">Custom formatters in ASP.NET Core Web API</span></span>
 
-<span data-ttu-id="1a3f1-104">作者：[Tom Dykstra](https://github.com/tdykstra)</span><span class="sxs-lookup"><span data-stu-id="1a3f1-104">By [Tom Dykstra](https://github.com/tdykstra)</span></span>
+<span data-ttu-id="6ef0a-104">By [Kirk Larkin](https://twitter.com/serpent5)和[Tom 作者: dykstra](https://github.com/tdykstra)。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-104">By [Kirk Larkin](https://twitter.com/serpent5) and [Tom Dykstra](https://github.com/tdykstra).</span></span>
 
-<span data-ttu-id="1a3f1-105">ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料交換。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-105">ASP.NET Core MVC supports data exchange in Web APIs using input and output formatters.</span></span> <span data-ttu-id="1a3f1-106">[模型](xref:mvc/models/model-binding)系結會使用輸入格式器。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-106">Input formatters are used by [Model Binding](xref:mvc/models/model-binding).</span></span> <span data-ttu-id="1a3f1-107">輸出格式器是用來[格式化回應](xref:web-api/advanced/formatting)。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-107">Output formatters are used to [format responses](xref:web-api/advanced/formatting).</span></span>
+<span data-ttu-id="6ef0a-105">ASP.NET Core MVC 支援使用輸入和輸出格式器在 Web Api 中進行資料交換。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-105">ASP.NET Core MVC supports data exchange in Web APIs using input and output formatters.</span></span> <span data-ttu-id="6ef0a-106">[模型](xref:mvc/models/model-binding)系結會使用輸入格式器。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-106">Input formatters are used by [Model Binding](xref:mvc/models/model-binding).</span></span> <span data-ttu-id="6ef0a-107">輸出格式器是用來[格式化回應](xref:web-api/advanced/formatting)。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-107">Output formatters are used to [format responses](xref:web-api/advanced/formatting).</span></span>
 
-<span data-ttu-id="1a3f1-108">架構會為 JSON 和 XML 提供內建的輸入和輸出格式器。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-108">The framework provides built-in input and output formatters for JSON and XML.</span></span> <span data-ttu-id="1a3f1-109">它會為純文字提供內建的輸出格式器，但不會提供純文字的輸入格式器。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-109">It provides a built-in output formatter for plain text, but doesn't provide an input formatter for plain text.</span></span>
+<span data-ttu-id="6ef0a-108">架構會為 JSON 和 XML 提供內建的輸入和輸出格式器。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-108">The framework provides built-in input and output formatters for JSON and XML.</span></span> <span data-ttu-id="6ef0a-109">它會為純文字提供內建的輸出格式器，但不會提供純文字的輸入格式器。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-109">It provides a built-in output formatter for plain text, but doesn't provide an input formatter for plain text.</span></span>
 
-<span data-ttu-id="1a3f1-110">本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-110">This article shows how to add support for additional formats by creating custom formatters.</span></span> <span data-ttu-id="1a3f1-111">如需純文字的自訂輸入格式器範例，請參閱 GitHub 上的[TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) 。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-111">For an example of a custom input formatter for plain text, see [TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) on GitHub.</span></span>
+<span data-ttu-id="6ef0a-110">本文說明如何藉由建立自訂的格式器來新增對其他格式的支援。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-110">This article shows how to add support for additional formats by creating custom formatters.</span></span> <span data-ttu-id="6ef0a-111">如需自訂純文字輸入格式器的範例，請參閱 GitHub 上的[TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-111">For an example of a custom plain text input formatter, see [TextPlainInputFormatter](https://github.com/aspnet/Entropy/blob/master/samples/Mvc.Formatters/TextPlainInputFormatter.cs) on GitHub.</span></span>
 
-<span data-ttu-id="1a3f1-112">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="1a3f1-112">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
+<span data-ttu-id="6ef0a-112">[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)（[如何下載](xref:index#how-to-download-a-sample)）</span><span class="sxs-lookup"><span data-stu-id="6ef0a-112">[View or download sample code](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample) ([how to download](xref:index#how-to-download-a-sample))</span></span>
 
-## <a name="when-to-use-custom-formatters"></a><span data-ttu-id="1a3f1-113">自訂格式器的使用時機</span><span class="sxs-lookup"><span data-stu-id="1a3f1-113">When to use custom formatters</span></span>
+## <a name="when-to-use-custom-formatters"></a><span data-ttu-id="6ef0a-113">自訂格式器的使用時機</span><span class="sxs-lookup"><span data-stu-id="6ef0a-113">When to use custom formatters</span></span>
 
-<span data-ttu-id="1a3f1-114">當您想要讓[內容協調](xref:web-api/advanced/formatting#content-negotiation)流程支援內建格式器不支援的內容類型時，請使用自訂格式器。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-114">Use a custom formatter when you want the [content negotiation](xref:web-api/advanced/formatting#content-negotiation) process to support a content type that isn't supported by the built-in formatters.</span></span>
+<span data-ttu-id="6ef0a-114">使用自訂格式器來新增不是由內建 in 格式器處理之內容類型的支援。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-114">Use a custom formatter to add support for a content type that isn't handled by the bult-in formatters.</span></span>
 
-<span data-ttu-id="1a3f1-115">例如，您有些 Web API 用戶端可以處理 [Protobuf](https://github.com/google/protobuf) 格式，因此您希望搭配使用 Protobuf 與這些用戶端，以便更有效率。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-115">For example, if some of the clients for your web API can handle the [Protobuf](https://github.com/google/protobuf) format, you might want to use Protobuf with those clients because it's more efficient.</span></span> <span data-ttu-id="1a3f1-116">或者，您可能會想要 Web API 以 [vCard](https://wikipedia.org/wiki/VCard) 格式 (其為交換連絡人資料的常用格式) 來傳送連絡人名稱和地址。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-116">Or you might want your web API to send contact names and addresses in [vCard](https://wikipedia.org/wiki/VCard) format, a commonly used format for exchanging contact data.</span></span> <span data-ttu-id="1a3f1-117">本文提供的範例應用程式會實作簡單的 vCard 格式器。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-117">The sample app provided with this article implements a simple vCard formatter.</span></span>
+## <a name="overview-of-how-to-use-a-custom-formatter"></a><span data-ttu-id="6ef0a-115">如何使用自訂格式器的概觀</span><span class="sxs-lookup"><span data-stu-id="6ef0a-115">Overview of how to use a custom formatter</span></span>
 
-## <a name="overview-of-how-to-use-a-custom-formatter"></a><span data-ttu-id="1a3f1-118">如何使用自訂格式器的概觀</span><span class="sxs-lookup"><span data-stu-id="1a3f1-118">Overview of how to use a custom formatter</span></span>
+<span data-ttu-id="6ef0a-116">若要建立自訂格式器：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-116">To create a custom formatter:</span></span>
 
-<span data-ttu-id="1a3f1-119">自訂格式器的建立與使用步驟如下：</span><span class="sxs-lookup"><span data-stu-id="1a3f1-119">Here are the steps to create and use a custom formatter:</span></span>
+* <span data-ttu-id="6ef0a-117">若要將傳送至用戶端的資料序列化，請建立輸出格式器類別。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-117">For serializing data sent to the client, create an output formatter class.</span></span>
+* <span data-ttu-id="6ef0a-118">如需從用戶端收到的 deserialzing 資料，請建立輸入格式器類別。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-118">For deserialzing data received from the client, create an input formatter class.</span></span>
+* <span data-ttu-id="6ef0a-119">將格式器類別的實例加入 `InputFormatters` 至 `OutputFormatters` [MvcOptions](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions)中的和集合。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-119">Add instances of formatter classes to the `InputFormatters` and `OutputFormatters` collections in [MvcOptions](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions).</span></span>
 
-* <span data-ttu-id="1a3f1-120">如果您想要將資料序列化以傳送到用戶端，請建立輸出格式器類別。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-120">Create an output formatter class if you want to serialize data to send to the client.</span></span>
-* <span data-ttu-id="1a3f1-121">如果您想要將從用戶端接收的資料還原序列化，請建立輸入格式器類別。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-121">Create an input formatter class if you want to deserialize data received from the client.</span></span>
-* <span data-ttu-id="1a3f1-122">將您的格式器執行個體新增至 [MvcOptions](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions) 中的 `InputFormatters` 和 `OutputFormatters` 集合。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-122">Add instances of your formatters to the `InputFormatters` and `OutputFormatters` collections in [MvcOptions](/dotnet/api/microsoft.aspnetcore.mvc.mvcoptions).</span></span>
+## <a name="how-to-create-a-custom-formatter-class"></a><span data-ttu-id="6ef0a-120">如何建立自訂格式器類別</span><span class="sxs-lookup"><span data-stu-id="6ef0a-120">How to create a custom formatter class</span></span>
 
-<span data-ttu-id="1a3f1-123">下列各節將提供每個步驟的指引與程式碼範例。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-123">The following sections provide guidance and code examples for each of these steps.</span></span>
+<span data-ttu-id="6ef0a-121">若要建立格式器：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-121">To create a formatter:</span></span>
 
-## <a name="how-to-create-a-custom-formatter-class"></a><span data-ttu-id="1a3f1-124">如何建立自訂格式器類別</span><span class="sxs-lookup"><span data-stu-id="1a3f1-124">How to create a custom formatter class</span></span>
+* <span data-ttu-id="6ef0a-122">請從適當的基底類別衍生類別。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-122">Derive the class from the appropriate base class.</span></span> <span data-ttu-id="6ef0a-123">範例應用程式衍生自 <xref:Microsoft.AspNetCore.Mvc.Formatters.TextOutputFormatter> 和 <xref:Microsoft.AspNetCore.Mvc.Formatters.TextInputFormatter> 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-123">The sample app derives from <xref:Microsoft.AspNetCore.Mvc.Formatters.TextOutputFormatter> and <xref:Microsoft.AspNetCore.Mvc.Formatters.TextInputFormatter>.</span></span>
+* <span data-ttu-id="6ef0a-124">在建構函式中指定有效的媒體類型和編碼方式。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-124">Specify valid media types and encodings in the constructor.</span></span>
+* <span data-ttu-id="6ef0a-125">覆寫 <xref:Microsoft.AspNetCore.Mvc.Formatters.InputFormatter.CanReadType%2A> 和 <xref:Microsoft.AspNetCore.Mvc.Formatters.OutputFormatter.CanWriteType%2A> 方法。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-125">Override the <xref:Microsoft.AspNetCore.Mvc.Formatters.InputFormatter.CanReadType%2A> and <xref:Microsoft.AspNetCore.Mvc.Formatters.OutputFormatter.CanWriteType%2A> methods.</span></span>
+* <span data-ttu-id="6ef0a-126">覆寫 <xref:Microsoft.AspNetCore.Mvc.Formatters.InputFormatter.ReadRequestBodyAsync%2A> 和 `WriteResponseBodyAsync` 方法。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-126">Override the <xref:Microsoft.AspNetCore.Mvc.Formatters.InputFormatter.ReadRequestBodyAsync%2A> and `WriteResponseBodyAsync` methods.</span></span>
 
-<span data-ttu-id="1a3f1-125">若要建立格式器：</span><span class="sxs-lookup"><span data-stu-id="1a3f1-125">To create a formatter:</span></span>
+<span data-ttu-id="6ef0a-127">下列程式碼顯示 `VcardOutputFormatter` [範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/3.1sample)中的類別：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-127">The following code shows the `VcardOutputFormatter` class from the [sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/3.1sample):</span></span>
 
-* <span data-ttu-id="1a3f1-126">請從適當的基底類別衍生類別。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-126">Derive the class from the appropriate base class.</span></span>
-* <span data-ttu-id="1a3f1-127">在建構函式中指定有效的媒體類型和編碼方式。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-127">Specify valid media types and encodings in the constructor.</span></span>
-* <span data-ttu-id="1a3f1-128">覆寫 `CanReadType`/`CanWriteType` 方法</span><span class="sxs-lookup"><span data-stu-id="1a3f1-128">Override `CanReadType`/`CanWriteType` methods</span></span>
-* <span data-ttu-id="1a3f1-129">覆寫 `ReadRequestBodyAsync`/`WriteResponseBodyAsync` 方法</span><span class="sxs-lookup"><span data-stu-id="1a3f1-129">Override `ReadRequestBodyAsync`/`WriteResponseBodyAsync` methods</span></span>
+[!code-csharp[](custom-formatters/3.1sample/Formatters/VcardOutputFormatter.cs?name=snippet)]
   
-### <a name="derive-from-the-appropriate-base-class"></a><span data-ttu-id="1a3f1-130">從適當的基底類別衍生</span><span class="sxs-lookup"><span data-stu-id="1a3f1-130">Derive from the appropriate base class</span></span>
+### <a name="derive-from-the-appropriate-base-class"></a><span data-ttu-id="6ef0a-128">從適當的基底類別衍生</span><span class="sxs-lookup"><span data-stu-id="6ef0a-128">Derive from the appropriate base class</span></span>
 
-<span data-ttu-id="1a3f1-131">如需文字媒體類型 (例如 vCard)，請從 [TextInputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textinputformatter) 或 [TextOutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter) 基底類別來衍生。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-131">For text media types (for example, vCard), derive from the [TextInputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textinputformatter) or [TextOutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter) base class.</span></span>
+<span data-ttu-id="6ef0a-129">如需文字媒體類型 (例如 vCard)，請從 [TextInputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textinputformatter) 或 [TextOutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter) 基底類別來衍生。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-129">For text media types (for example, vCard), derive from the [TextInputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textinputformatter) or [TextOutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.textoutputformatter) base class.</span></span>
 
-[!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
+[!code-csharp[](custom-formatters/3.1sample/Formatters/VcardOutputFormatter.cs?name=classdef)]
 
-<span data-ttu-id="1a3f1-132">若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-132">For an input formatter example, see the [sample app](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).</span></span>
+<span data-ttu-id="6ef0a-130">如需二進位類型，請從 [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) 或 [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter) 基底類別來衍生。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-130">For binary types, derive from the [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) or [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter) base class.</span></span>
 
-<span data-ttu-id="1a3f1-133">如需二進位類型，請從 [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) 或 [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter) 基底類別來衍生。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-133">For binary types, derive from the [InputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.inputformatter) or [OutputFormatter](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformatter) base class.</span></span>
+### <a name="specify-valid-media-types-and-encodings"></a><span data-ttu-id="6ef0a-131">指定有效的媒體類型和編碼方式</span><span class="sxs-lookup"><span data-stu-id="6ef0a-131">Specify valid media types and encodings</span></span>
 
-### <a name="specify-valid-media-types-and-encodings"></a><span data-ttu-id="1a3f1-134">指定有效的媒體類型和編碼方式</span><span class="sxs-lookup"><span data-stu-id="1a3f1-134">Specify valid media types and encodings</span></span>
+<span data-ttu-id="6ef0a-132">在建構函式中，您可以新增 `SupportedMediaTypes` 和 `SupportedEncodings` 集合，以指定有效的媒體類型和編碼方式。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-132">In the constructor, specify valid media types and encodings by adding to the `SupportedMediaTypes` and `SupportedEncodings` collections.</span></span>
 
-<span data-ttu-id="1a3f1-135">在建構函式中，您可以新增 `SupportedMediaTypes` 和 `SupportedEncodings` 集合，以指定有效的媒體類型和編碼方式。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-135">In the constructor, specify valid media types and encodings by adding to the `SupportedMediaTypes` and `SupportedEncodings` collections.</span></span>
+[!code-csharp[](custom-formatters/3.1sample/Formatters/VcardOutputFormatter.cs?name=ctor)]
 
-[!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=ctor&highlight=3,5-6)]
+<span data-ttu-id="6ef0a-133">格式器類別**無法**針對其相依性使用函式插入。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-133">A formatter class can **not** use constructor injection for its dependencies.</span></span> <span data-ttu-id="6ef0a-134">例如， `ILogger<VcardOutputFormatter>` 無法將當做參數加入至函式。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-134">For example, `ILogger<VcardOutputFormatter>` cannot be added as a parameter to the constructor.</span></span> <span data-ttu-id="6ef0a-135">若要存取服務，請使用傳入方法的內容物件。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-135">To access services, use the context object that gets passed in to the methods.</span></span> <span data-ttu-id="6ef0a-136">本文中的程式碼範例和[範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/3.1sample)示範如何執行這項操作。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-136">A code example in this article and the [sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/3.1sample) show how to do this.</span></span>
 
-<span data-ttu-id="1a3f1-136">若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-136">For an input formatter example, see the [sample app](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).</span></span>
+### <a name="override-canreadtype-and-canwritetype"></a><span data-ttu-id="6ef0a-137">覆寫 CanReadType 和 CanWriteType</span><span class="sxs-lookup"><span data-stu-id="6ef0a-137">Override CanReadType and CanWriteType</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="1a3f1-137">您無法在格式器類別中執行建構函式的相依性插入。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-137">You can't do constructor dependency injection in a formatter class.</span></span> <span data-ttu-id="1a3f1-138">舉例來說，您無法藉由將記錄器參數新增至建構函式，而取得記錄器。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-138">For example, you can't get a logger by adding a logger parameter to the constructor.</span></span> <span data-ttu-id="1a3f1-139">若要存取服務，您必須使用可傳入方法的內容物件。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-139">To access services, you have to use the context object that gets passed in to your methods.</span></span> <span data-ttu-id="1a3f1-140">[下列](#read-write)程式碼範例會示範這項操作。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-140">A code example [below](#read-write) shows how to do this.</span></span>
+<span data-ttu-id="6ef0a-138">藉由覆寫或方法，指定要還原序列化的型別或從中序列化 `CanReadType` `CanWriteType` 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-138">Specify the type to deserialize into or serialize from by overriding the `CanReadType` or `CanWriteType` methods.</span></span> <span data-ttu-id="6ef0a-139">例如，從類型建立 vCard 文字 `Contact` ，反之亦然。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-139">For example, creating vCard text from a `Contact` type and vice versa.</span></span>
 
-### <a name="override-canreadtypecanwritetype"></a><span data-ttu-id="1a3f1-141">覆寫 CanReadType/CanWriteType</span><span class="sxs-lookup"><span data-stu-id="1a3f1-141">Override CanReadType/CanWriteType</span></span>
+[!code-csharp[](custom-formatters/3.1sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
 
-<span data-ttu-id="1a3f1-142">您可以覆寫 `CanReadType` 或 `CanWriteType` 方法，以指定要序列化或還原序列化的類型。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-142">Specify the type you can deserialize into or serialize from by overriding the `CanReadType` or `CanWriteType` methods.</span></span> <span data-ttu-id="1a3f1-143">例如，您可能只能透過 `Contact` 類型建立 vCard 文字，反之亦然。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-143">For example, you might only be able to create vCard text from a `Contact` type and vice versa.</span></span>
+#### <a name="the-canwriteresult-method"></a><span data-ttu-id="6ef0a-140">CanWriteResult 方法</span><span class="sxs-lookup"><span data-stu-id="6ef0a-140">The CanWriteResult method</span></span>
 
-[!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=canwritetype)]
+<span data-ttu-id="6ef0a-141">在某些情況下， `CanWriteResult` 必須覆寫而不是 `CanWriteType` 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-141">In some scenarios, `CanWriteResult` must be overridden rather than `CanWriteType`.</span></span> <span data-ttu-id="6ef0a-142">如果符合下列所有條件，請使用 `CanWriteResult`：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-142">Use `CanWriteResult` if the following conditions are true:</span></span>
 
-<span data-ttu-id="1a3f1-144">若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-144">For an input formatter example, see the [sample app](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).</span></span>
+* <span data-ttu-id="6ef0a-143">動作方法會傳回模型類別。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-143">The action method returns a model class.</span></span>
+* <span data-ttu-id="6ef0a-144">在執行階段期間，可能會傳回衍生的類別。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-144">There are derived classes which might be returned at runtime.</span></span>
+* <span data-ttu-id="6ef0a-145">動作所傳回的衍生類別在執行時間必須是已知的。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-145">The derived class returned by the action must be known at runtime.</span></span>
 
-#### <a name="the-canwriteresult-method"></a><span data-ttu-id="1a3f1-145">CanWriteResult 方法</span><span class="sxs-lookup"><span data-stu-id="1a3f1-145">The CanWriteResult method</span></span>
+<span data-ttu-id="6ef0a-146">例如，假設動作方法：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-146">For example, suppose the action method:</span></span>
 
-<span data-ttu-id="1a3f1-146">在某些情況下，您必須覆寫 `CanWriteResult` 而不是 `CanWriteType`。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-146">In some scenarios you have to override `CanWriteResult` instead of `CanWriteType`.</span></span> <span data-ttu-id="1a3f1-147">如果符合下列所有條件，請使用 `CanWriteResult`：</span><span class="sxs-lookup"><span data-stu-id="1a3f1-147">Use `CanWriteResult` if the following conditions are true:</span></span>
+* <span data-ttu-id="6ef0a-147">簽章會傳回 `Person` 類型。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-147">Signature returns a `Person` type.</span></span>
+* <span data-ttu-id="6ef0a-148">可以傳回 `Student` `Instructor` 衍生自的或類型 `Person` 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-148">Can return a `Student` or `Instructor` type that derives from `Person`.</span></span> 
 
-* <span data-ttu-id="1a3f1-148">您的動作方法會傳回模型類別。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-148">Your action method returns a model class.</span></span>
-* <span data-ttu-id="1a3f1-149">在執行階段期間，可能會傳回衍生的類別。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-149">There are derived classes which might be returned at runtime.</span></span>
-* <span data-ttu-id="1a3f1-150">您必須知道在執行階段期間，動作傳回的衍生類別是哪一個。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-150">You need to know at runtime which derived class was returned by the action.</span></span>
+<span data-ttu-id="6ef0a-149">若要讓格式器只處理 `Student` 物件，請檢查提供給方法之內容物件中的[物件](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)類型 `CanWriteResult` 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-149">For the formatter to handle only `Student` objects, check the type of [Object](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object) in the context object provided to the `CanWriteResult` method.</span></span> <span data-ttu-id="6ef0a-150">當動作方法傳回時 `IActionResult` ：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-150">When the action method returns `IActionResult`:</span></span>
 
-<span data-ttu-id="1a3f1-151">例如，假設您的動作方法簽章傳回 `Person` 類型，但它可能會傳回衍生自 `Person` 的 `Student` 或 `Instructor` 類型。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-151">For example, suppose your action method signature returns a `Person` type, but it may return a `Student` or `Instructor` type that derives from `Person`.</span></span> <span data-ttu-id="1a3f1-152">如果您希望格式器只處理 `Student` 物件，請檢查您提供給 `CanWriteResult` 方法之內容物件中的[物件](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object)類型。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-152">If you want your formatter to handle only `Student` objects, check the type of [Object](/dotnet/api/microsoft.aspnetcore.mvc.formatters.outputformattercanwritecontext.object#Microsoft_AspNetCore_Mvc_Formatters_OutputFormatterCanWriteContext_Object) in the context object provided to the `CanWriteResult` method.</span></span> <span data-ttu-id="1a3f1-153">請注意，當動作方法傳回 `IActionResult` 時，您不需要使用 `CanWriteResult`；在此情況下，`CanWriteType` 方法會接收執行階段類型。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-153">Note that it's not necessary to use `CanWriteResult` when the action method returns `IActionResult`; in that case, the `CanWriteType` method receives the runtime type.</span></span>
+* <span data-ttu-id="6ef0a-151">不需要使用 `CanWriteResult` 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-151">It's not necessary to use `CanWriteResult`.</span></span>
+* <span data-ttu-id="6ef0a-152">`CanWriteType`方法會接收執行時間類型。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-152">The `CanWriteType` method receives the runtime type.</span></span>
 
 <a id="read-write"></a>
 
-### <a name="override-readrequestbodyasyncwriteresponsebodyasync"></a><span data-ttu-id="1a3f1-154">覆寫 ReadRequestBodyAsync/WriteResponseBodyAsync</span><span class="sxs-lookup"><span data-stu-id="1a3f1-154">Override ReadRequestBodyAsync/WriteResponseBodyAsync</span></span>
+### <a name="override-readrequestbodyasync-and-writeresponsebodyasync"></a><span data-ttu-id="6ef0a-153">覆寫 ReadRequestBodyAsync 和 WriteResponseBodyAsync</span><span class="sxs-lookup"><span data-stu-id="6ef0a-153">Override ReadRequestBodyAsync and WriteResponseBodyAsync</span></span>
 
-<span data-ttu-id="1a3f1-155">您可以在 `ReadRequestBodyAsync` 或 `WriteResponseBodyAsync` 中進行還原序列化或序列化的實際工作。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-155">You do the actual work of deserializing or serializing in `ReadRequestBodyAsync` or `WriteResponseBodyAsync`.</span></span> <span data-ttu-id="1a3f1-156">下列範例中，醒目標示的程式碼行示範如何透過相依性插入容器以取得服務 (您無法透過建構函式參數來取得)。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-156">The highlighted lines in the following example show how to get services from the dependency injection container (you can't get them from constructor parameters).</span></span>
+<span data-ttu-id="6ef0a-154">還原序列化或序列化會在 `ReadRequestBodyAsync` 或中執行 `WriteResponseBodyAsync` 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-154">Deserialization or serialization is performed in `ReadRequestBodyAsync` or `WriteResponseBodyAsync`.</span></span> <span data-ttu-id="6ef0a-155">下列範例顯示如何從相依性插入容器中取得服務。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-155">The following example shows how to get services from the dependency injection container.</span></span> <span data-ttu-id="6ef0a-156">無法從函數參數取得服務。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-156">Services can't be obtained from constructor parameters.</span></span>
 
-[!code-csharp[](custom-formatters/sample/Formatters/VcardOutputFormatter.cs?name=writeresponse&highlight=3-4)]
+[!code-csharp[](custom-formatters/3.1sample/Formatters/VcardOutputFormatter.cs?name=writeresponse)]
 
-<span data-ttu-id="1a3f1-157">若需要輸入格式器範例，請參考[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-157">For an input formatter example, see the [sample app](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample).</span></span>
+## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a><span data-ttu-id="6ef0a-157">如何設定 MVC 以使用自訂格式器</span><span class="sxs-lookup"><span data-stu-id="6ef0a-157">How to configure MVC to use a custom formatter</span></span>
 
-## <a name="how-to-configure-mvc-to-use-a-custom-formatter"></a><span data-ttu-id="1a3f1-158">如何設定 MVC 以使用自訂格式器</span><span class="sxs-lookup"><span data-stu-id="1a3f1-158">How to configure MVC to use a custom formatter</span></span>
+<span data-ttu-id="6ef0a-158">若要使用自訂格式器，請將格式器類別的執行個體新增至 `InputFormatters` 或 `OutputFormatters` 集合。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-158">To use a custom formatter, add an instance of the formatter class to the `InputFormatters` or `OutputFormatters` collection.</span></span>
 
-<span data-ttu-id="1a3f1-159">若要使用自訂格式器，請將格式器類別的執行個體新增至 `InputFormatters` 或 `OutputFormatters` 集合。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-159">To use a custom formatter, add an instance of the formatter class to the `InputFormatters` or `OutputFormatters` collection.</span></span>
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](custom-formatters/3.1sample/Startup.cs?name=mvcoptions)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
 
 [!code-csharp[](custom-formatters/sample/Startup.cs?name=mvcoptions&highlight=3-4)]
 
-<span data-ttu-id="1a3f1-160">系統會依據您插入格式器的順序進行評估。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-160">Formatters are evaluated in the order you insert them.</span></span> <span data-ttu-id="1a3f1-161">第一個會優先使用。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-161">The first one takes precedence.</span></span>
+::: moniker-end
 
-## <a name="next-steps"></a><span data-ttu-id="1a3f1-162">後續步驟</span><span class="sxs-lookup"><span data-stu-id="1a3f1-162">Next steps</span></span>
+<span data-ttu-id="6ef0a-159">系統會依據您插入格式器的順序進行評估。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-159">Formatters are evaluated in the order you insert them.</span></span> <span data-ttu-id="6ef0a-160">第一個會優先使用。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-160">The first one takes precedence.</span></span>
 
-* <span data-ttu-id="1a3f1-163">[此文件的範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，其會實作簡單的 vCard 輸入和輸出格式器。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-163">[Sample app for this doc](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), which implements simple vCard input and output formatters.</span></span> <span data-ttu-id="1a3f1-164">應用程式會讀取並寫入 vCard，如下範例所示：</span><span class="sxs-lookup"><span data-stu-id="1a3f1-164">The apps reads and writes vCards that look like the following example:</span></span>
+## <a name="the-completed-vcardinputformatter-class"></a><span data-ttu-id="6ef0a-161">完成的 `VcardInputFormatter` 類別</span><span class="sxs-lookup"><span data-stu-id="6ef0a-161">The completed `VcardInputFormatter` class</span></span>
+
+<span data-ttu-id="6ef0a-162">下列程式碼顯示 `VcardInputFormatter` [範例](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/3.1sample)中的類別：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-162">The following code shows the `VcardInputFormatter` class from the [sample](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/3.1sample):</span></span>
+
+[!code-csharp[](custom-formatters/3.1sample/Formatters/VcardInputFormatter.cs?name=snippet)]
+
+## <a name="test-the-app"></a><span data-ttu-id="6ef0a-163">測試應用程式</span><span class="sxs-lookup"><span data-stu-id="6ef0a-163">Test the app</span></span>
+
+<span data-ttu-id="6ef0a-164">[執行本文的範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample)，它會實行基本的 vCard 輸入和輸出格式器。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-164">[Run the sample app for this article](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/web-api/advanced/custom-formatters/sample), which implements basic vCard input and output formatters.</span></span> <span data-ttu-id="6ef0a-165">應用程式會讀取並寫入類似下列的電子名片：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-165">The app reads and writes vCards similar to the following:</span></span>
 
 ```
 BEGIN:VCARD
 VERSION:2.1
 N:Davolio;Nancy
 FN:Nancy Davolio
-no-loc: [Blazor, "Identity", "Let's Encrypt", Razor, SignalR]
-uid:20293482-9240-4d68-b475-325df4a83728
 END:VCARD
 ```
 
-<span data-ttu-id="1a3f1-165">若要查看 vCard 的輸出，請執行應用程式，並使用 Accept 標頭 "text/vcard" 將 Get 要求傳送給 `http://localhost:63313/api/contacts/` (從 Visual Studio 執行時) 或 `http://localhost:5000/api/contacts/` (從命令列執行時)。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-165">To see vCard output, run the application and send a Get request with Accept header "text/vcard" to `http://localhost:63313/api/contacts/` (when running from Visual Studio) or `http://localhost:5000/api/contacts/` (when running from the command line).</span></span>
+<span data-ttu-id="6ef0a-166">若要查看 vCard 輸出，請執行應用程式，並將具有 Accept 標頭的 Get 要求傳送 `text/vcard` 至 `https://localhost:5001/api/contacts` 。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-166">To see vCard output, run the app and send a Get request with Accept header `text/vcard` to `https://localhost:5001/api/contacts`.</span></span>
 
-<span data-ttu-id="1a3f1-166">若要將 vCard 新增至連絡人的記憶體內部集合，請使用 Content-Type 標頭 "text/vcard" 與主體中的 vCard 文字 (如上述範例的格式)，將 Post 要求傳送至相同的 URL。</span><span class="sxs-lookup"><span data-stu-id="1a3f1-166">To add a vCard to the in-memory collection of contacts, send a Post request to the same URL, with Content-Type header "text/vcard" and with vCard text in the body, formatted like the example above.</span></span>
+<span data-ttu-id="6ef0a-167">若要將 vCard 新增至連絡人的記憶體中集合：</span><span class="sxs-lookup"><span data-stu-id="6ef0a-167">To add a vCard to the in-memory collection of contacts:</span></span>
+
+* <span data-ttu-id="6ef0a-168">`Post` `/api/contacts` 使用類似 Postman 的工具，將要求傳送至。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-168">Send a `Post` request to `/api/contacts` with a tool like Postman.</span></span>
+* <span data-ttu-id="6ef0a-169">將 `Content-Type` 標頭設定為 `text/vcard`。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-169">Set the `Content-Type` header to `text/vcard`.</span></span>
+* <span data-ttu-id="6ef0a-170">設定 `vCard` 主體中的文字，格式如上述範例所示。</span><span class="sxs-lookup"><span data-stu-id="6ef0a-170">Set `vCard` text in the body, formatted like the preceding example.</span></span>
+
+## <a name="additional-resources"></a><span data-ttu-id="6ef0a-171">其他資源</span><span class="sxs-lookup"><span data-stu-id="6ef0a-171">Additional resources</span></span>
+
+* <xref:web-api/advanced/formatting>
+* <xref:grpc/dotnet-grpc>

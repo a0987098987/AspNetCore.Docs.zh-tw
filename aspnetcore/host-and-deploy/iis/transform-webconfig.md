@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/iis/transform-webconfig
-ms.openlocfilehash: f7e1fb0adc669b4bffa02e6688231c8f1447bd98
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: bebba7a72012b8be6257b14642bf130613627778
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775930"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403998"
 ---
 # <a name="transform-webconfig"></a>轉換 web.config
 
@@ -144,7 +146,7 @@ dotnet publish --configuration Release /p:EnvironmentName=Production
 
 已指定環境名稱時，`ASPNETCORE_ENVIRONMENT` 環境變數會自動新增至 *web.config* 檔案。
 
-## <a name="custom"></a>自訂
+## <a name="custom"></a>Custom
 
 自訂轉換會第四個執行，亦即在 [組建組態](#build-configuration)[設定檔](#profile)及[環境](#environment)轉換之後執行。
 

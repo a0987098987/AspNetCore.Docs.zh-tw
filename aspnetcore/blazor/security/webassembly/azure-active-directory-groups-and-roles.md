@@ -1,24 +1,26 @@
 ---
-title: ASP.NET Core Blazor 具有 Azure Active Directory 群組和角色的 WebAssembly
+title: Blazor WebAssembly具有 Azure Active Directory 群組和角色的 ASP.NET Core
 author: guardrex
-description: 瞭解如何將 Blazor WebAssembly 設定為使用 Azure Active Directory 群組和角色。
+description: 瞭解如何設定 Blazor WebAssembly ，以使用 Azure Active Directory 群組和角色。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/aad-groups-roles
-ms.openlocfilehash: ed49ba13842f2b5805250d8c12535397c542cfd4
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 6e27b062d7b5a1b72804fe5d4ea31ec65358ce45
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242871"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402152"
 ---
 # <a name="azure-ad-groups-administrative-roles-and-user-defined-roles"></a>Azure AD 群組、系統管理角色和使用者定義的角色
 
@@ -34,7 +36,7 @@ Azure Active Directory （AAD）提供數個可與 ASP.NET Core 結合的授權�
   * 內建的系統管理角色
   * 使用者定義角色
 
-本文中的指導方針適用于 Blazor 下列主題中所述的 WEBASSEMBLY AAD 部署案例：
+本文中的指導方針適用于 Blazor WebAssembly 下列主題中所述的 AAD 部署案例：
 
 * [獨立的 Microsoft 帳戶](xref:blazor/security/webassembly/standalone-with-microsoft-accounts)
 * [獨立的 AAD](xref:blazor/security/webassembly/standalone-with-azure-active-directory)

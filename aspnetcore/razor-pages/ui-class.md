@@ -7,17 +7,19 @@ ms.date: 01/25/2020
 ms.custom: mvc, seodec18
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: razor-pages/ui-class
-ms.openlocfilehash: adfcc281f285892583ab8a21c014d6fcb120af9c
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 1d37ebaa913a2815b79b16875049bbf91f9fb941
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102838"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404388"
 ---
 # <a name="create-reusable-ui-using-the-razor-class-library-project-in-aspnet-core"></a>使用 Razor 中的類別庫專案建立可重複使用的 UI ASP.NET Core
 
@@ -36,7 +38,7 @@ Razor視圖、頁面、控制器、頁面模型、 [ Razor 元件](xref:blazor/c
 * 從 Visual Studio 選取 [**建立新專案**]。
 * 選取 [ ** Razor 類別庫** > **] [下一步]**。
 * 為程式庫命名（例如，"RazorClassLib"），>**建立**]。 若要避免與產生的檢視程式庫發生檔案名稱衝突，程式庫名稱結尾請務必不要使用 `.Views`。
-* 如果您需要支援視圖，請選取 [**支援頁面和視圖**]。 根據預設，只 Razor 支援頁面。 選取 [建立]。
+* 如果您需要支援視圖，請選取 [**支援頁面和視圖**]。 根據預設，只 Razor 支援頁面。 選取 [建立]****。
 
 Razor根據預設，類別庫（RCL）範本預設為 Razor 元件開發。 **支援頁面和 views**選項支援頁面和視圖。
 

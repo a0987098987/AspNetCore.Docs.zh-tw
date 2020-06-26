@@ -8,17 +8,19 @@ ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/advanced
-ms.openlocfilehash: 74153b9a185d382a3418dd9470ce6ca4c3c70041
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 7233d6baf139d2ef362f4e3d1a56cf7f0e2514d2
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773610"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403114"
 ---
 # <a name="tutorial-learn-about-advanced-scenarios---aspnet-mvc-with-ef-core"></a>教學課程：瞭解 advanced 案例-使用 EF Core ASP.NET MVC
 
@@ -37,7 +39,7 @@ ms.locfileid: "82773610"
 > * 了解 EF Core 原始程式碼和開發計劃
 > * 了解如何使用動態 LINQ 來簡化程式碼
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [實作繼承](inheritance.md)
 
@@ -99,7 +101,7 @@ ms.locfileid: "82773610"
 
 在方案總管**** 中，以滑鼠右鍵按一下 *Views/Courses* 資料夾，然後按一下 [新增] > [新增項目]****。
 
-在 [**加入新專案**] 對話方塊中，按一下左窗格中 [**已安裝**] ** Razor **底下的 [ **ASP.NET Core** ]，按一下 [View]，並將新的 view 命名為*UpdateCourseCredits*。
+在 [**加入新專案**] 對話方塊中，按一下左窗格中 [**已安裝**] 底下的 [ **ASP.NET Core** ]，按一下 [ ** Razor View**]，並將新的 view 命名為*UpdateCourseCredits*。
 
 在 *Views/Courses/UpdateCourseCredits.cshtml* 中，以下列程式碼取代範本程式碼：
 
@@ -115,7 +117,7 @@ ms.locfileid: "82773610"
 
 按一下 [回到清單]****，以查看課程與已修訂學分數的清單。
 
-請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 （ `Credits`屬性具有`[Range(0, 5)]`屬性。）更新查詢會正常執行，但是不正確資料可能會導致系統的其他部分假設點數為5或更少，而造成非預期的結果。
+請注意，生產環境程式碼可確保更新一律會產生有效的資料。 此處顯示的簡化程式碼會增加足夠的學分數而使其數目大於 5。 （ `Credits` 屬性具有 `[Range(0, 5)]` 屬性。）更新查詢會正常執行，但是不正確資料可能會導致系統的其他部分假設點數為5或更少，而造成非預期的結果。
 
 如需原始 SQL 查詢的詳細資訊，請參閱[原始 SQL 查詢](/ef/core/querying/raw-sql)。
 
@@ -187,7 +189,7 @@ _context.ChangeTracker.AutoDetectChangesEnabled = false;
 
 ## <a name="ef-core-source-code-and-development-plans"></a>EF Core 原始程式碼和開發計劃
 
-Entity Framework Core 來源位於[https://github.com/dotnet/efcore](https://github.com/dotnet/efcore)。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/dotnet/efcore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
+Entity Framework Core 來源位於 [https://github.com/dotnet/efcore](https://github.com/dotnet/efcore) 。 EF Core 存放庫包含每夜組建、問題追蹤、功能規格、設計會議記錄和[未來開發藍圖](https://github.com/dotnet/efcore/wiki/Roadmap)。 您可以提交或尋找 Bug，並做出貢獻。
 
 雖然原始程式碼是開放式程式碼，但 Entity Framework Core 也作為 Microsoft 產品完整支援。 Microsoft Entity Framework 小組將控制接受哪些貢獻，並測試所有的程式碼變更以確保每次發行的品質。
 

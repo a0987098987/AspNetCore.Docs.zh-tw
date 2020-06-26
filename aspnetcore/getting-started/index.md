@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 01/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: getting-started
-ms.openlocfilehash: 565cde233d6fc5f085ae1709e167e73980d5c3c2
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: b88460cdff5d8c30c6a28afdb4f67e8e0b6b819c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776229"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403361"
 ---
 # <a name="tutorial-get-started-with-aspnet-core"></a>教學課程：ASP.NET Core 使用者入門
 
@@ -35,7 +37,7 @@ ms.locfileid: "82776229"
 
 ![Web 應用程式首頁](_static/home-page.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE[](~/includes/3.1-SDK.md)]
 
@@ -99,13 +101,13 @@ dotnet watch run
 
 命令殼層指出應用程式已啟動之後，瀏覽到 `https://localhost:5001`。
 
-## <a name="edit-a-razor-page"></a>編輯Razor頁面
+## <a name="edit-a-razor-page"></a>編輯 Razor 頁面
 
 開啟*Pages/Index. cshtml* ，並以下列反白顯示的標記修改並儲存頁面：
 
 [!code-cshtml[](sample/index.cshtml?highlight=9)]
 
-流覽至`https://localhost:5001`、重新整理頁面，然後確認是否顯示變更。
+流覽至 `https://localhost:5001` 、重新整理頁面，然後確認是否顯示變更。
 
 ## <a name="next-steps"></a>後續步驟
 

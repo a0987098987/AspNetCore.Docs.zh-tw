@@ -1,5 +1,5 @@
 ---
-title: Blazor使用伺服器保護 ASP.NET Core WebAssembly 託管應用程式 Identity
+title: Blazor WebAssembly使用伺服器保護 ASP.NET Core 託管應用 Identity 程式
 author: guardrex
 description: Blazor從使用[IdentityServer](https://identityserver.io/)後端的 Visual Studio 中，建立具有驗證的新託管應用程式
 monikerRange: '>= aspnetcore-3.1'
@@ -8,19 +8,21 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: 8251658a2bb99ec17424ec26b8a44171082fab05
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: cce6b6b1ec144e362415fe34645aef567269c873
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243462"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402204"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Blazor使用伺服器保護 ASP.NET Core WebAssembly 託管應用程式 Identity
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Blazor WebAssembly使用伺服器保護 ASP.NET Core 託管應用 Identity 程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
@@ -30,11 +32,11 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 在 Visual Studio 中：
 
-1. 建立新的** Blazor WebAssembly**應用程式。 如需詳細資訊，請參閱 <xref:blazor/get-started>。
+1. 建立新的 **Blazor WebAssembly** 應用程式。 如需詳細資訊，請參閱 <xref:blazor/get-started> 。
 1. 在 [**建立新的 Blazor 應用程式**] 對話方塊中，選取 [**驗證**] 區段中的 [**變更**]。
 1. 選取 [**個別使用者帳戶**]，後面接著 **[確定]**。
 1. 選取 [ **Advanced** ] 區段中的 [ **ASP.NET Core 託管**] 核取方塊。
-1. 選取 [建立] 按鈕。
+1. 選取 [建立]**** 按鈕。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 

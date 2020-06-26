@@ -1,5 +1,5 @@
 ---
-title: Blazor使用 Microsoft 帳戶保護 ASP.NET Core WebAssembly 獨立應用程式
+title: Blazor WebAssembly使用 Microsoft 帳戶保護 ASP.NET Core 獨立應用程式
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
@@ -8,23 +8,25 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 3b8dac31ce58fd2551b6b24925e2e3ad5749e3af
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 38452c3e9578d8a942035174a28d945e58e4008d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243301"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402035"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>Blazor使用 Microsoft 帳戶保護 ASP.NET Core WebAssembly 獨立應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>Blazor WebAssembly使用 Microsoft 帳戶保護 ASP.NET Core 獨立應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
-若要建立 Blazor WebAssembly 獨立應用程式，以使用[具有 AZURE ACTIVE DIRECTORY （AAD）的 Microsoft 帳戶](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)進行驗證：
+若要建立 Blazor WebAssembly 使用[Microsoft 帳戶搭配 AZURE ACTIVE DIRECTORY （AAD）](/azure/active-directory/develop/quickstart-register-app#register-a-new-application-using-the-azure-portal)進行驗證的獨立應用程式：
 
 [建立 AAD 租使用者和 web 應用程式](/azure/active-directory/develop/v2-overview)
 
@@ -34,7 +36,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 在 [**支援的帳戶類型**] 中，選取 [**任何組織目錄中的帳戶**]。
 1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，應用程式的隨機產生埠可以在 [**調試**程式] 面板的 [屬性] 中找到。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 本主題稍後會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
 1. 停用 **[授與系統**  >  **管理員同意 openid 和 offline_access 許可權**] 核取方塊。
-1. 選取 [註冊]。
+1. 選取 [註冊]****。
 
 記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。
 
@@ -63,7 +65,7 @@ dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "commo
 建立應用程式之後，您應該能夠：
 
 * 使用 Microsoft 帳戶登入應用程式。
-* 要求 Microsoft Api 的存取權杖。 如需詳細資訊，請參閱
+* 要求 Microsoft Api 的存取權杖。 如需詳細資訊，請參閱：
   * [存取權杖範圍](#access-token-scopes)
   * [快速入門：設定應用程式以公開 Web api](/azure/active-directory/develop/quickstart-configure-app-expose-web-apis)。
 
@@ -121,7 +123,7 @@ builder.Services.AddMsalAuthentication(options =>
 
 ## <a name="access-token-scopes"></a>存取權杖範圍
 
-BlazorWebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設存取權杖範圍 <xref:Microsoft.Authentication.WebAssembly.Msal.Models.MsalProviderOptions> ：
+Blazor WebAssembly範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設存取權杖範圍 <xref:Microsoft.Authentication.WebAssembly.Msal.Models.MsalProviderOptions> ：
 
 ```csharp
 builder.Services.AddMsalAuthentication(options =>

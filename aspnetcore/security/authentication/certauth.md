@@ -7,17 +7,19 @@ ms.author: bdorrans
 ms.date: 01/02/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: cf80f7009334f49d877d2bd296b512e23f7fded8
-ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
+ms.openlocfilehash: 493046e288c6b1ccd8e41f15a8e6e532a10a4adc
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84724246"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403192"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -573,7 +575,7 @@ ASP.NET Core 5 preview 4 和更新版本為選用的用戶端憑證增加了更�
 
 * 設定網域和子域的系結：
   * 例如，在和上設定系 `contoso.com` 結 `myClient.contoso.com` 。 `contoso.com`主機不需要用戶端憑證，而是 `myClient.contoso.com` 。
-  * 如需詳細資訊，請參閱
+  * 如需詳細資訊，請參閱：
     * [Kestrel](/fundamentals/servers/kestrel)：
       * [ListenOptions.UseHttps](xref:fundamentals/servers/kestrel#listenoptionsusehttps)
       * <xref:Microsoft.AspNetCore.Server.Kestrel.Https.HttpsConnectionAdapterOptions.ClientCertificateMode>

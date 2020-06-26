@@ -1,30 +1,32 @@
 ---
 title: ASP.NET Core Blazor 狀態管理
 author: guardrex
-description: 瞭解如何在 Blazor 伺服器應用程式中保存狀態。
+description: 瞭解如何在應用程式中保存狀態 Blazor Server 。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/state-management
-ms.openlocfilehash: 59adcce972b503a6aa6e596bc9bff63225961f84
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: a6c646425145855538f408ec6cafdb151cd24b86
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243196"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401944"
 ---
 # <a name="aspnet-core-blazor-state-management"></a>ASP.NET Core Blazor 狀態管理
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
-Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
+Blazor Server是可設定狀態的應用程式架構。 在大部分的情況下，應用程式會維護與伺服器之間的持續連接。 使用者的狀態會保留在*伺服器的記憶體中。* 
 
 保留給使用者線路的狀態範例包括：
 
@@ -33,7 +35,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 * 保留在範圍為線路之相依性[插入（DI）](xref:fundamentals/dependency-injection)服務實例中的資料。
 
 > [!NOTE]
-> 本文解決伺服器應用程式中的狀態持續性 Blazor 。 BlazorWebAssembly apps 可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要的自訂解決方案或協力廠商套件超出本文的範圍。
+> 本文解決應用程式中的狀態持續性 Blazor Server 。 Blazor WebAssembly應用程式可以利用[瀏覽器中的用戶端狀態持續](#client-side-in-the-browser)性，但需要的自訂解決方案或協力廠商套件超出本文的範圍。
 
 ## <a name="blazor-circuits"></a>Blazor獲得
 
@@ -68,7 +70,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 ## <a name="where-to-persist-state"></a>保存狀態的位置
 
-在伺服器應用程式中保存狀態有三個常見的位置 Blazor 。 每個方法最適合不同的案例，而且有不同的注意事項：
+有三個常見的位置存在於應用程式中保存狀態 Blazor Server 。 每個方法最適合不同的案例，而且有不同的注意事項：
 
 * [資料庫中的伺服器端](#server-side-in-a-database)
 * [URL](#url)
@@ -106,7 +108,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 對於使用者主動建立的暫時性資料，常見的備份存放區是瀏覽器的 `localStorage` 和 `sessionStorage` 集合。 若已放棄迴圈，則不需要應用程式來管理或清除已儲存的狀態，這是優於伺服器端儲存體的優點。
 
 > [!NOTE]
-> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[ Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)。 `localStorage`和 `sessionStorage` 可以在 WebAssembly apps 中使用， Blazor 但只能透過撰寫自訂程式碼或使用協力廠商套件。
+> 本節中的「用戶端」指的是瀏覽器中的用戶端案例，而不是[ Blazor WebAssembly 裝載模型](xref:blazor/hosting-models#blazor-webassembly)。 `localStorage`和 `sessionStorage` 可以在應用程式中使用， Blazor WebAssembly 但只能透過撰寫自訂程式碼或使用協力廠商套件。
 
 `localStorage`和 `sessionStorage` 的差異如下：
 
@@ -124,7 +126,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 * 類似于使用伺服器端資料庫，載入和儲存資料是非同步。
 * 與伺服器端資料庫不同的是，預先呈現期間無法使用儲存體，因為在預先呈現階段期間，瀏覽器中不存在要求的頁面。
-* 儲存幾 kb 的資料可合理保存 Blazor 伺服器應用程式。 除了幾 kb 以外，您還必須考慮效能上的影響，因為資料是透過網路載入和儲存。
+* 儲存幾 kb 的資料可合理保存 Blazor Server 應用程式。 除了幾 kb 以外，您還必須考慮效能上的影響，因為資料是透過網路載入和儲存。
 * 使用者可能會看到或篡改資料。 ASP.NET Core[資料保護](xref:security/data-protection/introduction)可以降低風險。
 
 ## <a name="third-party-browser-storage-solutions"></a>協力廠商瀏覽器儲存解決方案
@@ -144,7 +146,7 @@ Blazor伺服器是可設定狀態的應用程式架構。 在大部分的情況�
 
 若要安裝 `Microsoft.AspNetCore.ProtectedBrowserStorage` 套件：
 
-1. 在 Blazor 伺服器應用程式專案中，將套件參考新增至 [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) 。
+1. 在 Blazor Server 應用程式專案中，將套件參考新增至 [`Microsoft.AspNetCore.ProtectedBrowserStorage`](https://www.nuget.org/packages/Microsoft.AspNetCore.ProtectedBrowserStorage) 。
 1. 在最上層 HTML 中（例如，在 `Pages/_Host.cshtml` [預設專案] 範本的檔案中），加入下列 `<script>` 標記：
 
    ```html
@@ -196,7 +198,7 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在中指派結果 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> ，而不是 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>只有在第一次具現化元件時，才會呼叫一次。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱 <xref:blazor/components/lifecycle>。
+如果元件的參數包含導覽狀態，請呼叫 `ProtectedSessionStore.GetAsync` 並在中指派結果 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnParametersSetAsync%2A> ，而不是 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>只有在第一次具現化元件時，才會呼叫一次。 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A>如果使用者流覽至不同的 URL，但仍在相同頁面上，則不會再呼叫一次。 如需詳細資訊，請參閱 <xref:blazor/components/lifecycle> 。
 
 > [!WARNING]
 > 此章節中的範例僅適用于伺服器未啟用預先安裝的情況。 啟用預入功能時，會產生類似下列的錯誤：

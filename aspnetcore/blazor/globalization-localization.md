@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/globalization-localization
-ms.openlocfilehash: 5050d99e5304c7edaf6faa43f05298b69882521d
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 1d24ebe900dfcdeb8b7bcc97f1d212deea9cecae
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243586"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402724"
 ---
 # <a name="aspnet-core-blazor-globalization-and-localization"></a>ASP.NET Core Blazor 全球化和當地語系化
 
@@ -34,7 +36,7 @@ Razor元件可以讓使用者以多種文化特性和語言來存取。 以下�
 * <xref:Microsoft.Extensions.Localization.IStringLocalizer><xref:Microsoft.Extensions.Localization.IStringLocalizer%601>應用程式*支援*和 Blazor 。
 * <xref:Microsoft.AspNetCore.Mvc.Localization.IHtmlLocalizer>、 <xref:Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer> 和資料批註當地語系化 ASP.NET CORE MVC 案例中，而且應用程式**不支援** Blazor 。
 
-如需詳細資訊，請參閱 <xref:fundamentals/localization>。
+如需詳細資訊，請參閱 <xref:fundamentals/localization> 。
 
 ## <a name="globalization"></a>全球化
 
@@ -63,19 +65,19 @@ Blazor的 [`@bind`](xref:mvc/views/razor#bind) 功能會執行格式，並根據
 
 ## <a name="localization"></a>當地語系化
 
-### <a name="blazor-webassembly"></a>BlazorWebAssembly
+### Blazor WebAssembly
 
-BlazorWebAssembly apps 會使用使用者的[語言喜好](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages)設定來設定文化特性。
+Blazor WebAssembly應用程式會使用使用者的[語言喜好](https://developer.mozilla.org/docs/Web/API/NavigatorLanguage/languages)設定來設定文化特性。
 
 若要明確設定文化特性， <xref:System.Globalization.CultureInfo.DefaultThreadCurrentCulture?displayProperty=nameWithType> 請 <xref:System.Globalization.CultureInfo.DefaultThreadCurrentUICulture?displayProperty=nameWithType> 在中設定和 `Program.Main` 。
 
-根據預設， Blazor Blazor WebAssembly 應用程式的連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 如需控制連結器行為的詳細資訊和指引，請參閱 <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization> 。
+根據預設， Blazor 應用程式的連結器 Blazor WebAssembly 設定會去除國際化資訊，但不包括明確要求的地區設定。 如需控制連結器行為的詳細資訊和指引，請參閱 <xref:blazor/host-and-deploy/configure-linker#configure-the-linker-for-internationalization> 。
 
-雖然預設選取的文化特性 Blazor 可能足以滿足大部分使用者的需求，但請考慮提供一種方法讓使用者指定其慣用的地區設定。 如需 Blazor 具有文化特性選擇器的 WebAssembly 範例應用程式，請參閱 [`LocSample`](https://github.com/pranavkm/LocSample) 當地語系化範例應用程式。
+雖然預設選取的文化特性 Blazor 可能足以滿足大部分使用者的需求，但請考慮提供一種方法讓使用者指定其慣用的地區設定。 如需 Blazor WebAssembly 具有文化特性選擇器的範例應用程式，請參閱 [`LocSample`](https://github.com/pranavkm/LocSample) 當地語系化範例應用程式。
 
-### <a name="blazor-server"></a>Blazor伺服器
+### Blazor Server
 
-Blazor伺服器應用程式是使用[當地語系化中介軟體](xref:fundamentals/localization#localization-middleware)來當地語系化。 中介軟體會為從應用程式要求資源的使用者選取適當的文化特性。
+Blazor Server應用程式是使用[當地語系化中介軟體](xref:fundamentals/localization#localization-middleware)來當地語系化。 中介軟體會為從應用程式要求資源的使用者選取適當的文化特性。
 
 您可以使用下列其中一種方法來設定文化特性：
 
@@ -119,9 +121,9 @@ Blazor伺服器應用程式是使用[當地語系化中介軟體](xref:fundament
 1. 瀏覽器會將初始 HTTP 要求傳送至應用程式。
 1. 文化特性是由當地語系化中介軟體所指派。
 1. Razor頁面（）中的運算式會在 `_Host` `_Host.cshtml` cookie 中保存文化特性，做為回應的一部分。
-1. 瀏覽器會開啟 WebSocket 連接，以建立互動式 Blazor 伺服器會話。
+1. 瀏覽器會開啟 WebSocket 連線，以建立互動式 Blazor Server 會話。
 1. 當地語系化中介軟體會讀取 cookie 並指派文化特性。
-1. Blazor伺服器會話的開頭是正確的文化特性。
+1. Blazor Server會話的開頭是正確的文化特性。
 
 #### <a name="provide-ui-to-choose-the-culture"></a>提供 UI 以選擇文化特性
 
@@ -151,7 +153,7 @@ public class CultureController : Controller
 ```
 
 > [!WARNING]
-> 使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirect%2A> 動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱 <xref:security/preventing-open-redirects>。
+> 使用 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.LocalRedirect%2A> 動作結果來防止開啟重新導向攻擊。 如需詳細資訊，請參閱 <xref:security/preventing-open-redirects> 。
 
 如果應用程式未設定為處理控制器動作：
 

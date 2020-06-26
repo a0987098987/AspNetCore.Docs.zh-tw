@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: 72a8b59b06e40f6f85abe41217ae564f82c8d89c
-ms.sourcegitcommit: 1833870ad0845326fb764fef1b530a07b9b5b099
+ms.openlocfilehash: 236dffd829bcd7c30ae1145242ce07cd8e9857e6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85347069"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402945"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -28,7 +30,7 @@ ms.locfileid: "85347069"
 
 ### <a name="signalr-cross-origin-negotiation-for-authentication"></a>SignalR用於驗證的跨原始來源協調
 
-*本節適用于 Blazor WebAssembly。*
+*本節適用于 Blazor WebAssembly 。*
 
 若要設定 SignalR 的基礎用戶端來傳送認證，例如 cookie 或 HTTP 驗證標頭：
 
@@ -61,7 +63,7 @@ ms.locfileid: "85347069"
 
 ## <a name="reflect-the-connection-state-in-the-ui"></a>反映 UI 中的連接狀態
 
-*本節適用于 Blazor 伺服器。*
+*本節適用于 Blazor Server 。*
 
 當用戶端偵測到連線已遺失時，會在用戶端嘗試重新連線時，向使用者顯示預設的 UI。 如果重新連線失敗，則會提供使用者重試的選項。
 
@@ -84,9 +86,9 @@ ms.locfileid: "85347069"
 
 ## <a name="render-mode"></a>轉譯模式
 
-*本節適用于 Blazor 伺服器。*
+*本節適用于 Blazor Server 。*
 
-Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，然後才會建立與伺服器的用戶端連接。 這會在頁面中設定 `_Host.cshtml` Razor ：
+Blazor Server在建立伺服器的用戶端連接之前，預設會將應用程式設定為在伺服器上預先呈現該 UI。 這會在頁面中設定 `_Host.cshtml` Razor ：
 
 ```cshtml
 <body>
@@ -103,19 +105,19 @@ Blazor伺服器應用程式預設會設定為伺服器上預先呈現的 UI，�
 * 會資源清單到頁面中。
 * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | 描述 |
+| <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> | 說明 |
 | --- | --- |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
-| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將元件轉譯為靜態 HTML，並包含 Blazor Server 應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+| <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現應用程式的標記 Blazor Server 。 不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
 | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將元件轉譯為靜態 HTML。 |
 
 不支援從靜態 HTML 網頁轉譯伺服器元件。
 
-## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>設定 SignalR Blazor 伺服器應用程式的用戶端
+## <a name="configure-the-signalr-client-for-blazor-server-apps"></a>設定 SignalR 應用程式的用戶端 Blazor Server
 
-*本節適用于 Blazor 伺服器。*
+*本節適用于 Blazor Server 。*
 
-有時候，您需要設定 SignalR 伺服器應用程式所使用的用戶端 Blazor 。 例如，您可能會想要在用戶端上設定記錄 SignalR 來診斷連線問題。
+有時候，您需要設定 SignalR 應用程式所使用的用戶端 Blazor Server 。 例如，您可能會想要在用戶端上設定記錄 SignalR 來診斷連線問題。
 
 若要 SignalR 在檔案中設定用戶端 `Pages/_Host.cshtml` ：
 

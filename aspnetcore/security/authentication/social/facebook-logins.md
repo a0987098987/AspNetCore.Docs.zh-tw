@@ -8,17 +8,19 @@ ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/facebook-logins
-ms.openlocfilehash: 11ddc7314a694446d488da6ef1b2e3423bf7241a
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: df91b6f324de70b8492ccf0aef74c9264c3e9711
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777029"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403946"
 ---
 # <a name="facebook-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Facebook 外部登入設定
 
@@ -55,16 +57,16 @@ ms.locfileid: "82777029"
 
   ![[用戶端 OAuth 設定] 頁面](index/_static/FBOAuthSetup.png)
 
-* 輸入您的開發 URI，並將 */signin-facebook*附加至 [**有效的 OAuth 重新導向 uri** ] 欄位（例如： `https://localhost:44320/signin-facebook`）。 本教學課程稍後設定的 Facebook 驗證會在 */signin-facebook*路由上自動處理要求，以執行 OAuth 流程。
+* 輸入您的開發 URI，並將 */signin-facebook*附加至 [**有效的 OAuth 重新導向 uri** ] 欄位（例如： `https://localhost:44320/signin-facebook` ）。 本教學課程稍後設定的 Facebook 驗證會在 */signin-facebook*路由上自動處理要求，以執行 OAuth 流程。
 
 > [!NOTE]
 > URI */signin-facebook*會設定為 facebook 驗證提供者的預設回呼。 您可以在設定 Facebook 驗證中介軟體時，透過[FacebookOptions](/dotnet/api/microsoft.aspnetcore.authentication.facebook.facebookoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
 
 * 按一下 **[儲存變更]** 。
 
-* 按一下左側導覽列中的 [**設定** > ] [**基本**] 連結。
+* 按一下左側導覽列中的 [**設定**] [  >  **基本**] 連結。
 
-  在此頁面上，記下您`App ID`的和。 `App Secret` 您會在下一節中，將這兩個新增至您的 ASP.NET Core 應用程式：
+  在此頁面上，記下您的 `App ID` 和 `App Secret` 。 您會在下一節中，將這兩個新增至您的 ASP.NET Core 應用程式：
 
 * 部署網站時，您必須重新流覽**Facebook 登**入設定頁面，並註冊新的公用 URI。
 
@@ -73,7 +75,7 @@ ms.locfileid: "82777029"
 使用[秘密管理員](xref:security/app-secrets)來儲存機密設定（例如 Facebook 應用程式識別碼和秘密值）。 針對此範例，請使用下列步驟：
 
 1. 根據[啟用秘密儲存](xref:security/app-secrets#enable-secret-storage)中的指示，初始化秘密儲存的專案。
-1. 使用秘密金鑰`Authentication:Facebook:AppId`和， `Authentication:Facebook:AppSecret`將敏感性設定儲存在本機密碼存放區中：
+1. 使用秘密金鑰和，將敏感性設定儲存在本機密碼存放區中 `Authentication:Facebook:AppId` `Authentication:Facebook:AppSecret` ：
 
     ```dotnetcli
     dotnet user-secrets set "Authentication:Facebook:AppId" "<app-id>"
@@ -84,7 +86,7 @@ ms.locfileid: "82777029"
 
 ## <a name="configure-facebook-authentication"></a>設定 Facebook 驗證
 
-在`ConfigureServices` *Startup.cs*檔案的方法中新增 Facebook 服務：
+在 Startup.cs 檔案的方法中新增 Facebook 服務 `ConfigureServices` ： *Startup.cs*
 
 ```csharp
 services.AddAuthentication().AddFacebook(facebookOptions =>
@@ -112,11 +114,11 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 <xref:Microsoft.AspNetCore.Authentication.RemoteAuthenticationOptions.AccessDeniedPath>當使用者未核准要求的授權需求時，可以提供使用者代理程式的重新導向路徑。
 
-下列程式碼會將`AccessDeniedPath`設定`"/AccessDeniedPathInfo"`為：
+下列程式碼會將設定 `AccessDeniedPath` 為 `"/AccessDeniedPathInfo"` ：
 
 [!code-csharp[](~/security/authentication/social/social-code/StartupAccessDeniedPath.cs?name=snippetFB)]
 
-我們建議`AccessDeniedPath`頁面包含下列資訊：
+我們建議 `AccessDeniedPath` 頁面包含下列資訊：
 
 *  遠端驗證已取消。
 * 此應用程式需要驗證。
@@ -127,7 +129,7 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 * 流覽至[facebook.com](https://www.facebook.com/)
 * 如果您已登入，則必須登出。
 * 執行應用程式，然後選取 [Facebook 登入]。
-* 選取 [**不是現在**]。 系統會將您重新導向`AccessDeniedPath`至指定的頁面。
+* 選取 [**不是現在**]。 系統會將您重新導向至指定的 `AccessDeniedPath` 頁面。
 
 <!-- End of React  -->
 [!INCLUDE[Forward request information when behind a proxy or load balancer section](includes/forwarded-headers-middleware.md)]
@@ -141,13 +143,13 @@ services.AddAuthentication().AddFacebook(facebookOptions =>
 
 ## <a name="troubleshooting"></a>疑難排解
 
-* **僅限 ASP.NET Core 2.x：** 如果Identity未透過在中`services.AddIdentity` `ConfigureServices`呼叫來設定，則嘗試驗證會導致*ArgumentException：必須提供 ' SignInScheme ' 選項*。 本教學課程中使用的專案範本可確保這項作業已完成。
+* **僅限 ASP.NET Core 2.x：** 如果 Identity 未透過 `services.AddIdentity` 在中呼叫 `ConfigureServices` 來設定，則嘗試驗證會導致*ArgumentException：必須提供 ' SignInScheme ' 選項*。 本教學課程中使用的專案範本可確保這項作業已完成。
 * 如果尚未藉由套用初始遷移來建立網站資料庫，則在*處理要求錯誤時*，您會取得資料庫作業失敗。 請按 [套用**遷移**] 來建立資料庫，並重新整理以繼續發生錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 本文說明了您可以如何使用 Facebook 進行驗證。 您可以遵循類似的方法，向[先前頁面](xref:security/authentication/social/index)上所列的其他提供者進行驗證。
 
-* 將網站發佈至 Azure web 應用程式之後，您應該`AppSecret`在 Facebook 開發人員入口網站中重設。
+* 將網站發佈至 Azure web 應用程式之後，您應該 `AppSecret` 在 Facebook 開發人員入口網站中重設。
 
-* 將`Authentication:Facebook:AppId`和`Authentication:Facebook:AppSecret`設定為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。
+* 將 `Authentication:Facebook:AppId` 和設定 `Authentication:Facebook:AppSecret` 為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。

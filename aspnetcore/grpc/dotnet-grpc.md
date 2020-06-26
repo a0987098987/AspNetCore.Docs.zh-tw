@@ -7,17 +7,19 @@ ms.author: johluo
 ms.date: 10/17/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/dotnet-grpc
-ms.openlocfilehash: 0990013947be2cee5045deac92efc3c6bcf12e03
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 1e4e5cd6a4a687ecacf0c4803784e68aee228498
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82768831"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404206"
 ---
 # <a name="manage-protobuf-references-with-dotnet-grpc"></a>使用 dotnet-grpc 管理 Protobuf 參考
 
@@ -77,7 +79,7 @@ dotnet grpc add-file [options] <files>...
 | -p | --project | 要操作之專案檔的路徑。 如果未指定檔案，此命令會在目前的目錄中搜尋一個檔案。
 | -S | --服務 | 應產生的 gRPC 服務類型。 如果 `Default` 指定， `Both` 則會用於 Web 專案，並 `Client` 用於非 Web 專案。 接受的值為 `Both` 、 `Client` 、 `Default` 、 `None` 、 `Server` 。
 | -i | --其他-匯入-目錄 | 解析 protobuf 檔案的匯入時，所要使用的其他目錄。 這是以分號分隔的路徑清單。
-| | --access | 要用於產生之 c # 類別的存取修飾詞。 預設值為 `Public`。 接受的值為 `Internal` 和 `Public`。
+| | --access | 要用於產生之 c # 類別的存取修飾詞。 預設值是 `Public`。 接受的值為 `Internal` 和 `Public`。
 
 ### <a name="add-url"></a>新增 URL
 
@@ -93,7 +95,7 @@ dotnet-grpc add-url [options] <url>
 
 | 引數 | 說明 |
 |-|-|
-| URL | 遠端 protobuf 檔的 URL。 |
+| url | 遠端 protobuf 檔的 URL。 |
 
 #### <a name="options"></a>選項
 
@@ -162,7 +164,7 @@ dotnet-grpc refresh [options] [<references>...]
 
 `list`命令是用來顯示專案檔中的所有 Protobuf 參考。 如果資料行的所有值都是預設值，可能會省略資料行。
 
-### <a name="usage"></a>使用方式
+### <a name="usage"></a>使用量
 
 ```dotnetcli
 dotnet-grpc list [options]

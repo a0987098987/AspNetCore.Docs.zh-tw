@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 01/06/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/advanced/custom-model-binding
-ms.openlocfilehash: 109bebe79c9e77d26b02ca27367b8ff33191a4b4
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 54080191d76df674444019d43180a7f9d84b471c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776691"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403634"
 ---
 # <a name="custom-model-binding-in-aspnet-core"></a>ASP.NET Core 中的自訂模型繫結
 
@@ -36,13 +38,13 @@ ms.locfileid: "82776691"
 
 模型繫結使用特定定義來描述其作業類型。 「簡單型別」** 是指從輸入中的單一字串進行轉換。 「複雜類型」** 是指從多個輸入值進行轉換。 架構會根據是否有 `TypeConverter` 來判斷是否為不同類型。 如果您有不需要外部資源的簡單 `string` -> `SomeType` 對應，建議您建立型別轉換器。
 
-在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>可以用來將 base64 編碼的字串轉換成位元組陣列的。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
+在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder> 可以用來將 base64 編碼的字串轉換成位元組陣列的。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>使用 ByteArrayModelBinder
 
-Base64 編碼字串可用來代表二進位資料。 例如，影像可以編碼為字串。 此範例會在[Base64String](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt)中將影像包含為 base64 編碼的字串。
+Base64 編碼字串可用來代表二進位資料。 例如，影像可以編碼為字串。 範例會在[Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/3.x/CustomModelBindingSample/Base64String.txt)中將影像包含為 base64 編碼的字串。
 
-ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 會<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider>將`byte[]`引數`ByteArrayModelBinder`對應至：
+ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 會 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> 將 `byte[]` 引數對應至 `ByteArrayModelBinder` ：
 
 ```csharp
 public IModelBinder GetBinder(ModelBinderProviderContext context)
@@ -62,7 +64,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 }
 ```
 
-建立您自己的自訂模型系結器時，您`IModelBinderProvider`可以執行自己的<xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute>型別，或使用。
+建立您自己的自訂模型系結器時，您可以執行自己 `IModelBinderProvider` 的型別，或使用 <xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute> 。
 
 下列範例示範如何使用 `ByteArrayModelBinder`，將 Base64 編碼字串轉換成 `byte[]`，並將結果儲存至檔案：
 
@@ -160,13 +162,13 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 
 模型繫結使用特定定義來描述其作業類型。 「簡單型別」** 是指從輸入中的單一字串進行轉換。 「複雜類型」** 是指從多個輸入值進行轉換。 架構會根據是否有 `TypeConverter` 來判斷是否為不同類型。 如果您有不需要外部資源的簡單 `string` -> `SomeType` 對應，建議您建立型別轉換器。
 
-在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder>可以用來將 base64 編碼的字串轉換成位元組陣列的。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
+在您建立自己的自訂模型繫結器之前，建議您先檢閱現有模型繫結器的實作方式。 請考慮 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinder> 可以用來將 base64 編碼的字串轉換成位元組陣列的。 位元組陣列通常會儲存為檔案或資料庫 BLOB 欄位。
 
 ### <a name="working-with-the-bytearraymodelbinder"></a>使用 ByteArrayModelBinder
 
-Base64 編碼字串可用來代表二進位資料。 例如，影像可以編碼為字串。 此範例會在[Base64String](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt)中將影像包含為 base64 編碼的字串。
+Base64 編碼字串可用來代表二進位資料。 例如，影像可以編碼為字串。 範例會在[Base64String.txt](https://github.com/dotnet/AspNetCore.Docs/blob/master/aspnetcore/mvc/advanced/custom-model-binding/samples/2.x/CustomModelBindingSample/Base64String.txt)中將影像包含為 base64 編碼的字串。
 
-ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 會<xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider>將`byte[]`引數`ByteArrayModelBinder`對應至：
+ASP.NET Core MVC 接受 Base64 編碼字串，並使用 `ByteArrayModelBinder` 將其轉換成位元組陣列。 會 <xref:Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider> 將 `byte[]` 引數對應至 `ByteArrayModelBinder` ：
 
 ```csharp
 public IModelBinder GetBinder(ModelBinderProviderContext context)
@@ -185,7 +187,7 @@ public IModelBinder GetBinder(ModelBinderProviderContext context)
 }
 ```
 
-建立您自己的自訂模型系結器時，您`IModelBinderProvider`可以執行自己的<xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute>型別，或使用。
+建立您自己的自訂模型系結器時，您可以執行自己 `IModelBinderProvider` 的型別，或使用 <xref:Microsoft.AspNetCore.Mvc.ModelBinderAttribute> 。
 
 下列範例示範如何使用 `ByteArrayModelBinder`，將 Base64 編碼字串轉換成 `byte[]`，並將結果儲存至檔案：
 

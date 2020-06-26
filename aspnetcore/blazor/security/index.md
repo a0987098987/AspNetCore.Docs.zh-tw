@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: 14cf614bf5d4f2ad6a34c49cb08277a2deae8d00
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: e905f08f867b73fc37d5fed7138256ac89811312
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242946"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402399"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
 
@@ -26,12 +28,12 @@ ms.locfileid: "85242946"
 
 ASP.NET Core 支援在應用程式中設定和管理安全性 Blazor 。
 
-Blazor伺服器和 Blazor WebAssembly 應用程式之間的安全性案例不同。 因為 Blazor 伺服器應用程式是在伺服器上執行，所以授權檢查能夠判斷：
+Blazor Server和應用程式之間的安全性案例不同 Blazor WebAssembly 。 因為 Blazor Server 應用程式會在伺服器上執行，所以授權檢查能夠判斷：
 
 * 要提供給使用者的 UI 選項 (例如，使用者可以使用哪些功能表項目)。
 * 適用於應用程式和元件之特定區域的存取規則。
 
-BlazorWebAssembly 應用程式會在用戶端上執行。 授權「僅」** 會被用來決定要顯示的 UI 選項。 由於用戶端檢查可由使用者修改或略過，因此 Blazor WebAssembly 應用程式無法強制執行授權存取規則。
+Blazor WebAssembly應用程式會在用戶端上執行。 授權「僅」** 會被用來決定要顯示的 UI 選項。 由於用戶端檢查可由使用者修改或略過，因此 Blazor WebAssembly 應用程式無法強制執行授權存取規則。
 
 [ Razor 頁面授權慣例](xref:security/authorization/razor-pages-authorization)不適用於可路由的 Razor 元件。 如果無法路由傳送的 Razor 元件[內嵌在頁面中](xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps#render-components-from-a-page-or-view)，頁面的授權慣例會間接影響此 Razor 元件以及頁面內容的其餘部分。
 
@@ -40,11 +42,11 @@ BlazorWebAssembly 應用程式會在用戶端上執行。 授權「僅」** 會�
 
 ## <a name="authentication"></a>驗證
 
-Blazor會使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於 Blazor 應用程式的主控方式、 Blazor WebAssembly 或 Blazor 伺服器。
+Blazor會使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識別。 確切的機制取決於裝載 Blazor 應用程式的方式， Blazor WebAssembly 或 Blazor Server 。
 
-### <a name="blazor-webassembly-authentication"></a>BlazorWebAssembly authentication
+### <a name="blazor-webassembly-authentication"></a>Blazor WebAssembly 驗證
 
-在 Blazor WebAssembly apps 中，可以略過驗證檢查，因為使用者可以修改所有的用戶端程式代碼。 這同樣也適用於所有的用戶端應用程式技術，包括 JavaScript SPA 架構或任何作業系統的原生應用程式。
+在 Blazor WebAssembly 應用程式中，可以略過驗證檢查，因為使用者可以修改所有的用戶端程式代碼。 這同樣也適用於所有的用戶端應用程式技術，包括 JavaScript SPA 架構或任何作業系統的原生應用程式。
 
 新增下列內容：
 
@@ -55,9 +57,9 @@ Blazor會使用現有的 ASP.NET Core 驗證機制來建立使用者的身分識
 
 如需建立應用程式和設定的詳細資訊，請參閱 <xref:blazor/security/webassembly/index> 。
 
-### <a name="blazor-server-authentication"></a>Blazor伺服器驗證
+### <a name="blazor-server-authentication"></a>Blazor Server 驗證
 
-Blazor伺服器應用程式會透過使用建立的即時連線來運作 SignalR 。 建立連接時，會處理[以為 SignalR 基礎之應用程式中的驗證](xref:signalr/authn-and-authz)。 驗證可以是以 Cookie 或其他持有人權杖為基礎。
+Blazor Server應用程式會透過使用建立的即時連線來運作 SignalR 。 建立連接時，會處理[以為 SignalR 基礎之應用程式中的驗證](xref:signalr/authn-and-authz)。 驗證可以是以 Cookie 或其他持有人權杖為基礎。
 
 如需建立應用程式和設定的詳細資訊，請參閱 <xref:blazor/security/server/index> 。
 
@@ -159,7 +161,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>();
 ```
 
-在 Blazor 伺服器應用程式中， `CustomAuthStateProvider` 服務會在中註冊 `Startup.ConfigureServices` ：
+在 Blazor Server 應用程式中， `CustomAuthStateProvider` 服務會在中註冊 `Startup.ConfigureServices` ：
 
 ```csharp
 using Microsoft.AspNetCore.Components.Authorization;
@@ -232,7 +234,7 @@ builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
 ```
 
-在 Blazor 伺服器應用程式中，選項和授權的服務已存在，因此不需要採取進一步的動作。
+在 Blazor Server 應用程式中，選項和授權的服務已存在，因此不需要採取進一步的動作。
 
 ## <a name="authorization"></a>授權
 
@@ -298,7 +300,7 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-如需詳細資訊，請參閱 <xref:security/authorization/roles>。
+如需詳細資訊，請參閱 <xref:security/authorization/roles> 。
 
 針對原則型授權，請使用 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy> 參數：
 
@@ -308,15 +310,15 @@ builder.Services.AddAuthorizationCore();
 </AuthorizeView>
 ```
 
-宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies>。
+宣告型授權是特殊案例的原則型授權。 例如，您可以定義要求使用者具備特定宣告的原則。 如需詳細資訊，請參閱 <xref:security/authorization/policies> 。
 
-這些 Api 可以在 Blazor 伺服器或 Blazor WebAssembly 應用程式中使用。
+這些 Api 可以在 Blazor Server 或 Blazor WebAssembly 應用程式中使用。
 
 如果未指定 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Roles> 和 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Policy>，<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 便會使用預設原則。
 
 ### <a name="content-displayed-during-asynchronous-authentication"></a>在非同步驗證期間所顯示的內容
 
-Blazor允許以*非同步方式*判斷驗證狀態。 這種方法的主要案例是在 Blazor WebAssembly 應用程式中，對外部端點提出驗證的要求。
+Blazor允許以*非同步方式*判斷驗證狀態。 這種方法的主要案例是在對 Blazor WebAssembly 外部端點提出要求以進行驗證的應用程式中。
 
 在驗證期間，<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 預設不會顯示任何內容。 若要在驗證發生時顯示內容，請使用 `<Authorizing>` 元素：
 
@@ -333,7 +335,7 @@ Blazor允許以*非同步方式*判斷驗證狀態。 這種方法的主要案�
 </AuthorizeView>
 ```
 
-這種方法通常不適用於 Blazor 伺服器應用程式。 Blazor伺服器應用程式會在狀態建立後立即知道驗證狀態。 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeViewCore.Authorizing>內容可以在 Blazor 伺服器應用程式的元件中提供 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> ，但永遠不會顯示內容。
+這種方法通常不適用於 Blazor Server 應用程式。 Blazor Server應用程式會在狀態建立後立即知道驗證狀態。 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeViewCore.Authorizing>內容可以在 Blazor Server 應用程式的元件中提供 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> ，但永遠不會顯示內容。
 
 ## <a name="authorize-attribute"></a>[Authorize] 屬性
 
@@ -380,7 +382,7 @@ You can only see this if you're signed in.
 * 使用者無法通過套用 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 至元件的條件。 屬性 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 一節中會涵蓋[ `[Authorize]` ](#authorize-attribute)屬性。
 * 正在進行非同步驗證。
 
-在預設的 Blazor 伺服器專案範本中， `App` 元件（ `App.razor` ）會示範如何設定自訂內容：
+在預設 Blazor Server 專案範本中， `App` 元件（ `App.razor` ）會示範如何設定自訂內容：
 
 ```razor
 <CascadingAuthenticationState>
@@ -477,7 +479,7 @@ Not authorized.
 
 * **`null`接收的值`authenticationStateTask`**
 
-專案可能不是使用 Blazor 已啟用驗證的伺服器範本所建立。 將 `<CascadingAuthenticationState>` UI 樹狀結構的某些部分（例如在 `App` 元件（）中）包裝起來，如下所示 `App.razor` ：
+專案可能不是使用 Blazor Server 已啟用驗證的範本來建立。 將 `<CascadingAuthenticationState>` UI 樹狀結構的某些部分（例如在 `App` 元件（）中）包裝起來，如下所示 `App.razor` ：
 
 ```razor
 <CascadingAuthenticationState>

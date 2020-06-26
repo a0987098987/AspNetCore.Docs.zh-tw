@@ -8,22 +8,24 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/environments
-ms.openlocfilehash: a527e04cf97dd2d2b88dcc6e866475835498545d
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: f8d0fc3cba22973628f405b4399cef39d562d6ed
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243612"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402893"
 ---
 # <a name="aspnet-core-blazor-environments"></a>ASP.NET Core Blazor 環境
 
 > [!NOTE]
-> 本主題適用于 Blazor WebAssembly。 如需 ASP.NET Core 應用程式設定的一般指引，請參閱 <xref:fundamentals/environments> 。
+> 本主題適用于 Blazor WebAssembly 。 如需 ASP.NET Core 應用程式設定的一般指引，請參閱 <xref:fundamentals/environments> 。
 
 在本機執行應用程式時，環境會預設為開發。 當應用程式發佈時，環境會預設為 [生產]。
 

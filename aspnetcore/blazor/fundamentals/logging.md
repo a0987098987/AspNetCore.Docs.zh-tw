@@ -8,23 +8,25 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/logging
-ms.openlocfilehash: 841c4021d9217312b2601b0e775542c6455cca82
-ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
+ms.openlocfilehash: 1f4b18bdea02016fb76b75dd01a8fcbeab9b2bc9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85240870"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402828"
 ---
 # <a name="aspnet-core-blazor-logging"></a>ASP.NET Core Blazor 記錄
 
-## <a name="blazor-webassembly"></a>BlazorWebAssembly
+## Blazor WebAssembly
 
-Blazor使用中的屬性來設定 WebAssembly apps 中的記錄 `WebAssemblyHostBuilder.Logging` `Program.Main` ：
+Blazor WebAssembly使用中的屬性設定應用程式中的記錄功能 `WebAssemblyHostBuilder.Logging` `Program.Main` ：
 
 ```csharp
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -39,13 +41,13 @@ builder.Logging.AddProvider(new CustomLoggingProvider());
 
 `Logging`屬性的類型為 <xref:Microsoft.Extensions.Logging.ILoggingBuilder> ，因此中提供的所有擴充方法 <xref:Microsoft.Extensions.Logging.ILoggingBuilder> 也可在上取得 `Logging` 。
 
-記錄設定可以從應用程式佈建檔載入。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/configuration#logging-configuration>。
+記錄設定可以從應用程式佈建檔載入。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/configuration#logging-configuration> 。
 
-## <a name="blazor-server"></a>Blazor伺服器
+## Blazor Server
 
 如需一般 ASP.NET Core 記錄指引，請參閱 <xref:fundamentals/logging/index> 。
 
-## <a name="blazor-webassembly-signalr-net-client-logging"></a>BlazorWebAssembly SignalR .net 用戶端記錄
+## <a name="blazor-webassembly-signalr-net-client-logging"></a>Blazor WebAssemblySignalR.Net 用戶端記錄
 
 插入 <xref:Microsoft.Extensions.Logging.ILoggerProvider> ，將加入至 `WebAssemblyConsoleLogger` 傳遞至的記錄提供者 <xref:Microsoft.AspNetCore.SignalR.Client.HubConnectionBuilder> 。 不同于傳統 <xref:Microsoft.Extensions.Logging.Console.ConsoleLogger> ， `WebAssemblyConsoleLogger` 是瀏覽器專屬記錄 api 的包裝函式（例如， `console.log` ）。 在瀏覽器內容中使用時，可以 `WebAssemblyConsoleLogger` 在 Mono 內進行記錄。
 

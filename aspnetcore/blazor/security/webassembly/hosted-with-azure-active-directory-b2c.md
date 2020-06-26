@@ -1,5 +1,5 @@
 ---
-title: Blazor使用 Azure Active Directory B2C 保護 ASP.NET Core WebAssembly 託管應用程式
+title: Blazor WebAssembly使用 Azure Active Directory B2C 保護 ASP.NET Core 託管應用程式
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
@@ -8,23 +8,25 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 3dfaa043fd2e6bc092c2db828563aeaedaa9d272
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 123b664b87eb41a8f07344608713d9aed7a0aa37
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243534"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402243"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Blazor使用 Azure Active Directory B2C 保護 ASP.NET Core WebAssembly 託管應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Blazor WebAssembly使用 Azure Active Directory B2C 保護 ASP.NET Core 託管應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
-本文說明如何建立 Blazor WebAssembly 獨立應用程式，以使用[AZURE ACTIVE DIRECTORY （AAD） B2C](/azure/active-directory-b2c/overview)進行驗證。
+本文說明如何建立 Blazor WebAssembly 使用[AZURE ACTIVE DIRECTORY （AAD） B2C](/azure/active-directory-b2c/overview)進行驗證的獨立應用程式。
 
 ## <a name="register-apps-in-aad-b2c-and-create-solution"></a>在 AAD B2C 中註冊應用程式並建立解決方案
 
@@ -42,11 +44,11 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 請遵循教學課程[：在 Azure Active Directory B2C 中註冊應用程式中](/azure/active-directory-b2c/tutorial-register-applications)的指導方針，為*伺服器 API 應用*程式註冊 AAD 應用程式，然後執行下列動作：
 
 1. 在**Azure Active Directory**  >  **應用程式註冊**中，選取 [**新增註冊**]。
-1. 提供應用程式的**名稱**（例如， ** Blazor 伺服器 AAD B2C**）。
+1. 提供應用程式的**名稱**（例如， ** Blazor Server AAD B2C**）。
 1. 針對**支援的帳戶類型**，請選取 [多租使用者] 選項： [**任何組織目錄中的帳戶] 或 [任何身分識別提供者]。用於驗證 Azure AD B2C 的使用者。**
 1. 在此案例中，*伺服器 API 應用程式*不需要重新**導向 uri** ，因此，請將下拉式關閉設定為 [ **Web** ]，而不要輸入 [重新導向 uri]。
 1. 確認**Permissions**  >  已啟用 [許可權]，授與系統**管理員同意 openid 和 offline_access 的許可權**。
-1. 選取 [註冊]。
+1. 選取 [註冊]****。
 
 記錄下列資訊：
 
@@ -78,7 +80,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 針對**支援的帳戶類型**，請選取 [多租使用者] 選項： [**任何組織目錄中的帳戶] 或 [任何身分識別提供者]。用於驗證 Azure AD B2C 的使用者。**
 1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，在 [**調試**程式] 面板的伺服器應用程式屬性中，可以找到應用程式的隨機產生埠。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 [[建立應用程式](#create-the-app)] 區段中會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
 1. 確認**Permissions**  >  已啟用 [許可權]，授與系統**管理員同意 openid 和 offline_access 的許可權**。
-1. 選取 [註冊]。
+1. 選取 [註冊]****。
 
 記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。
 
@@ -92,11 +94,11 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 在 [ **API 許可權**] 中：
 
 1. 選取 [**新增許可權**]，後面接著 [**我的 api**]。
-1. 從 [**名稱**] 資料行中選取*伺服器 API 應用程式*（例如，[ ** Blazor 伺服器 AAD B2C**]）。
+1. 從 [**名稱**] 資料行中選取*伺服器 API 應用程式*（例如， ** Blazor Server AAD B2C**）。
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access` ）。
-1. 選取 [新增權限]。
-1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是]  加以確認。
+1. 選取 [新增權限]****。
+1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是] **** 加以確認。
 
 在**Home**  >  **Azure AD B2C**  >  **使用者流程**：
 
@@ -211,7 +213,7 @@ services.Configure<JwtBearerOptions>(
 WeatherForecast 控制器（*控制器/WeatherForecastController*）會公開受保護的 API，並將 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性套用至控制器。 請**務必**瞭解：
 
 * [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)此 api 控制器中的屬性是保護此 api 免于未經授權存取的唯一做法。
-* [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)WebAssembly 應用程式中所使用的屬性 Blazor 只會作為應用程式的提示，使用者應該獲得授權，應用程式才能正常運作。
+* [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute)應用程式中所使用的屬性 Blazor WebAssembly 只會作為應用程式的提示，使用者應該獲得授權，應用程式才能正確運作。
 
 ```csharp
 [Authorize]

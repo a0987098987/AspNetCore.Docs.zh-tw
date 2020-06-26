@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/20/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: web-api/http-repl
-ms.openlocfilehash: 4c42ad56bbdb7b66824b290cd118903cbe4311e8
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: ead745ae8843173bb25b94672005cc6ce295db2e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452209"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403374"
 ---
 # <a name="test-web-apis-with-the-http-repl"></a>使用 HTTP REPL 來測試 web API
 
@@ -56,7 +58,7 @@ dotnet tool install -g Microsoft.dotnet-httprepl
 
 會從 [Microsoft.dotnet-httprepl](https://www.nuget.org/packages/Microsoft.dotnet-httprepl) \(英文\) NuGet 套件安裝 [.NET Core 全域工具](/dotnet/core/tools/global-tools#install-a-global-tool)。
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 成功安裝工具後，請執行以下命令來啟動 HTTP REPL：
 
@@ -371,9 +373,9 @@ pref set editor.command.default.arguments "--disable-extensions --new-window"
 
 根據預設，HTTP REPL 有一組相對路徑，在執行 `connect` 命令時 (不使用 `--swagger` 選項)，HTTP REPL 會用來尋找 Swagger 文件。 這些相對路徑會與 `connect` 命令中指定的根路徑和基本路徑結合。 預設的相對路徑為：
 
-- *swagger. json*
-- *swagger/v1/swagger. json*
-- */swagger.json*
+- *swagger.js于*
+- *swagger/v1/swagger.js開啟*
+- */swagger.js于*
 - */swagger/v1/swagger.json*
 
 若要在您的環境中使用一組不同的搜尋路徑，請設定 `swagger.searchPaths` 喜好設定。 此值必須是以管線分隔的相對路徑清單。 例如：

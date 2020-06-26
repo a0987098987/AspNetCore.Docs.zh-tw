@@ -1,5 +1,5 @@
 ---
-title: Blazor使用驗證程式庫保護 ASP.NET Core WebAssembly 獨立應用程式
+title: Blazor WebAssembly使用驗證程式庫保護 ASP.NET Core 獨立應用程式
 author: guardrex
 description: ''
 monikerRange: '>= aspnetcore-3.1'
@@ -8,25 +8,27 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: 5a05543c77f1ebaebadc27236aa8f7634e84f1fd
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: be87257c5f901e9b3d1ba6a8d7c6b811419c433f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243406"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402191"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Blazor使用驗證程式庫保護 ASP.NET Core WebAssembly 獨立應用程式
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Blazor WebAssembly使用驗證程式庫保護 ASP.NET Core 獨立應用程式
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)
 
 *若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*
 
-若要建立 Blazor 使用程式庫的 WebAssembly 獨立應用程式 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) ，請在命令 shell 中執行下列命令：
+若要建立 Blazor WebAssembly 使用程式庫的獨立應用程式 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) ，請在命令 shell 中執行下列命令：
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual
@@ -76,7 +78,7 @@ builder.Services.AddOidcAuthentication(options =>
 
 ## <a name="access-token-scopes"></a>存取權杖範圍
 
-BlazorWebAssembly 範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions> ：
+Blazor WebAssembly範本不會自動將應用程式設定為要求安全 API 的存取權杖。 若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions> ：
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>

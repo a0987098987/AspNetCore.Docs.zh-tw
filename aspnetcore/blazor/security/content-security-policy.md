@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/content-security-policy
-ms.openlocfilehash: 360fff9383e25a6b5b9308cfebd397f7f4ee31a6
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 5c53ac64d3ae1b365b40c519eb119f913d58cad1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242975"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402438"
 ---
 # <a name="enforce-a-content-security-policy-for-aspnet-core-blazor"></a>針對 ASP.NET Core 強制執行內容安全性原則Blazor
 
@@ -38,7 +40,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 ## <a name="policy-directives"></a>原則指示詞
 
-請至少指定下列指示詞和 Blazor 應用程式的來源。 視需要新增其他指示詞和來源。 下列指示詞用於本文的套用[原則](#apply-the-policy)一節，其中 Blazor 提供 WebAssembly 和伺服器的範例安全性原則 Blazor ：
+請至少指定下列指示詞和 Blazor 應用程式的來源。 視需要新增其他指示詞和來源。 下列指示詞用於本文的套用[原則](#apply-the-policy)一節，其中提供和的範例安全性原則 Blazor WebAssembly Blazor Server ：
 
 * [base-uri](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri)：限制頁面標記的 url `<base>` 。 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
 * [全部封鎖-混合內容](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/block-all-mixed-content)：防止載入混合 HTTP 和 HTTPS 內容。
@@ -56,11 +58,11 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
       * `sha256-If//FtbPc03afjLezvWHnC3Nbu4fDM04IIzkPaf3pH0=`
       * `sha256-v8v3RKRPmN4odZ1CWM5gw80QKPCCWMcpNeOmimNL2AA=`
     * 指定 `unsafe-eval` 使用 `eval()` 和方法，從字串建立程式碼。
-  * 在 Blazor 伺服器應用程式中，指定為 `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` 樣式表單執行回溯偵測的內嵌腳本雜湊。
+  * 在 Blazor Server 應用程式中， `sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=` 為樣式表單的執行回溯偵測的內嵌腳本指定雜湊。
 * [樣式-src](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src)：表示樣式表單的有效來源。
   * 指定啟動載入器樣式表單的 `https://stackpath.bootstrapcdn.com/` 主機來源。
   * 指定 `self` 以指出應用程式的來源（包括配置和埠號碼）是有效的來源。
-  * 指定 `unsafe-inline` 允許使用內嵌樣式。 伺服器應用程式中的 UI 需要內嵌宣告，才能在 Blazor 初始要求之後重新連接用戶端和伺服器。 在未來的版本中，可能會移除內嵌樣式，因此不再 `unsafe-inline` 需要。
+  * 指定 `unsafe-inline` 允許使用內嵌樣式。 應用程式中的 UI 需要內嵌宣告，才能在 Blazor Server 初始要求之後重新連接用戶端和伺服器。 在未來的版本中，可能會移除內嵌樣式，因此不再 `unsafe-inline` 需要。
 * [升級-不安全-要求](https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/upgrade-insecure-requests)：表示來自不安全（HTTP）來源的內容 url 應透過 HTTPS 安全地取得。
 
 所有瀏覽器都支援上述指示詞，但 Microsoft Internet Explorer 除外。
@@ -81,9 +83,9 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 * 將指示詞放在 `content` 屬性值中。 以分號（）分隔指示詞 `;` 。
 * 請一律將 `meta` 標記放在 `<head>` 內容中。
 
-下列各節顯示 Blazor WebAssembly 和伺服器的範例原則 Blazor 。 這些範例會針對的每個版本，使用此文章進行版本設定 Blazor 。 若要使用適用于您版本的版本，請選取此網頁上具有 [**版本**] 下拉式選取器的檔版本。
+下列各節顯示和的範例 Blazor WebAssembly 原則 Blazor Server 。 這些範例會針對的每個版本，使用此文章進行版本設定 Blazor 。 若要使用適用于您版本的版本，請選取此網頁上具有 [**版本**] 下拉式選取器的檔版本。
 
-### <a name="blazor-webassembly"></a>BlazorWebAssembly
+### Blazor WebAssembly
 
 在 [ `<head>` 主機的內容] `wwwroot/index.html` 頁面上，套用[原則](#policy-directives)指示詞一節中所述的指示詞：
 
@@ -106,7 +108,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
                upgrade-insecure-requests;">
 ```
 
-### <a name="blazor-server"></a>Blazor伺服器
+### Blazor Server
 
 在 [ `<head>` 主機的內容] `Pages/_Host.cshtml` 頁面上，套用[原則](#policy-directives)指示詞一節中所述的指示詞：
 

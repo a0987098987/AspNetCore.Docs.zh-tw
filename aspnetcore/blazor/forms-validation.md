@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 588a24f7850c35bcbadc1c86edc61b23cc7a913e
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 1ed87b4aa2519334d2339b500a615aa96ef4d57d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242663"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402958"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -504,7 +506,7 @@ public class ShipDescription
 
 * 當元件初始化時，請使用表單的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 來指派模型。
 * 在內容的回呼中驗證表單 <xref:Microsoft.AspNetCore.Components.Forms.EditContext.OnFieldChanged> ，以啟用和停用 [提交] 按鈕。
-* 解除掛接方法中的事件處理常式 `Dispose` 。 如需詳細資訊，請參閱 <xref:blazor/components/lifecycle#component-disposal-with-idisposable>。
+* 解除掛接方法中的事件處理常式 `Dispose` 。 如需詳細資訊，請參閱 <xref:blazor/components/lifecycle#component-disposal-with-idisposable> 。
 
 ```razor
 @implements IDisposable

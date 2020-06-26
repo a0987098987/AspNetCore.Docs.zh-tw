@@ -8,23 +8,25 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/configure-linker
-ms.openlocfilehash: 76af450df70fe666ea1b951cb4b41696057c5e67
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 568efe9971aefc11841c42789ac7f2af3004003f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243573"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402698"
 ---
 # <a name="configure-the-linker-for-aspnet-core-blazor"></a>設定 ASP.NET Core 的連結器Blazor
 
 作者：[Luke Latham](https://github.com/guardrex)
 
-BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-code#intermediate-language--execution)連結，以從應用程式的輸出元件修剪不必要的 IL。 在 Debug 設定中建立時，會停用連結器。 應用程式必須在發行設定中建立，才能啟用連結器。 我們建議您在部署 WebAssembly apps 時建立發行 Blazor 。 
+Blazor WebAssembly在組建期間執行[中繼語言（IL）](/dotnet/standard/managed-code#intermediate-language--execution)連結，以從應用程式的輸出元件修剪不必要的 IL。 在 Debug 設定中建立時，會停用連結器。 應用程式必須在發行設定中建立，才能啟用連結器。 我們建議您在部署應用程式時建立發行 Blazor WebAssembly 。 
 
 連結應用程式會優化大小，但可能會有不利的影響。 使用反映或相關動態功能的應用程式可能會在修剪時中斷，因為連結器不知道此動態行為，而且無法判斷在執行時間的反映需要何種類型。 若要修剪這類應用程式，連結器必須通知程式碼中的反映所需的任何類型，以及應用程式所相依的封裝或架構。 
 
@@ -105,7 +107,7 @@ BlazorWebAssembly 會在組建期間執行[中繼語言（IL）](/dotnet/standar
 
 ### <a name="configure-the-linker-for-internationalization"></a>設定國際化的連結器
 
-根據預設， Blazor Blazor WebAssembly 應用程式的連結器設定會去除國際化資訊，但不包括明確要求的地區設定。 移除這些元件會將應用程式的大小降到最低。
+根據預設， Blazor 應用程式的連結器 Blazor WebAssembly 設定會去除國際化資訊，但不包括明確要求的地區設定。 移除這些元件會將應用程式的大小降到最低。
 
 若要控制要保留哪些國際化元件，請 `<BlazorWebAssemblyI18NAssemblies>` 在專案檔中設定 MSBuild 屬性：
 

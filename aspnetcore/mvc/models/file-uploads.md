@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/03/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/models/file-uploads
-ms.openlocfilehash: 632cc9fafc5daf2923997f0113adee52491acdcc
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 055dc7295aad67f92fe5f4e8271a1543262257b5
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "83838314"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404596"
 ---
 # <a name="upload-files-in-aspnet-core"></a>上傳 ASP.NET Core 中的檔案
 
@@ -528,7 +530,7 @@ Razor自動對屬性值進行 HTML 編碼以供顯示。 以下是可安全使�
 
 限制上傳檔案的大小。
 
-在範例應用程式中，檔案大小限制為 2 MB （以位元組表示）。 此限制是透過 appsettings[檔案中](xref:fundamentals/configuration/index)的*appsettings.json*設定來提供：
+在範例應用程式中，檔案大小限制為 2 MB （以位元組表示）。 此限制是透過檔案[Configuration](xref:fundamentals/configuration/index) *上appsettings.js*的設定來提供：
 
 ```json
 {
@@ -1257,7 +1259,7 @@ Razor自動對屬性值進行 HTML 編碼以供顯示。 以下是可安全使�
 
 限制上傳檔案的大小。
 
-在範例應用程式中，檔案大小限制為 2 MB （以位元組表示）。 此限制是透過 appsettings[檔案中](xref:fundamentals/configuration/index)的*appsettings.json*設定來提供：
+在範例應用程式中，檔案大小限制為 2 MB （以位元組表示）。 此限制是透過檔案[Configuration](xref:fundamentals/configuration/index) *上appsettings.js*的設定來提供：
 
 ```json
 {

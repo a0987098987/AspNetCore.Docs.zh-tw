@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 04/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: e1367fe284c4d51a341da01c6415284f6f3e7a9c
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: c936ff9a7aadd21ce99a0c37184ae8cf911c3070
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102888"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403972"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -38,7 +40,7 @@ ms.locfileid: "85102888"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
@@ -156,7 +158,7 @@ server {
 }
 ```
 
-如果應用程式是 Blazor 依賴 websocket 的伺服器應用程式 SignalR ，請參閱，以 <xref:blazor/host-and-deploy/server#linux-with-nginx> 取得如何設定標頭的相關資訊 `Connection` 。
+如果應用程式是 Blazor Server 依賴 websocket 的應用程式 SignalR ，請參閱，以 <xref:blazor/host-and-deploy/server#linux-with-nginx> 取得如何設定標頭的相關資訊 `Connection` 。
 
 當沒有任何與 `server_name` 相符的項目時，Nginx 會使用預設伺服器。 如果未定義任何預設伺服器，則設定檔中的第一個伺服器就是預設伺服器。 最佳做法是，在您的設定檔中新增一個會傳回狀態碼 444 的特定預設伺服器。 預設伺服器設定範例如下：
 
@@ -262,7 +264,7 @@ sudo systemctl enable kestrel-helloapp.service
 sudo systemctl start kestrel-helloapp.service
 sudo systemctl status kestrel-helloapp.service
 
-● kestrel-helloapp.service - Example .NET Web API App running on Ubuntu
+◝ kestrel-helloapp.service - Example .NET Web API App running on Ubuntu
     Loaded: loaded (/etc/systemd/system/kestrel-helloapp.service; enabled)
     Active: active (running) since Thu 2016-10-18 04:09:35 NZDT; 35s ago
 Main PID: 9021 (dotnet)

@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 01/17/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 6e4d80afa1c38344321ad45031ff21fec71ae0a4
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 00b42243e45c97c12ad2a4f97dff4a17b7bbb002
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776717"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403400"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -40,7 +42,7 @@ Swashbuckle 有三個主要元件：
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 從 [套件管理員主控台]**** 視窗中：
-  * 移至 [**查看** > **其他 Windows** > **套件管理員主控台**]
+  * 移至 [**查看**  >  **其他 Windows**  >  **套件管理員主控台**]
   * 巡覽至 *TodoApi.csproj* 檔案所在目錄
   * 執行下列命令：
 
@@ -49,7 +51,7 @@ Swashbuckle 有三個主要元件：
     ```
 
 * 從 [管理 NuGet 套件]**** 對話方塊中：
-  * 以滑鼠右鍵按一下**方案總管** > **管理 NuGet 套件**] 中的專案
+  * 以滑鼠右鍵按一下**方案總管**  >  **管理 NuGet 套件**] 中的專案
   * 將 [套件來源]**** 設定為 "nuget.org"
   * 請確定已啟用 [包含發行前版本] 選項
   * 在搜尋方塊中輸入 "Swashbuckle.AspNetCore"
@@ -182,7 +184,7 @@ XML 註解可以使用下列方式啟用：
 
 ::: moniker range=">= aspnetcore-2.0"
 
-* 從 [Solution Pad]** 中，按下 [控制項]****，然後按一下專案名稱。 流覽至 [**工具** > ] [**編輯**檔案]。
+* 從 [Solution Pad]** 中，按下 [控制項]****，然後按一下專案名稱。 流覽至 [**工具**] [  >  **編輯**檔案]。
 * 將醒目提示的程式碼行手動新增至 *.csproj* 檔案：
 
 [!code-xml[](../tutorials/web-api-help-pages-using-swagger/samples/2.1/TodoApi.Swashbuckle/TodoApi.csproj?name=snippet_SuppressWarnings&highlight=1-2,4)]
@@ -250,7 +252,7 @@ warning CS1591: Missing XML comment for publicly visible type or member 'TodoCon
 
 ::: moniker-end
 
-若只要針對特定成員隱藏，請將程式碼放在 [#pragma 警告](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning)前置處理器指示詞中。 這個方法適用于不應透過 API 檔公開的程式碼。在下列範例中，會忽略整個`Program`類別的警告程式碼 CS1591。 會在類別定義結尾處還原強制執行的警告碼。 以逗號分隔清單指定多個警告碼。
+若只要針對特定成員隱藏，請將程式碼放在 [#pragma 警告](/dotnet/csharp/language-reference/preprocessor-directives/preprocessor-pragma-warning)前置處理器指示詞中。 這個方法適用于不應透過 API 檔公開的程式碼。在下列範例中，會忽略整個類別的警告程式碼 CS1591 `Program` 。 會在類別定義結尾處還原強制執行的警告碼。 以逗號分隔清單指定多個警告碼。
 
 ```csharp
 namespace TodoApi
@@ -298,7 +300,7 @@ namespace TodoApi
 
 在上述程式碼中，[反映](/dotnet/csharp/programming-guide/concepts/reflection)是用來建立符合 Web API 專案的 XML 檔案名。 [AppContext.BaseDirectory](xref:System.AppContext.BaseDirectory*) 屬性用來建構 XML 檔案的路徑。 某些 Swagger 功能 (例如輸入參數的結構描述，或來自相對應屬性的 HTTP 方法和回應碼) 能在不使用 XML 文件檔案的情況下運作。 對於大部分的功能 (也就是方法摘要，以及參數和回應碼的描述) 而言，皆必須使用 XML 檔案。
 
-將三斜線註解新增至動作，即可透過將描述新增至區段標頭來增強 Swagger UI。 在`Delete`動作上方加入[ \<摘要>](/dotnet/csharp/programming-guide/xmldoc/summary)元素：
+將三斜線註解新增至動作，即可透過將描述新增至區段標頭來增強 Swagger UI。 [\<summary>](/dotnet/csharp/programming-guide/xmldoc/summary)在動作上方加入元素 `Delete` ：
 
 [!code-csharp[](../tutorials/web-api-help-pages-using-swagger/samples/2.0/TodoApi.Swashbuckle/Controllers/TodoController.cs?name=snippet_Delete&highlight=1-3)]
 
@@ -335,7 +337,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 }
 ```
 
-將[ \<備註>](/dotnet/csharp/programming-guide/xmldoc/remarks)元素新增至`Create`動作方法檔。 它會補充 `<summary>` 項目中指定的資訊，並提供更強固的 Swagger UI。 `<remarks>` 項目內容可以包含文字、JSON 或 XML。
+將 [\<remarks>](/dotnet/csharp/programming-guide/xmldoc/remarks) 元素新增至 `Create` 動作方法檔。 它會補充 `<summary>` 項目中指定的資訊，並提供更強固的 Swagger UI。 `<remarks>` 項目內容可以包含文字、JSON 或 XML。
 
 ::: moniker range="<= aspnetcore-2.0"
 
@@ -449,7 +451,7 @@ UI 是由產生的 JSON 結構描述所驅動：
 
 ::: moniker range=">= aspnetcore-2.2"
 
-在 ASP.NET Core 2.2 或更新版本中，慣例可作為使用 `[ProducesResponseType]` 明確裝飾個別動作的替代方案。 如需詳細資訊，請參閱<xref:web-api/advanced/conventions>。
+在 ASP.NET Core 2.2 或更新版本中，慣例可作為使用 `[ProducesResponseType]` 明確裝飾個別動作的替代方案。 如需詳細資訊，請參閱 <xref:web-api/advanced/conventions> 。
 
 ::: moniker-end
 

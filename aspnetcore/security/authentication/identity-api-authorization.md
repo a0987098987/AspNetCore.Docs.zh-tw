@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 11/08/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/identity/spa
-ms.openlocfilehash: 6d9d8cf6ca9ca3afc570c2c68510125200b96c60
-ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
+ms.openlocfilehash: 86f9b0a3efea5315092d1c6435a1b764fbec0a1d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85074474"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402984"
 ---
 # <a name="authentication-and-authorization-for-spas"></a>Spa 的驗證和授權
 

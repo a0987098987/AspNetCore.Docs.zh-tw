@@ -1,44 +1,46 @@
 ---
-title: 裝載和部署 ASP.NET Core Blazor 伺服器
+title: 裝載和部署 ASP.NET CoreBlazor Server
 author: guardrex
-description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor 伺服器應用程式。
+description: 瞭解如何使用 ASP.NET Core 裝載和部署 Blazor Server 應用程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/server
-ms.openlocfilehash: c02d005aa5e37bc359e1c104a19c387f1c16fa34
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: e59579046ecbfdbb4cca79bfb0e39d299e26913c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243547"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402594"
 ---
-# <a name="host-and-deploy-blazor-server"></a>裝載和部署 Blazor 伺服器
+# <a name="host-and-deploy-blazor-server"></a>裝載和部署Blazor Server
 
 作者：[Luke Latham](https://github.com/guardrex)、[Rainer Stropek](https://www.timecockpit.com) 和 [Daniel Roth](https://github.com/danroth27)
 
 ## <a name="host-configuration-values"></a>主機組態值
 
-[ Blazor 伺服器應用程式](xref:blazor/hosting-models#blazor-server)可以接受[一般主機設定值](xref:fundamentals/host/generic-host#host-configuration)。
+[ Blazor Server 應用程式](xref:blazor/hosting-models#blazor-server)可以接受[一般主機設定值](xref:fundamentals/host/generic-host#host-configuration)。
 
 ## <a name="deployment"></a>部署
 
-使用[ Blazor 伺服器裝載模型](xref:blazor/hosting-models#blazor-server)， Blazor 會在伺服器上從 ASP.NET Core 應用程式中執行。 UI 更新、事件處理及 JavaScript 呼叫會透過連接來處理 [SignalR](xref:signalr/introduction) 。
+使用[ Blazor Server 裝載模型](xref:blazor/hosting-models#blazor-server)， Blazor 會在伺服器上從 ASP.NET Core 應用程式中執行。 UI 更新、事件處理及 JavaScript 呼叫會透過連接來處理 [SignalR](xref:signalr/introduction) 。
 
-需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 包括** Blazor 伺服器應用程式**專案範本（ `blazorserverside` 使用命令時的範本 [`dotnet new`](/dotnet/core/tools/dotnet-new) ）。
+需要能夠裝載 ASP.NET Core 應用程式的網路伺服器。 Visual Studio 包含** Blazor Server 應用程式**專案範本（ `blazorserverside` 使用命令時的範本 [`dotnet new`](/dotnet/core/tools/dotnet-new) ）。
 
 ## <a name="scalability"></a>延展性
 
-規劃部署，以充分利用伺服器應用程式可用的基礎結構 Blazor 。 請參閱下列資源，以解決 Blazor 伺服器應用程式的擴充性：
+規劃部署，以充分運用應用程式可用的基礎結構 Blazor Server 。 請參閱下列資源來解決 Blazor Server 應用程式的擴充性：
 
-* [Blazor伺服器應用程式的基本概念](xref:blazor/hosting-models#blazor-server)
+* [應用程式的基本概念 Blazor Server](xref:blazor/hosting-models#blazor-server)
 * <xref:blazor/security/server/threat-mitigation>
 
 ### <a name="deployment-server"></a>部署伺服器
@@ -54,13 +56,13 @@ ms.locfileid: "85243547"
 
 ### <a name="signalr-configuration"></a>SignalR配置
 
-Blazor伺服器應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊。 [ SignalR 的裝載和調整規模條件](xref:signalr/publish-to-azure-web-app)適用 Blazor 于伺服器應用程式。
+Blazor Server應用程式會使用 ASP.NET Core SignalR 來與瀏覽器通訊。 [ SignalR 的裝載和調整規模條件](xref:signalr/publish-to-azure-web-app)適用于 Blazor Server 應用程式。
 
 BlazorSignalR因為延遲、可靠性和[安全性](xref:signalr/security)較低，所以使用 websocket 做為傳輸時，效果最佳。 SignalR當 websocket 無法使用時，或當應用程式明確設定為使用長輪詢時，會使用長輪詢。 部署到 Azure App Service 時，請將應用程式設定為在服務的 Azure 入口網站設定中使用 Websocket。 如需設定應用程式以進行 Azure App Service 的詳細資訊，請參閱[ SignalR 發佈指導方針](xref:signalr/publish-to-azure-web-app)。
 
 #### <a name="azure-signalr-service"></a>Azure SignalR 服務
 
-我們建議使用適用于伺服器應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor 。 此服務可讓您將 Blazor 伺服器應用程式相應增加至大量的並行 SignalR 連接。 此外， SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。 若要設定應用程式（並選擇性地布建） Azure SignalR 服務：
+我們建議使用適用于應用程式的[Azure SignalR 服務](/azure/azure-signalr) Blazor Server 。 此服務可將 Blazor Server 應用程式相應增加至大量的並行連線 SignalR 。 此外， SignalR 服務的全球範圍和高效能資料中心會大幅協助減少因地理位置而造成的延遲。 若要設定應用程式（並選擇性地布建） Azure SignalR 服務：
 
 1. 啟用服務以支援「固定*會話*」，在此情況下，用戶端會在進行[回溯時重新導向至相同的伺服器](xref:blazor/hosting-models#connection-to-the-server)。 將 `ServerStickyMode` 選項或設定值設為 `Required` 。 一般而言，應用程式會使用下列**其中一**種方法來建立設定：
 
@@ -84,7 +86,7 @@ BlazorSignalR因為延遲、可靠性和[安全性](xref:signalr/security)較低
 
      * **Configuration**  >  Azure 入口網站（**名稱**：，值：）中的 app service**設定應用程式設定** `Azure:SignalR:ServerStickyMode` **Value** `Required` 。
 
-1. 在伺服器應用程式的 Visual Studio 中建立 Azure 應用程式發佈設定檔 Blazor 。
+1. 在 Visual Studio 中建立應用程式的 Azure 應用程式發佈設定檔 Blazor Server 。
 1. 將**Azure SignalR 服務**相依性新增至設定檔。 如果 Azure 訂用帳戶沒有 SignalR 要指派給應用程式的既有 azure 服務實例，請選取 [**建立新的 azure SignalR 服務實例**] 以布建新的服務實例。
 1. 將應用程式發佈至 Azure。
 

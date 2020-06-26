@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: fde30109395065014433bebde52a9eb22458c451
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: ba85cc901127725d674b699638fef5fe363081a8
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242741"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402789"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -28,11 +30,11 @@ ms.locfileid: "85242741"
 
 ## <a name="aspnet-core-endpoint-routing-integration"></a>ASP.NET Core 端點路由整合
 
-Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing)。 ASP.NET Core 應用程式已設定為接受中的互動式元件連入 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> 連線 `Startup.Configure` ：
+Blazor Server已整合至[ASP.NET Core 端點路由](xref:fundamentals/routing)。 ASP.NET Core 應用程式已設定為接受中的互動式元件連入 <xref:Microsoft.AspNetCore.Builder.ComponentEndpointRouteBuilderExtensions.MapBlazorHub%2A> 連線 `Startup.Configure` ：
 
 [!code-csharp[](routing/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
-最常見的設定是將所有要求路由傳送至 Razor 頁面，做為伺服器應用程式伺服器端部分的主機 Blazor 。 依照慣例，*主機*頁面通常會命名為 `_Host.cshtml` 。 主機檔案中指定的路由稱為「回溯*路由*」，因為它在路由比對中以低優先順序運作。 當其他路由不相符時，就會考慮回退路由。 這可讓應用程式使用其他控制器和頁面，而不會干擾 Blazor 伺服器應用程式。
+最常見的設定是將所有要求路由傳送至 Razor 頁面，作為應用程式伺服器端部分的主機 Blazor Server 。 依照慣例，*主機*頁面通常會命名為 `_Host.cshtml` 。 主機檔案中指定的路由稱為「回溯*路由*」，因為它在路由比對中以低優先順序運作。 當其他路由不相符時，就會考慮回退路由。 這可讓應用程式使用其他控制器和頁面，而不會干擾 Blazor Server 應用程式。
 
 ## <a name="route-templates"></a>路由範本
 
@@ -68,7 +70,7 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 ```
 
 > [!IMPORTANT]
-> 為了讓 Url 正確解析，應用程式必須 `<base>` 在其檔案 `wwwroot/index.html` （ Blazor WebAssembly）或檔案（伺服器）中包含標記， `Pages/_Host.cshtml` Blazor 並在屬性中指定應用程式基底路徑 `href` （ `<base href="/">` ）。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/index#app-base-path>。
+> 為了讓 Url 正確解析，應用程式必須 `<base>` 在其檔案 `wwwroot/index.html` （）或檔案（）中包含標記，並在 Blazor WebAssembly `Pages/_Host.cshtml` Blazor Server 屬性中指定應用程式基底路徑 `href` （ `<base href="/">` ）。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/index#app-base-path> 。
 
 ## <a name="provide-custom-content-when-content-isnt-found"></a>在找不到內容時提供自訂內容
 
@@ -140,21 +142,21 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 
 | 條件約束 | 範例           | 範例相符項目                                                                  | 非變異值<br>culture<br>比對 |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Yes                              |
-| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Yes                              |
-| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Yes                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
-| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Yes                              |
-| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Yes                              |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | 否                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | 是                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | 是                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | 是                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | 是                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 否                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | 是                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | 是                              |
 
 > [!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 <xref:System.DateTime>) 一律使用不因國別而異的文化特性。 這些條件約束假設 URL 不可當地語系化。
 
 ### <a name="routing-with-urls-that-contain-dots"></a>包含點的 Url 路由
 
-在 Blazor 伺服器應用程式中，中的預設路由 `_Host.cshtml` 是 `/` （ `@page "/"` ）。 包含點（）的要求 URL `.` 不符合預設路由，因為 URL 會顯示要求檔案。 如果 Blazor 靜態檔案不存在，應用程式會傳回*404-找不*到的回應。 若要使用包含點的路由，請 `_Host.cshtml` 使用下列路由範本進行設定：
+在 Blazor Server 應用程式中，中的預設路由 `_Host.cshtml` 是 `/` （ `@page "/"` ）。 包含點（）的要求 URL `.` 不符合預設路由，因為 URL 會顯示要求檔案。 如果 Blazor 靜態檔案不存在，應用程式會傳回*404-找不*到的回應。 若要使用包含點的路由，請 `_Host.cshtml` 使用下列路由範本進行設定：
 
 ```cshtml
 @page "/{**path}"
@@ -168,7 +170,7 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 > [!NOTE]
 > *Catch-all* `*` / `**` 元件（）中**不**支援 Catch Razor -all 參數語法（） `.razor` 。
 
-如需詳細資訊，請參閱 <xref:fundamentals/routing>。
+如需詳細資訊，請參閱 <xref:fundamentals/routing> 。
 
 ## <a name="navlink-component"></a>NavLink 元件
 
@@ -201,10 +203,10 @@ Blazor伺服器已整合到[ASP.NET Core 端點路由](xref:fundamentals/routing
 
 用於 <xref:Microsoft.AspNetCore.Components.NavigationManager> 在 c # 程式碼中處理 uri 和導覽。 <xref:Microsoft.AspNetCore.Components.NavigationManager>提供下表所示的事件和方法。
 
-| member | 描述 |
+| member | 說明 |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri> | 取得目前的絕對 URI。 |
-| <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 通常會 <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> 對應至 `href` `<base>` `wwwroot/index.html` （ Blazor WebAssembly）或 `Pages/_Host.cshtml` （ Blazor 伺服器）中檔元素上的屬性。 |
+| <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 通常會 <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> 對應至 `href` `<base>` `wwwroot/index.html` （ Blazor WebAssembly ）或 `Pages/_Host.cshtml` （）中檔元素上的屬性 Blazor Server 。 |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.NavigateTo%2A> | 導覽至指定的 URI。 如果 `forceLoad` 為 `true` ：<ul><li>已略過用戶端路由。</li><li>瀏覽器會強制從伺服器載入新頁面，無論 URI 是否通常由用戶端路由器處理。</li></ul> |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.LocationChanged> | 導覽位置變更時引發的事件。 |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.ToAbsoluteUri%2A> | 將相對 URI 轉換為絕對 URI。 |

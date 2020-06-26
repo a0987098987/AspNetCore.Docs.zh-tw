@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/06/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/enforcing-ssl
-ms.openlocfilehash: 26e6fb38cf31b5a2d5c88c19347c867641eb55df
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 8247d66900a0c15b3b386dca021c5c5922d26e71
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451728"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404558"
 ---
 # <a name="enforce-https-in-aspnet-core"></a>在 ASP.NET Core 中強制使用 HTTPS
 
@@ -108,7 +110,7 @@ ms.locfileid: "84451728"
 
   * 在 [主機設定] 中。
   * 藉由設定 `ASPNETCORE_HTTPS_PORT` 環境變數。
-  * 藉由在*appsettings*中新增最上層專案：
+  * 藉由在*appsettings.js*中新增最上層專案：
 
     [!code-json[](enforcing-ssl/sample-snapshot/3.x/appsettings.json?highlight=2)]
 
@@ -122,7 +124,7 @@ ms.locfileid: "84451728"
 
   * 在 [主機設定] 中。
   * 藉由設定 `ASPNETCORE_HTTPS_PORT` 環境變數。
-  * 藉由在*appsettings*中新增最上層專案：
+  * 藉由在*appsettings.js*中新增最上層專案：
 
     [!code-json[](enforcing-ssl/sample-snapshot/2.x/appsettings.json?highlight=2)]
 
@@ -130,16 +132,16 @@ ms.locfileid: "84451728"
 
 ::: moniker-end
 
-* 在開發中，在*launchsettings.json*中設定 HTTPS URL。 使用 IIS Express 時啟用 HTTPS。
+* 在開發中，請在*launchsettings.js*中設定 HTTPS URL。 使用 IIS Express 時啟用 HTTPS。
 
-* 針對[Kestrel](xref:fundamentals/servers/kestrel)伺服器或[HTTP.sys](xref:fundamentals/servers/httpsys)伺服器的公眾面向邊緣部署，設定 HTTPS URL 端點。 應用程式只會使用**一個 HTTPS 埠**。 中介軟體會透過來探索埠 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> 。
+* 針對[Kestrel](xref:fundamentals/servers/kestrel)伺服器或[HTTP.sys](xref:fundamentals/servers/httpsys)伺服器的公眾面向邊緣部署設定 HTTPS URL 端點。 應用程式只會使用**一個 HTTPS 埠**。 中介軟體會透過來探索埠 <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> 。
 
 > [!NOTE]
 > 當應用程式在反向 proxy 設定中執行時， <xref:Microsoft.AspNetCore.Hosting.Server.Features.IServerAddressesFeature> 無法使用。 使用本節所述的其中一種其他方法來設定埠。
 
 ### <a name="edge-deployments"></a>Edge 部署 
 
-當 Kestrel 或 HTTP.SYS 做為公眾面向的邊緣伺服器時，Kestrel 或 HTTP.SYS 必須設定為接聽兩者：
+當 Kestrel 或 HTTP.sys 做為公眾面向的邊緣伺服器時，Kestrel 或 HTTP.sys 必須設定為在兩者上進行接聽：
 
 * 重新導向用戶端的安全埠（通常是生產環境中的443和開發中的5001）。
 * 不安全的埠（通常是在生產環境中為80，開發中則為5000）。
@@ -283,7 +285,7 @@ ASP.NET Core 2.1 和更新版本會使用擴充方法來執行 HSTS `UseHsts` �
 ::: moniker-end
 
 
-* 設定標頭的預先載入參數 `Strict-Transport-Security` 。 預先載入不是[RFC HSTS 規格](https://tools.ietf.org/html/rfc6797)的一部分，但 web 瀏覽器支援在全新安裝時預先載入 HSTS 網站。 如需詳細資訊，請參閱 [https://hstspreload.org/](https://hstspreload.org/) \(英文\)。
+* 設定標頭的預先載入參數 `Strict-Transport-Security` 。 預先載入不是[RFC HSTS 規格](https://tools.ietf.org/html/rfc6797)的一部分，但 web 瀏覽器支援在全新安裝時預先載入 HSTS 網站。 如需詳細資訊，請參閱 [https://hstspreload.org/](https://hstspreload.org/)。
 * 啟用[includeSubDomain](https://tools.ietf.org/html/rfc6797#section-6.1.2)，這會將 HSTS 原則套用至裝載子域。
 * 將 `max-age` 標頭的參數明確設定 `Strict-Transport-Security` 為60天。 如果未設定，則預設為30天。 如需詳細資訊，請參閱[最大壽命](https://tools.ietf.org/html/rfc6797#section-6.1.1)指示詞。
 * 新增 `example.com` 至要排除的主機清單。

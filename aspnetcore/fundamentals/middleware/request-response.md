@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 5/29/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/middleware/request-response
-ms.openlocfilehash: fed9e48cdb2b33805cb05243de706b5c86853328
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: b6fc7a115cb0f4696d10bf036eadb59028dfb605
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84548528"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404128"
 ---
 # <a name="request-and-response-operations-in-aspnet-core"></a>ASP.NET Core 中的要求和回應作業
 
@@ -76,7 +78,7 @@ ms.locfileid: "84548528"
 
 這些問題都是可修復的，但程式碼變得越來越複雜，而且沒有任何改善。 管線提供解決這些問題的方法，且具有最低的程式碼複雜度。
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipelines"></a>管線
 
 下列範例顯示如何使用[PipeReader](/dotnet/standard/io/pipelines#pipe)來處理相同的案例：
 

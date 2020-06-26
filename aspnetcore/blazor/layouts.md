@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: 6103a2e8173ccbb78372e01bd799d1bb47da4fa2
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: f405bb655b2879bd546420d99ff645401ead92fc
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243053"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402516"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -97,7 +99,7 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 ## <a name="share-a-razor-pages-layout-with-integrated-components"></a>Razor與整合式元件共用頁面配置
 
-當可路由的元件整合至 Razor 頁面應用程式時，應用程式的共用版面配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps>。
+當可路由的元件整合至 Razor 頁面應用程式時，應用程式的共用版面配置可以與元件搭配使用。 如需詳細資訊，請參閱 <xref:blazor/components/integrate-components-into-razor-pages-and-mvc-apps> 。
 
 ## <a name="additional-resources"></a>其他資源
 

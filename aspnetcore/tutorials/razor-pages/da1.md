@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/20/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/razor-pages/da1
-ms.openlocfilehash: 144c4e7f07986c0a10089d74991fe3b44c013894
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 9ab97ca9a79e055b9013801ccc65bd6707e2b312
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652869"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404505"
 ---
 # <a name="part-5-update-the-generated-pages-in-an-aspnet-core-app"></a>第5部分，更新 ASP.NET Core 應用程式中產生的頁面
 
@@ -82,7 +84,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 * 將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`。
 * 設定 `public async Task<IActionResult> OnGetAsync(int? id)` (位於 *Pages/Movies/Details.cshtml.cs*) 中的中斷點。
-* 瀏覽到 `https://localhost:5001/Movies/Details/` 。
+* 瀏覽至 `https://localhost:5001/Movies/Details/`。
 
 使用 `@page "{id:int}"` 指示詞，永遠不會叫用中斷點。 路由引擎會傳回 HTTP 404。 使用 `@page "{id:int?}"`，`OnGetAsync` 方法會傳回 `NotFound` (HTTP 404)。
 
@@ -195,7 +197,7 @@ Scaffolded 電影應用程式是一個不錯的起點，但其呈現效果卻不
 
 * 將 *Pages/Movies/Details.cshtml* 中的頁面指示詞設定為 `@page "{id:int?}"`。
 * 設定 `public async Task<IActionResult> OnGetAsync(int? id)` (位於 *Pages/Movies/Details.cshtml.cs*) 中的中斷點。
-* 瀏覽到 `https://localhost:5001/Movies/Details/` 。
+* 瀏覽至 `https://localhost:5001/Movies/Details/`。
 
 使用 `@page "{id:int}"` 指示詞，永遠不會叫用中斷點。 路由引擎會傳回 HTTP 404。 使用 `@page "{id:int?}"`，`OnGetAsync` 方法會傳回 `NotFound` (HTTP 404)。
 

@@ -8,17 +8,19 @@ ms.custom: mvc, seodec18
 ms.date: 03/26/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: razor-pages/sdk
-ms.openlocfilehash: 555965b96b0d4d541c70f8a137d4f098dc06a4d6
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 56b4d4c13023918a4ac25c8c5d8ad1ee2c346ac6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106620"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403036"
 ---
 # <a name="aspnet-core-razor-sdk"></a>ASP.NET Core Razor SDK
 
@@ -46,7 +48,7 @@ RazorSDK 包含一個 `Content` 專案，並 `Include` 將屬性設定為 `**\*.
 
 ::: moniker-end
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE[](~/includes/2.1-SDK.md)]
 
@@ -109,7 +111,7 @@ RazorSDK 包含一個 `Content` 專案，並 `Include` 將屬性設定為 `**\*.
 
 ::: moniker-end
 
-| 項目 | 描述 |
+| 項目 | 說明 |
 | ----- | ----------- |
 | `RazorGenerate` | 屬於程式碼產生之輸入的專案元素（*. cshtml*檔案）。 |
 | `RazorComponent` | 做為元件程式碼產生之輸入的專案元素（*razor*檔案） Razor 。 |
@@ -119,7 +121,7 @@ RazorSDK 包含一個 `Content` 專案，並 `Include` 將屬性設定為 `**\*.
 
 ::: moniker range=">= aspnetcore-3.0"
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | -------- | ----------- |
 | `RazorTargetName` | 產生之元件的檔案名（不含副檔名） Razor 。 |
 | `RazorOutputPath` | Razor輸出目錄。 |
@@ -143,7 +145,7 @@ RazorSDK 包含一個 `Content` 專案，並 `Include` 將屬性設定為 `**\*.
 
 ::: moniker range="< aspnetcore-3.0"
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | -------- | ----------- |
 | `RazorTargetName` | 產生之元件的檔案名（不含副檔名） Razor 。 |
 | `RazorOutputPath` | Razor輸出目錄。 |
@@ -196,4 +198,4 @@ Razor的語言版本與所建立之執行時間的版本緊密整合。 不支�
 ## <a name="additional-resources"></a>其他資源
 
 * [適用於 .NET Core 之 csproj 格式的新增項目](/dotnet/core/tools/csproj)
-* [一般 MSBuild 專案專案](/visualstudio/msbuild/common-msbuild-project-items)
+* [一般 MSBuild 專案項目](/visualstudio/msbuild/common-msbuild-project-items)

@@ -8,32 +8,34 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/fundamentals/configuration
-ms.openlocfilehash: 0e36b81d771b07e85158724c02210ee50a3ab118
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 9c83784676e061664b2ae980faadcbe0f84c9985
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242676"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402919"
 ---
 # <a name="aspnet-core-blazor-configuration"></a>ASP.NET Core Blazor 設定
 
 > [!NOTE]
-> 本主題適用于 Blazor WebAssembly。 如需 ASP.NET Core 應用程式設定的一般指引，請參閱 <xref:fundamentals/configuration/index> 。
+> 本主題適用于 Blazor WebAssembly 。 如需 ASP.NET Core 應用程式設定的一般指引，請參閱 <xref:fundamentals/configuration/index> 。
 
-BlazorWebAssembly 會從載入設定：
+Blazor WebAssembly從載入設定：
 
 * 應用程式佈建檔案（預設為）：
   * `wwwroot/appsettings.json`
   * `wwwroot/appsettings.{ENVIRONMENT}.json`
-* 應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。 並非所有提供者都適用于 Blazor WebAssembly apps。 澄清 Blazor [ Blazor WASM （dotnet/AspNetCore.Doc#18134）的設定提供者](https://github.com/dotnet/AspNetCore.Docs/issues/18134)，即可追蹤支援 WebAssembly 的提供者。
+* 應用程式註冊的其他設定[提供者](xref:fundamentals/configuration/index)。 並非所有提供者都適用于 Blazor WebAssembly 應用程式。 澄清 WASM 的設定 Blazor WebAssembly [提供者 Blazor （dotnet/AspNetCore.Docs #18134）](https://github.com/dotnet/AspNetCore.Docs/issues/18134)可追蹤支援的提供者的詳細資訊。
 
 > [!WARNING]
-> Blazor使用者可以看到 WebAssembly 應用程式中的設定。 **請勿在設定中儲存應用程式秘密或認證。**
+> Blazor WebAssembly使用者可以看到應用程式中的設定。 **請勿在設定中儲存應用程式秘密或認證。**
 
 如需設定提供者的詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
 

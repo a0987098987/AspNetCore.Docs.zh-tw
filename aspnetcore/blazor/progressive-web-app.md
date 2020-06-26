@@ -1,5 +1,5 @@
 ---
-title: 使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
+title: 使用 ASP.NET Core 建立漸進式 Web 應用程式Blazor WebAssembly
 author: guardrex
 description: 瞭解如何建立以新的 Blazor 瀏覽器功能為基礎的漸進式 Web 應用程式（PWA），其行為類似于桌面應用程式。
 monikerRange: '>= aspnetcore-3.1'
@@ -8,23 +8,25 @@ ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/progressive-web-app
-ms.openlocfilehash: f56fb0f09845ded6ef6907221a27f71621a155d1
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 237a8fceb75ba724625f018cf94c8d5bc5acfdad
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242806"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402581"
 ---
-# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core WebAssembly 建立漸進式 Web 應用程式 Blazor
+# <a name="build-progressive-web-applications-with-aspnet-core-blazor-webassembly"></a>使用 ASP.NET Core 建立漸進式 Web 應用程式Blazor WebAssembly
 
 作者：[Steve Sanderson](https://github.com/SteveSandersonMS)
 
-漸進式 Web 應用程式（PWA）通常是單一頁面應用程式（SPA），其使用新式瀏覽器 Api 和功能，其行為就像桌面應用程式。 BlazorWebAssembly 是以標準為基礎的用戶端 web 應用程式平臺，因此可以使用任何瀏覽器 API，包括下列功能所需的 PWA Api：
+漸進式 Web 應用程式（PWA）通常是單一頁面應用程式（SPA），其使用新式瀏覽器 Api 和功能，其行為就像桌面應用程式。 Blazor WebAssembly是以標準為基礎的用戶端 web 應用程式平臺，因此可以使用任何瀏覽器 API，包括下列功能所需的 PWA Api：
 
 * 離線工作並立即載入，獨立于網路速度。
 * 在自己的應用程式視窗中執行，而不只是瀏覽器視窗。
@@ -41,7 +43,7 @@ ms.locfileid: "85242806"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [**建立新專案**] 對話方塊中建立新的** Blazor WebAssembly 應用程式**時，選取 [**漸進式 Web 應用程式**] 核取方塊：
+在 [**建立新專案**] 對話方塊中建立新** Blazor WebAssembly 應用**程式時，選取 [**漸進式 Web 應用程式**] 核取方塊：
 
 ![[Visual Studio 新增專案] 對話方塊中已選取 [漸進式 Web 應用程式] 核取方塊。](progressive-web-app/_static/image1.png)
 
@@ -89,7 +91,7 @@ dotnet new blazorwasm -o MyNewProject --pwa
 
 若要查看離線支援的運作方式：
 
-1. 發行應用程式。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/index#publish-the-app>。
+1. 發行應用程式。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/index#publish-the-app> 。
 1. 將應用程式部署至支援 HTTPS 的伺服器，並在瀏覽器中以安全的 HTTPS 位址存取應用程式。
 1. 開啟瀏覽器的 [開發工具]，並確認已在 [**應用程式**] 索引標籤上註冊主機的*服務背景工作*：
 
@@ -210,11 +212,11 @@ const shouldServeIndexHtml = event.request.mode === 'navigate'
 
 ## <a name="push-notifications"></a>推送通知
 
-就像任何其他 PWA 一樣， Blazor WebAssembly 的 pwa 也可以從後端伺服器接收推播通知。 伺服器可以隨時傳送推播通知，即使使用者未主動使用應用程式也一樣。 例如，當其他使用者執行相關動作時，可以傳送推播通知。
+就像任何其他 PWA 一樣， Blazor WebAssembly pwa 也可以從後端伺服器接收推播通知。 伺服器可以隨時傳送推播通知，即使使用者未主動使用應用程式也一樣。 例如，當其他使用者執行相關動作時，可以傳送推播通知。
 
-傳送推播通知的機制完全獨立于 Blazor WebAssembly，因為它是由可使用任何技術的後端伺服器所執行。 如果您想要從 ASP.NET Core 伺服器傳送推播通知，請考慮[使用類似于技術比薩研討會所採用之方法的技巧](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications)。
+傳送推播通知的機制完全獨立于 Blazor WebAssembly ，因為它是由可使用任何技術的後端伺服器所執行。 如果您想要從 ASP.NET Core 伺服器傳送推播通知，請考慮[使用類似于技術比薩研討會所採用之方法的技巧](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#sending-push-notifications)。
 
-在用戶端上接收和顯示推播通知的機制也獨立于 Blazor WebAssembly，因為它是在服務背景工作 JavaScript 檔案中執行。 如需範例，請參閱在[進行中的比薩研討會中使用的方法](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications)。
+在用戶端上接收和顯示推播通知的機制也是獨立的 Blazor WebAssembly ，因為它是在服務背景工作 JavaScript 檔案中執行。 如需範例，請參閱在[進行中的比薩研討會中使用的方法](https://github.com/dotnet-presentations/blazor-workshop/blob/master/docs/09-progressive-web-app.md#displaying-notifications)。
 
 ## <a name="caveats-for-offline-pwas"></a>離線 Pwa 的注意事項
 

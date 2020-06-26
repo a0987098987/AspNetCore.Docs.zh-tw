@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/31/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/get-started
-ms.openlocfilehash: 63fee0b6a3152640a5483c2a682eec7d04742145
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 1eabc35175d1b696de99488981b1382d231f5544
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243599"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402776"
 ---
 # <a name="get-started-with-aspnet-core-blazor"></a>開始使用 ASP.NET CoreBlazor
 
@@ -34,11 +36,11 @@ ms.locfileid: "85243599"
 
 1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步] 。
 
-1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
+1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]****。
 
-1. 如需 Blazor WebAssembly 體驗，請選擇 [ ** Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ ** Blazor 伺服器應用程式**] 範本。 選取 [建立]。
+1. 如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [建立]****。
 
-   如需這兩個 Blazor 裝載模型（ * Blazor WebAssembly*和* Blazor 伺服器*）的詳細資訊，請參閱 <xref:blazor/hosting-models> 。
+   如需這兩個 Blazor 裝載模型的詳細資訊，請 *Blazor WebAssembly* *Blazor Server* 參閱 <xref:blazor/hosting-models> 。
 
 1. 按<kbd>Ctrl</kbd> + <kbd>F5</kbd>執行應用程式。
 
@@ -62,17 +64,17 @@ ms.locfileid: "85243599"
    dotnet new blazorwasm -o WebApplication1
    ```
 
-   如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
+   如需 Blazor Server 體驗，請在命令 shell 中執行下列命令：
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
    ```
 
-   如需這兩個 Blazor 裝載模型（ * Blazor WebAssembly*和* Blazor 伺服器*）的詳細資訊，請參閱 <xref:blazor/hosting-models> 。
+   如需這兩個 Blazor 裝載模型的詳細資訊，請 *Blazor WebAssembly* *Blazor Server* 參閱 <xref:blazor/hosting-models> 。
 
 1. 在 Visual Studio Code 中開啟 `WebApplication1` 資料夾。
 
-1. IDE 會要求您新增資產，以建立和對專案進行偵錯工具。 選取 [是]。
+1. IDE 會要求您新增資產，以建立和對專案進行偵錯工具。 選取 [是]****。
 
 1. 按<kbd>Ctrl</kbd> + <kbd>F5</kbd>執行應用程式。
 
@@ -84,9 +86,9 @@ ms.locfileid: "85243599"
 
 1. 在提要欄位中，選取 [ **Web 和主控台**  >  **應用程式**]。
 
-   如需 Blazor WebAssembly 體驗，請選擇 [ ** Blazor WebAssembly 應用程式**] 範本。 如需 Blazor 伺服器體驗，請選擇 [ ** Blazor 伺服器應用程式**] 範本。 選取 [下一步] 。
+   如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [下一步] 。
 
-   如需這兩個 Blazor 裝載模型（ * Blazor WebAssembly*和* Blazor 伺服器*）的詳細資訊，請參閱 <xref:blazor/hosting-models> 。
+   如需這兩個 Blazor 裝載模型的詳細資訊，請 *Blazor WebAssembly* *Blazor Server* 參閱 <xref:blazor/hosting-models> 。
 
 1. 確認下列設定：
 
@@ -95,7 +97,7 @@ ms.locfileid: "85243599"
    
    選取 [下一步] 。
 
-1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1` 。 選取 [建立]。
+1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1` 。 選取 [建立]****。
 
 1. 選取 [**執行**  >  **而不進行調試**程式]，以*在沒有偵錯工具的情況下*執行 app。 使用 [**執行**  >  **開始調試**程式] 或 [執行] （&#9654;）按鈕執行應用程式，以*使用調試*程式執行應用程式。
 
@@ -117,7 +119,7 @@ ms.locfileid: "85243599"
    dotnet run
    ```
 
-   如需 Blazor 伺服器體驗，請在命令 shell 中執行下列命令：
+   如需 Blazor Server 體驗，請在命令 shell 中執行下列命令：
 
    ```dotnetcli
    dotnet new blazorserver -o WebApplication1
@@ -125,7 +127,7 @@ ms.locfileid: "85243599"
    dotnet run
    ```
 
-   如需這兩個 Blazor 裝載模型（ * Blazor WebAssembly*和* Blazor 伺服器*）的詳細資訊，請參閱 <xref:blazor/hosting-models> 。
+   如需這兩個 Blazor 裝載模型的詳細資訊，請 *Blazor WebAssembly* *Blazor Server* 參閱 <xref:blazor/hosting-models> 。
 
 1. 在瀏覽器中，巡覽至 `https://localhost:5001`。
 
@@ -179,7 +181,7 @@ ms.locfileid: "85243599"
 
 執行應用程式。 `Index`元件有自己的計數器，每次選取按鈕時都會遞增10。 `Counter`中的元件（ `Pages/Counter.razor` ）會 `/counter` 繼續遞增一。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 逐步建立 Blazor 應用程式：
 

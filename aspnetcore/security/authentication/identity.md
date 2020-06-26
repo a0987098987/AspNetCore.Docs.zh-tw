@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 01/15/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 6d9532ed8ff89735f41c362b27826436c37c6cb5
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 97cbc5f68d20c06e92a56ead85c8377d4e8ef582
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452131"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404583"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>簡介 Identity ASP.NET Core
 
@@ -55,7 +57,7 @@ Identity通常會使用 SQL Server 資料庫來設定，以儲存使用者名稱
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]****。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 
@@ -238,6 +240,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ## <a name="next-steps"></a>後續步驟
 
+* [ASP.NET Core Identity 原始碼](https://github.com/dotnet/aspnetcore/tree/master/src/Identity)
 * 如需使用 SQLite 進行設定的相關資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/5131) Identity 。
 * [配置Identity](xref:security/authentication/identity-configuration)
 * <xref:security/authorization/secure-data>
@@ -281,7 +284,7 @@ Identity可以使用 SQL Server 資料庫來設定，以儲存使用者名稱、
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]****。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 

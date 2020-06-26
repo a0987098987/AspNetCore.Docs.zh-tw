@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/iis/modules
-ms.openlocfilehash: 7262b9ea18e4cf6acd278d087fcc44262f8f9c80
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 124f2a629ebd14210cb21351a720e007bba48f02
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775943"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404011"
 ---
 # <a name="iis-modules-with-aspnet-core"></a>與 ASP.NET Core 搭配運作的 IIS 模組
 
@@ -28,7 +30,7 @@ ms.locfileid: "82775943"
 
 下表指出可搭配 ASP.NET Core 應用程式和 ASP.NET Core 模組運作的原生 IIS 模組。
 
-| Module | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
+| 模組 | 對 ASP.NET Core 應用程式有作用 | ASP.NET Core 選項 |
 | --- | :---: | --- |
 | **匿名驗證**<br>`AnonymousAuthenticationModule`                                  | 是 | |
 | **基本驗證**<br>`BasicAuthenticationModule`                                          | 是 | |
@@ -37,9 +39,9 @@ ms.locfileid: "82775943"
 | **設定驗證**<br>`ConfigurationValidationModule`                                  | 是 | |
 | **HTTP 錯誤**<br>`CustomErrorModule`                                                           | 否  | [狀態碼頁面中介軟體](xref:fundamentals/error-handling#usestatuscodepages) |
 | **自訂記錄**<br>`CustomLoggingModule`                                                      | 是 | |
-| **預設檔**<br>`DefaultDocumentModule`                                                  | 否  | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
+| **預設文件**<br>`DefaultDocumentModule`                                                  | 否  | [預設檔案中介軟體](xref:fundamentals/static-files#serve-a-default-document) |
 | **摘要式驗證**<br>`DigestAuthenticationModule`                                        | 是 | |
-| **流覽目錄**<br>`DirectoryListingModule`                                               | 否  | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
+| **目錄瀏覽**<br>`DirectoryListingModule`                                               | 否  | [目錄瀏覽中介軟體](xref:fundamentals/static-files#enable-directory-browsing) |
 | **動態壓縮**<br>`DynamicCompressionModule`                                            | 是 | [回應壓縮中介軟體](xref:performance/response-compression) |
 | **失敗的要求追蹤**<br>`FailedRequestsTracingModule`                                     | 是 | [ASP.NET Core 記錄](xref:fundamentals/logging/index#tracesource-provider) |
 | **檔案快取**<br>`FileCacheModule`                                                            | 否  | [回應快取中介軟體](xref:performance/caching/middleware) |
@@ -48,7 +50,7 @@ ms.locfileid: "82775943"
 | **HTTP 重新導向**<br>`HttpRedirectionModule`                                                  | 是 | [URL 重寫中介軟體](xref:fundamentals/url-rewriting) |
 | **HTTP 追蹤**<br>`TracingModule`                                                              | 是 | |
 | **IIS 用戶端憑證對應驗證**<br>`IISCertificateMappingAuthenticationModule` | 是 | |
-| **IP 和網域限制**<br>`IpRestrictionModule`                                          | 是 | |
+| **IP 及網域限制**<br>`IpRestrictionModule`                                          | 是 | |
 | **ISAPI 篩選器**<br>`IsapiFilterModule`                                                         | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **ISAPI**<br>`IsapiModule`                                                                       | 是 | [中介軟體](xref:fundamentals/middleware/index) |
 | **通訊協定支援**<br>`ProtocolSupportModule`                                                  | 是 | |
@@ -60,7 +62,7 @@ ms.locfileid: "82775943"
 | **靜態內容**<br>`StaticFileModule`                                                         | 否  | [靜態檔案中介軟體](xref:fundamentals/static-files) |
 | **權杖快取**<br>`TokenCacheModule`                                                          | 是 | |
 | **URI 快取**<br>`UriCacheModule`                                                              | 是 | |
-| **URL 授權**<br>`UrlAuthorizationModule`                                                | 是 | [ASP.NET Core 身分識別](xref:security/authentication/identity) |
+| **URL 授權**<br>`UrlAuthorizationModule`                                                | 是 | [ASP.NET CoreIdentity](xref:security/authentication/identity) |
 | **Windows 驗證**<br>`WindowsAuthenticationModule`                                      | 是 | |
 
 &#8224;由於[目錄結構](xref:host-and-deploy/directory-structure)變更的緣故，因此「URL 重寫模組」的 `isFile` 和 `isDirectory` 比對類型對 ASP.NET Core 應用程式沒有作用。
@@ -69,7 +71,7 @@ ms.locfileid: "82775943"
 
 當應用程式集區的 .NET CLR 版本已設定為 [沒有 Managed 程式碼]**** 時，受控模組對所裝載的 ASP.NET Core 應用程式「沒有」** 作用。 ASP.NET Core 在數種案例中都有提供中介軟體替代方案。
 
-| Module                  | ASP.NET Core 選項 |
+| 模組                  | ASP.NET Core 選項 |
 | ----------------------- | ------------------- |
 | AnonymousIdentification | |
 | DefaultAuthentication   | |
@@ -105,7 +107,7 @@ ms.locfileid: "82775943"
 </configuration>
 ```
 
-如需有關使用組態設定來停用模組的詳細資訊，請參考 [IIS \<system.webServer>](/iis/configuration/system.webServer/) ＜子元素＞** 一節中的連結。
+如需使用配置設定停用模組的詳細資訊，請遵循[ \<system.webServer> IIS](/iis/configuration/system.webServer/)的 [*子項目*] 區段中的連結。
 
 ### <a name="module-removal"></a>模組移除
 
@@ -113,9 +115,9 @@ ms.locfileid: "82775943"
 
 1. 將伺服器層級的模組解除鎖定。 選取「IIS 管理員」[連線]**** 資訊看板中的 IIS 伺服器。 開啟 [IIS]**** 區域中的 [模組]****。 選取清單中的模組。 在右邊的 [動作]**** 資訊看板上，選取 [解除鎖定]****。 若模組的動作項目顯示為**鎖定**，就代表該模組已經解除鎖定，且不需要任何動作。 將您打算稍後從 *web.config* 移除的模組都解除鎖定。
 
-2. 部署應用程式，而`<modules>`不使用*web.config 中的區段。* 如果應用程式是以包含`<modules>`區段的*web.config*部署，但未在 IIS 管理員中先解除鎖定區段，則當嘗試解除鎖定區段時，Configuration Manager 會擲回例外狀況。 因此，請在沒有 `<modules>` 區段的情況下部署應用程式。
+2. 在web.config中部署應用程式，而不使用 `<modules>` 區段。 *web.config*如果應用程式是以包含區段的*web.config*來部署 `<modules>` ，但未先在 IIS 管理員中解除鎖定區段，則在嘗試解除鎖定區段時，Configuration Manager 會擲回例外狀況。 因此，請在沒有 `<modules>` 區段的情況下部署應用程式。
 
-3. 解除鎖定`<modules>` *web.config*的區段。在 [**連接**] 提要欄位中，選取 [**網站**] 中的網站。 在 [管理]**** 區域中，開啟 [設定編輯器]****。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作]**** 資訊看板上，選取將區段 [解除鎖定]****。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
+3. 解除鎖定 `<modules>` *web.config*的區段。在 [**連接**] 提要欄位中，選取 [**網站**] 中的網站。 在 [管理]**** 區域中，開啟 [設定編輯器]****。 使用導覽控制項來選取 `system.webServer/modules` 區段。 在右邊的 [動作]**** 資訊看板上，選取將區段 [解除鎖定]****。 若模組區段的動作項目顯示為**鎖定區段**，就代表該模組區段已經解除鎖定，且不需要任何動作。
 
 4. 將 `<modules>` 區段新增至具有 `<remove>` 元素的應用程式本機 *web.config* 檔案，以從應用程式移除該模組。 新增多個 `<remove>` 元素以移除多個模組。 如果已在伺服器上進行 *web.config* 變更，請立即在本機對專案的 *web.config* 檔案進行相同的變更。 使用此方法移除模組不會影響模組與伺服器上其他應用程式的搭配使用。
 
@@ -174,4 +176,4 @@ Appcmd.exe delete module MODULE_NAME /app.name:APPLICATION_NAME
 * [IIS 架構簡介：IIS 中的模組](/iis/get-started/introduction-to-iis/introduction-to-iis-architecture#modules-in-iis)
 * [IIS 模組概觀](/iis/get-started/introduction-to-iis/iis-modules-overview)
 * [自訂 IIS 7.0 角色和模組](https://technet.microsoft.com/library/cc627313.aspx)
-* [IIS \<system.webserver>](/iis/configuration/system.webServer/)
+* [IIS\<system.webServer>](/iis/configuration/system.webServer/)

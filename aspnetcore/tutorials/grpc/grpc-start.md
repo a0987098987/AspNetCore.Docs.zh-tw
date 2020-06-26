@@ -6,17 +6,19 @@ ms.author: johluo
 ms.date: 04/08/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/grpc/grpc-start
-ms.openlocfilehash: a4676803361d71a3199b2cd1232d0ced8c93db5f
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: c2ec543bd73c0c15c65358c95def0109c295a0f8
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451936"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403465"
 ---
 # <a name="tutorial-create-a-grpc-client-and-server-in-aspnet-core"></a>教學課程：在 ASP.NET Core 中建立 gRPC 用戶端和伺服器
 
@@ -61,10 +63,10 @@ ms.locfileid: "84451936"
   ![[建立新專案] 對話方塊](~/tutorials/grpc/grpc-start/static/cnp.png)
 
 * 將專案命名為 **GrpcGreeter**。 請務必將專案命名為 *GrpcGreeter*，如此當您複製並貼上程式碼時，命名空間才會相符。
-* 選取 [建立]。
+* 選取 [建立]****。
 * 在 [建立新的 gRPC 服務]**** 對話方塊中：
   * 已選取 [gRPC 服務]**** 範本。
-  * 選取 [建立]。
+  * 選取 [建立]****。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -81,7 +83,7 @@ ms.locfileid: "84451936"
   * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [GrpcGreeter]** 資料夾。
 
   此時會出現一個對話方塊，其中包含**組建所需的資產，且 ' GrpcGreeter ' 中遺漏了 debug。要新增它們嗎？**
-* 選取 [是]。
+* 選取 [是]****。
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
@@ -126,7 +128,7 @@ info: Microsoft.Hosting.Lifetime[0]
 
 * *歡迎. proto*： *Protos/歡迎*檔案 `Greeter` 會定義 gRPC，並用於產生 gRPC 伺服器資產。 如需詳細資訊，請參閱 [gRPC 簡介](xref:grpc/index)。
 * *Services*資料夾：包含服務的執行 `Greeter` 。
-* *appSettings*：包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
+* *appSettings.js于*：包含設定資料，例如 Kestrel 所使用的通訊協定。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/index> 。
 * *Program.cs*：包含 gRPC 服務的進入點。 如需詳細資訊，請參閱 <xref:fundamentals/host/generic-host> 。
 * *Startup.cs*：包含可設定應用程式行為的程式碼。 如需詳細資訊，請參閱[應用程式啟動](xref:fundamentals/startup)。
 

@@ -1,20 +1,34 @@
 ---
-標題： author： description： monikerRange： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: .NET Core 上的 gRPC 簡介
+author: juntaoluo
+description: 了解搭配 Kestrel 伺服器及 ASP.NET Core 堆疊的 gRPC 服務。
+monikerRange: '>= aspnetcore-3.0'
+ms.author: johluo
+ms.date: 09/20/2019
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: grpc/index
+ms.openlocfilehash: 9f3a2041059c1d890ce72ce5f2a88151253d9bd9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404180"
 ---
 # <a name="introduction-to-grpc-on-net-core"></a>.NET Core 上的 gRPC 簡介
 
 依[John 羅文](https://github.com/juntaoluo)和[James 的牛頓-王](https://twitter.com/jamesnk)
 
-[gRPC](https://grpc.io/docs/guides/) 是不限於語言的高效能遠端程序呼叫 (RPC) 架構。
+[gRPC](https://grpc.io/docs/guides/)是一種與語言無關、高效能的遠端程序呼叫（RPC）架構。
 
 gRPC 的主要優點包括：
-* 現代化、高效能、輕量的 RPC 架構。
+* 新式高效能輕量型的 RPC 架構。
 * 根據預設使用 Protocol Buffers 的合約優先式 API 開發，使您得以進行不限於語言的實作。
 * 適用於多種語言的工具，可產生強型別伺服器及用戶端。
 * 支援用戶端、伺服器及雙向資料流呼叫。

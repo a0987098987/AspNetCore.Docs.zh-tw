@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/index
-ms.openlocfilehash: 796d7da76da6723ea996b57510da9c45ab21b3e7
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 79022af0e6ee1294e12c21492bc81bc40482a3fb
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775917"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403959"
 ---
 # <a name="host-and-deploy-aspnet-core"></a>裝載及部署 ASP.NET Core
 
@@ -40,7 +42,7 @@ ms.locfileid: "82775917"
 
 .NET Core 應用程式可以發行為「自主式部署」** 或「相依於架構的部署」**。 如果應用程式是自主式，包含 .NET 執行階段的組件檔會包含在 *publish* 資料夾中。 如果應用程式是與 Framework 相依的應用程式，則不會包含 .NET 執行階段檔案，因為應用程式具有對伺服器上已安裝之 .NET 版本的參考。 預設部署模式是與 Framework 相依。 如需詳細資訊，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
 
-除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含組態檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱<xref:host-and-deploy/directory-structure>。
+除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含組態檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱 <xref:host-and-deploy/directory-structure> 。
 
 ## <a name="set-up-a-process-manager"></a>設定處理序管理員
 
@@ -79,7 +81,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="internet-information-services-iis"></a>網際網路資訊服務 (IIS)
 
-若要*使用 web.config 檔案所提供*的設定來部署至 INTERNET INFORMATION SERVICES （IIS），請參閱底下的<xref:host-and-deploy/iis/index>文章。
+若要使用*web.config*檔案所提供的設定來部署至 INTERNET INFORMATION SERVICES （IIS），請參閱底下的文章 <xref:host-and-deploy/iis/index> 。
 
 ## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
 
@@ -87,11 +89,11 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="host-on-docker"></a>Docker 上的主機
 
-如需詳細資訊，請參閱<xref:host-and-deploy/docker/index>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/docker/index> 。
 
 ## <a name="perform-health-checks"></a>執行健康狀態檢查
 
-您可以使用健康狀態檢查中介軟體，對應用程式及其相依性執行健康狀態檢查。 如需詳細資訊，請參閱<xref:host-and-deploy/health-checks>。
+您可以使用健康狀態檢查中介軟體，對應用程式及其相依性執行健康狀態檢查。 如需詳細資訊，請參閱 <xref:host-and-deploy/health-checks> 。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -118,7 +120,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 .NET Core 應用程式可以發行為「自主式部署」** 或「相依於架構的部署」**。 如果應用程式是自主式，包含 .NET 執行階段的組件檔會包含在 *publish* 資料夾中。 如果應用程式是與 Framework 相依的應用程式，則不會包含 .NET 執行階段檔案，因為應用程式具有對伺服器上已安裝之 .NET 版本的參考。 預設部署模式是與 Framework 相依。 如需詳細資訊，請參閱 [.NET Core 應用程式部署](/dotnet/core/deploying/)。
 
-除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含組態檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱<xref:host-and-deploy/directory-structure>。
+除了 *.exe* 和 *.dll* 檔案之外，ASP.NET Core 應用程式的 *publish* 資料夾通常還包含組態檔、靜態資產和 MVC 檢視。 如需詳細資訊，請參閱 <xref:host-and-deploy/directory-structure> 。
 
 ## <a name="set-up-a-process-manager"></a>設定處理序管理員
 
@@ -157,7 +159,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="internet-information-services-iis"></a>網際網路資訊服務 (IIS)
 
-若要*使用 web.config 檔案所提供*的設定來部署至 INTERNET INFORMATION SERVICES （IIS），請參閱底下的<xref:host-and-deploy/iis/index>文章。
+若要使用*web.config*檔案所提供的設定來部署至 INTERNET INFORMATION SERVICES （IIS），請參閱底下的文章 <xref:host-and-deploy/iis/index> 。
 
 ## <a name="host-in-a-web-farm"></a>裝載於 Web 伺服陣列
 
@@ -165,7 +167,7 @@ Proxy 伺服器和負載平衡器後方託管的應用程式可能需要其他�
 
 ## <a name="host-on-docker"></a>Docker 上的主機
 
-如需詳細資訊，請參閱<xref:host-and-deploy/docker/index>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/docker/index> 。
 
 ## <a name="additional-resources"></a>其他資源
 

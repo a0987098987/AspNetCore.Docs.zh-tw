@@ -1,34 +1,36 @@
 ---
 title: ASP.NET Core Blazor Server 其他安全性案例
 author: guardrex
-description: 瞭解如何設定 Blazor 伺服器以進行其他安全性案例。
+description: 瞭解如何設定 Blazor Server 其他安全性案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/server/additional-scenarios
-ms.openlocfilehash: 7f92f82d6e78771494b9f2358ee19153502f8dcb
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 46de9a22dec540b8dfda7583b7a3c5c2dcbbc549
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243040"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402321"
 ---
 # <a name="aspnet-core-blazor-server-additional-security-scenarios"></a>ASP.NET Core Blazor Server 其他安全性案例
 
 By [Javier Calvarro Nelson](https://github.com/javiercn)
 
-## <a name="pass-tokens-to-a-blazor-server-app"></a>將權杖傳遞至 Blazor 伺服器應用程式
+## <a name="pass-tokens-to-a-blazor-server-app"></a>將權杖傳遞給 Blazor Server 應用程式
 
-您 Razor Blazor 可以使用本節所述的方法，將伺服器應用程式中元件外部可用的權杖傳遞給元件。 如需範例程式碼，包括完整的 `Startup.ConfigureServices` 範例，請參閱將[權杖傳遞給伺服器端 Blazor 應用程式](https://github.com/javiercn/blazor-server-aad-sample)。
+您 Razor Blazor Server 可以使用本節所述的方法，將應用程式中元件外部可用的權杖傳遞給元件。 如需範例程式碼，包括完整的 `Startup.ConfigureServices` 範例，請參閱將[權杖傳遞給伺服器端 Blazor 應用程式](https://github.com/javiercn/blazor-server-aad-sample)。
 
-驗證 Blazor 伺服器應用程式的方式與一般 Razor 頁面或 MVC 應用程式一樣。 布建權杖並將其儲存至驗證 cookie。 例如：
+Blazor Server以一般 Razor 頁面或 MVC 應用程式的方式驗證應用程式。 布建權杖並將其儲存至驗證 cookie。 例如：
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;

@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 03/06/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: c29b58eb14a7962f53f2c8c48067de2f5872fded
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 4ecbf6920980e293e8c274996c6a4f25e74a5cb7
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774804"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403621"
 ---
 # <a name="session-and-state-management-in-aspnet-core"></a>ASP.NET Core 中的會話和狀態管理
 
@@ -41,7 +43,7 @@ HTTP 是無狀態的通訊協定。 根據預設，HTTP 要求是不會保留使
 | [查詢字串](#query-strings) | HTTP 查詢字串 |
 | [隱藏欄位](#hidden-fields) | HTTP 表單欄位 |
 | [HttpContext.Items](#httpcontextitems) | 伺服器端應用程式程式碼 |
-| [快取](#cache) | 伺服器端應用程式程式碼 |
+| [高速](#cache) | 伺服器端應用程式程式碼 |
 
 ## <a name="cookies"></a>Cookie
 
@@ -57,7 +59,7 @@ Cookie 通常可用於個人化，其中內容會針對已知的使用者自訂�
 
 工作階段狀態是用來在使用者瀏覽 Web 應用程式時存放使用者資料的 ASP.NET Core 情節。 工作階段狀態使用應用程式所維護的存放區，在用戶端的要求之間保存資料。 會話資料是由快取所支援，並被視為暫時資料。 網站應該在沒有會話資料的情況下繼續運作。 重要應用程式資料應該儲存在使用者資料庫，並只在工作階段中快取以獲得效能最佳化。
 
-[SignalR](xref:signalr/index) 應用程式中不支援工作階段，因為 [SignalR 中樞](xref:signalr/hubs)可獨立於 HTTP 內容之外而執行。 例如，當長時間輪詢要求由中樞維持開啟，超過要求的 HTTP 內容存留期時，便可能發生此情況。
+應用程式不支援會話， [SignalR](xref:signalr/index) 因為[ SignalR 中樞](xref:signalr/hubs)可能會獨立于 HTTP 內容之外執行。 例如，當長時間輪詢要求由中樞維持開啟，超過要求的 HTTP 內容存留期時，便可能發生此情況。
 
 ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維護會話狀態。 Cookie 會話識別碼：
 
@@ -75,14 +77,14 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
   * 其中的資料不需要跨會話的永久儲存體。
 * 工作階段資料會在呼叫 [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) 實作或工作階段過期時刪除。
 * 沒有任何預設機制可通知應用程式程式碼，用戶端瀏覽器已關閉，或工作階段 Cookie 遭到刪除或在用戶端上已過期。
-* 根據預設，會話狀態 cookie 不會標示為必要。 除非網站訪客允許追蹤，否則會話狀態無法運作。 如需詳細資訊，請參閱<xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>。
+* 根據預設，會話狀態 cookie 不會標示為必要。 除非網站訪客允許追蹤，否則會話狀態無法運作。 如需詳細資訊，請參閱 <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential> 。
 
 > [!WARNING]
 > 請勿將敏感性資料存放在工作階段狀態。 使用者可能不會關閉瀏覽器，並清除工作階段 Cookie。 某些瀏覽器會在瀏覽器視窗之間維護有效的工作階段 Cookie。 會話可能無法限制為單一使用者。 下一個使用者可能會繼續流覽具有相同會話 cookie 的應用程式。
 
 記憶體中快取提供者會將工作階段資料存放在應用程式所在伺服器的記憶體中。 在伺服器陣列案例中：
 
-* 使用「黏性工作階段」** 將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+* 使用「黏性工作階段」** 將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
 * 工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
 
 ### <a name="configure-session-state"></a>設定工作階段狀態
@@ -94,7 +96,7 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 
 若要啟用工作階段中介軟體，`Startup` 必須包含：
 
-* 任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+* 任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
 * 在 `ConfigureServices` 中呼叫 [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession)。
 * 在 `Configure` 中呼叫 [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions.usesession#Microsoft_AspNetCore_Builder_SessionMiddlewareExtensions_UseSession_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。
 
@@ -104,7 +106,7 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 
 上述程式碼會設定簡短的時間，以簡化測試。
 
-中介軟體的順序很重要。  在`UseSession`前後`UseRouting`呼叫`UseEndpoints`。 請參閱[中介軟體順序](xref:fundamentals/middleware/index#order)。
+中介軟體的順序很重要。  `UseSession`在前後呼叫 `UseRouting` `UseEndpoints` 。 請參閱[中介軟體順序](xref:fundamentals/middleware/index#order)。
 
 設定工作階段狀態之後便可以使用 [HttpContext.Session](xref:Microsoft.AspNetCore.Http.HttpContext.Session)。
 
@@ -140,7 +142,7 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 
 ### <a name="set-and-get-session-values"></a>設定和取得工作階段值
 
-工作階段狀態的存取，是從 Razor Pages [PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel) 類別，或 MVC [Controller](/dotnet/api/microsoft.aspnetcore.mvc.controller) 類別搭配 [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)。 這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。
+會話狀態是從 Razor 具有[HttpCoNtext](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)的頁面[PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel)類別或 MVC[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)類別存取。 這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。
 
 `ISession` 實作提供數個延伸模組來設定和擷取整數和字串值。 擴充方法位於[AspNetCore](/dotnet/api/microsoft.aspnetcore.http)命名空間中。
 
@@ -152,7 +154,7 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 * [SetInt32(ISession, String, Int32)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setint32)
 * [SetString(ISession, String, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setstring)
 
-下列範例會在 Razor Pages 頁面中，擷取 `IndexModel.SessionKeyName` 索引鍵的工作階段值 (範例應用程式中的 `_Name`)：
+下列範例會 `IndexModel.SessionKeyName` `_Name` 在頁面頁面中抓取金鑰（在範例應用程式中）的會話值 Razor ：
 
 ```csharp
 @page
@@ -174,16 +176,16 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Extensions/SessionExtensions.cs?name=snippet1)]
 
-下列範例顯示如何使用`SessionExtensions`類別來設定和取得可序列化物件：
+下列範例顯示如何使用類別來設定和取得可序列化物件 `SessionExtensions` ：
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Pages/Index.cshtml.cs?name=snippet2)]
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core 會公開 Razor Pages [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData)或控制器<xref:Microsoft.AspNetCore.Mvc.Controller.TempData>。 這個屬性會儲存資料，直到讀取另一個要求為止。 在要求結束時，可以使用[保留（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)和[查看（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*)方法來檢查資料，而不需要刪除。 [保留](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)將字典中的所有專案標示為保留。 `TempData` 是：
+ASP.NET Core 會公開 Razor [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData)或控制器頁面 <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> 。 這個屬性會儲存資料，直到讀取另一個要求為止。 在要求結束時，可以使用[保留（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)和[查看（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*)方法來檢查資料，而不需要刪除。 [保留](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)將字典中的所有專案標示為保留。 `TempData` 是：
 
 * 適用于需要超過單一要求的資料時重新導向。
-* 由使用`TempData` cookie 或會話狀態的提供者所執行。
+* 由 `TempData` 使用 cookie 或會話狀態的提供者所執行。
 
 ## <a name="tempdata-samples"></a>TempData 範例
 
@@ -191,19 +193,19 @@ ASP.NET Core 會公開 Razor Pages [TempData](xref:Microsoft.AspNetCore.Mvc.Razo
 
 [!code-csharp[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet&highlight=15-16,30)]
 
-會顯示`TempData["Message"]`下列頁面：
+會顯示下列頁面 `TempData["Message"]` ：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexPeek.cshtml?range=1-14)]
 
-在上述標記中，在要求結束時，**不**會`TempData["Message"]`刪除，因為`Peek`會使用。 重新整理頁面會顯示的內容`TempData["Message"]`。
+在上述標記中，在要求結束 `TempData["Message"]` 時，**不**會刪除，因為 `Peek` 會使用。 重新整理頁面會顯示的內容 `TempData["Message"]` 。
 
-下列標記與上述程式碼類似，但會使用`Keep`來保留要求結尾的資料：
+下列標記與上述程式碼類似，但會使用 `Keep` 來保留要求結尾的資料：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexKeep.cshtml?range=1-14)]
 
-在*IndexPeek*和*IndexKeep*頁面之間流覽並不`TempData["Message"]`會刪除。
+在*IndexPeek*和*IndexKeep*頁面之間流覽並不會刪除 `TempData["Message"]` 。
 
-下列程式碼會`TempData["Message"]`顯示，但在要求結束時， `TempData["Message"]`會刪除：
+下列 `TempData["Message"]` 程式碼會顯示，但在要求結束 `TempData["Message"]` 時，會刪除：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Index.cshtml?range=1-14)]
 
@@ -227,7 +229,7 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 預設會啟用 Cookie 架構 TempData 提供者。
 
-若要啟用以會話為基礎的 TempData 提供者，請使用[AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider)擴充方法。 只需要呼叫`AddSessionStateTempDataProvider`一次：
+若要啟用以會話為基礎的 TempData 提供者，請使用[AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider)擴充方法。 只需要呼叫一次 `AddSessionStateTempDataProvider` ：
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Startup3.cs?name=snippet1&highlight=4,6,30)]
 
@@ -245,11 +247,11 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 [HttpContext.Items](/dotnet/api/microsoft.aspnetcore.http.httpcontext.items) 集合用來在處理單一要求時存放資料。 集合的內容會在每個要求處理之後捨棄。 當元件或中介軟體在要求期間的不同時間點運作，而且沒有可傳遞參數的直接方式時，`Items` 集合經常用來允許元件或中介軟體進行通訊。
 
-在下列範例中，[中介軟體](xref:fundamentals/middleware/index)會`isVerified`將`Items`新增至集合：
+在下列範例中，[中介軟體](xref:fundamentals/middleware/index)會將新增 `isVerified` 至 `Items` 集合：
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Startup.cs?name=snippet1)]
 
-針對只在單一應用程式中使用的中介軟體， `string`可以接受固定的金鑰。 應用程式之間共用的中介軟體應使用唯一的物件索引鍵，以避免發生按鍵衝突。 下列範例示範如何使用中介軟體類別中定義的唯一物件索引鍵：
+針對只在單一應用程式中使用的中介軟體， `string` 可以接受固定的金鑰。 應用程式之間共用的中介軟體應使用唯一的物件索引鍵，以避免發生按鍵衝突。 下列範例示範如何使用中介軟體類別中定義的唯一物件索引鍵：
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Middleware/HttpContextItemsMiddleware.cs?name=snippet1&highlight=4,13)]
 
@@ -261,17 +263,17 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 ## <a name="cache"></a>快取
 
-快取是儲存和擷取資料的有效方式。 應用程式可以控制快取項目的存留期。 如需詳細資訊，請參閱<xref:performance/caching/response>。
+快取是儲存和擷取資料的有效方式。 應用程式可以控制快取項目的存留期。 如需詳細資訊，請參閱 <xref:performance/caching/response> 。
 
 快取的資料未與特定要求、使用者或工作階段建立關聯。 **不要快取其他使用者要求可能會抓取的使用者特定資料。**
 
-若要快取整個應用程式<xref:performance/caching/memory>的資料，請參閱。
+若要快取整個應用程式的資料，請參閱 <xref:performance/caching/memory> 。
 
 ## <a name="common-errors"></a>常見錯誤
 
 * 「嘗試啟動 'Microsoft.AspNetCore.Session.DistributedSessionStore' 時，無法解析類型 'Microsoft.Extensions.Caching.Distributed.IDistributedCache' 。」
 
-  這通常是因為無法設定至少一個`IDistributedCache`執行所造成。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 和 <xref:performance/caching/memory>。
+  這通常是因為無法設定至少一個執行所造成 `IDistributedCache` 。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 和 <xref:performance/caching/memory>。
 
 如果會話中介軟體無法保存會話：
 
@@ -280,11 +282,11 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 如果備份存放區無法使用，則會話中介軟體可能無法保存會話。 例如，使用者在工作階段中存放購物車。 使用者在購物車新增一個項目，但認可失敗。 應用程式未察覺到失敗，因此它向使用者報告項目已新增至購物車，但這並不正確。
 
-檢查錯誤的建議方法是在應用程式完成`await feature.Session.CommitAsync`寫入會話時呼叫。 備份存放區無法使用時，<xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> 會擲回例外狀況。 如果 `CommitAsync` 失敗，應用程式可以處理例外狀況。 <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*>當資料存放區無法使用時，會在相同的情況下擲回。
+檢查錯誤的建議方法是在 `await feature.Session.CommitAsync` 應用程式完成寫入會話時呼叫。 備份存放區無法使用時，<xref:Microsoft.AspNetCore.Http.ISession.CommitAsync*> 會擲回例外狀況。 如果 `CommitAsync` 失敗，應用程式可以處理例外狀況。 <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync*>當資料存放區無法使用時，會在相同的情況下擲回。
   
-## <a name="signalr-and-session-state"></a>SignalR 和會話狀態
+## <a name="signalr-and-session-state"></a>SignalR和會話狀態
 
-SignalR apps 不應使用會話狀態來儲存資訊。 SignalR apps 可以在中樞的中， `Context.Items`將每個線上狀態儲存在中。 <!-- https://github.com/aspnet/SignalR/issues/2139 -->
+SignalR應用程式不應使用會話狀態來儲存資訊。 SignalR應用程式可以在中樞的中，將每個線上狀態儲存在中 `Context.Items` 。 <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -311,7 +313,7 @@ HTTP 是無狀態的通訊協定。 若不採取其他步驟，HTTP 要求是獨
 | [查詢字串](#query-strings) | HTTP 查詢字串 |
 | [隱藏欄位](#hidden-fields) | HTTP 表單欄位 |
 | [HttpContext.Items](#httpcontextitems) | 伺服器端應用程式程式碼 |
-| [快取](#cache) | 伺服器端應用程式程式碼 |
+| [高速](#cache) | 伺服器端應用程式程式碼 |
 | [相依性插入](#dependency-injection) | 伺服器端應用程式程式碼 |
 
 ## <a name="cookies"></a>Cookie
@@ -329,7 +331,7 @@ Cookie 通常可用於個人化，其中內容會針對已知的使用者自訂�
 工作階段狀態是用來在使用者瀏覽 Web 應用程式時存放使用者資料的 ASP.NET Core 情節。 工作階段狀態使用應用程式所維護的存放區，在用戶端的要求之間保存資料。 工作階段資料受到快取的支援，並被視為暫時資料&mdash;網站沒有工作階段資料應該也會繼續運作。 重要應用程式資料應該儲存在使用者資料庫，並只在工作階段中快取以獲得效能最佳化。
 
 > [!NOTE]
-> [SignalR](xref:signalr/index) 應用程式中不支援工作階段，因為 [SignalR 中樞](xref:signalr/hubs)可獨立於 HTTP 內容之外而執行。 例如，當長時間輪詢要求由中樞維持開啟，超過要求的 HTTP 內容存留期時，便可能發生此情況。
+> 應用程式不支援會話， [SignalR](xref:signalr/index) 因為[ SignalR 中樞](xref:signalr/hubs)可能會獨立于 HTTP 內容之外執行。 例如，當長時間輪詢要求由中樞維持開啟，超過要求的 HTTP 內容存留期時，便可能發生此情況。
 
 ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識別碼的 Cookie 給用戶端，以便將其隨著每個要求傳送至應用程式。 應用程式則使用工作階段識別碼來擷取工作階段資料。
 
@@ -342,21 +344,21 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 * 應用程式會在最後一個要求之後，保留工作階段一段有限的時間。 應用程式會設定工作階段逾時或使用預設值 20 分鐘。 工作階段狀態適合用來儲存特定工作階段特定的使用者資料，但資料不需要在工作階段之間永久儲存的情況。
 * 工作階段資料會在呼叫 [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) 實作或工作階段過期時刪除。
 * 沒有任何預設機制可通知應用程式程式碼，用戶端瀏覽器已關閉，或工作階段 Cookie 遭到刪除或在用戶端上已過期。
-* ASP.NET Core MVC 和 Razor Pages 範本包含對一般資料保護規定 (GDPR) 的支援。 工作階段狀態 Cookie 未預設標示為必要項目，因此工作階段狀態無法運作，除網站訪客允許追蹤。 如需詳細資訊，請參閱<xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential>。
+* ASP.NET Core MVC 和 Razor pages 範本包含一般資料保護規定的支援（GDPR）。 工作階段狀態 Cookie 未預設標示為必要項目，因此工作階段狀態無法運作，除網站訪客允許追蹤。 如需詳細資訊，請參閱 <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential> 。
 
 > [!WARNING]
 > 請勿將敏感性資料存放在工作階段狀態。 使用者可能不會關閉瀏覽器，並清除工作階段 Cookie。 某些瀏覽器會在瀏覽器視窗之間維護有效的工作階段 Cookie。 工作階段可能無法限制為單一使用者&mdash;下一位使用者可能會繼續使用相同的工作階段 Cookie 瀏覽應用程式。
 
 記憶體中快取提供者會將工作階段資料存放在應用程式所在伺服器的記憶體中。 在伺服器陣列案例中：
 
-* 使用「黏性工作階段」** 將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+* 使用「黏性工作階段」** 將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
 * 工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
 
 ### <a name="configure-session-state"></a>設定工作階段狀態
 
 [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件隨附於 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，提供用來管理工作階段狀態的中介軟體。 若要啟用工作階段中介軟體，`Startup` 必須包含：
 
-* 任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱<xref:performance/caching/distributed>。
+* 任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
 * 在 `ConfigureServices` 中呼叫 [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession)。
 * 在 `Configure` 中呼叫 [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions.usesession#Microsoft_AspNetCore_Builder_SessionMiddlewareExtensions_UseSession_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。
 
@@ -400,7 +402,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 
 ### <a name="set-and-get-session-values"></a>設定和取得工作階段值
 
-會話狀態Razor是從具有[HttpCoNtext](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)的頁面[PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel)類別或 MVC[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)類別存取。 這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。
+會話狀態是從 Razor 具有[HttpCoNtext](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)的頁面[PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel)類別或 MVC[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)類別存取。 這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。
 
 `ISession` 實作提供數個延伸模組來設定和擷取整數和字串值。 當專案參考 [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) 套件時，擴充方法位於 [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) 命名空間 (新增 `using Microsoft.AspNetCore.Http;` 陳述式即可取得擴充方法的存取權)。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)包含兩個套件。
 
@@ -412,7 +414,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 * [SetInt32(ISession, String, Int32)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setint32)
 * [SetString(ISession, String, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setstring)
 
-下列範例會在`IndexModel.SessionKeyName` `_Name` Razor頁面頁面中抓取金鑰（在範例應用程式中）的會話值：
+下列範例會 `IndexModel.SessionKeyName` `_Name` 在頁面頁面中抓取金鑰（在範例應用程式中）的會話值 Razor ：
 
 ```csharp
 @page
@@ -440,7 +442,7 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 ## <a name="tempdata"></a>TempData
 
-ASP.NET Core 會公開Razor [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData)或控制器<xref:Microsoft.AspNetCore.Mvc.Controller.TempData>頁面。 這個屬性會儲存資料，直到讀取另一個要求為止。 在要求結束時，可以使用[保留（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)和[查看（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*)方法來檢查資料，而不需要刪除。 [Keep （）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)會標示字典中的所有專案以進行保留。 `TempData`當需要多個單一要求的資料時，對於重新導向而言特別有用。 `TempData`是由使用`TempData` cookie 或會話狀態的提供者所執行。
+ASP.NET Core 會公開 Razor [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel.TempData)或控制器頁面 <xref:Microsoft.AspNetCore.Mvc.Controller.TempData> 。 這個屬性會儲存資料，直到讀取另一個要求為止。 在要求結束時，可以使用[保留（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)和[查看（字串）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Peek*)方法來檢查資料，而不需要刪除。 [Keep （）](xref:Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataDictionary.Keep*)會標示字典中的所有專案以進行保留。 `TempData`當需要多個單一要求的資料時，對於重新導向而言特別有用。 `TempData`是由 `TempData` 使用 cookie 或會話狀態的提供者所執行。
 
 ## <a name="tempdata-samples"></a>TempData 範例
 
@@ -448,19 +450,19 @@ ASP.NET Core 會公開Razor [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages.
 
 [!code-csharp[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Create.cshtml.cs?name=snippet&highlight=15-16,30)]
 
-會顯示`TempData["Message"]`下列頁面：
+會顯示下列頁面 `TempData["Message"]` ：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexPeek.cshtml?range=1-14)]
 
-在上述標記中，在要求結束時，**不**會`TempData["Message"]`刪除，因為`Peek`會使用。 重新整理頁面會`TempData["Message"]`顯示。
+在上述標記中，在要求結束 `TempData["Message"]` 時，**不**會刪除，因為 `Peek` 會使用。 重新整理頁面會顯示 `TempData["Message"]` 。
 
-下列標記與上述程式碼類似，但會使用`Keep`來保留要求結尾的資料：
+下列標記與上述程式碼類似，但會使用 `Keep` 來保留要求結尾的資料：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/IndexKeep.cshtml?range=1-14)]
 
-在*IndexPeek*和*IndexKeep*頁面之間流覽並不`TempData["Message"]`會刪除。
+在*IndexPeek*和*IndexKeep*頁面之間流覽並不會刪除 `TempData["Message"]` 。
 
-下列程式碼會`TempData["Message"]`顯示，但在要求結束時， `TempData["Message"]`會刪除：
+下列 `TempData["Message"]` 程式碼會顯示，但在要求結束 `TempData["Message"]` 時，會刪除：
 
 [!code-cshtml[](app-state/3.0samples/RazorPagesContacts/Pages/Customers/Index.cshtml?range=1-14)]
 
@@ -544,7 +546,7 @@ app.Run(async (context) =>
 
 快取的資料未與特定要求、使用者或工作階段建立關聯。 **請小心不要快取可能由其他使用者要求所擷取的特定使用者資料。**
 
-如需詳細資訊，請參閱<xref:performance/caching/response>。
+如需詳細資訊，請參閱 <xref:performance/caching/response> 。
 
 ## <a name="dependency-injection"></a>相依性插入
 
@@ -595,7 +597,7 @@ app.Run(async (context) =>
   
 ## <a name="signalr-and-session-state"></a>SignalR和會話狀態
 
-SignalR應用程式不應使用會話狀態來儲存資訊。 SignalR應用程式可以在中樞的中`Context.Items` ，將每個線上狀態儲存在中。 <!-- https://github.com/aspnet/SignalR/issues/2139 -->
+SignalR應用程式不應使用會話狀態來儲存資訊。 SignalR應用程式可以在中樞的中，將每個線上狀態儲存在中 `Context.Items` 。 <!-- https://github.com/aspnet/SignalR/issues/2139 -->
 
 ## <a name="additional-resources"></a>其他資源
 

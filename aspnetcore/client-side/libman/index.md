@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 08/14/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: client-side/libman/index
-ms.openlocfilehash: 8dc94bd8dc15eaf3b778a8bd2905fcce08398a95
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a9b0f389303709ebf27e6c300ac2489d4e5a86a9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82770489"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85403077"
 ---
 # <a name="client-side-library-acquisition-in-aspnet-core-with-libman"></a>使用 LibMan 讓 ASP.NET Core 取得用戶端程式庫
 

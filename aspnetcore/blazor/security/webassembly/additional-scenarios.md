@@ -1,24 +1,26 @@
 ---
 title: ASP.NET Core Blazor WebAssembly 其他安全性案例
 author: guardrex
-description: 瞭解如何設定 Blazor WebAssembly 以進行其他安全性案例。
+description: 瞭解如何設定 Blazor WebAssembly 其他安全性案例。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/10/2020
+ms.date: 06/24/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 13007df4ddddd31dd0508e9526775a6d33e0fd97
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 4e7f7c89e7dbc1851069b6e7024065e96495a317
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242910"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85402178"
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 其他安全性案例
 
@@ -255,7 +257,7 @@ builder.Services.AddHttpClient("ServerAPI.NoAuthenticationClient",
 
 先前的註冊是除了現有的安全預設註冊之外 <xref:System.Net.Http.HttpClient> 。
 
-元件會 <xref:System.Net.Http.HttpClient> 從 <xref:System.Net.Http.IHttpClientFactory> （ [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http/) 套件）建立，以提出未經驗證或未經授權的要求：
+元件會 <xref:System.Net.Http.HttpClient> 從 <xref:System.Net.Http.IHttpClientFactory> （ [`Microsoft.Extensions.Http`](https://www.nuget.org/packages/Microsoft.Extensions.Http) 套件）建立，以提出未經驗證或未經授權的要求：
 
 ```razor
 @inject IHttpClientFactory ClientFactory
@@ -277,6 +279,10 @@ builder.Services.AddHttpClient("ServerAPI.NoAuthenticationClient",
 
 > [!NOTE]
 > 先前範例的伺服器 API 中的控制器 `WeatherForecastNoAuthenticationController` 不會以 [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性標記。
+
+決定要使用安全用戶端還是不安全的用戶端做為預設 <xref:System.Net.Http.HttpClient> 實例，是由開發人員負責。 進行這項決定的其中一個方法是考慮應用程式所聯繫的已驗證和未驗證端點數目。 如果大部分的應用程式要求都是要保護 API 端點，請使用已驗證的 <xref:System.Net.Http.HttpClient> 實例作為預設值。 否則，請將未驗證的 <xref:System.Net.Http.HttpClient> 實例註冊為預設值。
+
+使用的替代方法是建立具型別 <xref:System.Net.Http.IHttpClientFactory> [用戶端](#typed-httpclient)，以進行未經驗證的匿名端點存取。
 
 ## <a name="request-additional-access-tokens"></a>要求其他存取權杖
 
@@ -328,7 +334,7 @@ if (tokenResult.TryGetToken(out var token))
 
 ## <a name="httpclient-and-httprequestmessage-with-fetch-api-request-options"></a>具有 Fetch API 要求選項的 HttpClient 和 HttpRequestMessage
 
-在 WebAssembly 應用程式的 WebAssembly 上執行時 Blazor ， [`HttpClient`](xref:fundamentals/http-requests) <xref:System.Net.Http.HttpRequestMessage> 可以用來自訂要求。 例如，您可以指定 HTTP 方法和要求標頭。 下列元件會對 `POST` 伺服器上的 To Do LIST API 端點提出要求，並顯示回應主體：
+在應用程式中的 WebAssembly 上執行時 Blazor WebAssembly ， [`HttpClient`](xref:fundamentals/http-requests) <xref:System.Net.Http.HttpRequestMessage> 可用於自訂要求。 例如，您可以指定 HTTP 方法和要求標頭。 下列元件會對 `POST` 伺服器上的 To Do LIST API 端點提出要求，並顯示回應主體：
 
 ```razor
 @page "/todorequest"
@@ -861,7 +867,7 @@ public class CustomAccountFactory
 
 ## <a name="support-prerendering-with-authentication"></a>支援使用驗證來進行預呈現
 
-遵循其中一個託管 WebAssembly 應用程式主題中的指導方針之後 Blazor ，請使用下列指示來建立應用程式：
+遵循其中一個託管應用程式主題中的指導方針之後 Blazor WebAssembly ，請使用下列指示來建立應用程式：
 
 * 不需要授權的 Prerenders 路徑。
 * 不需要授權的已呈現路徑。
@@ -946,9 +952,9 @@ app.UseEndpoints(endpoints =>
   
 ## <a name="options-for-hosted-apps-and-third-party-login-providers"></a>託管應用程式和協力廠商登入提供者的選項
 
-Blazor使用協力廠商提供者驗證和授權託管 WebAssembly 應用程式時，有數個選項可用來驗證使用者。 您選擇哪一個取決於您的案例。
+Blazor WebAssembly使用協力廠商提供者驗證和授權託管應用程式時，有數個選項可用來驗證使用者。 您選擇哪一個取決於您的案例。
 
-如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims>。
+如需詳細資訊，請參閱 <xref:security/authentication/social/additional-claims> 。
 
 ### <a name="authenticate-users-to-only-call-protected-third-party-apis"></a>驗證使用者只呼叫受保護的協力廠商 Api
 

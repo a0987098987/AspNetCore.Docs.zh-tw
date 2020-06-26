@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/index
-ms.openlocfilehash: cc12dc2bc6720652866227dc2bbcbcf4e8af793d
-ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
+ms.openlocfilehash: 9ffeebbf8125ddac5d6e621e411c4e86c5bd34b1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85074239"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399305"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-app-service"></a>將 ASP.NET Core 應用程式部署至 Azure App Service
 
@@ -207,7 +209,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
 1. 選取 Web 應用程式。
 1. 在搜尋方塊中鍵入 "ex" 來篩選 "Extensions"，也可往下捲動管理工具的清單。
 1. 選取 [**延伸**模組]。
-1. 選取 [新增]。
+1. 選取 [新增]****。
 1. 從清單選取 [ASP.NET Core {X.Y} ({x64|x86}) 執行階段]**** 延伸模組，其中 `{X.Y}` 是 ASP.NET Core 預覽版本，而 `{x64|x86}` 則指定平台。
 1. 選取 [確定]**** 以接受法律條款。
 1. 選取 [確定]**** 安裝延伸模組。
@@ -270,7 +272,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    * 開啟 [部署模式]**** 下拉式清單，然後選取 [依架構不同]****。
    * 將 [目標執行階段]**** 選取為 [可攜式]****。
    * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]**** 並選取核取方塊，以移除目的地的其他檔案。
-   * 選取 [儲存]。
+   * 選取 [儲存]****。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
@@ -301,7 +303,7 @@ Azure 入口網站中的應用程式設定允許您為應用程式設定環境�
    * 開啟 [部署模式]**** 下拉式清單，然後選取 [獨立式]****。
    * 從 [目標執行階段]**** 下拉式清單中選取目標執行階段。 預設值為 `win-x86`。
    * 如果您需要在部署時移除其他檔案，請開啟 [檔案發佈選項]**** 並選取核取方塊，以移除目的地的其他檔案。
-   * 選取 [儲存]。
+   * 選取 [儲存]****。
 1. 遵循 [發佈精靈] 的其餘提示來建立新網站，或更新現有網站。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)

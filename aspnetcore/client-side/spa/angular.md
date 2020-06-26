@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/06/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: spa/angular
-ms.openlocfilehash: d6e52a7e2c8e9c2e440b187312eeee9fc06699ae
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 1c91f1adadca8b339e4daf33207ca60008679810
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773738"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401775"
 ---
 # <a name="use-the-angular-project-template-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Angular 專案範本
 
@@ -60,7 +62,7 @@ Now listening on: http://localhost:<port>
 在瀏覽器中開啟這個 URL。
 
 > [!WARNING]
-> 應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息： *NG Live 程式開發伺服器接聽 localhost&lt;： otherport&gt;，將瀏覽器開啟至http://localhost:&lt; otherport&gt;*。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
+> 應用程式會在背景啟動 Angular CLI 伺服器的執行個體。 會記錄類似下列的訊息： *NG Live 程式開發伺服器接聽 localhost： &lt; otherport &gt; ，將瀏覽器開啟至 http://localhost:&lt ; otherport &gt; / *。 請忽略此訊息&mdash;這**不是** ASP.NET Core 與 Angular CLI 應用程式的合併 URL。
 
 ---
 
@@ -105,7 +107,7 @@ npm install --save <package_name>
 
 專案已設定為會在 ASP.NET Core 應用程式於開發模式中啟動時，在背景啟動屬於自己的 Angular CLI 伺服器執行個體。 這很方便，因為您不需要手動執行個別的伺服器。
 
-此預設設定有一個缺點。 每當您修改 C# 程式碼，且需要重新啟動 ASP.NET Core 應用程式時，Angular CLI 伺服器都會重新啟動。 開始備份需要大約 10 秒鐘的時間。 如果您經常編輯 C# 程式碼，但又不想要等候 Angular CLI 重新啟動，請獨立於 ASP.NET Core 處理序，於外部執行 Angular CLI 伺服器。 操作方法：
+此預設設定有一個缺點。 每當您修改 C# 程式碼，且需要重新啟動 ASP.NET Core 應用程式時，Angular CLI 伺服器都會重新啟動。 開始備份需要大約 10 秒鐘的時間。 如果您經常編輯 C# 程式碼，但又不想要等候 Angular CLI 重新啟動，請獨立於 ASP.NET Core 處理序，於外部執行 Angular CLI 伺服器。 若要這樣做：
 
 1. 在命令提示字元中，切換至 *ClientApp* 子目錄，然後啟動 Angular CLI 程式開發伺服器：
 

@@ -7,17 +7,19 @@ ms.author: jamesnk
 ms.date: 01/09/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/versioning
-ms.openlocfilehash: dcf089f1e5f27639d048e91ee3aa42c7da6d8398
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: af8c6cac621ed073fc34e2afe0402e640c2c5727
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775358"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400007"
 ---
 # <a name="versioning-grpc-services"></a>Versioning gRPC 服務
 
@@ -54,7 +56,7 @@ GRPC 通訊協定是設計用來支援隨時間變更的服務。 一般來說�
 
 * 從已移除的欄位**移除欄位**值，會還原序列化為訊息的[未知欄位](https://developers.google.com/protocol-buffers/docs/proto3#unknowns)。 這不是 gRPC 的通訊協定重大變更，但如果用戶端升級至最新的合約，則需要更新。 重要的是，在未來不小心重複使用移除的欄位號碼。 若要確保不會發生這種情況，請使用 Protobuf 的[reserved](https://developers.google.com/protocol-buffers/docs/proto3#reserved)關鍵字，在訊息上指定已刪除的欄位編號和名稱。
 * 重新**命名訊息**：通常不會在網路上傳送訊息名稱，因此這不是 gRPC 的通訊協定中斷變更。 如果用戶端升級至最新的合約，則需要更新。 當訊息名稱用來識別訊息類型時，在網路**上傳送訊息**名稱的一種情況就是使用[任何](https://developers.google.com/protocol-buffers/docs/proto3#any)欄位。
-* 變更**csharp_namespace**變更`csharp_namespace`將會變更所產生之 .net 類型的命名空間。 這不是 gRPC 的通訊協定重大變更，但如果用戶端升級至最新的合約，則需要更新。
+* 變更**csharp_namespace**變更 `csharp_namespace` 將會變更所產生之 .net 類型的命名空間。 這不是 gRPC 的通訊協定重大變更，但如果用戶端升級至最新的合約，則需要更新。
 
 ### <a name="protocol-breaking-changes"></a>通訊協定重大變更
 
@@ -79,7 +81,7 @@ GRPC 通訊協定是設計用來支援隨時間變更的服務。 一般來說�
 
 服務應該致力於維持與舊用戶端的回溯相容性。 應用程式最終的變更可能需要重大變更。 中斷舊的用戶端，並強制它們與您的服務一起更新，並不是很好的使用者體驗。 在進行重大變更時，維護回溯相容性的方法是發佈服務的多個版本。
 
-gRPC 支援選擇性的[封裝](https://developers.google.com/protocol-buffers/docs/proto3#packages)規範，其功能非常類似 .net 命名空間。 事實上，如果`option csharp_namespace`不`package`是在*proto*檔案中設定，將會使用做為所產生 .net 類型的 .net 命名空間。 封裝可以用來指定您的服務和其訊息的版本號碼：
+gRPC 支援選擇性的[封裝](https://developers.google.com/protocol-buffers/docs/proto3#packages)規範，其功能非常類似 .net 命名空間。 事實上， `package` 如果 `option csharp_namespace` 不是在*proto*檔案中設定，將會使用做為所產生 .net 類型的 .net 命名空間。 封裝可以用來指定您的服務和其訊息的版本號碼：
 
 [!code-protobuf[](versioning/sample/greet.v1.proto?highlight=3)]
 

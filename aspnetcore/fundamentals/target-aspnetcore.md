@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/16/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/target-aspnetcore
-ms.openlocfilehash: 70a445d109a1a9553178e94d79df87cd373e6b06
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 1c794092b856a916a318956d7cfb357d46a22d1d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103021"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399643"
 ---
 # <a name="use-aspnet-core-apis-in-a-class-library"></a>在類別庫中使用 ASP.NET Core Api
 
@@ -52,7 +54,7 @@ Blazor支援 WebAssembly （WASM）和伺服器[裝載模型](xref:blazor/hostin
 
 ### <a name="support-both-hosting-models"></a>同時支援這兩種裝載模型
 
-若要支援 Razor [ Blazor 伺服器](xref:blazor/hosting-models#blazor-server)和[ Blazor WASM](xref:blazor/hosting-models#blazor-webassembly)專案的元件耗用量，請針對您的編輯器使用下列指示。
+若要 Razor 同時支援 [Blazor Server](xref:blazor/hosting-models#blazor-server) 和[ Blazor WASM](xref:blazor/hosting-models#blazor-webassembly)專案的元件耗用量，請針對您的編輯器使用下列指示。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -86,7 +88,7 @@ dotnet new razorclasslib
 
 ### <a name="support-a-specific-hosting-model"></a>支援特定的主控模型
 
-支援單一裝載模型並不常見 Blazor 。 例如， Razor 僅支援來自[ Blazor 伺服器](xref:blazor/hosting-models#blazor-server)專案的元件耗用量：
+支援單一裝載模型並不常見 Blazor 。 例如， Razor 僅支援來自專案的元件耗用量 [Blazor Server](xref:blazor/hosting-models#blazor-server) ：
 
 * 以 .NET Core 3.x 為目標。
 * 新增 `<FrameworkReference>` 共用架構的元素。

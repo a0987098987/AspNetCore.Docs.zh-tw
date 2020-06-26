@@ -7,27 +7,29 @@ ms.custom: mvc
 ms.date: 06/12/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/partial
-ms.openlocfilehash: 1bce6b9cdc876062b050eae6eb3c4acf0127ce92
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 47bd91f4d2bf166a4d0c9a0829e24cbe26a81a10
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777120"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399708"
 ---
 # <a name="partial-views-in-aspnet-core"></a>ASP.NET Core 中的部分檢視
 
 作者：[Steve Smith](https://ardalis.com/)、[Maher JENDOUBI](https://twitter.com/maherjend)、[Rick Anderson](https://twitter.com/RickAndMSFT) 和 [Scott Sauber](https://twitter.com/scottsauber)
 
-部分視圖是在[Razor](xref:mvc/views/razor)另一個標記檔案轉譯輸出*中*呈現 HTML 輸出的標記檔案（*. cshtml*）。
+部分視圖是在 [Razor](xref:mvc/views/razor) 另一個標記檔案轉譯輸出*中*呈現 HTML 輸出的標記檔案（*. cshtml*）。
 
 ::: moniker range=">= aspnetcore-2.1"
 
-開發 MVC 應用程式（其中標記檔案稱為*views*）或Razor頁面應用程式（其中標記檔案稱為*頁面*）時，會使用「*部分視圖*」一詞。 本主題的一般是以*標記*檔案Razor的形式來參考 MVC views 和 pages 頁面。
+開發 MVC 應用程式（其中標記檔案稱為*views*）或頁面應用程式（其中標記檔案稱為頁面）時，會使用「*部分視圖*」一詞 Razor 。 *pages* 本主題的一般是以標記檔案的形式來參考 MVC views 和 Razor pages 頁面。 *markup files*
 
 ::: moniker-end
 
@@ -52,9 +54,9 @@ ms.locfileid: "82777120"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-部分視圖是在*Views*資料夾（MVC）或*pages*資料夾（Razor pages）中維護的 *. cshtml*標記檔案。
+部分視圖是在*Views*資料夾（MVC）或*pages*資料夾（pages）中維護的 *. cshtml*標記檔案。 Razor
 
-在 ASP.NET Core MVC 中，控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。 在Razor頁面中， <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel>可以傳回以<xref:Microsoft.AspNetCore.Mvc.PartialViewResult>物件表示的部分視圖。 [參考部分檢視](#reference-a-partial-view)一節介紹參考和轉譯部分檢視。
+在 ASP.NET Core MVC 中，控制器的 <xref:Microsoft.AspNetCore.Mvc.ViewResult> 能夠傳回檢視或部分檢視。 在 Razor 頁面中， <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 可以傳回以物件表示的部分視圖 <xref:Microsoft.AspNetCore.Mvc.PartialViewResult> 。 [參考部分檢視](#reference-a-partial-view)一節介紹參考和轉譯部分檢視。
 
 不同於 MVC 檢視或網頁轉譯，部分檢視不會執行 *_ViewStart.cshtml*。 如需 *_ViewStart.cshtml* 的詳細資訊，請參閱 <xref:mvc/views/layout>。
 
@@ -78,9 +80,9 @@ ms.locfileid: "82777120"
 
 ::: moniker range=">= aspnetcore-2.0"
 
-### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>在Razor頁面 PageModel 中使用部分視圖
+### <a name="use-a-partial-view-in-a-razor-pages-pagemodel"></a>在頁面 PageModel 中使用部分視圖 Razor
 
-在 ASP.NET Core 2.0 或2.1 中，下列處理常式方法會將* \_AuthorPartialRP*部分視圖呈現給回應：
+在 ASP.NET Core 2.0 或2.1 中，下列處理常式方法會將* \_ AuthorPartialRP*部分視圖呈現給回應：
 
 ```csharp
 public IActionResult OnGetPartial() =>
@@ -163,7 +165,7 @@ public IActionResult OnGetPartial() =>
 <partial name="../Account/_PartialName.cshtml" />
 ```
 
-如需詳細資訊，請參閱<xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper> 。
 
 ::: moniker-end
 
@@ -207,7 +209,7 @@ public IActionResult OnGetPartial() =>
 @await Html.PartialAsync("../Account/_LoginPartial.cshtml")
 ```
 
-或者，您可以使用 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*> 轉譯部分檢視。 此方法不會傳回 <xref:Microsoft.AspNetCore.Html.IHtmlContent>。 ，而是將轉譯輸出直接串流給回應。 因為方法不會傳回結果，所以必須在程式Razor代碼區塊內呼叫它：
+或者，您可以使用 <xref:Microsoft.AspNetCore.Mvc.Rendering.HtmlHelperPartialExtensions.RenderPartialAsync*> 轉譯部分檢視。 此方法不會傳回 <xref:Microsoft.AspNetCore.Html.IHtmlContent>。 ，而是將轉譯輸出直接串流給回應。 因為方法不會傳回結果，所以必須在程式碼區塊內呼叫它 Razor ：
 
 [!code-cshtml[](partial/sample/PartialViewsSample/Views/Home/Discovery.cshtml?name=snippet_RenderPartialAsync)]
 
@@ -226,7 +228,7 @@ public IActionResult OnGetPartial() =>
 
 > 使用 IHtmlHelper.Partial 可能會導致應用程式死結。 請考慮使用&lt;部分&gt;標籤協助程式或 IHtmlHelper.PartialAsync。
 
-將對的`@Html.Partial` `@await Html.PartialAsync`呼叫取代為或[部分標記](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)協助程式。 如需 Partial 標籤協助程式移轉的詳細資訊，請參閱[從 HTML 協助程式移轉](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper)。
+將對的呼叫取代為 `@Html.Partial` `@await Html.PartialAsync` 或[部分標記](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper)協助程式。 如需 Partial 標籤協助程式移轉的詳細資訊，請參閱[從 HTML 協助程式移轉](xref:mvc/views/tag-helpers/builtin-th/partial-tag-helper#migrate-from-an-html-helper)。
 
 ::: moniker-end
 
@@ -269,10 +271,10 @@ public IActionResult OnGetPartial() =>
 
 * 當部分檢視位於不同的資料夾中時，可允許使用具有相同檔案名稱的不同部分檢視。
 * 當以不含檔案副檔名的名稱參考部分檢視，且部分檢視出現在呼叫者的資料夾和*共用*資料夾中時，呼叫者資料夾中的部分檢視會提供部分檢視。 如果呼叫者資料夾中不存在部分檢視，則會從「共用」** 資料夾中提供部分檢視。 「共用」** 資料夾中的部分檢視稱為「共用部分檢視」** 或「預設部分檢視」**。
-* 部分視圖可以*連結*&mdash;，部分視圖可以在呼叫不是由迴圈參考時呼叫另一個部分視圖。 相對路徑一律相對於目前的檔案，而不是相對於檔案的根目錄或父檔案。
+* 部分視圖可以*連結* &mdash; ，部分視圖可以在呼叫不是由迴圈參考時呼叫另一個部分視圖。 相對路徑一律相對於目前的檔案，而不是相對於檔案的根目錄或父檔案。
 
 > [!NOTE]
-> 父[Razor](xref:mvc/views/razor) `section`標記檔案不會顯示在部分視圖中定義的。 `section` 只會顯示在具有其定義的部分檢視。
+> [Razor](xref:mvc/views/razor) `section` 父標記檔案不會顯示在部分視圖中定義的。 `section` 只會顯示在具有其定義的部分檢視。
 
 ## <a name="access-data-from-partial-views"></a>從部分檢視存取資料
 

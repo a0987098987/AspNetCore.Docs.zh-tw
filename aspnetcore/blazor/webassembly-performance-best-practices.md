@@ -1,24 +1,26 @@
 ---
 title: ASP.NET Core Blazor WebAssembly 效能最佳做法
 author: pranavkm
-description: 增加 ASP.NET Core Blazor WebAssembly 應用程式的效能，並避免常見的效能問題的秘訣。
+description: 提升 ASP.NET Core Blazor WebAssembly 應用程式效能及避免常見效能問題的秘訣。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/08/2020
+ms.date: 06/25/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/webassembly-performance-best-practices
-ms.openlocfilehash: 2b6d4e706856cb28f26c2502feca4f959ca4abac
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: f7bd0d356030e6ddb95c77d7376995320e3ec40e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85243027"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401879"
 ---
 # <a name="aspnet-core-blazor-webassembly-performance-best-practices"></a>ASP.NET Core Blazor WebAssembly 效能最佳做法
 
@@ -38,7 +40,7 @@ Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rere
 }
 ```
 
-大部分的應用程式都不需要更精細的控制，但 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 也可以用來選擇性地呈現回應 UI 事件的元件。
+大部分的應用程式都不需要更精細的控制，但是 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 可以用來選擇性地呈現回應 UI 事件的元件。 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A>在轉譯大量元件的情況下，使用可能也很重要。 假設有一個方格，其中在方格的一個資料格的某個 <xref:Microsoft.AspNetCore.Components.EventCallback> 儲存格中，使用 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> 。 呼叫 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> 會導致每個子元件的重新呈現。 如果只有少數的資料格需要 rerendering，請使用 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 來避免不必要的轉譯效能負面影響。
 
 在下例中︰
 
@@ -70,7 +72,7 @@ Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rere
 }
 ```
 
-如需詳細資訊，請參閱 <xref:blazor/components/lifecycle#after-component-render>。
+如需詳細資訊，請參閱 <xref:blazor/components/lifecycle#after-component-render> 。
 
 ## <a name="virtualize-re-usable-fragments"></a>虛擬化重複使用的片段
 
@@ -83,7 +85,7 @@ Blazor當演算法察覺元件尚未變更時，其比較演算法可避免 rere
 
 ## <a name="avoid-javascript-interop-to-marshal-data"></a>避免 JavaScript interop 來封送處理資料
 
-在 Blazor WebAssembly 中，JavaScript （JS） interop 呼叫必須流經 WebAssembly-JS 界限。 在這兩個內容中序列化和還原序列化內容，會建立應用程式的處理額外負荷。 經常的 JS interop 呼叫通常會對效能造成不良影響。 若要減少跨界限的資料封送處理，請判斷應用程式是否可以將許多小型承載合併成單一大型承載，以避免在 WebAssembly 和 JS 之間進行大量的內容切換。
+在中 Blazor WebAssembly ，JavaScript （JS） interop 呼叫必須流經 WebAssembly-JS 界限。 在這兩個內容中序列化和還原序列化內容，會建立應用程式的處理額外負荷。 經常的 JS interop 呼叫通常會對效能造成不良影響。 若要減少跨界限的資料封送處理，請判斷應用程式是否可以將許多小型承載合併成單一大型承載，以避免在 WebAssembly 和 JS 之間進行大量的內容切換。
 
 ## <a name="use-systemtextjson"></a>使用 System.Text.Js
 
@@ -93,7 +95,7 @@ Blazor的 JS interop 實現依賴 <xref:System.Text.Json> ，這是具有低記�
 
 ## <a name="use-synchronous-and-unmarshalled-js-interop-apis-where-appropriate"></a>適當時使用同步和 unmarshalled JS interop Api
 
-BlazorWebAssembly <xref:Microsoft.JSInterop.IJSRuntime> 在 Blazor 伺服器應用程式可用的單一版本上提供兩個額外版本：
+Blazor WebAssembly在 <xref:Microsoft.JSInterop.IJSRuntime> 應用程式可用的單一版本上，提供兩個額外版本 Blazor Server ：
 
 * <xref:Microsoft.JSInterop.IJSInProcessRuntime>允許同步叫用 JS interop 呼叫，其額外負荷比非同步版本少：
 
@@ -138,7 +140,7 @@ BlazorWebAssembly <xref:Microsoft.JSInterop.IJSRuntime> 在 Blazor 伺服器應�
 
 ### <a name="intermediate-language-il-linking"></a>中繼語言（IL）連結
 
-[連結 BlazorWebAssembly 應用程式](xref:blazor/host-and-deploy/configure-linker)藉由在應用程式的二進位檔中修剪未使用的程式碼，來減少應用程式的大小。 根據預設，只有在設定中建立時，才會啟用連結器 `Release` 。 若要受益于此，請使用命令發佈應用程式以進行部署， [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 並將[-c |--configuration](/dotnet/core/tools/dotnet-publish#options)選項設為 `Release` ：
+[連結 Blazor WebAssembly 應用程式](xref:blazor/host-and-deploy/configure-linker)會藉由在應用程式的二進位檔中修剪未使用的程式碼，來減少應用程式的大小。 根據預設，只有在設定中建立時，才會啟用連結器 `Release` 。 若要受益于此，請使用命令發佈應用程式以進行部署， [`dotnet publish`](/dotnet/core/tools/dotnet-publish) 並將[-c |--configuration](/dotnet/core/tools/dotnet-publish#options)選項設為 `Release` ：
 
 ```dotnetcli
 dotnet publish -c Release
@@ -146,13 +148,13 @@ dotnet publish -c Release
 
 ### <a name="compression"></a>壓縮
 
-Blazor發佈 WebAssembly 應用程式時，會在發佈期間以靜態方式壓縮輸出，以減少應用程式的大小，並移除執行時間壓縮的額外負荷。 Blazor依賴伺服器來執行 content negotation，並提供靜態壓縮檔案。
+當 Blazor WebAssembly 應用程式發佈時，會在發佈期間以靜態方式壓縮輸出，以減少應用程式的大小，並移除執行時間壓縮的額外負荷。 Blazor依賴伺服器來執行 content negotation，並提供靜態壓縮檔案。
 
 部署應用程式之後，請確認應用程式會提供壓縮檔案。 檢查瀏覽器開發人員工具中的 [網路] 索引標籤，並確認已使用或提供檔案 `Content-Encoding: br` `Content-Encoding: gz` 。 如果主機未提供壓縮檔案，請遵循中的指示 <xref:blazor/host-and-deploy/webassembly#compression> 。
 
 ### <a name="disable-unused-features"></a>停用未使用的功能
 
-BlazorWebAssembly 的執行時間包含下列 .NET 功能，如果應用程式不需要它們來取得較小的承載大小，就可以停用這些功能：
+Blazor WebAssembly的執行時間包含下列 .NET 功能，如果應用程式不需要它們來取得較小的承載大小，就可以停用這些功能：
 
 * 包含資料檔案可讓時區資訊正確無誤。 如果應用程式不需要這項功能，請考慮將 `BlazorEnableTimeZoneSupport` 應用程式的專案檔中的 MSBuild 屬性設定為來停用它 `false` ：
 

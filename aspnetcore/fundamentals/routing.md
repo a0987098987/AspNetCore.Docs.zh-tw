@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 4/1/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: f4bba10f7ce0b5a95c2aed8644aed18fa0637457
-ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
+ms.openlocfilehash: 7ac6dc983454153792610a07c1df01fbc38c8d67
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85074510"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400826"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -389,7 +391,7 @@ URL 產生：
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器最方便的方式，就是透過擴充方法來執行特定網址類別型的作業：
 
-| 擴充方法 | 描述 |
+| 擴充方法 | 說明 |
 | ---------------- | ----------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |
@@ -667,7 +669,7 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 如需 URL 產生的詳細資訊，請參閱[url 產生參考](#ugr)。
 
-### <a name="addresses"></a>地址
+### <a name="addresses"></a>位址
 
 位址是 URL 產生的概念，用來將連結產生器的呼叫系結至一組候選端點。
 
@@ -1108,7 +1110,7 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器的最便利方式是透過執行特定位址類型作業的擴充方法。
 
-| 擴充方法   | 描述                                                         |
+| 擴充方法   | 說明                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |

@@ -3,7 +3,7 @@
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio) 
 
 * 從 [ **View** ] 功能表中，選取 [ **SQL Server 物件總管**（SSOX）]。
-* 流覽至 **（localdb） MSSQLLocalDB （SQL Server 13）** 。 以滑鼠右鍵按一下 [ **dbo]。AspNetUsers** > **查看資料**：
+* 流覽至 **（localdb） MSSQLLocalDB （SQL Server 13）**。 以滑鼠右鍵按一下 [ **dbo]。AspNetUsers**  >  **View 資料**：
 
 ![SQL Server 物件總管中 AspNetUsers 資料表的相關功能表](~/security/authentication/accconfirm/_static/ssox.png)
 

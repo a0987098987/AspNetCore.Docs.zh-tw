@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 08/05/2017
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-controller
-ms.openlocfilehash: 1bb2d96d7b58bdd88ce9c2266c33f6e7de9e9209
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 30272900b2ff19879921f1954a1c9b3eba203ca4
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84653038"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400449"
 ---
 # <a name="part-2-add-a-controller-to-an-aspnet-core-mvc-app"></a>第2部分，將控制器新增至 ASP.NET Core MVC 應用程式
 
@@ -94,7 +96,7 @@ MVC 會根據傳入 URL 叫用控制器類別 (和其中的動作方法)。 MVC 
 
 第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應到 **HelloWorld**Controller 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `HelloWorldController` 類別的 `Index` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為，`Index` 是在未明確指定方法名稱時，會在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
 
-瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome`。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
+瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome` 。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 
 ![顯示應用程式回應 "This is the Welcome action method" 的瀏覽器視窗](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 
@@ -213,7 +215,7 @@ Remove link for simplified tutorial.
 
 第一個 URL 區段決定要執行的控制器類別。 因此，`localhost:{PORT}/HelloWorld` 會對應至 `HelloWorldController` 類別。 URL 區段的第二部分則決定類別上的動作方法。 因此，`localhost:{PORT}/HelloWorld/Index` 會導致 `HelloWorldController` 類別的 `Index` 方法執行。 請注意，您只需要瀏覽至 `localhost:{PORT}/HelloWorld`，根據預設就會呼叫 `Index` 方法。 這是因為 `Index` 是未明確指定方法名稱時，在控制器上呼叫的預設方法。 URL 區段的第三個部分 (`id`) 是路由資料。 本教學課程稍後會說明路由資料。
 
-瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome`。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
+瀏覽至 `https://localhost:{PORT}/HelloWorld/Welcome` 。 `Welcome` 方法隨即執行，並傳回字串 `This is the Welcome action method...`。 在此 URL 中，控制器是 `HelloWorld`，而 `Welcome` 是動作方法。 您尚未使用 URL 的 `[Parameters]` 部分。
 
 ![顯示應用程式回應 "This is the Welcome action method" 的瀏覽器視窗](~/tutorials/first-mvc-app/adding-controller/_static/welcome.png)
 

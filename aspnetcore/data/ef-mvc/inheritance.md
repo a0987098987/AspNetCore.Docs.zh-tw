@@ -8,17 +8,19 @@ ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/inheritance
-ms.openlocfilehash: 4883c697e950cac298dec961b4cd5a5096d8e946
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: cea19044294482adf834d998b75e0f3fc386cc46
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773571"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400527"
 ---
 # <a name="tutorial-implement-inheritance---aspnet-mvc-with-ef-core"></a>教學課程：執行繼承-使用 EF Core 的 ASP.NET MVC
 
@@ -105,7 +107,7 @@ dotnet ef migrations add Inheritance
 
 還不要執行 `database update` 命令。 該命令將導致資料遺失，因為它會卸除 Instructor 資料表，然後將 Student 資料表重新命名為 Person。 您必須提供自訂程式碼來保留現有的資料。
 
-開啟 Migrations/\<時間戳記>_Inheritance.cs**，並以下列程式碼取代 `Up` 方法：
+開啟 [*遷移/ \<timestamp> _Inheritance .cs* ]，並 `Up` 以下列程式碼取代方法：
 
 [!code-csharp[](intro/samples/cu/Migrations/20170216215525_Inheritance.cs?name=snippet_Up)]
 

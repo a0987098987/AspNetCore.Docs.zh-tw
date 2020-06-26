@@ -8,17 +8,19 @@ ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 32d3a22b85675d817286e3e72b8b9c8e63df6ca6
-ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
+ms.openlocfilehash: 59bf94f6818108f09e9af147559fc304f48936bc
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82850418"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401307"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 
@@ -39,7 +41,7 @@ ms.locfileid: "82850418"
 > * 更新 [刪除] 頁面
 > * 將辦公室位置和課程新增至 [建立] 頁面
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [讀取相關資料](read-related-data.md)
 
@@ -107,7 +109,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ![Course [建立] 頁面](update-related-data/_static/course-create.png)
 
-按一下 [建立]  。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
+按一下 [建立]****。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
 
 按一下 Courses [索引] 頁面中課程的 [編輯]****。
 

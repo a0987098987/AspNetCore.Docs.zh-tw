@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 01/24/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/distributed-cache-tag-helper
-ms.openlocfilehash: df1daa68a3e18f7aad4507ce9526d76ff6a2114d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 4b8e393542c56502a825000773bbf714d91e4128
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773912"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399227"
 ---
 # <a name="distributed-cache-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的分散式快取標籤協助程式
 
@@ -48,13 +50,13 @@ ms.locfileid: "82773912"
 
 分散式快取標籤協助程式繼承自與快取標籤協助程式相同的類別。 如需這些屬性的描述，請參閱[快取標籤協助程式](xref:mvc/views/tag-helpers/builtin-th/cache-tag-helper)。
 
-### <a name="name"></a>name
+### <a name="name"></a>NAME
 
 | 屬性類型 | 範例                               |
 | -------------- | ------------------------------------- |
-| 字串         | `my-distributed-cache-unique-key-101` |
+| String         | `my-distributed-cache-unique-key-101` |
 
-`name` 是必要的。 `name` 屬性會作為每個預存快取執行個體的索引鍵。 不同于快取標籤協助程式會根據頁面名稱和Razor Razor分頁中的位置，將快取索引鍵指派給每個實例，分散式快取標籤協助程式`name`只會以屬性的索引鍵為基礎。
+`name` 是必要的。 `name` 屬性會作為每個預存快取執行個體的索引鍵。 不同于快取標籤協助程式會根據頁面 Razor 名稱和分頁中的位置，將快取索引鍵指派給每個實例，分散式快取標籤協助程式只會以屬性的索引鍵為基礎 Razor `name` 。
 
 範例：
 

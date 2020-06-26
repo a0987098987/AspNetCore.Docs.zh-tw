@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 07/22/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-rp/crud
-ms.openlocfilehash: 62e35639d5e3d43bd20c9f92b75fa101d7914f82
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 46846d99230620e45d8a2baab46df320425cfb6c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652350"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401203"
 ---
 # <a name="part-2-razor-pages-with-ef-core-in-aspnet-core---crud"></a>第2部分， Razor ASP.NET Core 中有 EF Core 的頁面-CRUD
 

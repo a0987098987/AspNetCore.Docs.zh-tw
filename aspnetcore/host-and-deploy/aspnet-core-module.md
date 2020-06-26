@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 01/13/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/aspnet-core-module
-ms.openlocfilehash: 84612ccfdf00497b11cd93cef2837c5a897cc905
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: b60fa81b3bf180cd2ba15f285df9474be42f95f8
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105346"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400085"
 ---
 # <a name="aspnet-core-module"></a>ASP.NET Core 模組
 
@@ -38,7 +40,7 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 
 同處理序裝載時，模組會使用 IIS 的同處理序伺服程式實作，稱為 IIS HTTP 伺服器 (`IISHttpServer`)。
 
-跨處理序裝載時，該模組只適用於 Kestrel。 此模組[無法與 HTTP.sys 搭配運作。](xref:fundamentals/servers/httpsys)
+跨處理序裝載時，該模組只適用於 Kestrel。 模組不會與[HTTP.sys](xref:fundamentals/servers/httpsys)搭配運作。
 
 ## <a name="hosting-models"></a>裝載模型
 
@@ -198,7 +200,7 @@ ASP.NET Core 模組也可以：
 
 您可以在 `processPath` 屬性中為處理序指定環境變數。 請使用 `<environmentVariables>` 集合元素的 `<environmentVariable>` 子元素來指定環境變數。 本節中所設定環境變數的優先順序會高於系統環境變數。
 
-下列範例會在*web.config 中設定*兩個環境變數。將 `ASPNETCORE_ENVIRONMENT` 應用程式的環境設定為 `Development` 。 開發人員可以在 *web.config* 檔案中暫時設定這個值，以在進行應用程式例外狀況偵錯時，強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入。 `CONFIG_DIR` 是一個使用者定義的環境變數範例，其中開發人員已撰寫程式碼，會在啟動時讀取值來構成用以載入應用程式設定檔的路徑。
+下列範例會在*web.config*中設定兩個環境變數。將 `ASPNETCORE_ENVIRONMENT` 應用程式的環境設定為 `Development` 。 開發人員可以在 *web.config* 檔案中暫時設定這個值，以在進行應用程式例外狀況偵錯時，強制[開發人員例外狀況頁面](xref:fundamentals/error-handling)載入。 `CONFIG_DIR` 是一個使用者定義的環境變數範例，其中開發人員已撰寫程式碼，會在啟動時讀取值來構成用以載入應用程式設定檔的路徑。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -214,7 +216,7 @@ ASP.NET Core 模組也可以：
 ```
 
 > [!NOTE]
-> 直接在*web.config*中設定環境的替代方法是在 `<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+> 直接在*web.config*中設定環境的替代方法，是在 `<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
 >
 > ```xml
 > <PropertyGroup>
@@ -278,7 +280,7 @@ ASP.NET Core 模組也可以：
 
 ## <a name="enhanced-diagnostic-logs"></a>增強型診斷記錄
 
-ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 元素加入至 web.config `<aspNetCore>` 中的*web.config*專案。將設定 `debugLevel` 為會 `TRACE` 公開更高的診斷資訊精確度：
+ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 元素新增至 `<aspNetCore>` *web.config*中的專案。將設定 `debugLevel` 為會 `TRACE` 公開更高的診斷資訊精確度：
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -324,7 +326,7 @@ ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<han
 
 *僅適用于使用同進程裝載模型時。*
 
-使用 web.config 中的 `stackSize` 設定（以位元組為單位） *web.config*來設定受控堆疊大小。預設大小為 `1048576` 位元組（1 MB）。
+使用web.config中的 `stackSize` 設定（以位元組為單位） *web.config*來設定受控堆疊大小。預設大小為 `1048576` 位元組（1 MB）。
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -412,7 +414,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 **IIS**
 
@@ -442,7 +444,7 @@ ASP.NET Core 模組是一種原生 IIS 模組，可外掛至 IIS 管線以便：
 
 同處理序裝載時，模組會使用 IIS 的同處理序伺服程式實作，稱為 IIS HTTP 伺服器 (`IISHttpServer`)。
 
-跨處理序裝載時，該模組只適用於 Kestrel。 此模組[無法與 HTTP.sys 搭配運作。](xref:fundamentals/servers/httpsys)
+跨處理序裝載時，該模組只適用於 Kestrel。 模組不會與[HTTP.sys](xref:fundamentals/servers/httpsys)搭配運作。
 
 ## <a name="hosting-models"></a>裝載模型
 
@@ -629,7 +631,7 @@ ASP.NET Core 模組也可以：
 ```
 
 > [!NOTE]
-> 直接在*web.config*中設定環境的替代方法是在 `<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
+> 直接在*web.config*中設定環境的替代方法，是在 `<EnvironmentName>` [發行設定檔（. .pubxml）](xref:host-and-deploy/visual-studio-publish-profiles)或專案檔中包含屬性。 此方法會在專案發行時於 *web.config* 中設定環境：
 >
 > ```xml
 > <PropertyGroup>
@@ -691,7 +693,7 @@ ASP.NET Core 模組也可以：
 
 ## <a name="enhanced-diagnostic-logs"></a>增強型診斷記錄
 
-ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 元素加入至 web.config `<aspNetCore>` 中的*web.config*專案。將設定 `debugLevel` 為會 `TRACE` 公開更高的診斷資訊精確度：
+ASP.NET Core 模組是可設定的，以提供增強型診斷記錄。 將 `<handlerSettings>` 元素新增至 `<aspNetCore>` *web.config*中的專案。將設定 `debugLevel` 為會 `TRACE` 公開更高的診斷資訊精確度：
 
 ```xml
 <aspNetCore processPath="dotnet"
@@ -807,7 +809,7 @@ dotnet-hosting-{VERSION}.exe OPT_NO_SHARED_CONFIG_CHECK=1
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema_v2.xml
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 **IIS**
 
@@ -1033,7 +1035,7 @@ ASP.NET Core 模組安裝程式會以 **TrustedInstaller** 帳戶的權限執行
 
 * %ProgramFiles%\IIS Express\config\schema\aspnetcore_schema.xml
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 **IIS**
 

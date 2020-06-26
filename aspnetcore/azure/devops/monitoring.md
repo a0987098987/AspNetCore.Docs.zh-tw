@@ -7,17 +7,19 @@ ms.custom: mvc, seodec18
 ms.date: 07/10/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: azure/devops/monitor
-ms.openlocfilehash: 3af36a37124968e13952e8bf5de1b643265a4a5b
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a94b1e0b5ce2a24cf22eb665c9bcd03c25ffa67f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766884"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400371"
 ---
 # <a name="monitor-and-debug"></a>監視和調試
 
@@ -37,7 +39,7 @@ ms.locfileid: "82766884"
 
 App Service 的 web 應用程式會即時受到輕鬆監視。 Azure 入口網站會以易於瞭解的圖表和圖形呈現計量。
 
-1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp\<unique_number\> * App Service。
+1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp \<unique_number\> * App Service。
 
 1. [**總覽**] 索引標籤會顯示有用的「一覽」資訊，包括顯示最近度量的圖形。
 
@@ -65,7 +67,7 @@ App Service 的 web 應用程式會即時受到輕鬆監視。 Azure 入口網�
 
 [Application Insights](/azure/application-insights/app-insights-overview)是一項 Azure 服務，可用於分析 web 應用程式的效能和穩定性，以及使用者使用它們的方式。 Application Insights 的資料比 Azure 監視器更廣且更深入。 資料可為開發人員和系統管理員提供改善應用程式的重要資訊。 Application Insights 可以新增至 Azure App Service 資源，而不需要變更程式碼。
 
-1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp\<unique_number\> * App Service。
+1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp \<unique_number\> * App Service。
 1. 從 [**總覽**] 索引標籤中，按一下 [ **Application Insights** ] 磚。
 
     ![Application Insights 圖格](./media/monitoring/app-insights.png)
@@ -75,7 +77,7 @@ App Service 的 web 應用程式會即時受到輕鬆監視。 Azure 入口網�
     ![Application Insights 設定](./media/monitoring/new-app-insights.png)
 
 1. 針對 [**執行時間/架構**]，選取 [ **ASP.NET Core**]。 接受預設設定。
-1. 選取 [確定]  。 如果系統提示您確認，請選取 [**繼續**]。
+1. 選取 [確定]****。 如果系統提示您確認，請選取 [**繼續**]。
 1. 建立資源之後，請按一下 Application Insights 資源的名稱，直接流覽至 [Application Insights] 頁面。
 
     ![已準備好新的 Application Insights 資源](./media/monitoring/new-app-insights-done.png)
@@ -90,7 +92,7 @@ Application Insights 提供有用的伺服器端資訊，而不需進行其他�
 
 在 Azure App Service 中，預設會停用 Web 服務器和應用程式記錄檔。 使用下列步驟啟用記錄：
 
-1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp\<unique_number\> * App Service。
+1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp \<unique_number\> * App Service。
 1. 在左側功能表中，向下流覽至 [**監視**] 區段。 選取 [**診斷記錄**]。
 
     ![診斷記錄連結](./media/monitoring/logging.png)
@@ -98,7 +100,7 @@ Application Insights 提供有用的伺服器端資訊，而不需進行其他�
 1. 開啟 **[應用程式記錄（檔案系統）**]。 若出現提示，請按一下方塊以安裝延伸模組，以在 web 應用程式中啟用應用程式記錄。
 1. 將 [ **Web 服務器記錄**] 設定為 [**檔案系統**]。
 1. 輸入**保留期限**（以天為單位）。 例如，30。
-1. 按一下 [檔案]  。
+1. 按一下 [檔案] ****。
 
 ASP.NET Core 和 web 伺服器（App Service）記錄會針對 web 應用程式產生。 您可以使用顯示的 FTP/FTPS 資訊來下載它們。 此密碼與本指南稍早建立的部署認證相同。 [您可以使用 PowerShell 或 Azure CLI，將記錄直接串流至您的本機電腦](/azure/app-service/web-sites-enable-diagnostic-log#download)。 您也可以[在 Application Insights 中查看](/azure/app-service/web-sites-enable-diagnostic-log#how-to-view-logs-in-application-insights)記錄。
 
@@ -106,7 +108,7 @@ ASP.NET Core 和 web 伺服器（App Service）記錄會針對 web 應用程式�
 
 應用程式和 web 伺服器記錄可以透過入口網站即時串流。
 
-1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp\<unique_number\> * App Service。
+1. 開啟[Azure 入口網站](https://portal.azure.com)，然後流覽至*mywebapp \<unique_number\> * App Service。
 1. 在左側功能表中，向下流覽至 [**監視**] 區段，然後選取 [**記錄資料流程**]。
 
     ![顯示記錄資料流程連結的螢幕擷取畫面](./media/monitoring/log-stream.png)

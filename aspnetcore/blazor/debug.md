@@ -1,30 +1,32 @@
 ---
-title: Debug ASP.NET Core Blazor WebAssembly
+title: Debug ASP.NET CoreBlazor WebAssembly
 author: guardrex
 description: 瞭解如何調試 Blazor 程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/31/2020
+ms.date: 06/25/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 75db5d5e69cb200ebf3bd1dc1e0afed0300214cc
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 9fe51b8c7eafdd62cc6fc1a820135d9ee5ff010e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242767"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401008"
 ---
-# <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET Core Blazor WebAssembly
+# <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET CoreBlazor WebAssembly
 
 [Daniel Roth](https://github.com/danroth27)
 
-BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器開發工具（邊緣/Chrome）進行調試。 或者，您可以使用 Visual Studio 或 Visual Studio Code 來對應用程式進行 debug 錯。
+Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium 為基礎的瀏覽器（邊緣/Chrome）進行調試。 或者，您可以使用 Visual Studio 或 Visual Studio Code 來對應用程式進行 debug 錯。
 
 可用的案例包括：
 
@@ -51,7 +53,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 ## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>啟用 Visual Studio 和 Visual Studio Code 的偵錯工具
 
-若要啟用現有 Blazor WebAssembly 應用程式的偵測功能，請更新 `launchSettings.json` 啟始專案中的檔案，以 `inspectUri` 在每個啟動設定檔中包含下列屬性：
+若要啟用現有應用程式的偵測功能 Blazor WebAssembly ，請更新 `launchSettings.json` 啟始專案中的檔案，以 `inspectUri` 在每個啟動設定檔中包含下列屬性：
 
 ```json
 "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}"
@@ -63,14 +65,14 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 `inspectUri`屬性：
 
-* 可讓 IDE 偵測應用程式是否為 Blazor WebAssembly 應用程式。
+* 可讓 IDE 偵測應用程式是否為應用程式 Blazor WebAssembly 。
 * 指示腳本的偵錯工具，透過的偵錯工具 proxy 連接到瀏覽器 Blazor 。
 
 在 `wsProtocol` 啟動的瀏覽器（）上，websocket 通訊協定（）、主機（ `url.hostname` ）、埠（ `url.port` ）和偵測器 URI 的預留位置值 `browserInspectUri` 是由架構所提供。
 
 ## <a name="visual-studio"></a>Visual Studio
 
-若要 Blazor 在 Visual Studio 中進行 WebAssembly 應用程式的 debug：
+若要 Blazor WebAssembly 在 Visual Studio 中進行應用程式的 debug：
 
 1. 建立新的 ASP.NET Core 託管 Blazor WebAssembly 應用程式。
 1. 按<kbd>F5</kbd>以在偵錯工具中執行應用程式。
@@ -85,7 +87,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 1. 按<kbd>F5</kbd>繼續執行。
 
-在偵測 Blazor WebAssembly 應用程式時，您也可以對伺服器程式碼進行偵錯工具：
+在對您的 Blazor WebAssembly 應用程式進行調試時，您也可以對伺服器程式碼進行 debug：
 
 1. 在的頁面中設定中斷點 `Pages/FetchData.razor` <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 。
 1. 在動作方法的中設定中斷點 `WeatherForecastController` `Get` 。
@@ -103,7 +105,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-若要 Blazor 在 Visual Studio Code 中進行 WebAssembly 應用程式的 debug：
+若要 Blazor WebAssembly 在 Visual Studio Code 中進行應用程式的 debug：
  
 安裝[c # 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸，並 `debug.javascript.usePreview` 將設定為 `true` 。
 
@@ -111,9 +113,9 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 ![JS 預覽偵錯工具](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-js-use-preview.png)
 
-### <a name="debug-standalone-blazor-webassembly"></a>Debug 獨立 Blazor WebAssembly
+### <a name="debug-standalone-blazor-webassembly"></a>獨立調試Blazor WebAssembly
 
-1. Blazor在 VS Code 中開啟獨立的 WebAssembly 應用程式。
+1. Blazor WebAssembly在 VS Code 中開啟獨立應用程式。
 
    如果您收到下列通知，表示需要額外的設定才能啟用偵錯工具：
    
@@ -125,7 +127,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 1. 使用<kbd>F5</kbd>鍵盤快速鍵或功能表項目開始進行調試。
 
-1. 出現提示時，選取 [ ** Blazor WebAssembly] Debug**選項以開始進行調試。
+1. 出現提示時，請選取 [ ** Blazor WebAssembly Debug** ] 選項來開始進行調試。
 
    ![可用的調試選項清單](index/_static/blazor-vscode-debugtypes.png)
 
@@ -135,11 +137,11 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
    ![VS Code 中的 Debug 計數器](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-debug-counter.png)
 
-### <a name="debug-hosted-blazor-webassembly"></a>Debug hosted Blazor WebAssembly
+### <a name="debug-hosted-blazor-webassembly"></a>已裝載的調試Blazor WebAssembly
 
-1. Blazor在 VS Code 中開啟 hosted WebAssembly 應用程式。
+1. Blazor WebAssembly在 VS Code 中開啟託管應用程式。
 
-1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]。
+1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]****。
 
    ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
 
@@ -166,13 +168,13 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 
 以下是支援的啟動設定選項： `blazorwasm` debug 類型。
 
-| 選項    | 描述 |
+| 選項    | 說明 |
 | --------- | ----------- |
-| `request` | 使用 `launch` 來啟動 WebAssembly 應用程式，並將其連結至已在執行中的 Blazor `attach` 應用程式。 |
+| `request` | 使用 `launch` 來啟動並將偵錯工具連結至 Blazor WebAssembly 應用程式，或將 `attach` 偵錯工具附加至已在執行中的應用程式。 |
 | `url`     | 要在瀏覽器中開啟的 URL。 預設為 `https://localhost:5001`。 |
 | `browser` | 要為偵錯工具啟動的瀏覽器。 設為 `edge` 或 `chrome`。 預設為 `chrome`。 |
 | `trace`   | 用來從 JS 偵錯工具產生記錄。 將設定為 `true` 以產生記錄。 |
-| `hosted`  | `true`如果啟動和偵測託管的 WebAssembly 應用程式，則必須設定為 Blazor 。 |
+| `hosted`  | `true`如果啟動和偵測託管應用程式，則必須設定為 Blazor WebAssembly 。 |
 | `webRoot` | 指定 web 伺服器的絕對路徑。 如果從子路由提供應用程式，則應設定。 |
 | `timeout` | 等候偵錯工具附加的毫秒數。 預設為30000毫秒（30秒）。 |
 | `program` | 可執行檔的參考，可執行裝載應用程式的伺服器。 如果為，則必須設定 `hosted` `true` 。 |
@@ -202,7 +204,7 @@ BlazorWebAssembly 應用程式可以使用 Chromium 式瀏覽器中的瀏覽器�
 }
 ```
 
-#### <a name="launch-and-debug-a-hosted-blazor-webassembly-app"></a>啟動和偵測託管的 Blazor WebAssembly 應用程式
+#### <a name="launch-and-debug-a-hosted-blazor-webassembly-app"></a>啟動和調試託管 Blazor WebAssembly 應用程式
 
 ```json
 {
@@ -235,4 +237,5 @@ Blazor提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https:
 如果您遇到錯誤，下列秘訣可能會有説明：
 
 * 在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。 在主控台中，執行 `localStorage.clear()` 以移除任何中斷點。
-* 確認您已安裝並信任 ASP.NET Core 的 HTTPS 開發憑證。 如需詳細資訊，請參閱<xref:security/enforcing-ssl#troubleshoot-certificate-problems>。
+* 確認您已安裝並信任 ASP.NET Core 的 HTTPS 開發憑證。 如需詳細資訊，請參閱 <xref:security/enforcing-ssl#troubleshoot-certificate-problems> 。
+* Visual Studio 需要 [**工具**] [選項] [一般] 中的 [**啟用 ASP.NET （Chrome、Edge 和 IE）的 JavaScript 偵錯工具**] 選項  >  **Options**  >  **Debugging**  >  ** **。 這是 Visual Studio 的預設設定。 如果偵錯工具無法運作，請確認已選取此選項。

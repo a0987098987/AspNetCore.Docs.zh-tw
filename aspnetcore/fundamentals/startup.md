@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/startup
-ms.openlocfilehash: 39fba5ccc99ec0ecf32df5681cfc025c52bc5469
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 0d1bf0dd23b7f3b99d6e9383ffc72291c1b138ec
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776431"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400709"
 ---
 # <a name="app-startup-in-aspnet-core"></a>ASP.NET Core 中的應用程式啟動
 
@@ -32,23 +34,23 @@ ms.locfileid: "82776431"
 
 ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startup`。 `Startup` 類別：
 
-* 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務**。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會*registered*在中`ConfigureServices`註冊，並透過相依性[插入（DI）](xref:fundamentals/dependency-injection)或<xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>在整個應用程式中使用。
+* 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務**。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會在中*註冊*，並透過相依性 `ConfigureServices` [插入（DI）](xref:fundamentals/dependency-injection)或在整個應用程式中使用 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 。
 * 包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 方法來建立應用程式的要求處理管線。
 
 應用程式啟動時，ASP.NET Core 執行階段會呼叫 `ConfigureServices` 與 `Configure`：
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-上述範例適用于[ Razor頁面](xref:razor-pages/index);MVC 版本很類似。
+上述範例適用于[ Razor 頁面](xref:razor-pages/index); MVC 版本類似。
 
 
-一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 通常`Startup`會藉由在主機建立器上呼叫[WebHostBuilderExtensions\<. UseStartup TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定類別：
+一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 `Startup`通常會藉由呼叫主機產生器上的[WebHostBuilderExtensions \<TStartup> UseStartup](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定類別：
 
 [!code-csharp[](startup/3.0_samples/Program3.cs?name=snippet_Program&highlight=12)]
 
 主機會提供可供 `Startup` 類別建構函式使用的服務。 應用程式會透過 `ConfigureServices` 新增其他服務。 主機和應用程式服務都可以在 `Configure` 和整個應用程式中使用。
 
-使用[泛型主機](xref:fundamentals/host/generic-host)（<xref:Microsoft.Extensions.Hosting.IHostBuilder>）時，只有下列服務`Startup`類型可以插入至此函式：
+`Startup`使用[泛型主機](xref:fundamentals/host/generic-host)（）時，只有下列服務類型可以插入至此函式 <xref:Microsoft.Extensions.Hosting.IHostBuilder> ：
 
 * <xref:Microsoft.AspNetCore.Hosting.IWebHostEnvironment>
 * <xref:Microsoft.Extensions.Hosting.IHostEnvironment>
@@ -91,12 +93,12 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 * [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [HTTPS 重新導向](xref:security/enforcing-ssl)
 * [靜態檔案](xref:fundamentals/static-files)
-* ASP.NET Core [MVC](xref:mvc/overview)和[ Razor頁面](xref:razor-pages/index)
+* ASP.NET Core [MVC](xref:mvc/overview)和[ Razor 頁面](xref:razor-pages/index)
 
 
 [!code-csharp[](startup/3.0_samples/StartupFilterSample/Startup.cs?name=snippet)]
 
-上述範例適用于[ Razor頁面](xref:razor-pages/index);MVC 版本很類似。
+上述範例適用于[ Razor 頁面](xref:razor-pages/index); MVC 版本類似。
 
 各 `Use` 擴充方法會將一或多個中介軟體元件新增到要求管線。 例如，<xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles*> 會設定[中介軟體](xref:fundamentals/middleware/index)來提供[靜態檔案](xref:fundamentals/static-files)。
 
@@ -116,10 +118,10 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ## <a name="extend-startup-with-startup-filters"></a>使用啟動篩選條件來擴充啟動
 
-使用<xref:Microsoft.AspNetCore.Hosting.IStartupFilter>：
+使用 <xref:Microsoft.AspNetCore.Hosting.IStartupFilter> ：
 
-* 在應用程式[設定](#the-configure-method)中介軟體管線的開頭或結尾設定中介軟體，而不需要明確呼叫`Use{Middleware}`。 `IStartupFilter`ASP.NET Core 用來將預設值新增至管線的開頭，而不需要讓應用程式作者明確註冊預設中介軟體。 `IStartupFilter`允許代表應用程式作者`Use{Middleware}`進行不同的元件呼叫。
-* 建立`Configure`方法的管線。 [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) 可以將中介軟體設為在程式庫新增中介軟體之前或之後執行。
+* 在應用程式[設定](#the-configure-method)中介軟體管線的開頭或結尾設定中介軟體，而不需要明確呼叫 `Use{Middleware}` 。 `IStartupFilter`ASP.NET Core 用來將預設值新增至管線的開頭，而不需要讓應用程式作者明確註冊預設中介軟體。 `IStartupFilter`允許代表應用程式作者進行不同的元件呼叫 `Use{Middleware}` 。
+* 建立方法的管線 `Configure` 。 [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) 可以將中介軟體設為在程式庫新增中介軟體之前或之後執行。
 
 `IStartupFilter` 會實作 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*>，其會接收並傳回 `Action<IApplicationBuilder>`。 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 會定義類別，以設定應用程式的要求管線。 如需詳細資訊，請參閱[使用 IApplicationBuilder 建立中介軟體管線](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)。
 
@@ -149,7 +151,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>在啟動時從外部組件新增組態
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration> 。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -167,14 +169,14 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startup`。 `Startup` 類別：
 
-* 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務**。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會*registered*在中`ConfigureServices`註冊，並透過相依性[插入（DI）](xref:fundamentals/dependency-injection)或<xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*>在整個應用程式中使用。
+* 選擇性地包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.ConfigureServices*> 方法來設定應用程式的服務**。 服務的定義是可提供應用程式功能的可重複使用元件。 服務會在中*註冊*，並透過相依性 `ConfigureServices` [插入（DI）](xref:fundamentals/dependency-injection)或在整個應用程式中使用 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder.ApplicationServices*> 。
 * 包含 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*> 方法來建立應用程式的要求處理管線。
 
 應用程式啟動時，ASP.NET Core 執行階段會呼叫 `ConfigureServices` 與 `Configure`：
 
 [!code-csharp[](startup/sample_snapshot/Startup1.cs)]
 
-一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 通常`Startup`會藉由在主機建立器上呼叫[WebHostBuilderExtensions\<. UseStartup TStartup>](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定類別：
+一旦建置應用程式[主機](xref:fundamentals/index#host)，就會指定 `Startup` 類別。 `Startup`通常會藉由呼叫主機產生器上的[WebHostBuilderExtensions \<TStartup> UseStartup](xref:Microsoft.AspNetCore.Hosting.WebHostBuilderExtensions.UseStartup*)方法來指定類別：
 
 [!code-csharp[](startup/sample_snapshot/Program3.cs?name=snippet_Program&highlight=12)]
 
@@ -225,7 +227,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 * [HTTP 嚴格的傳輸安全性 (HSTS)](xref:security/enforcing-ssl#http-strict-transport-security-protocol-hsts)
 * [HTTPS 重新導向](xref:security/enforcing-ssl)
 * [靜態檔案](xref:fundamentals/static-files)
-* ASP.NET Core [MVC](xref:mvc/overview)和[ Razor頁面](xref:razor-pages/index)
+* ASP.NET Core [MVC](xref:mvc/overview)和[ Razor 頁面](xref:razor-pages/index)
 * [一般資料保護規定 (GDPR)](xref:security/gdpr)
 
 [!code-csharp[](startup/sample_snapshot/Startup4.cs)]
@@ -248,10 +250,10 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ## <a name="extend-startup-with-startup-filters"></a>使用啟動篩選條件來擴充啟動
 
-使用<xref:Microsoft.AspNetCore.Hosting.IStartupFilter>：
+使用 <xref:Microsoft.AspNetCore.Hosting.IStartupFilter> ：
 
-* 在應用程式[設定](#the-configure-method)中介軟體管線的開頭或結尾設定中介軟體，而不需要明確呼叫`Use{Middleware}`。 `IStartupFilter`ASP.NET Core 用來將預設值新增至管線的開頭，而不需要讓應用程式作者明確註冊預設中介軟體。 `IStartupFilter`允許代表應用程式作者`Use{Middleware}`進行不同的元件呼叫。
-* 建立`Configure`方法的管線。 [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) 可以將中介軟體設為在程式庫新增中介軟體之前或之後執行。
+* 在應用程式[設定](#the-configure-method)中介軟體管線的開頭或結尾設定中介軟體，而不需要明確呼叫 `Use{Middleware}` 。 `IStartupFilter`ASP.NET Core 用來將預設值新增至管線的開頭，而不需要讓應用程式作者明確註冊預設中介軟體。 `IStartupFilter`允許代表應用程式作者進行不同的元件呼叫 `Use{Middleware}` 。
+* 建立方法的管線 `Configure` 。 [IStartupFilter.Configure](xref:Microsoft.AspNetCore.Hosting.IStartupFilter.Configure*) 可以將中介軟體設為在程式庫新增中介軟體之前或之後執行。
 
 `IStartupFilter` 會實作 <xref:Microsoft.AspNetCore.Hosting.StartupBase.Configure*>，其會接收並傳回 `Action<IApplicationBuilder>`。 <xref:Microsoft.AspNetCore.Builder.IApplicationBuilder> 會定義類別，以設定應用程式的要求管線。 如需詳細資訊，請參閱[使用 IApplicationBuilder 建立中介軟體管線](xref:fundamentals/middleware/index#create-a-middleware-pipeline-with-iapplicationbuilder)。
 
@@ -281,7 +283,7 @@ ASP.NET Core 應用程式使用 `Startup` 類別，其依慣例命名為 `Startu
 
 ## <a name="add-configuration-at-startup-from-an-external-assembly"></a>在啟動時從外部組件新增組態
 
-<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱<xref:fundamentals/configuration/platform-specific-configuration>。
+<xref:Microsoft.AspNetCore.Hosting.IHostingStartup> 實作允許在啟動時從應用程式 `Startup` 類別外部的外部組件，針對應用程式新增增強功能。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration> 。
 
 ## <a name="additional-resources"></a>其他資源
 

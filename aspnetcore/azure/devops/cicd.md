@@ -7,17 +7,19 @@ ms.date: 10/24/2018
 ms.custom: mvc, seodec18
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: azure/devops/cicd
-ms.openlocfilehash: f5b0e0ee1c903de26188815c7dc01ed547cca97e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 0edded18d766d6f2af08f6be5dbecbfd52a14a35
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767131"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400553"
 ---
 # <a name="continuous-integration-and-deployment"></a>持續整合及部署
 
@@ -36,8 +38,8 @@ ms.locfileid: "82767131"
 
 ## <a name="publish-the-apps-code-to-github"></a>將應用程式的程式碼發佈至 GitHub
 
-1. 開啟瀏覽器視窗，並流覽至`https://github.com`。
-1. 按一下標**+** 頭中的下拉式選單，然後選取 [**新增存放庫**]：
+1. 開啟瀏覽器視窗，並流覽至 `https://github.com` 。
+1. 按一下 **+** 標頭中的下拉式選單，然後選取 [**新增存放庫**]：
 
     ![GitHub 新增存放庫選項](media/cicd/github-new-repo.png)
 
@@ -62,13 +64,13 @@ ms.locfileid: "82767131"
     git push -u origin master
     ```
 
-1. 開啟瀏覽器視窗，並流覽至`https://github.com/<GitHub_username>/simple-feed-reader/`。 驗證您的程式碼出現在 GitHub 存放庫中。
+1. 開啟瀏覽器視窗，並流覽至 `https://github.com/<GitHub_username>/simple-feed-reader/` 。 驗證您的程式碼出現在 GitHub 存放庫中。
 
 ## <a name="disconnect-local-git-deployment"></a>中斷本機 Git 部署的連線
 
 使用下列步驟移除本機 Git 部署。 Azure Pipelines （Azure DevOps 服務）會取代並增強該功能。
 
-1. 開啟[Azure 入口網站](https://portal.azure.com/)，然後流覽至預備環境 *（mywebapp\<\>unique_number/staging）* Web 應用程式。 在入口網站的搜尋方塊中輸入*預備*，可以快速地找到 Web 應用程式：
+1. 開啟[Azure 入口網站](https://portal.azure.com/)，然後流覽至預備環境 *（mywebapp \<unique_number\> /Staging）* Web 應用程式。 在入口網站的搜尋方塊中輸入*預備*，可以快速地找到 Web 應用程式：
 
     ![預備 Web 應用程式搜尋詞彙](media/cicd/portal-search-box.png)
 
@@ -81,7 +83,7 @@ ms.locfileid: "82767131"
 1. 開啟瀏覽器，然後流覽至[Azure DevOps 組織建立] 頁面](https://go.microsoft.com/fwlink/?LinkId=307137)。
 1. 在 [**挑選易記名稱**] 文字方塊中輸入唯一的名稱，以形成用來存取 Azure DevOps 組織的 URL。
 1. 選取 [ **Git** ] 選項按鈕，因為程式碼裝載于 GitHub 存放庫中。
-1. 按一下 [繼續]  按鈕。 短暫等候之後，就會建立名為*myfirstproject 專案*的帳戶和 team 專案。
+1. 按一下 [繼續] 按鈕。 短暫等候之後，就會建立名為*myfirstproject 專案*的帳戶和 team 專案。
 
     ![Azure DevOps 組織建立頁面](media/cicd/vsts-account-creation.png)
 
@@ -89,7 +91,7 @@ ms.locfileid: "82767131"
 
     ![啟動您的專案按鈕](media/cicd/vsts-start-project.png)
 
-1. 瀏覽器會開啟* \<以\>account_name visualstudio.com*。 按一下 [ *myfirstproject 專案*] 連結，開始設定專案的 DevOps 管線。
+1. 瀏覽器會開啟至* \<account_name\> visualstudio.com*。 按一下 [ *myfirstproject 專案*] 連結，開始設定專案的 DevOps 管線。
 
 ## <a name="configure-the-azure-pipelines-pipeline"></a>設定 Azure Pipelines 管線
 
@@ -112,7 +114,7 @@ ms.locfileid: "82767131"
 1. 如果已在您的 GitHub 帳戶上啟用雙因素驗證，則需要個人存取權杖。 在此情況下，請按一下 [**使用 GitHub 個人存取權杖進行授權**] 連結。 如需協助，請參閱[官方 GitHub 個人存取權杖建立指示](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)。 只需要許可權的存放*庫範圍。* 否則，請按一下 [**使用 OAuth 授權**] 按鈕。
 1. 出現提示時，請登入您的 GitHub 帳戶。 然後選取 [授權]，將存取權授與您的 Azure DevOps 組織。 如果成功，就會建立新的服務端點。
 1. 按一下 [存放**庫**] 按鈕旁的省略號按鈕。 從清單中選取 [ *<] GitHub_username>/simple-feed-reader* ] 存放庫。 按一下 [選取]**** 按鈕。
-1. 從 [**手動和排程的組建**] 下拉式選單的預設分支中，選取 [*主要*] 分支。 按一下 [繼續]  按鈕。 [範本選取專案] 頁面隨即出現。
+1. 從 [**手動和排程的組建**] 下拉式選單的預設分支中，選取 [*主要*] 分支。 按一下 [繼續] 按鈕。 [範本選取專案] 頁面隨即出現。
 
 ### <a name="create-the-build-definition"></a>建立組建定義
 
@@ -136,7 +138,7 @@ ms.locfileid: "82767131"
 
     ![儲存組建定義-強制回應對話方塊](media/cicd/vsts-save-modal.png)
 
-    使用的預設資料夾*\\*，然後按一下 [**儲存**] 按鈕。
+    使用的預設資料夾 *\\* ，然後按一下 [**儲存**] 按鈕。
 
 ### <a name="create-the-release-pipeline"></a>建立發行管線
 
@@ -178,7 +180,7 @@ ms.locfileid: "82767131"
 
 1. 在 [**生產**] 方塊中，按一下 [ **1 個階段，2**個工作] 連結：
 
-    ![發行管線-生產環境連結 .png](media/cicd/vsts-production-link.png)
+    ![發行管線-生產環境 link.png](media/cicd/vsts-production-link.png)
 
     環境**的 [工作] 索引**標籤隨即出現。
 1. 按一下 [**部署 Azure App Service 至**位置] 工作。 其設定會出現在右邊的面板中。
@@ -198,7 +200,7 @@ ms.locfileid: "82767131"
 
 1. 在 Visual Studio 中開啟*SimpleFeedReader* 。
 1. 在方案總管中，開啟*Pages\Index.cshtml*。 將 `<h2>Simple Feed Reader - V3</h2>` 變更為 `<h2>Simple Feed Reader - V4</h2>`。
-1. 按**Ctrl**+**Shift**+**B**來建立應用程式。
+1. 按**Ctrl** + **Shift** + **B**來建立應用程式。
 1. 將檔案認可至 GitHub 存放庫。 使用 Visual Studio 的 [ *Team Explorer* ] 索引標籤中的 [**變更**] 頁面，或使用本機電腦的命令 shell 執行下列動作：
 
     ```console
@@ -219,7 +221,7 @@ ms.locfileid: "82767131"
 
     ![啟用持續整合](media/cicd/enable-ci.png)
 
-1. 在 Azure DevOps Services 中，流覽至 [ **Azure Pipelines** > **組建**] 頁面的 [已**佇列**] 索引標籤。 已排入佇列的組建會顯示觸發組建的分支和認可：
+1. 在 Azure DevOps Services 中，流覽至 [ **Azure Pipelines**組建] 頁面的 [已**佇列**] 索引標籤  >  **Builds** 。 已排入佇列的組建會顯示觸發組建的分支和認可：
 
     ![已排入佇列的組建](media/cicd/build-queued.png)
 
@@ -237,15 +239,15 @@ ms.locfileid: "82767131"
 
 ![組建定義工作](media/cicd/build-definition-tasks.png)
 
-1. **Restore** &mdash;會執行`dotnet restore`命令來還原應用程式的 NuGet 套件。 使用的預設封裝摘要是 nuget.org。
-1. **Build** &mdash;會執行`dotnet build --configuration release`命令來編譯應用程式的程式碼。 此`--configuration`選項是用來產生程式碼的優化版本，適用于部署到生產環境。 在組建定義的 [**變數**] 索引標籤上修改*BuildConfiguration*變數（例如，需要進行 debug 設定）。
-1. **測試** &mdash;會執行`dotnet test --configuration release --logger trx --results-directory <local_path_on_build_agent>`命令來執行應用程式的單元測試。 單元測試會在符合 glob 模式的`**/*Tests/*.csproj`任何 c # 專案中執行。 測試結果會儲存在`--results-directory`選項所指定位置的 *.trx*檔案中。 如果有任何測試失敗，則組建會失敗且不會部署。
+1. **還原** &mdash;執行 `dotnet restore` 命令以還原應用程式的 NuGet 套件。 使用的預設封裝摘要是 nuget.org。
+1. **組建** &mdash;執行 `dotnet build --configuration release` 命令來編譯應用程式的程式碼。 此 `--configuration` 選項是用來產生程式碼的優化版本，適用于部署到生產環境。 在組建定義的 [**變數**] 索引標籤上修改*BuildConfiguration*變數（例如，需要進行 debug 設定）。
+1. **測試** &mdash;執行 `dotnet test --configuration release --logger trx --results-directory <local_path_on_build_agent>` 命令，以執行應用程式的單元測試。 單元測試會在符合 glob 模式的任何 c # 專案中執行 `**/*Tests/*.csproj` 。 測試結果會儲存在選項所指定位置的 *.trx*檔案中。 `--results-directory` 如果有任何測試失敗，則組建會失敗且不會部署。
 
     > [!NOTE]
-    > 若要確認單元測試能夠正常執行，請修改*SimpleFeedReader Tests\Services\NewsServiceTests.cs*以特意中斷其中一個測試。 例如，在`Assert.True(result.Count > 0);` `Returns_News_Stories_Given_Valid_Uri`方法中`Assert.False(result.Count > 0);`將變更為。 認可並推送變更至 GitHub。 組建已觸發且失敗。 組建管線狀態變更為 [**失敗**]。 再次還原變更、認可和推送。 組建成功。
+    > 若要確認單元測試能夠正常執行，請修改*SimpleFeedReader Tests\Services\NewsServiceTests.cs*以特意中斷其中一個測試。 例如， `Assert.True(result.Count > 0);` `Assert.False(result.Count > 0);` 在方法中將變更為 `Returns_News_Stories_Given_Valid_Uri` 。 認可並推送變更至 GitHub。 組建已觸發且失敗。 組建管線狀態變更為 [**失敗**]。 再次還原變更、認可和推送。 組建成功。
 
-1. **Publish** &mdash; [ `dotnet publish --configuration release --output <local_path_on_build_agent>`發行] 會執行命令，以產生包含要部署之成品的 *.zip*檔案。 `--output`選項會指定 *.zip*檔案的發行位置。 該位置是藉由傳遞[預先定義](/azure/devops/pipelines/build/variables)的變數`$(build.artifactstagingdirectory)`（名為）所指定。 該變數會展開至組建代理程式上的本機路徑，例如*c:\agent\_work\1\a*。
-1. **發行** &mdash;構件會發行**發行**工作所產生的 *.zip*檔案。 此工作會接受 *.zip*檔案位置做為參數，也就是預先定義的`$(build.artifactstagingdirectory)`變數。 *.Zip*檔案會發行為名為*drop*的資料夾。
+1. **發行** &mdash;執行 `dotnet publish --configuration release --output <local_path_on_build_agent>` 命令，以產生包含要部署之成品的 *.zip*檔案。 `--output`選項會指定 *.zip*檔案的發行位置。 該位置是藉由傳遞[預先定義的變數](/azure/devops/pipelines/build/variables)（名為）所指定 `$(build.artifactstagingdirectory)` 。 該變數會展開至組建代理程式上的本機路徑，例如*c:\agent \_ work\1\a*。
+1. **發行成品** &mdash;發行**發行**工作所產生的 *.zip*檔案。 此工作會接受 *.zip*檔案位置做為參數，也就是預先定義的變數 `$(build.artifactstagingdirectory)` 。 *.Zip*檔案會發行為名為*drop*的資料夾。
 
 按一下組建定義的 [**摘要**] 連結，以使用定義來查看組建的歷程記錄：
 
@@ -279,7 +281,7 @@ ms.locfileid: "82767131"
 
 ![顯示發行管線部署工作的螢幕擷取畫面](media/cicd/release-definition-task1.png)
 
-Azure 訂用帳戶、服務類型、web 應用程式名稱、資源群組和部署位置都會在部署工作中定義。 [**封裝或資料夾**] 文字方塊會保存要解壓縮並部署到*\< \> mywebapp unique_number* web 應用程式*預備*位置的 *.zip*檔案路徑。
+Azure 訂用帳戶、服務類型、web 應用程式名稱、資源群組和部署位置都會在部署工作中定義。 [**封裝或資料夾**] 文字方塊會保存要解壓縮並部署到*mywebapp \<unique_number\> * web 應用程式*預備*位置的 *.zip*檔案路徑。
 
 按一下 [插槽交換] 工作會顯示下列工作設定：
 

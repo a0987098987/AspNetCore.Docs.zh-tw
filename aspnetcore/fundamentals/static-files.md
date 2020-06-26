@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 10/07/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/static-files
-ms.openlocfilehash: f7697260e6ab29d0e9ba955dfdf0c8c81e4e1130
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 33b4d43471932ed5e9e328163672028b00e6b5b8
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775488"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399474"
 ---
 # <a name="static-files-in-aspnet-core"></a>ASP.NET Core 中的靜態檔案
 
@@ -56,7 +58,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
   * **images**
   * **node.js**
 
-若要存取 *images* 子資料夾的檔案，其 URI 格式為 http://\<伺服器位址>/images/\<影像檔名稱>**。 例如： *http://localhost:9189/images/banner3.svg* 。
+在*images*子資料夾中存取檔案的 URI 格式為*HTTP:// \<server_address> /images/ \<image_file_name> *。 例如： *http://localhost:9189/images/banner3.svg* 。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -84,11 +86,11 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [!code-csharp[](static-files/samples/1x/StartupStaticFiles.cs?name=snippet_ConfigureMethod&highlight=3)]
 
-無參數`UseStaticFiles`方法多載會將[web 根目錄](xref:fundamentals/index#web-root)中的檔案標記為 servable。 下列標記參考 *wwwroot/images/banner1.svg*：
+無參數方法多載會 `UseStaticFiles` 將[web 根目錄](xref:fundamentals/index#web-root)中的檔案標記為 servable。 下列標記參考 *wwwroot/images/banner1.svg*：
 
 [!code-cshtml[](static-files/samples/1x/Views/Home/Index.cshtml?name=snippet_static_file_wwwroot)]
 
-在上述程式碼中，波狀`~/`符號字元會指向[web 根目錄](xref:fundamentals/index#web-root)。
+在上述程式碼中，波狀符號字元會 `~/` 指向[web 根目錄](xref:fundamentals/index#web-root)。
 
 ### <a name="serve-files-outside-of-web-root"></a>提供 Web 根目錄外的檔案
 
@@ -106,7 +108,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [!code-csharp[](static-files/samples/1x/StartupTwoStaticFiles.cs?name=snippet_ConfigureMethod&highlight=5-10)]
 
-上述程式碼會透過 *StaticFiles* URI 區段公開 *MyStaticFiles* 目錄階層。 要求 http://\<伺服器位址>/StaticFiles/images/banner1.svg** 時，會提供 *banner1.svg* 檔案。
+上述程式碼會透過 *StaticFiles* URI 區段公開 *MyStaticFiles* 目錄階層。 對*Http:// \<server_address> /StaticFiles/images/banner1.svg*的要求會提供*banner1.svg svg*檔案的服務。
 
 下列標記參考 *MyStaticFiles/images/banner1.svg*：
 
@@ -114,7 +116,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ### <a name="set-http-response-headers"></a>設定 HTTP 回應標頭
 
-[StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) 物件可以用來設定 HTTP 回應標頭。 除了設定[web 根目錄](xref:fundamentals/index#web-root)提供的靜態檔案外，下列程式碼也會設定`Cache-Control`標頭：
+[StaticFileOptions](/dotnet/api/microsoft.aspnetcore.builder.staticfileoptions) 物件可以用來設定 HTTP 回應標頭。 除了設定[web 根目錄](xref:fundamentals/index#web-root)提供的靜態檔案外，下列程式碼也會設定 `Cache-Control` 標頭：
 
 [!code-csharp[](static-files/samples/1x/StartupAddHeader.cs?name=snippet_ConfigureMethod)]
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
@@ -144,13 +146,13 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureServicesMethod&highlight=3)]
 
-上述程式碼可讓您使用 URL http://\<伺服器位址>/MyImages** 與每個檔案和資料夾的連結，來進行 *wwwroot/images* 資料夾的目錄瀏覽：
+上述程式碼允許使用 URL *Http:// \<server_address> /MyImages*流覽*wwwroot/images*資料夾的目錄，並提供每個檔案和資料夾的連結：
 
 ![目錄瀏覽](static-files/_static/dir-browse.png)
 
 如需了解啟用瀏覽功能時的安全性風險，請參閱[考量](#considerations)。
 
-請注意下列範例中的兩個 `UseStaticFiles` 呼叫。 第一個呼叫可提供 *wwwroot* 資料夾中的靜態檔案。 第二個呼叫可啟用使用 URL http://\<伺服器位址>/MyImages** 的 *wwwroot/images* 資料夾目錄瀏覽功能：
+請注意下列範例中的兩個 `UseStaticFiles` 呼叫。 第一個呼叫可提供 *wwwroot* 資料夾中的靜態檔案。 第二個呼叫會使用 URL *Http:// \<server_address> /MyImages*，啟用*wwwroot/images*資料夾的瀏覽目錄：
 
 [!code-csharp[](static-files/samples/1x/StartupBrowse.cs?name=snippet_ConfigureMethod&highlight=3,5)]
 
@@ -168,7 +170,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 * *default.htm*
 * *default.html*
 * *index.htm*
-* *索引 .html*
+* *index.html*
 
 系統會提供從清單中找到的第一個檔案，就像提出的要求是完整 URI 一樣。 瀏覽器 URL 仍會繼續反應要求的 URI。
 
@@ -178,7 +180,7 @@ HTML、CSS、影像和 JavaScript 這類靜態檔案都是 ASP.NET Core 應用�
 
 ## <a name="usefileserver"></a>UseFileServer
 
-<xref:Microsoft.AspNetCore.Builder.FileServerExtensions.UseFileServer*>結合`UseStaticFiles`、 `UseDefaultFiles`和的功能（選擇性） `UseDirectoryBrowser`。
+<xref:Microsoft.AspNetCore.Builder.FileServerExtensions.UseFileServer*>結合 `UseStaticFiles` 、和的功能 `UseDefaultFiles` （選擇性） `UseDirectoryBrowser` 。
 
 下列程式碼可提供靜態檔案和預設檔案。 未啟用目錄瀏覽功能。
 
@@ -215,10 +217,10 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 | URI            |                             回應  |
 | ------- | ------|
-| *HTTP://\<server_address>/staticfiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
-| *HTTP://\<server_address>/staticfiles*             |     MyStaticFiles/default.html |
+| *HTTP:// \<server_address> /StaticFiles/images/banner1.svg*    |      MyStaticFiles/images/banner1.svg |
+| *HTTP:// \<server_address> /StaticFiles*             |     MyStaticFiles/default.html |
 
-如果 *MyStaticFiles* 目錄中不存在預設名稱的檔案，http://\<伺服器位址>/StaticFiles** 會傳回含有可點按連結的目錄清單：
+如果*MyStaticFiles*目錄中沒有任何預設名稱的檔案存在， *HTTP:// \<server_address> /StaticFiles*會傳回具有可按式連結的目錄清單：
 
 ![靜態檔案清單](static-files/_static/db2.png)
 
@@ -248,12 +250,12 @@ app.UseFileServer(enableDirectoryBrowsing: true);
 
 ## <a name="serve-files-from-multiple-locations"></a>提供多個位置的檔案
 
-`UseStaticFiles`和`UseFileServer`預設為指向*wwwroot*的檔案提供者。 您可以提供其他的`UseStaticFiles`實例和`UseFileServer`其他檔案提供者，以從其他位置處理檔案。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/15578)。
+`UseStaticFiles`和 `UseFileServer` 預設為指向*wwwroot*的檔案提供者。 您可以提供其他的實例 `UseStaticFiles` 和 `UseFileServer` 其他檔案提供者，以從其他位置處理檔案。 如需詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/15578)。
 
 ### <a name="considerations"></a>考量
 
 > [!WARNING]
-> `UseDirectoryBrowser` 和 `UseStaticFiles` 可能會導致洩漏祕密。 強烈建議您在生產環境中停用目錄瀏覽功能。 透過 `UseStaticFiles` 或 `UseDirectoryBrowser`，仔細檢閱要啟用哪些目錄。 因為整個目錄和其子目錄都可供公開存取。 儲存適用于在專用目錄中提供給公用的檔案，例如* \<content_root>/wwwroot*。 將這些檔案與 MVC views、 Razor Pages （僅限2.x）、設定檔等隔開。
+> `UseDirectoryBrowser` 和 `UseStaticFiles` 可能會導致洩漏祕密。 強烈建議您在生產環境中停用目錄瀏覽功能。 透過 `UseStaticFiles` 或 `UseDirectoryBrowser`，仔細檢閱要啟用哪些目錄。 因為整個目錄和其子目錄都可供公開存取。 儲存適用于在專用目錄中提供給公用的檔案，例如* \<content_root> /wwwroot*。 將這些檔案與 MVC views、 Razor Pages （僅限2.x）、設定檔等隔開。
 
 * 使用 `UseDirectoryBrowser` 和 `UseStaticFiles` 公開內容的 URL 可能有區分大小寫，並受限於基礎檔案系統的字元限制。 例如，Windows 不區分大小寫&mdash;macOS 和 Linux 則區分大小寫。
 

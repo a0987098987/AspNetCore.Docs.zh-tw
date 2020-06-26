@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/04/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 4ac7b82d734f078cf50901d02e7d0c4eb8bb45bb
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 2fce394202be5df9af67e8afca27a0914f410402
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242415"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399032"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 事件處理
 
@@ -139,7 +141,7 @@ private void ShowMessage(MouseEventArgs e)
 ```
 
 > [!NOTE]
-> 請勿直接在 lambda 運算式**中使用迴圈**變數，例如 `i` 在先前的 `for` 迴圈範例中，或迴圈中的參考變數 `foreach` 。 否則，所有 lambda 運算式都會使用相同的變數，這會導致在所有 lambda 中使用相同的值。 一律在本機變數中捕獲變數的值，然後使用它。 在上述範例中，迴圈變數 `i` 會指派給 `buttonNumber` 。
+> 請勿直接在 lambda 運算式**中使用迴圈**變數，如 `i` 先前的迴圈範例中所示 `for` 。 否則，所有 lambda 運算式都會使用相同的變數，這會導致在所有 lambda 中使用相同的值。 一律在本機變數中捕獲變數的值，然後使用它。 在上述範例中，迴圈變數 `i` 會指派給 `buttonNumber` 。
 
 ## <a name="eventcallback"></a>App eventcallback
 

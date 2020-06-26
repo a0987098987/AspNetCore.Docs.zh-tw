@@ -8,25 +8,27 @@ ms.custom: mvc
 ms.date: 02/18/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/advanced-scenarios
-ms.openlocfilehash: d4ebab0d8fc2ee48fa4d9c8b1f1b8e5cbf43cab9
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: bdea9f2fe5c552b56414bb49588733c8dc2a34db
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242439"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400215"
 ---
 # <a name="aspnet-core-blazor-advanced-scenarios"></a>ASP.NET Core Blazor advanced 案例
 
 By [Luke Latham](https://github.com/guardrex)和[Daniel Roth](https://github.com/danroth27)
 
-## <a name="blazor-server-circuit-handler"></a>Blazor伺服器線路處理常式
+## <a name="blazor-server-circuit-handler"></a>Blazor Server線路處理常式
 
-Blazor伺服器允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 線路處理常式是透過衍生自 `CircuitHandler` 並在應用程式的服務容器中註冊類別來執行。 下列線路處理常式範例會追蹤開啟的 SignalR 連接：
+Blazor Server允許程式碼定義*電路處理常式*，允許對使用者線路狀態的變更執行程式碼。 線路處理常式是透過衍生自 `CircuitHandler` 並在應用程式的服務容器中註冊類別來執行。 下列線路處理常式範例會追蹤開啟的 SignalR 連接：
 
 ```csharp
 using System.Collections.Generic;
@@ -68,7 +70,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對伺服器線路而言是嚴重的 Blazor 。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 使用錯誤處理和記錄，將程式碼包裝在一或多個語句中。
+如果自訂電路處理常式的方法擲回未處理的例外狀況，則例外狀況對線路而言是嚴重的 Blazor Server 。 若要容忍處理常式程式碼或呼叫方法中的例外狀況，請 [`try-catch`](/dotnet/csharp/language-reference/keywords/try-catch) 使用錯誤處理和記錄，將程式碼包裝在一或多個語句中。
 
 當線路因使用者已中斷連線而結束，而架構正在清除線路狀態時，架構會處置線路的 DI 範圍。 處置範圍會處置任何執行的線路範圍 DI 服務 <xref:System.IDisposable?displayProperty=fullName> 。 如果任何 DI 服務在處置期間擲回未處理的例外狀況，則架構會記錄例外狀況。
 
@@ -221,14 +223,14 @@ builder.AddContent(seq++, "Second");
 * 如果序號已硬式編碼，則 diff 演算法只會要求序號增加值。 起始值和間距無關。 一個合法的選項是使用程式程式碼號做為序號，或從零開始，並以一個或數百個（或任何慣用的間隔）來增加。 
 * Blazor會使用序號，而其他樹狀結構比較的 UI 架構則不會使用它們。 使用序號時，比較速度會更快，而且 Blazor 具有可自動處理序號以開發人員撰寫檔案之編譯步驟的優點 `.razor` 。
 
-## <a name="perform-large-data-transfers-in-blazor-server-apps"></a>在伺服器應用程式中執行大型資料傳輸 Blazor
+## <a name="perform-large-data-transfers-in-blazor-server-apps"></a>在應用程式中執行大型資料傳輸 Blazor Server
 
 在某些情況下，必須在 JavaScript 和之間傳輸大量資料 Blazor 。 通常會在下列情況進行大型資料傳輸：
 
 * 瀏覽器檔案系統 Api 可用來上傳或下載檔案。
 * 需要具有協力廠商程式庫的互通性。
 
-在 Blazor 伺服器中，有一項限制是為了避免傳遞可能會導致效能問題的單一大型訊息。
+在中 Blazor Server ，有一項限制可防止傳遞可能會導致效能問題的單一大型訊息。
 
 開發在 JavaScript 和之間傳輸資料的程式碼時，請考慮下列指導方針 Blazor ：
 

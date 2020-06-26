@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 07/07/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/security
-ms.openlocfilehash: 8bbe198087f8ba80abfe6b518f8223c719801a85
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: f06e239054b1c4edf126d1cf974dff1ca36ee56a
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774951"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400124"
 ---
 # <a name="security-considerations-in-grpc-for-aspnet-core"></a>ASP.NET Core 的 gRPC 中的安全性考慮
 
@@ -45,7 +47,7 @@ TLS 是在 Kestrel 中設定。 如需設定 Kestrel 端點的詳細資訊，請
 
 gRPC 會使用每個訊息的大小限制來管理傳入和傳出訊息。 根據預設，gRPC 會將傳入訊息限制為 4 MB。 外寄訊息沒有任何限制。
 
-在伺服器上，可以使用下列方式`AddGrpc`為應用程式中的所有服務設定 gRPC 訊息限制：
+在伺服器上，可以使用下列方式為應用程式中的所有服務設定 gRPC 訊息限制 `AddGrpc` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -58,7 +60,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-您也可以使用`AddServiceOptions<TService>`來設定個別服務的限制。 如需設定訊息大小限制的詳細資訊，請參閱[gRPC configuration](xref:grpc/configuration)。
+您也可以使用來設定個別服務的限制 `AddServiceOptions<TService>` 。 如需設定訊息大小限制的詳細資訊，請參閱[gRPC configuration](xref:grpc/configuration)。
 
 ## <a name="client-certificate-validation"></a>用戶端憑證驗證
 

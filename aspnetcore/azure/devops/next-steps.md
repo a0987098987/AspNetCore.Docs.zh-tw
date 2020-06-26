@@ -7,17 +7,19 @@ ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: azure/devops/next-steps
-ms.openlocfilehash: 92401d45d36dd3b93d175e08a8fa8697217ca7c7
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 6e7f46a0c78575e52a8182829f7b3d2bddec70f6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766520"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400332"
 ---
 # <a name="next-steps"></a>後續步驟
 
@@ -39,7 +41,7 @@ ms.locfileid: "82766520"
 
 [Azure Active Directory](/azure/active-directory/)和[Azure Active Directory B2C](/azure/active-directory-b2c/)都是身分識別服務。 Azure Active Directory 是針對企業案例而設計，可讓 Azure AD B2B （企業對企業）共同作業，而 Azure Active Directory B2C 則是預期的企業對客戶案例，包括社交網路登入。
 
-## <a name="mobile"></a>行動訊息
+## <a name="mobile"></a>行動
 
 [通知中樞](/azure/notification-hubs/)是多平臺、可擴充的推播通知引擎，可快速地將數百萬個訊息傳送到在各種類型的裝置上執行的應用程式。
 

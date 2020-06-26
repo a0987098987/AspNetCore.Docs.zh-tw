@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: 4523ba299d5c5e50a442f84acadf06bf57c69c5d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: de7c155189008e1f78bfb1eba062fcc86f9e4839
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82770949"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401905"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>在 ASP.NET Core 中組合及縮小靜態資產
 
@@ -69,29 +71,29 @@ ms.locfileid: "82770949"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>選擇捆綁和縮制策略
 
-MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 設定檔案的組合和縮制。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制 &mdash; （例如 linting 和影像優化）時，協力廠商工具是很好的組合。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
+MVC 和 Razor Pages 專案範本提供了一種解決方案，可供包含 JSON 設定檔的組合和縮制使用。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制 &mdash; （例如 linting 和影像優化）時，協力廠商工具是很好的組合。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
 
 ## <a name="configure-bundling-and-minification"></a>設定捆綁和縮制
 
 ::: moniker range="<= aspnetcore-2.0"
 
-在 ASP.NET Core 2.0 或更早版本中，MVC 和 Razor Pages 專案範本會提供*bundleconfig.json*檔案，以定義每個組合的選項：
+在 ASP.NET Core 2.0 或更早版本中，MVC 和 Razor Pages 專案範本會提供設定檔案的*bundleconfig.js* ，以定義每個組合的選項：
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-在 ASP.NET Core 2.1 或更新版本中，將名為*bundleconfig.json*的新 JSON 檔案新增至 MVC 或 Razor Pages 專案根目錄。 在該檔案中包含下列 JSON 做為起點：
+在 ASP.NET Core 2.1 或更新版本中，將名為*bundleconfig.js的*新 JSON 檔案加入至 MVC 或 Razor Pages 專案根目錄。 在該檔案中包含下列 JSON 做為起點：
 
 ::: moniker-end
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig.json)]
 
-*Bundleconfig.json*會定義每個配套的選項。 在上述範例中，會針對自訂 JavaScript （*wwwroot/js/* node.js）和樣式表單（*wwwroot/css/.css*）檔案定義單一組合設定。
+檔案*上的bundleconfig.js*會定義每個配套的選項。 在上述範例中，會針對自訂 JavaScript （*wwwroot/js/site.js*）和樣式表單（*wwwroot/css/.css*）檔案定義單一組合設定。
 
 設定選項包括：
 
-* `outputFileName`：要輸出的配套檔案名。 可以包含來自*bundleconfig.json*的相對路徑。 **必填**
+* `outputFileName`：要輸出的配套檔案名。 可以包含檔案中*bundleconfig.js*的相對路徑。 **必填**
 * `inputFiles`：要組合在一起的檔案陣列。 這些是設定檔的相對路徑。 （**選擇性**） * 空白值會產生空的輸出檔。 支援[萬用字元模式。](https://www.tldp.org/LDP/abs/html/globbingref.html)
 * `minify`：輸出類型的縮制選項。 **選擇性**，*預設值 `minify: { enabled: true }` -*
   * 每個輸出檔案類型都有可用的設定選項。
@@ -108,7 +110,7 @@ MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 
 
 [!code-css[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/wwwroot/css/custom.css)]
 
-若要縮小*自訂的 .css* ，並將其與 *.css*結合在*網站. 最小 .css*檔案中，請新增*bundleconfig.json*的相對路徑：
+若要縮小*自訂的 .css* ，並將*它與 .css 結合在**網站. 最小的 .css*檔案中，請將相對路徑新增至*bundleconfig.js*：
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/bundleconfig2.json?highlight=6)]
 
@@ -157,20 +159,20 @@ MVC 和 Razor Pages 專案範本提供了一種解決方案，可讓您以 JSON 
 
 ::: moniker-end
 
-## <a name="consume-bundleconfigjson-from-gulp"></a>使用 Gulp 的 bundleconfig.json
+## <a name="consume-bundleconfigjson-from-gulp"></a>從 Gulp 取用 bundleconfig.js
 
 在某些情況下，應用程式的捆綁與縮制工作流程需要額外的處理。 範例包括影像優化、快取破壞和 CDN 資產處理。 若要滿足這些需求，您可以將包裝和縮制工作流程轉換為使用 Gulp。
 
 ### <a name="manually-convert-the-bundling-and-minification-workflow-to-use-gulp"></a>手動將配套與縮制工作流程轉換為使用 Gulp
 
-將包含下列的*package. json*檔案新增 `devDependencies` 至專案根目錄：
+使用下列內容將*package.js*新增 `devDependencies` 至專案根目錄：
 
 > [!WARNING]
 > `gulp-uglify`模組不支援 ECMAScript （ES） 2015/ES6 和更新版本。 安裝[gulp-terser](https://www.npmjs.com/package/gulp-terser) ，而不是 `gulp-uglify` 使用 ES2015/ES6 或更新版本。
 
 [!code-json[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/package.json?range=5-13)]
 
-藉由在與 package 相同的層級執行下列命令來安裝相依性 *。 json*：
+在與package.js的相同層級*上*執行下列命令，以安裝相依性：
 
 ```console
 npm i
@@ -182,7 +184,7 @@ npm i
 npm i -g gulp-cli
 ```
 
-將下列*gulpfile.js*複製到專案根目錄：
+將下列*gulpfile.js*檔案複製到專案根目錄：
 
 [!code-javascript[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/gulpfile.js?range=1-11,14-)]
 

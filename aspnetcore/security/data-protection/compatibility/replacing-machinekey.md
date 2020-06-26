@@ -6,39 +6,41 @@ ms.author: riande
 ms.date: 04/06/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/data-protection/compatibility/replacing-machinekey
-ms.openlocfilehash: 72e736f820ec243a7ad1461fc70e2711ac8b76ee
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: db041ab4939fc7c39ac01cc02e350aca2fbee93e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777458"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400540"
 ---
 # <a name="replace-the-aspnet-machinekey-in-aspnet-core"></a>取代中的 ASP.NET machineKey ASP.NET Core
 
 <a name="compatibility-replacing-machinekey"></a>
 
-ASP.NET 中`<machineKey>`元素的實作為[可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分的呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制（包括新的資料保護系統）來路由傳送。
+`<machineKey>`ASP.NET 中元素的實作為[可取代](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)。 這可讓大部分的呼叫 ASP.NET 密碼編譯常式，以透過取代資料保護機制（包括新的資料保護系統）來路由傳送。
 
 ## <a name="package-installation"></a>套件安裝
 
 > [!NOTE]
 > 新的資料保護系統只能安裝到以 .NET 4.5.1 或更新版本為目標的現有 ASP.NET 應用程式。 如果應用程式是以 .NET 4.5 或更低版本為目標，安裝將會失敗。
 
-若要將新的資料保護系統安裝到現有的 ASP.NET 4.5.1 + 專案，請安裝 AspNetCore. DataProtection. SystemWeb 套件。 這會使用[預設](xref:security/data-protection/configuration/default-settings)的設定來將資料保護系統具現化。
+若要將新的資料保護系統安裝到現有的 ASP.NET 4.5.1 + 專案，請安裝套件 Microsoft.AspNetCore.DataProtection.SystemWeb。 這會使用[預設](xref:security/data-protection/configuration/default-settings)的設定來將資料保護系統具現化。
 
-當您安裝套件時，它會在*web.config*中插入一行，告訴 ASP.NET 將它用於大部分的[密碼編譯作業](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)，包括表單驗證、檢視狀態和 MachineKey 的呼叫。 插入的程式程式碼會如下所示。
+當您安裝套件時，它會在*Web.config*中插入一行，告訴 ASP.NET 將它用於[大部分的密碼編譯作業](https://blogs.msdn.microsoft.com/webdev/2012/10/23/cryptographic-improvements-in-asp-net-4-5-pt-2/)，包括表單驗證、檢視狀態和 MachineKey 的呼叫。 插入的程式程式碼會如下所示。
 
 ```xml
 <machineKey compatibilityMode="Framework45" dataProtectorType="..." />
 ```
 
 >[!TIP]
-> 您可以檢查之類`__VIEWSTATE`的欄位（如下列範例所示），以判斷新的資料保護系統是否作用中。 "CfDJ8" 是神奇 "09 F0 C9 F0" 標頭的 base64 標記法，可識別資料保護系統所保護的承載。
+> 您可以檢查之類的欄位 `__VIEWSTATE` （如下列範例所示），以判斷新的資料保護系統是否作用中。 "CfDJ8" 是神奇 "09 F0 C9 F0" 標頭的 base64 標記法，可識別資料保護系統所保護的承載。
 
 ```html
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="CfDJ8AWPr2EQPTBGs3L2GCZOpk...">
@@ -73,9 +75,9 @@ namespace DataProtectionDemo
 ```
 
 >[!TIP]
-> 您也可以使用`<machineKey applicationName="my-app" ... />`來取代對 SetApplicationName 的明確呼叫。 這是一種便利的機制，如果他們想要設定的是應用程式名稱，就可以避免強制開發人員建立 DataProtectionStartup 衍生的型別。
+> 您也可以使用 `<machineKey applicationName="my-app" ... />` 來取代對 SetApplicationName 的明確呼叫。 這是一種便利的機制，如果他們想要設定的是應用程式名稱，就可以避免強制開發人員建立 DataProtectionStartup 衍生的型別。
 
-若要啟用此自訂設定，請回到 web.config 並尋找封裝安裝新增`<appSettings>`至設定檔的元素。 它看起來會像下面這樣的標記：
+若要啟用此自訂設定，請回到 Web.config 並尋找 `<appSettings>` 封裝安裝新增至設定檔的專案。 它看起來會像下面這樣的標記：
 
 ```xml
 <appSettings>

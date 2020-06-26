@@ -7,17 +7,19 @@ ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: d9cd3a74c35d531b5e8c91fc7f922b0cdf8e9558
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 45aabc644fbeaeaa31d534877ba93cb0611f3f34
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773506"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401333"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 新增排序、篩選和分頁 ASP.NET MVC
 
@@ -37,7 +39,7 @@ ms.locfileid: "82773506"
 > * 新增分頁連結
 > * 建立 [關於] 頁面
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [實作 CRUD 功能](crud.md)
 
@@ -47,7 +49,7 @@ ms.locfileid: "82773506"
 
 ### <a name="add-sorting-functionality-to-the-index-method"></a>將排序功能新增至 Index 方法
 
-在*StudentsController.cs*中，將`Index`方法取代為下列程式碼：
+在*StudentsController.cs*中，將 `Index` 方法取代為下列程式碼：
 
 [!code-csharp[](intro/samples/cu/Controllers/StudentsController.cs?name=snippet_SortOnly)]
 
@@ -97,9 +99,9 @@ ms.locfileid: "82773506"
 您已將 `searchString` 參數新增至 `Index` 方法。 從將新增至 [索引] 檢視的文字方塊中接收搜尋字串值。 您也已在 LINQ 陳述式中新增 where 子句，該子句只會選取其名字或姓氏包含搜尋字串的學生。 唯有當具有要搜尋的值時，才會執行新增 where 子句的陳述式。
 
 > [!NOTE]
-> 在這裡，您可以在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選將會在伺服器上處理。 在某些情況下，您可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 （例如，假設您將參考變更為`_context.Students` ，而不是使用 EF `DbSet` ，而是參考會傳回`IEnumerable`集合的存放庫方法）。結果通常會相同，但在某些情況下可能會不同。
+> 在這裡，您可以在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選將會在伺服器上處理。 在某些情況下，您可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 （例如，假設您將參考變更為， `_context.Students` 而不是使用 EF，而是 `DbSet` 參考會傳回集合的存放庫方法 `IEnumerable` ）。結果通常會相同，但在某些情況下可能會不同。
 >
->例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法，使測試明確地不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。 （當您在`Contains` `IEnumerable`集合上呼叫方法時，會取得 .NET Framework 的實值; 當您在`IQueryable`物件上呼叫它時，您會取得資料庫提供者的執行）。不過，此解決方案的效能會有負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
+>例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法，使測試明確地不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。 （當您在 `Contains` 集合上呼叫方法時 `IEnumerable` ，會取得 .NET Framework 的實值; 當您在物件上呼叫它時 `IQueryable` ，您會取得資料庫提供者的執行）。不過，此解決方案的效能會有負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>將搜尋方塊新增至學生的 [索引] 檢視
 

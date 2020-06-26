@@ -8,17 +8,19 @@ ms.date: 02/04/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 51334370b07709a773f6acd18d302f8b3ea88290
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 0be63811874709db95285f4013e47bc1706050b1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773584"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401476"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 來執行 CRUD 功能-ASP.NET MVC
 
@@ -36,7 +38,7 @@ ms.locfileid: "82773584"
 > * 更新 [刪除] 頁面
 > * 關閉資料庫連線
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [開始使用 EF Core 和 ASP.NET Core MVC](intro.md)
 
@@ -70,7 +72,7 @@ URL 最後的部分 ("?courseID=2021") 為查詢字串的值。 模型繫結器�
 http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 ```
 
-在 [索引] 頁面中，超連結 Url 是由Razor視圖中的標記協助程式語句所建立。 在下列Razor程式碼中， `id`參數符合預設路由，因此`id`會加入至路由資料。
+在 [索引] 頁面中，超連結 Url 是由視圖中的標記協助程式語句所建立 Razor 。 在下列程式 Razor 代碼中， `id` 參數符合預設路由，因此 `id` 會加入至路由資料。
 
 ```html
 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
@@ -82,7 +84,7 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 <a href="/Students/Edit/6">Edit</a>
 ```
 
-在下列Razor程式碼中`studentID` ，不符合預設路由中的參數，因此會新增為查詢字串。
+在下列程式 Razor 代碼中， `studentID` 不符合預設路由中的參數，因此會新增為查詢字串。
 
 ```html
 <a asp-action="Edit" asp-route-studentID="@item.ID">Edit</a>
@@ -157,7 +159,7 @@ public class Student
 
 ### <a name="test-the-create-page"></a>測試 [建立] 頁面
 
-*Views/student/Create. cshtml*中的程式碼`label`會`input`針對每`span`個欄位使用、和（適用于驗證訊息）標記協助程式。
+*Views/student/Create. cshtml*中的程式碼 `label` 會 `input` `span` 針對每個欄位使用、和（適用于驗證訊息）標記協助程式。
 
 執行應用程式，選取 [Students]**** 索引標籤，然後按一下 [新建]****。
 

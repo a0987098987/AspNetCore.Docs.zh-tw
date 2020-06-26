@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: performance/caching/middleware
-ms.openlocfilehash: 93ac4e7e159f2b1f031e48a44c2297a741ba7b1c
-ms.sourcegitcommit: 5e462c3328c70f95969d02adce9c71592049f54c
+ms.openlocfilehash: 0d13c44b5538f617343a89a441856d4a3f0cc7f1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85292642"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399942"
 ---
 # <a name="response-caching-middleware-in-aspnet-core"></a>ASP.NET Core 中的回應快取中介軟體
 
@@ -65,7 +67,7 @@ ms.locfileid: "85292642"
 
 回應快取選項如下表所示。
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 |
@@ -209,7 +211,7 @@ if (responseCachingFeature != null)
 
 回應快取選項如下表所示。
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.MaximumBodySize> | 回應主體的最大可快取大小（以位元組為單位）。 預設值為 `64 * 1024 * 1024` （64 MB）。 |
 | <xref:Microsoft.AspNetCore.ResponseCaching.ResponseCachingOptions.SizeLimit> | 回應快取中介軟體的大小限制（以位元組為單位）。 預設值為 `100 * 1024 * 1024` （100 MB）。 |

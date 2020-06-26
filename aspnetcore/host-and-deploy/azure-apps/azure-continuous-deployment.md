@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/06/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/azure-apps/azure-continuous-deployment
-ms.openlocfilehash: 0b9f5f15403c7d18d68a41baa2a59582cf039f44
-ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
+ms.openlocfilehash: 97da88b6fb79944d99b69c92eb611dd0e4e39454
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82850561"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400163"
 ---
 # <a name="continuous-deployment-to-azure-with-visual-studio-and-git-with-aspnet-core"></a>搭配 ASP.NET Core 使用 Visual Studio 與 Git 持續部署至 Azure
 
@@ -32,7 +34,7 @@ ms.locfileid: "82850561"
 > [!NOTE]
 > 若要完成本教學課程，您需要 Microsoft Azure 帳戶。 若要取得帳戶，請[啟動 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A261C142F)或[註冊免費試用](https://azure.microsoft.com/free/dotnet/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您已安裝下列軟體：
 
@@ -88,7 +90,7 @@ ms.locfileid: "82850561"
 
    此外，請在 [Web 應用程式]**** 刀鋒視窗中，選取現有的 [App Service 方案/位置]**** 或另外新建一個。 如果要建立新的方案，請選取定價層、位置和其他選項。 如需 App Service 方案的詳細資訊，請參閱 [Azure App Service 方案深入概觀](/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)。
 
-1. 選取 [建立]。 Azure 將會開始佈建並啟動 Web 應用程式。
+1. 選取 [建立]****。 Azure 將會開始佈建並啟動 Web 應用程式。
 
    ![Azure 入口網站：範例 Web 應用程式示範 01 [基本資訊] 刀鋒視窗](azure-continuous-deployment/_static/07-azure-webappblade.png)
 
@@ -106,13 +108,13 @@ Git 是一種分散式版本控制系統，可用來部署 Azure App Service Web
 
    ![[設定] 刀鋒視窗：[部署來源] 刀鋒視窗：[選擇來源] 刀鋒視窗](azure-continuous-deployment/_static/deployment-options.png)
 
-1. 選取 [確定]。
+1. 選取 [確定]****。
 
 1. 如果尚未設定發行 Web 應用程式或其他 App Service 應用程式所需的部署認證，請立即設定：
 
    * 選取 [**設定**] [  >  **部署認證**]。 [設定部署認證]**** 刀鋒視窗隨即顯示。
    * 建立使用者名稱和密碼。 儲存該密碼，以於日後設定 Git 時使用。
-   * 選取 [儲存]。
+   * 選取 [儲存]****。
 
 1. 在 [Web 應用程式]**** 刀鋒視窗中，選取 [設定]**** > [屬性]****。 [GIT URL]**** 下方會顯示作為部署目的地遠端 Git 存放庫的 URL。
 

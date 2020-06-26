@@ -6,23 +6,25 @@ ms.author: riande
 ms.date: 03/27/2017
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/index
-ms.openlocfilehash: 8e32f8261ebd33af035990e68031e3bf2719761d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: b04df04029a6afcc21b449ea0f1d60fb445df1cc
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773558"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400501"
 ---
 # <a name="aspnet-core-mvc-with-ef-core---tutorial-series"></a>ASP.NET Core MVC 與 EF Core - 教學課程系列
 
 ::: moniker range=">= aspnetcore-3.0"
 
-此教學課程**尚未**升級至 ASP.NET Core 3.0。 頁面版本已更新。 [ Razor ](xref:data/ef-rp/intro) 如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/13920) \(英文\)。
+此教學課程**尚未**升級至 ASP.NET Core 3.0。 [ Razor 頁面版本](xref:data/ef-rp/intro)已更新。 如需何時可能更新此資訊的詳細資訊，請參閱[此 GitHub 問題](https://github.com/dotnet/AspNetCore.Docs/issues/13920) \(英文\)。
 
 ::: moniker-end
 
@@ -37,4 +39,4 @@ ms.locfileid: "82773558"
 1. [更新相關資料](xref:data/ef-mvc/update-related-data)
 1. [處理並行衝突](xref:data/ef-mvc/concurrency)
 1. [繼承](xref:data/ef-mvc/inheritance)
-1. [進階主題](xref:data/ef-mvc/advanced)
+1. [Advanced 主題](xref:data/ef-mvc/advanced)

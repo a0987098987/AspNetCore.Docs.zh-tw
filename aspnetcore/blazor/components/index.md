@@ -5,20 +5,22 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/11/2020
+ms.date: 06/25/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: e1778d865edcfed8f5f45f4f53a57f1b3a3bd9aa
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 02e3f7f5442a5abde0b13b7bba14d9d0f29c1de7
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242430"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399084"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -47,7 +49,7 @@ Razor應用程式中的元件會 Blazor 廣泛使用 Razor 語法。 如果您�
 
 ### <a name="routing"></a>路由
 
-中的路由 Blazor 會藉由提供路由範本給應用程式中每個可存取的元件來達成。 當編譯具有指示詞的檔案時 Razor [`@page`][9] ，系統會指定路由範本給產生的類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 。 在執行時間，路由器會尋找具有的元件類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> ，並轉譯哪個元件具有符合所要求 URL 的路由範本。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/routing>。
+中的路由 Blazor 會藉由提供路由範本給應用程式中每個可存取的元件來達成。 當編譯具有指示詞的檔案時 Razor [`@page`][9] ，系統會指定路由範本給產生的類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> 。 在執行時間，路由器會尋找具有的元件類別 <xref:Microsoft.AspNetCore.Mvc.RouteAttribute> ，並轉譯哪個元件具有符合所要求 URL 的路由範本。 如需詳細資訊，請參閱 <xref:blazor/fundamentals/routing> 。
 
 ```razor
 @page "/ParentComponent"
@@ -427,11 +429,24 @@ public IDictionary<string, object> AdditionalAttributes { get; set; }
 > [!NOTE]
 > 請勿**使用元件**參考來改變子元件的狀態。 請改用一般宣告式參數，將資料傳遞至子元件。 使用一般宣告式參數會導致子元件自動 rerender 正確的時間。
 
-## <a name="invoke-component-methods-externally-to-update-state"></a>在外部叫用元件方法來更新狀態
+## <a name="synchronization-context"></a>同步處理內容
 
 Blazor會使用同步處理內容（ <xref:System.Threading.SynchronizationContext> ）來強制執行單一邏輯執行緒。 元件的[生命週期方法](xref:blazor/components/lifecycle)和所引發的任何事件回呼 Blazor 都會在同步處理內容上執行。
 
-Blazor伺服器的同步處理內容會嘗試模擬單一執行緒環境，讓它與瀏覽器中的 WebAssembly 模型（單一執行緒）緊密相符。 在任何指定的時間點，只會在一個執行緒上執行工作，以提供單一邏輯執行緒的印象。 不會同時執行兩個作業。
+Blazor Server的同步處理內容會嘗試模擬單一執行緒環境，讓它與瀏覽器中的 WebAssembly 模型（單一執行緒）緊密相符。 在任何指定的時間點，只會在一個執行緒上執行工作，以提供單一邏輯執行緒的印象。 不會同時執行兩個作業。
+
+### <a name="avoid-thread-blocking-calls"></a>避免執行緒封鎖呼叫
+
+一般而言，請勿呼叫下列方法。 下列方法會封鎖執行緒，因此會封鎖應用程式繼續工作，直到基礎 <xref:System.Threading.Tasks.Task> 完成為止：
+
+* <xref:System.Threading.Tasks.Task%601.Result%2A>
+* <xref:System.Threading.Tasks.Task.Wait%2A>
+* <xref:System.Threading.Tasks.Task.WaitAny%2A>
+* <xref:System.Threading.Tasks.Task.WaitAll%2A>
+* <xref:System.Threading.Thread.Sleep%2A>
+* <xref:System.Runtime.CompilerServices.TaskAwaiter.GetResult%2A>
+
+### <a name="invoke-component-methods-externally-to-update-state"></a>在外部叫用元件方法來更新狀態
 
 在事件中，必須根據外來事件（例如計時器或其他通知）來更新元件，請使用 `InvokeAsync` 方法，這會分派至 Blazor 的同步處理內容。 例如，假設有一個通知程式*服務*可通知任何處于已更新狀態的「接聽」元件：
 
@@ -453,13 +468,13 @@ public class NotifierService
 
 將註冊 `NotifierService` 為 singletion：
 
-* 在 Blazor WebAssembly 中，于中註冊服務 `Program.Main` ：
+* 在中，于中 Blazor WebAssembly 註冊服務 `Program.Main` ：
 
   ```csharp
   builder.Services.AddSingleton<NotifierService>();
   ```
 
-* 在 [伺服器] 中 Blazor ，于註冊服務 `Startup.ConfigureServices` ：
+* 在中，于中 Blazor Server 註冊服務 `Startup.ConfigureServices` ：
 
   ```csharp
   services.AddScoped<NotifierService>();
@@ -703,7 +718,7 @@ HTML 專案屬性會根據 .NET 值有條件地呈現。 如果值為 `false` �
 <input type="checkbox" />
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/razor>。
+如需詳細資訊，請參閱 <xref:mvc/views/razor> 。
 
 > [!WARNING]
 > 當 .NET 類型為時，某些 HTML 屬性（例如 [`aria-pressed`](https://developer.mozilla.org/docs/Web/Accessibility/ARIA/Roles/button_role#Toggle_buttons) ）無法正常運作 `bool` 。 在這些情況下，請使用型別， `string` 而不是 `bool` 。
@@ -798,7 +813,7 @@ Razor元件**不**支援波形符-斜線標記法（ `~/` ）。
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:blazor/security/server/threat-mitigation>：包含有關建立 Blazor 伺服器應用程式的指導方針，這些服務必須與資源耗盡有關。
+* <xref:blazor/security/server/threat-mitigation>：包含有關建立 Blazor Server 應用程式的指導方針，必須對抗資源耗盡。
 
 <!--Reference links in article-->
 [1]: <xref:mvc/views/razor#code>

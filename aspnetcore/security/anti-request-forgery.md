@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/anti-request-forgery
-ms.openlocfilehash: 89a7a12c943933f745793eeccb4f3d2e4856063f
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 0ec9aa5f2e1c9d439bbea2ac15ffb50b3e42daca
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105905"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399331"
 ---
 # <a name="prevent-cross-site-request-forgery-xsrfcsrf-attacks-in-aspnet-core"></a>防止 ASP.NET Core 中的跨網站要求偽造（XSRF/CSRF）攻擊
 
@@ -216,7 +218,7 @@ services.AddAntiforgery(options =>
 
 &dagger;`Cookie`使用[CookieBuilder](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder)類別的屬性來設定 antiforgery 屬性。
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 決定用來建立 antiforgery cookie 的設定。 |
 | [FormFieldName](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.formfieldname) | Antiforgery 系統用來轉譯 views 中 antiforgery 標記的隱藏表單欄位名稱。 |
@@ -240,7 +242,7 @@ services.AddAntiforgery(options =>
 });
 ```
 
-| 選項 | 描述 |
+| 選項 | 說明 |
 | ------ | ----------- |
 | [Cookie](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookie) | 決定用來建立 antiforgery cookie 的設定。 |
 | [CookieDomain](/dotnet/api/microsoft.aspnetcore.antiforgery.antiforgeryoptions.cookiedomain) | Cookie 的網域值。 預設為 `null`。 這個屬性已經過時，將在未來的版本中移除。 建議的替代做法是 [Cookie. 網域]。 |

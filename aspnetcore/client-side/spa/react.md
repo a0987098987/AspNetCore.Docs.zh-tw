@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 03/07/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: spa/react
-ms.openlocfilehash: 1dd352f1a00d30df915fe1936d7dcb34af1b6634
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: d5185a80895423bdd60309509ab4d1dad4dad12f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773672"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401723"
 ---
 # <a name="use-the-react-project-template-with-aspnet-core"></a>React 專案範本與 ASP.NET Core 搭配使用
 
@@ -26,7 +28,7 @@ ms.locfileid: "82773672"
 
 這個範本相當於建立一個 ASP.NET Core 專案作為 API 後端，以及建立一個標準 CRA React 專案作為 UI，但是可以將這兩個專案裝載至單一應用程式專案中，這樣便可視為一個整體進行建置與發行。
 
-[回應] 專案範本不是用於伺服器端轉譯（SSR）。 針對具有回應和 node.js 的 SSR，請考慮使用[Next .js](https://github.com/zeit/next.js/)或[Razzle](https://github.com/jaredpalmer/razzle)。
+[回應] 專案範本不是用於伺服器端轉譯（SSR）。 針對具有反應和 Node.js 的 SSR，請考慮[Next.js](https://github.com/zeit/next.js/)或[Razzle](https://github.com/jaredpalmer/razzle)。
 
 ## <a name="create-a-new-app"></a>建立新的應用程式
 
@@ -86,7 +88,7 @@ npm install --save <package_name>
 
 專案已設定為：當 ASP.NET Core 應用程式在開發模式中啟動時，便在背景啟動它自己的 CRA 程式開發伺服器執行個體。 因為這表示您不需要手動執行不同的伺服器，所以省了不少麻煩。
 
-此預設設定有一個缺點。 每當您修改 C# 程式碼後，需要重新啟動 ASP.NET Core 應用程式，CRA 伺服器才會重新啟動。 大約幾秒鐘時間，才會開始備份。 如果您經常編輯 C# 程式碼，且不想要等候 CRA 伺服器重新啟動，可以在外部執行 CRA 伺服器，與 ASP.NET Core 程序獨立開來。 操作方法：
+此預設設定有一個缺點。 每當您修改 C# 程式碼後，需要重新啟動 ASP.NET Core 應用程式，CRA 伺服器才會重新啟動。 大約幾秒鐘時間，才會開始備份。 如果您經常編輯 C# 程式碼，且不想要等候 CRA 伺服器重新啟動，可以在外部執行 CRA 伺服器，與 ASP.NET Core 程序獨立開來。 若要這樣做：
 
 1. 使用下列設定，將*env*檔案新增至*ClientApp*子目錄：
 

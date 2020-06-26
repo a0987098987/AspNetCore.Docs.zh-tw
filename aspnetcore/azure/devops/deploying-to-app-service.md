@@ -7,17 +7,19 @@ ms.custom: mvc, seodec18
 ms.date: 10/24/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: azure/devops/deploy-to-app-service
-ms.openlocfilehash: 811b6d047e344fa98ce14f436d3cd8f03c786aff
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 7cf6395b6f57413d85532ed15e5a875af10f905b
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767027"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400384"
 ---
 # <a name="deploy-an-app-to-app-service"></a>將應用程式部署至 App Service
 
@@ -35,13 +37,13 @@ ms.locfileid: "82767027"
 
 ## <a name="download-and-test-the-app"></a>下載並測試應用程式
 
-本指南中使用的應用程式是預先建立的 ASP.NET Core 應用程式、簡單的摘要[讀取器](https://github.com/Azure-Samples/simple-feed-reader/)。 它是Razor頁面應用程式，使用`Microsoft.SyndicationFeed.ReaderWriter` API 來抓取 RSS/Atom 摘要，並將新聞專案顯示在清單中。
+本指南中使用的應用程式是預先建立的 ASP.NET Core 應用程式、簡單的摘要[讀取器](https://github.com/Azure-Samples/simple-feed-reader/)。 它是 Razor 頁面應用程式，使用 `Microsoft.SyndicationFeed.ReaderWriter` API 來抓取 RSS/Atom 摘要，並將新聞專案顯示在清單中。
 
 您可以自由地檢查程式碼，但請務必瞭解，這不是關於此應用程式的任何特殊資訊。 這只是一個簡單的 ASP.NET Core 應用程式，供說明之用。
 
 從命令 shell 下載程式代碼、建立專案，然後如下所示執行。
 
-> *注意： Linux/macOS 使用者應該對路徑進行適當的變更，例如，使用正斜線（`/`），而不是反`\`斜杠（）。*
+> *注意： Linux/macOS 使用者應該對路徑進行適當的變更，例如，使用正斜線（ `/` ），而不是反斜線（ `\` ）。*
 
 1. 將程式碼複製到本機電腦上的資料夾。
 
@@ -73,7 +75,7 @@ ms.locfileid: "82767027"
 
      ![顯示 RSS 摘要內容的應用程式](./media/deploying-to-app-service/app-in-browser.png)
 
-6. 當您滿意應用程式正常運作後，請在命令介面中按**Ctrl**+**C**來將它關閉。
+6. 當您滿意應用程式正常運作後，請在命令介面中按**Ctrl**C 來將它關閉 + **C** 。
 
 ## <a name="create-the-azure-app-service-web-app"></a>建立 Azure App Service Web 應用程式
 
@@ -83,7 +85,7 @@ ms.locfileid: "82767027"
 
 2. 請使用 Cloud Shell 來執行下列步驟。
 
-    a. 宣告變數以儲存 web 應用程式的名稱。 名稱必須是唯一的，才能在預設 URL 中使用。 使用`$RANDOM` Bash 函式來建立名稱保證唯一性，並產生格式`webappname99999`。
+    a. 宣告變數以儲存 web 應用程式的名稱。 名稱必須是唯一的，才能在預設 URL 中使用。 使用 Bash 函式 `$RANDOM` 來建立名稱保證唯一性，並產生格式 `webappname99999` 。
 
     ```console
     webappname=mywebapp$RANDOM
@@ -95,7 +97,7 @@ ms.locfileid: "82767027"
     az group create --location centralus --name AzureTutorial
     ```
 
-    `az`命令會叫用[Azure CLI](/cli/azure/)。 CLI 可以在本機執行，但在 Cloud Shell 中使用會節省時間和設定。
+    命令會叫用 `az` [Azure CLI](/cli/azure/)。 CLI 可以在本機執行，但在 Cloud Shell 中使用會節省時間和設定。
 
     c. 在 S1 層中建立 App Service 計畫。 App Service 計畫是共用相同定價層的 web 應用程式群組。 S1 層不是免費的，但它是預備位置功能的必要項。
 
@@ -127,7 +129,7 @@ ms.locfileid: "82767027"
     echo Web app URL: http://$webappname.azurewebsites.net
     ```
 
-3. 在您的本機電腦上使用命令 shell，流覽至 web 應用程式的專案資料夾（例如`.\simple-feed-reader\SimpleFeedReader`）。 執行下列命令來設定 Git 以推送至部署 URL：
+3. 在您的本機電腦上使用命令 shell，流覽至 web 應用程式的專案資料夾（例如 `.\simple-feed-reader\SimpleFeedReader` ）。 執行下列命令來設定 Git 以推送至部署 URL：
 
     a. 將遠端 URL 新增至本機存放庫。
 
@@ -143,27 +145,27 @@ ms.locfileid: "82767027"
 
     系統會提示您輸入稍早建立的部署認證。 觀察命令 shell 中的輸出。 Azure 會從遠端建立 ASP.NET Core 應用程式。
 
-4. 在瀏覽器中，流覽至*Web 應用程式 URL* ，並記下已建立並部署應用程式。 您可以使用`git commit`，將其他變更認可至本機 Git 存放庫。 這些變更會使用上述`git push`命令推送至 Azure。
+4. 在瀏覽器中，流覽至*Web 應用程式 URL* ，並記下已建立並部署應用程式。 您可以使用，將其他變更認可至本機 Git 存放庫 `git commit` 。 這些變更會使用上述命令推送至 Azure `git push` 。
 
 ## <a name="deployment-with-visual-studio"></a>使用 Visual Studio 部署
 
-> *注意：本節僅適用于 Windows。Linux 和 macOS 使用者應該進行下列步驟2所述的變更。儲存檔案，並使用`git commit`將變更認可至本機存放庫。最後，使用`git push`推送變更，如第一節所示。*
+> *注意：本節僅適用于 Windows。Linux 和 macOS 使用者應該進行下列步驟2所述的變更。儲存檔案，並使用將變更認可至本機存放庫 `git commit` 。最後，使用推送變更 `git push` ，如第一節所示。*
 
 已從命令 shell 部署應用程式。 讓我們使用 Visual Studio 的整合式工具，將更新部署到應用程式。 在幕後，Visual Studio 完成與命令列工具相同的工作，但在 Visual Studio 的熟悉 UI 中。
 
 1. 在 Visual Studio 中開啟*SimpleFeedReader* 。
 2. 在方案總管中，開啟*Pages\Index.cshtml*。 將 `<h2>Simple Feed Reader</h2>` 變更為 `<h2>Simple Feed Reader - V2</h2>`。
-3. 按**Ctrl**+**Shift**+**B**來建立應用程式。
+3. 按**Ctrl** + **Shift** + **B**來建立應用程式。
 4. 在方案總管中，以滑鼠右鍵按一下專案，然後按一下 [**發佈**]。
 
     ![顯示以滑鼠右鍵按一下、發佈的螢幕擷取畫面](./media/deploying-to-app-service/publish.png)
 5. Visual Studio 可以建立新的 App Service 資源，但此更新將會透過現有部署發行。 在 [**挑選發行目標**] 對話方塊中，從左側清單中選取 [ **App Service** ]，然後選取 [**選取現有**的]。 按一下 **[發行]**。
 6. 在 [ **App Service** ] 對話方塊中，確認用來建立 Azure 訂用帳戶的 Microsoft 或組織帳戶會顯示在右上方。 如果不是，請按一下下拉式並新增它。
-7. 確認已選取正確的 Azure**訂**用帳戶。 針對 [ **View**]，選取 [**資源群組**]。 展開 [ **AzureTutorial** ] 資源群組，然後選取現有的 web 應用程式。 按一下 [確定]  。
+7. 確認已選取正確的 Azure**訂**用帳戶。 針對 [ **View**]，選取 [**資源群組**]。 展開 [ **AzureTutorial** ] 資源群組，然後選取現有的 web 應用程式。 按一下 [確定]****。
 
     ![顯示 [發行 App Service] 對話方塊的螢幕擷取畫面](./media/deploying-to-app-service/publish-dialog.png)
 
-Visual Studio 建立應用程式並將其部署至 Azure。 流覽至 web 應用程式 URL。 `<h2>`驗證專案修改是否已上線。
+Visual Studio 建立應用程式並將其部署至 Azure。 流覽至 web 應用程式 URL。 驗證專案 `<h2>` 修改是否已上線。
 
 ![已變更標題的應用程式](./media/deploying-to-app-service/app-v2.png)
 
@@ -192,7 +194,7 @@ Visual Studio 建立應用程式並將其部署至 Azure。 流覽至 web 應用
     echo Staging web app URL: http://$webappname-staging.azurewebsites.net
     ```
 
-3. 在文字編輯器或 Visual Studio 中，再次修改*Pages/Index. cshtml* ，讓`<h2>`元素讀取`<h2>Simple Feed Reader - V3</h2>`並儲存檔案。
+3. 在文字編輯器或 Visual Studio 中，再次修改*Pages/Index. cshtml* ，讓 `<h2>` 元素讀取 `<h2>Simple Feed Reader - V3</h2>` 並儲存檔案。
 
 4. 使用 Visual Studio 的 [ *Team Explorer* ] 索引標籤中的 [**變更**] 頁面，或使用本機電腦的命令 shell 輸入下列內容，將檔案認可至本機 Git 存放庫：
 

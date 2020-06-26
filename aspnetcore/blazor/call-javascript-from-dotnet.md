@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: f39a1a3b78d8017738f83f4d191c7f11c7a6c9e6
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 8a2df6ca55985a1cff49abb09113e49bfeae6829
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242536"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400514"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>在 ASP.NET Core 中從 .NET 方法呼叫 JavaScript 函式Blazor
 
@@ -32,11 +34,11 @@ Blazor應用程式可以從 javascript 函數的 .net 方法和 .net 方法叫�
 
 若要從 .NET 呼叫 JavaScript，請使用 <xref:Microsoft.JSInterop.IJSRuntime> 抽象概念。 若要發出 JS interop 呼叫，請 <xref:Microsoft.JSInterop.IJSRuntime> 在您的元件中插入抽象概念。 <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A>取得您想要叫用之 JavaScript 函式的識別碼，以及任何數目的 JSON 可序列化引數。 函數識別碼相對於全域範圍（ `window` ）。 如果您想要呼叫 `window.someScope.someFunction` ，識別碼會是 `someScope.someFunction` 。 在呼叫函式之前，不需要先註冊函式。 傳回型別 `T` 也必須是 JSON 可序列化。 `T`應符合最佳對應至所傳回 JSON 類型的 .NET 類型。
 
-若為 Blazor 已啟用可呈現的伺服器應用程式，在初始的預入期間，不可能呼叫 JavaScript。 在建立與瀏覽器的連線之後，必須延後 JavaScript interop 呼叫。 如需詳細資訊，請參閱偵測[ Blazor 伺服器應用程式何時進行預呈現](#detect-when-a-blazor-server-app-is-prerendering)一節。
+對於 Blazor Server 已啟用已匯入功能的應用程式，在初始的預處理期間，不可能呼叫 JavaScript。 在建立與瀏覽器的連線之後，必須延後 JavaScript interop 呼叫。 如需詳細資訊，請參閱偵測[ Blazor Server 應用程式何時進行預呈現](#detect-when-a-blazor-server-app-is-prerendering)一節。
 
 下列範例是 [`TextDecoder`](https://developer.mozilla.org/docs/Web/API/TextDecoder) 以 JavaScript 為基礎的解碼器為基礎。 此範例示範如何從 c # 方法叫用 JavaScript 函式，將開發人員程式碼的需求卸載至現有的 JavaScript API。 JavaScript 函式會接受 c # 方法的位元組陣列、解碼陣列，然後將文字傳回給元件以供顯示。
 
-在 `<head>` `wwwroot/index.html` （ Blazor WebAssembly）或 `Pages/_Host.cshtml` （伺服器）的元素中 Blazor ，提供 JavaScript 函式， `TextDecoder` 以使用來解碼傳遞的陣列，並傳回解碼的值：
+在 `<head>` `wwwroot/index.html` （ Blazor WebAssembly ）或（）的元素中 `Pages/_Host.cshtml` Blazor Server ，提供 JavaScript 函式，用 `TextDecoder` 來解碼傳遞的陣列，並傳回解碼的值：
 
 [!code-html[](call-javascript-from-dotnet/samples_snapshot/index-script-convertarray.html)]
 
@@ -61,7 +63,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
   [!code-razor[](call-javascript-from-dotnet/samples_snapshot/inject-abstraction.razor?highlight=1)]
 
-  在 `<head>` `wwwroot/index.html` （ Blazor WebAssembly）或 `Pages/_Host.cshtml` （伺服器）的元素內 Blazor ，提供 `handleTickerChanged` JavaScript 函數。 呼叫函式時 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> ，不會傳回值：
+  在 `<head>` `wwwroot/index.html` （ Blazor WebAssembly ）或（）的元素內 `Pages/_Host.cshtml` Blazor Server ，提供 `handleTickerChanged` JavaScript 函數。 呼叫函式時 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> ，不會傳回值：
 
   [!code-html[](call-javascript-from-dotnet/samples_snapshot/index-script-handleTickerChanged1.html)]
 
@@ -69,7 +71,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
   [!code-csharp[](call-javascript-from-dotnet/samples_snapshot/inject-abstraction-class.cs?highlight=5)]
 
-  在 `<head>` `wwwroot/index.html` （ Blazor WebAssembly）或 `Pages/_Host.cshtml` （伺服器）的元素內 Blazor ，提供 `handleTickerChanged` JavaScript 函數。 使用呼叫函式 `JSRuntime.InvokeAsync` ，並傳回值：
+  在 `<head>` `wwwroot/index.html` （ Blazor WebAssembly ）或（）的元素內 `Pages/_Host.cshtml` Blazor Server ，提供 `handleTickerChanged` JavaScript 函數。 使用呼叫函式 `JSRuntime.InvokeAsync` ，並傳回值：
 
   [!code-html[](call-javascript-from-dotnet/samples_snapshot/index-script-handleTickerChanged2.html)]
 
@@ -89,13 +91,13 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 [!code-javascript[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/exampleJsInterop.js?highlight=2-7)]
 
-將 `<script>` 參考 JavaScript 檔案的標記放在檔案 `wwwroot/index.html` （ Blazor WebAssembly）或檔案 `Pages/_Host.cshtml` （ Blazor 伺服器）中。
+將 `<script>` 參考 JavaScript 檔案的標記放在檔案 `wwwroot/index.html` （ Blazor WebAssembly ）或檔案 `Pages/_Host.cshtml` （）中 Blazor Server 。
 
-`wwwroot/index.html`（ Blazor WebAssembly）：
+`wwwroot/index.html` (Blazor WebAssembly):
 
 [!code-html[](./common/samples/3.x/BlazorWebAssemblySample/wwwroot/index.html?highlight=22)]
 
-`Pages/_Host.cshtml`（ Blazor 伺服器）：
+`Pages/_Host.cshtml` (Blazor Server):
 
 [!code-cshtml[](./common/samples/3.x/BlazorServerSample/Pages/_Host.cshtml?highlight=35)]
 
@@ -103,7 +105,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 .NET 方法會藉由呼叫，與檔案中的 JavaScript 函式進行 interop `exampleJsInterop.js` <xref:Microsoft.JSInterop.IJSRuntime.InvokeAsync%2A?displayProperty=nameWithType> 。
 
-<xref:Microsoft.JSInterop.IJSRuntime>抽象概念是非同步，允許 Blazor 伺服器案例。 如果應用程式是 Blazor WebAssembly 應用程式，而且您想要以同步方式叫用 JavaScript 函式，請改為向下轉換 <xref:Microsoft.JSInterop.IJSInProcessRuntime> 並呼叫 <xref:Microsoft.JSInterop.IJSInProcessRuntime.Invoke%2A> 。 我們建議大部分的 JS interop 程式庫都使用非同步 Api，以確保所有案例中都有可用的程式庫。
+<xref:Microsoft.JSInterop.IJSRuntime>抽象概念是非同步，以允許 Blazor Server 案例。 如果應用程式是 Blazor WebAssembly 應用程式，而且您想要以同步方式叫用 JavaScript 函式，請改為向下轉換 <xref:Microsoft.JSInterop.IJSInProcessRuntime> 並呼叫 <xref:Microsoft.JSInterop.IJSInProcessRuntime.Invoke%2A> 。 我們建議大部分的 JS interop 程式庫都使用非同步 Api，以確保所有案例中都有可用的程式庫。
 
 範例應用程式包含一個可示範 JS interop 的元件。 元件：
 
@@ -150,7 +152,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 會使用呼叫傳回[void （0）/void 0](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Operators/void)或[undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined)的 JavaScript 函數 <xref:Microsoft.JSInterop.JSRuntimeExtensions.InvokeVoidAsync%2A?displayProperty=nameWithType> 。
 
-## <a name="detect-when-a-blazor-server-app-is-prerendering"></a>偵測 Blazor 伺服器應用程式何時已進行預呈現
+## <a name="detect-when-a-blazor-server-app-is-prerendering"></a>偵測 Blazor Server 應用程式何時已進行預呈現
  
 [!INCLUDE[](~/includes/blazor-prerendering.md)]
 
@@ -443,7 +445,7 @@ namespace BlazorSample.Shared
 
 ## <a name="harden-js-interop-calls"></a>強化 JS interop 呼叫
 
-JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。 根據預設， Blazor 伺服器應用程式會在一分鐘之後，將伺服器上的 JS interop 呼叫數倍。 如果應用程式可以容忍更積極的超時時間，請使用下列其中一種方法來設定超時時間：
+JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。 根據預設， Blazor Server 應用程式會在一分鐘後呼叫伺服器上的 JS interop。 如果應用程式可以容忍更積極的超時時間，請使用下列其中一種方法來設定超時時間：
 
 * 全域在中 `Startup.ConfigureServices` ，指定 [超時]：
 
@@ -479,4 +481,4 @@ JS interop 可能會因為網路錯誤而失敗，而且應該視為不可靠。
 
 * <xref:blazor/call-dotnet-from-javascript>
 * [InteropComponent razor 範例（dotnet/AspNetCore GitHub 存放庫，3.1 發行分支）](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Components/test/testassets/BasicTestApp/InteropComponent.razor)
-* [在伺服器應用程式中執行大型資料傳輸 Blazor](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)
+* [在應用程式中執行大型資料傳輸 Blazor Server](xref:blazor/advanced-scenarios#perform-large-data-transfers-in-blazor-server-apps)

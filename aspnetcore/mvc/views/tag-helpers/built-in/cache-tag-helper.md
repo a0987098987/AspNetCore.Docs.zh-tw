@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 10/10/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/cache-tag-helper
-ms.openlocfilehash: ced10a7b7b221188fdac2a4e3c54f66292110ece
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 65d8bbcdaed76a308b924ba024219e8f520bb585
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773938"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399279"
 ---
 # <a name="cache-tag-helper-in-aspnet-core-mvc"></a>ASP.NET Core MVC 中的快取標籤協助程式
 
@@ -27,7 +29,7 @@ ms.locfileid: "82773938"
 
 如需標籤協助程式的概觀，請參閱 <xref:mvc/views/tag-helpers/intro>。
 
-下列 Razor 標記會快取目前日期：
+下列標記會快取 Razor 目前的日期：
 
 ```cshtml
 <cache>@DateTime.Now</cache>
@@ -85,7 +87,7 @@ ms.locfileid: "82773938"
 </cache>
 ```
 
-Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
+RazorView 引擎會將預設 `expires-after` 值設定為20分鐘。
 
 ### <a name="expires-sliding"></a>expires-sliding
 
@@ -107,7 +109,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例                                    |
 | -------------- | ------------------------------------------- |
-| 字串         | `User-Agent`, `User-Agent,content-encoding` |
+| String         | `User-Agent`, `User-Agent,content-encoding` |
 
 `vary-by-header` 接受標頭值的逗號分隔清單，在標頭值變更時，會觸發快取重新整理。
 
@@ -123,7 +125,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例             |
 | -------------- | -------------------- |
-| 字串         | `Make`, `Make,Model` |
+| String         | `Make`, `Make,Model` |
 
 `vary-by-query` 接受查詢字串 (<xref:Microsoft.AspNetCore.Http.HttpRequest.Query*>) 中 <xref:Microsoft.AspNetCore.Http.IQueryCollection.Keys*> 的逗點分隔清單，當任何所列索引碼的值變更時，會觸發快取重新整理。
 
@@ -139,7 +141,7 @@ Razor 檢視引擎將預設的 `expires-after` 值設定為 20 分鐘。
 
 | 屬性類型 | 範例             |
 | -------------- | -------------------- |
-| 字串         | `Make`, `Make,Model` |
+| String         | `Make`, `Make,Model` |
 
 `vary-by-route` 接受路由參數名稱的逗點分隔清單，當路由資料參數值變更時，這些路由參數名稱會觸發快取重新整理。
 
@@ -165,11 +167,11 @@ routes.MapRoute(
 
 | 屬性類型 | 範例                                                                         |
 | -------------- | -------------------------------------------------------------------------------- |
-| 字串         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
+| String         | `.AspNetCore.Identity.Application`, `.AspNetCore.Identity.Application,HairColor` |
 
 `vary-by-cookie` 接受 Cookie 名稱的逗點分隔清單，當 Cookie 值變更時，這些 Cookie 名稱會觸發快取重新整理。
 
-下列範例會監視與 ASP.NET Core 身分識別建立關聯的 Cookie。 驗證使用者時，身分識別 Cookie 中的變更會觸發快取重新整理：
+下列範例會監視與 ASP.NET Core 相關聯的 cookie Identity 。 當使用者通過驗證時，cookie 中的變更會觸發快取重新整理 Identity ：
 
 ```cshtml
 <cache vary-by-cookie=".AspNetCore.Identity.Application">
@@ -183,7 +185,7 @@ routes.MapRoute(
 | --------------- | --------------- | ------- |
 | Boolean         | `true`, `false` | `true`  |
 
-`vary-by-user` 可指定當登入的使用者 (或內容主體) 變更時，是否重設快取。 目前的使用者也稱為要求內容主體，可在 Razor 檢視中藉由參考 `@User.Identity.Name` 進行檢視。
+`vary-by-user` 可指定當登入的使用者 (或內容主體) 變更時，是否重設快取。 目前的使用者也稱為要求內容主體，而且可以藉 Razor 由參考在視圖中查看 `@User.Identity.Name` 。
 
 下列範例會監視目前登入的使用者，以觸發快取重新整理：
 
@@ -199,7 +201,7 @@ routes.MapRoute(
 
 | 屬性類型 | 範例  |
 | -------------- | -------- |
-| 字串         | `@Model` |
+| String         | `@Model` |
 
 `vary-by` 可自訂要快取哪些資料。 當屬性字串值所參考的物件變更時，就會更新快取標籤協助程式的內容。 通常會對此屬性指派模型值的字串串連。 實際上，這會導致更新任何串連值都會使快取失效的情節。
 

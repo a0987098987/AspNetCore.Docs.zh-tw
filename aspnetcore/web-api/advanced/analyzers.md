@@ -8,21 +8,23 @@ ms.custom: mvc
 ms.date: 09/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: web-api/advanced/analyzers
-ms.openlocfilehash: 530ce2d2a7f67f549f6d188a0c571a5d58518377
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 1f44fd65836cc42ffb2303890eefb053b61c4c30
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776242"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399461"
 ---
 # <a name="use-web-api-analyzers"></a>使用 Web API 分析器
 
-ASP.NET Core 2.2 和更新版本提供 MVC 分析器套件，適用于 Web API 專案。 分析器會處理以標注的<xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute>控制器，同時根據[Web API 慣例](xref:web-api/advanced/conventions)來建立。
+ASP.NET Core 2.2 和更新版本提供 MVC 分析器套件，適用于 Web API 專案。 分析器會處理以標注的控制器 <xref:Microsoft.AspNetCore.Mvc.ApiControllerAttribute> ，同時根據[Web API 慣例](xref:web-api/advanced/conventions)來建立。
 
 分析器套件會通知您有任何控制器動作：
 
@@ -35,7 +37,7 @@ ASP.NET Core 2.2 和更新版本提供 MVC 分析器套件，適用于 Web API �
 
 ## <a name="reference-the-analyzer-package"></a>參考分析器套件
 
-在 ASP.NET Core 3.0 或更新版本中，分析器會包含在 .NET Core SDK 中。 若要在專案中啟用分析器，請在`IncludeOpenAPIAnalyzers`專案檔中包含屬性：
+在 ASP.NET Core 3.0 或更新版本中，分析器會包含在 .NET Core SDK 中。 若要在專案中啟用分析器，請在 `IncludeOpenAPIAnalyzers` 專案檔中包含屬性：
 
 ```xml
 <PropertyGroup>
@@ -64,7 +66,7 @@ ASP.NET Core 2.2 和更新版本提供 MVC 分析器套件，適用于 Web API �
 
 ### <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-* 以滑鼠右鍵按一下**Solution Pad** > **新增套件 ...**] 中的 [*套件*] 資料夾。
+* 以滑鼠右鍵按一下*Packages* **Solution Pad** > **新增套件 ...**] 中的 [套件] 資料夾。
 * 將 [**新增套件**] 視窗的 [**來源**] 下拉式下拉設定為 [nuget.org]。
 * 在搜尋方塊中輸入 "Microsoft.AspNetCore.Mvc.Api.Analyzers"。
 * 從結果窗格中選取 "Microsoft.AspNetCore.Mvc.Api.Analyzers" 套件，然後按一下 [新增套件]****。

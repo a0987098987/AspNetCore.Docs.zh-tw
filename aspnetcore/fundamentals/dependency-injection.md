@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/21/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 34ed08a5b49b56fd37628032ac73fe03a34448e6
-ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
+ms.openlocfilehash: 665f9f761f729fad59af298cacd0d48ab3a3f71f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85240853"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400721"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -144,7 +146,7 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 }
 ```
 
-如需詳細資訊，請參閱 <xref:fundamentals/startup>。
+如需詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
@@ -206,7 +208,7 @@ public void ConfigureServices(IServiceCollection services)
 在處理要求的應用程式中，會在要求結束時處置已設定範圍的服務。
 
 > [!WARNING]
-> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 不要透過函式[插入](xref:mvc/controllers/dependency-injection#constructor-injection)來插入，因為它會強制服務的行為就像 singleton 一樣。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies>。
+> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 不要透過函式[插入](xref:mvc/controllers/dependency-injection#constructor-injection)來插入，因為它會強制服務的行為就像 singleton 一樣。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies> 。
 
 ### <a name="singleton"></a>單一
 
@@ -223,11 +225,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | Yes | 是 | No |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Yes | Yes | Yes |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();` | 是 | No | 否 |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | Yes |
-| `AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | No | 否 | 是 |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
+| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();` | 是 | 否 | 否 |
+| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | 是 |
+| `AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 否 | 否 | 是 |
 
 如需類型處置的詳細資訊，請參閱[＜服務處置＞](#disposal-of-services)一節。 多個實作的常見案例是[模擬測試類型](xref:test/integration-tests#inject-mock-services)。
 
@@ -241,7 +243,7 @@ services.AddSingleton<IMyDependency, MyDependency>();
 services.TryAddSingleton<IMyDependency, DifferentDependency>();
 ```
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAdd*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddTransient*>
@@ -405,7 +407,7 @@ public class Program
 
 範圍服務會由建立這些服務的容器處置。 若是在根容器中建立範圍服務，因為當應用程式/伺服器關機時，服務只會由根容器處理，所以服務的存留期會提升為單一服務等級。 當呼叫 `BuildServiceProvider` 時，驗證服務範圍會攔截到這些情況。
 
-如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#scope-validation>。
+如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#scope-validation> 。
 
 ## <a name="request-services"></a>要求服務
 
@@ -540,7 +542,7 @@ public void ConfigureServices(IServiceCollection services)
 
 * 避免使用「服務定位器模式」**。 例如，當您可以改用 DI 時，請勿叫用 <xref:System.IServiceProvider.GetService*> 來取得服務執行個體：
 
-  **正確**
+  **不正確：**
 
   ```csharp
   public class MyClass()
@@ -727,7 +729,7 @@ public void Configure(IApplicationBuilder app, IOptions<MyOptions> options)
 }
 ```
 
-如需詳細資訊，請參閱 <xref:fundamentals/startup>。
+如需詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
 ## <a name="framework-provided-services"></a>架構提供的服務
 
@@ -789,7 +791,7 @@ public void ConfigureServices(IServiceCollection services)
 在處理要求的應用程式中，會在要求結束時處置已設定範圍的服務。
 
 > [!WARNING]
-> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 不要透過函式[插入](xref:mvc/controllers/dependency-injection#constructor-injection)來插入，因為它會強制服務的行為就像 singleton 一樣。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies>。
+> 在中介軟體中使用具範圍服務時，請將該服務插入 `Invoke` 或 `InvokeAsync` 方法中。 不要透過函式[插入](xref:mvc/controllers/dependency-injection#constructor-injection)來插入，因為它會強制服務的行為就像 singleton 一樣。 如需詳細資訊，請參閱 <xref:fundamentals/middleware/write#per-request-middleware-dependencies> 。
 
 ### <a name="singleton"></a>單一
 
@@ -806,11 +808,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | 方法 | 自動<br>物件 (object)<br>處置 | 多個<br>實作 | 傳遞引數 |
 | ------ | :-----------------------------: | :-------------------------: | :-------: |
-| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | Yes | 是 | No |
-| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | Yes | Yes | Yes |
-| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();` | 是 | No | 否 |
-| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | Yes |
-| `AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | No | 否 | 是 |
+| `Add{LIFETIME}<{SERVICE}, {IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<IMyDep, MyDep>();` | 是 | 是 | 否 |
+| `Add{LIFETIME}<{SERVICE}>(sp => new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(sp => new MyDep());`<br>`services.AddSingleton<IMyDep>(sp => new MyDep("A string!"));` | 是 | 是 | 是 |
+| `Add{LIFETIME}<{IMPLEMENTATION}>()`<br>範例：<br>`services.AddSingleton<MyDep>();` | 是 | 否 | 否 |
+| `AddSingleton<{SERVICE}>(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton<IMyDep>(new MyDep());`<br>`services.AddSingleton<IMyDep>(new MyDep("A string!"));` | 否 | 是 | 是 |
+| `AddSingleton(new {IMPLEMENTATION})`<br>範例：<br>`services.AddSingleton(new MyDep());`<br>`services.AddSingleton(new MyDep("A string!"));` | 否 | 否 | 是 |
 
 如需類型處置的詳細資訊，請參閱[＜服務處置＞](#disposal-of-services)一節。 多個實作的常見案例是[模擬測試類型](xref:test/integration-tests#inject-mock-services)。
 
@@ -824,7 +826,7 @@ services.AddSingleton<IMyDependency, MyDependency>();
 services.TryAddSingleton<IMyDependency, DifferentDependency>();
 ```
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAdd*>
 * <xref:Microsoft.Extensions.DependencyInjection.Extensions.ServiceCollectionDescriptorExtensions.TryAddTransient*>
@@ -986,7 +988,7 @@ public class Program
 
 範圍服務會由建立這些服務的容器處置。 若是在根容器中建立範圍服務，因為當應用程式/伺服器關機時，服務只會由根容器處理，所以服務的存留期會提升為單一服務等級。 當呼叫 `BuildServiceProvider` 時，驗證服務範圍會攔截到這些情況。
 
-如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#scope-validation>。
+如需詳細資訊，請參閱 <xref:fundamentals/host/web-host#scope-validation> 。
 
 ## <a name="request-services"></a>要求服務
 
@@ -1123,7 +1125,7 @@ public void ConfigureServices(IServiceCollection services)
 
   * <xref:System.IServiceProvider.GetService*>當您可以改用 DI 時，請勿叫用來取得服務實例：
 
-    **正確**
+    **不正確：**
 
     ```csharp
     public class MyClass()

@@ -8,17 +8,19 @@ ms.date: 03/27/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/migrations
-ms.openlocfilehash: 20a6cbbdd1f10c06f454f230363951059bdd3a7b
-ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
+ms.openlocfilehash: 3d005c0a3cf705e3e877888dbd39d43551608776
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85240922"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401424"
 ---
 # <a name="tutorial-using-the-migrations-feature---aspnet-mvc-with-ef-core"></a>教學課程：使用遷移功能-ASP.NET MVC 搭配 EF Core
 
@@ -36,7 +38,7 @@ ms.locfileid: "85240922"
 
 ## <a name="prerequisites"></a>必要條件
 
-* [排序、篩選及分頁](sort-filter-page.md)
+* [排序、篩選和分頁](sort-filter-page.md)
 
 ## <a name="about-migrations"></a>關於移轉
 
@@ -122,7 +124,7 @@ Migrations 會呼叫 `Up` 方法，以實作移轉所需的資料模型變更。
 dotnet ef database update
 ```
 
-此命令的輸出類似於 `migrations add` 命令，不同之處在於其會顯示設定資料庫之 SQL 命令的記錄。 下列範例輸出中省略了大部分的記錄。 如果您不想看到這麼詳細的記錄訊息，可以變更 *appsettings.Development.json* 檔案中的記錄層級。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index>。
+此命令的輸出類似於 `migrations add` 命令，不同之處在於其會顯示設定資料庫之 SQL 命令的記錄。 下列範例輸出中省略了大部分的記錄。 如果您不想看到這麼詳細的記錄訊息，可以變更 *appsettings.Development.json* 檔案中的記錄層級。 如需詳細資訊，請參閱 <xref:fundamentals/logging/index> 。
 
 ```text
 info: Microsoft.EntityFrameworkCore.Infrastructure[10403]

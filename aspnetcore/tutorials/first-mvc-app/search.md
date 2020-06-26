@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/13/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/search
-ms.openlocfilehash: 83bd904f90190456d42453653d3420c4c572fe8c
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 652ee8c4bfe8980eb09246720f9ddf1743021f34
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652754"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399045"
 ---
 # <a name="part-7-add-search-to-an-aspnet-core-mvc-app"></a>第7部分，將搜尋新增至 ASP.NET Core MVC 應用程式
 
@@ -45,7 +47,7 @@ var movies = from m in _context.Movie
 
 注意：[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 方法是在資料庫上執行，而不是在上方顯示的 C# 程式碼中執行。 查詢是否區分大小寫取決於資料庫和定序。 在 SQL Server 上，[Contains](/dotnet/api/system.data.objects.dataclasses.entitycollection-1.contains) 對應至 [SQL LIKE](/sql/t-sql/language-elements/like-transact-sql)，因此不區分大小寫。 而在 SQLlite 中，由於使用預設定序，因此會區分大小寫。
 
-瀏覽到 `/Movies/Index` 。 將查詢字串 (例如 `?searchString=Ghost`) 附加至 URL。 隨即顯示篩選過的電影。
+瀏覽至 `/Movies/Index`。 將查詢字串 (例如 `?searchString=Ghost`) 附加至 URL。 隨即顯示篩選過的電影。
 
 ![索引檢視](~/tutorials/first-mvc-app/search/_static/ghost.png)
 

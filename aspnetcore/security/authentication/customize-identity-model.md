@@ -6,17 +6,19 @@ ms.author: avickers
 ms.date: 07/01/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/customize_identity_model
-ms.openlocfilehash: 96ee703da4ced69c5d9c703139e33b76b5dcdff1
-ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
+ms.openlocfilehash: 3a5bac0e3e34602b1f8a85a7bcde1ba92b372607
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85074147"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399162"
 ---
 # <a name="identity-model-customization-in-aspnet-core"></a>IdentityASP.NET Core 中的模型自訂
 
@@ -56,7 +58,7 @@ ASP.NET Core 有開發階段錯誤頁面處理常式。 處理常式可以在應
 
 此 Identity 模型是由下列實體類型所組成。
 
-|實體類型|描述                                                  |
+|實體類型|說明                                                  |
 |-----------|-------------------------------------------------------------|
 |`User`     |代表使用者。                                         |
 |`Role`     |代表角色。                                           |
@@ -361,7 +363,7 @@ services.AddIdentity<ApplicationUser>()
         .AddDefaultUI();
 ```
 
-在 ASP.NET Core 2.1 或更新版本中， Identity 是以 Razor 類別庫的形式提供。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity> 。 因此，上述程式碼需要呼叫 <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> 。 如果 Identity scaffolder 是用來將檔案加入至 Identity 專案，請移除對的呼叫 `AddDefaultUI` 。 如需詳細資訊，請參閱
+在 ASP.NET Core 2.1 或更新版本中， Identity 是以 Razor 類別庫的形式提供。 如需詳細資訊，請參閱 <xref:security/authentication/scaffold-identity> 。 因此，上述程式碼需要呼叫 <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*> 。 如果 Identity scaffolder 是用來將檔案加入至 Identity 專案，請移除對的呼叫 `AddDefaultUI` 。 如需詳細資訊，請參閱：
 
 * [ScaffoldIdentity](xref:security/authentication/scaffold-identity)
 * [新增、下載及刪除自訂使用者資料至Identity](xref:security/authentication/add-user-data)

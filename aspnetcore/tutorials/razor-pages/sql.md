@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 7/22/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/razor-pages/sql
-ms.openlocfilehash: 21ae2ed4e91a0b3e52b1cdad1f4f4686c50614ba
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 68764a5b8c908012cc0053aa4e3ea071f2ce423d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652981"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400904"
 ---
 # <a name="part-4-with-a-database-and-aspnet-core"></a>第4部分，含有資料庫和 ASP.NET Core
 
@@ -38,7 +40,7 @@ ms.locfileid: "84652981"
 
 ---
 
-ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從*appsettings*取得連接字串。
+ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從檔案中的*appsettings.js*取得連接字串。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -173,7 +175,7 @@ if (context.Movie.Any())
 * 適用於 `CookiePolicyOptions` 的 [ASP.NET Core 中的 EU 一般資料保護規定 (GDPR) 支援](xref:security/gdpr)。
 * [SetCompatibilityVersion](xref:mvc/compatibility-version)
 
-ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從*appsettings*取得連接字串。
+ASP.NET Core [組態](xref:fundamentals/configuration/index)系統會讀取 `ConnectionString`。 對於本機開發，它會從檔案中的*appsettings.js*取得連接字串。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

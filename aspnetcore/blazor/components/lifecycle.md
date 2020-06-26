@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 06/01/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/components/lifecycle
-ms.openlocfilehash: 61c1dc383728f42c5dac6742fd19d1d22c988913
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 312a265dd251eadf876b4252e3d9f9858adcde1b
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242689"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400982"
 ---
 # <a name="aspnet-core-blazor-lifecycle"></a>ASP.NET Core Blazor 生命週期
 
@@ -73,14 +75,14 @@ protected override async Task OnInitializedAsync()
 }
 ```
 
-Blazor將[其內容呼叫呈現](xref:blazor/fundamentals/additional-scenarios#render-mode) <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> **_兩次_** 的伺服器應用程式：
+Blazor Server將[其內容呼叫呈現](xref:blazor/fundamentals/additional-scenarios#render-mode) <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> **_兩次_** 的應用程式：
 
 * 當元件一開始以靜態方式轉譯為頁面的一部分時。
 * 第二次當瀏覽器建立與伺服器的連接時。
 
 若要防止中的開發人員程式碼執行 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 兩次，請參閱在預做[後](#stateful-reconnection-after-prerendering)重新設定狀態一節。
 
-在預先 Blazor 處理伺服器應用程式時，因為尚未建立與瀏覽器的連接，所以無法執行某些動作（例如呼叫 JavaScript）。 元件可能需要在資源清單時以不同的方式呈現。 如需詳細資訊，請參閱偵測[應用程式何時進行預呈現](#detect-when-the-app-is-prerendering)一節。
+當 Blazor Server 應用程式進行預先處理時，某些動作（例如呼叫 JavaScript）並不可能，因為尚未建立與瀏覽器的連接。 元件可能需要在資源清單時以不同的方式呈現。 如需詳細資訊，請參閱偵測[應用程式何時進行預呈現](#detect-when-the-app-is-prerendering)一節。
 
 如果已設定任何事件處理常式，請將它們解除鎖定以供處置。 如需詳細資訊，請參閱[ `IDisposable` 使用元件處置](#component-disposal-with-idisposable)一節。
 
@@ -167,7 +169,7 @@ protected override bool ShouldRender()
 
 即使 <xref:Microsoft.AspNetCore.Components.ComponentBase.ShouldRender%2A> 已覆寫，元件一律會一開始呈現。
 
-如需詳細資訊，請參閱 <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-component-renders>。
+如需詳細資訊，請參閱 <xref:blazor/webassembly-performance-best-practices#avoid-unnecessary-component-renders> 。
 
 ## <a name="state-changes"></a>狀態變更
 
@@ -179,7 +181,7 @@ protected override bool ShouldRender()
 
 在 `FetchData` 範本的元件中 Blazor ， <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 會覆寫為 asychronously 接收預測資料（ `forecasts` ）。 當 `forecasts` 為時 `null` ，會向使用者顯示載入訊息。 在所 `Task` 傳回的 <xref:Microsoft.AspNetCore.Components.ComponentBase.OnInitializedAsync%2A> 完成之後，元件會以更新的狀態重新顯示。
 
-`Pages/FetchData.razor`在 Blazor 伺服器範本中：
+`Pages/FetchData.razor`在 Blazor Server 範本中：
 
 [!code-razor[](lifecycle/samples_snapshot/3.x/FetchData.razor?highlight=9,21,25)]
 
@@ -220,20 +222,20 @@ protected override bool ShouldRender()
 
 ## <a name="stateful-reconnection-after-prerendering"></a>預呈現後的具狀態重新連接
 
-在 Blazor 伺服器應用程式中 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> ，當為時 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> ，元件一開始會以靜態方式呈現為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果 [`OnInitialized{Async}`](#component-initialization-methods) 有用來初始化元件的生命週期方法，則會執行*兩次*方法：
+在 Blazor Server 應用程式中 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper.RenderMode> ，當為時 <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> ，元件一開始會以靜態方式呈現為頁面的一部分。 當瀏覽器建立回到伺服器的連接後，就會*再次*轉譯該元件，而且該元件現在是互動式的。 如果 [`OnInitialized{Async}`](#component-initialization-methods) 有用來初始化元件的生命週期方法，則會執行*兩次*方法：
 
 * 當元件以靜態方式資源清單時。
 * 建立伺服器連接之後。
 
 這可能會導致在最後呈現元件時，UI 中顯示的資料有明顯的變更。
 
-若要避免伺服器應用程式中的雙呈現案例 Blazor ：
+若要避免應用程式中的雙呈現案例 Blazor Server ：
 
 * 傳入識別碼，可在自動處理期間用來快取狀態，並在應用程式重新開機之後，取得狀態。
 * 在預入期間使用識別碼來儲存元件狀態。
 * 在可呈現後使用識別碼，以取得快取的狀態。
 
-下列程式碼示範 `WeatherForecastService` 在以範本為基礎的 Blazor 伺服器應用程式中已更新，可避免雙重呈現：
+下列程式碼示範 `WeatherForecastService` 在以範本為基礎的 Blazor Server 應用程式中，已更新，可避免雙重呈現：
 
 ```csharp
 public class WeatherForecastService

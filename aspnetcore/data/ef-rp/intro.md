@@ -7,17 +7,19 @@ ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: a6915da23124b7ed4bfaa982692635f9fc75f96a
-ms.sourcegitcommit: 726b8c5cf92e6f6a4d0205787b19307e889d6240
+ms.openlocfilehash: 79cfe50f7e074954291c88689940c3263b68e151
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "82967505"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401353"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor在 ASP.NET Core 中使用 Entity Framework Core 的頁面-教學課程1之8
 
@@ -221,7 +223,7 @@ Visual Studio Code 說明則會使用 [SQLite](https://www.sqlite.org/)，它是
   * 在 [模型類別]**** 下拉式清單中，選取 [學生 (ContosoUniversity.Models)]****。
   * 在 [資料內容類別]**** 資料列中，選取 **+** (加號)。
   * 將資料內容的名稱從 *ContosoUniversity.Models.ContosoUniversityContext* 變更為 *ContosoUniversity.Data.SchoolContext*。
-  * 選取 [新增]。
+  * 選取 [新增]****。
 
 會自動安裝下列套件：
 
@@ -451,7 +453,7 @@ public async Task OnGetAsync()
 
 如需非同步方法的詳細資訊，請參閱 [Async 概觀](/dotnet/standard/async)和[使用 Async 和 Await 設計非同步程式](/dotnet/csharp/programming-guide/concepts/async/)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="step-by-step"]
 > [下一個教學課程](xref:data/ef-rp/crud)
@@ -604,7 +606,7 @@ dotnet run
 * 在 [模型類別]**** 下拉式清單中，選取 [學生 (ContosoUniversity.Models)]****。
 * 在 [資料內容類別]**** 列中，選取 **+** (加號) 符號，並將產生的名稱變更為 **ContosoUniversity.Models.SchoolContext**。
 * 在 [資料內容類別]**** 下拉式清單中，選取 **ContosoUniversity.Models.SchoolContext**
-* 選取 [新增]。
+* 選取 [新增]****。
 
 ![CRUD 對話方塊](intro/_static/s1.png)
 

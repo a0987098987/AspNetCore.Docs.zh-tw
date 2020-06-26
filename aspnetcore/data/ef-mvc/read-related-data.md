@@ -7,17 +7,19 @@ ms.date: 09/28/2019
 ms.topic: tutorial
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: 7cc400218d7ad8717311e56ec5b3fc190857862c
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: f2e989b2c6370d862b4d1e6550b09cb47b5747c1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773532"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401515"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料-使用 EF Core ASP.NET MVC
 
@@ -194,7 +196,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
   }
   ```
 
-* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 如需詳細資訊，請參閱Razor語法文章的[明確行轉換](xref:mvc/views/razor#explicit-line-transition)一節。
+* 新增 [課程]**** 資料行，以顯示每位講師所教授的課程。 如需詳細資訊，請參閱語法文章的[明確行轉換](xref:mvc/views/razor#explicit-line-transition)一節 Razor 。
 
 * 新增程式碼，將 `class="success"` 動態新增至所選取講師的 `tr` 項目。 這會使用啟動程序類別設定所選取資料列的背景色彩。
 

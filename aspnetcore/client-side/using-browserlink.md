@@ -7,17 +7,19 @@ ms.custom: H1Hack27Feb2017
 ms.date: 01/09/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: client-side/using-browserlink
-ms.openlocfilehash: 619d19ba90298b2455d4a558fea138c86a751f07
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 95ddf379d7cab336356cbfd3853311cb0911552a
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773653"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85401710"
 ---
 # <a name="browser-link-in-aspnet-core"></a>ASP.NET Core 中的瀏覽器連結
 
@@ -29,25 +31,25 @@ By [Nicolò Carandini](https://github.com/ncarandini)、 [Mike Wasson](https://g
 
 ::: moniker range=">= aspnetcore-3.0"
 
-將[BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)套件新增至您的專案。 針對 ASP.NET Core Razor頁面或 MVC 專案，也請依照中Razor <xref:mvc/views/view-compilation>的說明，啟用（*cshtml*）檔案的執行時間編譯。 Razor只有在已啟用執行時間編譯時，才會套用語法變更。
+將[BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)套件新增至您的專案。 針對 ASP.NET Core Razor 頁面或 MVC 專案，也請依照中的 Razor 說明，啟用（*cshtml*）檔案的執行時間編譯 <xref:mvc/views/view-compilation> 。 Razor只有在已啟用執行時間編譯時，才會套用語法變更。
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1 <= aspnetcore-2.2"
 
-將 ASP.NET Core 2.0 專案轉換成 ASP.NET Core 2.1 並轉換成[AspNetCore 應用程式](xref:fundamentals/metapackage-app)時，請安裝 VisualStudio 瀏覽器連結功能的[BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)套件。 ASP.NET Core 2.1 專案範本預設會使用`Microsoft.AspNetCore.App`中繼套件。
+將 ASP.NET Core 2.0 專案轉換成 ASP.NET Core 2.1 並轉換成[AspNetCore 應用程式](xref:fundamentals/metapackage-app)時，請安裝 VisualStudio 瀏覽器連結功能的[BrowserLink](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)套件。 ASP.NET Core 2.1 專案範本預設會使用 `Microsoft.AspNetCore.App` 中繼套件。
 
 ::: moniker-end
 
 ::: moniker range="= aspnetcore-2.0"
 
-ASP.NET Core 2.0 **Web 應用程式**、**空**的和**Web API**專案範本都會使用[AspNetCore 中繼套件](xref:fundamentals/metapackage)，其中包含[VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)的套件參考。 因此，使用`Microsoft.AspNetCore.All`中繼套件不需要進一步的動作，即可讓瀏覽器連結可供使用。
+ASP.NET Core 2.0 **Web 應用程式**、**空**的和**Web API**專案範本都會使用[AspNetCore 中繼套件](xref:fundamentals/metapackage)，其中包含[VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/)的套件參考。 因此，使用 `Microsoft.AspNetCore.All` 中繼套件不需要進一步的動作，即可讓瀏覽器連結可供使用。
 
 ::: moniker-end
 
 ::: moniker range="<= aspnetcore-1.1"
 
-ASP.NET Core 1.x **Web 應用程式**專案範本具有 BrowserLink 套件的套件參考。（ [VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ）。 其他專案類型則需要您將套件參考新增至`Microsoft.VisualStudio.Web.BrowserLink`。
+ASP.NET Core 1.x **Web 應用程式**專案範本具有 BrowserLink 套件的套件參考。（ [VisualStudio](https://www.nuget.org/packages/Microsoft.VisualStudio.Web.BrowserLink/) ）。 其他專案類型則需要您將套件參考新增至 `Microsoft.VisualStudio.Web.BrowserLink` 。
 
 ::: moniker-end
 
@@ -59,7 +61,7 @@ ASP.NET Core 1.x **Web 應用程式**專案範本具有 BrowserLink 套件的套
 app.UseBrowserLink();
 ```
 
-`UseBrowserLink`呼叫通常會放在只在`if`開發環境中啟用瀏覽器連結的區塊中。 例如：
+`UseBrowserLink`呼叫通常會放在只在 `if` 開發環境中啟用瀏覽器連結的區塊中。 例如：
 
 ```csharp
 if (env.IsDevelopment())
@@ -69,7 +71,7 @@ if (env.IsDevelopment())
 }
 ```
 
-如需詳細資訊，請參閱<xref:fundamentals/environments>。
+如需詳細資訊，請參閱 <xref:fundamentals/environments> 。
 
 ## <a name="how-to-use-browser-link"></a>如何使用瀏覽器連結
 
@@ -134,7 +136,7 @@ if (env.IsDevelopment())
 
 ## <a name="how-it-works"></a>運作方式
 
-瀏覽器連結[SignalR](xref:signalr/introduction)會使用來建立 Visual Studio 與瀏覽器之間的通道。 啟用瀏覽器連結時，Visual Studio 會作為多SignalR個用戶端（瀏覽器）可以連接的伺服器。 瀏覽器連結也會在 ASP.NET Core 要求管線中註冊中介軟體元件。 此元件會從`<script>`伺服器插入每個頁面要求的特殊參考。 您可以在瀏覽器中選取 [ **View source** ]，並將它滾動到`<body>`標記內容的結尾，以查看腳本參考：
+瀏覽器連結會使用 [SignalR](xref:signalr/introduction) 來建立 Visual Studio 與瀏覽器之間的通道。 啟用瀏覽器連結時，Visual Studio SignalR 會作為多個用戶端（瀏覽器）可以連接的伺服器。 瀏覽器連結也會在 ASP.NET Core 要求管線中註冊中介軟體元件。 此元件會 `<script>` 從伺服器插入每個頁面要求的特殊參考。 您可以在瀏覽器中選取 [ **View source** ]，並將它滾動到標記內容的結尾，以查看腳本參考 `<body>` ：
 
 ```html
     <!-- Visual Studio Browser Link -->
@@ -148,4 +150,4 @@ if (env.IsDevelopment())
 
 您的原始程式檔不會遭到修改。 中介軟體元件會動態插入腳本參考。
 
-因為瀏覽器端程式碼是所有的 JavaScript，所以它適用于所有SignalR支援的瀏覽器，而不需要瀏覽器外掛程式。
+因為瀏覽器端程式碼是所有的 JavaScript，所以它適用于所有支援的瀏覽器， SignalR 而不需要瀏覽器外掛程式。

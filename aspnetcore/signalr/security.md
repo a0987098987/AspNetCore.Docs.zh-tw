@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 01/16/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: signalr/security
-ms.openlocfilehash: b80ece8c74c0f1d4d8518f0da16a91db9687336c
-ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
+ms.openlocfilehash: 4e125fd6c4ad2cd4989d692dd28a63638218ee57
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2020
-ms.locfileid: "84755883"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400410"
 ---
 # <a name="security-considerations-in-aspnet-core-signalr"></a>ASP.NET Core 中的安全性考慮SignalR
 

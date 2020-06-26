@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 03/23/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: 0c6f1330a5bac8ab37c957c5ed4e81678fe1f27d
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: b54eb7142fc7e1665cc0aaaad068a67852ac2f74
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242507"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399071"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -41,14 +43,14 @@ ms.locfileid: "85242507"
 1. 建立新專案。
 1. 選取 [ ** Razor 類別庫**]。 選取 [下一步] 。
 1. 在 [**建立新的 Razor 類別庫**] 對話方塊中，選取 [**建立**]。
-1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱 `MyComponentLib1` 。 選取 [建立]。
+1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱 `MyComponentLib1` 。 選取 [建立]****。
 1. 將 RCL 新增至方案：
    1. 以滑鼠右鍵按一下方案。 選取 [**加入**  >  **現有專案**]。
    1. 流覽至 RCL 的專案檔。
    1. 選取 RCL 的專案檔（ `.csproj` ）。
 1. 從應用程式新增參考 RCL：
    1. 以滑鼠右鍵按一下應用程式專案。 選取 [**新增**  >  **參考**]。
-   1. 選取 [RCL] 專案。 選取 [確定]。
+   1. 選取 [RCL] 專案。 選取 [確定]****。
 
 > [!NOTE]
 > 從範本產生 RCL 時，如果已選取 [**支援頁面和視圖**] 核取方塊，則也會 `_Imports.razor` 使用下列內容將檔案新增至所產生專案的根目錄，以啟用 Razor 元件撰寫：
@@ -119,7 +121,7 @@ Welcome to your new app.
 
 ## <a name="create-a-razor-components-class-library-with-static-assets"></a>建立 Razor 具有靜態資產的元件類別庫
 
-RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets>。
+RCL 可以包含靜態資產。 使用該程式庫的任何應用程式都可以使用靜態資產。 如需詳細資訊，請參閱 <xref:razor-pages/ui-class#create-an-rcl-with-static-assets> 。
 
 ## <a name="build-pack-and-ship-to-nuget"></a>組建、封裝和寄送至 NuGet
 

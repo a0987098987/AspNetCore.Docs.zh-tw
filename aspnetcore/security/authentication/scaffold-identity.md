@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 5/1/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: f3314458a504af7f44dcdc276de890fa9485a2b3
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 155bdfbeea06022d35bbb551d5b2d0ee5a51a093
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103039"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85400813"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>IdentityASP.NET Core 專案中的 Scaffold
 
@@ -178,7 +180,7 @@ dotnet aspnet-codegenerator identity -dc MvcAuth.Data.ApplicationDbContext  --fi
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 
-## <a name="scaffold-identity-into-a-blazor-server-project-without-existing-authorization"></a>Scaffold Identity 至 Blazor 沒有現有授權的伺服器專案
+## <a name="scaffold-identity-into-a-blazor-server-project-without-existing-authorization"></a>Scaffold Identity 至 Blazor Server 沒有現有授權的專案
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
@@ -289,11 +291,11 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 
 ### <a name="style-authentication-endpoints"></a>樣式驗證端點
 
-因為 Blazor 伺服器使用 Razor 頁面 Identity 頁面，所以當訪客在頁面和元件之間流覽時，UI 的樣式會變更 Identity 。 您有兩個選項可解決 incongruous 樣式：
+由於會 Blazor Server 使用 Razor 頁面 Identity 頁面，因此當訪客在 Identity 頁面和元件之間流覽時，UI 的樣式會變更。 您有兩個選項可解決 incongruous 樣式：
 
 #### <a name="build-identity-components"></a>組建 Identity 元件
 
-不使用頁面的元件是用來 Identity 建立元件的方法 Identity 。 因為 `SignInManager` `UserManager` 元件中不支援和 Razor ，所以請使用伺服器應用程式中的 API 端點 Blazor 來處理使用者帳戶動作。
+不使用頁面的元件是用來 Identity 建立元件的方法 Identity 。 因為 `SignInManager` `UserManager` 元件中不支援和 Razor ，所以請使用應用程式中的 API 端點 Blazor Server 來處理使用者帳戶動作。
 
 #### <a name="use-a-custom-layout-with-blazor-app-styles"></a>使用具有 Blazor 應用程式樣式的自訂版面配置
 
@@ -360,7 +362,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
   <script src="_framework/blazor.server.js"></script>
   ```
 
-## <a name="scaffold-identity-into-a-blazor-server-project-with-authorization"></a>Scaffold Identity 至 Blazor 具有授權的伺服器專案
+## <a name="scaffold-identity-into-a-blazor-server-project-with-authorization"></a>Scaffold Identity 至 Blazor Server 具有授權的專案
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg-auth.md)]
 

@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 04/25/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
-ms.openlocfilehash: 1c71067528fb34ab141bb1ee846716834204ee40
-ms.sourcegitcommit: 066d66ea150f8aab63f9e0e0668b06c9426296fd
+ms.openlocfilehash: 29360174ea86623491d5d8aacd4038162855bba8
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85242455"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85399058"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式
 
@@ -70,7 +72,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
    @using MyAppNamespace
    ```
 
-1. 在中 `Startup.ConfigureServices` ，註冊 Blazor 伺服器服務：
+1. 在中 `Startup.ConfigureServices` ，註冊 Blazor Server 服務：
 
    ```csharp
    services.AddServerSideBlazor();
@@ -128,10 +130,10 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
    * 會資源清單到頁面中。
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-   | 轉譯模式 | 描述 |
+   | 轉譯模式 | 說明 |
    | ----------- | ----------- |
-   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
-   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor Server 應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現應用程式的標記 Blazor Server 。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將 `App` 元件轉譯為靜態 HTML。 |
 
    如需元件標記協助程式的詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
@@ -202,10 +204,10 @@ Razor在 MVC 應用程式中支援可路由的元件：
    * 會資源清單到頁面中。
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-   | 轉譯模式 | 描述 |
+   | 轉譯模式 | 說明 |
    | ----------- | ----------- |
-   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor 伺服器應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
-   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現 Blazor 伺服器應用程式的標記。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor Server 應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
+   | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現應用程式的標記 Blazor Server 。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static> | 將 `App` 元件轉譯為靜態 HTML。 |
 
    如需元件標記協助程式的詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
@@ -272,7 +274,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
 }
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
 
 ### <a name="render-noninteractive-components"></a>呈現非互動式元件
 
@@ -295,7 +297,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
 }
 ```
 
-如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper>。
+如需詳細資訊，請參閱 <xref:mvc/views/tag-helpers/builtin-th/component-tag-helper> 。
 
 ## <a name="component-namespaces"></a>元件命名空間
 

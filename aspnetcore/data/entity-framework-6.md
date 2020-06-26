@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/entity-framework-6
-ms.openlocfilehash: 7c77ecb663bebcaf0c6239f07ac15dda23f17b9c
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 8611ea8bd6737c8b8ea366affa2158f80e9a1aa9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775475"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405051"
 ---
 # <a name="get-started-with-aspnet-core-and-entity-framework-6"></a>ASP.NET Core 與 Entity Framework 6 使用者入門
 
@@ -25,7 +27,7 @@ ms.locfileid: "82775475"
 
 本文示範如何在 ASP.NET Core 應用程式中使用 Entity Framework 6。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要使用 Entity Framework 6，您的專案必須針對 .NET Framework 進行編譯，因為 Entity Framework 6 不支援 .NET Core。 如果您需要跨平台功能，則必須升級至 [Entity Framework Core](/ef/)。
 

@@ -7,17 +7,19 @@ ms.custom: mvc, seodec18
 ms.date: 03/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/google-logins
-ms.openlocfilehash: 8b1eee7ff088fb1229ec1d2dd538ea4f01e094c3
-ms.sourcegitcommit: 6c7a149168d2c4d747c36de210bfab3abd60809a
+ms.openlocfilehash: ba0b9a0da30f761f12f6015dace5ba8046535761
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "83003100"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405415"
 ---
 # <a name="google-external-login-setup-in-aspnet-core"></a>ASP.NET Core 中的 Google external 登入設定
 
@@ -39,7 +41,7 @@ ms.locfileid: "83003100"
 使用[秘密管理員](xref:security/app-secrets)來儲存機密設定（例如 Google 用戶端識別碼和秘密值）。 針對此範例，請使用下列步驟：
 
 1. 根據[啟用秘密儲存](xref:security/app-secrets#enable-secret-storage)中的指示，初始化秘密儲存的專案。
-1. 使用秘密金鑰`Authentication:Google:ClientId`和， `Authentication:Google:ClientSecret`將敏感性設定儲存在本機密碼存放區中：
+1. 使用秘密金鑰和，將敏感性設定儲存在本機密碼存放區中 `Authentication:Google:ClientId` `Authentication:Google:ClientSecret` ：
 
     ```dotnetcli
     dotnet user-secrets set "Authentication:Google:ClientId" "<client-id>"
@@ -52,7 +54,7 @@ ms.locfileid: "83003100"
 
 ## <a name="configure-google-authentication"></a>設定 Google 驗證
 
-將 Google 服務新增至`Startup.ConfigureServices`：
+將 Google 服務新增至 `Startup.ConfigureServices` ：
 
 [!code-csharp[](~/security/authentication/social/social-code/3.x/StartupGoogle3x.cs?highlight=11-19)]
 
@@ -68,20 +70,20 @@ ms.locfileid: "83003100"
 
 [!INCLUDE[](includes/chain-auth-providers.md)]
 
-如需<xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> Google 驗證所支援之設定選項的詳細資訊，請參閱 API 參考。 這可以用來要求使用者的不同資訊。
+如需 <xref:Microsoft.AspNetCore.Authentication.Google.GoogleOptions> Google 驗證所支援之設定選項的詳細資訊，請參閱 API 參考。 這可以用來要求使用者的不同資訊。
 
 ## <a name="change-the-default-callback-uri"></a>變更預設回呼 URI
 
-URI 區段`/signin-google`會設定為 Google 驗證提供者的預設回呼。 設定 Google 驗證中介軟體時，您可以透過[GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
+URI 區段 `/signin-google` 會設定為 Google 驗證提供者的預設回呼。 設定 Google 驗證中介軟體時，您可以透過[GoogleOptions](/dotnet/api/microsoft.aspnetcore.authentication.google.googleoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
 
 ## <a name="troubleshooting"></a>疑難排解
 
 * 如果登入無法正常執行，而且您沒有收到任何錯誤，請切換到開發模式，讓問題更容易進行調試。
-* 如果Identity未透過在中`services.AddIdentity` `ConfigureServices`呼叫來設定，則嘗試在 ArgumentException 中驗證結果 *：必須提供 ' SignInScheme ' 選項*。 本教學課程中使用的專案範本可確保這項作業已完成。
+* 如果 Identity 未透過 `services.AddIdentity` 在中呼叫 `ConfigureServices` 來設定，則嘗試在 ArgumentException 中驗證結果 *：必須提供 ' SignInScheme ' 選項*。 本教學課程中使用的專案範本可確保這項作業已完成。
 * 如果尚未藉由套用初始遷移來建立網站資料庫，則在*處理要求錯誤時*，您會取得資料庫作業失敗。 選取 [套用**遷移**] 以建立資料庫，然後重新整理頁面以繼續發生錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 本文說明了您可以如何使用 Google 進行驗證。 您可以遵循類似的方法，向[先前頁面](xref:security/authentication/social/index)上所列的其他提供者進行驗證。
-* 將應用程式發行至 Azure 之後，請`ClientSecret`在 Google API 主控台中重設。
-* 將`Authentication:Google:ClientId`和`Authentication:Google:ClientSecret`設定為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。
+* 將應用程式發行至 Azure 之後，請 `ClientSecret` 在 GOOGLE API 主控台中重設。
+* 將 `Authentication:Google:ClientId` 和設定 `Authentication:Google:ClientSecret` 為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。

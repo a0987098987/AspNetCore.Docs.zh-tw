@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 01/31/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/samples
-ms.openlocfilehash: 7cd0fe60d7917abda7d8ac0e071deca13a4136ce
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 95915c28b132a1a48fb772b2663794754006627f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776548"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405350"
 ---
 # <a name="authentication-samples-for-aspnet-core"></a>ASP.NET Core 的驗證範例
 
@@ -39,7 +41,7 @@ ms.locfileid: "82776548"
 * 選取[分支](https://github.com/dotnet/AspNetCore)。 例如， `release/3.1`
 * 複製或下載[ASP.NET Core 存放庫](https://github.com/dotnet/AspNetCore)。
 * 確認您已安裝符合 ASP.NET Core 存放庫複製的[.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)版本。
-* 流覽至*AspNetCore/src/Security/samples*中的範例，並使用`dotnet run`來執行範例。
+* 流覽至*AspNetCore/src/Security/samples*中的範例，並使用來執行範例 `dotnet run` 。
 
 ::: moniker-end
 
@@ -60,6 +62,6 @@ ms.locfileid: "82776548"
 * 選取[分支](https://github.com/dotnet/AspNetCore)。 例如， `release/2.2`
 * 複製或下載[ASP.NET Core 存放庫](https://github.com/dotnet/AspNetCore)。
 * 確認您已安裝符合 ASP.NET Core 存放庫複製的[.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)版本。
-* 流覽至*AspNetCore/src/Security/samples*中的範例，並使用`dotnet run`來執行範例。
+* 流覽至*AspNetCore/src/Security/samples*中的範例，並使用來執行範例 `dotnet run` 。
 
 ::: moniker-end

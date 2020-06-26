@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 01/21/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/azure-ad-b2c
-ms.openlocfilehash: d62889ba6dba6748ce3d047f0d37b3a904199496
-ms.sourcegitcommit: 4a9321db7ca4e69074fa08a678dcc91e16215b1e
+ms.openlocfilehash: 4933203b8bdd8f653268c1df7ff83b8e9423341f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82850431"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405064"
 ---
 # <a name="cloud-authentication-with-azure-active-directory-b2c-in-aspnet-core"></a>在 ASP.NET Core 中使用 Azure Active Directory B2C 進行雲端驗證
 
@@ -36,7 +38,7 @@ ms.locfileid: "82850431"
 > * 使用 Visual Studio 建立 ASP.NET Core web 應用程式，並將其設定為使用 Azure AD B2C 的租使用者進行驗證
 > * 設定原則來控制 Azure AD B2C 租使用者的行為
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 此逐步解說需要下列各項：
 
@@ -53,12 +55,12 @@ ms.locfileid: "82850431"
 
 輸入下列值：
 
-| 設定                       | 值                     | 備忘錄                                                                                                                                                                                              |
+| 設定                       | 值                     | 注意                                                                                                                                                                                              |
 |-------------------------------|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                      | *&lt;應用程式名稱&gt;*        | 輸入應用程式的**名稱**，以向取用者描述您的應用程式。                                                                                                                                 |
+| **名稱**                      | *&lt;應用程式名稱&gt;*        | 輸入應用程式的**名稱**，以向取用者描述您的應用程式。                                                                                                                                 |
 | **包含 Web 應用程式 / Web API** | 是                       |                                                                                                                                                                                                    |
 | **允許隱含流程**       | 是                       |                                                                                                                                                                                                    |
-| **回復 URL**                 | `https://localhost:44300/signin-oidc` | 回覆 URL 是 Azure AD B2C 傳回您應用程式要求之任何權杖的所在端點。 Visual Studio 提供要使用的回復 URL。 現在請輸入`https://localhost:44300/signin-oidc`來完成表單。 |
+| **回覆 URL**                 | `https://localhost:44300/signin-oidc` | 回覆 URL 是 Azure AD B2C 傳回您應用程式要求之任何權杖的所在端點。 Visual Studio 提供要使用的回復 URL。 現在請輸入 `https://localhost:44300/signin-oidc` 來完成表單。 |
 | **應用程式識別碼 URI**                | 保留空白               | 本教學課程不需要。                                                                                                                                                                    |
 | **包含原生用戶端**     | 否                        |                                                                                                                                                                                                    |
 
@@ -103,18 +105,18 @@ Visual Studio Web 應用程式範本可以設定為使用 Azure AD B2C 租使用
 返回瀏覽器視窗，其中 B2C 應用程式屬性仍為開啟狀態。 將稍早指定的暫時**回復 URL**變更為從 Visual Studio 複製的值。 選取視窗頂端的 [**儲存**]。
 
 > [!TIP]
-> 如果您未複製回復 URL，請使用 Web 專案屬性中 [Debug] 索引標籤的 HTTPS 位址，然後從*appsettings*附加**CallbackPath**值。
+> 如果您未複製回復 URL，請使用 Web 專案屬性之 [調試] 索引標籤中的 HTTPS 位址，並從*appsettings.js*附加的**CallbackPath**值。
 
 ## <a name="configure-policies"></a>設定原則
 
-使用 Azure AD B2C 檔中的步驟來[建立註冊或登入原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)，然後[建立密碼重設原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)。 使用** Identity提供者**、**註冊屬性**和**應用程式宣告**檔中提供的範例值。 使用 [**立即執行**] 按鈕來測試原則（如檔中所述）是選擇性的。
+使用 Azure AD B2C 檔中的步驟來[建立註冊或登入原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)，然後[建立密碼重設原則](/azure/active-directory-b2c/active-directory-b2c-reference-policies#user-flow-versions)。 使用** Identity 提供者**、**註冊屬性**和**應用程式宣告**檔中提供的範例值。 使用 [**立即執行**] 按鈕來測試原則（如檔中所述）是選擇性的。
 
 > [!WARNING]
-> 請確定原則名稱與檔中所述的完全相同，因為 Visual Studio 中的 [**變更驗證**] 對話方塊中使用這些原則。 原則名稱可以在*appsettings*中進行驗證。
+> 請確定原則名稱與檔中所述的完全相同，因為 Visual Studio 中的 [**變更驗證**] 對話方塊中使用這些原則。 原則名稱可在*appsettings.js*中進行驗證。
 
 ## <a name="configure-the-underlying-openidconnectoptionsjwtbearercookie-options"></a>設定基礎 OpenIdConnectOptions/Microsoft.aspnetcore.authentication.jwtbearer/Cookie 選項
 
-若要直接設定基礎選項，請在中`Startup.ConfigureServices`使用適當的配置常數：
+若要直接設定基礎選項，請在中使用適當的配置常數 `Startup.ConfigureServices` ：
 
 ```csharp
 services.Configure<OpenIdConnectOptions>(

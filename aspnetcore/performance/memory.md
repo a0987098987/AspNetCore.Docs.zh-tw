@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 4/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: performance/memory
-ms.openlocfilehash: db6f8e867fc83a211170aa59f5bad604d9c2730d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: d261a26de7b9ba77e5f9787ae2eb37293257a0fc
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776112"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406390"
 ---
 # <a name="memory-management-and-garbage-collection-gc-in-aspnet-core"></a>ASP.NET Core 中的記憶體管理和垃圾收集（GC）
 
@@ -135,7 +137,7 @@ public ActionResult<string> GetBigString()
 * **工作站 GC**：針對桌面優化。
 * **伺服器 GC**。 ASP.NET Core 應用程式的預設 GC。 已針對伺服器進行優化。
 
-GC 模式可以在專案檔或已發佈應用程式的 *.runtimeconfig.json*中明確設定。 下列標記顯示專案檔`ServerGarbageCollection`中的設定：
+您可以在專案檔或已發佈應用程式檔案的*runtimeconfig.js*中明確設定 GC 模式。 下列標記顯示專案檔 `ServerGarbageCollection` 中的設定：
 
 ```xml
 <PropertyGroup>
@@ -143,9 +145,9 @@ GC 模式可以在專案檔或已發佈應用程式的 *.runtimeconfig.json*中�
 </PropertyGroup>
 ```
 
-在`ServerGarbageCollection`專案檔中變更需要重建應用程式。
+`ServerGarbageCollection`在專案檔中變更需要重建應用程式。
 
-**注意：** 在具有單一核心的機器上**無法**使用伺服器垃圾收集。 如需詳細資訊，請參閱<xref:System.Runtime.GCSettings.IsServerGC>。
+**注意：** 在具有單一核心的機器上**無法**使用伺服器垃圾收集。 如需詳細資訊，請參閱 <xref:System.Runtime.GCSettings.IsServerGC> 。
 
 下圖顯示使用工作站 GC 之已測的 RPS 下的記憶體設定檔。
 
@@ -186,23 +188,23 @@ public ActionResult<string> GetStaticString()
 上述程式碼：
 
 * 是一般記憶體流失的範例。
-* 使用頻繁的呼叫，會導致應用程式記憶體增加，直到進程損`OutOfMemory`毀，但發生例外狀況。
+* 使用頻繁的呼叫，會導致應用程式記憶體增加，直到進程損毀，但發生 `OutOfMemory` 例外狀況。
 
 ![先前的圖表](memory/_static/eternal.png)
 
 在上圖中：
 
-* 負載測試`/api/staticstring`端點會導致記憶體中的線性增加。
+* 負載測試 `/api/staticstring` 端點會導致記憶體中的線性增加。
 * GC 會藉由呼叫第2代回收，在記憶體壓力增加時，嘗試釋放記憶體。
 * GC 無法釋放洩漏的記憶體。 已配置和工作集增加了一段時間。
 
-某些案例（例如快取）需要保留物件參考，直到記憶體壓力強制釋放它們為止。 <xref:System.WeakReference>類別可以用於這種類型的快取程式碼。 在`WeakReference`記憶體壓力下收集物件。 的預設執行方式<xref:Microsoft.Extensions.Caching.Memory.IMemoryCache>是`WeakReference`使用。
+某些案例（例如快取）需要保留物件參考，直到記憶體壓力強制釋放它們為止。 <xref:System.WeakReference>類別可以用於這種類型的快取程式碼。 `WeakReference`在記憶體壓力下收集物件。 的預設執行方式是 <xref:Microsoft.Extensions.Caching.Memory.IMemoryCache> 使用 `WeakReference` 。
 
 ### <a name="native-memory"></a>原生記憶體
 
 有些 .NET Core 物件依賴原生記憶體。 GC**無法**收集原生記憶體。 使用原生記憶體的 .NET 物件必須使用機器碼釋放它。
 
-.NET 提供<xref:System.IDisposable>介面讓開發人員釋放原生記憶體。 即使未呼叫，當完成項執行時，正確實[作為類別](/dotnet/csharp/programming-guide/classes-and-structs/destructors)的呼叫。 `Dispose` <xref:System.IDisposable.Dispose*>
+.NET 提供 <xref:System.IDisposable> 介面讓開發人員釋放原生記憶體。 即使 <xref:System.IDisposable.Dispose*> 未呼叫， `Dispose` 當完成項執行時，正確實[finalizer](/dotnet/csharp/programming-guide/classes-and-structs/destructors)作為類別的呼叫。
 
 請考慮下列程式碼：
 
@@ -217,7 +219,7 @@ public void GetFileProvider()
 
 [PhysicalFileProvider](/dotnet/api/microsoft.extensions.fileproviders.physicalfileprovider?view=dotnet-plat-ext-3.0)是 managed 類別，因此會在要求結束時收集任何實例。
 
-下圖顯示連續叫用`fileprovider` API 時的記憶體設定檔。
+下圖顯示連續叫用 API 時的記憶體設定檔 `fileprovider` 。
 
 ![先前的圖表](memory/_static/fileprovider.png)
 
@@ -226,7 +228,7 @@ public void GetFileProvider()
 在使用者程式碼中，可能會發生相同的流失，如下所示：
 
 * 未正確釋放類別。
-* 忘記叫用應`Dispose`處置之相依物件的方法。
+* 忘記叫 `Dispose` 用應處置之相依物件的方法。
 
 ### <a name="large-objects-heap"></a>大型物件堆積
 
@@ -248,7 +250,7 @@ GCSettings.LargeObjectHeapCompactionMode = GCLargeObjectHeapCompactionMode.Compa
 GC.Collect();
 ```
 
-如<xref:System.Runtime.GCSettings.LargeObjectHeapCompactionMode>需有關壓縮 LOH 的詳細資訊，請參閱。
+如需有關 <xref:System.Runtime.GCSettings.LargeObjectHeapCompactionMode> 壓縮 LOH 的詳細資訊，請參閱。
 
 在使用 .NET Core 3.0 和更新版本的容器中，會自動壓縮 LOH。
 
@@ -262,15 +264,15 @@ public int GetLOH1(int size)
 }
 ```
 
-下圖顯示在 [ `/api/loh/84975`最大負載] 底下呼叫端點的記憶體設定檔：
+下圖顯示 `/api/loh/84975` 在 [最大負載] 底下呼叫端點的記憶體設定檔：
 
 ![先前的圖表](memory/_static/loh1.png)
 
-下圖顯示呼叫`/api/loh/84976`端點的記憶體設定檔，只配置*一個位元組*：
+下圖顯示呼叫端點的記憶體設定檔 `/api/loh/84976` ，*只配置一個位元組*：
 
 ![先前的圖表](memory/_static/loh2.png)
 
-注意：結構`byte[]`有額外的位元組。 這就是為什麼84976個位元組會觸發85000限制的原因。
+注意： `byte[]` 結構有額外的位元組。 這就是為什麼84976個位元組會觸發85000限制的原因。
 
 比較上述兩個圖表：
 
@@ -287,23 +289,23 @@ public int GetLOH1(int size)
 * [ResponseCaching/資料流程/StreamUtilities .cs](https://github.com/dotnet/AspNetCore/blob/v3.0.0/src/Middleware/ResponseCaching/src/Streams/StreamUtilities.cs#L16)
 * [ResponseCaching/MemoryResponseCache .cs](https://github.com/aspnet/ResponseCaching/blob/c1cb7576a0b86e32aec990c22df29c780af29ca5/src/Microsoft.AspNetCore.ResponseCaching/Internal/MemoryResponseCache.cs#L55)
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [發現大型物件堆積](https://devblogs.microsoft.com/dotnet/large-object-heap-uncovered-from-an-old-msdn-article/)
 * [大型物件堆積](/dotnet/standard/garbage-collection/large-object-heap)
 
 ### <a name="httpclient"></a>HttpClient
 
-不正確<xref:System.Net.Http.HttpClient>地使用會導致資源洩漏。 系統資源，例如資料庫連接、通訊端、檔案控制代碼等：
+不正確地使用 <xref:System.Net.Http.HttpClient> 會導致資源洩漏。 系統資源，例如資料庫連接、通訊端、檔案控制代碼等：
 
 * 比記憶體更少。
 * 當洩漏記憶體時，會有更多的問題。
 
-有經驗的 .NET 開發人員<xref:System.IDisposable.Dispose*>知道要在執行<xref:System.IDisposable>的物件上呼叫。 不處置執行`IDisposable`的物件通常會導致記憶體流失或遺漏系統資源。
+有經驗的 .NET 開發人員知道要 <xref:System.IDisposable.Dispose*> 在執行的物件上呼叫 <xref:System.IDisposable> 。 不處置執行的物件 `IDisposable` 通常會導致記憶體流失或遺漏系統資源。
 
-`HttpClient`會`IDisposable`執行，但**不**應該在每次叫用時處置。 相反地`HttpClient` ，應該重複使用。
+`HttpClient``IDisposable`會執行，但**不**應該在每次叫用時處置。 相反地， `HttpClient` 應該重複使用。
 
-下列端點會在每個要求上`HttpClient`建立及處置新的實例：
+下列端點會 `HttpClient` 在每個要求上建立及處置新的實例：
 
 ```csharp
 [HttpGet("httpclient1")]
@@ -331,9 +333,9 @@ System.Net.Http.HttpRequestException: Only one usage of each socket address
     CancellationToken cancellationToken)
 ```
 
-即使`HttpClient`實例已被處置，實際的網路連線還是需要一些時間才能由作業系統釋放。 藉由持續建立新的連接，就會發生_埠耗盡_。 每個用戶端連接都需要自己的用戶端埠。
+即使 `HttpClient` 實例已被處置，實際的網路連線還是需要一些時間才能由作業系統釋放。 藉由持續建立新的連接，就會發生_埠耗盡_。 每個用戶端連接都需要自己的用戶端埠。
 
-防止埠耗盡的其中一種方法是重複使用`HttpClient`相同的實例：
+防止埠耗盡的其中一種方法是重複使用相同的 `HttpClient` 實例：
 
 ```csharp
 private static readonly HttpClient _httpClient = new HttpClient();
@@ -346,16 +348,16 @@ public async Task<int> GetHttpClient2(string url)
 }
 ```
 
-當`HttpClient`應用程式停止時，就會釋放實例。 這個範例顯示，每次使用之後，不應處置每個可處置的資源。
+`HttpClient`當應用程式停止時，就會釋放實例。 這個範例顯示，每次使用之後，不應處置每個可處置的資源。
 
-請參閱下列內容，以取得更好的方法來處理`HttpClient`實例的存留期：
+請參閱下列內容，以取得更好的方法來處理實例的存留期 `HttpClient` ：
 
 * [HttpClient 和存留期管理](/aspnet/core/fundamentals/http-requests#httpclient-and-lifetime-management)
 * [HTTPClient factory 的 blog](https://devblogs.microsoft.com/aspnet/asp-net-core-2-1-preview1-introducing-httpclient-factory/)
  
 ### <a name="object-pooling"></a>物件共用
 
-先前的範例示範如何將`HttpClient`實例設為靜態，並由所有要求重複使用。 重複使用會導致資源不足。
+先前的範例示範如何將 `HttpClient` 實例設為靜態，並由所有要求重複使用。 重複使用會導致資源不足。
 
 物件共用：
 
@@ -366,7 +368,7 @@ public async Task<int> GetHttpClient2(string url)
 
 [ObjectPool](https://www.nuget.org/packages/Microsoft.Extensions.ObjectPool/)的 NuGet 套件包含可協助管理這類集區的類別。
 
-下列 API 端點會具現`byte`化在每個要求上填入亂數字的緩衝區：
+下列 API 端點 `byte` 會具現化在每個要求上填入亂數字的緩衝區：
 
 ```csharp
         [HttpGet("array/{size}")]
@@ -386,7 +388,7 @@ public async Task<int> GetHttpClient2(string url)
 
 在上圖中，層代0回收大約每秒發生一次。
 
-上述程式碼可以藉由使用`byte` [ArrayPool\<T>](xref:System.Buffers.ArrayPool`1)，藉由共用緩衝區來進行優化。 靜態實例會在要求之間重複使用。
+上述程式碼可以藉由 `byte` 使用[ArrayPool \<T> ](xref:System.Buffers.ArrayPool`1)來共用緩衝區來進行優化。 靜態實例會在要求之間重複使用。
 
 這種方法的不同之處在于，會從 API 傳回集區物件。 這表示：
 
@@ -398,7 +400,7 @@ public async Task<int> GetHttpClient2(string url)
 * 將集區陣列封裝在可處置的物件中。
 * 使用[HttpCoNtext. RegisterForDispose](xref:Microsoft.AspNetCore.Http.HttpResponse.RegisterForDispose*)註冊集區物件。
 
-`RegisterForDispose`會負責呼叫`Dispose`目標物件，使其只在 HTTP 要求完成時才會釋放。
+`RegisterForDispose`會負責呼叫 `Dispose` 目標物件，使其只在 HTTP 要求完成時才會釋放。
 
 ```csharp
 private static ArrayPool<byte> _arrayPool = ArrayPool<byte>.Create();

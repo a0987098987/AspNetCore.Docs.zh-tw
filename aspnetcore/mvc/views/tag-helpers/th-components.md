@@ -7,17 +7,19 @@ ms.author: scaddie
 ms.date: 06/12/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/th-components
-ms.openlocfilehash: df118cdc8346b99e4e5c60c9f0441c963543f4b4
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 58781880764b26a67d71e70c225ab4ed4e5da109
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767508"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406702"
 ---
 # <a name="tag-helper-components-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式元件
 
@@ -25,7 +27,7 @@ ms.locfileid: "82767508"
 
 標籤協助程式元件是一種標籤協助程式，允許您從伺服器端程式碼有條件地修改或新增 HTML 項目。 ASP.NET Core 2.0 或更新版本提供此功能。
 
-ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 它們位於<xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers>命名空間中，而且可以在 MVC 和Razor頁面中使用。 標籤協助程式元件不需要在 *_ViewImports.cshtml* 中註冊應用程式。
+ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 它們位於 <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers> 命名空間中，而且可以在 MVC 和頁面中使用 Razor 。 標籤協助程式元件不需要在 *_ViewImports.cshtml* 中註冊應用程式。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/th-components/samples)（[如何下載](xref:index#how-to-download-a-sample)）
 
@@ -69,7 +71,7 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 標籤協助程式元件必須新增至應用程式的標籤協助程式元件集合中。 有三種方式可新增至集合：
 
 * [透過服務容器註冊](#registration-via-services-container)
-* [Razor透過檔案註冊](#registration-via-razor-file)
+* [透過檔案註冊 Razor](#registration-via-razor-file)
 * [透過頁面模型或控制器註冊](#registration-via-page-model-or-controller)
 
 ### <a name="registration-via-services-container"></a>透過服務容器註冊
@@ -78,9 +80,9 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Startup.cs?name=snippet_ConfigureServices&highlight=12-15)]
 
-### <a name="registration-via-razor-file"></a>Razor透過檔案註冊
+### <a name="registration-via-razor-file"></a>透過檔案註冊 Razor
 
-如果標籤協助程式元件未向 DI 註冊，則可以從 [ Razor頁面] 頁面或 MVC 視圖進行註冊。 這項技術是用來控制檔案中Razor插入的標記和元件執行順序。
+如果標籤協助程式元件未向 DI 註冊，則可以從 [ Razor 頁面] 頁面或 MVC 視圖進行註冊。 這項技術是用來控制檔案中插入的標記和元件執行順序 Razor 。
 
 `ITagHelperComponentManager` 用於新增標籤協助程式元件，或從應用程式移除。 下列程式碼使用 `AddressTagHelperComponent` 示範這項技術：
 
@@ -88,7 +90,7 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 
 在上述程式碼中：
 
-* `@inject` 指示詞會提供 `ITagHelperComponentManager` 的執行個體。 實例會指派給名`manager`為的變數，以存取檔案中Razor的下游。
+* `@inject` 指示詞會提供 `ITagHelperComponentManager` 的執行個體。 實例會指派給名為的變數，以 `manager` 存取檔案中的下游 Razor 。
 * `AddressTagHelperComponent` 的執行個體會新增至應用程式標籤協助程式元件集合中。
 
 `AddressTagHelperComponent` 已修改，以容納接受 `markup` 和 `order` 參數的建構函式：
@@ -101,9 +103,9 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 
 ### <a name="registration-via-page-model-or-controller"></a>透過頁面模型或控制器註冊
 
-如果標籤協助程式元件未向 DI 註冊，則可以從Razor頁面頁面模型或 MVC 控制器進行註冊。 這項技術適用于將 c # 邏輯Razor與檔案分開。
+如果標籤協助程式元件未向 DI 註冊，則可以從 Razor 頁面頁面模型或 MVC 控制器進行註冊。 這項技術適用于將 c # 邏輯與檔案分開 Razor 。
 
-建構函式插入可用於存取 `ITagHelperComponentManager` 的執行個體。 標籤協助程式元件會新增至執行個體的標籤協助程式元件集合。 下列Razor頁面模型使用`AddressTagHelperComponent`來示範這項技術：
+建構函式插入可用於存取 `ITagHelperComponentManager` 的執行個體。 標籤協助程式元件會新增至執行個體的標籤協助程式元件集合。 下列 Razor 頁面模型使用來示範這項技術 `AddressTagHelperComponent` ：
 
 [!code-csharp[](th-components/samples/RazorPagesSample/Pages/Index.cshtml.cs?name=snippet_IndexModelClass)]
 
@@ -117,8 +119,8 @@ ASP.NET Core 包含兩個內建標籤協助程式元件：`head` 和 `body`。 �
 建立自訂標籤協助程式元件：
 
 * 建立衍生自 <xref:Microsoft.AspNetCore.Mvc.Razor.TagHelpers.TagHelperComponentTagHelper> 的公用類別。
-* 將[`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute)屬性套用至類別。 指定目標 HTML 項目的名稱。
-* *選擇性*：將[`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute)屬性套用至類別，以隱藏 IntelliSense 中的類型顯示。
+* 將 [`[HtmlTargetElement]`](xref:Microsoft.AspNetCore.Razor.TagHelpers.HtmlTargetElementAttribute) 屬性套用至類別。 指定目標 HTML 項目的名稱。
+* *選擇性*：將 [`[EditorBrowsable(EditorBrowsableState.Never)]`](xref:System.ComponentModel.EditorBrowsableAttribute) 屬性套用至類別，以隱藏 IntelliSense 中的類型顯示。
 
 下列程式碼會建立以 `<address>` HTML 項目為目標的自訂標籤協助程式元件：
 

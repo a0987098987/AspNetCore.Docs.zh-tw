@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 4/20/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/app-secrets
-ms.openlocfilehash: 7508aebcda4e14812140f13ece635428908a4abb
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a12262d182ce84a326086935627b55d2edc4885e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776678"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407001"
 ---
 # <a name="safe-storage-of-app-secrets-in-development-in-aspnet-core"></a>在 ASP.NET Core 中的開發中安全儲存應用程式秘密
 
@@ -33,7 +35,7 @@ ms.locfileid: "82776678"
 
 環境變數是用來避免在程式碼或本機設定檔案中儲存應用程式秘密。 環境變數會覆寫所有先前指定之設定來源的設定值。
 
-請考慮啟用**個別使用者帳戶**安全性的 ASP.NET Core web 應用程式。 預設的資料庫連接字串會包含在專案的*appsettings*中，並具有索引鍵`DefaultConnection`。 預設連接字串適用于 LocalDB，它會在使用者模式中執行，而且不需要密碼。 在應用程式部署期間`DefaultConnection` ，可以使用環境變數的值來覆寫金鑰值。 環境變數可能會儲存具有敏感性認證的完整連接字串。
+請考慮啟用**個別使用者帳戶**安全性的 ASP.NET Core web 應用程式。 預設的資料庫連接字串會包含在具有索引鍵之檔案的專案*appsettings.js*中 `DefaultConnection` 。 預設連接字串適用于 LocalDB，它會在使用者模式中執行，而且不需要密碼。 在應用程式部署期間， `DefaultConnection` 可以使用環境變數的值來覆寫金鑰值。 環境變數可能會儲存具有敏感性認證的完整連接字串。
 
 > [!WARNING]
 > 環境變數通常會儲存為純文字、未加密的文字。 如果電腦或進程遭到入侵，則不受信任的合作物件可以存取環境變數。 可能需要其他措施來防止洩漏使用者秘密。
@@ -65,7 +67,7 @@ ms.locfileid: "82776678"
 
 ---
 
-在先前的檔案路徑中， `<user_secrets_id>`將取代`UserSecretsId`為 *.csproj*檔案中指定的值。
+在先前的檔案路徑中， `<user_secrets_id>` 將取代為 `UserSecretsId` *.csproj*檔案中指定的值。
 
 請勿撰寫依賴秘密管理員工具所儲存之資料位置或格式的程式碼。 這些執行詳細資料可能會變更。 例如，秘密值不會加密，但未來可能會是。
 
@@ -73,29 +75,29 @@ ms.locfileid: "82776678"
 
 「秘密管理員」工具會針對儲存在使用者設定檔中的專案特定設定進行操作。
 
-「密碼管理員」工具在`init` .NET Core SDK 3.0.100 或更新版本中包含一個命令。 若要使用使用者秘密，請在專案目錄中執行下列命令：
+「密碼管理員」工具 `init` 在 .NET Core SDK 3.0.100 或更新版本中包含一個命令。 若要使用使用者秘密，請在專案目錄中執行下列命令：
 
 ```dotnetcli
 dotnet user-secrets init
 ```
 
-上述命令會在`UserSecretsId` *.csproj*檔案的中`PropertyGroup`新增專案。 根據預設，的內部文字`UserSecretsId`是 GUID。 內部文字是任意的，但對專案而言是唯一的。
+上述命令會 `UserSecretsId` 在 `PropertyGroup` *.csproj*檔案的中新增專案。 根據預設，的內部文字 `UserSecretsId` 是 GUID。 內部文字是任意的，但對專案而言是唯一的。
 
 [!code-xml[](app-secrets/samples/3.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
 
-在 Visual Studio 中，以滑鼠右鍵按一下方案總管中的專案，然後從內容功能表中選取 [**管理使用者秘密**]。 此手勢會將`UserSecretsId`已填入 GUID 的元素新增至 *.csproj*檔案。
+在 Visual Studio 中，以滑鼠右鍵按一下方案總管中的專案，然後從內容功能表中選取 [**管理使用者秘密**]。 此手勢會將已 `UserSecretsId` 填入 GUID 的元素新增至 *.csproj*檔案。
 
 ## <a name="set-a-secret"></a>設定密碼
 
-定義由金鑰和其值組成的應用程式密碼。 此密碼與專案的`UserSecretsId`值相關聯。 例如，從 *.csproj*檔案所在的目錄執行下列命令：
+定義由金鑰和其值組成的應用程式密碼。 此密碼與專案的值相關聯 `UserSecretsId` 。 例如，從 *.csproj*檔案所在的目錄執行下列命令：
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 ```
 
-在上述範例中，冒號表示`Movies`是具有`ServiceApiKey`屬性的物件常值。
+在上述範例中，冒號表示 `Movies` 是具有屬性的物件常值 `ServiceApiKey` 。
 
-秘密管理員工具也可以從其他目錄中使用。 使用`--project`選項來提供 *.csproj*檔案所在的檔案系統路徑。 例如：
+秘密管理員工具也可以從其他目錄中使用。 使用 `--project` 選項來提供 *.csproj*檔案所在的檔案系統路徑。 例如：
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -103,7 +105,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Visual Studio 中的 JSON 結構簡維
 
-Visual Studio 的 [**管理使用者秘密**] 手勢會在文字編輯器中開啟一個*秘密 json*檔案。 以要儲存的機碼值組取代*密碼. json*的內容。 例如：
+Visual Studio 的 [**管理使用者秘密**] 手勢會在文字編輯器中開啟檔案*secrets.js* 。 將*secrets.js*的內容取代為要儲存的機碼值組。 例如：
 
 ```json
 {
@@ -114,7 +116,7 @@ Visual Studio 的 [**管理使用者秘密**] 手勢會在文字編輯器中開�
 }
 ```
 
-JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`進行修改之後壓平合併。 例如， `dotnet user-secrets remove "Movies:ConnectionString"`執行會折迭`Movies`物件常值。 修改過的檔案如下所示：
+JSON 結構會在透過或進行修改之後壓平合併 `dotnet user-secrets remove` `dotnet user-secrets set` 。 例如，執行會折迭 `dotnet user-secrets remove "Movies:ConnectionString"` `Movies` 物件常值。 修改過的檔案如下所示：
 
 ```json
 {
@@ -124,7 +126,7 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 
 ## <a name="set-multiple-secrets"></a>設定多個秘密
 
-您可以透過將 JSON 傳送至`set`命令的方式來設定密碼批次。 在下列範例中，*輸入 json*檔案的內容會以管道傳送至`set`命令。
+您可以透過將 JSON 傳送至命令的方式來設定密碼批次 `set` 。 在下列範例中，檔案內容*上的input.js*會以管道傳送至 `set` 命令。
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -148,15 +150,15 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 
 [ASP.NET Core 設定 API](xref:fundamentals/configuration/index)提供秘密管理員密碼的存取權。
 
-當專案呼叫<xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A>以預先設定的預設值來初始化主機的新實例時，會自動在開發模式中新增使用者秘密設定來源。 `CreateDefaultBuilder`當<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> <xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName>為<xref:Microsoft.Extensions.Hosting.EnvironmentName.Development>時呼叫：
+當專案呼叫 <xref:Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder%2A> 以預先設定的預設值來初始化主機的新實例時，會自動在開發模式中新增使用者秘密設定來源。 `CreateDefaultBuilder`<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A>當為時 <xref:Microsoft.Extensions.Hosting.IHostEnvironment.EnvironmentName> 呼叫 <xref:Microsoft.Extensions.Hosting.EnvironmentName.Development> ：
 
 [!code-csharp[](app-secrets/samples/3.x/UserSecrets/Program.cs?name=snippet_CreateHostBuilder&highlight=2)]
 
-若`CreateDefaultBuilder`未呼叫，請呼叫<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A>以明確新增使用者秘密設定來源。 只有`AddUserSecrets`當應用程式在開發環境中執行時才會呼叫，如下列範例所示：
+若 `CreateDefaultBuilder` 未呼叫，請呼叫以明確新增使用者秘密設定來源 <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> 。 `AddUserSecrets`只有當應用程式在開發環境中執行時才會呼叫，如下列範例所示：
 
 [!code-csharp[](app-secrets/samples/3.x/UserSecrets/Program2.cs?name=snippet_Host&highlight=6-9)]
 
-您可以透過`Configuration` API 來抓取使用者秘密：
+您可以透過 API 來抓取使用者秘密 `Configuration` ：
 
 [!code-csharp[](app-secrets/samples/3.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=14)]
 
@@ -166,17 +168,17 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
-若要將上述密碼對應到 POCO，請使用`Configuration` API 的[物件圖形](xref:fundamentals/configuration/index#bind-to-an-object-graph)系結功能。 下列程式碼會系結至`MovieSettings`自訂 POCO 並`ServiceApiKey`存取屬性值：
+若要將上述密碼對應到 POCO，請使用 `Configuration` API 的[物件圖形](xref:fundamentals/configuration/index#bind-to-an-object-graph)系結功能。 下列程式碼會系結至自訂 `MovieSettings` POCO 並存取 `ServiceApiKey` 屬性值：
 
 [!code-csharp[](app-secrets/samples/3.x/UserSecrets/Startup3.cs?name=snippet_BindToObjectGraph)]
 
-`Movies:ConnectionString`和`Movies:ServiceApiKey`密碼會對應至中`MovieSettings`的個別屬性：
+`Movies:ConnectionString`和 `Movies:ServiceApiKey` 密碼會對應至中的個別屬性 `MovieSettings` ：
 
 [!code-csharp[](app-secrets/samples/3.x/UserSecrets/Models/MovieSettings.cs?name=snippet_MovieSettingsClass)]
 
 ## <a name="string-replacement-with-secrets"></a>使用秘密取代字串
 
-以純文字儲存密碼並不安全。 例如，儲存在*appsettings*中的資料庫連接字串可能包含指定使用者的密碼：
+以純文字儲存密碼並不安全。 例如，儲存在*appsettings.js*中的資料庫連接字串可能會包含指定使用者的密碼：
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -186,11 +188,11 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-從 appsettings `Password`的連接字串中移除索引鍵/值*appsettings.json*組。 例如：
+`Password`從*appsettings.json*的連接字串中移除索引鍵/值組。 例如：
 
 [!code-json[](app-secrets/samples/3.x/UserSecrets/appsettings.json?highlight=3)]
 
-您可以在<xref:System.Data.SqlClient.SqlConnectionStringBuilder>物件的<xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A>屬性上設定密碼的值，以完成連接字串：
+您可以在物件的屬性上設定密碼的值 <xref:System.Data.SqlClient.SqlConnectionStringBuilder> <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> ，以完成連接字串：
 
 [!code-csharp[](app-secrets/samples/3.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-17)]
 
@@ -211,7 +213,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-在上述範例中，索引鍵名稱中的冒號代表在*私密金鑰內的物件階層。*
+在上述範例中，索引鍵名稱中的冒號代表*secrets.js*中的物件階層。
 
 ## <a name="remove-a-single-secret"></a>移除單一秘密
 
@@ -223,7 +225,7 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-應用程式的私密金鑰*json*檔案已修改，以移除與`MoviesConnectionString`金鑰相關聯的機碼值組：
+應用程式*在檔案上的secrets.js*已修改為移除與機碼相關聯的機碼值組 `MoviesConnectionString` ：
 
 ```json
 {
@@ -249,13 +251,13 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets clear
 ```
 
-應用程式的所有使用者秘密都已從*密碼 json*檔案中刪除：
+應用程式的所有使用者秘密已從檔案中的*secrets.js*刪除：
 
 ```json
 {}
 ```
 
-執行`dotnet user-secrets list`會顯示下列訊息：
+`dotnet user-secrets list`執行會顯示下列訊息：
 
 ```console
 No secrets configured for this application.
@@ -281,7 +283,7 @@ No secrets configured for this application.
 
 環境變數是用來避免在程式碼或本機設定檔案中儲存應用程式秘密。 環境變數會覆寫所有先前指定之設定來源的設定值。
 
-請考慮啟用**個別使用者帳戶**安全性的 ASP.NET Core web 應用程式。 預設的資料庫連接字串會包含在專案的*appsettings*中，並具有索引鍵`DefaultConnection`。 預設連接字串適用于 LocalDB，它會在使用者模式中執行，而且不需要密碼。 在應用程式部署期間`DefaultConnection` ，可以使用環境變數的值來覆寫金鑰值。 環境變數可能會儲存具有敏感性認證的完整連接字串。
+請考慮啟用**個別使用者帳戶**安全性的 ASP.NET Core web 應用程式。 預設的資料庫連接字串會包含在具有索引鍵之檔案的專案*appsettings.js*中 `DefaultConnection` 。 預設連接字串適用于 LocalDB，它會在使用者模式中執行，而且不需要密碼。 在應用程式部署期間， `DefaultConnection` 可以使用環境變數的值來覆寫金鑰值。 環境變數可能會儲存具有敏感性認證的完整連接字串。
 
 > [!WARNING]
 > 環境變數通常會儲存為純文字、未加密的文字。 如果電腦或進程遭到入侵，則不受信任的合作物件可以存取環境變數。 可能需要其他措施來防止洩漏使用者秘密。
@@ -313,7 +315,7 @@ No secrets configured for this application.
 
 ---
 
-在先前的檔案路徑中， `<user_secrets_id>`將取代`UserSecretsId`為 *.csproj*檔案中指定的值。
+在先前的檔案路徑中， `<user_secrets_id>` 將取代為 `UserSecretsId` *.csproj*檔案中指定的值。
 
 請勿撰寫依賴秘密管理員工具所儲存之資料位置或格式的程式碼。 這些執行詳細資料可能會變更。 例如，秘密值不會加密，但未來可能會是。
 
@@ -321,24 +323,24 @@ No secrets configured for this application.
 
 「秘密管理員」工具會針對儲存在使用者設定檔中的專案特定設定進行操作。
 
-若要使用使用者秘密，請`UserSecretsId`在 .csproj 檔案`PropertyGroup`的中 *.csproj*定義元素。 的內部文字是`UserSecretsId`任意的，但對專案而言是唯一的。 開發人員通常會產生的`UserSecretsId`GUID。
+若要使用使用者秘密，請 `UserSecretsId` 在 .csproj 檔案的中定義元素。 `PropertyGroup` *.csproj* 的內部文字 `UserSecretsId` 是任意的，但對專案而言是唯一的。 開發人員通常會產生的 GUID `UserSecretsId` 。
 
 [!code-xml[](app-secrets/samples/2.x/UserSecrets/UserSecrets.csproj?name=snippet_PropertyGroup&highlight=3)]
 
 > [!TIP]
-> 在 Visual Studio 中，以滑鼠右鍵按一下方案總管中的專案，然後從內容功能表中選取 [**管理使用者秘密**]。 此手勢會將`UserSecretsId`已填入 GUID 的元素新增至 *.csproj*檔案。
+> 在 Visual Studio 中，以滑鼠右鍵按一下方案總管中的專案，然後從內容功能表中選取 [**管理使用者秘密**]。 此手勢會將已 `UserSecretsId` 填入 GUID 的元素新增至 *.csproj*檔案。
 
 ## <a name="set-a-secret"></a>設定密碼
 
-定義由金鑰和其值組成的應用程式密碼。 此密碼與專案的`UserSecretsId`值相關聯。 例如，從 *.csproj*檔案所在的目錄執行下列命令：
+定義由金鑰和其值組成的應用程式密碼。 此密碼與專案的值相關聯 `UserSecretsId` 。 例如，從 *.csproj*檔案所在的目錄執行下列命令：
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 ```
 
-在上述範例中，冒號表示`Movies`是具有`ServiceApiKey`屬性的物件常值。
+在上述範例中，冒號表示 `Movies` 是具有屬性的物件常值 `ServiceApiKey` 。
 
-秘密管理員工具也可以從其他目錄中使用。 使用`--project`選項來提供 *.csproj*檔案所在的檔案系統路徑。 例如：
+秘密管理員工具也可以從其他目錄中使用。 使用 `--project` 選項來提供 *.csproj*檔案所在的檔案系統路徑。 例如：
 
 ```dotnetcli
 dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp1\src\WebApp1"
@@ -346,7 +348,7 @@ dotnet user-secrets set "Movies:ServiceApiKey" "12345" --project "C:\apps\WebApp
 
 ### <a name="json-structure-flattening-in-visual-studio"></a>Visual Studio 中的 JSON 結構簡維
 
-Visual Studio 的 [**管理使用者秘密**] 手勢會在文字編輯器中開啟一個*秘密 json*檔案。 以要儲存的機碼值組取代*密碼. json*的內容。 例如：
+Visual Studio 的 [**管理使用者秘密**] 手勢會在文字編輯器中開啟檔案*secrets.js* 。 將*secrets.js*的內容取代為要儲存的機碼值組。 例如：
 
 ```json
 {
@@ -357,7 +359,7 @@ Visual Studio 的 [**管理使用者秘密**] 手勢會在文字編輯器中開�
 }
 ```
 
-JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`進行修改之後壓平合併。 例如， `dotnet user-secrets remove "Movies:ConnectionString"`執行會折迭`Movies`物件常值。 修改過的檔案如下所示：
+JSON 結構會在透過或進行修改之後壓平合併 `dotnet user-secrets remove` `dotnet user-secrets set` 。 例如，執行會折迭 `dotnet user-secrets remove "Movies:ConnectionString"` `Movies` 物件常值。 修改過的檔案如下所示：
 
 ```json
 {
@@ -367,7 +369,7 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 
 ## <a name="set-multiple-secrets"></a>設定多個秘密
 
-您可以透過將 JSON 傳送至`set`命令的方式來設定密碼批次。 在下列範例中，*輸入 json*檔案的內容會以管道傳送至`set`命令。
+您可以透過將 JSON 傳送至命令的方式來設定密碼批次 `set` 。 在下列範例中，檔案內容*上的input.js*會以管道傳送至 `set` 命令。
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -391,17 +393,17 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 
 [ASP.NET Core 設定 API](xref:fundamentals/configuration/index)提供秘密管理員密碼的存取權。
 
-如果您的專案是以 .NET Framework 為目標，請安裝[Usersecrets.xml](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 套件。
+如果您的專案是以 .NET Framework 為目標，請安裝[Microsoft.Extensions.Configuration。Usersecrets.xml](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.UserSecrets) NuGet 套件。
 
-在 ASP.NET Core 2.0 或更新版本中，當專案呼叫<xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A>以預先設定的預設值來初始化主機的新實例時，就會自動在開發模式中新增使用者秘密設定來源。 `CreateDefaultBuilder`當<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName>為<xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development>時呼叫：
+在 ASP.NET Core 2.0 或更新版本中，當專案呼叫 <xref:Microsoft.AspNetCore.WebHost.CreateDefaultBuilder%2A> 以預先設定的預設值來初始化主機的新實例時，就會自動在開發模式中新增使用者秘密設定來源。 `CreateDefaultBuilder`<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A>當為時 <xref:Microsoft.AspNetCore.Hosting.IHostingEnvironment.EnvironmentName> 呼叫 <xref:Microsoft.AspNetCore.Hosting.EnvironmentName.Development> ：
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Program.cs?name=snippet_CreateWebHostBuilder&highlight=2)]
 
-當`CreateDefaultBuilder`未呼叫時，請在函式中呼叫<xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A>以`Startup`明確新增使用者秘密設定來源。 只有`AddUserSecrets`當應用程式在開發環境中執行時才會呼叫，如下列範例所示：
+當 `CreateDefaultBuilder` 未呼叫時，請在函式中呼叫以明確新增使用者秘密設定來源 <xref:Microsoft.Extensions.Configuration.UserSecretsConfigurationExtensions.AddUserSecrets%2A> `Startup` 。 `AddUserSecrets`只有當應用程式在開發環境中執行時才會呼叫，如下列範例所示：
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup3.cs?name=snippet_StartupConstructor&highlight=12)]
 
-您可以透過`Configuration` API 來抓取使用者秘密：
+您可以透過 API 來抓取使用者秘密 `Configuration` ：
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup.cs?name=snippet_StartupClass&highlight=14)]
 
@@ -411,17 +413,17 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 
 [!INCLUDE[secrets.json file](~/includes/app-secrets/secrets-json-file-and-text.md)]
 
-若要將上述密碼對應到 POCO，請使用`Configuration` API 的[物件圖形](xref:fundamentals/configuration/index#bind-to-an-object-graph)系結功能。 下列程式碼會系結至`MovieSettings`自訂 POCO 並`ServiceApiKey`存取屬性值：
+若要將上述密碼對應到 POCO，請使用 `Configuration` API 的[物件圖形](xref:fundamentals/configuration/index#bind-to-an-object-graph)系結功能。 下列程式碼會系結至自訂 `MovieSettings` POCO 並存取 `ServiceApiKey` 屬性值：
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup3.cs?name=snippet_BindToObjectGraph)]
 
-`Movies:ConnectionString`和`Movies:ServiceApiKey`密碼會對應至中`MovieSettings`的個別屬性：
+`Movies:ConnectionString`和 `Movies:ServiceApiKey` 密碼會對應至中的個別屬性 `MovieSettings` ：
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Models/MovieSettings.cs?name=snippet_MovieSettingsClass)]
 
 ## <a name="string-replacement-with-secrets"></a>使用秘密取代字串
 
-以純文字儲存密碼並不安全。 例如，儲存在*appsettings*中的資料庫連接字串可能包含指定使用者的密碼：
+以純文字儲存密碼並不安全。 例如，儲存在*appsettings.js*中的資料庫連接字串可能會包含指定使用者的密碼：
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings-unsecure.json?highlight=3)]
 
@@ -431,11 +433,11 @@ JSON 結構會在透過`dotnet user-secrets remove`或`dotnet user-secrets set`�
 dotnet user-secrets set "DbPassword" "pass123"
 ```
 
-從 appsettings `Password`的連接字串中移除索引鍵/值*appsettings.json*組。 例如：
+`Password`從*appsettings.json*的連接字串中移除索引鍵/值組。 例如：
 
 [!code-json[](app-secrets/samples/2.x/UserSecrets/appsettings.json?highlight=3)]
 
-您可以在<xref:System.Data.SqlClient.SqlConnectionStringBuilder>物件的<xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A>屬性上設定密碼的值，以完成連接字串：
+您可以在物件的屬性上設定密碼的值 <xref:System.Data.SqlClient.SqlConnectionStringBuilder> <xref:System.Data.SqlClient.SqlConnectionStringBuilder.Password%2A> ，以完成連接字串：
 
 [!code-csharp[](app-secrets/samples/2.x/UserSecrets/Startup2.cs?name=snippet_StartupClass&highlight=14-17)]
 
@@ -456,7 +458,7 @@ Movies:ConnectionString = Server=(localdb)\mssqllocaldb;Database=Movie-1;Trusted
 Movies:ServiceApiKey = 12345
 ```
 
-在上述範例中，索引鍵名稱中的冒號代表在*私密金鑰內的物件階層。*
+在上述範例中，索引鍵名稱中的冒號代表*secrets.js*中的物件階層。
 
 ## <a name="remove-a-single-secret"></a>移除單一秘密
 
@@ -468,7 +470,7 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-應用程式的私密金鑰*json*檔案已修改，以移除與`MoviesConnectionString`金鑰相關聯的機碼值組：
+應用程式*在檔案上的secrets.js*已修改為移除與機碼相關聯的機碼值組 `MoviesConnectionString` ：
 
 ```json
 {
@@ -478,7 +480,7 @@ dotnet user-secrets remove "Movies:ConnectionString"
 }
 ```
 
-執行`dotnet user-secrets list`會顯示下列訊息：
+`dotnet user-secrets list`執行會顯示下列訊息：
 
 ```console
 Movies:ServiceApiKey = 12345
@@ -494,13 +496,13 @@ Movies:ServiceApiKey = 12345
 dotnet user-secrets clear
 ```
 
-應用程式的所有使用者秘密都已從*密碼 json*檔案中刪除：
+應用程式的所有使用者秘密已從檔案中的*secrets.js*刪除：
 
 ```json
 {}
 ```
 
-執行`dotnet user-secrets list`會顯示下列訊息：
+`dotnet user-secrets list`執行會顯示下列訊息：
 
 ```console
 No secrets configured for this application.

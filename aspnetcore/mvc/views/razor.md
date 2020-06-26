@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 02/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/razor
-ms.openlocfilehash: e85c9d384361f9169035e6a3ab8770e1a96b8650
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: ba778c45c9a6f608b50a17a9f8c6d50484dbf07c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102727"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405896"
 ---
 # <a name="razor-syntax-reference-for-aspnet-core"></a>RazorASP.NET Core 的語法參考
 

@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/20/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: test/integration-tests
-ms.openlocfilehash: ee57843dc79805aed48dbb4d3a6ac97469052f5c
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 6e4a0065486f6d9d6744dcd21de10ec76782f210
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105177"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405870"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -341,9 +343,9 @@ protected override IWebHostBuilder CreateWebHostBuilder() =>
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由包含具有正確設定的*xUnit*檔案，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由在具有正確設定的檔案*上包含xunit.runner.js* ，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
 
-將*xunit*檔案新增至測試專案的根目錄，並包含下列內容：
+使用下列內容，將檔案*上的xunit.runner.js*新增至測試專案的根目錄：
 
 ```json
 {
@@ -359,7 +361,7 @@ protected override IWebHostBuilder CreateWebHostBuilder() =>
 
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| App | 專案目錄 | 描述 |
+| 應用程式 | 專案目錄 | 說明 |
 | --- | ----------------- | ----------- |
 | 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
 | 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |
@@ -389,7 +391,7 @@ SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
 
-| 測試應用程式目錄 | 描述 |
+| 測試應用程式目錄 | 說明 |
 | ------------------ | ----------- |
 | *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
 | *BasicTests* | 包含路由和內容類型的測試方法。 |
@@ -722,9 +724,9 @@ public class CustomWebApplicationFactory<TStartup>
 
 ## <a name="disable-shadow-copying"></a>停用陰影複製
 
-陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由包含具有正確設定的*xUnit*檔案，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
+陰影複製會使測試在與輸出目錄不同的目錄中執行。 若要讓測試正常運作，必須停用陰影複製。 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)會使用 xUnit，並藉由在具有正確設定的檔案*上包含xunit.runner.js* ，來停用 xUnit 的陰影複製。 如需詳細資訊，請參閱[使用 JSON 設定 xUnit](https://xunit.github.io/docs/configuring-with-json.html)。
 
-將*xunit*檔案新增至測試專案的根目錄，並包含下列內容：
+使用下列內容，將檔案*上的xunit.runner.js*新增至測試專案的根目錄：
 
 ```json
 {
@@ -750,7 +752,7 @@ public class CustomWebApplicationFactory<TStartup>
 
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| App | 專案目錄 | 描述 |
+| 應用程式 | 專案目錄 | 說明 |
 | --- | ----------------- | ----------- |
 | 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
 | 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |
@@ -780,7 +782,7 @@ SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
 
-| 測試應用程式目錄 | 描述 |
+| 測試應用程式目錄 | 說明 |
 | ------------------ | ----------- |
 | *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
 | *BasicTests* | 包含路由和內容類型的測試方法。 |

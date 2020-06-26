@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/controllers/actions
-ms.openlocfilehash: b7c4d61c4a71939e84bdea180a2f77b6438b15d5
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 0c91edc947b1a17f2dd36b281afe348aa8611bd7
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774193"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406910"
 ---
 # <a name="handle-requests-with-controllers-in-aspnet-core-mvc"></a>在 ASP.NET Core MVC 中處理控制器要求
 
@@ -35,8 +37,8 @@ ms.locfileid: "82774193"
 
 控制器是至少下列其中一個條件為 true 的可具現化類別：
 
-* 類別名稱尾碼為`Controller`。
-* 類別繼承自名稱尾碼為的類別`Controller`。
+* 類別名稱尾碼為 `Controller` 。
+* 類別繼承自名稱尾碼為的類別 `Controller` 。
 * `[Controller]`屬性會套用至類別。
 
 控制器類別不得具有相關聯的 `[NonController]` 屬性。
@@ -51,7 +53,7 @@ ms.locfileid: "82774193"
 
 ## <a name="defining-actions"></a>定義動作
 
-控制器上的`[NonAction]`公用方法（屬性除外）是動作。 動作上的參數會繫結至要求資料，並使用[模型繫結](xref:mvc/models/model-binding)進行驗證。 繫結模型的所有項目都會進行模型驗證。 `ModelState.IsValid` 屬性值指出模型繫結和驗證是否成功。
+控制器上的公用方法（屬性除外） `[NonAction]` 是動作。 動作上的參數會繫結至要求資料，並使用[模型繫結](xref:mvc/models/model-binding)進行驗證。 繫結模型的所有項目都會進行模型驗證。 `ModelState.IsValid` 屬性值指出模型繫結和驗證是否成功。
 
 動作方法應該包含將要求對應至商務關注的邏輯。 商務關注應該一般呈現為控制器透過[相依性插入](xref:mvc/controllers/dependency-injection)存取的服務。 動作接著會將商務動作的結果對應至應用程式狀態。
 
@@ -71,7 +73,7 @@ ms.locfileid: "82774193"
 
     此類型會傳回 HTTP 狀態碼。 此類型的一些協助程式方法是 `BadRequest`、`NotFound` 和 `Ok`。 例如，`return BadRequest();` 在執行時會產生 400 狀態碼。 `BadRequest`、`NotFound` 和 `Ok` 這類方法進行多載時，就不再適合作為 HTTP 狀態碼回應程式，因為會執行內容交涉。
 
-* **導向**
+* **重新導向**
 
     此類型會傳回到某個動作或目的地的重新導向 (使用 `Redirect`、`LocalRedirect`、`RedirectToAction` 或 `RedirectToRoute`)。 例如，`return RedirectToAction("Complete", new {id = 123});` 會重新導向至 `Complete`，並傳遞匿名物件。
 

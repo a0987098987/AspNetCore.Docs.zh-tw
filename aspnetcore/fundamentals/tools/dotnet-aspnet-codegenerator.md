@@ -7,17 +7,19 @@ ms.author: riande
 ms.date: 07/04/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/tools/dotnet-aspnet-codegenerator
-ms.openlocfilehash: 58f7aa30d3e916307437d56c61e80765ac0c21cf
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a106654c8a37e84e9186a2f06d90605df753e8a7
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766468"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405597"
 ---
 # <a name="dotnet-aspnet-codegenerator"></a>dotnet aspnet-codegenerator
 
@@ -58,15 +60,15 @@ dotnet aspnet-codegenerator [-h|--help]
 
 要執行的程式碼產生器。 可用產生器如下︰
 
-| Generator | 作業 |
+| 產生器 | 作業 |
 | ----------------- | ------------ | 
 | 區域      | [架起區域](/aspnet/core/mvc/controllers/areas) |
   controller| [架起控制器](/aspnet/core/tutorials/first-mvc-app/adding-model) |
-  身分識別  | [架起身分識別](/aspnet/core/security/authentication/scaffold-identity) |
-  razorpage | [架起 Razor Pages](/aspnet/core/tutorials/razor-pages/model) |
+  身分識別  | [ScaffoldIdentity](/aspnet/core/security/authentication/scaffold-identity) |
+  razorpage | [Scaffold Razor 頁面](/aspnet/core/tutorials/razor-pages/model) |
   檢視      | [架起檢視](/aspnet/core/mvc/views/overview) |
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
 `-n|--nuget-package-dir`
 
@@ -102,7 +104,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 * 區域
 * 控制器
-* 身份識別  
+* Identity  
 * Razorpage
 * 檢視
 
@@ -110,7 +112,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ### <a name="area-options"></a>區域選項
 
-此工具旨在用於搭配控制器與檢視使用 ASP.NET Core Web 專案。 它不是要用於 Razor Pages 應用程式。
+此工具旨在用於搭配控制器與檢視使用 ASP.NET Core Web 專案。 並非適用于 Razor 頁面應用程式。
 
 使用方式：`dotnet aspnet-codegenerator area AreaNameToGenerate`
 
@@ -118,7 +120,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 * *區域*
   * *AreaNameToGenerate*
-    * *Controllers*
+    * *控制器*
     * *Data*
     * *模型*
     * *檢視*
@@ -127,7 +129,7 @@ dotnet aspnet-codegenerator [-h|--help]
 
 ### <a name="controller-options"></a>控制器選項
 
-下表列出和`aspnet-codegenerator` `controller` `razorpage`的選項：
+下表列出和的選項 `aspnet-codegenerator` `controller` `razorpage` ：
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
@@ -153,7 +155,7 @@ dotnet aspnet-codegenerator controller -h
 
 <a name="rp"></a>
 
-您可以透過指定新頁面名稱與要使用的範本來個別架起 Razor Pages。 支援的範本為：
+Razor您可以藉由指定要使用的新頁面名稱和範本來個別 scaffold 頁面。 支援的範本為：
 
 * `Empty`
 * `Create`
@@ -176,7 +178,7 @@ dotnet aspnet-codegenerator razorpage MyEdit Edit -m Movie -dc RazorPagesMovieCo
 * `Details`
 * `List`
 
-下表列出和`aspnet-codegenerator` `razorpage` `controller`的選項：
+下表列出和的選項 `aspnet-codegenerator` `razorpage` `controller` ：
 
 [!INCLUDE [aspnet-codegenerator-args-md.md](~/includes/aspnet-codegenerator-args-md.md)]
 
@@ -198,4 +200,4 @@ dotnet aspnet-codegenerator razorpage -h
 
 ### Identity
 
-請[參閱Identity Scaffold](/aspnet/core/security/authentication/scaffold-identity)
+請[參閱 Identity Scaffold](/aspnet/core/security/authentication/scaffold-identity)

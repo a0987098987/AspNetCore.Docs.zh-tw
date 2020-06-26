@@ -1,44 +1,52 @@
 ---
-title: ASP.NET Core 中 Razor 檔案的先行編譯
+title: RazorASP.NET Core 中的檔案編譯
 author: rick-anderson
-description: 了解在 ASP.NET Core 應用程式中發生 Razor 檔案編譯的方式。
+description: 瞭解檔案編譯如何 Razor 在 ASP.NET Core 應用程式中發生。
 ms.author: riande
 ms.custom: mvc
 ms.date: 04/14/2020
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: mvc/views/view-compilation
-ms.openlocfilehash: 3d871ab960de28a565280d9e4cb2c597832e2455
-ms.sourcegitcommit: 6c8cff2d6753415c4f5d2ffda88159a7f6f7431a
+ms.openlocfilehash: 71487ff2d5d7d7cf96835778f386e5f30fa32254
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81440931"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405441"
 ---
-# <a name="razor-file-compilation-in-aspnet-core"></a>ASP.NET Core 中 Razor 檔案的先行編譯
+# <a name="razor-file-compilation-in-aspnet-core"></a>RazorASP.NET Core 中的檔案編譯
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
 ::: moniker range=">= aspnetcore-3.1"
 
-具有 *.cshtml*副檔名的 Razor 檔在使用[Razor SDK](xref:razor-pages/sdk)在生成和發表時間編譯。 通過配置專案,可以選擇啟用運行時編譯。
+Razor具有*cshtml*副檔名的檔案會使用[ Razor SDK](xref:razor-pages/sdk)在組建和發行時間進行編譯。 設定專案時，可以選擇性地啟用執行時間編譯。
 
-## <a name="razor-compilation"></a>Razor 編譯
+## <a name="razor-compilation"></a>Razor編譯
 
-Razor SDK 預設啟用 Razor 檔的生成時間和發佈時間編譯。 啟用後,執行時編譯將補充生成時間編譯,允許在編輯 Razor 檔時對其進行更新。
+RazorSDK 預設會啟用檔案的組建時間和發行時間編譯 Razor 。 啟用時，執行時間編譯會補充組建階段編譯，讓檔案可以在 Razor 編輯時進行更新。
 
-## <a name="enable-runtime-compilation-at-project-creation"></a>在項目建立時開啟執行時編譯
+## <a name="enable-runtime-compilation-at-project-creation"></a>在建立專案時啟用執行時間編譯
 
-Razor 頁面和 MVC 專案範本包括一個選項,用於在創建專案時啟用運行時編譯。 ASP.NET酷3.1及更高版本支援此選項。
+Razor頁面和 MVC 專案範本包含一個選項，可在建立專案時啟用執行時間編譯。 ASP.NET Core 3.1 和更新版本支援此選項。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 **'建立新ASP.NET核心 Web 應用程式**對話框中:
+在 [**建立新的 ASP.NET Core web 應用程式**] 對話方塊中：
 
-1. 選擇**Web 應用程式**或 Web**應用程式(模型檢視控制器)** 專案範本。
-1. 勾選中啟用**Razor 執行時編譯**複選框。
+1. 選取 [ **Web 應用程式**] 或 [ **web 應用程式（模型-視圖控制器）** ] 專案範本。
+1. 選取 [**啟用 Razor 執行時間編譯**] 核取方塊。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-使用`-rrc`或`--razor-runtime-compilation`範本選項。 例如,以下指令建立啟用執行時編譯的新 Razor Pages 專案:
+使用 `-rrc` 或 `--razor-runtime-compilation` 範本選項。 例如，下列命令會建立新的 Razor 頁面專案，並啟用執行時間編譯：
 
 ```dotnetcli
 dotnet new webapp --razor-runtime-compilation
@@ -46,12 +54,12 @@ dotnet new webapp --razor-runtime-compilation
 
 ---
 
-## <a name="enable-runtime-compilation-in-an-existing-project"></a>在現有項目中開啟執行時編譯
+## <a name="enable-runtime-compilation-in-an-existing-project"></a>在現有的專案中啟用執行時間編譯
 
-要為現有項目中的所有環境啟用運行時編譯,:
+若要在現有專案中啟用所有環境的執行時間編譯：
 
-1. 安裝[微軟.AspNetCore.Mvc.Razor.運行時編譯](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)NuGet包。
-1. 更新專案`Startup.ConfigureServices`的方法以包括<xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>對 的調用。 例如：
+1. 請安裝[AspNetCore Razor 。Microsoft.aspnetcore.mvc.razor.runtimecompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 套件。
+1. 更新專案的 `Startup.ConfigureServices` 方法，以包含對的呼叫 <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*> 。 例如：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -63,40 +71,40 @@ dotnet new webapp --razor-runtime-compilation
     }
     ```
 
-## <a name="conditionally-enable-runtime-compilation-in-an-existing-project"></a>在現有項目中有條件執行時編譯
+## <a name="conditionally-enable-runtime-compilation-in-an-existing-project"></a>有條件地啟用現有專案中的執行時間編譯
 
-可以啟用運行時編譯,使其僅可用於本地開發。 以這種方式有條件地啟用可確保發布的輸出:
+可以啟用執行時間編譯，使其僅適用于本機開發。 以這種方式有條件地啟用會確保已發行的輸出：
 
 * 使用已編譯的視圖。
-* 在生產中不啟用文件觀察程式。
+* 不會在生產環境中啟用檔案監看員。
 
-要只在開發環境中開啟執行時編譯:
+若只要在開發環境中啟用執行時間編譯：
 
-1. 安裝[微軟.AspNetCore.Mvc.Razor.運行時編譯](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)NuGet包。
-1. 變更`environmentVariables`*啟動設定的*啟動檔部份 :
-    * 認證`ASPNETCORE_ENVIRONMENT`設定`"Development"`為 。
+1. 請安裝[AspNetCore Razor 。Microsoft.aspnetcore.mvc.razor.runtimecompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 套件。
+1. 修改 `environmentVariables` *launchSettings.js開啟*的啟動設定檔區段：
+    * 確認 `ASPNETCORE_ENVIRONMENT` 設定為 `"Development"` 。
     * 將 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 設定為 `"Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"`。
 
-在下面的範例中,在與`IIS Express``RazorPagesApp`啟動設定檔的開發環境中開啟執行時編譯:
+在下列範例中，會在開發環境中啟用 `IIS Express` 和啟動設定檔的執行時間編譯 `RazorPagesApp` ：
 
 [!code-json[](~/mvc/views/view-compilation/samples/3.1/launchSettings.json?highlight=15-16,24-25)]
 
-專案`Startup`類不需要更改代碼。 在執行時,ASP.NET Core`Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`搜尋中的[程式集級託管啟動屬性](xref:fundamentals/configuration/platform-specific-configuration#hostingstartup-attribute)。 該`HostingStartup`屬性指定要執行的應用啟動代碼。 該啟動代碼支援運行時編譯。
+專案的類別中不需要變更程式碼 `Startup` 。 在執行時間，ASP.NET Core 會在中搜尋[元件層級的 HostingStartup 屬性](xref:fundamentals/configuration/platform-specific-configuration#hostingstartup-attribute) `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` 。 `HostingStartup`屬性會指定要執行的應用程式啟動程式碼。 該啟動程式碼會啟用執行時間編譯。
 
-## <a name="enable-runtime-compilation-for-a-razor-class-library"></a>為 Razor 函式庫啟用執行時編譯
+## <a name="enable-runtime-compilation-for-a-razor-class-library"></a>啟用類別庫的執行時間編譯 Razor
 
-請考慮 Razor 頁面專案引用名為*MyClassLib*的[Razor 類庫 (RCL)](xref:razor-pages/ui-class)的方案。 RCL 包含 *_Layout.cshtml*檔,所有團隊的 MVC 和 Razor 頁面專案都使用該檔。 您希望為該 RCL 中的 *_Layout.cshtml*檔啟用執行時編譯。 在 Razor 頁面項目中進行以下變更:
+假設有個 Razor 頁面專案參考名為*MyClassLib*的[ Razor 類別庫（RCL）](xref:razor-pages/ui-class)的案例。 RCL 包含您的所有小組 MVC 和頁面專案都會使用的 *_Layout. cshtml*檔案 Razor 。 您想要啟用該 RCL 中 *_Layout cshtml*檔案的執行時間編譯。 在 Pages 專案中進行下列變更 Razor ：
 
-1. 使用[「有條件地」中的指令在現有項目中啟用執行時編譯](#conditionally-enable-runtime-compilation-in-an-existing-project), 啟用執行時編譯。
-1. 在`Startup.ConfigureServices`中 配置運行時編譯選項。
+1. 使用在[現有專案中有條件地啟用執行時間編譯中](#conditionally-enable-runtime-compilation-in-an-existing-project)的指示，啟用執行時間編譯。
+1. 在中設定執行時間編譯選項 `Startup.ConfigureServices` ：
 
     [!code-csharp[](~/mvc/views/view-compilation/samples/3.1/Startup.cs?name=snippet_ConfigureServices&highlight=5-10)]
 
-    在前面的代碼中,建構了*MyClassLib* RCL的絕對路徑。 [實體檔提供者 API](xref:fundamentals/file-providers#physicalfileprovider)用於尋找該絕對路徑上的目錄和檔案。 最後,實例`PhysicalFileProvider`被添加到檔提供程式集合中,允許造訪RCL的 *.cshtml*檔。
+    在上述程式碼中，會結構化*MyClassLib* RCL 的絕對路徑。 [PHYSICALFILEPROVIDER API](xref:fundamentals/file-providers#physicalfileprovider)是用來尋找位於該絕對路徑的目錄和檔案。 最後， `PhysicalFileProvider` 實例會加入至檔案提供者集合，讓您可以存取 RCL 的 *. cshtml*檔案。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Razor 編譯上建構和Razor編譯上發佈](xref:razor-pages/sdk#properties)屬性。
+* [RazorCompileOnBuild 和 RazorCompileOnPublish](xref:razor-pages/sdk#properties)屬性。
 * <xref:razor-pages/index>
 * <xref:mvc/views/overview>
 * <xref:razor-pages/sdk>
@@ -105,19 +113,19 @@ dotnet new webapp --razor-runtime-compilation
 
 ::: moniker range="= aspnetcore-3.0"
 
-具有 *.cshtml*副檔名的 Razor 檔在使用[Razor SDK](xref:razor-pages/sdk)在生成和發表時間編譯。 您可以透過設定應用程式，選擇性地啟用執行階段編譯。
+Razor具有*cshtml*副檔名的檔案會使用[ Razor SDK](xref:razor-pages/sdk)在組建和發行時間進行編譯。 您可以透過設定應用程式，選擇性地啟用執行階段編譯。
 
-## <a name="razor-compilation"></a>Razor 編譯
+## <a name="razor-compilation"></a>Razor編譯
 
-Razor SDK 預設啟用 Razor 檔的生成時間和發佈時間編譯。 啟用後,執行時編譯將補充生成時間編譯,允許在編輯 Razor 檔時對其進行更新。
+RazorSDK 預設會啟用檔案的組建時間和發行時間編譯 Razor 。 啟用時，執行時間編譯會補充組建階段編譯，讓檔案可以在 Razor 編輯時進行更新。
 
 ## <a name="runtime-compilation"></a>執行階段編譯
 
-要為所有環境與設定模式啟用執行時編譯,:
+若要啟用所有環境和設定模式的執行時間編譯：
 
-1. 安裝[微軟.AspNetCore.Mvc.Razor.運行時編譯](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)NuGet包。
+1. 請安裝[AspNetCore Razor 。Microsoft.aspnetcore.mvc.razor.runtimecompilation](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/) NuGet 套件。
 
-1. 更新專案`Startup.ConfigureServices`的方法以包括<xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*>對 的調用。 例如：
+1. 更新專案的 `Startup.ConfigureServices` 方法，以包含對的呼叫 <xref:Microsoft.Extensions.DependencyInjection.RazorRuntimeCompilationMvcBuilderExtensions.AddRazorRuntimeCompilation*> 。 例如：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -129,52 +137,52 @@ Razor SDK 預設啟用 Razor 檔的生成時間和發佈時間編譯。 啟用�
     }
     ```
 
-### <a name="conditionally-enable-runtime-compilation"></a>有條件開啟執行時編譯
+### <a name="conditionally-enable-runtime-compilation"></a>有條件地啟用執行時間編譯
 
-可以啟用運行時編譯,使其僅可用於本地開發。 以這種方式有條件地啟用可確保發布的輸出:
+可以啟用執行時間編譯，使其僅適用于本機開發。 以這種方式有條件地啟用會確保已發行的輸出：
 
 * 使用已編譯的視圖。
-* 尺寸較小。
-* 在生產中不啟用文件觀察程式。
+* 大小較小。
+* 不會在生產環境中啟用檔案監看員。
 
-要根據環境與設定模式啟用執行時編譯,:
+若要根據環境和設定模式啟用執行時間編譯：
 
-1. 根據活動`Configuration`值有條件地引用[Microsoft.AspNetCore.Mvc.Razor.執行時編譯](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)套件:
+1. 有條件地參考[AspNetCore Razor 。](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation/)根據使用中的值來 microsoft.aspnetcore.mvc.razor.runtimecompilation 套件 `Configuration` ：
 
     ```xml
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.0" Condition="'$(Configuration)' == 'Debug'" />
     ```
 
-1. 更新專案`Startup.ConfigureServices`的方法以包括`AddRazorRuntimeCompilation`對 的調用。 有條件地`AddRazorRuntimeCompilation`執行,以便僅`ASPNETCORE_ENVIRONMENT`當 變數設定`Development`為 : 時,它才在除錯模式下執行:
+1. 更新專案的 `Startup.ConfigureServices` 方法，以包含對的呼叫 `AddRazorRuntimeCompilation` 。 有條件 `AddRazorRuntimeCompilation` 地執行，使其只有在變數設定為時，才會在「Debug 模式」中執行 `ASPNETCORE_ENVIRONMENT` `Development` ：
 
     [!code-csharp[](~/mvc/views/view-compilation/samples/3.0/Startup.cs?name=snippet)]
 
 ## <a name="additional-resources"></a>其他資源
 
-* [Razor 編譯上建構和Razor編譯上發佈](xref:razor-pages/sdk#properties)屬性。
+* [RazorCompileOnBuild 和 RazorCompileOnPublish](xref:razor-pages/sdk#properties)屬性。
 * <xref:razor-pages/index>
 * <xref:mvc/views/overview>
 * <xref:razor-pages/sdk>
-* 有關顯示跨項目進行執行時編譯工作的範例,請參閱[GitHub 上的執行時編譯範例](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/mvc/runtimecompilation)。
+* 請參閱[GitHub 上的執行時間編譯範例](https://github.com/aspnet/samples/tree/master/samples/aspnetcore/mvc/runtimecompilation)，以取得示範如何在專案之間進行執行時間編譯的範例。
 
 ::: moniker-end
 
 ::: moniker range="< aspnetcore-3.0"
 
-叫用關聯的 Razor 頁面或 MVC 檢視時，Razor 檔案便會在執行階段編譯。 Razor 檔案會在建置和發佈階段使用 [Razor SDK](xref:razor-pages/sdk) 來編譯。
+當叫用 Razor 相關聯的 Razor 頁面或 MVC 視圖時，會在執行時間編譯檔案。 Razor檔案會使用[ Razor SDK](xref:razor-pages/sdk)在組建和發行時間進行編譯。
 
-## <a name="razor-compilation"></a>Razor 編譯
+## <a name="razor-compilation"></a>Razor編譯
 
-Razor SDK 預設會啟用 Razor 檔案的建置和發佈階段編譯。 在建置階段中，支援更新 Razor 檔案後進行編輯。 根據預設，只有已編譯的 *Views.dll* 會與您的應用程式一起部署，而且在編譯 Razor 檔案時不需要任何 *.cshtml* 檔案或參考組件。
+RazorSDK 預設會啟用檔案的組建和發行時間編譯 Razor 。 Razor在檔案更新之後編輯檔案，會在建立時受到支援。 根據預設，系統只會使用您的 *.cshtml*應用程式部署編譯的*Views.dll* ，以及編譯檔案所需的任何 cshtml 檔案或參考元件。 Razor
 
 > [!IMPORTANT]
-> 先行編譯工具已被取代，且將在 ASP.NET Core 3.0 中移除。 建議移轉到 [Razor SDK](xref:razor-pages/sdk)。
+> 先行編譯工具已被取代，且將在 ASP.NET Core 3.0 中移除。 我們建議您遷移至[ Razor Sdk](xref:razor-pages/sdk)。
 >
-> 只有當專案檔中未設定先行編譯特定的屬性時，Razor SDK 才會有效。 例如，將 *.csproj* 檔案的 `MvcRazorCompileOnPublish` 屬性設定成 `true`，便會停用 Razor SDK。
+> Razor只有在專案檔中未設定預先編譯特定的屬性時，SDK 才會生效。 例如，將 *.csproj*檔案的 `MvcRazorCompileOnPublish` 屬性設定為會停用 `true` Razor SDK。
 
 ## <a name="runtime-compilation"></a>執行階段編譯
 
-建置時間編譯會透過 Razor 檔案的執行階段編譯來補充。 當 *.cshtml* 檔案的內容變更時，ASP.NET Core MVC 將重新編譯 Razor 檔案。
+組建階段編譯是由檔案的執行時間編譯來補充 Razor 。 Razor當*cshtml*檔案的內容變更時，ASP.NET Core MVC 會重新編譯檔案。
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -7,17 +7,19 @@ ms.author: riande
 ms.date: 11/08/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authorization/limitingidentitybyscheme
-ms.openlocfilehash: 69b6412f249355573faa785743b124a67ecb8b9e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 042b22a220d961773437e9d85d5f0c5782e29bea
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777510"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406013"
 ---
 # <a name="authorize-with-a-specific-scheme-in-aspnet-core"></a>在 ASP.NET Core 中使用特定配置進行授權
 
@@ -44,11 +46,11 @@ public void ConfigureServices(IServiceCollection services)
 在上述程式碼中，已新增兩個驗證處理常式：一個用於 cookie，一個用於持有人。
 
 >[!NOTE]
->指定預設配置會導致`HttpContext.User`屬性設定為該身分識別。 如果不想要該行為，請叫用的無參數形式`AddAuthentication`來停用它。
+>指定預設配置 `HttpContext.User` 會導致屬性設定為該身分識別。 如果不想要該行為，請叫用的無參數形式來停用它 `AddAuthentication` 。
 
 ## <a name="selecting-the-scheme-with-the-authorize-attribute"></a>選取具有 [授權] 屬性的配置
 
-在授權的時候，應用程式會指出要使用的處理常式。 藉由將以逗號分隔的驗證架構清單傳遞至，以`[Authorize]`選取應用程式將授權的處理常式。 不論`[Authorize]`是否已設定預設值，屬性都會指定要使用的驗證配置或配置。 例如：
+在授權的時候，應用程式會指出要使用的處理常式。 藉由將以逗號分隔的驗證架構清單傳遞至，以選取應用程式將授權的處理常式 `[Authorize]` 。 `[Authorize]`不論是否已設定預設值，屬性都會指定要使用的驗證配置或配置。 例如：
 
 ```csharp
 [Authorize(AuthenticationSchemes = AuthSchemes)]
@@ -73,7 +75,7 @@ public class MixedController : Controller
 
 ## <a name="selecting-the-scheme-with-policies"></a>選取具有原則的配置
 
-如果您想要在[原則](xref:security/authorization/policies)中指定所需的配置，您可以`AuthenticationSchemes`在新增原則時設定集合：
+如果您想要在[原則](xref:security/authorization/policies)中指定所需的配置，您可以在 `AuthenticationSchemes` 新增原則時設定集合：
 
 ```csharp
 services.AddAuthorization(options =>
@@ -87,7 +89,7 @@ services.AddAuthorization(options =>
 });
 ```
 
-在上述範例中，"Over18" 原則只會針對「持有人」處理常式所建立的身分識別來執行。 藉由設定`[Authorize]`屬性的`Policy`屬性來使用原則：
+在上述範例中，"Over18" 原則只會針對「持有人」處理常式所建立的身分識別來執行。 藉由設定 `[Authorize]` 屬性的屬性來使用原則 `Policy` ：
 
 ```csharp
 [Authorize(Policy = "Over18")]
@@ -100,7 +102,7 @@ public class RegistrationController : Controller
 
 某些應用程式可能需要支援多種類型的驗證。 例如，您的應用程式可能會從 Azure Active Directory 和使用者資料庫驗證使用者。 另一個範例是從 Active Directory 同盟服務和 Azure Active Directory B2C 驗證使用者的應用程式。 在此情況下，應用程式應該接受來自數個簽發者的 JWT 持有人權杖。
 
-新增您想要接受的所有驗證配置。 例如，中`Startup.ConfigureServices`的下列程式碼會新增具有不同簽發者的兩個 JWT 持有人驗證配置：
+新增您想要接受的所有驗證配置。 例如，中的下列程式碼會 `Startup.ConfigureServices` 新增具有不同簽發者的兩個 JWT 持有人驗證配置：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -122,7 +124,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!NOTE]
-> 只有一個 JWT 持有人驗證會向預設驗證配置`JwtBearerDefaults.AuthenticationScheme`註冊。 額外的驗證必須使用唯一的驗證配置進行註冊。
+> 只有一個 JWT 持有人驗證會向預設驗證配置註冊 `JwtBearerDefaults.AuthenticationScheme` 。 額外的驗證必須使用唯一的驗證配置進行註冊。
 
 下一個步驟是更新預設授權原則，以接受這兩種驗證配置。 例如：
 
@@ -143,6 +145,6 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-當預設的授權原則遭到覆寫時，可以在控制器中`[Authorize]`使用屬性。 然後，控制器會接受第一個或第二個簽發者所發出的 JWT 要求。
+當預設的授權原則遭到覆寫時，可以 `[Authorize]` 在控制器中使用屬性。 然後，控制器會接受第一個或第二個簽發者所發出的 JWT 要求。
 
 ::: moniker-end

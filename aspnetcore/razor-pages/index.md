@@ -7,17 +7,19 @@ ms.author: riande
 ms.date: 02/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: razor-pages/index
-ms.openlocfilehash: 52c3dc82e51cb4375954a603a1bfde60fd667b56
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 73af74c2cf65ec5e644af89c300ffa108825fb2e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103054"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404687"
 ---
 # <a name="introduction-to-razor-pages-in-aspnet-core"></a>RazorASP.NET Core 中的頁面簡介
 
@@ -31,7 +33,7 @@ Razor頁面可讓撰寫以頁面為焦點的案例更輕鬆且更具生產力，
 
 本檔提供 Razor 頁面簡介。 它不是逐步教學課程。 如果您發現某些區段太先進，請參閱[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)。 如需 ASP.NET Core 的概觀，請參閱[ASP.NET Core 簡介](xref:index)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -321,7 +323,7 @@ Razor根據預設，頁面只會系結屬性與非 `GET` 動詞。 系結至屬�
 
 ![有多個 jQuery 用戶端驗證錯誤的電影檢視表單](~/tutorials/razor-pages/validation/_static/val.png)
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [將驗證新增至電影應用程式](xref:tutorials/razor-pages/validation)
 * [ASP.NET Core 中的模型驗證](xref:mvc/models/validation)。
@@ -622,7 +624,7 @@ Razor頁面是 ASP.NET Core MVC 的新層面，可讓撰寫以頁面為焦點的
 
 本檔提供 Razor 頁面簡介。 它不是逐步教學課程。 如果您發現某些區段太先進，請參閱[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start)。 如需 ASP.NET Core 的概觀，請參閱[ASP.NET Core 簡介](xref:index)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 

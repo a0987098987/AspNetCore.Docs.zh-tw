@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 10/14/2016
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/data-protection/configuration/default-settings
-ms.openlocfilehash: 1db5177230fd4076af080e208f094ce4d6537c62
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: f758c814280ee09a240d99cc59cdab2dc4590df6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777445"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407092"
 ---
 # <a name="data-protection-key-management-and-lifetime-in-aspnet-core"></a>ASP.NET Core 中的資料保護金鑰管理和存留期
 
@@ -44,7 +46,7 @@ ms.locfileid: "82777445"
 
 1. 如果這些條件都不符合，則索引鍵不會保存在目前的進程之外。 當進程關閉時，所有產生的金鑰都會遺失。
 
-開發人員永遠都是完全控制，而且可以覆寫儲存金鑰的方式和位置。 上述前三個選項應該為大部分應用程式提供良好的預設值，類似于 ASP.NET ** \<machineKey>** 自動產生常式在過去的運作方式。 最終的 [回溯] 選項是唯一需要開發[人員指定預先](xref:security/data-protection/configuration/overview)設定的情況（如果他們想要保留金鑰），但只有在罕見的情況下才會發生這種情況。
+開發人員永遠都是完全控制，而且可以覆寫儲存金鑰的方式和位置。 上述前三個選項應該為大部分應用程式提供良好的預設值，類似于 ASP.NET **\<machineKey>** 自動產生常式過去的運作方式。 最終的 [回溯] 選項是唯一需要開發[人員指定預先](xref:security/data-protection/configuration/overview)設定的情況（如果他們想要保留金鑰），但只有在罕見的情況下才會發生這種情況。
 
 在 Docker 容器中裝載時，金鑰應保存在屬於 Docker 磁片區的資料夾中（共用磁片區或保存在容器存留期以外的主機裝載磁片區），或在外部提供者（例如[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)或[Redis](https://redis.io/)）中。 如果應用程式無法存取共用網路磁片區，則外部提供者也適用于 web 伺服陣列案例（如需詳細資訊，請參閱[PersistKeysToFileSystem](xref:security/data-protection/configuration/overview#persistkeystofilesystem) ）。
 

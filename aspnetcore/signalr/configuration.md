@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 04/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: signalr/configuration
-ms.openlocfilehash: 809bdc777b6307314a7bcde82ab5e0c6888db99b
-ms.sourcegitcommit: 4437f4c149f1ef6c28796dcfaa2863b4c088169c
+ms.openlocfilehash: c711c2163908e3fdd20e3bb497f333ebd495d921
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85074469"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406832"
 ---
 # <a name="aspnet-core-signalr-configuration"></a>ASP.NET Core SignalR 設定
 
@@ -71,7 +73,7 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 下表說明設定中樞的選項 SignalR ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值為值的雙精度浮點數 `KeepAliveInterval` 。|
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -126,7 +128,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 下表描述設定 ASP.NET Core SignalR 的 ADVANCED HTTP 選項的選項：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 在套用背壓之前，伺服器會緩衝的用戶端接收的最大位元組數目。 增加此值可讓伺服器更快速地接收較大的訊息，而不需套用背壓，但可能會增加記憶體耗用量。 |
 | `AuthorizationData` | 從套用至中樞類別的屬性自動收集的資料 `Authorize` 。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
@@ -138,13 +140,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 長輪詢傳輸具有其他選項，可以使用屬性來設定 `LongPolling` ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90秒 | 在終止單一輪詢要求之前，伺服器等候訊息傳送至用戶端的最大時間量。 降低此值會導致用戶端更頻繁地發出新的輪詢要求。 |
 
 WebSocket 傳輸具有可使用屬性來設定的其他選項 `WebSockets` ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `CloseTimeout` | 5 秒 | 伺服器關閉之後，如果用戶端無法在此時間間隔內關閉，連接就會終止。 |
 | `SubProtocolSelector` | `null` | 可以用來將 `Sec-WebSocket-Protocol` 標頭設定為自訂值的委派。 委派會接收用戶端要求的值做為輸入，而且預期會傳回所需的值。 |
@@ -196,8 +198,8 @@ let connection = new signalR.HubConnectionBuilder()
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info`**或**`information` | `LogLevel.Information` |
-| `warn`**或**`warning`     | `LogLevel.Warning`     |
+| `info` **或** `information` | `LogLevel.Information` |
+| `warn` **或** `warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -302,7 +304,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `Closed` 事件（ `onclose` 在 JavaScript 中）。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器值的數位 `KeepAliveInterval` ，以允許時間到達 ping。 |
 | `HandshakeTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `Closed` 事件（ `onclose` 在 JavaScript 中）。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -312,14 +314,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `serverTimeoutInMilliseconds` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onclose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器值的數位 `KeepAliveInterval` ，以允許時間到達 ping。 |
 | `keepAliveIntervalInMilliseconds` | 15秒（15000毫秒） | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上的集合中傳送訊息 `ClientTimeoutInterval` ，伺服器會將用戶端視為已中斷連線。 |
 
 # <a name="java"></a>[Java](#tab/java)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `getServerTimeout` / `setServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onClose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器值的數位 `KeepAliveInterval` ，以允許時間到達 ping。 |
 | `withHandshakeResponseTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `onClose` 事件。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -333,7 +335,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-| .NET 選項 |  預設值 | 描述 |
+| .NET 選項 |  預設值 | 說明 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `SkipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
@@ -349,7 +351,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-| JavaScript 選項 | 預設值 | 描述 |
+| JavaScript 選項 | 預設值 | 說明 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `headers` | `null` | 每個 HTTP 要求所傳送之標頭的字典。 在瀏覽器中傳送標頭不適用於 Websocket 或 <xref:Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents> 資料流程。 |
@@ -359,7 +361,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="java"></a>[Java](#tab/java)
 
-| JAVA 選項 | 預設值 | 描述 |
+| JAVA 選項 | 預設值 | 說明 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `shouldSkipNegotiate` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
@@ -459,7 +461,7 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 下表說明設定中樞的選項 SignalR ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值為值的雙精度浮點數 `KeepAliveInterval` 。|
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -584,8 +586,8 @@ let connection = new signalR.HubConnectionBuilder()
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info`**或**`information` | `LogLevel.Information` |
-| `warn`**或**`warning`     | `LogLevel.Warning`     |
+| `info` **或** `information` | `LogLevel.Information` |
+| `warn` **或** `warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -845,7 +847,7 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 下表說明設定中樞的選項 SignalR ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值為值的雙精度浮點數 `KeepAliveInterval` 。|
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -900,7 +902,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 下表描述設定 ASP.NET Core SignalR 的 ADVANCED HTTP 選項的選項：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 在套用背壓之前，伺服器會緩衝的用戶端接收的最大位元組數目。 增加此值可讓伺服器更快速地接收較大的訊息，而不需套用背壓，但可能會增加記憶體耗用量。 |
 | `AuthorizationData` | 從套用至中樞類別的屬性自動收集的資料 `Authorize` 。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
@@ -911,13 +913,13 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 長輪詢傳輸具有其他選項，可以使用屬性來設定 `LongPolling` ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90秒 | 在終止單一輪詢要求之前，伺服器等候訊息傳送至用戶端的最大時間量。 降低此值會導致用戶端更頻繁地發出新的輪詢要求。 |
 
 WebSocket 傳輸具有可使用屬性來設定的其他選項 `WebSockets` ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `CloseTimeout` | 5 秒 | 伺服器關閉之後，如果用戶端無法在此時間間隔內關閉，連接就會終止。 |
 | `SubProtocolSelector` | `null` | 可以用來將 `Sec-WebSocket-Protocol` 標頭設定為自訂值的委派。 委派會接收用戶端要求的值做為輸入，而且預期會傳回所需的值。 |
@@ -969,8 +971,8 @@ let connection = new signalR.HubConnectionBuilder()
 | --------------------------- | ---------------------- |
 | `trace`                     | `LogLevel.Trace`       |
 | `debug`                     | `LogLevel.Debug`       |
-| `info`**或**`information` | `LogLevel.Information` |
-| `warn`**或**`warning`     | `LogLevel.Warning`     |
+| `info` **或** `information` | `LogLevel.Information` |
+| `warn` **或** `warning`     | `LogLevel.Warning`     |
 | `error`                     | `LogLevel.Error`       |
 | `critical`                  | `LogLevel.Critical`    |
 | `none`                      | `LogLevel.None`        |
@@ -1075,7 +1077,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `Closed` 事件（ `onclose` 在 JavaScript 中）。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器值的數位 `KeepAliveInterval` ，以允許時間到達 ping。 |
 | `HandshakeTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `Closed` 事件（ `onclose` 在 JavaScript 中）。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -1085,14 +1087,14 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `serverTimeoutInMilliseconds` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onclose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器值的數位 `KeepAliveInterval` ，以允許時間到達 ping。 |
 | `keepAliveIntervalInMilliseconds` | 15秒（15000毫秒） | 決定用戶端傳送 ping 訊息的間隔。 從用戶端傳送任何訊息時，會將計時器重設為間隔的開始。 如果用戶端未在伺服器上的集合中傳送訊息 `ClientTimeoutInterval` ，伺服器會將用戶端視為已中斷連線。 |
 
 # <a name="java"></a>[Java](#tab/java)
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `getServerTimeout` / `setServerTimeout` | 30秒（30000毫秒） | 伺服器活動的超時時間。 如果伺服器未在此間隔內傳送訊息，用戶端會將伺服器視為已中斷連線，並觸發 `onClose` 事件。 這個值必須夠大，才能從伺服器傳送 ping 訊息 **，並**在逾時間隔內接收用戶端。 建議的值是至少兩個伺服器值的數位 `KeepAliveInterval` ，以允許時間到達 ping。 |
 | `withHandshakeResponseTimeout` | 15 秒 | 初始伺服器交握的超時時間。 如果伺服器未在此間隔內傳送交握回應，用戶端會取消交握並觸發 `onClose` 事件。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -1106,7 +1108,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-| .NET 選項 |  預設值 | 描述 |
+| .NET 選項 |  預設值 | 說明 |
 | ----------- | -------------- | ----------- |
 | `AccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `SkipNegotiation` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
@@ -1122,7 +1124,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-| JavaScript 選項 | 預設值 | 描述 |
+| JavaScript 選項 | 預設值 | 說明 |
 | ----------------- | ------------- | ----------- |
 | `accessTokenFactory` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `logMessageContent` | `null` | 將設定為 `true` ，以記錄用戶端所傳送和接收之訊息的位元組/字元。 |
@@ -1130,7 +1132,7 @@ HubConnection hubConnection = HubConnectionBuilder.create("https://example.com/c
 
 # <a name="java"></a>[Java](#tab/java)
 
-| JAVA 選項 | 預設值 | 描述 |
+| JAVA 選項 | 預設值 | 說明 |
 | ----------- | ------------- | ----------- |
 | `withAccessTokenProvider` | `null` | 傳回字串的函式，在 HTTP 要求中提供為持有人驗證權杖。 |
 | `shouldSkipNegotiate` | `false` | 將此設為 `true` 以略過協商步驟。 **只有在 websocket 傳輸為唯一啟用的傳輸時才支援**。 使用 Azure 服務時，無法啟用此設定 SignalR 。 |
@@ -1228,7 +1230,7 @@ MessagePack 序列化可以藉由提供委派給[AddMessagePackProtocol](/dotnet
 
 下表說明設定中樞的選項 SignalR ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ClientTimeoutInterval` | 30 秒 | 如果用戶端未在此間隔內收到訊息（包括 keep-alive），伺服器會將它視為已中斷連線。 這可能需要比此逾時間隔更長的時間，讓用戶端實際被標示為已中斷連線，因為這是如何實行的。 建議的值為值的雙精度浮點數 `KeepAliveInterval` 。|
 | `HandshakeTimeout` | 15 秒 | 如果用戶端未在此時間間隔內傳送初始交握訊息，連接就會關閉。 這是一種只有在因網路延遲嚴重而發生交握逾時錯誤時，才應該修改的「高級」設定。 如需交握程式的詳細資訊，請參閱[ SignalR 中樞通訊協定規格](https://github.com/aspnet/SignalR/blob/master/specs/HubProtocol.md)。 |
@@ -1281,7 +1283,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 下表描述設定 ASP.NET Core SignalR 的 ADVANCED HTTP 選項的選項：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `ApplicationMaxBufferSize` | 32 KB | 從用戶端接收伺服器緩衝區的最大位元組數目。 增加這個值可讓伺服器接收較大的訊息，但可能會對記憶體耗用量造成負面影響。 |
 | `AuthorizationData` | 從套用至中樞類別的屬性自動收集的資料 `Authorize` 。 | 用來判斷是否授權用戶端連線到中樞的[IAuthorizeData](/dotnet/api/microsoft.aspnetcore.authorization.iauthorizedata)物件清單。 |
@@ -1292,7 +1294,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 長輪詢傳輸具有其他選項，可以使用屬性來設定 `LongPolling` ：
 
-| 選項 | 預設值 | 描述 |
+| 選項 | 預設值 | 說明 |
 | ------ | ------------- | ----------- |
 | `PollTimeout` | 90秒 | 在終止單一輪詢要求之前，伺服器等候訊息傳送至用戶端的最大時間量。 降低此值會導致用戶端更頻繁地發出新的輪詢要求。 |
 

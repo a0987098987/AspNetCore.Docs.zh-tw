@@ -7,17 +7,19 @@ ms.author: jamesnk
 ms.date: 09/23/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/diagnostics
-ms.openlocfilehash: 33b2ee29830cd3012ff791c949c3a7c23a2e98c7
-ms.sourcegitcommit: 16b3abec1ed70f9a206f0cfa7cf6404eebaf693d
+ms.openlocfilehash: ca87ba5b03e7657132e5ebaba72370bde85c85d4
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/17/2020
-ms.locfileid: "83444343"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406767"
 ---
 # <a name="logging-and-diagnostics-in-grpc-on-net"></a>.NET 上 gRPC 中的記錄和診斷
 
@@ -40,7 +42,7 @@ gRPC services 和 gRPC 用戶端會使用[.Net Core 記錄](xref:fundamentals/lo
 
 因為 gRPC 服務是在 ASP.NET Core 上主控，所以它會使用 ASP.NET Core 記錄系統。 在預設設定中，gRPC 會記錄非常少的資訊，但這可加以設定。 如需設定 ASP.NET Core 記錄的詳細資訊，請參閱有關[ASP.NET Core 記錄](xref:fundamentals/logging/index#configuration)的檔。
 
-gRPC 會將記錄新增至 `Grpc` 類別之下。 若要啟用 gRPC 的詳細記錄，請將 `Grpc` `Debug` 下列專案新增至中的子區段，以在*appsettings*中設定層級的前置詞 `LogLevel` `Logging` ：
+gRPC 會將記錄新增至 `Grpc` 類別之下。 若要啟用 gRPC 的詳細記錄，請 `Grpc` `Debug` 將下列專案新增至中*appsettings.json*的 `LogLevel` 子區段，以在檔案的appsettings.js中設定層級的首碼 `Logging` ：
 
 [!code-json[](diagnostics/sample/logging-config.json?highlight=7)]
 
@@ -171,7 +173,7 @@ gRPC 服務裝載于 ASP.NET Core，其會報告傳入 HTTP 要求的相關事�
 
 事件來源上會回報 gRPC 伺服器計量 `Grpc.AspNetCore.Server` 。
 
-| Name                      | 說明                   |
+| 名稱                      | 說明                   |
 | --------------------------|-------------------------------|
 | `total-calls`             | 呼叫總數                   |
 | `current-calls`           | 目前的呼叫                 |
@@ -187,7 +189,7 @@ ASP.NET Core 也會在事件來源上提供自己的計量 `Microsoft.AspNetCore
 
 事件來源上會回報 gRPC 用戶端計量 `Grpc.Net.Client` 。
 
-| Name                      | 說明                   |
+| 名稱                      | 說明                   |
 | --------------------------|-------------------------------|
 | `total-calls`             | 呼叫總數                   |
 | `current-calls`           | 目前的呼叫                 |

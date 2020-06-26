@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 5/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: test/middleware
-ms.openlocfilehash: ea7fc0e889ab32cbaf23257b3e866519af0727aa
-ms.sourcegitcommit: 69e1a79a572b0af17d08e81af12c594b7316f2e1
+ms.openlocfilehash: f4ed16b136da37c093a72a8866301a188a8518a2
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/15/2020
-ms.locfileid: "83424542"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406481"
 ---
 # <a name="test-aspnet-core-middleware"></a>測試 ASP.NET Core 中介軟體
 
@@ -41,6 +43,14 @@ ms.locfileid: "83424542"
 
 * 建立並啟動使用的主機 <xref:Microsoft.AspNetCore.TestHost.TestServer> 。
 * 新增中介軟體所使用的任何必要服務。
+* 將[TestHost](https://www.nuget.org/packages/Microsoft.AspNetCore.TestHost/) NuGet 套件新增至專案：
+  
+  ```dotnetcli
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.*" />
+  </ItemGroup>
+  ```
+
 * 設定處理管線以使用中介軟體進行測試。
 
 [!code-csharp[](middleware/samples_snapshot/3.x/setup.cs?highlight=4-18)]
@@ -62,7 +72,7 @@ ms.locfileid: "83424542"
 
 ## <a name="send-requests-with-httpcontext"></a>使用 HttpCoNtext 傳送要求
 
-測試應用程式也可以使用[SendAsync （Action \< HttpCoNtext>，CancellationToken）](xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A)傳送要求。 在下列範例中，當中間件處理時，會進行幾項檢查 `https://example.com/A/Path/?and=query` ：
+測試應用程式也可以使用[SendAsync （Action \<HttpContext> ，CancellationToken）](xref:Microsoft.AspNetCore.TestHost.TestServer.SendAsync%2A)傳送要求。 在下列範例中，當中間件處理時，會進行幾項檢查 `https://example.com/A/Path/?and=query` ：
 
 ```csharp
 [Fact]

@@ -8,17 +8,19 @@ ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/twitter-logins
-ms.openlocfilehash: c6498704214de5e805c9bf57033529d4acc5fd3e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 61c983de33b91a16ad207d8a350daf4859c89eaf
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775787"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406091"
 ---
 # <a name="twitter-external-sign-in-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Twitter 外部登錄設定
 
@@ -30,7 +32,7 @@ ms.locfileid: "82775787"
 
 * 將[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Twitter/3.0.0)新增至該專案中。
 
-* 流覽至[https://apps.twitter.com/](https://apps.twitter.com/)並登入。 如果您還沒有 Twitter 帳戶，請使用 [**[立即註冊](https://twitter.com/signup)**] 連結來建立一個。
+* 流覽至 [https://apps.twitter.com/](https://apps.twitter.com/) 並登入。 如果您還沒有 Twitter 帳戶，請使用 [**[立即註冊](https://twitter.com/signup)**] 連結來建立一個。
 
 * 選取 [**建立應用程式**]。 填寫 [應用程式**名稱**]、[**應用程式描述**] 和 [公用**網站**URI] （這可以是暫時性的，直到您註冊功能變數名稱）：
 
@@ -38,10 +40,10 @@ ms.locfileid: "82775787"
 
 * AspNetCore。Identity 根據預設，使用者需要有電子郵件地址。 前往 [**許可權**] 索引標籤，按一下 [**編輯**] 按鈕，然後核取 [**要求使用者的電子郵件地址**] 旁的方塊。
 
-* 輸入您的開發 URI `/signin-twitter` ，並附加至 [**回呼 url** ] 欄位（ `https://webapp128.azurewebsites.net/signin-twitter`例如：）。 稍後在此範例中設定的 Twitter 驗證配置會自動處理路由`/signin-twitter`上的要求，以執行 OAuth 流程。
+* 輸入您的開發 URI，並 `/signin-twitter` 附加至 [**回呼 url** ] 欄位（例如： `https://webapp128.azurewebsites.net/signin-twitter` ）。 稍後在此範例中設定的 Twitter 驗證配置會自動處理 `/signin-twitter` 路由上的要求，以執行 OAuth 流程。
 
   > [!NOTE]
-  > URI 區段`/signin-twitter`會設定為 Twitter 驗證提供者的預設回呼。 您可以在設定 Twitter 驗證中介軟體時，透過[TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
+  > URI 區段 `/signin-twitter` 會設定為 Twitter 驗證提供者的預設回呼。 您可以在設定 Twitter 驗證中介軟體時，透過[TwitterOptions](/dotnet/api/microsoft.aspnetcore.authentication.twitter.twitteroptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
 
 * 填寫表單的其餘部分，然後選取 [**建立**]。 隨即顯示新的應用程式詳細資料：
 
@@ -50,7 +52,7 @@ ms.locfileid: "82775787"
 使用[秘密管理員](xref:security/app-secrets)來儲存機密設定，例如 Twitter 取用者 API 金鑰和密碼。 針對此範例，請使用下列步驟：
 
 1. 根據[啟用秘密儲存](xref:security/app-secrets#enable-secret-storage)中的指示，初始化秘密儲存的專案。
-1. 使用秘密金鑰`Authentication:Twitter:ConsumerKey`和， `Authentication:Twitter:ConsumerSecret`將敏感性設定儲存在本機密碼存放區中：
+1. 使用秘密金鑰和，將敏感性設定儲存在本機密碼存放區中 `Authentication:Twitter:ConsumerKey` `Authentication:Twitter:ConsumerSecret` ：
 
     ```dotnetcli
     dotnet user-secrets set "Authentication:Twitter:ConsumerAPIKey" "<consumer-api-key>"
@@ -63,7 +65,7 @@ ms.locfileid: "82775787"
 
 ## <a name="configure-twitter-authentication"></a>設定 Twitter 驗證
 
-在`ConfigureServices` *Startup.cs*檔案的方法中新增 Twitter 服務：
+在 Startup.cs 檔案的方法中新增 Twitter 服務 `ConfigureServices` ： *Startup.cs*
 
 [!code-csharp[](~/security/authentication/social/social-code/3.x/StartupTwitter3x.cs?name=snippet&highlight=10-15)]
 
@@ -93,13 +95,13 @@ Rather in the twitter setup, you can provide an External sign-in homepage. The e
 
 ## <a name="troubleshooting"></a>疑難排解
 
-* **僅限 ASP.NET Core 2.x：** 如果Identity未透過在中`services.AddIdentity` `ConfigureServices`呼叫來設定，則嘗試驗證會導致*ArgumentException：必須提供 ' SignInScheme ' 選項*。 此範例中使用的專案範本可確保完成此作業。
+* **僅限 ASP.NET Core 2.x：** 如果 Identity 未透過 `services.AddIdentity` 在中呼叫 `ConfigureServices` 來設定，則嘗試驗證會導致*ArgumentException：必須提供 ' SignInScheme ' 選項*。 此範例中使用的專案範本可確保完成此作業。
 * 如果尚未藉由套用初始遷移來建立網站資料庫，則在處理要求錯誤時，您將會收到*資料庫作業失敗的*情況。 請按 [套用**遷移**] 來建立資料庫，並重新整理以繼續發生錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 本文說明如何使用 Twitter 進行驗證。 您可以遵循類似的方法，向[先前頁面](xref:security/authentication/social/index)上所列的其他提供者進行驗證。
 
-* 將網站發佈至 Azure web 應用程式之後，您應該`ConsumerSecret`在 Twitter 開發人員入口網站中重設。
+* 將網站發佈至 Azure web 應用程式之後，您應該 `ConsumerSecret` 在 Twitter 開發人員入口網站中重設。
 
-* 將`Authentication:Twitter:ConsumerKey`和`Authentication:Twitter:ConsumerSecret`設定為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。
+* 將 `Authentication:Twitter:ConsumerKey` 和設定 `Authentication:Twitter:ConsumerSecret` 為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。

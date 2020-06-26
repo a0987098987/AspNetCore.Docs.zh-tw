@@ -8,17 +8,19 @@ ms.date: 03/19/2020
 monikerRange: '>= aspnetcore-3.0'
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/microsoft-logins
-ms.openlocfilehash: 731a17085a1fd01852bb3fe2f0fc9f3e7a9ac30f
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: df3e738880902e3005221c6047b6be9e924f2929
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775657"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406130"
 ---
 # <a name="microsoft-account-external-login-setup-with-aspnet-core"></a>使用 ASP.NET Core 的 Microsoft 帳戶外部登入設定
 
@@ -34,10 +36,10 @@ ms.locfileid: "82775657"
 如果您沒有 Microsoft 帳戶，請選取 [**建立一個**]。 登入之後，系統會將您重新導向至 [**應用程式註冊**] 頁面：
 
 * 選取 [**新增註冊**]
-* 輸入 [**名稱**]。
+* 輸入 [名稱]。
 * 選取**支援的帳戶類型**選項。  <!-- Accounts for any org work with MS domain accounts. Most folks probably want the last option, personal MS accounts. It took 24 hours after setting this up for the keys to work -->
-* 在 [重新**導向 URI**] 底下，輸入`/signin-microsoft`附加的開發 URL。 例如： `https://localhost:5001/signin-microsoft` 。 稍後在此範例中設定的 Microsoft 驗證配置會自動處理路由`/signin-microsoft`上的要求，以執行 OAuth 流程。
-* 選取 [**註冊**]
+* 在 [重新**導向 URI**] 底下，輸入附加的開發 URL `/signin-microsoft` 。 例如： `https://localhost:5001/signin-microsoft` 。 稍後在此範例中設定的 Microsoft 驗證配置會自動處理 `/signin-microsoft` 路由上的要求，以執行 OAuth 流程。
+* 選取 [註冊]
 
 ### <a name="create-client-secret"></a>建立用戶端密碼
 
@@ -45,18 +47,18 @@ ms.locfileid: "82775657"
 * 在 [**用戶端密碼**] 底下，選取 [**新增用戶端密碼**]
 
   * 新增用戶端密碼的描述。
-  * 選取 [**新增**] 按鈕。
+  * 選取 [新增] 按鈕。
 
 * 在 [**用戶端密碼**] 下，複製用戶端密碼的值。
 
-URI 區段`/signin-microsoft`會設定為 Microsoft 驗證提供者的預設回呼。 您可以在設定 Microsoft 驗證中介軟體時，透過[MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
+URI 區段 `/signin-microsoft` 會設定為 Microsoft 驗證提供者的預設回呼。 您可以在設定 Microsoft 驗證中介軟體時，透過[MicrosoftAccountOptions](/dotnet/api/microsoft.aspnetcore.authentication.microsoftaccount.microsoftaccountoptions)類別的繼承[RemoteAuthenticationOptions. CallbackPath](/dotnet/api/microsoft.aspnetcore.authentication.remoteauthenticationoptions.callbackpath)屬性來變更預設的回呼 URI。
 
 ## <a name="store-the-microsoft-client-id-and-secret"></a>儲存 Microsoft 用戶端識別碼和密碼
 
 使用[秘密管理員](xref:security/app-secrets)來儲存機密設定（例如 Microsoft 用戶端識別碼和秘密值）。 針對此範例，請使用下列步驟：
 
 1. 根據[啟用秘密儲存](xref:security/app-secrets#enable-secret-storage)中的指示，初始化秘密儲存的專案。
-1. 使用秘密金鑰`Authentication:Microsoft:ClientId`和， `Authentication:Microsoft:ClientSecret`將敏感性設定儲存在本機密碼存放區中：
+1. 使用秘密金鑰和，將敏感性設定儲存在本機密碼存放區中 `Authentication:Microsoft:ClientId` `Authentication:Microsoft:ClientSecret` ：
 
     ```dotnetcli
     dotnet user-secrets set "Authentication:Microsoft:ClientId" "<client-id>"
@@ -67,7 +69,7 @@ URI 區段`/signin-microsoft`會設定為 Microsoft 驗證提供者的預設回�
 
 ## <a name="configure-microsoft-account-authentication"></a>設定 Microsoft 帳戶驗證
 
-將 Microsoft 帳戶服務新增至`Startup.ConfigureServices`：
+將 Microsoft 帳戶服務新增至 `Startup.ConfigureServices` ：
 
 [!code-csharp[](~/security/authentication/social/social-code/3.x/StartupMS3x.cs?name=snippet&highlight=10-14)]
 
@@ -89,10 +91,10 @@ URI 區段`/signin-microsoft`會設定為 Microsoft 驗證提供者的預設回�
 
 ## <a name="troubleshooting"></a>疑難排解
 
-* 如果 Microsoft 帳戶提供者將您重新導向至 [登入錯誤] 頁面，請注意 Uri 中`#` （主題標籤）後面的 [錯誤標題] 和 [描述] 查詢字串參數。
+* 如果 Microsoft 帳戶提供者將您重新導向至 [登入錯誤] 頁面，請注意 Uri 中（主題標籤）後面的 [錯誤標題] 和 [描述] 查詢字串參數 `#` 。
 
   雖然錯誤訊息似乎表示 Microsoft 驗證有問題，但最常見的原因是您的應用程式 Uri 不符合為**Web**平臺指定的任何重新**導向 uri** 。
-* 如果Identity未透過在中`services.AddIdentity` `ConfigureServices`呼叫來設定，則嘗試驗證會導致*ArgumentException：必須提供 ' SignInScheme ' 選項*。 此範例中使用的專案範本可確保完成此作業。
+* 如果 Identity 未透過 `services.AddIdentity` 在中呼叫 `ConfigureServices` 來設定，則嘗試驗證會導致*ArgumentException：必須提供 ' SignInScheme ' 選項*。 此範例中使用的專案範本可確保完成此作業。
 * 如果尚未藉由套用初始遷移來建立網站資料庫，則在處理要求錯誤時，您將會收到*資料庫作業失敗的*情況。 請按 [套用**遷移**] 來建立資料庫，並重新整理以繼續發生錯誤。
 
 ## <a name="next-steps"></a>後續步驟
@@ -101,4 +103,4 @@ URI 區段`/signin-microsoft`會設定為 Microsoft 驗證提供者的預設回�
 
 * 一旦您將網站發佈至 Azure web 應用程式，請在 Microsoft 開發人員入口網站中建立新的用戶端密碼。
 
-* 將`Authentication:Microsoft:ClientId`和`Authentication:Microsoft:ClientSecret`設定為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。
+* 將 `Authentication:Microsoft:ClientId` 和設定 `Authentication:Microsoft:ClientSecret` 為 Azure 入口網站中的應用程式設定。 設定系統已設定為從環境變數讀取金鑰。

@@ -8,23 +8,25 @@ ms.custom: mvc
 ms.date: 08/03/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/localization-extensibility
-ms.openlocfilehash: 152146992f1ea3cace14a2e702762af942a6c289
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 6f3007637200b375730c970ca9186436629cbcf7
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774336"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406598"
 ---
 # <a name="localization-extensibility"></a>當地語系化擴充性
 
 作者為 [Hisham Bin Ateya](https://github.com/hishamco)
 
-這篇文章：
+本文：
 
 * 列出當地語系化 API 的擴充點。
 * 提供如何擴充 ASP.NET Core 應用程式當地語系化的指示。

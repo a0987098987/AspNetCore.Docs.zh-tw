@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/iis/development-time-iis-support
-ms.openlocfilehash: 06c215156cdfa9bc1ae6ac2eb21a3f739a309bed
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: d922b2eb4d00a252b3e7da2f00de8b4571359b20
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106776"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406429"
 ---
 # <a name="development-time-iis-support-in-visual-studio-for-aspnet-core"></a>Visual Studio for ASP.NET Core 中的開發階段 IIS 支援
 
@@ -28,7 +30,7 @@ ms.locfileid: "84106776"
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [適用于 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -38,7 +40,7 @@ ms.locfileid: "84106776"
 ## <a name="enable-iis"></a>啟用 IIS
 
 1. 在 Windows 中，瀏覽至 [控制台]**[程式]** > **[程式和功能]** > **[開啟或關閉 Windows 功能]** > **** (畫面左側)。
-1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]。
+1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]****。
 
 安裝 IIS 可能需要重新啟動系統。
 
@@ -143,7 +145,7 @@ IIS 的網站必須含有下列設定：
 
 本文說明針對在 Windows Server 上搭配 IIS 執行的 ASP.NET Core 應用程式所提供的 [Visual Studio](https://visualstudio.microsoft.com) 偵錯支援。 本主題會逐步解說如何啟用此案例及設定專案。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * [適用于 Windows 的 Visual Studio](https://visualstudio.microsoft.com/downloads/)
 * **ASP.NET 與網頁程式開發**工作負載
@@ -153,7 +155,7 @@ IIS 的網站必須含有下列設定：
 ## <a name="enable-iis"></a>啟用 IIS
 
 1. 在 Windows 中，瀏覽至 [控制台]**[程式]** > **[程式和功能]** > **[開啟或關閉 Windows 功能]** > **** (畫面左側)。
-1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]。
+1. 選取 [Internet Information Services]**** 核取方塊。 選取 [確定]****。
 
 安裝 IIS 可能需要重新啟動系統。
 

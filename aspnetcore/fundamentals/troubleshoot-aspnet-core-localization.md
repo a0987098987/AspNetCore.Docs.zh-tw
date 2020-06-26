@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 01/24/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/troubleshoot-aspnet-core-localization
-ms.openlocfilehash: f5c2be93be4f896b1822bf93deef24f091e30442
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 48f75b4fbfdb2078f07efeffd8d4105366998876
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774284"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407079"
 ---
 # <a name="troubleshoot-aspnet-core-localization"></a>針對 ASP.NET Core 當地語系化進行疑難排解
 
@@ -56,7 +58,7 @@ ASP.NET Core 已為當地語系化資源檔命名預先定義了規則與方針�
 - 某些語言的 `resx` 中缺少這項資源，但其他語言則有。
 - 如果您仍持續發生問題，請查看當地語系化記錄訊息 (在 `Debug` 記錄層級)，以獲取所缺少資源的詳細資料。
 
-_**提示：** 使用`CookieRequestCultureProvider`時，請確認單引號不會與當地語系化 cookie 值內的文化特性搭配使用。例如， `c='en-UK'|uic='en-US'`是不正確 cookie 值，而`c=en-UK|uic=en-US`則是有效的。_
+_**提示：** 使用時 `CookieRequestCultureProvider` ，請確認單引號不會與當地語系化 cookie 值內的文化特性搭配使用。例如， `c='en-UK'|uic='en-US'` 是不正確 cookie 值，而 `c=en-UK|uic=en-US` 則是有效的。_
 
 ## <a name="resources--class-libraries-issues"></a>資源與類別庫的問題
 
@@ -77,7 +79,7 @@ ASP.NET Core 根據預設會提供讓類別庫能透過 [ResourceLocationAttribu
 
 [CustomRequestCultureProvider](/dotnet/api/microsoft.aspnetcore.localization.customrequestcultureprovider?view=aspnetcore-2.1) 可讓您自訂如何在應用程式中提供當地語系化文化特性 (Culture)。 當預設提供者不符合您的需求時，會使用 `CustomRequestCultureProvider`。
 
-- 自訂提供者無法正常運作的常見原因在於它不是 `RequestCultureProviders` 清單中的第一個提供者。 解決此問題：
+- 自訂提供者無法正常運作的常見原因在於它不是 `RequestCultureProviders` 清單中的第一個提供者。 若要解決此問題：
 
 - 將自訂提供者插入 `RequestCultureProviders` 清單中的位置 0，如下所示：
 
@@ -108,7 +110,7 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
 當組件的根命名空間與組件名稱不同時，當地語系化根據預設無法運作。 若要避免此問題，請使用 [RootNamespace](/dotnet/api/microsoft.extensions.localization.rootnamespaceattribute?view=aspnetcore-2.1)，其詳細說明請參閱[這裡](xref:fundamentals/localization?view=aspnetcore-2.2#resource-file-naming)
 
 > [!WARNING]
-> 當專案的名稱不是有效的 .NET 識別碼時，就可能發生這種情況。 例如， `my-project-name.csproj`會使用根命名空間`my_project_name` ，以及導致此`my-project-name`錯誤的元件名稱。 
+> 當專案的名稱不是有效的 .NET 識別碼時，就可能發生這種情況。 例如， `my-project-name.csproj` 會使用根命名空間 `my_project_name` ，以及 `my-project-name` 導致此錯誤的元件名稱。 
 
 ## <a name="resources--build-action"></a>資源與建置動作
 

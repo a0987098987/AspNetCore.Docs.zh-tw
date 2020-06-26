@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 09/28/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 5ffb57f21c89e21fcbb14b933cb0d0cb29d9c71b
-ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
+ms.openlocfilehash: 14b28f04f4077cb5622858dad1bd18b81b198f3d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85240947"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405792"
 ---
 # <a name="part-6-razor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>第6部分， Razor ASP.NET Core 讀取相關資料中有 EF Core 的頁面
 
@@ -326,7 +328,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 測試應用程式。 就使用者的觀點而言，應用程式行為與先前版本相同。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 下一個教學課程會示範如何更新相關資料。
 

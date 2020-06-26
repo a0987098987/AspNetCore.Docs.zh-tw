@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 10/24/2018
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: migration/mvc2
-ms.openlocfilehash: 98b93731d40b47be8d7d5050afc7c74d25a7e1dc
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: c51098ec02e5a337fd6607e970d3bf78ffcd568a
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776268"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405519"
 ---
 # <a name="migrate-from-aspnet-to-aspnet-core-20"></a>從 ASP.NET 遷移至 ASP.NET Core 2.0
 
@@ -25,7 +27,7 @@ ms.locfileid: "82776268"
 
 這篇文章可作為 ASP.NET 應用程式移轉至 ASP.NET Core 2.0 的參考指南。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 從 .Net 下載安裝下列**其中一**項[： Windows](https://dotnet.microsoft.com/download)：
 
@@ -48,7 +50,7 @@ ASP.NET Core 2.0 專案讓開發人員能夠彈性以 .NET Core、.NET Framework
 </ItemGroup>
 ```
 
-使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 如<xref:fundamentals/metapackage>需詳細資訊，請參閱。
+使用中繼套件時，不使用應用程式部署中繼套件中參考的任何套件。 .NET Core 執行階段存放區包含這些資產，而且它們會先行編譯以改善效能。 如需詳細資訊，請參閱 <xref:fundamentals/metapackage> 。
 
 ## <a name="project-structure-differences"></a>專案結構差異
 
@@ -88,7 +90,7 @@ ASP.NET Core 使用類似的方法，但不依賴 OWIN 處理項目。 相反地
 
 主機與應用程式已分離，這讓您未來可以彈性移至不同的平台。
 
-如需 ASP.NET Core 啟動和中介軟體的更深入參考，請參閱<xref:fundamentals/startup>。
+如需 ASP.NET Core 啟動和中介軟體的更深入參考，請參閱 <xref:fundamentals/startup> 。
 
 ## <a name="storing-configurations"></a>正在儲存組態
 
@@ -119,7 +121,7 @@ ASP.NET Core 可將應用程式的組態資料儲存在任何檔案中，將它�
 services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"));
 ```
 
-**注意：** 如需 ASP.NET Core 設定的更深入參考，請參閱<xref:fundamentals/configuration/index>。
+**注意：** 如需 ASP.NET Core 設定的更深入參考，請參閱 <xref:fundamentals/configuration/index> 。
 
 ## <a name="native-dependency-injection"></a>原生相依性插入
 
@@ -127,7 +129,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 在 ASP.NET 應用程式中，開發人員依賴協力廠商程式庫來執行相依性插入。 Microsoft 模式和實務提供的 [Unity](https://github.com/unitycontainer/unity) 就是這樣的程式庫。
 
-使用 Unity 設定相依性插入的範例，就是`IDependencyResolver`執行包裝 a `UnityContainer`的：
+使用 Unity 設定相依性插入的範例，就是執行 `IDependencyResolver` 包裝 a 的 `UnityContainer` ：
 
 [!code-csharp[](samples/sample8.cs)]
 
@@ -139,13 +141,13 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 [!code-csharp[](samples/sample5.cs)]
 
-由於相依性插入是 ASP.NET Core 的一部分，因此您可以在中新增`Startup.ConfigureServices`服務：
+由於相依性插入是 ASP.NET Core 的一部分，因此您可以在中新增服務 `Startup.ConfigureServices` ：
 
 [!code-csharp[](samples/configure-services.cs)]
 
 存放庫可插入任何位置，就像以前的 Unity 一樣。
 
-如需 ASP.NET Core 中相依性插入的詳細資訊<xref:fundamentals/dependency-injection>，請參閱。
+如需 ASP.NET Core 中相依性插入的詳細資訊，請參閱 <xref:fundamentals/dependency-injection> 。
 
 ## <a name="serving-static-files"></a>提供靜態檔案
 
@@ -153,7 +155,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 在 ASP.NET 中，靜態檔案會儲存在不同目錄中，於檢視中提供參考。
 
-在 ASP.NET Core 中，除非另有設定，否則靜態檔案會儲存在「web 根目錄」（*&lt;內容根目錄&gt;/wwwroot*）中。 從 `Startup.Configure` 叫用 `UseStaticFiles` 擴充方法，將檔案載入至要求管線：
+在 ASP.NET Core 中，除非另有設定，否則靜態檔案會儲存在「web 根目錄」（* &lt; 內容根目錄 &gt; /wwwroot*）中。 從 `Startup.Configure` 叫用 `UseStaticFiles` 擴充方法，將檔案載入至要求管線：
 
 [!code-csharp[](../../fundamentals/static-files/samples/1x/StartupStaticFiles.cs?highlight=3&name=snippet_ConfigureMethod)]
 
@@ -161,7 +163,7 @@ services.Configure<AppConfiguration>(Configuration.GetSection("AppConfiguration"
 
 例如，位在 `http://<app>/images/<imageFileName>` 等位置的瀏覽器可存取 *wwwroot/images* 資料夾中的影像資產。
 
-**注意：** 如需在 ASP.NET Core 中提供靜態檔案的更深入參考，請參閱<xref:fundamentals/static-files>。
+**注意：** 如需在 ASP.NET Core 中提供靜態檔案的更深入參考，請參閱 <xref:fundamentals/static-files> 。
 
 ## <a name="additional-resources"></a>其他資源
 

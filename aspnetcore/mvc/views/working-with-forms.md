@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/working-with-forms
-ms.openlocfilehash: ba523fba60153e2ae804f5a875cfaa1aa8fffedd
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 06d5d6e2db1cf3ccb148c24c40c264016d47a0ed
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82769098"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406585"
 ---
 # <a name="tag-helpers-in-forms-in-aspnet-core"></a>ASP.NET Core 表單中的標籤協助程式
 
@@ -33,7 +35,7 @@ ms.locfileid: "82769098"
 
 [表單](https://www.w3.org/TR/html401/interact/forms.html)標記協助程式：
 
-* 產生 MVC 控制器動作或命名路由>`action`屬性值的 HTML [ \<表單](https://www.w3.org/TR/html401/interact/forms.html)
+* 產生 [\<FORM>](https://www.w3.org/TR/html401/interact/forms.html) `action` MVC 控制器動作或命名路由的 HTML 屬性值
 
 * 產生隱藏的[要求驗證權杖](/aspnet/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages)，以防止跨站台要求偽造 (搭配 HTTP Post 動作方法中的 `[ValidateAntiForgeryToken]` 屬性使用時)
 
@@ -75,7 +77,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 ## <a name="the-form-action-tag-helper"></a>表單動作標記協助程式
 
-表單動作標記協助程式會在產生的 `<button ...>` 或 `<input type="image" ...>` 標記上產生 `formaction` 屬性。 `formaction` 屬性可讓您控制表單提交其資料的位置。 它會系結至`image` [ \< ](https://www.w3.org/wiki/HTML/Elements/button) [ \< ](https://www.w3.org/wiki/HTML/Elements/input) type 和 button>元素的輸入>元素。 表單動作標記協助程式允許使用多個 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) `asp-` 屬性來控制會為相應元素產生哪個 `formaction` 連結。
+表單動作標記協助程式會在產生的 `<button ...>` 或 `<input type="image" ...>` 標記上產生 `formaction` 屬性。 `formaction` 屬性可讓您控制表單提交其資料的位置。 它會系結至 [\<input>](https://www.w3.org/wiki/HTML/Elements/input) 類型 `image` 和 [\<button>](https://www.w3.org/wiki/HTML/Elements/button) 元素的元素。 表單動作標記協助程式允許使用多個 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) `asp-` 屬性來控制會為相應元素產生哪個 `formaction` 連結。
 
 支援 [AnchorTagHelper](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper) 屬性來控制 `formaction` 的值：
 
@@ -84,8 +86,8 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 |[asp-controller](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-controller)|控制器的名稱。|
 |[asp-action](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-action)|動作方法的名稱。|
 |[asp-area](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-area)|區域的名稱。|
-|[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|Razor 頁面的名稱。|
-|[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Razor 頁面處理常式的名稱。|
+|[asp-page](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page)|網頁的名稱 Razor 。|
+|[asp-page-handler](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-page-handler)|Razor網頁處理常式的名稱。|
 |[asp-route](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route)|路由的名稱。|
 |[asp-route-{value}](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-route-value)|單一 URL 路由值。 例如： `asp-route-id="1234"` 。|
 |[asp-all-route-data](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper#asp-all-route-data)|所有路由值。|
@@ -114,7 +116,7 @@ MVC 執行階段會從表單標籤協助程式屬性 `asp-controller` 和 `asp-a
 
 ### <a name="submit-to-page-example"></a>提交至頁面範例
 
-下列標記會將表單提交到 `About` Razor 頁面：
+下列標記會將表單提交至 `About` Razor 頁面：
 
 ```cshtml
 <form method="post">
@@ -167,7 +169,7 @@ public class HomeController : Controller
 
 ## <a name="the-input-tag-helper"></a>輸入標籤協助程式
 
-輸入標記協助程式會將 HTML [ \<輸入>](https://www.w3.org/wiki/HTML/Elements/input)專案系結至 razor 視圖中的模型運算式。
+輸入標記協助程式會將 HTML 專案系結 [\<input>](https://www.w3.org/wiki/HTML/Elements/input) 至 razor 視圖中的模型運算式。
 
 語法：
 
@@ -205,7 +207,7 @@ Type expected
 |.NET 類型|輸入類型|
 |---|---|
 |Bool|type="checkbox"|
-|字串|type="text"|
+|String|type="text"|
 |Datetime|type=["datetime-local"](https://developer.mozilla.org/docs/Web/HTML/Element/input/datetime-local)|
 |Byte|type="number"|
 |Int|type="number"|
@@ -247,7 +249,7 @@ Type expected
    </form>
 ```
 
-套用至 `Email` 和 `Password` 屬性的資料註解會產生模型的中繼資料。 輸入標籤協助程式會取用模型中繼資料，並產生 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` 屬性 (請參閱[模型驗證](../models/validation.md))。 這些屬性描述要附加至輸入欄位的驗證程式。 這提供低調的 HTML5 和 [jQuery](https://jquery.com/) 驗證。 不顯眼的屬性具有格式`data-val-rule="Error Message"`，其中 rule 是驗證規則的名稱（例如`data-val-required`、 `data-val-email`、 `data-val-maxlength`等）。如果在屬性中提供錯誤訊息，則會顯示為`data-val-rule`屬性的值。 另外還有 `data-val-ruleName-argumentName="argumentValue"` 格式的屬性，提供規則的其他詳細資料，例如 `data-val-maxlength-max="1024"`。
+套用至 `Email` 和 `Password` 屬性的資料註解會產生模型的中繼資料。 輸入標籤協助程式會取用模型中繼資料，並產生 [HTML5](https://developer.mozilla.org/docs/Web/Guide/HTML/HTML5) `data-val-*` 屬性 (請參閱[模型驗證](../models/validation.md))。 這些屬性描述要附加至輸入欄位的驗證程式。 這提供低調的 HTML5 和 [jQuery](https://jquery.com/) 驗證。 不顯眼的屬性具有格式 `data-val-rule="Error Message"` ，其中 rule 是驗證規則的名稱（例如 `data-val-required` 、 `data-val-email` 、等 `data-val-maxlength` ）。如果在屬性中提供錯誤訊息，則會顯示為屬性的值 `data-val-rule` 。 另外還有 `data-val-ruleName-argumentName="argumentValue"` 格式的屬性，提供規則的其他詳細資料，例如 `data-val-maxlength-max="1024"`。
 
 ### <a name="html-helper-alternatives-to-input-tag-helper"></a>輸入標籤協助程式的 HTML 標記替代
 
@@ -321,7 +323,7 @@ public IActionResult Edit(int id, int colorIndex)
 }
 ```
 
-下列 Razor 示範如何存取特定 `Color` 項目：
+以下 Razor 顯示如何存取特定 `Color` 元素：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Demo/EditColor.cshtml)]
 
@@ -333,7 +335,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/ToDoItem.cs?range=3-8)]
 
-下列 Razor 示範如何逐一查看集合：
+以下 Razor 顯示如何反復查看集合：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Demo/Edit.cshtml)]
 
@@ -352,7 +354,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 `Textarea Tag Helper` 標籤協助程式類似於輸入標籤協助程式。
 
-* 從>`id`專案`name`的[ \<textarea](https://www.w3.org/wiki/HTML/Elements/textarea)模型中，產生和屬性以及資料驗證屬性。
+* 從專案的 `id` 模型產生和 `name` 屬性，以及資料驗證屬性 [\<textarea>](https://www.w3.org/wiki/HTML/Elements/textarea) 。
 
 * 提供強型別。
 
@@ -382,7 +384,7 @@ public IActionResult Edit(int id, int colorIndex)
 
 ## <a name="the-label-tag-helper"></a>標籤標籤協助程式
 
-* [在\<標籤](https://www.w3.org/wiki/HTML/Elements/label)上產生`for`標籤標題和屬性>運算式名稱的元素
+* `for`針對運算式名稱，在元素上產生標籤標題和屬性 [\<label>](https://www.w3.org/wiki/HTML/Elements/label)
 
 * HTML 協助程式替代：`Html.LabelFor`。
 
@@ -459,12 +461,12 @@ public IActionResult Edit(int id, int colorIndex)
 |asp-validation-summary|顯示的驗證訊息|
 |--- |--- |
 |ValidationSummary.All|屬性和模型層級|
-|ValidationSummary.ModelOnly|型號|
+|ValidationSummary.ModelOnly|模型|
 |ValidationSummary.None|None|
 
 ### <a name="sample"></a>範例
 
-在下列範例中，資料模型具有`DataAnnotation`屬性，其會在`<input>`元素上產生驗證錯誤訊息。  在發生驗證錯誤時，驗證標籤協助程式會顯示錯誤訊息：
+在下列範例中，資料模型具有 `DataAnnotation` 屬性，其會在元素上產生驗證錯誤訊息 `<input>` 。  在發生驗證錯誤時，驗證標籤協助程式會顯示錯誤訊息：
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/RegisterViewModel.cs)]
 
@@ -552,7 +554,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 [!code-HTML[](../../mvc/views/working-with-forms/sample/final/Views/Home/IndexEnum.cshtml?highlight=5)]
 
-您可以使用`Display`屬性標記您的列舉值清單，以取得更豐富的 UI：
+您可以使用屬性標記您的列舉值清單， `Display` 以取得更豐富的 UI：
 
 [!code-csharp[](working-with-forms/sample/final/ViewModels/CountryEnum.cs?highlight=5,7)]
 
@@ -576,7 +578,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 ### <a name="option-group"></a>選項群組
 
-當視圖模型包含一或多個`SelectListGroup`物件時，就會產生 HTML [ \<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup)元素。
+[\<optgroup>](https://www.w3.org/wiki/HTML/Elements/optgroup)當視圖模型包含一或多個物件時，就會產生 HTML 元素 `SelectListGroup` 。
 
 `CountryViewModelGroup` 將 `SelectListItem` 項目分組成「北美洲」和「歐洲」群組：
 
@@ -645,7 +647,7 @@ HTTP POST `Index` 方法會顯示選取項目：
 
 [!code-HTML[](working-with-forms/sample/final/Views/Shared/EditorTemplates/CountryViewModel.cshtml)]
 
-新增 HTML [ \<選項>](https://www.w3.org/wiki/HTML/Elements/option)專案不限於 [*沒有選取範圍*] 案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
+新增 HTML [\<option>](https://www.w3.org/wiki/HTML/Elements/option) 專案並不限於 [*沒有選取範圍*] 案例。 例如，下列檢視和動作方法會產生類似於上述程式碼的 HTML：
 
 [!code-csharp[](working-with-forms/sample/final/Controllers/HomeController.cs?name=snippetNone)]
 

@@ -7,17 +7,19 @@ ms.author: jamesnk
 ms.date: 05/26/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/browser
-ms.openlocfilehash: 6f66a94b41e6e13550396e2e19fdf48f9dc63d46
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 37932e755a0ef2149fb2336d2dcef87d3347d1a4
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106594"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404752"
 ---
 # <a name="use-grpc-in-browser-apps"></a>在瀏覽器應用程式中使用 gRPC
 
@@ -55,9 +57,9 @@ ASP.NET Core 中裝載的 gRPC 服務可以設定為支援 gRPC-Web 與 HTTP/2 g
 [!code-csharp[](~/grpc/browser/sample/AllServicesSupportExample_Startup.cs?name=snippet_1&highlight=12)]
 
 > [!NOTE]
-> 已知的問題是，當[HTTP.sys](xref:fundamentals/servers/httpsys)在 .net Core 3.x 中裝載時，會導致 gRPC 失敗。
+> 已知的問題會導致 gRPC 在 .NET Core 3.x 中[由 Http.sys](xref:fundamentals/servers/httpsys)裝載時失敗。
 >
-> 您可以在[這裡](https://github.com/grpc/grpc-dotnet/issues/853#issuecomment-610078202)取得在 HTTP.sys 上運作 gRPC 的因應措施。
+> 您可以在[這裡](https://github.com/grpc/grpc-dotnet/issues/853#issuecomment-610078202)找到 gRPC Web 運作 Http.sys 的因應措施。
 
 ### <a name="grpc-web-and-cors"></a>gRPC-Web 和 CORS
 
@@ -87,7 +89,7 @@ ASP.NET Core 中裝載的 gRPC 服務可以設定為支援 gRPC-Web 與 HTTP/2 g
 
 ### <a name="configure-grpc-web-with-the-net-grpc-client"></a>使用 .NET gRPC 用戶端設定 gRPC-Web
 
-您可以設定 .NET gRPC 用戶端進行 gRPC-Web 呼叫。 這適用于[ Blazor WebAssembly](xref:blazor/index#blazor-webassembly)應用程式（裝載于瀏覽器中），並具有 JavaScript 程式碼的相同 HTTP 限制。 使用 .NET 用戶端呼叫 gRPC Web 與[HTTP/2 gRPC 相同](xref:grpc/client)。 唯一的修改是建立通道的方式。
+您可以設定 .NET gRPC 用戶端進行 gRPC-Web 呼叫。 這適用于在 [Blazor WebAssembly](xref:blazor/index#blazor-webassembly) 瀏覽器中裝載並具有 JavaScript 程式碼相同 HTTP 限制的應用程式。 使用 .NET 用戶端呼叫 gRPC Web 與[HTTP/2 gRPC 相同](xref:grpc/client)。 唯一的修改是建立通道的方式。
 
 若要使用 gRPC-Web：
 
@@ -111,7 +113,7 @@ ASP.NET Core 中裝載的 gRPC 服務可以設定為支援 gRPC-Web 與 HTTP/2 g
 * **HttpVersion**： `Version` 用來在基礎 gRPC HTTP 要求上設定[HttpRequestMessage](xref:System.Net.Http.HttpRequestMessage.Version)的 HTTP 通訊協定。 gRPC-Web 不需要特定版本，除非指定，否則不會覆寫預設值。
 
 > [!IMPORTANT]
-> 產生的 gRPC 用戶端具有呼叫一元方法的同步和非同步方法。 例如， `SayHello` 會同步處理，而且 `SayHelloAsync` 是非同步。 在 WebAssembly 應用程式中呼叫同步處理方法， Blazor 會導致應用程式沒有回應。 非同步方法必須一律在 WebAssembly 中使用 Blazor 。
+> 產生的 gRPC 用戶端具有呼叫一元方法的同步和非同步方法。 例如， `SayHello` 會同步處理，而且 `SayHelloAsync` 是非同步。 在應用程式中呼叫同步方法 Blazor WebAssembly 會導致應用程式變得沒有回應。 非同步方法必須一律在中使用 Blazor WebAssembly 。
 
 ## <a name="additional-resources"></a>其他資源
 

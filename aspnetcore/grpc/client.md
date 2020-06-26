@@ -7,17 +7,19 @@ ms.author: jamesnk
 ms.date: 04/21/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/client
-ms.openlocfilehash: c554ce9702a9f2b2efeabbfdf0d1319ca4161a1c
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 9ebe36cdb17e858fd82216b090e3e89169197101
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774726"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406182"
 ---
 # <a name="call-grpc-services-with-the-net-client"></a>利用 .NET 用戶端呼叫 gRPC 服務
 
@@ -28,16 +30,16 @@ ms.locfileid: "82774726"
 
 ## <a name="configure-grpc-client"></a>設定 gRPC 用戶端
 
-gRPC 用戶端是[從* \*proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體的 gRPC 用戶端具有轉譯為* \*proto*檔案中 gRPC 服務的方法。
+gRPC 用戶端是[從* \* proto*檔案產生](xref:grpc/basics#generated-c-assets)的具體用戶端類型。 具體的 gRPC 用戶端具有轉譯為* \* proto*檔案中 gRPC 服務的方法。
 
-GRPC 用戶端是從通道建立的。 首先，使用`GrpcChannel.ForAddress`來建立通道，然後使用通道來建立 gRPC 用戶端：
+GRPC 用戶端是從通道建立的。 首先，使用 `GrpcChannel.ForAddress` 來建立通道，然後使用通道來建立 gRPC 用戶端：
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
 var client = new Greet.GreeterClient(channel);
 ```
 
-通道代表 gRPC 服務的長時間連接。 建立通道時，會使用與呼叫服務相關的選項進行設定。 例如， `HttpClient`用來進行呼叫的、傳送和接收訊息大小上限，以及記錄可以在上`GrpcChannelOptions`指定並搭配使用。 `GrpcChannel.ForAddress` 如需完整的選項清單，請參閱[用戶端設定選項](xref:grpc/configuration#configure-client-options)。
+通道代表 gRPC 服務的長時間連接。 建立通道時，會使用與呼叫服務相關的選項進行設定。 例如， `HttpClient` 用來進行呼叫的、傳送和接收訊息大小上限，以及記錄可以在上指定並搭配 `GrpcChannelOptions` 使用 `GrpcChannel.ForAddress` 。 如需完整的選項清單，請參閱[用戶端設定選項](xref:grpc/configuration#configure-client-options)。
 
 ```csharp
 var channel = GrpcChannel.ForAddress("https://localhost:5001");
@@ -56,13 +58,13 @@ var counterClient = new Count.CounterClient(channel);
 * 通道和從通道建立的用戶端可以安全地由多個執行緒使用。
 * 從通道建立的用戶端可以進行多個同時呼叫。
 
-`GrpcChannel.ForAddress`不是建立 gRPC 用戶端的唯一選項。 如果從 ASP.NET Core 應用程式呼叫 gRPC services，請考慮[gRPC 用戶端 factory 整合](xref:grpc/clientfactory)。 gRPC 與的`HttpClientFactory`整合提供了建立 gRPC 用戶端的集中式替代方案。
+`GrpcChannel.ForAddress`不是建立 gRPC 用戶端的唯一選項。 如果從 ASP.NET Core 應用程式呼叫 gRPC services，請考慮[gRPC 用戶端 factory 整合](xref:grpc/clientfactory)。 gRPC 與的整合 `HttpClientFactory` 提供了建立 gRPC 用戶端的集中式替代方案。
 
 > [!NOTE]
 > 需要其他設定，才能[使用 .net 用戶端呼叫不安全的 gRPC 服務](xref:grpc/troubleshoot#call-insecure-grpc-services-with-net-core-client)。
 
 > [!NOTE]
-> Xamarin 目前不支援透過 HTTP/ `Grpc.Net.Client` 2 呼叫 gRPC。 我們正致力於改善未來 Xamarin 版本中的 HTTP/2 支援。 [Grpc](https://www.nuget.org/packages/Grpc.Core)和[Grpc-Web](xref:grpc/browser)是可行的替代方案。
+> Xamarin 目前不支援透過 HTTP/2 呼叫 gRPC `Grpc.Net.Client` 。 我們正致力於改善未來 Xamarin 版本中的 HTTP/2 支援。 [Grpc](https://www.nuget.org/packages/Grpc.Core)和[Grpc-Web](xref:grpc/browser)是可行的替代方案。
 
 ## <a name="make-grpc-calls"></a>進行 gRPC 呼叫
 
@@ -87,14 +89,14 @@ Console.WriteLine("Greeting: " + response.Message);
 // Greeting: Hello World
 ```
 
-* \*Proto*檔案中的每個一元服務方法都會在具象 gRPC 用戶端類型上產生兩個 .net 方法，以呼叫方法：非同步方法和封鎖方法。 例如， `GreeterClient`有兩種方法可以呼叫`SayHello`：
+* \* Proto*檔案中的每個一元服務方法都會在具象 gRPC 用戶端類型上產生兩個 .net 方法，以呼叫方法：非同步方法和封鎖方法。 例如， `GreeterClient` 有兩種方法可以呼叫 `SayHello` ：
 
-* `GreeterClient.SayHelloAsync`-以`Greeter.SayHello`非同步方式呼叫服務。 可以等候。
-* `GreeterClient.SayHello`-呼叫`Greeter.SayHello`服務並封鎖直到完成為止。 不要在非同步程式碼中使用。
+* `GreeterClient.SayHelloAsync`- `Greeter.SayHello` 以非同步方式呼叫服務。 可以等候。
+* `GreeterClient.SayHello`-呼叫 `Greeter.SayHello` 服務並封鎖直到完成為止。 不要在非同步程式碼中使用。
 
 ### <a name="server-streaming-call"></a>伺服器串流呼叫
 
-伺服器串流呼叫會從傳送要求訊息的用戶端開始。 `ResponseStream.MoveNext()`讀取從服務資料流程處理的訊息。 當傳回時`ResponseStream.MoveNext()` ，會完成伺服器資料流程`false`呼叫。
+伺服器串流呼叫會從傳送要求訊息的用戶端開始。 `ResponseStream.MoveNext()`讀取從服務資料流程處理的訊息。 當傳回時，會完成伺服器資料流程呼叫 `ResponseStream.MoveNext()` `false` 。
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -107,7 +109,7 @@ while (await call.ResponseStream.MoveNext())
 }
 ```
 
-使用 c # 8 或更新版本時`await foreach` ，語法可以用來讀取訊息。 `IAsyncStreamReader<T>.ReadAllAsync()`擴充方法會讀取來自回應資料流程的所有訊息：
+使用 c # 8 或更新版本時， `await foreach` 語法可以用來讀取訊息。 `IAsyncStreamReader<T>.ReadAllAsync()`擴充方法會讀取來自回應資料流程的所有訊息：
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -122,7 +124,7 @@ await foreach (var response in call.ResponseStream.ReadAllAsync())
 
 ### <a name="client-streaming-call"></a>用戶端串流呼叫
 
-用戶端串流呼叫會在沒有用戶端傳送訊息的*情況下*啟動。 用戶端可以選擇用`RequestStream.WriteAsync`來傳送訊息。 當用戶端完成傳送訊息時， `RequestStream.CompleteAsync`應該呼叫來通知服務。 當服務傳迴響應消息時，就會完成呼叫。
+用戶端串流呼叫會在沒有用戶端傳送訊息的*情況下*啟動。 用戶端可以選擇用來傳送訊息 `RequestStream.WriteAsync` 。 當用戶端完成傳送訊息時， `RequestStream.CompleteAsync` 應該呼叫來通知服務。 當服務傳迴響應消息時，就會完成呼叫。
 
 ```csharp
 var client = new Counter.CounterClient(channel);
@@ -141,7 +143,7 @@ Console.WriteLine($"Count: {response.Count}");
 
 ### <a name="bi-directional-streaming-call"></a>雙向串流呼叫
 
-雙向串流呼叫會在沒有用戶端傳送訊息的*情況下*啟動。 用戶端可以選擇用`RequestStream.WriteAsync`來傳送訊息。 從服務串流處理`ResponseStream.MoveNext()`的訊息可以透過或`ResponseStream.ReadAllAsync()`來存取。 當沒有任何訊息時`ResponseStream` ，雙向串流呼叫會完成。
+雙向串流呼叫會在沒有用戶端傳送訊息的*情況下*啟動。 用戶端可以選擇用來傳送訊息 `RequestStream.WriteAsync` 。 從服務串流處理的訊息可以透過 `ResponseStream.MoveNext()` 或來存取 `ResponseStream.ReadAllAsync()` 。 當沒有任何訊息時，雙向串流呼叫會完成 `ResponseStream` 。
 
 ```csharp
 var client = new Echo.EchoClient(channel);
@@ -181,9 +183,9 @@ await readTask;
 
 gRPC 呼叫可能會傳回 gRPC 尾端。 gRPC 尾端用來提供關於呼叫的名稱/值中繼資料。 尾端提供類似于 HTTP 標頭的功能，但會在通話結束時收到。
 
-gRPC 尾端可使用`GetTrailers()`來存取，這會傳回中繼資料的集合。 在回應完成後會傳回結尾，因此，您必須在存取結尾之前等待所有回應訊息。
+gRPC 尾端可使用來存取 `GetTrailers()` ，這會傳回中繼資料的集合。 在回應完成後會傳回結尾，因此，您必須在存取結尾之前等待所有回應訊息。
 
-`ResponseAsync`在呼叫`GetTrailers()`之前，一元和用戶端資料流程呼叫必須等候：
+在呼叫之前，一元和用戶端資料流程呼叫必須等候 `ResponseAsync` `GetTrailers()` ：
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -197,7 +199,7 @@ var trailers = call.GetTrailers();
 var myValue = trailers.First(e => e.Key == "my-trailer-name");
 ```
 
-在呼叫`GetTrailers()`之前，伺服器和雙向串流呼叫必須完成等待回應資料流程的作業：
+在呼叫之前，伺服器和雙向串流呼叫必須完成等待回應資料流程的作業 `GetTrailers()` ：
 
 ```csharp
 var client = new Greet.GreeterClient(channel);
@@ -213,7 +215,7 @@ var trailers = call.GetTrailers();
 var myValue = trailers.First(e => e.Key == "my-trailer-name");
 ```
 
-gRPC 尾端也可以從`RpcException`存取。 服務可能會傳回尾端和非 OK gRPC 狀態。 在此情況下，會從 gRPC 用戶端擲回的例外狀況中抓取尾端：
+gRPC 尾端也可以從存取 `RpcException` 。 服務可能會傳回尾端和非 OK gRPC 狀態。 在此情況下，會從 gRPC 用戶端擲回的例外狀況中抓取尾端：
 
 ```csharp
 var client = new Greet.GreeterClient(channel);

@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/key-vault-configuration
-ms.openlocfilehash: 4a5689af9ffea175838a869e92752de889cbb227
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 47172339f1c82a572a8a2c5d4ba49e4906e30b29
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106672"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406871"
 ---
 # <a name="azure-key-vault-configuration-provider-in-aspnet-core"></a>ASP.NET Core 中的 Azure Key Vault 設定提供者
 
@@ -35,7 +37,7 @@ ms.locfileid: "84106672"
 
 ## <a name="packages"></a>套件
 
-將套件參考新增至[AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)套件。
+將套件參考新增至[Microsoft.Extensions.Configuration。AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)封裝。
 
 ## <a name="sample-app"></a>範例應用程式
 
@@ -129,11 +131,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    1. 在 Azure AD 中選取應用程式。
    1. 流覽至 [**憑證 & 密碼**]。
    1. 選取 [**上傳憑證**] 來上傳包含公開金鑰的憑證。 *.Cer*、 *pem*或 *.crt*憑證是可接受的。
-1. 將金鑰保存庫名稱、應用程式識別碼和憑證指紋儲存在應用程式的*appsettings*中。
+1. 將金鑰保存庫名稱、應用程式識別碼和憑證指紋儲存在應用程式的*appsettings.js*檔案中。
 1. 流覽至 Azure 入口網站中的 [**金鑰保存庫**]。
 1. 選取您在[生產環境中使用 Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault)一節所建立的金鑰保存庫。
-1. 選取 [**存取原則**]。
-1. 選取 [**新增存取原則**]。
+1. 選取 [存取原則]。
+1. 選取 [新增存取原則]。
 1. 開啟 [**秘密許可權**]，並提供具有 [**取得**] 和 [**列出**] 許可權的應用程式。
 1. 選取 [**選取主體**]，然後依名稱選取已註冊的應用程式。 選取 [選取]  按鈕。
 1. 選取 [確定]  。
@@ -147,7 +149,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 使用*appsettings*所提供的值來呼叫：
+X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 使用*appsettings.json* file 所提供的值來呼叫：
 
 [!code-csharp[](key-vault-configuration/samples/3.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -157,7 +159,7 @@ X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Exten
 * 應用程式識別碼：`627e911e-43cc-61d4-992e-12db9c81b413`
 * 憑證指紋：`fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
-*appsettings. json*：
+*appsettings.js*：
 
 [!code-json[](key-vault-configuration/samples/3.x/SampleApp/appsettings.json?highlight=10-12)]
 
@@ -169,7 +171,7 @@ X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Exten
 
 當 `#define` *Program.cs*檔案頂端的語句設定為時，範例應用程式會使用適用于 Azure 資源的受控識別 `Managed` 。
 
-在應用程式的*appsettings*中輸入保存庫名稱。 在設定為版本時，範例應用程式不需要應用程式識別碼和密碼（用戶端密碼） `Managed` ，因此您可以忽略這些設定專案。 應用程式會部署至 Azure，而 Azure 只會使用儲存在*appsettings*中的保存庫名稱來驗證應用程式，以存取 Azure Key Vault。
+在檔案的應用程式*appsettings.js*中輸入保存庫名稱。 在設定為版本時，範例應用程式不需要應用程式識別碼和密碼（用戶端密碼） `Managed` ，因此您可以忽略這些設定專案。 應用程式會部署至 Azure，而 Azure 只會使用儲存在檔案*appsettings.js*中的保存庫名稱來驗證應用程式，以存取 Azure Key Vault。
 
 將範例應用程式部署至 Azure App Service。
 
@@ -193,7 +195,7 @@ az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-
 
 金鑰保存庫名稱範例值：`contosovault`
     
-*appsettings. json*：
+*appsettings.js*：
 
 ```json
 {
@@ -219,7 +221,7 @@ config.AddAzureKeyVault(
     });
 ```
 
-| 屬性         | 描述 |
+| 屬性         | 說明 |
 | ---------------- | ----------- |
 | `Client`         | <xref:Microsoft.Azure.KeyVault.KeyVaultClient>用來抓取值。 |
 | `Manager`        | <xref:Microsoft.Extensions.Configuration.AzureKeyVault.IKeyVaultSecretManager>用來控制密碼載入的實例。 |
@@ -381,7 +383,7 @@ Configuration.Reload();
 
 ## <a name="packages"></a>套件
 
-將套件參考新增至[AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)套件。
+將套件參考新增至[Microsoft.Extensions.Configuration。AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/)封裝。
 
 ## <a name="sample-app"></a>範例應用程式
 
@@ -475,11 +477,11 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
    1. 在 Azure AD 中選取應用程式。
    1. 流覽至 [**憑證 & 密碼**]。
    1. 選取 [**上傳憑證**] 來上傳包含公開金鑰的憑證。 *.Cer*、 *pem*或 *.crt*憑證是可接受的。
-1. 將金鑰保存庫名稱、應用程式識別碼和憑證指紋儲存在應用程式的*appsettings*中。
+1. 將金鑰保存庫名稱、應用程式識別碼和憑證指紋儲存在應用程式的*appsettings.js*檔案中。
 1. 流覽至 Azure 入口網站中的 [**金鑰保存庫**]。
 1. 選取您在[生產環境中使用 Azure Key Vault](#secret-storage-in-the-production-environment-with-azure-key-vault)一節所建立的金鑰保存庫。
-1. 選取 [**存取原則**]。
-1. 選取 [**新增存取原則**]。
+1. 選取 [存取原則]。
+1. 選取 [新增存取原則]。
 1. 開啟 [**秘密許可權**]，並提供具有 [**取得**] 和 [**列出**] 許可權的應用程式。
 1. 選取 [**選取主體**]，然後依名稱選取已註冊的應用程式。 選取 [選取]  按鈕。
 1. 選取 [確定]  。
@@ -493,7 +495,7 @@ dotnet user-secrets set "Section:SecretName" "secret_value_2_dev"
   * `config["Section:SecretName"]`
   * `config.GetSection("Section")["SecretName"]`
 
-X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 使用*appsettings*所提供的值來呼叫：
+X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Extensions.Configuration.AzureKeyVaultConfigurationExtensions.AddAzureKeyVault*> 使用*appsettings.json* file 所提供的值來呼叫：
 
 [!code-csharp[](key-vault-configuration/samples/2.x/SampleApp/Program.cs?name=snippet1&highlight=20-23)]
 
@@ -503,7 +505,7 @@ X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Exten
 * 應用程式識別碼：`627e911e-43cc-61d4-992e-12db9c81b413`
 * 憑證指紋：`fe14593dd66b2406c5269d742d04b6e1ab03adb1`
 
-*appsettings. json*：
+*appsettings.js*：
 
 [!code-json[](key-vault-configuration/samples/2.x/SampleApp/appsettings.json?highlight=10-12)]
 
@@ -515,7 +517,7 @@ X.509 憑證是由作業系統所管理。 應用程式會 <xref:Microsoft.Exten
 
 當 `#define` *Program.cs*檔案頂端的語句設定為時，範例應用程式會使用適用于 Azure 資源的受控識別 `Managed` 。
 
-在應用程式的*appsettings*中輸入保存庫名稱。 在設定為版本時，範例應用程式不需要應用程式識別碼和密碼（用戶端密碼） `Managed` ，因此您可以忽略這些設定專案。 應用程式會部署至 Azure，而 Azure 只會使用儲存在*appsettings*中的保存庫名稱來驗證應用程式，以存取 Azure Key Vault。
+在檔案的應用程式*appsettings.js*中輸入保存庫名稱。 在設定為版本時，範例應用程式不需要應用程式識別碼和密碼（用戶端密碼） `Managed` ，因此您可以忽略這些設定專案。 應用程式會部署至 Azure，而 Azure 只會使用儲存在檔案*appsettings.js*中的保存庫名稱來驗證應用程式，以存取 Azure Key Vault。
 
 將範例應用程式部署至 Azure App Service。
 
@@ -539,7 +541,7 @@ az keyvault set-policy --name {KEY VAULT NAME} --object-id {OBJECT ID} --secret-
 
 金鑰保存庫名稱範例值：`contosovault`
     
-*appsettings. json*：
+*appsettings.js*：
 
 ```json
 {

@@ -1,22 +1,24 @@
 ---
-title: 「教學課程：開始使用 Razor ASP.NET Core 中的頁面」
+title: 教學課程：開始使用 Razor ASP.NET Core 中的頁面
 author: rick-anderson
 description: 這一系列的教學課程會示範如何使用 Razor ASP.NET Core 中的頁面。 瞭解如何建立模型、產生頁面的程式碼 Razor 、使用 Entity Framework Core 和 SQL Server 進行資料存取、新增搜尋功能、新增輸入驗證，以及使用遷移來更新模型。
 ms.author: riande
 ms.date: 11/12/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 3b8ccf639bb91234f81c67750fffa170e52d636f
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 97e3f60480bc8e7e88c8361e5b13f02d98765d9e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452332"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405298"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 Razor ASP.NET Core 中的頁面
 
@@ -92,7 +94,7 @@ ms.locfileid: "84452332"
   * `dotnet new`命令會 Razor 在*RazorPagesMovie*資料夾中建立新的頁面專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]****。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
@@ -111,7 +113,7 @@ ms.locfileid: "84452332"
   * 設定為 **.Net Core 3.1**的**目標 Framework** 。
   * **驗證**設為 [**無驗證**]。
    
-  選取 [下一步]。
+  選取 [下一步] 。
 
   ![macOS .NET Core 3.1 選項](razor-pages-start/_static/targetframework3.png)
 
@@ -242,7 +244,7 @@ ms.locfileid: "84452332"
   * `dotnet new`命令會 Razor 在*RazorPagesMovie*資料夾中建立新的頁面專案。
   * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]****。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 

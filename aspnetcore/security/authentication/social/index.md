@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 01/23/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/social/index
-ms.openlocfilehash: 880aeea4dce5f5ae6533a3293067d89f98587e72
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a2c068df85290a59d45432cb168b2c882b59405b
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777146"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405363"
 ---
 # <a name="facebook-google-and-external-provider-authentication-in-aspnet-core"></a>ASP.NET Core 中的 Facebook、Google 及外部提供者驗證
 
@@ -40,9 +42,9 @@ ms.locfileid: "82777146"
 
 * 建立新專案。
 * 選取 [ASP.NET Core Web 應用程式]**** 和 [下一步]****。
-* 提供**專案名稱**並確認或變更**位置**。 選取 [建立]  。
+* 提供**專案名稱**並確認或變更**位置**。 選取 [建立]****。
 * 在下拉式（**ASP.NET Core {X. Y}**）中選取最新版本的 ASP.NET Core，然後選取 [ **Web 應用程式**]。
-* 選取 [驗證]**** 下的 [變更]****，並將驗證設定為 [個別使用者帳戶]****。 選取 [確定]  。
+* 選取 [驗證]**** 下的 [變更]****，並將驗證設定為 [個別使用者帳戶]****。 選取 [確定]****。
 * 在 [建立新的 ASP.NET Core Web 應用程式]**** 視窗中選取 [建立]****。
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
@@ -63,7 +65,7 @@ ms.locfileid: "82777146"
   dotnet new webapp -o WebApp1 -au Individual
   ```
 
-  * `dotnet new` 命令會在 [WebApp1]** 資料夾中建立新的 Razor Pages 專案。
+  * `dotnet new`命令會 Razor 在*WebApp1*資料夾中建立新的頁面專案。
   * `-au Individual` 會建立程式碼以進行個別驗證。
   * `-uld`使用 LocalDB，這是 Windows SQL Server Express 的輕量版本。 省略 `-uld` 以使用 SQLite。
   * `code` 命令會在新的 Visual Studio Code 執行個體中開啟 [WebApp1]** 資料夾。
@@ -109,7 +111,7 @@ ms.locfileid: "82777146"
 
 ![Web 應用程式的 [管理] 檢視](index/_static/pass1a.png)
 
-* 選取 [**建立**]
+* 選取 [建立] 
 
 ![[設定密碼] 頁面](index/_static/pass2a.png)
 

@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 10/14/2016
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authorization/introduction
-ms.openlocfilehash: 241ef8b00e9dcbd1983d32edcd9c1db2eaa5c687
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: b0d6c91adfb5dc273aeb662cb2c249626ef1d3c6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777523"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405428"
 ---
 # <a name="introduction-to-authorization-in-aspnet-core"></a>ASP.NET Core 中的授權簡介
 
@@ -26,7 +28,7 @@ ms.locfileid: "82777523"
 
 授權是與驗證無關且獨立的。 不過，授權需要驗證機制。 「驗證」（Authentication）是查明使用者的處理常式。 驗證可為目前使用者建立一或多個身分識別。
 
-如需 ASP.NET Core 中驗證的詳細資訊， <xref:security/authentication/index>請參閱。
+如需 ASP.NET Core 中驗證的詳細資訊，請參閱 <xref:security/authentication/index> 。
 
 ## <a name="authorization-types"></a>授權類型
 
@@ -34,6 +36,6 @@ ASP.NET Core 授權提供簡單、宣告式[角色](xref:security/authorization/
 
 ## <a name="namespaces"></a>命名空間
 
-授權元件（包括`AuthorizeAttribute`和`AllowAnonymousAttribute`屬性）可在`Microsoft.AspNetCore.Authorization`命名空間中找到。
+授權元件（包括 `AuthorizeAttribute` 和 `AllowAnonymousAttribute` 屬性）可在 `Microsoft.AspNetCore.Authorization` 命名空間中找到。
 
 請參閱有關[簡單授權](xref:security/authorization/simple)的檔。

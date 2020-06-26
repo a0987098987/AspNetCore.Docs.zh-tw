@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 12/10/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: 7c641fb12e0d06ebd7bb3ce9f878f0469b4a3d8e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: f756d9abfb92fd4d6d51d8762967ac2288b54b2a
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775059"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405753"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>處理 ASP.NET Core web Api 中的錯誤
 
@@ -28,11 +30,11 @@ ms.locfileid: "82775059"
 
 ## <a name="developer-exception-page"></a>開發人員例外狀況頁面
 
-[[開發人員例外](xref:fundamentals/error-handling)狀況] 頁面是一個實用的工具，可取得伺服器錯誤的詳細堆疊追蹤。 它會<xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware>使用從 HTTP 管線捕獲同步和非同步例外狀況，並產生錯誤回應。 為了說明，請考慮下列控制器動作：
+[[開發人員例外](xref:fundamentals/error-handling)狀況] 頁面是一個實用的工具，可取得伺服器錯誤的詳細堆疊追蹤。 它會使用 <xref:Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware> 從 HTTP 管線捕獲同步和非同步例外狀況，並產生錯誤回應。 為了說明，請考慮下列控制器動作：
 
 [!code-csharp[](handle-errors/samples/3.x/Controllers/WeatherForecastController.cs?name=snippet_GetByCity)]
 
-執行下列`curl`命令來測試前一個動作：
+執行下列 `curl` 命令來測試前一個動作：
 
 ```bash
 curl -i https://localhost:5001/weatherforecast/chicago
@@ -74,7 +76,7 @@ Host: localhost:44312
 User-Agent: curl/7.55.1
 ```
 
-若要改為顯示 HTML 格式的回應，請`Accept`將 HTTP 要求標頭`text/html`設定為媒體類型。 例如：
+若要改為顯示 HTML 格式的回應，請將 `Accept` HTTP 要求標頭設定為 `text/html` 媒體類型。 例如：
 
 ```bash
 curl -i -H "Accept: text/html" https://localhost:5001/weatherforecast/chicago
@@ -127,7 +129,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 在非開發環境中，[例外狀況處理中介軟體](xref:fundamentals/error-handling)可以用來產生錯誤承載：
 
-1. 在`Startup.Configure`中， <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A>叫用以使用中介軟體：
+1. 在中 `Startup.Configure` ，叫 <xref:Microsoft.AspNetCore.Builder.ExceptionHandlerExtensions.UseExceptionHandler%2A> 用以使用中介軟體：
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -141,7 +143,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-1. 設定控制器動作以回應`/error`路由：
+1. 設定控制器動作以回應 `/error` 路由：
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -155,11 +157,11 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     ::: moniker-end
 
-上述`Error`動作會將[RFC 7807](https://tools.ietf.org/html/rfc7807)相容的承載傳送至用戶端。
+上述 `Error` 動作會將[RFC 7807](https://tools.ietf.org/html/rfc7807)相容的承載傳送至用戶端。
 
 例外狀況處理中介軟體也可以在本機開發環境中提供更詳細的內容協商輸出。 使用下列步驟，在開發與生產環境之間產生一致的裝載格式：
 
-1. 在`Startup.Configure`中，註冊環境特定的例外狀況處理中介軟體實例：
+1. 在中 `Startup.Configure` ，註冊環境特定的例外狀況處理中介軟體實例：
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -199,8 +201,8 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
     在上述程式碼中，中介軟體會向註冊：
 
-    * 在開發環境`/error-local-development`中的路由。
-    * 在非開發`/error`環境中的路由。
+    * `/error-local-development`在開發環境中的路由。
+    * `/error`在非開發環境中的路由。
     
 1. 將屬性路由套用至控制器動作：
 
@@ -218,17 +220,17 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ## <a name="use-exceptions-to-modify-the-response"></a>使用例外狀況來修改回應
 
-您可以從控制器外部修改回應的內容。 在 ASP.NET 4.x Web API 中，其中一種方法是使用<xref:System.Web.Http.HttpResponseException>型別。 ASP.NET Core 不包含對等的類型。 您可以`HttpResponseException`使用下列步驟來新增的支援：
+您可以從控制器外部修改回應的內容。 在 ASP.NET 4.x Web API 中，其中一種方法是使用 <xref:System.Web.Http.HttpResponseException> 型別。 ASP.NET Core 不包含對等的類型。 您 `HttpResponseException` 可以使用下列步驟來新增的支援：
 
-1. 建立名為`HttpResponseException`的知名例外狀況類型：
+1. 建立名為的知名例外狀況類型 `HttpResponseException` ：
 
     [!code-csharp[](handle-errors/samples/3.x/Exceptions/HttpResponseException.cs?name=snippet_HttpResponseException)]
 
-1. 建立名為`HttpResponseExceptionFilter`的動作篩選準則：
+1. 建立名為的動作篩選準則 `HttpResponseExceptionFilter` ：
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
 
-1. 在`Startup.ConfigureServices`中，將動作篩選準則新增至篩選集合：
+1. 在中 `Startup.ConfigureServices` ，將動作篩選準則新增至篩選集合：
 
     ::: moniker range=">= aspnetcore-3.0"
 
@@ -250,7 +252,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ## <a name="validation-failure-error-response"></a>驗證失敗錯誤回應
 
-針對 Web API 控制器，當模型驗證失敗<xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>時，MVC 會以回應類型回應。 MVC 會使用的結果<xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory>來針對驗證失敗來建立錯誤回應。 下列範例會使用 factory，將預設回應類型變更為<xref:Microsoft.AspNetCore.Mvc.SerializableError>中`Startup.ConfigureServices`的：
+針對 Web API 控制器， <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 當模型驗證失敗時，MVC 會以回應類型回應。 MVC 會使用的結果 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.InvalidModelStateResponseFactory> 來針對驗證失敗來建立錯誤回應。 下列範例會使用 factory，將預設回應類型變更為 <xref:Microsoft.AspNetCore.Mvc.SerializableError> 中的 `Startup.ConfigureServices` ：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -272,7 +274,7 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ## <a name="client-error-response"></a>用戶端錯誤回應
 
-*錯誤結果*會定義為 HTTP 狀態碼為400或更高的結果。 針對 Web API 控制器，MVC 會使用<xref:Microsoft.AspNetCore.Mvc.ProblemDetails>將錯誤結果轉換成結果。
+*錯誤結果*會定義為 HTTP 狀態碼為400或更高的結果。 針對 Web API 控制器，MVC 會使用將錯誤結果轉換成結果 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> 。
 
 ::: moniker range="= aspnetcore-2.1"
 
@@ -290,9 +292,9 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 
 ### <a name="implement-problemdetailsfactory"></a>執行 ProblemDetailsFactory
 
-MVC 會`Microsoft.AspNetCore.Mvc.ProblemDetailsFactory`使用來產生和<xref:Microsoft.AspNetCore.Mvc.ProblemDetails> <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails>的所有實例。 這包括用戶端錯誤回應、驗證失敗錯誤回應，以及`Microsoft.AspNetCore.Mvc.ControllerBase.Problem`和<xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem> helper 方法。
+MVC 會使用 `Microsoft.AspNetCore.Mvc.ProblemDetailsFactory` 來產生和的所有實例 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 。 這包括用戶端錯誤回應、驗證失敗錯誤回應，以及 `Microsoft.AspNetCore.Mvc.ControllerBase.Problem` 和 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem> helper 方法。
 
-若要自訂問題詳細資料回應，請在中`ProblemDetailsFactory` `Startup.ConfigureServices`註冊的自訂執行：
+若要自訂問題詳細資料回應，請在中註冊的自訂執行 `ProblemDetailsFactory` `Startup.ConfigureServices` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection serviceCollection)
@@ -314,7 +316,7 @@ public void ConfigureServices(IServiceCollection serviceCollection)
 
 ### <a name="use-apibehavioroptionsclienterrormapping"></a>使用 ApiBehaviorOptions. ClientErrorMapping
 
-使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> 屬性可設定 `ProblemDetails` 回應的內容。 例如，中`Startup.ConfigureServices`的下列程式碼會更新`type` 404 回應的屬性：
+使用 <xref:Microsoft.AspNetCore.Mvc.ApiBehaviorOptions.ClientErrorMapping%2A> 屬性可設定 `ProblemDetails` 回應的內容。 例如，中的下列程式碼會 `Startup.ConfigureServices` 更新 `type` 404 回應的屬性：
 
 ::: moniker-end
 

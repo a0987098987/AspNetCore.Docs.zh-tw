@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 07/30/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/layout
-ms.openlocfilehash: fbae94f315c1bb49f1b04be7e71c841f46826216
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 08e6284a6c5fc8e8926651f6fe873a71df449acb
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82766481"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85406650"
 ---
 # <a name="layout-in-aspnet-core"></a>ASP.NET Core 中的配置
 
@@ -28,7 +30,7 @@ ms.locfileid: "82766481"
 * 共用指示詞。
 * 執行常見的程式碼，再轉譯頁面或檢視。
 
-本檔討論兩種不同方法的配置，以 ASP.NET Core MVC Razor ：具有 views 的頁面和控制器。 針對本主題，差異很小：
+本檔討論兩種不同方法的配置，以 ASP.NET Core MVC： Razor 具有 views 的頁面和控制器。 針對本主題，差異很小：
 
 * Razor頁面會在*pages*資料夾中。
 * 包含檢視的控制器，使用 *Views* 資料夾進行檢視。
@@ -59,7 +61,7 @@ ms.locfileid: "82766481"
 
 ## <a name="specifying-a-layout"></a>指定配置
 
-Razorviews 具有`Layout`屬性。 個別檢視透過設定此屬性來指定配置：
+Razorviews 具有 `Layout` 屬性。 個別檢視透過設定此屬性來指定配置：
 
 [!code-cshtml[](../../common/samples/WebApplication1/Views/_ViewStart.cshtml?highlight=2)]
 
@@ -79,9 +81,9 @@ Razorviews 具有`Layout`屬性。 個別檢視透過設定此屬性來指定配
 @RenderSection("Scripts", required: false)
 ```
 
-如果找不到必要區段，將會擲回例外狀況。 個別視圖會使用`@section` Razor語法來指定要在區段內轉譯的內容。 如果頁面或檢視定義區段，則必須進行轉譯 (否則會發生錯誤)。
+如果找不到必要區段，將會擲回例外狀況。 個別視圖會使用語法來指定要在區段內轉譯的內容 `@section` Razor 。 如果頁面或檢視定義區段，則必須進行轉譯 (否則會發生錯誤)。
 
-網頁檢視`@section`中Razor的範例定義：
+`@section`網頁檢視中的範例定義 Razor ：
 
 ```html
 @section Scripts {
@@ -99,23 +101,23 @@ Razorviews 具有`Layout`屬性。 個別檢視透過設定此屬性來指定配
 }
 ```
 
-上述標記[是由Identity樣板所產生](xref:security/authentication/scaffold-identity)。
+上述標記[是由 Identity 樣板所產生](xref:security/authentication/scaffold-identity)。
 
 頁面或檢視中所定義的區段僅適用於其立即配置頁面。 無法從部分、檢視元件或檢視系統的其他部分參考它們。
 
 ### <a name="ignoring-sections"></a>忽略區段
 
-根據預設，內容頁面中的本文和所有區段都必須透過配置頁面進行轉譯。 Razor View engine 會藉由追蹤是否已轉譯本文和每個區段來強制執行。
+根據預設，內容頁面中的本文和所有區段都必須透過配置頁面進行轉譯。 RazorView engine 會藉由追蹤是否已轉譯本文和每個區段來強制執行。
 
 若要指示檢視引擎略過本文或區段，請呼叫 `IgnoreBody` 和 `IgnoreSection` 方法。
 
-Razor頁面中的本文和每個區段都必須呈現或忽略。
+頁面中的本文和每個區段都 Razor 必須呈現或忽略。
 
 <a name="viewimports"></a>
 
 ## <a name="importing-shared-directives"></a>匯入共用指示詞
 
-Views 和 pages 可以使用Razor指示詞來匯入命名空間，並使用相依性[插入](dependency-injection.md)。 許多檢視所共用的指示詞可能指定於通用 *_ViewImports.cshtml* 檔案中。 `_ViewImports` 檔案支援下列指示詞：
+Views 和 pages 可以使用指示詞 Razor 來匯入命名空間，並使用相依性[插入](dependency-injection.md)。 許多檢視所共用的指示詞可能指定於通用 *_ViewImports.cshtml* 檔案中。 `_ViewImports` 檔案支援下列指示詞：
 
 * `@addTagHelper`
 * `@removeTagHelper`
@@ -125,7 +127,7 @@ Views 和 pages 可以使用Razor指示詞來匯入命名空間，並使用相�
 * `@inherits`
 * `@inject`
 
-檔案不支援其他Razor功能，例如函數和區段定義。
+檔案不支援其他 Razor 功能，例如函數和區段定義。
 
 範例 `_ViewImports.cshtml` 檔案：
 

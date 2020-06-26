@@ -7,17 +7,19 @@ ms.custom: mvc, seodec18
 ms.date: 02/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/choose-between-aspnet-and-aspnetcore
-ms.openlocfilehash: 1fb81d5a54cf332ca473af8fbe1841813a127be7
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 73495ea851cdfe5d3588b347e75f0af6adacc02e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775878"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404934"
 ---
 # <a name="choose-between-aspnet-4x-and-aspnet-core"></a>在 ASP.NET 4.x 和 ASP.NET Core 之間進行選擇
 
@@ -40,7 +42,7 @@ ASP.NET 4.x 是一個成熟的架構，其提供在 Windows 上建置企業級�
 | ASP.NET Core | ASP.NET 4.x |
 |---|---|
 |為 Windows、macOS 或 Linux 建置|為 Windows 建置|
-|頁面是建立 Web UI 的建議方法，從 ASP.NET Core 2.x. x。 [ Razor ](xref:razor-pages/index) 另請參閱[MVC](xref:mvc/overview)、 [Web API](xref:tutorials/first-web-api)和[SignalR](xref:signalr/introduction)。|使用[web Forms](/aspnet/web-forms)、 [SignalR](/aspnet/signalr)、 [MVC](/aspnet/mvc)、 [web API](/aspnet/web-api/)、 [webhook](/aspnet/webhooks/)或[Web Pages](/aspnet/web-pages)|
+|[ Razor 頁面](xref:razor-pages/index)是建立 Web UI 的建議方法，從 ASP.NET Core 2.x. x。 另請參閱[MVC](xref:mvc/overview)、 [Web API](xref:tutorials/first-web-api)和 [SignalR](xref:signalr/introduction) 。|使用[web Forms](/aspnet/web-forms)、 [SignalR](/aspnet/signalr) 、 [MVC](/aspnet/mvc)、 [web API](/aspnet/web-api/)、 [webhook](/aspnet/webhooks/)或[Web Pages](/aspnet/web-pages)|
 |每部電腦多個版本|每部電腦一個版本|
 |使用 c # 或 F 以[Visual Studio](https://visualstudio.microsoft.com/vs/)、 [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)或[Visual Studio Code](https://code.visualstudio.com/)進行開發#|使用 c #、VB 或 F [Visual Studio](https://visualstudio.microsoft.com/vs/)進行開發#|
 |效能比 ASP.NET 4.x 更高|效能良好|

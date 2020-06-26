@@ -8,17 +8,19 @@ ms.custom: mvc, seodec18
 ms.date: 09/26/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/configuration/platform-specific-configuration
-ms.openlocfilehash: 8cf6a4467f041fa71b75ee8d1e7a08d8f572acf3
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 0636c62c4373533234ab252d64052b476b123bbf
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106347"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405090"
 ---
 # <a name="use-hosting-startup-assemblies-in-aspnet-core"></a>在 ASP.NET Core 中使用裝載啟動組件
 
@@ -275,7 +277,7 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 用於產生額外相依性的建議方法是：
 
  1. 在上一節參考的執行階段存放區資訊清單檔上執行 `dotnet publish`。
- 1. 從程式庫和 .deps.json 的區段中移除資訊清單參考 `runtime` 。 *.deps.json*
+ 1. 從程式庫中移除資訊清單參考，以及在檔案 `runtime` *上*產生的.deps.js區段。
 
 在範例專案中，`store.manifest/1.0.0` 屬已從 `targets` 與 `libraries` 區段移除：
 
@@ -438,8 +440,8 @@ dotnet nuget locals all --clear
 1. *StartupDiagnostics* 專案使用 [PowerShell](/powershell/scripting/powershell-scripting) 修改其 *StartupDiagnostics.deps.json* 檔案。 從 Windows 7 SP1 和 Windows Server 2008 R2 SP1 開始，會在 Windows 上預設安裝 PowerShell。 若要在其他平臺上取得 PowerShell，請參閱[安裝各種版本的 powershell](/powershell/scripting/install/installing-powershell)。
 1. 執行 *RuntimeStore* 資料夾中的 *build.ps1* 指令碼。 指令碼：
    * `StartupDiagnostics`在*obj\packages*資料夾中產生封裝。
-   * 在 *store* 資料夾中產生 `StartupDiagnostics` 的執行階段存放區。 指令碼中的 `dotnet store` 命令會使用  的 `win7-x64` [runtime identifier (RID) (執行階段識別碼 (RID))](/dotnet/core/rid-catalog) 作為部署至 Windows 的裝載啟動。 為不同的執行階段提供裝載啟動時，請在指令碼的行 37 上替換成正確的 RID。 稍後的執行時間存放區會 `StartupDiagnostics` 移至要使用元件之電腦上的使用者或系統執行時間存放區。 元件的使用者執行時間存放區安裝位置 `StartupDiagnostics` 為 *. dotnet/store/x64/netcoreapp 3.0/startupdiagnostics/1.0.0/lib/netcoreapp 3.0/startupdiagnostics .dll*。
-   * `additionalDeps` `StartupDiagnostics` 在*additionalDeps*資料夾中產生的。 其他相依性稍後會移至使用者或系統的其他相依性。 使用者其他相依性 `StartupDiagnostics` 安裝位置為 *. dotnet/X64/AdditionalDeps/StartupDiagnostics/Shared/NETCore. App/3.0.0/* StartupDiagnostics. .deps.json. json。
+   * 在 *store* 資料夾中產生 `StartupDiagnostics` 的執行階段存放區。 指令碼中的 `dotnet store` 命令會使用  的 `win7-x64` [runtime identifier (RID) (執行階段識別碼 (RID))](/dotnet/core/rid-catalog) 作為部署至 Windows 的裝載啟動。 為不同的執行階段提供裝載啟動時，請在指令碼的行 37 上替換成正確的 RID。 稍後的執行時間存放區會 `StartupDiagnostics` 移至要使用元件之電腦上的使用者或系統執行時間存放區。 元件的使用者執行時間存放區安裝位置 `StartupDiagnostics` 為 *. dotnet/store/x64/netcoreapp 3.0/startupdiagnostics/1.0.0/lib/netcoreapp 3.0/StartupDiagnostics.dll*。
+   * `additionalDeps` `StartupDiagnostics` 在*additionalDeps*資料夾中產生的。 其他相依性稍後會移至使用者或系統的其他相依性。 使用者的 `StartupDiagnostics` 其他相依性安裝位置為 *. dotnet/X64/AdditionalDeps/StartupDiagnostics/Shared/NETCore。應用程式/3.0.0/StartupDiagnostics.deps.json*。
    * 將 *deploy.ps1* 檔案置於 *deployment* 資料夾中。
 1. 執行 *deployment* 資料夾中的 *deploy.ps1* 指令碼。 該指令碼會附加至：
    * `StartupDiagnostics` 至 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。
@@ -661,7 +663,7 @@ dotnet store --manifest store.manifest.csproj --runtime win7-x64 --output ./depl
 用於產生額外相依性的建議方法是：
 
  1. 在上一節參考的執行階段存放區資訊清單檔上執行 `dotnet publish`。
- 1. 從程式庫和 .deps.json 的區段中移除資訊清單參考 `runtime` 。 *.deps.json*
+ 1. 從程式庫中移除資訊清單參考，以及在檔案 `runtime` *上*產生的.deps.js區段。
 
 在範例專案中，`store.manifest/1.0.0` 屬已從 `targets` 與 `libraries` 區段移除：
 
@@ -824,8 +826,8 @@ dotnet nuget locals all --clear
 1. *StartupDiagnostics* 專案使用 [PowerShell](/powershell/scripting/powershell-scripting) 修改其 *StartupDiagnostics.deps.json* 檔案。 從 Windows 7 SP1 和 Windows Server 2008 R2 SP1 開始，會在 Windows 上預設安裝 PowerShell。 若要在其他平臺上取得 PowerShell，請參閱[安裝各種版本的 powershell](/powershell/scripting/install/installing-powershell)。
 1. 執行 *RuntimeStore* 資料夾中的 *build.ps1* 指令碼。 指令碼：
    * `StartupDiagnostics`在*obj\packages*資料夾中產生封裝。
-   * 在 *store* 資料夾中產生 `StartupDiagnostics` 的執行階段存放區。 指令碼中的 `dotnet store` 命令會使用  的 `win7-x64` [runtime identifier (RID) (執行階段識別碼 (RID))](/dotnet/core/rid-catalog) 作為部署至 Windows 的裝載啟動。 為不同的執行階段提供裝載啟動時，請在指令碼的行 37 上替換成正確的 RID。 稍後的執行時間存放區會 `StartupDiagnostics` 移至要使用元件之電腦上的使用者或系統執行時間存放區。 元件的使用者執行時間存放區安裝位置 `StartupDiagnostics` 為 *. dotnet/store/x64/netcoreapp 2.2/startupdiagnostics/1.0.0/lib/netcoreapp 2.2/startupdiagnostics .dll*。
-   * `additionalDeps` `StartupDiagnostics` 在*additionalDeps*資料夾中產生的。 其他相依性稍後會移至使用者或系統的其他相依性。 使用者其他相依性 `StartupDiagnostics` 安裝位置為 *. dotnet/X64/AdditionalDeps/StartupDiagnostics/Shared/NETCore. App/2.2.0/* StartupDiagnostics. .deps.json. json。
+   * 在 *store* 資料夾中產生 `StartupDiagnostics` 的執行階段存放區。 指令碼中的 `dotnet store` 命令會使用  的 `win7-x64` [runtime identifier (RID) (執行階段識別碼 (RID))](/dotnet/core/rid-catalog) 作為部署至 Windows 的裝載啟動。 為不同的執行階段提供裝載啟動時，請在指令碼的行 37 上替換成正確的 RID。 稍後的執行時間存放區會 `StartupDiagnostics` 移至要使用元件之電腦上的使用者或系統執行時間存放區。 元件的使用者執行時間存放區安裝位置 `StartupDiagnostics` 為 *. dotnet/store/x64/netcoreapp 2.2/startupdiagnostics/1.0.0/lib/netcoreapp 2.2/StartupDiagnostics.dll*。
+   * `additionalDeps` `StartupDiagnostics` 在*additionalDeps*資料夾中產生的。 其他相依性稍後會移至使用者或系統的其他相依性。 使用者的 `StartupDiagnostics` 其他相依性安裝位置為 *. dotnet/X64/AdditionalDeps/StartupDiagnostics/Shared/NETCore。應用程式/2.2.0/StartupDiagnostics.deps.json*。
    * 將 *deploy.ps1* 檔案置於 *deployment* 資料夾中。
 1. 執行 *deployment* 資料夾中的 *deploy.ps1* 指令碼。 該指令碼會附加至：
    * `StartupDiagnostics` 至 `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` 環境變數。

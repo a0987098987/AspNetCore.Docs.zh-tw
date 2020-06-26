@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 10/16/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: c2b76b59ae775b9268fa77019bf8420e5e4108b6
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 01321d68defafbe79371250669f921307bcfdba6
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452270"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407040"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
@@ -109,7 +111,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
   * 設定為 **.Net Core 3.1**的**目標 Framework** 。
   * **驗證**設為 [**無驗證**]。
    
-  選取 [下一步]。
+  選取 [下一步] 。
 
   ![macOS .NET Core 3.1 選項](start-mvc/_static/new_project_31_vsmac.png)
 

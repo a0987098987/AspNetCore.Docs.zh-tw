@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 09b004abd423abc9cc8e83d3bb3fea1dddf09e14
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 65095f3990c72224d95f1f5fe46d320ab8f12040
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776626"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85404830"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 
@@ -59,18 +61,18 @@ The Web server is configured to not list the contents of this directory.
 
 * 應用程式會部署到裝載系統上錯誤的資料夾。
 * 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
-* 部署中遺漏*web.config*檔案，或*web.config*檔案內容的格式不正確。
+* 部署中遺漏了*web.config*檔案，或*web.config*的檔案內容格式不正確。
 
 執行下列步驟：
 
 1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
 1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
-   * 請確認*web.config*檔案存在於部署中，而且其內容正確。
-   * 在 Azure App Service 上裝載時，請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
+   * 確認*web.config*檔案存在於部署中，而且其內容正確。
+   * 在 Azure App Service 上裝載時，請確認應用程式已部署至 `D:\home\site\wwwroot` 資料夾。
    * 當應用程式由 IIS 裝載時，請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
 1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容，確認已部署所有應用程式的檔案和資料夾。
 
-如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊， <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
+如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊，請參閱 <xref:host-and-deploy/directory-structure> 。 如需*web.config*檔案的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig> 。
 
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
@@ -138,7 +140,7 @@ The specified framework 'Microsoft.NETCore.App', version '3.0.0' was not found.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-應用程式未參考 `Microsoft.AspNetCore.App` 架構。 [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)只能主控`Microsoft.AspNetCore.App`以架構為目標的應用程式。
+應用程式未參考 `Microsoft.AspNetCore.App` 架構。 `Microsoft.AspNetCore.App` [ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)只能主控以架構為目標的應用程式。
 
 若要修正這個錯誤，請確認應用程式以 `Microsoft.AspNetCore.App` 架構為目標。 檢查 `.runtimeconfig.json` 以驗證應用程式是否以該架構為目標。
 
@@ -172,8 +174,8 @@ ANCM 找不到應用程式 DLL，其應該位於可執行檔的旁邊。
 
 使用同進程裝載模型來裝載封裝為[單一檔案可執行](/dotnet/core/whats-new/dotnet-core-3-0#single-file-executables)檔的應用程式時，就會發生此錯誤。 同進程模型要求 ANCM 將 .NET Core 應用程式載入至現有的 IIS 進程。 單一檔案部署模型不支援此案例。 在應用程式的專案檔中，使用下列**其中一**種方法來修正此錯誤：
 
-1. 將`PublishSingleFile` MSBuild 屬性設定為，以`false`停用單一檔案發行。
-1. 將`AspNetCoreHostingModel` MSBuild 屬性設定為`OutOfProcess`，以切換至跨進程裝載模型。
+1. 將 `PublishSingleFile` MSBuild 屬性設定為，以停用單一檔案發行 `false` 。
+1. 將 MSBuild 屬性設定為，以切換至跨進程裝載模型 `AspNetCoreHostingModel` `OutOfProcess` 。
 
 ### <a name="5025-process-failure"></a>502.5 處理序失敗
 
@@ -205,7 +207,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
    * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
    * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
 
-確認專案檔中的`<Platform>` MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
+確認 `<Platform>` 專案檔中的 MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
 
 ### <a name="connection-reset"></a>連線重設
 
@@ -319,7 +321,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 選取 [儲存]**** 以儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
@@ -335,10 +337,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
    * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
      1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
      1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-     1. 開啟路徑**site** > **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
+     1. 開啟路徑**site**  >  **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
 1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-1. 開啟路徑**site** > **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
+1. 開啟路徑**site**  >  **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
 
 完成疑難排解時，請停用偵錯記錄：
@@ -348,7 +350,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * 從 *web.config* 檔案本機移除 `<handlerSettings>` 並重新部署應用程式。
 * 使用 Kudu 主控台來編輯 *web.config* 檔案並移除 `<handlerSettings>` 區段。 儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs> 。
 
 > [!WARNING]
 > 無法停用偵錯記錄，可能會造成應用程式或伺服器發生失敗。 記錄檔大小沒有任何限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用偵錯記錄。
@@ -429,7 +431,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 如果應用程式是[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
 
-1. 在命令提示字元中，瀏覽至部署資料夾，然後使用 *dotnet.exe* 來執行應用程式組件以執行應用程式。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`dotnet .\<assembly_name>.dll`。
+1. 在命令提示字元中，瀏覽至部署資料夾，然後使用 *dotnet.exe* 來執行應用程式組件以執行應用程式。 在下列命令中，以應用程式元件的名稱取代 \<assembly_name> ： `dotnet .\<assembly_name>.dll` 。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
@@ -437,7 +439,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)：
 
-1. 在命令提示字元中，瀏覽至部署資料夾，然後執行應用程式的可執行檔。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`<assembly_name>.exe`。
+1. 在命令提示字元中，瀏覽至部署資料夾，然後執行應用程式的可執行檔。 在下列命令中，以應用程式元件的名稱取代 \<assembly_name> ： `<assembly_name>.exe` 。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
@@ -460,7 +462,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。
@@ -469,7 +471,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ### <a name="aspnet-core-module-debug-log-iis"></a>ASP.NET Core 模組的調試記錄檔（IIS）
 
-將下列處理常式設定新增至應用程式*的 web.config 檔案*，以啟用 ASP.NET Core 模組的 debug 記錄檔：
+將下列處理常式設定新增至應用程式的*web.config*檔案，以啟用 ASP.NET Core 模組的 debug 記錄檔：
 
 ```xml
 <aspNetCore ...>
@@ -482,7 +484,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 確認為記錄指定的路徑存在，而且應用程式集區的身分識別具有該位置的寫入權限。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs> 。
 
 ### <a name="enable-the-developer-exception-page"></a>啟用開發人員例外頁面
 
@@ -562,7 +564,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 刪除 [bin]** 和 [obj]** 資料夾。
 1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令 `nuget locals all -clear` 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
 1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
@@ -634,18 +636,18 @@ The Web server is configured to not list the contents of this directory.
 
 * 應用程式會部署到裝載系統上錯誤的資料夾。
 * 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
-* 部署中遺漏*web.config*檔案，或*web.config*檔案內容的格式不正確。
+* 部署中遺漏了*web.config*檔案，或*web.config*的檔案內容格式不正確。
 
 執行下列步驟：
 
 1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
 1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
-   * 請確認*web.config*檔案存在於部署中，而且其內容正確。
-   * 在 Azure App Service 上裝載時，請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
+   * 確認*web.config*檔案存在於部署中，而且其內容正確。
+   * 在 Azure App Service 上裝載時，請確認應用程式已部署至 `D:\home\site\wwwroot` 資料夾。
    * 當應用程式由 IIS 裝載時，請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
 1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容，確認已部署所有應用程式的檔案和資料夾。
 
-如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊， <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
+如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊，請參閱 <xref:host-and-deploy/directory-structure> 。 如需*web.config*檔案的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig> 。
 
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
@@ -657,7 +659,7 @@ The Web server is configured to not list the contents of this directory.
 
 背景工作處理序失敗。 應用程式未啟動。
 
-[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)找不到 .NET Core CLR，而且找不到同進程要求處理常式（*aspnetcorev2_inprocess .dll*）。 請檢查︰
+[ASP.NET Core 模組](xref:host-and-deploy/aspnet-core-module)找不到 .NET Core CLR，而且找不到同進程要求處理常式（*aspnetcorev2_inprocess.dll*）。 請檢查︰
 
 * 應用程式以 [Microsoft.AspNetCore.Server.IIS](https://www.nuget.org/packages/Microsoft.AspNetCore.Server.IIS) NuGet 套件或 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)為目標。
 * 應用程式設為目標的 ASP.NET Core 共用架構版本有安裝在目標機器上。
@@ -698,7 +700,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
    * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
    * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
 
-確認專案檔中的`<Platform>` MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
+確認 `<Platform>` 專案檔中的 MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
 
 ### <a name="connection-reset"></a>連線重設
 
@@ -812,7 +814,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 選取 [儲存]**** 以儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
@@ -828,10 +830,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
    * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
      1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
      1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-     1. 開啟路徑**site** > **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
+     1. 開啟路徑**site**  >  **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
 1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-1. 開啟路徑**site** > **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
+1. 開啟路徑**site**  >  **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
 
 完成疑難排解時，請停用偵錯記錄：
@@ -841,7 +843,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * 從 *web.config* 檔案本機移除 `<handlerSettings>` 並重新部署應用程式。
 * 使用 Kudu 主控台來編輯 *web.config* 檔案並移除 `<handlerSettings>` 區段。 儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs> 。
 
 > [!WARNING]
 > 無法停用偵錯記錄，可能會造成應用程式或伺服器發生失敗。 記錄檔大小沒有任何限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用偵錯記錄。
@@ -922,7 +924,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 如果應用程式是[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
 
-1. 在命令提示字元中，瀏覽至部署資料夾，然後使用 *dotnet.exe* 來執行應用程式組件以執行應用程式。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`dotnet .\<assembly_name>.dll`。
+1. 在命令提示字元中，瀏覽至部署資料夾，然後使用 *dotnet.exe* 來執行應用程式組件以執行應用程式。 在下列命令中，以應用程式元件的名稱取代 \<assembly_name> ： `dotnet .\<assembly_name>.dll` 。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
@@ -930,7 +932,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)：
 
-1. 在命令提示字元中，瀏覽至部署資料夾，然後執行應用程式的可執行檔。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`<assembly_name>.exe`。
+1. 在命令提示字元中，瀏覽至部署資料夾，然後執行應用程式的可執行檔。 在下列命令中，以應用程式元件的名稱取代 \<assembly_name> ： `<assembly_name>.exe` 。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
@@ -953,7 +955,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。
@@ -962,7 +964,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ### <a name="aspnet-core-module-debug-log-iis"></a>ASP.NET Core 模組的調試記錄檔（IIS）
 
-將下列處理常式設定新增至應用程式*的 web.config 檔案*，以啟用 ASP.NET Core 模組的 debug 記錄檔：
+將下列處理常式設定新增至應用程式的*web.config*檔案，以啟用 ASP.NET Core 模組的 debug 記錄檔：
 
 ```xml
 <aspNetCore ...>
@@ -975,7 +977,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 確認為記錄指定的路徑存在，而且應用程式集區的身分識別具有該位置的寫入權限。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs> 。
 
 ### <a name="enable-the-developer-exception-page"></a>啟用開發人員例外頁面
 
@@ -1055,7 +1057,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 刪除 [bin]** 和 [obj]** 資料夾。
 1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令 `nuget locals all -clear` 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
 1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。
@@ -1127,18 +1129,18 @@ The Web server is configured to not list the contents of this directory.
 
 * 應用程式會部署到裝載系統上錯誤的資料夾。
 * 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
-* 部署中遺漏*web.config*檔案，或*web.config*檔案內容的格式不正確。
+* 部署中遺漏了*web.config*檔案，或*web.config*的檔案內容格式不正確。
 
 執行下列步驟：
 
 1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
 1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
-   * 請確認*web.config*檔案存在於部署中，而且其內容正確。
-   * 在 Azure App Service 上裝載時，請確認應用程式已部署至`D:\home\site\wwwroot`資料夾。
+   * 確認*web.config*檔案存在於部署中，而且其內容正確。
+   * 在 Azure App Service 上裝載時，請確認應用程式已部署至 `D:\home\site\wwwroot` 資料夾。
    * 當應用程式由 IIS 裝載時，請確認應用程式已部署到 iis**管理員**的 [**基本設定**] 中所顯示的 iis**實體路徑**。
 1. 藉由比較主控系統上的部署與專案 [*發行*] 資料夾的內容，確認已部署所有應用程式的檔案和資料夾。
 
-如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊， <xref:host-and-deploy/directory-structure>請參閱。 如需*web.config*檔案的詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig>。
+如需已發佈之 ASP.NET Core 應用程式佈建的詳細資訊，請參閱 <xref:host-and-deploy/directory-structure> 。 如需*web.config*檔案的詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#configuration-with-webconfig> 。
 
 ### <a name="500-internal-server-error"></a>500 內部伺服器錯誤
 
@@ -1176,7 +1178,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
    * 如果部署 32 位元 (x86) 應用程式，請將值設定為 `True`。
    * 如果部署 64 位元 (x64) 應用程式，請將值設定為 `False`。
 
-確認專案檔中的`<Platform>` MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
+確認 `<Platform>` 專案檔中的 MSBuild 屬性和應用程式的已發佈位之間沒有衝突。
 
 ### <a name="connection-reset"></a>連線重設
 
@@ -1290,7 +1292,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 選取 [儲存]**** 以儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
@@ -1371,7 +1373,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 如果應用程式是[架構相依部署](/dotnet/core/deploying/#framework-dependent-deployments-fdd)：
 
-1. 在命令提示字元中，瀏覽至部署資料夾，然後使用 *dotnet.exe* 來執行應用程式組件以執行應用程式。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`dotnet .\<assembly_name>.dll`。
+1. 在命令提示字元中，瀏覽至部署資料夾，然後使用 *dotnet.exe* 來執行應用程式組件以執行應用程式。 在下列命令中，以應用程式元件的名稱取代 \<assembly_name> ： `dotnet .\<assembly_name>.dll` 。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
@@ -1379,7 +1381,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 如果應用程式是[自封式部署](/dotnet/core/deploying/#self-contained-deployments-scd)：
 
-1. 在命令提示字元中，瀏覽至部署資料夾，然後執行應用程式的可執行檔。 在下列命令中，請以應用程式組件的名稱取代 \<assembly_name>：`<assembly_name>.exe`。
+1. 在命令提示字元中，瀏覽至部署資料夾，然後執行應用程式的可執行檔。 在下列命令中，以應用程式元件的名稱取代 \<assembly_name> ： `<assembly_name>.exe` 。
 1. 來自應用程式的主控台輸出若有顯示任何錯誤，就會寫入至主控台視窗。
 1. 如果是在對應用程式發出要求時發生錯誤，請對 Kestrel 進行接聽的主機和連接埠發出要求。 如果使用預設主機和連接埠，請對 `http://localhost:5000/` 發出要求。 如果應用程式在 Kestrel 端點位址正常回應，則問題與主機組態有關的機率較大，而與應用程式本身有關的機率較小。
 
@@ -1402,7 +1404,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `false`。
 1. 儲存檔案。
 
-如需詳細資訊，請參閱<xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection>。
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。
@@ -1486,7 +1488,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 刪除 [bin]** 和 [obj]** 資料夾。
 1. 從命令 shell 執行[dotnet nuget 區域變數 all--clear](/dotnet/core/tools/dotnet-nuget-locals) ，以清除套件快取。
 
-   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令`nuget locals all -clear`。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
+   清除套件快取也可以使用[nuget.exe](https://www.nuget.org/downloads)工具來完成，並執行命令 `nuget locals all -clear` 。 *nuget.exe* 並未隨附在 Windows 桌面作業系統的安裝中，必須另外從 [NuGet 網站](https://www.nuget.org/downloads)取得。
 
 1. 還原並重建專案。
 1. 重新部署應用程式之前，請先刪除伺服器上 [部署] 資料夾中的所有檔案。

@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 02/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/overview
-ms.openlocfilehash: fcd81544385702ce72ff5fc8ae2de34d0f7afb37
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 68a0b14eb0897f6ff6e24e74b1fe5536bee1adfe
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85103000"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85405844"
 ---
 # <a name="overview-of-aspnet-core-mvc"></a>ASP.NET Core MVC 概觀
 
@@ -61,11 +63,11 @@ ASP.NET Core MVC 架構是輕量型、開放原始碼且可高度測試的展示
 
 ASP.NET Core MVC 可讓您透過模式建立動態網站，以清楚關注點分離。 它可讓您完全掌控標記，支援適合 TDD 的開發，並使用最新的網站標準。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 ASP.NET Core MVC 包括下列各項：
 
-* [傳入](#routing)
+* [路由](#routing)
 * [模型繫結](#model-binding)
 * [模型驗證](#model-validation)
 * [相依性插入](../fundamentals/dependency-injection.md)

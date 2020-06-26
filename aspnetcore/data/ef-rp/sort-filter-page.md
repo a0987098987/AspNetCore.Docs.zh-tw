@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 07/22/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 99b14c99cb99d106604f1a4edacf1da0a2d6125c
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 0a87fe2f4cf7014cc15752dcf25545ce7aaa4687
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652584"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408600"
 ---
 # <a name="part-3-razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>第3部分， Razor ASP.NET Core 排序、篩選、分頁中有 EF Core 的頁面
 
@@ -144,7 +146,7 @@ Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())`
 
 * 選取 [Students]**** 索引標籤並輸入搜尋字串。 如果您使用 SQLite，則只有在您實作先前示範的選擇性 `ToUpper` 程式碼時，篩選才會不區分大小寫。
 
-* 選取 [搜尋]****。
+* 選取 [搜尋]。
 
 請注意，URL 中包含了搜尋字串。 例如：
 
@@ -398,7 +400,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 測試應用程式：
 
 * 選取 [Students]**** 索引標籤並輸入搜尋字串。
-* 選取 [搜尋]****。
+* 選取 [搜尋]。
 
 請注意，URL 中包含了搜尋字串。
 

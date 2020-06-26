@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 02/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: aspnetcore-3.1
-ms.openlocfilehash: 6a03e35495e2ae545dc0a3cdd38578b433d8df6b
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 92804d168381526100ddb8a368f71d201bd4cad9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102582"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407664"
 ---
 # <a name="whats-new-in-aspnet-core-31"></a>3.1 ASP.NET Core 的新功能
 
@@ -37,7 +39,7 @@ Razor元件現在會以部分類別的形式產生。 元件的程式碼 Razor �
 
 ASP.NET Core 3.1 仍然支援 HTML Helper，但建議使用元件標記協助程式。
 
-Blazor伺服器應用程式現在可以在初始轉譯期間，將參數傳遞至最上層元件。 先前您只能將參數傳遞至具有[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static)的最上層元件。 在此版本中，支援[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server)和[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) 。 任何指定的參數值會序列化為 JSON，並包含在初始回應中。
+Blazor Server應用程式現在可以在初始轉譯期間，將參數傳遞至最上層元件。 先前您只能將參數傳遞至具有[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Static)的最上層元件。 在此版本中，支援[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server)和[RenderMode](xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered) 。 任何指定的參數值會序列化為 JSON，並包含在初始回應中。
 
 例如， `Counter` 已建立具有遞增量（）的元件 `IncrementAmount` ：
 

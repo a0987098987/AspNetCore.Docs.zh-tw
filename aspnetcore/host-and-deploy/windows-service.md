@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/windows-service
-ms.openlocfilehash: af0c3836362233e41a79e72bd28b4a331e9763bc
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 61280a82fc46116b3ecf057a00cf3f78f0af8951
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106477"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408457"
 ---
 # <a name="host-aspnet-core-in-a-windows-service"></a>在 Windows 服務上裝載 ASP.NET Core
 
@@ -42,7 +44,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 
 [!INCLUDE[](~/includes/worker-template-instructions.md)]
 
-## <a name="app-configuration"></a>應用程式組態
+## <a name="app-configuration"></a>應用程式設定
 
 應用程式需要[WindowsServices](https://www.nuget.org/packages/Microsoft.Extensions.Hosting.WindowsServices)的套件參考。
 
@@ -53,7 +55,7 @@ ASP.NET Core 背景工作服務範本提供撰寫長期執行服務應用程式�
 * 啟用記錄至事件記錄檔：
   * 應用程式名稱會用來做為預設的來源名稱。
   * 根據呼叫來建立主機的 ASP.NET Core 範本，應用程式的預設記錄層級為*警告*或更高 `CreateDefaultBuilder` 。
-  * 使用 `Logging:EventLog:LogLevel:Default` *appsettings. json*appsettings 中的金鑰覆寫預設記錄層級 / *。 {環境}. json*或其他設定提供者。
+  * 在 `Logging:EventLog:LogLevel:Default` appsettings*上的appsettings.js*中，以金鑰覆寫預設的記錄層級 / *。 {環境}. json*或其他設定提供者。
   * 只有系統管理員才能建立新的事件來源。 如果無法使用應用程式名稱建立事件來源，則會向「應用程式」** 來源記錄警告，並停用事件記錄檔。
 
 在 `CreateHostBuilder` *Program.cs*中：
@@ -93,7 +95,7 @@ Host.CreateDefaultBuilder(args)
 
 架構相依部署 (FDD) 仰賴存在於目標系統上的全系統共用 .NET Core 版本。 依照此文章中的指導方針採用 FDD 案例時，SDK 會產生可執行檔 (*.exe*)，稱為「架構相依可執行檔」**。
 
-如果使用[WEB SDK](#sdk)，通常是在發佈 ASP.NET Core 應用程式時所*產生的 web.config*檔案，對於 Windows 服務應用程式而言是不必要的。 若要停用 *web.config* 檔案的建立，請新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`。
+如果使用[WEB SDK](#sdk)，Windows 服務應用程式不需要*web.config*檔案（通常是在發佈 ASP.NET Core 應用程式時所產生）。 若要停用 *web.config* 檔案的建立，請新增 `<IsTransformWebConfigDisabled>` 屬性集到 `true`。
 
 ```xml
 <PropertyGroup>
@@ -153,7 +155,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]****。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定]**** 將使用者新增至原則。
-   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定]**** 將使用者新增至原則。
+   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]****。 再次選取 [確定]**** 將使用者新增至原則。
 1. 選取 [確定]**** 或 [套用]**** 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -248,9 +250,9 @@ ASP.NET Core 預設會繫結至 `http://localhost:5000`。 設定環境變數，
 
 當應用程式以服務方式執行時，會 <xref:Microsoft.Extensions.Hosting.WindowsServiceLifetimeHostBuilderExtensions.UseWindowsService*> 將設定 <xref:Microsoft.Extensions.Hosting.IHostEnvironment.ContentRootPath> 為[AppCoNtext. BaseDirectory](xref:System.AppContext.BaseDirectory)。
 
-應用程式的預設設定檔案*appsettings. json*和*appsettings。 {環境}. json*會在[主機結構期間呼叫 CreateDefaultBuilder](xref:fundamentals/host/generic-host#set-up-a-host)，從應用程式的內容根目錄載入。
+應用程式的預設設定檔， *appsettings.js*和*appsettings。 {環境}. json*會在[主機結構期間呼叫 CreateDefaultBuilder](xref:fundamentals/host/generic-host#set-up-a-host)，從應用程式的內容根目錄載入。
 
-若為開發人員程式碼在中載入的其他設定檔案 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> ，則不需要呼叫 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 。 在下列範例中， *custom_settings 的 json*檔案存在於應用程式的內容根目錄中，並在未明確設定基底路徑的情況下載入：
+若為開發人員程式碼在中載入的其他設定檔案 <xref:Microsoft.Extensions.Hosting.HostBuilder.ConfigureAppConfiguration*> ，則不需要呼叫 <xref:Microsoft.Extensions.Configuration.FileConfigurationExtensions.SetBasePath*> 。 在下列範例中，檔案*上的custom_settings.js*存在於應用程式的內容根目錄中，並在未明確設定基底路徑的情況下載入：
 
 [!code-csharp[](windows-service/samples_snapshot/CustomSettingsExample.cs?highlight=13)]
 
@@ -356,7 +358,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
 
-## <a name="app-configuration"></a>應用程式組態
+## <a name="app-configuration"></a>應用程式設定
 
 應用程式需要 [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) 和 [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) 的套件參考。
 
@@ -465,7 +467,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]****。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定]**** 將使用者新增至原則。
-   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定]**** 將使用者新增至原則。
+   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]****。 再次選取 [確定]**** 將使用者新增至原則。
 1. 選取 [確定]**** 或 [套用]**** 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務
@@ -690,7 +692,7 @@ ASP.NET Core 應用程式可以裝載在 Windows 上作為 [Windows 服務](/dot
 * [ASP.NET Core SDK 2.1 或更新版本](https://dotnet.microsoft.com/download)
 * [PowerShell 6.2 或更新版本](https://github.com/PowerShell/PowerShell)
 
-## <a name="app-configuration"></a>應用程式組態
+## <a name="app-configuration"></a>應用程式設定
 
 應用程式需要 [Microsoft.AspNetCore.Hosting.WindowsServices](https://www.nuget.org/packages/Microsoft.AspNetCore.Hosting.WindowsServices) 和 [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog) 的套件參考。
 
@@ -802,7 +804,7 @@ powershell -Command "New-LocalUser -Name {SERVICE NAME}"
 1. 選取 [新增使用者或群組]****。
 1. 使用下列其中一種方法提供物件名稱 (使用者帳戶)：
    1. 在物件名稱欄位中輸入使用者帳戶 (`{DOMAIN OR COMPUTER NAME\USER}`)，然後選取 [確定]**** 將使用者新增至原則。
-   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]。 再次選取 [確定]**** 將使用者新增至原則。
+   1. 選取 [進階]  。 選取 [立即尋找]****。 從清單中選取使用者帳戶。 選取 [確定]****。 再次選取 [確定]**** 將使用者新增至原則。
 1. 選取 [確定]**** 或 [套用]**** 以接受變更。
 
 ## <a name="create-and-manage-the-windows-service"></a>建立及管理 Windows 服務

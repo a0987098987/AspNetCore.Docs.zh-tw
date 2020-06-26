@@ -1,30 +1,32 @@
 ---
-title: 搭配 WebAssembly 使用 ASP.NET Core SignalR Blazor
+title: SignalR使用 ASP.NET Core 搭配Blazor WebAssembly
 author: guardrex
-description: 建立使用 ASP.NET Core 搭配 WebAssembly 的聊天應用程式 SignalR Blazor 。
+description: 建立使用 ASP.NET Core 搭配的聊天應用 SignalR 程式 Blazor WebAssembly 。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
 ms.date: 06/10/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 3f8aeec1e0471bab5034d1dcc8a42023f6b13c0d
-ms.sourcegitcommit: 77729ba225d5143c0e3954db005906f4a5c7da95
+ms.openlocfilehash: 5a58e7ae28842e2e8a0f3bae8f47e252839903fe
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85122096"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408873"
 ---
-# <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>搭配 WebAssembly 使用 ASP.NET Core SignalR Blazor
+# <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>SignalR使用 ASP.NET Core 搭配Blazor WebAssembly
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-本教學課程將教您使用 with WebAssembly 建立即時應用程式的基本概念 SignalR Blazor 。 您會了解如何：
+本教學課程將教您使用與建立即時應用程式的基本概念 SignalR Blazor WebAssembly 。 您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Blazor WebAssembly 託管應用程式專案
@@ -59,7 +61,7 @@ ms.locfileid: "85122096"
 
 ---
 
-## <a name="create-a-hosted-blazor-webassembly-app-project"></a>建立 hosted Blazor WebAssembly 應用程式專案
+## <a name="create-a-hosted-blazor-webassembly-app-project"></a>建立託管 Blazor WebAssembly 應用程式專案
 
 遵循您選擇的工具的指導方針：
 
@@ -72,13 +74,13 @@ ms.locfileid: "85122096"
 
 1. 選取** Blazor 應用程式**，然後選取 **[下一步]**。
 
-1. `BlazorSignalRApp`在 [**專案名稱**] 欄位中輸入。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
+1. `BlazorSignalRApp`在 [**專案名稱**] 欄位中輸入。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]****。
 
 1. 選擇 [ ** Blazor WebAssembly 應用程式**] 範本。
 
 1. 在 [ **Advanced**] 底下，選取 [ **ASP.NET Core**裝載] 核取方塊。
 
-1. 選取 [建立]。
+1. 選取 [建立]****。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -111,7 +113,7 @@ ms.locfileid: "85122096"
 
    選取 [下一步] 。
 
-1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `BlazorSignalRApp` 。 選取 [建立]。
+1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `BlazorSignalRApp` 。 選取 [建立]****。
 
    如果出現會信任開發憑證的提示，請信任憑證並繼續。 需要使用者和 keychain 密碼，才能信任憑證。
 
@@ -221,7 +223,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
-   ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![SignalRBlazor WebAssembly範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    引號：*星星 TREK VI：未發現的國家/地區* &copy; 1991[重要](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -239,7 +241,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
-   ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![SignalRBlazor WebAssembly範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    引號：*星星 TREK VI：未發現的國家/地區* &copy; 1991[重要](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -251,7 +253,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
-   ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![SignalRBlazor WebAssembly範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    引號：*星星 TREK VI：未發現的國家/地區* &copy; 1991[重要](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 
@@ -268,7 +270,7 @@ dotnet add Client package Microsoft.AspNetCore.SignalR.Client
 
 1. 選擇任一個瀏覽器、輸入名稱和訊息，然後選取按鈕來傳送訊息。 名稱和訊息會立即顯示在兩個頁面上：
 
-   ![SignalRBlazorWebAssembly 範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
+   ![SignalRBlazor WebAssembly範例應用程式會在兩個顯示交換訊息的瀏覽器視窗中開啟。](signalr-blazor-webassembly/_static/3.x/signalr-blazor-webassembly-finished.png)
 
    引號：*星星 TREK VI：未發現的國家/地區* &copy; 1991[重要](https://www.paramountmovies.com/movies/star-trek-vi-the-undiscovered-country)
 

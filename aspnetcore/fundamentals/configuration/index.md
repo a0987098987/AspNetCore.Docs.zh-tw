@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 3/29/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 91200a7a4396d91bec3cfe6ce4b787839f30c72f
-ms.sourcegitcommit: 490434a700ba8c5ed24d849bd99d8489858538e3
+ms.openlocfilehash: 5e413fad090ff2cb5e1379bf7311caf159a57a4b
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85102674"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408587"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 

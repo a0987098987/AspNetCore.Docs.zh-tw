@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 02/07/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: host-and-deploy/azure-iis-errors-reference
-ms.openlocfilehash: 19e8fd1ed390a160df8646a83a66d251ba6d92d8
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 1b0402ceccde0f2410ac29e9c6a251110c81eafa
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105034"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408132"
 ---
 # <a name="common-errors-reference-for-azure-app-service-and-iis-with-aspnet-core"></a>Azure App Service 與 IIS 搭配 ASP.NET Core 時的常見錯誤參考
 
@@ -277,11 +279,11 @@ SDK 會在發行獨立應用程式時攔截到此案例。 如果 RID 不符合�
 
 * **瀏覽器：** 應用程式正常回應。
 
-* **應用程式記錄檔：** 無法在 C:\Program Files\IIS\Asp.Net Core Module\v2\aspnetcorev2.dll 中啟動 stdout 重新導向 例外狀況訊息：已在 {PATH} \aspnetcoremodulev2\commonlib\fileoutputmanager.cpp：84傳回 HRESULT 0x80070005。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 例外狀況訊息：在 {PATH} 傳回 HRESULT 0x80070002。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
+* **應用程式記錄檔：** 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中啟動 stdout 重新導向。 例外狀況訊息：已在 {PATH} \aspnetcoremodulev2\commonlib\fileoutputmanager.cpp：84傳回 HRESULT 0x80070005。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 例外狀況訊息：在 {PATH} 傳回 HRESULT 0x80070002。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
 
 * **ASP.NET Core 模組 Stdout 記錄檔：** 不會建立記錄檔。
 
-* **ASP.NET Core 模組的 Debug 記錄檔：** 無法在 C:\Program Files\IIS\Asp.Net Core Module\v2\aspnetcorev2.dll 中啟動 stdout 重新導向 例外狀況訊息：已在 {PATH} \aspnetcoremodulev2\commonlib\fileoutputmanager.cpp：84傳回 HRESULT 0x80070005。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 例外狀況訊息：在 {PATH} 傳回 HRESULT 0x80070002。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
+* **ASP.NET Core 模組的 Debug 記錄檔：** 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中啟動 stdout 重新導向。 例外狀況訊息：已在 {PATH} \aspnetcoremodulev2\commonlib\fileoutputmanager.cpp：84傳回 HRESULT 0x80070005。 無法在 C:\Program Files\IIS\Asp.Net Core Module\V2\aspnetcorev2.dll 中停止 stdout 重新導向。 例外狀況訊息：在 {PATH} 傳回 HRESULT 0x80070002。 無法在 {PATH}\aspnetcorev2_inprocess.dll 中啟動 stdout 重新導向。
 
 疑難排解：
 

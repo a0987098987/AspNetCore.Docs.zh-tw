@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 05/26/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: migration/webapi
-ms.openlocfilehash: 3c8bf27a97de92a42817d4af625976a4920001aa
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 530455c85c4c869f06ba795d9fb63dcfd1c8d5cf
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84145547"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407222"
 ---
 # <a name="migrate-from-aspnet-web-api-to-aspnet-core"></a>從 ASP.NET Web API 遷移至 ASP.NET Core
 
@@ -59,7 +61,7 @@ ASP.NET 4.x Web API 是一種 HTTP 服務，可觸及各種用戶端，包括瀏
 
 1. 從 [檔案]**** 功能表選取 [新增]**[專案]** > ****。
 1. 選取 [**空白解決方案**] 範本，然後選取 **[下一步]**。
-1. 將方案命名為*WebAPIMigration*。 選取 [建立]。
+1. 將方案命名為*WebAPIMigration*。 選取 [建立]****。
 1. 將現有的*ProductsApp*專案新增至方案。
 
 新增要遷移至的新 API 專案：
@@ -73,7 +75,7 @@ ASP.NET 4.x Web API 是一種 HTTP 服務，可觸及各種用戶端，包括瀏
 
 ## <a name="migrate-configuration"></a>移轉組態
 
-ASP.NET Core 不會使用*App_Start*資料夾或*global.asax*檔案。 此外，也會在發行時新增*web.config*檔案。
+ASP.NET Core 不會使用*App_Start*資料夾或*global.asax*檔案。 此外，也會在發行時加入*web.config*檔案。
 
 `Startup` 類別：
 
@@ -140,7 +142,7 @@ ASP.NET Core *API*專案範本會在產生的程式碼中包含端點路由設�
     * 將 [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) 屬性套用至 `GetAllProducts` 動作。
     * 將 `[HttpGet("{id}")]` 屬性套用至 `GetProduct` 動作。
 
-執行已遷移的專案，並流覽至 `/api/products` 。 隨即會顯示三個產品的完整清單。 瀏覽至 `/api/products/1`。 第一個產品隨即出現。
+執行已遷移的專案，並流覽至 `/api/products` 。 隨即會顯示三個產品的完整清單。 瀏覽至 `/api/products/1` 。 第一個產品隨即出現。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -186,7 +188,7 @@ ASP.NET Core *API*專案範本會在產生的程式碼中包含端點路由設�
 ASP.NET Core 不會使用：
 
 * *App_Start*資料夾或*global.asax*檔案
-* *web.config 檔案*會在發行時加入。
+* 發行時，會加入*web.config*檔案。
 
 `Startup` 類別：
 
@@ -253,7 +255,7 @@ ASP.NET Core 中不存在下列元件：
     * 將 [`[HttpGet]`](xref:Microsoft.AspNetCore.Mvc.HttpGetAttribute) 屬性套用至 `GetAllProducts` 動作。
     * 將 `[HttpGet("{id}")]` 屬性套用至 `GetProduct` 動作。
 
-執行已遷移的專案，並流覽至 `/api/products` 。 隨即會顯示三個產品的完整清單。 瀏覽至 `/api/products/1`。 第一個產品隨即出現。
+執行已遷移的專案，並流覽至 `/api/products` 。 隨即會顯示三個產品的完整清單。 瀏覽至 `/api/products/1` 。 第一個產品隨即出現。
 
 ## <a name="compatibility-shim"></a>相容性填充碼
 

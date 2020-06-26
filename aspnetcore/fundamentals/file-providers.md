@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 04/06/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/file-providers
-ms.openlocfilehash: 1e243d31a1c6b1f6ac6c9f7966ce07ecb01ceae5
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: 9c679f6cb56397632eb99708bd2edd83c55ecf50
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84106178"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408262"
 ---
 # <a name="file-providers-in-aspnet-core"></a>ASP.NET Core 中的檔案提供者
 
@@ -59,7 +61,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 檔
 
 下表列出的執行 `IFileProvider` 。
 
-| 實作 | 描述 |
+| 實作 | 說明 |
 | -------------- | ----------- |
 | [CompositeFileProvider](#compositefileprovider) | 用來提供來自一或多個其他提供者之檔案和目錄的合併存取。 |
 | [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | 用來存取內嵌于元件中的檔案。 |
@@ -122,7 +124,7 @@ var manifestEmbeddedProvider =
 * 將檔案限定為上次修改日期。
 * 為包內嵌檔案資訊清單的內嵌資源命名。
 
-| 多載 | 描述 |
+| 多載 | 說明 |
 | -------- | ----------- |
 | `ManifestEmbeddedFileProvider(Assembly, String)` | 接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 |
 | `ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑參數與 `lastModified` 日期 (<xref:System.DateTimeOffset>) 參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 |
@@ -170,7 +172,7 @@ var manifestEmbeddedProvider =
 |---------|---------|
 |`directory/file.txt`|符合特定目錄中的特定檔案。|
 |`directory/*.txt`|符合特定目錄中具有 *.txt* 副檔名的所有檔案。|
-|`directory/*/appsettings.json`|將目錄中的所有*appsettings*檔案，完全符合*目錄*資料夾底下的一個層級。|
+|`directory/*/appsettings.json`|比對目錄中檔案的所有*appsettings.js*與*目錄*資料夾下的一個層級。|
 |`directory/**/*.txt`|符合*目錄*資料夾下任何位置的副檔名為 *.txt*的檔案。|
 
 ::: moniker-end
@@ -210,7 +212,7 @@ ASP.NET Core 透過使用檔案提供者，將檔案系統存取抽象化。 「
 
 我們提供三個 `IFileProvider` 的實作。
 
-| 實作 | 描述 |
+| 實作 | 說明 |
 | -------------- | ----------- |
 | [PhysicalFileProvider](#physicalfileprovider) | 實體提供者用來存取系統的實體檔案。 |
 | [ManifestEmbeddedFileProvider](#manifestembeddedfileprovider) | 資訊清單內嵌提供者用來存取內嵌於組件的檔案。 |
@@ -269,7 +271,7 @@ var manifestEmbeddedProvider =
 * 將檔案限定為上次修改日期。
 * 為包內嵌檔案資訊清單的內嵌資源命名。
 
-| 多載 | 描述 |
+| 多載 | 說明 |
 | -------- | ----------- |
 | `ManifestEmbeddedFileProvider(Assembly, String)` | 接受選擇性的 `root` 相對路徑參數。 指定 `root` 以將對 <xref:Microsoft.Extensions.FileProviders.IFileProvider.GetDirectoryContents*> 的呼叫限定為所提供路徑下的那些資源。 |
 | `ManifestEmbeddedFileProvider(Assembly, String, DateTimeOffset)` | 接受選擇性的 `root` 相對路徑參數與 `lastModified` 日期 (<xref:System.DateTimeOffset>) 參數。 `lastModified` 日期會限定為 <xref:Microsoft.Extensions.FileProviders.IFileInfo> 執行個體 (由 <xref:Microsoft.Extensions.FileProviders.IFileProvider> 所傳回) 的上次修改日期。 |

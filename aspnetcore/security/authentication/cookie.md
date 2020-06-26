@@ -7,17 +7,19 @@ ms.author: riande
 ms.date: 02/11/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/cookie
-ms.openlocfilehash: 7d2f338f8ece6bd3cc99d5f2ab8153b5c465c7a4
-ms.sourcegitcommit: d243fadeda20ad4f142ea60301ae5f5e0d41ed60
+ms.openlocfilehash: 401d03352b8c2c040202716bdddf484e3b778f52
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84724233"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408821"
 ---
 # <a name="use-cookie-authentication-without-aspnet-core-identity"></a>在不 ASP.NET Core 的情況下使用 cookie 驗證Identity
 
@@ -31,7 +33,7 @@ ASP.NET Core Identity 是完整的完整功能驗證提供者，可用於建立�
 
 針對範例應用程式中的示範用途，假設使用者的使用者帳戶（Maria Rodriguez）已硬式編碼到應用程式中。 使用 [**電子郵件**位址] `maria.rodriguez@contoso.com` 和 [任何密碼] 來登入使用者。 使用者會在 `AuthenticateUser` *頁面/帳戶/登入. cshtml .cs*檔案的方法中進行驗證。 在真實世界的範例中，使用者會針對資料庫進行驗證。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 如果應用程式不使用[AspNetCore 中繼套件](xref:fundamentals/metapackage-app)，請在專案檔中建立 AspNetCore 的套件參考。請參閱[Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)套件。
 
@@ -252,7 +254,7 @@ ASP.NET Core Identity 是完整的完整功能驗證提供者，可用於建立�
 
 針對範例應用程式中的示範用途，假設使用者的使用者帳戶（Maria Rodriguez）已硬式編碼到應用程式中。 使用 [**電子郵件**位址] `maria.rodriguez@contoso.com` 和 [任何密碼] 來登入使用者。 使用者會在 `AuthenticateUser` *頁面/帳戶/登入. cshtml .cs*檔案的方法中進行驗證。 在真實世界的範例中，使用者會針對資料庫進行驗證。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 如果應用程式不使用[AspNetCore 中繼套件](xref:fundamentals/metapackage-app)，請在專案檔中建立 AspNetCore 的套件參考。請參閱[Microsoft.AspNetCore.Authentication.Cookies](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Cookies/)套件。
 

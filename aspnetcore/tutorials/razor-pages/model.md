@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/razor-pages/model
-ms.openlocfilehash: d3f7d355625ce20a0cb45c785fbab259a5655c63
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 053e35e78b2bf58fded49c9a2860060d6a81c544
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652929"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408106"
 ---
 # <a name="part-2-add-a-model-to-a-razor-pages-app-in-aspnet-core"></a>第2部分，將模型新增至 Razor 頁面應用程式中的 ASP.NET Core
 
@@ -90,7 +92,7 @@ ms.locfileid: "84652929"
 
 * 在 [模型類別]**** 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)****。
 * 在 [資料內容類別]**** 列中選取 [+]**** \(加號\)，並將產生的名稱 RazorPagesMovie.**Models**.RazorPagesMovieContext 變更為 RazorPagesMovie.**Data**.RazorPagesMovieContext。 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
-* 選取 [新增]。
+* 選取 [新增]****。
 
 ![前述指示中的圖片。](model/_static/3/arp.png)
 
@@ -144,7 +146,7 @@ ms.locfileid: "84652929"
 
 * 在 [**模型類別**] 下拉式選，選取或輸入**Movie （RazorPagesMovie）**。
 * 在 [**資料內容類別**] 列中，輸入新類別的名稱 RazorPagesMovie。**資料**。RazorpagesmoviecoNtext-21. 這不是必要的[變更](https://developercommunity.visualstudio.com/content/problem/652166/aspnet-core-ef-scaffolder-uses-incorrect-namespace.html) \(英文\)。 它會使用正確的命名空間來建立資料庫內容類別。
-* 選取 [新增]。
+* 選取 [新增]****。
 
 ![前述指示中的圖片。](model/_static/arpMac.png)
 
@@ -375,7 +377,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 * 在 [模型類別]**** 下拉式清單中選取 [Movie (RazorPagesMovie.Models)] \(影片 (RazorPagesMovie.Models)\)****。
 * 在 [資料內容類別]**** 列中選取 [+]**** (加號)，並接受產生的名稱 **RazorPagesMovie.Models.RazorPagesMovieContext**。
-* 選取 [新增]。
+* 選取 [新增]****。
 
 ![前述指示中的圖片。](model/_static/arp.png)
 
@@ -421,7 +423,7 @@ to use Data, it should not use models. That will make the namespace the same for
 
 * 在 [**模型類別**] 下拉式選，選取或輸入**Movie**。
 * 在 [**資料內容類別**] 列中，輸入選取**razorpagesmoviecoNtext-21** ，這會使用正確的命名空間建立新的 db 內容類別。 在此情況下，它會是**RazorPagesMovie。 razorpagesmoviecoNtext-21**。
-* 選取 [新增]。
+* 選取 [新增]****。
 
 ![前述指示中的圖片。](model/_static/arpMac.png)
 

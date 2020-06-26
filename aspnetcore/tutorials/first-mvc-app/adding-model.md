@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 01/13/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 29f70d6bd1d5c1223ef35b4e24e5b9c0a8465d1d
-ms.sourcegitcommit: fa67462abdf0cc4051977d40605183c629db7c64
+ms.openlocfilehash: 28274d1deccdfe9e6430aa2899854f23d3ddc12a
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84652380"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408977"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>第4部分，將模型新增至 ASP.NET Core MVC 應用程式
 
@@ -146,7 +148,7 @@ using Microsoft.EntityFrameworkCore;
 
 ## <a name="add-a-database-connection-string"></a>新增資料庫連線字串
 
-將連接字串新增至*appsettings*檔案：
+將連接字串新增至檔案*中的appsettings.js* ：
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -183,7 +185,7 @@ using Microsoft.EntityFrameworkCore;
 
 * **檢視：** 保持核取預設的每一個選項
 * **控制器名稱：** 保留預設值 *MoviesController*
-* 選取 [**新增**]
+* 選取 [新增]
 
 Visual Studio 會建立：
 
@@ -458,7 +460,7 @@ return View(movie);
 
 * **檢視：** 保持核取預設的每一個選項
 * **控制器名稱：** 保留預設值 *MoviesController*
-* 選取 [**新增**]
+* 選取 [新增]
 
 ![[新增控制器] 對話方塊](adding-model/_static/add_controller2.png)
 

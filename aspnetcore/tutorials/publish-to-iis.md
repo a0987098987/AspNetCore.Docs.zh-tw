@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 10/03/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/publish-to-iis
-ms.openlocfilehash: aa79ce604539b4f09d6f17d4f43da28a6b615f53
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 837a66ef36f1394df87d56132e146ef23a5d5659
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774570"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407885"
 ---
 # <a name="publish-an-aspnet-core-app-to-iis"></a>將 ASP.NET Core 應用程式發佈到 IIS
 
@@ -31,7 +33,7 @@ ms.locfileid: "82774570"
 > * 在 IIS 管理員中建立 IIS 網站。
 > * 部署 ASP.NET Core 應用程式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 在部署電腦上安裝 [.NET Core SDK](/dotnet/core/sdk)。
 * 使用 **Web Server (IIS)** 伺服器角色設定的 Windows Server。 若您的伺服器並未設為使用 IIS 來裝載網站，請遵循 <xref:host-and-deploy/iis/index#iis-configuration> 一文中＜IIS 組態＞** 一節內的指導，然後返回本教學課程。
@@ -65,9 +67,9 @@ ms.locfileid: "82774570"
 
 1. 提供**網站名稱**，並將**實體路徑**設定為您建立的應用程式部署資料夾。 提供**繫結**組態，然後選取 [確定]**** 來建立網站。
 
-## <a name="create-an-aspnet-core-razor-pages-app"></a>建立 ASP.NET Core Razor Pages 應用程式
+## <a name="create-an-aspnet-core-razor-pages-app"></a>建立 ASP.NET Core Razor 頁面應用程式
 
-遵循 <xref:getting-started> 教學課程來建立 Razor Pages 應用程式。
+依照 <xref:getting-started> 教學課程來建立 Razor 頁面應用程式。
 
 ## <a name="publish-and-deploy-the-app"></a>發佈及部署應用程式
 

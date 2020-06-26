@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: aspnetcore-3.0
-ms.openlocfilehash: f2588665c26887a6e3864866425b887e97e656d5
-ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
+ms.openlocfilehash: 6e31a8f49ca535f98f4e073af13896386a4a0feb
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2020
-ms.locfileid: "84755868"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408210"
 ---
 # <a name="whats-new-in-aspnet-core-30"></a>3.0 ASP.NET Core 的新功能
 
@@ -43,13 +45,13 @@ Blazor架構支援的案例：
 
 如需詳細資訊，請參閱 <xref:blazor/index> 。
 
-### <a name="blazor-server"></a>Blazor伺服器
+### Blazor Server
 
-Blazor將元件轉譯邏輯與 UI 更新的套用方式分離。 Blazor伺服器提供 Razor 在 ASP.NET Core 應用程式的伺服器上裝載元件的支援。 UI 更新會透過連接來處理 SignalR 。 BlazorASP.NET Core 3.0 中支援伺服器。
+Blazor將元件轉譯邏輯與 UI 更新的套用方式分離。 Blazor Server提供在 Razor ASP.NET Core 應用程式的伺服器上裝載元件的支援。 UI 更新會透過連接來處理 SignalR 。 Blazor ServerASP.NET Core 3.0 中支援。
 
-### <a name="blazor-webassembly-preview"></a>BlazorWebAssembly （預覽）
+### <a name="blazor-webassembly-preview"></a>Blazor WebAssembly (預覽)
 
-Blazor應用程式也可以直接在瀏覽器中使用以 WebAssembly 為基礎的 .NET 執行時間來執行。 BlazorWebAssembly 處於預覽狀態，ASP.NET Core 3.0*不*支援。 BlazorASP.NET Core 的未來版本中將會支援 WebAssembly。
+Blazor應用程式也可以直接在瀏覽器中使用以 WebAssembly 為基礎的 .NET 執行時間來執行。 Blazor WebAssembly處於預覽狀態，且在 ASP.NET Core 3.0 中*不*受支援。 Blazor WebAssembly未來的 ASP.NET Core 版本將會支援。
 
 ### <a name="razor-components"></a>Razor 元件
 
@@ -495,7 +497,7 @@ app.UseEndpoints(endpoints =>
 
 .NET Core 3.0 引進了新的背景工作服務應用程式範本。 此範本提供在 .NET Core 中撰寫長時間執行服務的起點。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [.NET Core 背景工作角色做為 Windows 服務](https://devblogs.microsoft.com/aspnet/net-core-workers-as-windows-services/)
 * <xref:fundamentals/host/hosted-services>

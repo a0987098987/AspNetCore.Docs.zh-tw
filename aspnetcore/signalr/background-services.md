@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: signalr/background-services
-ms.openlocfilehash: 7bc3b9535055e3fccf23ffa4638bd29676910348
-ms.sourcegitcommit: e87dfa08fec0be1008249b1be678e5f79dcc5acb
+ms.openlocfilehash: bf5fff213b2cd7db0b3227922a8c5babba2fc904
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83382565"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85409081"
 ---
 # <a name="host-aspnet-core-signalr-in-background-services"></a>SignalR背景服務中的主機 ASP.NET Core
 
@@ -62,7 +64,7 @@ SignalR在背景工作進程的內容中裝載 ASP.NET Core 中樞，等同于�
 如需強型別中樞的詳細資訊，請參閱[在中使用中樞 SignalR 以進行 ASP.NET Core](xref:signalr/hubs#strongly-typed-hubs)。
 
 > [!NOTE]
-> 此功能不限於[中樞 \< t>](xref:Microsoft.AspNetCore.SignalR.Hub`1)類別。 任何繼承自[中樞](xref:Microsoft.AspNetCore.SignalR.Hub)的類別（例如[DynamicHub](xref:Microsoft.AspNetCore.SignalR.DynamicHub)）都可以運作。
+> 這種功能並不限於[中樞 \<T> ](xref:Microsoft.AspNetCore.SignalR.Hub`1)類別。 任何繼承自[中樞](xref:Microsoft.AspNetCore.SignalR.Hub)的類別（例如[DynamicHub](xref:Microsoft.AspNetCore.SignalR.DynamicHub)）都可以運作。
 
 ::: moniker range=">= aspnetcore-3.0"
 

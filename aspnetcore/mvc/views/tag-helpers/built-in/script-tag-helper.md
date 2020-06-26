@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/02/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/script-tag-helper
-ms.openlocfilehash: 4162221ef3401427c44fb54dee9c36b78b39564f
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: b9b90c1c40fccbc7bb6b6c9050bd525b5fa8cd92
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774661"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407404"
 ---
 # <a name="script-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的腳本標記協助程式
 
@@ -29,7 +31,7 @@ ms.locfileid: "82774661"
 
 當 CDN 無法使用時，腳本標籤協助程式可讓您指定腳本檔案的 CDN 和回退。 腳本標記協助程式可提供 CDN 的效能優勢，以及本機裝載的穩定性。
 
-下列Razor標記顯示具有 fallback `script`的元素：
+下列 Razor 標記顯示 `script` 具有 fallback 的元素：
 
 ```html
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
@@ -40,7 +42,7 @@ ms.locfileid: "82774661"
 </script>
 ```
 
-請勿使用`<script>`元素的[defer](https://developer.mozilla.org/docs/Web/HTML/Element/script)屬性來延遲載入 CDN 腳本。 腳本標記協助程式會轉譯 JavaScript，以立即執行[asp-fallback-測試](#asp-fallback-test)運算式。 如果載入 CDN 腳本已延遲，運算式就會失敗。
+請勿使用 `<script>` 元素的[defer](https://developer.mozilla.org/docs/Web/HTML/Element/script)屬性來延遲載入 CDN 腳本。 腳本標記協助程式會轉譯 JavaScript，以立即執行[asp-fallback-測試](#asp-fallback-test)運算式。 如果載入 CDN 腳本已延遲，運算式就會失敗。
 
 ## <a name="commonly-used-script-tag-helper-attributes"></a>常用的腳本標記協助程式屬性
 
@@ -48,11 +50,11 @@ ms.locfileid: "82774661"
 
 ### <a name="asp-fallback-test"></a>asp-回溯-測試
 
-要用於回溯測試之主要腳本中定義的腳本方法。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression>。
+要用於回溯測試之主要腳本中定義的腳本方法。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackTestExpression> 。
 
 ### <a name="asp-fallback-src"></a>asp-fallback-src
 
-當主要複本失敗時，要回復之腳本標記的 URL。 如需詳細資訊，請參閱<xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc>。
+當主要複本失敗時，要回復之腳本標記的 URL。 如需詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper.FallbackSrc> 。
 
 ## <a name="additional-resources"></a>其他資源
 

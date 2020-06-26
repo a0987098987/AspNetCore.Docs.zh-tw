@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 11/30/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: e3b73a7a559d2f4a0803dc26dd42257c60fab884
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: cc30cedd51af06ffc7e17d36d4426fa45c452015
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84356956"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407742"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 

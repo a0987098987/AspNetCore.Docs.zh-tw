@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mobile/native-mobile-backend
-ms.openlocfilehash: 1ffaf61bb21f44681f530e35e746a30e9e158c6d
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a6d99e4a8f05125e6e7968b088c5b7e29cb75e6c
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777263"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407560"
 ---
 # <a name="create-backend-services-for-native-mobile-apps-with-aspnet-core"></a>使用 ASP.NET Core 建立原生行動應用程式的後端服務
 
@@ -69,7 +71,7 @@ public static string RestUrl = "http://192.168.1.207:5000/api/todoitems/{0}";
 > [!NOTE]
 > 請確定您是直接執行應用程式，而非在 IIS Express 之後執行，因為其根據預設會忽略所有非本機的要求。 在命令提示字元中執行 [dotnet run](/dotnet/core/tools/dotnet-run)，或從 Visual Studio 工具列的 [偵錯目標] 下拉式功能表中選擇應用程式名稱設定檔。
 
-新增一個模型類別來代表待辦項目。 使用`[Required]`屬性標記必要欄位：
+新增一個模型類別來代表待辦項目。 使用屬性標記必要欄位 `[Required]` ：
 
 [!code-csharp[](native-mobile-backend/sample/ToDoApi/src/ToDoApi/Models/ToDoItem.cs)]
 
@@ -114,7 +116,7 @@ API 方法需要一些方式才能操作資料。 使用原始 Xamarin 範本使
 
 ### <a name="creating-items"></a>建立項目
 
-根據慣例，建立新的資料項目會對應到 HTTP POST 動詞命令。 `Create`方法已套用`[HttpPost]`屬性並接受`ToDoItem`實例。 因為自`item`變數會傳入 POST 的主體，所以這個參數會指定`[FromBody]`屬性。
+根據慣例，建立新的資料項目會對應到 HTTP POST 動詞命令。 `Create`方法已套用 `[HttpPost]` 屬性並接受 `ToDoItem` 實例。 因為自 `item` 變數會傳入 POST 的主體，所以這個參數會指定 `[FromBody]` 屬性。
 
 在方法中，項目會經過有效性的檢查，以及是否先前存在過資料存放區中。若沒有發現任何問題，則該項目便會新增至存放庫中。 檢查 `ModelState.IsValid` 會執行 [模型驗證](../mvc/models/validation.md)，並且應該要在每個接受使用者輸入的 API 方法中執行。
 

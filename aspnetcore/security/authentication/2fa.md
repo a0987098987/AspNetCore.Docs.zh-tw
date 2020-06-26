@@ -8,17 +8,19 @@ ms.date: 09/22/2018
 ms.custom: mvc, seodec18
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/2fa
-ms.openlocfilehash: e33f22356de983c8c4e0211822d5027a33b48de6
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 032650296cfdcc4fef632c6a6a9ce2b56db6a6df
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775826"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408574"
 ---
 # <a name="two-factor-authentication-with-sms-in-aspnet-core"></a>在 ASP.NET Core 中使用 SMS 的雙因素驗證
 
@@ -33,7 +35,7 @@ ms.locfileid: "82775826"
 
 ## <a name="create-a-new-aspnet-core-project"></a>建立新的 ASP.NET Core 專案
 
-使用個別使用者帳戶建立名為`Web2FA`的新 ASP.NET Core web 應用程式。 依照中<xref:security/enforcing-ssl>的指示進行設定，並要求 HTTPS。
+使用個別使用者帳戶建立名為的新 ASP.NET Core web 應用程式 `Web2FA` 。 依照中的指示 <xref:security/enforcing-ssl> 進行設定，並要求 HTTPS。
 
 ### <a name="create-an-sms-account"></a>建立 SMS 帳戶
 
@@ -49,7 +51,7 @@ ms.locfileid: "82775826"
 
 從您的帳戶設定中，流覽至**Userkey** ，並將它與您的**密碼**一起複製。
 
-稍後我們會將這些值儲存在中，並使用金鑰`SMSAccountIdentification`和`SMSAccountPassword`中的秘密管理員工具。
+稍後我們會將這些值儲存在中，並使用金鑰和中的秘密管理員工具 `SMSAccountIdentification` `SMSAccountPassword` 。
 
 #### <a name="specifying-senderid--originator"></a>指定 SenderID/發信者
 
@@ -57,17 +59,17 @@ ms.locfileid: "82775826"
 
 **ASPSMS：** 在 [解除鎖定擁有者] 功能表中，解除鎖定一或多個始發者，或選擇英數位元（並非所有網路都支援）。
 
-我們稍後將使用金鑰`SMSAccountFrom`中的「秘密管理員」工具來儲存此值。
+我們稍後將使用金鑰中的「秘密管理員」工具來儲存此值 `SMSAccountFrom` 。
 
 ### <a name="provide-credentials-for-the-sms-service"></a>提供 SMS 服務的認證
 
 我們將使用 [[選項] 模式](xref:fundamentals/configuration/options)來存取使用者帳戶和金鑰設定。
 
-* 建立類別來提取安全 SMS 金鑰。 針對此範例，會`SMSoptions`在*Services/SMSoptions .cs*檔案中建立類別。
+* 建立類別來提取安全 SMS 金鑰。 針對此範例， `SMSoptions` 會在*Services/SMSoptions .cs*檔案中建立類別。
 
 [!code-csharp[](2fa/sample/Web2FA/Services/SMSoptions.cs)]
 
-`SMSAccountIdentification`使用 [[密碼管理員] 工具](xref:security/app-secrets)設定`SMSAccountPassword`和`SMSAccountFrom` 。 例如：
+`SMSAccountIdentification` `SMSAccountPassword` `SMSAccountFrom` 使用 [[密碼管理員] 工具](xref:security/app-secrets)設定和。 例如：
 
 ```none
 C:/Web2FA/src/WebApp1>dotnet user-secrets set SMSAccountIdentification 12345
@@ -94,13 +96,13 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ### <a name="configure-startup-to-use-smsoptions"></a>設定要使用的啟動`SMSoptions`
 
-在`SMSoptions` `ConfigureServices` *Startup.cs*的方法中，將新增至服務容器：
+在 Startup.cs 的方法中，將新增 `SMSoptions` 至服務容器 `ConfigureServices` ： *Startup.cs*
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet1&highlight=4)]
 
 ### <a name="enable-two-factor-authentication"></a>啟用雙因素驗證
 
-開啟*Views/Manage/Index. cshtml* Razor視圖檔案並移除批註字元（因此不會註解標記）。
+開啟*Views/Manage/Index. cshtml* Razor 視圖檔案並移除批註字元（因此不會註解標記）。
 
 ## <a name="log-in-with-two-factor-authentication"></a>使用雙因素驗證進行登入
 
@@ -108,7 +110,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 ![在 Microsoft Edge 中開啟 Web 應用程式註冊視圖](2fa/_static/login2fa1.png)
 
-* 在您的使用者名稱上按一下，即可`Index`在 [管理控制器] 中啟用動作方法。 然後，按一下 [電話號碼] [**新增**] 連結。
+* 在您的使用者名稱上按一下，即可在 [ `Index` 管理控制器] 中啟用動作方法。 然後，按一下 [電話號碼] [**新增**] 連結。
 
 ![管理檢視-點一下 [新增] 連結](2fa/_static/login2fa2.png)
 
@@ -152,7 +154,7 @@ info: Successfully saved SMSAccountIdentification = 12345 to the secret store.
 
 [!code-csharp[](2fa/sample/Web2FA/Startup.cs?name=snippet2&highlight=13-17)]
 
-確認[PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync)設定`lockoutOnFailure`為`true`：
+確認[PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync)設定 `lockoutOnFailure` 為 `true` ：
 
 ```csharp
 var result = await _signInManager.PasswordSignInAsync(

@@ -7,17 +7,19 @@ ms.author: bradyg
 ms.date: 11/21/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: signalr/version-differences
-ms.openlocfilehash: b5899f816dc5a5f8ff4c3f05c8e2c54ded5fc47b
-ms.sourcegitcommit: a423e8fcde4b6181a3073ed646a603ba20bfa5f9
+ms.openlocfilehash: d63e9077ba23c3783d7ce1ceb9c9683bcb0d3a29
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/13/2020
-ms.locfileid: "84756037"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408886"
 ---
 # <a name="differences-between-aspnet-signalr-and-aspnet-core-signalr"></a>ASP.NET SignalR 和 ASP.NET Core 之間的差異SignalR
 

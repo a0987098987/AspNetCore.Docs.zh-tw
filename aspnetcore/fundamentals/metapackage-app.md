@@ -7,25 +7,27 @@ ms.author: riande
 ms.date: 09/24/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/metapackage-app
-ms.openlocfilehash: 5f3511b31b45b2c4ad4467bb49d4eaacf22ad437
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 89f447699e8219ec4dd48b2342095d86a011860f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775553"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407963"
 ---
 # <a name="microsoftaspnetcoreapp-for-aspnet-core"></a>ASP.NET Core 的 AspNetCore 應用程式
 
 ::: moniker range=">= aspnetcore-3.0"
 
- ASP.NET Core 共用架構（`Microsoft.AspNetCore.App`）包含由 Microsoft 開發及支援的元件。 `Microsoft.AspNetCore.App`安裝[.Net Core 3.0 或更新版本的 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)時，會進行安裝。 *共用架構*是一組安裝在電腦上的元件（*.dll*檔案），其中包含執行時間元件和目標套件。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
+ ASP.NET Core 共用架構（ `Microsoft.AspNetCore.App` ）包含由 Microsoft 開發及支援的元件。 `Microsoft.AspNetCore.App`安裝[.Net Core 3.0 或更新版本的 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.0)時，會進行安裝。 *共用架構*是一組安裝在電腦上的元件（*.dll*檔案），其中包含執行時間元件和目標套件。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
 
-* 以 SDK 為目標`Microsoft.NET.Sdk.Web`的專案會隱含`Microsoft.AspNetCore.App`地參考架構。
+* 以 SDK 為目標的專案會 `Microsoft.NET.Sdk.Web` 隱含地參考 `Microsoft.AspNetCore.App` 架構。
 
 這些專案不需要其他參考：
 
@@ -55,7 +57,7 @@ ASP.NET Core 的 [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Micro
 * 包含所有由 ASP.NET Core 小組支援的套件，除了含有協力廠商相依性的套件以外 (非先前所述)。
 * 包含所有由 Entity Framework Core 小組支援的套件，除了含有協力廠商相依性的套件以外 (非先前所述)。
 
-`Microsoft.AspNetCore.App` 套件包含 ASP.NET Core 2.x 和 Entity Framework Core 2.x 的所有功能。 以 ASP.NET Core 2.x 為目標的預設專案範本會使用此套件。 我們建議以 ASP.NET Core 2.x 和 Entity Framework Core 2.x 為目標的`Microsoft.AspNetCore.App`應用程式使用套件。
+`Microsoft.AspNetCore.App` 套件包含 ASP.NET Core 2.x 和 Entity Framework Core 2.x 的所有功能。 以 ASP.NET Core 2.x 為目標的預設專案範本會使用此套件。 我們建議以 ASP.NET Core 2.x 和 Entity Framework Core 2.x 為目標的應用程式使用 `Microsoft.AspNetCore.App` 套件。
 
 `Microsoft.AspNetCore.App` 中繼套件的版本號碼代表最低的 ASP.NET Core 版本和 Entity Framework Core 版本。
 
@@ -67,7 +69,7 @@ ASP.NET Core 的 [Microsoft.AspNetCore.App](https://www.nuget.org/packages/Micro
 
 使用 `Microsoft.AspNetCore.App` 中繼套件的應用程式會自動利用 ASP.NET Core 共用架構。 當您使用 `Microsoft.AspNetCore.App` 中繼套件時，**不會**在應用程式中部署所參考之 ASP.NET Core NuGet 套件的任何資產 &mdash; ASP.NET Core 共用架構包含這些資產。 共用架構中的資產會先行編譯，以改善應用程式啟動時間。 如需詳細資訊，請參閱[共用的架構](https://natemcmaster.com/blog/2018/08/29/netcore-primitives-2/) \(英文\)。
 
-下列專案檔會參考 ASP.NET Core `Microsoft.AspNetCore.App`的中繼套件，並代表一般的 ASP.NET Core 2.2 範本：
+下列專案檔會參考 `Microsoft.AspNetCore.App` ASP.NET Core 的中繼套件，並代表一般的 ASP.NET Core 2.2 範本：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">

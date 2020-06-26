@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/policyschemes
-ms.openlocfilehash: ddedf62c5e8363bd93c9948fd2d3418abc566539
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: a8bde9633f06f41ebcb55480eb2322544db4b4da
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82767313"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408756"
 ---
 # <a name="policy-schemes-in-aspnet-core"></a>ASP.NET Core 中的原則配置
 
@@ -25,7 +27,7 @@ ms.locfileid: "82767313"
 * 輕鬆將任何驗證動作轉送至另一個配置。
 * 根據要求動態轉送。
 
-所有使用衍生<xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions>的驗證配置和相關聯[的\<AuthenticationHandler TOptions>](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1)：
+使用衍生 <xref:Microsoft.AspNetCore.Authentication.AuthenticationSchemeOptions> 和相關聯[AuthenticationHandler \<TOptions> ](/dotnet/api/microsoft.aspnetcore.authentication.authenticationhandler-1)的所有驗證配置：
 
 * 會在 ASP.NET Core 2.1 和更新版本中自動進行原則配置。
 * 可以透過設定配置的選項來啟用。

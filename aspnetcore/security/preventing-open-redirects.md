@@ -6,17 +6,19 @@ ms.author: riande
 ms.date: 07/07/2017
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/preventing-open-redirects
-ms.openlocfilehash: ad4c9806146567b6ef1f5e78eaeca96cb649c1af
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: eb18c599d84fd08ffe97867b67a837303af188db
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774388"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408145"
 ---
 # <a name="prevent-open-redirect-attacks-in-aspnet-core"></a>防止 ASP.NET Core 中的開啟重新導向攻擊
 
@@ -26,24 +28,24 @@ ms.locfileid: "82774388"
 
 ## <a name="what-is-an-open-redirect-attack"></a>什麼是開啟的重新導向攻擊？
 
-Web 應用程式通常會在使用者存取需要驗證的資源時，將他們重新導向至登入頁面。 重新導向通常會包含`returnUrl` querystring 參數，讓使用者可以在成功登入之後，傳回給原始要求的 URL。 使用者驗證之後，系統會將他們重新導向至原先要求的 URL。
+Web 應用程式通常會在使用者存取需要驗證的資源時，將他們重新導向至登入頁面。 重新導向通常會包含 `returnUrl` querystring 參數，讓使用者可以在成功登入之後，傳回給原始要求的 URL。 使用者驗證之後，系統會將他們重新導向至原先要求的 URL。
 
 因為在要求的 querystring 中指定了目的地 URL，所以惡意使用者可能會篡改 querystring。 遭篡改的 querystring 可能會允許網站將使用者重新導向至外部的惡意網站。 這項技術稱為「開啟重新導向」（或「重新導向」）攻擊。
 
 ### <a name="an-example-attack"></a>範例攻擊
 
-惡意使用者可能會開發攻擊，以允許惡意使用者存取使用者的認證或機密資訊。 若要開始攻擊，惡意使用者說服使用者按一下您網站登入頁面的連結，並將`returnUrl` querystring 值新增至 URL。 例如，請考慮中`contoso.com`的應用程式，其中包含的登`http://contoso.com/Account/LogOn?returnUrl=/Home/About`入頁面。 攻擊會遵循下列步驟：
+惡意使用者可能會開發攻擊，以允許惡意使用者存取使用者的認證或機密資訊。 若要開始攻擊，惡意使用者說服使用者按一下您網站登入頁面的連結，並將 `returnUrl` querystring 值新增至 URL。 例如，請考慮中的應用程式， `contoso.com` 其中包含的登入頁面 `http://contoso.com/Account/LogOn?returnUrl=/Home/About` 。 攻擊會遵循下列步驟：
 
-1. 使用者按一下的惡意連結`http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` （第二個 URL 是 "contoso**1**.com"，而不是 "contoso.com"）。
+1. 使用者按一下的惡意連結 `http://contoso.com/Account/LogOn?returnUrl=http://contoso1.com/Account/LogOn` （第二個 URL 是 "contoso**1**.com"，而不是 "contoso.com"）。
 2. 使用者登入成功。
-3. 使用者會被重新導向（由網站）到`http://contoso1.com/Account/LogOn` （看起來與實際網站完全類似的惡意網站）。
+3. 使用者會被重新導向（由網站）到 `http://contoso1.com/Account/LogOn` （看起來與實際網站完全類似的惡意網站）。
 4. 使用者再次登入（提供惡意網站的認證），然後重新導向至實際網站。
 
 使用者可能認為第一次嘗試登入失敗，而第二次嘗試成功。 使用者很可能會不知道他們的認證會受到危害。
 
 ![開啟重新導向攻擊程式](preventing-open-redirects/_static/open-redirection-attack-process.png)
 
-除了登入頁面以外，有些網站會提供重新導向頁面或端點。 假設您的應用程式有一個頁面， `/Home/Redirect`其中包含開啟的重新導向。 例如，攻擊者可能會建立電子郵件中的連結，以前往`[yoursite]/Home/Redirect?url=http://phishingsite.com/Home/Login`。 一般使用者會查看 URL，並從您的網站名稱開始查看。 信任它，他們會按一下連結。 然後，開啟的重新導向會將使用者傳送至網路釣魚網站，看起來與您的內容相同，而且使用者可能會登入他們認為您的網站。
+除了登入頁面以外，有些網站會提供重新導向頁面或端點。 假設您的應用程式有一個頁面，其中包含開啟的重新導向 `/Home/Redirect` 。 例如，攻擊者可能會建立電子郵件中的連結，以前往 `[yoursite]/Home/Redirect?url=http://phishingsite.com/Home/Login` 。 一般使用者會查看 URL，並從您的網站名稱開始查看。 信任它，他們會按一下連結。 然後，開啟的重新導向會將使用者傳送至網路釣魚網站，看起來與您的內容相同，而且使用者可能會登入他們認為您的網站。
 
 ## <a name="protecting-against-open-redirect-attacks"></a>防止開啟重新導向攻擊
 
@@ -51,7 +53,7 @@ Web 應用程式通常會在使用者存取需要驗證的資源時，將他們�
 
 ### <a name="localredirect"></a>LocalRedirect
 
-使用來自`LocalRedirect`基類`Controller`的 helper 方法：
+使用 `LocalRedirect` 來自基類的 helper 方法 `Controller` ：
 
 ```csharp
 public IActionResult SomeAction(string redirectUrl)
@@ -60,7 +62,7 @@ public IActionResult SomeAction(string redirectUrl)
 }
 ```
 
-`LocalRedirect`如果指定非本機 URL，將會擲回例外狀況。 否則，它的`Redirect`行為就像方法一樣。
+`LocalRedirect`如果指定非本機 URL，將會擲回例外狀況。 否則，它的行為就像 `Redirect` 方法一樣。
 
 ### <a name="islocalurl"></a>IsLocalUrl
 

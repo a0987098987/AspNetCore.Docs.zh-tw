@@ -7,27 +7,29 @@ ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: signalr/client-features
-ms.openlocfilehash: a759e473ff7ffaebd0eb9309f37a959d0e06a466
-ms.sourcegitcommit: e20653091c30e0768c4f960343e2c3dd658bba13
+ms.openlocfilehash: 10752e8cace82dc08721af7d38c0250182e9bfb0
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/16/2020
-ms.locfileid: "83438953"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408483"
 ---
 # <a name="aspnet-core-signalr-clients"></a>ASP.NET Core SignalR 用戶端
 
 ## <a name="versioning-support-and-compatibility"></a>版本控制、支援和相容性
 
-SignalR 用戶端會連同伺服器元件一起出貨，並建立版本以符合。 任何支援的用戶端都可以安全地連接到任何支援的伺服器，而且任何相容性問題都會被視為要修正的錯誤。 與其余 .NET Core 相同的支援生命週期中支援 SignalR 用戶端。 如需詳細資訊，請參閱[.Net Core 支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
+SignalR用戶端會連同伺服器元件一起出貨，並建立版本以符合。 任何支援的用戶端都可以安全地連接到任何支援的伺服器，而且任何相容性問題都會被視為要修正的錯誤。 SignalR用戶端在與其余 .NET Core 相同的支援生命週期中受到支援。 如需詳細資訊，請參閱[.Net Core 支援原則](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)。
 
 許多功能都需要相容的用戶端**和**伺服器。 請參閱下方的表格，其中顯示各種功能的最低版本。
 
-1.x 版的 SignalR 對應至2.1 和 2.2 .NET Core 版本，並具有相同的存留期。 在3.x 版和更新版本中，SignalR 版本完全符合 .NET 的其餘部分，並具有相同的支援生命週期。
+1.x 版的 SignalR 對應至2.1 和 2.2 .Net Core 版本，並具有相同的存留期。 在版本3.x 和更新版本中， SignalR 版本完全符合 .net 的其餘部分，而且具有相同的支援生命週期。
 
 | SignalR 版本 | .NET Core 版本 | 支援層級 | 結束支援 |
 | - | - | - | - |
@@ -41,7 +43,7 @@ SignalR 用戶端會連同伺服器元件一起出貨，並建立版本以符合
 
 下表顯示提供即時支援之用戶端的功能與支援。 針對每個功能，會列出支援這項功能的*最低*版本。 如果沒有列出任何版本，則不支援此功能。
 
-| 特徵 | Server (伺服器) | .NET 用戶端 | JavaScript 用戶端 | Java 用戶端 |
+| 功能 | 伺服器 | .NET 用戶端 | JavaScript 用戶端 | Java 用戶端 |
 | ---- | :-: | :-: | :-: | :-: |
 | Azure SignalR 服務支援 |2.1.0|1.0.0|1.0.0|1.0.0|
 | [伺服器對用戶端串流](xref:signalr/streaming)          |2.1.0|1.0.0|1.0.0|1.0.0|

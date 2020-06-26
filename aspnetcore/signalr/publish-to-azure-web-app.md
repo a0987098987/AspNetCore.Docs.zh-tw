@@ -1,33 +1,35 @@
 ---
-title: 將 ASP.NET Core SignalR應用程式發佈至 Azure App Service
+title: SignalR將 ASP.NET Core 應用程式發佈至 Azure App Service
 author: bradygaster
-description: 瞭解如何將 ASP.NET Core SignalR應用程式發佈至 Azure App Service。
+description: 瞭解如何將 ASP.NET Core SignalR 應用程式發佈至 Azure App Service。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: bradyg
 ms.custom: mvc
 ms.date: 11/12/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: signalr/publish-to-azure-web-app
-ms.openlocfilehash: a5d19c1519c69351605e8da1d8fa70bff784efd4
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: d3f48b3171012b03fcaf7665c2089b27d37bbeca
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82777185"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408834"
 ---
-# <a name="publish-an-aspnet-core-signalr-app-to-azure-app-service"></a>將 ASP.NET Core SignalR 應用程式發佈至 Azure App Service
+# <a name="publish-an-aspnet-core-signalr-app-to-azure-app-service"></a>SignalR將 ASP.NET Core 應用程式發佈至 Azure App Service
 
 依[Brady Gaster](https://twitter.com/bradygaster)
 
 [Azure App Service](/azure/app-service/app-service-web-overview)是用來裝載 web 應用程式的[Microsoft 雲端](https://azure.microsoft.com/)運算平臺服務，包括 ASP.NET Core。
 
 > [!NOTE]
-> 本文是指從 Visual Studio 發佈 ASP.NET Core SignalR 應用程式。 如需詳細資訊，請參閱[SignalR service For Azure](https://azure.microsoft.com/services/signalr-service)。
+> 本文是指從 Visual Studio 發佈 ASP.NET Core SignalR 應用程式。 如需詳細資訊，請參閱[ SignalR 適用于 Azure 的服務](https://azure.microsoft.com/services/signalr-service)。
 
 ## <a name="publish-the-app"></a>發佈應用程式
 
@@ -44,17 +46,17 @@ ms.locfileid: "82777185"
    | 項目               | 描述 |
    | ------------------ | ----------- |
    | **名稱**           | 應用程式的唯一名稱。 |
-   | **訂閱帳戶**   | 應用程式使用的 Azure 訂用帳戶。 |
+   | **訂用帳戶**   | 應用程式使用的 Azure 訂用帳戶。 |
    | **資源群組** | 應用程式所屬的相關資源群組。 |
    | **主控方案**   | Web 應用程式的定價方案。 |
 
-1. 在 [相依性] [ ** **  > **新增**] 下拉式清單中選取 [ **Azure SignalR服務**]：
+1. 在 [相依性] [新增] 下拉式清單中選取 [ **Azure SignalR 服務** **]**  >  **Add** ：
 
-   ![[相依性] 區域顯示 [ SignalR新增] 下拉式清單中的 [Azure 服務] 的選取專案](publish-to-azure-web-app/_static/signalr-service-dependency.png)
+   ![[相依性] 區域顯示 SignalR [新增] 下拉式清單中的 [Azure 服務] 的選取專案](publish-to-azure-web-app/_static/signalr-service-dependency.png)
 
-1. 在 [ **Azure SignalR服務**] 對話方塊中，選取 [**建立SignalR新的 Azure 服務實例**]。
+1. 在 [ **Azure SignalR 服務**] 對話方塊中，選取 [**建立新的 Azure SignalR 服務實例**]。
 
-1. 提供 [**名稱**]、[**資源群組**] 和 [**位置**]。 返回 [ ** SignalR Azure 服務**] 對話方塊，然後選取 [**新增**]。
+1. 提供 [**名稱**]、[**資源群組**] 和 [**位置**]。 返回 [ **Azure SignalR 服務**] 對話方塊，然後選取 [**新增**]。
 
 Visual Studio 完成下列工作：
 
@@ -63,24 +65,24 @@ Visual Studio 完成下列工作：
 * 發佈應用程式。
 * 啟動瀏覽器，它會載入 web 應用程式。
 
-應用程式 URL 的格式為`{APP SERVICE NAME}.azurewebsites.net`。 例如，名為`SignalRChatApp`的應用程式具有的 URL `https://signalrchatapp.azurewebsites.net`。
+應用程式 URL 的格式為 `{APP SERVICE NAME}.azurewebsites.net` 。 例如，名為的應用程式 `SignalRChatApp` 具有的 URL `https://signalrchatapp.azurewebsites.net` 。
 
 如果部署以預覽 .NET Core 版本為目標的應用程式時，發生 HTTP *502.2-不正確的閘道*錯誤，請參閱將[ASP.NET Core preview 版本部署至 Azure App Service](xref:host-and-deploy/azure-apps/index#deploy-aspnet-core-preview-release-to-azure-app-service)加以解決。
 
 ## <a name="configure-the-app-in-azure-app-service"></a>在 Azure App Service 中設定應用程式
 
 > [!NOTE]
-> *本節僅適用于不使用 Azure SignalR服務的應用程式。*
+> *本節僅適用于不使用 Azure 服務的應用程式 SignalR 。*
 >
-> 如果應用程式使用 Azure SignalR服務，則 App Service 不需要設定本章節所述的應用程式要求路由（ARR）親和性和 Web 通訊端。 用戶端會將其 Web 通訊端SignalR連線至 Azure 服務，而不是直接連接至應用程式。
+> 如果應用程式使用 Azure SignalR 服務，則 App Service 不需要設定本章節所述的應用程式要求路由（ARR）親和性和 Web 通訊端。 用戶端會將其 Web 通訊端連線至 Azure SignalR 服務，而不是直接連接至應用程式。
 
-若為不含 Azure SignalR服務的託管應用程式，請啟用：
+若為不含 Azure 服務的託管應用程式 SignalR ，請啟用：
 
 * [ARR 親和性](https://azure.github.io/AppService/2016/05/16/Disable-Session-affinity-cookie-(ARR-cookie)-for-Azure-web-apps.html)，可將來自使用者的要求路由回到相同的 App Service 實例。 預設設定為 [**開啟**]。
 * [Web 通訊端](xref:fundamentals/websockets)，允許 Web 通訊端傳輸運作。 預設設定為 [**關閉**]。
 
 1. 在 Azure 入口網站中，流覽至**應用程式服務**中的 web 應用程式。
-1.  > 開啟**Configuration****[設定] [一般設定**]。
+1. 開啟**Configuration**  >  **[設定] [一般設定**]。
 1. 將 [ **Web 通訊端**] 設為 [**開啟**]。
 1. 確認 [ **ARR 親和性**] 已設定為 [**開啟**]。
 
@@ -90,7 +92,7 @@ Web 通訊端和其他傳輸會根據選取的 App Service 方案而受到限制
 
 ## <a name="additional-resources"></a>其他資源
 
-* [什麼是 Azure SignalR服務？](/azure/azure-signalr/signalr-overview)
+* [什麼是 Azure SignalR 服務？](/azure/azure-signalr/signalr-overview)
 * <xref:signalr/introduction>
 * <xref:host-and-deploy/index>
 * <xref:tutorials/publish-to-azure-webapp-using-vs>

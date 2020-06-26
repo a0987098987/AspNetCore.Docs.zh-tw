@@ -6,17 +6,19 @@ ms.author: wpickett
 ms.date: 06/18/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: migration/mvc
-ms.openlocfilehash: d2b1cce4bf70893f164e77921df8122e0291be18
-ms.sourcegitcommit: dd2a1542a4a377123490034153368c135fdbd09e
+ms.openlocfilehash: 6a645d0e5959b4301ee7d2bcfc692f7499574dc4
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85241021"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407319"
 ---
 # <a name="migrate-from-aspnet-mvc-to-aspnet-core-mvc"></a>從 ASP.NET MVC 移轉至 ASP.NET Core MVC
 
@@ -43,7 +45,7 @@ ms.locfileid: "85241021"
 
 1. 從 [檔案]**** 功能表選取 [新增]**[專案]** > ****。
 1. 選取 [ **ASP.NET Web 應用程式（.NET Framework）** ]，然後選取 **[下一步]**。
-1. 將專案命名為*WebApp1* ，使命名空間符合下一個步驟中建立的 ASP.NET Core 專案。 選取 [建立]。
+1. 將專案命名為*WebApp1* ，使命名空間符合下一個步驟中建立的 ASP.NET Core 專案。 選取 [建立]****。
 1. 選取 [ **MVC**]，然後選取 [**建立**]。
 
 ## <a name="create-the-aspnet-core-project"></a>建立 ASP.NET Core 專案
@@ -54,7 +56,7 @@ ms.locfileid: "85241021"
 1. 從 [檔案]**** 功能表選取 [新增]**[專案]** > ****。
 1. 選取 [ **ASP.NET Web Core Web 應用程式**]，然後選取 **[下一步]**。
 1. 在 [**設定您的新專案**] 對話方塊中，將專案命名為*WebApp1*。
-1. 將 [位置] 設定為與前一個專案不同的目錄，以使用相同的專案名稱。 使用相同的命名空間，可讓您更輕鬆地在這兩個專案之間複製程式碼。 選取 [建立]。
+1. 將 [位置] 設定為與前一個專案不同的目錄，以使用相同的專案名稱。 使用相同的命名空間，可讓您更輕鬆地在這兩個專案之間複製程式碼。 選取 [建立]****。
 1. 在 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中，確認已選取 [ **.net Core** ] 和 [ **ASP.NET Core 3.1** ]。 選取 [ **Web 應用程式（模型-視圖控制器）** ] 專案範本，然後選取 [**建立**]。
 
 ## <a name="configure-the-aspnet-core-site-to-use-mvc"></a>將 ASP.NET Core 網站設定為使用 MVC
@@ -72,7 +74,7 @@ ms.locfileid: "85241021"
 * 取代*global.asax*。
 * 處理所有應用程式啟動工作。
 
-如需詳細資訊，請參閱 <xref:fundamentals/startup>。
+如需詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
 在 ASP.NET Core 專案中，開啟*Startup.cs*檔案：
 
@@ -81,8 +83,8 @@ ms.locfileid: "85241021"
 ASP.NET Core 應用程式必須使用中介軟體加入宣告架構功能。 先前範本產生的程式碼會新增下列服務和中介軟體：
 
 * <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddControllersWithViews%2A>擴充方法會針對控制器、API 相關的功能和 views 註冊 MVC 服務支援。 如需 MVC 服務註冊選項的詳細資訊，請參閱[mvc 服務註冊](xref:migration/22-to-30#mvc-service-registration)
-* <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A>擴充方法會加入靜態檔案處理常式 `Microsoft.AspNetCore.StaticFiles` 。 `UseStaticFiles`必須先呼叫擴充方法 `UseRouting` 。 如需詳細資訊，請參閱 <xref:fundamentals/static-files>。
-* <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A>擴充方法會新增路由。 如需詳細資訊，請參閱 <xref:fundamentals/routing>。
+* <xref:Microsoft.AspNetCore.Builder.StaticFileExtensions.UseStaticFiles%2A>擴充方法會加入靜態檔案處理常式 `Microsoft.AspNetCore.StaticFiles` 。 `UseStaticFiles`必須先呼叫擴充方法 `UseRouting` 。 如需詳細資訊，請參閱 <xref:fundamentals/static-files> 。
+* <xref:Microsoft.AspNetCore.Builder.EndpointRoutingApplicationBuilderExtensions.UseRouting%2A>擴充方法會新增路由。 如需詳細資訊，請參閱 <xref:fundamentals/routing> 。
 
 此現有設定包含遷移範例 ASP.NET MVC 專案所需的功能。 如需 ASP.NET Core 中介軟體選項的詳細資訊，請參閱 <xref:fundamentals/startup> 。
 
@@ -177,7 +179,7 @@ ASP.NET Core 與數個開放原始碼的包裝和縮制解決方案（例如[Web
 
 ASP.NET Core 會將未處理的例外狀況轉換成 HTTP 500 錯誤回應。 一般來說，錯誤詳細資料不會包含在這些回應中，以防止洩漏伺服器的潛在敏感性資訊。 如需詳細資訊，請參閱[開發人員例外狀況頁面](xref:fundamentals/error-handling#developer-exception-page)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * <xref:migration/identity>
 

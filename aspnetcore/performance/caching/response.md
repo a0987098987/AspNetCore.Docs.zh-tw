@@ -7,17 +7,19 @@ ms.author: riande
 ms.date: 11/04/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 87ff2633ded612eba2c996583b4a6cf997fe8e18
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 25d6bdae0fce7821ec7b9195817dc07ef9aed40f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84105762"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408184"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -40,16 +42,16 @@ ms.locfileid: "84105762"
 | 指示詞                                                       | 動作 |
 | --------------------------------------------------------------- | ------ |
 | [public](https://tools.ietf.org/html/rfc7234#section-5.2.2.5)   | 快取可能會儲存回應。 |
-| [private](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | 回應不得由共用快取儲存。 私用快取可能會儲存並重複使用回應。 |
+| [私人](https://tools.ietf.org/html/rfc7234#section-5.2.2.6)  | 回應不得由共用快取儲存。 私用快取可能會儲存並重複使用回應。 |
 | [最大壽命](https://tools.ietf.org/html/rfc7234#section-5.2.1.1)  | 用戶端不接受其年齡大於指定秒數的回應。 範例： `max-age=60` （60秒）、 `max-age=2592000` （1個月） |
 | [no-cache](https://tools.ietf.org/html/rfc7234#section-5.2.1.4) | **在要求上**：快取不得使用預存回應來滿足要求。 源伺服器會重新產生用戶端的回應，中介軟體會在其快取中更新儲存的回應。<br><br>**回應時**：回應不得用於後續要求，而不需在源伺服器上進行驗證。 |
 | [否-存放區](https://tools.ietf.org/html/rfc7234#section-5.2.1.5) | **在要求上**：快取不得儲存要求。<br><br>**回應時**：快取不得儲存回應的任何部分。 |
 
 下表顯示在快取中扮演角色的其他快取標頭。
 
-| Header                                                     | 函式 |
+| 頁首                                                     | 函式 |
 | ---------------------------------------------------------- | -------- |
-| [存在](https://tools.ietf.org/html/rfc7234#section-5.1)     | 在源伺服器上產生或成功驗證回應後的時間量估計（以秒為單位）。 |
+| [Age](https://tools.ietf.org/html/rfc7234#section-5.1)     | 在源伺服器上產生或成功驗證回應後的時間量估計（以秒為單位）。 |
 | [失效](https://tools.ietf.org/html/rfc7234#section-5.3) | 回應被視為過時的時間。 |
 | [雜](https://tools.ietf.org/html/rfc7234#section-5.4)  | 存在於與 HTTP/1.0 快取的回溯相容性，以進行設定 `no-cache` 行為。 如果 `Cache-Control` 標頭存在，則 `Pragma` 會忽略標頭。 |
 | [相同](https://tools.ietf.org/html/rfc7231#section-7.1.4)  | 指定不應傳送快取的回應，除非所有 `Vary` 標頭欄位都符合快取回應的原始要求和新的要求。 |

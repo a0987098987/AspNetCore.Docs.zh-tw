@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 12/05/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: aspnetcore-2.2
-ms.openlocfilehash: 3b510c7f4788a59145ef16720276fc7e4560f07e
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: c2e23871866565a3f4ea0b0c72af5ec4fb770e6f
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82774141"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408704"
 ---
 # <a name="whats-new-in-aspnet-core-22"></a>ASP.NET Core 2.2 的新功能
 
@@ -35,7 +37,7 @@ OpenAPI (之前稱為 Swagger) 是用來描述 REST API 的語言無關規格。
 
 ## <a name="problem-details-support"></a>問題詳細資料支援
 
-ASP.NET Core 2.1 引進`ProblemDetails`的是以[RFC 7807](https://tools.ietf.org/html/rfc7807)規格為基礎，其使用 HTTP 回應來攜帶錯誤的詳細資料。 在 2.2 中，`ProblemDetails` 是對具有 `ApiControllerAttribute` 屬性之控制器中用戶端錯誤碼的標準回應。 傳回用戶端錯誤狀態碼 (4xx) 的 `IActionResult` 現在會傳回 `ProblemDetails` 主體。 結果中也會包含相互關聯識別碼，可用來透過要求記錄檔與錯誤相互關聯。 對於用戶端錯誤，`ProducesResponseType` 預設會使用 `ProblemDetails` 作為回應類型。 這會記載於使用 NSwag 或 Swashbuckle.AspNetCore 產生的 OpenAPI/Swagger 輸出中。
+ASP.NET Core 2.1 引進 `ProblemDetails` 的是以[RFC 7807](https://tools.ietf.org/html/rfc7807)規格為基礎，其使用 HTTP 回應來攜帶錯誤的詳細資料。 在 2.2 中，`ProblemDetails` 是對具有 `ApiControllerAttribute` 屬性之控制器中用戶端錯誤碼的標準回應。 傳回用戶端錯誤狀態碼 (4xx) 的 `IActionResult` 現在會傳回 `ProblemDetails` 主體。 結果中也會包含相互關聯識別碼，可用來透過要求記錄檔與錯誤相互關聯。 對於用戶端錯誤，`ProducesResponseType` 預設會使用 `ProblemDetails` 作為回應類型。 這會記載於使用 NSwag 或 Swashbuckle.AspNetCore 產生的 OpenAPI/Swagger 輸出中。
 
 ## <a name="endpoint-routing"></a>端點路由
 
@@ -87,7 +89,7 @@ HTTP/2 是 HTTP 通訊協定的主要版本。 值得注意的 HTTP/2 功能包�
 
 ## <a name="signalr-java-client"></a>SignalRJAVA 用戶端
 
-ASP.NET Core 2.2 引進的 JAVA 用戶端SignalR。 此用戶端支援從 JAVA 程式SignalR代碼連接到 ASP.NET Core 伺服器，包括 Android 應用程式。
+ASP.NET Core 2.2 引進的 JAVA 用戶端 SignalR 。 此用戶端支援 SignalR 從 JAVA 程式碼連接到 ASP.NET Core 伺服器，包括 Android 應用程式。
 
 如需詳細資訊，請參閱[ASP.NET Core SignalR JAVA 用戶端](https://docs.microsoft.com/aspnet/core/signalr/java-client?view=aspnetcore-2.2)。
 

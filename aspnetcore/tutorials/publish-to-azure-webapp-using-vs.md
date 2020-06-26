@@ -1,11 +1,25 @@
 ---
-標題： author： description： ms-chap： ms. custom： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
+author: rick-anderson
+description: 了解如何使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure App Service。
+ms.author: riande
+ms.custom: mvc
+ms.date: 07/10/2019
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: tutorials/publish-to-azure-webapp-using-vs
+ms.openlocfilehash: d805d57fd1e2d83d0148900993e4bf6108a13028
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408405"
 ---
 # <a name="publish-an-aspnet-core-app-to-azure-with-visual-studio"></a>使用 Visual Studio 將 ASP.NET Core 應用程式發行到 Azure
 
@@ -101,18 +115,18 @@ Visual Studio 會建立解決方案。
 [**建立 App Service** ] 對話方塊隨即出現：
 
 * 會填入 [應用程式名稱]****、[資源群組]**** 和 [App Service 方案]**** 輸入欄位。 您可以保留這些名稱，或變更它們。
-* 選取 [建立]  。
+* 選取 [建立]****。
 
 ![建立 App Service 對話方塊](publish-to-azure-webapp-using-vs/_static/newrg1.png)
 
 建立完成後，會自動關閉對話方塊，而且 [**發行**] 對話方塊會再次取得焦點：
 
 * 系統會自動選取剛建立的新實例。
-* 選取 [完成]  。
+* 選取 [完成]。
 
 ![發行對話方塊：選取 App Service 實例](publish-to-azure-webapp-using-vs/_static/select_as.png)
 
-接下來，您會看到 [**發行設定檔摘要**] 頁面。 Visual Studio 偵測到此應用程式需要 SQL Server 資料庫，而且它會要求您進行設定。 選取 [設定]  。
+接下來，您會看到 [**發行設定檔摘要**] 頁面。 Visual Studio 偵測到此應用程式需要 SQL Server 資料庫，而且它會要求您進行設定。 選取 [設定] 。
 
 ![發行設定檔摘要頁面：設定 SQL Server 相依性](publish-to-azure-webapp-using-vs/_static/sql.png)
 
@@ -131,7 +145,7 @@ Visual Studio 會建立解決方案。
 
 * [**資料庫名稱**]、[**資源群組**]、[**資料庫伺服器**] 和 [ **App Service 方案**專案] 欄位都會填入。 您可以保留這些值或加以變更。
 * 輸入所選**資料庫伺服器**的**資料庫管理員使用者名稱**和**資料庫系統管理員密碼**（請注意，您使用的帳戶必須具有建立新 Azure SQL 資料庫所需的許可權）
-* 選取 [建立]  。
+* 選取 [建立]****。
 
 ![新增 Azure SQL Database 對話方塊](publish-to-azure-webapp-using-vs/_static/sql_create.png)
 
@@ -145,7 +159,7 @@ Visual Studio 會建立解決方案。
 在 [**設定 Azure SQL Database** ] 對話方塊的下一個步驟中：
 
 * 輸入**資料庫連接的 [使用者名稱**] 和 [**資料庫連接密碼**] 欄位。 這些是您的應用程式將在執行時間用來連接到資料庫的詳細資料。 最佳做法是避免使用與上一個步驟中所使用的系統管理員使用者名稱 & 密碼相同的詳細資料。
-* 選取 [完成]  。
+* 選取 [完成]。
 
 ![設定 Azure SQL Database 對話方塊、連接字串詳細資料](publish-to-azure-webapp-using-vs/_static/sql_connection.png)
 
@@ -158,7 +172,7 @@ Visual Studio 會建立解決方案。
 * 展開 [資料庫]**** 並選取 [在執行階段使用此連接字串]****。
 * 展開 [ **Entity Framework 遷移**]，然後選取 [**在發行時套用此遷移**]。
 
-* 選取 [儲存]。 Visual Studio 會回到 [發行]**** 對話方塊。 
+* 選取 [儲存]****。 Visual Studio 會回到 [發行]**** 對話方塊。 
 
 ![[發行] 對話方塊：設定面板](publish-to-azure-webapp-using-vs/_static/pp_settings.png)
 

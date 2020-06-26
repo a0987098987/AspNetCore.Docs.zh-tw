@@ -1,11 +1,25 @@
 ---
-標題： author： description： monikerRange： ms. author： ms. date： no-loc：
-- 'Blazor'
-- 'Identity'
-- 'Let's Encrypt'
-- 'Razor'
-- ' SignalR ' uid： 
-
+title: 搭配 C# 的 gRPC 服務
+author: juntaoluo
+description: '瞭解使用 c # 撰寫 gRPC 服務時的基本概念。'
+monikerRange: '>= aspnetcore-3.0'
+ms.author: johluo
+ms.date: 07/03/2019
+no-loc:
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
+uid: grpc/basics
+ms.openlocfilehash: 08c755cf078fe71d09e8c7af2cc16f5c427495f1
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407287"
 ---
 # <a name="grpc-services-with-c"></a>使用 C gRPC 服務\#
 

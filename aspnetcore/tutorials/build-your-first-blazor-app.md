@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 05/19/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: tutorials/first-blazor-app
-ms.openlocfilehash: 892663a533a207df84b0fce9af259a7dc212bc9b
-ms.sourcegitcommit: 5e462c3328c70f95969d02adce9c71592049f54c
+ms.openlocfilehash: f791dae5915c87d4c36f23419961e3c53e888743
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85292772"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85409068"
 ---
 # <a name="build-your-first-blazor-app"></a>建立您的第一個 Blazor 應用程式
 
@@ -71,7 +73,7 @@ ms.locfileid: "85292772"
 
 1. 藉 `Counter` `Index` 由將 `<Counter />` 元素新增至 `Index` 元件（），將元件新增至應用程式的元件 `Index.razor` 。
 
-   如果您在 Blazor 此體驗中使用 WebAssembly， `SurveyPrompt` 元件會使用元件 `Index` 。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您使用 Blazor 伺服器應用程式來進行此體驗，請將 `<Counter />` 元素新增至 `Index` 元件：
+   如果您在使用 Blazor WebAssembly 此體驗時，元件 `SurveyPrompt` 會使用元件 `Index` 。 使用 `<Counter />` 元素取代 `<SurveyPrompt>` 元素。 如果您在 Blazor Server 此體驗中使用應用程式，請將 `<Counter />` 元素新增至 `Index` 元件：
 
    `Pages/Index.razor`:
 
@@ -111,9 +113,9 @@ ms.locfileid: "85292772"
 
 ## <a name="dependency-injection"></a>相依性插入
 
-### <a name="blazor-server-experience"></a>Blazor伺服器體驗
+### <a name="blazor-server-experience"></a>Blazor Server遇到
 
-如果使用 Blazor 伺服器應用程式， `WeatherForecastService` 服務會在中註冊為[單一實例](xref:fundamentals/dependency-injection#service-lifetimes) `Startup.ConfigureServices` 。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
+如果使用 Blazor Server 應用程式， `WeatherForecastService` 服務會在中註冊為[單一實例](xref:fundamentals/dependency-injection#service-lifetimes) `Startup.ConfigureServices` 。 服務的實例可透過相依性[插入（DI）](xref:fundamentals/dependency-injection)在整個應用程式中使用：
 
 [!code-csharp[](build-your-first-blazor-app/samples_snapshot/3.x/Startup.cs?highlight=5)]
 
@@ -127,7 +129,7 @@ ms.locfileid: "85292772"
 
 [!code-razor[](build-your-first-blazor-app/samples_snapshot/3.x/FetchData2.razor?highlight=6)]
 
-### <a name="blazor-webassembly-experience"></a>BlazorWebAssembly 體驗
+### <a name="blazor-webassembly-experience"></a>Blazor WebAssembly遇到
 
 如果使用 Blazor WebAssembly 應用程式， <xref:System.Net.Http.HttpClient> 則會插入以從資料夾中的檔案取得氣象預測資料 `weather.json` `wwwroot/sample-data` 。
 

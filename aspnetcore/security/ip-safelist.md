@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 03/12/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/ip-safelist
-ms.openlocfilehash: 7923a81e72124cfb0e11e3c1ac327c1e32194b21
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 5b74205bc7b17d61edbb73cf309f6e24e4318391
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776496"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85409003"
 ---
 # <a name="client-ip-safelist-for-aspnet-core"></a>ASP.NET Core 的用戶端 IP 安全
 
@@ -28,7 +30,7 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 * 中介軟體，以檢查每個要求的遠端 IP 位址。
 * MVC 動作篩選準則，以檢查特定控制器或動作方法的遠端 IP 位址要求。
-* Razor頁面篩選以檢查Razor頁面要求的遠端 IP 位址。
+* Razor頁面篩選以檢查頁面要求的遠端 IP 位址 Razor 。
 
 在每個案例中，包含已核准用戶端 IP 位址的字串會儲存在應用程式設定中。 中介軟體或篩選：
 
@@ -43,16 +45,16 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 在範例應用程式中，IP 位址的「安全」是：
 
-* 由 appsettings 中`AdminSafeList`的屬性所*appsettings.json*定義。
+* 由 `AdminSafeList` *appsettings.json*檔案中的屬性所定義。
 * 以分號分隔的字串，其中可能包含[網際網路通訊協定第4版（IPv4）](https://wikipedia.org/wiki/IPv4)和[網際網路通訊協定第6版（IPv6）](https://wikipedia.org/wiki/IPv6)位址。
 
 [!code-json[](ip-safelist/samples/3.x/ClientIpAspNetCore/appsettings.json?range=1-3&highlight=2)]
 
-在上述範例中， `127.0.0.1`允許和`192.168.1.5`的 IPv4 位址和的 IPv6 回送位址`::1` （的壓縮格式`0:0:0:0:0:0:0:1`）。
+在上述範例中，允許和的 IPv4 `127.0.0.1` 位址 `192.168.1.5` 和的 IPv6 回送位址 `::1` （的壓縮格式 `0:0:0:0:0:0:0:1` ）。
 
 ## <a name="middleware"></a>中介軟體
 
-`Startup.Configure`方法會將自訂`AdminSafeListMiddleware`中介軟體類型新增至應用程式的要求管線。 您可使用 .NET Core 設定提供者來抓取安全，並將其當做「函式參數」傳遞。
+`Startup.Configure`方法會將自訂 `AdminSafeListMiddleware` 中介軟體類型新增至應用程式的要求管線。 您可使用 .NET Core 設定提供者來抓取安全，並將其當做「函式參數」傳遞。
 
 [!code-csharp[](ip-safelist/samples/3.x/ClientIpAspNetCore/Startup.cs?name=snippet_ConfigureAddMiddleware)]
 
@@ -66,7 +68,7 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckActionFilter.cs?name=snippet_ClassOnly)]
 
-在`Startup.ConfigureServices`中，將動作篩選準則新增至 MVC 篩選集合。 在下列範例中，會`ClientIpCheckActionFilter`加入動作篩選準則。 「安全性記錄檔」和「主控台記錄器」實例會當做「函式參數」傳遞。
+在中 `Startup.ConfigureServices` ，將動作篩選準則新增至 MVC 篩選集合。 在下列範例中， `ClientIpCheckActionFilter` 會加入動作篩選準則。 「安全性記錄檔」和「主控台記錄器」實例會當做「函式參數」傳遞。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -84,9 +86,9 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 [!code-csharp[](ip-safelist/samples/3.x/ClientIpAspNetCore/Controllers/ValuesController.cs?name=snippet_ActionFilter&highlight=1)]
 
-在範例應用程式中，動作篩選準則會套用至控制器的`Get`動作方法。 當您藉由傳送來測試應用程式時：
+在範例應用程式中，動作篩選準則會套用至控制器的 `Get` 動作方法。 當您藉由傳送來測試應用程式時：
 
-* HTTP GET 要求， `[ServiceFilter]`屬性會驗證用戶端 IP 位址。 如果允許存取`Get`動作方法，則動作篩選和動作方法會產生下列主控台輸出的變化：
+* HTTP GET 要求，屬性會 `[ServiceFilter]` 驗證用戶端 IP 位址。 如果允許存取 `Get` 動作方法，則動作篩選和動作方法會產生下列主控台輸出的變化：
 
     ```
     dbug: ClientIpSafelistComponents.Filters.ClientIpCheckActionFilter[0]
@@ -95,15 +97,15 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
           successful HTTP GET    
     ```
 
-* GET 以外的`AdminSafeListMiddleware` HTTP 要求動詞，中介軟體會驗證用戶端 IP 位址。
+* GET 以外的 HTTP 要求動詞， `AdminSafeListMiddleware` 中介軟體會驗證用戶端 IP 位址。
 
 ## <a name="razor-pages-filter"></a>Razor頁面篩選
 
-如果您想要使用Razor網頁應用程式的 [以安全] 為導向Razor的存取控制，請使用 [頁面] 篩選準則。 例如：
+如果您想要使用網頁應用程式的 [以安全] 為導向的存取控制 Razor ，請使用 [ Razor 頁面] 篩選準則。 例如：
 
 [!code-csharp[](ip-safelist/samples/Shared/ClientIpSafelistComponents/Filters/ClientIpCheckPageFilter.cs?name=snippet_ClassOnly)]
 
-在`Startup.ConfigureServices`中，藉Razor由將頁面篩選新增至 MVC 篩選器集合來啟用它們。 在下列範例中， `ClientIpCheckPageFilter` Razor會加入頁面篩選。 「安全性記錄檔」和「主控台記錄器」實例會當做「函式參數」傳遞。
+在中 `Startup.ConfigureServices` ，藉 Razor 由將頁面篩選新增至 MVC 篩選器集合來啟用它們。 在下列範例中， `ClientIpCheckPageFilter` Razor 會加入頁面篩選。 「安全性記錄檔」和「主控台記錄器」實例會當做「函式參數」傳遞。
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -117,7 +119,7 @@ By [Damien Bowden](https://twitter.com/damien_bod)和[Tom 作者: dykstra](https
 
 ::: moniker-end
 
-要求範例應用程式的 [*索引* Razor ] 頁面時， Razor [頁面] 篩選準則會驗證用戶端 IP 位址。 此篩選會產生下列主控台輸出的變化：
+要求範例應用程式的 [*索引*] Razor 頁面時，[ Razor 頁面] 篩選準則會驗證用戶端 IP 位址。 此篩選會產生下列主控台輸出的變化：
 
 ```
 dbug: ClientIpSafelistComponents.Filters.ClientIpCheckPageFilter[0]

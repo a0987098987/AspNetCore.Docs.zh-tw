@@ -7,17 +7,19 @@ ms.author: johluo
 ms.date: 09/03/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: grpc/aspnetcore
-ms.openlocfilehash: fa38ec9f9cf882b1a62f74879b7d49706ee150ce
-ms.sourcegitcommit: cd73744bd75fdefb31d25ab906df237f07ee7a0a
+ms.openlocfilehash: 0d05a6dcaf6677e71181d522a9f501051ec34f9d
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84452378"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407547"
 ---
 # <a name="grpc-services-with-aspnet-core"></a>搭配 ASP.NET Core 的 gRPC 服務
 
@@ -88,7 +90,7 @@ Kestrel 支援大多數新式作業系統上的[HTTP/2](xref:fundamentals/server
 
 用於 gRPC 的 Kestrel 端點應使用 TLS 來保護。 在開發期間，會在 `https://localhost:5001` ASP.NET Core 開發憑證存在時，自動建立以 TLS 保護的端點。 不需要組態。 `https`前置詞會驗證 Kestrel 端點是否使用 TLS。
 
-在生產環境中，必須明確設定 TLS。 在下列*appsettings*範例中，會提供使用 TLS 保護的 HTTP/2 端點：
+在生產環境中，必須明確設定 TLS。 在下列*appsettings.js*範例中，會提供使用 TLS 保護的 HTTP/2 端點：
 
 [!code-json[](~/grpc/aspnetcore/sample/appsettings.json?highlight=4)]
 

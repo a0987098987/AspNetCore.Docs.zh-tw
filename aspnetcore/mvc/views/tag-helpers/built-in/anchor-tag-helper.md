@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 10/13/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-ms.openlocfilehash: 142ad62bbbc25fc5390331b253a6173f064ef162
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: af0f07a0f50a79f25b6a14459402f9dd8b59dae2
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82773961"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408249"
 ---
 # <a name="anchor-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的錨點標籤協助程式
 
@@ -145,7 +147,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 [asp-all-route-data](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.RouteValues*) 屬性支援建立機碼值組的字典。 機碼為參數名稱，值則為參數值。
 
-在下列範例中，會初始化字典，並將其傳遞Razor給視圖。 或者，您也可以使用自己的模型來傳遞資料。
+在下列範例中，會初始化字典，並將其傳遞給 Razor 視圖。 或者，您也可以使用自己的模型來傳遞資料。
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAllRouteData)]
 
@@ -179,7 +181,7 @@ MVC 檢視會使用動作提供的模型，如下所示：
 
 [asp-area](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Area*) 屬性設定區域名稱，用以設定合適的路由。 下列範例描述了 `asp-area` 屬性如何造成路由重新對應。
 
-#### <a name="usage-in-razor-pages"></a>頁面中Razor的使用方式
+#### <a name="usage-in-razor-pages"></a>頁面中的使用方式 Razor
 
 RazorASP.NET Core 2.1 或更新版本中支援頁面區域。
 
@@ -195,7 +197,7 @@ RazorASP.NET Core 2.1 或更新版本中支援頁面區域。
         * *Index.cshtml.cs*
   * **頁面**
 
-參考 [*會話*] 區域*索引* Razor頁面的標記為：
+參考 [*會話*] 區域*索引*頁面的標記 Razor 為：
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspAreaRazorPages)]
 
@@ -206,7 +208,7 @@ RazorASP.NET Core 2.1 或更新版本中支援頁面區域。
 ```
 
 > [!TIP]
-> 若要支援Razor頁面應用程式中的區域，請在中`Startup.ConfigureServices`執行下列其中一項：
+> 若要支援 Razor 頁面應用程式中的區域，請在中執行下列其中一項 `Startup.ConfigureServices` ：
 >
 > * 將[相容性版本](xref:mvc/compatibility-version) 設定為 2.1 或更新版本。
 > * 將 [RazorPagesOptions.AllowAreas](xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.AllowAreas*) 屬性設定為 `true`：
@@ -221,14 +223,14 @@ RazorASP.NET Core 2.1 或更新版本中支援頁面區域。
   * **wwwroot**
   * **區域**
     * **部落格**
-      * **Controllers**
+      * **控制器**
         * *HomeController.cs*
       * **檢視**
         * **首頁**
           * *AboutBlog.cshtml*
           * *Index.cshtml*
         * *\_ViewStart. cshtml*
-  * **Controllers**
+  * **控制器**
 
 將 `asp-area` 設定為 "Blogs" 會在 此錨點標籤之相關控制器和檢視的路由前面加上目錄 *Areas/Blogs*。 要參考 *AboutBlog* 檢視的標記如下：
 
@@ -273,9 +275,9 @@ RazorASP.NET Core 2.1 或更新版本中支援頁面區域。
 
 ### <a name="asp-page"></a>asp-page
 
-[ [Asp 頁面](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*)] 屬性會與Razor頁面搭配使用。 您可用其將錨點標籤的 `href` 屬性值設定為特定頁面。 在頁面名稱的開頭加上正斜線 ("/") 即可建立 URL。
+[ [Asp 頁面](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.Page*)] 屬性會與頁面搭配使用 Razor 。 您可用其將錨點標籤的 `href` 屬性值設定為特定頁面。 在頁面名稱的開頭加上正斜線 ("/") 即可建立 URL。
 
-下列範例會指向 [出席Razor者] 頁面：
+下列範例會指向 [出席者] Razor 頁面：
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Views/Home/Index.cshtml?name=snippet_AspPage)]
 
@@ -297,7 +299,7 @@ RazorASP.NET Core 2.1 或更新版本中支援頁面區域。
 
 ### <a name="asp-page-handler"></a>asp-page-handler
 
-[Asp 頁面處理常式](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*)屬性會與Razor頁面搭配使用。 其用途為建立特定頁面處理常式的連結。
+[Asp 頁面處理常式](xref:Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper.PageHandler*)屬性會與頁面搭配使用 Razor 。 其用途為建立特定頁面處理常式的連結。
 
 請考慮下列頁面處理常式：
 

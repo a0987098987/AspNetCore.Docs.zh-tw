@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 03/28/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/docker-compose-https
-ms.openlocfilehash: 533d86fb17e3c89fdca59685b090645a11ba5473
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: b282af3b9c657bda4432f0d60f100f65fa7cbae9
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775137"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408613"
 ---
 # <a name="hosting-aspnet-core-images-with-docker-compose-over-https"></a>透過 HTTPS Docker Compose 裝載 ASP.NET Core 映射
 
@@ -31,7 +33,7 @@ ASP.NET Core 預設會使用[HTTPS](/aspnet/core/security/enforcing-ssl)。 [HTT
 
 此範例需要 docker [17.06](https://docs.docker.com/release-notes/docker-ce)或更新版本的[docker 用戶端](https://www.docker.com/products/docker)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本檔中的部分指示需要[.Net Core 2.2 SDK](https://dotnet.microsoft.com/download)或更新版本。
 
@@ -39,14 +41,14 @@ ASP.NET Core 預設會使用[HTTPS](/aspnet/core/security/enforcing-ssl)。 [HTT
 
 需要[憑證授權單位](https://wikipedia.org/wiki/Certificate_authority)單位的憑證，才能針對網域進行[生產環境裝載](https://blogs.msdn.microsoft.com/webdev/2017/11/29/configuring-https-in-asp-net-core-across-different-platforms/)。 [Let's Encrypt](https://letsencrypt.org/)是提供免費憑證的憑證授權單位單位。
 
-本檔使用[自我簽署的開發憑證](https://wikipedia.org/wiki/Self-signed_certificate)來裝載預先建立的映射`localhost`。 這些指示與使用生產憑證類似。
+本檔使用[自我簽署的開發憑證](https://wikipedia.org/wiki/Self-signed_certificate)來裝載預先建立的映射 `localhost` 。 這些指示與使用生產憑證類似。
 
 針對生產環境憑證：
 
-* 不`dotnet dev-certs`需要此工具。
+* `dotnet dev-certs`不需要此工具。
 * 憑證不需要儲存在指示所使用的位置。 將憑證儲存在網站目錄以外的任何位置。
 
-下列區段中所包含的指示會使用*docker-compose.dev.debug.yml. yml*中的`volumes`屬性，將憑證掛接到容器中。 您可以使用`COPY` *Dockerfile*中的命令將憑證新增至容器映射，但不建議這麼做。 基於下列原因，不建議將憑證複製到映射：
+下列區段中所包含的指示會使用 `volumes` *docker-compose.dev.debug.yml. yml*中的屬性，將憑證掛接到容器中。 您可以使用 Dockerfile 中的命令將憑證新增至容器映射 `COPY` ，但不建議這麼做。 *Dockerfile* 基於下列原因，不建議將憑證複製到映射：
 
 * 這會讓您難以使用相同的映射來測試開發人員憑證。
 * 這會讓使用相同的映射來裝載生產憑證變得很容易。
@@ -65,7 +67,7 @@ dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p { passwo
 dotnet dev-certs https --trust
 ```
 
-在上述命令中，將`{ password here }`取代為密碼。
+在上述命令中， `{ password here }` 將取代為密碼。
 
 建立包含下列內容的_docker-compose.dev.debug.yml yml_檔案：
 
@@ -105,7 +107,7 @@ dotnet dev-certs https --trust
 
 `dotnet dev-certs https --trust`只有在 macOS 和 Windows 上才支援。 您必須以散發版本支援的方式信任 Linux 上的憑證。 您很可能需要信任您瀏覽器中的憑證。
 
-在上述命令中，將`{ password here }`取代為密碼。
+在上述命令中， `{ password here }` 將取代為密碼。
 
 建立包含下列內容的_docker-compose.dev.debug.yml yml_檔案：
 
@@ -143,7 +145,7 @@ dotnet dev-certs https -ep %USERPROFILE%\.aspnet\https\aspnetapp.pfx -p { passwo
 dotnet dev-certs https --trust
 ```
 
-在上述命令中，將`{ password here }`取代為密碼。
+在上述命令中， `{ password here }` 將取代為密碼。
 
 建立包含下列內容的_docker-compose.dev.debug.yml yml_檔案：
 

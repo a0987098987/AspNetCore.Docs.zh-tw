@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 08/16/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: fundamentals/url-rewriting
-ms.openlocfilehash: e43cd5055737feaef451d27b651c1d301c1f93d2
-ms.sourcegitcommit: 6a71b560d897e13ad5b61d07afe4fcb57f8ef6dc
+ms.openlocfilehash: c41ba2e067c8dc978b1359db548733c5f8890a2b
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84105944"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408379"
 ---
 # <a name="url-rewriting-middleware-in-aspnet-core"></a>ASP.NET Core 的 URL 重寫中介軟體
 
@@ -92,7 +94,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
   如果要確實得知哪種方法會降低最多效能，或是降低的效能可以忽略的話，進行效能評定是唯一方法。
 
-## <a name="package"></a>Package
+## <a name="package"></a>套件
 
 URL 重寫中介軟體由 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite) 套件所提供，其會以隱含方式包含在 ASP.NET Core 應用程式中。
 
@@ -192,7 +194,7 @@ public void Configure(IApplicationBuilder app)
 
 在先前的重新導向規則範例 `redirect-rule/(.*)` 中，Regex 的開頭沒有插入號 (`^`)。 因此，就算 `redirect-rule/` 前有任何字元也能成功比對。
 
-| 路徑                               | 比對 |
+| 路徑                               | 相符項目 |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | 是   |
 | `/my-cool-redirect-rule/1234/5678` | 是   |
@@ -200,7 +202,7 @@ public void Configure(IApplicationBuilder app)
 
 `^rewrite-rule/(\d+)/(\d+)` 重寫規則只會比對開頭為 `rewrite-rule/` 的路徑。 請注意下表中的比對差異。
 
-| 路徑                              | 比對 |
+| 路徑                              | 相符項目 |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | 是   |
 | `/my-cool-rewrite-rule/1234/5678` | 否    |
@@ -444,7 +446,7 @@ URL 重寫是指根據一或多個預先定義的規則來修改要求 URL 的�
 
   如果要確實得知哪種方法會降低最多效能，或是降低的效能可以忽略的話，進行效能評定是唯一方法。
 
-## <a name="package"></a>Package
+## <a name="package"></a>套件
 
 若要在您的專案中包含中介軟體，請在包含 [Microsoft.AspNetCore.Rewrite](https://www.nuget.org/packages/Microsoft.AspNetCore.Rewrite) 套件的專案檔中，將套件參考新增至 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)。
 
@@ -546,7 +548,7 @@ public void Configure(IApplicationBuilder app)
 
 在先前的重新導向規則範例 `redirect-rule/(.*)` 中，Regex 的開頭沒有插入號 (`^`)。 因此，就算 `redirect-rule/` 前有任何字元也能成功比對。
 
-| 路徑                               | 比對 |
+| 路徑                               | 相符項目 |
 | ---------------------------------- | :---: |
 | `/redirect-rule/1234/5678`         | 是   |
 | `/my-cool-redirect-rule/1234/5678` | 是   |
@@ -554,7 +556,7 @@ public void Configure(IApplicationBuilder app)
 
 `^rewrite-rule/(\d+)/(\d+)` 重寫規則只會比對開頭為 `rewrite-rule/` 的路徑。 請注意下表中的比對差異。
 
-| 路徑                              | 比對 |
+| 路徑                              | 相符項目 |
 | --------------------------------- | :---: |
 | `/rewrite-rule/1234/5678`         | 是   |
 | `/my-cool-rewrite-rule/1234/5678` | 否    |

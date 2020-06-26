@@ -1,32 +1,34 @@
 ---
 title: 設定 ASP.NET CoreIdentity
 author: AdrienTorris
-description: 瞭解 ASP.NET Core Identity預設值，並瞭解如何設定Identity屬性以使用自訂值。
+description: 瞭解 ASP.NET Core Identity 預設值，並瞭解如何設定 Identity 屬性以使用自訂值。
 ms.author: riande
 ms.date: 02/11/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: b88f2627eabc536f2d3b8e677020a67bfd1a40ba
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: 95c19b671602b45ba217dcb551110854cbbee359
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775644"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408964"
 ---
-# <a name="configure-aspnet-core-identity"></a>設定 ASP.NET Core 身分識別
+# <a name="configure-aspnet-core-identity"></a>設定 ASP.NET CoreIdentity
 
-ASP.NET Core 身分識別會使用設定的預設值，例如密碼原則、鎖定和 cookie 設定。 這些設定可以在`Startup`類別中覆寫。
+ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定的預設值。 這些設定可以在類別中覆寫 `Startup` 。
 
-## <a name="identity-options"></a>身分識別選項
+## <a name="identity-options"></a>Identity選項
 
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)類別代表可以用來設定身分識別系統的選項。 `IdentityOptions`呼叫`AddIdentity`或`AddDefaultIdentity`**之後**，必須設定。
+[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)類別代表可以用來設定系統的選項 Identity 。 `IdentityOptions`呼叫或**之後**，必須 `AddIdentity` 設定 `AddDefaultIdentity` 。
 
-### <a name="claims-identity"></a>宣告身分識別
+### <a name="claims-identity"></a>退款Identity
 
 [IdentityOptions. ClaimsIdentity](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity)會使用下表所示的屬性來指定[ClaimsIdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) 。
 
@@ -43,9 +45,9 @@ ASP.NET Core 身分識別會使用設定的預設值，例如密碼原則、鎖�
 
 [!code-csharp[](identity-configuration/sample/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
 
-上述程式碼是以身分`Login`識別範本為基礎。 
+上述程式碼是以範本為基礎 `Login` Identity 。 
 
-鎖定選項設定于`StartUp.ConfigureServices`：
+鎖定選項設定于 `StartUp.ConfigureServices` ：
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_lock)]
 
@@ -63,7 +65,7 @@ ASP.NET Core 身分識別會使用設定的預設值，例如密碼原則、鎖�
 
 ### <a name="password"></a>密碼
 
-根據預設，身分識別需要密碼包含大寫字元、小寫字元、數位和非英數位元。 密碼長度至少必須為6個字元。 [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions)可以在中`Startup.ConfigureServices`設定。
+根據預設， Identity 密碼必須包含大寫字元、小寫字元、數位和非英數位元。 密碼長度至少必須為6個字元。 [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions)可以在中設定 `Startup.ConfigureServices` 。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -112,7 +114,7 @@ ASP.NET Core 身分識別會使用設定的預設值，例如密碼原則、鎖�
 
 ### <a name="sign-in"></a>登入
 
-下列程式碼會`SignIn`設定設定（預設值）：
+下列程式碼會設定 `SignIn` 設定（預設值）：
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -139,11 +141,11 @@ ASP.NET Core 身分識別會使用設定的預設值，例如密碼原則、鎖�
 
 |                                                        屬性                                                         |                                                                                      說明                                                                                      |
 |-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider)     |                                       取得或設定， `AuthenticatorTokenProvider`用來驗證驗證器的雙因素登入。                                       |
-|       [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider)       |                                     取得或設定， `ChangeEmailTokenProvider`用來產生電子郵件變更確認電子郵件中使用的權杖。                                     |
-| [ChangePhoneNumberTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changephonenumbertokenprovider) |                                      取得或設定， `ChangePhoneNumberTokenProvider`用來產生變更電話號碼時使用的權杖。                                      |
+|     [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider)     |                                       取得或設定，用 `AuthenticatorTokenProvider` 來驗證驗證器的雙因素登入。                                       |
+|       [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider)       |                                     取得或設定， `ChangeEmailTokenProvider` 用來產生電子郵件變更確認電子郵件中使用的權杖。                                     |
+| [ChangePhoneNumberTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changephonenumbertokenprovider) |                                      取得或設定， `ChangePhoneNumberTokenProvider` 用來產生變更電話號碼時使用的權杖。                                      |
 | [EmailConfirmationTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.emailconfirmationtokenprovider) |                                             取得或設定權杖提供者，用來產生帳戶確認電子郵件中使用的權杖。                                              |
-|     [PasswordResetTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.passwordresettokenprovider)     | 取得或設定[\<IUserTwoFactorTokenProvider TUser>](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactortokenprovider-1)用來產生密碼重設電子郵件中使用的權杖。 |
+|     [PasswordResetTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.passwordresettokenprovider)     | 取得或設定用來產生密碼重設電子郵件中使用之權杖的[IUserTwoFactorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactortokenprovider-1) 。 |
 |                    [ProviderMap](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.providermap)                    |                用來以用來作為提供者名稱的金鑰來建立[使用者權杖提供者](/dotnet/api/microsoft.aspnetcore.identity.tokenproviderdescriptor)。                 |
 
 ### <a name="user"></a>User
@@ -159,7 +161,7 @@ ASP.NET Core 身分識別會使用設定的預設值，例如密碼原則、鎖�
 
 ### <a name="cookie-settings"></a>Cookie 設定
 
-在中`Startup.ConfigureServices`設定應用程式的 cookie。 呼叫`AddIdentity`或`AddDefaultIdentity`**之後**，必須呼叫[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) 。
+在中設定應用程式的 cookie `Startup.ConfigureServices` 。 呼叫或**之後**，必須呼叫[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) `AddIdentity` `AddDefaultIdentity` 。
 
 ::: moniker range=">= aspnetcore-2.1"
 
@@ -187,10 +189,10 @@ ASP.NET Core 身分識別會使用設定的預設值，例如密碼原則、鎖�
 
 | 選項 | 描述 |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | 雜湊新密碼時所使用的相容性模式。 預設為 <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>。 雜湊密碼的第一個位元組（稱為*格式標記*）會指定用來雜湊密碼的雜湊演算法版本。 根據雜湊來驗證密碼時， <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*>方法會根據第一個位元組來選取正確的演算法。 無論使用哪一個演算法版本來雜湊密碼，用戶端都可以進行驗證。 設定相容性模式會影響*新密碼*的雜湊。 |
-| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | 使用 PBKDF2 來對密碼進行雜湊處理時所使用的反覆運算次數。 只有當設定為<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>時，才會使用這個值。 值必須是正整數，且預設值為`10000`。 |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | 雜湊新密碼時所使用的相容性模式。 預設為 <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>。 雜湊密碼的第一個位元組（稱為*格式標記*）會指定用來雜湊密碼的雜湊演算法版本。 根據雜湊來驗證密碼時，方法會根據 <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> 第一個位元組來選取正確的演算法。 無論使用哪一個演算法版本來雜湊密碼，用戶端都可以進行驗證。 設定相容性模式會影響*新密碼*的雜湊。 |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | 使用 PBKDF2 來對密碼進行雜湊處理時所使用的反覆運算次數。 只有當設定為時，才會使用這個值 <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3> 。 值必須是正整數，且預設值為 `10000` 。 |
 
-在下列範例中，會<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount>設定為`12000`中`Startup.ConfigureServices`的：
+在下列範例中， <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> 會設定為 `12000` 中的 `Startup.ConfigureServices` ：
 
 ```csharp
 // using Microsoft.AspNetCore.Identity;

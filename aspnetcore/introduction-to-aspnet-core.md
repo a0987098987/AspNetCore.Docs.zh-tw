@@ -7,17 +7,19 @@ ms.custom: mvc
 ms.date: 04/17/2020
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: 7f46051193681ecac59428b77ca1e36830c7bb63
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: f58c25ec8b47b2bd8d425d0bfd0d52df9bbc2655
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82776332"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85408197"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -43,16 +45,16 @@ ASP.NET Core 是一種跨平臺、高效能、[開放原始](https://github.com/
 ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/first-web-api) 和 [Web 應用程式](xref:tutorials/razor-pages/index)的功能：
 
 * [模型檢視控制器 (MVC) 模式](xref:mvc/overview)有助於讓您的 Web API 和 Web 應用程式可測試。
-* [Razor Pages](xref:razor-pages/index)是以頁面為基礎的程式設計模型，可讓建立 web UI 變得更容易且更具生產力。
-* [Razor 標記](xref:mvc/views/razor)提供了適用於 [Razor 頁面](xref:razor-pages/index)和 [MVC 檢視](xref:mvc/views/overview)的高效率語法。
-* [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。
+* [ Razor 頁面](xref:razor-pages/index)是以頁面為基礎的程式設計模型，可讓建立 web UI 變得更容易且更具生產力。
+* [ Razor 標記](xref:mvc/views/razor)可為[ Razor 頁面](xref:razor-pages/index)和[MVC 視圖](xref:mvc/views/overview)提供高生產力的語法。
+* [標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中的 HTML 元素 Razor 。
 * [多個資料格式和內容交涉](xref:web-api/advanced/formatting)的內建支援可讓您的 Web API 連線到各種用戶端，包括瀏覽器和行動裝置。
 * [模型繫結](xref:mvc/models/model-binding)會自動將 HTTP 要求中的資料對應至動作方法參數。
 * [模型驗證](xref:mvc/models/validation)會自動執行用戶端和伺服器端驗證。
 
 ## <a name="client-side-development"></a>用戶端開發
 
-ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Blazor](xref:blazor/index)、[Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](https://getbootstrap.com/)。 如需詳細資訊，請參閱 <xref:blazor/index> 及*用戶端開發*下的相關主題。
+ASP.NET Core 與熱門的用戶端架構和程式庫緊密整合，包括 [Blazor](xref:blazor/index) 、[角度](xref:spa/angular)、[反應](xref:spa/react)和[啟動](https://getbootstrap.com/)程式。 如需詳細資訊，請參閱 <xref:blazor/index> 及*用戶端開發*下的相關主題。
 
 <a name="target-framework"></a>
 
@@ -76,18 +78,18 @@ ASP.NET Core 3.x 和更新版本只能以 .NET Core 為目標。 一般來說，
 
    |應用程式類型  |狀況  |教學課程  |
    |----------|----------|----------|
-   |Web 應用程式                   | 新的伺服器端 web UI 開發 |[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
+   |Web 應用程式                   | 新的伺服器端 web UI 開發 |[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start) |
    |Web 應用程式                   | 維護 MVC 應用程式 |[開始使用 MVC](xref:tutorials/first-mvc-app/start-mvc)|
-   |Web 應用程式                   | 用戶端 web UI 開發 |[開始使用 Blazor](xref:tutorials/first-blazor-app) |
+   |Web 應用程式                   | 用戶端 web UI 開發 |[開始使用Blazor](xref:tutorials/first-blazor-app) |
    |Web API                   | RESTful HTTP 服務 |[建立 Web API](xref:tutorials/first-web-api)&dagger; |
    |遠端程序呼叫應用程式 | 使用通訊協定緩衝區的合約優先服務 |[開始使用 gRPC 服務](xref:tutorials/grpc/grpc-start) |
-   |即時應用程式             | 伺服器和連線用戶端之間的雙向通訊 |[開始使用 SignalR](xref:tutorials/signalr) |
+   |即時應用程式             | 伺服器和連線用戶端之間的雙向通訊 |[開始使用SignalR](xref:tutorials/signalr) |
 
 1. 遵循示範如何執行基本資料存取的教學課程。
 
    |狀況  |教學課程  |
    |----------|----------|
-   |新開發        |[搭配 Entity Framework Core 的 Razor 頁面](xref:data/ef-rp/intro) |
+   |新開發        |[Razor具有 Entity Framework Core 的頁面](xref:data/ef-rp/intro) |
    |維護 MVC 應用程式 |[搭配 Entity Framework Core 的 MVC](xref:data/ef-mvc/intro) |
 
 1. 閱讀適用于所有應用程式類型之 ASP.NET Core[基本](xref:fundamentals/index)概念的總覽。
@@ -98,7 +100,7 @@ ASP.NET Core 3.x 和更新版本只能以 .NET Core 為目標。 一般來說，
 
 ## <a name="migrate-from-net-framework"></a>從 .NET Framework 遷移
 
-如需將 ASP.NET 4.x 應用程式遷移至 ASP.NET Core 的參考指南，請<xref:migration/proper-to-2x/index>參閱。
+如需將 ASP.NET 4.x 應用程式遷移至 ASP.NET Core 的參考指南，請參閱 <xref:migration/proper-to-2x/index> 。
 
 ::: moniker-end
 
@@ -122,16 +124,16 @@ ASP.NET Core 是一種跨平臺、高效能、[開放原始](https://github.com/
 ASP.NET Core MVC 提供了建置 [Web API](xref:tutorials/first-web-api) 和 [Web 應用程式](xref:tutorials/razor-pages/index)的功能：
 
 * [模型檢視控制器 (MVC) 模式](xref:mvc/overview)有助於讓您的 Web API 和 Web 應用程式可測試。
-* [Razor Pages](xref:razor-pages/index)是以頁面為基礎的程式設計模型，可讓建立 web UI 變得更容易且更具生產力。
-* [Razor 標記](xref:mvc/views/razor)提供了適用於 [Razor 頁面](xref:razor-pages/index)和 [MVC 檢視](xref:mvc/views/overview)的高效率語法。
-* [標記協助程式](xref:mvc/views/tag-helpers/intro)可啟用伺服器端程式碼，以參與建立和轉譯 Razor 檔案中的 HTML 元素。
+* [ Razor 頁面](xref:razor-pages/index)是以頁面為基礎的程式設計模型，可讓建立 web UI 變得更容易且更具生產力。
+* [ Razor 標記](xref:mvc/views/razor)可為[ Razor 頁面](xref:razor-pages/index)和[MVC 視圖](xref:mvc/views/overview)提供高生產力的語法。
+* [標記](xref:mvc/views/tag-helpers/intro)協助程式可讓伺服器端程式碼參與建立和轉譯檔案中的 HTML 元素 Razor 。
 * [多個資料格式和內容交涉](xref:web-api/advanced/formatting)的內建支援可讓您的 Web API 連線到各種用戶端，包括瀏覽器和行動裝置。
 * [模型繫結](xref:mvc/models/model-binding)會自動將 HTTP 要求中的資料對應至動作方法參數。
 * [模型驗證](xref:mvc/models/validation)會自動執行用戶端和伺服器端驗證。
 
 ## <a name="client-side-development"></a>用戶端開發
 
-ASP.NET Core 可完美整合常用的用戶端架構和程式庫，包括 [Blazor](xref:blazor/index)、[Angular](xref:spa/angular)、[React](xref:spa/react) 與 [Bootstrap](https://getbootstrap.com/)。 如需詳細資訊，請參閱 <xref:blazor/index> 及*用戶端開發*下的相關主題。
+ASP.NET Core 與熱門的用戶端架構和程式庫緊密整合，包括 [Blazor](xref:blazor/index) 、[角度](xref:spa/angular)、[反應](xref:spa/react)和[啟動](https://getbootstrap.com/)程式。 如需詳細資訊，請參閱 <xref:blazor/index> 及*用戶端開發*下的相關主題。
 
 <a name="target-framework"></a>
 
@@ -164,10 +166,10 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
    |應用程式類型  |狀況  |教學課程  |
    |----------|----------|----------|
-   |Web 應用程式                   | 針對全新開發        |[開始使用 Razor Pages](xref:tutorials/razor-pages/razor-pages-start) |
+   |Web 應用程式                   | 針對全新開發        |[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start) |
    |Web 應用程式                   | 針對維護 MVC 應用程式 |[開始使用 MVC](xref:tutorials/first-mvc-app/start-mvc)|
    |Web API                   |                            |[建立 Web API](xref:tutorials/first-web-api)&dagger; |
-   |即時應用程式             |                            |[開始使用 SignalR](xref:tutorials/signalr) |
+   |即時應用程式             |                            |[開始使用SignalR](xref:tutorials/signalr) |
 
 1. 遵循示範如何執行基本資料存取的教學課程。
 
@@ -184,7 +186,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
 ## <a name="migrate-from-net-framework"></a>從 .NET Framework 遷移
 
-如需將 ASP.NET 應用程式遷移至 ASP.NET Core 的參考指南<xref:migration/proper-to-2x/index>，請參閱。
+如需將 ASP.NET 應用程式遷移至 ASP.NET Core 的參考指南，請參閱 <xref:migration/proper-to-2x/index> 。
 
 ::: moniker-end
 
@@ -198,7 +200,7 @@ ASP.NET Core 3.0 及更新版本只可在.NET Core 上執行。 如需此變更�
 
 ### <a name="preprocessor-directives-in-sample-code"></a>範例程式碼中的前置處理器指示詞
 
-為了示範多個案例，範例應用程式`#define`會`#if-#else/#elif-#endif`使用和預處理器指示詞，選擇性地編譯和執行範例程式碼的不同區段。 針對使用這種方法的範例，請在 c # `#define`檔案頂端設定指示詞，以定義與您要執行之情節相關聯的符號。 有些範例需要在多個檔案的頂端定義符號，才能執行案例。
+為了示範多個案例，範例應用程式會使用 `#define` 和預處理器指示詞， `#if-#else/#elif-#endif` 選擇性地編譯和執行範例程式碼的不同區段。 針對使用這種方法的範例，請在 c # 檔案頂端設定指示詞， `#define` 以定義與您要執行之情節相關聯的符號。 有些範例需要在多個檔案的頂端定義符號，才能執行案例。
 
 例如下列 `#define` 符號清單指出其提供四個情節 (每個符號一個情節)。 目前的範例設定會執行 `TemplateCode` 情節：
 
@@ -236,7 +238,7 @@ Host.CreateDefaultBuilder(args)
 [!code-csharp[](sample/SampleApp/Program.cs?name=snippet_WebHostDefaults)]
 ```
 
-您可以放心地忽略（或移除） `#region`程式`#endregion`代碼周圍的和指示詞。 如果您打算執行主題中所述的範例案例，請不要更改這些指示詞內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
+您可以放心地忽略（或移除） `#region` `#endregion` 程式碼周圍的和指示詞。 如果您打算執行主題中所述的範例案例，請不要更改這些指示詞內的程式碼。 您可以在試驗其他案例時自由改變程式碼。
 
 如需詳細資訊，請參閱 [Contribute to the ASP.NET documentation: Code snippets](https://github.com/dotnet/AspNetCore.Docs/blob/master/CONTRIBUTING.md#code-snippets) (參與 ASP.NET 文件：程式碼片段)。
 

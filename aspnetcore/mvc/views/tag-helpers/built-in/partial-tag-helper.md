@@ -8,17 +8,19 @@ ms.custom: mvc
 ms.date: 04/06/2019
 no-loc:
 - Blazor
+- Blazor Server
+- Blazor WebAssembly
 - Identity
 - Let's Encrypt
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/partial-tag-helper
-ms.openlocfilehash: d3207969dfbeb9a81e0da88f38a38c6889bbfba9
-ms.sourcegitcommit: 70e5f982c218db82aa54aa8b8d96b377cfc7283f
+ms.openlocfilehash: d92707ff06125a4b65f1ec18e402f5fe86547b5e
+ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82775865"
+ms.lasthandoff: 06/26/2020
+ms.locfileid: "85407911"
 ---
 # <a name="partial-tag-helper-in-aspnet-core"></a>ASP.NET Core 的部分標記協助程式
 
@@ -30,7 +32,7 @@ ms.locfileid: "82775865"
 
 ## <a name="overview"></a>概觀
 
-部分標記協助程式用於呈現頁面和 MVC 應用程式中Razor的[部分視圖](xref:mvc/views/partial)。 請考慮它：
+部分標記協助程式用於呈現頁面和 MVC 應用程式中的[部分視圖](xref:mvc/views/partial) Razor 。 請考慮它：
 
 * 需要 ASP.NET Core 2.1 或更新版本。
 * 是 [HTML 協助程式語法](xref:mvc/views/partial#reference-a-partial-view)的替代方法。
@@ -49,7 +51,7 @@ ms.locfileid: "82775865"
 
 部分標記協助程式屬性的清查如下。
 
-## <a name="name"></a>name
+## <a name="name"></a>NAME
 
 `name` 屬性 (Attribute) 是必要項。 它會指出要呈現之部分檢視的名稱或路徑。 當提供部分檢視名稱時，就會起始[檢視探索](xref:mvc/views/overview#view-discovery)程序。 提供明確的路徑時，則會略過該程序。 如需了解所有可接受的 `name` 值，請參閱[部分檢視探索](xref:mvc/views/partial#partial-view-discovery)。
 
@@ -57,7 +59,7 @@ ms.locfileid: "82775865"
 
 [!code-cshtml[](samples/TagHelpersBuiltIn/Pages/Product.cshtml?name=snippet_Name)]
 
-## <a name="for"></a>for
+## <a name="for"></a>對象
 
 `for` 屬性會針對目前的模型指派一個要評估的 [ModelExpression](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.modelexpression)。 `ModelExpression` 可推斷 `@Model.` 語法。 例如，可以使用 `for="Product"`，而不是 `for="@Model.Product"`。 使用 `@` 符號來定義內嵌運算式會覆寫這個預設的推斷行為。
 

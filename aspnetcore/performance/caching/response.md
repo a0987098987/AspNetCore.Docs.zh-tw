@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/caching/response
-ms.openlocfilehash: 25d6bdae0fce7821ec7b9195817dc07ef9aed40f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5c3314991d05ea868fe9190bb3a0206b27fd920f
+ms.sourcegitcommit: b06511252f165dd4590ba9b5beca4153fa220779
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408184"
+ms.lasthandoff: 06/27/2020
+ms.locfileid: "85459762"
 ---
 # <a name="response-caching-in-aspnet-core"></a>ASP.NET Core 中的回應快取
 
@@ -176,7 +176,17 @@ Cache-Control: public,max-age=10
 
 設定快取設定檔。 下列範例顯示範例應用程式中的30秒快取設定檔 `Startup.ConfigureServices` ：
 
+::: moniker range=">= aspnetcore-3.0"
+
+[!code-csharp[](response/samples/3.x/Startup.cs?name=snippet1)]
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-3.0"
+
 [!code-csharp[](response/samples/2.x/ResponseCacheSample/Startup.cs?name=snippet1)]
+
+::: moniker-end
 
 範例應用程式的 Cache4 頁面模型會參考快取 `Default30` 設定檔：
 
@@ -184,9 +194,9 @@ Cache-Control: public,max-age=10
 
 <xref:Microsoft.AspNetCore.Mvc.ResponseCacheAttribute>可套用至：
 
-* Razor頁面處理常式（類別）：屬性無法套用至處理常式方法。
-* MVC 控制器（類別）。
-* MVC 動作（方法）：方法層級屬性會覆寫在類別層級屬性中指定的設定。
+* RazorPages：無法將屬性套用至處理常式方法。
+* MVC 控制器。
+* MVC 動作方法：方法層級屬性會覆寫在類別層級屬性中指定的設定。
 
 由快取設定檔套用至 Cache4 頁面回應的產生標頭 `Default30` ：
 

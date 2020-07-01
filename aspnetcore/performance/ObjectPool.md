@@ -14,16 +14,16 @@ no-loc:
 - Razor
 - SignalR
 uid: performance/ObjectPool
-ms.openlocfilehash: 8244acb39a345875d80c5528a822de23f78b6e38
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 9df7f370eb550172493478bcd8d94a9541926fec
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403543"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793561"
 ---
 # <a name="object-reuse-with-objectpool-in-aspnet-core"></a>在 ASP.NET Core 中使用 ObjectPool 的物件重複使用
 
-作者： [Steve Gordon](https://twitter.com/stevejgordon)、 [Ryan Nowak](https://github.com/rynowak)和[Rick Anderson](https://twitter.com/RickAndMSFT)
+作者： [Steve Gordon](https://twitter.com/stevejgordon)、 [Ryan Nowak](https://github.com/rynowak)和[Günther Foidl](https://github.com/gfoidl)
 
 <xref:Microsoft.Extensions.ObjectPool>是 ASP.NET Core 基礎結構的一部分，可支援將一組物件保留在記憶體中以供重複使用，而不是允許物件進行垃圾收集。
 
@@ -42,7 +42,9 @@ ms.locfileid: "85403543"
 
 只有在使用應用程式或程式庫的實際案例收集效能資料之後，才使用物件共用。
 
-**警告： `ObjectPool` 不會執行 `IDisposable` 。我們不建議您將它與需要處置的類型搭配使用。**
+::: moniker range="< aspnetcore-3.0"
+**警告： `ObjectPool` 不會執行 `IDisposable` 。我們不建議您將它與需要處置的類型搭配使用。** `ObjectPool`在 ASP.NET Core 3.0 和更新版本中支援 `IDisposable` 。
+::: moniker-end
 
 **注意： ObjectPool 不會限制它所配置的物件數目，而會限制它將保留的物件數目。**
 
@@ -63,7 +65,20 @@ ObjectPool 可在應用程式中以多種方式使用：
 
 ## <a name="how-to-use-objectpool"></a>如何使用 ObjectPool
 
-呼叫 <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1> 以取得物件，並傳回 <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Return*> 物件。  您不需要傳回每個物件。 如果您未傳回物件，則會進行垃圾收集。
+呼叫 <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Get*> 以取得物件，並傳回 <xref:Microsoft.Extensions.ObjectPool.ObjectPool`1.Return*> 物件。  您不需要傳回每個物件。 如果您未傳回物件，則會進行垃圾收集。
+
+::: moniker range=">= aspnetcore-3.0"
+當 <xref:Microsoft.Extensions.ObjectPool.DefaultObjectPoolProvider> 使用並 `T` 實行時 `IDisposable` ：
+
+* ***未***傳回集區的專案將會被處置。
+* 當 DI 處置集區時，會處置集區中的所有專案。
+
+注意：處置集區之後：
+
+* 呼叫會擲回 `Get` `ObjectDisposedException` 。
+* `return`處置指定的專案。
+
+::: moniker-end
 
 ## <a name="objectpool-sample"></a>ObjectPool 範例
 

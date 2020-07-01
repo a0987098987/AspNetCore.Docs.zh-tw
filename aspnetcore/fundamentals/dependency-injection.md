@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/dependency-injection
-ms.openlocfilehash: 665f9f761f729fad59af298cacd0d48ab3a3f71f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2074aa75029cf27922b43545ec18c0cd8a50eb02
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400721"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793354"
 ---
 # <a name="dependency-injection-in-aspnet-core"></a>.NET Core 中的相依性插入
 
@@ -28,7 +28,7 @@ ms.locfileid: "85400721"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core 支援相依性插入 (DI) 軟體設計模式，這是用來在類別與其相依性之間達成[控制權反轉 (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) \(英文\) 的技術。
+ASP.NET Core 支援相依性插入 (DI) 軟體設計模式，這是在類別及其相依性之間達成[控制反轉 (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的技術。
 
 如需有關 MVC 控制器內相依性插入的特定詳細資訊，請參閱 <xref:mvc/controllers/dependency-injection>。
 
@@ -417,6 +417,8 @@ public class Program
 
 一般而言，應用程式不應該直接使用這些屬性。 相反地，請透過類別的函式要求類別所需的類型，並允許架構插入相依性。 這會產生容易測試的類別。
 
+ASP.NET Core 會根據要求建立範圍，並 `RequestServices` 公開限定範圍的服務提供者。 只要要求為作用中，所有已設定範圍的服務都有效。
+
 > [!NOTE]
 > 偏好要求相依性作為建構函式參數，而不要存取 `RequestServices` 集合。
 
@@ -481,7 +483,7 @@ public void ConfigureServices(IServiceCollection services)
 * 實例會在根範圍中解析。
 * 應該在範圍結束之前處置實例。
 
-**方案**
+**解決方案**
 
 使用 factory 模式，在父範圍外建立實例。 在這種情況下，應用程式通常會有 `Create` 方法，直接呼叫最終型別的函式。 如果最終類型具有其他相依性，則 factory 可以：
 
@@ -494,7 +496,7 @@ public void ConfigureServices(IServiceCollection services)
 
 應用程式需要 <xref:System.IDisposable> 多個服務之間的共用實例，但 <xref:System.IDisposable> 應具有有限的存留期。
 
-**方案**
+**解決方案**
 
 註冊具有限定範圍存留期的實例。 使用 <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope%2A?displayProperty=nameWithType> 來啟動並建立新的 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope> 。 使用範圍的 <xref:System.IServiceProvider> 來取得所需的服務。 在存留期結束時處置範圍。
 
@@ -611,7 +613,7 @@ https://github.com/OrchardCMS/OrchardCore.Samples如需如何使用 Orchard Core
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core 支援相依性插入 (DI) 軟體設計模式，這是用來在類別與其相依性之間達成[控制權反轉 (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) \(英文\) 的技術。
+ASP.NET Core 支援相依性插入 (DI) 軟體設計模式，這是在類別及其相依性之間達成[控制反轉 (IoC)](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) 的技術。
 
 如需有關 MVC 控制器內相依性插入的特定詳細資訊，請參閱 <xref:mvc/controllers/dependency-injection>。
 
@@ -1062,7 +1064,7 @@ public void ConfigureServices(IServiceCollection services)
 * 實例會在根範圍中解析。
 * 應該在範圍結束之前處置實例。
 
-**方案**
+**解決方案**
 
 使用 factory 模式，在父範圍外建立實例。 在這種情況下，應用程式通常會有 `Create` 方法，直接呼叫最終型別的函式。 如果最終類型具有其他相依性，則 factory 可以：
 
@@ -1075,7 +1077,7 @@ public void ConfigureServices(IServiceCollection services)
 
 應用程式需要 <xref:System.IDisposable> 多個服務之間的共用實例，但 <xref:System.IDisposable> 應具有有限的存留期。
 
-**方案**
+**解決方案**
 
 註冊具有限定範圍存留期的實例。 使用 <xref:Microsoft.Extensions.DependencyInjection.IServiceScopeFactory.CreateScope%2A?displayProperty=nameWithType> 來啟動並建立新的 <xref:Microsoft.Extensions.DependencyInjection.IServiceScope> 。 使用範圍的 <xref:System.IServiceProvider> 來取得所需的服務。 在存留期結束時處置範圍。
 

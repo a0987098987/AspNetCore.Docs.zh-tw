@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 28274d1deccdfe9e6430aa2899854f23d3ddc12a
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0974abfe632fd897c08435b82a7c695534cc3139
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408977"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793611"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>第4部分，將模型新增至 ASP.NET Core MVC 應用程式
 
@@ -204,7 +204,7 @@ Visual Studio 會建立：
   export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* 執行以下命令：
+* 執行下列命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -216,7 +216,7 @@ Visual Studio 會建立：
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 
-* 執行以下命令：
+* 執行下列命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -261,6 +261,8 @@ Update-Database
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
+[!INCLUDE [more information on the CLI for EF Core](~/includes/ef-cli.md)]
+
 執行下列 .NET Core CLI 命令：
 
 ```dotnetcli
@@ -271,8 +273,6 @@ dotnet ef database update
 * `ef migrations add InitialCreate`：產生*遷移/{timestamp} _InitialCreate .cs*遷移檔案。 `InitialCreate` 引數是移轉名稱。 您可以使用任何名稱，但依照慣例，會選取描述移轉的名稱。 因為這是第一次移轉，所產生類別會包含建立資料庫結構描述的程式碼。 資料庫結構描述會以 `MvcMovieContext` 類別 (在 *Data/MvcMovieContext.cs* 檔案中) 中指定的模型為基礎。
 
 * `ef database update`：將資料庫更新為先前命令所建立的最新遷移。 此命令會執行 *Migrations/{time-stamp}_InitialCreate.cs* 檔案中的 `Up` 方法，其會建立資料庫。
-
-[!INCLUDE [more information on the CLI for EF Core](~/includes/ef-cli.md)]
 
 ---
 
@@ -490,7 +490,7 @@ Visual Studio 會建立：
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* 執行以下命令：
+* 執行下列命令：
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -509,7 +509,7 @@ Visual Studio 會建立：
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* 執行以下命令：
+* 執行下列命令：
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries

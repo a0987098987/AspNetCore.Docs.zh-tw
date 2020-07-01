@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: eb0797a26393ce425d07ea9a97109b7fe8983f91
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5a2d39af6c921323ae9113fd4aca27dcdedd44a5
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407872"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793459"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -34,10 +34,10 @@ ASP.NET Core 範本會建立 .NET Core 泛型主機 <xref:Microsoft.Extensions.H
 
 * 相依性插入 (DI)
 * 記錄
-* 設定
+* 組態
 * `IHostedService` 實作
 
-當啟動主機時，會在 DI 容器中找到的每個 `IHostedService.StartAsync` 實作上呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService>。 在 Web 應用程式中，其中一個 `IHostedService` 實作是一種 Web 服務，負責啟動 [HTTP 伺服器實作](xref:fundamentals/index#servers)。
+當主機啟動時，它會 <xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync%2A?displayProperty=nameWithType> 在 <xref:Microsoft.Extensions.Hosting.IHostedService> 服務容器的託管服務集合中註冊的每個執行上呼叫。 在 Web 應用程式中，其中一個 `IHostedService` 實作是一種 Web 服務，負責啟動 [HTTP 伺服器實作](xref:fundamentals/index#servers)。
 
 在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。
 
@@ -407,7 +407,7 @@ webBuilder.UseStartup<Startup>();
 
 ### <a name="urls"></a>URL
 
-以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如： `http://localhost:123` 。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
+以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如 `http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
 
 機**碼**：`urls`  
 **類型**：`string`  
@@ -458,7 +458,7 @@ webBuilder.UseWebRoot("public");
 
 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.RunConsoleAsync*>啟用主控台支援、組建和啟動主機，以及等候<kbd>Ctrl</kbd> + <kbd>C</kbd>/SIGINT 或 SIGTERM 關閉。
 
-### <a name="start"></a>啟動
+### <a name="start"></a>開始
 
 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Start*> 會同步啟動主機。
 
@@ -1011,10 +1011,10 @@ ASP.NET Core 範本會建立 .NET Core 泛型主機（ <xref:Microsoft.Extension
 
 * 相依性插入 (DI)
 * 記錄
-* 設定
+* 組態
 * `IHostedService` 實作
 
-當啟動主機時，會在 DI 容器中找到的每個 `IHostedService.StartAsync` 實作上呼叫 <xref:Microsoft.Extensions.Hosting.IHostedService>。 在 Web 應用程式中，其中一個 `IHostedService` 實作是一種 Web 服務，負責啟動 [HTTP 伺服器實作](xref:fundamentals/index#servers)。
+當主機啟動時，它會 <xref:Microsoft.Extensions.Hosting.IHostedService.StartAsync%2A?displayProperty=nameWithType> 在 <xref:Microsoft.Extensions.Hosting.IHostedService> 服務容器的託管服務集合中註冊的每個執行上呼叫。 在 Web 應用程式中，其中一個 `IHostedService` 實作是一種 Web 服務，負責啟動 [HTTP 伺服器實作](xref:fundamentals/index#servers)。
 
 在單一物件中包含所有應用程式相互依存資源的主要理由便是生命週期管理：控制應用程式的啟動及順利關機。
 
@@ -1395,7 +1395,7 @@ webBuilder.UseStartup<Startup>();
 
 ### <a name="urls"></a>URL
 
-以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如： `http://localhost:123` 。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
+以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如 `http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
 
 機**碼**：`urls`  
 **類型**：`string`  
@@ -1446,7 +1446,7 @@ webBuilder.UseWebRoot("public");
 
 <xref:Microsoft.Extensions.Hosting.HostingHostBuilderExtensions.RunConsoleAsync*>啟用主控台支援、組建和啟動主機，以及等候<kbd>Ctrl</kbd> + <kbd>C</kbd>/SIGINT 或 SIGTERM 關閉。
 
-### <a name="start"></a>啟動
+### <a name="start"></a>開始
 
 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Start*> 會同步啟動主機。
 

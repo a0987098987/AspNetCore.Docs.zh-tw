@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization
-ms.openlocfilehash: cc30cedd51af06ffc7e17d36d4426fa45c452015
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 412cd7a39a0eed6800e15d235102ed367da5f746
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407742"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793484"
 ---
 # <a name="globalization-and-localization-in-aspnet-core"></a>ASP.NET Core 全球化和當地語系化
 
@@ -52,7 +52,8 @@ ms.locfileid: "85407742"
 
 [!code-csharp[](~/fundamentals/localization/sample/3.x/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
+> [!NOTE]
+> 一般來說，只會將文字當地語系化，而不是 HTML。
 
 您可以在最底層的[相依性插入](dependency-injection.md)中，將 `IStringLocalizerFactory` 移出：
 
@@ -82,13 +83,14 @@ ms.locfileid: "85407742"
 
 法文資源檔可能包含下列內容：
 
-| Key | 值 |
-| ----- | ------ |
+| 機碼 | 值 |
+| --- | ----- |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
-**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
+> [!NOTE]
+> 一般來說，只會將文字當地語系化，而不是 HTML。
 
 若要在檢視中使用共用的資源檔，請插入 `IHtmlLocalizer<T>`：
 
@@ -136,19 +138,19 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 1. 在方案總管**** 中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增]**[新增項目]** > ****。
 
-    ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
+   ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
 
-2. 在 [Search installed templates] (搜尋已安裝的範本)**** 方塊中，輸入「資源」，並命名檔案。
+1. 在 [Search installed templates] (搜尋已安裝的範本)**** 方塊中，輸入「資源」，並命名檔案。
 
-    ![[新增項目] 對話方塊](localization/_static/res.png)
+   ![[新增項目] 對話方塊](localization/_static/res.png)
 
-3. 在 [名稱]**** 資料行中輸入索引鍵值 (原生字串)，並在 [值]**** 資料行中輸入已翻譯的字串。
+1. 在 [名稱]**** 資料行中輸入索引鍵值 (原生字串)，並在 [值]**** 資料行中輸入已翻譯的字串。
 
-    ![Welcome.es.resx 檔案 (西班牙文的「歡迎使用」資源檔)，其中 [名稱] 資料行的文字為 Hello，而 [值] 資料行的文字為 Hola (Hello 的西班牙文)](localization/_static/hola.png)
+   ![Welcome.es.resx 檔案 (西班牙文的「歡迎使用」資源檔)，其中 [名稱] 資料行的文字為 Hello，而 [值] 資料行的文字為 Hola (Hello 的西班牙文)](localization/_static/hola.png)
 
-    Visual Studio 會顯示 *Welcome.es.resx* 檔案。
+   Visual Studio 會顯示 *Welcome.es.resx* 檔案。
 
-    ![方案總管，其中顯示「歡迎使用」的西班牙文 (es) 資源檔](localization/_static/se.png)
+   ![方案總管，其中顯示「歡迎使用」的西班牙文 (es) 資源檔](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>資源檔命名
 
@@ -160,7 +162,6 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | 點  |
 | Resources/Controllers/HomeController.fr.resx  | 路徑 |
-|    |     |
 
 在 views 中使用的資源檔會 `@inject IViewLocalizer` Razor 遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor查看資源檔模擬其相關聯之視圖檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
 
@@ -222,24 +223,25 @@ using Microsoft.Extensions.Localization;
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization` 可將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
+* `AddLocalization`將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
 
-* `AddViewLocalization` 可支援當地語系化的檢視檔案。 在此範例中，檢視的當地語系化會以檢視檔案的後置詞為依據。 例如 *Index.fr.cshtml* 檔案中的 "fr"。
+* `AddViewLocalization`新增當地語系化視圖檔案的支援。 在此範例中，檢視的當地語系化會以檢視檔案的後置詞為依據。 例如 *Index.fr.cshtml* 檔案中的 "fr"。
 
-* `AddDataAnnotationsLocalization` 可支援透過 `IStringLocalizer` 抽象概念而來的當地語系化 `DataAnnotations` 驗證訊息。
+* `AddDataAnnotationsLocalization`透過抽象來新增當地語系化 `DataAnnotations` 驗證訊息的支援 `IStringLocalizer` 。
 
 ### <a name="localization-middleware"></a>當地語系化中介軟體
 
 您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Startup.Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet2)]
+
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` 會初始化 `RequestLocalizationOptions` 物件。 在每次要求時，系統會列舉 `RequestLocalizationOptions` 中的 `RequestCultureProvider` 清單，並使用能成功判斷要求的文化特性的第一個提供者。 預設的提供者是來自 `RequestLocalizationOptions` 類別：
 
 1. `QueryStringRequestCultureProvider`
-2. `CookieRequestCultureProvider`
-3. `AcceptLanguageHeaderRequestCultureProvider`
+1. `CookieRequestCultureProvider`
+1. `AcceptLanguageHeaderRequestCultureProvider`
 
 預設清單會由針對性高到低來排列。 在本文稍後，我們會說明如何變更順序，甚至新增自訂的文化特性提供者。 如果沒有任何提供者可以判斷要求的文化特性，即會使用 `DefaultRequestCulture`。
 
@@ -251,7 +253,9 @@ using Microsoft.Extensions.Localization;
 
 如果您只傳入兩者其一 (`culture` 或 `ui-culture`)，查詢字串提供者就會使用您傳入的項目來設定這兩個值。 例如，若只設定文化特性，即會同時設定 `Culture` 和 `UICulture`：
 
-   `http://localhost:5000/?culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX
+```
 
 ### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
@@ -261,7 +265,9 @@ using Microsoft.Extensions.Localization;
 
 Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `uic` 是 `UICulture`，例如：
 
-    c=en-UK|uic=en-US
+```
+c=en-UK|uic=en-US
+```
 
 如果您只指定文化特性資訊和 UI 文化特性其一，系統就會將您所指定的文化特性用於文化特性資訊和 UI 文化特性。
 
@@ -273,17 +279,17 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 1. 從齒輪圖示，點選 [網際網路選項]****。
 
-2. 點選 [語言]****。
+1. 點選 [語言]****。
 
-    ![網際網路選項](localization/_static/lang.png)
+   ![網際網路選項](localization/_static/lang.png)
 
-3. 點選 [設定語言喜好設定]****。
+1. 點選 [設定語言喜好設定]****。
 
-4. 點選 [新增語言]****。
+1. 點選 [新增語言]****。
 
-5. 新增語言。
+1. 新增語言。
 
-6. 點選語言，然後點選 [上移]****。
+1. 點選語言，然後點選 [上移]****。
 
 ### <a name="use-a-custom-provider"></a>使用自訂提供者
 
@@ -400,7 +406,8 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 [!code-csharp[](~/fundamentals/localization/sample/3.x/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
+> [!NOTE]
+> 一般來說，只會將文字當地語系化，而不是 HTML。
 
 您可以在最底層的[相依性插入](dependency-injection.md)中，將 `IStringLocalizerFactory` 移出：
 
@@ -430,13 +437,14 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 法文資源檔可能包含下列內容：
 
-| Key | 值 |
-| ----- | ------ |
+| 機碼 | 值 |
+| --- | ----- |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
-**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
+> [!NOTE]
+> 一般來說，只會將文字當地語系化，而不是 HTML。
 
 若要在檢視中使用共用的資源檔，請插入 `IHtmlLocalizer<T>`：
 
@@ -484,19 +492,19 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 1. 在方案總管**** 中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增]**[新增項目]** > ****。
 
-    ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
+   ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
 
-2. 在 [Search installed templates] (搜尋已安裝的範本)**** 方塊中，輸入「資源」，並命名檔案。
+1. 在 [Search installed templates] (搜尋已安裝的範本)**** 方塊中，輸入「資源」，並命名檔案。
 
-    ![[新增項目] 對話方塊](localization/_static/res.png)
+   ![[新增項目] 對話方塊](localization/_static/res.png)
 
-3. 在 [名稱]**** 資料行中輸入索引鍵值 (原生字串)，並在 [值]**** 資料行中輸入已翻譯的字串。
+1. 在 [名稱]**** 資料行中輸入索引鍵值 (原生字串)，並在 [值]**** 資料行中輸入已翻譯的字串。
 
-    ![Welcome.es.resx 檔案 (西班牙文的「歡迎使用」資源檔)，其中 [名稱] 資料行的文字為 Hello，而 [值] 資料行的文字為 Hola (Hello 的西班牙文)](localization/_static/hola.png)
+   ![Welcome.es.resx 檔案 (西班牙文的「歡迎使用」資源檔)，其中 [名稱] 資料行的文字為 Hello，而 [值] 資料行的文字為 Hola (Hello 的西班牙文)](localization/_static/hola.png)
 
-    Visual Studio 會顯示 *Welcome.es.resx* 檔案。
+   Visual Studio 會顯示 *Welcome.es.resx* 檔案。
 
-    ![方案總管，其中顯示「歡迎使用」的西班牙文 (es) 資源檔](localization/_static/se.png)
+   ![方案總管，其中顯示「歡迎使用」的西班牙文 (es) 資源檔](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>資源檔命名
 
@@ -508,7 +516,6 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | 點  |
 | Resources/Controllers/HomeController.fr.resx  | 路徑 |
-|    |     |
 
 在 views 中使用的資源檔會 `@inject IViewLocalizer` Razor 遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor查看資源檔模擬其相關聯之視圖檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
 
@@ -570,24 +577,25 @@ using Microsoft.Extensions.Localization;
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization` 可將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
+* `AddLocalization`將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
 
-* `AddViewLocalization` 可支援當地語系化的檢視檔案。 在此範例中，檢視的當地語系化會以檢視檔案的後置詞為依據。 例如 *Index.fr.cshtml* 檔案中的 "fr"。
+* `AddViewLocalization`新增當地語系化視圖檔案的支援。 在此範例中，檢視的當地語系化會以檢視檔案的後置詞為依據。 例如 *Index.fr.cshtml* 檔案中的 "fr"。
 
-* `AddDataAnnotationsLocalization` 可支援透過 `IStringLocalizer` 抽象概念而來的當地語系化 `DataAnnotations` 驗證訊息。
+* `AddDataAnnotationsLocalization`透過抽象來新增當地語系化 `DataAnnotations` 驗證訊息的支援 `IStringLocalizer` 。
 
 ### <a name="localization-middleware"></a>當地語系化中介軟體
 
 您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Startup.Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet2)]
+
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` 會初始化 `RequestLocalizationOptions` 物件。 在每次要求時，系統會列舉 `RequestLocalizationOptions` 中的 `RequestCultureProvider` 清單，並使用能成功判斷要求的文化特性的第一個提供者。 預設的提供者是來自 `RequestLocalizationOptions` 類別：
 
 1. `QueryStringRequestCultureProvider`
-2. `CookieRequestCultureProvider`
-3. `AcceptLanguageHeaderRequestCultureProvider`
+1. `CookieRequestCultureProvider`
+1. `AcceptLanguageHeaderRequestCultureProvider`
 
 預設清單會由針對性高到低來排列。 在本文稍後，我們會說明如何變更順序，甚至新增自訂的文化特性提供者。 如果沒有任何提供者可以判斷要求的文化特性，即會使用 `DefaultRequestCulture`。
 
@@ -595,11 +603,15 @@ using Microsoft.Extensions.Localization;
 
 有些應用程式會使用查詢字串來設定[文化特性和 UI 文化特性](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx)。 若是使用 Cookie 或 Accept-Language 標頭方法的應用程式，您可以將查詢字串新增至 URL 以偵錯和測試程式碼。 系統預設會將 `QueryStringRequestCultureProvider` 登錄為 `RequestCultureProvider` 清單中的第一個當地語系化提供者。 您應傳遞查詢字串參數 `culture` 和 `ui-culture`。 下列範例會設定西班牙文/墨西哥的特定文化特性 (語言和地區)：
 
-   `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX&ui-culture=es-MX
+```
 
 如果您只傳入兩者其一 (`culture` 或 `ui-culture`)，查詢字串提供者就會使用您傳入的項目來設定這兩個值。 例如，若只設定文化特性，即會同時設定 `Culture` 和 `UICulture`：
 
-   `http://localhost:5000/?culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX
+```
 
 ### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
@@ -609,7 +621,9 @@ using Microsoft.Extensions.Localization;
 
 Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `uic` 是 `UICulture`，例如：
 
-    c=en-UK|uic=en-US
+```
+c=en-UK|uic=en-US
+```
 
 如果您只指定文化特性資訊和 UI 文化特性其一，系統就會將您所指定的文化特性用於文化特性資訊和 UI 文化特性。
 
@@ -621,17 +635,17 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 1. 從齒輪圖示，點選 [網際網路選項]****。
 
-2. 點選 [語言]****。
+1. 點選 [語言]****。
 
-    ![網際網路選項](localization/_static/lang.png)
+   ![網際網路選項](localization/_static/lang.png)
 
-3. 點選 [設定語言喜好設定]****。
+1. 點選 [設定語言喜好設定]****。
 
-4. 點選 [新增語言]****。
+1. 點選 [新增語言]****。
 
-5. 新增語言。
+1. 新增語言。
 
-6. 點選語言，然後點選 [上移]****。
+1. 點選語言，然後點選 [上移]****。
 
 ### <a name="use-a-custom-provider"></a>使用自訂提供者
 
@@ -747,7 +761,8 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 [!code-csharp[](~/fundamentals/localization/sample/3.x/Localization/Controllers/BookController.cs?highlight=3,5,20&start=1&end=24)]
 
-**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
+> [!NOTE]
+> 一般來說，只會將文字當地語系化，而不是 HTML。
 
 您可以在最底層的[相依性插入](dependency-injection.md)中，將 `IStringLocalizerFactory` 移出：
 
@@ -777,13 +792,14 @@ services.Configure<RequestLocalizationOptions>(options =>
 
 法文資源檔可能包含下列內容：
 
-| Key | 值 |
-| ----- | ------ |
+| 機碼 | 值 |
+| --- | ----- |
 | `<i>Hello</i> <b>{0}!</b>` | `<i>Bonjour</i> <b>{0} !</b>` |
 
 轉譯的檢視內容可能包含來自資源檔的 HTML 標記。
 
-**注意：** 一般來說，您只想將文字當地語系化，而不是 HTML。
+> [!NOTE]
+> 一般來說，只會將文字當地語系化，而不是 HTML。
 
 若要在檢視中使用共用的資源檔，請插入 `IHtmlLocalizer<T>`：
 
@@ -831,19 +847,19 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 
 1. 在方案總管**** 中，以滑鼠右鍵按一下要放置資源檔的資料夾 > [新增]**[新增項目]** > ****。
 
-    ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
+   ![巢狀特色選單：方案總管會開啟 [資源] 的特色選單， 接著針對 [新增] 開啟第二個特色選單，並反白顯示 [新增項目] 命令。](localization/_static/newi.png)
 
-2. 在 [Search installed templates] (搜尋已安裝的範本)**** 方塊中，輸入「資源」，並命名檔案。
+1. 在 [Search installed templates] (搜尋已安裝的範本)**** 方塊中，輸入「資源」，並命名檔案。
 
-    ![[新增項目] 對話方塊](localization/_static/res.png)
+   ![[新增項目] 對話方塊](localization/_static/res.png)
 
-3. 在 [名稱]**** 資料行中輸入索引鍵值 (原生字串)，並在 [值]**** 資料行中輸入已翻譯的字串。
+1. 在 [名稱]**** 資料行中輸入索引鍵值 (原生字串)，並在 [值]**** 資料行中輸入已翻譯的字串。
 
-    ![Welcome.es.resx 檔案 (西班牙文的「歡迎使用」資源檔)，其中 [名稱] 資料行的文字為 Hello，而 [值] 資料行的文字為 Hola (Hello 的西班牙文)](localization/_static/hola.png)
+   ![Welcome.es.resx 檔案 (西班牙文的「歡迎使用」資源檔)，其中 [名稱] 資料行的文字為 Hello，而 [值] 資料行的文字為 Hola (Hello 的西班牙文)](localization/_static/hola.png)
 
-    Visual Studio 會顯示 *Welcome.es.resx* 檔案。
+   Visual Studio 會顯示 *Welcome.es.resx* 檔案。
 
-    ![方案總管，其中顯示「歡迎使用」的西班牙文 (es) 資源檔](localization/_static/se.png)
+   ![方案總管，其中顯示「歡迎使用」的西班牙文 (es) 資源檔](localization/_static/se.png)
 
 ## <a name="resource-file-naming"></a>資源檔命名
 
@@ -855,7 +871,6 @@ ASP.NET Core 可讓您指定 `SupportedCultures` 和 `SupportedUICultures` 這�
 | ------------   | ------------- |
 | Resources/Controllers.HomeController.fr.resx | 點  |
 | Resources/Controllers/HomeController.fr.resx  | 路徑 |
-|    |     |
 
 在 views 中使用的資源檔會 `@inject IViewLocalizer` Razor 遵循類似的模式。 您可以使用點命名或路徑命名方式，來命名檢視的資源檔。 Razor查看資源檔模擬其相關聯之視圖檔案的路徑。 假設我們將 `ResourcesPath` 設為 "Resources"，與 *Views/Home/About.cshtml* 檢視建立關聯的法文資源檔可為下列其一：
 
@@ -917,24 +932,25 @@ using Microsoft.Extensions.Localization;
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet1)]
 
-* `AddLocalization` 可將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
+* `AddLocalization`將當地語系化服務新增至服務容器。 上方的程式碼也會將資源路徑設為 "Resources"。
 
-* `AddViewLocalization` 可支援當地語系化的檢視檔案。 在此範例中，檢視的當地語系化會以檢視檔案的後置詞為依據。 例如 *Index.fr.cshtml* 檔案中的 "fr"。
+* `AddViewLocalization`新增當地語系化視圖檔案的支援。 在此範例中，檢視的當地語系化會以檢視檔案的後置詞為依據。 例如 *Index.fr.cshtml* 檔案中的 "fr"。
 
-* `AddDataAnnotationsLocalization` 可支援透過 `IStringLocalizer` 抽象概念而來的當地語系化 `DataAnnotations` 驗證訊息。
+* `AddDataAnnotationsLocalization`透過抽象來新增當地語系化 `DataAnnotations` 驗證訊息的支援 `IStringLocalizer` 。
 
 ### <a name="localization-middleware"></a>當地語系化中介軟體
 
 您可以在當地語系化[中介軟體](xref:fundamentals/middleware/index)中，設定要求目前的文化特性。 已在 `Startup.Configure` 方法中啟用當地語系化中介軟體。 您必須在可能檢查要求文化特性的任何中介軟體之前，設定當地語系化中介軟體 (例如 `app.UseMvcWithDefaultRoute()`)。
 
 [!code-csharp[](localization/sample/3.x/Localization/Startup.cs?name=snippet2)]
+
 [!INCLUDE[about the series](~/includes/code-comments-loc.md)]
 
 `UseRequestLocalization` 會初始化 `RequestLocalizationOptions` 物件。 在每次要求時，系統會列舉 `RequestLocalizationOptions` 中的 `RequestCultureProvider` 清單，並使用能成功判斷要求的文化特性的第一個提供者。 預設的提供者是來自 `RequestLocalizationOptions` 類別：
 
 1. `QueryStringRequestCultureProvider`
-2. `CookieRequestCultureProvider`
-3. `AcceptLanguageHeaderRequestCultureProvider`
+1. `CookieRequestCultureProvider`
+1. `AcceptLanguageHeaderRequestCultureProvider`
 
 預設清單會由針對性高到低來排列。 在本文稍後，我們會說明如何變更順序，甚至新增自訂的文化特性提供者。 如果沒有任何提供者可以判斷要求的文化特性，即會使用 `DefaultRequestCulture`。
 
@@ -942,11 +958,15 @@ using Microsoft.Extensions.Localization;
 
 有些應用程式會使用查詢字串來設定[文化特性和 UI 文化特性](https://msdn.microsoft.com/library/system.globalization.cultureinfo.aspx)。 若是使用 Cookie 或 Accept-Language 標頭方法的應用程式，您可以將查詢字串新增至 URL 以偵錯和測試程式碼。 系統預設會將 `QueryStringRequestCultureProvider` 登錄為 `RequestCultureProvider` 清單中的第一個當地語系化提供者。 您應傳遞查詢字串參數 `culture` 和 `ui-culture`。 下列範例會設定西班牙文/墨西哥的特定文化特性 (語言和地區)：
 
-   `http://localhost:5000/?culture=es-MX&ui-culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX&ui-culture=es-MX
+```
 
 如果您只傳入兩者其一 (`culture` 或 `ui-culture`)，查詢字串提供者就會使用您傳入的項目來設定這兩個值。 例如，若只設定文化特性，即會同時設定 `Culture` 和 `UICulture`：
 
-   `http://localhost:5000/?culture=es-MX`
+```
+http://localhost:5000/?culture=es-MX
+```
 
 ### <a name="cookierequestcultureprovider"></a>CookieRequestCultureProvider
 
@@ -956,7 +976,9 @@ using Microsoft.Extensions.Localization;
 
 Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `uic` 是 `UICulture`，例如：
 
-    c=en-UK|uic=en-US
+```
+c=en-UK|uic=en-US
+```
 
 如果您只指定文化特性資訊和 UI 文化特性其一，系統就會將您所指定的文化特性用於文化特性資訊和 UI 文化特性。
 
@@ -968,24 +990,24 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 1. 從齒輪圖示，點選 [網際網路選項]****。
 
-2. 點選 [語言]****。
+1. 點選 [語言]****。
 
-    ![網際網路選項](localization/_static/lang.png)
+   ![網際網路選項](localization/_static/lang.png)
 
-3. 點選 [設定語言喜好設定]****。
+1. 點選 [設定語言喜好設定]****。
 
-4. 點選 [新增語言]****。
+1. 點選 [新增語言]****。
 
-5. 新增語言。
+1. 新增語言。
 
-6. 點選語言，然後點選 [上移]****。
+1. 點選語言，然後點選 [上移]****。
 
 ### <a name="the-content-language-http-header"></a>內容語言 HTTP 標頭
 
 [內容語言](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language)實體標頭：
 
- - 用來描述適用于物件的語言。
- - 可讓使用者根據使用者的慣用語言來區分。
+* 用來描述適用于物件的語言。
+* 可讓使用者根據使用者的慣用語言來區分。
 
 實體標頭會同時用於 HTTP 要求和回應。
 
@@ -993,8 +1015,8 @@ Cookie 格式為 `c=%LANGCODE%|uic=%LANGCODE%`，其中 `c` 是 `Culture` 而 `u
 
 新增 `Content-Language` 標頭：
 
- - 允許 RequestLocalizationMiddleware 使用來設定 `Content-Language` 標頭 `CurrentUICulture` 。
- - 不需要明確地設定回應標頭 `Content-Language` 。
+* 允許 RequestLocalizationMiddleware 使用來設定 `Content-Language` 標頭 `CurrentUICulture` 。
+* 不需要明確地設定回應標頭 `Content-Language` 。
 
 ```csharp
 app.UseRequestLocalization(new RequestLocalizationOptions

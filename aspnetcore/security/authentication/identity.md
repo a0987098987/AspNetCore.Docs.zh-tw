@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 97cbc5f68d20c06e92a56ead85c8377d4e8ef582
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 31970bd2b52ad83c116067d258aa9dca2d9b3b66
+ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404583"
+ms.lasthandoff: 07/01/2020
+ms.locfileid: "85793582"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>簡介 Identity ASP.NET Core
 
@@ -57,7 +57,7 @@ Identity通常會使用 SQL Server 資料庫來設定，以儲存使用者名稱
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]****。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定] 。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 
@@ -93,7 +93,11 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-使用 SQLite 時，在此步驟中不需要進行遷移。 若是 LocalDB，請執行下列命令：
+使用 SQLite 時，在此步驟中不需要進行遷移。
+
+[!INCLUDE [more information on the CLI for EF Core](~/includes/ef-cli.md)]
+
+若是 LocalDB，請執行下列命令：
 
 ```dotnetcli
 dotnet ef database update
@@ -284,7 +288,7 @@ Identity可以使用 SQL Server 資料庫來設定，以儲存使用者名稱、
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]****。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定] 。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 

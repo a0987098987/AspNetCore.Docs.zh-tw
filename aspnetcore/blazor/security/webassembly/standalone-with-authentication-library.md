@@ -15,34 +15,34 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: be87257c5f901e9b3d1ba6a8d7c6b811419c433f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: df957c5ee385b29ca390c014187a4c10e79d37f4
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402191"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944629"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a><span data-ttu-id="a54d7-102">Blazor WebAssembly使用驗證程式庫保護 ASP.NET Core 獨立應用程式</span><span class="sxs-lookup"><span data-stu-id="a54d7-102">Secure an ASP.NET Core Blazor WebAssembly standalone app with the Authentication library</span></span>
+# <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a><span data-ttu-id="1434d-102">Blazor WebAssembly使用驗證程式庫保護 ASP.NET Core 獨立應用程式</span><span class="sxs-lookup"><span data-stu-id="1434d-102">Secure an ASP.NET Core Blazor WebAssembly standalone app with the Authentication library</span></span>
 
-<span data-ttu-id="a54d7-103">By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="a54d7-103">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="1434d-103">By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="1434d-103">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="a54d7-104">*若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*</span><span class="sxs-lookup"><span data-stu-id="a54d7-104">*For Azure Active Directory (AAD) and Azure Active Directory B2C (AAD B2C), don't follow the guidance in this topic. See the AAD and AAD B2C topics in this table of contents node.*</span></span>
+<span data-ttu-id="1434d-104">*若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*</span><span class="sxs-lookup"><span data-stu-id="1434d-104">*For Azure Active Directory (AAD) and Azure Active Directory B2C (AAD B2C), don't follow the guidance in this topic. See the AAD and AAD B2C topics in this table of contents node.*</span></span>
 
-<span data-ttu-id="a54d7-105">若要建立 Blazor WebAssembly 使用程式庫的獨立應用程式 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) ，請在命令 shell 中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="a54d7-105">To create a Blazor WebAssembly standalone app that uses [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) library, execute the following command in a command shell:</span></span>
+<span data-ttu-id="1434d-105">若要建立 Blazor WebAssembly 使用程式庫的獨立應用程式 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) ，請在命令 shell 中執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="1434d-105">To create a Blazor WebAssembly standalone app that uses [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) library, execute the following command in a command shell:</span></span>
 
 ```dotnetcli
 dotnet new blazorwasm -au Individual
 ```
 
-<span data-ttu-id="a54d7-106">若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。</span><span class="sxs-lookup"><span data-stu-id="a54d7-106">To specify the output location, which creates a project folder if it doesn't exist, include the output option in the command with a path (for example, `-o BlazorSample`).</span></span> <span data-ttu-id="a54d7-107">資料夾名稱也會成為專案名稱的一部分。</span><span class="sxs-lookup"><span data-stu-id="a54d7-107">The folder name also becomes part of the project's name.</span></span>
+<span data-ttu-id="1434d-106">若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。</span><span class="sxs-lookup"><span data-stu-id="1434d-106">To specify the output location, which creates a project folder if it doesn't exist, include the output option in the command with a path (for example, `-o BlazorSample`).</span></span> <span data-ttu-id="1434d-107">資料夾名稱也會成為專案名稱的一部分。</span><span class="sxs-lookup"><span data-stu-id="1434d-107">The folder name also becomes part of the project's name.</span></span>
 
-<span data-ttu-id="a54d7-108">在 Visual Studio 中，[建立 Blazor WebAssembly 應用程式](xref:blazor/get-started)。</span><span class="sxs-lookup"><span data-stu-id="a54d7-108">In Visual Studio, [create a Blazor WebAssembly app](xref:blazor/get-started).</span></span> <span data-ttu-id="a54d7-109">使用 [**儲存使用者帳戶應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="a54d7-109">Set **Authentication** to **Individual User Accounts** with the **Store user accounts in-app** option.</span></span>
+<span data-ttu-id="1434d-108">如果使用 Visual Studio 建立 Blazor WebAssembly 應用程式，請使用 [**將使用者帳戶儲存在應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。</span><span class="sxs-lookup"><span data-stu-id="1434d-108">If using Visual Studio to create a Blazor WebAssembly app, set **Authentication** to **Individual User Accounts** with the **Store user accounts in-app** option.</span></span>
 
-## <a name="authentication-package"></a><span data-ttu-id="a54d7-110">驗證套件</span><span class="sxs-lookup"><span data-stu-id="a54d7-110">Authentication package</span></span>
+## <a name="authentication-package"></a><span data-ttu-id="1434d-109">驗證套件</span><span class="sxs-lookup"><span data-stu-id="1434d-109">Authentication package</span></span>
 
-<span data-ttu-id="a54d7-111">建立應用程式以使用個別使用者帳戶時，應用程式會 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 在應用程式的專案檔中自動接收套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="a54d7-111">When an app is created to use Individual User Accounts, the app automatically receives a package reference for the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package in the app's project file.</span></span> <span data-ttu-id="a54d7-112">封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。</span><span class="sxs-lookup"><span data-stu-id="a54d7-112">The package provides a set of primitives that help the app authenticate users and obtain tokens to call protected APIs.</span></span>
+<span data-ttu-id="1434d-110">建立應用程式以使用個別使用者帳戶時，應用程式會 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 在應用程式的專案檔中自動接收套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="1434d-110">When an app is created to use Individual User Accounts, the app automatically receives a package reference for the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package in the app's project file.</span></span> <span data-ttu-id="1434d-111">封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。</span><span class="sxs-lookup"><span data-stu-id="1434d-111">The package provides a set of primitives that help the app authenticate users and obtain tokens to call protected APIs.</span></span>
 
-<span data-ttu-id="a54d7-113">如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：</span><span class="sxs-lookup"><span data-stu-id="a54d7-113">If adding authentication to an app, manually add the package to the app's project file:</span></span>
+<span data-ttu-id="1434d-112">如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：</span><span class="sxs-lookup"><span data-stu-id="1434d-112">If adding authentication to an app, manually add the package to the app's project file:</span></span>
 
 ```xml
 <PackageReference 
@@ -50,11 +50,11 @@ dotnet new blazorwasm -au Individual
   Version="3.2.0" />
 ```
 
-## <a name="authentication-service-support"></a><span data-ttu-id="a54d7-114">驗證服務支援</span><span class="sxs-lookup"><span data-stu-id="a54d7-114">Authentication service support</span></span>
+## <a name="authentication-service-support"></a><span data-ttu-id="1434d-113">驗證服務支援</span><span class="sxs-lookup"><span data-stu-id="1434d-113">Authentication service support</span></span>
 
-<span data-ttu-id="a54d7-115">使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 。</span><span class="sxs-lookup"><span data-stu-id="a54d7-115">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> extension method provided by the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package.</span></span> <span data-ttu-id="a54d7-116">這個方法會設定應用程式與 Identity 提供者（IP）互動所需的服務。</span><span class="sxs-lookup"><span data-stu-id="a54d7-116">This method sets up the services required for the app to interact with the Identity Provider (IP).</span></span>
+<span data-ttu-id="1434d-114">使用封裝所提供的擴充方法，在服務容器中註冊驗證使用者的支援 <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 。</span><span class="sxs-lookup"><span data-stu-id="1434d-114">Support for authenticating users is registered in the service container with the <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> extension method provided by the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package.</span></span> <span data-ttu-id="1434d-115">這個方法會設定應用程式與 Identity 提供者（IP）互動所需的服務。</span><span class="sxs-lookup"><span data-stu-id="1434d-115">This method sets up the services required for the app to interact with the Identity Provider (IP).</span></span>
 
-<span data-ttu-id="a54d7-117">`Program.cs`:</span><span class="sxs-lookup"><span data-stu-id="a54d7-117">`Program.cs`:</span></span>
+<span data-ttu-id="1434d-116">`Program.cs`:</span><span class="sxs-lookup"><span data-stu-id="1434d-116">`Program.cs`:</span></span>
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
@@ -63,7 +63,7 @@ builder.Services.AddOidcAuthentication(options =>
 });
 ```
 
-<span data-ttu-id="a54d7-118">設定是由檔案所提供 `wwwroot/appsettings.json` ：</span><span class="sxs-lookup"><span data-stu-id="a54d7-118">Configuration is supplied by the `wwwroot/appsettings.json` file:</span></span>
+<span data-ttu-id="1434d-117">設定是由檔案所提供 `wwwroot/appsettings.json` ：</span><span class="sxs-lookup"><span data-stu-id="1434d-117">Configuration is supplied by the `wwwroot/appsettings.json` file:</span></span>
 
 ```json
 {
@@ -74,11 +74,11 @@ builder.Services.AddOidcAuthentication(options =>
 }
 ```
 
-<span data-ttu-id="a54d7-119">獨立應用程式的驗證支援是使用 Open ID Connect （OIDC）提供。</span><span class="sxs-lookup"><span data-stu-id="a54d7-119">Authentication support for standalone apps is offered using Open ID Connect (OIDC).</span></span> <span data-ttu-id="a54d7-120"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>方法會接受回呼來設定使用 OIDC 驗證應用程式所需的參數。</span><span class="sxs-lookup"><span data-stu-id="a54d7-120">The <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> method accepts a callback to configure the parameters required to authenticate an app using OIDC.</span></span> <span data-ttu-id="a54d7-121">設定應用程式所需的值可從符合 OIDC 規範的 IP 取得。</span><span class="sxs-lookup"><span data-stu-id="a54d7-121">The values required for configuring the app can be obtained from the OIDC-compliant IP.</span></span> <span data-ttu-id="a54d7-122">當您註冊應用程式時，請取得這些值，這通常會發生在其線上入口網站中。</span><span class="sxs-lookup"><span data-stu-id="a54d7-122">Obtain the values when you register the app, which typically occurs in their online portal.</span></span>
+<span data-ttu-id="1434d-118">獨立應用程式的驗證支援是使用 Open ID Connect （OIDC）提供。</span><span class="sxs-lookup"><span data-stu-id="1434d-118">Authentication support for standalone apps is offered using Open ID Connect (OIDC).</span></span> <span data-ttu-id="1434d-119"><xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A>方法會接受回呼來設定使用 OIDC 驗證應用程式所需的參數。</span><span class="sxs-lookup"><span data-stu-id="1434d-119">The <xref:Microsoft.Extensions.DependencyInjection.WebAssemblyAuthenticationServiceCollectionExtensions.AddOidcAuthentication%2A> method accepts a callback to configure the parameters required to authenticate an app using OIDC.</span></span> <span data-ttu-id="1434d-120">設定應用程式所需的值可從符合 OIDC 規範的 IP 取得。</span><span class="sxs-lookup"><span data-stu-id="1434d-120">The values required for configuring the app can be obtained from the OIDC-compliant IP.</span></span> <span data-ttu-id="1434d-121">當您註冊應用程式時，請取得這些值，這通常會發生在其線上入口網站中。</span><span class="sxs-lookup"><span data-stu-id="1434d-121">Obtain the values when you register the app, which typically occurs in their online portal.</span></span>
 
-## <a name="access-token-scopes"></a><span data-ttu-id="a54d7-123">存取權杖範圍</span><span class="sxs-lookup"><span data-stu-id="a54d7-123">Access token scopes</span></span>
+## <a name="access-token-scopes"></a><span data-ttu-id="1434d-122">存取權杖範圍</span><span class="sxs-lookup"><span data-stu-id="1434d-122">Access token scopes</span></span>
 
-<span data-ttu-id="a54d7-124">Blazor WebAssembly範本不會自動將應用程式設定為要求安全 API 的存取權杖。</span><span class="sxs-lookup"><span data-stu-id="a54d7-124">The Blazor WebAssembly template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="a54d7-125">若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions> ：</span><span class="sxs-lookup"><span data-stu-id="a54d7-125">To provision an access token as part of the sign-in flow, add the scope to the default token scopes of the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:</span></span>
+<span data-ttu-id="1434d-123">Blazor WebAssembly範本不會自動將應用程式設定為要求安全 API 的存取權杖。</span><span class="sxs-lookup"><span data-stu-id="1434d-123">The Blazor WebAssembly template doesn't automatically configure the app to request an access token for a secure API.</span></span> <span data-ttu-id="1434d-124">若要在登入流程中布建存取權杖，請將範圍新增至的預設權杖範圍 <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions> ：</span><span class="sxs-lookup"><span data-stu-id="1434d-124">To provision an access token as part of the sign-in flow, add the scope to the default token scopes of the <xref:Microsoft.AspNetCore.Components.WebAssembly.Authentication.OidcProviderOptions>:</span></span>
 
 ```csharp
 builder.Services.AddOidcAuthentication(options =>
@@ -90,35 +90,35 @@ builder.Services.AddOidcAuthentication(options =>
 
 [!INCLUDE[](~/includes/blazor-security/azure-scope.md)]
 
-<span data-ttu-id="a54d7-126">如需詳細資訊，請參閱*其他案例*文章的下列章節：</span><span class="sxs-lookup"><span data-stu-id="a54d7-126">For more information, see the following sections of the *Additional scenarios* article:</span></span>
+<span data-ttu-id="1434d-125">如需詳細資訊，請參閱*其他案例*文章的下列章節：</span><span class="sxs-lookup"><span data-stu-id="1434d-125">For more information, see the following sections of the *Additional scenarios* article:</span></span>
 
-* [<span data-ttu-id="a54d7-127">要求其他存取權杖</span><span class="sxs-lookup"><span data-stu-id="a54d7-127">Request additional access tokens</span></span>](xref:blazor/security/webassembly/additional-scenarios#request-additional-access-tokens)
-* [<span data-ttu-id="a54d7-128">將權杖附加到連出要求</span><span class="sxs-lookup"><span data-stu-id="a54d7-128">Attach tokens to outgoing requests</span></span>](xref:blazor/security/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)
+* [<span data-ttu-id="1434d-126">要求其他存取權杖</span><span class="sxs-lookup"><span data-stu-id="1434d-126">Request additional access tokens</span></span>](xref:blazor/security/webassembly/additional-scenarios#request-additional-access-tokens)
+* [<span data-ttu-id="1434d-127">將權杖附加到連出要求</span><span class="sxs-lookup"><span data-stu-id="1434d-127">Attach tokens to outgoing requests</span></span>](xref:blazor/security/webassembly/additional-scenarios#attach-tokens-to-outgoing-requests)
 
-## <a name="imports-file"></a><span data-ttu-id="a54d7-129">匯入檔案</span><span class="sxs-lookup"><span data-stu-id="a54d7-129">Imports file</span></span>
+## <a name="imports-file"></a><span data-ttu-id="1434d-128">匯入檔案</span><span class="sxs-lookup"><span data-stu-id="1434d-128">Imports file</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/imports-file-standalone.md)]
 
-## <a name="index-page"></a><span data-ttu-id="a54d7-130">索引頁面</span><span class="sxs-lookup"><span data-stu-id="a54d7-130">Index page</span></span>
+## <a name="index-page"></a><span data-ttu-id="1434d-129">索引頁面</span><span class="sxs-lookup"><span data-stu-id="1434d-129">Index page</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/index-page-authentication.md)]
 
-## <a name="app-component"></a><span data-ttu-id="a54d7-131">應用程式元件</span><span class="sxs-lookup"><span data-stu-id="a54d7-131">App component</span></span>
+## <a name="app-component"></a><span data-ttu-id="1434d-130">應用程式元件</span><span class="sxs-lookup"><span data-stu-id="1434d-130">App component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/app-component.md)]
 
-## <a name="redirecttologin-component"></a><span data-ttu-id="a54d7-132">RedirectToLogin 元件</span><span class="sxs-lookup"><span data-stu-id="a54d7-132">RedirectToLogin component</span></span>
+## <a name="redirecttologin-component"></a><span data-ttu-id="1434d-131">RedirectToLogin 元件</span><span class="sxs-lookup"><span data-stu-id="1434d-131">RedirectToLogin component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
 
-## <a name="logindisplay-component"></a><span data-ttu-id="a54d7-133">LoginDisplay 元件</span><span class="sxs-lookup"><span data-stu-id="a54d7-133">LoginDisplay component</span></span>
+## <a name="logindisplay-component"></a><span data-ttu-id="1434d-132">LoginDisplay 元件</span><span class="sxs-lookup"><span data-stu-id="1434d-132">LoginDisplay component</span></span>
 
-<span data-ttu-id="a54d7-134">`LoginDisplay`元件（ `Shared/LoginDisplay.razor` ）會在 `MainLayout` 元件（）中轉譯 `Shared/MainLayout.razor` ，並管理下列行為：</span><span class="sxs-lookup"><span data-stu-id="a54d7-134">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
+<span data-ttu-id="1434d-133">`LoginDisplay`元件（ `Shared/LoginDisplay.razor` ）會在 `MainLayout` 元件（）中轉譯 `Shared/MainLayout.razor` ，並管理下列行為：</span><span class="sxs-lookup"><span data-stu-id="1434d-133">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
 
-* <span data-ttu-id="a54d7-135">針對已驗證的使用者：</span><span class="sxs-lookup"><span data-stu-id="a54d7-135">For authenticated users:</span></span>
-  * <span data-ttu-id="a54d7-136">顯示目前的使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="a54d7-136">Displays the current username.</span></span>
-  * <span data-ttu-id="a54d7-137">提供用來登出應用程式的按鈕。</span><span class="sxs-lookup"><span data-stu-id="a54d7-137">Offers a button to log out of the app.</span></span>
-* <span data-ttu-id="a54d7-138">若為匿名使用者，則提供登入的選項。</span><span class="sxs-lookup"><span data-stu-id="a54d7-138">For anonymous users, offers the option to log in.</span></span>
+* <span data-ttu-id="1434d-134">針對已驗證的使用者：</span><span class="sxs-lookup"><span data-stu-id="1434d-134">For authenticated users:</span></span>
+  * <span data-ttu-id="1434d-135">顯示目前的使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="1434d-135">Displays the current username.</span></span>
+  * <span data-ttu-id="1434d-136">提供用來登出應用程式的按鈕。</span><span class="sxs-lookup"><span data-stu-id="1434d-136">Offers a button to log out of the app.</span></span>
+* <span data-ttu-id="1434d-137">若為匿名使用者，則提供登入的選項。</span><span class="sxs-lookup"><span data-stu-id="1434d-137">For anonymous users, offers the option to log in.</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Components.Authorization
@@ -147,13 +147,13 @@ builder.Services.AddOidcAuthentication(options =>
 }
 ```
 
-## <a name="authentication-component"></a><span data-ttu-id="a54d7-139">驗證元件</span><span class="sxs-lookup"><span data-stu-id="a54d7-139">Authentication component</span></span>
+## <a name="authentication-component"></a><span data-ttu-id="1434d-138">驗證元件</span><span class="sxs-lookup"><span data-stu-id="1434d-138">Authentication component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
 
-## <a name="additional-resources"></a><span data-ttu-id="a54d7-140">其他資源</span><span class="sxs-lookup"><span data-stu-id="a54d7-140">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="1434d-139">其他資源</span><span class="sxs-lookup"><span data-stu-id="1434d-139">Additional resources</span></span>
 
 * <xref:blazor/security/webassembly/additional-scenarios>
-* [<span data-ttu-id="a54d7-141">在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求</span><span class="sxs-lookup"><span data-stu-id="a54d7-141">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
+* [<span data-ttu-id="1434d-140">在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求</span><span class="sxs-lookup"><span data-stu-id="1434d-140">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)

@@ -10,12 +10,12 @@ metadata:
   author: WadePickett
   ms.author: wpickett
   ms.date: 06/05/2020
-  ms.openlocfilehash: 25b5387c8956ea7931751525ea954f6f702c0cde
-  ms.sourcegitcommit: 05490855e0c70565f0c4b509d392b0828bcfd141
+  ms.openlocfilehash: c90bd79b68252505120a0b28bce2a2b5b9d627d7
+  ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/08/2020
-  ms.locfileid: "84507278"
+  ms.lasthandoff: 07/03/2020
+  ms.locfileid: "85944303"
 highlightedContent:
   items:
   - title: 5 分鐘內完成在任何平台上建立 ASP.NET Core 應用程式
@@ -52,10 +52,10 @@ conceptualContent:
     - url: blazor/index.md
       itemType: overview
       text: 總覽
-    - url: blazor/get-started.md
+    - url: https://dotnet.microsoft.com/learn/aspnet/blazor-tutorial/intro
       itemType: get-started
-      text: 建立您的第一個 Blazor 應用程式
-    - url: tutorials/build-your-first-blazor-app.md
+      text: 組建第一個 Blazor 應用程式
+    - url: tutorials/build-a-blazor-app.md
       itemType: get-started
       text: 利用可重複使用的元件建置您的第一個 Blazor 應用程式
     - url: blazor/hosting-models.md

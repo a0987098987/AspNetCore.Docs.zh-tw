@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 5e413fad090ff2cb5e1379bf7311caf159a57a4b
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5a9ed8d6737352f56be78039a895a85f22dec361
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408587"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944640"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -184,6 +184,10 @@ dotnet run
 
 如需 Azure 資料庫連接字串的相關資訊，請參閱[連接字串](#constr)前置詞。
 
+### <a name="environment-variables-set-in-launchsettingsjson"></a>在 launchSettings.js中設定的環境變數
+
+在*launchSettings.js*中設定的環境變數會覆寫系統內容中的設定。
+
 <a name="clcp"></a>
 
 ## <a name="command-line"></a>命令列
@@ -219,7 +223,7 @@ dotnet run --MyKey "Using --" --Position:Title=Cmd-- --Position:Name=Cmd--Rick
 索引鍵值：
 
 * 必須遵循 `=` ，或者 `--` `/` 當值在空格後面時，索引鍵必須有或的前置詞。
-* 如果 `=` 使用，則不需要。 例如： `MySetting=` 。
+* 如果 `=` 使用，則不需要。 例如 `MySetting=`。
 
 在相同的命令中，請不要混合使用搭配使用空格的機碼值組的命令列引數索引鍵/值配對 `=` 。
 
@@ -751,6 +755,8 @@ Index: 5  Value: value5
   * <xref:host-and-deploy/iis/index>
   * <xref:host-and-deploy/aspnet-core-module>
 
+在*launchSettings.js*中設定的環境變數會覆寫系統內容中的設定。
+
 如需從舊版 ASP.NET 遷移應用程式設定的詳細資訊，請參閱 <xref:migration/proper-to-2x/index#store-configurations> 。
 
 ## <a name="add-configuration-from-an-external-assembly"></a>從外部組件新增設定
@@ -1102,7 +1108,7 @@ public static readonly Dictionary<string, string> _switchMappings =
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| Key       | 值             |
+| 機碼       | 值             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -1115,7 +1121,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| Key               | 值    |
+| 機碼               | 值    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -1619,7 +1625,7 @@ TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| Key             | 值  |
+| 機碼             | 值  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | value1 |
@@ -1679,7 +1685,7 @@ config.AddJsonFile(
 
 表格中顯示的機碼值組會載入到設定中。
 
-| Key             | 值  |
+| 機碼             | 值  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1702,7 +1708,7 @@ config.AddJsonFile(
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
-| Key                     | 值  |
+| 機碼                     | 值  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |

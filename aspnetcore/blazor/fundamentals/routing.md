@@ -5,7 +5,7 @@ description: 瞭解如何在應用程式中路由傳送要求，以及關於 Nav
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/01/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/routing
-ms.openlocfilehash: ba85cc901127725d674b699638fef5fe363081a8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c41736e7c5a3e59a08b579de54f9810381c8df1c
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402789"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944174"
 ---
 # <a name="aspnet-core-blazor-routing"></a>ASP.NET Core Blazor 路由
 
@@ -142,14 +142,14 @@ Blazor Server已整合至[ASP.NET Core 端點路由](xref:fundamentals/routing)�
 
 | 條件約束 | 範例           | 範例相符項目                                                                  | 非變異值<br>culture<br>比對 |
 | ---------- | ----------------- | -------------------------------------------------------------------------------- | :------------------------------: |
-| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | 否                               |
-| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | 是                              |
-| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | 是                              |
-| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | 是                              |
-| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | 是                              |
-| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 否                               |
-| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | 是                              |
-| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | 是                              |
+| `bool`     | `{active:bool}`   | `true`, `FALSE`                                                                  | No                               |
+| `datetime` | `{dob:datetime}`  | `2016-12-31`, `2016-12-31 7:32pm`                                                | Yes                              |
+| `decimal`  | `{price:decimal}` | `49.99`, `-1,000.01`                                                             | Yes                              |
+| `double`   | `{weight:double}` | `1.234`, `-1,001.01e8`                                                           | Yes                              |
+| `float`    | `{weight:float}`  | `1.234`, `-1,001.01e8`                                                           | Yes                              |
+| `guid`     | `{id:guid}`       | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | No                               |
+| `int`      | `{id:int}`        | `123456789`, `-123456789`                                                        | Yes                              |
+| `long`     | `{ticks:long}`    | `123456789`, `-123456789`                                                        | Yes                              |
 
 > [!WARNING]
 > 確認 URL 可以轉換成 CLR 類型的路由條件約束 (例如 `int` 或 <xref:System.DateTime>) 一律使用不因國別而異的文化特性。 這些條件約束假設 URL 不可當地語系化。
@@ -174,7 +174,7 @@ Blazor Server已整合至[ASP.NET Core 端點路由](xref:fundamentals/routing)�
 
 ## <a name="navlink-component"></a>NavLink 元件
 
-<xref:Microsoft.AspNetCore.Components.Routing.NavLink>建立導覽連結時，請使用元件來取代 HTML 超連結元素（ `<a>` ）。 <xref:Microsoft.AspNetCore.Components.Routing.NavLink>元件的行為類似 `<a>` 元素，但它會根據 `active` 其是否 `href` 符合目前的 URL 來切換 CSS 類別。 `active`類別可協助使用者瞭解在顯示的導覽連結中，哪個頁面是使用中的頁面。
+<xref:Microsoft.AspNetCore.Components.Routing.NavLink>建立導覽連結時，請使用元件來取代 HTML 超連結元素（ `<a>` ）。 <xref:Microsoft.AspNetCore.Components.Routing.NavLink>元件的行為類似 `<a>` 元素，但它會根據 `active` 其是否 `href` 符合目前的 URL 來切換 CSS 類別。 `active`類別可協助使用者瞭解在顯示的導覽連結中，哪個頁面是使用中的頁面。 （選擇性）將 CSS 類別名稱指派給， <xref:Microsoft.AspNetCore.Components.Routing.NavLink.ActiveClass?displayProperty=nameWithType> 以在目前的路由符合時，將自訂 css 類別套用至轉譯的連結 `href` 。
 
 下列 `NavMenu` 元件 [`Bootstrap`](https://getbootstrap.com/docs/) 會建立導覽列，以示範如何使用 <xref:Microsoft.AspNetCore.Components.Routing.NavLink> 元件：
 
@@ -196,14 +196,14 @@ Blazor Server已整合至[ASP.NET Core 端點路由](xref:fundamentals/routing)�
 會轉譯下列 HTML 標籤：
 
 ```html
-<a href="my-page" target="_blank" rel="noopener noreferrer">My page</a>
+<a href="my-page" target="_blank">My page</a>
 ```
 
 ## <a name="uri-and-navigation-state-helpers"></a>URI 和流覽狀態協助程式
 
 用於 <xref:Microsoft.AspNetCore.Components.NavigationManager> 在 c # 程式碼中處理 uri 和導覽。 <xref:Microsoft.AspNetCore.Components.NavigationManager>提供下表所示的事件和方法。
 
-| member | 說明 |
+| member | Description |
 | ------ | ----------- |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.Uri> | 取得目前的絕對 URI。 |
 | <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> | 取得可在相對 URI 路徑前面加上的基底 URI （含尾端斜線），以產生絕對 URI。 通常會 <xref:Microsoft.AspNetCore.Components.NavigationManager.BaseUri> 對應至 `href` `<base>` `wwwroot/index.html` （ Blazor WebAssembly ）或 `Pages/_Host.cshtml` （）中檔元素上的屬性 Blazor Server 。 |
@@ -232,7 +232,7 @@ Blazor Server已整合至[ASP.NET Core 端點路由](xref:fundamentals/routing)�
 }
 ```
 
-下列元件會藉由設定來處理位置已變更事件 <xref:Microsoft.AspNetCore.Components.NavigationManager.LocationChanged?displayProperty=nameWithType> 。 `HandleLocationChanged`當架構呼叫時，方法會解除掛鉤 `Dispose` 。 Unhooking 方法允許元件的垃圾收集。
+下列元件會藉由訂閱來處理位置已變更事件 <xref:Microsoft.AspNetCore.Components.NavigationManager.LocationChanged?displayProperty=nameWithType> 。 `HandleLocationChanged`當架構呼叫時，方法會解除掛鉤 `Dispose` 。 Unhooking 方法允許元件的垃圾收集。
 
 ```razor
 @implements IDisposable

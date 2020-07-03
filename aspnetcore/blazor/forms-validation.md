@@ -5,7 +5,7 @@ description: 瞭解如何在中使用表單和欄位驗證案例 Blazor 。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/04/2020
+ms.date: 07/01/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 1ed87b4aa2519334d2339b500a615aa96ef4d57d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 925051d7426470aebfddbdb5ff83d7dab9f82726
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402958"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944428"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -302,7 +302,7 @@ public class Starship
 }
 ```
 
-## <a name="work-with-radio-buttons"></a>使用選項按鈕
+## <a name="radio-buttons"></a>選項按鈕
 
 使用表單中的選項按鈕時，資料系結的處理方式不同于其他元素，因為選項按鈕會評估為群組。 每個選項按鈕的值都是固定的，但是選項按鈕群組的值就是選取之選項按鈕的值。 下列範例示範如何執行：
 
@@ -390,6 +390,30 @@ public class Starship
 }
 ```
 
+## <a name="binding-select-element-options-to-c-object-null-values"></a>`<select>`C # 物件值的繫結項目選項 `null`
+
+沒有任何合理的方法可以將 `<select>` 元素選項值表示為 c # 物件 `null` 值，因為：
+
+* HTML 屬性不能有 `null` 值。 在 HTML 中，最接近的對等專案 `null` 不存在 `value` 來自元素的 html 屬性 `<option>` 。
+* 選取 `<option>` 沒有屬性的時 `value` ，瀏覽器會將值視為該元素的*文字內容* `<option>` 。
+
+Blazor架構不會嘗試隱藏預設行為，因為它會牽涉到：
+
+* 在架構中建立一系列特殊案例的因應措施。
+* 目前架構行為的重大變更。
+
+::: moniker range=">= aspnetcore-5.0"
+
+HTML 中最合理情況的對 `null` 等項是*空字串* `value` 。 架構會將雙向系結的 Blazor `null` 空字串轉換處理成 `<select>` 的值。
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
+
+Blazor當嘗試雙向系結至值時，架構不會自動處理 `null` 空的字串轉換 `<select>` 。 如需詳細資訊，請參閱[修正 `<select>` null 值的系結（dotnet/aspnetcore #23221）](https://github.com/dotnet/aspnetcore/pull/23221)。
+
+::: moniker-end
+
 ## <a name="validation-support"></a>驗證支援
 
 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>元件會使用資料批註，將驗證支援附加至串聯的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 。 若要啟用使用資料批註進行驗證的支援，則需要這個明確的手勢。 若要使用不同于資料批註的驗證系統，請將取代為 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 自訂的執行。 ASP.NET Core 的執行可用於參考來源中的檢查： [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs) / [`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs) 。 先前的參考來源連結提供存放庫分支的程式碼 `master` ，其代表下一版 ASP.NET Core 的產品單位目前開發。 若要選取不同版本的分支，請使用 GitHub 分支選取器（例如 `release/3.1` ）。
@@ -429,7 +453,7 @@ Blazor會執行兩種類型的驗證：
 using System;
 using System.ComponentModel.DataAnnotations;
 
-private class MyCustomValidator : ValidationAttribute
+private class CustomValidator : ValidationAttribute
 {
     protected override ValidationResult IsValid(object value, 
         ValidationContext validationContext)
@@ -441,6 +465,9 @@ private class MyCustomValidator : ValidationAttribute
     }
 }
 ```
+
+> [!NOTE]
+> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> 為 `null`。 不支援在方法中插入服務以進行驗證 `IsValid` 。
 
 ### <a name="blazor-data-annotations-validation-package"></a>Blazor資料批註驗證封裝
 

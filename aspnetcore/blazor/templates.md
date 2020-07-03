@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/templates
-ms.openlocfilehash: 6359a02b23803f26c4a40772c68d39e804396403
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f1b131947a242323295a763ba2f2473af0ccfb4f
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401892"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944523"
 ---
 # <a name="aspnet-core-blazor-templates"></a>ASP.NET Core Blazor 範本
 
@@ -32,8 +32,6 @@ ms.locfileid: "85401892"
 * Blazor Server (`blazorserver`)
 
 如需裝載模型的詳細資訊 Blazor ，請參閱 <xref:blazor/hosting-models> 。
-
-如需從範本建立應用程式的逐步指示 Blazor ，請參閱 <xref:blazor/get-started> 。
 
 藉由將 `--help` 選項傳遞至 CLI 命令，即可使用範本選項 [`dotnet new`](/dotnet/core/tools/dotnet-new) ：
 

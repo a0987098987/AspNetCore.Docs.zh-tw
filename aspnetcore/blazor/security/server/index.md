@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/server/index
-ms.openlocfilehash: ab3baad30f78c5d5e2f969b3292d4886fcd0406d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 69a24fc955a0f2fb524ec817eb50372052f538a1
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402308"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944252"
 ---
 # <a name="secure-aspnet-core-blazor-server-apps"></a>保護 ASP.NET Core Blazor Server 應用程式
 
@@ -34,7 +34,7 @@ Blazor Server專案範本可以設定為在建立專案時進行驗證。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-遵循文章中的 Visual Studio 指導方針 <xref:blazor/get-started> ，使用驗證機制來建立新的 Blazor Server 專案。
+遵循中的 Visual Studio 指導方針 <xref:blazor/tooling> ，使用驗證機制來建立新的 Blazor Server 專案。
 
 選擇 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中的** Blazor Server 應用程式**範本之後，請選取 [**驗證**] 底下的 [**變更**]。
 
@@ -49,7 +49,7 @@ Blazor Server專案範本可以設定為在建立專案時進行驗證。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
-遵循文章中的 Visual Studio Code 指導方針 <xref:blazor/get-started> ，使用驗證機制來建立新的 Blazor Server 專案：
+遵循中的 Visual Studio Code 指導方針， <xref:blazor/tooling> 使用驗證機制來建立新的 Blazor Server 專案：
 
 ```dotnetcli
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
@@ -57,7 +57,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 下表顯示允許的驗證值 (`{AUTHENTICATION}`)。
 
-| 驗證機制 | 說明 |
+| 驗證機制 | Description |
 | ------------------------ | ----------- |
 | `None` (預設)         | 不需要驗證 |
 | `Individual`             | 使用 ASP.NET Core 儲存在應用程式中的使用者Identity |
@@ -75,7 +75,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 # <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
 
-1. 遵循文章中的 Visual Studio for Mac 指導方針 <xref:blazor/get-started> 。
+1. 遵循中的 Visual Studio for Mac 指導方針 <xref:blazor/tooling> 。
 
 1. 在 [**設定新的 Blazor Server 應用程式**] 步驟上，從 [**驗證**] 下拉式選單選取 [**個別驗證（應用程式內）** ]。
 
@@ -83,7 +83,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli/)
 
-遵循文章中的 .NET Core CLI 指導方針 <xref:blazor/get-started> ，使用驗證機制來建立新的 Blazor Server 專案：
+Blazor Server在命令 shell 中使用下列命令，以驗證機制建立新的專案：
 
 ```dotnetcli
 dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
@@ -91,7 +91,7 @@ dotnet new blazorserver -o {APP NAME} -au {AUTHENTICATION}
 
 下表顯示允許的驗證值 (`{AUTHENTICATION}`)。
 
-| 驗證機制 | 說明 |
+| 驗證機制 | Description |
 | ------------------------ | ----------- |
 | `None` (預設)         | 不需要驗證 |
 | `Individual`             | 使用 ASP.NET Core 儲存在應用程式中的使用者Identity |

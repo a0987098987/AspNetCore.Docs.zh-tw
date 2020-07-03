@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 2c1454d4fc3cd5923100e27748013873c6b4a74a
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2e761f6f4d8e15569c0eb12388db04c401bbb1f5
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402373"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944337"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory"></a>Blazor WebAssembly使用 Azure Active Directory 保護 ASP.NET Core 託管應用程式
 
@@ -43,7 +43,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 選擇**支援的帳戶類型**。 在此體驗中，您可以**只選取此組織目錄中的帳戶**（單一租使用者）。
 1. 在此案例中，*伺服器 API 應用程式*不需要重新**導向 uri** ，因此，請將下拉式關閉設定為 [ **Web** ]，而不要輸入 [重新導向 uri]。
 1. 停用 **[授與系統**  >  **管理員同意 openid 和 offline_access 許可權**] 核取方塊。
-1. 選取 [註冊]****。
+1. 選取 [註冊]。
 
 記錄下列資訊：
 
@@ -77,7 +77,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 選擇**支援的帳戶類型**。 在此體驗中，您可以**只選取此組織目錄中的帳戶**（單一租使用者）。
 1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，在 [**調試**程式] 面板的伺服器應用程式屬性中，可以找到應用程式的隨機產生埠。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 [[建立應用程式](#create-the-app)] 區段中會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
 1. 停用 **[授與系統**  >  **管理員同意 openid 和 offline_access 許可權**] 核取方塊。
-1. 選取 [註冊]****。
+1. 選取 [註冊]。
 
 記錄*用戶端應用*程式識別碼（用戶端識別碼）（例如 `33333333-3333-3333-3333-333333333333` ）。
 
@@ -96,7 +96,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access` ）。
 1. 選取 [新增權限]****。
-1. 選取 [**授與 {租使用者名稱} 的系統管理員內容**] 按鈕。 選取 [是] **** 加以確認。
+1. 選取 [為 **{租使用者名稱} 授與系統管理員同意**] 按鈕。 選取 [是] **** 加以確認。
 
 ### <a name="create-the-app"></a>建立應用程式
 

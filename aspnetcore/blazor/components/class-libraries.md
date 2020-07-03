@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/class-libraries
-ms.openlocfilehash: b54eb7142fc7e1665cc0aaaad068a67852ac2f74
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b172059407f9a08dacc0fadd804864c7aee7fb90
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399071"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944491"
 ---
 # <a name="aspnet-core-razor-components-class-libraries"></a>ASP.NET Core Razor 元件類別庫
 
@@ -36,21 +36,19 @@ ms.locfileid: "85399071"
 
 ## <a name="create-an-rcl"></a>建立 RCL
 
-請遵循文章中的指導方針 <xref:blazor/get-started> ，為設定您的環境 Blazor 。
-
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 1. 建立新專案。
-1. 選取 [ ** Razor 類別庫**]。 選取 [下一步] 。
+1. 選取 [ ** Razor 類別庫**]。 選取 [下一步]。
 1. 在 [**建立新的 Razor 類別庫**] 對話方塊中，選取 [**建立**]。
-1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱 `MyComponentLib1` 。 選取 [建立]****。
+1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 本主題中的範例會使用專案名稱 `MyComponentLib1` 。 選取 [建立]。
 1. 將 RCL 新增至方案：
    1. 以滑鼠右鍵按一下方案。 選取 [**加入**  >  **現有專案**]。
    1. 流覽至 RCL 的專案檔。
    1. 選取 RCL 的專案檔（ `.csproj` ）。
 1. 從應用程式新增參考 RCL：
    1. 以滑鼠右鍵按一下應用程式專案。 選取 [**新增**  >  **參考**]。
-   1. 選取 [RCL] 專案。 選取 [確定]****。
+   1. 選取 [RCL] 專案。 選取 [確定]。
 
 > [!NOTE]
 > 從範本產生 RCL 時，如果已選取 [**支援頁面和視圖**] 核取方塊，則也會 `_Imports.razor` 使用下列內容將檔案新增至所產生專案的根目錄，以啟用 Razor 元件撰寫：

@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: index
-ms.openlocfilehash: f58c25ec8b47b2bd8d425d0bfd0d52df9bbc2655
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2ad97dd7eb38b4cb69fa7af5ae1e1d1837a97443
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408197"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944561"
 ---
 # <a name="introduction-to-aspnet-core"></a>ASP.NET Core 簡介
 
@@ -80,7 +80,7 @@ ASP.NET Core 3.x 和更新版本只能以 .NET Core 為目標。 一般來說，
    |----------|----------|----------|
    |Web 應用程式                   | 新的伺服器端 web UI 開發 |[開始使用 Razor 頁面](xref:tutorials/razor-pages/razor-pages-start) |
    |Web 應用程式                   | 維護 MVC 應用程式 |[開始使用 MVC](xref:tutorials/first-mvc-app/start-mvc)|
-   |Web 應用程式                   | 用戶端 web UI 開發 |[開始使用Blazor](xref:tutorials/first-blazor-app) |
+   |Web 應用程式                   | 用戶端 web UI 開發 |[開始使用Blazor](https://dotnet.microsoft.com/learn/aspnet/blazor-tutorial/intro) |
    |Web API                   | RESTful HTTP 服務 |[建立 Web API](xref:tutorials/first-web-api)&dagger; |
    |遠端程序呼叫應用程式 | 使用通訊協定緩衝區的合約優先服務 |[開始使用 gRPC 服務](xref:tutorials/grpc/grpc-start) |
    |即時應用程式             | 伺服器和連線用戶端之間的雙向通訊 |[開始使用SignalR](xref:tutorials/signalr) |

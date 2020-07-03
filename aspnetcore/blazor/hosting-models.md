@@ -15,22 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/hosting-models
-ms.openlocfilehash: ba43ff052fbd290412fa27cf57ace3ee3491f8d0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 56681e713e008188d57166da9c8fd4eb6923928c
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402555"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944213"
 ---
 # <a name="aspnet-core-blazor-hosting-models"></a>ASP.NET Core Blazor 裝載模型
 
 依[Daniel Roth](https://github.com/danroth27)
 
 Blazor是一種 web 架構，設計用來在[WebAssembly](https://webassembly.org/)型 .net 執行時間（ *Blazor WebAssembly* ）或伺服器端的 ASP.NET Core （）中，于瀏覽器中執行用戶端 *Blazor Server* 。 無論裝載模型為何，應用程式和元件模型*都相同*。
-
-若要為本文所述的主控模型建立專案，請參閱 <xref:blazor/get-started> 。
-
-如需 advanced configuration，請參閱 <xref:blazor/fundamentals/configuration> 。
 
 ## Blazor WebAssembly
 
@@ -155,7 +151,6 @@ Blazor Server應用程式會 prerenders 以回應第一個用戶端要求，這�
 
 ## <a name="additional-resources"></a>其他資源
 
-* <xref:blazor/get-started>
 * <xref:signalr/introduction>
 * <xref:blazor/fundamentals/additional-scenarios>
 * <xref:tutorials/signalr-blazor-webassembly>

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/configuration
-ms.openlocfilehash: 9c83784676e061664b2ae980faadcbe0f84c9985
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 3e1d265f269e2a2c5ea584e62e80f8a6167f9d3a
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402919"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944402"
 ---
 # <a name="aspnet-core-blazor-configuration"></a>ASP.NET Core Blazor 設定
 
@@ -108,9 +108,12 @@ builder.Configuration.Add(memoryConfig);
 </ul>
 
 @code {
-    var wheelsSection = Configuration.GetSection("wheels");
-    
-    ...
+    protected override void OnInitialized()
+    {
+        var wheelsSection = Configuration.GetSection("wheels");
+        
+        ...
+    }
 }
 ```
 

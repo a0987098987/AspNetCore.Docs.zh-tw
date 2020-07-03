@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: be87257c5f901e9b3d1ba6a8d7c6b811419c433f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: df957c5ee385b29ca390c014187a4c10e79d37f4
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402191"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944629"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Blazor WebAssembly使用驗證程式庫保護 ASP.NET Core 獨立應用程式
 
@@ -36,7 +36,7 @@ dotnet new blazorwasm -au Individual
 
 若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
 
-在 Visual Studio 中，[建立 Blazor WebAssembly 應用程式](xref:blazor/get-started)。 使用 [**儲存使用者帳戶應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。
+如果使用 Visual Studio 建立 Blazor WebAssembly 應用程式，請使用 [**將使用者帳戶儲存在應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。
 
 ## <a name="authentication-package"></a>驗證套件
 

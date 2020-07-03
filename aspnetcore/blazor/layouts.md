@@ -5,7 +5,7 @@ description: 瞭解如何為應用程式建立可重複使用的版面配置元�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: f405bb655b2879bd546420d99ff645401ead92fc
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: fe78a144b413bf97be83d20b11148e1856608f78
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402516"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944227"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -80,6 +80,9 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 檔案 `_Imports.razor` 類似于[ Razor views 和 pages 的 _ViewImports. cshtml](xref:mvc/views/layout#importing-shared-directives)檔案，但特別適用于元件檔案 Razor 。
 
 在中指定版面配置會 `_Imports.razor` 覆寫指定為路由器*預設版面*配置的版面配置。
+
+> [!WARNING]
+> 請勿**not**將指示詞新增 Razor `@layout` 至根檔案 `_Imports.razor` ，這會導致應用程式中的配置無限迴圈。 若要控制預設的應用程式版面配置，請在元件中指定版面配置 `Router` 。 如需詳細資訊，請參閱[預設版面](#default-layout)配置一節。
 
 ## <a name="nested-layouts"></a>嵌套版面配置
 

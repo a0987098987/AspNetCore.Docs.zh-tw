@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: cce6b6b1ec144e362415fe34645aef567269c873
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b0c6cbd814a23afabbbf9a0d943d28125ac1f61c
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402204"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944576"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a>Blazor WebAssembly使用伺服器保護 ASP.NET Core 託管應用 Identity 程式
 
@@ -32,7 +32,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 在 Visual Studio 中：
 
-1. 建立新的 **Blazor WebAssembly** 應用程式。 如需詳細資訊，請參閱 <xref:blazor/get-started> 。
+1. 建立新的 **Blazor WebAssembly** 應用程式。
 1. 在 [**建立新的 Blazor 應用程式**] 對話方塊中，選取 [**驗證**] 區段中的 [**變更**]。
 1. 選取 [**個別使用者帳戶**]，後面接著 **[確定]**。
 1. 選取 [ **Advanced** ] 區段中的 [ **ASP.NET Core 託管**] 核取方塊。

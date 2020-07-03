@@ -4,7 +4,7 @@ author: jamesnk
 description: 瞭解如何在 ASP.NET Core 上設定 gRPC 服務，以使用 gRPC-Web 從瀏覽器應用程式呼叫。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
-ms.date: 06/29/2020
+ms.date: 06/30/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/browser
-ms.openlocfilehash: 20f72deb9895111a6e691eb1ee5cd7419c8c4cb4
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 05ff343f7116509128b7370a50bcfa3c67ffb9fe
+ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793502"
+ms.lasthandoff: 07/03/2020
+ms.locfileid: "85944234"
 ---
 # <a name="use-grpc-in-browser-apps"></a>在瀏覽器應用程式中使用 gRPC
 
@@ -79,6 +79,15 @@ ASP.NET Core 中裝載的 gRPC 服務可以設定為支援 gRPC-Web 與 HTTP/2 g
 * 呼叫 `AddCors` 以新增 cors 服務，並設定會公開 gRPC 特定標頭的 CORS 原則。
 * 呼叫 `UseCors` ，以在路由和結束端點之後加入 CORS 中介軟體。
 * 指定 `endpoints.MapGrpcService<GreeterService>()` 方法支援 CORS 與 `RequiresCors` 。
+
+### <a name="grpc-web-and-streaming"></a>gRPC-Web 和串流
+
+傳統 gRPC over HTTP/2 支援所有方向的串流。 gRPC-Web 提供有限的串流支援：
+
+* gRPC-網頁瀏覽器用戶端不支援呼叫用戶端資料流程和雙向串流方法。
+* Azure App Service 和 IIS 上裝載的 ASP.NET Core gRPC 服務不支援雙向串流。
+
+使用 gRPC-Web 時，我們只建議使用一元方法和伺服器資料流程方法。
 
 ## <a name="call-grpc-web-from-the-browser"></a>從瀏覽器呼叫 gRPC-Web
 

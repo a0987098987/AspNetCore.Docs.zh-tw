@@ -15,32 +15,25 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/tooling
-ms.openlocfilehash: 3ff610225c798624b7ead7d365924ae3d193829d
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+zone_pivot_groups: operating-systems-set-one
+ms.openlocfilehash: 538257597ec5c6c705d8280a817c409debe22224
+ms.sourcegitcommit: c6467f86c09b1f608b09d37d33c8c43de7ae8bc7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944941"
+ms.locfileid: "85946817"
 ---
-<!-- zone_pivot_groups: operating-systems -->
-
 # <a name="tooling-for-aspnet-core-blazor"></a>適用于 ASP.NET Core 的工具Blazor
 
 作者：[Daniel Roth](https://github.com/danroth27) 和 [Luke Latham](https://github.com/guardrex)
 
-選取適用于您平臺的工具：
-
-* Windows：選取 [ **Visual Studio** ] 索引標籤。
-* Linux：選取 [ **Visual Studio Code** ] 索引標籤。
-* macOS：選取 [ **Visual Studio for Mac** ] 索引標籤。
-
-# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+::: zone pivot="os-windows"
 
 1. 使用**ASP.NET 和 網頁程式開發**工作負載安裝最新版的[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) 。
 
 1. 建立新專案。
 
-1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步]。
+1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步] 。
 
 1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
@@ -50,7 +43,9 @@ ms.locfileid: "85944941"
 
 1. 按<kbd>Ctrl</kbd> + <kbd>F5</kbd>執行應用程式。
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
+::: zone-end
+
+::: zone pivot="os-linux"
 
 1. 安裝最新版的[.Net Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)。 如果您先前已安裝 SDK，您可以在命令 shell 中執行下列命令，以判斷已安裝的版本：
 
@@ -84,7 +79,9 @@ ms.locfileid: "85944941"
 
 1. 按<kbd>Ctrl</kbd> + <kbd>F5</kbd>執行應用程式。
 
-# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+::: zone-end
+
+::: zone pivot="os-macos"
 
 1. 安裝[Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)。
 
@@ -92,7 +89,7 @@ ms.locfileid: "85944941"
 
 1. 在提要欄位中，選取 [ **Web 和主控台**  >  **應用程式**]。
 
-   如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [下一步]。
+   如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [下一步] 。
 
    如需這兩個 Blazor 裝載模型的詳細資訊，請 *Blazor WebAssembly* *Blazor Server* 參閱 <xref:blazor/hosting-models> 。
 
@@ -101,7 +98,7 @@ ms.locfileid: "85944941"
    * 設定為 **.Net Core 3.1**的**目標 Framework** 。
    * **驗證**設為 [**無驗證**]。
    
-   選取 [下一步]。
+   選取 [下一步] 。
 
 1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1` 。 選取 [建立]。
 
@@ -109,89 +106,4 @@ ms.locfileid: "85944941"
 
 如果出現會信任開發憑證的提示，請信任憑證並繼續。 需要使用者和 keychain 密碼，才能信任憑證。
 
----
-
-<!--
-
-::: zone pivot="os-windows"
-
-1. Install the latest version of [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) with the **ASP.NET and web development** workload.
-
-1. Create a new project.
-
-1. Select **Blazor App**. Select **Next**.
-
-1. Provide a project name in the **Project name** field or accept the default project name. Confirm the **Location** entry is correct or provide a location for the project. Select **Create**.
-
-1. For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template. For a Blazor Server experience, choose the **Blazor Server App** template. Select **Create**.
-
-   For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server*, see <xref:blazor/hosting-models>.
-
-1. Press <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app.
-
 ::: zone-end
-
-::: zone pivot="os-linux"
-
-1. Install the latest version of the [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). If you previously installed the SDK, you can determine your installed version by executing the following command in a command shell:
-
-   ```dotnetcli
-   dotnet --version
-   ```
-
-1. Install the latest version of [Visual Studio Code](https://code.visualstudio.com/).
-
-1. Install the latest [C# for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) and the [JavaScript Debugger (Nightly)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) extension with `debug.javascript.usePreview` set to `true`.
-
-   To set `debug.javascript.usePreview` to `true` using the VS Code UI, open **File** > **Preferences** > **Settings** and search for `debug javascript use preview`. Select the check box for **Use the new in-preview JavaScript debugger for Node.js and Chrome**.
-
-1. For a Blazor WebAssembly experience, execute the following command in a command shell:
-
-   ```dotnetcli
-   dotnet new blazorwasm -o WebApplication1
-   ```
-
-   For a Blazor Server experience, execute the following command in a command shell:
-
-   ```dotnetcli
-   dotnet new blazorserver -o WebApplication1
-   ```
-
-   For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server*, see <xref:blazor/hosting-models>.
-
-1. Open the `WebApplication1` folder in Visual Studio Code.
-
-1. The IDE requests that you add assets to build and debug the project. Select **Yes**.
-
-1. Press <kbd>Ctrl</kbd>+<kbd>F5</kbd> to run the app.
-
-::: zone-end
-
-::: zone pivot="os-macos"
-
-1. Install [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/).
-
-1. Select **File** > **New Solution** or create a **New** project from the **Start Window**.
-
-1. In the sidebar, select **Web and Console** > **App**.
-
-   For a Blazor WebAssembly experience, choose the **Blazor WebAssembly App** template. For a Blazor Server experience, choose the **Blazor Server App** template. Select **Next**.
-
-   For information on the two Blazor hosting models, *Blazor WebAssembly* and *Blazor Server*, see <xref:blazor/hosting-models>.
-
-1. Confirm the following configurations:
-
-   * **Target Framework** set to **.NET Core 3.1**.
-   * **Authentication** set to **No Authentication**.
-   
-   Select **Next**.
-
-1. In the **Project Name** field, name the app `WebApplication1`. Select **Create**.
-
-1. Select **Run** > **Start Without Debugging** to run the app *without the debugger*. Run the app with **Run** > **Start Debugging** or the Run (&#9654;) button to run the app *with the debugger*.
-
-If a prompt appears to trust the development certificate, trust the certificate and continue. The user and keychain passwords are required to trust the certificate.
-
-::: zone-end
-
--->

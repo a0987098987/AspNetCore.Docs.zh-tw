@@ -369,6 +369,8 @@
           uid: blazor/call-javascript-from-dotnet
         - name: 從 JavaScript 呼叫 .NET
           uid: blazor/call-dotnet-from-javascript
+        - name: 從 WebAssembly 呼叫 Web API
+          uid: blazor/call-web-api
         - name: 安全性及身分識別
           items:
             - name: 總覽
@@ -409,8 +411,6 @@
           uid: blazor/state-management
         - name: 偵錯 WebAssembly
           uid: blazor/debug
-        - name: 從 WebAssembly 呼叫 Web API
-          uid: blazor/call-web-api
         - name: WebAssembly 效能
           uid: blazor/webassembly-performance-best-practices
         - name: 漸進式 Web 應用程式

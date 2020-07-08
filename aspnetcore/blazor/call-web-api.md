@@ -5,7 +5,7 @@ description: 瞭解如何 Blazor WebAssembly 使用 JSON helper 從應用程式�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/28/2020
+ms.date: 06/24/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: 2d910def31e4035c1d9cbacb3aaa721dd699c273
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a2e320eb24d47de9e704c2a5355d28cf90bad0cd
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400740"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059938"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
 
@@ -158,7 +158,7 @@ JSON helper 方法會將要求傳送至 URI （下列範例中的 Web API）並�
   呼叫會傳回 <xref:System.Net.Http.Json.HttpClientJsonExtensions.PutAsJsonAsync%2A> <xref:System.Net.Http.HttpResponseMessage> 。 若要從回應訊息還原序列化 JSON 內容，請使用 <xref:System.Net.Http.Json.HttpContentJsonExtensions.ReadFromJsonAsync%2A> 擴充方法：
   
   ```csharp
-  var content = response.content.ReadFromJsonAsync<WeatherForecast>();
+  var content = response.Content.ReadFromJsonAsync<WeatherForecast>();
   ```
 
 <xref:System.Net.Http>包含用來傳送 HTTP 要求和接收 HTTP 回應的其他擴充方法。 <xref:System.Net.Http.HttpClient.DeleteAsync%2A?displayProperty=nameWithType>是用來將 HTTP DELETE 要求傳送至 Web API。
@@ -304,7 +304,7 @@ protected override async Task OnInitializedAsync()
 ```
 
 > [!NOTE]
-> 上述範例是為了示範之用。 即使端點不存在，或伺服器上發生未處理的例外，您也可以將 Web API 伺服器應用程式設定為傳回 JSON。
+> 上述範例是為了示範之用。 即使端點不存在或伺服器上發生未處理的例外狀況，Web API 伺服器應用程式也可以設定為傳回 JSON。
 
 如需詳細資訊，請參閱 <xref:blazor/fundamentals/handle-errors> 。
 
@@ -314,7 +314,9 @@ protected override async Task OnInitializedAsync()
 
 [ Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（）中使用 CORS `Pages/CallWebAPI.razor` 。
 
-若要允許其他網站對您的應用程式進行跨原始來源資源分享（CORS）要求，請參閱 <xref:security/cors> 。
+如需安全要求的詳細資訊和程式碼範例，請參閱 <xref:blazor/security/webassembly/additional-scenarios> 。 如需有關具有安全要求之 CORS 的詳細資訊，請參閱上一篇文章的[cors 一節](xref:blazor/security/webassembly/additional-scenarios#cross-origin-resource-sharing-cors)。
+
+如需詳細資訊，請參閱 <xref:security/cors> 。
 
 ## <a name="additional-resources"></a>其他資源
 

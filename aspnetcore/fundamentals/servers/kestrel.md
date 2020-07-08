@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/servers/kestrel
-ms.openlocfilehash: 9f70de3c4c3f936f25a390c3a7ab1a1e2a000138
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 03c25c103f03c3f9b17311f468d96907d2498641
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401021"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060380"
 ---
 # <a name="kestrel-web-server-implementation-in-aspnet-core"></a>ASP.NET Core 中的 Kestrel 網頁伺服器實作
 
@@ -354,7 +354,7 @@ webBuilder.ConfigureKestrel(serverOptions =>
 
 ### <a name="synchronous-io"></a>同步 I/O
 
-<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO>控制要求和回應是否允許同步的 i/o。 預設值是 `false`。
+<xref:Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerOptions.AllowSynchronousIO>控制要求和回應是否允許同步的 i/o。 預設值為 `false`。
 
 > [!WARNING]
 > 大量封鎖同步 i/o 作業可能會導致執行緒集區耗盡，讓應用程式無回應。 只有 `AllowSynchronousIO` 在使用不支援非同步 i/o 的程式庫時才啟用。
@@ -1725,7 +1725,7 @@ HTTP/2 的 TLS 限制：
 * 暫時金鑰交換大小下限：
   * 橢圓曲線 Diffie-hellman （ECDHE） &lbrack; [RFC4492](https://www.ietf.org/rfc/rfc4492.txt) &rbrack; ：224位最小值
   * 有限欄位 diffie-hellman （DHE） &lbrack; `TLS12` &rbrack; ：2048位最小值
-* 加密套件未列於封鎖清單中
+* 未封鎖加密套件
 
 `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`&lbrack;`TLS-ECDHE`&rbrack;根據預設，支援 P-256 橢圓曲線 &lbrack; `FIPS186` &rbrack; 。
 

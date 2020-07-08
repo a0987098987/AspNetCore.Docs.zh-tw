@@ -5,7 +5,7 @@ description: 瞭解如何在中使用表單和欄位驗證案例 Blazor 。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/01/2020
+ms.date: 07/06/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: 925051d7426470aebfddbdb5ff83d7dab9f82726
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: f31a1f1d8942c9d9654dc26e946c022cf21ed9d1
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944428"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059860"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -445,6 +445,14 @@ Blazor會執行兩種類型的驗證：
 
 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601>和 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 元件支援任意屬性。 任何不符合元件參數的屬性都會加入至產生的 `<div>` 或 `<ul>` 元素。
 
+在應用程式的樣式表單（或）中控制驗證訊息的樣式 `wwwroot/css/app.css` `wwwroot/css/site.css` 。 預設 `validation-message` 類別會將驗證訊息的文字色彩設定為紅色：
+
+```css
+.validation-message {
+    color: red;
+}
+```
+
 ### <a name="custom-validation-attributes"></a>自訂驗證屬性
 
 若要在使用[自訂驗證屬性](xref:mvc/models/validation#custom-attributes)時，確保驗證結果與欄位正確相關聯，請 <xref:System.ComponentModel.DataAnnotations.ValidationContext.MemberName> 在建立時傳遞驗證內容 <xref:System.ComponentModel.DataAnnotations.ValidationResult> ：
@@ -467,7 +475,7 @@ private class CustomValidator : ValidationAttribute
 ```
 
 > [!NOTE]
-> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> 為 `null`。 不支援在方法中插入服務以進行驗證 `IsValid` 。
+> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> 是 `null` \(英文\)。 不支援在方法中插入服務以進行驗證 `IsValid` 。
 
 ### <a name="blazor-data-annotations-validation-package"></a>Blazor資料批註驗證封裝
 

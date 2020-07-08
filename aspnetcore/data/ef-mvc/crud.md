@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: 0be63811874709db95285f4013e47bc1706050b1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e7e4c4b15cca9612a552c58029ae8b34b79070d1
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401476"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060120"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 來執行 CRUD 功能-ASP.NET MVC
 
@@ -187,7 +187,7 @@ public class Student
 
 新的程式碼會讀取現有的實體，呼叫 `TryUpdateModel` 來[根據使用者在 Post 表單資料中輸入的內容](xref:mvc/models/model-binding)來更新已擷取實體中的欄位。 Entity Framework 的自動變更追蹤會在表單輸入變更的欄位上設定 `Modified` 旗標。 當呼叫 `SaveChanges` 方法時，Entity Framework 會建立 SQL 陳述式來更新資料庫的資料列。 系統會忽略並行衝突，並且只有使用者更新的資料表資料行會在資料庫中獲得更新。 (之後的教學課程會顯示如何處理並行衝突。)
 
-作為防止大量指派的最佳做法，您要允許 [編輯]**** 頁面更新的欄位會在 `TryUpdateModel` 參數的允許清單中。 （參數清單中欄位清單前面的空字串，是要搭配表單欄位名使用的前置詞）。目前沒有任何其他您要保護的欄位，但會列出您想要讓模型系結器系結的欄位，確保在未來將欄位加入至資料模型時，它們會自動受到保護，直到您明確地將它們加入到這裡。
+若要避免防止大量指派，最佳作法是在參數中宣告您想要由 [**編輯**] 頁面更新的欄位 `TryUpdateModel` 。 （參數清單中欄位清單前面的空字串，是要搭配表單欄位名使用的前置詞）。目前沒有任何其他您要保護的欄位，但會列出您想要讓模型系結器系結的欄位，確保在未來將欄位加入至資料模型時，它們會自動受到保護，直到您明確地將它們加入到這裡。
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 59bf94f6818108f09e9af147559fc304f48936bc
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 066bebf95a941fca5e7cc175c4c0d6d56abc9cb5
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401307"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060055"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 
@@ -109,7 +109,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 ![Course [建立] 頁面](update-related-data/_static/course-create.png)
 
-按一下 [建立]****。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
+按一下 [建立]。 Courses [索引] 頁面便會顯示，並且清單中已有新建立的課程。 [索引] 頁面中的部門名稱來自於導覽屬性，顯示關聯性已正確建立。
 
 按一下 Courses [索引] 頁面中課程的 [編輯]****。
 
@@ -143,7 +143,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 * 針對 `OfficeAssignment` 導覽屬性使用積極式載入從資料庫中取得目前的 Instructor 實體。 這與您在 HttpGet `Edit` 方法中所做的事情一樣。
 
-* 使用從模型繫結器取得的值更新擷取的 Instructor 實體。 `TryUpdateModel` 多載可讓您將要包含的屬性加入允許清單中。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
+* 使用從模型繫結器取得的值更新擷取的 Instructor 實體。 多載 `TryUpdateModel` 可讓您宣告想要包含的屬性。 這可防止大量指派，如同在[第二個教學課程](crud.md)中所解釋的。
 
     <!-- Snippets don't play well with <ul> [!code-csharp[](intro/samples/cu/Controllers/InstructorsController.cs?range=241-244)] -->
 
@@ -211,7 +211,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 
 方法簽章現在已和 HttpGet `Edit` 方法不同，因此方法名稱會從 `EditPost` 變回 `Edit`。
 
-由於檢視沒有 Course 實體的集合，模型繫結器無法自動更新 `CourseAssignments` 導覽屬性。 相較於使用模型繫結器更新 `CourseAssignments` 導覽屬性，您會在新的 `UpdateInstructorCourses` 方法中進行相同的操作。 因此您必須從模型繫結器中排除 `CourseAssignments` 屬性。 這並不需要對呼叫 `TryUpdateModel` 的程式碼進行任何變更，因為您使用的是允許清單多載，且 `CourseAssignments` 並未位於包含清單中。
+由於檢視沒有 Course 實體的集合，模型繫結器無法自動更新 `CourseAssignments` 導覽屬性。 相較於使用模型繫結器更新 `CourseAssignments` 導覽屬性，您會在新的 `UpdateInstructorCourses` 方法中進行相同的操作。 因此，您必須 `CourseAssignments` 從模型系結中排除屬性。 這不需要對呼叫的程式碼進行任何變更， `TryUpdateModel` 因為您正在使用需要明確核准且 `CourseAssignments` 不在包含清單中的多載。
 
 若沒有選取任何核取方塊，`UpdateInstructorCourses` 中的程式碼會使用空集合初始化 `CourseAssignments` 導覽屬性並傳回：
 

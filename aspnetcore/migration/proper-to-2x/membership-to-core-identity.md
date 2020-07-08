@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: migration/proper-to-2x/membership-to-core-identity
-ms.openlocfilehash: f039772f4276d0e8bcec2629350eba2ec0e7418c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: afad542a18a357a77f4542511a3d2c3108dbfb31
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399682"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059769"
 ---
 # <a name="migrate-from-aspnet-membership-authentication-to-aspnet-core-20-identity"></a>從 ASP.NET 成員資格驗證遷移至 ASP.NET Core 2。0Identity
 
@@ -75,36 +75,33 @@ ASP.NET Core 2.0 遵循 [Identity](/aspnet/identity/index) ASP.NET 4.5 中引進
 
 ### <a name="users"></a>使用者
 
-|*Identity<br>供.AspNetUsers*        ||*成員資格 <br> （dbo. aspnet_Users/dbo. aspnet_Membership）*||
-|----------------------------------------|-----------------------------------------------------------|
-|**功能變數名稱**                 |**型別**|**功能變數名稱**                                    |**型別**|
-|`Id`                           |字串  |`aspnet_Users.UserId`                             |字串  |
-|`UserName`                     |字串  |`aspnet_Users.UserName`                           |字串  |
-|`Email`                        |字串  |`aspnet_Membership.Email`                         |字串  |
-|`NormalizedUserName`           |字串  |`aspnet_Users.LoweredUserName`                    |字串  |
-|`NormalizedEmail`              |字串  |`aspnet_Membership.LoweredEmail`                  |字串  |
-|`PhoneNumber`                  |字串  |`aspnet_Users.MobileAlias`                        |字串  |
-|`LockoutEnabled`               |bit     |`aspnet_Membership.IsLockedOut`                   |bit     |
+|Identity<br>（ `dbo.AspNetUsers` ）資料行  |類型     |成員資格<br>（ `dbo.aspnet_Users`  /  `dbo.aspnet_Membership` ）資料行|類型      |
+|-------------------------------------------|-----------------------------------------------------------------------|
+| `Id`                            | `string`| `aspnet_Users.UserId`                                      | `string` |
+| `UserName`                      | `string`| `aspnet_Users.UserName`                                    | `string` |
+| `Email`                         | `string`| `aspnet_Membership.Email`                                  | `string` |
+| `NormalizedUserName`            | `string`| `aspnet_Users.LoweredUserName`                             | `string` |
+| `NormalizedEmail`               | `string`| `aspnet_Membership.LoweredEmail`                           | `string` |
+| `PhoneNumber`                   | `string`| `aspnet_Users.MobileAlias`                                 | `string` |
+| `LockoutEnabled`                | `bit`   | `aspnet_Membership.IsLockedOut`                            | `bit`    |
 
 > [!NOTE]
 > 並非所有欄位對應都與從成員資格到 ASP.NET Core 的一對一關聯性類似 Identity 。 上表會採用預設成員資格使用者架構，並將它對應至 ASP.NET Core Identity 架構。 任何其他用於成員資格的自訂欄位都必須手動對應。 在此對應中，沒有任何密碼對應，因為密碼條件和密碼 salts 都不會在兩者之間遷移。 **建議您將密碼保留為 null，並要求使用者重設其密碼。** 在 ASP.NET Core 中 Identity ， `LockoutEnd` 如果使用者遭到鎖定，則應該設定為未來的某個日期。這會顯示在遷移腳本中。
 
 ### <a name="roles"></a>角色
 
-|*Identity<br>供.AspNetRoles)*        ||*成員資格 <br> （dbo. aspnet_Roles）*||
+|Identity<br>（ `dbo.AspNetRoles` ）資料行|類型|成員資格<br>（ `dbo.aspnet_Roles` ）資料行|類型|
 |----------------------------------------|-----------------------------------|
-|**功能變數名稱**                 |**型別**|**功能變數名稱**   |**型別**         |
-|`Id`                           |字串  |`RoleId`         | 字串          |
-|`Name`                         |字串  |`RoleName`       | 字串          |
-|`NormalizedName`               |字串  |`LoweredRoleName`| 字串          |
+|`Id`                           |`string`|`RoleId`         | `string`        |
+|`Name`                         |`string`|`RoleName`       | `string`        |
+|`NormalizedName`               |`string`|`LoweredRoleName`| `string`        |
 
 ### <a name="user-roles"></a>使用者角色
 
-|*Identity<br>供.[Aspnetuserroles]*||*成員資格 <br> （dbo. aspnet_UsersInRoles）*||
-|------------------------------------|------------------------------------------|
-|**功能變數名稱**           |**型別**  |**功能變數名稱**|**型別**                   |
-|`RoleId`                 |字串    |`RoleId`      |字串                     |
-|`UserId`                 |字串    |`UserId`      |字串                     |
+|Identity<br>（ `dbo.AspNetUserRoles` ）資料行|類型|成員資格<br>（ `dbo.aspnet_UsersInRoles` ）資料行|類型|
+|-------------------------|----------|--------------|---------------------------|
+|`RoleId`                 |`string`  |`RoleId`      |`string`                   |
+|`UserId`                 |`string`  |`UserId`      |`string`                   |
 
 建立*使用者*和*角色*的遷移腳本時，請參考上述對應表。 下列範例假設您在資料庫伺服器上有兩個資料庫。 一個資料庫包含現有的 ASP.NET 成員資格架構和資料。 另一個*CoreIdentitySample*資料庫是使用稍早所述的步驟所建立。 批註包含內嵌，以提供更多詳細資料。
 

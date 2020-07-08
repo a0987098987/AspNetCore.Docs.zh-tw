@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/comparison
-ms.openlocfilehash: 08efb79f5085acff455744e46ca411777b2641e5
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: caf9e99bcd4a1887fe5d69a3641fabee08573ef1
+ms.sourcegitcommit: d1fa3d69dda675d7a52c7100742dfa6297413376
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406156"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86093319"
 ---
 # <a name="compare-grpc-services-with-http-apis"></a>比較 gRPC 服務與 HTTP API
 
@@ -37,7 +37,7 @@ ms.locfileid: "85406156"
 | 通訊協定         | HTTP/2                                             | HTTP                          |
 | Payload          | [Protobuf （小型，二進位）](#performance)           | JSON （大型、人類可讀取）  |
 | Prescriptiveness | [嚴格規格](#strict-specification)      | 鬆動. 任何 HTTP 都是有效的。     |
-| 串流        | [用戶端，伺服器，雙向](#streaming)       | 用戶端，伺服器                |
+| 資料流        | [用戶端，伺服器，雙向](#streaming)       | 用戶端，伺服器                |
 | 瀏覽器支援  | [否（需要 grpc-web）](#limited-browser-support) | 是                           |
 | 安全性         | 傳輸（TLS）                                    | 傳輸（TLS）               |
 | 用戶端程式代碼產生 | [是](#code-generation)                      | OpenAPI + 協力廠商工具 |
@@ -67,7 +67,7 @@ HTTP/2 不是 gRPC 專屬的。 許多要求類型，包括具有 JSON 的 HTTP 
 
 [GRPC 規格](https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md)規定了 gRPC 服務必須遵循的格式。 gRPC 可排除爭論並節省開發人員的時間，因為 gRPC 在平臺和實現之間是一致的。
 
-### <a name="streaming"></a>串流
+### <a name="streaming"></a>資料流
 
 HTTP/2 提供長時間即時通訊資料流程的基礎。 gRPC 提供透過 HTTP/2 進行串流的第一級支援。
 
@@ -104,7 +104,7 @@ gRPC 適用于下列案例：
 GRPC-Web 不支援所有 gRPC 的功能。 用戶端和雙向串流不受支援，而且對伺服器串流的支援有限。
 
 > [!TIP]
-> .NET Core 具有 gRPC Web 的實驗性支援。 如需詳細資訊，請造訪 <xref:grpc/browser> 。
+> .NET Core 支援 gRPC-Web。 如需詳細資訊，請造訪 <xref:grpc/browser> 。
 
 ### <a name="not-human-readable"></a>不是人類看得懂
 

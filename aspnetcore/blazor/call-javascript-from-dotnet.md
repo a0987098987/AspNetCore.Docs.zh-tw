@@ -5,7 +5,7 @@ description: 瞭解如何從應用程式中的 .NET 方法叫用 JavaScript 函�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/07/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-javascript-from-dotnet
-ms.openlocfilehash: 8a2df6ca55985a1cff49abb09113e49bfeae6829
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5c22220871fdba7fea43c38fa4bc826c07135ffc
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400514"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060029"
 ---
 # <a name="call-javascript-functions-from-net-methods-in-aspnet-core-blazor"></a>在 ASP.NET Core 中從 .NET 方法呼叫 JavaScript 函式Blazor
 
@@ -117,7 +117,7 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
 
 ```razor
 @page "/JSInterop"
-@using BlazorSample.JsInteropClasses
+@using {APP ASSEMBLY}.JsInteropClasses
 @inject IJSRuntime JSRuntime
 
 <h1>JavaScript Interop</h1>
@@ -143,6 +143,8 @@ JavaScript 程式碼（如上述範例所示的程式碼）也可以從 JavaScri
     }
 }
 ```
+
+預留位置 `{APP ASSEMBLY}` 為應用程式的應用程式元件名稱（例如 `BlazorSample` ）。
 
 1. 當您 `TriggerJsPrompt` 選取元件的按鈕來執行時 **`Trigger JavaScript Prompt`** ， `showPrompt` 會呼叫檔案中提供的 JavaScript 函數 `wwwroot/exampleJsInterop.js` 。
 1. 函式 `showPrompt` 會接受使用者輸入（使用者的名稱），這是 HTML 編碼並傳回給元件。 元件會將使用者的名稱儲存在本機變數中 `name` 。
@@ -291,7 +293,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Components;
 
-namespace BlazorSample.Pages
+namespace {APP ASSEMBLY}.Pages
 {
     public partial class Index : 
         ComponentBase, IObservable<ElementReference>, IDisposable
@@ -368,6 +370,8 @@ namespace BlazorSample.Pages
 }
 ```
 
+預留位置 `{APP ASSEMBLY}` 為應用程式的應用程式元件名稱（例如 `BlazorSample` ）。
+
 `Shared/SurveyPrompt.razor`（子元件）：
 
 ```razor
@@ -397,7 +401,7 @@ namespace BlazorSample.Pages
 using System;
 using Microsoft.AspNetCore.Components;
 
-namespace BlazorSample.Shared
+namespace {APP ASSEMBLY}.Shared
 {
     public partial class SurveyPrompt : 
         ComponentBase, IObserver<ElementReference>, IDisposable
@@ -442,6 +446,8 @@ namespace BlazorSample.Shared
     }
 }
 ```
+
+預留位置 `{APP ASSEMBLY}` 為應用程式的應用程式元件名稱（例如 `BlazorSample` ）。
 
 ## <a name="harden-js-interop-calls"></a>強化 JS interop 呼叫
 

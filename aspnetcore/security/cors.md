@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: 76e79c2d9762e242dc44857370b0ce1d13f1d1cb
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0a2be31092ab491e23ab9de9be676b5b4d3963ee
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403777"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060276"
 ---
 # <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨原始來源要求（CORS）
 
@@ -794,7 +794,7 @@ CORS 中介軟體一律允許傳送中的四個標頭， `Access-Control-Request
 app.UseCors(policy => policy.WithHeaders(HeaderNames.CacheControl));
 ```
 
-CORS 中介軟體會以下列要求標頭成功回應預檢要求，因為 `Content-Language` 一律會列入允許清單：
+CORS 中介軟體會以下列要求標頭成功回應預檢要求，因為 `Content-Language` 一律允許：
 
 ```
 Access-Control-Request-Headers: Cache-Control, Content-Language

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/data-protection/implementation/context-headers
-ms.openlocfilehash: 078392662281253b8b6cfc0d50fddc8d66482b63
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0995cd80c10f638c90a60630378518988ffb89ed
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406890"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060094"
 ---
 # <a name="context-headers-in-aspnet-core"></a>ASP.NET Core 中的內容標頭
 
@@ -26,7 +26,7 @@ ms.locfileid: "85406890"
 
 ## <a name="background-and-theory"></a>背景和理論
 
-在資料保護系統中，「金鑰」是指可提供已驗證加密服務的物件。 每個金鑰都是以唯一識別碼（GUID）來識別，而且它會攜帶其演算法資訊和 entropic 材質。 它的目的是要讓每個金鑰都具有獨特的熵，但是系統無法強制執行，而且我們也需要將金鑰環中現有金鑰的演算法資訊修改為手動變更金鑰信號的開發人員。 為了達到我們的安全性需求，在這些情況下，資料保護系統具有[密碼](https://www.microsoft.com/en-us/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption/)編譯彈性的概念，可讓您在多個密碼編譯演算法中安全使用單一 entropic 值。
+在資料保護系統中，「金鑰」是指可提供已驗證加密服務的物件。 每個金鑰都是以唯一識別碼（GUID）來識別，而且它會攜帶其演算法資訊和 entropic 材質。 它的目的是要讓每個金鑰都具有獨特的熵，但是系統無法強制執行，而且我們也需要將金鑰環中現有金鑰的演算法資訊修改為手動變更金鑰信號的開發人員。 為了達到我們的安全性需求，在這些情況下，資料保護系統具有[密碼](https://www.microsoft.com/research/publication/cryptographic-agility-and-its-relation-to-circular-encryption)編譯彈性的概念，可讓您在多個密碼編譯演算法中安全使用單一 entropic 值。
 
 大部分支援密碼編譯靈活性的系統，都是在裝載內包含關於演算法的一些識別資訊。 演算法的 OID 通常是很好的候選。 不過，我們遇到的一個問題是，有多種方式可以指定相同的演算法：「AES」（CNG）和受管理的 Aes、AesManaged、AesCryptoServiceProvider、AesCng 和 RijndaelManaged （指定的特定參數）類別實際上都是相同的，因此我們需要維護所有這些的對應到正確的 OID。 如果開發人員想要提供自訂演算法（或甚至是 AES！的另一個實作為），他們必須告訴我們其 OID。 這個額外的註冊步驟讓系統設定特別困難。
 
@@ -50,21 +50,21 @@ ms.locfileid: "85406890"
 
 * [32 位]HMAC 演算法的摘要大小（以位元組為單位）。
 
-* EncCBC （K_E，IV，""），這是對稱式區塊加密演算法的輸出，指定空白字串輸入，其中 IV 是全零向量。 K_E 的結構如下所述。
+* `EncCBC(K_E, IV, "")`，這是指定空字串輸入，而且 IV 為全零向量的對稱區塊加密演算法的輸出。 的結構 `K_E` 如下所述。
 
-* MAC （K_H，""），這是指定空字串輸入的 HMAC 演算法輸出。 K_H 的結構如下所述。
+* `MAC(K_H, "")`，這是指定空字串輸入的 HMAC 演算法輸出。 的結構 `K_H` 如下所述。
 
-在理想的情況下，我們可以針對 K_E 和 K_H 傳遞所有-零的向量。 不過，我們想要避免基礎演算法在執行任何作業之前檢查弱式金鑰是否存在（尤其是 DES 和3DES），這種情況會使用簡單或可重複的模式（例如全零向量）來排除。
+在理想的情況下，我們可以針對和傳遞所有-零的向量 `K_E` `K_H` 。 不過，我們想要避免基礎演算法在執行任何作業之前檢查弱式金鑰是否存在（尤其是 DES 和3DES），這種情況會使用簡單或可重複的模式（例如全零向量）來排除。
 
-相反地，我們使用計數器模式的 NIST SP800-108 KDF （請參閱[NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，Sec. 5.1），其長度為零的索引鍵、標籤和內容，以及 HMACSHA512 作為基礎 PRF。 我們衍生 |K_E |+ |K_H |輸出的位元組數，然後將結果分解成 K_E 並 K_H 本身。 這是以數學方式表示，如下所示。
+相反地，我們使用計數器模式的 NIST SP800-108 KDF （請參閱[NIST SP800-108](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf)，Sec. 5.1），其長度為零的索引鍵、標籤和內容，以及 HMACSHA512 作為基礎 PRF。 我們會衍生 `| K_E | + | K_H |` 位元組的輸出，然後將結果分解成 `K_E` 和 `K_H` 自己。 這是以數學方式表示，如下所示。
 
-（K_E | |K_H） = SP800_108_CTR （prf = HMACSHA512，key = ""，label = ""，coNtext = ""）
+`( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
 ### <a name="example-aes-192-cbc--hmacsha256"></a>範例： AES-192-CBC + HMACSHA256
 
 例如，假設對稱區塊加密演算法是 AES-192-CBC，而驗證演算法是 HMACSHA256 的情況。 系統會使用下列步驟來產生內容標頭。
 
-首先，let （K_E | |K_H） = SP800_108_CTR （prf = HMACSHA512，key = ""，label = ""，coNtext = ""），where |K_E |= 192 位 and |K_H |= 每個指定演算法256位。 這會導致 K_E = 5BB6。21DD 和 K_H = A04A。下列範例中的00A9：
+First、let `( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` 、where `| K_E | = 192 bits` 和 `| K_H | = 256 bits` 依據指定的演算法。 這會導致 `K_E = 5BB6..21DD` `K_H = A04A..00A9` 下列範例中的和：
 
 ```
 5B B6 C9 83 13 78 22 1D 8E 10 73 CA CF 65 8E B0
@@ -73,13 +73,13 @@ ms.locfileid: "85406890"
 B7 92 3D BF 59 90 00 A9
 ```
 
-接下來，計算 Enc_CBC （K_E，IV，""）的 AES-192-CBC 指定 IV = 0 *，並 K_E 如上所示。
+接下來， `Enc_CBC (K_E, IV, "")` 為指定和如上所述的 AES-192-CBC 計算 `IV = 0*` `K_E` 。
 
-result： = F474B1872B3B53E4721DE19C0841DB6F
+`result := F474B1872B3B53E4721DE19C0841DB6F`
 
-接下來，計算所提供的 HMACSHA256 K_H 的 MAC （K_H，""），如上所示。
+接下來，為 `MAC(K_H, "")` 指定的 HMACSHA256 計算 `K_H` 。
 
-result： = D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C
+`result := D4791184B996092EE1202F36E8608FA8FBD98ABDFF5402F264B1D7211536220C`
 
 這會產生以下的完整內容標頭：
 
@@ -93,26 +93,26 @@ DB 6F D4 79 11 84 B9 96 09 2E E1 20 2F 36 E8 60
 
 此內容標頭是已驗證加密演算法配對的指紋（AES-192-CBC 加密 + HMACSHA256 驗證）。 [上述](xref:security/data-protection/implementation/context-headers#data-protection-implementation-context-headers-cbc-components)元件如下所述：
 
-* 標記（00 00）
+* 標記`(00 00)`
 
-* 區塊密碼金鑰長度（00 00 00 18）
+* 區塊密碼金鑰長度`(00 00 00 18)`
 
-* 區塊加密區塊大小（00 00 00 10）
+* 區塊加密區塊大小`(00 00 00 10)`
 
-* HMAC 金鑰長度（00 00 00 20）
+* HMAC 金鑰長度`(00 00 00 20)`
 
-* HMAC 摘要大小（00 00 00 20）
+* HMAC 摘要大小`(00 00 00 20)`
 
-* 區塊密碼 PRP 輸出（F4 74-DB 6F）和
+* 區塊密碼 PRP 輸出 `(F4 74 - DB 6F)` 和
 
-* HMAC PRF 輸出（D4 79-end）。
+* HMAC PRF 輸出 `(D4 79 - end)` 。
 
 > [!NOTE]
 > 不論演算法實架構是由 Windows CNG 還是由 managed System.security.cryptography.symmetricalgorithm 和 KeyedHashAlgorithm 類型所提供，CBC 模式加密 + HMAC 驗證內容標頭的建立方式都相同。 這可讓在不同作業系統上執行的應用程式可靠地產生相同的內容標頭，即使作業系統的演算法不同也是一樣。 （實際上，KeyedHashAlgorithm 不一定要是適當的 HMAC。 它可以是任何金鑰雜湊演算法類型）。
 
 ### <a name="example-3des-192-cbc--hmacsha1"></a>範例： 3DES-192-CBC + HMACSHA1
 
-首先，let （K_E | |K_H） = SP800_108_CTR （prf = HMACSHA512，key = ""，label = ""，coNtext = ""），where |K_E |= 192 位 and |K_H |= 每個指定演算法160位。 這會導致 K_E = A219。E2BB 和 K_H = DC4A。下列範例中的 B464：
+First、let `( K_E || K_H ) = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` 、where `| K_E | = 192 bits` 和 `| K_H | = 160 bits` 依據指定的演算法。 這會導致 `K_E = A219..E2BB` `K_H = DC4A..B464` 下列範例中的和：
 
 ```
 A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
@@ -120,13 +120,13 @@ A2 19 60 2F 83 A9 13 EA B0 61 3A 39 B8 A6 7E 22
 D1 F7 5A 34 EB 28 3E D7 D4 67 B4 64
 ```
 
-接下來，計算 Enc_CBC （K_E，IV，""）的 3DES-192-CBC 指定 IV = 0 *，並 K_E 如上所示。
+接下來，計算 `Enc_CBC (K_E, IV, "")` 3des-192-CBC， `IV = 0*` 並如上所述提供 `K_E` 。
 
-result： = ABB100F81E53E10E
+`result := ABB100F81E53E10E`
 
-接下來，計算所提供的 HMACSHA1 K_H 的 MAC （K_H，""），如上所示。
+接下來，為 `MAC(K_H, "")` 指定的 HMACSHA1 計算 `K_H` 。
 
-result： = 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
+`result := 76EB189B35CF03461DDF877CD9F4B1B4D63A7555`
 
 這會產生完整的內容標頭，這是已驗證加密演算法配對的指紋（3DES-192-CBC 加密 + HMACSHA1 驗證），如下所示：
 
@@ -138,19 +138,19 @@ result： = 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
 
 元件會依照下列方式細分：
 
-* 標記（00 00）
+* 標記`(00 00)`
 
-* 區塊密碼金鑰長度（00 00 00 18）
+* 區塊密碼金鑰長度`(00 00 00 18)`
 
-* 區塊加密區塊大小（00 00 00 08）
+* 區塊加密區塊大小`(00 00 00 08)`
 
-* HMAC 金鑰長度（00 00 00 14）
+* HMAC 金鑰長度`(00 00 00 14)`
 
-* HMAC 摘要大小（00 00 00 14）
+* HMAC 摘要大小`(00 00 00 14)`
 
-* 區塊密碼 PRP 輸出（AB B1-E1 0E）和
+* 區塊密碼 PRP 輸出 `(AB B1 - E1 0E)` 和
 
-* HMAC PRF 輸出（76 EB-end）。
+* HMAC PRF 輸出 `(76 EB - end)` 。
 
 ## <a name="galoiscounter-mode-encryption--authentication"></a>Galois/計數器模式加密 + 驗證
 
@@ -166,21 +166,21 @@ result： = 76EB189B35CF03461DDF877CD9F4B1B4D63A7555
 
 * [32 位]已驗證的加密函式所產生的驗證標記大小（以位元組為單位）。 （在我們的系統中，這是在標記大小 = 128 位）。
 
-* [128 位]Enc_GCM （K_E，nonce，""）的標籤，這是對稱式區塊密碼演算法的輸出，指定空白字串輸入，其中 nonce 是96位的全部-零向量。
+* [128 位]的標記 `Enc_GCM (K_E, nonce, "")` ，這是對稱區塊加密演算法的輸出，指定空白字串輸入，其中 nonce 是96位的全部-零向量。
 
-K_E 是使用與 CBC 加密 + HMAC 驗證案例中相同的機制所衍生。 不過，由於這裡沒有 K_H 播放，我們基本上有 |K_H |= 0，而演算法折迭為下列表單。
+`K_E`是使用與 CBC 加密 + HMAC 驗證案例中相同的機制來衍生。 不過，由於這裡沒有任何 `K_H` 播放，我們基本上有 `| K_H | = 0` ，而演算法折迭為下列表單。
 
-K_E = SP800_108_CTR （prf = HMACSHA512，key = ""，label = ""，coNtext = ""）
+`K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")`
 
 ### <a name="example-aes-256-gcm"></a>範例： AES-256-GCM
 
-首先，let K_E = SP800_108_CTR （prf = HMACSHA512，key = ""，label = ""，coNtext = ""），where |K_E |= 256 位。
+首先，讓我們來看 `K_E = SP800_108_CTR(prf = HMACSHA512, key = "", label = "", context = "")` `| K_E | = 256 bits` 。
 
-K_E： = 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8
+`K_E := 22BC6F1B171C08C4AE2F27444AF8FC8B3087A90006CAEA91FDCFB47C1B8733B8`
 
-接下來，計算 Enc_GCM （K_E，nonce，""）的驗證標記，以取得指定 nonce = 096 和 K_E 如上所述的 AES-256-GCM。
+接下來， `Enc_GCM (K_E, nonce, "")` 針對指定的 AES-256-GCM 計算的驗證標記， `nonce = 096` 並 `K_E` 如上所述。
 
-result： = E7DCCE66DF855A323A6BB7BD7A59BE45
+`result := E7DCCE66DF855A323A6BB7BD7A59BE45`
 
 這會產生以下的完整內容標頭：
 
@@ -192,14 +192,14 @@ BE 45
 
 元件會依照下列方式細分：
 
-* 標記（00 01）
+* 標記`(00 01)`
 
-* 區塊密碼金鑰長度（00 00 00 20）
+* 區塊密碼金鑰長度`(00 00 00 20)`
 
-* nonce 大小（00 00 00 0C）
+* nonce 大小`(00 00 00 0C)`
 
-* 區塊加密區塊大小（00 00 00 10）
+* 區塊加密區塊大小`(00 00 00 10)`
 
-* 驗證標記大小（00 00 00 10）和
+* 驗證標記大小 `(00 00 00 10)` 和
 
-* 執行區塊密碼的驗證標記（E7 DC 端）。
+* 執行區塊密碼的驗證標記 `(E7 DC - end)` 。

@@ -5,7 +5,7 @@ description: 瞭解如何調試 Blazor 程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/25/2020
+ms.date: 07/06/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 9fe51b8c7eafdd62cc6fc1a820135d9ee5ff010e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c48eb19c5a1759aace112e2afb1637c649173a3d
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401008"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059899"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET CoreBlazor WebAssembly
 
@@ -105,13 +105,7 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
-若要 Blazor WebAssembly 在 Visual Studio Code 中進行應用程式的 debug：
- 
-安裝[c # 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能和[JavaScript 偵錯工具（夜間）](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly)延伸，並 `debug.javascript.usePreview` 將設定為 `true` 。
-
-![延伸模組](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-extensions.png)
-
-![JS 預覽偵錯工具](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-js-use-preview.png)
+如需安裝應用程式開發 Visual Studio Code 的詳細資訊 Blazor ，請參閱 <xref:blazor/tooling> 。
 
 ### <a name="debug-standalone-blazor-webassembly"></a>獨立調試Blazor WebAssembly
 
@@ -141,7 +135,7 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 1. Blazor WebAssembly在 VS Code 中開啟託管應用程式。
 
-1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]****。
+1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]。
 
    ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
 
@@ -168,7 +162,7 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 以下是支援的啟動設定選項： `blazorwasm` debug 類型。
 
-| 選項    | 說明 |
+| 選項    | 描述 |
 | --------- | ----------- |
 | `request` | 使用 `launch` 來啟動並將偵錯工具連結至 Blazor WebAssembly 應用程式，或將 `attach` 偵錯工具附加至已在執行中的應用程式。 |
 | `url`     | 要在瀏覽器中開啟的 URL。 預設為 `https://localhost:5001`。 |
@@ -220,11 +214,17 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 1. 在開發環境中執行應用程式的 Debug 組建。
 
-1. 按<kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>D</kbd>。
+1. 啟動瀏覽器並流覽至應用程式的 URL （例如， `https://localhost:5001` ）。
 
-1. 瀏覽器必須在啟用遠端偵錯功能的情況下執行。 如果已停用遠端偵錯程式，就會產生 [找**不到可調試的瀏覽器]** 索引標籤錯誤頁面。 錯誤頁面包含在開啟偵錯工具的情況之下執行瀏覽器的指示，讓 Blazor 偵錯工具 proxy 可以連接到應用程式。 *關閉所有瀏覽器實例*，然後依照指示重新開機瀏覽器。
+1. 在瀏覽器中，按下<kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>D</kbd>，嘗試開始進行遠端偵錯程式。
 
-當瀏覽器在啟用遠端偵錯程式的情況下執行時，[偵錯工具] 鍵盤快速鍵會開啟新的 [偵錯工具]經過一段時間之後，[**來源**] 索引標籤會顯示應用程式中的 .net 元件清單。 展開每個元件，並尋找 `.cs` / `.razor` 可供進行偵錯工具的來源檔案。 設定中斷點、切換回應用程式的索引標籤，並在程式碼執行時叫用中斷點。 叫用中斷點之後，以單一步驟（<kbd>F10</kbd>），透過程式碼或繼續（<kbd>F8</kbd>）程式碼執行正常。
+   瀏覽器必須在啟用遠端偵測功能的情況下執行，這不是預設值。 如果已停用遠端偵錯程式，將會顯示 [**找不到可調試的瀏覽器]** 索引標籤錯誤頁面，並提供啟動瀏覽器並開啟偵錯工具的指示。 遵循瀏覽器的指示，這會開啟新的瀏覽器視窗。 關閉先前的瀏覽器視窗。
+
+1. 一旦瀏覽器在啟用遠端偵錯程式的情況下執行，偵錯工具鍵盤快速鍵（<kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>D</kbd>）就會開啟新的偵錯工具索引標籤。
+
+1. 經過一段時間之後，[**來源**] 索引標籤會顯示該節點內的應用程式 .net 元件清單 `file://` 。
+
+1. 在元件程式碼（檔案 `.razor` ）和 c # 程式碼檔案（ `.cs` ）中，您設定的中斷點會在執行程式碼時叫用。 叫用中斷點之後，以單一步驟（<kbd>F10</kbd>），透過程式碼或繼續（<kbd>F8</kbd>）程式碼執行正常。
 
 Blazor提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https://chromedevtools.github.io/devtools-protocol/)，並使用來擴充通訊協定。NET 特定資訊。 當您按下 [調試鍵盤快速鍵] 時，會將 Blazor Chrome DevTools 指向 proxy。 Proxy 會連線到您想要進行調試的瀏覽器視窗（因此需要啟用遠端偵錯）。
 

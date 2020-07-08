@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/update-related-data
-ms.openlocfilehash: b084404a7fdd8b2fc18c407bd11705ccd1c496c1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b442a4ce1f63c047c123315626f559155fd06424
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406299"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060133"
 ---
 # <a name="part-7-razor-pages-with-ef-core-in-aspnet-core---update-related-data"></a>第7部分， Razor ASP.NET Core 更新相關資料中包含 EF Core 的頁面
 
@@ -158,7 +158,7 @@ Razor頁面會使用[選取](xref:mvc/views/working-with-forms#the-select-tag-he
 
 `InstructorCoursesPageModel` 是您將用於 *Edit* 和 *Create* 頁面模型的基底類別。 `PopulateAssignedCourseData` 會讀取所有 `Course` 實體來擴展 `AssignedCourseDataList`。 對於每個課程，此程式碼設定 `CourseID`、標題以及是否將講師指派給課程。 [HashSet](/dotnet/api/system.collections.generic.hashset-1) 會用來進行有效率的查閱。
 
-由於 Razor 頁面沒有課程實體的集合，因此模型系結器無法自動更新 `CourseAssignments` 導覽屬性。 相較於使用模型繫結器更新 `CourseAssignments` 導覽屬性，您會在新的 `UpdateInstructorCourses` 方法中進行相同的操作。 因此您必須從模型繫結器中排除 `CourseAssignments` 屬性。 這並不需要對呼叫 `TryUpdateModel` 的程式碼進行任何變更，因為您使用的是允許清單多載，且 `CourseAssignments` 並未位於包含清單中。
+由於 Razor 頁面沒有課程實體的集合，因此模型系結器無法自動更新 `CourseAssignments` 導覽屬性。 相較於使用模型繫結器更新 `CourseAssignments` 導覽屬性，您會在新的 `UpdateInstructorCourses` 方法中進行相同的操作。 因此您必須從模型繫結器中排除 `CourseAssignments` 屬性。 這不需要對呼叫的程式碼進行任何變更， `TryUpdateModel` 因為您是使用具有宣告屬性的多載，而且 `CourseAssignments` 不在包含清單中。
 
 若沒有選取任何核取方塊，`UpdateInstructorCourses` 中的程式碼會使用空集合初始化 `CourseAssignments` 導覽屬性並傳回：
 

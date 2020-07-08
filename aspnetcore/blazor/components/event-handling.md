@@ -5,7 +5,7 @@ description: 瞭解 Blazor 的事件處理功能，包括事件引數類型、�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/04/2020
+ms.date: 07/06/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/event-handling
-ms.openlocfilehash: 60a2ff43945bcb92136b3bb8e622669d51ea3b19
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: f15f7e0fc7ef460cefffd817a7d0fa40c1f919b2
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944454"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059795"
 ---
 # <a name="aspnet-core-blazor-event-handling"></a>ASP.NET Core Blazor 事件處理
 
@@ -183,7 +183,7 @@ private void ShowMessage(MouseEventArgs e)
 * `ParentComponent` `ShowMessage` 會呼叫的方法。 `messageText`會更新並顯示在中 `ParentComponent` 。
 * [`StateHasChanged`](xref:blazor/components/lifecycle#state-changes)回呼的方法（）中不需要呼叫 `ShowMessage` 。 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A>會自動呼叫來 rerender `ParentComponent` ，就像子事件會觸發元件 rerendering 在子系內執行的事件處理常式一樣。
 
-<xref:Microsoft.AspNetCore.Components.EventCallback>和 <xref:Microsoft.AspNetCore.Components.EventCallback%601> 允許非同步委派。 <xref:Microsoft.AspNetCore.Components.EventCallback%601>是強型別，而且需要特定的引數類型。 <xref:Microsoft.AspNetCore.Components.EventCallback>是弱型別，並允許任何引數類型。
+<xref:Microsoft.AspNetCore.Components.EventCallback>和 <xref:Microsoft.AspNetCore.Components.EventCallback%601> 允許非同步委派。 <xref:Microsoft.AspNetCore.Components.EventCallback>是弱型別，並允許在中傳遞任何類型引數 `InvokeAsync(Object)` 。 <xref:Microsoft.AspNetCore.Components.EventCallback%601>是強型別，而且需要將 `T` 中的引數傳遞 `InvokeAsync(T)` 至可指派給的 `TValue` 。
 
 ```razor
 <ChildComponent 

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 7ac6dc983454153792610a07c1df01fbc38c8d67
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 25464817314f79c5bfd11d982cc9b09a3c72df15
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400826"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86060341"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -391,7 +391,7 @@ URL 產生：
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器最方便的方式，就是透過擴充方法來執行特定網址類別型的作業：
 
-| 擴充方法 | 說明 |
+| 擴充方法 | 描述 |
 | ---------------- | ----------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |
@@ -502,7 +502,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示范範例路由條件約束及其預期行為：
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` 。 不區分大小寫 |
@@ -565,14 +565,14 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中使用的正則運算式通常以 `^` 字元開頭，並符合字串的開始位置。 運算式通常以 `$` 字元結尾，並符合字串的結尾。 `^`和 `$` 字元可確保正則運算式符合整個路由參數值。 如果沒有 `^` 和 `$` 字元，正則運算式會比對字串內的任何子字串，這通常是不需要的。 下表提供範例，並說明它們符合或無法符合的原因：
 
-| 運算是   | String    | 相符項目 | 註解               |
+| 運算式   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | mz        | 是   | 符合運算式    |
 | `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | hello     | No    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | 123abc456 | No    | 請參閱上述的 `^` 和 `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
@@ -1110,7 +1110,7 @@ URL 產生是路由可用來依據一組路由值建立 URL 路徑的處理序�
 
 <xref:Microsoft.AspNetCore.Routing.LinkGenerator> 提供的方法支援適用於任何位址類型的標準連結產生功能。 使用連結產生器的最便利方式是透過執行特定位址類型作業的擴充方法。
 
-| 擴充方法   | 說明                                                         |
+| 擴充方法   | 描述                                                         |
 | ------------------ | ------------------------------------------------------------------- |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetPathByAddress*> | 根據提供的值產生具有絕對路徑的 URI。 |
 | <xref:Microsoft.AspNetCore.Routing.LinkGenerator.GetUriByAddress*> | 根據提供的值產生絕對 URI。             |
@@ -1436,26 +1436,26 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
-| ---------- | ------- | --------------- | ----- |
-| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數。 |
-| `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 ' false。 不區分大小寫。 |
+| 條件約束 | 範例 | 範例相符項目 | 備註 |
+|------------|---------|-----------------|-------|
+| `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數。|
+| `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` 。 不區分大小寫。|
 | `datetime` | `{dob:datetime}` | `2016-12-31`, `2016-12-31 7:32pm` | 符合不因文化特性而異的有效 `DateTime` 值。 請參閱先前的警告。|
 | `decimal` | `{price:decimal}` | `49.99`, `-1,000.01` | 符合不因文化特性而異的有效 `decimal` 值。 請參閱先前的警告。|
 | `double` | `{weight:double}` | `1.234`, `-1,001.01e8` | 符合不因文化特性而異的有效 `double` 值。 請參閱先前的警告。|
 | `float` | `{weight:float}` | `1.234`, `-1,001.01e8` | 符合不因文化特性而異的有效 `float` 值。 請參閱先前的警告。|
-| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值。 |
-| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效的 `long` 值。 |
-| `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有4個字元。 |
-| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | 字串最多可以有8個字元。 |
-| `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好12個字元。 |
-| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | 字串必須至少為8個字元，且最多可以有16個字元。 |
-| `min(value)` | `{age:min(18)}` | `19` | 整數值必須至少為18。 |
-| `max(value)` | `{age:max(120)}` | `91` | 整數值上限為120。 |
-| `range(min,max)` | `{age:range(18,120)}` | `91` | 整數值必須至少為18，而最大值為120。 |
-| `alpha` | `{name:alpha}` | `Rick` | 字串必須包含一或多個字母字元 `a` - `z` 。  不區分大小寫。 |
-| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | 字串必須符合正則運算式。 請參閱定義正則運算式的秘訣。 |
-| `required` | `{name:required}` | `Rick` | 用來強制在 URL 產生期間出現非參數值。 |
+| `guid` | `{id:guid}` | `CD2C1638-1638-72D5-1638-DEADBEEF1638`, `{CD2C1638-1638-72D5-1638-DEADBEEF1638}` | 符合有效的 `Guid` 值。|
+| `long` | `{ticks:long}` | `123456789`, `-123456789` | 符合有效的 `long` 值。|
+| `minlength(value)` | `{username:minlength(4)}` | `Rick` | 字串必須至少有4個字元。|
+| `maxlength(value)` | `{filename:maxlength(8)}` | `MyFile` | 字串最多可以有8個字元。|
+| `length(length)` | `{filename:length(12)}` | `somefile.txt` | 字串長度必須剛好12個字元。|
+| `length(min,max)` | `{filename:length(8,16)}` | `somefile.txt` | 字串必須至少為8個字元，且最多可以有16個字元。|
+| `min(value)` | `{age:min(18)}` | `19` | 整數值必須至少為18。|
+| `max(value)` | `{age:max(120)}` | `91` | 整數值上限為120。|
+| `range(min,max)` | `{age:range(18,120)}` | `91` | 整數值必須至少為18，而最大值為120。|
+| `alpha` | `{name:alpha}` | `Rick` | 字串必須包含一或多個字母字元 `a` - `z` 。 不區分大小寫。|
+| `regex(expression)` | `{ssn:regex(^\\d{{3}}-\\d{{2}}-\\d{{4}}$)}` | `123-45-6789` | 字串必須符合正則運算式。 請參閱定義正則運算式的秘訣。|
+| `required` | `{name:required}` | `Rick` | 用來強制在 URL 產生期間出現非參數值。|
 
 以冒號分隔的多個條件約束，可以套用至單一參數。 例如，下列條件約束會將參數限制在 1 或更大的整數值：
 
@@ -1486,14 +1486,14 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中使用的正則運算式通常會以插入 `^` 號字元開頭，並比對字串的開始位置。 這些運算式通常會以貨幣符號 `$` 字元結尾，並比對字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算是   | String    | 相符項目 | 註解               |
+| 運算式   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | mz        | 是   | 符合運算式    |
 | `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | hello     | No    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | 123abc456 | No    | 請參閱上述的 `^` 和 `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
@@ -1886,7 +1886,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 注意 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -1930,14 +1930,14 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 
 路由中所使用的規則運算式通常以插入號 (`^`) 字元開頭，並符合字串的開始位置。 運算式通常以貨幣符號 (`$`) 字元結尾，並符合字串的結尾。 `^` 和 `$` 字元可確保規則運算式符合整個路由參數值。 若不使用 `^` 與 `$` 字元，規則運算式會比對字串內的所有部分字串，這通常不是您想要的結果。 下表提供範例，並說明它們符合或無法符合的原因。
 
-| 運算是   | String    | 相符項目 | 註解               |
+| 運算式   | String    | 比對 | 註解               |
 | ------------ | --------- | :---: |  -------------------- |
 | `[a-z]{2}`   | hello     | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | mz        | 是   | 符合運算式    |
 | `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | hello     | No    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | 123abc456 | No    | 請參閱上述的 `^` 和 `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 

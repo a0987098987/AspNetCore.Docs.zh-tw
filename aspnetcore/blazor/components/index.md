@@ -5,7 +5,7 @@ description: 瞭解如何建立和使用 Razor 元件，包括如何系結至資
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/25/2020
+ms.date: 07/06/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/index
-ms.openlocfilehash: 0a8335461b4c9cd628d9c65b97f7ab6a74487fca
-ms.sourcegitcommit: 7f423602a1475736f61fc361327d4de0976c9649
+ms.openlocfilehash: 23aab2504368559b8d3dd21b3c0896ffc3348e2f
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85950898"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059814"
 ---
 # <a name="create-and-use-aspnet-core-razor-components"></a>建立和使用 ASP.NET Core Razor 元件
 
@@ -83,15 +83,15 @@ Razor應用程式中的元件會 Blazor 廣泛使用 Razor 語法。 如果您�
 
 ### <a name="namespaces"></a>命名空間
 
-一般而言，元件的命名空間是從應用程式的根命名空間和元件在應用程式內的位置（資料夾）衍生而來。 如果應用程式的根命名空間為 `BlazorApp` ，且 `Counter` 元件位於 `Pages` 資料夾中：
+一般而言，元件的命名空間是從應用程式的根命名空間和元件在應用程式內的位置（資料夾）衍生而來。 如果應用程式的根命名空間為 `BlazorSample` ，且 `Counter` 元件位於 `Pages` 資料夾中：
 
-* `Counter`元件的命名空間是 `BlazorApp.Pages` 。
-* 元件的完整類型名稱為 `BlazorApp.Pages.Counter` 。
+* `Counter`元件的命名空間是 `BlazorSample.Pages` 。
+* 元件的完整類型名稱為 `BlazorSample.Pages.Counter` 。
 
 若為保存元件的自訂資料夾，請將指示詞新增 [`@using`][2] 至父元件或應用程式的檔案 `_Imports.razor` 。 下列範例會讓資料夾中的元件 `Components` 可供使用：
 
 ```razor
-@using BlazorApp.Components
+@using BlazorSample.Components
 ```
 
 元件也可以使用其完整名稱來參考，而不需要指示詞 [`@using`][2] ：
@@ -162,7 +162,7 @@ Razor元件是以部分類別的形式產生。 Razor元件是使用下列其中
 `Counter.razor.cs`:
 
 ```csharp
-namespace BlazorApp.Pages
+namespace BlazorSample.Pages
 {
     public partial class Counter
     {
@@ -481,15 +481,15 @@ public class NotifierService
 }
 ```
 
-將註冊 `NotifierService` 為 singletion：
+註冊 `NotifierService` ：
 
-* 在中，于中 Blazor WebAssembly 註冊服務 `Program.Main` ：
+* 在中 Blazor WebAssembly ，在中將服務註冊為 singleton `Program.Main` ：
 
   ```csharp
   builder.Services.AddSingleton<NotifierService>();
   ```
 
-* 在中，于中 Blazor Server 註冊服務 `Startup.ConfigureServices` ：
+* 在中 Blazor Server ，將服務註冊為的範圍 `Startup.ConfigureServices` ：
 
   ```csharp
   services.AddScoped<NotifierService>();
@@ -619,13 +619,19 @@ public class NotifierService
 * 使用元件參數來顯示子內容的切換。
 
 ```razor
-<div @onclick="@Toggle">
-    Toggle (Expanded = @Expanded)
+<div @onclick="@Toggle" class="card text-white bg-success mb-3">
+    <div class="card-body">
+        <div class="panel-heading">
+            <h2>Toggle (Expanded = @Expanded)</h2>
+        </div>
 
-    @if (Expanded)
-    {
-        @ChildContent
-    }
+        @if (Expanded)
+        {
+            <div class="card-text">
+                @ChildContent
+            </div>
+        }
+    </div>
 </div>
 
 @code {
@@ -645,13 +651,15 @@ public class NotifierService
 `Expander`元件會新增至可能呼叫的父元件 <xref:Microsoft.AspNetCore.Components.ComponentBase.StateHasChanged%2A> ：
 
 ```razor
+@page "/expander"
+
 <Expander Expanded="true">
-    <h1>Hello, world!</h1>
+    Expander 1 content
 </Expander>
 
 <Expander Expanded="true" />
 
-<button @onclick="@(() => StateHasChanged())">
+<button @onclick="StateHasChanged">
     Call StateHasChanged
 </button>
 ```
@@ -660,30 +668,36 @@ public class NotifierService
 
 若要維護上述案例中的狀態，請使用元件中的*私用欄位* `Expander` 來維護其切換狀態。
 
-下列 `Expander` 元件：
+下列修訂的 `Expander` 元件：
 
 * 接受 `Expanded` 來自父系的元件參數值。
 * 將元件參數值指派給 OnInitialized 事件中的私用*欄位*（ `expanded` ）。 [OnInitialized event](xref:blazor/components/lifecycle#component-initialization-methods)
 * 會使用私用欄位來維護其內部切換狀態。
 
 ```razor
-<div @onclick="@Toggle">
-    Toggle (Expanded = @expanded)
+<div @onclick="@Toggle" class="card text-white bg-success mb-3">
+    <div class="card-body">
+        <div class="panel-heading">
+            <h2>Toggle (Expanded = @expanded)</h2>
+        </div>
 
-    @if (expanded)
-    {
-        @ChildContent
-    }
+        @if (Expanded)
+        {
+            <div class="card-text">
+                @ChildContent
+            </div>
+        }
+    </div>
 </div>
 
 @code {
+    private bool expanded;
+
     [Parameter]
     public bool Expanded { get; set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
-
-    private bool expanded;
 
     protected override void OnInitialized()
     {

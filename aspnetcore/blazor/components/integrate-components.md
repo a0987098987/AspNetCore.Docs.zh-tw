@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/components/integrate-components-into-razor-pages-and-mvc-apps
-ms.openlocfilehash: 29360174ea86623491d5d8aacd4038162855bba8
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 6aef51a0f8bf4ec2e7cb6115856bc465a90ec2ee
+ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85399058"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86059842"
 ---
 # <a name="integrate-aspnet-core-razor-components-into-razor-pages-and-mvc-apps"></a>將 ASP.NET Core Razor 元件整合至 Razor 頁面和 MVC 應用程式
 
@@ -51,7 +51,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
 
      此檔案 `_Layout.cshtml` 位於 MVC 應用程式中頁面應用程式或 Views/shared 資料夾的*Pages/shared*資料夾中 Razor 。 *Views/Shared*
 
-   * 在結尾 `<script>` 標記的正後方新增*blazor.server.js*腳本的標記 `</body>` ：
+   * 在 `<script>` 結束記號的正後方新增*blazor.server.js*腳本的標記 `</body>` ：
 
      ```html
      <script src="_framework/blazor.server.js"></script>
@@ -130,7 +130,7 @@ Razor元件可以整合至 Razor 頁面和 MVC 應用程式中。 當頁面或�
    * 會資源清單到頁面中。
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-   | 轉譯模式 | 說明 |
+   | 轉譯模式 | 描述 |
    | ----------- | ----------- |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor Server 應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現應用程式的標記 Blazor Server 。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
@@ -204,7 +204,7 @@ Razor在 MVC 應用程式中支援可路由的元件：
    * 會資源清單到頁面中。
    * 會在頁面上轉譯為靜態 HTML，或包含從使用者代理程式啟動應用程式所需的資訊 Blazor 。
 
-   | 轉譯模式 | 說明 |
+   | 轉譯模式 | 描述 |
    | ----------- | ----------- |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.ServerPrerendered> | 將 `App` 元件轉譯為靜態 HTML，並包含 Blazor Server 應用程式的標記。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |
    | <xref:Microsoft.AspNetCore.Mvc.Rendering.RenderMode.Server> | 呈現應用程式的標記 Blazor Server 。 `App`不包含來自元件的輸出。 當使用者代理程式啟動時，會使用此標記來啟動 Blazor 應用程式。 |

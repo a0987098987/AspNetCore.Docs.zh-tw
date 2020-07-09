@@ -1,11 +1,11 @@
 ---
 title: Blazor WebAssembly使用伺服器保護 ASP.NET Core 託管應用 Identity 程式
 author: guardrex
-description: Blazor從使用[IdentityServer](https://identityserver.io/)後端的 Visual Studio 中，建立具有驗證的新託管應用程式
+description: 若要 Blazor 從使用[ Identity 伺服器](https://identityserver.io/)後端的 Visual Studio 內，建立具有驗證的新託管應用程式
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,52 +15,68 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-identity-server
-ms.openlocfilehash: b0c6cbd814a23afabbbf9a0d943d28125ac1f61c
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 001fa0885c4ef4f365d9849278d3aa36e7657c54
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944576"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147724"
 ---
-# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a><span data-ttu-id="e8bf7-103">Blazor WebAssembly使用伺服器保護 ASP.NET Core 託管應用 Identity 程式</span><span class="sxs-lookup"><span data-stu-id="e8bf7-103">Secure an ASP.NET Core Blazor WebAssembly hosted app with Identity Server</span></span>
+# <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-identity-server"></a><span data-ttu-id="73974-103">Blazor WebAssembly使用伺服器保護 ASP.NET Core 託管應用 Identity 程式</span><span class="sxs-lookup"><span data-stu-id="73974-103">Secure an ASP.NET Core Blazor WebAssembly hosted app with Identity Server</span></span>
 
-<span data-ttu-id="e8bf7-104">By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="e8bf7-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
+<span data-ttu-id="73974-104">By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https://github.com/guardrex)</span><span class="sxs-lookup"><span data-stu-id="73974-104">By [Javier Calvarro Nelson](https://github.com/javiercn) and [Luke Latham](https://github.com/guardrex)</span></span>
 
-<span data-ttu-id="e8bf7-105">本文說明如何建立新的 Blazor 託管應用程式，以使用[IdentityServer](https://identityserver.io/)來驗證使用者和 API 呼叫。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-105">This article explains how to create a new Blazor hosted app that uses [IdentityServer](https://identityserver.io/) to authenticate users and API calls.</span></span>
+<span data-ttu-id="73974-105">本文說明如何建立新的 Blazor 託管應用程式，以使用[ Identity 伺服器](https://identityserver.io/)來驗證使用者和 API 呼叫。</span><span class="sxs-lookup"><span data-stu-id="73974-105">This article explains how to create a new Blazor hosted app that uses [IdentityServer](https://identityserver.io/) to authenticate users and API calls.</span></span>
 
-# <a name="visual-studio"></a>[<span data-ttu-id="e8bf7-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="e8bf7-106">Visual Studio</span></span>](#tab/visual-studio)
+# <a name="visual-studio"></a>[<span data-ttu-id="73974-106">Visual Studio</span><span class="sxs-lookup"><span data-stu-id="73974-106">Visual Studio</span></span>](#tab/visual-studio)
 
-<span data-ttu-id="e8bf7-107">在 Visual Studio 中：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-107">In Visual Studio:</span></span>
+<span data-ttu-id="73974-107">若要 Blazor WebAssembly 使用驗證機制建立新的專案：</span><span class="sxs-lookup"><span data-stu-id="73974-107">To create a new Blazor WebAssembly project with an authentication mechanism:</span></span>
 
-1. <span data-ttu-id="e8bf7-108">建立新的 **Blazor WebAssembly** 應用程式。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-108">Create a new **Blazor WebAssembly** app.</span></span>
-1. <span data-ttu-id="e8bf7-109">在 [**建立新的 Blazor 應用程式**] 對話方塊中，選取 [**驗證**] 區段中的 [**變更**]。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-109">In the **Create a new Blazor app** dialog, select **Change** in the **Authentication** section.</span></span>
-1. <span data-ttu-id="e8bf7-110">選取 [**個別使用者帳戶**]，後面接著 **[確定]**。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-110">Select **Individual User Accounts** followed by **OK**.</span></span>
-1. <span data-ttu-id="e8bf7-111">選取 [ **Advanced** ] 區段中的 [ **ASP.NET Core 託管**] 核取方塊。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-111">Select the **ASP.NET Core hosted** checkbox in the **Advanced** section.</span></span>
-1. <span data-ttu-id="e8bf7-112">選取 [建立]\*\*\*\* 按鈕。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-112">Select the **Create** button.</span></span>
+1. <span data-ttu-id="73974-108">選擇 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中的\*\* Blazor WebAssembly 應用程式**範本之後，請選取 [**驗證**] 底下的 [**變更\*\*]。</span><span class="sxs-lookup"><span data-stu-id="73974-108">After choosing the **Blazor WebAssembly App** template in the **Create a new ASP.NET Core Web Application** dialog, select **Change** under **Authentication**.</span></span>
 
-# <a name="net-core-cli"></a>[<span data-ttu-id="e8bf7-113">.NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="e8bf7-113">.NET Core CLI</span></span>](#tab/netcore-cli/)
+1. <span data-ttu-id="73974-109">使用 [**將使用者帳戶儲存在應用程式中**] 選項選取**個別的使用者帳戶**，以使用 ASP.NET Core 的系統將使用者儲存在應用程式中 [Identity](xref:security/authentication/identity) 。</span><span class="sxs-lookup"><span data-stu-id="73974-109">Select **Individual User Accounts** with the **Store user accounts in-app** option to store users within the app using ASP.NET Core's [Identity](xref:security/authentication/identity) system.</span></span>
 
-<span data-ttu-id="e8bf7-114">若要在命令 shell 中建立應用程式，請執行下列命令：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-114">To create the app in a command shell, execute the following command:</span></span>
+1. <span data-ttu-id="73974-110">在 [ **Advanced** ] 區段中，選取 [ **hosted ASP.NET Core** ] 核取方塊。</span><span class="sxs-lookup"><span data-stu-id="73974-110">Select the **ASP.NET Core hosted** check box in the **Advanced** section.</span></span>
+
+# <a name="visual-studio-code--net-core-cli"></a>[<span data-ttu-id="73974-111">Visual Studio Code / .NET Core CLI</span><span class="sxs-lookup"><span data-stu-id="73974-111">Visual Studio Code / .NET Core CLI</span></span>](#tab/visual-studio-code+netcore-cli)
+
+<span data-ttu-id="73974-112">若要使用 Blazor WebAssembly 空白資料夾中的驗證機制來建立新的專案，請指定 `Individual` 驗證機制，並 `-au|--auth` 選擇使用 ASP.NET Core 的系統將使用者儲存在應用程式內 [Identity](xref:security/authentication/identity) ：</span><span class="sxs-lookup"><span data-stu-id="73974-112">To create a new Blazor WebAssembly project with an authentication mechanism in an empty folder, specify the `Individual` authentication mechanism with the `-au|--auth` option to store users within the app using ASP.NET Core's [Identity](xref:security/authentication/identity) system:</span></span>
 
 ```dotnetcli
-dotnet new blazorwasm -au Individual -ho
+dotnet new blazorwasm -au Individual -ho -o {APP NAME}
 ```
 
-<span data-ttu-id="e8bf7-115">若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-115">To specify the output location, which creates a project folder if it doesn't exist, include the output option in the command with a path (for example, `-o BlazorSample`).</span></span> <span data-ttu-id="e8bf7-116">資料夾名稱也會成為專案名稱的一部分。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-116">The folder name also becomes part of the project's name.</span></span>
+| <span data-ttu-id="73974-113">預留位置</span><span class="sxs-lookup"><span data-stu-id="73974-113">Placeholder</span></span>  | <span data-ttu-id="73974-114">範例</span><span class="sxs-lookup"><span data-stu-id="73974-114">Example</span></span>        |
+| ------------ | -------------- |
+| `{APP NAME}` | `BlazorSample` |
+
+<span data-ttu-id="73974-115">使用選項指定的輸出位置會 `-o|--output` 建立專案資料夾（如果不存在），並成為應用程式名稱的一部分。</span><span class="sxs-lookup"><span data-stu-id="73974-115">The output location specified with the `-o|--output` option creates a project folder if it doesn't exist and becomes part of the app's name.</span></span>
+
+<span data-ttu-id="73974-116">如需詳細資訊，請參閱 [`dotnet new`](/dotnet/core/tools/dotnet-new) .Net Core 指南中的命令。</span><span class="sxs-lookup"><span data-stu-id="73974-116">For more information, see the [`dotnet new`](/dotnet/core/tools/dotnet-new) command in the .NET Core Guide.</span></span>
+
+# <a name="visual-studio-for-mac"></a>[<span data-ttu-id="73974-117">Visual Studio for Mac</span><span class="sxs-lookup"><span data-stu-id="73974-117">Visual Studio for Mac</span></span>](#tab/visual-studio-mac)
+
+<span data-ttu-id="73974-118">若要 Blazor WebAssembly 使用驗證機制建立新的專案：</span><span class="sxs-lookup"><span data-stu-id="73974-118">To create a new Blazor WebAssembly project with an authentication mechanism:</span></span>
+
+1. <span data-ttu-id="73974-119">在 [**設定新的 Blazor WebAssembly 應用程式**] 步驟上，從 [**驗證**] 下拉式選單選取 [**個別驗證（應用程式內）** ]。</span><span class="sxs-lookup"><span data-stu-id="73974-119">On the **Configure your new Blazor WebAssembly App** step, select **Individual Authentication (in-app)** from the **Authentication** drop down.</span></span>
+
+1. <span data-ttu-id="73974-120">應用程式會針對以 ASP.NET Core 儲存在應用程式中的個別使用者而建立 [Identity](xref:security/authentication/identity) 。</span><span class="sxs-lookup"><span data-stu-id="73974-120">The app is created for individual users stored in the app with ASP.NET Core [Identity](xref:security/authentication/identity).</span></span>
+
+1. <span data-ttu-id="73974-121">選取 [**主控 ASP.NET Core** ] 核取方塊。</span><span class="sxs-lookup"><span data-stu-id="73974-121">Select the **ASP.NET Core hosted** check box.</span></span>
 
 ---
 
-## <a name="server-app-configuration"></a><span data-ttu-id="e8bf7-117">伺服器應用程式設定</span><span class="sxs-lookup"><span data-stu-id="e8bf7-117">Server app configuration</span></span>
+## <a name="server-app-configuration"></a><span data-ttu-id="73974-122">伺服器應用程式設定</span><span class="sxs-lookup"><span data-stu-id="73974-122">Server app configuration</span></span>
 
-<span data-ttu-id="e8bf7-118">下列各節說明當包含驗證支援時，專案的新增功能。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-118">The following sections describe additions to the project when authentication support is included.</span></span>
+<span data-ttu-id="73974-123">下列各節說明當包含驗證支援時，專案的新增功能。</span><span class="sxs-lookup"><span data-stu-id="73974-123">The following sections describe additions to the project when authentication support is included.</span></span>
 
-### <a name="startup-class"></a><span data-ttu-id="e8bf7-119">啟始類別</span><span class="sxs-lookup"><span data-stu-id="e8bf7-119">Startup class</span></span>
+### <a name="startup-class"></a><span data-ttu-id="73974-124">啟始類別</span><span class="sxs-lookup"><span data-stu-id="73974-124">Startup class</span></span>
 
-<span data-ttu-id="e8bf7-120">`Startup`類別具有下列新增專案。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-120">The `Startup` class has the following additions.</span></span>
+<span data-ttu-id="73974-125">`Startup`類別具有下列新增專案。</span><span class="sxs-lookup"><span data-stu-id="73974-125">The `Startup` class has the following additions.</span></span>
 
-* <span data-ttu-id="e8bf7-121">在 `Startup.ConfigureServices` 中：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-121">In `Startup.ConfigureServices`:</span></span>
+* <span data-ttu-id="73974-126">在 `Startup.ConfigureServices` 中：</span><span class="sxs-lookup"><span data-stu-id="73974-126">In `Startup.ConfigureServices`:</span></span>
 
-  * <span data-ttu-id="e8bf7-122">ASP.NET Core Identity ：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-122">ASP.NET Core Identity:</span></span>
+  * <span data-ttu-id="73974-127">ASP.NET Core Identity ：</span><span class="sxs-lookup"><span data-stu-id="73974-127">ASP.NET Core Identity:</span></span>
 
     ```csharp
     services.AddDbContext<ApplicationDbContext>(options =>
@@ -72,69 +88,69 @@ dotnet new blazorwasm -au Individual -ho
         .AddEntityFrameworkStores<ApplicationDbContext>();
     ```
 
-  * <span data-ttu-id="e8bf7-123">IdentityServer 使用額外 <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> 的協助程式方法，在 IdentityServer 上設定預設的 ASP.NET Core 慣例：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-123">IdentityServer with an additional <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> helper method that sets up default ASP.NET Core conventions on top of IdentityServer:</span></span>
+  * Identity<span data-ttu-id="73974-128">伺服器，另一個 <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> helper 方法會在伺服器上設定預設的 ASP.NET Core 慣例 Identity ：</span><span class="sxs-lookup"><span data-stu-id="73974-128">Server with an additional <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> helper method that sets up default ASP.NET Core conventions on top of IdentityServer:</span></span>
 
     ```csharp
     services.AddIdentityServer()
         .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
     ```
 
-  * <span data-ttu-id="e8bf7-124">使用其他 helper 方法進行驗證，以設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 應用程式來驗證 IdentityServer 所產生的 JWT 權杖：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-124">Authentication with an additional <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> helper method that configures the app to validate JWT tokens produced by IdentityServer:</span></span>
+  * <span data-ttu-id="73974-129">使用其他 helper 方法進行驗證，以設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 應用程式來驗證服務器所產生的 JWT 權杖 Identity ：</span><span class="sxs-lookup"><span data-stu-id="73974-129">Authentication with an additional <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> helper method that configures the app to validate JWT tokens produced by IdentityServer:</span></span>
 
     ```csharp
     services.AddAuthentication()
         .AddIdentityServerJwt();
     ```
 
-* <span data-ttu-id="e8bf7-125">在 `Startup.Configure` 中：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-125">In `Startup.Configure`:</span></span>
+* <span data-ttu-id="73974-130">在 `Startup.Configure` 中：</span><span class="sxs-lookup"><span data-stu-id="73974-130">In `Startup.Configure`:</span></span>
 
-  * <span data-ttu-id="e8bf7-126">IdentityServer 中介軟體會公開 Open ID Connect （OIDC）端點：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-126">The IdentityServer middleware exposes the Open ID Connect (OIDC) endpoints:</span></span>
+  * <span data-ttu-id="73974-131">Identity伺服器中介軟體會公開 OPEN ID Connect （OIDC）端點：</span><span class="sxs-lookup"><span data-stu-id="73974-131">The IdentityServer middleware exposes the Open ID Connect (OIDC) endpoints:</span></span>
 
     ```csharp
     app.UseIdentityServer();
     ```
 
-  * <span data-ttu-id="e8bf7-127">驗證中介軟體會負責驗證要求認證，並在要求內容上設定使用者：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-127">The Authentication middleware is responsible for validating request credentials and setting the user on the request context:</span></span>
+  * <span data-ttu-id="73974-132">驗證中介軟體會負責驗證要求認證，並在要求內容上設定使用者：</span><span class="sxs-lookup"><span data-stu-id="73974-132">The Authentication middleware is responsible for validating request credentials and setting the user on the request context:</span></span>
 
     ```csharp
     app.UseAuthentication();
     ```
 
-  * <span data-ttu-id="e8bf7-128">授權中介軟體可啟用授權功能：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-128">Authorization Middleware enables authorization capabilities:</span></span>
+  * <span data-ttu-id="73974-133">授權中介軟體可啟用授權功能：</span><span class="sxs-lookup"><span data-stu-id="73974-133">Authorization Middleware enables authorization capabilities:</span></span>
 
     ```csharp
     app.UseAuthentication();
     app.UseAuthorization();
     ```
 
-### <a name="addapiauthorization"></a><span data-ttu-id="e8bf7-129">AddApiAuthorization</span><span class="sxs-lookup"><span data-stu-id="e8bf7-129">AddApiAuthorization</span></span>
+### <a name="addapiauthorization"></a><span data-ttu-id="73974-134">AddApiAuthorization</span><span class="sxs-lookup"><span data-stu-id="73974-134">AddApiAuthorization</span></span>
 
-<span data-ttu-id="e8bf7-130"><xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>Helper 方法會設定 ASP.NET Core 案例的[IdentityServer](https://identityserver.io/) 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-130">The <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> helper method configures [IdentityServer](https://identityserver.io/) for ASP.NET Core scenarios.</span></span> <span data-ttu-id="e8bf7-131">IdentityServer 是功能強大且可擴充的架構，可處理應用程式的安全性考慮。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-131">IdentityServer is a powerful and extensible framework for handling app security concerns.</span></span> <span data-ttu-id="e8bf7-132">IdentityServer 會在最常見的案例中公開不必要的複雜性。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-132">IdentityServer exposes unnecessary complexity for the most common scenarios.</span></span> <span data-ttu-id="e8bf7-133">因此，會提供一組慣例和設定選項，讓我們考慮一個良好的起點。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-133">Consequently, a set of conventions and configuration options is provided that we consider a good starting point.</span></span> <span data-ttu-id="e8bf7-134">一旦您的驗證需要變更，就可以使用 IdentityServer 的完整功能，自訂驗證以符合應用程式的需求。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-134">Once your authentication needs change, the full power of IdentityServer is available to customize authentication to suit an app's requirements.</span></span>
+<span data-ttu-id="73974-135"><xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A>Helper 方法會針對 ASP.NET Core 案例設定[ Identity 伺服器](https://identityserver.io/)。</span><span class="sxs-lookup"><span data-stu-id="73974-135">The <xref:Microsoft.Extensions.DependencyInjection.IdentityServerBuilderConfigurationExtensions.AddApiAuthorization%2A> helper method configures [IdentityServer](https://identityserver.io/) for ASP.NET Core scenarios.</span></span> Identity<span data-ttu-id="73974-136">伺服器是一種功能強大且可擴充的架構，可處理應用程式的安全性考慮。</span><span class="sxs-lookup"><span data-stu-id="73974-136">Server is a powerful and extensible framework for handling app security concerns.</span></span> Identity<span data-ttu-id="73974-137">伺服器會在最常見的案例中公開不必要的複雜性。</span><span class="sxs-lookup"><span data-stu-id="73974-137">Server exposes unnecessary complexity for the most common scenarios.</span></span> <span data-ttu-id="73974-138">因此，會提供一組慣例和設定選項，讓我們考慮一個良好的起點。</span><span class="sxs-lookup"><span data-stu-id="73974-138">Consequently, a set of conventions and configuration options is provided that we consider a good starting point.</span></span> <span data-ttu-id="73974-139">一旦您的驗證需要變更， Identity 就可以使用伺服器的完整功能，自訂驗證以符合應用程式的需求。</span><span class="sxs-lookup"><span data-stu-id="73974-139">Once your authentication needs change, the full power of IdentityServer is available to customize authentication to suit an app's requirements.</span></span>
 
-### <a name="addidentityserverjwt"></a><span data-ttu-id="e8bf7-135">AddIdentityServerJwt</span><span class="sxs-lookup"><span data-stu-id="e8bf7-135">AddIdentityServerJwt</span></span>
+### <a name="addidentityserverjwt"></a><span data-ttu-id="73974-140">新增 Identity ServerJwt</span><span class="sxs-lookup"><span data-stu-id="73974-140">AddIdentityServerJwt</span></span>
 
-<span data-ttu-id="e8bf7-136"><xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>Helper 方法會將應用程式的原則配置設定為預設驗證處理常式。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-136">The <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> helper method configures a policy scheme for the app as the default authentication handler.</span></span> <span data-ttu-id="e8bf7-137">此原則設定為允許 Identity 處理路由至 URL 空間中任何子路徑的所有要求 Identity `/Identity` 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-137">The policy is configured to allow Identity to handle all requests routed to any subpath in the Identity URL space `/Identity`.</span></span> <span data-ttu-id="e8bf7-138">會 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 處理所有其他要求。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-138">The <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> handles all other requests.</span></span> <span data-ttu-id="e8bf7-139">此外，這個方法也會：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-139">Additionally, this method:</span></span>
+<span data-ttu-id="73974-141"><xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>Helper 方法會將應用程式的原則配置設定為預設驗證處理常式。</span><span class="sxs-lookup"><span data-stu-id="73974-141">The <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> helper method configures a policy scheme for the app as the default authentication handler.</span></span> <span data-ttu-id="73974-142">此原則設定為允許 Identity 處理路由至 URL 空間中任何子路徑的所有要求 Identity `/Identity` 。</span><span class="sxs-lookup"><span data-stu-id="73974-142">The policy is configured to allow Identity to handle all requests routed to any subpath in the Identity URL space `/Identity`.</span></span> <span data-ttu-id="73974-143">會 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 處理所有其他要求。</span><span class="sxs-lookup"><span data-stu-id="73974-143">The <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> handles all other requests.</span></span> <span data-ttu-id="73974-144">此外，這個方法也會：</span><span class="sxs-lookup"><span data-stu-id="73974-144">Additionally, this method:</span></span>
 
-* <span data-ttu-id="e8bf7-140">向 `{APPLICATION NAME}API` IdentityServer 註冊具有預設範圍的 API 資源 `{APPLICATION NAME}API` 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-140">Registers an `{APPLICATION NAME}API` API resource with IdentityServer with a default scope of `{APPLICATION NAME}API`.</span></span>
-* <span data-ttu-id="e8bf7-141">設定 JWT 持有人權杖中介軟體，以驗證 IdentityServer 針對應用程式所簽發的權杖。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-141">Configures the JWT Bearer Token Middleware to validate tokens issued by IdentityServer for the app.</span></span>
+* <span data-ttu-id="73974-145">向伺服器註冊具有 `{APPLICATION NAME}API` Identity 預設範圍的 API 資源 `{APPLICATION NAME}API` 。</span><span class="sxs-lookup"><span data-stu-id="73974-145">Registers an `{APPLICATION NAME}API` API resource with IdentityServer with a default scope of `{APPLICATION NAME}API`.</span></span>
+* <span data-ttu-id="73974-146">設定 JWT 持有人權杖中介軟體，以驗證 Identity 伺服器針對應用程式所簽發的權杖。</span><span class="sxs-lookup"><span data-stu-id="73974-146">Configures the JWT Bearer Token Middleware to validate tokens issued by IdentityServer for the app.</span></span>
 
-### <a name="weatherforecastcontroller"></a><span data-ttu-id="e8bf7-142">WeatherForecastController</span><span class="sxs-lookup"><span data-stu-id="e8bf7-142">WeatherForecastController</span></span>
+### <a name="weatherforecastcontroller"></a><span data-ttu-id="73974-147">WeatherForecastController</span><span class="sxs-lookup"><span data-stu-id="73974-147">WeatherForecastController</span></span>
 
-<span data-ttu-id="e8bf7-143">在 `WeatherForecastController` （ `Controllers/WeatherForecastController.cs` ）中， [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性會套用至類別。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-143">In the `WeatherForecastController` (`Controllers/WeatherForecastController.cs`), the [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute is applied to the class.</span></span> <span data-ttu-id="e8bf7-144">屬性會指出使用者必須根據預設原則來存取資源。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-144">The attribute indicates that the user must be authorized based on the default policy to access the resource.</span></span> <span data-ttu-id="e8bf7-145">預設的授權原則會設定為使用預設的驗證配置，這是由所設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-145">The default authorization policy is configured to use the default authentication scheme, which is set up by <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>.</span></span> <span data-ttu-id="e8bf7-146">Helper 方法會將設定 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 為應用程式要求的預設處理常式。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-146">The helper method configures <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> as the default handler for requests to the app.</span></span>
+<span data-ttu-id="73974-148">在 `WeatherForecastController` （ `Controllers/WeatherForecastController.cs` ）中， [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) 屬性會套用至類別。</span><span class="sxs-lookup"><span data-stu-id="73974-148">In the `WeatherForecastController` (`Controllers/WeatherForecastController.cs`), the [`[Authorize]`](xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute) attribute is applied to the class.</span></span> <span data-ttu-id="73974-149">屬性會指出使用者必須根據預設原則來存取資源。</span><span class="sxs-lookup"><span data-stu-id="73974-149">The attribute indicates that the user must be authorized based on the default policy to access the resource.</span></span> <span data-ttu-id="73974-150">預設的授權原則會設定為使用預設的驗證配置，這是由所設定 <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A> 。</span><span class="sxs-lookup"><span data-stu-id="73974-150">The default authorization policy is configured to use the default authentication scheme, which is set up by <xref:Microsoft.AspNetCore.Authentication.AuthenticationBuilderExtensions.AddIdentityServerJwt%2A>.</span></span> <span data-ttu-id="73974-151">Helper 方法會將設定 <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> 為應用程式要求的預設處理常式。</span><span class="sxs-lookup"><span data-stu-id="73974-151">The helper method configures <xref:Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler> as the default handler for requests to the app.</span></span>
 
-### <a name="applicationdbcontext"></a><span data-ttu-id="e8bf7-147">[ApplicationdbcoNtext]</span><span class="sxs-lookup"><span data-stu-id="e8bf7-147">ApplicationDbContext</span></span>
+### <a name="applicationdbcontext"></a><span data-ttu-id="73974-152">[ApplicationdbcoNtext]</span><span class="sxs-lookup"><span data-stu-id="73974-152">ApplicationDbContext</span></span>
 
-<span data-ttu-id="e8bf7-148">在 `ApplicationDbContext` （ `Data/ApplicationDbContext.cs` ）中，會 <xref:Microsoft.EntityFrameworkCore.DbContext> 擴充 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 以包含 IdentityServer 的架構。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-148">In the `ApplicationDbContext` (`Data/ApplicationDbContext.cs`), <xref:Microsoft.EntityFrameworkCore.DbContext> extends <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> to include the schema for IdentityServer.</span></span> <span data-ttu-id="e8bf7-149"><xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-149"><xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> is derived from <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>.</span></span>
+<span data-ttu-id="73974-153">在 `ApplicationDbContext` （ `Data/ApplicationDbContext.cs` ）中，會 <xref:Microsoft.EntityFrameworkCore.DbContext> 延伸 <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 以包含伺服器的架構 Identity 。</span><span class="sxs-lookup"><span data-stu-id="73974-153">In the `ApplicationDbContext` (`Data/ApplicationDbContext.cs`), <xref:Microsoft.EntityFrameworkCore.DbContext> extends <xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> to include the schema for IdentityServer.</span></span> <span data-ttu-id="73974-154"><xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> 衍生自 <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>。</span><span class="sxs-lookup"><span data-stu-id="73974-154"><xref:Microsoft.AspNetCore.ApiAuthorization.IdentityServer.ApiAuthorizationDbContext%601> is derived from <xref:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext>.</span></span>
 
-<span data-ttu-id="e8bf7-150">若要取得資料庫架構的完整控制權，請從其中一個可用的類別繼承， Identity <xref:Microsoft.EntityFrameworkCore.DbContext> 並透過 Identity `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` 在方法中呼叫來設定內容以包含架構 <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A> 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-150">To gain full control of the database schema, inherit from one of the available Identity <xref:Microsoft.EntityFrameworkCore.DbContext> classes and configure the context to include the Identity schema by calling `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` in the <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A> method.</span></span>
+<span data-ttu-id="73974-155">若要取得資料庫架構的完整控制權，請從其中一個可用的類別繼承， Identity <xref:Microsoft.EntityFrameworkCore.DbContext> 並透過 Identity `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` 在方法中呼叫來設定內容以包含架構 <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A> 。</span><span class="sxs-lookup"><span data-stu-id="73974-155">To gain full control of the database schema, inherit from one of the available Identity <xref:Microsoft.EntityFrameworkCore.DbContext> classes and configure the context to include the Identity schema by calling `builder.ConfigurePersistedGrantContext(_operationalStoreOptions.Value)` in the <xref:Microsoft.EntityFrameworkCore.DbContext.OnModelCreating%2A> method.</span></span>
 
-### <a name="oidcconfigurationcontroller"></a><span data-ttu-id="e8bf7-151">OidcConfigurationController</span><span class="sxs-lookup"><span data-stu-id="e8bf7-151">OidcConfigurationController</span></span>
+### <a name="oidcconfigurationcontroller"></a><span data-ttu-id="73974-156">OidcConfigurationController</span><span class="sxs-lookup"><span data-stu-id="73974-156">OidcConfigurationController</span></span>
 
-<span data-ttu-id="e8bf7-152">在 `OidcConfigurationController` （ `Controllers/OidcConfigurationController.cs` ）中，會布建用戶端端點來提供 OIDC 參數。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-152">In the `OidcConfigurationController` (`Controllers/OidcConfigurationController.cs`), the client endpoint is provisioned to serve OIDC parameters.</span></span>
+<span data-ttu-id="73974-157">在 `OidcConfigurationController` （ `Controllers/OidcConfigurationController.cs` ）中，會布建用戶端端點來提供 OIDC 參數。</span><span class="sxs-lookup"><span data-stu-id="73974-157">In the `OidcConfigurationController` (`Controllers/OidcConfigurationController.cs`), the client endpoint is provisioned to serve OIDC parameters.</span></span>
 
-### <a name="app-settings-files"></a><span data-ttu-id="e8bf7-153">應用程式佈建檔案</span><span class="sxs-lookup"><span data-stu-id="e8bf7-153">App settings files</span></span>
+### <a name="app-settings-files"></a><span data-ttu-id="73974-158">應用程式佈建檔案</span><span class="sxs-lookup"><span data-stu-id="73974-158">App settings files</span></span>
 
-<span data-ttu-id="e8bf7-154">在專案根目錄的應用程式佈建檔案（ `appsettings.json` ）中， `IdentityServer` 區段會描述已設定的用戶端清單。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-154">In the app settings file (`appsettings.json`) at the project root, the `IdentityServer` section describes the list of configured clients.</span></span> <span data-ttu-id="e8bf7-155">在下列範例中，有一個用戶端。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-155">In the following example, there's a single client.</span></span> <span data-ttu-id="e8bf7-156">用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId` 參數。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-156">The client name corresponds to the app name and is mapped by convention to the OAuth `ClientId` parameter.</span></span> <span data-ttu-id="e8bf7-157">此設定檔會指出正在設定的應用程式類型。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-157">The profile indicates the app type being configured.</span></span> <span data-ttu-id="e8bf7-158">此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-158">The profile is used internally to drive conventions that simplify the configuration process for the server.</span></span> <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
+<span data-ttu-id="73974-159">在專案根目錄的應用程式佈建檔案（ `appsettings.json` ）中， `IdentityServer` 區段會描述已設定的用戶端清單。</span><span class="sxs-lookup"><span data-stu-id="73974-159">In the app settings file (`appsettings.json`) at the project root, the `IdentityServer` section describes the list of configured clients.</span></span> <span data-ttu-id="73974-160">在下列範例中，有一個用戶端。</span><span class="sxs-lookup"><span data-stu-id="73974-160">In the following example, there's a single client.</span></span> <span data-ttu-id="73974-161">用戶端名稱會對應至應用程式名稱，並依照慣例對應至 OAuth `ClientId` 參數。</span><span class="sxs-lookup"><span data-stu-id="73974-161">The client name corresponds to the app name and is mapped by convention to the OAuth `ClientId` parameter.</span></span> <span data-ttu-id="73974-162">此設定檔會指出正在設定的應用程式類型。</span><span class="sxs-lookup"><span data-stu-id="73974-162">The profile indicates the app type being configured.</span></span> <span data-ttu-id="73974-163">此設定檔會在內部使用，以驅動可簡化伺服器設定程式的慣例。</span><span class="sxs-lookup"><span data-stu-id="73974-163">The profile is used internally to drive conventions that simplify the configuration process for the server.</span></span> <!-- There are several profiles available, as explained in the [Application profiles](#application-profiles) section. -->
 
 ```json
 "IdentityServer": {
@@ -146,15 +162,15 @@ dotnet new blazorwasm -au Individual -ho
 }
 ```
 
-<span data-ttu-id="e8bf7-159">預留位置 `{APP ASSEMBLY}` 是應用程式的元件名稱（例如， `BlazorSample.Client` ）。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-159">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `BlazorSample.Client`).</span></span>
+<span data-ttu-id="73974-164">預留位置 `{APP ASSEMBLY}` 是應用程式的元件名稱（例如， `BlazorSample.Client` ）。</span><span class="sxs-lookup"><span data-stu-id="73974-164">The placeholder `{APP ASSEMBLY}` is the app's assembly name (for example, `BlazorSample.Client`).</span></span>
 
-## <a name="client-app-configuration"></a><span data-ttu-id="e8bf7-160">用戶端應用程式設定</span><span class="sxs-lookup"><span data-stu-id="e8bf7-160">Client app configuration</span></span>
+## <a name="client-app-configuration"></a><span data-ttu-id="73974-165">用戶端應用程式設定</span><span class="sxs-lookup"><span data-stu-id="73974-165">Client app configuration</span></span>
 
-### <a name="authentication-package"></a><span data-ttu-id="e8bf7-161">驗證套件</span><span class="sxs-lookup"><span data-stu-id="e8bf7-161">Authentication package</span></span>
+### <a name="authentication-package"></a><span data-ttu-id="73974-166">驗證套件</span><span class="sxs-lookup"><span data-stu-id="73974-166">Authentication package</span></span>
 
-<span data-ttu-id="e8bf7-162">建立應用程式以使用個別使用者帳戶（）時 `Individual` ，應用程式會 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 在應用程式的專案檔中自動接收套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-162">When an app is created to use Individual User Accounts (`Individual`), the app automatically receives a package reference for the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package in the app's project file.</span></span> <span data-ttu-id="e8bf7-163">封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-163">The package provides a set of primitives that help the app authenticate users and obtain tokens to call protected APIs.</span></span>
+<span data-ttu-id="73974-167">建立應用程式以使用個別使用者帳戶（）時 `Individual` ，應用程式會 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 在應用程式的專案檔中自動接收套件的套件參考。</span><span class="sxs-lookup"><span data-stu-id="73974-167">When an app is created to use Individual User Accounts (`Individual`), the app automatically receives a package reference for the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package in the app's project file.</span></span> <span data-ttu-id="73974-168">封裝提供一組基本類型，可協助應用程式驗證使用者，並取得權杖以呼叫受保護的 Api。</span><span class="sxs-lookup"><span data-stu-id="73974-168">The package provides a set of primitives that help the app authenticate users and obtain tokens to call protected APIs.</span></span>
 
-<span data-ttu-id="e8bf7-164">如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-164">If adding authentication to an app, manually add the package to the app's project file:</span></span>
+<span data-ttu-id="73974-169">如果將驗證新增至應用程式，請手動將套件新增至應用程式的專案檔：</span><span class="sxs-lookup"><span data-stu-id="73974-169">If adding authentication to an app, manually add the package to the app's project file:</span></span>
 
 ```xml
 <PackageReference 
@@ -162,43 +178,43 @@ dotnet new blazorwasm -au Individual -ho
   Version="3.2.0" />
 ```
 
-### <a name="api-authorization-support"></a><span data-ttu-id="e8bf7-165">API 授權支援</span><span class="sxs-lookup"><span data-stu-id="e8bf7-165">API authorization support</span></span>
+### <a name="api-authorization-support"></a><span data-ttu-id="73974-170">API 授權支援</span><span class="sxs-lookup"><span data-stu-id="73974-170">API authorization support</span></span>
 
-<span data-ttu-id="e8bf7-166">驗證使用者的支援是由套件內提供的擴充方法插入服務容器中 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-166">The support for authenticating users is plugged into the service container by the extension method provided inside the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package.</span></span> <span data-ttu-id="e8bf7-167">這個方法會設定應用程式所需的服務，以與現有的授權系統互動。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-167">This method sets up the services required by the app to interact with the existing authorization system.</span></span>
+<span data-ttu-id="73974-171">驗證使用者的支援是由套件內提供的擴充方法插入服務容器中 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) 。</span><span class="sxs-lookup"><span data-stu-id="73974-171">The support for authenticating users is plugged into the service container by the extension method provided inside the [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) package.</span></span> <span data-ttu-id="73974-172">這個方法會設定應用程式所需的服務，以與現有的授權系統互動。</span><span class="sxs-lookup"><span data-stu-id="73974-172">This method sets up the services required by the app to interact with the existing authorization system.</span></span>
 
 ```csharp
 builder.Services.AddApiAuthorization();
 ```
 
-<span data-ttu-id="e8bf7-168">根據預設，應用程式的設定會依照慣例從載入 `_configuration/{client-id}` 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-168">By default, configuration for the app is loaded by convention from `_configuration/{client-id}`.</span></span> <span data-ttu-id="e8bf7-169">依照慣例，用戶端識別碼會設定為應用程式的元件名稱。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-169">By convention, the client ID is set to the app's assembly name.</span></span> <span data-ttu-id="e8bf7-170">您可以使用選項呼叫多載，將此 URL 變更為指向不同的端點。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-170">This URL can be changed to point to a separate endpoint by calling the overload with options.</span></span>
+<span data-ttu-id="73974-173">根據預設，應用程式的設定會依照慣例從載入 `_configuration/{client-id}` 。</span><span class="sxs-lookup"><span data-stu-id="73974-173">By default, configuration for the app is loaded by convention from `_configuration/{client-id}`.</span></span> <span data-ttu-id="73974-174">依照慣例，用戶端識別碼會設定為應用程式的元件名稱。</span><span class="sxs-lookup"><span data-stu-id="73974-174">By convention, the client ID is set to the app's assembly name.</span></span> <span data-ttu-id="73974-175">您可以使用選項呼叫多載，將此 URL 變更為指向不同的端點。</span><span class="sxs-lookup"><span data-stu-id="73974-175">This URL can be changed to point to a separate endpoint by calling the overload with options.</span></span>
 
-### <a name="imports-file"></a><span data-ttu-id="e8bf7-171">匯入檔案</span><span class="sxs-lookup"><span data-stu-id="e8bf7-171">Imports file</span></span>
+### <a name="imports-file"></a><span data-ttu-id="73974-176">匯入檔案</span><span class="sxs-lookup"><span data-stu-id="73974-176">Imports file</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/imports-file-hosted.md)]
 
-### <a name="index-page"></a><span data-ttu-id="e8bf7-172">索引頁面</span><span class="sxs-lookup"><span data-stu-id="e8bf7-172">Index page</span></span>
+### <a name="index-page"></a><span data-ttu-id="73974-177">索引頁面</span><span class="sxs-lookup"><span data-stu-id="73974-177">Index page</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/index-page-authentication.md)]
 
-### <a name="app-component"></a><span data-ttu-id="e8bf7-173">應用程式元件</span><span class="sxs-lookup"><span data-stu-id="e8bf7-173">App component</span></span>
+### <a name="app-component"></a><span data-ttu-id="73974-178">應用程式元件</span><span class="sxs-lookup"><span data-stu-id="73974-178">App component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/app-component.md)]
 
-### <a name="redirecttologin-component"></a><span data-ttu-id="e8bf7-174">RedirectToLogin 元件</span><span class="sxs-lookup"><span data-stu-id="e8bf7-174">RedirectToLogin component</span></span>
+### <a name="redirecttologin-component"></a><span data-ttu-id="73974-179">RedirectToLogin 元件</span><span class="sxs-lookup"><span data-stu-id="73974-179">RedirectToLogin component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/redirecttologin-component.md)]
 
-### <a name="logindisplay-component"></a><span data-ttu-id="e8bf7-175">LoginDisplay 元件</span><span class="sxs-lookup"><span data-stu-id="e8bf7-175">LoginDisplay component</span></span>
+### <a name="logindisplay-component"></a><span data-ttu-id="73974-180">LoginDisplay 元件</span><span class="sxs-lookup"><span data-stu-id="73974-180">LoginDisplay component</span></span>
 
-<span data-ttu-id="e8bf7-176">`LoginDisplay`元件（ `Shared/LoginDisplay.razor` ）會在 `MainLayout` 元件（）中轉譯 `Shared/MainLayout.razor` ，並管理下列行為：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-176">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
+<span data-ttu-id="73974-181">`LoginDisplay`元件（ `Shared/LoginDisplay.razor` ）會在 `MainLayout` 元件（）中轉譯 `Shared/MainLayout.razor` ，並管理下列行為：</span><span class="sxs-lookup"><span data-stu-id="73974-181">The `LoginDisplay` component (`Shared/LoginDisplay.razor`) is rendered in the `MainLayout` component (`Shared/MainLayout.razor`) and manages the following behaviors:</span></span>
 
-* <span data-ttu-id="e8bf7-177">針對已驗證的使用者：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-177">For authenticated users:</span></span>
-  * <span data-ttu-id="e8bf7-178">顯示目前的使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-178">Displays the current user name.</span></span>
-  * <span data-ttu-id="e8bf7-179">提供 ASP.NET Core 中 [使用者設定檔] 頁面的連結 Identity 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-179">Offers a link to the user profile page in ASP.NET Core Identity.</span></span>
-  * <span data-ttu-id="e8bf7-180">提供用來登出應用程式的按鈕。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-180">Offers a button to log out of the app.</span></span>
-* <span data-ttu-id="e8bf7-181">匿名使用者：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-181">For anonymous users:</span></span>
-  * <span data-ttu-id="e8bf7-182">提供註冊的選項。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-182">Offers the option to register.</span></span>
-  * <span data-ttu-id="e8bf7-183">提供登入的選項。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-183">Offers the option to log in.</span></span>
+* <span data-ttu-id="73974-182">針對已驗證的使用者：</span><span class="sxs-lookup"><span data-stu-id="73974-182">For authenticated users:</span></span>
+  * <span data-ttu-id="73974-183">顯示目前的使用者名稱。</span><span class="sxs-lookup"><span data-stu-id="73974-183">Displays the current user name.</span></span>
+  * <span data-ttu-id="73974-184">提供 ASP.NET Core 中 [使用者設定檔] 頁面的連結 Identity 。</span><span class="sxs-lookup"><span data-stu-id="73974-184">Offers a link to the user profile page in ASP.NET Core Identity.</span></span>
+  * <span data-ttu-id="73974-185">提供用來登出應用程式的按鈕。</span><span class="sxs-lookup"><span data-stu-id="73974-185">Offers a button to log out of the app.</span></span>
+* <span data-ttu-id="73974-186">匿名使用者：</span><span class="sxs-lookup"><span data-stu-id="73974-186">For anonymous users:</span></span>
+  * <span data-ttu-id="73974-187">提供註冊的選項。</span><span class="sxs-lookup"><span data-stu-id="73974-187">Offers the option to register.</span></span>
+  * <span data-ttu-id="73974-188">提供登入的選項。</span><span class="sxs-lookup"><span data-stu-id="73974-188">Offers the option to log in.</span></span>
 
 ```razor
 @using Microsoft.AspNetCore.Components.Authorization
@@ -228,28 +244,28 @@ builder.Services.AddApiAuthorization();
 }
 ```
 
-### <a name="authentication-component"></a><span data-ttu-id="e8bf7-184">驗證元件</span><span class="sxs-lookup"><span data-stu-id="e8bf7-184">Authentication component</span></span>
+### <a name="authentication-component"></a><span data-ttu-id="73974-189">驗證元件</span><span class="sxs-lookup"><span data-stu-id="73974-189">Authentication component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/authentication-component.md)]
 
-### <a name="fetchdata-component"></a><span data-ttu-id="e8bf7-185">FetchData 元件</span><span class="sxs-lookup"><span data-stu-id="e8bf7-185">FetchData component</span></span>
+### <a name="fetchdata-component"></a><span data-ttu-id="73974-190">FetchData 元件</span><span class="sxs-lookup"><span data-stu-id="73974-190">FetchData component</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/fetchdata-component.md)]
 
-## <a name="run-the-app"></a><span data-ttu-id="e8bf7-186">執行應用程式</span><span class="sxs-lookup"><span data-stu-id="e8bf7-186">Run the app</span></span>
+## <a name="run-the-app"></a><span data-ttu-id="73974-191">執行應用程式</span><span class="sxs-lookup"><span data-stu-id="73974-191">Run the app</span></span>
 
-<span data-ttu-id="e8bf7-187">從伺服器專案執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-187">Run the app from the Server project.</span></span> <span data-ttu-id="e8bf7-188">使用 Visual Studio 時，您可以：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-188">When using Visual Studio, either:</span></span>
+<span data-ttu-id="73974-192">從伺服器專案執行應用程式。</span><span class="sxs-lookup"><span data-stu-id="73974-192">Run the app from the Server project.</span></span> <span data-ttu-id="73974-193">使用 Visual Studio 時，您可以：</span><span class="sxs-lookup"><span data-stu-id="73974-193">When using Visual Studio, either:</span></span>
 
-* <span data-ttu-id="e8bf7-189">將工具列中的 [**啟始專案**] 下拉式清單設定為*伺服器 API 應用程式*，然後選取 [**執行**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-189">Set the **Startup Projects** drop down list in the toolbar to the *Server API app* and select the **Run** button.</span></span>
-* <span data-ttu-id="e8bf7-190">在**方案總管**中選取伺服器專案，然後選取工具列中的 [**執行**] 按鈕，或從 [**調試**程式] 功能表啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-190">Select the Server project in **Solution Explorer** and select the **Run** button in the toolbar or start the app from the **Debug** menu.</span></span>
+* <span data-ttu-id="73974-194">將工具列中的 [**啟始專案**] 下拉式清單設定為*伺服器 API 應用程式*，然後選取 [**執行**] 按鈕。</span><span class="sxs-lookup"><span data-stu-id="73974-194">Set the **Startup Projects** drop down list in the toolbar to the *Server API app* and select the **Run** button.</span></span>
+* <span data-ttu-id="73974-195">在**方案總管**中選取伺服器專案，然後選取工具列中的 [**執行**] 按鈕，或從 [**調試**程式] 功能表啟動應用程式。</span><span class="sxs-lookup"><span data-stu-id="73974-195">Select the Server project in **Solution Explorer** and select the **Run** button in the toolbar or start the app from the **Debug** menu.</span></span>
 
-## <a name="name-and-role-claim-with-api-authorization"></a><span data-ttu-id="e8bf7-191">具有 API 授權的名稱和角色宣告</span><span class="sxs-lookup"><span data-stu-id="e8bf7-191">Name and role claim with API authorization</span></span>
+## <a name="name-and-role-claim-with-api-authorization"></a><span data-ttu-id="73974-196">具有 API 授權的名稱和角色宣告</span><span class="sxs-lookup"><span data-stu-id="73974-196">Name and role claim with API authorization</span></span>
 
-### <a name="custom-user-factory"></a><span data-ttu-id="e8bf7-192">自訂使用者工廠</span><span class="sxs-lookup"><span data-stu-id="e8bf7-192">Custom user factory</span></span>
+### <a name="custom-user-factory"></a><span data-ttu-id="73974-197">自訂使用者工廠</span><span class="sxs-lookup"><span data-stu-id="73974-197">Custom user factory</span></span>
 
-<span data-ttu-id="e8bf7-193">在用戶端應用程式中，建立自訂的使用者 factory。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-193">In the Client app, create a custom user factory.</span></span> Identity<span data-ttu-id="e8bf7-194">伺服器會在單一宣告中以 JSON 陣列的形式傳送多個角色 `role` 。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-194"> Server sends multiple roles as a JSON array in a single `role` claim.</span></span> <span data-ttu-id="e8bf7-195">單一角色會當做宣告中的字串值來傳送。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-195">A single role is sent as a string value in the claim.</span></span> <span data-ttu-id="e8bf7-196">Factory 會 `role` 針對每個使用者角色建立個別的宣告。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-196">The factory creates an individual `role` claim for each of the user's roles.</span></span>
+<span data-ttu-id="73974-198">在用戶端應用程式中，建立自訂的使用者 factory。</span><span class="sxs-lookup"><span data-stu-id="73974-198">In the Client app, create a custom user factory.</span></span> Identity<span data-ttu-id="73974-199">伺服器會在單一宣告中以 JSON 陣列的形式傳送多個角色 `role` 。</span><span class="sxs-lookup"><span data-stu-id="73974-199"> Server sends multiple roles as a JSON array in a single `role` claim.</span></span> <span data-ttu-id="73974-200">單一角色會當做宣告中的字串值來傳送。</span><span class="sxs-lookup"><span data-stu-id="73974-200">A single role is sent as a string value in the claim.</span></span> <span data-ttu-id="73974-201">Factory 會 `role` 針對每個使用者角色建立個別的宣告。</span><span class="sxs-lookup"><span data-stu-id="73974-201">The factory creates an individual `role` claim for each of the user's roles.</span></span>
 
-<span data-ttu-id="e8bf7-197">`CustomUserFactory.cs`:</span><span class="sxs-lookup"><span data-stu-id="e8bf7-197">`CustomUserFactory.cs`:</span></span>
+<span data-ttu-id="73974-202">`CustomUserFactory.cs`:</span><span class="sxs-lookup"><span data-stu-id="73974-202">`CustomUserFactory.cs`:</span></span>
 
 ```csharp
 using System.Linq;
@@ -309,14 +325,14 @@ public class CustomUserFactory
 }
 ```
 
-<span data-ttu-id="e8bf7-198">在用戶端應用程式中，于（）中註冊 factory `Program.Main` `Program.cs` ：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-198">In the Client app, register the factory in `Program.Main` (`Program.cs`):</span></span>
+<span data-ttu-id="73974-203">在用戶端應用程式中，于（）中註冊 factory `Program.Main` `Program.cs` ：</span><span class="sxs-lookup"><span data-stu-id="73974-203">In the Client app, register the factory in `Program.Main` (`Program.cs`):</span></span>
 
 ```csharp
 builder.Services.AddApiAuthorization()
     .AddAccountClaimsPrincipalFactory<CustomUserFactory>();
 ```
 
-<span data-ttu-id="e8bf7-199">在伺服器應用程式中，呼叫產生器 <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> 上的 Identity ，這會新增角色相關服務：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-199">In the Server app, call <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> on the Identity builder, which adds role-related services:</span></span>
+<span data-ttu-id="73974-204">在伺服器應用程式中，呼叫產生器 <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> 上的 Identity ，這會新增角色相關服務：</span><span class="sxs-lookup"><span data-stu-id="73974-204">In the Server app, call <xref:Microsoft.AspNetCore.Identity.IdentityBuilder.AddRoles*> on the Identity builder, which adds role-related services:</span></span>
 
 ```csharp
 using Microsoft.AspNetCore.Identity;
@@ -329,19 +345,19 @@ services.AddDefaultIdentity<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>();
 ```
 
-### <a name="configure-identity-server"></a><span data-ttu-id="e8bf7-200">設定 Identity 伺服器</span><span class="sxs-lookup"><span data-stu-id="e8bf7-200">Configure Identity Server</span></span>
+### <a name="configure-identity-server"></a><span data-ttu-id="73974-205">設定 Identity 伺服器</span><span class="sxs-lookup"><span data-stu-id="73974-205">Configure Identity Server</span></span>
 
-<span data-ttu-id="e8bf7-201">請使用下列**其中一**種方法：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-201">Use **one** of the following approaches:</span></span>
+<span data-ttu-id="73974-206">請使用下列**其中一**種方法：</span><span class="sxs-lookup"><span data-stu-id="73974-206">Use **one** of the following approaches:</span></span>
 
-* [<span data-ttu-id="e8bf7-202">API 授權選項</span><span class="sxs-lookup"><span data-stu-id="e8bf7-202">API authorization options</span></span>](#api-authorization-options)
-* [<span data-ttu-id="e8bf7-203">設定檔服務</span><span class="sxs-lookup"><span data-stu-id="e8bf7-203">Profile Service</span></span>](#profile-service)
+* [<span data-ttu-id="73974-207">API 授權選項</span><span class="sxs-lookup"><span data-stu-id="73974-207">API authorization options</span></span>](#api-authorization-options)
+* [<span data-ttu-id="73974-208">設定檔服務</span><span class="sxs-lookup"><span data-stu-id="73974-208">Profile Service</span></span>](#profile-service)
 
-#### <a name="api-authorization-options"></a><span data-ttu-id="e8bf7-204">API 授權選項</span><span class="sxs-lookup"><span data-stu-id="e8bf7-204">API authorization options</span></span>
+#### <a name="api-authorization-options"></a><span data-ttu-id="73974-209">API 授權選項</span><span class="sxs-lookup"><span data-stu-id="73974-209">API authorization options</span></span>
 
-<span data-ttu-id="e8bf7-205">在伺服器應用程式中：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-205">In the Server app:</span></span>
+<span data-ttu-id="73974-210">在伺服器應用程式中：</span><span class="sxs-lookup"><span data-stu-id="73974-210">In the Server app:</span></span>
 
-* <span data-ttu-id="e8bf7-206">設定 Identity 伺服器將 `name` 和宣告放 `role` 入識別碼權杖和存取權杖中。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-206">Configure Identity Server to put the `name` and `role` claims into the ID token and access token.</span></span>
-* <span data-ttu-id="e8bf7-207">防止 JWT 權杖處理常式中的角色的預設對應。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-207">Prevent the default mapping for roles in the JWT token handler.</span></span>
+* <span data-ttu-id="73974-211">設定 Identity 伺服器將 `name` 和宣告放 `role` 入識別碼權杖和存取權杖中。</span><span class="sxs-lookup"><span data-stu-id="73974-211">Configure Identity Server to put the `name` and `role` claims into the ID token and access token.</span></span>
+* <span data-ttu-id="73974-212">防止 JWT 權杖處理常式中的角色的預設對應。</span><span class="sxs-lookup"><span data-stu-id="73974-212">Prevent the default mapping for roles in the JWT token handler.</span></span>
 
 ```csharp
 using System.IdentityModel.Tokens.Jwt;
@@ -360,11 +376,11 @@ services.AddIdentityServer()
 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Remove("role");
 ```
 
-#### <a name="profile-service"></a><span data-ttu-id="e8bf7-208">設定檔服務</span><span class="sxs-lookup"><span data-stu-id="e8bf7-208">Profile Service</span></span>
+#### <a name="profile-service"></a><span data-ttu-id="73974-213">設定檔服務</span><span class="sxs-lookup"><span data-stu-id="73974-213">Profile Service</span></span>
 
-<span data-ttu-id="e8bf7-209">在伺服器應用程式中，建立一個 `ProfileService` 執行。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-209">In the Server app, create a `ProfileService` implementation.</span></span>
+<span data-ttu-id="73974-214">在伺服器應用程式中，建立一個 `ProfileService` 執行。</span><span class="sxs-lookup"><span data-stu-id="73974-214">In the Server app, create a `ProfileService` implementation.</span></span>
 
-<span data-ttu-id="e8bf7-210">`ProfileService.cs`:</span><span class="sxs-lookup"><span data-stu-id="e8bf7-210">`ProfileService.cs`:</span></span>
+<span data-ttu-id="73974-215">`ProfileService.cs`:</span><span class="sxs-lookup"><span data-stu-id="73974-215">`ProfileService.cs`:</span></span>
 
 ```csharp
 using IdentityModel;
@@ -396,7 +412,7 @@ public class ProfileService : IProfileService
 }
 ```
 
-<span data-ttu-id="e8bf7-211">在伺服器應用程式中，在中註冊設定檔服務 `Startup.ConfigureServices` ：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-211">In the Server app, register the Profile Service in `Startup.ConfigureServices`:</span></span>
+<span data-ttu-id="73974-216">在伺服器應用程式中，在中註冊設定檔服務 `Startup.ConfigureServices` ：</span><span class="sxs-lookup"><span data-stu-id="73974-216">In the Server app, register the Profile Service in `Startup.ConfigureServices`:</span></span>
 
 ```csharp
 using IdentityServer4.Services;
@@ -406,15 +422,15 @@ using IdentityServer4.Services;
 services.AddTransient<IProfileService, ProfileService>();
 ```
 
-### <a name="use-authorization-mechanisms"></a><span data-ttu-id="e8bf7-212">使用授權機制</span><span class="sxs-lookup"><span data-stu-id="e8bf7-212">Use authorization mechanisms</span></span>
+### <a name="use-authorization-mechanisms"></a><span data-ttu-id="73974-217">使用授權機制</span><span class="sxs-lookup"><span data-stu-id="73974-217">Use authorization mechanisms</span></span>
 
-<span data-ttu-id="e8bf7-213">在用戶端應用程式中，元件授權方法會在此時運作。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-213">In the Client app, component authorization approaches are functional at this point.</span></span> <span data-ttu-id="e8bf7-214">元件中的任何授權機制都可以使用角色來授權使用者：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-214">Any of the authorization mechanisms in components can use a role to authorize the user:</span></span>
+<span data-ttu-id="73974-218">在用戶端應用程式中，元件授權方法會在此時運作。</span><span class="sxs-lookup"><span data-stu-id="73974-218">In the Client app, component authorization approaches are functional at this point.</span></span> <span data-ttu-id="73974-219">元件中的任何授權機制都可以使用角色來授權使用者：</span><span class="sxs-lookup"><span data-stu-id="73974-219">Any of the authorization mechanisms in components can use a role to authorize the user:</span></span>
 
-* <span data-ttu-id="e8bf7-215">[ `AuthorizeView` 元件](xref:blazor/security/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）</span><span class="sxs-lookup"><span data-stu-id="e8bf7-215">[`AuthorizeView` component](xref:blazor/security/index#authorizeview-component) (Example: `<AuthorizeView Roles="admin">`)</span></span>
-* <span data-ttu-id="e8bf7-216">[ `[Authorize]` attribute](xref:blazor/security/index#authorize-attribute)指示詞（ <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ）（範例： `@attribute [Authorize(Roles = "admin")]` ）</span><span class="sxs-lookup"><span data-stu-id="e8bf7-216">[`[Authorize]` attribute directive](xref:blazor/security/index#authorize-attribute) (<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>) (Example: `@attribute [Authorize(Roles = "admin")]`)</span></span>
-* <span data-ttu-id="e8bf7-217">程式[邏輯](xref:blazor/security/index#procedural-logic)（範例： `if (user.IsInRole("admin")) { ... }` ）</span><span class="sxs-lookup"><span data-stu-id="e8bf7-217">[Procedural logic](xref:blazor/security/index#procedural-logic) (Example: `if (user.IsInRole("admin")) { ... }`)</span></span>
+* <span data-ttu-id="73974-220">[ `AuthorizeView` 元件](xref:blazor/security/index#authorizeview-component)（範例： `<AuthorizeView Roles="admin">` ）</span><span class="sxs-lookup"><span data-stu-id="73974-220">[`AuthorizeView` component](xref:blazor/security/index#authorizeview-component) (Example: `<AuthorizeView Roles="admin">`)</span></span>
+* <span data-ttu-id="73974-221">[ `[Authorize]` attribute](xref:blazor/security/index#authorize-attribute)指示詞（ <xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute> ）（範例： `@attribute [Authorize(Roles = "admin")]` ）</span><span class="sxs-lookup"><span data-stu-id="73974-221">[`[Authorize]` attribute directive](xref:blazor/security/index#authorize-attribute) (<xref:Microsoft.AspNetCore.Authorization.AuthorizeAttribute>) (Example: `@attribute [Authorize(Roles = "admin")]`)</span></span>
+* <span data-ttu-id="73974-222">程式[邏輯](xref:blazor/security/index#procedural-logic)（範例： `if (user.IsInRole("admin")) { ... }` ）</span><span class="sxs-lookup"><span data-stu-id="73974-222">[Procedural logic](xref:blazor/security/index#procedural-logic) (Example: `if (user.IsInRole("admin")) { ... }`)</span></span>
 
-  <span data-ttu-id="e8bf7-218">支援多個角色測試：</span><span class="sxs-lookup"><span data-stu-id="e8bf7-218">Multiple role tests are supported:</span></span>
+  <span data-ttu-id="73974-223">支援多個角色測試：</span><span class="sxs-lookup"><span data-stu-id="73974-223">Multiple role tests are supported:</span></span>
 
   ```csharp
   if (user.IsInRole("admin") && user.IsInRole("developer"))
@@ -423,15 +439,15 @@ services.AddTransient<IProfileService, ProfileService>();
   }
   ```
 
-<span data-ttu-id="e8bf7-219">`User.Identity.Name`會在用戶端應用程式中填入使用者的使用者名稱，這通常是其登入電子郵件地址。</span><span class="sxs-lookup"><span data-stu-id="e8bf7-219">`User.Identity.Name` is populated in the Client app with the user's user name, which is usually their sign-in email address.</span></span>
+<span data-ttu-id="73974-224">`User.Identity.Name`會在用戶端應用程式中填入使用者的使用者名稱，這通常是其登入電子郵件地址。</span><span class="sxs-lookup"><span data-stu-id="73974-224">`User.Identity.Name` is populated in the Client app with the user's user name, which is usually their sign-in email address.</span></span>
 
 [!INCLUDE[](~/includes/blazor-security/usermanager-signinmanager.md)]
 
 [!INCLUDE[](~/includes/blazor-security/troubleshoot.md)]
 
-## <a name="additional-resources"></a><span data-ttu-id="e8bf7-220">其他資源</span><span class="sxs-lookup"><span data-stu-id="e8bf7-220">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="73974-225">其他資源</span><span class="sxs-lookup"><span data-stu-id="73974-225">Additional resources</span></span>
 
-* [<span data-ttu-id="e8bf7-221">部署至 Azure App Service</span><span class="sxs-lookup"><span data-stu-id="e8bf7-221">Deployment to Azure App Service</span></span>](xref:security/authentication/identity/spa#deploy-to-production)
-* [<span data-ttu-id="e8bf7-222">從 Key Vault 匯入憑證（Azure 檔）</span><span class="sxs-lookup"><span data-stu-id="e8bf7-222">Import a certificate from Key Vault (Azure documentation)</span></span>](/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
+* [<span data-ttu-id="73974-226">部署至 Azure App Service</span><span class="sxs-lookup"><span data-stu-id="73974-226">Deployment to Azure App Service</span></span>](xref:security/authentication/identity/spa#deploy-to-production)
+* [<span data-ttu-id="73974-227">從 Key Vault 匯入憑證（Azure 檔）</span><span class="sxs-lookup"><span data-stu-id="73974-227">Import a certificate from Key Vault (Azure documentation)</span></span>](/azure/app-service/configure-ssl-certificate#import-a-certificate-from-key-vault)
 * <xref:blazor/security/webassembly/additional-scenarios>
-* [<span data-ttu-id="e8bf7-223">在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求</span><span class="sxs-lookup"><span data-stu-id="e8bf7-223">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
+* [<span data-ttu-id="73974-228">在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求</span><span class="sxs-lookup"><span data-stu-id="73974-228">Unauthenticated or unauthorized web API requests in an app with a secure default client</span></span>](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)

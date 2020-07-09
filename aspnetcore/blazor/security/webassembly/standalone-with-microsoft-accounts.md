@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-ms.openlocfilehash: 38452c3e9578d8a942035174a28d945e58e4008d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 58dd791718a820e1a326db309afcd173d73c667b
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402035"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147701"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-microsoft-accounts"></a>Blazor WebAssembly使用 Microsoft 帳戶保護 ASP.NET Core 獨立應用程式
 
@@ -36,9 +36,9 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 在 [**支援的帳戶類型**] 中，選取 [**任何組織目錄中的帳戶**]。
 1. 將 [重新**導向 uri** ] 下拉式設定保留為 [ **Web** ]，並提供下列重新導向 uri： `https://localhost:{PORT}/authentication/login-callback` 。 在 Kestrel 上執行之應用程式的預設埠是5001。 如果應用程式是在不同的 Kestrel 埠上執行，請使用應用程式的埠。 針對 IIS Express，應用程式的隨機產生埠可以在 [**調試**程式] 面板的 [屬性] 中找到。 由於應用程式目前不存在，且 IIS Express 埠未知，請在建立應用程式之後返回此步驟，並更新重新導向 URI。 本主題稍後會出現一個批註，提醒 IIS Express 使用者更新重新導向 URI。
 1. 停用 **[授與系統**  >  **管理員同意 openid 和 offline_access 許可權**] 核取方塊。
-1. 選取 [註冊]****。
+1. 選取 [註冊]。
 
-記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。
+記錄應用程式（用戶端）識別碼（例如 `41451fa7-82d9-4673-8fa5-69eff5a761fd` ）。
 
 在 [**驗證**  >  **平臺**設定]  >  **Web**：
 
@@ -50,10 +50,15 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 建立應用程式。 以先前記錄的資訊取代下列命令中的預留位置，並在命令 shell 中執行下列命令：
 
 ```dotnetcli
-dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "common"
+dotnet new blazorwasm -au SingleOrg --client-id "{CLIENT ID}" --tenant-id "common" -o {APP NAME}
 ```
 
-若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
+| 預留位置   | Azure 入口網站名稱       | 範例                                |
+| ------------- | ----------------------- | -------------------------------------- |
+| `{APP NAME}`  | &mdash;                 | `BlazorSample`                         |
+| `{CLIENT ID}` | 應用程式 (用戶端) 識別碼 | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+
+使用選項指定的輸出位置會 `-o|--output` 建立專案資料夾（如果不存在），並成為應用程式名稱的一部分。
 
 > [!NOTE]
 > 在 Azure 入口網站中，應用程式的**驗證**  >  **平臺**  >  設定**Web**重新  >  **導向 URI**會針對使用預設設定在 Kestrel 伺服器上執行的應用程式進行通訊埠5001。

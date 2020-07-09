@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/standalone-with-authentication-library
-ms.openlocfilehash: df957c5ee385b29ca390c014187a4c10e79d37f4
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 02960e6c7d70be3ea1be3ed9e2280e5b5847c926
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944629"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147682"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-standalone-app-with-the-authentication-library"></a>Blazor WebAssembly使用驗證程式庫保護 ASP.NET Core 獨立應用程式
 
@@ -28,15 +28,41 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 *若為 Azure Active Directory （AAD）和 Azure Active Directory B2C （AAD B2C），請不要遵循本主題中的指導方針。請參閱此目錄節點中的 AAD 和 AAD B2C 主題。*
 
-若要建立 Blazor WebAssembly 使用程式庫的獨立應用程式 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) ，請在命令 shell 中執行下列命令：
+若要建立 Blazor WebAssembly 使用程式庫的獨立應用程式 [`Microsoft.AspNetCore.Components.WebAssembly.Authentication`](https://www.nuget.org/packages/Microsoft.AspNetCore.Components.WebAssembly.Authentication/) ，請遵循您選擇工具的指引。
+
+# <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+若要 Blazor WebAssembly 使用驗證機制建立新的專案：
+
+1. 選擇 [**建立新的 ASP.NET Core Web 應用程式**] 對話方塊中的** Blazor WebAssembly 應用程式**範本之後，請選取 [**驗證**] 底下的 [**變更**]。
+
+1. 使用 [**將使用者帳戶儲存在應用程式中**] 選項選取**個別的使用者帳戶**，以使用 ASP.NET Core 的系統將使用者儲存在應用程式中 [Identity](xref:security/authentication/identity) 。
+
+# <a name="visual-studio-code--net-core-cli"></a>[Visual Studio Code / .NET Core CLI](#tab/visual-studio-code+netcore-cli)
+
+Blazor WebAssembly使用空白資料夾中的驗證機制來建立新的專案。 指定 `Individual` 驗證機制，並 `-au|--auth` 選擇使用 ASP.NET Core 的系統將使用者儲存在應用程式內 [Identity](xref:security/authentication/identity) ：
 
 ```dotnetcli
-dotnet new blazorwasm -au Individual
+dotnet new blazorwasm -au Individual -o {APP NAME}
 ```
 
-若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
+| 預留位置  | 範例        |
+| ------------ | -------------- |
+| `{APP NAME}` | `BlazorSample` |
 
-如果使用 Visual Studio 建立 Blazor WebAssembly 應用程式，請使用 [**將使用者帳戶儲存在應用程式內**] 選項，將**驗證**設定為**個別使用者帳戶**。
+使用選項指定的輸出位置會 `-o|--output` 建立專案資料夾（如果不存在），並成為應用程式名稱的一部分。
+
+如需詳細資訊，請參閱 [`dotnet new`](/dotnet/core/tools/dotnet-new) .Net Core 指南中的命令。
+
+# <a name="visual-studio-for-mac"></a>[Visual Studio for Mac](#tab/visual-studio-mac)
+
+若要 Blazor WebAssembly 使用驗證機制建立新的專案：
+
+1. 在 [**設定新的 Blazor WebAssembly 應用程式**] 步驟上，從 [**驗證**] 下拉式選單選取 [**個別驗證（應用程式內）** ]。
+
+1. 應用程式會針對以 ASP.NET Core 儲存在應用程式中的個別使用者而建立 [Identity](xref:security/authentication/identity) 。
+
+---
 
 ## <a name="authentication-package"></a>驗證套件
 

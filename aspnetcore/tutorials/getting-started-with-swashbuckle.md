@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/get-started-with-swashbuckle
-ms.openlocfilehash: 0a47ed3338ebfbc5361a6082978d407543fb95c5
-ms.sourcegitcommit: b06511252f165dd4590ba9b5beca4153fa220779
+ms.openlocfilehash: bf6375f8f63bb9db50c423706a48363f53e96549
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85459775"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147666"
 ---
 # <a name="get-started-with-swashbuckle-and-aspnet-core"></a>Swashbuckle 與 ASP.NET Core 使用者入門
 
@@ -75,7 +75,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
 
 ### <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-執行以下命令：
+執行下列命令：
 
 ```dotnetcli
 dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
@@ -124,7 +124,7 @@ dotnet add TodoApi.csproj package Swashbuckle.AspNetCore -v 5.5.0
 
 上述 `UseSwaggerUI` 方法呼叫會啟用[靜態檔案中介軟體](xref:fundamentals/static-files)。 如果以 .NET Framework 或 .NET Core 1.x 為目標，請將[StaticFiles](https://www.nuget.org/packages/Microsoft.AspNetCore.StaticFiles/) NuGet 套件新增至專案。
 
-啟動應用程式，並巡覽至 `http://localhost:<port>/swagger/v1/swagger.json`。 描述端點的已產生文件隨即出現，如 [Swagger 規格 (swagger.json)](xref:tutorials/web-api-help-pages-using-swagger#swagger-specification-swaggerjson) 中所示。
+啟動應用程式，並巡覽至 `http://localhost:<port>/swagger/v1/swagger.json`。 描述端點的產生檔隨即出現，如[OpenAPI 規格（openapi.json）](xref:tutorials/web-api-help-pages-using-swagger#openapi-specification-openapijson)所示。
 
 您可以在 `http://localhost:<port>/swagger` 找到 Swagger UI。 透過 Swagger UI 探索 API，並將其併入其他程式。
 

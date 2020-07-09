@@ -16,12 +16,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems-set-one
-ms.openlocfilehash: bda287e54efadf8575c15c7b621416f20ae591c9
-ms.sourcegitcommit: d1fa3d69dda675d7a52c7100742dfa6297413376
+ms.openlocfilehash: 30a76eda0e94ee7bb2b2d3db918bc029865bdf1a
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86093322"
+ms.locfileid: "86147644"
 ---
 # <a name="tooling-for-aspnet-core-blazor"></a>適用于 ASP.NET Core 的工具Blazor
 
@@ -33,7 +33,7 @@ ms.locfileid: "86093322"
 
 1. 建立新專案。
 
-1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步]。
+1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步] 。
 
 1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
@@ -99,16 +99,11 @@ ms.locfileid: "86093322"
 
 1. 在提要欄位中，選取 [ **Web 和主控台**  >  **應用程式**]。
 
-   如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [下一步]。
+   如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [下一步] 。
 
    如需這兩個 Blazor 裝載模型的詳細資訊，請 *Blazor WebAssembly* *Blazor Server* 參閱 <xref:blazor/hosting-models> 。
 
-1. 確認下列設定：
-
-   * 設定為 **.Net Core 3.1**的**目標 Framework** 。
-   * **驗證**設為 [**無驗證**]。
-   
-   選取 [下一步]。
+1. 確認 [**驗證**] 已設為 [**無驗證**]。 選取 [下一步] 。
 
 1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1` 。 選取 [建立]。
 

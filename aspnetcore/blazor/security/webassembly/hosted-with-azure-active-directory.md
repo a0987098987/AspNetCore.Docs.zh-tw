@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 2e761f6f4d8e15569c0eb12388db04c401bbb1f5
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 82916c06413300bbefa85c619239c23a8e40468a
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944337"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147756"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory"></a>Blazor WebAssembly使用 Azure Active Directory 保護 ASP.NET Core 託管應用程式
 
@@ -47,9 +47,9 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 記錄下列資訊：
 
-* *伺服器 API 應用程式*應用程式識別碼（用戶端識別碼）（例如， `11111111-1111-1111-1111-111111111111` ）
-* 目錄識別碼（租使用者識別碼）（例如， `222222222-2222-2222-2222-222222222222` ）
-* AAD 租使用者網域（例如， `contoso.onmicrosoft.com` ）：在已註冊的應用程式之 Azure 入口網站的 [**商標**] 分頁中，網域會以**發行者網域**的形式提供。
+* *伺服器 API 應用程式*應用程式（用戶端）識別碼（例如， `41451fa7-82d9-4673-8fa5-69eff5a761fd` ）
+* 目錄（租使用者）識別碼（例如， `e86c78e2-8bb4-4c41-aefd-918e0565a45e` ）
+* AAD 主要/發行者/租使用者網域（例如， `contoso.onmicrosoft.com` ）：在已註冊的應用程式之 Azure 入口網站的 [**商標**] 分頁中，此網域可作為 [**發行者] 網域**。
 
 在 [ **API 許可權**] 中，移除 [ **Microsoft Graph**  >  **使用者]。 [讀取**] 許可權，因為應用程式不需要登入或使用者設定檔存取權。
 
@@ -65,8 +65,10 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 記錄下列資訊：
 
-* 應用程式識別碼 URI （例如， `https://contoso.onmicrosoft.com/11111111-1111-1111-1111-111111111111` 、 `api://11111111-1111-1111-1111-111111111111` 或您提供的自訂值）
+* 應用程式識別碼 URI （例如， `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd` 、 `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` 或您提供的自訂值）
 * 預設範圍（例如， `API.Access` ）
+
+應用程式識別碼 URI 可能需要用戶端應用程式中的特殊設定，如本主題稍後的[存取權杖範圍](#access-token-scopes)一節中所述。
 
 ### <a name="register-a-client-app"></a>註冊用戶端應用程式
 
@@ -79,7 +81,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 停用 **[授與系統**  >  **管理員同意 openid 和 offline_access 許可權**] 核取方塊。
 1. 選取 [註冊]。
 
-記錄*用戶端應用*程式識別碼（用戶端識別碼）（例如 `33333333-3333-3333-3333-333333333333` ）。
+記錄*用戶端應用*程式（用戶端）識別碼（例如 `4369008b-21fa-427c-abaa-9b53bf58e538` ）。
 
 在 [**驗證**  >  **平臺**設定]  >  **Web**：
 
@@ -95,18 +97,28 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 從 [**名稱**] 資料行中選取*伺服器 API 應用程式*（例如， ** Blazor Server AAD**）。
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access` ）。
-1. 選取 [新增權限]****。
+1. 選取 [新增權限]。
 1. 選取 [為 **{租使用者名稱} 授與系統管理員同意**] 按鈕。 選取 [是] **** 加以確認。
 
 ### <a name="create-the-app"></a>建立應用程式
 
-以先前記錄的資訊取代下列命令中的預留位置，並在命令 shell 中執行命令：
+在空的資料夾中，將下列命令中的預留位置取代為先前記錄的資訊，並在命令 shell 中執行命令：
 
 ```dotnetcli
-dotnet new blazorwasm -au SingleOrg --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho --tenant-id "{TENANT ID}"
+dotnet new blazorwasm -au SingleOrg --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} --tenant-id "{TENANT ID}"
 ```
 
-若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
+| 預留位置                  | Azure 入口網站名稱                                     | 範例                                |
+| ---------------------------- | ----------------------------------------------------- | -------------------------------------- |
+| `{APP NAME}`                 | &mdash;                                               | `BlazorSample`                         |
+| `{CLIENT APP CLIENT ID}`     | *用戶端應用*程式的應用程式（用戶端）識別碼          | `4369008b-21fa-427c-abaa-9b53bf58e538` |
+| `{DEFAULT SCOPE}`            | 領域名稱                                            | `API.Access`                           |
+| `{SERVER API APP CLIENT ID}` | *伺服器 API 應用*程式的應用程式（用戶端）識別碼      | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SERVER API APP ID URI}`    | 應用程式識別碼 URI （[請參閱附注](#access-token-scopes)） | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{TENANT DOMAIN}`            | 主要/發行者/租使用者網域                       | `contoso.onmicrosoft.com`              |
+| `{TENANT ID}`                | 目錄 (租用戶) 識別碼                                 | `e86c78e2-8bb4-4c41-aefd-918e0565a45e` |
+
+使用選項指定的輸出位置會 `-o|--output` 建立專案資料夾（如果不存在），並成為應用程式名稱的一部分。
 
 > [!NOTE]
 > 將應用程式識別碼 URI 傳遞給 `app-id-uri` 選項，但請注意，在用戶端應用程式中可能需要進行設定變更，如[存取權杖範圍](#access-token-scopes)一節中所述。
@@ -114,7 +126,7 @@ dotnet new blazorwasm -au SingleOrg --api-client-id "{SERVER API APP CLIENT ID}"
 > [!NOTE]
 > 在 Azure 入口網站中，*用戶端應用程式的***驗證**  >  **平臺**  >  設定**Web**重新  >  **導向 URI**會針對使用預設設定在 Kestrel 伺服器上執行的應用程式，設定為埠5001。
 >
-> 如果*用戶端應用程式*是在隨機 IIS Express 埠上執行，則可以在 [**調試**程式] 面板的*伺服器應用程式*屬性中找到應用程式的埠。
+> 如果*用戶端應用程式*是在隨機 IIS Express 埠上執行，則可以在 [**調試**程式] 面板的*伺服器 API 應用程式*屬性中找到應用程式的埠。
 >
 > 如果未在*用戶端應用程式的*已知埠之前設定埠，請回到 Azure 入口網站中的*用戶端應用程式*註冊，並使用正確的埠更新重新導向 URI。
 

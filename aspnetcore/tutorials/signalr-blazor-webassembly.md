@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/signalr-blazor-webassembly
-ms.openlocfilehash: 5a58e7ae28842e2e8a0f3bae8f47e252839903fe
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d5aa7520a637b18e014519134dfe2d2139e7c11d
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408873"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147782"
 ---
 # <a name="use-aspnet-core-signalr-with-blazor-webassembly"></a>SignalR使用 ASP.NET Core 搭配Blazor WebAssembly
 
@@ -39,7 +39,7 @@ ms.locfileid: "85408873"
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/tutorials/signalr-blazor-webassembly/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -74,13 +74,13 @@ ms.locfileid: "85408873"
 
 1. 選取** Blazor 應用程式**，然後選取 **[下一步]**。
 
-1. `BlazorSignalRApp`在 [**專案名稱**] 欄位中輸入。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]****。
+1. `BlazorSignalRApp`在 [**專案名稱**] 欄位中輸入。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
 1. 選擇 [ ** Blazor WebAssembly 應用程式**] 範本。
 
 1. 在 [ **Advanced**] 底下，選取 [ **ASP.NET Core**裝載] 核取方塊。
 
-1. 選取 [建立]****。
+1. 選取 [建立]。
 
 # <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
@@ -104,16 +104,9 @@ ms.locfileid: "85408873"
 
 1. 選擇 [ ** Blazor WebAssembly 應用程式**] 範本。 選取 [下一步] 。
 
-   確認下列設定：
+1. 確認 [**驗證**] 已設為 [**無驗證**]。 選取 [**主控 ASP.NET Core** ] 核取方塊。 選取 [下一步] 。
 
-   * 設定為 **.Net Core 3.1**的**目標 Framework** 。
-   * **驗證**設為 [**無驗證**]。
-
-   選取 [**主控 ASP.NET Core** ] 核取方塊。
-
-   選取 [下一步] 。
-
-1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `BlazorSignalRApp` 。 選取 [建立]****。
+1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `BlazorSignalRApp` 。 選取 [建立]。
 
    如果出現會信任開發憑證的提示，請信任憑證並繼續。 需要使用者和 keychain 密碼，才能信任憑證。
 

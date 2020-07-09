@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/call-web-api
-ms.openlocfilehash: a2e320eb24d47de9e704c2a5355d28cf90bad0cd
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 9c90e2a6c03e02b771cfa8f589e381d52637dc26
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059938"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147634"
 ---
 # <a name="call-a-web-api-from-aspnet-core-blazor"></a>從 ASP.NET Core 呼叫 Web APIBlazor
 
@@ -312,11 +312,11 @@ protected override async Task OnInitializedAsync()
 
 瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制稱為「*相同來源原則*」。 相同來源的原則可防止惡意網站從另一個網站讀取敏感性資料。 若要將來自瀏覽器的要求傳送至具有不同來源的端點，*端點*必須啟用[跨原始來源資源分享（CORS）](https://www.w3.org/TR/cors/)。
 
-[ Blazor WebAssembly 範例應用程式（BlazorWebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（）中使用 CORS `Pages/CallWebAPI.razor` 。
+[ Blazor WebAssembly 範例應用程式（ Blazor WebAssemblySample）](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/blazor/common/samples/)示範如何在呼叫 Web API 元件（）中使用 CORS `Pages/CallWebAPI.razor` 。
 
-如需安全要求的詳細資訊和程式碼範例，請參閱 <xref:blazor/security/webassembly/additional-scenarios> 。 如需有關具有安全要求之 CORS 的詳細資訊，請參閱上一篇文章的[cors 一節](xref:blazor/security/webassembly/additional-scenarios#cross-origin-resource-sharing-cors)。
+如需有關在應用程式中使用安全要求之 CORS 的詳細資訊 Blazor ，請參閱 <xref:blazor/security/webassembly/additional-scenarios#cross-origin-resource-sharing-cors> 。
 
-如需詳細資訊，請參閱 <xref:security/cors> 。
+如需有關 ASP.NET Core 應用程式之 CORS 的一般資訊，請參閱 <xref:security/cors> 。
 
 ## <a name="additional-resources"></a>其他資源
 

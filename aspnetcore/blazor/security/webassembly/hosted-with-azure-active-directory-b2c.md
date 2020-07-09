@@ -5,7 +5,7 @@ description: ''
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/19/2020
+ms.date: 07/08/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: 3f5fa42aea0af8880f9598f2e923b4e62481a797
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: b9125526db9a7484aca50f2ffa6175fd99b11453
+ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147766"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Blazor WebAssembly使用 Azure Active Directory B2C 保護 ASP.NET Core 託管應用程式
 
@@ -34,10 +34,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 依照[教學課程：建立 Azure Active Directory B2C 租](/azure/active-directory-b2c/tutorial-create-tenant)使用者中的指引來建立 AAD B2C 租使用者。
 
-記錄下列資訊：
-
-* AAD B2C 實例（例如， `https://contoso.b2clogin.com/` 包含尾端斜線的）
-* AAD B2C 租使用者網域（例如， `contoso.onmicrosoft.com` ）
+記錄 AAD B2C 實例（例如， `https://contoso.b2clogin.com/` 包含尾端斜線的）。 實例是 Azure B2C 應用程式註冊的配置和主機，您可以從 Azure 入口網站的 [**應用程式註冊**] 頁面中開啟 [**端點**] 視窗來找到此功能。
 
 ### <a name="register-a-server-api-app"></a>註冊伺服器 API 應用程式
 
@@ -52,9 +49,8 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 記錄下列資訊：
 
-* *伺服器 API 應用程式*應用程式識別碼（用戶端識別碼）（例如， `11111111-1111-1111-1111-111111111111` ）
-* 目錄識別碼（租使用者識別碼）（例如， `222222222-2222-2222-2222-222222222222` ）
-* AAD 租使用者網域（例如， `contoso.onmicrosoft.com` ）：在已註冊的應用程式之 Azure 入口網站的 [**商標**] 分頁中，網域會以**發行者網域**的形式提供。
+* *伺服器 API 應用程式*應用程式（用戶端）識別碼（例如， `41451fa7-82d9-4673-8fa5-69eff5a761fd` ）
+* AAD 主要/發行者/租使用者網域（例如， `contoso.onmicrosoft.com` ）：在已註冊的應用程式之 Azure 入口網站的 [**商標**] 分頁中，此網域可作為 [**發行者] 網域**。
 
 在中**公開 API**：
 
@@ -68,8 +64,10 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 
 記錄下列資訊：
 
-* 應用程式識別碼 URI （例如， `https://contoso.onmicrosoft.com/11111111-1111-1111-1111-111111111111` 、 `api://11111111-1111-1111-1111-111111111111` 或您提供的自訂值）
+* 應用程式識別碼 URI （例如， `https://contoso.onmicrosoft.com/41451fa7-82d9-4673-8fa5-69eff5a761fd` 、 `api://41451fa7-82d9-4673-8fa5-69eff5a761fd` 或您提供的自訂值）
 * 預設範圍（例如， `API.Access` ）
+
+應用程式識別碼 URI 可能需要用戶端應用程式中的特殊設定，如本主題稍後的[存取權杖範圍](#access-token-scopes)一節中所述。
 
 ### <a name="register-a-client-app"></a>註冊用戶端應用程式
 
@@ -82,7 +80,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 確認**Permissions**  >  已啟用 [許可權]，授與系統**管理員同意 openid 和 offline_access 的許可權**。
 1. 選取 [註冊]。
 
-記錄應用程式識別碼（用戶端識別碼）（例如 `11111111-1111-1111-1111-111111111111` ）。
+記錄應用程式（用戶端）識別碼（例如 `4369008b-21fa-427c-abaa-9b53bf58e538` ）。
 
 在 [**驗證**  >  **平臺**設定]  >  **Web**：
 
@@ -97,7 +95,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 從 [**名稱**] 資料行中選取*伺服器 API 應用程式*（例如， ** Blazor Server AAD B2C**）。
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access` ）。
-1. 選取 [新增權限]****。
+1. 選取 [新增權限]。
 1. 選取 [為 **{租使用者名稱} 授與系統管理員同意**] 按鈕。 選取 [是] **** 加以確認。
 
 在**Home**  >  **Azure AD B2C**  >  **使用者流程**：
@@ -113,10 +111,21 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 以先前記錄的資訊取代下列命令中的預留位置，並在命令 shell 中執行命令：
 
 ```dotnetcli
-dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -ssp "{SIGN UP OR SIGN IN POLICY}" --tenant-id "{TENANT ID}"
+dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" --api-client-id "{SERVER API APP CLIENT ID}" --app-id-uri "{SERVER API APP ID URI}" --client-id "{CLIENT APP CLIENT ID}" --default-scope "{DEFAULT SCOPE}" --domain "{TENANT DOMAIN}" -ho -o {APP NAME} -ssp "{SIGN UP OR SIGN IN POLICY}"
 ```
 
-若要指定輸出位置（如果它不存在，則會建立專案資料夾），請在命令中包含一個路徑（例如）的 output 選項 `-o BlazorSample` 。 資料夾名稱也會成為專案名稱的一部分。
+| 預留位置                   | Azure 入口網站名稱                                     | 範例                                |
+| ----------------------------- | ----------------------------------------------------- | -------------------------------------- |
+| `{AAD B2C INSTANCE}`          | 執行個體                                              | `https://contoso.b2clogin.com/`        |
+| `{APP NAME}`                  | &mdash;                                               | `BlazorSample`                         |
+| `{CLIENT APP CLIENT ID}`      | *用戶端應用*程式的應用程式（用戶端）識別碼          | `4369008b-21fa-427c-abaa-9b53bf58e538` |
+| `{DEFAULT SCOPE}`             | 領域名稱                                            | `API.Access`                           |
+| `{SERVER API APP CLIENT ID}`  | *伺服器 API 應用*程式的應用程式（用戶端）識別碼      | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SERVER API APP ID URI}`     | 應用程式識別碼 URI （[請參閱附注](#access-token-scopes)） | `41451fa7-82d9-4673-8fa5-69eff5a761fd` |
+| `{SIGN UP OR SIGN IN POLICY}` | 註冊/登入使用者流程                             | `B2C_1_signupsignin1`                  |
+| `{TENANT DOMAIN}`             | 主要/發行者/租使用者網域                       | `contoso.onmicrosoft.com`              |
+
+使用選項指定的輸出位置會 `-o|--output` 建立專案資料夾（如果不存在），並成為應用程式名稱的一部分。
 
 > [!NOTE]
 > 將應用程式識別碼 URI 傳遞給 `app-id-uri` 選項，但請注意，在用戶端應用程式中可能需要進行設定變更，如[存取權杖範圍](#access-token-scopes)一節中所述。
@@ -126,7 +135,7 @@ dotnet new blazorwasm -au IndividualB2C --aad-b2c-instance "{AAD B2C INSTANCE}" 
 > [!NOTE]
 > 在 Azure 入口網站中，*用戶端應用程式的***驗證**  >  **平臺**  >  設定**Web**重新  >  **導向 URI**會針對使用預設設定在 Kestrel 伺服器上執行的應用程式，設定為埠5001。
 >
-> 如果*用戶端應用程式*是在隨機 IIS Express 埠上執行，則可以在 [**調試**程式] 面板的*伺服器應用程式*屬性中找到應用程式的埠。
+> 如果*用戶端應用程式*是在隨機 IIS Express 埠上執行，則可以在 [**調試**程式] 面板的*伺服器 API 應用程式*屬性中找到應用程式的埠。
 >
 > 如果未在*用戶端應用程式的*已知埠之前設定埠，請回到 Azure 入口網站中的*用戶端應用程式*註冊，並使用正確的埠更新重新導向 URI。
 

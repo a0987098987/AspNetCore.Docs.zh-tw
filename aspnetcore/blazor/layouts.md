@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/layouts
-ms.openlocfilehash: fe78a144b413bf97be83d20b11148e1856608f78
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 684d7b76c7500ec19c90eb696ec0127692923297
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944227"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176258"
 ---
 # <a name="aspnet-core-blazor-layouts"></a>ASP.NET Core Blazor 版面配置
 
@@ -39,7 +39,11 @@ By [Rainer Stropek](https://www.timecockpit.com)和[Luke Latham](https://github.
 
 [!code-razor[](layouts/sample_snapshot/3.x/MainLayout.razor?highlight=1,13)]
 
-在以其中一個應用程式範本為基礎的應用程式中 Blazor ， `MainLayout` 元件（ `MainLayout.razor` ）位於應用程式的 `Shared` 資料夾中。
+## <a name="mainlayout-component"></a>`MainLayout` 元件
+
+在以其中一個專案範本為基礎的應用程式中 Blazor ， `MainLayout` (`MainLayout.razor`) 元件位於應用程式的 `Shared` 資料夾中：
+
+[!code-razor[](./common/samples/3.x/BlazorWebAssemblySample/Shared/MainLayout.razor)]
 
 ## <a name="default-layout"></a>預設版面配置
 

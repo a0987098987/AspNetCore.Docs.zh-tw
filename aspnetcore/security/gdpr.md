@@ -1,5 +1,5 @@
 ---
-title: ASP.NET Core 中的一般資料保護規定（GDPR）支援
+title: ASP.NET Core 中的一般資料保護規定 (GDPR) 支援
 author: rick-anderson
 description: 瞭解如何存取 ASP.NET Core web 應用程式中的 GDPR 擴充點。
 ms.author: riande
@@ -14,18 +14,18 @@ no-loc:
 - Razor
 - SignalR
 uid: security/gdpr
-ms.openlocfilehash: 0fef14388f83d8b4c708194954f2b75b2164b746
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8a7041a976ea9f0e99bfd1eba792d0e919eaf6d3
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404492"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212824"
 ---
-# <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>ASP.NET Core 中的 EU 一般資料保護規定（GDPR）支援
+# <a name="eu-general-data-protection-regulation-gdpr-support-in-aspnet-core"></a>歐盟一般資料保護規定 (GDPR) 在 ASP.NET Core 中提供支援
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-ASP.NET Core 提供 Api 和範本，以協助符合[歐盟一般資料保護規定（GDPR）](https://ec.europa.eu/info/law/law-topic/data-protection/reform/what-does-general-data-protection-regulation-gdpr-govern_en)需求：
+ASP.NET Core 提供 Api 和範本，以協助符合[歐盟一般資料保護規定 (GDPR) ](https://ec.europa.eu/info/law/law-topic/data-protection/reform/what-does-general-data-protection-regulation-gdpr-govern_en)需求：
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -54,14 +54,14 @@ ASP.NET Core 提供 Api 和範本，以協助符合[歐盟一般資料保護規�
 ::: moniker range="= aspnetcore-2.2"
 
 * 專案範本包括擴充點和 stub 標記，您可以將其取代為您的隱私權和 cookie 使用原則。
-* Cookie 同意功能可讓您向使用者要求（並追蹤）同意，以儲存個人資訊。 如果使用者尚未同意資料收集，而應用程式已將[CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded)設定為 `true` ，則不會將非必要的 cookie 傳送至瀏覽器。
+* Cookie 同意功能可讓您要求 (並追蹤您的使用者) 同意，以儲存個人資訊。 如果使用者尚未同意資料收集，而應用程式已將[CheckConsentNeeded](/dotnet/api/microsoft.aspnetcore.builder.cookiepolicyoptions.checkconsentneeded)設定為 `true` ，則不會將非必要的 cookie 傳送至瀏覽器。
 * Cookie 可以標示為必要。 即使使用者尚未同意，也會將必要的 cookie 傳送至瀏覽器，而且會停用追蹤。
 * 停用追蹤時[，TempData 和會話 cookie](#tempdata)無法正常運作。
 * [ [ Identity 管理](#pd)] 頁面提供下載和刪除使用者資料的連結。
 
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)可讓您測試新增至 ASP.NET Core 2.1 範本的大部分 GDPR 擴充點和 api。 如需測試指示，請參閱[自述](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)檔。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/gdpr/sample) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="aspnet-core-gdpr-support-in-template-generated-code"></a>在範本產生的程式碼中 ASP.NET Core GDPR 支援
 
@@ -86,7 +86,7 @@ Razor使用專案範本建立的頁面和 MVC 專案包含下列 GDPR 支援：
 
 * \_ CookieConsentPartial*的部分視圖：
 
-[!code-html[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
+[!code-cshtml[](gdpr/sample/RP2.2/Pages/Shared/_CookieConsentPartial.cshtml)]
 
 這部分：
 
@@ -142,7 +142,7 @@ Razor使用專案範本建立的頁面和 MVC 專案包含下列 GDPR 支援：
 
 例如：
 
-* Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)（TDE）。
+* Microsoft SQL 和 Azure SQL 提供[透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) 。
 * [SQL Azure 預設會加密資料庫](https://azure.microsoft.com/updates/newly-created-azure-sql-databases-encrypted-by-default/)
 * [預設會加密 Azure blob、檔案、資料表和佇列儲存體](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/)。
 

@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/update-related-data
-ms.openlocfilehash: 066bebf95a941fca5e7cc175c4c0d6d56abc9cb5
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 754ca2f94b1abde30ae650c9c3bcf00499520383
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060055"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212575"
 ---
 # <a name="tutorial-update-related-data---aspnet-mvc-with-ef-core"></a>教學課程：更新相關的資料-使用 EF Core ASP.NET MVC
 
@@ -87,19 +87,19 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 在 *Views/Courses/Create.cshtml* 中，將一個「選取部門」選項新增至 [部門]**** 下拉式清單，將標題從 **DepartmentID** 變更為 **Department**，然後新增一個驗證訊息。
 
-[!code-html[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Create.cshtml?highlight=2-6&range=29-34)]
 
 在 *Views/Courses/Edit.cshtml* 中，為 [部門] 欄位進行您剛剛為 *Create.cshtml* 進行的相同變更。
 
 同樣的，在 *Views/Courses/Edit.cshtml* 中，在 [標題]**** 欄位之前新增一個課程號碼欄位。 由於課程號碼是主索引鍵，雖然會顯示，但您無法變更它。
 
-[!code-html[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Edit.cshtml?range=15-18)]
 
 在 [編輯] 檢視中已有一個針對課程號碼的隱藏欄位 (`<input type="hidden">`)。 新增 `<label>` 標籤協助程式無法消除隱藏欄位的必要，因為它無法讓課程號碼包含在使用者按一下位於 [編輯]**** 頁面上的 [儲存]**** 時以 Post 方式提交的資料中。
 
 在 *Views/Courses/Delete.cshtml* 中，在頂端新增一個課程號碼欄位，並將部門識別碼變更為部門名稱。
 
-[!code-html[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Delete.cshtml?highlight=14-19,36)]
 
 在 *Views/Courses/Details.cshtml* 中，進行您方才對 *Delete.cshtml* 進行的相同變更。
 
@@ -171,7 +171,7 @@ HttpGet `Edit` 方法會根據已指派給正在編輯之課程的部門識別�
 
 在 *Views/Instructors/Edit.cshtml* 中，在 [儲存]**** 按鈕前的結尾處新增一個用於編輯辦公室位置的欄位：
 
-[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=30-34)]
 
 執行應用程式，選取 [Instructor]**** 索引標籤，然後在講師上按一下 [編輯]****。 變更 [辦公室位置]****，然後按一下 [儲存]****。
 
@@ -235,7 +235,7 @@ Course 與 Instructor 實體的關係為多對多。 若要新增和移除關聯
 > [!NOTE]
 > 當您將程式碼貼至 Visual Studio 時，分行符號可能會變更，而讓程式碼斷行。 如果程式碼在貼上之後看起來不同，請按 Ctrl+Z 一次以復原自動格式化。 這會修正分行符號，使他們看起來就跟您在這裡看到的一樣。 縮排不一定要是完美的，但 `@:</tr><tr>`、`@:<td>`、`@:</td>` 和 `@:</tr>` 必須要如顯示般各自在獨立的一行上，否則您會接收到執行階段錯誤。 當選取新的程式碼區塊時，按 Tab 鍵三次來讓新的程式碼對準現有的程式碼。 Visual Studio 2019 已修正這個問題。
 
-[!code-html[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Edit.cshtml?range=35-61)]
 
 此程式碼會建立一個 HTML 表格，該表格中有三個資料行。 在每個資料行中，核取方塊的後方會是由課程號碼和標題組成的標題。 所有核取方塊的名稱都是 ("selectedCourses")，會告知模型繫結器應將其視為一個群組。 每個核取方塊的 Value 屬性都會設為 `CourseID` 的值。 當頁面以 post 方式提交時，模型繫結器便會將只包含我們選取核取方塊之 `CourseID` 值的陣列傳遞到控制器。
 
@@ -299,7 +299,7 @@ public ICollection<CourseAssignment> CourseAssignments
 
 在 *Views/Instructor/Create.cshtml* 中，在 [提交] 按鈕前新增一個辦公室位置文字方塊及課程核取方塊。 若為 [編輯] 頁面，請[修正 Visual Studio 於您貼上時重新格式化程式碼](#notepad)。
 
-[!code-html[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Create.cshtml?range=29-61)]
 
 執行應用程式並建立一名講師，以進行測試。
 

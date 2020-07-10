@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/read-related-data
-ms.openlocfilehash: 14b28f04f4077cb5622858dad1bd18b81b198f3d
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 171607544bfe89fdd0a1ed9efb68f7a532f9aee1
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405792"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212658"
 ---
 # <a name="part-6-razor-pages-with-ef-core-in-aspnet-core---read-related-data"></a>第6部分， Razor ASP.NET Core 讀取相關資料中有 EF Core 的頁面
 
@@ -291,7 +291,7 @@ EF Core 有幾種方式可以將相關資料載入到實體的導覽屬性：
 
 * 新增所選課程的學生註冊資料表。
 
-執行應用程式，然後選取 [**講師**] 索引標籤。此頁面會顯示 `Location` 來自相關實體的（office） `OfficeAssignment` 。 如果 `OfficeAssignment` 為 Null，則會顯示空的資料表資料格。
+執行應用程式，然後選取 [**講師**] 索引標籤。此頁面會顯示 `Location` 來自相關實體的 (office) `OfficeAssignment` 。 如果 `OfficeAssignment` 為 Null，則會顯示空的資料表資料格。
 
 按一下講師的 [選取]**** 連結。 資料列樣式會變更，並會顯示指派給該講師的課程。
 
@@ -420,7 +420,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 以下列醒目提示的標記更新 *Pages/Courses/Index.cshtml*：
 
-[!code-html[](intro/samples/cu/Pages/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
+[!code-cshtml[](intro/samples/cu/Pages/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
 已對包含 Scaffold 的程式碼進行下列變更：
 
@@ -515,7 +515,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 以下列標記更新 *Pages/Instructors/Index.cshtml*：
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=1-65&highlight=1,5,8,16-21,25-32,43-57)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=1-65&highlight=1,5,8,16-21,25-32,43-57)]
 
 上述標記會進行下列變更：
 
@@ -556,7 +556,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
   <a asp-action="Index" asp-route-id="@item.ID">Select</a> |
   ```
 
-執行應用程式，然後選取 [**講師**] 索引標籤。此頁面會顯示 `Location` 來自相關實體的（office） `OfficeAssignment` 。 如果 OfficeAssignment 是 Null，就會顯示空的資料表資料格。
+執行應用程式，然後選取 [**講師**] 索引標籤。此頁面會顯示 `Location` 來自相關實體的 (office) `OfficeAssignment` 。 如果 OfficeAssignment 是 Null，就會顯示空的資料表資料格。
 
 按一下**選取**連結。 資料列樣式變更。
 
@@ -595,7 +595,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 將下列標記新增至*Pages/講師/Index. cshtml* Razor 頁面的結尾：
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=60-102&highlight=7-999)]
 
 當選取講師時，上述標記會顯示與講師相關的課程。
 
@@ -611,7 +611,7 @@ Course 實體包含導覽屬性，其中包含 `Department` 實體。 `Departmen
 
 更新 *Pages/Instructors/Index.cshtml*。 將下列標記新增至檔案結尾：
 
-[!code-html[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=103-)]
+[!code-cshtml[](intro/samples/cu/Pages/Instructors/IndexRRD.cshtml?range=103-)]
 
 上述標記會顯示註冊所選取課程的學生清單。
 

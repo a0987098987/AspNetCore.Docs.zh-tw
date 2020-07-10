@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/intro
-ms.openlocfilehash: 36d8c3dd42ac9d0acdb93bba4bc39ab18ad5c52f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d2791422e50082eab51c0735e2209e5b829d22f2
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400891"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212505"
 ---
 # <a name="tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的標籤協助程式
 
@@ -35,7 +35,7 @@ ms.locfileid: "85400891"
 
 **用來建立 HTML 和 Razor 標記的豐富 IntelliSense 環境**，這與 HTML helper 相比，是先前在 views 中建立標記的方法 Razor 。 [標籤協助程式與 HTML 協助程式的比較](#tag-helpers-compared-to-html-helpers)會詳述差異。 [標籤協助程式的 IntelliSense 支援](#intellisense-support-for-tag-helpers)說明 IntelliSense 環境。 即使是熟悉 c # 語法的開發人員，使用標籤協助程式 Razor 比撰寫 c # 標記更具生產力 Razor 。
 
-**讓您更具生產力，而且可以只使用伺服器上的可用資訊來產生更強固、可靠和易維護的程式碼**：例如，在過去，更新映像的目的是要在您變更映像時變更映像名稱。 基於效能考量，應該主動快取影像，而且除非您變更影像的名稱，否則用戶端會有取得過時複本的風險。 在過去，編輯映像之後，必須變更名稱，而且需要更新 Web 應用程式中映像的每個參考。 這不僅非常耗費人力，也很容易發生錯誤（您可能會遺漏參考、不小心輸入錯誤的字串等等）。內建 `ImageTagHelper` 可以自動為您執行這項操作。 `ImageTagHelper` 可以將版本號碼附加到映像名稱後面；因此，只要映像變更，伺服器就會自動產生映像的新唯一版本。 用戶端保證會取得目前的映像。 使用 `ImageTagHelper`，此健全性和人力節省基本上是免費的。
+**讓您更具生產力，而且可以只使用伺服器上的可用資訊來產生更強固、可靠和易維護的程式碼**：例如，在過去，更新映像的目的是要在您變更映像時變更映像名稱。 基於效能考量，應該主動快取影像，而且除非您變更影像的名稱，否則用戶端會有取得過時複本的風險。 在過去，編輯映像之後，必須變更名稱，而且需要更新 Web 應用程式中映像的每個參考。 這不僅非常耗費人力， (您可能會遺漏參考、不小心輸入錯誤的字串等等。 ) 內建的 `ImageTagHelper` 可以自動為您執行這項工作。 `ImageTagHelper` 可以將版本號碼附加到映像名稱後面；因此，只要映像變更，伺服器就會自動產生映像的新唯一版本。 用戶端保證會取得目前的映像。 使用 `ImageTagHelper`，此健全性和人力節省基本上是免費的。
 
 大部分的內建的標籤協助程式都可以在標準的 HTML 元素中使用，可為元素提供伺服器端的屬性。 例如，在 [檢視/帳戶]** 資料夾內許多檢視中所使用的 `<input>` 元素會包含 `asp-for` 屬性。 此屬性會擷取指定之模型屬性的名稱，並將其放入轉譯的 HTML 中。 請考慮 Razor 使用下列模型的觀點：
 
@@ -76,7 +76,7 @@ public class Movie
 
 [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopy.cshtml?highlight=2&range=2-3)]
 
-`@addTagHelper` 指示詞讓標籤協助程式可供檢視使用。 在此情況下，視圖檔案是*pages/_ViewImports. cshtml*，預設會由*pages*資料夾和子資料夾中的所有檔案繼承;讓標籤協助程式可供使用。 上述程式碼使用萬用字元語法（" \* "），指定在*Views*目錄或子目錄中的每個視圖檔案都可以使用指定元件（*TagHelpers*）中的所有標籤協助程式。 `@addTagHelper` 後面的第一個參數指定要載入的標籤協助程式 (使用 "\*" 表示所有標籤協助程式)，而第二個參數 "Microsoft.AspNetCore.Mvc.TagHelpers" 指定包含標籤協助程式的組件。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是內建 ASP.NET Core 標籤協助程式的組件。
+`@addTagHelper` 指示詞讓標籤協助程式可供檢視使用。 在此情況下，視圖檔案是*pages/_ViewImports. cshtml*，預設會由*pages*資料夾和子資料夾中的所有檔案繼承;讓標籤協助程式可供使用。 上述程式碼使用萬用字元語法 ( " \* " ) ，指定在*Views*目錄或子目錄中的每個視圖檔案中，指定元件 (*TagHelpers*) 中的所有標籤協助程式都可供使用。 `@addTagHelper` 後面的第一個參數指定要載入的標籤協助程式 (使用 "\*" 表示所有標籤協助程式)，而第二個參數 "Microsoft.AspNetCore.Mvc.TagHelpers" 指定包含標籤協助程式的組件。 *Microsoft.AspNetCore.Mvc.TagHelpers* 是內建 ASP.NET Core 標籤協助程式的組件。
 
 若要公開此專案中的所有標籤協助程式 (這會建立名為 *AuthoringTagHelpers* 的組件)，請使用下列內容：
 
@@ -205,13 +205,13 @@ IntelliSense 會列出頁面上模型可用的屬性和方法。 豐富的 Intel
 @Html.Label("FirstName", "First Name:", new {@class="caption"})
 ```
 
-At （ `@` ）符號會告訴 Razor 這是程式碼的開頭。 下兩個參數 ("FirstName" 和 "First Name:") 是字串，因此 [IntelliSense](/visualstudio/ide/using-intellisense) 沒有幫助。 最後一個引數：
+At (`@`) 符號會告訴 Razor 這是程式碼的開頭。 下兩個參數 ("FirstName" 和 "First Name:") 是字串，因此 [IntelliSense](/visualstudio/ide/using-intellisense) 沒有幫助。 最後一個引數：
 
 ```cshtml
 new {@class="caption"}
 ```
 
-是用來代表屬性的匿名物件。 由於 `class` 是 C# 中的保留關鍵字，因此您可以使用 `@` 符號來強制 C# 將 `@class=` 解譯為符號 (屬性名稱)。 對前端設計人員（熟悉 HTML/CSS/JavaScript 和其他用戶端技術，但不熟悉 c # 和）的人而言 Razor ，這行大部分都是外部的。 您必須編寫整行，而 IntelliSense 沒有任何幫助。
+是用來代表屬性的匿名物件。 由於 `class` 是 C# 中的保留關鍵字，因此您可以使用 `@` 符號來強制 C# 將 `@class=` 解譯為符號 (屬性名稱)。 在前端設計工具 (熟悉 HTML/CSS/JavaScript 和其他用戶端技術，但不熟悉 c # 和) 的使用者 Razor ，大部分的那一行都是外部的。 您必須編寫整行，而 IntelliSense 沒有任何幫助。
 
 使用 `LabelTagHelper`，可以將相同的標記撰寫為：
 
@@ -243,7 +243,7 @@ Visual Studio 編輯器會以灰色背景顯示 C# 程式碼。 例如，`AntiFo
 
 請考慮使用 *Email* 群組：
 
-[!code-csharp[](intro/sample/Register.cshtml?range=12-18)]
+[!code-cshtml[](intro/sample/Register.cshtml?range=12-18)]
 
 每個 "asp-" 屬性的值都是 "Email"，但 "Email" 不是字串。 在此內容中，"Email" 是 `RegisterViewModel` 的 C# 模型運算式屬性。
 

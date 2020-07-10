@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/sort-filter-page
-ms.openlocfilehash: 45aabc644fbeaeaa31d534877ba93cb0611f3f34
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 24643931ed84ac257d98ceb8cc6c64d0767cfc14
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401333"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212585"
 ---
 # <a name="tutorial-add-sorting-filtering-and-paging---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 新增排序、篩選和分頁 ASP.NET MVC
 
@@ -78,7 +78,7 @@ ms.locfileid: "85401333"
 
 以下列程式碼取代 *Views/Students/Index.cshtml* 中的程式碼，以新增資料行標題超連結。 變更的行已醒目提示。
 
-[!code-html[](intro/samples/cu/Views/Students/Index2.cshtml?highlight=16,22)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index2.cshtml?highlight=16,22)]
 
 此程式碼使用 `ViewData` 屬性中的資訊，以適當的查詢字串值設定超連結。
 
@@ -99,15 +99,15 @@ ms.locfileid: "85401333"
 您已將 `searchString` 參數新增至 `Index` 方法。 從將新增至 [索引] 檢視的文字方塊中接收搜尋字串值。 您也已在 LINQ 陳述式中新增 where 子句，該子句只會選取其名字或姓氏包含搜尋字串的學生。 唯有當具有要搜尋的值時，才會執行新增 where 子句的陳述式。
 
 > [!NOTE]
-> 在這裡，您可以在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選將會在伺服器上處理。 在某些情況下，您可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 （例如，假設您將參考變更為， `_context.Students` 而不是使用 EF，而是 `DbSet` 參考會傳回集合的存放庫方法 `IEnumerable` ）。結果通常會相同，但在某些情況下可能會不同。
+> 在這裡，您可以在 `IQueryable` 物件上呼叫 `Where` 方法，而篩選將會在伺服器上處理。 在某些情況下，您可能會呼叫 `Where` 方法在記憶體內部集合上作為擴充方法。 例如，假設您將參考變更為， `_context.Students` 而不是由 EF 參考傳回 `DbSet` 集合的存放庫方法 `IEnumerable` 。 ) 結果通常都是一樣的，但在某些情況下可能會不同。 (
 >
->例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法，使測試明確地不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。 （當您在 `Contains` 集合上呼叫方法時 `IEnumerable` ，會取得 .NET Framework 的實值; 當您在物件上呼叫它時 `IQueryable` ，您會取得資料庫提供者的執行）。不過，此解決方案的效能會有負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
+>例如，.NET Framework 實作的 `Contains` 方法預設會執行區分大小寫的比較，但在 SQL Server 中，這取決於 SQL Server 執行個體的定序設定。 該設定預設為不區分大小寫。 您可以呼叫 `ToUpper` 方法，使測試明確地不區分大小寫：*Where(s => s.LastName.ToUpper().Contains(searchString.ToUpper())*。 如果您稍後變更程式碼，以使用傳回 `IEnumerable` 集合 (而不是 `IQueryable` 物件) 的存放庫，這會確保結果保持不變。  (當您在 `Contains` 集合上呼叫方法時 `IEnumerable` ，會取得 .NET Framework 的實值; 當您在物件上呼叫它時 `IQueryable` ，就會取得資料庫提供者的執行。 ) 不過，此解決方案的效能會有負面影響。 `ToUpper` 程式碼會將一個函式置於 TSQL SELECT 陳述式的 WHERE 子句中。 這會防止最佳化工具使用索引。 假設 SQL 大部分安裝為不區分大小寫，最好避免使用 `ToUpper` 程式碼，直到您移轉至區分大小寫的資料存放區為止。
 
 ### <a name="add-a-search-box-to-the-student-index-view"></a>將搜尋方塊新增至學生的 [索引] 檢視
 
 在 *Views/Student/Index.cshtml* 中，於開始表格標記之前立即新增醒目提示的程式碼，以建立標題、文字方塊及 [搜尋] **** 按鈕。
 
-[!code-html[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index3.cshtml?range=9-23&highlight=5-13)]
 
 此程式碼會使用 `<form>` [標籤協助程式](xref:mvc/views/tag-helpers/intro) 來新增搜尋文字方塊和按鈕。 `<form>` 標籤協助程式預設會使用 POST 提交表單資料，這表示參數會以 HTTP 訊息本文傳遞，而不是以 URL 作為查詢字串傳遞。 當您指定 HTTP GET 時，表單資料會以 URL 中作為查詢字串傳遞，這可讓使用者為該 URL 加上書籤。 W3C 指導方針建議，只有在動作不會產生更新時才應使用 GET。
 
@@ -186,7 +186,7 @@ return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pa
 
 在 *Views/Students/Index.cshtml* 中，以下列程式碼取代現有程式碼。 所做的變更已醒目提示。
 
-[!code-html[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Index.cshtml?highlight=1,27,30,33,61-79)]
 
 頁面頂端的 `@model` 陳述式指定檢視現在會取得 `PaginatedList<T>` 物件，而不是 `List<T>` 物件。
 
@@ -250,7 +250,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 使用下列程式碼來新增 *Views/Home/About.cshtml* 檔案：
 
-[!code-html[](intro/samples/cu/Views/Home/About.cshtml)]
+[!code-cshtml[](intro/samples/cu/Views/Home/About.cshtml)]
 
 執行應用程式並移至 About 頁面。 每個註冊日期的學生人數將會顯示在資料表中。
 

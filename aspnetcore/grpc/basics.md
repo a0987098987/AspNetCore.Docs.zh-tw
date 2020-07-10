@@ -4,7 +4,7 @@ author: juntaoluo
 description: '瞭解使用 c # 撰寫 gRPC 服務時的基本概念。'
 monikerRange: '>= aspnetcore-3.0'
 ms.author: johluo
-ms.date: 07/03/2019
+ms.date: 07/09/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/basics
-ms.openlocfilehash: 08c755cf078fe71d09e8c7af2cc16f5c427495f1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: a99e5c78e291469bdce5c2b5cfa6eec86caa9735
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407287"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176288"
 ---
 # <a name="grpc-services-with-c"></a>使用 C gRPC 服務\#
 
@@ -29,12 +29,12 @@ ms.locfileid: "85407287"
 
 ## <a name="proto-file"></a>proto 檔案
 
-gRPC 會使用合約優先的方法來開發 API。 通訊協定緩衝區（protobuf）預設會當做介面設計語言（IDL）使用。 此* \* proto*檔案包含：
+gRPC 會使用合約優先的方法來開發 API。 預設會使用 (protobuf) 的通訊協定緩衝區作為介面設計語言 (IDL) 。 此* \* proto*檔案包含：
 
 * GRPC 服務的定義。
 * 在用戶端與伺服器之間傳送的訊息。
 
-如需 protobuf 檔語法的詳細資訊，請參閱[官方檔（protobuf）](https://developers.google.com/protocol-buffers/docs/proto3)。
+如需 protobuf 檔語法的詳細資訊，請參閱[官方檔 (protobuf) ](https://developers.google.com/protocol-buffers/docs/proto3)。
 
 例如，請考慮[開始使用 gRPC 服務](xref:tutorials/grpc/grpc-start)中使用的*歡迎*：
 
@@ -51,9 +51,16 @@ gRPC 會使用合約優先的方法來開發 API。 通訊協定緩衝區（prot
 
 [!code-xml[](~/tutorials/grpc/grpc-start/sample/GrpcGreeter/GrpcGreeter.csproj?highlight=2&range=7-9)]
 
+根據預設， `<Protobuf>` 參考會產生具體的用戶端和服務基類。 參考專案的 `GrpcServices` 屬性可以用來限制 c # 資產產生。 有效 `GrpcServices` 的選項為：
+
+* `Both`不存在時 (預設值) 
+* `Server`
+* `Client`
+* `None`
+
 ## <a name="c-tooling-support-for-proto-files"></a>適用于 proto 檔案的 c # 工具支援
 
-[工具套件 Grpc](https://www.nuget.org/packages/Grpc.Tools/) ：從* \* Proto*檔案產生 c # 資產時所需。 產生的資產（files）：
+[工具套件 Grpc](https://www.nuget.org/packages/Grpc.Tools/) ：從* \* Proto*檔案產生 c # 資產時所需。 產生的資產 (檔案) ：
 
 * 每次建立專案時，會在需要時產生。
 * 不會加入至專案或簽入原始檔控制。

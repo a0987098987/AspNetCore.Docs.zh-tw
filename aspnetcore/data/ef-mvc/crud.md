@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/crud
-ms.openlocfilehash: e7e4c4b15cca9612a552c58029ae8b34b79070d1
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: c33ff357ec6b467435325578047ac851a39e533e
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060120"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212715"
 ---
 # <a name="tutorial-implement-crud-functionality---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 來執行 CRUD 功能-ASP.NET MVC
 
@@ -102,11 +102,11 @@ http://localhost:1230/Instructor/Index?id=1&CourseID=2021
 
 開啟 *Views/Students/Details.cshtml*。 每個欄位都會使用 `DisplayNameFor` 及 `DisplayFor` 協助程式顯示，如下列範例所示：
 
-[!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=13-18&highlight=2,5)]
 
 在最後一個欄位之後，並在結尾的 `</dl>` 標籤之前，新增下列程式碼以顯示註冊清單：
 
-[!code-html[](intro/samples/cu/Views/Students/Details.cshtml?range=31-52)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Details.cshtml?range=31-52)]
 
 若在您貼上程式碼之後，程式碼的縮排發生錯誤，請按 CTRL-K-D 修正它。
 
@@ -159,11 +159,11 @@ public class Student
 
 ### <a name="test-the-create-page"></a>測試 [建立] 頁面
 
-*Views/student/Create. cshtml*中的程式碼 `label` 會 `input` `span` 針對每個欄位使用、和（適用于驗證訊息）標記協助程式。
+*Views/student/Create. cshtml*中的程式碼 `label` 會 `input` `span` 針對每個欄位的驗證訊息使用、和 (，) 標記協助程式。
 
 執行應用程式，選取 [Students]**** 索引標籤，然後按一下 [新建]****。
 
-輸入名稱和日期。 嘗試輸入無效的日期 (若您的瀏覽器允許的話)。 （有些瀏覽器會強制您使用日期選擇器）。然後按一下 [**建立**]，以查看錯誤訊息。
+輸入名稱和日期。 嘗試輸入無效的日期 (若您的瀏覽器允許的話)。  (有些瀏覽器會強制您使用日期選擇器。 ) 然後按一下 [**建立**] 以查看錯誤訊息。
 
 ![日期驗證錯誤](crud/_static/date-error.png)
 
@@ -187,7 +187,7 @@ public class Student
 
 新的程式碼會讀取現有的實體，呼叫 `TryUpdateModel` 來[根據使用者在 Post 表單資料中輸入的內容](xref:mvc/models/model-binding)來更新已擷取實體中的欄位。 Entity Framework 的自動變更追蹤會在表單輸入變更的欄位上設定 `Modified` 旗標。 當呼叫 `SaveChanges` 方法時，Entity Framework 會建立 SQL 陳述式來更新資料庫的資料列。 系統會忽略並行衝突，並且只有使用者更新的資料表資料行會在資料庫中獲得更新。 (之後的教學課程會顯示如何處理並行衝突。)
 
-若要避免防止大量指派，最佳作法是在參數中宣告您想要由 [**編輯**] 頁面更新的欄位 `TryUpdateModel` 。 （參數清單中欄位清單前面的空字串，是要搭配表單欄位名使用的前置詞）。目前沒有任何其他您要保護的欄位，但會列出您想要讓模型系結器系結的欄位，確保在未來將欄位加入至資料模型時，它們會自動受到保護，直到您明確地將它們加入到這裡。
+若要避免防止大量指派，最佳作法是在參數中宣告您想要由 [**編輯**] 頁面更新的欄位 `TryUpdateModel` 。  (在參數清單中的欄位清單前面的空字串，是要用於表單欄位名稱的前置詞。 ) 目前沒有您要保護的額外欄位，但是列出您想要讓模型系結器系結的欄位，確保當您在未來將欄位加入至資料模型時，會自動保護它們，直到您明確地在此加入這些欄位為止。
 
 作為這些變更的結果，HttpPost `Edit` 方法的方法簽章會與 HttpGet `Edit` 方法的簽章一樣；因此，您已將方法重新命名為 `EditPost`。
 
@@ -267,7 +267,7 @@ Scaffold 程式碼會使用「建立及連結 」方法，但僅會捕捉到 `Db
 
 在 *Views/Student/Delete.cshtml* 中，在 h2 標題和 h3 標題之間新增一個錯誤訊息，如下列範例所示：
 
-[!code-html[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
+[!code-cshtml[](intro/samples/cu/Views/Students/Delete.cshtml?range=7-9&highlight=2)]
 
 執行應用程式，選取 [Students]**** 索引標籤，然後按一下**刪除**超連結：
 

@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/dependency-injection
-ms.openlocfilehash: 0cc452b25392fe92c87ef346b2e16350fb3ec19a
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 335eac4b1533f4156e00f9d0140f921fa492e71a
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405883"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212970"
 ---
 # <a name="dependency-injection-into-views-in-aspnet-core"></a>ASP.NET Core 檢視中的相依性插入
 
@@ -26,7 +26,7 @@ ms.locfileid: "85405883"
 
 ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-injection)。 這可用於檢視特定服務，例如僅適用於填入檢視項目所需的當地語系化或資料。 您應該嘗試維護控制器與檢視之間的 [Separation of Concerns](/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#separation-of-concerns) (關注點分離)。 您檢視所顯示的大部分資料應該都是從控制器傳入。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/dependency-injection/sample) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="configuration-injection"></a>插入組態
 
@@ -61,7 +61,7 @@ ASP.NET Core 支援檢視中的[相依性插入](xref:fundamentals/dependency-in
 
 使用 `@inject` 指示詞，可將服務插入至檢視。 您可以將 `@inject` 視為將屬性新增至檢視，並使用 DI 來填入屬性。
 
-[!code-csharp[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
+[!code-cshtml[](../../mvc/views/dependency-injection/sample/src/ViewInjectSample/Views/ToDo/Index.cshtml?highlight=4,5,15,16,17)]
 
 此檢視會顯示 `ToDoItem` 執行個體清單，以及顯示整體統計資料的摘要。 摘要是從插入的 `StatisticsService` 中填入。 在 *Startup.cs* 的 `ConfigureServices` 中，註冊此服務以進行相依性插入：
 

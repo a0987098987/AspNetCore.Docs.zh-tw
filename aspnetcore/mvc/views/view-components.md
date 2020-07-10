@@ -14,18 +14,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/view-components
-ms.openlocfilehash: 40902da52217505822abd9bfd889ecafdd4d88e0
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 272b5a89601a9e6ef24f3e60a3da7e2a40297c97
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407833"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213113"
 ---
 # <a name="view-components-in-aspnet-core"></a>檢視 ASP.NET Core 中的元件
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/view-components/sample) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="view-components"></a>檢視元件
 
@@ -100,7 +100,7 @@ ms.locfileid: "85407833"
 
 若要自訂視圖搜尋路徑，請修改 Razor 的 <xref:Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions.ViewLocationFormats> 集合。 例如，若要在 "/Components/{View Component Name}/{檢視 Name}" 路徑中搜尋 views，請將新專案新增至集合：
 
-[!code-cs[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
+[!code-csharp[](view-components/samples_snapshot/2.x/Startup.cs?name=snippet_ViewLocationFormats&highlight=4)]
 
 在上述程式碼中，預留位置 " {0} " 代表路徑 "Components/{View Component name}/{檢視 Name}"。
 
@@ -202,7 +202,7 @@ ms.locfileid: "85407833"
 
    此 Razor 視圖會接受的清單 `TodoItem` ，並顯示這些專案。 如果檢視元件 `InvokeAsync` 方法未傳遞檢視名稱 (如我們的範例所示)，則依照慣例會使用 *Default* 作為檢視名稱。 在教學課程稍後，我將示範如何傳遞檢視的名稱。 若要覆寫特定控制器的預設樣式，請在控制器特定檢視資料夾中新增檢視 (例如 *Views/ToDO/Components/PriorityList/Default.cshtml*)。
 
-    如果 view 元件是控制器特定的，您可以將它新增至控制器特定的資料夾（*Views/ToDo/Components/prioritylist default.cshtml/Default. cshtml*）。
+    如果 view 元件是控制器特定的，您可以將它新增至控制器特定資料夾， (*Views/ToDo/Components/prioritylist default.cshtml/Default. cshtml*) 。
 
 * 將包含優先順序清單元件呼叫的 `div` 新增至 *Views/ToDO/index.cshtml* 檔案底端：
 
@@ -287,7 +287,7 @@ public class PriorityList : ViewComponent
 }
 ```
 
-View 元件的檔案會 Razor 列出傳遞至方法的字串 `Invoke` （*Views/Home/Components/Prioritylist default.cshtml/預設值*）：
+View 元件的檔案會 Razor 列出傳遞給方法的字串 `Invoke` (*Views/Home/Components/prioritylist default.cshtml/Default. cshtml*) ：
 
 ```cshtml
 @model List<string>
@@ -303,7 +303,7 @@ View 元件的檔案會 Razor 列出傳遞至方法的字串 `Invoke` （*Views/
 
 ::: moniker range=">= aspnetcore-1.1"
 
-您可使用下列其中一種方法，在檔案中叫用 view 元件 Razor （例如*Views/Home/Index. cshtml*）：
+View 元件是在檔案中叫用 Razor (例如*Views/Home/Index. Cshtml*) 使用下列其中一種方法：
 
 * <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper>
 * [標籤協助程式](xref:mvc/views/tag-helpers/intro)
@@ -314,7 +314,7 @@ View 元件的檔案會 Razor 列出傳遞至方法的字串 `Invoke` （*Views/
 
 ::: moniker range="< aspnetcore-1.1"
 
-View 元件是在檔案中叫 Razor 用（例如*Views/Home/Index. cshtml*） <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> 。
+View 元件是在檔案中叫用 Razor (例如*Views/Home/Index. cshtml*) <xref:Microsoft.AspNetCore.Mvc.IViewComponentHelper> 。
 
 呼叫 `Component.InvokeAsync`：
 

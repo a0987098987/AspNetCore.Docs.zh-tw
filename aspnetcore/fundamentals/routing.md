@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/routing
-ms.openlocfilehash: 25464817314f79c5bfd11d982cc9b09a3c72df15
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 18f1aee5ac33b17914bd182e46453120e14b31ab
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060341"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176199"
 ---
 # <a name="routing-in-aspnet-core"></a>ASP.NET Core 中的路由
 
@@ -49,7 +49,7 @@ By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com
 * 先前版本的版本選取器。
 * 選取 [ [ASP.NET Core 2.1 路由](https://docs.microsoft.com/aspnet/core/fundamentals/routing?view=aspnetcore-2.1)]。
 
-[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/aspnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples/3.x) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 此檔的下載範例會由特定 `Startup` 類別啟用。 若要執行特定的範例，請修改*Program.cs*以呼叫所需的 `Startup` 類別。
 
@@ -84,7 +84,7 @@ By [Ryan Nowak](https://github.com/rynowak)、 [Kirk Larkin](https://twitter.com
 
 應用程式可比對並執行的端點會在中設定 `UseEndpoints` 。 例如，、 <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapGet*> <xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions.MapPost*> 和類似的[方法](xref:Microsoft.AspNetCore.Builder.EndpointRouteBuilderExtensions)會將要求委派連接至路由系統。
 您可以使用其他方法，將 ASP.NET Core framework 功能連接到路由系統：
-- [頁面的 MapRazorPages Razor](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*)
+- [Razor頁面的對應頁面 Razor](xref:Microsoft.AspNetCore.Builder.RazorPagesEndpointRouteBuilderExtensions.MapRazorPages*)
 - [適用于控制器的 MapControllers](xref:Microsoft.AspNetCore.Builder.ControllerEndpointRouteBuilderExtensions.MapControllers*)
 - [\<THub>適用于的 MapHubSignalR](xref:Microsoft.AspNetCore.SignalR.HubRouteBuilder.MapHub*) 
 - [\<TService>適用于 gRPC 的 MapGrpcService](xref:grpc/aspnetcore)
@@ -435,7 +435,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 * `/files/myFile.txt`
 * `/files/myFile`
 
-路由參數可能有「預設值」****，指定方法是在參數名稱之後指定預設值，並以等號 (`=`) 分隔。 例如，`{controller=Home}` 定義 `Home` 作為 `controller` 的預設值。 如果 URL 中沒有用於參數的任何值，則會使用預設值。 將問號（ `?` ）附加至參數名稱的結尾，可將路由參數設為選擇性。 例如： `id?` 。 選擇性值與預設路由參數之間的差異如下：
+路由參數可能有「預設值」****，指定方法是在參數名稱之後指定預設值，並以等號 (`=`) 分隔。 例如，`{controller=Home}` 定義 `Home` 作為 `controller` 的預設值。 如果 URL 中沒有用於參數的任何值，則會使用預設值。 藉由將問號 (`?`) 附加至參數名稱的結尾，即可將路由參數設為選擇性。 例如，`id?`。 選擇性值與預設路由參數之間的差異如下：
 
 * 具有預設值的路由參數一律會產生值。
 * 選擇性參數只有在要求 URL 提供值時才會有值。
@@ -470,16 +470,16 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 這是路由執行的步驟 `/a{b}c{d}` 和範本和 URL 路徑的摘要 `/abcd` 。 `|`是用來協助視覺化演算法的運作方式：
 
 * 第一個常值（由右至左）為 `c` 。 因此， `/abcd` 會向右搜尋並尋找 `/ab|c|d` 。
-* 右邊的所有專案（ `d` ）現在都符合路由參數 `{d}` 。
+* 右 () 的所有內容 `d` 現在都符合路由參數 `{d}` 。
 * 下一個常值（由右至左）為 `a` 。 因此， `/ab|c|d` 在從離開的地方開始搜尋，然後 `a` 找到 `/|a|b|c|d` 。
-* 右邊的值（ `b` ）現在符合路由參數 `{b}` 。
+* 右邊 (的值 `b`) 現在會符合路由參數 `{b}` 。
 * 沒有任何剩餘的文字，也沒有剩餘的路由範本，因此這是相符的。
 
 以下是使用相同範本和 URL 路徑的負面案例範例 `/a{b}c{d}` `/aabcd` 。 `|`是用來協助視覺化演算法的運作方式。 這種情況並不相符，這會透過相同的演算法來說明：
 * 第一個常值（由右至左）為 `c` 。 因此， `/aabcd` 會向右搜尋並尋找 `/aab|c|d` 。
-* 右邊的所有專案（ `d` ）現在都符合路由參數 `{d}` 。
+* 右 () 的所有內容 `d` 現在都符合路由參數 `{d}` 。
 * 下一個常值（由右至左）為 `a` 。 因此， `/aab|c|d` 在從離開的地方開始搜尋，然後 `a` 找到 `/a|a|b|c|d` 。
-* 右邊的值（ `b` ）現在符合路由參數 `{b}` 。
+* 右邊 (的值 `b`) 現在會符合路由參數 `{b}` 。
 * 此時會有剩餘的文字 `a` ，但演算法已用完路由範本進行剖析，因此這不是相符的。
 
 因為比對演算法[是非貪婪](#greedy)的：
@@ -502,7 +502,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示范範例路由條件約束及其預期行為：
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 附註 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` 。 不區分大小寫 |
@@ -571,8 +571,8 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | mz        | 是   | 符合運算式    |
 | `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | No    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | No    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
@@ -675,13 +675,13 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 位址是一種可延伸的概念，預設會隨附兩個執行：
 
-* 使用*端點名稱*（ `string` ）作為位址：
+* 使用*端點名稱* (`string`) 作為位址：
     * 為 MVC 的路由名稱提供類似的功能。
     * 使用 <xref:Microsoft.AspNetCore.Routing.IEndpointNameMetadata> 元資料類型。
     * 針對所有已註冊端點的中繼資料，解析提供的字串。
     * 如果多個端點使用相同的名稱，則會在啟動時擲回例外狀況。
     * 建議用於在控制器和頁面以外的一般用途 Razor 。
-* 使用*路由值*（ <xref:Microsoft.AspNetCore.Routing.RouteValuesAddress> ）做為位址：
+* 使用*路由值* (<xref:Microsoft.AspNetCore.Routing.RouteValuesAddress>) 作為位址：
     * 提供類似的功能來進行控制器和 Razor 分頁的舊版 URL 產生。
     * 擴充和調試非常複雜。
     * 提供所使用的實作為 `IUrlHelper` 、標記協助程式、HTML helper、動作結果等。
@@ -898,7 +898,7 @@ URL 產生進程會從呼叫[LinkGenerator. GetPathByAddress](xref:Microsoft.Asp
 
 * 正則運算式：可以撰寫複雜的正則運算式，或具有少量輸入的長期執行時間。
 
-* 複雜區段（ `{x}-{y}-{z}` ）： 
+*  () 的複雜區段 `{x}-{y}-{z}` ： 
   * 比剖析一般 URL 路徑區段高得多。
   * 導致已配置更多子字串。
   * 在 ASP.NET Core 3.0 路由效能更新中，未更新複雜的區段邏輯。
@@ -936,7 +936,7 @@ app.UseEndpoints(endpoints =>
 app.UseEndpoints(endpoints =>
 {
     // Your framework
-    endpoints.MapMyFramework(...).RequrireAuthorization()
+    endpoints.MapMyFramework(...).RequireAuthorization()
                                  .WithMyFrameworkFeature(awesome: true);
 
     endpoints.MapHealthChecks("/healthz");
@@ -988,7 +988,7 @@ app.UseAuthorization(new AuthorizationPolicy() { ... });
 app.UseEndpoints(endpoints =>
 {
     // Your framework
-    endpoints.MapMyFramework(...).RequrireAuthorization();
+    endpoints.MapMyFramework(...).RequireAuthorization();
 });
 ```
 
@@ -1027,7 +1027,7 @@ services.AddMvc(options => options.EnableEndpointRouting = false)
 > [!IMPORTANT]
 > 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需頁面中路由慣例的詳細資訊 Razor ，請參閱 <xref:razor-pages/razor-pages-conventions> 。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="routing-basics"></a>路由的基本概念
 
@@ -1044,7 +1044,7 @@ Razor頁面應用程式會使用預設的傳統路由，在應用程式的*Pages
 
 URL 產生支援允許在不需要硬式編碼的 URL 來連結應用程式的情況下開發應用程式。 這項支援可讓您從基本路由設定開始，並在決定應用程式資源配置之後修改路由。
 
-路由會使用*端點*（ `Endpoint` ）來代表應用程式中的邏輯端點。
+路由會使用*端點* (`Endpoint`) 來代表應用程式中的邏輯端點。
 
 端點會定義用來處理要求的一項委派及一個任意中繼資料集合。 中繼資料可根據附加至每個端點的原則和組態，來實作跨領域關注。
 
@@ -1128,7 +1128,7 @@ ASP.NET Core 2.2 或更新版本中的端點路由與 ASP.NET Core 中的舊版�
 
 * 端點路由系統不支援以 <xref:Microsoft.AspNetCore.Routing.IRouter> 為基礎的擴充性，包括從 <xref:Microsoft.AspNetCore.Routing.Route> 繼承。
 
-* 端點路由不支援 [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim)。 請使用 2.1[相容性版本](xref:mvc/compatibility-version)（ `.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)` ）繼續使用相容性填充碼。
+* 端點路由不支援 [WebApiCompatShim](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.WebApiCompatShim)。 使用 2.1[相容性版本](xref:mvc/compatibility-version) (`.SetCompatibilityVersion(CompatibilityVersion.Version_2_1)`) 繼續使用相容性填充碼。
 
 * 端點路由與使用傳統路由時所產生 URI 大小寫的行為不同。
 
@@ -1436,7 +1436,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| 條件約束 | 範例 | 範例相符項目 | 備註 |
+| 條件約束 | 範例 | 範例相符項目 | 附註 |
 |------------|---------|-----------------|-------|
 | `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數。|
 | `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` 。 不區分大小寫。|
@@ -1492,8 +1492,8 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | mz        | 是   | 符合運算式    |
 | `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | No    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | No    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 
@@ -1609,7 +1609,7 @@ services.AddMvc()
 > [!IMPORTANT]
 > 本文件涵蓋低階的 ASP.NET Core 路由。 如需 ASP.NET Core MVC 路由的資訊，請參閱 <xref:mvc/controllers/routing>。 如需頁面中路由慣例的詳細資訊 Razor ，請參閱 <xref:razor-pages/razor-pages-conventions> 。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/routing/samples) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="routing-basics"></a>路由的基本概念
 
@@ -1886,7 +1886,7 @@ URL 模式嘗試擷取具有選擇性副檔名的檔案名稱時，具有其他�
 
 下表示範範例路由條件約束及其預期行為。
 
-| constraint (條件約束) | 範例 | 範例相符項目 | 備註 |
+| constraint (條件約束) | 範例 | 範例相符項目 | 附註 |
 | ---------- | ------- | --------------- | ----- |
 | `int` | `{id:int}` | `123456789`, `-123456789` | 符合任何整數 |
 | `bool` | `{active:bool}` | `true`, `FALSE` | 符合 `true` 或 `false` (不區分大小寫) |
@@ -1936,8 +1936,8 @@ ASP.NET Core 架構將 `RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexO
 | `[a-z]{2}`   | 123abc456 | 是   | 子字串相符項目     |
 | `[a-z]{2}`   | mz        | 是   | 符合運算式    |
 | `[a-z]{2}`   | MZ        | 是   | 不區分大小寫    |
-| `^[a-z]{2}$` | hello     | No    | 請參閱上述的 `^` 和 `$` |
-| `^[a-z]{2}$` | 123abc456 | No    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | hello     | 否    | 請參閱上述的 `^` 和 `$` |
+| `^[a-z]{2}$` | 123abc456 | 否    | 請參閱上述的 `^` 和 `$` |
 
 如需規則運算式語法的詳細資訊，請參閱 [.NET Framework 規則運算式](/dotnet/standard/base-types/regular-expression-language-quick-reference)。
 

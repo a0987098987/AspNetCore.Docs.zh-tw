@@ -14,18 +14,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/builtin-th/link-tag-helper
-ms.openlocfilehash: c767ff4c2a1e0d5d10ccb3ff855126f541c04f64
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ac9f6449e2b7b135318ecf116e1dba7b33ddff83
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408236"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212398"
 ---
 # <a name="link-tag-helper-in-aspnet-core"></a>ASP.NET Core 中的連結標記協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[連結](xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper)標籤協助程式會產生主要或切換回 CSS 檔案的連結。 主要 CSS 檔案通常位於[內容傳遞網路](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn)（CDN）上。
+[連結](xref:Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper)標籤協助程式會產生主要或切換回 CSS 檔案的連結。 主要 CSS 檔案通常是在[內容傳遞網路](/office365/enterprise/content-delivery-networks#what-exactly-is-a-cdn) (CDN) 上。
 
 [!INCLUDE[](~/includes/cdn.md)]
 
@@ -33,11 +33,11 @@ ms.locfileid: "85408236"
 
 下列 Razor 標記顯示 `head` 使用 ASP.NET Core web 應用程式範本所建立之配置檔案的元素：
 
-[!code-html[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
+[!code-cshtml[](link-tag-helper/sample/_Layout.cshtml?name=snippet)]
 
-下列是上述程式碼（在非開發環境中）所呈現的 HTML：
+以下是先前程式碼 (在非開發環境中轉譯的 HTML) ：
 
-[!code-csharp[](link-tag-helper/sample/HtmlPage1.html)]
+[!code-html[](link-tag-helper/sample/HtmlPage1.html)]
 
 在上述程式碼中，連結標記協助 `<meta name="x-stylesheet-fallback-test" content="" class="sr-only" />` 程式會產生元素和下列 JavaScript，用來驗證要求的*啟動程式。最小的 .css*檔案可在 CDN 上使用。 在此情況下，CSS 檔案可供使用，標記協助程式會 `<link />` 使用 CDN CSS 檔案產生元素。
 

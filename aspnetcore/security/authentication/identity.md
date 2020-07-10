@@ -1,7 +1,7 @@
 ---
 title: 簡介 Identity ASP.NET Core
 author: rick-anderson
-description: 搭配 Identity ASP.NET Core 應用程式使用。 瞭解如何設定密碼需求（RequireDigit、RequiredLength、RequiredUniqueChars 等）。
+description: 搭配 Identity ASP.NET Core 應用程式使用。 瞭解如何 (RequireDigit、RequiredLength、RequiredUniqueChars 等) 設定密碼需求。
 ms.author: riande
 ms.date: 01/15/2020
 no-loc:
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 31970bd2b52ad83c116067d258aa9dca2d9b3b66
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 6ac565bfa4862168fa143417ab5a81c51b620f16
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793582"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212454"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>簡介 Identity ASP.NET Core
 
@@ -28,7 +28,7 @@ ms.locfileid: "85793582"
 
 ASP.NET Core Identity ：
 
-* 是支援使用者介面（UI）登入功能的 API。
+* 是支援使用者介面 (UI) 登入功能的 API。
 * 管理使用者、密碼、設定檔資料、角色、宣告、權杖、電子郵件確認等等。
 
 使用者可以建立具有儲存在中之登入資訊的帳戶， Identity 或可以使用外部登入提供者。 支援的外部登入提供者包括[Facebook、Google、Microsoft 帳戶及 Twitter](xref:security/authentication/social/index)。
@@ -41,12 +41,12 @@ Identity通常會使用 SQL Server 資料庫來設定，以儲存使用者名稱
 
 [Microsoft 身分識別平臺](/azure/active-directory/develop/)是：
 
-* Azure Active Directory （Azure AD）開發人員平臺的演進。
+* Azure Active Directory (Azure AD) 開發人員平臺的演進。
 * 與 ASP.NET Core 無關 Identity 。
 
-[!INCLUDE[](~/includes/IdentityServer4.md)]
+[!INCLUDE[](~/includes/IdentityServer4.md) ]
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)（[如何下載）](xref:index#how-to-download-a-sample)）。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([如何下載) ](xref:index#how-to-download-a-sample)) 。
 
 <a name="adi"></a>
 
@@ -57,7 +57,7 @@ Identity通常會使用 SQL Server 資料庫來設定，以儲存使用者名稱
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定] 。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 
@@ -87,7 +87,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [套件管理員主控台] （PMC）中執行下列命令：
+在套件管理員主控台中執行下列命令 (PMC) ：
 
 `PM> Update-Database`
 
@@ -185,7 +185,7 @@ PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請�
 
 Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
-[!code-csharp[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
+[!code-cshtml[](identity/sample/WebApp3/Pages/Shared/_LoginPartial.cshtml?highlight=15)]
 
 ## <a name="test-identity"></a>測驗Identity
 
@@ -216,7 +216,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 如需設定最小密碼[需求的範例](#pw)，請參閱設定。
 
-## <a name="adddefaultidentity-and-addidentity"></a>AddDefaultIdentity 和 AddIdentity
+## <a name="adddefaultidentity-and-addidentity"></a>AddDefault Identity 並新增Identity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*>已在 ASP.NET Core 2.1 中引進。 呼叫 `AddDefaultIdentity` 類似于呼叫下列內容：
 
@@ -224,11 +224,11 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderExtensions.AddDefaultTokenProviders*>
 
-如需詳細資訊，請參閱[AddDefaultIdentity source](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) 。
+如需詳細資訊，請參閱[AddDefault Identity source](https://github.com/dotnet/AspNetCore/blob/release/3.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) 。
 
 ## <a name="prevent-publish-of-static-identity-assets"></a>防止發行靜態 Identity 資產
 
-若要防止將靜態 Identity 資產（適用于 UI 的樣式表單和 JavaScript 檔案 Identity ）發行至 web 根目錄，請將下列 `ResolveStaticWebAssetsInputsDependsOn` 屬性和 `RemoveIdentityAssets` 目標新增至應用程式的專案檔：
+若要防止將靜態 Identity 資產發行 (的樣式表單和 JavaScript 檔案，以供 Identity UI) 至 web 根目錄，請將下列 `ResolveStaticWebAssetsInputsDependsOn` 屬性和 `RemoveIdentityAssets` 目標新增至應用程式的專案檔：
 
 ```xml
 <PropertyGroup>
@@ -265,13 +265,13 @@ ASP.NET Core Identity 是將登入功能新增至 ASP.NET Core 應用程式的�
 
 Identity可以使用 SQL Server 資料庫來設定，以儲存使用者名稱、密碼和設定檔資料。 或者，也可以使用另一個持續性存放區，例如 Azure 表格儲存體。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/)（[如何下載）](xref:index#how-to-download-a-sample)）。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([如何下載) ](xref:index#how-to-download-a-sample)) 。
 
 在本主題中，您將瞭解如何使用 Identity 來註冊、登入和登出使用者。 如需有關建立使用之應用程式的詳細指示 Identity ，請參閱本文結尾的後續步驟一節。
 
 <a name="adi"></a>
 
-## <a name="adddefaultidentity-and-addidentity"></a>AddDefaultIdentity 和 AddIdentity
+## <a name="adddefaultidentity-and-addidentity"></a>AddDefault Identity 並新增Identity
 
 <xref:Microsoft.Extensions.DependencyInjection.IdentityServiceCollectionUIExtensions.AddDefaultIdentity*>已在 ASP.NET Core 2.1 中引進。 呼叫 `AddDefaultIdentity` 類似于呼叫下列內容：
 
@@ -279,7 +279,7 @@ Identity可以使用 SQL Server 資料庫來設定，以儲存使用者名稱、
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderUIExtensions.AddDefaultUI*>
 * <xref:Microsoft.AspNetCore.Identity.IdentityBuilderExtensions.AddDefaultTokenProviders*>
 
-如需詳細資訊，請參閱[AddDefaultIdentity source](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) 。
+如需詳細資訊，請參閱[AddDefault Identity source](https://github.com/dotnet/AspNetCore/blob/release/2.1/src/Identity/UI/src/IdentityServiceCollectionUIExtensions.cs#L47-L63) 。
 
 ## <a name="create-a-web-app-with-authentication"></a>建立具有驗證的 Web 應用程式
 
@@ -288,7 +288,7 @@ Identity可以使用 SQL Server 資料庫來設定，以儲存使用者名稱、
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定] 。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 
@@ -312,7 +312,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在 [套件管理員主控台] （PMC）中執行下列命令：
+在套件管理員主控台中執行下列命令 (PMC) ：
 
 ```powershell
 Update-Database
@@ -346,7 +346,7 @@ Identity會藉由呼叫[UseAuthentication](/dotnet/api/microsoft.aspnetcore.buil
 
 [!code-csharp[](identity/sample/WebApp1/Startup.cs?name=snippet_configure&highlight=18)]
 
-如需詳細資訊，請參閱[IdentityOptions 類別](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)和[應用程式啟動](xref:fundamentals/startup)。
+如需詳細資訊，請參閱[ Identity Options 類別](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)和[應用程式啟動](xref:fundamentals/startup)。
 
 ## <a name="scaffold-register-login-and-logout"></a>Scaffold 註冊、登入和登出
 
@@ -402,7 +402,7 @@ PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請�
 
 Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
-[!code-csharp[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
+[!code-cshtml[](identity/sample/WebApp1/Pages/Shared/_LoginPartial.cshtml?highlight=16)]
 
 ## <a name="test-identity"></a>測驗Identity
 

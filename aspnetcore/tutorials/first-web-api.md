@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: 63f91086a7e9d71add7f7a5d58d96f46fa76353c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 79f36168d0430ceee3794cfb5a4e29f3671ac73f
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407781"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212628"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -44,12 +44,12 @@ ms.locfileid: "85407781"
 
 本教學課程會建立以下 API：
 
-|API | 說明 | 要求本文 | 回應本文 |
+|API | 描述 | Request body | 回應本文 |
 |--- | ---- | ---- | ---- |
-|`GET /api/TodoItems` | 取得所有待辦事項 | None | 待辦事項的陣列|
-|`GET /api/TodoItems/{id}` | 依識別碼取得項目 | None | 待辦事項|
+|`GET /api/TodoItems` | 取得所有待辦事項 | 無 | 待辦事項的陣列|
+|`GET /api/TodoItems/{id}` | 依識別碼取得項目 | 無 | 待辦事項|
 |`POST /api/TodoItems` | 新增記錄 | 待辦事項 | 待辦事項 |
-|`PUT /api/TodoItems/{id}` | 更新現有的項目 &nbsp; | 待辦事項 | None |
+|`PUT /api/TodoItems/{id}` | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
 |`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | 刪除專案 &nbsp;&nbsp; | None | None|
 
 下圖顯示應用程式的設計。
@@ -114,9 +114,7 @@ ms.locfileid: "85407781"
 
   ![macOS API 範本選取專案](first-web-api-mac/_static/api_template.png)
 
-* 確認 [**目標 Framework** ] 已設定為 [ **.net Core 3.1**]。 選取 [下一步] 。
-
-  ![macOS .NET Core 3.1 選項](first-web-api-mac/_static/api_31_config.png)
+* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 3.X**目標 Framework**。 選取 [下一步]。
 
 * 針對 [專案名稱]**** 輸入 *TodoApi*，然後選取 [建立]****。
 
@@ -196,7 +194,7 @@ ms.locfileid: "85407781"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管]**** 中，於專案上按一下滑鼠右鍵。 選取 **[**  >  **新增資料夾**]。 將資料夾命名為 *Models*。
+* 在**方案總管**中，以滑鼠右鍵按一下專案。 選取 **[**  >  **新增資料夾**]。 將資料夾命名為 *Models*。
 
 * 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]**** > [類別]****。 將類別命名為 *TodoItem*，然後選取 [新增]****。
 
@@ -281,9 +279,9 @@ ms.locfileid: "85407781"
 * 選取 [使用 Entity Framework 執行動作的 API 控制器]****，然後選取 [新增]****。
 * 在 [使用 Entity Framework 執行動作的 API 控制器]**** 對話方塊中：
 
-  * 在**模型類別**中選取 [ **TodoItem （TodoApi）** ]。
-  * 選取**資料內容類別**中的 [ **TodoCoNtext （TodoApi）** ]。
-  * 選取 [新增]****。
+  * 在**模型類別**中選取 [ **TodoItem] ([TodoApi]) ** 。
+  * 選取**資料內容類別**中 **) 的 TodoCoNtext ([模型**]。
+  * 選取 [新增]。
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
@@ -372,7 +370,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
   ![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/3/create.png)
 
 * 將方法設定為 GET。
-* 貼上 URI （例如 `https://localhost:5001/api/TodoItems/1` ）。
+* 將 URI 貼入 (例如， `https://localhost:5001/api/TodoItems/1`) 。
 * 選取 [傳送]。
 
 ## <a name="examine-the-get-methods"></a>檢查 GET 方法
@@ -403,7 +401,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * 建立新的要求。
 * 將 HTTP 方法設定為 **GET**。
-* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如： `https://localhost:5001/api/TodoItems` 。
+* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如，`https://localhost:5001/api/TodoItems`。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)****。
 * 選取 [傳送]。
 
@@ -439,7 +437,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 [!code-csharp[](first-web-api/samples/3.0/TodoApi/Controllers/TodoItemsController.cs?name=snippet_Update)]
 
-`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。 回應為[204 （沒有內容）](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。 若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。
+`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。 回應為[204 (沒有內容) ](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。 若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。
 
 如果在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。
 
@@ -472,14 +470,14 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 使用 Postman 刪除待辦事項：
 
 * 將方法設定為 `DELETE`。
-* 設定要刪除之物件的 URI （例如 `https://localhost:5001/api/TodoItems/1` ）。
+* 設定要刪除之物件的 URI (例如 `https://localhost:5001/api/TodoItems/1`) 。
 * 選取 [傳送]。
 
 <a name="over-post"></a>
 
 ## <a name="prevent-over-posting"></a>防止過度張貼
 
-範例應用程式目前會公開整個 `TodoItem` 物件。 生產應用程式通常會使用模型的子集來限制輸入和傳回的資料。 這種情況的原因有很多，而且安全性是主要的。 模型的子集通常稱為「資料傳輸物件（DTO）」、「輸入模型」或「視圖模型」。 這篇文章中使用了**DTO** 。
+範例應用程式目前會公開整個 `TodoItem` 物件。 生產應用程式通常會使用模型的子集來限制輸入和傳回的資料。 這種情況的原因有很多，而且安全性是主要的。 模型的子集通常稱為資料傳輸物件 (DTO) 、輸入模型或視圖模型。 這篇文章中使用了**DTO** 。
 
 DTO 可用來：
 
@@ -532,12 +530,12 @@ DTO 可用來：
 
 本教學課程會建立以下 API：
 
-|API | 說明 | 要求本文 | 回應本文 |
+|API | 描述 | Request body | 回應本文 |
 |--- | ---- | ---- | ---- |
-|GET /api/TodoItems | 取得所有待辦事項 | None | 待辦事項的陣列|
-|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | None | 待辦事項|
+|GET /api/TodoItems | 取得所有待辦事項 | 無 | 待辦事項的陣列|
+|GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | 無 | 待辦事項|
 |POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
-|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | None |
+|PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
 |刪除/api/TodoItems/{id} &nbsp;&nbsp; | 刪除專案 &nbsp;&nbsp; | None | None|
 
 下圖顯示應用程式的設計。
@@ -594,7 +592,7 @@ DTO 可用來：
 
 * 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用程式**  >  **API**  >  **] [下一步]**。 在8.6 或更新版本中，選取 [ **Web 和主控台**  >  **應用程式**  >  **API**  >  **] [下一步]**。
   
-* 在 [設定您的新 ASP.NET Core Web API]**** 對話方塊中，接受 [目標 Framework]**** 的預設 **.NET Core 2.2*。
+* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 2.X**目標架構**。 選取 [下一步]。
 
 * 針對 [專案名稱]**** 輸入 *TodoApi*，然後選取 [建立]****。
 
@@ -622,7 +620,7 @@ DTO 可用來：
 
 ---
 
-即會傳回下列 JSON：
+隨即傳回下列 JSON：
 
 ```json
 ["value1","value2"]
@@ -634,7 +632,7 @@ DTO 可用來：
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-* 在 [方案總管]**** 中，於專案上按一下滑鼠右鍵。 選取 **[**  >  **新增資料夾**]。 將資料夾命名為 *Models*。
+* 在**方案總管**中，以滑鼠右鍵按一下專案。 選取 **[**  >  **新增資料夾**]。 將資料夾命名為 *Models*。
 
 * 以滑鼠右鍵按一下 *Models* 資料夾，然後選取 [新增]**** > [類別]****。 將類別命名為 *TodoItem*，然後選取 [新增]****。
 
@@ -795,7 +793,7 @@ DTO 可用來：
 
 # <a name="visual-studio-code--visual-studio-for-mac"></a>[Visual Studio Code / Visual Studio for Mac](#tab/visual-studio-code+visual-studio-mac)
 
-* 從 [ **Postman**  >  **喜好**設定] （**[一般**] 索引標籤），停用**SSL 憑證驗證**。 或者，選取扳手並選取 [設定]****，然後停用 [SSL 憑證驗證]。
+* 從 [ **Postman**  >  **喜好**設定] (**[一般**] 索引標籤) ，停用**SSL 憑證驗證**。 或者，選取扳手並選取 [設定]****，然後停用 [SSL 憑證驗證]。
 
 ---
   
@@ -804,7 +802,7 @@ DTO 可用來：
 
 * 建立新的要求。
   * 將 HTTP 方法設定為 **GET**。
-  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如： `https://localhost:5001/api/todo` 。
+  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如，`https://localhost:5001/api/todo`。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)****。
 * 選取 [傳送]。
 
@@ -856,7 +854,7 @@ DTO 可用來：
   ![Postman 主控台的 [標頭] 索引標籤](first-web-api/_static/pmc2.png)
 
 * 將方法設定為 GET。
-* 貼上 URI （例如 `https://localhost:5001/api/Todo/2` ）。
+* 將 URI 貼入 (例如， `https://localhost:5001/api/Todo/2`) 。
 * 選取 [傳送]。
 
 ## <a name="add-a-puttodoitem-method"></a>新增 PutTodoItem 方法
@@ -865,7 +863,7 @@ DTO 可用來：
 
 [!code-csharp[](first-web-api/samples/2.2/TodoApi/Controllers/TodoController.cs?name=snippet_Update)]
 
-`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。 回應為[204 （沒有內容）](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。 若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。
+`PutTodoItem` 類似於 `PostTodoItem`，但是會使用 HTTP PUT。 回應為[204 (沒有內容) ](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)。 根據 HTTP 規格，PUT 要求需要用戶端傳送整個更新的實體，而不只是變更。 若要支援部分更新，請使用 [HTTP PATCH](xref:Microsoft.AspNetCore.Mvc.HttpPatchAttribute)。
 
 如果在呼叫 `PutTodoItem` 時發生錯誤，請呼叫 `GET` 以確保資料庫中有項目。
 
@@ -900,7 +898,7 @@ DTO 可用來：
 使用 Postman 刪除待辦事項：
 
 * 將方法設定為 `DELETE`。
-* 設定要刪除之物件的 URI （例如， `https://localhost:5001/api/todo/1` ）。
+* 設定要刪除之物件的 URI (例如， `https://localhost:5001/api/todo/1`) 。
 * 選取 [傳送]。
 
 範例應用程式可讓您刪除所有項目。 但刪除最後一個項目之後，模型類別建構函式會在下次呼叫 API 時建立新的項目。
@@ -960,7 +958,7 @@ jQuery 會傳送 HTTP POST 要求和要求主體中的待辦事項。 `accepts` 
 
 ## <a name="add-authentication-support-to-a-web-api"></a>將驗證支援新增至 Web API
 
-[!INCLUDE[](~/includes/IdentityServer4.md)]
+[!INCLUDE[](~/includes/IdentityServer4.md) ]
 
 ## <a name="additional-resources"></a>其他資源
 

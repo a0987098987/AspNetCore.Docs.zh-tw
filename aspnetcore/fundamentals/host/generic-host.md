@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/host/generic-host
-ms.openlocfilehash: 5a2d39af6c921323ae9113fd4aca27dcdedd44a5
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 26aef561ba299403df0dad9893fecd5e2a15ab0e
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793459"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213008"
 ---
 # <a name="net-generic-host"></a>.NET 泛型主機
 
@@ -286,7 +286,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 當它為 `false` 時，啟動期間發生的錯誤會導致主機結束。 當它為 `true` 時，主機會擷取啟動期間的例外狀況，並嘗試啟動伺服器。
 
 機**碼**：`captureStartupErrors`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設值**：預設為 `false`，除非應用程式執行時在 IIS 背後有 Kestrel，此時預設值即為 `true`。  
 **環境變數**：`<PREFIX_>CAPTURESTARTUPERRORS`
 
@@ -301,7 +301,7 @@ webBuilder.CaptureStartupErrors(true);
 啟用時 (或當環境為 `Development` 時)，應用程式會擷取詳細錯誤。
 
 機**碼**：`detailedErrors`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設**：`false`  
 **環境變數**：`<PREFIX_>_DETAILEDERRORS`
 
@@ -361,7 +361,7 @@ webBuilder.UseSetting("https_port", "8080");
 指出主機是否應接聽以設定的 Url， `IWebHostBuilder` 而不是使用執行時所設定的 url `IServer` 。
 
 機**碼**：`preferHostingUrls`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設**：`true`  
 **環境變數**：`<PREFIX_>_PREFERHOSTINGURLS`
 
@@ -376,7 +376,7 @@ webBuilder.PreferHostingUrls(false);
 可防止自動載入裝載啟動組件，包括應用程式組件所設定的裝載啟動組件。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration> 。
 
 機**碼**：`preventHostingStartup`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設**：`false`  
 **環境變數**：`<PREFIX_>_PREVENTHOSTINGSTARTUP`
 
@@ -407,7 +407,7 @@ webBuilder.UseStartup<Startup>();
 
 ### <a name="urls"></a>URL
 
-以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如 `http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
+以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如，`http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
 
 機**碼**：`urls`  
 **類型**：`string`  
@@ -522,7 +522,7 @@ ASP.NET Core 應用程式會設定並啟動主機。 主機負責應用程式啟
 
 泛型主機是 ASP.NET Core 2.1 的新功能，不適用於虛擬主機案例。 針對虛擬主機案例，請使用 [Web 主機](xref:fundamentals/host/web-host)。 泛型主機將在未來版本中取代 Web 主機，並成為 HTTP 和非 HTTP 案例中的主要主機 API。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/fundamentals/host/generic-host/samples/) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 在 [Visual Studio Code](https://code.visualstudio.com/) 中執行範例應用程式時，請使用「外部或整合式終端機」**。 請勿在 `internalConsole` 中執行範例。
 
@@ -569,14 +569,14 @@ var host = new HostBuilder()
 
 下列服務會在主機初始化期間註冊：
 
-* [環境](xref:fundamentals/environments)（ <xref:Microsoft.Extensions.Hosting.IHostingEnvironment> ）
+* [環境](xref:fundamentals/environments) (<xref:Microsoft.Extensions.Hosting.IHostingEnvironment>) 
 * <xref:Microsoft.Extensions.Hosting.HostBuilderContext>
-* [Configuration](xref:fundamentals/configuration/index)設定（ <xref:Microsoft.Extensions.Configuration.IConfiguration> ）
+* [Configuration](xref:fundamentals/configuration/index) (<xref:Microsoft.Extensions.Configuration.IConfiguration>) 
 * <xref:Microsoft.Extensions.Hosting.IApplicationLifetime> (`Microsoft.Extensions.Hosting.Internal.ApplicationLifetime`)
 * <xref:Microsoft.Extensions.Hosting.IHostLifetime> (`Microsoft.Extensions.Hosting.Internal.ConsoleLifetime`)
 * <xref:Microsoft.Extensions.Hosting.IHost>
-* [選項](xref:fundamentals/configuration/options)（ <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions*> ）
-* [記錄](xref:fundamentals/logging/index)（ <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*> ）
+*  (的[選項](xref:fundamentals/configuration/options) <xref:Microsoft.Extensions.DependencyInjection.OptionsServiceCollectionExtensions.AddOptions*>) 
+* [記錄](xref:fundamentals/logging/index) (<xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging*>) 
 
 ## <a name="host-configuration"></a>主機組態
 
@@ -595,7 +595,7 @@ var host = new HostBuilder()
 **類型**：`string`  
 **預設**：包含應用程式進入點的組件名稱。  
 **設定使用**：`HostBuilderContext.HostingEnvironment.ApplicationName`  
-**環境變數**： `<PREFIX_>APPLICATIONNAME` （ `<PREFIX_>` 是[選擇性和使用者定義](#configurehostconfiguration)的）
+**環境變數**： `<PREFIX_>APPLICATIONNAME` (`<PREFIX_>` 是[選擇性的，而且是使用者定義的](#configurehostconfiguration)) 
 
 ### <a name="content-root"></a>內容根目錄
 
@@ -605,7 +605,7 @@ var host = new HostBuilder()
 **類型**：`string`  
 **預設值**：預設為應用程式組件所在的資料夾。  
 **設定使用**：`UseContentRoot`  
-**環境變數**： `<PREFIX_>CONTENTROOT` （ `<PREFIX_>` 是[選擇性和使用者定義](#configurehostconfiguration)的）
+**環境變數**： `<PREFIX_>CONTENTROOT` (`<PREFIX_>` 是[選擇性的，而且是使用者定義的](#configurehostconfiguration)) 
 
 如果路徑不存在，就無法啟動主機。
 
@@ -621,7 +621,7 @@ var host = new HostBuilder()
 **類型**：`string`  
 **預設**：`Production`  
 **設定使用**：`UseEnvironment`  
-**環境變數**： `<PREFIX_>ENVIRONMENT` （ `<PREFIX_>` 是[選擇性和使用者定義](#configurehostconfiguration)的）
+**環境變數**： `<PREFIX_>ENVIRONMENT` (`<PREFIX_>` 是[選擇性的，而且是使用者定義的](#configurehostconfiguration)) 
 
 環境可以設定為任何值。 架構定義的值包括 `Development`、`Staging` 和 `Production`。 值不區分大小寫。
 
@@ -650,7 +650,7 @@ var host = new HostBuilder()
 
 *hostsettings.json*：
 
-[!code-csharp[](generic-host/samples/2.x/GenericHostSample/hostsettings.json)]
+[!code-json[](generic-host/samples/2.x/GenericHostSample/hostsettings.json)]
 
 您可以使用 [applicationName](#application-key-name) 和 [contentRoot](#content-root) 索引鍵來提供其他組態。
 
@@ -670,15 +670,15 @@ var host = new HostBuilder()
 
 *appsettings.js*：
 
-[!code-csharp[](generic-host/samples/2.x/GenericHostSample/appsettings.json)]
+[!code-json[](generic-host/samples/2.x/GenericHostSample/appsettings.json)]
 
 *appsettings.Development.json*：
 
-[!code-csharp[](generic-host/samples/2.x/GenericHostSample/appsettings.Development.json)]
+[!code-json[](generic-host/samples/2.x/GenericHostSample/appsettings.Development.json)]
 
 *appsettings.Production.json*：
 
-[!code-csharp[](generic-host/samples/2.x/GenericHostSample/appsettings.Production.json)]
+[!code-json[](generic-host/samples/2.x/GenericHostSample/appsettings.Production.json)]
 
 若要將設定檔移至輸出目錄，請在專案檔中將設定檔指定為 [MSBuild 專案項目](/visualstudio/msbuild/common-msbuild-project-items)。 範例應用程式使用下列 `<Content>` 項目，移動其 JSON 應用程式設定檔和 *hostsettings.json*：
 
@@ -866,7 +866,7 @@ public class Program
 
 ### <a name="waitforshutdown"></a>WaitForShutdown
 
-<xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*>會透過觸發 <xref:Microsoft.Extensions.Hosting.IHostLifetime> ，例如 `Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` （接聽<kbd>Ctrl</kbd> + <kbd>C</kbd>/SIGINT 或 SIGTERM）。 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> 會呼叫 <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>。
+<xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*>會透過觸發 <xref:Microsoft.Extensions.Hosting.IHostLifetime> ，例如 `Microsoft.Extensions.Hosting.Internal.ConsoleLifetime` (接聽<kbd>Ctrl</kbd> + <kbd>C</kbd>/SIGINT 或 SIGTERM) 。 <xref:Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.WaitForShutdown*> 會呼叫 <xref:Microsoft.Extensions.Hosting.IHost.StopAsync*>。
 
 ```csharp
 public class Program
@@ -1003,7 +1003,7 @@ public class MyClass
 
 ::: moniker range=">= aspnetcore-5.0"
 
-ASP.NET Core 範本會建立 .NET Core 泛型主機（ <xref:Microsoft.Extensions.Hosting.HostBuilder> ）。
+ASP.NET Core 範本會 () 建立 .NET Core 泛型主機 <xref:Microsoft.Extensions.Hosting.HostBuilder> 。
 
 ## <a name="host-definition"></a>主機定義
 
@@ -1245,13 +1245,13 @@ Host.CreateDefaultBuilder(args)
 根據[預設](xref:fundamentals/configuration/index#default)， *appsettings.js*和*appsettings。 {環境}. json*會在檔案變更時重載。 若要在 ASP.NET Core 5.0 Preview 3 或更新版本中停用此重載行為，請將 `hostBuilder:reloadConfigOnChange` 金鑰設定為 `false` 。
 
 機**碼**：`hostBuilder:reloadConfigOnChange`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設**：`true`  
 **命令列引數**：`hostBuilder:reloadConfigOnChange`  
 **環境變數**：`<PREFIX_>hostBuilder:reloadConfigOnChange`
 
 > [!WARNING]
-> 冒號（ `:` ）分隔符號不適用於所有平臺上的環境變數階層式索引鍵。 如需詳細資訊，請參閱[環境變數](xref:fundamentals/configuration/index#environment-variables)。
+> 冒號 (`:`) 分隔符號不適用於所有平臺上的環境變數階層式索引鍵。 如需詳細資訊，請參閱[環境變數](xref:fundamentals/configuration/index#environment-variables)。
 
 ## <a name="settings-for-web-apps"></a>Web 應用程式的設定
 
@@ -1274,7 +1274,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 當它為 `false` 時，啟動期間發生的錯誤會導致主機結束。 當它為 `true` 時，主機會擷取啟動期間的例外狀況，並嘗試啟動伺服器。
 
 機**碼**：`captureStartupErrors`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設值**：預設為 `false`，除非應用程式執行時在 IIS 背後有 Kestrel，此時預設值即為 `true`。  
 **環境變數**：`<PREFIX_>CAPTURESTARTUPERRORS`
 
@@ -1289,7 +1289,7 @@ webBuilder.CaptureStartupErrors(true);
 啟用時 (或當環境為 `Development` 時)，應用程式會擷取詳細錯誤。
 
 機**碼**：`detailedErrors`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設**：`false`  
 **環境變數**：`<PREFIX_>_DETAILEDERRORS`
 
@@ -1349,7 +1349,7 @@ webBuilder.UseSetting("https_port", "8080");
 指出主機是否應接聽以設定的 Url， `IWebHostBuilder` 而不是使用執行時所設定的 url `IServer` 。
 
 機**碼**：`preferHostingUrls`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設**：`true`  
 **環境變數**：`<PREFIX_>_PREFERHOSTINGURLS`
 
@@ -1364,7 +1364,7 @@ webBuilder.PreferHostingUrls(false);
 可防止自動載入裝載啟動組件，包括應用程式組件所設定的裝載啟動組件。 如需詳細資訊，請參閱 <xref:fundamentals/configuration/platform-specific-configuration> 。
 
 機**碼**：`preventHostingStartup`  
-**類型**： `bool` （ `true` 或 `1` ）  
+**類型**： `bool` (`true` 或 `1`)   
 **預設**：`false`  
 **環境變數**：`<PREFIX_>_PREVENTHOSTINGSTARTUP`
 
@@ -1395,7 +1395,7 @@ webBuilder.UseStartup<Startup>();
 
 ### <a name="urls"></a>URL
 
-以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如 `http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
+以分號分隔的 IP 位址或主機位址，包含伺服器應接聽要求的連接埠和通訊協定。 例如，`http://localhost:123`。 使用 "\*"，表示伺服器應接聽任何 IP 位址或主機名稱上的要求，並使用指定的連接埠和通訊協定 (例如，`http://*:5000`)。 通訊協定 (`http://` 或 `https://`) 必須包含在每個 URL 中。 支援的格式會依伺服器而有所不同。
 
 機**碼**：`urls`  
 **類型**：`string`  

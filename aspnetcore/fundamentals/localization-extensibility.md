@@ -15,18 +15,18 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/localization-extensibility
-ms.openlocfilehash: 6f3007637200b375730c970ca9186436629cbcf7
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: b743aee87af96ebf064689e94d85ee794de520e7
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85406598"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176195"
 ---
 # <a name="localization-extensibility"></a>當地語系化擴充性
 
 作者為 [Hisham Bin Ateya](https://github.com/hishamco)
 
-本文：
+這篇文章：
 
 * 列出當地語系化 API 的擴充點。
 * 提供如何擴充 ASP.NET Core 應用程式當地語系化的指示。
@@ -68,7 +68,7 @@ options.RequestCultureProviders.Insert(0, new CustomRequestCultureProvider(async
         currentCulture = segments[0];
     }
 
-    var requestCulture = new ProviderCultureResult(culture);
+    var requestCulture = new ProviderCultureResult(currentCulture);
     
     return Task.FromResult(requestCulture);
 }));
@@ -89,7 +89,7 @@ options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async 
         currentCulture = segments[0];
     }
 
-    var requestCulture = new ProviderCultureResult(culture);
+    var requestCulture = new ProviderCultureResult(currentCulture);
     
     return Task.FromResult(requestCulture);
 }));

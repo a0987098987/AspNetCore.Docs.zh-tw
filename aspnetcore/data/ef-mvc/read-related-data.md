@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/read-related-data
-ms.openlocfilehash: f2e989b2c6370d862b4d1e6550b09cb47b5747c1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: abd5c4e474e30c119e2bea9e3cce3d2b277e0daf
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401515"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212750"
 ---
 # <a name="tutorial-read-related-data---aspnet-mvc-with-ef-core"></a>教學課程：讀取相關資料-使用 EF Core ASP.NET MVC
 
@@ -83,7 +83,7 @@ Course 實體包括一個導覽屬性，其中包含已指派課程之部門的 
 
 開啟 *Views/Courses/Index.cshtml*，並以下列程式碼取代範本程式碼。 所做的變更已醒目提示：
 
-[!code-html[](intro/samples/cu/Views/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
+[!code-cshtml[](intro/samples/cu/Views/Courses/Index.cshtml?highlight=4,7,15-17,34-36,44)]
 
 您已對包含 Scaffold 的程式碼進行下列變更：
 
@@ -179,7 +179,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 在 *Views/Instructors/Index.cshtml* 中，以下列程式碼取代範本程式碼。 所做的變更已醒目提示。
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=1-64&highlight=1,3-7,15-19,24,26-31,41-54,56)]
 
 您已對現有程式碼進行下列變更：
 
@@ -221,7 +221,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 在 *Views/Instructors/Index.cshtml* 檔案的結束資料表項目 (在檔案的結尾) 之後，新增下列程式碼。 當選取講師時，此程式碼會顯示與講師相關的課程。
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=66-101)]
 
 此程式碼會讀取檢視模型的 `Courses` 屬性以顯示課程清單。 它也會提供**選取**超連結，將所選取課程的識別碼傳送至 `Index` 動作方法。
 
@@ -231,7 +231,7 @@ Instructors 頁面會顯示下列三個不同資料表的資料。 因此，您�
 
 在您剛才新增的程式碼區塊之後，新增下列程式碼。 這會在選取課程時，顯示已註冊該課程的學生清單。
 
-[!code-html[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=103-125)]
+[!code-cshtml[](intro/samples/cu/Views/Instructors/Index1.cshtml?range=103-125)]
 
 此程式碼會讀取檢視模型的 Enrollments 屬性，以顯示已註冊課程的學生清單。
 

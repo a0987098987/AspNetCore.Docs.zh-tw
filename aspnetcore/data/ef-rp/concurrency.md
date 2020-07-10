@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/concurrency
-ms.openlocfilehash: 597f396237151f49a9ae333973e91d8f4f7c6ff1
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: ff9e01df002ac0fc94ced6d5d093099d66a14f36
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401372"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176284"
 ---
 # <a name="part-8-razor-pages-with-ef-core-in-aspnet-core---concurrency"></a>第8部分， Razor ASP.NET Core 並行 EF Core 的頁面
 
@@ -70,7 +70,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
-  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。 （用戶端的所有值會優先于資料存放區中的內容）。如果您未執行任何並行處理的編碼，用戶端會自動進行。
+  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。  (用戶端的所有值會優先于資料存放區中的內容。 ) 如果您沒有對並行處理進行任何編碼，用戶端會自動進行。
 
 * 您可以防止 John 的變更更新到資料庫中。 一般而言，應用程式會：
 
@@ -78,7 +78,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
   * 顯示資料的目前狀態。
   * 允許使用者重新套用變更。
 
-  這稱為「存放區獲勝 (Store Wins)」** 案例。 （資料存放區的值會優先于用戶端所提交的值。）在本教學課程中，您會執行存放區的 Wins 案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
+  這稱為「存放區獲勝 (Store Wins)」** 案例。  (資料存放區的值會優先于用戶端所提交的值。在本教學課程中，) 您執行存放區的 Wins 案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
 
 ## <a name="conflict-detection-in-ef-core"></a>EF Core 中的衝突偵測
 
@@ -86,7 +86,7 @@ EF Core 會在偵測到衝突時擲回 `DbConcurrencyException` 例外狀況。 
 
 * 設定 EF Core，在 Update 和 Delete 命令的 Where 子句中將資料行的原始值設為[並行權杖](/ef/core/modeling/concurrency)並包含在其中。
 
-  呼叫 `SaveChanges` 時，Where 子句會尋找任何標註 [ConcurrencyCheck](/dotnet/api/system.componentmodel.dataannotations.concurrencycheckattribute) 屬性的屬性原始值。 若從第一次讀取資料列後有任何的並行權杖屬性產生變更，更新陳述式便不會尋找要更新的資料列。 EF Core 會將其解譯為並行衝突。 針對擁有許多資料行的資料庫資料表，這種方法可能導致非常龐大的 Where 子句，且可能會需要維持龐大數量的狀態。 因此通常不建議使用這種方法，並且這種方法也不是此教學課程中所使用的方法。
+  當 `SaveChanges` 呼叫時，Where 子句會尋找以屬性標注之任何屬性的原始值 <xref:System.ComponentModel.DataAnnotations.ConcurrencyCheckAttribute> 。 若從第一次讀取資料列後有任何的並行權杖屬性產生變更，更新陳述式便不會尋找要更新的資料列。 EF Core 會將其解譯為並行衝突。 針對擁有許多資料行的資料庫資料表，這種方法可能導致非常龐大的 Where 子句，且可能會需要維持龐大數量的狀態。 因此通常不建議使用這種方法，並且這種方法也不是此教學課程中所使用的方法。
 
 * 在資料庫資料表中，包含一個追蹤資料行，該資料行可用於決定資料列發生變更的時機。
 
@@ -98,7 +98,7 @@ EF Core 會在偵測到衝突時擲回 `DbConcurrencyException` 例外狀況。 
 
 [!code-csharp[](intro/samples/cu30/Models/Department.cs?highlight=26,27)]
 
-[Timestamp](/dotnet/api/system.componentmodel.dataannotations.timestampattribute) 屬性是將資料行識別為並行追蹤資料行的屬性。 Fluent API 是指定追蹤屬性的另外一種方式：
+<xref:System.ComponentModel.DataAnnotations.TimestampAttribute>屬性會將資料行識別為並行追蹤資料行。 Fluent API 是指定追蹤屬性的另外一種方式：
 
 ```csharp
 modelBuilder.Entity<Department>()
@@ -250,7 +250,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 下列程式碼會顯示更新後的頁面：
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Index.cshtml?highlight=5,8,29,48,51)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Index.cshtml?highlight=5,8,29,48,51)]
 
 ## <a name="update-the-edit-page-model"></a>更新 [編輯] 頁面模型
 
@@ -258,7 +258,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_All)]
 
-[OriginalValue](/dotnet/api/microsoft.entityframeworkcore.changetracking.propertyentry.originalvalue?view=efcore-2.0#Microsoft_EntityFrameworkCore_ChangeTracking_PropertyEntry_OriginalValue) 會在於 `OnGet` 方法中進行擷取時，使用實體的 `rowVersion` 值來進行更新。 EF Core 會產生一個帶有包含了原始 `RowVersion` 值 WHERE 子句的 SQL UPDATE 命令。 若 UPDATE 命令並未影響任何資料列 (即沒有任何資料列具有原始的 `RowVersion` 值)，則便會擲回 `DbUpdateConcurrencyException` 例外狀況。
+在 <xref:Microsoft.EntityFrameworkCore.ChangeTracking.PropertyEntry.OriginalValue> `rowVersion` 方法中提取實體時，會使用來自實體的值進行更新 `OnGet` 。 EF Core 會產生一個帶有包含了原始 `RowVersion` 值 WHERE 子句的 SQL UPDATE 命令。 若 UPDATE 命令並未影響任何資料列 (即沒有任何資料列具有原始的 `RowVersion` 值)，則便會擲回 `DbUpdateConcurrencyException` 例外狀況。
 
 [!code-csharp[](intro/samples/cu30/Pages/Departments/Edit.cshtml.cs?name=snippet_RowVersion&highlight=17-18)]
 
@@ -282,16 +282,16 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 `ModelState.Remove` 陳述式是必須的，因為 `ModelState` 具有舊的 `RowVersion` 值。 在 Razor 頁面中， `ModelState` 欄位的值會在兩者都存在時，優先于模型屬性值。
 
-### <a name="update-the-razor-page"></a>更新 Razor 頁面
+### <a name="update-the-edit-page"></a>更新 [編輯] 頁面
 
 使用下列程式碼更新 *Pages/Departments/Edit.cshtml*：
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
 上述程式碼：
 
 * 將 `page` 指示詞從 `@page` 更新為 `@page "{id:int}"`。
-* 新增一個隱藏的資料列版本。 您必須新增 `RowVersion`，以讓回傳繫結值。
+* 新增一個隱藏的資料列版本。 `RowVersion`必須加入，以便回傳系結值。
 * 顯示 `RowVersion` 的最後一個位元組，作為偵錯用途。
 * 使用強型別的 `InstructorNameSL` 取代 `ViewData`。
 
@@ -315,7 +315,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 ![變更之後的 Department [編輯] 頁面 2](concurrency/_static/edit-after-change-230.png)
 
-按一下 [檔案] ****。 您會看到所有不符合資料庫值欄位的錯誤訊息：
+按一下 [儲存]。 您會看到所有不符合資料庫值欄位的錯誤訊息：
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/edit-error30.png)
 
@@ -323,7 +323,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 再按一下 [儲存]****。 您在第二個瀏覽器索引標籤中輸入的值已儲存。 您會在 [索引] 頁面中看到儲存的值。
 
-## <a name="update-the-delete-page"></a>更新 [刪除] 頁面
+## <a name="update-the-delete-page-model"></a>更新 [刪除] 頁面模型
 
 使用下列程式碼更新 *ges/Departments/Delete.cshtml.cs*：
 
@@ -335,11 +335,11 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 * 擲回 DbUpdateConcurrencyException。
 * 使用 `concurrencyError` 呼叫 `OnGetAsync`。
 
-### <a name="update-the-delete-razor-page"></a>更新 [刪除] Razor 頁面
+### <a name="update-the-delete-page"></a>更新 [刪除] 頁面
 
 使用下列程式碼更新 *ges/Departments/Delete.cshtml*：
 
-[!code-html[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
+[!code-cshtml[](intro/samples/cu30/Pages/Departments/Delete.cshtml?highlight=1,10,39,42,51)]
 
 上述程式碼會進行下列變更：
 
@@ -347,7 +347,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 * 新增錯誤訊息。
 * 在 [系統管理員]**** 欄位中將 FirstMidName 取代為 FullName。
 * 變更 `RowVersion` 以顯示最後一個位元組。
-* 新增一個隱藏的資料列版本。 您必須新增 `RowVersion`，以讓 postgit add back 繫結值。
+* 新增一個隱藏的資料列版本。 `RowVersion`必須加入，以便回傳系結值。
 
 ### <a name="test-concurrency-conflicts"></a>測試並行衝突
 
@@ -365,7 +365,7 @@ Scaffolding 工具會為 Index 頁面建立 `RowVersion` 資料行，但該欄�
 
 瀏覽器會顯示 [索引] 頁面，當中包含了變更之後的值和更新後的 rowVersion 指標。 請注意更新後的 rowVersion 指標。它會顯示在另一個索引標籤中的第二個回傳上。
 
-從第二個索引標籤中刪除測試部門。並行處理錯誤會顯示資料庫中的目前值。 按一下 [刪除]**** 會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
+從第二個索引標籤中刪除測試部門。並行處理錯誤會顯示資料庫中的目前值。 除非已更新，否則按一下 [**刪除**] 會刪除實體 `RowVersion` 。
 
 ## <a name="additional-resources"></a>其他資源
 
@@ -426,7 +426,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
-  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。 （用戶端的所有值會優先于資料存放區中的內容）。如果您未執行任何並行處理的編碼，用戶端會自動進行。
+  下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，以及擷取的美金 $350,000.00 元預算金額。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。  (用戶端的所有值會優先于資料存放區中的內容。 ) 如果您沒有對並行處理進行任何編碼，用戶端會自動進行。
 
 * 您可以防止 John 的變更更新到資料庫中。 一般而言，應用程式會：
 
@@ -434,7 +434,7 @@ John 在仍然顯示預算為美金 $350,000.00 的 [編輯] 頁面上按一下 
   * 顯示資料的目前狀態。
   * 允許使用者重新套用變更。
 
-  這稱為「存放區獲勝 (Store Wins)」** 案例。 （資料存放區的值會優先于用戶端所提交的值。）在本教學課程中，您會執行存放區的 Wins 案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
+  這稱為「存放區獲勝 (Store Wins)」** 案例。  (資料存放區的值會優先于用戶端所提交的值。在本教學課程中，) 您執行存放區的 Wins 案例。 這個方法可確保沒有任何變更會在使用者收到警示前遭到覆寫。
 
 ## <a name="handling-concurrency"></a>處理並行 
 
@@ -550,7 +550,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 下列標記顯示了更新後的頁面：
 
-[!code-html[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Index.cshtml?highlight=5,8,29,47,50)]
 
 ### <a name="update-the-edit-page-model"></a>更新 [編輯] 頁面模型
 
@@ -582,7 +582,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 以下列標記更新 *Pages/Departments/Edit.cshtml*：
 
-[!code-html[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Edit.cshtml?highlight=1,14,16-17,37-39)]
 
 上述標記：
 
@@ -611,7 +611,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 ![變更之後的 Department [編輯] 頁面 2](concurrency/_static/edit-after-change-2.png)
 
-按一下 [檔案] ****。 您會看到所有不符合資料庫值之欄位的錯誤訊息：
+按一下 [儲存]。 您會看到所有不符合資料庫值之欄位的錯誤訊息：
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/edit-error.png)
 
@@ -637,7 +637,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 使用下列程式碼更新 *ges/Departments/Delete.cshtml*：
 
-[!code-html[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
+[!code-cshtml[](intro/samples/cu/Pages/Departments/Delete.cshtml?highlight=1,10,39,51)]
 
 上述程式碼會進行下列變更：
 
@@ -663,7 +663,7 @@ Scaffolding 引擎會在 [索引] 頁面中建立 `RowVersion` 資料行，但�
 
 瀏覽器會顯示 [索引] 頁面，當中包含了變更之後的值和更新後的 rowVersion 指標。 請注意更新後的 rowVersion 指標。它會顯示在另一個索引標籤中的第二個回傳上。
 
-從第二個索引標籤中刪除測試部門。同步處理錯誤會顯示資料庫中的目前值。 按一下 [刪除]**** 會刪除實體，除非 `RowVersion` 已更新。部門已刪除。
+從第二個索引標籤中刪除測試部門。同步處理錯誤會顯示資料庫中的目前值。 除非已更新，否則按一下 [**刪除**] 會刪除實體 `RowVersion` 。
 
 請參閱[繼承](xref:data/ef-mvc/inheritance)以了解如何繼承資料模型。
 

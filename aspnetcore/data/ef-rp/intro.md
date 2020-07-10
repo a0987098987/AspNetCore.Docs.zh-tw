@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/intro
-ms.openlocfilehash: 79cfe50f7e074954291c88689940c3263b68e151
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 700370fd11a0df40a45c47e8c378d5bdd0c60009
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401353"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212696"
 ---
 # <a name="razor-pages-with-entity-framework-core-in-aspnet-core---tutorial-1-of-8"></a>Razor在 ASP.NET Core 中使用 Entity Framework Core 的頁面-教學課程1之8
 
@@ -27,7 +27,7 @@ ms.locfileid: "85401353"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-這是一系列教學課程中的第一篇，示範如何在[ASP.NET Core Razor Pages](xref:razor-pages/index)應用程式中使用 Entity Framework （EF） Core。 教學課程會為虛構的 Contoso 大學建置網站。 網站包含學生入學許可、課程建立和講師指派等功能。 本教學課程使用 code first 方法。 如需使用資料庫第一種方法來遵循本教學課程的詳細資訊，請參閱[此 Github 問題](https://github.com/dotnet/AspNetCore.Docs/issues/16897)。
+這是一系列教學課程中的第一篇，示範如何在[ASP.NET Core Razor Pages](xref:razor-pages/index)應用程式中使用 Entity Framework (EF) Core。 教學課程會為虛構的 Contoso 大學建置網站。 網站包含學生入學許可、課程建立和講師指派等功能。 本教學課程使用 code first 方法。 如需使用資料庫第一種方法來遵循本教學課程的詳細資訊，請參閱[此 Github 問題](https://github.com/dotnet/AspNetCore.Docs/issues/16897)。
 
 [下載或檢視已完成的應用程式。](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/data/ef-rp/intro/samples) [下載指示](xref:index#how-to-download-a-sample)。
 
@@ -212,18 +212,18 @@ Visual Studio Code 說明則會使用 [SQLite](https://www.sqlite.org/)，它是
 在本節中，您會使用 ASP.NET scaffolding 工具來產生：
 
 * EF Core「內容」** 類別。 內容是協調指定資料模型 Entity Framework 功能的主類別。 它衍生自 `Microsoft.EntityFrameworkCore.DbContext` 類別。
-* Razor處理實體的建立、讀取、更新和刪除（CRUD）作業的頁面 `Student` 。
+* Razor處理建立、讀取、更新和刪除的頁面， (實體的 CRUD) 作業 `Student` 。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在 *Pages* 資料夾中建立 *Students* 資料夾。
 * 在 [方案總管]**** 中，以滑鼠右鍵按一下 *Page/Students* 資料夾，然後選取 [新增]** [新增 Scaffold 項目]** > ****。
-* 在 [**新增 Scaffold** ] 對話方塊中，選取 [ ** Razor 使用 Entity Framework （CRUD）** > **新增**] 頁面。
-* 在 [ ** Razor 使用 ENTITY FRAMEWORK （CRUD）新增頁面**] 對話方塊中：
+* 在 [**新增 Scaffold** ] 對話方塊中， ** Razor 使用 Entity Framework (CRUD) ** [新增] 選取頁面 > ** **。
+* 在 [ ** Razor 使用 Entity Framework 新增頁面] 中 (CRUD) ** ] 對話方塊：
   * 在 [模型類別]**** 下拉式清單中，選取 [學生 (ContosoUniversity.Models)]****。
   * 在 [資料內容類別]**** 資料列中，選取 **+** (加號)。
   * 將資料內容的名稱從 *ContosoUniversity.Models.ContosoUniversityContext* 變更為 *ContosoUniversity.Data.SchoolContext*。
-  * 選取 [新增]****。
+  * 選取 [新增]。
 
 會自動安裝下列套件：
 
@@ -327,7 +327,7 @@ LocalDB 是輕量版的 SQL Server Express Database Engine，旨在用於應用�
 
 ## <a name="startupcs"></a>Startup.cs
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core 資料庫內容) 會在應用程式啟動期間對相依性插入進行註冊。 需要這些服務的元件（例如頁面）會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼會顯示在本教學課程稍後部分。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core 資料庫內容) 會在應用程式啟動期間對相依性插入進行註冊。 需要這些服務的元件 (例如頁面) 會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼會顯示在本教學課程稍後部分。
 
 Scaffolding 工具會自動對相依性插入容器註冊內容類別。
 
@@ -462,7 +462,7 @@ public async Task OnGetAsync()
 
 ::: moniker range="< aspnetcore-3.0"
 
-Contoso 大學範例 web 應用程式示範如何 Razor 使用 Entity Framework （EF） Core 來建立 ASP.NET Core 頁面應用程式。
+Contoso 大學範例 web 應用程式示範如何 Razor 使用 Entity Framework (EF) Core 來建立 ASP.NET Core 頁面應用程式。
 
 這個範例應用程式是虛構的 Contoso 大學網站。 其中包括的功能有學生入學許可、課程建立、教師指派。 此頁面是說明如何建立 Contoso 大學範例應用程式教學課程系列中的第一頁。
 
@@ -529,11 +529,11 @@ dotnet run
 
 所做的變更已醒目提示。 (所有標記都「不會」** 顯示。)
 
-[!code-html[](intro/samples/cu21/Pages/Shared/_Layout.cshtml?highlight=6,29,35-38,50&name=snippet)]
+[!code-cshtml[](intro/samples/cu21/Pages/Shared/_Layout.cshtml?highlight=6,29,35-38,50&name=snippet)]
 
 在 *Pages/Index.cshtml* 中用下列程式碼取代檔案內容，以使用關於此應用程式的文字來取代關於 ASP.NET 和 MVC 的文字：
 
-[!code-html[](intro/samples/cu21/Pages/Index.cshtml)]
+[!code-cshtml[](intro/samples/cu21/Pages/Index.cshtml)]
 
 ## <a name="create-the-data-model"></a>建立資料模型
 
@@ -599,14 +599,14 @@ dotnet run
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 在 [方案總管]**** 中，以滑鼠右鍵按一下 *Pages/Students* 資料夾 > [新增]** [新增 Scaffold 項目]** > ****。
-* 在 [**新增 Scaffold** ] 對話方塊中，選取 [ ** Razor 使用 Entity Framework （CRUD）** > **新增**] 頁面。
+* 在 [**新增 Scaffold** ] 對話方塊中， ** Razor 使用 Entity Framework (CRUD) ** [新增] 選取頁面 > ** **。
 
-完成 [ ** Razor 使用 ENTITY FRAMEWORK （CRUD）新增頁面**] 對話方塊：
+完成** Razor 使用 ENTITY FRAMEWORK (CRUD) ** ] 對話方塊中的 [新增頁面]：
 
 * 在 [模型類別]**** 下拉式清單中，選取 [學生 (ContosoUniversity.Models)]****。
 * 在 [資料內容類別]**** 列中，選取 **+** (加號) 符號，並將產生的名稱變更為 **ContosoUniversity.Models.SchoolContext**。
 * 在 [資料內容類別]**** 下拉式清單中，選取 **ContosoUniversity.Models.SchoolContext**
-* 選取 [新增]****。
+* 選取 [新增]。
 
 ![CRUD 對話方塊](intro/_static/s1.png)
 
@@ -638,7 +638,7 @@ dotnet aspnet-codegenerator razorpage -m Student -dc ContosoUniversity.Models.Sc
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 需要這些服務的元件（例如頁面）會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，在本教學課程稍後會示範。
+ASP.NET Core 內建[相依性插入](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 是在應用程式啟動期間使用相依性插入來註冊。 需要這些服務的元件 (例如頁面) 會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，在本教學課程稍後會示範。
 
 Scaffolding 工具會自動建立資料庫內容，並向相依性插入容器註冊。
 
@@ -705,7 +705,7 @@ EF Core 會建立空白資料庫。 在本節中，會寫入 `Initialize` 方法
 
 [!code-csharp[](intro/samples/cu21/Data/DbInitializer.cs?name=snippet_Intro)]
 
-注意：上述程式碼會使用 `Models` 命名空間（ `namespace ContosoUniversity.Models` ），而不是 `Data` 。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
+注意：上述程式碼會使用做 `Models` 為命名空間 (`namespace ContosoUniversity.Models`) ，而不是 `Data` 。 `Models` 與產生框架的程式碼一致。 如需詳細資訊，請參閱[此 GitHub Scaffolding 問題](https://github.com/aspnet/Scaffolding/issues/822)。
 
 程式碼會檢查資料庫中是否有任何學生。 如果資料庫中沒有學生，則會使用測試資料初始化資料庫。 會將測試資料載入至陣列而非 `List<T>` 集合，以最佳化效能。
 

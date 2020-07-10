@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/forms-validation
-ms.openlocfilehash: f31a1f1d8942c9d9654dc26e946c022cf21ed9d1
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: b57e2a34f79691f7f2b1ed69cfad25de00c5ca13
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059860"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176211"
 ---
 # <a name="aspnet-core-blazor-forms-and-validation"></a>ASP.NET Core Blazor 表單和驗證
 
@@ -65,13 +65,15 @@ public class ExampleModel
 
 在上述範例中：
 
-* 表單會使用在型別中 `name` 定義的驗證來驗證欄位中的使用者輸入 `ExampleModel` 。 模型會建立在元件的區塊中 `@code` ，並保留在私用欄位（ `exampleModel` ）中。 欄位會指派給元素的 `Model` 屬性 `<EditForm>` 。
+* 表單會使用在型別中 `name` 定義的驗證來驗證欄位中的使用者輸入 `ExampleModel` 。 模型會在元件的區塊中建立 `@code` ，並保存在私用欄位中 (`exampleModel`) 。 欄位會指派給元素的 `Model` 屬性 `<EditForm>` 。
 * <xref:Microsoft.AspNetCore.Components.Forms.InputText>元件的系結 `@bind-Value` ：
-  * 模型屬性（ `exampleModel.Name` ）至 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 元件的 `Value` 屬性。 如需屬性系結的詳細資訊，請參閱 <xref:blazor/components/data-binding#parent-to-child-binding-with-component-parameters> 。
+  * 模型屬性 (`exampleModel.Name`) 至 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 元件的 `Value` 屬性。 如需屬性系結的詳細資訊，請參閱 <xref:blazor/components/data-binding#parent-to-child-binding-with-component-parameters> 。
   * 元件的屬性的變更事件委派 <xref:Microsoft.AspNetCore.Components.Forms.InputText> `ValueChanged` 。
 * <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>元件會使用資料批註附加驗證支援。
 * <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>元件會摘要驗證訊息。
-* `HandleValidSubmit`當表單成功提交（通過驗證）時，就會觸發。
+* `HandleValidSubmit`當表單成功提交 (通過驗證) 時，就會觸發。
+
+## <a name="built-in-forms-components"></a>內建表單元件
 
 有一組內建的輸入元件可用來接收和驗證使用者輸入。 當輸入變更時和送出表單時，會進行驗證。 下表顯示可用的輸入元件。
 
@@ -86,7 +88,7 @@ public class ExampleModel
 
 所有的輸入元件（包括 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> ）都支援任意屬性。 任何不符合元件參數的屬性都會加入至轉譯的 HTML 專案。
 
-輸入元件會提供預設行為，以便在編輯和變更其 CSS 類別時進行驗證，以反映欄位狀態。 某些元件包含有用的剖析邏輯。 例如，和會藉由將無法剖析 <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> 的值註冊為驗證錯誤來妥善處理。 可以接受 null 值的類型也支援目標欄位的 null 屬性（例如 `int?` ）。
+輸入元件會提供預設行為，以便在編輯和變更其 CSS 類別時進行驗證，以反映欄位狀態。 某些元件包含有用的剖析邏輯。 例如，和會藉由將無法剖析 <xref:Microsoft.AspNetCore.Components.Forms.InputDate%601> <xref:Microsoft.AspNetCore.Components.Forms.InputNumber%601> 的值註冊為驗證錯誤來妥善處理。 可以接受 null 值的類型也支援目標欄位的 null 屬性 (例如， `int?`) 。
 
 下列 `Starship` 型別使用較早的屬性集和資料注釋，來定義驗證邏輯 `ExampleModel` ：
 
@@ -194,13 +196,13 @@ public class Starship
 }
 ```
 
-會 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 建立 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 做為階層式[值](xref:blazor/components/cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>也提供有效和無效提交的便利事件（ <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> 、 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit> ）。 或者，使用 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
+會 <xref:Microsoft.AspNetCore.Components.Forms.EditForm> 建立 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 做為階層式[值](xref:blazor/components/cascading-values-and-parameters)，以追蹤編輯程式的相關中繼資料，包括已修改的欄位和目前的驗證訊息。 <xref:Microsoft.AspNetCore.Components.Forms.EditForm>也會針對有效和不正確提交 (、) 提供便利的事件 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnValidSubmit> <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnInvalidSubmit> 。 或者，使用 <xref:Microsoft.AspNetCore.Components.Forms.EditForm.OnSubmit> 來觸發驗證，並使用自訂驗證程式代碼來檢查域值。
 
 在下例中︰
 
 * `HandleSubmit`當選取按鈕時， **`Submit`** 就會執行方法。
 * 表單會使用表單的進行驗證 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 。
-* 藉由將傳遞 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 至在 `ServerValidate` 伺服器上呼叫 Web API 端點的方法（*未顯示*），進一步驗證表單。
+* 藉由將傳遞 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 至在 `ServerValidate` 伺服器上呼叫 Web API 端點的方法，將進一步驗證表單 (*不會顯示*) 。
 * 額外的程式碼會根據用戶端和伺服器端驗證的結果來執行（藉由檢查） `isValid` 。
 
 ```razor
@@ -248,7 +250,7 @@ public class Starship
 
 使用 <xref:Microsoft.AspNetCore.Components.Forms.InputText> 元件來建立使用事件的自訂群組件， `input` 而不是 `change` 事件。
 
-在下列範例中， `CustomInputText` 元件會繼承架構的 `InputText` 元件，並將事件系結（ <xref:Microsoft.AspNetCore.Components.EventCallbackFactoryBinderExtensions.CreateBinder%2A> ）設定為 `oninput` 事件。
+在下列範例中， `CustomInputText` 元件會繼承架構的 `InputText` 元件，並將事件系結 (<xref:Microsoft.AspNetCore.Components.EventCallbackFactoryBinderExtensions.CreateBinder%2A>) 設定為 `oninput` 事件。
 
 `Shared/CustomInputText.razor`:
 
@@ -410,13 +412,13 @@ HTML 中最合理情況的對 `null` 等項是*空字串* `value` 。 架構會�
 
 ::: moniker range="< aspnetcore-5.0"
 
-Blazor當嘗試雙向系結至值時，架構不會自動處理 `null` 空的字串轉換 `<select>` 。 如需詳細資訊，請參閱[修正 `<select>` null 值的系結（dotnet/aspnetcore #23221）](https://github.com/dotnet/aspnetcore/pull/23221)。
+Blazor當嘗試雙向系結至值時，架構不會自動處理 `null` 空的字串轉換 `<select>` 。 如需詳細資訊，請參閱將系結[修正 `<select>` 為 null 值 (dotnet/aspnetcore #23221) ](https://github.com/dotnet/aspnetcore/pull/23221)。
 
 ::: moniker-end
 
 ## <a name="validation-support"></a>驗證支援
 
-<xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>元件會使用資料批註，將驗證支援附加至串聯的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 。 若要啟用使用資料批註進行驗證的支援，則需要這個明確的手勢。 若要使用不同于資料批註的驗證系統，請將取代為 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 自訂的執行。 ASP.NET Core 的執行可用於參考來源中的檢查： [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs) / [`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs) 。 先前的參考來源連結提供存放庫分支的程式碼 `master` ，其代表下一版 ASP.NET Core 的產品單位目前開發。 若要選取不同版本的分支，請使用 GitHub 分支選取器（例如 `release/3.1` ）。
+<xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>元件會使用資料批註，將驗證支援附加至串聯的 <xref:Microsoft.AspNetCore.Components.Forms.EditContext> 。 若要啟用使用資料批註進行驗證的支援，則需要這個明確的手勢。 若要使用不同于資料批註的驗證系統，請將取代為 <xref:Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator> 自訂的執行。 ASP.NET Core 的執行可用於參考來源中的檢查： [`DataAnnotationsValidator`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/DataAnnotationsValidator.cs) / [`AddDataAnnotationsValidation`](https://github.com/dotnet/AspNetCore/blob/master/src/Components/Forms/src/EditContextDataAnnotationsExtensions.cs) 。 先前的參考來源連結提供存放庫分支的程式碼 `master` ，其代表下一版 ASP.NET Core 的產品單位目前開發。 若要選取不同版本的分支，請使用 GitHub 分支選取器 (例如 `release/3.1`) 。
 
 Blazor會執行兩種類型的驗證：
 
@@ -445,7 +447,7 @@ Blazor會執行兩種類型的驗證：
 
 <xref:Microsoft.AspNetCore.Components.Forms.ValidationMessage%601>和 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 元件支援任意屬性。 任何不符合元件參數的屬性都會加入至產生的 `<div>` 或 `<ul>` 元素。
 
-在應用程式的樣式表單（或）中控制驗證訊息的樣式 `wwwroot/css/app.css` `wwwroot/css/site.css` 。 預設 `validation-message` 類別會將驗證訊息的文字色彩設定為紅色：
+在應用程式的樣式表單中控制驗證訊息的樣式 (`wwwroot/css/app.css` 或 `wwwroot/css/site.css`) 。 預設 `validation-message` 類別會將驗證訊息的文字色彩設定為紅色：
 
 ```css
 .validation-message {
@@ -475,7 +477,7 @@ private class CustomValidator : ValidationAttribute
 ```
 
 > [!NOTE]
-> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> 是 `null` \(英文\)。 不支援在方法中插入服務以進行驗證 `IsValid` 。
+> <xref:System.ComponentModel.DataAnnotations.ValidationContext.GetService%2A?displayProperty=nameWithType> 為 `null`。 不支援在方法中插入服務以進行驗證 `IsValid` 。
 
 ### <a name="blazor-data-annotations-validation-package"></a>Blazor資料批註驗證封裝
 
@@ -587,7 +589,7 @@ public class ShipDescription
 上述方法的副作用在於，在 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 使用者與任何一個欄位互動之後，元件會填入不正確欄位。 此案例可透過下列其中一種方式來解決：
 
 * 請勿使用 <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary> 表單上的元件。
-* <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>選取 [提交] 按鈕時，讓元件顯示（例如，在方法中 `HandleValidSubmit` ）。
+* <xref:Microsoft.AspNetCore.Components.Forms.ValidationSummary>當選取 [提交] 按鈕時，讓元件顯示 (例如，在 `HandleValidSubmit` 方法) 中。
 
 ```razor
 <EditForm EditContext="@editContext" OnValidSubmit="HandleValidSubmit">

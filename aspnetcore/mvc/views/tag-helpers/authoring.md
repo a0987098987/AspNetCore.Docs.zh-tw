@@ -14,18 +14,18 @@ no-loc:
 - Razor
 - SignalR
 uid: mvc/views/tag-helpers/authoring
-ms.openlocfilehash: 5e250debb5c4c2ef00b844557d31ed8281d2ff2f
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: e630bf4b0c121796315be077623abae73d240b37
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407586"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212455"
 ---
 # <a name="author-tag-helpers-in-aspnet-core"></a>ASP.NET Core 中的編寫標籤協助程式
 
 作者：[Rick Anderson](https://twitter.com/RickAndMSFT)
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/mvc/views/tag-helpers/authoring/sample) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="get-started-with-tag-helpers"></a>開始使用標籤協助程式
 
@@ -77,7 +77,7 @@ ms.locfileid: "85407586"
 
    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImportsCopyEmail.cshtml?highlight=2,3)]
 
-   上述程式碼使用萬用字元語法，指定將使用組件中的所有標籤協助程式。 `@addTagHelper` 後面的第一個字串指定要載入的標籤協助程式 (使用 "*" 表示所有標籤協助程式)，而第二個字串 "AuthoringTagHelpers" 指定標籤協助程式所在的組件。 另請注意，第二行會使用萬用字元語法來帶入 ASP.NET Core MVC 標籤協助程式（標記協助程式[簡介](intro.md)中會討論這些 helper）。這是讓標籤協助 `@addTagHelper` 程式可供視圖使用的指示詞 Razor 。 或者，您可以提供標籤協助程式的完整名稱 (FQN)，如下所示：
+   上述程式碼使用萬用字元語法，指定將使用組件中的所有標籤協助程式。 `@addTagHelper` 後面的第一個字串指定要載入的標籤協助程式 (使用 "*" 表示所有標籤協助程式)，而第二個字串 "AuthoringTagHelpers" 指定標籤協助程式所在的組件。 另請注意，第二行會使用萬用字元語法來帶入 ASP.NET Core MVC 標記協助程式 (這些協助程式會在標籤協助程式[簡介](intro.md)中討論。 ) 它是讓標籤協助 `@addTagHelper` 程式可供視圖使用的指示詞。 Razor 或者，您可以提供標籤協助程式的完整名稱 (FQN)，如下所示：
 
 ```csharp
 @using AuthoringTagHelpers
@@ -87,20 +87,20 @@ ms.locfileid: "85407586"
 
 <!--
 the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
-    [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
+    [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/_ViewImports.cshtml?highlight=3&range=1-3)]
 -->
 
 若要使用 FQN 將標籤協助程式新增至檢視，您需先新增 FQN (`AuthoringTagHelpers.TagHelpers.EmailTagHelper`)，再新增**組件名稱** (*AuthoringTagHelpers*，不一定要是 `namespace`)。 大部分開發人員都會想要使用萬用字元語法。 [標籤協助程式簡介](intro.md)會詳述標籤協助程式新增、移除、階層和萬用字元語法。
 
 1. 使用下列變更來更新 *Views/Home/Contact.cshtml* 檔案中的標記：
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
 
 1. 執行應用程式，並使用慣用的瀏覽器來檢視 HTML 原始檔，讓您可以驗證電子郵件標籤已取代為錨點標籤 (例如，`<a>Support</a>`)。 *Support* 和 *Marketing* 會轉譯為連結，但沒有 `href` 屬性可讓它們運作。 我們將在下節修正該問題。
 
 ## <a name="setattribute-and-setcontent"></a>SetAttribute 和 SetContent
 
-在本節中，我們將更新 `EmailTagHelper`，以建立電子郵件的有效錨點標籤。 我們會將它更新為從 Razor 視圖中取出資訊（以屬性的形式 `mail-to` ），並使用它來產生錨點。
+在本節中，我們將更新 `EmailTagHelper`，以建立電子郵件的有效錨點標籤。 我們會將它更新為以 Razor 屬性) 的形式從 view (的資訊 `mail-to` ，並使用它來產生錨點。
 
 使用下列程式碼更新 `EmailTagHelper` 類別：
 
@@ -118,14 +118,14 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 1. 使用下列變更來更新 *Views/Home/Contact.cshtml* 檔案中的標記：
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/ContactCopy.cshtml?highlight=15,16)]
 
 1. 執行應用程式，並驗證它會產生正確的連結。
 
 <a name="self-closing"></a>
 
    > [!NOTE]
-   > 如果您要撰寫電子郵件標籤自我結尾 (`<email mail-to="Rick" />`)，則最終輸出也會是自我結尾。 若要啟用只使用開始標記（）寫入標記的功能 `<email mail-to="Rick">` ，您必須使用下列內容來標記類別：
+   > 如果您要撰寫電子郵件標籤自我結尾 (`<email mail-to="Rick" />`)，則最終輸出也會是自我結尾。 若要啟用只以開頭標記 (寫入標記的功能 `<email mail-to="Rick">`) 您必須使用下列內容來標記類別：
    >
    > [!code-csharp[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/TagHelpers/EmailTagHelperMailVoid.cs?highlight=1&range=6-10)]
 
@@ -147,7 +147,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 1. 對 *Views/Home/Contact.cshtml* 檔案進行下列變更，讓標籤協助程式可以取得目標電子郵件。
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=15,16&range=1-17)]
 
 1. 執行應用程式，並驗證它產生有效的電子郵件連結。
 
@@ -163,7 +163,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 1. 修改 *About.cshtml* 檢視，以包含 `bold` 屬性值。 已完成的程式碼如下所示。
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/AboutBoldOnly.cshtml?highlight=7)]
 
 1. 執行應用程式。 您可以使用慣用的瀏覽器來檢查原始檔，並驗證標記。
 
@@ -215,7 +215,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
    [HtmlTargetElement("Website-Information")]
    ```
 
-   * 自我結尾項目沒有內容。 在此範例中， Razor 標記會使用自我結束記號，但標籤協助程式將會建立[區段](https://www.w3.org/TR/html5/sections.html#the-section-element)元素（這不是自行關閉，而且您會在專案內寫入內容 `section` ）。 因此，您需要將 `TagMode` 設定為 `StartTagAndEndTag`，才能撰寫輸出。 或者，您可以將設定 `TagMode` 的行設定為註解，並撰寫含結尾標籤 (tag) 的標籤 (markup)  (本教學課程稍後會提供範例標記)。
+   * 自我結尾項目沒有內容。 在此範例中， Razor 標記會使用自我結束記號，但標籤協助程式將會建立[區段](https://www.w3.org/TR/html5/sections.html#the-section-element)元素 (不會自行關閉，而且您會在專案) 內寫入內容 `section` 。 因此，您需要將 `TagMode` 設定為 `StartTagAndEndTag`，才能撰寫輸出。 或者，您可以將設定 `TagMode` 的行設定為註解，並撰寫含結尾標籤 (tag) 的標籤 (markup)  (本教學課程稍後會提供範例標記)。
 
    * 下行中的 `$` (貨幣符號) 使用[插入字串](/dotnet/csharp/language-reference/keywords/interpolated-strings)：
 
@@ -225,7 +225,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 1. 將下列標記新增至 *About.cshtml* 檢視。 反白顯示的標記會顯示網站資訊。
 
-   [!code-html[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
+   [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/About.cshtml?highlight=1,4-8, 18-999)]
 
    > [!NOTE]
    > 在如下所 Razor 示的標記中：
@@ -251,7 +251,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 1. 將 *Views/Home/Index.cshtml* 檔案的內容取代為下列標記：
 
-   [!code-csharp[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
+   [!code-cshtml[](authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Index.cshtml)]
 
 1. 將 `Home` 控制器中的 `Index` 方法取代為下列程式碼：
 
@@ -281,7 +281,7 @@ the following snippet uses TagHelpers3 and should use TagHelpers (not the 3)
 
 1. 將下列標記新增至 *Views/Home/Contact.cshtml* 檔案結尾：
 
-   [!code-html[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
+   [!code-cshtml[](../../../mvc/views/tag-helpers/authoring/sample/AuthoringTagHelpers/src/AuthoringTagHelpers/Views/Home/Contact.cshtml?highlight=19)]
 
 1. 執行應用程式，並驗證標籤協助程式正確地轉譯錨點。
 

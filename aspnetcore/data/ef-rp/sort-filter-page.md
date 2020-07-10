@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-rp/sort-filter-page
-ms.openlocfilehash: 0a87fe2f4cf7014cc15752dcf25545ce7aaa4687
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 496221bb4e34e1f9e4177d1934786a77d8c9b411
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408600"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212535"
 ---
 # <a name="part-3-razor-pages-with-ef-core-in-aspnet-core---sort-filter-paging"></a>第3部分， Razor ASP.NET Core 排序、篩選、分頁中有 EF Core 的頁面
 
@@ -295,8 +295,8 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 [!code-csharp[](intro/samples/cu21/Pages/Students/Index.cshtml.cs?name=snippet_SortOnly)]
 
-上述程式碼會從 URL 中的查詢字串接收 `sortOrder` 參數。 URL （包含查詢字串）是由[錨點標記](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
-)協助程式所產生
+上述程式碼會從 URL 中的查詢字串接收 `sortOrder` 參數。  (包含查詢字串) 的 URL 是由[錨點](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper
+)標籤協助程式所產生。
 
 `sortOrder`參數為 "Name" 或 "Date"。 `sortOrder` 參數後面可以選擇接著 "_desc" 來指定遞減順序。 預設排序順序為遞增。
 
@@ -337,7 +337,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 用下列醒目標示的程式碼，取代 *Students/Index.cshtml* 中的程式碼：
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index2.cshtml?highlight=17-19,25-27)]
 
 上述程式碼：
 
@@ -393,7 +393,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 在 *Pages/Students/Index.cshtml* 中新增下列醒目標示的程式碼，以建立 **Search** 按鈕和各式各樣的色彩。
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index3.cshtml?highlight=14-23&range=1-25)]
 
 上述程式碼會使用 `<form>` [標籤協助程式](xref:mvc/views/tag-helpers/intro) 新增搜尋文字方塊和按鈕。 `<form>` 標籤協助程式預設為使用 POST 提交表單資料。 在 POST 中，參數會在 HTTP 訊息本文中傳遞，而不是在 URL 中傳遞。 使用 HTTP GET 時，表單資料會以查詢字串的形式在 URL 中傳遞。 以查詢字串來傳遞資料，可讓使用者為 URL 加上書籤。 [W3C 指導方針](https://www.w3.org/2001/tag/doc/whenToUseGet.html) 建議，只有在動作不會產生更新時才應使用 GET。
 
@@ -471,15 +471,15 @@ http://localhost:5000/Students?SearchString=an
 
 更新 *Students/Index.cshtml* 中的標記。 所做的變更已醒目提示：
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?highlight=28-31,37-40,68-999)]
 
 資料行頁首連結會使用查詢字串，將目前的搜尋字串傳遞至 `OnGetAsync` 方法，讓使用者可以在篩選結果內排序：
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?range=28-31)]
 
 分頁按鈕會透過標籤協助程式來顯示：
 
-[!code-html[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
+[!code-cshtml[](intro/samples/cu21/Pages/Students/Index.cshtml?range=72-)]
 
 執行應用程式並巡覽至學生頁面。
 
@@ -525,7 +525,7 @@ LINQ 陳述式會依註冊日期將學生實體組成群組、計算每個群組
 
 以下列程式碼取代 *Pages/About.cshtml* 檔案中的程式碼：
 
-[!code-html[](intro/samples/cu21/Pages/About.cshtml)]
+[!code-cshtml[](intro/samples/cu21/Pages/About.cshtml)]
 
 執行應用程式並巡覽至 About 頁面。 每個註冊日期的學生人數將會顯示在資料表中。
 

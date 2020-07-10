@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/razor-pages/razor-pages-start
-ms.openlocfilehash: 97e3f60480bc8e7e88c8361e5b13f02d98765d9e
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 77b230f14b4eef60d771daf8fe09288a9dd3c69c
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405298"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212996"
 ---
 # <a name="tutorial-get-started-with-razor-pages-in-aspnet-core"></a>教學課程：開始使用 Razor ASP.NET Core 中的頁面
 
@@ -44,7 +44,7 @@ ms.locfileid: "85405298"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -67,7 +67,7 @@ ms.locfileid: "85405298"
 * 從 Visual Studio 的 [檔案]**** 功能表中，選取 [新增]**[專案]** > **** 。
 * 建立新的 ASP.NET Core Web 應用程式並選取 [下一步]****。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
-* 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
+* 將專案命名為** Razor PagesMovie**。 請務必將專案命名為* Razor PagesMovie* ，如此一來，當您複製並貼上程式碼時，命名空間將會相符。
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
 
 * 在下拉式清單 [ **Web 應用程式**] 中選取 [ **ASP.NET Core 3.1** ]，然後選取 [**建立**]。
@@ -91,10 +91,10 @@ ms.locfileid: "85405298"
   code -r RazorPagesMovie
   ```
 
-  * `dotnet new`命令會 Razor 在*RazorPagesMovie*資料夾中建立新的頁面專案。
-  * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
+  * `dotnet new`命令會 Razor 在* Razor PagesMovie*資料夾中建立新的頁面專案。
+  * `code`命令會在 Visual Studio Code 的目前實例中開啟* Razor PagesMovie*資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]****。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' PagesMovie ' 中遺漏了 debug Razor 。要新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
@@ -108,16 +108,14 @@ ms.locfileid: "85405298"
 
   ![macOS web 應用程式範本選取專案](razor-pages-start/_static/web_app_template_vsmac.png)
 
-* 確認下列設定：
+* 在 [**設定您的新 Web 應用程式**] 對話方塊中：
 
-  * 設定為 **.Net Core 3.1**的**目標 Framework** 。
-  * **驗證**設為 [**無驗證**]。
-   
-  選取 [下一步] 。
+  * 確認 [**驗證**] 已設為 [**無驗證**]。
+  * 如果提供選取**目標 Framework**的選項，請選取最新的3.x 版。
 
-  ![macOS .NET Core 3.1 選項](razor-pages-start/_static/targetframework3.png)
+  選取 [下一步]。
 
-* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]****。
+* 將專案命名為** Razor PagesMovie**，然後選取 [**建立**]。
 
   ![macOS 將專案命名為](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -190,7 +188,7 @@ ms.locfileid: "85405298"
 
 ![Home 或 Index 頁面](razor-pages-start/_static/home2.2.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -216,7 +214,7 @@ ms.locfileid: "85405298"
 
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/np_2.1.png)
 
-* 將專案命名為 **RazorPagesMovie**。 請務必將專案命名為 *RazorPagesMovie*，以便在您複製並貼上程式碼時，名稱空間會相符。
+* 將專案命名為** Razor PagesMovie**。 請務必將專案命名為* Razor PagesMovie* ，如此一來，當您複製並貼上程式碼時，命名空間將會相符。
 
   ![新增 ASP.NET Core Web 應用程式](razor-pages-start/_static/config.png)
 
@@ -241,10 +239,10 @@ ms.locfileid: "85405298"
   code -r RazorPagesMovie
   ```
 
-  * `dotnet new`命令會 Razor 在*RazorPagesMovie*資料夾中建立新的頁面專案。
-  * `code` 命令會在目前的 Visual Studio Code 執行個體中開啟 *RazorPagesMovie* 資料夾。
+  * `dotnet new`命令會 Razor 在* Razor PagesMovie*資料夾中建立新的頁面專案。
+  * `code`命令會在 Visual Studio Code 的目前實例中開啟* Razor PagesMovie*資料夾。
 
-* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' RazorPagesMovie ' 中遺漏了 debug。要新增它們嗎？** 選取 [是]****。
+* 狀態列的 OmniSharp 火焰圖示變為綠色後，會有一個對話方塊要求**所需的資產建立，而且 ' PagesMovie ' 中遺漏了 debug Razor 。要新增它們嗎？** 選取 [是]。
 
   *.vscode* 目錄 (其中包含 *launch.json* 和 *tasks.json* 檔案) 會被新增至專案的根目錄。
 
@@ -256,11 +254,14 @@ ms.locfileid: "85405298"
 
 * 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用**  >  **程式**  >  **] [下一步]**。 在8.6 版或更新版本中，選取 [ **web 和主控台**  >  **應用**  >  **程式**  >  **] [下一步]**。
 
-* 在 [設定**您的新 ASP.NET Core WEB API** ] 對話方塊中，將 [**目標 Framework** ] 設為 [ **.net Core 3.1**]。
+* 在 [**設定您的新 Web 應用程式**] 對話方塊中：
 
-  ![macOS .NET Core 3.0 選取項目](razor-pages-start/_static/targetframework3.png)
+  * 確認 [**驗證**] 已設為 [**無驗證**]。
+  * 如果提供選取**目標 Framework**的選項，請選取最新的2.x 版。
 
-* 將專案命名為 **RazorPagesMovie**，然後選取 [建立]****。
+  選取 [下一步]。
+
+* 將專案命名為** Razor PagesMovie**，然後選取 [**建立**]。
 
   ![nameproj](razor-pages-start/_static/RazorPagesMovie.png)
 
@@ -276,7 +277,7 @@ ms.locfileid: "85405298"
 
   [!INCLUDE[](~/includes/trustCertVS.md)]
 
-  Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
+  Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 Localhost 只會為來自本機電腦的 Web 要求提供服務。 當 Visual Studio 建立 Web 專案時，會為網頁伺服器使用隨機連接埠。
 
 * 在應用程式的首頁上，選取 [接受]**** 同意追蹤。
 

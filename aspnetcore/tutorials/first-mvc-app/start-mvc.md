@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/start-mvc
-ms.openlocfilehash: 01321d68defafbe79371250669f921307bcfdba6
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d4eb1744b1186704603430584b3da0793f90ee49
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85407040"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213079"
 ---
 # <a name="get-started-with-aspnet-core-mvc"></a>ASP.NET Core MVC 使用者入門
 
@@ -102,18 +102,16 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![macOS 新增方案](start-mvc/_static/new_project_vsmac.png)
 
-* 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用**  >  **程式 Web 應用程式（模型-視圖控制器）**  >  **] [下一步]**。 在8.6 版或更新版本中，選取 [ **web 和主控台**  >  **應用**  >  **程式] [web 應用程式（模型-視圖控制器）**  >  **] 下一步**。
+* 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用**  >  **程式 Web 應用程式] ([模型-視圖) 控制器**  >  **] [下一步]**。 在8.6 版或更新版本中，選取 [ **web 和主控台**  >  **應用**  >  **程式] [web 應用程式] ([模型-視圖控制器) **  >  **下一步]**
 
   ![macOS web 應用程式範本選取專案](start-mvc/_static/web_app_template_vsmac.png)
 
-* 確認下列設定：
+* 在 [**設定您的新 Web 應用程式**] 對話方塊中：
 
-  * 設定為 **.Net Core 3.1**的**目標 Framework** 。
-  * **驗證**設為 [**無驗證**]。
-   
-  選取 [下一步] 。
+  * 確認 [**驗證**] 已設為 [**無驗證**]。
+  * 如果提供選取**目標 Framework**的選項，請選取最新的3.x 版。
 
-  ![macOS .NET Core 3.1 選項](start-mvc/_static/new_project_31_vsmac.png)
+  選取 [下一步]。
 
 * 將專案命名為 **MvcMovie**，然後選取 [建立]****。
 
@@ -129,8 +127,8 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/trustCertVS.md)]
 
-* Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
-* 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
+* Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會為網頁伺服器使用隨機連接埠。
+* 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員偏好使用非偵錯模式來快速啟動應用程式並檢視變更。
 * 您可以從 [偵錯]**** 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 
   ![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
@@ -161,7 +159,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
+* 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會為網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
 * 您可以從 [執行]**** 功能表的偵錯或非偵錯模式中啟動應用程式。
 
   下圖顯示應用程式：
@@ -257,11 +255,14 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![macOS 新增方案](./start-mvc/_static/new_project_vsmac.png)
 
-* 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用**  >  **程式 Web 應用程式（模型-視圖控制器）**  >  **] [下一步]**。 在8.6 版或更新版本中，選取 [ **web 和主控台**  >  **應用**  >  **程式] [web 應用程式（模型-視圖控制器）**  >  **] 下一步**。
+* 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用**  >  **程式 Web 應用程式] ([模型-視圖) 控制器**  >  **] [下一步]**。 在8.6 版或更新版本中，選取 [ **web 和主控台**  >  **應用**  >  **程式] [web 應用程式] ([模型-視圖控制器) **  >  **下一步]**
 
-* 在 [**設定新的 ASP.NET Core WEB API** ] 對話方塊中，接受預設的 [ **.net Core 2.2**]**目標 Framework** 。
+* 在 [**設定您的新 Web 應用程式**] 對話方塊中：
 
-  ![macOS .NET Core 2.2 選取項目](./start-mvc/_static/new_project_22_vsmac.png)
+  * 確認 [**驗證**] 已設為 [**無驗證**]。
+  * 如果提供選取**目標 Framework**的選項，請選取最新的2.x 版。
+
+  選取 [下一步]。
 
 * 將專案命名為 **MvcMovie**，然後選取 [建立]****。
 
@@ -275,8 +276,8 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/trustCertVS.md)]
 
-* Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。
-* 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式，以便快速啟動應用程式並檢視變更。
+* Visual Studio 會啟動 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)，並執行應用程式。 請注意，位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會為網頁伺服器使用隨機連接埠。
+* 使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員偏好使用非偵錯模式來快速啟動應用程式並檢視變更。
 * 您可以從 [偵錯]**** 功能表項目的偵錯或非偵錯模式中啟動應用程式：
 
   ![[偵錯] 功能表](start-mvc/_static/debug_menu.png)
@@ -285,7 +286,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   ![IIS Express](start-mvc/_static/iis_express.png)
 
-* 選取 [接受]**** 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+* 選取 [接受] 以同意追蹤。 此應用程式不會追蹤個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
   ![Home 或 Index 頁面](start-mvc/_static/privacy.png)
 
@@ -303,7 +304,7 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
   使用 Ctrl + F5 (非偵錯模式) 啟動應用程式，可讓您變更程式碼、儲存檔案、重新整理瀏覽器，以及查看程式碼變更。 許多開發人員想要使用非偵錯模式來重新整理頁面並檢視變更。
 
-* 選取 [接受]**** 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+* 選取 [接受] 以同意追蹤。 此應用程式不會追蹤個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
   ![Home 或 Index 頁面](start-mvc/_static/privacy.png)
 
@@ -317,10 +318,10 @@ Visual Studio 在您剛才建立的 MVC 專案中使用了預設範本。 您只
 
 [!INCLUDE[](~/includes/trustCertMac.md)]
 
-* 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會對網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
+* 位址列會顯示 `localhost:port#`，而不是類似於 `example.com` 的內容。 這是因為 `localhost` 是本機電腦的標準主機名稱。 當 Visual Studio 建立 Web 專案時，會為網頁伺服器使用隨機連接埠。 當您執行應用程式時，會看到不同的連接埠編號。
 * 您可以從 [執行]**** 功能表的偵錯或非偵錯模式中啟動應用程式。
 
-* 選取 [接受]**** 同意追蹤。 此應用程式不會追踪個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
+* 選取 [接受] 以同意追蹤。 此應用程式不會追蹤個人資訊。 範本產生之程式碼所包含的資產有利於滿足[一般資料保護規定 (GDPR)](xref:security/gdpr)。
 
   ![Home 或 Index 頁面](./start-mvc/_static/output_privacy_macos.png)
 

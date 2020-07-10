@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: data/ef-mvc/concurrency
-ms.openlocfilehash: 3038ae8f01273013e6c35694583d9674a1668bac
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: f6ee60bf5e75256a9bf330f56b2f09b06f720a85
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401554"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212799"
 ---
 # <a name="tutorial-handle-concurrency---aspnet-mvc-with-ef-core"></a>教學課程：使用 EF Core 處理並行 ASP.NET MVC
 
@@ -83,11 +83,11 @@ Jana 先按了一下 [儲存]****，並且在瀏覽器返回 [索引] 頁面時�
 
 * 您可以讓 John 的變更覆寫 Jane 的變更。
 
-     下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，且預算的金額已還原到美金 $350,000.00 元。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。 （用戶端的所有值會優先于資料存放區中的內容）。如本節簡介中所述，如果您沒有針對並行處理進行任何編碼，則會自動發生。
+     下一次當有人瀏覽英文部門時，他們便會看到開始日期為 2013/9/1，且預算的金額已還原到美金 $350,000.00 元。 這稱之為「用戶端獲勝 (Client Wins)」** 或「最後寫入為準 (Last in Wins)」** 案例。  (用戶端的所有值會優先于資料存放區中的內容。如本節簡介中所述 ) ，如果您未對並行處理進行任何編碼，則會自動發生。
 
 * 您可以防止 John 的變更更新到資料庫中。
 
-     一般而言，您會顯示一個錯誤訊息，將資料目前的狀態顯示給他，然後允許他重新套用他所作出的變更 (若他還是要變更的話)。 這稱為「存放區獲勝 (Store Wins)」** 案例。 （資料存放區的值會優先于用戶端所提交的值。）在本教學課程中，您將會實行「存放區獲勝」案例。 這個方法可確保沒有任何變更會在使用者收到警示，告知其發生的事情前遭到覆寫。
+     一般而言，您會顯示一個錯誤訊息，將資料目前的狀態顯示給他，然後允許他重新套用他所作出的變更 (若他還是要變更的話)。 這稱為「存放區獲勝 (Store Wins)」** 案例。  (資料存放區的值會優先于用戶端所提交的值。 ) 您將在本教學課程中執行存放區的 Wins 案例。 這個方法可確保沒有任何變更會在使用者收到警示，告知其發生的事情前遭到覆寫。
 
 ### <a name="detecting-concurrency-conflicts"></a>偵測並行衝突
 
@@ -148,7 +148,7 @@ Scaffolding 引擎會在 [索引] 檢視中建立 RowVersion 資料行，但該�
 
 請以下列程式碼取代 *Views/Departments/Index.cshtml* 中的程式碼。
 
-[!code-html[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Index.cshtml?highlight=4,7,44)]
 
 這會將標題變更為"Departments"，刪除 RowVersion 資料行，並為系統管理員顯示完整的名稱而非只有名字。
 
@@ -198,7 +198,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 * 將 [選取系統管理員] 選項新增到下拉式清單中。
 
-[!code-html[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Edit.cshtml?highlight=16,34-36)]
 
 ## <a name="test-concurrency-conflicts"></a>測試並行衝突
 
@@ -214,7 +214,7 @@ _context.Entry(departmentToUpdate).Property("RowVersion").OriginalValue = rowVer
 
 ![變更之後的 Department [編輯] 頁面 2](concurrency/_static/edit-after-change-2.png)
 
-按一下 [檔案] ****。 您會看到一個錯誤訊息：
+按一下 [儲存]。 您會看到一個錯誤訊息：
 
 ![Department [編輯] 頁面錯誤訊息](concurrency/_static/edit-error.png)
 
@@ -248,7 +248,7 @@ public async Task<IActionResult> DeleteConfirmed(int id)
 public async Task<IActionResult> Delete(Department department)
 ```
 
-您也將動作方法的名稱從 `DeleteConfirmed` 變更為 `Delete`。 Scaffold 程式碼使用了 `DeleteConfirmed` 的名稱來給予 HttpPost 方法一個唯一的簽章。 （CLR 需要多載的方法，才能有不同的方法參數）。由於簽章是唯一的，因此您可以使用 MVC 慣例，並針對 HttpPost 和 HttpGet delete 方法使用相同的名稱。
+您也將動作方法的名稱從 `DeleteConfirmed` 變更為 `Delete`。 Scaffold 程式碼使用了 `DeleteConfirmed` 的名稱來給予 HttpPost 方法一個唯一的簽章。  (CLR 需要多載的方法，以擁有不同的方法參數。 ) 簽章是唯一的，您可以使用 MVC 慣例，並針對 HttpPost 和 HttpGet delete 方法使用相同的名稱。
 
 若部門已遭刪除，`AnyAsync` 方法會傳回 false，應用程式便會直接返回 Index 方法。
 
@@ -258,7 +258,7 @@ public async Task<IActionResult> Delete(Department department)
 
 在 *Views/Departments/Delete.cshtml* 中，以下列新增錯誤訊息欄位和 DepartmentID 及 RowVersion 屬性隱藏欄位的程式碼取代 Scaffold 程式碼。 所做的變更已醒目提示。
 
-[!code-html[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Delete.cshtml?highlight=9,38,44,45,48)]
 
 這會進行下列變更：
 
@@ -288,11 +288,11 @@ public async Task<IActionResult> Delete(Department department)
 
 取代 *Views/Departments/Details.cshtml* 中的程式碼以刪除 RowVersion 資料行並顯示系統管理員的完整名稱。
 
-[!code-html[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Details.cshtml?highlight=35)]
 
 取代 *Views/Departments/Create.cshtml* 中的程式碼來將 [選取 ] 選項新增到下拉式清單中。
 
-[!code-html[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
+[!code-cshtml[](intro/samples/cu/Views/Departments/Create.cshtml?highlight=32-34)]
 
 ## <a name="get-the-code"></a>取得程式碼
 

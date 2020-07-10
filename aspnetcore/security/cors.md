@@ -1,5 +1,5 @@
 ---
-title: 啟用 ASP.NET Core 中的跨原始來源要求（CORS）
+title: '在 ASP.NET Core 中啟用跨原始來源要求 (CORS) '
 author: rick-anderson
 description: 瞭解 CORS 如何作為標準，以允許或拒絕 ASP.NET Core 應用程式中的跨原始來源要求。
 ms.author: riande
@@ -14,14 +14,14 @@ no-loc:
 - Razor
 - SignalR
 uid: security/cors
-ms.openlocfilehash: 0a2be31092ab491e23ab9de9be676b5b4d3963ee
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: dc8e68ef482025443147eeb27bd3f245c1a1a5ed
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060276"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86212884"
 ---
-# <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>啟用 ASP.NET Core 中的跨原始來源要求（CORS）
+# <a name="enable-cross-origin-requests-cors-in-aspnet-core"></a>在 ASP.NET Core 中啟用跨原始來源要求 (CORS) 
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -31,18 +31,18 @@ ms.locfileid: "86060276"
 
 瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制稱為「*相同來源原則*」。 相同來源的原則可防止惡意網站從另一個網站讀取敏感性資料。 有時候，您可能會想要允許其他網站向您的應用程式發出跨原始來源要求。 如需詳細資訊，請參閱[MOZILLA CORS 一文](https://developer.mozilla.org/docs/Web/HTTP/CORS)。
 
-[跨原始來源資源分享](https://www.w3.org/TR/cors/)（CORS）：
+[跨原始來源資源分享](https://www.w3.org/TR/cors/) (CORS) ：
 
 * 是一種 W3C 標準，可讓伺服器放寬相同的來源原則。
 * **不**是安全性功能，CORS 放寬安全性。 藉由允許 CORS，API 不會更安全。 如需詳細資訊，請參閱[CORS 的運作方式](#how-cors)。
 * 允許伺服器明確允許某些跨原始來源要求，同時拒絕其他要求。
 * 比先前的技術更安全且更具彈性，例如[JSONP](/dotnet/framework/wcf/samples/jsonp)。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/3.1sample/Cors/WebAPI) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="same-origin"></a>相同的來源
 
-如果兩個 Url 具有相同的配置、主機和埠（[RFC 6454](https://tools.ietf.org/html/rfc6454)），就會有相同的來源。
+如果兩個 Url 具有相同的配置、主機和埠 ([RFC 6454](https://tools.ietf.org/html/rfc6454)) ，則其具有相同的來源。
 
 這兩個 Url 具有相同的來源：
 
@@ -101,7 +101,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會將 CORS �
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/Startup2.cs?name=snippet)]
 
-注意：指定的 URL**不**能包含尾端斜線（ `/` ）。 如果 URL 以結束 `/` ，則比較會 `false` 傳回，而且不會傳回任何標頭。
+注意：指定的 URL**不**能包含 () 的尾端斜線 `/` 。 如果 URL 以結束 `/` ，則比較會 `false` 傳回，而且不會傳回任何標頭。
 
 <a name="dp"></a>
 
@@ -188,7 +188,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會將 CORS �
 
 * 不會使用[端點路由](#ecors)來啟用 CORS。
 * 不會定義[預設的 CORS 原則](#dp)。
-* 使用[[EnableCors （"MyPolicy"）]](#attr)來啟用 `"MyPolicy"` 控制器的 CORS 原則。
+* 使用[[EnableCors ( "MyPolicy" ) ]](#attr)來啟用 `"MyPolicy"` 控制器的 CORS 原則。
 * 停用方法的 CORS `GetValues2` 。
 
 如需測試上述程式碼的指示，請參閱[測試 CORS](#testc) 。
@@ -210,7 +210,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會將 CORS �
 
 ## <a name="set-the-allowed-origins"></a>設定允許的原始來源
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>：允許使用任何配置（或）來自所有來源的 CORS 要求 `http` `https` 。 `AllowAnyOrigin`不安全，因為*任何網站*都可以對應用程式發出跨原始來源要求。
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>：允許所有來源的 CORS 要求與任何配置 (`http` 或 `https`) 。 `AllowAnyOrigin`不安全，因為*任何網站*都可以對應用程式發出跨原始來源要求。
 
 > [!NOTE]
 > 指定 `AllowAnyOrigin` 和 `AllowCredentials` 是不安全的設定，而且可能會導致跨網站偽造要求。 當應用程式已設定這兩種方法時，CORS 服務會傳回不正確 CORS 回應。
@@ -246,7 +246,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會將 CORS �
 
 [!code-csharp[](cors/3.1sample/Cors/WebAPI/StartupAllowSubdomain.cs?name=snippet4)]
 
-CORS 中介軟體會拒絕具有下列要求標頭的預檢要求，因為 `Content-Language` （[HeaderNames. ContentLanguage](xref:Microsoft.Net.Http.Headers.HeaderNames.ContentLanguage)）未列于 `WithHeaders` ：
+CORS 中介軟體會拒絕具有下列要求標頭的預檢要求，因為 `Content-Language` ([HeaderNames. ContentLanguage](xref:Microsoft.Net.Http.Headers.HeaderNames.ContentLanguage)) 並未列于 `WithHeaders` ：
 
 ```
 Access-Control-Request-Headers: Cache-Control, Content-Language
@@ -256,7 +256,7 @@ Access-Control-Request-Headers: Cache-Control, Content-Language
 
 ### <a name="set-the-exposed-response-headers"></a>設定公開的回應標頭
 
-根據預設，瀏覽器不會將所有的回應標頭公開給應用程式。 如需詳細資訊，請參閱[W3C 跨原始來源資源分享（術語）：簡單的回應標頭](https://www.w3.org/TR/cors/#simple-response-header)。
+根據預設，瀏覽器不會將所有的回應標頭公開給應用程式。 如需詳細資訊，請參閱[W3C 跨原始來源資源分享 (術語) ：簡單的回應標頭](https://www.w3.org/TR/cors/#simple-response-header)。
 
 預設可用的回應標頭為：
 
@@ -313,7 +313,7 @@ HTTP 回應包含 `Access-Control-Allow-Credentials` 標頭，它會告訴瀏覽
 允許跨原始來源認證會有安全性風險。 另一個網域的網站可以代表使用者將登入使用者的認證傳送給應用程式，而不需要使用者的知識。 <!-- TODO Review: When using `AllowCredentials`, all CORS enabled domains must be trusted.
 I don't like "all CORS enabled domains must be trusted", because it implies that if you're not using  `AllowCredentials`, domains don't need to be trusted. -->
 
-CORS 規格也會指出如果標頭存在，將原始來源設定為 `"*"` （所有來源）是不正確 `Access-Control-Allow-Credentials` 。
+CORS 規格也 `"*"` 會指出如果標頭存在，設定要 (所有原始來源) 不正確來源 `Access-Control-Allow-Credentials` 。
 
 <a name="pref"></a>
 
@@ -370,7 +370,7 @@ User-Agent: Mozilla/5.0
 
 使用 F12 工具時，主控台應用程式會顯示類似下列其中一項的錯誤，視瀏覽器而定：
 
-* Firefox：跨原始來源要求已封鎖：相同的來源原則不允許讀取位於的遠端資源 `https://cors1.azurewebsites.net/api/TodoItems1/MyDelete2/5` 。 （原因： CORS 要求未成功）。 [深入了解](https://developer.mozilla.org/docs/Web/HTTP/CORS/Errors/CORSDidNotSucceed)
+* Firefox：跨原始來源要求已封鎖：相同的來源原則不允許讀取位於的遠端資源 `https://cors1.azurewebsites.net/api/TodoItems1/MyDelete2/5` 。  (原因： CORS 要求未成功) 。 [深入了解](https://developer.mozilla.org/docs/Web/HTTP/CORS/Errors/CORSDidNotSucceed)
 * 以 Chromium 為基礎：從來源 ' ' 提取 ' ' 的存取權已 https://cors1.azurewebsites.net/api/TodoItems1/MyDelete2/5 https://cors3.azurewebsites.net 遭 CORS 原則封鎖：對預檢要求的回應未通過存取控制檢查：要求的資源上沒有任何「存取控制-允許-來源」標頭。 如果不透明回應適合您的需求，請將要求的模式設定為 'no-cors' 以在停用 CORS 之下擷取資源。
 
 若要允許特定標頭，請呼叫 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.WithHeaders*> ：
@@ -425,9 +425,9 @@ ASP.NET Core 回應預檢 OPTIONS 要求。
 本節說明在 HTTP 訊息層級的[CORS](https://developer.mozilla.org/docs/Web/HTTP/CORS)要求中會發生什麼事。
 
 * CORS**不**是安全性功能。 CORS 是一種 W3C 標準，可讓伺服器放寬相同的原始原則。
-  * 例如，惡意執行者可以對您的網站使用[跨網站腳本（XSS）](xref:security/cross-site-scripting) ，並對其已啟用 CORS 的網站執行跨網站要求，以竊取資訊。
+  * 例如，惡意執行者可以針對您的網站使用[跨網站腳本 (XSS) ](xref:security/cross-site-scripting) ，並對其已啟用 CORS 的網站執行跨網站要求，以竊取資訊。
 * 藉由允許 CORS，API 不會更安全。
-  * 而是由用戶端（瀏覽器）強制執行 CORS。 伺服器會執行要求並傳迴響應，這是傳回錯誤並封鎖回應的用戶端。 例如，下列任何一項工具都會顯示伺服器回應：
+  * 用戶端 (瀏覽器) 來強制執行 CORS。 伺服器會執行要求並傳迴響應，這是傳回錯誤並封鎖回應的用戶端。 例如，下列任何一項工具都會顯示伺服器回應：
     * [Fiddler](https://www.telerik.com/fiddler)
     * [Postman](https://www.getpostman.com/)
     * [.NET HttpClient](/dotnet/csharp/tutorials/console-webapiclient)
@@ -632,18 +632,18 @@ C:\Program Files\Git\mingw64\bin\
 
 瀏覽器安全性可防止網頁向不同于服務網頁的網域提出要求。 這種限制稱為「*相同來源原則*」。 相同來源的原則可防止惡意網站從另一個網站讀取敏感性資料。 有時候，您可能會想要允許其他網站向您的應用程式發出跨原始來源要求。 如需詳細資訊，請參閱[MOZILLA CORS 一文](https://developer.mozilla.org/docs/Web/HTTP/CORS)。
 
-[跨原始來源資源分享](https://www.w3.org/TR/cors/)（CORS）：
+[跨原始來源資源分享](https://www.w3.org/TR/cors/) (CORS) ：
 
 * 是一種 W3C 標準，可讓伺服器放寬相同的來源原則。
 * **不**是安全性功能，CORS 放寬安全性。 藉由允許 CORS，API 不會更安全。 如需詳細資訊，請參閱[CORS 的運作方式](#how-cors)。
 * 允許伺服器明確允許某些跨原始來源要求，同時拒絕其他要求。
 * 比先前的技術更安全且更具彈性，例如[JSONP](/dotnet/framework/wcf/samples/jsonp)。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample)（[如何下載](xref:index#how-to-download-a-sample)）
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/cors/sample) ([如何下載](xref:index#how-to-download-a-sample)) 
 
 ## <a name="same-origin"></a>相同的來源
 
-如果兩個 Url 具有相同的配置、主機和埠（[RFC 6454](https://tools.ietf.org/html/rfc6454)），就會有相同的來源。
+如果兩個 Url 具有相同的配置、主機和埠 ([RFC 6454](https://tools.ietf.org/html/rfc6454)) ，則其具有相同的來源。
 
 這兩個 Url 具有相同的來源：
 
@@ -681,7 +681,7 @@ CORS 中介軟體會處理跨原始來源要求。 下列程式碼會針對具�
 
 [!code-csharp[](cors/sample/Cors/WebAPI/Startup2.cs?name=snippet2)]
 
-注意： URL**不**能包含尾端斜線（ `/` ）。 如果 URL 以結束 `/` ，則比較會 `false` 傳回，而且不會傳回任何標頭。
+注意： URL**不**能包含 () 的尾端斜線 `/` 。 如果 URL 以結束 `/` ，則比較會 `false` 傳回，而且不會傳回任何標頭。
 
 下列程式碼會透過 CORS 中介軟體將 CORS 原則套用至所有應用程式端點：
 ```csharp
@@ -751,7 +751,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ## <a name="set-the-allowed-origins"></a>設定允許的原始來源
 
-<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>：允許使用任何配置（或）來自所有來源的 CORS 要求 `http` `https` 。 `AllowAnyOrigin`不安全，因為*任何網站*都可以對應用程式發出跨原始來源要求。
+<xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicyBuilder.AllowAnyOrigin*>：允許所有來源的 CORS 要求與任何配置 (`http` 或 `https`) 。 `AllowAnyOrigin`不安全，因為*任何網站*都可以對應用程式發出跨原始來源要求。
 
 > [!NOTE]
 > 指定 `AllowAnyOrigin` 和 `AllowCredentials` 是不安全的設定，而且可能會導致跨網站偽造要求。 針對安全的應用程式，如果用戶端必須授權自己來存取伺服器資源，請指定來源的確切清單。
@@ -802,7 +802,7 @@ Access-Control-Request-Headers: Cache-Control, Content-Language
 
 ### <a name="set-the-exposed-response-headers"></a>設定公開的回應標頭
 
-根據預設，瀏覽器不會將所有的回應標頭公開給應用程式。 如需詳細資訊，請參閱[W3C 跨原始來源資源分享（術語）：簡單的回應標頭](https://www.w3.org/TR/cors/#simple-response-header)。
+根據預設，瀏覽器不會將所有的回應標頭公開給應用程式。 如需詳細資訊，請參閱[W3C 跨原始來源資源分享 (術語) ：簡單的回應標頭](https://www.w3.org/TR/cors/#simple-response-header)。
 
 預設可用的回應標頭為：
 
@@ -860,7 +860,7 @@ HTTP 回應包含 `Access-Control-Allow-Credentials` 標頭，它會告訴瀏覽
 允許跨原始來源認證會有安全性風險。 另一個網域的網站可以代表使用者將登入使用者的認證傳送給應用程式，而不需要使用者的知識。 <!-- TODO Review: When using `AllowCredentials`, all CORS enabled domains must be trusted.
 I don't like "all CORS enabled domains must be trusted", because it implies that if you're not using  `AllowCredentials`, domains don't need to be trusted. -->
 
-CORS 規格也會指出如果標頭存在，將原始來源設定為 `"*"` （所有來源）是不正確 `Access-Control-Allow-Credentials` 。
+CORS 規格也 `"*"` 會指出如果標頭存在，設定要 (所有原始來源) 不正確來源 `Access-Control-Allow-Credentials` 。
 
 ### <a name="preflight-requests"></a>預檢要求
 
@@ -908,9 +908,9 @@ CORS 預檢要求可能會包含 `Access-Control-Request-Headers` 標頭，這�
 
 [!code-csharp[](cors/sample/CorsExample4/Startup.cs?range=64-69&highlight=5)]
 
-瀏覽器的設定方式並不完全一致 `Access-Control-Request-Headers` 。 如果您將標頭設定為 `"*"` （或使用）以外的任何專案 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.AllowAnyHeader*> ，您應該至少包含 `Accept` 、 `Content-Type` 和，再 `Origin` 加上您想要支援的任何自訂標頭。
+瀏覽器的設定方式並不完全一致 `Access-Control-Request-Headers` 。 如果您將標頭設定為 `"*"` (或使用) 以外的任何專案 <xref:Microsoft.AspNetCore.Cors.Infrastructure.CorsPolicy.AllowAnyHeader*> ，您應該至少包含 `Accept` 、 `Content-Type` 和，再 `Origin` 加上您想要支援的任何自訂標頭。
 
-以下是預檢要求的回應範例（假設伺服器允許此要求）：
+以下是對預檢要求的範例回應， (假設伺服器允許要求) ：
 
 ```
 HTTP/1.1 200 OK
@@ -940,15 +940,15 @@ Date: Wed, 20 May 2015 06:33:22 GMT
 本節說明在 HTTP 訊息層級的[CORS](https://developer.mozilla.org/docs/Web/HTTP/CORS)要求中會發生什麼事。
 
 * CORS**不**是安全性功能。 CORS 是一種 W3C 標準，可讓伺服器放寬相同的原始原則。
-  * 例如，惡意執行者可能會對您的網站使用[防止跨網站腳本（XSS）](xref:security/cross-site-scripting) ，並對其已啟用 CORS 的網站執行跨網站要求，以竊取資訊。
+  * 例如，惡意執行者可能會使用[防止跨網站腳本 (XSS) ](xref:security/cross-site-scripting)對您的網站執行，並對其已啟用 CORS 的網站執行跨網站要求，以竊取資訊。
 * 藉由允許 CORS，您的 API 不會更安全。
-  * 而是由用戶端（瀏覽器）強制執行 CORS。 伺服器會執行要求並傳迴響應，這是傳回錯誤並封鎖回應的用戶端。 例如，下列任何一項工具都會顯示伺服器回應：
+  * 用戶端 (瀏覽器) 來強制執行 CORS。 伺服器會執行要求並傳迴響應，這是傳回錯誤並封鎖回應的用戶端。 例如，下列任何一項工具都會顯示伺服器回應：
     * [Fiddler](https://www.telerik.com/fiddler)
     * [Postman](https://www.getpostman.com/)
     * [.NET HttpClient](/dotnet/csharp/tutorials/console-webapiclient)
     * 網頁瀏覽器，方法是在網址列中輸入 URL。
 * 這是讓伺服器允許瀏覽器執行跨原始[XHR](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest)或[提取 API](https://developer.mozilla.org/docs/Web/API/Fetch_API)要求的方式，否則會禁止。
-  * 瀏覽器（不含 CORS）無法執行跨原始來源要求。 在 CORS 之前， [JSONP](https://www.w3schools.com/js/js_json_jsonp.asp)是用來規避這種限制。 JSONP 不會使用 XHR，它會使用 `<script>` 標記來接收回應。 允許跨原始來源載入腳本。
+  * 沒有 CORS 的瀏覽器 () 無法執行跨原始來源要求。 在 CORS 之前， [JSONP](https://www.w3schools.com/js/js_json_jsonp.asp)是用來規避這種限制。 JSONP 不會使用 XHR，它會使用 `<script>` 標記來接收回應。 允許跨原始來源載入腳本。
 
 [CORS 規格](https://www.w3.org/TR/cors/)引進數個新的 HTTP 標頭，可啟用跨原始來源要求。 如果瀏覽器支援 CORS，它會針對跨原始來源要求自動設定這些標頭。 不需要自訂 JavaScript 程式碼來啟用 CORS。
 
@@ -995,16 +995,16 @@ Test message
   > [!WARNING]
   > `WithOrigins("https://localhost:<port>");`應該僅用於測試範例應用程式，類似于[下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/live/aspnetcore/security/cors/sample/Cors)。
 
-1. 建立 web 應用程式專案（ Razor 頁面或 MVC）。 此範例會使用 Razor 頁面。 您可以在與 API 專案相同的方案中建立 web 應用程式。
+1. 建立 web 應用程式專案 (Razor 頁面或 MVC) 。 此範例會使用 Razor 頁面。 您可以在與 API 專案相同的方案中建立 web 應用程式。
 1. 將下列反白顯示的程式碼新增至*Index. cshtml*檔案：
 
-  [!code-csharp[](cors/sample/Cors/ClientApp/Pages/Index2.cshtml?highlight=7-99)]
+  [!code-cshtml[](cors/sample/Cors/ClientApp/Pages/Index2.cshtml?highlight=7-99)]
 
 1. 在上述程式碼中，將取代為已 `url: 'https://<web app>.azurewebsites.net/api/values/1',` 部署應用程式的 URL。
 1. 部署 API 專案。 例如，[部署至 Azure](xref:host-and-deploy/azure-apps/index)。
 1. Razor從桌面執行頁面或 MVC 應用程式，然後按一下 [**測試**] 按鈕。 使用 F12 工具來檢查錯誤訊息。
 1. 從移除 localhost 來源 `WithOrigins` ，並部署應用程式。 或者，使用不同的埠來執行用戶端應用程式。 例如，從 Visual Studio 執行。
-1. 使用用戶端應用程式進行測試。 CORS 失敗會傳回錯誤，但 JavaScript 無法使用錯誤訊息。 使用 F12 工具中的 [主控台] 索引標籤來查看錯誤。 視瀏覽器而定，您會收到類似下列的錯誤（在 F12 工具主控台中）：
+1. 使用用戶端應用程式進行測試。 CORS 失敗會傳回錯誤，但 JavaScript 無法使用錯誤訊息。 使用 F12 工具中的 [主控台] 索引標籤來查看錯誤。 視瀏覽器而定，您會在 F12 工具主控台中收到錯誤 () 類似下面所示：
 
    * 使用 Microsoft Edge：
 

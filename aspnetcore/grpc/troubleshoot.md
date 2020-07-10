@@ -5,7 +5,7 @@ description: 針對在 .NET Core 上使用 gRPC 時的錯誤進行疑難排解�
 monikerRange: '>= aspnetcore-3.0'
 ms.author: jamesnk
 ms.custom: mvc
-ms.date: 05/26/2020
+ms.date: 07/09/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: grpc/troubleshoot
-ms.openlocfilehash: 9a3e7269db04b79146686668879bf47f1a7dd6af
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 385291ec6bb6719a5fade927fa9f599af8c94045
+ms.sourcegitcommit: 14c3d111f9d656c86af36ecb786037bf214f435c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85400033"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86176183"
 ---
 # <a name="troubleshoot-grpc-on-net-core"></a>針對 .NET Core 上的 gRPC 進行疑難排解
 
@@ -30,7 +30,7 @@ ms.locfileid: "85400033"
 
 ## <a name="mismatch-between-client-and-service-ssltls-configuration"></a>用戶端與服務 SSL/TLS 設定不相符
 
-GRPC 範本和範例預設會使用[傳輸層安全性（TLS）](https://tools.ietf.org/html/rfc5246)來保護 gRPC 服務。 gRPC 用戶端必須使用安全連線，才能順利呼叫受保護的 gRPC 服務。
+根據預設，gRPC 範本和範例會使用[ (TLS) 的傳輸層安全性](https://tools.ietf.org/html/rfc5246)來保護 gRPC 服務。 gRPC 用戶端必須使用安全連線，才能順利呼叫受保護的 gRPC 服務。
 
 您可以確認 ASP.NET Core gRPC 服務在應用程式啟動時所寫入的記錄中使用 TLS。 服務將接聽 HTTPS 端點：
 
@@ -136,13 +136,6 @@ gRPC 程式碼產生具體的用戶端和服務基類需要從專案參考 proto
 
 如需產生 gRPC c # 資產的詳細資訊，請參閱 <xref:grpc/basics> 。
 
-根據預設， `<Protobuf>` 參考會產生具體的用戶端和服務基類。 參考專案的 `GrpcServices` 屬性可以用來限制 c # 資產產生。 有效 `GrpcServices` 的選項為：
-
-* `Both`（不存在時的預設值）
-* `Server`
-* `Client`
-* `None`
-
 裝載 gRPC 服務的 ASP.NET Core web 應用程式只需要產生服務基類：
 
 ```xml
@@ -163,7 +156,7 @@ gRPC 程式碼產生具體的用戶端和服務基類需要從專案參考 proto
 
 WPF 專案有一個[已知的問題](https://github.com/dotnet/wpf/issues/810)，導致 gRPC 程式碼產生無法正常運作。 在 WPF 專案中，藉由參考和 proto 檔案產生的任何 gRPC 類型 `Grpc.Tools` ，會在使用時建立編譯錯誤： *.proto*
 
-> 錯誤 CS0246：找不到類型或命名空間名稱 ' MyGrpcServices ' （您是否遺漏 using 指示詞或元件參考？）
+> 錯誤 CS0246：找不到類型或命名空間名稱 ' MyGrpcServices ' (您是否遺漏 using 指示詞或元件參考？ ) 
 
 您可以藉由下列方式解決此問題：
 

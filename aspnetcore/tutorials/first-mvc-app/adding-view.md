@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-view
-ms.openlocfilehash: 841751ffb834f77184365c3022293dbadc9f6f2c
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: d6a541e9633d3ecc2768744956c3b43d830b0b2b
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403530"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213122"
 ---
 # <a name="part-3-add-a-view-to-an-aspnet-core-mvc-app"></a>第3部分，將視圖加入至 ASP.NET Core MVC 應用程式
 
@@ -72,7 +72,7 @@ ms.locfileid: "85403530"
   * 在左窗格中選取 [ **ASP .Net Core** ]。
   * 選取中央窗格中的 [ **MVC 視圖] 頁面**。
   * 在 [**名稱**] 方塊中輸入*Index* 。
-  * 選取 [ **新增**]。
+  * 選取 [新增]。
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view_mac.png)
 
@@ -80,9 +80,9 @@ ms.locfileid: "85403530"
 
 以下列內容取代*Views/HelloWorld/Index. cshtml*視圖檔案的內容 Razor ：
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
-瀏覽至 `https://localhost:{PORT}/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設的視圖檔案與方法（）具有相同的名稱 `Index` ，因此會使用 */Views/HelloWorld/Index.cshtml*中的 view 範本。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
+瀏覽至 `https://localhost:{PORT}/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設視圖檔案的名稱與方法 (`Index`) 相同，因此會使用 */Views/HelloWorld/Index.cshtml*中的 view 範本。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
 ![瀏覽器視窗](~/tutorials/first-mvc-app/adding-view/_static/hell_template.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "85403530"
 
 以下列標記取代*Views/Shared/_Layout. cshtml*檔案的內容。 所做的變更已醒目提示：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie3/Views/Shared/_Layout.cshtml?highlight=6,14,40)]
 
 上述標記進行了下列變更：
 
@@ -125,7 +125,7 @@ ms.locfileid: "85403530"
 
 變更 *Views/HelloWorld/Index.cshtml* 檢視檔案的標題和 `<h2>` 元素：
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
 
 標題和 `<h2>` 元素略有不同，因此可看出哪一段程式碼變更了顯示。
 
@@ -135,7 +135,7 @@ ms.locfileid: "85403530"
 <title>@ViewData["Title"] - Movie App</title>
 ```
 
-儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在瀏覽器中按 Ctrl + F5，以強制載入伺服器的回應。）建立瀏覽器標題時， `ViewData["Title"]` 我們會在 [ *. cshtml* ] 視圖範本中設定，並在版面配置檔案中新增額外的「-電影應用程式」。
+儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在您的瀏覽器中按 Ctrl + F5，以強制載入伺服器的回應。 ) 瀏覽器標題是以 `ViewData["Title"]` 我們在*Index. cshtml*視圖範本中設定，並在版面配置檔案中新增的「-電影應用程式」所建立。
 
 *Index.cshtml* 檢視範本中的內容已與 *Views/Shared/_Layout.cshtml* 檢視範本合併。 單一 HTML 回應會傳送到瀏覽器。 版面配置範本可讓您輕鬆進行變更，然後套用到應用程式中的所有頁面。 若要深入了解，請參閱[版面配置](xref:mvc/views/layout)。
 
@@ -161,7 +161,7 @@ ms.locfileid: "85403530"
 
 您將在 *Welcome.cshtml* 檢視範本中建立迴圈，以顯示 "Hello" `NumTimes` 次。 使用下列內容取代 *Views/HelloWorld/Welcome.cshtml* 的內容：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
 儲存變更並瀏覽至下列 URL：
 
@@ -229,7 +229,7 @@ ms.locfileid: "85403530"
   * 選取左窗格的 [Web]****。
   * 選取中間窗格的 [空的 HTML 檔案]****。
   * 在 [名稱]** 方塊中，鍵入 **Index.cshtml**。
-  * 選取 [ **新增**]。
+  * 選取 [新增]。
 
 ![[新增項目] 對話方塊](adding-view/_static/add_view_mac.png)
 
@@ -237,7 +237,7 @@ ms.locfileid: "85403530"
 
 以下列內容取代*Views/HelloWorld/Index. cshtml*視圖檔案的內容 Razor ：
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/HelloWorld/Index1.cshtml?highlight=7)]
 
 瀏覽至 `https://localhost:{PORT}/HelloWorld`。 `HelloWorldController` 中的 `Index` 方法不會執行什麼作業；它會執行陳述式 `return View();`，其指定方法應使用檢視範本檔案來呈現瀏覽器的回應。 因為未指定檢視範本檔案名稱，因此 MVC 預設為使用預設檢視檔案。 預設檢視檔案與方法 (`Index`) 擁有相同的名稱，因此會在 */Views/HelloWorld/Index.cshtml* 中使用。 下列影像顯示檢視中硬式編碼的字串 "Hello from our View Template!" 。
 
@@ -256,7 +256,7 @@ ms.locfileid: "85403530"
 
 下列標記顯示醒目提示的變更：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Shared/_Layout.cshtml?highlight=6,24,51)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Shared/_Layout.cshtml?highlight=6,24,51)]
 
 在上述標記中，由於此應用程式未使用[區域](xref:mvc/controllers/areas)，因此已省略 `asp-area` [錨點標籤協助程式屬性](xref:mvc/views/tag-helpers/builtin-th/anchor-tag-helper)。
 
@@ -285,7 +285,7 @@ ms.locfileid: "85403530"
 
 變更 *Views/HelloWorld/Index.cshtml* 檢視檔案的標題和 `<h2>` 元素：
 
-[!code-HTML[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Index2.cshtml?highlight=2,5)]
 
 標題和 `<h2>` 元素略有不同，因此可看出哪一段程式碼變更了顯示。
 
@@ -295,7 +295,7 @@ ms.locfileid: "85403530"
 <title>@ViewData["Title"] - Movie App</title>
 ```
 
-儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在瀏覽器中按 Ctrl + F5，以強制載入伺服器的回應。）建立瀏覽器標題時， `ViewData["Title"]` 我們會在 [ *. cshtml* ] 視圖範本中設定，並在版面配置檔案中新增額外的「-電影應用程式」。
+儲存變更並巡覽至 `https://localhost:{PORT}/HelloWorld`。 請注意，瀏覽器標題、主要標題和次要標題已變更 (如果您在瀏覽器中沒有看到變更，可能檢視的是快取的內容。 在您的瀏覽器中按 Ctrl + F5，以強制載入伺服器的回應。 ) 瀏覽器標題是以 `ViewData["Title"]` 我們在*Index. cshtml*視圖範本中設定，並在版面配置檔案中新增的「-電影應用程式」所建立。
 
 同時也請注意，*Index.cshtml* 檢視範本中的內容如何與 *Views/Shared/_Layout.cshtml* 檢視範本和已傳送至瀏覽器的單一 HTML 回應合併。 版面配置範本可讓您輕鬆進行會套用到應用程式之所有頁面的變更。 若要深入瞭解，請參閱[版面](xref:mvc/views/layout)配置。
 
@@ -321,7 +321,7 @@ ms.locfileid: "85403530"
 
 您將在 *Welcome.cshtml* 檢視範本中建立迴圈，以顯示 "Hello" `NumTimes` 次。 使用下列內容取代 *Views/HelloWorld/Welcome.cshtml* 的內容：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie/Views/HelloWorld/Welcome.cshtml)]
 
 儲存變更並瀏覽至下列 URL：
 

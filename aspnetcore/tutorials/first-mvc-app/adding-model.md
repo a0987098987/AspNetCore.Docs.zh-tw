@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: tutorials/first-mvc-app/adding-model
-ms.openlocfilehash: 0974abfe632fd897c08435b82a7c695534cc3139
-ms.sourcegitcommit: 895e952aec11c91d703fbdd3640a979307b8cc67
+ms.openlocfilehash: 77c12b98462c8a84ab807abef247573b6a028fcc
+ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85793611"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86213167"
 ---
 # <a name="part-4-add-a-model-to-an-aspnet-core-mvc-app"></a>第4部分，將模型新增至 ASP.NET Core MVC 應用程式
 
@@ -56,14 +56,14 @@ ms.locfileid: "85793611"
 
 `Movie` 類別包含 `Id` 欄位，該欄位是資料庫的必要欄位，將作為主索引鍵。
 
-<xref:System.ComponentModel.DataAnnotations.DataType>上的屬性會 `ReleaseDate` 指定資料的類型（ `Date` ）。 使用此屬性：
+<xref:System.ComponentModel.DataAnnotations.DataType>上的屬性會指定要) 的 `ReleaseDate` 資料 (類型 `Date` 。 使用此屬性：
 
 * 使用者不需要在日期欄位中輸入時間資訊。
 * 只會顯示日期，不會顯示時間資訊。
 
 稍後的教學課程會涵蓋 [DataAnnotations](/dotnet/api/system.componentmodel.dataannotations)。
 
-## <a name="add-nuget-packages"></a>新增 NuGet 封裝
+## <a name="add-nuget-packages"></a>新增 NuGet 套件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -121,7 +121,7 @@ Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
 ## <a name="register-the-database-context"></a>登錄資料庫內容
 
-ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core 資料庫內容) 必須在應用程式啟動期間向 DI 進行註冊。 需要這些服務的元件（例如頁面）會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。 在本節中，您會向 DI 容器註冊資料庫內容。
+ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core 資料庫內容) 必須在應用程式啟動期間向 DI 進行註冊。 需要這些服務的元件 (例如頁面) 會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。 在本節中，您會向 DI 容器註冊資料庫內容。
 
 在 *Startup.cs* 最上方新增下列 `using` 陳述式：
 
@@ -179,7 +179,7 @@ using Microsoft.EntityFrameworkCore;
 完成 [新增控制器]**** 對話方塊：
 
 * **模型類別:** *Movie (MvcMovie.Models)*
-* **資料內容類別：** *mvcmoviecoNtext.cs （MvcMovie. Data）*
+* **資料內容類別：** *MvcmoviecoNtext.cs (MvcMovie 資料) *
 
 ![新增資料內容](adding-model/_static/dc3.png)
 
@@ -190,7 +190,7 @@ using Microsoft.EntityFrameworkCore;
 Visual Studio 會建立：
 
 * 電影控制器 (*Controllers/MoviesController.cs*)
-* Razor查看建立、刪除、詳細資料、編輯和索引頁面的檔案（*Views/電影/ \* cshtml*）
+* Razor查看用於建立、刪除、詳細資料、編輯和索引頁面的檔案 (*Views/電影/ \* cshtml*) 
 
 自動建立這些檔案的流程稱為 *scaffolding*。
 
@@ -204,7 +204,7 @@ Visual Studio 會建立：
   export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* 執行下列命令：
+* 執行以下命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -216,7 +216,7 @@ Visual Studio 會建立：
 
 * 在專案目錄 (包含 *Program.cs*、*Startup.cs* 和 *.csproj* 檔案的目錄) 中開啟一個命令視窗。
 
-* 執行下列命令：
+* 執行以下命令：
 
   ```dotnetcli
   dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -364,7 +364,7 @@ MVC 也提供將強型別模型物件傳遞至檢視的能力。 這種強型別
 
 `https://localhost:5001/movies/details?id=1`
 
-`id`如果未提供識別碼值，參數會定義為[可為 null 的型](/dotnet/csharp/programming-guide/nullable-types/index)別（ `int?` ）。
+`id`參數會定義為[可為 null 的類型](/dotnet/csharp/programming-guide/nullable-types/index) (`int?`) ，以防未提供識別碼值。
 
 [Lambda 運算式](/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions)會傳遞至 `FirstOrDefaultAsync`，以選取符合路由資料或查詢字串值的電影實體。
 
@@ -468,7 +468,7 @@ Visual Studio 會建立：
 
 * Entity Framework Core [資料庫內容類別](xref:data/ef-mvc/intro#create-the-database-context) (*Data/MvcMovieContext.cs*)
 * 電影控制器 (*Controllers/MoviesController.cs*)
-* Razor查看建立、刪除、詳細資料、編輯和索引頁面的檔案（*Views/電影/ \* cshtml*）
+* Razor查看用於建立、刪除、詳細資料、編輯和索引頁面的檔案 (*Views/電影/ \* cshtml*) 
 
 自動建立資料庫內容與 [CRUD](https://wikipedia.org/wiki/Create,_read,_update_and_delete) (建立、讀取、更新和刪除) 動作方法和檢視稱為 *Scaffolding*。
 
@@ -490,7 +490,7 @@ Visual Studio 會建立：
     export PATH=$HOME/.dotnet/tools:$PATH
   ```
 
-* 執行下列命令：
+* 執行以下命令：
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -509,7 +509,7 @@ Visual Studio 會建立：
    dotnet tool install --global dotnet-aspnet-codegenerator
    ```
 
-* 執行下列命令：
+* 執行以下命令：
 
   ```dotnetcli
    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries
@@ -587,7 +587,7 @@ Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(int rc, sqlite3 db)
 
 ## <a name="examine-the-context-registered-with-dependency-injection"></a>檢查使用相依性插入所註冊的內容
 
-ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 會在應用程式啟動期間使用 DI 來註冊。 需要這些服務的元件（例如頁面）會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
+ASP.NET Core 內建[相依性插入 (DI)](xref:fundamentals/dependency-injection)。 服務 (例如 EF Core DB 內容) 會在應用程式啟動期間使用 DI 來註冊。 需要這些服務的元件 (例如頁面) 會透過「函式 Razor 參數」提供這些服務。 取得資料庫內容執行個體的建構函式程式碼，本教學課程中稍後會示範。
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -673,7 +673,7 @@ MVC 也提供將強型別模型物件傳遞至檢視的能力。 強型別方法
 
 `https://localhost:5001/movies/details?id=1`
 
-`id`如果未提供識別碼值，參數會定義為[可為 null 的型](/dotnet/csharp/programming-guide/nullable-types/index)別（ `int?` ）。
+`id`參數會定義為[可為 null 的類型](/dotnet/csharp/programming-guide/nullable-types/index) (`int?`) ，以防未提供識別碼值。
 
 [Lambda 運算式](/dotnet/articles/csharp/programming-guide/statements-expressions-operators/lambda-expressions)會傳遞至 `FirstOrDefaultAsync`，以選取符合路由資料或查詢字串值的電影實體。
 
@@ -690,7 +690,7 @@ return View(movie);
 
 檢查 *Views/Movies/Details.cshtml* 檔案的內容：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/DetailsOriginal.cshtml)]
 
 藉由在檢視檔案的最上方包含 `@model` 陳述式，您可以指定檢視預期要有的物件類型。 當您建立電影控制器時，*Details.cshtml* 檔案的最上方會自動包含下列 `@model` 陳述式：
 
@@ -708,11 +708,11 @@ return View(movie);
 
 <!-- Copy Index.cshtml to IndexOriginal.cshtml -->
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?range=1)]
 
 `@model` 指示詞可讓您使用強型別的 `Model` 物件，存取控制器傳遞至檢視的電影清單。 例如，在 *Index.cshtml* 檢視中，程式碼會透過強型別 `Model` 物件的 `foreach` 陳述式循環存取電影：
 
-[!code-html[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
+[!code-cshtml[](~/tutorials/first-mvc-app/start-mvc/sample/MvcMovie22/Views/Movies/IndexOriginal.cshtml?highlight=1,31,34,37,40,43,46-48)]
 
 因為 `Model` 物件是強型別 (作為 `IEnumerable<Movie>` 物件)，所以迴圈中每個項目的類型為 `Movie`。 撇開其他優點，這表示您會進行程式碼編譯時期檢查：
 

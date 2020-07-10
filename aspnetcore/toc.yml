@@ -320,31 +320,31 @@
             - name: 內建元件
               items:
                 - name: 應用程式
-                  uid: blazor/templates
+                  href: blazor/templates.md#blazor-project-structure
                 - name: 驗證
-                  uid: blazor/security/webassembly/additional-scenarios
+                  href: blazor/security/webassembly/index.md#authentication-component
                 - name: AuthorizeView
-                  uid: blazor/security/index
+                  href: blazor/security/index.md#authorizeview-component
                 - name: InputCheckbox
-                  uid: blazor/forms-validation
+                  href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputDate
-                  uid: blazor/forms-validation
+                  href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputNumber
-                  uid: blazor/forms-validation
+                  href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputSelect
-                  uid: blazor/forms-validation
+                  href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputText
-                  uid: blazor/forms-validation
+                  href: blazor/forms-validation.md#built-in-forms-components
                 - name: InputTextArea
-                  uid: blazor/forms-validation
+                  href: blazor/forms-validation.md#built-in-forms-components
                 - name: MainLayout
-                  uid: blazor/layouts
+                  href: blazor/layouts.md#mainlayout-component
                 - name: NavLink
-                  uid: blazor/fundamentals/routing
+                  href: blazor/fundamentals/routing.md#navlink-component
                 - name: NavMenu
-                  uid: blazor/fundamentals/routing
+                  href: blazor/fundamentals/routing.md#navlink-component
                 - name: 路由器
-                  uid: blazor/fundamentals/routing
+                  href: blazor/fundamentals/routing.md#route-templates
             - name: 串聯的值及參數
               uid: blazor/components/cascading-values-and-parameters
             - name: 資料繫結
@@ -927,16 +927,6 @@
     - name: 健康狀態檢查
       uid: host-and-deploy/health-checks
       displayName: 'deploy, publish'
-    - name: Blazor
-      items:
-        - name: 總覽
-          uid: blazor/host-and-deploy/index
-        - name: Blazor WebAssembly
-          uid: blazor/host-and-deploy/webassembly
-        - name: Blazor 伺服器
-          uid: blazor/host-and-deploy/server
-        - name: 設定連結器
-          uid: blazor/host-and-deploy/configure-linker
 - name: 安全性及身分識別
   displayName: 'authentication, authorization'
   items:
@@ -1169,42 +1159,6 @@
       uid: security/ip-safelist
     - name: 應用程式安全性 - OWASP
       href: 'https://cheatsheetseries.owasp.org/cheatsheets/DotNet_Security_Cheat_Sheet.html'
-    - name: Blazor
-      items:
-        - name: 總覽
-          uid: blazor/security/index
-        - name: Blazor WebAssembly
-          items:
-            - name: 總覽
-              uid: blazor/security/webassembly/index
-            - name: 獨立的驗證程式庫
-              uid: blazor/security/webassembly/standalone-with-authentication-library
-            - name: 獨立的 Microsoft 帳戶
-              uid: blazor/security/webassembly/standalone-with-microsoft-accounts
-            - name: 獨立的 AAD
-              uid: blazor/security/webassembly/standalone-with-azure-active-directory
-            - name: 獨立的 AAD B2C
-              uid: blazor/security/webassembly/standalone-with-azure-active-directory-b2c
-            - name: 使用 AAD 託管
-              uid: blazor/security/webassembly/hosted-with-azure-active-directory
-            - name: 使用 AAD B2C 託管
-              uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-            - name: 使用 Identity Server 託管
-              uid: blazor/security/webassembly/hosted-with-identity-server
-            - name: 其他案例
-              uid: blazor/security/webassembly/additional-scenarios
-            - name: AAD 群組及角色
-              uid: blazor/security/webassembly/aad-groups-roles
-        - name: Blazor 伺服器
-          items:
-            - name: 總覽
-              uid: blazor/security/server/index
-            - name: 威脅防護
-              uid: blazor/security/server/threat-mitigation
-            - name: 其他案例
-              uid: blazor/security/server/additional-scenarios
-        - name: 內容安全性原則
-          uid: blazor/security/content-security-policy
 - name: 效能
   items:
     - name: 總覽
@@ -1229,8 +1183,6 @@
       uid: performance/diagnostic-tools
     - name: 負載與壓力測試
       uid: test/loadtests
-    - name: Blazor WebAssembly
-      uid: blazor/webassembly-performance-best-practices
 - name: 全球化和當地語系化
   items:
     - name: 總覽

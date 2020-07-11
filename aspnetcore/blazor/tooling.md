@@ -15,13 +15,13 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/tooling
-zone_pivot_groups: operating-systems-set-one
-ms.openlocfilehash: 30a76eda0e94ee7bb2b2d3db918bc029865bdf1a
-ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+zone_pivot_groups: operating-systems
+ms.openlocfilehash: 0bd38d8d16365a80d7954c860a4e20e2280c36b2
+ms.sourcegitcommit: e216e8f4afa21215dc38124c28d5ee19f5ed7b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147644"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86239604"
 ---
 # <a name="tooling-for-aspnet-core-blazor"></a>適用于 ASP.NET Core 的工具Blazor
 
@@ -33,7 +33,7 @@ ms.locfileid: "86147644"
 
 1. 建立新專案。
 
-1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步] 。
+1. 選取 [ ** Blazor 應用程式**]。 選取 [下一步]。
 
 1. 在 [專案名稱]**** 欄位中提供專案名稱，或接受預設專案名稱。 確認 [**位置**] 專案正確，或提供專案的 [位置]。 選取 [建立]。
 
@@ -99,15 +99,15 @@ ms.locfileid: "86147644"
 
 1. 在提要欄位中，選取 [ **Web 和主控台**  >  **應用程式**]。
 
-   如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [下一步] 。
+   如需 Blazor WebAssembly 體驗，請選擇** Blazor WebAssembly 應用程式**範本。 如需 Blazor Server 體驗，請選擇** Blazor Server 應用程式**範本。 選取 [下一步]。
 
    如需這兩個 Blazor 裝載模型的詳細資訊，請 *Blazor WebAssembly* *Blazor Server* 參閱 <xref:blazor/hosting-models> 。
 
-1. 確認 [**驗證**] 已設為 [**無驗證**]。 選取 [下一步] 。
+1. 確認 [**驗證**] 已設為 [**無驗證**]。 選取 [下一步]。
 
 1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1` 。 選取 [建立]。
 
-1. 選取 [**執行**  >  **而不進行調試**程式]，以*在沒有偵錯工具的情況下*執行 app。 使用 [**執行**  >  **開始調試**程式] 或 [執行] （&#9654;）按鈕執行應用程式，以*使用調試*程式執行應用程式。
+1. 選取 [**執行**  >  **而不進行調試**程式]，以*在沒有偵錯工具的情況下*執行 app。 使用 [**執行**] [啟動] [偵測]  >  **Start Debugging**或 [執行 ( # A0) ] 按鈕執行應用程式，以*使用調試*程式執行應用程式。
 
 如果出現會信任開發憑證的提示，請信任憑證並繼續。 需要使用者和 keychain 密碼，才能信任憑證。 如需信任 ASP.NET Core HTTPS 開發憑證的詳細資訊，請參閱 <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> 。
 

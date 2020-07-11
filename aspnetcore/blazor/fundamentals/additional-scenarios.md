@@ -5,7 +5,7 @@ description: 深入瞭解 ASP.NET Core 裝載模型設定的其他案例 Blazor 
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/fundamentals/additional-scenarios
-ms.openlocfilehash: e62cb2ab865fbf57166d5ec3d1344183c00c2095
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: b28e4e43b88fcf8eab9e8959142cca21223c57ff
+ms.sourcegitcommit: e216e8f4afa21215dc38124c28d5ee19f5ed7b1e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059835"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86239630"
 ---
 # <a name="aspnet-core-blazor-hosting-model-configuration"></a>ASP.NET Core Blazor 裝載模型設定
 
@@ -75,7 +75,7 @@ ms.locfileid: "86059835"
 </div>
 ```
 
-將下列內容新增至應用程式的樣式表單（ `wwwroot/css/app.css` 或 `wwwroot/css/site.css` ）：
+將下列內容新增至應用程式的樣式表單 (`wwwroot/css/app.css` 或 `wwwroot/css/site.css`) ：
 
 ```css
 #components-reconnect-modal {
@@ -129,23 +129,107 @@ Blazor Server在建立伺服器的用戶端連接之前，預設會將應用程�
 
 *本節適用于 Blazor Server 。*
 
-有時候，您需要設定 SignalR 應用程式所使用的用戶端 Blazor Server 。 例如，您可能會想要在用戶端上設定記錄 SignalR 來診斷連線問題。
+設定 SignalR 應用程式在檔案中使用的用戶端 Blazor Server `Pages/_Host.cshtml` 。 將呼叫的腳本放在 `Blazor.start` `_framework/blazor.server.js` 腳本之後和標記內 `</body>` 。
 
-若要 SignalR 在檔案中設定用戶端 `Pages/_Host.cshtml` ：
+### <a name="logging"></a>記錄
+
+若要設定 SignalR 用戶端記錄：
 
 * 將 `autostart="false"` 屬性加入至 `<script>` 腳本的標記 `blazor.server.js` 。
-* 呼叫 `Blazor.start` 並傳入指定產生器的設定物件 SignalR 。
+* 傳入設定物件 (在 `configureSignalR` 用戶端產生器 `configureLogging` 上通話記錄層級的) 。
 
-```html
-<script src="_framework/blazor.server.js" autostart="false"></script>
-<script>
-  Blazor.start({
-    configureSignalR: function (builder) {
-      builder.configureLogging("information"); // LogLevel.Information
-    }
-  });
-</script>
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      Blazor.start({
+        configureSignalR: function (builder) {
+          builder.configureLogging("information");
+        }
+      });
+    </script>
+</body>
 ```
+
+在上述範例中， `information` 相當於的記錄層級 <xref:Microsoft.Extensions.Logging.LogLevel.Information?displayProperty=nameWithType> 。
+
+### <a name="modify-the-reconnection-handler"></a>修改重新連接處理常式
+
+重新連線處理常式的線路連接事件可以針對自訂行為進行修改，例如：
+
+* 表示在連接中斷時通知使用者。
+* 當線路連線時，從用戶端) 執行記錄 (。
+
+若要修改連接事件：
+
+* 將 `autostart="false"` 屬性加入至 `<script>` 腳本的標記 `blazor.server.js` 。
+* 針對已卸載連接的連線變更註冊回呼， (`onConnectionDown`) ，並 () 建立/重新建立的連接 `onConnectionUp` 。 **兩者** `onConnectionDown``onConnectionUp`必須指定和。
+
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      Blazor.start({
+        reconnectionHandler: {
+          onConnectionDown: (options, error) => console.error(error);
+          onConnectionUp: () => console.log("Up, up, and away!");
+        }
+      });
+    </script>
+</body>
+```
+
+### <a name="adjust-the-reconnection-retry-count-and-interval"></a>調整重新連接重試計數和間隔
+
+若要調整重新連接重試計數和間隔：
+
+* 將 `autostart="false"` 屬性加入至 `<script>` 腳本的標記 `blazor.server.js` 。
+* 設定 `maxRetries` 每次重試嘗試 () 的重試次數 () 和允許的期間（以毫秒為單位） `retryIntervalMilliseconds` 。
+
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      Blazor.start({
+        reconnectionOptions: {
+          maxRetries: 3,
+          retryIntervalMilliseconds: 2000
+        }
+      });
+    </script>
+</body>
+```
+
+### <a name="hide-or-replace-the-reconnection-display"></a>隱藏或取代重新連接顯示
+
+若要隱藏重新連接顯示：
+
+* 將 `autostart="false"` 屬性加入至 `<script>` 腳本的標記 `blazor.server.js` 。
+* 將重新連接處理常式的 `_reconnectionDisplay` (或) 設定為空的物件 `{}` `new Object()` 。
+
+```cshtml
+    ...
+
+    <script src="_framework/blazor.server.js" autostart="false"></script>
+    <script>
+      window.addEventListener('beforeunload', function () {
+        Blazor.defaultReconnectionHandler._reconnectionDisplay = {};
+      });
+    </script>
+</body>
+```
+
+若要取代重新連接顯示，請將 `_reconnectionDisplay` 前述範例中的設定為顯示的元素：
+
+```javascript
+Blazor.defaultReconnectionHandler._reconnectionDisplay = 
+  document.getElementById("{ELEMENT ID}");
+```
+
+預留位置 `{ELEMENT ID}` 是要顯示之 HTML 專案的識別碼。
 
 ## <a name="additional-resources"></a>其他資源
 

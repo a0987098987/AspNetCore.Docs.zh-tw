@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/handle-errors
-ms.openlocfilehash: f756d9abfb92fd4d6d51d8762967ac2288b54b2a
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 0abb5e78e1971925c8e741386c65bdf71a0f0072
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405753"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407628"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>處理 ASP.NET Core web Api 中的錯誤
 
@@ -42,7 +42,7 @@ curl -i https://localhost:5001/weatherforecast/chicago
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在 ASP.NET Core 3.0 和更新版本中，如果用戶端不要求 HTML 格式的輸出，則開發人員例外狀況頁面會顯示純文字回應。 即會出現下列輸出：
+在 ASP.NET Core 3.0 和更新版本中，如果用戶端不要求 HTML 格式的輸出，則開發人員例外狀況頁面會顯示純文字回應。 下列輸出會出現：
 
 ```console
 HTTP/1.1 500 Internal Server Error
@@ -290,11 +290,11 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 1. [執行 ProblemDetailsFactory](#implement-problemdetailsfactory)
 1. [使用 ApiBehaviorOptions. ClientErrorMapping](#use-apibehavioroptionsclienterrormapping)
 
-### <a name="implement-problemdetailsfactory"></a>執行 ProblemDetailsFactory
+### <a name="implement-problemdetailsfactory"></a>實作 `ProblemDetailsFactory`
 
-MVC 會使用 `Microsoft.AspNetCore.Mvc.ProblemDetailsFactory` 來產生和的所有實例 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 。 這包括用戶端錯誤回應、驗證失敗錯誤回應，以及 `Microsoft.AspNetCore.Mvc.ControllerBase.Problem` 和 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem> helper 方法。
+MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory?displayProperty=fullName> 來產生和的所有實例 <xref:Microsoft.AspNetCore.Mvc.ProblemDetails> <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 。 這包括用戶端錯誤回應、驗證失敗錯誤回應，以及 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.Problem%2A?displayProperty=nameWithType> 和 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A?displayProperty=nameWithType> helper 方法。
 
-若要自訂問題詳細資料回應，請在中註冊的自訂執行 `ProblemDetailsFactory` `Startup.ConfigureServices` ：
+若要自訂問題詳細資料回應，請在中註冊的自訂執行 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ProblemDetailsFactory> `Startup.ConfigureServices` ：
 
 ```csharp
 public void ConfigureServices(IServiceCollection serviceCollection)

@@ -14,14 +14,14 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/app-state
-ms.openlocfilehash: 4ecbf6920980e293e8c274996c6a4f25e74a5cb7
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 30123e043a7c152b5719af8092b2ab42a70d2787
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403621"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407615"
 ---
-# <a name="session-and-state-management-in-aspnet-core"></a>ASP.NET Core 中的會話和狀態管理
+# <a name="session-and-state-management-in-aspnet-core"></a>ASP.NET Core 中的工作階段和狀態管理 (機器翻譯)
 
 ::: moniker range=">= aspnetcore-3.0"
 
@@ -43,7 +43,7 @@ HTTP 是無狀態的通訊協定。 根據預設，HTTP 要求是不會保留使
 | [查詢字串](#query-strings) | HTTP 查詢字串 |
 | [隱藏欄位](#hidden-fields) | HTTP 表單欄位 |
 | [HttpContext.Items](#httpcontextitems) | 伺服器端應用程式程式碼 |
-| [高速](#cache) | 伺服器端應用程式程式碼 |
+| [Cache](#cache) | 伺服器端應用程式程式碼 |
 
 ## <a name="cookies"></a>Cookie
 
@@ -75,7 +75,7 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 * 應用程式會在最後一個要求之後，保留工作階段一段有限的時間。 應用程式會設定工作階段逾時或使用預設值 20 分鐘。 會話狀態適合用來儲存使用者資料：
   * 專屬於特定的會話。
   * 其中的資料不需要跨會話的永久儲存體。
-* 工作階段資料會在呼叫 [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) 實作或工作階段過期時刪除。
+* 當呼叫或會話到期時，就會刪除會話資料 <xref:Microsoft.AspNetCore.Http.ISession.Clear%2A?displayProperty=nameWithType> 。
 * 沒有任何預設機制可通知應用程式程式碼，用戶端瀏覽器已關閉，或工作階段 Cookie 遭到刪除或在用戶端上已過期。
 * 根據預設，會話狀態 cookie 不會標示為必要。 除非網站訪客允許追蹤，否則會話狀態無法運作。 如需詳細資訊，請參閱 <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential> 。
 
@@ -85,7 +85,7 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 記憶體中快取提供者會將工作階段資料存放在應用程式所在伺服器的記憶體中。 在伺服器陣列案例中：
 
 * 使用「黏性工作階段」** 將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
-* 工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
+* 會話 cookie 會透過加密 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> 。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
 
 ### <a name="configure-session-state"></a>設定工作階段狀態
 
@@ -96,9 +96,9 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 
 若要啟用工作階段中介軟體，`Startup` 必須包含：
 
-* 任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
-* 在 `ConfigureServices` 中呼叫 [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession)。
-* 在 `Configure` 中呼叫 [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions.usesession#Microsoft_AspNetCore_Builder_SessionMiddlewareExtensions_UseSession_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。
+* 任何記憶體快取 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
+* <xref:Microsoft.Extensions.DependencyInjection.SessionServiceCollectionExtensions.AddSession%2A>在中呼叫 `ConfigureServices` 。
+* <xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession%2A>在中呼叫 `Configure` 。
 
 下列程式碼示範如何設定記憶體內部工作階段提供者，以及 `IDistributedCache` 的預設記憶體中實作。
 
@@ -116,43 +116,43 @@ ASP.NET Core 會藉由提供 cookie 給包含會話識別碼的用戶端來維�
 
 ### <a name="load-session-state-asynchronously"></a>非同步載入工作階段狀態
 
-只有在 [TryGetValue](/dotnet/api/microsoft.aspnetcore.http.isession.trygetvalue)、[Set](/dotnet/api/microsoft.aspnetcore.http.isession.set) 或 [Remove](/dotnet/api/microsoft.aspnetcore.http.isession.remove) 方法之前明確呼叫 [ISession.LoadAsync](/dotnet/api/microsoft.aspnetcore.http.isession.loadasync) 方法時，ASP.NET Core 中的預設工作階段提供者才會從基礎 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 備份存放區以非同步方式載入工作階段記錄。 如果並未先呼叫 `LoadAsync`，則基礎工作階段記錄會同步載入，這可能大規模地為效能帶來負面影響。
+ASP.NET Core 中的預設會話提供者 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> ，只有在 <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync%2A?displayProperty=nameWithType> <xref:Microsoft.AspNetCore.Http.ISession.TryGetValue%2A> 、或方法之前明確呼叫方法時，才會以非同步方式從基礎支援存放區載入會話記錄 <xref:Microsoft.AspNetCore.Http.ISession.Set%2A> <xref:Microsoft.AspNetCore.Http.ISession.Remove%2A> 。 如果並未先呼叫 `LoadAsync`，則基礎工作階段記錄會同步載入，這可能大規模地為效能帶來負面影響。
 
-若要讓應用程式強制執行此模式，請使用未在 `TryGetValue`、`Set` 或 `Remove` 之前呼叫 `LoadAsync` 方法時擲回例外狀況的版本來包裝 [DistributedSessionStore](/dotnet/api/microsoft.aspnetcore.session.distributedsessionstore) 和 [DistributedSession](/dotnet/api/microsoft.aspnetcore.session.distributedsession) 實作。 請在服務容器中註冊已包裝的版本。
+若要讓應用程式強制執行此模式，請 <xref:Microsoft.AspNetCore.Session.DistributedSessionStore> <xref:Microsoft.AspNetCore.Session.DistributedSession> 使用在 `LoadAsync` 、或之前未呼叫方法時擲回例外狀況的版本來包裝和部署 `TryGetValue` `Set` `Remove` 。 請在服務容器中註冊已包裝的版本。
 
 ### <a name="session-options"></a>工作階段選項
 
-若要覆寫工作階段的預設值，請使用 [SessionOptions](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions)。
+若要覆寫會話預設值，請使用 <xref:Microsoft.AspNetCore.Builder.SessionOptions> 。
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 | ------ | ----------- |
-| [Cookie](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookie) | 決定用來建立 Cookie 的設定。 [Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) 預設為 [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`)。 [Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) 預設為 [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`)。 [SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) 預設為 [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`)。 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`。 [IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) 預設為 `false`。 |
-| [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | `IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。 每個工作階段存取都會重設逾時。 此設定只適用於工作階段的內容，而非 Cookie。 預設值是 20 分鐘。 |
-| [IOTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.iotimeout) | 從存放區載入工作階段，或將它認可回到存放區時，所允許的時間長度上限。 此設定只可能適用於非同步作業。 此逾時可以使用 [InfiniteTimeSpan](/dotnet/api/system.threading.timeout.infinitetimespan) 來停用。 預設值是 1 分鐘。 |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | 決定用來建立 Cookie 的設定。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>預設為 <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> （ `.AspNetCore.Session` ）。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>預設為 <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> （ `/` ）。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>預設為 <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> （ `1` ）。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>預設為 `true` 。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>預設為 `false` 。 |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | `IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。 每個工作階段存取都會重設逾時。 此設定只適用於工作階段的內容，而非 Cookie。 預設值是 20 分鐘。 |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IOTimeout> | 從存放區載入工作階段，或將它認可回到存放區時，所允許的時間長度上限。 此設定只可能適用於非同步作業。 您可以使用來停用此超時 <xref:System.Threading.Timeout.InfiniteTimeSpan> 。 預設值是 1 分鐘。 |
 
-工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。 此 Cookie 預設名為 `.AspNetCore.Session`，並使用路徑 `/`。 由於 Cookie 預設值未指定網域，因此它不會提供給頁面上的用戶端指令碼 (因為 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`)。
+工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。 此 Cookie 預設名為 `.AspNetCore.Session`，並使用路徑 `/`。 由於 cookie 預設值未指定網域，因此它不會提供給頁面上的用戶端腳本（因為 <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> 預設為 `true` ）。
 
 若要覆寫 Cookie 工作階段的預設值，請使用 <xref:Microsoft.AspNetCore.Builder.SessionOptions>：
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Startup2.cs?name=snippet1&highlight=5-10)]
 
-應用程式會使用 [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) 屬性，判斷工作階段可以在放棄伺服器快取中的內容之前閒置多長時間。 這個屬性與 Cookie 到期日無關。 透過[工作階段中介軟體](/dotnet/api/microsoft.aspnetcore.session.sessionmiddleware)傳遞的每個要求都會重設逾時。
+應用程式會使用 <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> 屬性來判斷會話在伺服器快取中的內容被放棄之前，可以閒置多久。 這個屬性與 Cookie 到期日無關。 透過[工作階段中介軟體](xref:Microsoft.AspNetCore.Session.SessionMiddleware)傳遞的每個要求都會重設逾時。
 
 工作階段狀態為「非鎖定」**。 如果兩個要求同時嘗試修改工作階段的內容，則最後一個要求會覆寫第一個要求。 `Session` 會實作為「一致性工作階段」**，這表示所有內容會都儲存在一起。 當兩個要求試圖修改不同的工作階段值時，最後一個要求可能會覆寫第一個要求所做的工作階段變更。
 
 ### <a name="set-and-get-session-values"></a>設定和取得工作階段值
 
-會話狀態是從 Razor 具有[HttpCoNtext](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)的頁面[PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel)類別或 MVC[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)類別存取。 這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。
+會話狀態可從 Razor 頁面 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 類別或 MVC <xref:Microsoft.AspNetCore.Mvc.Controller> 類別使用來存取 <xref:Microsoft.AspNetCore.Http.HttpContext.Session?displayProperty=nameWithType> 。 此屬性為 <xref:Microsoft.AspNetCore.Http.ISession> 實作為。
 
-`ISession` 實作提供數個延伸模組來設定和擷取整數和字串值。 擴充方法位於[AspNetCore](/dotnet/api/microsoft.aspnetcore.http)命名空間中。
+`ISession` 實作提供數個延伸模組來設定和擷取整數和字串值。 擴充方法位於 <xref:Microsoft.AspNetCore.Http> 命名空間中。
 
 `ISession` 擴充方法：
 
-* [Get(ISession, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.get)
-* [GetInt32(ISession, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.getint32)
-* [GetString(ISession, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.getstring)
-* [SetInt32(ISession, String, Int32)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setint32)
-* [SetString(ISession, String, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setstring)
+* [Get(ISession, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.Get%2A)
+* [GetInt32(ISession, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.GetInt32%2A)
+* [GetString(ISession, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.GetString%2A)
+* [SetInt32(ISession, String, Int32)](xref:Microsoft.AspNetCore.Http.SessionExtensions.SetInt32%2A)
+* [SetString(ISession, String, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.SetString%2A)
 
 下列範例會 `IndexModel.SessionKeyName` `_Name` 在頁面頁面中抓取金鑰（在範例應用程式中）的會話值 Razor ：
 
@@ -170,7 +170,7 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 [!code-csharp[](app-state/samples/3.x/SessionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=18-19,22-23)]
 
-若要啟用分散式快取案例，即使是使用記憶體中快取時，都必須序列化所有工作階段資料。 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession)的擴充方法會提供字串和整數序列化程式。 複雜類型必須由使用者使用另一個機制加以序列化，例如 JSON。
+若要啟用分散式快取案例，即使是使用記憶體中快取時，都必須序列化所有工作階段資料。 字串和整數序列化程式是由的擴充方法所提供 <xref:Microsoft.AspNetCore.Http.ISession> 。 複雜類型必須由使用者使用另一個機制加以序列化，例如 JSON。
 
 使用下列範例程式碼來序列化物件：
 
@@ -213,7 +213,7 @@ ASP.NET Core 會公開 Razor [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages
 
 預設會使用以 Cookie 為基礎的 TempData 提供者，以將 TempData 儲存在 Cookie 中。
 
-Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密，並使用 [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder) 編碼，然後分成區塊。 由於加密和區塊化的緣故，cookie 大小的最大值小於[4096 個位元組](http://www.faqs.org/rfcs/rfc2965.html)。 Cookie 資料不會壓縮，因為壓縮加密資料可能會導致安全性問題，例如 [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) 和 [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) 攻擊。 如需 Cookie 架構 TempData 提供者的詳細資訊，請參閱 [CookieTempDataProvider](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.cookietempdataprovider)。
+Cookie 資料會使用進行加密 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> ，並以編碼 <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> ，然後再進行區塊處理。 由於加密和區塊化的緣故，cookie 大小的最大值小於[4096 個位元組](http://www.faqs.org/rfcs/rfc2965.html)。 Cookie 資料不會壓縮，因為壓縮加密資料可能會導致安全性問題，例如 [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) 和 [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) 攻擊。 如需以 cookie 為基礎的 TempData 提供者的詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider> 。
 
 ### <a name="choose-a-tempdata-provider"></a>選擇 TempData 提供者
 
@@ -229,9 +229,9 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 預設會啟用 Cookie 架構 TempData 提供者。
 
-若要啟用以會話為基礎的 TempData 提供者，請使用[AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider)擴充方法。 只需要呼叫一次 `AddSessionStateTempDataProvider` ：
+若要啟用以會話為基礎的 TempData 提供者，請使用 <xref:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcBuilderExtensions.AddSessionStateTempDataProvider%2A> 擴充方法。 只需要呼叫一次 `AddSessionStateTempDataProvider` ：
 
-[!code-csharp[](app-state/samples/3.x/SessionSample/Startup3.cs?name=snippet1&highlight=4,6,30)]
+[!code-csharp[](app-state/samples/3.x/SessionSample/Startup3.cs?name=snippet1&highlight=4,6,8,30)]
 
 ## <a name="query-strings"></a>查詢字串
 
@@ -245,7 +245,7 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 ## <a name="httpcontextitems"></a>HttpContext.Items
 
-[HttpContext.Items](/dotnet/api/microsoft.aspnetcore.http.httpcontext.items) 集合用來在處理單一要求時存放資料。 集合的內容會在每個要求處理之後捨棄。 當元件或中介軟體在要求期間的不同時間點運作，而且沒有可傳遞參數的直接方式時，`Items` 集合經常用來允許元件或中介軟體進行通訊。
+在 <xref:Microsoft.AspNetCore.Http.HttpContext.Items?displayProperty=nameWithType> 處理單一要求時，會使用集合來儲存資料。 集合的內容會在每個要求處理之後捨棄。 當元件或中介軟體在要求期間的不同時間點運作，而且沒有可傳遞參數的直接方式時，`Items` 集合經常用來允許元件或中介軟體進行通訊。
 
 在下列範例中，[中介軟體](xref:fundamentals/middleware/index)會將新增 `isVerified` 至 `Items` 集合：
 
@@ -313,7 +313,7 @@ HTTP 是無狀態的通訊協定。 若不採取其他步驟，HTTP 要求是獨
 | [查詢字串](#query-strings) | HTTP 查詢字串 |
 | [隱藏欄位](#hidden-fields) | HTTP 表單欄位 |
 | [HttpContext.Items](#httpcontextitems) | 伺服器端應用程式程式碼 |
-| [高速](#cache) | 伺服器端應用程式程式碼 |
+| [Cache](#cache) | 伺服器端應用程式程式碼 |
 | [相依性插入](#dependency-injection) | 伺服器端應用程式程式碼 |
 
 ## <a name="cookies"></a>Cookie
@@ -342,7 +342,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 * 如果收到過期工作階段的 Cookie，則會建立使用相同工作階段 Cookie 的新工作階段。
 * 並不會保留空白工作階段&mdash;必須在工作階段中設定至少一個值，才能在要求之間保存工作階段。 不保留工作階段時，會為每個新的要求產生新的工作階段識別碼。
 * 應用程式會在最後一個要求之後，保留工作階段一段有限的時間。 應用程式會設定工作階段逾時或使用預設值 20 分鐘。 工作階段狀態適合用來儲存特定工作階段特定的使用者資料，但資料不需要在工作階段之間永久儲存的情況。
-* 工作階段資料會在呼叫 [ISession.Clear](/dotnet/api/microsoft.aspnetcore.http.isession.clear) 實作或工作階段過期時刪除。
+* 當呼叫或會話到期時，就會刪除會話資料 <xref:Microsoft.AspNetCore.Http.ISession.Clear%2A?displayProperty=nameWithType> 。
 * 沒有任何預設機制可通知應用程式程式碼，用戶端瀏覽器已關閉，或工作階段 Cookie 遭到刪除或在用戶端上已過期。
 * ASP.NET Core MVC 和 Razor pages 範本包含一般資料保護規定的支援（GDPR）。 工作階段狀態 Cookie 未預設標示為必要項目，因此工作階段狀態無法運作，除網站訪客允許追蹤。 如需詳細資訊，請參閱 <xref:security/gdpr#tempdata-provider-and-session-state-cookies-arent-essential> 。
 
@@ -352,15 +352,15 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 記憶體中快取提供者會將工作階段資料存放在應用程式所在伺服器的記憶體中。 在伺服器陣列案例中：
 
 * 使用「黏性工作階段」** 將每個工作階段繫結至個別伺服器上的特定應用程式執行個體。 [Azure App Service](https://azure.microsoft.com/services/app-service/) 預設會使用[應用程式要求路由 (ARR)](/iis/extensions/planning-for-arr/using-the-application-request-routing-module) 來強制執行自黏工作階段。 不過，黏性工作階段可能會影響延展性，並使 Web 應用程式更新複雜化。 較好的方法是使用 Redis 或 SQL Server 分散式快取，這不需要黏性工作階段。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
-* 工作階段 Cookie 是透過 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
+* 會話 cookie 會透過加密 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> 。 必須正確設定資料保護，以閱讀每一部機器上的工作階段 Cookie。 如需詳細資訊，請參閱 <xref:security/data-protection/introduction>與[金鑰儲存提供者](xref:security/data-protection/implementation/key-storage-providers)。
 
 ### <a name="configure-session-state"></a>設定工作階段狀態
 
 [Microsoft.AspNetCore.Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/) 套件隨附於 [Microsoft.AspNetCore.App metapackage](xref:fundamentals/metapackage-app)，提供用來管理工作階段狀態的中介軟體。 若要啟用工作階段中介軟體，`Startup` 必須包含：
 
-* 任一 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 記憶體快取。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
-* 在 `ConfigureServices` 中呼叫 [AddSession](/dotnet/api/microsoft.extensions.dependencyinjection.sessionservicecollectionextensions.addsession)。
-* 在 `Configure` 中呼叫 [UseSession](/dotnet/api/microsoft.aspnetcore.builder.sessionmiddlewareextensions.usesession#Microsoft_AspNetCore_Builder_SessionMiddlewareExtensions_UseSession_Microsoft_AspNetCore_Builder_IApplicationBuilder_)。
+* 任何記憶體快取 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> 。 `IDistributedCache` 實作會作為工作階段的支援存放區。 如需詳細資訊，請參閱 <xref:performance/caching/distributed> 。
+* <xref:Microsoft.Extensions.DependencyInjection.SessionServiceCollectionExtensions.AddSession%2A>在中呼叫 `ConfigureServices` 。
+* <xref:Microsoft.AspNetCore.Builder.SessionMiddlewareExtensions.UseSession%2A>在中呼叫 `Configure` 。
 
 下列程式碼示範如何設定記憶體內部工作階段提供者，以及 `IDistributedCache` 的預設記憶體中實作。
 
@@ -368,7 +368,7 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 
 中介軟體的順序很重要。 在上述範例中，如果在 `UseMvc` 之後叫用 `UseSession`，則會發生 `InvalidOperationException`　例外狀況。 如需詳細資訊，請參閱[中介軟體順序](xref:fundamentals/middleware/index#order)。
 
-設定工作階段狀態之後便可以使用 [HttpContext.Session](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)。
+<xref:Microsoft.AspNetCore.Http.HttpContext.Session?displayProperty=nameWithType>會話狀態設定後可供使用。
 
 呼叫 `UseSession` 之前無法存取 `HttpContext.Session`。
 
@@ -376,43 +376,43 @@ ASP.NET Core 可維護工作階段狀態，方法是提供包含工作階段識�
 
 ### <a name="load-session-state-asynchronously"></a>非同步載入工作階段狀態
 
-只有在 [TryGetValue](/dotnet/api/microsoft.aspnetcore.http.isession.trygetvalue)、[Set](/dotnet/api/microsoft.aspnetcore.http.isession.set) 或 [Remove](/dotnet/api/microsoft.aspnetcore.http.isession.remove) 方法之前明確呼叫 [ISession.LoadAsync](/dotnet/api/microsoft.aspnetcore.http.isession.loadasync) 方法時，ASP.NET Core 中的預設工作階段提供者才會從基礎 [IDistributedCache](/dotnet/api/microsoft.extensions.caching.distributed.idistributedcache) 備份存放區以非同步方式載入工作階段記錄。 如果並未先呼叫 `LoadAsync`，則基礎工作階段記錄會同步載入，這可能大規模地為效能帶來負面影響。
+ASP.NET Core 中的預設會話提供者 <xref:Microsoft.Extensions.Caching.Distributed.IDistributedCache> ，只有在 <xref:Microsoft.AspNetCore.Http.ISession.LoadAsync%2A?displayProperty=nameWithType> <xref:Microsoft.AspNetCore.Http.ISession.TryGetValue%2A> 、或方法之前明確呼叫方法時，才會以非同步方式從基礎支援存放區載入會話記錄 <xref:Microsoft.AspNetCore.Http.ISession.Set%2A> <xref:Microsoft.AspNetCore.Http.ISession.Remove%2A> 。 如果並未先呼叫 `LoadAsync`，則基礎工作階段記錄會同步載入，這可能大規模地為效能帶來負面影響。
 
-若要讓應用程式強制執行此模式，請使用未在 `TryGetValue`、`Set` 或 `Remove` 之前呼叫 `LoadAsync` 方法時擲回例外狀況的版本來包裝 [DistributedSessionStore](/dotnet/api/microsoft.aspnetcore.session.distributedsessionstore) 和 [DistributedSession](/dotnet/api/microsoft.aspnetcore.session.distributedsession) 實作。 請在服務容器中註冊已包裝的版本。
+若要讓應用程式強制執行此模式，請 <xref:Microsoft.AspNetCore.Session.DistributedSessionStore> <xref:Microsoft.AspNetCore.Session.DistributedSession> 使用在 `LoadAsync` 、或之前未呼叫方法時擲回例外狀況的版本來包裝和部署 `TryGetValue` `Set` `Remove` 。 請在服務容器中註冊已包裝的版本。
 
 ### <a name="session-options"></a>工作階段選項
 
-若要覆寫工作階段的預設值，請使用 [SessionOptions](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions)。
+若要覆寫會話預設值，請使用 <xref:Microsoft.AspNetCore.Builder.SessionOptions> 。
 
-| 選項 | 說明 |
+| 選項 | 描述 |
 | ------ | ----------- |
-| [Cookie](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.cookie) | 決定用來建立 Cookie 的設定。 [Name](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.name) 預設為 [SessionDefaults.CookieName](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiename) (`.AspNetCore.Session`)。 [Path](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.path) 預設為 [SessionDefaults.CookiePath](/dotnet/api/microsoft.aspnetcore.session.sessiondefaults.cookiepath) (`/`)。 [SameSite](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.samesite) 預設為 [SameSiteMode.Lax](/dotnet/api/microsoft.aspnetcore.http.samesitemode) (`1`)。 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`。 [IsEssential](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.isessential) 預設為 `false`。 |
-| [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) | `IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。 每個工作階段存取都會重設逾時。 此設定只適用於工作階段的內容，而非 Cookie。 預設值是 20 分鐘。 |
-| [IOTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.iotimeout) | 從存放區載入工作階段，或將它認可回到存放區時，所允許的時間長度上限。 此設定只可能適用於非同步作業。 此逾時可以使用 [InfiniteTimeSpan](/dotnet/api/system.threading.timeout.infinitetimespan) 來停用。 預設值是 1 分鐘。 |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.Cookie> | 決定用來建立 Cookie 的設定。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.Name>預設為 <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookieName?displayProperty=nameWithType> （ `.AspNetCore.Session` ）。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.Path>預設為 <xref:Microsoft.AspNetCore.Session.SessionDefaults.CookiePath?displayProperty=nameWithType> （ `/` ）。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.SameSite>預設為 <xref:Microsoft.AspNetCore.Http.SameSiteMode.Lax?displayProperty=nameWithType> （ `1` ）。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly>預設為 `true` 。 <xref:Microsoft.AspNetCore.Http.CookieBuilder.IsEssential>預設為 `false` 。 |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> | `IdleTimeout` 指出工作階段可以閒置多久，之後才會放棄它的內容。 每個工作階段存取都會重設逾時。 此設定只適用於工作階段的內容，而非 Cookie。 預設值是 20 分鐘。 |
+| <xref:Microsoft.AspNetCore.Builder.SessionOptions.IOTimeout> | 從存放區載入工作階段，或將它認可回到存放區時，所允許的時間長度上限。 此設定只可能適用於非同步作業。 您可以使用來停用此超時 <xref:System.Threading.Timeout.InfiniteTimeSpan> 。 預設值是 1 分鐘。 |
 
-工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。 此 Cookie 預設名為 `.AspNetCore.Session`，並使用路徑 `/`。 由於 Cookie 預設值未指定網域，因此它不會提供給頁面上的用戶端指令碼 (因為 [HttpOnly](/dotnet/api/microsoft.aspnetcore.http.cookiebuilder.httponly) 預設為 `true`)。
+工作階段使用 Cookie 來追蹤和識別來自單一瀏覽器的要求。 此 Cookie 預設名為 `.AspNetCore.Session`，並使用路徑 `/`。 由於 cookie 預設值未指定網域，因此它不會提供給頁面上的用戶端腳本（因為 <xref:Microsoft.AspNetCore.Http.CookieBuilder.HttpOnly> 預設為 `true` ）。
 
 若要覆寫 Cookie 工作階段的預設值，請使用 `SessionOptions`：
 
 [!code-csharp[](app-state/samples_snapshot/2.x/SessionSample/Startup.cs?name=snippet1&highlight=14-19)]
 
-應用程式會使用 [IdleTimeout](/dotnet/api/microsoft.aspnetcore.builder.sessionoptions.idletimeout) 屬性，判斷工作階段可以在放棄伺服器快取中的內容之前閒置多長時間。 這個屬性與 Cookie 到期日無關。 透過[工作階段中介軟體](/dotnet/api/microsoft.aspnetcore.session.sessionmiddleware)傳遞的每個要求都會重設逾時。
+應用程式會使用 <xref:Microsoft.AspNetCore.Builder.SessionOptions.IdleTimeout> 屬性來判斷會話在伺服器快取中的內容被放棄之前，可以閒置多久。 這個屬性與 Cookie 到期日無關。 透過[工作階段中介軟體](xref:Microsoft.AspNetCore.Session.SessionMiddleware)傳遞的每個要求都會重設逾時。
 
 工作階段狀態為「非鎖定」**。 如果兩個要求同時嘗試修改工作階段的內容，則最後一個要求會覆寫第一個要求。 `Session` 會實作為「一致性工作階段」**，這表示所有內容會都儲存在一起。 當兩個要求試圖修改不同的工作階段值時，最後一個要求可能會覆寫第一個要求所做的工作階段變更。
 
 ### <a name="set-and-get-session-values"></a>設定和取得工作階段值
 
-會話狀態是從 Razor 具有[HttpCoNtext](/dotnet/api/microsoft.aspnetcore.http.httpcontext.session)的頁面[PageModel](/dotnet/api/microsoft.aspnetcore.mvc.razorpages.pagemodel)類別或 MVC[控制器](/dotnet/api/microsoft.aspnetcore.mvc.controller)類別存取。 這個屬性是 [ISession](/dotnet/api/microsoft.aspnetcore.http.isession) 實作。
+會話狀態可從 Razor 頁面 <xref:Microsoft.AspNetCore.Mvc.RazorPages.PageModel> 類別或 MVC <xref:Microsoft.AspNetCore.Mvc.Controller> 類別使用來存取 <xref:Microsoft.AspNetCore.Http.HttpContext.Session?displayProperty=nameWithType> 。 此屬性為 <xref:Microsoft.AspNetCore.Http.ISession> 實作為。
 
-`ISession` 實作提供數個延伸模組來設定和擷取整數和字串值。 當專案參考 [Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/) 套件時，擴充方法位於 [Microsoft.AspNetCore.Http](/dotnet/api/microsoft.aspnetcore.http) 命名空間 (新增 `using Microsoft.AspNetCore.Http;` 陳述式即可取得擴充方法的存取權)。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)包含兩個套件。
+`ISession` 實作提供數個延伸模組來設定和擷取整數和字串值。 <xref:Microsoft.AspNetCore.Http>當專案參考 AspNetCore 時，擴充方法會在命名空間中（加入 `using Microsoft.AspNetCore.Http;` 語句以取得擴充方法的[Microsoft.AspNetCore.Http.Extensions](https://www.nuget.org/packages/Microsoft.AspNetCore.Http.Extensions/)存取權）。 [Microsoft.AspNetCore.App 中繼套件](xref:fundamentals/metapackage-app)包含兩個套件。
 
 `ISession` 擴充方法：
 
-* [Get(ISession, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.get)
-* [GetInt32(ISession, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.getint32)
-* [GetString(ISession, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.getstring)
-* [SetInt32(ISession, String, Int32)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setint32)
-* [SetString(ISession, String, String)](/dotnet/api/microsoft.aspnetcore.http.sessionextensions.setstring)
+* [Get(ISession, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.Get%2A)
+* [GetInt32(ISession, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.GetInt32%2A)
+* [GetString(ISession, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.GetString%2A)
+* [SetInt32(ISession, String, Int32)](xref:Microsoft.AspNetCore.Http.SessionExtensions.SetInt32%2A)
+* [SetString(ISession, String, String)](xref:Microsoft.AspNetCore.Http.SessionExtensions.SetString%2A)
 
 下列範例會 `IndexModel.SessionKeyName` `_Name` 在頁面頁面中抓取金鑰（在範例應用程式中）的會話值 Razor ：
 
@@ -430,7 +430,7 @@ Name: @HttpContext.Session.GetString(IndexModel.SessionKeyName)
 
 [!code-csharp[](app-state/samples/2.x/SessionSample/Pages/Index.cshtml.cs?name=snippet1&highlight=18-19,22-23)]
 
-若要啟用分散式快取案例，即使是使用記憶體中快取時，都必須序列化所有工作階段資料。 字串和整數序列化程式是由[ISession](/dotnet/api/microsoft.aspnetcore.http.isession)的擴充方法所提供）。 複雜類型必須由使用者使用另一個機制加以序列化，例如 JSON。
+若要啟用分散式快取案例，即使是使用記憶體中快取時，都必須序列化所有工作階段資料。 字串和整數序列化程式是由的擴充方法所提供 <xref:Microsoft.AspNetCore.Http.ISession> 。 複雜類型必須由使用者使用另一個機制加以序列化，例如 JSON。
 
 新增下列擴充方法，即可設定和取得可序列化物件：
 
@@ -470,7 +470,7 @@ ASP.NET Core 會公開 Razor [TempData](xref:Microsoft.AspNetCore.Mvc.RazorPages
 
 預設會使用以 Cookie 為基礎的 TempData 提供者，以將 TempData 儲存在 Cookie 中。
 
-Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.dataprotection.idataprotector) 加密，並使用 [Base64UrlTextEncoder](/dotnet/api/microsoft.aspnetcore.webutilities.base64urltextencoder) 編碼，然後分成區塊。 因為 Cookie 分成區塊，所以不適用 ASP.NET Core 1.x 中找到的 Cookie 大小限制。 Cookie 資料不會壓縮，因為壓縮加密資料可能會導致安全性問題，例如 [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) 和 [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) 攻擊。 如需 Cookie 架構 TempData 提供者的詳細資訊，請參閱 [CookieTempDataProvider](/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.cookietempdataprovider)。
+Cookie 資料會使用進行加密 <xref:Microsoft.AspNetCore.DataProtection.IDataProtector> ，並以編碼 <xref:Microsoft.AspNetCore.WebUtilities.Base64UrlTextEncoder> ，然後再進行區塊處理。 因為 Cookie 分成區塊，所以不適用 ASP.NET Core 1.x 中找到的 Cookie 大小限制。 Cookie 資料不會壓縮，因為壓縮加密資料可能會導致安全性問題，例如 [CRIME](https://wikipedia.org/wiki/CRIME_(security_exploit)) 和 [BREACH](https://wikipedia.org/wiki/BREACH_(security_exploit)) 攻擊。 如需以 cookie 為基礎的 TempData 提供者的詳細資訊，請參閱 <xref:Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider> 。
 
 ### <a name="choose-a-tempdata-provider"></a>選擇 TempData 提供者
 
@@ -487,7 +487,7 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 預設會啟用 Cookie 架構 TempData 提供者。
 
-若要啟用以工作階段為基礎的 TempData 提供者，請使用 [AddSessionStateTempDataProvider](/dotnet/api/microsoft.extensions.dependencyinjection.mvcviewfeaturesmvcbuilderextensions.addsessionstatetempdataprovider) 擴充方法：
+若要啟用以會話為基礎的 TempData 提供者，請使用 <xref:Microsoft.Extensions.DependencyInjection.MvcViewFeaturesMvcBuilderExtensions.AddSessionStateTempDataProvider%2A> 擴充方法：
 
 [!code-csharp[](app-state/samples_snapshot_2/2.x/SessionSample/Startup.cs?name=snippet1&highlight=11,13,32)]
 
@@ -508,7 +508,7 @@ Cookie 資料是使用 [IDataProtector](/dotnet/api/microsoft.aspnetcore.datapro
 
 ## <a name="httpcontextitems"></a>HttpContext.Items
 
-[HttpContext.Items](/dotnet/api/microsoft.aspnetcore.http.httpcontext.items) 集合用來在處理單一要求時存放資料。 集合的內容會在每個要求處理之後捨棄。 當元件或中介軟體在要求期間的不同時間點運作，而且沒有可傳遞參數的直接方式時，`Items` 集合經常用來允許元件或中介軟體進行通訊。
+在 <xref:Microsoft.AspNetCore.Http.HttpContext.Items?displayProperty=nameWithType> 處理單一要求時，會使用集合來儲存資料。 集合的內容會在每個要求處理之後捨棄。 當元件或中介軟體在要求期間的不同時間點運作，而且沒有可傳遞參數的直接方式時，`Items` 集合經常用來允許元件或中介軟體進行通訊。
 
 在下列範例中，[中介軟體](xref:fundamentals/middleware/index)會將 `isVerified` 新增至 `Items` 集合。
 

@@ -5,7 +5,7 @@ description: 瞭解如何調試 Blazor 程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/06/2020
+ms.date: 07/15/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: c48eb19c5a1759aace112e2afb1637c649173a3d
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 828fb0ce5101407b6f40195138d59c335eec389f
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059899"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407667"
 ---
 # <a name="debug-aspnet-core-blazor-webassembly"></a>Debug ASP.NET CoreBlazor WebAssembly
 
@@ -48,8 +48,8 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 調試需要下列其中一個瀏覽器：
 
+* Google Chrome （70版或更新版本）（預設值）
 * Microsoft Edge （版本80或更新版本）
-* Google Chrome （版本70或更新版本）
 
 ## <a name="enable-debugging-for-visual-studio-and-visual-studio-code"></a>啟用 Visual Studio 和 Visual Studio Code 的偵錯工具
 
@@ -133,13 +133,13 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 ### <a name="debug-hosted-blazor-webassembly"></a>已裝載的調試Blazor WebAssembly
 
-1. Blazor WebAssembly在 VS Code 中開啟託管應用程式。
+1. Blazor WebAssembly在 VS Code 中開啟裝載應用程式的 [解決方案] 資料夾。
 
 1. 如果沒有為專案設定啟動設定，則會出現下列通知。 選取 [是]。
 
    ![新增必要的資產](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-required-assets.png)
 
-1. 在 [選取範圍] 視窗中，選取裝載解決方案內的*伺服器*專案。
+1. 在視窗頂端的 [命令選擇區] 中，選取裝載解決方案內的*伺服器*專案。
 
 `launch.json`會使用啟動偵錯工具來產生檔案。
 
@@ -160,7 +160,7 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 ### <a name="launch-configuration-options"></a>啟動設定選項
 
-以下是支援的啟動設定選項： `blazorwasm` debug 類型。
+以下是針對 `blazorwasm` debug 類型（）支援的啟動設定選項 `.vscode/launch.json` 。
 
 | 選項    | 描述 |
 | --------- | ----------- |
@@ -198,17 +198,23 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 }
 ```
 
-#### <a name="launch-and-debug-a-hosted-blazor-webassembly-app"></a>啟動和調試託管 Blazor WebAssembly 應用程式
+#### <a name="launch-and-debug-a-hosted-blazor-webassembly-app-with-microsoft-edge"></a>使用 Microsoft Edge 啟動和調試託管 Blazor WebAssembly 應用程式
+
+瀏覽器設定預設為 Google Chrome。 當您使用 Microsoft Edge 進行偵錯工具時，請將設定 `browser` 為 `edge` 。 若要使用 Google Chrome，請不要設定 `browser` 選項，或將選項的值設定為 `chrome` 。
 
 ```json
 {
+  "name": "Launch and Debug Hosted Blazor WebAssembly App",
   "type": "blazorwasm",
   "request": "launch",
-  "name": "Launch and Debug Hosted App",
+  "hosted": true,
   "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/MyHostedApp.Server.dll",
-  "cwd": "${workspaceFolder}"
+  "cwd": "${workspaceFolder}/Server",
+  "browser": "edge"
 }
 ```
+
+在上述範例中， `MyHostedApp.Server.dll` 是*伺服器*應用程式的元件。 `.vscode`資料夾位於 `Client` 、 `Server` 和資料夾旁的方案資料夾中 `Shared` 。
 
 ## <a name="debug-in-the-browser"></a>瀏覽器中的 Debug
 

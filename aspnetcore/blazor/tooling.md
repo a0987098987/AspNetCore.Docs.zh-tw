@@ -16,12 +16,12 @@ no-loc:
 - SignalR
 uid: blazor/tooling
 zone_pivot_groups: operating-systems
-ms.openlocfilehash: 0bd38d8d16365a80d7954c860a4e20e2280c36b2
-ms.sourcegitcommit: e216e8f4afa21215dc38124c28d5ee19f5ed7b1e
+ms.openlocfilehash: 33245e669b317ed577a8a1652b2eed8f9ea5b915
+ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86239604"
+ms.lasthandoff: 07/15/2020
+ms.locfileid: "86407641"
 ---
 # <a name="tooling-for-aspnet-core-blazor"></a>適用于 ASP.NET Core 的工具Blazor
 
@@ -87,7 +87,7 @@ ms.locfileid: "86239604"
 * 信任所有的自我簽署憑證 `localhost` 。
 * 將憑證新增至瀏覽器中受信任的憑證清單。
 
-如需詳細資訊，請參閱瀏覽器和 Linux 散發版本所提供的指引。
+如需詳細資訊，請參閱瀏覽器和 Linux 發行版本所提供的指引。
 
 ::: zone-end
 
@@ -107,7 +107,7 @@ ms.locfileid: "86239604"
 
 1. 在 [**專案名稱**] 欄位中，將應用程式命名為 `WebApplication1` 。 選取 [建立]。
 
-1. 選取 [**執行**  >  **而不進行調試**程式]，以*在沒有偵錯工具的情況下*執行 app。 使用 [**執行**] [啟動] [偵測]  >  **Start Debugging**或 [執行 ( # A0) ] 按鈕執行應用程式，以*使用調試*程式執行應用程式。
+1. 選取 [**執行**  >  **而不進行調試**程式]，以*在沒有偵錯工具的情況下*執行 app。 使用 [**執行**  >  **開始調試**程式] 或 [執行] （&#9654;）按鈕執行應用程式，以*使用調試*程式執行應用程式。
 
 如果出現會信任開發憑證的提示，請信任憑證並繼續。 需要使用者和 keychain 密碼，才能信任憑證。 如需信任 ASP.NET Core HTTPS 開發憑證的詳細資訊，請參閱 <xref:security/enforcing-ssl#trust-the-aspnet-core-https-development-certificate-on-windows-and-macos> 。
 

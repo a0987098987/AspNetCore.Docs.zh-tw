@@ -1,9 +1,9 @@
 ---
 title: 簡介 Identity ASP.NET Core
 author: rick-anderson
-description: 搭配 Identity ASP.NET Core 應用程式使用。 瞭解如何 (RequireDigit、RequiredLength、RequiredUniqueChars 等) 設定密碼需求。
+description: 搭配 Identity ASP.NET Core 應用程式使用。 瞭解如何設定密碼需求（RequireDigit、RequiredLength、RequiredUniqueChars 等）。
 ms.author: riande
-ms.date: 01/15/2020
+ms.date: 7/15/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity
-ms.openlocfilehash: 6ac565bfa4862168fa143417ab5a81c51b620f16
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: dd3296db568700a363c427398f02239846a46ada
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212454"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445423"
 ---
 # <a name="introduction-to-identity-on-aspnet-core"></a>簡介 Identity ASP.NET Core
 
@@ -28,7 +28,7 @@ ms.locfileid: "86212454"
 
 ASP.NET Core Identity ：
 
-* 是支援使用者介面 (UI) 登入功能的 API。
+* 是支援使用者介面（UI）登入功能的 API。
 * 管理使用者、密碼、設定檔資料、角色、宣告、權杖、電子郵件確認等等。
 
 使用者可以建立具有儲存在中之登入資訊的帳戶， Identity 或可以使用外部登入提供者。 支援的外部登入提供者包括[Facebook、Google、Microsoft 帳戶及 Twitter](xref:security/authentication/social/index)。
@@ -37,16 +37,16 @@ ASP.NET Core Identity ：
 
 Identity通常會使用 SQL Server 資料庫來設定，以儲存使用者名稱、密碼和設定檔資料。 或者，也可以使用另一個持續性存放區，例如 Azure 表格儲存體。
 
-在本主題中，您將瞭解如何使用 Identity 來註冊、登入和登出使用者。 注意：範本會將使用者名稱和電子郵件視為相同。 如需有關建立使用之應用程式的詳細指示 Identity ，請參閱本文結尾的後續步驟一節。
+在本主題中，您將瞭解如何使用 Identity 來註冊、登入和登出使用者。 注意：範本會將使用者名稱和電子郵件視為相同。 如需建立使用之應用程式的詳細指示 Identity ，請參閱[後續步驟](#next)。
 
 [Microsoft 身分識別平臺](/azure/active-directory/develop/)是：
 
-* Azure Active Directory (Azure AD) 開發人員平臺的演進。
+* Azure Active Directory （Azure AD）開發人員平臺的演進。
 * 與 ASP.NET Core 無關 Identity 。
 
-[!INCLUDE[](~/includes/IdentityServer4.md) ]
+[!INCLUDE[](~/includes/IdentityServer4.md）]
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample) ([如何下載) ](xref:index#how-to-download-a-sample)) 。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample)（[如何下載）](xref:index#how-to-download-a-sample)）。
 
 <a name="adi"></a>
 
@@ -87,7 +87,7 @@ dotnet new webapp --auth Individual -uld -o WebApp1
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在套件管理員主控台中執行下列命令 (PMC) ：
+在 [套件管理員主控台] （PMC）中執行下列命令：
 
 `PM> Update-Database`
 
@@ -117,7 +117,7 @@ dotnet ef database update
 
 服務會在中加入 `ConfigureServices` 。 典型模式是呼叫所有 `Add{Service}` 方法，然後呼叫 `services.Configure{Service}` 方法。
 
-[!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configureservices&highlight=10-99)]
+[!code-csharp[](identity/sample/WebApp3/Startup.cs?name=snippet_configureservices&highlight=11-99)]
 
 上述的反白顯示程式碼會 Identity 使用預設選項值進行設定。 服務可透過相依性[插入](xref:fundamentals/dependency-injection)提供給應用程式。
 
@@ -129,11 +129,11 @@ Identity藉由呼叫來啟用 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderE
 
 如需和的詳細資訊 `IdentityOptions` `Startup` ，請參閱 <xref:Microsoft.AspNetCore.Identity.IdentityOptions> 和[應用程式啟動](xref:fundamentals/startup)。
 
-## <a name="scaffold-register-login-and-logout"></a>Scaffold 註冊、登入和登出
+## <a name="scaffold-register-login-logout-and-registerconfirmation"></a>Scaffold Register、Login、登出和 RegisterConfirmation
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-新增註冊、登入和登出檔案。 遵循[Scaffold 身分識別， Razor 並提供授權](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization)指示來產生本節所示的程式碼。
+新增 `Register` 、、 `Login` 和檔案 `LogOut` `RegisterConfirmation` 。 遵循[Scaffold 身分識別， Razor 並提供授權](xref:security/authentication/scaffold-identity#scaffold-identity-into-a-razor-project-with-authorization)指示來產生本節所示的程式碼。
 
 # <a name="net-core-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
@@ -141,7 +141,7 @@ Identity藉由呼叫來啟用 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderE
 
 ```dotnetcli
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
-dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout"
+dotnet aspnet-codegenerator identity -dc WebApp1.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.Logout;Account.RegisterConfirmation"
 ```
 
 PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請將檔案清單中的分號 escape，或將檔案清單放在雙引號中，如上述範例所示。
@@ -152,13 +152,14 @@ PowerShell 使用分號做為命令分隔符號。 使用 PowerShell 時，請�
 
 ### <a name="examine-register"></a>檢查 Register
 
-當使用者按一下 [**註冊**] 連結時， `RegisterModel.OnPostAsync` 就會叫用動作。 [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_)會在物件上建立使用者 `_userManager` ：
+當使用者按一下頁面上的 [**註冊**] 按鈕時 `Register` ， `RegisterModel.OnPostAsync` 就會叫用動作。 [CreateAsync](/dotnet/api/microsoft.aspnetcore.identity.usermanager-1.createasync#Microsoft_AspNetCore_Identity_UserManager_1_CreateAsync__0_System_String_)會在物件上建立使用者 `_userManager` ：
 
 [!code-csharp[](identity/sample/WebApp3/Areas/Identity/Pages/Account/Register.cshtml.cs?name=snippet&highlight=9)]
 
-如果成功建立使用者，則會呼叫來登入使用者 `_signInManager.SignInAsync` 。
-
-請參閱[帳戶確認](xref:security/authentication/accconfirm#prevent-login-at-registration)以取得在註冊時防止立即登入的步驟。
+<!-- .NET 5 fixes this, see
+https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+-->
+[!INCLUDE[](~/includes/disableVer.md)]
 
 ### <a name="log-in"></a>登入
 
@@ -228,7 +229,7 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
 
 ## <a name="prevent-publish-of-static-identity-assets"></a>防止發行靜態 Identity 資產
 
-若要防止將靜態 Identity 資產發行 (的樣式表單和 JavaScript 檔案，以供 Identity UI) 至 web 根目錄，請將下列 `ResolveStaticWebAssetsInputsDependsOn` 屬性和 `RemoveIdentityAssets` 目標新增至應用程式的專案檔：
+若要防止將靜態 Identity 資產（適用于 UI 的樣式表單和 JavaScript 檔案 Identity ）發行至 web 根目錄，請將下列 `ResolveStaticWebAssetsInputsDependsOn` 屬性和 `RemoveIdentityAssets` 目標新增至應用程式的專案檔：
 
 ```xml
 <PropertyGroup>
@@ -241,6 +242,8 @@ Post 是在*Pages/Shared/_LoginPartial*中指定的。 cshtml：
   </ItemGroup>
 </Target>
 ```
+
+<a name="next"></a>
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -265,7 +268,7 @@ ASP.NET Core Identity 是將登入功能新增至 ASP.NET Core 應用程式的�
 
 Identity可以使用 SQL Server 資料庫來設定，以儲存使用者名稱、密碼和設定檔資料。 或者，也可以使用另一個持續性存放區，例如 Azure 表格儲存體。
 
-[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/) ([如何下載) ](xref:index#how-to-download-a-sample)) 。
+[查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/security/authentication/identity/sample/src/ASPNETCore-IdentityDemoComplete/)（[如何下載）](xref:index#how-to-download-a-sample)）。
 
 在本主題中，您將瞭解如何使用 Identity 來註冊、登入和登出使用者。 如需有關建立使用之應用程式的詳細指示 Identity ，請參閱本文結尾的後續步驟一節。
 
@@ -312,7 +315,7 @@ dotnet new webapp --auth Individual -o WebApp1
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-在套件管理員主控台中執行下列命令 (PMC) ：
+在 [套件管理員主控台] （PMC）中執行下列命令：
 
 ```powershell
 Update-Database

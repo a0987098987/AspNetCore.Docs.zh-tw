@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/scaffold-identity
-ms.openlocfilehash: e2ae82b9c26771ee5da16b1611026c6d62804bce
-ms.sourcegitcommit: 50e7c970f327dbe92d45eaf4c21caa001c9106d0
+ms.openlocfilehash: a8ca520d84d382b95cd4c0e2962ba4e5c922049e
+ms.sourcegitcommit: 3544941682869734ea0113e24e02ed0ec9e1a9ec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86212944"
+ms.lasthandoff: 07/18/2020
+ms.locfileid: "86464562"
 ---
 # <a name="scaffold-identity-in-aspnet-core-projects"></a>IdentityASP.NET Core 專案中的 Scaffold
 
@@ -28,7 +28,7 @@ ms.locfileid: "86212944"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-ASP.NET Core 提供[ASP.NET Core Identity ](xref:security/authentication/identity)做為[ Razor 類別庫](xref:razor-pages/ui-class)。 包含的應用程式 Identity 可以套用 scaffolder，以選擇性地加入包含在類別庫中的原始程式碼， Identity Razor (RCL) 。 建議您產生原始程式碼，以便能夠修改程式碼並變更行為。 例如，您可以指示 Scaffolder 產生註冊使用的程式碼。 產生的程式碼優先于 RCL 中的相同程式碼 Identity 。 若要取得 UI 的完全控制，而不使用預設 RCL，請參閱[建立完整的 Identity UI 來源](#full)一節。
+ASP.NET Core 提供[ASP.NET Core Identity ](xref:security/authentication/identity)做為[ Razor 類別庫](xref:razor-pages/ui-class)。 包含的應用程式 Identity 可以套用 scaffolder，以選擇性地新增包含在 Identity Razor 類別庫（RCL）中的原始程式碼。 建議您產生原始程式碼，以便能夠修改程式碼並變更行為。 例如，您可以指示 Scaffolder 產生註冊使用的程式碼。 產生的程式碼優先于 RCL 中的相同程式碼 Identity 。 若要取得 UI 的完全控制，而不使用預設 RCL，請參閱[建立完整的 Identity UI 來源](#full)一節。
 
 **不**包含驗證的應用程式可以套用 scaffolder 來新增 RCL Identity 套件。 您可以選擇 Identity 要產生的程式碼。
 
@@ -113,7 +113,7 @@ Identity會在*區域/ Identity / Identity HostingStartup.cs*中設定。 如需
 
 ### <a name="layout-changes"></a>版面配置變更
 
-選擇性：將登入部分 (`_LoginPartial`) 新增至配置檔案：
+選擇性：將登入部分（ `_LoginPartial` ）新增至配置檔案：
 
 [!code-cshtml[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
 
@@ -152,7 +152,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-選擇性：將登入部分 (`_LoginPartial`) 新增至*Views/Shared/_Layout. cshtml*檔案：
+選擇性：將登入部分（ `_LoginPartial` ）新增至*Views/Shared/_Layout. cshtml*檔案：
 
 [!code-cshtml[](scaffold-identity/3.1sample/_Layout.cshtml?highlight=20)]
 
@@ -195,7 +195,7 @@ Identity會在*區域/ Identity / Identity HostingStartup.cs*中設定。 如需
 權杖可以傳遞給元件：
 
 * 當驗證權杖已布建並儲存至驗證 cookie 時，可以將它們傳遞給元件。
-* Razor元件無法 `HttpContext` 直接使用，因此無法取得[ (XSRF) 權杖的防要求偽造](xref:security/anti-request-forgery)，以張貼到 Identity 的登出端點 `/Identity/Account/Logout` 。 XSRF token 可以傳遞給元件。
+* Razor元件無法 `HttpContext` 直接使用，因此無法取得[反要求偽造（XSRF）權杖](xref:security/anti-request-forgery)，以在張貼到 Identity 的登出端點 `/Identity/Account/Logout` 。 XSRF token 可以傳遞給元件。
 
 如需詳細資訊，請參閱 <xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app> 。
 
@@ -214,7 +214,7 @@ var tokens = new InitialApplicationState
 };
 ```
 
-`App` (*app.config*) 更新元件，以指派 `InitialState.XsrfToken` ：
+更新 `App` 元件（*razor*）以指派 `InitialState.XsrfToken` ：
 
 ```csharp
 @inject TokenProvider TokenProvider
@@ -242,7 +242,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 
 ### <a name="layout-and-authentication-flow-changes"></a>版面配置和驗證流程變更
 
-將 `RedirectToLogin` 元件 (*RedirectToLogin*) 新增至專案根目錄中應用程式的*共用*資料夾：
+`RedirectToLogin`在專案根目錄中，將元件（*RedirectToLogin*）新增至應用程式的*共用*資料夾：
 
 ```razor
 @inject NavigationManager Navigation
@@ -255,7 +255,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 }
 ```
 
-將 `LoginDisplay` 元件 (*LoginDisplay*) 新增至應用程式的*共用*資料夾。 [TokenProvider 服務](xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)會針對張貼至的登出端點的 HTML 表單，提供 XSRF token Identity ：
+將 `LoginDisplay` 元件（*LoginDisplay*）新增至應用程式的*共用*資料夾。 [TokenProvider 服務](xref:blazor/security/server/additional-scenarios#pass-tokens-to-a-blazor-server-app)會針對張貼至的登出端點的 HTML 表單，提供 XSRF token Identity ：
 
 ```razor
 @using Microsoft.AspNetCore.Components.Authorization
@@ -280,7 +280,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 </AuthorizeView>
 ```
 
-在 `MainLayout` (*Shared/MainLayout*) 的元件中，將元件加入 `LoginDisplay` 至頂端資料列 `<div>` 元素的內容：
+在 `MainLayout` 元件（*Shared/MainLayout*）中，將 `LoginDisplay` 元件加入至頂端資料列 `<div>` 元素的內容：
 
 ```razor
 <div class="top-row px-4 auth">
@@ -304,7 +304,7 @@ TokenProvider.XsrfToken = InitialState.XsrfToken;
 > [!NOTE]
 > 本節中的範例只是自訂的起點。 可能需要額外的工作，才能獲得最佳的使用者體驗。
 
-建立新的 `NavMenu_IdentityLayout` 元件 (*共用/NavMenu_ Identity 版面配置. razor*) 。 針對元件的標記和程式碼，請使用應用程式元件的相同內容， `NavMenu` (*Shared/navmenu.cshtml. razor*) 。 去除 `NavLink` 無法匿名連線的任何元件，因為元件中的自動重新導向在 `RedirectToLogin` 需要驗證或授權的元件中失敗。
+建立新的 `NavMenu_IdentityLayout` 元件（*Shared/NavMenu_ Identity Layout*）。 如需元件的標記和程式碼，請使用應用程式元件的相同內容 `NavMenu` （*Shared/navmenu.cshtml*）。 去除 `NavLink` 無法匿名連線的任何元件，因為元件中的自動重新導向在 `RedirectToLogin` 需要驗證或授權的元件中失敗。
 
 在*Pages/Shared/Layout*檔案中，進行下列變更：
 
@@ -400,6 +400,14 @@ cd RPauth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
 -->
+
+## <a name="password-configuration"></a>密碼設定
+
+如果 <xref:Microsoft.AspNetCore.Identity.PasswordOptions> 在中設定 `Startup.ConfigureServices` ，則 scaffold 頁面中的屬性可能需要[ `[StringLength]` 屬性](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute)設定 `Password` Identity 。 `InputModel``Password`在下列檔案中可找到屬性：
+
+* `Areas/Identity/Pages/Account/Register.cshtml.cs`
+* `Areas/Identity/Pages/Account/ResetPassword.cshtml.cs`
+
 ## <a name="disable-a-page"></a>停用頁面
 
 本章節說明如何停用 [註冊] 頁面，但此方法可用來停用任何頁面。
@@ -480,7 +488,7 @@ dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --file
 
 ::: moniker range="< aspnetcore-3.0"
 
-ASP.NET Core 2.1 和更新版本[提供 Identity ASP.NET Core](xref:security/authentication/identity)做為[ Razor 類別庫](xref:razor-pages/ui-class)。 包含的應用程式 Identity 可以套用 scaffolder，以選擇性地加入包含在類別庫中的原始程式碼， Identity Razor (RCL) 。 建議您產生原始程式碼，以便能夠修改程式碼並變更行為。 例如，您可以指示 Scaffolder 產生註冊使用的程式碼。 產生的程式碼優先于 RCL 中的相同程式碼 Identity 。 若要取得 UI 的完全控制，而不使用預設 RCL，請參閱[建立完整身分識別 UI 來源](#full)一節。
+ASP.NET Core 2.1 和更新版本[提供 Identity ASP.NET Core](xref:security/authentication/identity)做為[ Razor 類別庫](xref:razor-pages/ui-class)。 包含的應用程式 Identity 可以套用 scaffolder，以選擇性地新增包含在 Identity Razor 類別庫（RCL）中的原始程式碼。 建議您產生原始程式碼，以便能夠修改程式碼並變更行為。 例如，您可以指示 Scaffolder 產生註冊使用的程式碼。 產生的程式碼優先于 RCL 中的相同程式碼 Identity 。 若要取得 UI 的完全控制，而不使用預設 RCL，請參閱[建立完整身分識別 UI 來源](#full)一節。
 
 **不**包含驗證的應用程式可以套用 scaffolder 來新增 RCL Identity 套件。 您可以選擇 Identity 要產生的程式碼。
 
@@ -546,7 +554,7 @@ Identity會在*區域/ Identity / Identity HostingStartup.cs*中設定。 如需
 
 ### <a name="layout-changes"></a>版面配置變更
 
-選擇性：將登入部分 (`_LoginPartial`) 新增至配置檔案：
+選擇性：將登入部分（ `_LoginPartial` ）新增至配置檔案：
 
 [!code-cshtml[](scaffold-identity/sample/_Layout.cshtml?highlight=37)]
 
@@ -585,7 +593,7 @@ dotnet ef database update
 
 [!INCLUDE[](~/includes/scaffold-identity/id-scaffold-dlg.md)]
 
-選擇性：將登入部分 (`_LoginPartial`) 新增至*Views/Shared/_Layout. cshtml*檔案：
+選擇性：將登入部分（ `_LoginPartial` ）新增至*Views/Shared/_Layout. cshtml*檔案：
 
 [!code-cshtml[](scaffold-identity/sample/_LayoutMvc.cshtml?highlight=37)]
 
@@ -647,6 +655,14 @@ cd RPauth
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
 dotnet aspnet-codegenerator identity -dc RPauth.Data.ApplicationDbContext --files "Account.Register;Account.Login;Account.RegisterConfirmation"
 -->
+
+## <a name="password-configuration"></a>密碼設定
+
+如果 <xref:Microsoft.AspNetCore.Identity.PasswordOptions> 在中設定 `Startup.ConfigureServices` ，則 scaffold 頁面中的屬性可能需要[ `[StringLength]` 屬性](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute)設定 `Password` Identity 。 `InputModel``Password`在下列檔案中可找到屬性：
+
+* `Areas/Identity/Pages/Account/Register.cshtml.cs`
+* `Areas/Identity/Pages/Account/ResetPassword.cshtml.cs`
+
 ## <a name="disable-register-page"></a>停用註冊頁面
 
 若要停用使用者註冊：

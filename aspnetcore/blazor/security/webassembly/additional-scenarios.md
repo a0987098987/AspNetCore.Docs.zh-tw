@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/additional-scenarios
-ms.openlocfilehash: 0cf2c2d2ef0d199ca5df6c27ddcc39e84db46ebd
-ms.sourcegitcommit: fa89d6553378529ae86b388689ac2c6f38281bb9
+ms.openlocfilehash: 79f7b2177d6d07101c73cde841c062b0e1468593
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86059756"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445147"
 ---
 # <a name="aspnet-core-blazor-webassembly-additional-security-scenarios"></a>ASP.NET Core Blazor WebAssembly 其他安全性案例
 
@@ -59,7 +59,7 @@ public class CustomAuthorizationMessageHandler : AuthorizationMessageHandler
 在 `Program.Main` （ `Program.cs` ）中， <xref:System.Net.Http.HttpClient> 會使用自訂授權訊息處理常式來設定：
 
 ```csharp
-builder.Services.AddTransient<CustomAuthorizationMessageHandler>();
+builder.Services.AddScoped<CustomAuthorizationMessageHandler>();
 
 builder.Services.AddHttpClient("ServerAPI",
         client => client.BaseAddress = new Uri("https://www.example.com/base"))
@@ -108,16 +108,14 @@ using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 ...
 
-builder.Services.AddTransient(sp =>
-{
-    return new HttpClient(sp.GetRequiredService<AuthorizationMessageHandler>()
-        .ConfigureHandler(
-            authorizedUrls: new [] { "https://www.example.com/base" },
-            scopes: new[] { "example.read", "example.write" }))
-        {
-            BaseAddress = new Uri("https://www.example.com/base")
-        };
-});
+builder.Services.AddScoped(sp => new HttpClient(
+    sp.GetRequiredService<AuthorizationMessageHandler>()
+    .ConfigureHandler(
+        authorizedUrls: new[] { "https://www.example.com/base" },
+        scopes: new[] { "example.read", "example.write" }))
+    {
+        BaseAddress = new Uri("https://www.example.com/base")
+    });
 ```
 
 針對以裝載 Blazor 的範本為基礎的應用程式 Blazor WebAssembly ， <xref:Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment.BaseAddress?displayProperty=nameWithType> 可以指派給：
@@ -137,7 +135,7 @@ builder.Services.AddHttpClient("ServerAPI",
         client => client.BaseAddress = new Uri("https://www.example.com/base"))
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
-builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("ServerAPI"));
 ```
 
@@ -904,10 +902,11 @@ public class Program
         var builder = WebAssemblyHostBuilder.CreateDefault(args);
         builder.RootComponents.Add<App>("app");
 
-        builder.Services.AddTransient(new HttpClient 
-        {
-            BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
-        });
+        builder.Services.AddScoped(sp => 
+            new HttpClient
+            {
+                BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+            });
 
         services.Add...;
 
@@ -1043,3 +1042,79 @@ builder.Services.Configure<JwtBearerOptions>(
 如果在區段上對授權單位的追蹤不適合應用程式的 OIDC 提供者（例如使用非 AAD 提供者），請 <xref:Microsoft.AspNetCore.Builder.OpenIdConnectOptions.Authority> 直接設定屬性。 請在 <xref:Microsoft.AspNetCore.Builder.JwtBearerOptions> 應用程式佈建檔案（）中， `appsettings.json` 使用金鑰來設定屬性 `Authority` 。
 
 針對 v2.0 端點，識別碼權杖中的宣告清單會變更。 如需詳細資訊，請參閱[為何要更新至 Microsoft 身分識別平臺（v2.0）？](/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison)。
+
+## <a name="configure-and-use-grpc-in-components"></a>設定和使用元件中的 gRPC
+
+若要將 Blazor WebAssembly 應用程式設定為使用[ASP.NET Core gRPC 架構](xref:grpc/index)：
+
+* 在伺服器上啟用 gRPC-Web。 如需詳細資訊，請參閱 <xref:grpc/browser> 。
+* 為應用程式的訊息處理常式註冊 gRPC 服務。 下列範例會設定應用程式的授權訊息處理常式，以使用[ `GreeterClient` gRPC 教學](xref:tutorials/grpc/grpc-start#create-a-grpc-service)課程（）中的服務 `Program.Main` ：
+
+```csharp
+using System.Net.Http;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using Grpc.Net.Client;
+using Grpc.Net.Client.Web;
+using {APP ASSEMBLY}.Shared;
+
+...
+
+builder.Services.AddScoped(sp =>
+{
+    var baseAddressMessageHandler = 
+        sp.GetRequiredService<BaseAddressAuthorizationMessageHandler>();
+    baseAddressMessageHandler.InnerHandler = new HttpClientHandler();
+    var grpcWebHandler = 
+        new GrpcWebHandler(GrpcWebMode.GrpcWeb, baseAddressMessageHandler);
+    var channel = GrpcChannel.ForAddress(builder.HostEnvironment.BaseAddress, 
+        new GrpcChannelOptions { HttpHandler = grpcWebHandler });
+
+    return new Greeter.GreeterClient(channel);
+});
+```
+
+預留位置 `{APP ASSEMBLY}` 是應用程式的元件名稱（例如， `BlazorSample` ）。 將檔案放 `.proto` 在 `Shared` 託管方案的專案中 Blazor 。
+
+用戶端應用程式中的元件可以使用 gRPC 用戶端（）進行 gRPC 呼叫 `Pages/Grpc.razor` ：
+
+```razor
+@page "/grpc"
+@attribute [Authorize]
+@using Microsoft.AspNetCore.Authorization
+@using {APP ASSEMBLY}.Shared
+@inject Greeter.GreeterClient GreeterClient
+
+<h1>Invoke gRPC service</h1>
+
+<p>
+    <input @bind="name" placeholder="Type your name" />
+    <button @onclick="GetGreeting" class="btn btn-primary">Call gRPC service</button>
+</p>
+
+Server response: <strong>@serverResponse</strong>
+
+@code {
+    private string name = "Bert";
+    private string serverResponse;
+
+    private async Task GetGreeting()
+    {
+        try
+        {
+            var request = new HelloRequest { Name = name };
+            var reply = await GreeterClient.SayHelloAsync(request);
+            serverResponse = reply.Message;
+        }
+        catch (Grpc.Core.RpcException ex)
+            when (ex.Status.DebugException is 
+                AccessTokenNotAvailableException tokenEx)
+        {
+            tokenEx.Redirect();
+        }
+    }
+}
+```
+
+預留位置 `{APP ASSEMBLY}` 是應用程式的元件名稱（例如， `BlazorSample` ）。 若要使用 `Status.DebugException` 屬性，請使用[Grpc .Net. Client](https://www.nuget.org/packages/Grpc.Net.Client) version 2.30.0 或更新版本。
+
+如需詳細資訊，請參閱<xref:grpc/browser>。

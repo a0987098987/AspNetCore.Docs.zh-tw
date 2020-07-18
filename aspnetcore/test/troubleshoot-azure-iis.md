@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/troubleshoot-azure-iis
-ms.openlocfilehash: 65095f3990c72224d95f1f5fe46d320ab8f12040
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 17ada36c40997353528f922bece5acc34ce760d2
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404830"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445381"
 ---
 # <a name="troubleshoot-aspnet-core-on-azure-app-service-and-iis"></a>疑難排解 Azure App Service 和 IIS 上的 ASP.NET Core
 
@@ -47,7 +47,7 @@ ms.locfileid: "85404830"
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 使用本主題中的建議，可以診斷在本機進行偵錯工具時所發生的*502.5-進程失敗*或*500.30 啟動失敗*。
+在 Visual Studio 中，ASP.NET Core 專案預設為在進行偵錯工具時[IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)裝載。 使用本主題中的建議，可以診斷在本機進行偵錯工具時所發生的*502.5-進程失敗*或*500.30 啟動失敗*。
 
 ### <a name="40314-forbidden"></a>403.14 禁止
 
@@ -63,7 +63,7 @@ The Web server is configured to not list the contents of this directory.
 * 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
 * 部署中遺漏了*web.config*檔案，或*web.config*的檔案內容格式不正確。
 
-執行下列步驟：
+請執行下列步驟：
 
 1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
 1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
@@ -226,14 +226,14 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題]**** 刀鋒視窗：
 
 1. 在 Azure 入口網站的 [應用程式服務]**** 中，開啟應用程式。
-1. 選取 [診斷並解決問題]****。
+1. 選取 [診斷並解決問題]。
 1. 選取 [診斷工具]**** 標題。
 1. 在 [支援工具]**** 下，選取 [應用程式事件]**** 按鈕。
 1. 檢查 [來源]**** 資料行中 *IIS AspNetCoreModule* 或 *IIS AspNetCoreModule V2* 項目所提供的最新錯誤。
 
 除了使用 [診斷並解決問題]**** 刀鋒視窗之外，也可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 來直接檢查「應用程式事件記錄檔」：
 
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 開啟 **LogFiles** 資料夾。
 1. 選取 *eventlog.xml* 檔案旁邊的鉛筆圖示。
@@ -243,7 +243,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 許多啟動錯誤不會在「應用程式事件記錄檔」中產生實用的資訊。 您可以在 [Kudu](https://github.com/projectkudu/kudu/wiki)「遠端執行主控台」中執行應用程式來探索錯誤：
 
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 
 #### <a name="test-a-32-bit-x86-app"></a>測試 32 位元 (x86) 應用程式
@@ -264,7 +264,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
      {ASSEMBLY NAME}.exe
      ```
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 **在預覽版上執行的架構相依部署**
 
@@ -273,7 +273,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` 是執行階段版本)
 1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 #### <a name="test-a-64-bit-x64-app"></a>測試 64 位元 (x64) 應用程式
 
@@ -286,7 +286,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
   1. `cd D:\home\site\wwwroot`
   1. 執行應用程式：`{ASSEMBLY NAME}.exe`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 **在預覽版上執行的架構相依部署**
 
@@ -295,38 +295,28 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` 是執行階段版本)
 1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 ### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET Core 模組 stdout 記錄檔（Azure App Service）
-
-ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄檔」中所沒有的實用訊息。 啟用及檢視 stdout 記錄檔：
-
-1. 在 Azure 入口網站中，瀏覽至 [診斷並解決問題]**** 刀鋒視窗。
-1. 在 [選取問題類別]**** 底下，選取 [Web 應用程式停止運作]**** 按鈕。
-1. 在 [建議的解決方案]**[啟用 Stdout 記錄檔重新導向]** > **** 底下，選取用來**開啟 Kudu 主控台以編輯 Web.Config** 的按鈕。
-1. 在 Kudu [診斷主控台]**** 中，將資料夾開啟至路徑 [site]**** > [wwwroot]****。 向下捲動以顯露位於清單底部的 *web.config* 檔案。
-1. 按一下 *web.config* 檔案旁邊的鉛筆圖示。
-1. 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為：`\\?\%home%\LogFiles\stdout`。
-1. 選取 [儲存]**** 以儲存已更新的 *web.config* 檔案。
-1. 對應用程式發出要求。
-1. 返回 Azure 入口網站。 選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
-1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
-1. 選取 **LogFiles** 資料夾。
-1. 檢查 [修改時間]**** 資料行，然後選取鉛筆圖示來編輯修改日期最新的 stdout 記錄檔。
-1. 當記錄檔開啟時，會顯示錯誤。
-
-完成疑難排解時，請停用 stdout 記錄：
-
-1. 在 Kudu [診斷主控台]**** 中，返回路徑 [site]**** > [wwwroot]**** 以顯露 *web.config* 檔案。 再次選取鉛筆圖示來開啟 **web.config** 檔案。
-1. 將 **stdoutLogEnabled** 設定為 `false`。
-1. 選取 [儲存]**** 以儲存檔案。
-
-如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 > [!WARNING]
 > 如果無法停用 stdout 記錄檔，可能會造成應用程式或伺服器發生失敗。 因為它並沒有記錄檔大小或數量上的限制。 請只在針對應用程式啟動問題進行疑難排解時，才使用 stdout 記錄。
 >
 > 針對 ASP.NET Core 應用程式啟動後的一般記錄，請使用會限制記錄檔大小並輪替記錄檔的記錄程式庫。 如需詳細資訊，請參閱[協力廠商記錄提供者](xref:fundamentals/logging/index#third-party-logging-providers)。
+
+ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄檔」中所沒有的實用訊息。 啟用及檢視 stdout 記錄檔：
+
+1. 在 Azure 入口網站中，流覽至 web 應用程式。
+1. 在 [ **App Service** ] 分頁的 [搜尋] 方塊中，輸入**kudu** 。
+1. 選取 [**先進的工具**] [ > **Go**]。
+1. 選取 [ **Debug console] > CMD**。
+1. 流覽至*site/wwwroot*
+1. 選取鉛筆圖示以編輯*web.config*檔案。
+1. 在 `<aspNetCore />` 元素中，設定 `stdoutLogEnabled="true"` 並選取 [**儲存**]。
+
+當您透過設定完成疑難排解時，請停用 stdout 記錄 `stdoutLogEnabled="false"` 。
+
+如需詳細資訊，請參閱 <xref:host-and-deploy/aspnet-core-module#log-creation-and-redirection> 。
 
 ### <a name="aspnet-core-module-debug-log-azure-app-service"></a>ASP.NET Core 模組的 debug 記錄檔（Azure App Service）
 
@@ -335,10 +325,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 若要啟用增強型診斷記錄，請執行下列任一動作：
    * 遵循[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中的指示，來設定應用程式進行增強型診斷記錄。 重新部署應用程式。
    * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
-     1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+     1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
      1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
      1. 開啟路徑**site**  >  **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 開啟路徑**site**  >  **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
@@ -380,7 +370,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 如果未啟用 stdout 記錄，請依照下列步驟進行操作：
 
-1. 在 Azure 入口網站中，選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 Azure 入口網站中，選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 將資料夾開啟至路徑 [site]**[wwwroot]** > ****，然後向下捲動以顯露位於清單底部的 *web.config* 檔案。
 1. 按一下 *web.config* 檔案旁邊的鉛筆圖示。
@@ -595,7 +585,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * [Visual Studio 2017 中遠端 IIS 電腦上的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
 * [瞭解如何使用 Visual Studio 進行調試](/visualstudio/debugger/getting-started-with-the-debugger)
 
-### <a name="visual-studio-code-documentation"></a>Visual Studio Code 檔
+### <a name="visual-studio-code-documentation"></a>Visual Studio Code 文件
 
 * [使用 Visual Studio Code 偵錯](https://code.visualstudio.com/docs/editor/debugging)
 
@@ -622,7 +612,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 使用本主題中的建議，可以診斷在本機進行偵錯工具時所發生的*502.5-進程失敗*或*500.30 啟動失敗*。
+在 Visual Studio 中，ASP.NET Core 專案預設為在進行偵錯工具時[IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)裝載。 使用本主題中的建議，可以診斷在本機進行偵錯工具時所發生的*502.5-進程失敗*或*500.30 啟動失敗*。
 
 ### <a name="40314-forbidden"></a>403.14 禁止
 
@@ -638,7 +628,7 @@ The Web server is configured to not list the contents of this directory.
 * 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
 * 部署中遺漏了*web.config*檔案，或*web.config*的檔案內容格式不正確。
 
-執行下列步驟：
+請執行下列步驟：
 
 1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
 1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
@@ -719,14 +709,14 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題]**** 刀鋒視窗：
 
 1. 在 Azure 入口網站的 [應用程式服務]**** 中，開啟應用程式。
-1. 選取 [診斷並解決問題]****。
+1. 選取 [診斷並解決問題]。
 1. 選取 [診斷工具]**** 標題。
 1. 在 [支援工具]**** 下，選取 [應用程式事件]**** 按鈕。
 1. 檢查 [來源]**** 資料行中 *IIS AspNetCoreModule* 或 *IIS AspNetCoreModule V2* 項目所提供的最新錯誤。
 
 除了使用 [診斷並解決問題]**** 刀鋒視窗之外，也可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 來直接檢查「應用程式事件記錄檔」：
 
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 開啟 **LogFiles** 資料夾。
 1. 選取 *eventlog.xml* 檔案旁邊的鉛筆圖示。
@@ -736,7 +726,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 許多啟動錯誤不會在「應用程式事件記錄檔」中產生實用的資訊。 您可以在 [Kudu](https://github.com/projectkudu/kudu/wiki)「遠端執行主控台」中執行應用程式來探索錯誤：
 
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 
 #### <a name="test-a-32-bit-x86-app"></a>測試 32 位元 (x86) 應用程式
@@ -757,7 +747,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
      {ASSEMBLY NAME}.exe
      ```
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 **在預覽版上執行的架構相依部署**
 
@@ -766,7 +756,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` 是執行階段版本)
 1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 #### <a name="test-a-64-bit-x64-app"></a>測試 64 位元 (x64) 應用程式
 
@@ -779,7 +769,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
   1. `cd D:\home\site\wwwroot`
   1. 執行應用程式：`{ASSEMBLY NAME}.exe`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 **在預覽版上執行的架構相依部署**
 
@@ -788,7 +778,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` 是執行階段版本)
 1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 ### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET Core 模組 stdout 記錄檔（Azure App Service）
 
@@ -802,7 +792,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為：`\\?\%home%\LogFiles\stdout`。
 1. 選取 [儲存]**** 以儲存已更新的 *web.config* 檔案。
 1. 對應用程式發出要求。
-1. 返回 Azure 入口網站。 選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 返回 Azure 入口網站。 選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 選取 **LogFiles** 資料夾。
 1. 檢查 [修改時間]**** 資料行，然後選取鉛筆圖示來編輯修改日期最新的 stdout 記錄檔。
@@ -828,10 +818,10 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 1. 若要啟用增強型診斷記錄，請執行下列任一動作：
    * 遵循[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中的指示，來設定應用程式進行增強型診斷記錄。 重新部署應用程式。
    * 使用 Kudu 主控台，將[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所顯示的 `<handlerSettings>` 新增至即時應用程式的 *web.config* 檔案：
-     1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+     1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
      1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
      1. 開啟路徑**site**  >  **wwwroot**的資料夾。 選取鉛筆圖示來編輯 *web.config* 檔案。 新增 `<handlerSettings>` 區段，如[增強型診斷記錄](xref:host-and-deploy/aspnet-core-module#enhanced-diagnostic-logs)中所示。 選取 [儲存]**** 按鈕。
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 開啟路徑**site**  >  **wwwroot**的資料夾。 如果未提供 *aspnetcore-debug.log* 檔案的路徑，該檔案會顯示在清單中。 如果已提供路徑，請巡覽至記錄檔的位置。
 1. 使用檔案名稱旁的鉛筆圖示來開啟記錄檔。
@@ -873,7 +863,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 如果未啟用 stdout 記錄，請依照下列步驟進行操作：
 
-1. 在 Azure 入口網站中，選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 Azure 入口網站中，選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 將資料夾開啟至路徑 [site]**[wwwroot]** > ****，然後向下捲動以顯露位於清單底部的 *web.config* 檔案。
 1. 按一下 *web.config* 檔案旁邊的鉛筆圖示。
@@ -1088,7 +1078,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 * [Visual Studio 2017 中遠端 IIS 電腦上的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
 * [瞭解如何使用 Visual Studio 進行調試](/visualstudio/debugger/getting-started-with-the-debugger)
 
-### <a name="visual-studio-code-documentation"></a>Visual Studio Code 檔
+### <a name="visual-studio-code-documentation"></a>Visual Studio Code 文件
 
 * [使用 Visual Studio Code 偵錯](https://code.visualstudio.com/docs/editor/debugging)
 
@@ -1115,7 +1105,7 @@ ASP.NET Core 模組偵錯記錄提供 ASP.NET Core 模組中其他且更深入�
 
 ## <a name="app-startup-errors"></a>應用程式啟動錯誤
 
-在 Visual Studio 中，進行偵錯時，ASP.NET Core 專案會預設為 [IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview) 裝載環境。 使用本主題中的建議，可以診斷本機上的偵錯工具發生的*502.5 進程失敗*。
+在 Visual Studio 中，ASP.NET Core 專案預設為在進行偵錯工具時[IIS Express](/iis/extensions/introduction-to-iis-express/iis-express-overview)裝載。 使用本主題中的建議，可以診斷本機上的偵錯工具發生的*502.5 進程失敗*。
 
 ### <a name="40314-forbidden"></a>403.14 禁止
 
@@ -1131,7 +1121,7 @@ The Web server is configured to not list the contents of this directory.
 * 部署進程無法將應用程式的所有檔案和資料夾移到主控系統上的部署資料夾。
 * 部署中遺漏了*web.config*檔案，或*web.config*的檔案內容格式不正確。
 
-執行下列步驟：
+請執行下列步驟：
 
 1. 刪除主控系統上部署資料夾中的所有檔案和資料夾。
 1. 使用一般部署方法（例如 Visual Studio、PowerShell 或手動部署），將應用程式的 [*發佈*] 資料夾的內容重新部署至主機系統：
@@ -1197,14 +1187,14 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 若要存取「應用程式事件記錄檔」，請使用 Azure 入口網站中的 [診斷並解決問題]**** 刀鋒視窗：
 
 1. 在 Azure 入口網站的 [應用程式服務]**** 中，開啟應用程式。
-1. 選取 [診斷並解決問題]****。
+1. 選取 [診斷並解決問題]。
 1. 選取 [診斷工具]**** 標題。
 1. 在 [支援工具]**** 下，選取 [應用程式事件]**** 按鈕。
 1. 檢查 [來源]**** 資料行中 *IIS AspNetCoreModule* 或 *IIS AspNetCoreModule V2* 項目所提供的最新錯誤。
 
 除了使用 [診斷並解決問題]**** 刀鋒視窗之外，也可以使用 [Kudu](https://github.com/projectkudu/kudu/wiki) 來直接檢查「應用程式事件記錄檔」：
 
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 開啟 **LogFiles** 資料夾。
 1. 選取 *eventlog.xml* 檔案旁邊的鉛筆圖示。
@@ -1214,7 +1204,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 
 許多啟動錯誤不會在「應用程式事件記錄檔」中產生實用的資訊。 您可以在 [Kudu](https://github.com/projectkudu/kudu/wiki)「遠端執行主控台」中執行應用程式來探索錯誤：
 
-1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 [開發工具]**** 區域中，開啟 [進階工具]****。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 
 #### <a name="test-a-32-bit-x86-app"></a>測試 32 位元 (x86) 應用程式
@@ -1235,7 +1225,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
      {ASSEMBLY NAME}.exe
      ```
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 **在預覽版上執行的架構相依部署**
 
@@ -1244,7 +1234,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x32` (`{X.Y}` 是執行階段版本)
 1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 #### <a name="test-a-64-bit-x64-app"></a>測試 64 位元 (x64) 應用程式
 
@@ -1257,7 +1247,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
   1. `cd D:\home\site\wwwroot`
   1. 執行應用程式：`{ASSEMBLY NAME}.exe`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 **在預覽版上執行的架構相依部署**
 
@@ -1266,7 +1256,7 @@ Failed to start application '/LM/W3SVC/6/ROOT/', ErrorCode '0x800700c1'.
 1. `cd D:\home\SiteExtensions\AspNetCoreRuntime.{X.Y}.x64` (`{X.Y}` 是執行階段版本)
 1. 執行應用程式：`dotnet \home\site\wwwroot\{ASSEMBLY NAME}.dll`
 
-來自應用程式的主控台輸出若有顯示任何錯誤，就會透過管道傳送給 Kudu 主控台。
+應用程式的主控台輸出 (顯示任何錯誤) 會以管道傳送至 Kudu 主控台。
 
 ### <a name="aspnet-core-module-stdout-log-azure-app-service"></a>ASP.NET Core 模組 stdout 記錄檔（Azure App Service）
 
@@ -1280,7 +1270,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 1. 將 **stdoutLogEnabled** 設定為 `true`，並將 **stdoutLogFile** 路徑變更為：`\\?\%home%\LogFiles\stdout`。
 1. 選取 [儲存]**** 以儲存已更新的 *web.config* 檔案。
 1. 對應用程式發出要求。
-1. 返回 Azure 入口網站。 選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 返回 Azure 入口網站。 選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 選取 **LogFiles** 資料夾。
 1. 檢查 [修改時間]**** 資料行，然後選取鉛筆圖示來編輯修改日期最新的 stdout 記錄檔。
@@ -1322,7 +1312,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 
 如果未啟用 stdout 記錄，請依照下列步驟進行操作：
 
-1. 在 Azure 入口網站中，選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [執行&rarr;]**** 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
+1. 在 Azure 入口網站中，選取 [開發工具]**** 區域中的 [進階工具]**** 刀鋒視窗。 選取 [**移 &rarr; 至**] 按鈕。 Kudu 主控台會在新的瀏覽器索引標籤或視窗中開啟。
 1. 使用頁面頂端的導覽列，開啟 [偵錯主控台]****，然後選取 [CMD]****。
 1. 將資料夾開啟至路徑 [site]**[wwwroot]** > ****，然後向下捲動以顯露位於清單底部的 *web.config* 檔案。
 1. 按一下 *web.config* 檔案旁邊的鉛筆圖示。
@@ -1519,7 +1509,7 @@ ASP.NET Core 模組 stdout 記錄檔通常會記錄「應用程式事件記錄�
 * [Visual Studio 2017 中遠端 IIS 電腦上的遠端 Debug ASP.NET Core](/visualstudio/debugger/remote-debugging-aspnet-on-a-remote-iis-computer)
 * [瞭解如何使用 Visual Studio 進行調試](/visualstudio/debugger/getting-started-with-the-debugger)
 
-### <a name="visual-studio-code-documentation"></a>Visual Studio Code 檔
+### <a name="visual-studio-code-documentation"></a>Visual Studio Code 文件
 
 * [使用 Visual Studio Code 偵錯](https://code.visualstudio.com/docs/editor/debugging)
 

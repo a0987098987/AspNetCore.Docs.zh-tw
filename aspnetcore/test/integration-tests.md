@@ -5,7 +5,7 @@ description: 了解整合測試如何確保應用程式的元件在基礎結構�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 05/20/2020
+ms.date: 07/14/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: test/integration-tests
-ms.openlocfilehash: 6e4a0065486f6d9d6744dcd21de10ec76782f210
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: c050665f630c0973abe6c9d08a4652597441639f
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405870"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445277"
 ---
 # <a name="integration-tests-in-aspnet-core"></a>ASP.NET Core 中的整合測試
 
@@ -114,7 +114,7 @@ Razor頁面應用程式和 MVC 應用程式的測試設定之間幾乎沒有任�
 * 參考[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing)的封裝。
 * 在專案檔中指定 Web SDK （ `<Project Sdk="Microsoft.NET.Sdk.Web">` ）。
 
-這些必要條件可在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [*測試]/[RazorPagesProject]/* [測試]/[RazorPagesProject]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
+這些必要條件可在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [測試]/[PagesProject]/[測試] * Razor /[ Razor PagesProject* ]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
 
 * [xunit](https://www.nuget.org/packages/xunit)
 * [xunit。 visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio)
@@ -310,7 +310,7 @@ _client = _factory.CreateClient(clientOptions);
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet4&highlight=11-18)]
 
-`TestAuthHandler`當驗證配置設定為 `Test` （其中已註冊的）時，會呼叫來驗證使用者 `AddAuthentication` `ConfigureTestServices` ：
+`TestAuthHandler`當驗證配置設定為 `Test` （其中已針對註冊）時，會呼叫來驗證使用者 `AddAuthentication` `ConfigureTestServices` 。 `Test`配置必須符合您的應用程式所預期的配置。 否則，驗證將無法使用。
 
 [!code-csharp[](integration-tests/samples/3.x/IntegrationTestsSample/tests/RazorPagesProject.Tests/IntegrationTests/AuthTests.cs?name=snippet3&highlight=7-12)]
 
@@ -361,12 +361,12 @@ protected override IWebHostBuilder CreateWebHostBuilder() =>
 
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| 應用程式 | 專案目錄 | 說明 |
+| App | 專案目錄 | 描述 |
 | --- | ----------------- | ----------- |
-| 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
-| 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |
+| 訊息應用程式（SUT） | *src/ Razor PagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
+| 測試應用程式 | *測試/ Razor PagesProject。測試* | 用來整合測試 SUT。 |
 
-測試可以使用 IDE 的內建測試功能來執行，例如[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列，請在 [測試]/[RazorPagesProject] 的命令提示字元中執行下列命令 *。測試*目錄：
+測試可以使用 IDE 的內建測試功能來執行，例如[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列，請在 [測試]/[PagesProject] 的命令提示字元中執行下列命令* Razor 。測試*目錄：
 
 ```console
 dotnet test
@@ -389,9 +389,9 @@ SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 ### <a name="test-app-organization"></a>測試應用程式組織
 
-測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
+測試應用程式是 [*測試/ Razor PagesProject* ] 目錄中的主控台應用程式。
 
-| 測試應用程式目錄 | 說明 |
+| 測試應用程式目錄 | 描述 |
 | ------------------ | ----------- |
 | *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
 | *BasicTests* | 包含路由和內容類型的測試方法。 |
@@ -504,7 +504,7 @@ Razor頁面應用程式和 MVC 應用程式的測試設定之間幾乎沒有任�
   * [AspNetCore 測試](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Testing/)
 * 在專案檔中指定 Web SDK （ `<Project Sdk="Microsoft.NET.Sdk.Web">` ）。 參考[AspNetCore 應用程式中繼套件](xref:fundamentals/metapackage-app)時，需要 Web SDK。
 
-這些必要條件可在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [*測試]/[RazorPagesProject]/* [測試]/[RazorPagesProject]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
+這些必要條件可在[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples/)中看到。 檢查 [測試]/[PagesProject]/[測試] * Razor /[ Razor PagesProject* ]。 範例應用程式會使用[xUnit](https://xunit.github.io/)測試架構和[AngleSharp](https://anglesharp.github.io/)剖析器程式庫，因此範例應用程式也會參考：
 
 * [xunit](https://www.nuget.org/packages/xunit/)
 * [xunit。 visualstudio](https://www.nuget.org/packages/xunit.runner.visualstudio/)
@@ -752,12 +752,12 @@ public class CustomWebApplicationFactory<TStartup>
 
 [範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/test/integration-tests/samples)是由兩個應用程式所組成：
 
-| 應用程式 | 專案目錄 | 說明 |
+| App | 專案目錄 | 描述 |
 | --- | ----------------- | ----------- |
-| 訊息應用程式（SUT） | *src/RazorPagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
-| 測試應用程式 | *測試/RazorPagesProject。測試* | 用來整合測試 SUT。 |
+| 訊息應用程式（SUT） | *src/ Razor PagesProject* | 可讓使用者加入、刪除一個、刪除全部及分析訊息。 |
+| 測試應用程式 | *測試/ Razor PagesProject。測試* | 用來整合測試 SUT。 |
 
-測試可以使用 IDE 的內建測試功能來執行，例如[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列，請在 [測試]/[RazorPagesProject] 的命令提示字元中執行下列命令 *。測試*目錄：
+測試可以使用 IDE 的內建測試功能來執行，例如[Visual Studio](https://visualstudio.microsoft.com)。 如果使用[Visual Studio Code](https://code.visualstudio.com/)或命令列，請在 [測試]/[PagesProject] 的命令提示字元中執行下列命令* Razor 。測試*目錄：
 
 ```dotnetcli
 dotnet test
@@ -780,9 +780,9 @@ SUT 是 Razor 具有下列特性的頁面訊息系統：
 
 ### <a name="test-app-organization"></a>測試應用程式組織
 
-測試應用程式是 [*測試/RazorPagesProject* ] 目錄中的主控台應用程式。
+測試應用程式是 [*測試/ Razor PagesProject* ] 目錄中的主控台應用程式。
 
-| 測試應用程式目錄 | 說明 |
+| 測試應用程式目錄 | 描述 |
 | ------------------ | ----------- |
 | *AuthTests* | 包含的測試方法：<ul><li>以未驗證的使用者存取安全頁面。</li><li>使用 mock 存取已驗證使用者的安全頁面 <xref:Microsoft.AspNetCore.Authentication.AuthenticationHandler`1> 。</li><li>取得 GitHub 使用者設定檔，並檢查設定檔的使用者登入。</li></ul> |
 | *BasicTests* | 包含路由和內容類型的測試方法。 |

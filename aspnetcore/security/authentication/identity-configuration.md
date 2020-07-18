@@ -3,6 +3,7 @@ title: 設定 ASP.NET CoreIdentity
 author: AdrienTorris
 description: 瞭解 ASP.NET Core Identity 預設值，並瞭解如何設定 Identity 屬性以使用自訂值。
 ms.author: riande
+ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
 - Blazor
@@ -13,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/identity-configuration
-ms.openlocfilehash: 95c19b671602b45ba217dcb551110854cbbee359
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 262101594d57ad63bb0bac4da3cefa8d8d380908
+ms.sourcegitcommit: 3544941682869734ea0113e24e02ed0ec9e1a9ec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85408964"
+ms.lasthandoff: 07/18/2020
+ms.locfileid: "86464523"
 ---
 # <a name="configure-aspnet-core-identity"></a>設定 ASP.NET CoreIdentity
 
@@ -26,11 +27,11 @@ ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定�
 
 ## <a name="identity-options"></a>Identity選項
 
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)類別代表可以用來設定系統的選項 Identity 。 `IdentityOptions`呼叫或**之後**，必須 `AddIdentity` 設定 `AddDefaultIdentity` 。
+[ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)類別代表可以用來設定系統的選項 Identity 。 `IdentityOptions`呼叫或**之後**，必須 `AddIdentity` 設定 `AddDefaultIdentity` 。
 
 ### <a name="claims-identity"></a>退款Identity
 
-[IdentityOptions. ClaimsIdentity](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity)會使用下表所示的屬性來指定[ClaimsIdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions) 。
+[ Identity Options。宣告 Identity ](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity)會使用下表所示的屬性來指定[宣告 Identity 選項](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions)。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -51,11 +52,11 @@ ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定�
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_lock)]
 
-上述程式碼會使用預設值來設定[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
+上述程式碼會使用預設值來設定[ Identity 選項](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
 
 成功的驗證會重設失敗的存取嘗試計數，並重設時鐘。
 
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout)會使用資料表中顯示的屬性來指定[LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
+[ Identity 選項。鎖定](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout)會使用資料表中顯示的屬性來指定[LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -65,29 +66,18 @@ ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定�
 
 ### <a name="password"></a>密碼
 
-根據預設， Identity 密碼必須包含大寫字元、小寫字元、數位和非英數位元。 密碼長度至少必須為6個字元。 [PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions)可以在中設定 `Startup.ConfigureServices` 。
+根據預設， Identity 密碼必須包含大寫字元、小寫字元、數位和非英數位元。 密碼長度至少必須為6個字元。
 
-::: moniker range=">= aspnetcore-2.1"
+密碼是使用下列設定：
+
+* <xref:Microsoft.AspNetCore.Identity.PasswordOptions>在中 `Startup.ConfigureServices` 。
+* [ `[StringLength]` ](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) `Password` 如果 Identity [scaffold 至應用程式](xref:security/authentication/scaffold-identity)，則為屬性的屬性。 `InputModel``Password`在下列檔案中可找到屬性：
+  * `Areas/Identity/Pages/Account/Register.cshtml.cs`
+  * `Areas/Identity/Pages/Account/ResetPassword.cshtml.cs`
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_pw)]
 
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-37,50-52)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-1.1"
-
-[!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Startup.cs?range=58-65,84)]
-
-::: moniker-end
-
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password)會使用資料表中顯示的屬性來指定[PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) 。
-
-::: moniker range=">= aspnetcore-2.0"
+[ Identity Options。 Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password)會使用資料表中顯示的屬性來指定[PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) 。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -98,37 +88,13 @@ ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定�
 | [RequiredUniqueChars](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireduniquechars) | 僅適用于 ASP.NET Core 2.0 或更新版本。<br><br> 需要密碼中的相異字元數。 | 1 |
 | [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | 需要密碼中的大寫字元。 | `true` |
 
-::: moniker-end
-
-::: moniker range="< aspnetcore-2.0"
-
-| 屬性 | 描述 | 預設 |
-| -------- | ----------- | :-----: |
-| [RequireDigit](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredigit) | 在密碼中需要介於0-9 之間的數位。 | `true` |
-| [RequiredLength](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requiredlength) | 密碼的最小長度。 | 6 |
-| [RequireLowercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirelowercase) | 需要密碼中的小寫字元。 | `true` |
-| [RequireNonAlphanumeric](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requirenonalphanumeric) | 密碼中需要非英數位元。 | `true` |
-| [RequireUppercase](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions.requireuppercase) | 需要密碼中的大寫字元。 | `true` |
-
-::: moniker-end
-
 ### <a name="sign-in"></a>登入
 
 下列程式碼會設定 `SignIn` 設定（預設值）：
 
-::: moniker range=">= aspnetcore-2.1"
-
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_si)]
 
-::: moniker-end
-
-::: moniker range="<= aspnetcore-2.0"
-
-[!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?range=29-30,44-46,50-52)] 
-
-::: moniker-end
-
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin)會使用資料表中顯示的屬性來指定[SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) 。
+[登入] 會使用資料表中顯示的屬性[ Identity 來指定](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) 。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -137,24 +103,24 @@ ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定�
 
 ### <a name="tokens"></a>權杖
 
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens)會使用資料表中顯示的屬性來指定[TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) 。
+[ Identity 選項。權杖](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens)會使用資料表中顯示的屬性來指定[TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) 。
 
-|                                                        屬性                                                         |                                                                                      說明                                                                                      |
-|-------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|     [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider)     |                                       取得或設定，用 `AuthenticatorTokenProvider` 來驗證驗證器的雙因素登入。                                       |
-|       [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider)       |                                     取得或設定， `ChangeEmailTokenProvider` 用來產生電子郵件變更確認電子郵件中使用的權杖。                                     |
-| [ChangePhoneNumberTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changephonenumbertokenprovider) |                                      取得或設定， `ChangePhoneNumberTokenProvider` 用來產生變更電話號碼時使用的權杖。                                      |
-| [EmailConfirmationTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.emailconfirmationtokenprovider) |                                             取得或設定權杖提供者，用來產生帳戶確認電子郵件中使用的權杖。                                              |
-|     [PasswordResetTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.passwordresettokenprovider)     | 取得或設定用來產生密碼重設電子郵件中使用之權杖的[IUserTwoFactorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactortokenprovider-1) 。 |
-|                    [ProviderMap](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.providermap)                    |                用來以用來作為提供者名稱的金鑰來建立[使用者權杖提供者](/dotnet/api/microsoft.aspnetcore.identity.tokenproviderdescriptor)。                 |
+| 屬性 | 描述 |
+| -------- | ----------- |
+| [AuthenticatorTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.authenticatortokenprovider) | 取得或設定，用 `AuthenticatorTokenProvider` 來驗證驗證器的雙因素登入。 |
+| [ChangeEmailTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changeemailtokenprovider) | 取得或設定， `ChangeEmailTokenProvider` 用來產生電子郵件變更確認電子郵件中使用的權杖。 |
+| [ChangePhoneNumberTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.changephonenumbertokenprovider) | 取得或設定， `ChangePhoneNumberTokenProvider` 用來產生變更電話號碼時使用的權杖。 |
+| [EmailConfirmationTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.emailconfirmationtokenprovider) | 取得或設定權杖提供者，用來產生帳戶確認電子郵件中使用的權杖。 |
+| [PasswordResetTokenProvider](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.passwordresettokenprovider) | 取得或設定用來產生密碼重設電子郵件中使用之權杖的[IUserTwoFactorTokenProvider \<TUser> ](/dotnet/api/microsoft.aspnetcore.identity.iusertwofactortokenprovider-1) 。 |
+| [ProviderMap](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions.providermap) | 用來以用來作為提供者名稱的金鑰來建立[使用者權杖提供者](/dotnet/api/microsoft.aspnetcore.identity.tokenproviderdescriptor)。 |
 
 ### <a name="user"></a>User
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_user)]
 
-[IdentityOptions](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user)會使用資料表中顯示的屬性來指定[UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) 。
+[ Identity Options。使用者](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user)指定具有資料表中所顯示內容的[UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) 。
 
-| 屬性 | 說明 | 預設 |
+| 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
 | [AllowedUserNameCharacters](/dotnet/api/microsoft.aspnetcore.identity.useroptions.allowedusernamecharacters) | 使用者名稱中允許的字元。 | abcdefghijklmnopqrstuvwxyz<br>ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>0123456789<br>-.\_@+ |
 | [RequireUniqueEmail](/dotnet/api/microsoft.aspnetcore.identity.useroptions.requireuniqueemail) | 要求每位使用者都有唯一的電子郵件。 | `false` |
@@ -163,23 +129,7 @@ ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定�
 
 在中設定應用程式的 cookie `Startup.ConfigureServices` 。 呼叫或**之後**，必須呼叫[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) `AddIdentity` `AddDefaultIdentity` 。
 
-::: moniker range=">= aspnetcore-2.1"
-
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
-
-::: moniker-end
-
-::: moniker range="= aspnetcore-2.0"
-
-[!code-csharp[](identity/sample/src/ASPNETv2-IdentityDemo-Configuration/Startup.cs?name=snippet_configurecookie)]
-
-::: moniker-end
-
-::: moniker range="<= aspnetcore-1.1"
-
-[!code-csharp[](identity/sample/src/ASPNET-IdentityDemo-PrimaryKeysConfig/Startup.cs?range=58-59,72-80,84)]
-
-::: moniker-end
 
 如需詳細資訊，請參閱[cookieauthenticationoptions.authenticationtype](/dotnet/api/microsoft.aspnetcore.authentication.cookies.cookieauthenticationoptions)。
 

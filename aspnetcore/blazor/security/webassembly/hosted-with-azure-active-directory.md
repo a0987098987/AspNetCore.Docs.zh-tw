@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory
-ms.openlocfilehash: 82916c06413300bbefa85c619239c23a8e40468a
-ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.openlocfilehash: d2732819dd8f18da1f99965bb91e5eb3670ff4db
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147756"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445186"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory"></a>Blazor WebAssembly使用 Azure Active Directory 保護 ASP.NET Core 託管應用程式
 
@@ -98,7 +98,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access` ）。
 1. 選取 [新增權限]。
-1. 選取 [為 **{租使用者名稱} 授與系統管理員同意**] 按鈕。 選取 [是] **** 加以確認。
+1. 選取 [為 **{租使用者名稱} 授與系統管理員同意**] 按鈕。 選取 [是] 以確認。
 
 ### <a name="create-the-app"></a>建立應用程式
 
@@ -257,7 +257,7 @@ builder.Services.AddHttpClient("{APP ASSEMBLY}.ServerAPI", client =>
         client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
-builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("{APP ASSEMBLY}.ServerAPI"));
 ```
 

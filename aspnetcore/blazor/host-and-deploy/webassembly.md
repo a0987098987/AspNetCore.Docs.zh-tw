@@ -5,7 +5,7 @@ description: 瞭解如何 Blazor 使用 ASP.NET Core、內容傳遞網路（CDN�
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 06/07/2020
+ms.date: 07/09/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/host-and-deploy/webassembly
-ms.openlocfilehash: 2b100ba029c08e0ce68d208df761f22a712fbbfd
-ms.sourcegitcommit: 99c784a873b62fbd97a73c5c07f4fe7a7f5db638
+ms.openlocfilehash: 2a2b0dabc26c14624144ce7eceb5861fe56f1054
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85503509"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445134"
 ---
 # <a name="host-and-deploy-aspnet-core-blazor-webassembly"></a>裝載和部署 ASP.NET CoreBlazor WebAssembly
 
@@ -244,12 +244,30 @@ http {
         listen 80;
 
         location / {
-            root /usr/share/nginx/html;
+            root      /usr/share/nginx/html;
             try_files $uri $uri/ /index.html =404;
         }
     }
 }
 ```
+
+當您使用設定 NGINX 高載[速率限制](https://www.nginx.com/blog/rate-limiting-nginx/#bursts)時 [`limit_req`](https://nginx.org/docs/http/ngx_http_limit_req_module.html#limit_req) ， Blazor WebAssembly 應用程式可能需要大型 `burst` 參數值來容納應用程式所提出的相對大量要求。 一開始，請將值設定為至少60：
+
+```
+http {
+    server {
+        ...
+
+        location / {
+            ...
+
+            limit_req zone=one burst=60 nodelay;
+        }
+    }
+}
+```
+
+如果瀏覽器開發人員工具或網路流量工具指出要求收到*503-服務無法使用*的狀態碼，請增加此值。
 
 如需生產環境 Nginx 網頁伺服器組態的詳細資訊，請參閱[建立 NGINX Plus 和 NGINX 組態檔](https://docs.nginx.com/nginx/admin-guide/basic-functionality/managing-configuration-files/)。
 
@@ -313,7 +331,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 如需詳細資訊，請參閱 [`mod_mime`](https://httpd.apache.org/docs/2.4/mod/mod_mime.html) 和 [`mod_deflate`](https://httpd.apache.org/docs/current/mod/mod_deflate.html) 。
 
-### <a name="github-pages"></a>GitHub Pages
+### <a name="github-pages"></a>GitHub 頁面
 
 若要處理 URL 重寫，請新增具有腳本的檔案，以處理將要求重新導向 `404.html` 至 `index.html` 頁面。 如需社群所提供的範例實作，請參閱 [GitHub Pages 的單一頁面應用程式](https://spa-github-pages.rafrex.com/) (GitHub 上的 [rafrex/spa-github-pages](https://github.com/rafrex/spa-github-pages#readme))。 使用社群方法的範例可在 [GitHub 上的 blazor-demo/blazor-demo.github.io](https://github.com/blazor-demo/blazor-demo.github.io) ([即時網站](https://blazor-demo.github.io/)) 看到。
 

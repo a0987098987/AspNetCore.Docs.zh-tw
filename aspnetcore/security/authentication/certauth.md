@@ -4,7 +4,7 @@ author: blowdart
 description: 瞭解如何在 IIS 和 HTTP.sys 的 ASP.NET Core 中設定憑證驗證。
 monikerRange: '>= aspnetcore-3.0'
 ms.author: bdorrans
-ms.date: 01/02/2020
+ms.date: 07/16/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 493046e288c6b1ccd8e41f15a8e6e532a10a4adc
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 2c58a274e8de0b1205b223287b7690b1d5caed23
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403192"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445121"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -40,11 +40,38 @@ ms.locfileid: "85403192"
 
 取得 HTTPS 憑證並加以套用，並[將您的伺服器設定](#configure-your-server-to-require-certificates)為需要憑證。
 
-在您的 web 應用程式中，新增對 `Microsoft.AspNetCore.Authentication.Certificate` 封裝的參考。 然後在 `Startup.ConfigureServices` 方法中， `services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate(...);` 使用您的選項呼叫，提供的委派， `OnCertificateValidated` 以在隨要求傳送的用戶端憑證上執行任何補充驗證。 將該資訊轉換成 `ClaimsPrincipal` ，並在屬性上設定它 `context.Principal` 。
+在您的 web 應用程式中，新增[AspNetCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.Certificate)的參考。 然後在 `Startup.ConfigureServices` 方法中， `services.AddAuthentication(CertificateAuthenticationDefaults.AuthenticationScheme).AddCertificate(...);` 使用您的選項呼叫，提供的委派， `OnCertificateValidated` 以在隨要求傳送的用戶端憑證上執行任何補充驗證。 將該資訊轉換成 `ClaimsPrincipal` ，並在屬性上設定它 `context.Principal` 。
 
 如果驗證失敗，此處理程式 `403 (Forbidden)` 會傳迴響應，而不是 `401 (Unauthorized)` ，如您所預期。 其原因是必須在初始 TLS 連線期間進行驗證。 當它到達處理常式時，就太晚了。 沒有任何方法可將連接從匿名連接升級為具有憑證的連線。
 
 此外，也會 `app.UseAuthentication();` 在方法中新增 `Startup.Configure` 。 否則， `HttpContext.User` 將不會設定為 `ClaimsPrincipal` 從憑證建立。 例如：
+
+::: moniker range=">= aspnetcore-5.0"
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthentication(
+        CertificateAuthenticationDefaults.AuthenticationScheme)
+        .AddCertificate()
+        // Adding an ICertificateValidationCache results in certificate auth caching the results.
+        // The default implementation uses a memory cache.
+        .AddCertificateCache();
+
+    // All other service configuration
+}
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+    app.UseAuthentication();
+
+    // All other app configuration
+}
+```
+
+::: moniker-end
+
+::: moniker range="< aspnetcore-5.0"
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -52,16 +79,19 @@ public void ConfigureServices(IServiceCollection services)
     services.AddAuthentication(
         CertificateAuthenticationDefaults.AuthenticationScheme)
         .AddCertificate();
-    // All the other service configuration.
+
+    // All other service configuration
 }
 
 public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 {
     app.UseAuthentication();
 
-    // All the other app configuration.
+    // All other app configuration
 }
 ```
+
+::: moniker-end
 
 上述範例示範新增憑證驗證的預設方式。 處理常式會使用一般憑證屬性來建立使用者主體。
 
@@ -343,7 +373,7 @@ namespace AspNetCoreCertificateAuthApi
 
 #### <a name="implement-an-httpclient-using-a-certificate-and-the-httpclienthandler"></a>使用憑證和 HttpClientHandler 來執行 HttpClient
 
-HttpClientHandler 可以直接加入 HttpClient 類別的函式中。 建立 HttpClient 的實例時，請務必小心。 然後，HttpClient 會在每個要求中傳送憑證。
+`HttpClientHandler`可以直接加入類別的函式中 `HttpClient` 。 建立的實例時，請小心 `HttpClient` 。 `HttpClient`接著，會使用每個要求傳送憑證。
 
 ```csharp
 private async Task<JsonDocument> GetApiDataUsingHttpClientHandler()
@@ -372,7 +402,7 @@ private async Task<JsonDocument> GetApiDataUsingHttpClientHandler()
 
 #### <a name="implement-an-httpclient-using-a-certificate-and-a-named-httpclient-from-ihttpclientfactory"></a>使用憑證和 IHttpClientFactory 中名為 HttpClient 的來執行 HttpClient 
 
-在下列範例中，會使用處理程式中的 ClientCertificates 屬性，將用戶端憑證新增至 HttpClientHandler。 然後，可以使用 ConfigurePrimaryHttpMessageHandler 方法，在 HttpClient 的命名實例中使用這個處理常式。 這會在 ConfigureServices 方法的 Startup 類別中設定。
+在下列範例中，會 `HttpClientHandler` 使用來自處理常式的屬性，將用戶端憑證新增至 `ClientCertificates` 。 然後，可以使用方法，在的已命名實例中使用這個處理常式 `HttpClient` `ConfigurePrimaryHttpMessageHandler` 。 這會在中設定 `Startup.ConfigureServices` ：
 
 ```csharp
 var clientCertificate = 
@@ -387,7 +417,7 @@ services.AddHttpClient("namedClient", c =>
 }).ConfigurePrimaryHttpMessageHandler(() => handler);
 ```
 
-然後，IHttpClientFactory 可以用來取得具有處理常式和憑證的已命名實例。 使用 Startup 類別中定義之用戶端名稱的 CreateClient 方法，會用來取得實例。 您可以視需要使用用戶端來傳送 HTTP 要求。
+`IHttpClientFactory`接著，可以用來取得具有處理常式和憑證的已命名實例。 `CreateClient`使用類別中所定義之用戶端名稱的方法， `Startup` 是用來取得實例。 您可以視需要使用用戶端來傳送 HTTP 要求。
 
 ```csharp
 private readonly IHttpClientFactory _clientFactory;
@@ -562,12 +592,43 @@ namespace AspNetCoreCertificateAuthApi
 
 <a name="occ"></a>
 
+::: moniker range=">= aspnetcore-5.0"
+
+## <a name="certificate-validation-caching"></a>憑證驗證快取
+
+ASP.NET Core 5.0 和更新版本支援啟用驗證結果快取的功能。 快取可大幅提升憑證驗證的效能，因為驗證是一項昂貴的作業。
+
+根據預設，憑證驗證會停用快取。 若要啟用快取，請 `AddCertificateCache` 在中呼叫 `Startup.ConfigureServices` ：
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthentication(
+        CertificateAuthenticationDefaults.AuthenticationScheme)
+            .AddCertificate()
+            .AddCertificateCache(options =>
+            {
+                options.CacheSize = 1024;
+                options.CacheEntryExpiration = TimeSpan.FromMinutes(2);
+            });
+}
+```
+
+預設的快取執行會將結果儲存在記憶體中。 您可以透過使用相依性插入來執行和註冊，來提供自己的快取 `ICertificateValidationCache` 。 例如： `services.AddSingleton<ICertificateValidationCache, YourCache>()` 。
+
+::: moniker-end
+
 ## <a name="optional-client-certificates"></a>選擇性用戶端憑證
 
 本節提供的資訊適用于必須使用憑證保護應用程式子集的應用程式。 例如， Razor 應用程式中的頁面或控制器可能需要用戶端憑證。 這會以用戶端憑證的形式呈現挑戰：
   
 * 是 TLS 功能，不是 HTTP 功能。
-* 會針對每個連接進行協商，而且必須在連接開始時進行協商，才能使用任何 HTTP 資料。 在連接開始時，只會知道伺服器名稱指示（SNI） &dagger; 。 用戶端和伺服器憑證會在第一次要求連線之前進行協商，而要求通常無法重新協商。 HTTP/2 禁止重新協商。
+* 會針對每個連接進行協商，而且必須在連接開始時進行協商，才能使用任何 HTTP 資料。 在連接開始時，只會知道伺服器名稱指示（SNI） &dagger; 。 用戶端和伺服器憑證會在第一次要求連線之前進行協商，而要求通常無法重新協商。
+
+TLS 重新協商是執行選用用戶端憑證的舊方式。 這不是建議的作法，因為：
+- 在 HTTP/1.1 中，POST 要求期間的重新交涉可能會造成鎖死，其中要求主體已填滿 TCP 視窗，而重新協商封包則無法接收。
+- HTTP/2[明確禁止](https://tools.ietf.org/html/rfc7540#section-9.2.1)重新協商。
+- TLS 1.3 已[移除](https://tools.ietf.org/html/rfc8740#section-1)重新協商的支援。
 
 ASP.NET Core 5 preview 4 和更新版本為選用的用戶端憑證增加了更方便的支援。 如需詳細資訊，請參閱[選用憑證範例](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample)。
 

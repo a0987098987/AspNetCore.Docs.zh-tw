@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/webassembly/hosted-with-azure-active-directory-b2c
-ms.openlocfilehash: b9125526db9a7484aca50f2ffa6175fd99b11453
-ms.sourcegitcommit: f7873c02c1505c99106cbc708f37e18fc0a496d1
+ms.openlocfilehash: 40ec40423de82926bd861ef352546b3dfe63dae0
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147766"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445251"
 ---
 # <a name="secure-an-aspnet-core-blazor-webassembly-hosted-app-with-azure-active-directory-b2c"></a>Blazor WebAssembly使用 Azure Active Directory B2C 保護 ASP.NET Core 託管應用程式
 
@@ -96,7 +96,7 @@ By [Javier Calvarro Nelson](https://github.com/javiercn)和[Luke Latham](https:/
 1. 開啟 [ **API**清單]。
 1. 啟用 API 的存取權（例如， `API.Access` ）。
 1. 選取 [新增權限]。
-1. 選取 [為 **{租使用者名稱} 授與系統管理員同意**] 按鈕。 選取 [是] **** 加以確認。
+1. 選取 [為 **{租使用者名稱} 授與系統管理員同意**] 按鈕。 選取 [是] 以確認。
 
 在**Home**  >  **Azure AD B2C**  >  **使用者流程**：
 
@@ -266,7 +266,7 @@ builder.Services.AddHttpClient("{APP ASSEMBLY}.ServerAPI", client =>
     client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
     .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
-builder.Services.AddTransient(sp => sp.GetRequiredService<IHttpClientFactory>()
+builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>()
     .CreateClient("{APP ASSEMBLY}.ServerAPI"));
 ```
 
@@ -383,5 +383,5 @@ builder.Services.AddMsalAuthentication(options =>
 * <xref:blazor/security/webassembly/additional-scenarios>
 * [在具有安全預設用戶端的應用程式中，未經驗證或未經授權的 Web API 要求](xref:blazor/security/webassembly/additional-scenarios#unauthenticated-or-unauthorized-web-api-requests-in-an-app-with-a-secure-default-client)
 * <xref:security/authentication/azure-ad-b2c>
-* [教學課程：建立 Azure Active Directory B2C 租用戶](/azure/active-directory-b2c/tutorial-create-tenant)
+* [教學課程：建立 Azure Active Directory B2C 租用戶](/azure/active-directory-b2c/tutorial-create-tenant) \(部分機器翻譯\)
 * [Microsoft 身分識別平台文件](/azure/active-directory/develop/)

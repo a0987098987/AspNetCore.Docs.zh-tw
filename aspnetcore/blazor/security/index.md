@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/security/index
-ms.openlocfilehash: e905f08f867b73fc37d5fed7138256ac89811312
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 85446ac18608b39c469da766e1a9f2e92a1f5e11
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85402399"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445108"
 ---
 # <a name="aspnet-core-blazor-authentication-and-authorization"></a>ASP.NET Core Blazor 驗證和授權
 
@@ -320,7 +320,7 @@ builder.Services.AddAuthorizationCore();
 
 Blazor允許以*非同步方式*判斷驗證狀態。 這種方法的主要案例是在對 Blazor WebAssembly 外部端點提出要求以進行驗證的應用程式中。
 
-在驗證期間，<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 預設不會顯示任何內容。 若要在驗證發生時顯示內容，請使用 `<Authorizing>` 元素：
+在驗證期間，<xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeView> 預設不會顯示任何內容。 若要在進行驗證時顯示內容，請使用 `<Authorizing>` 標記：
 
 ```razor
 <AuthorizeView>
@@ -413,7 +413,7 @@ You can only see this if you're signed in.
 
 `<NotFound>`、 `<NotAuthorized>` 和標記的內容 `<Authorizing>` 可以包含任意專案，例如其他互動式元件。
 
-如果 `<NotAuthorized>` 未指定元素，會 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> 使用下列回溯訊息：
+如果 `<NotAuthorized>` 未指定標記，則會 <xref:Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView> 使用下列回溯訊息：
 
 ```html
 Not authorized.

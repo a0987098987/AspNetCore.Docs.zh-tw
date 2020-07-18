@@ -13,12 +13,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/accconfirm
-ms.openlocfilehash: bf599487fdc3e574f72f1a3d35278cc9c2ce7513
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 1156ddd2921afbfeccaf077ca29d267f8b1e844a
+ms.sourcegitcommit: 3544941682869734ea0113e24e02ed0ec9e1a9ec
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404648"
+ms.lasthandoff: 07/18/2020
+ms.locfileid: "86464549"
 ---
 # <a name="account-confirmation-and-password-recovery-in-aspnet-core"></a>ASP.NET Core 中的帳戶確認和密碼復原
 
@@ -32,15 +32,9 @@ ms.locfileid: "85404648"
 
 <!-- see C:/Dropbox/wrk/Code/SendGridConsole/Program.cs -->
 
-::: moniker range="<= aspnetcore-2.0"
+::: moniker range=">= aspnetcore-3.0"
 
-請參閱[此 PDF](https://webpifeed.blob.core.windows.net/webpifeed/Partners/asp.net_repo_pdf_1-16-18.pdf)檔案以取得 ASP.NET Core 1.1 版本。
-
-::: moniker-end
-
-::: moniker range="> aspnetcore-2.2"
-
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 [.NET Core 3.0 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
@@ -136,6 +130,16 @@ dotnet add package SendGrid
 
 [!code-csharp[](accconfirm/sample/WebPWrecover30/Startup.cs?name=snippet1&highlight=11-15)]
 
+## <a name="scaffold-registerconfirmation"></a>Scaffold RegisterConfirmation
+
+遵循[Scaffold Identity ](xref:security/authentication/scaffold-identity)和 Scaffold 的指示 `RegisterConfirmation` 。
+
+<!-- .NET 5 fixes this, see
+https://github.com/dotnet/aspnetcore/blob/master/src/Identity/UI/src/Areas/Identity/Pages/V4/Account/RegisterConfirmation.cshtml.cs#L74-L77
+-->
+
+[!INCLUDE[](~/includes/disableVer.md)]
+
 ## <a name="register-confirm-email-and-reset-password"></a>註冊、確認電子郵件和重設密碼
 
 執行 web 應用程式，並測試帳戶確認和密碼復原流程。
@@ -225,9 +229,9 @@ dotnet add package SendGrid
 
 ::: moniker-end
 
-::: moniker range="> aspnetcore-2.0 < aspnetcore-3.0"
+::: moniker range="< aspnetcore-3.0"
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 [.NET Core 2.2 SDK 或更新版本](https://dotnet.microsoft.com/download/dotnet-core)
 
@@ -244,8 +248,10 @@ dotnet aspnet-codegenerator identity -dc WebPWrecover.Data.ApplicationDbContext 
 dotnet ef database drop -f
 dotnet ef database update
 dotnet run
-
 ```
+
+> [!NOTE]
+> 如果 <xref:Microsoft.AspNetCore.Identity.PasswordOptions> 在中設定 `Startup.ConfigureServices` ，則 scaffold 頁面中的屬性可能需要[ `[StringLength]` 屬性](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute)設定 `Password` Identity 。 在檔案中的樣板 `InputModel` `Password` 之後，會在檔案中找到屬性 `Areas/Identity/Pages/Account/Register.cshtml.cs` Identity 。
 
 ## <a name="test-new-user-registration"></a>測試新的使用者註冊
 

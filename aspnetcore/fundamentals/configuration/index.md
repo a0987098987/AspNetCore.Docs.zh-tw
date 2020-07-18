@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: fundamentals/configuration/index
-ms.openlocfilehash: 5a9ed8d6737352f56be78039a895a85f22dec361
-ms.sourcegitcommit: 66fca14611eba141d455fe0bd2c37803062e439c
+ms.openlocfilehash: 6e47e627915bd8988d161f7d5af4a89f3671c0a7
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/03/2020
-ms.locfileid: "85944640"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445446"
 ---
 # <a name="configuration-in-aspnet-core"></a>ASP.NET Core 的設定
 
@@ -32,7 +32,7 @@ ASP.NET Core 中的設定是使用一或多個設定[提供者](#cp)來執行。
 
 * 設定檔案，例如*appsettings.js*
 * 環境變數
-* Azure 金鑰保存庫
+* Azure Key Vault
 * Azure 應用程式組態
 * 命令列引數
 * 已安裝或建立的自訂提供者
@@ -223,7 +223,7 @@ dotnet run --MyKey "Using --" --Position:Title=Cmd-- --Position:Name=Cmd--Rick
 索引鍵值：
 
 * 必須遵循 `=` ，或者 `--` `/` 當值在空格後面時，索引鍵必須有或的前置詞。
-* 如果 `=` 使用，則不需要。 例如 `MySetting=`。
+* 如果 `=` 使用，則不需要。 例如： `MySetting=` 。
 
 在相同的命令中，請不要混合使用搭配使用空格的機碼值組的命令列引數索引鍵/值配對 `=` 。
 
@@ -246,18 +246,18 @@ dotnet run --MyKey "Using --" --Position:Title=Cmd-- --Position:Name=Cmd--Rick
 
 [!code-csharp[](index/samples/3.x/ConfigSample/Pages/Test3.cshtml.cs?name=snippet)]
 
-執行下列命令來測試金鑰取代：
-
-```dotnetcli
-dotnet run -k1=value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 value6
-```
-
-注意：目前 `=` 無法使用單一破折號來設定索引鍵取代值 `-` 。 請參閱[這個 GitHub 問題](https://github.com/dotnet/extensions/issues/3059)。
-
 下列命令適用于測試金鑰取代：
 
 ```dotnetcli
 dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 value6
+```
+
+<!-- Run the following command to test the key replacement: -->
+
+注意：目前 `=` 無法使用單一破折號來設定索引鍵取代值 `-` 。 請參閱[這個 GitHub 問題](https://github.com/dotnet/extensions/issues/3059)。
+
+```dotnetcli
+dotnet run -k1=value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 value6
 ```
 
 針對使用切換對應的應用程式，呼叫 `CreateDefaultBuilder` 不應傳遞引數。 `CreateDefaultBuilder`方法的 `AddCommandLine` 呼叫不包含對應的參數，而且沒有任何方法可將參數對應字典傳遞至 `CreateDefaultBuilder` 。 解決方案並不會將引數傳遞給， `CreateDefaultBuilder` 而是允許 `ConfigurationBuilder` 方法的 `AddCommandLine` 方法同時處理引數和切換對應字典。
@@ -307,7 +307,7 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 
 | 提供者 | 從提供設定 |
 | -------- | ----------------------------------- |
-| [Azure Key Vault 設定提供者](xref:security/key-vault-configuration) | Azure 金鑰保存庫 |
+| [Azure Key Vault 設定提供者](xref:security/key-vault-configuration) | Azure Key Vault |
 | [Azure App 設定提供者](/azure/azure-app-configuration/quickstart-aspnet-core-app) | Azure 應用程式組態 |
 | [命令列設定提供者](#clcp) | 命令列參數 |
 | [自訂設定提供者](#custom-configuration-provider) | 自訂來源 |
@@ -352,9 +352,9 @@ dotnet run -k1 value1 -k2 value2 --alt3=value2 /alt4=value3 --alt5 value5 /alt6 
 | 環境變數機碼 | 已轉換的設定機碼 | 提供者設定項目                                                    |
 | ------------------------ | --------------------------- | ------------------------------------------------------------------------------- |
 | `CUSTOMCONNSTR_{KEY} `   | `ConnectionStrings:{KEY}`   | 設定項目未建立。                                                |
-| `MYSQLCONNSTR_{KEY}`     | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值: `MySql.Data.MySqlClient` |
-| `SQLAZURECONNSTR_{KEY}`  | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值: `System.Data.SqlClient`  |
-| `SQLCONNSTR_{KEY}`       | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值: `System.Data.SqlClient`  |
+| `MYSQLCONNSTR_{KEY}`     | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值：`MySql.Data.MySqlClient` |
+| `SQLAZURECONNSTR_{KEY}`  | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值：`System.Data.SqlClient`  |
+| `SQLCONNSTR_{KEY}`       | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值：`System.Data.SqlClient`  |
 
 <a name="jcp"></a>
 
@@ -775,7 +775,7 @@ Index: 5  Value: value5
 
 ASP.NET Core 中的應用程式設定是以由*設定提供者*所建立的機碼值組為基礎。 設定提供者會從各種設定來源將設定資料讀取到機碼值組中：
 
-* Azure 金鑰保存庫
+* Azure Key Vault
 * Azure 應用程式組態
 * 命令列引數
 * 自訂提供者 (已安裝或已建立)
@@ -910,7 +910,7 @@ public class HomeController : Controller
 
 設定提供者無法使用 DI，因為當它們由主機設定時，它無法使用。
 
-### <a name="keys"></a>索引鍵
+### <a name="keys"></a>按鍵
 
 設定機碼會採用下列慣例：
 
@@ -935,7 +935,7 @@ public class HomeController : Controller
 
 | 提供者 | 從&hellip;提供設定 |
 | -------- | ----------------------------------- |
-| [Azure Key Vault 設定提供者](xref:security/key-vault-configuration) (*安全性*主題) | Azure 金鑰保存庫 |
+| [Azure Key Vault 設定提供者](xref:security/key-vault-configuration) (*安全性*主題) | Azure Key Vault |
 | [Azure 應用程式組態提供者](/azure/azure-app-configuration/quickstart-aspnet-core-app) (Azure 文件) | Azure 應用程式組態 |
 | [命令列設定提供者](#command-line-configuration-provider) | 命令列參數 |
 | [自訂設定提供者](#custom-configuration-provider) | 自訂來源 |
@@ -950,7 +950,7 @@ public class HomeController : Controller
 典型的設定提供者順序是：
 
 1. Files （*appsettings.json*、 *appsettings. {環境}. json*，其中 `{Environment}` 是應用程式的目前裝載環境）
-1. [Azure 金鑰保存庫](xref:security/key-vault-configuration)
+1. [Azure Key Vault](xref:security/key-vault-configuration)
 1. [使用者祕密 (祕密管理員)](xref:security/app-secrets) (僅限開發環境)
 1. 環境變數
 1. 命令列引數
@@ -1108,7 +1108,7 @@ public static readonly Dictionary<string, string> _switchMappings =
 
 建立切換對應字典之後，它會包含下表中所示的資料。
 
-| 機碼       | 值             |
+| Key       | 值             |
 | --------- | ----------------- |
 | `-CLKey1` | `CommandLineKey1` |
 | `-CLKey2` | `CommandLineKey2` |
@@ -1121,7 +1121,7 @@ dotnet run -CLKey1=value1 -CLKey2=value2
 
 執行上述命令之後，設定包含下表中顯示的值。
 
-| 機碼               | 值    |
+| Key               | 值    |
 | ----------------- | -------- |
 | `CommandLineKey1` | `value1` |
 | `CommandLineKey2` | `value2` |
@@ -1206,16 +1206,16 @@ var config = new ConfigurationBuilder()
 | 環境變數機碼 | 已轉換的設定機碼 | 提供者設定項目                                                    |
 | ------------------------ | --------------------------- | ------------------------------------------------------------------------------- |
 | `CUSTOMCONNSTR_{KEY} `   | `ConnectionStrings:{KEY}`   | 設定項目未建立。                                                |
-| `MYSQLCONNSTR_{KEY}`     | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值: `MySql.Data.MySqlClient` |
-| `SQLAZURECONNSTR_{KEY}`  | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值: `System.Data.SqlClient`  |
-| `SQLCONNSTR_{KEY}`       | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值: `System.Data.SqlClient`  |
+| `MYSQLCONNSTR_{KEY}`     | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值：`MySql.Data.MySqlClient` |
+| `SQLAZURECONNSTR_{KEY}`  | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值：`System.Data.SqlClient`  |
+| `SQLCONNSTR_{KEY}`       | `ConnectionStrings:{KEY}`   | 機碼：`ConnectionStrings:{KEY}_ProviderName`：<br>值：`System.Data.SqlClient`  |
 
 **範例**
 
 在伺服器上建立自訂連接字串環境變數：
 
 * 名稱：`CUSTOMCONNSTR_ReleaseDB`
-* 值: `Data Source=ReleaseSQLServer;Initial Catalog=MyReleaseDB;Integrated Security=True`
+* 值：`Data Source=ReleaseSQLServer;Initial Catalog=MyReleaseDB;Integrated Security=True`
 
 如果 `IConfiguration` 插入，並將其指派給名為的欄位 `_config` ，請閱讀值：
 
@@ -1625,7 +1625,7 @@ TvShow = tvShow;
 
 考慮下表中顯示的設定機碼與值。
 
-| 機碼             | 值  |
+| Key             | 值  |
 | :-------------: | :----: |
 | array:entries:0 | value0 |
 | array:entries:1 | value1 |
@@ -1685,7 +1685,7 @@ config.AddJsonFile(
 
 表格中顯示的機碼值組會載入到設定中。
 
-| 機碼             | 值  |
+| Key             | 值  |
 | :-------------: | :----: |
 | array:entries:3 | value3 |
 
@@ -1708,7 +1708,7 @@ config.AddJsonFile(
 
 「JSON 設定提供者」會將設定資料讀入到下列機碼值組：
 
-| 機碼                     | 值  |
+| Key                     | 值  |
 | ----------------------- | :----: |
 | json_array:key          | valueA |
 | json_array:subsection:0 | valueB |

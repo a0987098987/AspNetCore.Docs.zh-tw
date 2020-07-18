@@ -5,7 +5,7 @@ description: 了解如何在 Ubuntu 16.04 上將 Nginx 設定為反向 Proxy，�
 monikerRange: '>= aspnetcore-2.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 04/10/2020
+ms.date: 07/09/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: host-and-deploy/linux-nginx
-ms.openlocfilehash: c936ff9a7aadd21ce99a0c37184ae8cf911c3070
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 8038c63200c7c9aaadb9e0e7a68ae315ff620197
+ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85403972"
+ms.lasthandoff: 07/17/2020
+ms.locfileid: "86445290"
 ---
 # <a name="host-aspnet-core-on-linux-with-nginx"></a>在 Linux 上使用 Nginx 裝載 ASP.NET Core
 
@@ -40,7 +40,7 @@ ms.locfileid: "85403972"
 * 確保 Web 應用程式在啟動時以精靈的形式執行。
 * 設定程序管理工具以協助重新啟動 Web 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 1. 以 sudo 權限使用標準使用者帳戶存取 Ubuntu 16.04 伺服器。
 1. 在伺服器上安裝 .NET Core 執行階段。
@@ -395,6 +395,9 @@ static char ngx_http_server_full_string[] = "Server: Web Server" CRLF;
 編輯 */etc/nginx/Proxy.conf* 組態檔。 此範例在一個組態檔中同時包含 `http` 和 `server` 區段。
 
 [!code-nginx[](linux-nginx/nginx.conf?highlight=2)]
+
+> [!NOTE]
+> Blazor WebAssembly應用程式需要較大的 `burst` 參數值，以容納應用程式所提出的大量要求。 如需詳細資訊，請參閱 <xref:blazor/host-and-deploy/webassembly#nginx> 。
 
 #### <a name="secure-nginx-from-clickjacking"></a>保護 Nginx 免於點閱綁架
 

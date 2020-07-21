@@ -14,12 +14,12 @@ no-loc:
 - Razor
 - SignalR
 uid: security/authentication/certauth
-ms.openlocfilehash: 2c58a274e8de0b1205b223287b7690b1d5caed23
-ms.sourcegitcommit: 384833762c614851db653b841cc09fbc944da463
+ms.openlocfilehash: 06803ee57824bbfac5725763938abbb9db0e360a
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/17/2020
-ms.locfileid: "86445121"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568843"
 ---
 # <a name="configure-certificate-authentication-in-aspnet-core"></a>在 ASP.NET Core 中設定憑證驗證
 
@@ -630,7 +630,7 @@ TLS 重新協商是執行選用用戶端憑證的舊方式。 這不是建議的
 - HTTP/2[明確禁止](https://tools.ietf.org/html/rfc7540#section-9.2.1)重新協商。
 - TLS 1.3 已[移除](https://tools.ietf.org/html/rfc8740#section-1)重新協商的支援。
 
-ASP.NET Core 5 preview 4 和更新版本為選用的用戶端憑證增加了更方便的支援。 如需詳細資訊，請參閱[選用憑證範例](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample)。
+ASP.NET Core 5 preview 7 和更新版本為選用的用戶端憑證增加了更方便的支援。 如需詳細資訊，請參閱[選用憑證範例](https://github.com/dotnet/aspnetcore/tree/9ce4a970a21bace3fb262da9591ed52359309592/src/Security/Authentication/Certificate/samples/Certificate.Optional.Sample)。
 
 下列方法支援選用的用戶端憑證：
 

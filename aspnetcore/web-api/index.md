@@ -5,7 +5,7 @@ description: 了解使用 ASP.NET Core 建立 Web API 的基本概念。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 02/02/2020
+ms.date: 07/20/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: web-api/index
-ms.openlocfilehash: 7c9762d23ff612155846357bfadeaaad492c7299
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 98fb8c0a26f5f8e7ce5f07066f2f36e748ab2398
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85404726"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568739"
 ---
 # <a name="create-web-apis-with-aspnet-core"></a>使用 ASP.NET Core 建立 Web API
 
@@ -54,7 +54,7 @@ Web API 由一個或多個衍生自的控制器類別所組成 <xref:Microsoft.A
 
 以下是 `ControllerBase` 提供的一些其他方法範例。
 
-|方法   |注意    |
+|方法   |附註    |
 |---------|---------|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.BadRequest%2A>| 傳回 400 狀態碼。|
 |<xref:Microsoft.AspNetCore.Mvc.ControllerBase.NotFound%2A>|傳回 404 狀態碼。|
@@ -72,7 +72,7 @@ Web API 由一個或多個衍生自的控制器類別所組成 <xref:Microsoft.A
 
 以下是一些其他可用的屬性範例。
 
-|屬性|注意|
+|屬性|附註|
 |---------|-----|
 |[`[Route]`](<xref:Microsoft.AspNetCore.Mvc.RouteAttribute>)      |指定控制器或動作的 URL 模式。|
 |[`[Bind]`](<xref:Microsoft.AspNetCore.Mvc.BindAttribute>)        |指定模型繫結要包含的前置詞和屬性。|
@@ -98,16 +98,12 @@ Web API 由一個或多個衍生自的控制器類別所組成 <xref:Microsoft.A
 
 ::: moniker-end
 
-::: moniker range="= aspnetcore-2.1"
-
 * [屬性路由需求](#attribute-routing-requirement)
 * [HTTP 400 自動回應](#automatic-http-400-responses)
 * [繫結來源參數推斷](#binding-source-parameter-inference)
 * [多部分/表單資料要求推斷](#multipartform-data-request-inference)
 
 這些功能都需要[相容性版本](xref:mvc/compatibility-version) 2.1 或更新版本。
-
-::: moniker-end
 
 ### <a name="attribute-on-specific-controllers"></a>特定控制器上的屬性
 
@@ -232,9 +228,11 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 ::: moniker-end
 
+若要讓自動和自訂回應保持一致，請呼叫 <xref:Microsoft.AspNetCore.Mvc.ControllerBase.ValidationProblem%2A> 方法，而不是 <xref:System.Web.Http.ApiController.BadRequest%2A> 。 `ValidationProblem`傳回 <xref:Microsoft.AspNetCore.Mvc.ValidationProblemDetails> 物件以及自動回應。
+
 ### <a name="log-automatic-400-responses"></a>記錄自動 400 回應
 
-請參閱[如何在模型驗證錯誤上記錄自動 400 回應 (aspnet/AspNetCore.Docs #12157)](https://github.com/dotnet/AspNetCore.Docs/issues/12157) \(英文\)。
+請參閱[如何在模型驗證錯誤（dotnet/AspNetCore.Docs # 12157）上記錄自動400回應](https://github.com/dotnet/AspNetCore.Docs/issues/12157)。
 
 ### <a name="disable-automatic-400-response"></a>停用自動400回應
 
@@ -264,7 +262,7 @@ ASP.NET Core MVC 會使用 <xref:Microsoft.AspNetCore.Mvc.Infrastructure.ModelSt
 
 |屬性|繫結來源 |
 |---------|---------|
-|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | 要求本文 |
+|[`[FromBody]`](xref:Microsoft.AspNetCore.Mvc.FromBodyAttribute)     | Request body |
 |[`[FromForm]`](xref:Microsoft.AspNetCore.Mvc.FromFormAttribute)     | 要求本文中的表單資料 |
 |[`[FromHeader]`](xref:Microsoft.AspNetCore.Mvc.FromHeaderAttribute) | 要求標頭 |
 |[`[FromQuery]`](xref:Microsoft.AspNetCore.Mvc.FromQueryAttribute)   | 要求查詢字串參數 |

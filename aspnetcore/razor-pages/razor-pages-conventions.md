@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: razor-pages/razor-pages-conventions
-ms.openlocfilehash: 308ca4401289a55e5dba8d61de50644cb2a53433
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 3cb83d8cfd058c4d0a93ece9a4f19b6407dac384
+ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85405246"
+ms.lasthandoff: 07/21/2020
+ms.locfileid: "86568856"
 ---
 # <a name="razor-pages-route-and-app-conventions-in-aspnet-core"></a>RazorASP.NET Core 中的頁面路由和應用程式慣例
 
@@ -36,34 +36,33 @@ ms.locfileid: "85405246"
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
-| 狀況 | 範例會示範 ... |
+| 情節 | 範例會示範 ... |
 | -------- | --------------------------- |
 | [模型慣例](#model-conventions)<br><br>Conventions.Add<ul><li>IPageRouteModelConvention</li><li>IPageApplicationModelConvention</li><li>IPageHandlerModelConvention</li></ul> | 將路由範本和標頭新增至應用程式的頁面。 |
 | [頁面路由動作慣例](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | 將路由範本新增至資料夾中的頁面，以及新增至單一頁面。 |
 | [頁面模型動作慣例](#page-model-action-conventions)<ul><li>AddFolderApplicationModelConvention</li><li>AddPageApplicationModelConvention</li><li>ConfigureFilter (篩選類別、Lambda 運算式或篩選 Factory)</li></ul> | 將標頭新增至資料夾中的頁面、將標頭新增至單一頁面，以及設定[篩選條件 Factory](xref:mvc/controllers/filters#ifilterfactory) 將標頭新增至應用程式的頁面。 |
 
-Razor在 <xref:Microsoft.Extensions.DependencyInjection.MvcRazorPagesMvcBuilderExtensions.AddRazorPagesOptions*> <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddMvc*> 類別中的服務集合上，會使用擴充方法來新增和設定頁面慣例 `Startup` 。 稍後在本主題會說明下列慣例範例：
+Razor頁面慣例是使用 <xref:Microsoft.Extensions.DependencyInjection.MvcServiceCollectionExtensions.AddRazorPages%2A> 在中設定的多載來設定 <xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions> `Startup.ConfigureServices` 。 稍後在本主題會說明下列慣例範例：
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddRazorPages()
-        .AddRazorPagesOptions(options =>
-        {
-            options.Conventions.Add( ... );
-            options.Conventions.AddFolderRouteModelConvention(
-                "/OtherPages", model => { ... });
-            options.Conventions.AddPageRouteModelConvention(
-                "/About", model => { ... });
-            options.Conventions.AddPageRoute(
-                "/Contact", "TheContactPage/{text?}");
-            options.Conventions.AddFolderApplicationModelConvention(
-                "/OtherPages", model => { ... });
-            options.Conventions.AddPageApplicationModelConvention(
-                "/About", model => { ... });
-            options.Conventions.ConfigureFilter(model => { ... });
-            options.Conventions.ConfigureFilter( ... );
-        });
+    services.AddRazorPages(options =>
+    {
+        options.Conventions.Add( ... );
+        options.Conventions.AddFolderRouteModelConvention(
+            "/OtherPages", model => { ... });
+        options.Conventions.AddPageRouteModelConvention(
+            "/About", model => { ... });
+        options.Conventions.AddPageRoute(
+            "/Contact", "TheContactPage/{text?}");
+        options.Conventions.AddFolderApplicationModelConvention(
+            "/OtherPages", model => { ... });
+        options.Conventions.AddPageApplicationModelConvention(
+            "/About", model => { ... });
+        options.Conventions.ConfigureFilter(model => { ... });
+        options.Conventions.ConfigureFilter( ... );
+    });
 }
 ```
 
@@ -107,7 +106,7 @@ Razor頁面路由和 MVC 控制器路由會共用一個執行。 如需有關 MV
 
 盡可能不要設定 `Order` ，這會導致 `Order = 0` 。 依賴路由來選取正確的路由。
 
-Razor<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>當 MVC 加入至中的服務集合時，會加入 [頁面] 選項，例如 [加入] `Startup.ConfigureServices` 。 如需範例，請參閱[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
+Razor<xref:Microsoft.AspNetCore.Mvc.RazorPages.RazorPagesOptions.Conventions>當 Razor 頁面加入至中的服務集合時，會加入 [頁面] 選項，例如 [加入] `Startup.ConfigureServices` 。 如需範例，請參閱[範例應用程式](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)。
 
 [!code-csharp[](razor-pages-conventions/samples/3.x/SampleApp/Startup.cs?name=snippet1)]
 
@@ -192,13 +191,12 @@ ASP.NET Core 所產生的頁面路由可使用參數轉換器進行自訂。 參
 ```csharp
 public void ConfigureServices(IServiceCollection services)
 {
-    services.AddRazorPages()
-        .AddRazorPagesOptions(options =>
-        {
-            options.Conventions.Add(
-                new PageRouteTransformerConvention(
-                    new SlugifyParameterTransformer()));
-        });
+    services.AddRazorPages(options =>
+    {
+        options.Conventions.Add(
+            new PageRouteTransformerConvention(
+                new SlugifyParameterTransformer()));
+    });
 }
 ```
 
@@ -319,7 +317,7 @@ Contact 頁面也可以透過其預設路由在 `/Contact` 上連線。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
-| 狀況 | 範例會示範 ... |
+| 情節 | 範例會示範 ... |
 | -------- | --------------------------- |
 | [模型慣例](#model-conventions)<br><br>Conventions.Add<ul><li>IPageRouteModelConvention</li><li>IPageApplicationModelConvention</li><li>IPageHandlerModelConvention</li></ul> | 將路由範本和標頭新增至應用程式的頁面。 |
 | [頁面路由動作慣例](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | 將路由範本新增至資料夾中的頁面，以及新增至單一頁面。 |
@@ -609,7 +607,7 @@ Contact 頁面也可以透過其預設路由在 `/Contact` 上連線。
 
 [查看或下載範例程式碼](https://github.com/dotnet/AspNetCore.Docs/tree/master/aspnetcore/razor-pages/razor-pages-conventions/samples/)（[如何下載](xref:index#how-to-download-a-sample)）
 
-| 狀況 | 範例會示範 ... |
+| 情節 | 範例會示範 ... |
 | -------- | --------------------------- |
 | [模型慣例](#model-conventions)<br><br>Conventions.Add<ul><li>IPageRouteModelConvention</li><li>IPageApplicationModelConvention</li><li>IPageHandlerModelConvention</li></ul> | 將路由範本和標頭新增至應用程式的頁面。 |
 | [頁面路由動作慣例](#page-route-action-conventions)<ul><li>AddFolderRouteModelConvention</li><li>AddPageRouteModelConvention</li><li>AddPageRoute</li></ul> | 將路由範本新增至資料夾中的頁面，以及新增至單一頁面。 |

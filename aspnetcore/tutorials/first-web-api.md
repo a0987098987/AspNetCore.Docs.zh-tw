@@ -6,20 +6,20 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 2/25/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: tutorials/first-web-api
-ms.openlocfilehash: 79f36168d0430ceee3794cfb5a4e29f3671ac73f
-ms.sourcegitcommit: d9ae1f352d372a20534b57e23646c1a1d9171af1
+ms.openlocfilehash: 2383934070a65b8131e890a170186b736d3fcec0
+ms.sourcegitcommit: d00a200bc8347af794b24184da14ad5c8b6bba9a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/21/2020
-ms.locfileid: "86212628"
+ms.locfileid: "86869987"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
 
@@ -29,7 +29,7 @@ ms.locfileid: "86212628"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web API 專案。
@@ -44,7 +44,7 @@ ms.locfileid: "86212628"
 
 本教學課程會建立以下 API：
 
-|API | 描述 | Request body | 回應本文 |
+|API | 說明 | Request body | 回應本文 |
 |--- | ---- | ---- | ---- |
 |`GET /api/TodoItems` | 取得所有待辦事項 | 無 | 待辦事項的陣列|
 |`GET /api/TodoItems/{id}` | 依識別碼取得項目 | 無 | 待辦事項|
@@ -56,7 +56,7 @@ ms.locfileid: "86212628"
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -114,7 +114,7 @@ ms.locfileid: "86212628"
 
   ![macOS API 範本選取專案](first-web-api-mac/_static/api_template.png)
 
-* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 3.X**目標 Framework**。 選取 [下一步] 。
+* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 3.X**目標 Framework**。 選取 [下一步]。
 
 * 針對 [專案名稱]**** 輸入 *TodoApi*，然後選取 [建立]****。
 
@@ -232,7 +232,7 @@ ms.locfileid: "86212628"
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-### <a name="add-microsoftentityframeworkcoresqlserver"></a>新增 Microsoft.EntityFrameworkCore.SqlServer
+### <a name="add-nuget-packages"></a>新增 NuGet 套件
 
 * 在 [工具]**** 功能表上，選取 [NuGet 套件管理員] > [管理解決方案的 NuGet 套件]****。
 * 選取 [瀏覽]**** 索引標籤，然後在搜尋方塊中輸入 **Microsoft.EntityFrameworkCore.SqlServer**。
@@ -401,7 +401,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * 建立新的要求。
 * 將 HTTP 方法設定為 **GET**。
-* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如： `https://localhost:5001/api/TodoItems` 。
+* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如 `https://localhost:5001/api/TodoItems`。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)****。
 * 選取 [傳送]。
 
@@ -512,7 +512,7 @@ DTO 可用來：
 
 ::: moniker range="< aspnetcore-3.0"
 
-在本教學課程中，您會了解如何：
+在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web API 專案。
@@ -530,7 +530,7 @@ DTO 可用來：
 
 本教學課程會建立以下 API：
 
-|API | 描述 | Request body | 回應本文 |
+|API | 說明 | Request body | 回應本文 |
 |--- | ---- | ---- | ---- |
 |GET /api/TodoItems | 取得所有待辦事項 | 無 | 待辦事項的陣列|
 |GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | 無 | 待辦事項|
@@ -542,7 +542,7 @@ DTO 可用來：
 
 ![左側方塊代表用戶端。 它會送出要求並接收來自應用程式 (右側繪製的方塊) 的回應。 在應用程式方塊中，三個方塊代表控制器、模型以及資料存取層。 要求進入應用程式的控制器，而在控制器與資料存取層之間進行讀取/寫入作業。 模型會序列化並在回應中傳回至用戶端。](first-web-api/_static/architecture.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -592,7 +592,7 @@ DTO 可用來：
 
 * 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用程式**  >  **API**  >  **] [下一步]**。 在8.6 或更新版本中，選取 [ **Web 和主控台**  >  **應用程式**  >  **API**  >  **] [下一步]**。
   
-* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 2.X**目標架構**。 選取 [下一步] 。
+* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 2.X**目標架構**。 選取 [下一步]。
 
 * 針對 [專案名稱]**** 輸入 *TodoApi*，然後選取 [建立]****。
 
@@ -802,7 +802,7 @@ DTO 可用來：
 
 * 建立新的要求。
   * 將 HTTP 方法設定為 **GET**。
-  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如： `https://localhost:5001/api/todo` 。
+  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如 `https://localhost:5001/api/todo`。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)****。
 * 選取 [傳送]。
 
@@ -958,7 +958,7 @@ jQuery 會傳送 HTTP POST 要求和要求主體中的待辦事項。 `accepts` 
 
 ## <a name="add-authentication-support-to-a-web-api"></a>將驗證支援新增至 Web API
 
-[!INCLUDE[](~/includes/:::no-loc(Identity):::Server4.md)]
+[!INCLUDE[](~/includes/IdentityServer4.md）]
 
 ## <a name="additional-resources"></a>其他資源
 

@@ -4,22 +4,22 @@ author: scottaddie
 description: 瞭解如何藉由套用捆綁和縮制技術，將 ASP.NET Core web 應用程式中的靜態資源優化。
 ms.author: scaddie
 ms.custom: mvc
-ms.date: 04/15/2020
+ms.date: 07/23/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: client-side/bundling-and-minification
-ms.openlocfilehash: de7c155189008e1f78bfb1eba062fcc86f9e4839
-ms.sourcegitcommit: d65a027e78bf0b83727f975235a18863e685d902
+ms.openlocfilehash: 5db6ab3d790257c677c0a4ed7e605eb39c2982ed
+ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85401905"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87159715"
 ---
 # <a name="bundle-and-minify-static-assets-in-aspnet-core"></a>在 ASP.NET Core 中組合及縮小靜態資產
 
@@ -71,19 +71,19 @@ ms.locfileid: "85401905"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a>選擇捆綁和縮制策略
 
-MVC 和 Razor Pages 專案範本提供了一種解決方案，可供包含 JSON 設定檔的組合和縮制使用。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制 &mdash; （例如 linting 和影像優化）時，協力廠商工具是很好的組合。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
+MVC 和 :::no-loc(Razor)::: Pages 專案範本提供了一種解決方案，可供包含 JSON 設定檔的組合和縮制使用。 協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。 當您的開發工作流程需要處理超出配套和縮制 &mdash; （例如 linting 和影像優化）時，協力廠商工具是很好的組合。 藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。 部署之前的捆綁與縮小提供伺服器負載降低的優點。 不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。
 
 ## <a name="configure-bundling-and-minification"></a>設定捆綁和縮制
 
 ::: moniker range="<= aspnetcore-2.0"
 
-在 ASP.NET Core 2.0 或更早版本中，MVC 和 Razor Pages 專案範本會提供設定檔案的*bundleconfig.js* ，以定義每個組合的選項：
+在 ASP.NET Core 2.0 或更早版本中，MVC 和 :::no-loc(Razor)::: Pages 專案範本會提供設定檔案的*bundleconfig.js* ，以定義每個組合的選項：
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-在 ASP.NET Core 2.1 或更新版本中，將名為*bundleconfig.js的*新 JSON 檔案加入至 MVC 或 Razor Pages 專案根目錄。 在該檔案中包含下列 JSON 做為起點：
+在 ASP.NET Core 2.1 或更新版本中，將名為*bundleconfig.js的*新 JSON 檔案加入至 MVC 或 :::no-loc(Razor)::: Pages 專案根目錄。 在該檔案中包含下列 JSON 做為起點：
 
 ::: moniker-end
 
@@ -174,13 +174,13 @@ MVC 和 Razor Pages 專案範本提供了一種解決方案，可供包含 JSON 
 
 在與package.js的相同層級*上*執行下列命令，以安裝相依性：
 
-```console
+```bash
 npm i
 ```
 
 將 Gulp CLI 安裝為全域相依性：
 
-```console
+```bash
 npm i -g gulp-cli
 ```
 
@@ -190,9 +190,12 @@ npm i -g gulp-cli
 
 ### <a name="run-gulp-tasks"></a>執行 Gulp 工作
 
-若要在 Visual Studio 中建立專案之前觸發 Gulp 縮制工作，請將下列[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)新增至 * .csproj 檔案：
+若要在專案建立 Visual Studio 之前觸發 Gulp 縮制工作：
 
-[!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
+1. 安裝[BuildBundlerMinifier](https://www.nuget.org/packages/BuildBundlerMinifier) NuGet 套件。
+1. 將下列[MSBuild 目標](/visualstudio/msbuild/msbuild-targets)加入至專案檔：
+
+    [!code-xml[](../client-side/bundling-and-minification/samples/BuildBundlerMinifierApp/BuildBundlerMinifierApp.csproj?range=14-16)]
 
 在此範例中，目標內定義的任何工作都會在 `MyPreCompileTarget` 預先定義的目標之前執行 `Build` 。 與下列類似的輸出會出現在 Visual Studio 的 [輸出] 視窗中：
 

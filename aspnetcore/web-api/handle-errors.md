@@ -5,22 +5,22 @@ description: 瞭解 ASP.NET Core web Api 的錯誤處理。
 monikerRange: '>= aspnetcore-2.1'
 ms.author: prkrishn
 ms.custom: mvc
-ms.date: 12/10/2019
+ms.date: 07/23/2020
 no-loc:
-- Blazor
-- Blazor Server
-- Blazor WebAssembly
-- Identity
-- Let's Encrypt
-- Razor
-- SignalR
+- ':::no-loc(Blazor):::'
+- ':::no-loc(Blazor Server):::'
+- ':::no-loc(Blazor WebAssembly):::'
+- ':::no-loc(Identity):::'
+- ":::no-loc(Let's Encrypt):::"
+- ':::no-loc(Razor):::'
+- ':::no-loc(SignalR):::'
 uid: web-api/handle-errors
-ms.openlocfilehash: 0abb5e78e1971925c8e741386c65bdf71a0f0072
-ms.sourcegitcommit: 6fb27ea41a92f6d0e91dfd0eba905d2ac1a707f7
+ms.openlocfilehash: d9517bc14ced15094f279029abb791477f7a0004
+ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/15/2020
-ms.locfileid: "86407628"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87159749"
 ---
 # <a name="handle-errors-in-aspnet-core-web-apis"></a>處理 ASP.NET Core web Api 中的錯誤
 
@@ -229,6 +229,8 @@ Date: Fri, 27 Sep 2019 16:55:37 GMT
 1. 建立名為的動作篩選準則 `HttpResponseExceptionFilter` ：
 
     [!code-csharp[](handle-errors/samples/3.x/Filters/HttpResponseExceptionFilter.cs?name=snippet_HttpResponseExceptionFilter)]
+
+    在上述篩選中，會從最大整數值減去魔術數位10。 減去這個數位可讓其他篩選在管線的結尾執行。
 
 1. 在中 `Startup.ConfigureServices` ，將動作篩選準則新增至篩選集合：
 

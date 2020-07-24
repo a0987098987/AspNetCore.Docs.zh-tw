@@ -1,0 +1,1 @@
+如需如何全域要求所有使用者進行驗證的相關資訊，請參閱[要求已驗證的使用者](xref:security/authorization/secure-data#rau)。

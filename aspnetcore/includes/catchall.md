@@ -9,7 +9,7 @@
 >
 > [.Net Core 3.1.301 SDK 和更新版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)中包含這個 bug 的加入宣告修正程式。 下列程式碼會設定可修正此 bug 的內部交換器：
 >
->```
+>```csharp
 >public static void Main(string[] args)
 >{
 >    AppContext.SetSwitch("Microsoft.AspNetCore.Routing.UseCorrectCatchAllBehavior", 

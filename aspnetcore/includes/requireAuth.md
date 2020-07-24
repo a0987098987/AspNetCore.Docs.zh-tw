@@ -1,0 +1,1 @@
+<span data-ttu-id="077b7-101">如需如何全域要求所有使用者進行驗證的相關資訊，請參閱[要求已驗證的使用者](xref:security/authorization/secure-data#rau)。</span><span class="sxs-lookup"><span data-stu-id="077b7-101">For information on how to globally require all users to be authenticated, see [Require authenticated users](xref:security/authorization/secure-data#rau).</span></span>

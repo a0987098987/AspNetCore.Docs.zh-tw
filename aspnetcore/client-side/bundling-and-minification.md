@@ -6,13 +6,13 @@ ms.author: scaddie
 ms.custom: mvc
 ms.date: 07/23/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: client-side/bundling-and-minification
 ms.openlocfilehash: 5db6ab3d790257c677c0a4ed7e605eb39c2982ed
 ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
@@ -71,19 +71,19 @@ ms.locfileid: "87159715"
 
 ## <a name="choose-a-bundling-and-minification-strategy"></a><span data-ttu-id="203fa-151">選擇捆綁和縮制策略</span><span class="sxs-lookup"><span data-stu-id="203fa-151">Choose a bundling and minification strategy</span></span>
 
-<span data-ttu-id="203fa-152">MVC 和 :::no-loc(Razor)::: Pages 專案範本提供了一種解決方案，可供包含 JSON 設定檔的組合和縮制使用。</span><span class="sxs-lookup"><span data-stu-id="203fa-152">The MVC and :::no-loc(Razor)::: Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="203fa-153">協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。</span><span class="sxs-lookup"><span data-stu-id="203fa-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="203fa-154">當您的開發工作流程需要處理超出配套和縮制 &mdash; （例如 linting 和影像優化）時，協力廠商工具是很好的組合。</span><span class="sxs-lookup"><span data-stu-id="203fa-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="203fa-155">藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。</span><span class="sxs-lookup"><span data-stu-id="203fa-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="203fa-156">部署之前的捆綁與縮小提供伺服器負載降低的優點。</span><span class="sxs-lookup"><span data-stu-id="203fa-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="203fa-157">不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。</span><span class="sxs-lookup"><span data-stu-id="203fa-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
+<span data-ttu-id="203fa-152">MVC 和 Razor Pages 專案範本提供了一種解決方案，可供包含 JSON 設定檔的組合和縮制使用。</span><span class="sxs-lookup"><span data-stu-id="203fa-152">The MVC and Razor Pages project templates provide a solution for bundling and minification consisting of a JSON configuration file.</span></span> <span data-ttu-id="203fa-153">協力廠商工具（例如[Grunt](xref:client-side/using-grunt)工作執行器）會以更複雜的方式來完成相同的工作。</span><span class="sxs-lookup"><span data-stu-id="203fa-153">Third-party tools, such as the [Grunt](xref:client-side/using-grunt) task runner, accomplish the same tasks with a bit more complexity.</span></span> <span data-ttu-id="203fa-154">當您的開發工作流程需要處理超出配套和縮制 &mdash; （例如 linting 和影像優化）時，協力廠商工具是很好的組合。</span><span class="sxs-lookup"><span data-stu-id="203fa-154">A third-party tool is a great fit when your development workflow requires processing beyond bundling and minification&mdash;such as linting and image optimization.</span></span> <span data-ttu-id="203fa-155">藉由使用設計階段組合和縮制，縮減檔案會在應用程式部署之前建立。</span><span class="sxs-lookup"><span data-stu-id="203fa-155">By using design-time bundling and minification, the minified files are created prior to the app's deployment.</span></span> <span data-ttu-id="203fa-156">部署之前的捆綁與縮小提供伺服器負載降低的優點。</span><span class="sxs-lookup"><span data-stu-id="203fa-156">Bundling and minifying before deployment provides the advantage of reduced server load.</span></span> <span data-ttu-id="203fa-157">不過，請務必辨識設計階段的組合和縮制會增加組建複雜度，而且只適用于靜態檔案。</span><span class="sxs-lookup"><span data-stu-id="203fa-157">However, it's important to recognize that design-time bundling and minification increases build complexity and only works with static files.</span></span>
 
 ## <a name="configure-bundling-and-minification"></a><span data-ttu-id="203fa-158">設定捆綁和縮制</span><span class="sxs-lookup"><span data-stu-id="203fa-158">Configure bundling and minification</span></span>
 
 ::: moniker range="<= aspnetcore-2.0"
 
-<span data-ttu-id="203fa-159">在 ASP.NET Core 2.0 或更早版本中，MVC 和 :::no-loc(Razor)::: Pages 專案範本會提供設定檔案的*bundleconfig.js* ，以定義每個組合的選項：</span><span class="sxs-lookup"><span data-stu-id="203fa-159">In ASP.NET Core 2.0 or earlier, the MVC and :::no-loc(Razor)::: Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
+<span data-ttu-id="203fa-159">在 ASP.NET Core 2.0 或更早版本中，MVC 和 Razor Pages 專案範本會提供設定檔案的*bundleconfig.js* ，以定義每個組合的選項：</span><span class="sxs-lookup"><span data-stu-id="203fa-159">In ASP.NET Core 2.0 or earlier, the MVC and Razor Pages project templates provide a *bundleconfig.json* configuration file that defines the options for each bundle:</span></span>
 
 ::: moniker-end
 
 ::: moniker range=">= aspnetcore-2.1"
 
-<span data-ttu-id="203fa-160">在 ASP.NET Core 2.1 或更新版本中，將名為*bundleconfig.js的*新 JSON 檔案加入至 MVC 或 :::no-loc(Razor)::: Pages 專案根目錄。</span><span class="sxs-lookup"><span data-stu-id="203fa-160">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json*, to the MVC or :::no-loc(Razor)::: Pages project root.</span></span> <span data-ttu-id="203fa-161">在該檔案中包含下列 JSON 做為起點：</span><span class="sxs-lookup"><span data-stu-id="203fa-161">Include the following JSON in that file as a starting point:</span></span>
+<span data-ttu-id="203fa-160">在 ASP.NET Core 2.1 或更新版本中，將名為*bundleconfig.js的*新 JSON 檔案加入至 MVC 或 Razor Pages 專案根目錄。</span><span class="sxs-lookup"><span data-stu-id="203fa-160">In ASP.NET Core 2.1 or later, add a new JSON file, named *bundleconfig.json*, to the MVC or Razor Pages project root.</span></span> <span data-ttu-id="203fa-161">在該檔案中包含下列 JSON 做為起點：</span><span class="sxs-lookup"><span data-stu-id="203fa-161">Include the following JSON in that file as a starting point:</span></span>
 
 ::: moniker-end
 

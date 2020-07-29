@@ -6,13 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authorization/policies
 ms.openlocfilehash: 668c68bc328860ef17e1f2df09103fca07733ef7
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 
     services.AddControllersWithViews();
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 }
 ```
 
@@ -117,21 +117,21 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="apply-policies-to-mvc-controllers"></a><span data-ttu-id="9b0b7-120">將原則套用至 MVC 控制器</span><span class="sxs-lookup"><span data-stu-id="9b0b7-120">Apply policies to MVC controllers</span></span>
 
-<span data-ttu-id="9b0b7-121">如果您使用 :::no-loc(Razor)::: 的是頁面，請參閱本檔中的[將原則套用至 :::no-loc(Razor)::: 頁面](#apply-policies-to-razor-pages)。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-121">If you're using :::no-loc(Razor)::: Pages, see [Apply policies to :::no-loc(Razor)::: Pages](#apply-policies-to-razor-pages) in this document.</span></span>
+<span data-ttu-id="9b0b7-121">如果您使用 Razor 的是頁面，請參閱本檔中的[將原則套用至 Razor 頁面](#apply-policies-to-razor-pages)。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-121">If you're using Razor Pages, see [Apply policies to Razor Pages](#apply-policies-to-razor-pages) in this document.</span></span>
 
 <span data-ttu-id="9b0b7-122">原則會套用至控制器，方法是使用 `[Authorize]` 具有原則名稱的屬性。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-122">Policies are applied to controllers by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="9b0b7-123">例如：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-123">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="9b0b7-124">將原則套用至 :::no-loc(Razor)::: 頁面</span><span class="sxs-lookup"><span data-stu-id="9b0b7-124">Apply policies to :::no-loc(Razor)::: Pages</span></span>
+## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="9b0b7-124">將原則套用至 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="9b0b7-124">Apply policies to Razor Pages</span></span>
 
-<span data-ttu-id="9b0b7-125">原則會套用至 :::no-loc(Razor)::: 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-125">Policies are applied to :::no-loc(Razor)::: Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="9b0b7-126">例如：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-126">For example:</span></span>
+<span data-ttu-id="9b0b7-125">原則會套用至 Razor 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-125">Policies are applied to Razor Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="9b0b7-126">例如：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-126">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-<span data-ttu-id="9b0b7-127">原則***無法***套用 :::no-loc(Razor)::: 至頁面處理層級，必須套用至頁面。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-127">Policies can ***not*** be applied at the :::no-loc(Razor)::: Page handler level, they must be applied to the Page.</span></span>
+<span data-ttu-id="9b0b7-127">原則***無法***套用 Razor 至頁面處理層級，必須套用至頁面。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-127">Policies can ***not*** be applied at the Razor Page handler level, they must be applied to the Page.</span></span>
 
-<span data-ttu-id="9b0b7-128">您可以 :::no-loc(Razor)::: 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-128">Policies can be applied to :::no-loc(Razor)::: Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
+<span data-ttu-id="9b0b7-128">您可以 Razor 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-128">Policies can be applied to Razor Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
 
 ## <a name="requirements"></a><span data-ttu-id="9b0b7-129">需求</span><span class="sxs-lookup"><span data-stu-id="9b0b7-129">Requirements</span></span>
 
@@ -225,7 +225,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="access-mvc-request-context-in-handlers"></a><span data-ttu-id="9b0b7-185">存取處理常式中的 MVC 要求內容</span><span class="sxs-lookup"><span data-stu-id="9b0b7-185">Access MVC request context in handlers</span></span>
 
-<span data-ttu-id="9b0b7-186">`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-186">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="9b0b7-187">MVC 或等架構可 :::no-loc(SignalR)::: 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-187">Frameworks such as MVC or :::no-loc(SignalR)::: are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
+<span data-ttu-id="9b0b7-186">`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-186">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="9b0b7-187">MVC 或等架構可 SignalR 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-187">Frameworks such as MVC or SignalR are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
 
 <span data-ttu-id="9b0b7-188">使用端點路由時，授權通常會由授權中介軟體處理。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-188">When using endpoint routing, authorization is typically handled by the Authorization Middleware.</span></span> <span data-ttu-id="9b0b7-189">在此情況下， `Resource` 屬性是的實例 <xref:Microsoft.AspNetCore.Http.Endpoint> 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-189">In this case, the `Resource` property is an instance of <xref:Microsoft.AspNetCore.Http.Endpoint>.</span></span> <span data-ttu-id="9b0b7-190">端點可用來探查您要路由的基礎資源。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-190">The endpoint can be used to probe the underlying resource to which you're routing.</span></span> <span data-ttu-id="9b0b7-191">例如：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-191">For example:</span></span>
 
@@ -239,7 +239,7 @@ if (context.Resource is Endpoint endpoint)
 
 <span data-ttu-id="9b0b7-192">端點不會提供對目前的存取權 `HttpContext` 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-192">The endpoint doesn't provide access to the current `HttpContext`.</span></span> <span data-ttu-id="9b0b7-193">使用端點路由時，請使用 `IHttpContextAcessor` 來存取 `HttpContext` 授權處理常式內的。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-193">When using endpoint routing, use `IHttpContextAcessor` to access `HttpContext` inside of an authorization handler.</span></span> <span data-ttu-id="9b0b7-194">如需詳細資訊，請參閱[從自訂群組件使用 HttpCoNtext](xref:fundamentals/httpcontext#use-httpcontext-from-custom-components)。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-194">For more information, see [Use HttpContext from custom components](xref:fundamentals/httpcontext#use-httpcontext-from-custom-components).</span></span>
 
-<span data-ttu-id="9b0b7-195">使用傳統路由，或在 MVC 的授權篩選準則中發生授權時，的值 `Resource` 就是 <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> 實例。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-195">With traditional routing, or when authorization happens as part of MVC's authorization filter, the value of `Resource` is an <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> instance.</span></span> <span data-ttu-id="9b0b7-196">這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 :::no-loc(Razor)::: 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-196">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="9b0b7-195">使用傳統路由，或在 MVC 的授權篩選準則中發生授權時，的值 `Resource` 就是 <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> 實例。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-195">With traditional routing, or when authorization happens as part of MVC's authorization filter, the value of `Resource` is an <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> instance.</span></span> <span data-ttu-id="9b0b7-196">這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 Razor 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-196">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and Razor Pages.</span></span>
 
 <span data-ttu-id="9b0b7-197">屬性的使用 `Resource` 是架構特有的。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-197">The use of the `Resource` property is framework specific.</span></span> <span data-ttu-id="9b0b7-198">使用屬性中的資訊會將 `Resource` 您的授權原則限制為特定架構。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-198">Using information in the `Resource` property limits your authorization policies to particular frameworks.</span></span> <span data-ttu-id="9b0b7-199">您應該 `Resource` 使用關鍵字來轉換屬性 `is` ，然後確認轉換已成功，以確保您的程式碼在 `InvalidCastException` 其他架構上執行時不會損毀：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-199">You should cast the `Resource` property using the `is` keyword, and then confirm the cast has succeeded to ensure your code doesn't crash with an `InvalidCastException` when run on other frameworks:</span></span>
 
@@ -353,19 +353,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="apply-policies-to-mvc-controllers"></a><span data-ttu-id="9b0b7-217">將原則套用至 MVC 控制器</span><span class="sxs-lookup"><span data-stu-id="9b0b7-217">Apply policies to MVC controllers</span></span>
 
-<span data-ttu-id="9b0b7-218">如果您使用 :::no-loc(Razor)::: 的是頁面，請參閱本檔中的[將原則套用至 :::no-loc(Razor)::: 頁面](#apply-policies-to-razor-pages)。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-218">If you're using :::no-loc(Razor)::: Pages, see [Apply policies to :::no-loc(Razor)::: Pages](#apply-policies-to-razor-pages) in this document.</span></span>
+<span data-ttu-id="9b0b7-218">如果您使用 Razor 的是頁面，請參閱本檔中的[將原則套用至 Razor 頁面](#apply-policies-to-razor-pages)。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-218">If you're using Razor Pages, see [Apply policies to Razor Pages](#apply-policies-to-razor-pages) in this document.</span></span>
 
 <span data-ttu-id="9b0b7-219">原則會套用至控制器，方法是使用 `[Authorize]` 具有原則名稱的屬性。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-219">Policies are applied to controllers by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="9b0b7-220">例如：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-220">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="9b0b7-221">將原則套用至 :::no-loc(Razor)::: 頁面</span><span class="sxs-lookup"><span data-stu-id="9b0b7-221">Apply policies to :::no-loc(Razor)::: Pages</span></span>
+## <a name="apply-policies-to-no-locrazor-pages"></a><span data-ttu-id="9b0b7-221">將原則套用至 Razor 頁面</span><span class="sxs-lookup"><span data-stu-id="9b0b7-221">Apply policies to Razor Pages</span></span>
 
-<span data-ttu-id="9b0b7-222">原則會套用至 :::no-loc(Razor)::: 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-222">Policies are applied to :::no-loc(Razor)::: Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="9b0b7-223">例如：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-223">For example:</span></span>
+<span data-ttu-id="9b0b7-222">原則會套用至 Razor 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-222">Policies are applied to Razor Pages by using the `[Authorize]` attribute with the policy name.</span></span> <span data-ttu-id="9b0b7-223">例如：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-223">For example:</span></span>
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-<span data-ttu-id="9b0b7-224">您也可以 :::no-loc(Razor)::: 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-224">Policies can also be applied to :::no-loc(Razor)::: Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
+<span data-ttu-id="9b0b7-224">您也可以 Razor 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-224">Policies can also be applied to Razor Pages by using an [authorization convention](xref:security/authorization/razor-pages-authorization).</span></span>
 
 ## <a name="requirements"></a><span data-ttu-id="9b0b7-225">需求</span><span class="sxs-lookup"><span data-stu-id="9b0b7-225">Requirements</span></span>
 
@@ -459,9 +459,9 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="access-mvc-request-context-in-handlers"></a><span data-ttu-id="9b0b7-281">存取處理常式中的 MVC 要求內容</span><span class="sxs-lookup"><span data-stu-id="9b0b7-281">Access MVC request context in handlers</span></span>
 
-<span data-ttu-id="9b0b7-282">`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-282">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="9b0b7-283">MVC 或等架構可 :::no-loc(SignalR)::: 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-283">Frameworks such as MVC or :::no-loc(SignalR)::: are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
+<span data-ttu-id="9b0b7-282">`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-282">The `HandleRequirementAsync` method you implement in an authorization handler has two parameters: an `AuthorizationHandlerContext` and the `TRequirement` you are handling.</span></span> <span data-ttu-id="9b0b7-283">MVC 或等架構可 SignalR 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-283">Frameworks such as MVC or SignalR are free to add any object to the `Resource` property on the `AuthorizationHandlerContext` to pass extra information.</span></span>
 
-<span data-ttu-id="9b0b7-284">例如，MVC 會在屬性中傳遞[AuthorizationFilterCoNtext](/dotnet/api/?term=AuthorizationFilterContext)的實例 `Resource` 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-284">For example, MVC passes an instance of [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) in the `Resource` property.</span></span> <span data-ttu-id="9b0b7-285">這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 :::no-loc(Razor)::: 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-285">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and :::no-loc(Razor)::: Pages.</span></span>
+<span data-ttu-id="9b0b7-284">例如，MVC 會在屬性中傳遞[AuthorizationFilterCoNtext](/dotnet/api/?term=AuthorizationFilterContext)的實例 `Resource` 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-284">For example, MVC passes an instance of [AuthorizationFilterContext](/dotnet/api/?term=AuthorizationFilterContext) in the `Resource` property.</span></span> <span data-ttu-id="9b0b7-285">這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 Razor 。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-285">This property provides access to `HttpContext`, `RouteData`, and everything else provided by MVC and Razor Pages.</span></span>
 
 <span data-ttu-id="9b0b7-286">屬性的使用 `Resource` 是架構特有的。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-286">The use of the `Resource` property is framework specific.</span></span> <span data-ttu-id="9b0b7-287">使用屬性中的資訊會將 `Resource` 您的授權原則限制為特定架構。</span><span class="sxs-lookup"><span data-stu-id="9b0b7-287">Using information in the `Resource` property limits your authorization policies to particular frameworks.</span></span> <span data-ttu-id="9b0b7-288">您應該 `Resource` 使用關鍵字來轉換屬性 `is` ，然後確認轉換已成功，以確保您的程式碼在 `InvalidCastException` 其他架構上執行時不會損毀：</span><span class="sxs-lookup"><span data-stu-id="9b0b7-288">You should cast the `Resource` property using the `is` keyword, and then confirm the cast has succeeded to ensure your code doesn't crash with an `InvalidCastException` when run on other frameworks:</span></span>
 

@@ -6,13 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 04/15/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authorization/policies
 ms.openlocfilehash: 668c68bc328860ef17e1f2df09103fca07733ef7
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -109,7 +109,7 @@ public void ConfigureServices(IServiceCollection services)
 
 
     services.AddControllersWithViews();
-    services.Add:::no-loc(Razor):::Pages();
+    services.AddRazorPages();
 }
 ```
 
@@ -117,21 +117,21 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="apply-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
 
-如果您使用 :::no-loc(Razor)::: 的是頁面，請參閱本檔中的[將原則套用至 :::no-loc(Razor)::: 頁面](#apply-policies-to-razor-pages)。
+如果您使用 Razor 的是頁面，請參閱本檔中的[將原則套用至 Razor 頁面](#apply-policies-to-razor-pages)。
 
 原則會套用至控制器，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a>將原則套用至 :::no-loc(Razor)::: 頁面
+## <a name="apply-policies-to-no-locrazor-pages"></a>將原則套用至 Razor 頁面
 
-原則會套用至 :::no-loc(Razor)::: 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
+原則會套用至 Razor 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-原則***無法***套用 :::no-loc(Razor)::: 至頁面處理層級，必須套用至頁面。
+原則***無法***套用 Razor 至頁面處理層級，必須套用至頁面。
 
-您可以 :::no-loc(Razor)::: 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
+您可以 Razor 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
 
 ## <a name="requirements"></a>需求
 
@@ -225,7 +225,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="access-mvc-request-context-in-handlers"></a>存取處理常式中的 MVC 要求內容
 
-`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。 MVC 或等架構可 :::no-loc(SignalR)::: 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。
+`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。 MVC 或等架構可 SignalR 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。
 
 使用端點路由時，授權通常會由授權中介軟體處理。 在此情況下， `Resource` 屬性是的實例 <xref:Microsoft.AspNetCore.Http.Endpoint> 。 端點可用來探查您要路由的基礎資源。 例如：
 
@@ -239,7 +239,7 @@ if (context.Resource is Endpoint endpoint)
 
 端點不會提供對目前的存取權 `HttpContext` 。 使用端點路由時，請使用 `IHttpContextAcessor` 來存取 `HttpContext` 授權處理常式內的。 如需詳細資訊，請參閱[從自訂群組件使用 HttpCoNtext](xref:fundamentals/httpcontext#use-httpcontext-from-custom-components)。
 
-使用傳統路由，或在 MVC 的授權篩選準則中發生授權時，的值 `Resource` 就是 <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> 實例。 這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 :::no-loc(Razor)::: 。
+使用傳統路由，或在 MVC 的授權篩選準則中發生授權時，的值 `Resource` 就是 <xref:Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext> 實例。 這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 Razor 。
 
 屬性的使用 `Resource` 是架構特有的。 使用屬性中的資訊會將 `Resource` 您的授權原則限制為特定架構。 您應該 `Resource` 使用關鍵字來轉換屬性 `is` ，然後確認轉換已成功，以確保您的程式碼在 `InvalidCastException` 其他架構上執行時不會損毀：
 
@@ -353,19 +353,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="apply-policies-to-mvc-controllers"></a>將原則套用至 MVC 控制器
 
-如果您使用 :::no-loc(Razor)::: 的是頁面，請參閱本檔中的[將原則套用至 :::no-loc(Razor)::: 頁面](#apply-policies-to-razor-pages)。
+如果您使用 Razor 的是頁面，請參閱本檔中的[將原則套用至 Razor 頁面](#apply-policies-to-razor-pages)。
 
 原則會套用至控制器，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp1/Controllers/AlcoholPurchaseController.cs?name=snippet_AlcoholPurchaseControllerClass&highlight=4)]
 
-## <a name="apply-policies-to-no-locrazor-pages"></a>將原則套用至 :::no-loc(Razor)::: 頁面
+## <a name="apply-policies-to-no-locrazor-pages"></a>將原則套用至 Razor 頁面
 
-原則會套用至 :::no-loc(Razor)::: 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
+原則會套用至 Razor 頁面，方法是使用 `[Authorize]` 具有原則名稱的屬性。 例如：
 
 [!code-csharp[](policies/samples/PoliciesAuthApp2/Pages/AlcoholPurchase.cshtml.cs?name=snippet_AlcoholPurchaseModelClass&highlight=4)]
 
-您也可以 :::no-loc(Razor)::: 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
+您也可以 Razor 使用[授權慣例](xref:security/authorization/razor-pages-authorization)，將原則套用至頁面。
 
 ## <a name="requirements"></a>需求
 
@@ -459,9 +459,9 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="access-mvc-request-context-in-handlers"></a>存取處理常式中的 MVC 要求內容
 
-`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。 MVC 或等架構可 :::no-loc(SignalR)::: 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。
+`HandleRequirementAsync`您在授權處理常式中執行的方法有兩個參數： `AuthorizationHandlerContext` 和 `TRequirement` 您正在處理的。 MVC 或等架構可 SignalR 自由地將任何物件加入至的 `Resource` 屬性， `AuthorizationHandlerContext` 以傳遞額外的資訊。
 
-例如，MVC 會在屬性中傳遞[AuthorizationFilterCoNtext](/dotnet/api/?term=AuthorizationFilterContext)的實例 `Resource` 。 這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 :::no-loc(Razor)::: 。
+例如，MVC 會在屬性中傳遞[AuthorizationFilterCoNtext](/dotnet/api/?term=AuthorizationFilterContext)的實例 `Resource` 。 這個屬性可讓您 `HttpContext` 存取 `RouteData` MVC 和頁面所提供的、和其他所有專案 Razor 。
 
 屬性的使用 `Resource` 是架構特有的。 使用屬性中的資訊會將 `Resource` 您的授權原則限制為特定架構。 您應該 `Resource` 使用關鍵字來轉換屬性 `is` ，然後確認轉換已成功，以確保您的程式碼在 `InvalidCastException` 其他架構上執行時不會損毀：
 

@@ -1,18 +1,18 @@
 ---
-title: '設定 ASP.NET Core:::no-loc(Identity):::'
+title: 設定 ASP.NET CoreIdentity
 author: AdrienTorris
-description: '瞭解 ASP.NET Core :::no-loc(Identity)::: 預設值，並瞭解如何設定 :::no-loc(Identity)::: 屬性以使用自訂值。'
+description: 瞭解 ASP.NET Core Identity 預設值，並瞭解如何設定 Identity 屬性以使用自訂值。
 ms.author: riande
 ms.custom: mvc
 ms.date: 02/11/2019
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/identity-configuration
 ms.openlocfilehash: 5c999b426742cf75b1997f5b40223e2dda112901
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -21,42 +21,42 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 07/24/2020
 ms.locfileid: "87160296"
 ---
-# <a name="configure-aspnet-core-no-locidentity"></a>設定 ASP.NET Core:::no-loc(Identity):::
+# <a name="configure-aspnet-core-no-locidentity"></a>設定 ASP.NET CoreIdentity
 
-ASP.NET Core 會 :::no-loc(Identity)::: 使用密碼原則、鎖定和 cookie 設定等設定的預設值。 這些設定可以在類別中覆寫 `Startup` 。
+ASP.NET Core 會 Identity 使用密碼原則、鎖定和 cookie 設定等設定的預設值。 這些設定可以在類別中覆寫 `Startup` 。
 
-## <a name="no-locidentity-options"></a>:::no-loc(Identity):::選項
+## <a name="no-locidentity-options"></a>Identity選項
 
-[ :::no-loc(Identity)::: Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)類別代表可以用來設定系統的選項 :::no-loc(Identity)::: 。 `:::no-loc(Identity):::Options`呼叫或**之後**，必須 `Add:::no-loc(Identity):::` 設定 `AddDefault:::no-loc(Identity):::` 。
+[ Identity Options](/dotnet/api/microsoft.aspnetcore.identity.identityoptions)類別代表可以用來設定系統的選項 Identity 。 `IdentityOptions`呼叫或**之後**，必須 `AddIdentity` 設定 `AddDefaultIdentity` 。
 
-### <a name="claims-no-locidentity"></a>退款:::no-loc(Identity):::
+### <a name="claims-no-locidentity"></a>退款Identity
 
-[ :::no-loc(Identity)::: Options。宣告 :::no-loc(Identity)::: ](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity)會使用下表所示的屬性來指定[宣告 :::no-loc(Identity)::: 選項](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions)。
+[ Identity Options。宣告 Identity ](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.claimsidentity)會使用下表所示的屬性來指定[宣告 Identity 選項](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions)。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
 | [RoleClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.roleclaimtype) | 取得或設定用於角色宣告的宣告類型。 | [Claimtype。角色](/dotnet/api/system.security.claims.claimtypes.role) |
-| [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | 取得或設定用於安全性戳記宣告的宣告類型。 | `AspNet.:::no-loc(Identity):::.SecurityStamp` |
+| [SecurityStampClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.securitystampclaimtype) | 取得或設定用於安全性戳記宣告的宣告類型。 | `AspNet.Identity.SecurityStamp` |
 | [UserIdClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.useridclaimtype) | 取得或設定用於使用者識別碼宣告的宣告類型。 | [Claimtype. NameIdentifier](/dotnet/api/system.security.claims.claimtypes.nameidentifier) |
 | [UserNameClaimType](/dotnet/api/microsoft.aspnetcore.identity.claimsidentityoptions.usernameclaimtype) | 取得或設定用於使用者名稱宣告的宣告類型。 | [ClaimTypes.Name](/dotnet/api/system.security.claims.claimtypes.name) |
 
 ### <a name="lockout"></a>鎖定
 
-鎖定是在[PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync#Microsoft_AspNetCore_:::no-loc(Identity):::_SignInManager_1_PasswordSignInAsync_System_String_System_String_System_Boolean_System_Boolean_)方法中設定：
+鎖定是在[PasswordSignInAsync](/dotnet/api/microsoft.aspnetcore.identity.signinmanager-1.passwordsigninasync#Microsoft_AspNetCore_Identity_SignInManager_1_PasswordSignInAsync_System_String_System_String_System_Boolean_System_Boolean_)方法中設定：
 
-[!code-csharp[](identity-configuration/sample/Areas/:::no-loc(Identity):::/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
+[!code-csharp[](identity-configuration/sample/Areas/Identity/Pages/Account/Login.cshtml.cs?name=snippet&highlight=9)]
 
-上述程式碼是以範本為基礎 `Login` :::no-loc(Identity)::: 。 
+上述程式碼是以範本為基礎 `Login` Identity 。 
 
 鎖定選項設定于 `StartUp.ConfigureServices` ：
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_lock)]
 
-上述程式碼會使用預設值來設定[ :::no-loc(Identity)::: 選項](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
+上述程式碼會使用預設值來設定[ Identity 選項](/dotnet/api/microsoft.aspnetcore.identity.identityoptions) [LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
 
 成功的驗證會重設失敗的存取嘗試計數，並重設時鐘。
 
-[ :::no-loc(Identity)::: 選項。鎖定](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout)會使用資料表中顯示的屬性來指定[LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
+[ Identity 選項。鎖定](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.lockout)會使用資料表中顯示的屬性來指定[LockoutOptions](/dotnet/api/microsoft.aspnetcore.identity.lockoutoptions) 。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -66,18 +66,18 @@ ASP.NET Core 會 :::no-loc(Identity)::: 使用密碼原則、鎖定和 cookie �
 
 ### <a name="password"></a>密碼
 
-根據預設， :::no-loc(Identity)::: 密碼必須包含大寫字元、小寫字元、數位和非英數位元。 密碼長度至少必須為6個字元。
+根據預設， Identity 密碼必須包含大寫字元、小寫字元、數位和非英數位元。 密碼長度至少必須為6個字元。
 
 密碼是使用下列設定：
 
-* <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordOptions>在中 `Startup.ConfigureServices` 。
-* [ `[StringLength]` ](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) `Password` 如果 :::no-loc(Identity)::: [scaffold 至應用程式](xref:security/authentication/scaffold-identity)，則為屬性的屬性。 `InputModel``Password`在下列檔案中可找到屬性：
-  * `Areas/:::no-loc(Identity):::/Pages/Account/Register.cshtml.cs`
-  * `Areas/:::no-loc(Identity):::/Pages/Account/ResetPassword.cshtml.cs`
+* <xref:Microsoft.AspNetCore.Identity.PasswordOptions>在中 `Startup.ConfigureServices` 。
+* [ `[StringLength]` ](xref:System.ComponentModel.DataAnnotations.StringLengthAttribute) `Password` 如果 Identity [scaffold 至應用程式](xref:security/authentication/scaffold-identity)，則為屬性的屬性。 `InputModel``Password`在下列檔案中可找到屬性：
+  * `Areas/Identity/Pages/Account/Register.cshtml.cs`
+  * `Areas/Identity/Pages/Account/ResetPassword.cshtml.cs`
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_pw)]
 
-[ :::no-loc(Identity)::: Options。 Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password)會使用資料表中顯示的屬性來指定[PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) 。
+[ Identity Options。 Password](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.password)會使用資料表中顯示的屬性來指定[PasswordOptions](/dotnet/api/microsoft.aspnetcore.identity.passwordoptions) 。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -94,7 +94,7 @@ ASP.NET Core 會 :::no-loc(Identity)::: 使用密碼原則、鎖定和 cookie �
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_si)]
 
-[登入] 會使用資料表中顯示的屬性[ :::no-loc(Identity)::: 來指定](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) 。
+[登入] 會使用資料表中顯示的屬性[ Identity 來指定](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.signin) [SignInOptions](/dotnet/api/microsoft.aspnetcore.identity.signinoptions) 。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -103,7 +103,7 @@ ASP.NET Core 會 :::no-loc(Identity)::: 使用密碼原則、鎖定和 cookie �
 
 ### <a name="tokens"></a>權杖
 
-[ :::no-loc(Identity)::: 選項。權杖](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens)會使用資料表中顯示的屬性來指定[TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) 。
+[ Identity 選項。權杖](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.tokens)會使用資料表中顯示的屬性來指定[TokenOptions](/dotnet/api/microsoft.aspnetcore.identity.tokenoptions) 。
 
 | 屬性 | 說明 |
 | -------- | ----------- |
@@ -118,7 +118,7 @@ ASP.NET Core 會 :::no-loc(Identity)::: 使用密碼原則、鎖定和 cookie �
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_user)]
 
-[ :::no-loc(Identity)::: Options。使用者](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user)指定具有資料表中所顯示內容的[UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) 。
+[ Identity Options。使用者](/dotnet/api/microsoft.aspnetcore.identity.identityoptions.user)指定具有資料表中所顯示內容的[UserOptions](/dotnet/api/microsoft.aspnetcore.identity.useroptions) 。
 
 | 屬性 | 描述 | 預設 |
 | -------- | ----------- | :-----: |
@@ -127,7 +127,7 @@ ASP.NET Core 會 :::no-loc(Identity)::: 使用密碼原則、鎖定和 cookie �
 
 ### <a name="cookie-settings"></a>Cookie 設定
 
-在中設定應用程式的 cookie `Startup.ConfigureServices` 。 呼叫或**之後**，必須呼叫[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_:::no-loc(Identity):::ServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) `Add:::no-loc(Identity):::` `AddDefault:::no-loc(Identity):::` 。
+在中設定應用程式的 cookie `Startup.ConfigureServices` 。 呼叫或**之後**，必須呼叫[ConfigureApplicationCookie](/dotnet/api/microsoft.extensions.dependencyinjection.identityservicecollectionextensions.configureapplicationcookie#Microsoft_Extensions_DependencyInjection_IdentityServiceCollectionExtensions_ConfigureApplicationCookie_Microsoft_Extensions_DependencyInjection_IServiceCollection_System_Action_Microsoft_AspNetCore_Authentication_Cookies_CookieAuthenticationOptions__) `AddIdentity` `AddDefaultIdentity` 。
 
 [!code-csharp[](identity-configuration/sample/Startup.cs?name=snippet_cookie)]
 
@@ -135,17 +135,17 @@ ASP.NET Core 會 :::no-loc(Identity)::: 使用密碼原則、鎖定和 cookie �
 
 ## <a name="password-hasher-options"></a>密碼 Hasher 選項
 
-<xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions>取得和設定密碼雜湊的選項。
+<xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions>取得和設定密碼雜湊的選項。
 
 | 選項 | 說明 |
 | ------ | ----------- |
-| <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.CompatibilityMode> | 雜湊新密碼時所使用的相容性模式。 預設為 <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherCompatibilityMode.:::no-loc(Identity):::V3>。 雜湊密碼的第一個位元組（稱為*格式標記*）會指定用來雜湊密碼的雜湊演算法版本。 根據雜湊來驗證密碼時，方法會根據 <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasher`1.VerifyHashedPassword*> 第一個位元組來選取正確的演算法。 無論使用哪一個演算法版本來雜湊密碼，用戶端都可以進行驗證。 設定相容性模式會影響*新密碼*的雜湊。 |
-| <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.IterationCount> | 使用 PBKDF2 來對密碼進行雜湊處理時所使用的反覆運算次數。 只有當設定為時，才會使用這個值 <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.CompatibilityMode> <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherCompatibilityMode.:::no-loc(Identity):::V3> 。 值必須是正整數，且預設值為 `10000` 。 |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> | 雜湊新密碼時所使用的相容性模式。 預設為 <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3>。 雜湊密碼的第一個位元組（稱為*格式標記*）會指定用來雜湊密碼的雜湊演算法版本。 根據雜湊來驗證密碼時，方法會根據 <xref:Microsoft.AspNetCore.Identity.PasswordHasher`1.VerifyHashedPassword*> 第一個位元組來選取正確的演算法。 無論使用哪一個演算法版本來雜湊密碼，用戶端都可以進行驗證。 設定相容性模式會影響*新密碼*的雜湊。 |
+| <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> | 使用 PBKDF2 來對密碼進行雜湊處理時所使用的反覆運算次數。 只有當設定為時，才會使用這個值 <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.CompatibilityMode> <xref:Microsoft.AspNetCore.Identity.PasswordHasherCompatibilityMode.IdentityV3> 。 值必須是正整數，且預設值為 `10000` 。 |
 
-在下列範例中， <xref:Microsoft.AspNetCore.:::no-loc(Identity):::.PasswordHasherOptions.IterationCount> 會設定為 `12000` 中的 `Startup.ConfigureServices` ：
+在下列範例中， <xref:Microsoft.AspNetCore.Identity.PasswordHasherOptions.IterationCount> 會設定為 `12000` 中的 `Startup.ConfigureServices` ：
 
 ```csharp
-// using Microsoft.AspNetCore.:::no-loc(Identity):::;
+// using Microsoft.AspNetCore.Identity;
 
 services.Configure<PasswordHasherOptions>(option =>
 {

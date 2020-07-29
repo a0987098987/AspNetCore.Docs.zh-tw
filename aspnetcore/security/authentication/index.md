@@ -6,13 +6,13 @@ ms.author: riande
 ms.custom: mvc
 ms.date: 03/03/2020
 no-loc:
-- ':::no-loc(Blazor):::'
-- ':::no-loc(Blazor Server):::'
-- ':::no-loc(Blazor WebAssembly):::'
-- ':::no-loc(Identity):::'
-- ":::no-loc(Let's Encrypt):::"
-- ':::no-loc(Razor):::'
-- ':::no-loc(SignalR):::'
+- Blazor
+- Blazor Server
+- Blazor WebAssembly
+- Identity
+- Let's Encrypt
+- Razor
+- SignalR
 uid: security/authentication/index
 ms.openlocfilehash: a230e1ae85a54ddf16900b2ee7ed4a18d45e4ea2
 ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
@@ -49,7 +49,7 @@ services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 如果使用多個配置，授權原則（或授權屬性）可以[指定它們所依賴的驗證配置（或配置）](xref:security/authorization/limitingidentitybyscheme)來驗證使用者。 在上述範例中，您可以藉由指定名稱來使用 cookie 驗證配置（ `CookieAuthenticationDefaults.AuthenticationScheme` 根據預設，雖然呼叫時可能會提供不同的名稱 `AddCookie` ）。
 
-在某些情況下，對的呼叫會 `AddAuthentication` 由其他擴充方法自動進行。 例如，使用[ASP.NET Core :::no-loc(Identity)::: ](xref:security/authentication/identity)時， `AddAuthentication` 會在內部呼叫。
+在某些情況下，對的呼叫會 `AddAuthentication` 由其他擴充方法自動進行。 例如，使用[ASP.NET Core Identity ](xref:security/authentication/identity)時， `AddAuthentication` 會在內部呼叫。
 
 藉 `Startup.Configure` 由在 <xref:Microsoft.AspNetCore.Builder.AuthAppBuilderExtensions.UseAuthentication*> 應用程式的上呼叫擴充方法，即可在中新增驗證中介軟體 `IApplicationBuilder` 。 呼叫會 `UseAuthentication` 註冊使用先前註冊之驗證配置的中介軟體。 在 `UseAuthentication` 相依于要驗證之使用者的任何中介軟體之前呼叫。 使用端點路由時，對的呼叫 `UseAuthentication` 必須：
 

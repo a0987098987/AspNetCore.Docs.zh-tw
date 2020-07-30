@@ -15,10 +15,10 @@ no-loc:
 - SignalR
 uid: tutorials/first-web-api
 ms.openlocfilehash: 2383934070a65b8131e890a170186b736d3fcec0
-ms.sourcegitcommit: d00a200bc8347af794b24184da14ad5c8b6bba9a
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/21/2020
+ms.lasthandoff: 07/28/2020
 ms.locfileid: "86869987"
 ---
 # <a name="tutorial-create-a-web-api-with-aspnet-core"></a>教學課程：使用 ASP.NET Core 建立 Web API
@@ -29,7 +29,7 @@ ms.locfileid: "86869987"
 
 ::: moniker range=">= aspnetcore-3.0"
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web API 專案。
@@ -50,7 +50,7 @@ ms.locfileid: "86869987"
 |`GET /api/TodoItems/{id}` | 依識別碼取得項目 | 無 | 待辦事項|
 |`POST /api/TodoItems` | 新增記錄 | 待辦事項 | 待辦事項 |
 |`PUT /api/TodoItems/{id}` | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
-|`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | 刪除專案 &nbsp;&nbsp; | None | None|
+|`DELETE /api/TodoItems/{id}` &nbsp; &nbsp; | 刪除專案 &nbsp;&nbsp; | 無 | 無|
 
 下圖顯示應用程式的設計。
 
@@ -62,7 +62,7 @@ ms.locfileid: "86869987"
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs-3.1.md)]
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-3.1.md)]
 
@@ -83,7 +83,7 @@ ms.locfileid: "86869987"
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs3.png)
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 * 將目錄 (`cd`) 變更為包含專案資料夾的資料夾。
@@ -114,7 +114,7 @@ ms.locfileid: "86869987"
 
   ![macOS API 範本選取專案](first-web-api-mac/_static/api_template.png)
 
-* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 3.X**目標 Framework**。 選取 [下一步]。
+* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 3.X**目標 Framework**。 選取 [下一步]  。
 
 * 針對 [專案名稱]**** 輸入 *TodoApi*，然後選取 [建立]****。
 
@@ -141,7 +141,7 @@ ms.locfileid: "86869987"
 
 如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]****。 在接著出現的 [安全性警告]**** 對話方塊中，選取 [是]****。
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 按 Ctrl+F5 執行應用程式。 在瀏覽器中，前往下列 URL：`https://localhost:5001/WeatherForecast`。
 
@@ -200,7 +200,7 @@ ms.locfileid: "86869987"
 
 * 使用下列程式碼取代範本程式碼：
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 新增名為 *Models* 的資料夾。
 
@@ -380,7 +380,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 * `GET /api/TodoItems`
 * `GET /api/TodoItems/{id}`
 
-從瀏覽器或 Postman 呼叫這兩個端點來測試應用程式。 例如：
+從瀏覽器或 Postman 呼叫這兩個端點來測試應用程式。 例如︰
 
 * `https://localhost:5001/api/TodoItems`
 * `https://localhost:5001/api/TodoItems/1`
@@ -401,7 +401,7 @@ dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m 
 
 * 建立新的要求。
 * 將 HTTP 方法設定為 **GET**。
-* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如 `https://localhost:5001/api/TodoItems`。
+* 將要求 URL 設定為 `https://localhost:<port>/api/TodoItems`。 例如： `https://localhost:5001/api/TodoItems` 。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)****。
 * 選取 [傳送]。
 
@@ -512,7 +512,7 @@ DTO 可用來：
 
 ::: moniker range="< aspnetcore-3.0"
 
-在本教學課程中，您將了解如何：
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
 > * 建立 Web API 專案。
@@ -536,7 +536,7 @@ DTO 可用來：
 |GET /api/TodoItems/{識別碼} | 依識別碼取得項目 | 無 | 待辦事項|
 |POST /api/TodoItems | 新增記錄 | 待辦事項 | 待辦事項 |
 |PUT /api/TodoItems/{識別碼} | 更新現有的項目 &nbsp; | 待辦事項 | 無 |
-|刪除/api/TodoItems/{id} &nbsp;&nbsp; | 刪除專案 &nbsp;&nbsp; | None | None|
+|刪除/api/TodoItems/{id} &nbsp;&nbsp; | 刪除專案 &nbsp;&nbsp; | 無 | 無|
 
 下圖顯示應用程式的設計。
 
@@ -548,7 +548,7 @@ DTO 可用來：
 
 [!INCLUDE[](~/includes/net-core-prereqs-vs2019-2.2.md)]
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 [!INCLUDE[](~/includes/net-core-prereqs-vsc-2.2.md)]
 
@@ -569,7 +569,7 @@ DTO 可用來：
 
 ![VS 新增專案對話方塊](first-web-api/_static/vs.png)
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 開啟[整合式終端機](https://code.visualstudio.com/docs/editor/integrated-terminal)。
 * 將目錄 (`cd`) 變更為包含專案資料夾的資料夾。
@@ -592,7 +592,7 @@ DTO 可用來：
 
 * 在8.6 版之前的 Visual Studio for Mac 中，選取 [ **.net Core**  >  **應用程式**  >  **API**  >  **] [下一步]**。 在8.6 或更新版本中，選取 [ **Web 和主控台**  >  **應用程式**  >  **API**  >  **] [下一步]**。
   
-* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 2.X**目標架構**。 選取 [下一步]。
+* 在 [**設定您的新 ASP.NET Core WEB API** ] 對話方塊中，選取最新的 .net Core 2.X**目標架構**。 選取 [下一步]  。
 
 * 針對 [專案名稱]**** 輸入 *TodoApi*，然後選取 [建立]****。
 
@@ -610,7 +610,7 @@ DTO 可用來：
 
 如果出現對話方塊詢問您是否應該信任 IIS Express 憑證，請選取 [是]****。 在接著出現的 [安全性警告]**** 對話方塊中，選取 [是]****。
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 按 Ctrl+F5 執行應用程式。 在瀏覽器中，前往下列 URL：`https://localhost:5001/api/values`。
 
@@ -638,7 +638,7 @@ DTO 可用來：
 
 * 使用下列程式碼取代範本程式碼：
 
-# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code) \(英文\)
+# <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 * 新增名為 *Models* 的資料夾。
 
@@ -737,7 +737,7 @@ DTO 可用來：
 
 如果應用程式仍在執行，請將其停止。 然後重新予以執行以包含最新的變更。
 
-從瀏覽器呼叫這兩個端點來測試應用程式。 例如：
+從瀏覽器呼叫這兩個端點來測試應用程式。 例如︰
 
 * `https://localhost:<port>/api/todo`
 * `https://localhost:<port>/api/todo/1`
@@ -802,7 +802,7 @@ DTO 可用來：
 
 * 建立新的要求。
   * 將 HTTP 方法設定為 **GET**。
-  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如 `https://localhost:5001/api/todo`。
+  * 將要求 URL 設定為 `https://localhost:<port>/api/todo`。 例如： `https://localhost:5001/api/todo` 。
 * 在 Postman 中，設定 [Two pane view] \(雙窗格檢視\)****。
 * 選取 [傳送]。
 
@@ -958,7 +958,7 @@ jQuery 會傳送 HTTP POST 要求和要求主體中的待辦事項。 `accepts` 
 
 ## <a name="add-authentication-support-to-a-web-api"></a>將驗證支援新增至 Web API
 
-[!INCLUDE[](~/includes/IdentityServer4.md）]
+[!INCLUDE[](~/includes/IdentityServer4.md)]
 
 ## <a name="additional-resources"></a>其他資源
 

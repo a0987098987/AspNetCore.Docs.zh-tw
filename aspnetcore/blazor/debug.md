@@ -5,7 +5,7 @@ description: 瞭解如何調試 Blazor 程式。
 monikerRange: '>= aspnetcore-3.1'
 ms.author: riande
 ms.custom: mvc
-ms.date: 07/15/2020
+ms.date: 07/27/2020
 no-loc:
 - Blazor
 - Blazor Server
@@ -15,12 +15,12 @@ no-loc:
 - Razor
 - SignalR
 uid: blazor/debug
-ms.openlocfilehash: 14943b9f7847ac9144addfdf16a003f6fc8c340c
-ms.sourcegitcommit: cc845634a490c49ff869c89b6e422b6d65d0e886
+ms.openlocfilehash: b4199c3a99af5875c5d9a87f29f7c7e2758ffd71
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87159710"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87303556"
 ---
 # <a name="debug-aspnet-core-no-locblazor-webassembly"></a>Debug ASP.NET CoreBlazor WebAssembly
 
@@ -44,7 +44,7 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 我們將繼續改善即將發行的版本中的調試過程。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 調試需要下列其中一個瀏覽器：
 
@@ -109,13 +109,15 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 1. Blazor WebAssembly在 VS Code 中開啟獨立應用程式。
 
-   如果您收到下列通知，表示需要額外的設定才能啟用偵錯工具：
+   您可能會收到下列通知，指出需要額外的設定才能啟用偵錯工具：
    
-   * 確認您已安裝正確的延伸模組。
-   * 確認 JavaScript preview 的偵錯工具已啟用。
-   * 重載視窗。
-
    ![需要額外的設定](https://devblogs.microsoft.com/aspnet/wp-content/uploads/sites/16/2020/03/vscode-additional-setup.png)
+   
+   如果您收到通知：
+
+   * 確認已安裝最新的[c # for Visual Studio Code 延伸](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)模組。 若要檢查已安裝的擴充功能，請從功能表列開啟 [ **View**  >  **extension** ]，或選取 [**活動**] 提要欄位中的 [**擴充**功能] 圖示
+   * 確認 JavaScript preview 的偵錯工具已啟用。 從功能表列開啟設定（[檔案**File**  >  **喜好**  >  **設定**]）。 使用關鍵字進行搜尋 `debug preview` 。 在搜尋結果中，確認已核取 [ **Debug > JavaScript：使用預覽**] 核取方塊。
+   * 重載視窗。
 
 1. 使用<kbd>F5</kbd>鍵盤快速鍵或功能表項目開始進行調試。
 
@@ -160,7 +162,7 @@ Blazor WebAssembly應用程式可以使用瀏覽器開發工具，以 Chromium �
 
 以下是針對 `blazorwasm` debug 類型（）支援的啟動設定選項 `.vscode/launch.json` 。
 
-| 選項    | 說明 |
+| 選項    | 描述 |
 | --------- | ----------- |
 | `request` | 使用 `launch` 來啟動並將偵錯工具連結至 Blazor WebAssembly 應用程式，或將 `attach` 偵錯工具附加至已在執行中的應用程式。 |
 | `url`     | 要在瀏覽器中開啟的 URL。 預設為 `https://localhost:5001`。 |
@@ -241,5 +243,5 @@ Blazor提供的偵錯工具 proxy 會執行[Chrome DevTools 通訊協定](https:
 如果您遇到錯誤，下列秘訣可能會有説明：
 
 * 在 [**偵錯工具**] 索引標籤中，開啟瀏覽器中的開發人員工具。 在主控台中，執行 `localStorage.clear()` 以移除任何中斷點。
-* 確認您已安裝並信任 ASP.NET Core 的 HTTPS 開發憑證。 如需詳細資訊，請參閱 <xref:security/enforcing-ssl#troubleshoot-certificate-problems> 。
+* 確認您已安裝並信任 ASP.NET Core 的 HTTPS 開發憑證。 如需詳細資訊，請參閱 <xref:security/enforcing-ssl#troubleshoot-certificate-problems>。
 * Visual Studio 需要 [**工具**] [選項] [一般] 中的 [**啟用 ASP.NET （Chrome、Edge 和 IE）的 JavaScript 偵錯工具**] 選項  >  **Options**  >  **Debugging**  >  ** **。 這是 Visual Studio 的預設設定。 如果偵錯工具無法運作，請確認已選取此選項。

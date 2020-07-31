@@ -14,10 +14,10 @@ no-loc:
 - SignalR
 uid: security/authentication/identity
 ms.openlocfilehash: 25070e90050db9dca8b003ae782662811096526a
-ms.sourcegitcommit: 1b89fc58114a251926abadfd5c69c120f1ba12d8
+ms.sourcegitcommit: 5a36758cca2861aeb10840093e46d273a6e6e91d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 07/28/2020
 ms.locfileid: "87160309"
 ---
 # <a name="introduction-to-no-locidentity-on-aspnet-core"></a>簡介 Identity ASP.NET Core
@@ -59,7 +59,7 @@ Identity通常會使用 SQL Server 資料庫來設定，以儲存使用者名稱
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]  。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 
@@ -293,7 +293,7 @@ Identity可以使用 SQL Server 資料庫來設定，以儲存使用者名稱、
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
 * 選取 **[** 檔案] [ > **新增** > **專案**]。
-* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]  。
+* 選取 **ASP.NET Core Web 應用程式**。 將專案命名為**WebApp1** ，使其命名空間與專案下載相同。 按一下 [確定]。
 * 選取 ASP.NET Core **Web 應用程式**，然後選取 [**變更驗證**]。
 * 選取 [**個別使用者帳戶**]，然後按一下 **[確定]**。
 
